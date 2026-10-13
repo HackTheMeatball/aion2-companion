@@ -1,0 +1,95 @@
+/* Standalone-site checks (the parts of the repo build that the single-file suites don't cover).
+   node tests/site.js  (page at AION_BASE; see tests/config.js) */
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
+let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
+const FONT_HOST = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
+const KEY = 'aion2-assassin-route-v4';
+const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
+
+(async () => {
+  const b = await chromium.launch();
+
+  /* 1. standalone page: head, footer, no errors, export as a Blob download, service worker + offline */
+  {
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 }, acceptDownloads: true }); const p = await ctx.newPage();
+    const errs = [], bad = [];
+    p.on('pageerror', e => errs.push(e.message));
+    p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errs.push('console: ' + m.text()); });
+    p.on('requestfailed', r => { if (!FONT_HOST.test(r.url())) bad.push(r.url() + ' ' + (r.failure() || {}).errorText); });
+    p.on('response', r => { if (r.status() >= 400) bad.push(r.status() + ' ' + r.url()); });
+    await p.goto(CFG.CUR); await p.waitForTimeout(600);
+    const head = await p.evaluate(() => ({
+      mode: document.compatMode, charset: document.characterSet, title: document.title,
+      viewport: (document.querySelector('meta[name=viewport]') || {}).content, desc: !!(document.querySelector('meta[name=description]') || {}).content,
+      canonical: (document.querySelector('link[rel=canonical]') || {}).href, manifest: (document.querySelector('link[rel=manifest]') || {}).href,
+      icon: (document.querySelector('link[rel=icon]') || {}).href, theme: (document.querySelector('meta[name=theme-color]') || {}).content,
+      og: ['og:title', 'og:description', 'og:url', 'og:image', 'og:type'].every(k => !!(document.querySelector(`meta[property="${k}"]`) || {}).content),
+      lang: document.documentElement.lang }));
+    ok('head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang',
+      head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Asmodian Assassin Route' && /width=device-width/.test(head.viewport) && head.desc &&
+      head.canonical === 'https://aion2.ishkabytes.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
+    const foot = await p.evaluate(() => { const f = document.querySelector('.fanline'), links = f ? [...f.querySelectorAll('a')] : [];
+      return { text: f ? f.innerText : '', links: links.map(a => [a.textContent, a.getAttribute('href'), a.getAttribute('rel')]) }; });
+    const mb = foot.links.find(l => l[0] === 'Metabot');
+    ok('footer: fan-made / not affiliated with NCSoft line', /not affiliated with or endorsed by NCSoft/.test(foot.text), foot);
+    ok('footer: Sources link + plain (dofollow) Metabot link', foot.links.some(l => l[0] === 'Sources' && l[1] === '#srcCard') && mb && /^https:\/\/metabot\.gg\//.test(mb[1]) && !/nofollow/.test(mb[2] || ''), foot.links);
+    await p.click('#srcLink'); await p.waitForTimeout(150);
+    ok('footer: the Sources link opens the Sources card', await p.evaluate(() => document.getElementById('srcCard').open));
+    ok('all icons load (no broken images)', await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).map(i => i.getAttribute('src'))).then(x => !x.length), await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.getAttribute('src'))));
+    /* export without window.claude: visible button, plain Blob download of the saved state */
+    await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true })), KEY);
+    await p.reload(); await p.waitForTimeout(500);
+    ok('export: button visible outside claude.ai', await p.evaluate(() => !document.getElementById('expBtn').hidden));
+    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
+    const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
+    ok('export: Blob download equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && exported.level === 27, dl.suggestedFilename());
+    /* service worker */
+    const sw = await p.evaluate(async () => { const r = await Promise.race([navigator.serviceWorker.ready, new Promise(res => setTimeout(() => res(null), 8000))]);
+      return { ok: !!r, scope: r && r.scope, keys: await caches.keys(), build: await fetch('build.json').then(x => x.json()).then(x => x.build).catch(() => null) }; });
+    ok('service worker registers on localhost (scope = site root)', sw.ok && sw.scope === CFG.BASE + '/', sw);
+    ok('service worker cache is named after the build', sw.build && sw.keys.includes('aion2-route-' + sw.build), sw);
+    await p.reload(); await p.waitForTimeout(400);
+    ok('page is controlled by the service worker after a reload', await p.evaluate(() => !!navigator.serviceWorker.controller));
+    await ctx.setOffline(true);
+    await p.reload(); await p.waitForTimeout(700);
+    const off = await p.evaluate(() => ({ cards: document.querySelectorAll('#nowStar .ns-card').length, lv: state.level, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
+    ok('offline: the app shell, icons and saved progress load from the cache', off.cards > 0 && off.lv === 27 && off.broken === 0, off);
+    await ctx.setOffline(false);
+    ok('no page errors, failed requests or 4xx/5xx (Google Fonts may be unreachable)', !errs.length && !bad.length, { errs, bad });
+    await ctx.close();
+  }
+
+  /* 2. manifest, 404, robots, CNAME */
+  {
+    const ctx = await b.newContext(), p = await ctx.newPage();
+    const m = await (await p.request.get(CFG.BASE + '/manifest.webmanifest')).json();
+    const icons = await Promise.all(m.icons.map(async i => [i.src, (await p.request.get(CFG.BASE + '/' + i.src)).status()]));
+    ok('manifest: name, start_url, standalone, colors, 192/512 icons all served', m.name && m.short_name && m.start_url && m.display === 'standalone' && m.theme_color === '#110c13' &&
+      ['192x192', '512x512'].every(s => m.icons.some(i => i.sizes === s)) && icons.every(([, s]) => s === 200), { m, icons });
+    const r404 = await p.goto(CFG.BASE + '/no-such-page');
+    ok('404: status 404 with the styled page and a link home', r404.status() === 404 && /Off the route/.test(await p.innerText('h1')) && await p.getAttribute('a.btn', 'href') === '/');
+    const robots = await (await p.request.get(CFG.BASE + '/robots.txt')).text(), cname = await (await p.request.get(CFG.BASE + '/CNAME')).text();
+    ok('robots.txt allows all + sitemap; CNAME is aion2.ishkabytes.com', /Allow: \//.test(robots) && /Sitemap: https:\/\/aion2\.ishkabytes\.com\/sitemap\.xml/.test(robots) && cname.trim() === 'aion2.ishkabytes.com', { robots, cname });
+    await ctx.close();
+  }
+
+  /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
+  {
+    const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
+    const ids = [...art.matchAll(/\/_blob\/([0-9a-f]{32})/g)].map(x => x[1]), known = new Set(Object.values(blobs));
+    ok('artifact build: every icon is a known /_blob/ id, no relative icon paths', ids.length >= Object.keys(blobs).length && ids.every(i => known.has(i)) && !/assets\/icons\//.test(art), ids.length);
+    ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
+    await ctx.addInitScript(() => { window.__saved = []; window.claude = { use: async name => name === 'downloads' ? { save: async o => { window.__saved.push(o); } } : null }; });
+    const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(600);
+    await p.click('#expBtn'); await p.waitForTimeout(200);
+    const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).checks !== undefined]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
+    ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^aion2-assassin-progress-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
+    ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
+    await ctx.close();
+  }
+
+  console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `SITE CHECKS FAILED (${fail})` : 'SITE CHECKS PASSED');
+  await b.close(); process.exit(fail ? 1 : 0);
+})();
