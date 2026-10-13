@@ -102,11 +102,15 @@ jobs:
             node scripts/release-notes.mjs --version "$ver" > notes.md
             latest=false; [ "$ver" = "$cur" ] && latest=true
             # Failures are reported as annotations (readable without log access) with gh's own message.
+            # A backfill (older version) only warns: GITHUB_TOKEN may not create a tag on a commit whose workflow files
+            # differ from the current ones, so those need a one-time tag by a person. The current version must succeed.
             if ! out="$(gh release create "$tag" --target "$sha" \
                 --title "$(node scripts/release-notes.mjs --version "$ver" --title)" \
                 --notes-file notes.md --latest="$latest" 2>&1)"; then
-              echo "::error title=Release $tag failed::$(echo "$out" | tr '\n' ' ')"
-              exit 1
+              msg="$(echo "$out" | tr '\n' ' ')"
+              if [ "$ver" = "$cur" ]; then echo "::error title=Release $tag failed::$msg"; exit 1; fi
+              echo "::warning title=Backfill release $tag skipped::$msg"
+              continue
             fi
-            echo "Released $tag at $sha: $out"
+            echo "::notice title=Released $tag::$out"
           done
