@@ -6,7 +6,22 @@ Two targets, built from the same source by `npm run build`.
 
 Every push to `main` runs `.github/workflows/ci.yml`: the **test** job (`npm ci`, Playwright's Chromium, `npm test`),
 then, only if it passes, the **deploy** job builds `dist/` and publishes it with `actions/configure-pages`,
-`actions/upload-pages-artifact` and `actions/deploy-pages`. Pull requests and other branches only run the tests.
+`actions/upload-pages-artifact` and `actions/deploy-pages`. After a successful deploy, the **release** job tags and
+publishes a GitHub Release for every CHANGELOG version that has none yet (see *Releases* below). Pull requests and
+other branches only run the tests.
+
+Runners are pinned to `ubuntu-24.04` rather than `ubuntu-latest`, so a GitHub image change can't silently change test
+results. Move to a newer image on purpose, in its own commit, with a green run.
+
+## Releases
+
+1. In one commit: set `version` in `package.json` (`npm version X.Y.Z --no-git-tag-version`) and add a
+   `## X.Y.Z (beta) — YYYY-MM-DD · summary` section at the top of CHANGELOG.md.
+2. Push to `main`. The test job fails early if the version has no CHANGELOG section
+   (`node scripts/release-notes.mjs`).
+3. After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (notes = that CHANGELOG section,
+   marked latest). Older CHANGELOG versions without a tag are backfilled at the commit that first set them in
+   `package.json`. Don't create tags or releases by hand.
 
 ### One-time setup (repository settings)
 

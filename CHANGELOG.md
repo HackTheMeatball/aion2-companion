@@ -3,6 +3,15 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.1 (beta) — 2026-10-13 · release automation and CI upkeep
+
+- Releases are automatic: after tests and the deploy pass on `main`, CI tags each new version and publishes its GitHub
+  Release from this changelog (`scripts/release-notes.mjs`); CI fails early if a version has no changelog section.
+- CI: GitHub Actions moved to their current major versions (Node 24 runtime); runners pinned to Ubuntu 24.04 ahead of
+  the `ubuntu-latest` image change.
+- ROADMAP.md: 1.0 scope (all classes, Asmodian), versioning, how objectives are worked, the 0.1.x and 0.2 plans.
+- No change to the app.
+
 ## 0.1.0 (beta) — 2026-10-12 · repository and standalone site
 
 - Moved into this repository; published at <https://aion2.ishkabytes.com/> (GitHub Pages) besides the claude.ai artifact.

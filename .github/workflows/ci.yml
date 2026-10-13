@@ -14,22 +14,25 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
+# Runner pinned (not ubuntu-latest) so an image change can't silently change test results; move it on purpose.
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: CHANGELOG has an entry for this version
+        run: node scripts/release-notes.mjs > /dev/null
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - name: Upload test output (logs, results.json, screenshots)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-output
           path: tests/out/
@@ -39,7 +42,7 @@ jobs:
   deploy:
     needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       pages: write
@@ -51,15 +54,54 @@ jobs:
       group: pages
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - name: Build
         run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+
+  # A new version in package.json gets its tag and GitHub Release once it is tested and live. Notes come from its
+  # CHANGELOG section. Versions already tagged are skipped, so ordinary pushes to main do nothing here.
+  release:
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Tag and publish every CHANGELOG version that has no release yet
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Each version is released at the first commit that set it in package.json (the current version at HEAD).
+          cur="$(node -p 'require("./package.json").version')"
+          for ver in $(node scripts/release-notes.mjs --list); do
+            tag="v$ver"
+            if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then continue; fi
+            if [ "$ver" = "$cur" ]; then sha="$GITHUB_SHA"; else
+              sha="$(git log --reverse --format=%H -G"\"version\": \"$ver\"" -- package.json | head -1)"
+            fi
+            if [ -z "$sha" ]; then echo "::warning::No commit sets version $ver in package.json; not releasing it."; continue; fi
+            node scripts/release-notes.mjs --version "$ver" > notes.md
+            latest=false; [ "$ver" = "$cur" ] && latest=true
+            gh release create "$tag" --target "$sha" --title "$(node scripts/release-notes.mjs --version "$ver" --title)" \
+              --notes-file notes.md --latest="$latest"
+            echo "Released $tag at $sha"
+          done

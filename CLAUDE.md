@@ -18,6 +18,7 @@ claude.ai artifact build. Read `docs/ARCHITECTURE.md` before touching state, key
   iterating (after `npm run build`). Don't weaken a check to make it pass; if a change is intended, update the
   expectation and say why in the commit (e.g. `E1MIG_WRITE_EXPECTED=1` for mig1's pinned diffs, then review the diff).
 - Small commits with clear messages. Don't push unless asked.
+- Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
 - Locally Chromium is preinstalled (`PLAYWRIGHT_BROWSERS_PATH`); never run `playwright install` locally.
 
 ## Data and source policy
