@@ -1,9 +1,9 @@
 # Changelog
 
-Versions before 1.0.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
+Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
-## 1.0.0 — 2026-10 · repository and standalone site
+## 0.1.0 (beta) — 2026-10-12 · repository and standalone site
 
 - Moved into this repository; published at <https://aion2.ishkabytes.com/> (GitHub Pages) besides the claude.ai artifact.
   The visible app is unchanged from v291.
