@@ -51,7 +51,7 @@ button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(
 
 /* Left rail scrolls on its own. The scrollbar gets its own lane (gutter) with a gap before it, and the cards
    shrink to the space that's left, so nothing is ever drawn under the scrollbar. */
-aside.rail { position: sticky; top: 16px; display: grid; gap: 16px; max-height: calc(100vh - 32px); overflow-y: auto; overflow-x: hidden;
+aside.rail { position: sticky; top: 16px; display: grid; gap: 16px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; overflow-x: hidden;
   scrollbar-gutter: stable; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 aside.rail::-webkit-scrollbar { width: 8px; }
 aside.rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
@@ -59,9 +59,12 @@ aside.rail::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 aside.rail::-webkit-scrollbar-track { background: transparent; }
 @media (max-width: 860px) { aside.rail { max-height: none; overflow: visible; } }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-.card h2, h2.sec { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
-h2.sec { margin: 10px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
-h2.sec small { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; }
+.card h2, :is(h2, div).sec { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+:is(h2, div).sec { margin: 10px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+:is(h2, div).sec small { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; }
+/* Milestones / Next up: the heading holds only its text; the tools beside it are its siblings in the div.sec row.
+   display: contents keeps the row laid out exactly as when the tools sat inside the h2. */
+div.sec > h2.sec-h { display: contents; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; }
 
 .progress-row { display: flex; align-items: center; gap: 14px; }
 .ring { flex: none;}
@@ -436,7 +439,7 @@ footer.foot { margin-top: 28px; display: grid; gap: 14px; }
 .sd-tab .sd-chev { font-size: 14px; transition: transform .2s; }
 .sd-tab .sd-lbl { writing-mode: vertical-rl; transform: rotate(180deg); }
 .statdrawer.open .sd-chev { transform: rotate(180deg); }
-.sd-panel { pointer-events: auto; width: 0; overflow: hidden auto; background: var(--panel); border: 1px solid var(--line); border-right: 0; border-radius: 12px 0 0 12px; transition: width .2s; max-height: 80vh; box-shadow: -8px 0 24px #0008; box-sizing: border-box; }
+.sd-panel { pointer-events: auto; width: 0; overflow: hidden auto; background: var(--panel); border: 1px solid var(--line); border-right: 0; border-radius: 12px 0 0 12px; transition: width .2s; max-height: 80vh; max-height: 80dvh; box-shadow: -8px 0 24px #0008; box-sizing: border-box; }
 .statdrawer:not(.open) .sd-panel { border-width: 0; box-shadow: none; padding: 0; }
 .statdrawer.open .sd-panel { padding: 14px 16px;}
 .sd-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -709,7 +712,7 @@ header.top .nowstar { align-self: end; }
 .filt-menu label { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 8px; font-size: 13px; cursor: pointer; }
 .filt-menu label:hover { background: var(--panel-2); }
 .filt-menu input { width: 15px; height: 15px; margin: 0; accent-color: var(--good); }
-h2.sec .sec-btn { margin-left: auto; align-self: center; font: 600 11.5px var(--body); letter-spacing: 0; text-transform: none; padding: 5px 10px; }
+:is(h2, div).sec .sec-btn { margin-left: auto; align-self: center; font: 600 11.5px var(--body); letter-spacing: 0; text-transform: none; padding: 5px 10px; }
 /* Top-right bar: filter icon (dropdown) + Reset filters */
 .topbar { display: flex; justify-content: flex-end; align-items: center; gap: 6px; margin: -12px 0 10px; }
 .topbar .filt-btn { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; font: 600 12px var(--body); }
@@ -760,7 +763,7 @@ h2.sec .sec-btn { margin-left: auto; align-self: center; font: 600 11.5px var(--
 
 #main .top-grid .nowstar { margin: 0; align-self: auto; }
 
-.statdrawer.open .sd-panel { width: 320px; max-height: calc(100vh - 32px); }
+.statdrawer.open .sd-panel { width: 320px; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); }
 
 .sd-rot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
 .sd-rot .ns-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; min-height: 0; }
@@ -806,10 +809,10 @@ details.step.done .bar span, .dvbh.full .dvbh-bar span { background: var(--good)
 .opt-tag { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 4px; border: 1px solid var(--line); font: 600 10px/16px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); vertical-align: 1px; }
 #main li.item.optional .txt { color: color-mix(in srgb, var(--fg) 75%, var(--muted)); }
 /* Filters + Expand live on the Milestones header */
-h2.sec .sec-tools { margin: 0 0 0 auto; display: inline-flex; align-items: center; gap: 6px; align-self: center; letter-spacing: 0; text-transform: none; font-family: var(--body); position: relative; }
-h2.sec .sec-tools .sec-btn { margin-left: 0; }
-h2.sec .sec-tools .filt-btn { height: 30px; }
-h2.sec .sec-tools .filt-menu { font-size: 13px; color: var(--fg); }
+:is(h2, div).sec .sec-tools { margin: 0 0 0 auto; display: inline-flex; align-items: center; gap: 6px; align-self: center; letter-spacing: 0; text-transform: none; font-family: var(--body); position: relative; }
+:is(h2, div).sec .sec-tools .sec-btn { margin-left: 0; }
+:is(h2, div).sec .sec-tools .filt-btn { height: 30px; }
+:is(h2, div).sec .sec-tools .filt-menu { font-size: 13px; color: var(--fg); }
 /* Next up boxes: icon/arrow and button on one line, the task below */
 .nowstar .nsbox { display: flex; flex-direction: column; gap: 8px; }
 
@@ -988,7 +991,7 @@ body.basic #gates .loc, body.basic #gates .note, body.basic #gates .upsell, body
 body.basic #gates li.item:has(> label > input:checked), body.basic #gates li.item.optional, body.basic #gates li.storyreq.reached, body.basic #btnExpand,
 body.basic aside.rail > section:nth-child(n+4) { display: none !important; }
 body.basic #main .top-grid .tcard { min-height: 0; }
-body.basic h2.sec .sec-tools .filt, body.basic h2.sec .sec-tools #btnReset { display: none; }
+body.basic :is(h2, div).sec .sec-tools .filt, body.basic :is(h2, div).sec .sec-tools #btnReset { display: none; }
 /* Basic: Next up drops its header; its first card pulses to say "this one" (#nowStar.wide itself never animates: see its !important reset). */
 body.basic #nowStar .ns-head { display: none; }
 body.basic #nowStar .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; }
@@ -1259,10 +1262,10 @@ details.step.sideonly { opacity: .85; }
 .st-later .lt-lv { font: 600 11px var(--mono); color: var(--muted); }
 .st-later .lt-where { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
 /* Next up: pop-out button, page placeholder, and the pop-out window itself */
-h2.sec.ns-sec { align-items: center; }
-h2.sec .ns-pop { margin-left: auto; font: 600 10.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid transparent; border-radius: 6px; padding: 2px 7px; cursor: pointer; }
-h2.sec .ns-pop:hover { color: var(--fg); border-color: var(--line); }
-h2.sec .ns-pop:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+:is(h2, div).sec.ns-sec { align-items: center; }
+:is(h2, div).sec .ns-pop { margin-left: auto; font: 600 10.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid transparent; border-radius: 6px; padding: 2px 7px; cursor: pointer; }
+:is(h2, div).sec .ns-pop:hover { color: var(--fg); border-color: var(--line); }
+:is(h2, div).sec .ns-pop:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ns-away { margin: 14px 0 4px; padding: 10px 14px; border: 1px dashed var(--line); border-radius: 12px; display: flex; align-items: center; gap: 8px; font: 500 12.5px var(--body); color: var(--muted); }
 .ns-away .dot { opacity: .6; }
 .ns-away button { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); cursor: pointer; }
@@ -1355,3 +1358,29 @@ body.basic #spCard .sphint.warn { display: block !important; }
 .savewarn .xfer-btn { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
 .savewarn .xfer-btn:hover { border-color: var(--accent); }
 .fanline a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+/* ---- 0.1.6 accessibility (no visible change at rest) ---- */
+/* Focus rings where all: unset / outline: none removed them (the input field's ring also shows on click: text fields match :focus-visible). */
+.modeseg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.st.cur input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Taps act at once: no double-tap zoom delay on controls that are tapped in quick succession. */
+button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
+/* Reduced motion: each animation on its own (no blanket duration override: #rwToast clears itself on animationend).
+   Level up pulses and the infinite "new" pulse stop; the row highlight and the undo row switch on and off instead of
+   fading; the toast keeps its timing but fades in place. */
+@media (prefers-reduced-motion: reduce) {
+  .lvlup-btn.pop, #lvlNum.pulse, #stackViz .sk.new { animation: none; }
+  #gates li.flash, .undorow { animation-timing-function: step-end; }
+  #rwToast { transform: translate(-50%, 0); }
+  #rwToast.show { animation-name: rwToastFade; }
+}
+@keyframes rwToastFade { 0% { opacity: 0; } 10%, 80% { opacity: 1; } 100% { opacity: 0; } }
+/* Escape hides a hover-shown "i" popover until the pointer leaves it. */
+.tipwrap.shut .tippop { display: none !important; }
+/* Screen readers skip decorative arrows drawn with CSS (alt text "" where supported; same glyphs elsewhere). */
+@supports (content: "x" / "") {
+  .trk-wrap > summary::before, .trk-sum::before { content: "▸" / ""; }
+  .trk-wrap[open] > summary::before, .trk-sum[aria-expanded="true"]::before { content: "▾" / ""; }
+  details.foldcard > summary::after { content: "▸" / ""; }
+  #nowStar .rq-wait > summary::after { content: " ▾" / ""; }
+  #nowStar .rq-wait[open] > summary::after { content: " ▴" / ""; }
+}
