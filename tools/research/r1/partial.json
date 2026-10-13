@@ -1,0 +1,2578 @@
+{
+ "In the Fang Legion's Name": {
+  "name": "In the Fang Legion's Name",
+  "slug": "in-the-fang-legions-name",
+  "rec": 22,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Gamilla",
+   "place": "Watcher's Tent",
+   "kib": "Watcher's Tent",
+   "m": 6
+  },
+  "steps": [
+   {
+    "text": "Find the whereabouts of Menrik — Talk to the Fang legionnaire",
+    "kib": "Fang Hideout",
+    "m": 130
+   },
+   {
+    "text": "Read the command document left by Menrik — Read the Fang Command",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Listen to Aran — Talk to Aran",
+    "kib": "Fang Hideout",
+    "m": 158
+   },
+   {
+    "text": "Go to the place Aran mentioned — Go to the cave near the Crash Site",
+    "kib": "Mire Campsite",
+    "m": 90
+   },
+   {
+    "text": "Listen to Aran — Talk to Aran",
+    "kib": "Mire Campsite",
+    "m": 100
+   },
+   {
+    "text": "Find the whereabouts of Menrik — Go inside the cave",
+    "kib": "Mire Campsite",
+    "m": 193
+   },
+   {
+    "text": "Find the whereabouts of Menrik — Investigate deep inside the cave",
+    "kib": "Odar's Shade",
+    "m": 266
+   }
+  ],
+  "turnin": {
+   "npc": "Menrik",
+   "place": "Fang Hideout",
+   "kib": "Fang Hideout",
+   "m": 143
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Outsider Bracelet",
+    "Statue: Selvis",
+    "Title: Watch My Back"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot turn-in location field says 'Sanctum Outpost, Altgard'; completion text says 'Talk to Menrik at Fang Hideout'"
+  ]
+ },
+ "Blade of Vengeance": {
+  "name": "Blade of Vengeance",
+  "slug": "blade-of-vengeance",
+  "rec": 22,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Meet Menrik and participate in the negotiations (near the Fang Hideout)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Outsider Earrings",
+    "Title: Burdened with Responsibility"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no quest giver and no turn-in; single step 'Meet Menrik ... near the Fang Hideout' — consistent with an auto-granted follow-up of In the Fang Legion's Name (which ends talking to Menrik at Fang Hideout). App's giver 'Nemon · Forest Hideout' is not supported by Metabot."
+  ]
+ },
+ "Young Elim's Story": {
+  "name": "Young Elim's Story",
+  "slug": "young-elims-story",
+  "rec": 22,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Learn how to help the Young Elim",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find the hermit with the young Elim",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the place Lulu mentioned",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Talk about Lulu's Mother",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Do a favor for Lulu",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Bury the Elim's Essence in Odar's Shade",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Outsider Necklace",
+    "Title: Sapling Planter"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver/turn-in/Kibelisk; app giver 'Lulu · Elim's Rest' comes from allthings.how (locations.json place_src); Lulu is named in step text"
+  ]
+ },
+ "A Guardian's Sacrifice": {
+  "name": "A Guardian's Sacrifice",
+  "slug": "a-guardians-sacrifice",
+  "rec": 22,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Ecco",
+   "place": "Collapsed Chasm",
+   "kib": "Collapsed Chasm",
+   "m": 11
+  },
+  "steps": [
+   {
+    "text": "Persuade Odar with Ecco — Talk to Odar",
+    "kib": "Odar's Shade",
+    "m": 22
+   },
+   {
+    "text": "Hear about the Spirit Temple from Ecco — Talk to Ecco",
+    "kib": "Odar's Shade",
+    "m": 9
+   },
+   {
+    "text": "Find Odar's Essence — Investigate the Spirit Temple",
+    "kib": "Odar's Shade",
+    "m": 95
+   }
+  ],
+  "turnin": {
+   "npc": "Odar",
+   "place": "Odar's Shade",
+   "kib": "Odar's Shade",
+   "m": 22
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Outsider Ring",
+    "Title: Answer in Mind"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Nine Wonders of Altgard: 1st Leg": {
+  "name": "Nine Wonders of Altgard: 1st Leg",
+  "slug": "nine-wonders-of-altgard-1st-leg",
+  "rec": 22,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Tina",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Visit the Nine Wonders of Altgard — Enjoy the scenery of Safe Haven Cliff; Enjoy the scenery of Silent Hill Coastal Cliff",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Accept Tina's call — Talk via Selvis",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Tina",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Life Crystal x5",
+    "Title: New Perspective"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven'"
+  ]
+ },
+ "Fight Poison with Poison": {
+  "name": "Fight Poison with Poison",
+  "slug": "fight-poison-with-poison",
+  "rec": 27,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Spirit Guide Viron",
+   "place": "Guide Rest Stop",
+   "kib": "Guide Rest Stop",
+   "m": 41
+  },
+  "steps": [
+   {
+    "text": "Gather antidote ingredients — Collect Withered Branch Spider Poison Sac; defeat Withered Branch Spider (Lv 27)",
+    "kib": "Guide Rest Stop",
+    "m": 78
+   }
+  ],
+  "turnin": {
+   "npc": "Spirit Guide Viron",
+   "place": "Guide Rest Stop",
+   "kib": "Guide Rest Stop",
+   "m": 41
+  },
+  "rewards": {
+   "xp": 555442,
+   "kina": 29000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Chaser Ring",
+    "Title: Fight Poison with Poison"
+   ]
+  },
+  "prevText": "Required first: A Collective Effort",
+  "conflicts": []
+ },
+ "Hugo Mercenaries: Deep Shadow": {
+  "name": "Hugo Mercenaries: Deep Shadow",
+  "slug": "hugo-mercenaries-deep-shadow",
+  "rec": 30,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hadala",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 154
+  },
+  "steps": [
+   {
+    "text": "Read the letter Hadala handed over — Read Derk's letter",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Meet Derk at Safe Haven — Talk to Derk",
+    "kib": "Safe Haven Cliff",
+    "m": 215
+   },
+   {
+    "text": "Meet Urd with Derk — Talk to Urd",
+    "kib": "Nornir Assembly",
+    "m": 50
+   },
+   {
+    "text": "Resolve the problem at the Purifying Altar — Investigate the Old Purifying Altar",
+    "kib": "Nornir Assembly",
+    "m": 311
+   },
+   {
+    "text": "Return to the Nornir Assembly",
+    "kib": "Nornir Assembly",
+    "m": 50
+   },
+   {
+    "text": "Visit Urd — Talk to Urd",
+    "kib": "Nornir Assembly",
+    "m": 50
+   }
+  ],
+  "turnin": {
+   "npc": "Derk",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 162
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Chaser Necklace",
+    "Title: I Leave the Rest to You"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Giver place inferred from nearest Kibelisk (Nornir Assembly 154 m); Metabot location field just says Altgard. Step 2 sends you to Safe Haven."
+  ]
+ },
+ "Her Last Favor": {
+  "name": "Her Last Favor",
+  "slug": "her-last-favor",
+  "rec": 30,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Spirit Guide Reden",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Go with Reden to Grisilla's hideout — Check the conditions of the Young Elim; Investigate Grisilla's Hideout",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Spirit Guide Reden",
+   "place": "Odar's Shade",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Chaser Bracelet",
+    "Title: Let's Live Together!"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated."
+  ]
+ },
+ "An Invitation to the Past: Part 1": {
+  "name": "An Invitation to the Past: Part 1",
+  "slug": "an-invitation-to-the-past-part-1",
+  "rec": 30,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hallina",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 167
+  },
+  "steps": [
+   {
+    "text": "Learn about the interactive roleplay — Talk to Hallina",
+    "kib": "Nornir Assembly",
+    "m": 167
+   },
+   {
+    "text": "Go to the roleplay stage — Go to the place Hallina mentioned",
+    "kib": "Nornir Assembly",
+    "m": 106
+   },
+   {
+    "text": "Learn about the roleplay guidelines — Talk to Hallina",
+    "kib": "Nornir Assembly",
+    "m": 109
+   },
+   {
+    "text": "Participate in Hallina's roleplay — Go to the first stage",
+    "kib": "Nornir Assembly",
+    "m": 127
+   },
+   {
+    "text": "Talk about the roleplay — Talk to Hallina",
+    "kib": "Nornir Assembly",
+    "m": 109
+   },
+   {
+    "text": "Write an evaluation of the roleplay — Complete the Evaluation Survey",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Hallina",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 109
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Chaser Earrings",
+    "Title: Stuntman"
+   ]
+  },
+  "prevText": "Dialogue: 'Please participate in the second act if you'd like.'",
+  "conflicts": [
+   "App lists reward 'bracelet · Statue: Urd' for Part 1; Metabot Part 1 gives Chaser Earrings and no statue (Statue: Urd is a Part 2 reward)"
+  ]
+ },
+ "An Invitation to the Past: Part 2": {
+  "name": "An Invitation to the Past: Part 2",
+  "slug": "an-invitation-to-the-past-part-2",
+  "rec": 30,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hallina",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 109
+  },
+  "steps": [
+   {
+    "text": "Participate in the roleplay's next chapter — Go to the second stage",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Hallina",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 109
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Chaser Bracelet",
+    "Statue: Urd",
+    "Title: Surprise Cameo"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "The Future Within the Past": {
+  "name": "The Future Within the Past",
+  "slug": "the-future-within-the-past",
+  "rec": 30,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Harald",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Hear about Minusha's Apparition — Talk to Harald",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Learn about the folktale — Go to the Victorious Daeva's Statue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find clues about the folktale — Examine the tablet in the ruins",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find another clue — Examine the Broken Warrior Statue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find the missing statue head — Collect the Statue Head Fragment",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Restore the statue — Restore the broken statue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Inspect the restored statue — Talk to the Daeva Warrior's Statue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find a way to seal Minusha — Investigate the Ancient Ruins",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Return to the present — Inspect the object in front",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Examine the gleaming object — Examine Uruthum's Sword",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Explain the situation to the Relic Warden — Talk to Harald",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Seal Minusha's Apparition — Investigate the Relic Storage",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Harald",
+   "place": "Abandoned Site",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Clash Rune Chest",
+    "Title: Heartbreaker"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'"
+  ]
+ },
+ "Hugo Mercenaries: An Old Promise": {
+  "name": "Hugo Mercenaries: An Old Promise",
+  "slug": "hugo-mercenaries-an-old-promise",
+  "rec": 32,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hadala",
+   "place": "Briskwind Shelter",
+   "kib": "Briskwind Shelter",
+   "m": 127
+  },
+  "steps": [
+   {
+    "text": "Read the letter Hadala handed over — Read Derk's letter",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Talk about Derk — Talk to Hadala",
+    "kib": "Briskwind Shelter",
+    "m": 127
+   },
+   {
+    "text": "Find Derk at Safe Haven — Go near Hugo's Memorial",
+    "kib": "Safe Haven Cliff",
+    "m": 224
+   },
+   {
+    "text": "Clean up around Hugo's Memorial — Remove overgrown weeds",
+    "kib": "Safe Haven Cliff",
+    "m": 223
+   },
+   {
+    "text": "Ask about Derk — Talk to the child villager",
+    "kib": "Safe Haven Cliff",
+    "m": 226
+   },
+   {
+    "text": "Ask where Derk lives — Talk to Galorik",
+    "kib": "Galorik's Inspection Area",
+    "m": 17
+   },
+   {
+    "text": "Go to where Derk is staying — Go to the tent on the hill",
+    "kib": "Safe Haven",
+    "m": 150
+   },
+   {
+    "text": "Find clues about Derk's whereabouts — Examine Firepit Cooking Station, Blood-Stained Clothes, Worn Bag",
+    "kib": "Safe Haven",
+    "m": 146
+   },
+   {
+    "text": "Go to Derk — Investigate the Den of the Dead",
+    "kib": "Gravekeeper Camp",
+    "m": 281
+   },
+   {
+    "text": "Investigate the place Derk mentioned — Examine the chest near the tent",
+    "kib": "Safe Haven",
+    "m": 144
+   },
+   {
+    "text": "Deliver Derk's gift — Talk to Galorik",
+    "kib": "Galorik's Inspection Area",
+    "m": 17
+   },
+   {
+    "text": "Mourn Derk — Leave flowers in front of the memorial",
+    "kib": "Safe Haven Cliff",
+    "m": 217
+   }
+  ],
+  "turnin": {
+   "npc": "Village Kid",
+   "place": "Safe Haven",
+   "kib": "Safe Haven Cliff",
+   "m": 220
+  },
+  "rewards": {
+   "xp": 282521,
+   "kina": 41000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Clash Rune Chest",
+    "Title: Heir of Sparks"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Most steps are in Safe Haven / Nameless Cemetery although giver is at Briskwind Shelter (Dranactus)",
+   "EXP 282,521 at rec 32 is lower than rec-30 quests (896,701) — as shown on Metabot list and page"
+  ]
+ },
+ "Pain Unending": {
+  "name": "Pain Unending",
+  "slug": "pain-unending",
+  "rec": 32,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Bekrin",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Meet Menrik and assess the situation — Go to the Temporary Clinic",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the Hidden Cave",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Discuss the situation with Menrik — Talk to Menrik",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find information about Tarzel — Talk to Draconute Sentinel",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Do the task given by the Sentinel — Collect the Wooden Chest",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Discard the chest in a secluded place — Dispose of the Wooden Chest",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find the source of the sound — Talk to the Lazy Mumu",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Report back to the Hidden Cave — Go to the Hidden Cave",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Share information with Menrik — Talk to Menrik",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Secure Tarzel — Investigate the Tarzel Depository",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Elena",
+   "place": "Briskwind Shelter",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 282521,
+   "kina": 41000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Avenger Bracelet",
+    "Title: Good Chemistry"
+   ]
+  },
+  "prevText": "Intro: 'Talk to Menrik at the temporary clinic.'",
+  "conflicts": [
+   "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena)."
+  ]
+ },
+ "Nine Wonders of Altgard: 2nd Leg": {
+  "name": "Nine Wonders of Altgard: 2nd Leg",
+  "slug": "nine-wonders-of-altgard-2nd-leg",
+  "rec": 32,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Tina",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Visit the Nine Wonders of Altgard — Moslan Forest Wave-swept Cliff; Basfelt Ruins Cliff",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Accept Tina's call — Talk via Selvis",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Tina",
+   "place": "Nornir Assembly",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 282521,
+   "kina": 41000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Key: Hidden Cube",
+    "Title: The Road Goes Ever On"
+   ]
+  },
+  "prevText": "Text: Tina 'shared the locations of two more wonders' (no quest named)",
+  "conflicts": [
+   "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly."
+  ]
+ },
+ "Traveling Merchant's Conundrum": {
+  "name": "Traveling Merchant's Conundrum",
+  "slug": "traveling-merchants-conundrum",
+  "rec": 33,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Wandering Merchant Shirakiki",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Help Wandering Merchant Shirakiki — find Agrint Root (she looked at the Graverobber Campsite)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 358968,
+   "kina": 44000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Avenger Earrings",
+    "Title: Celebrity"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins)."
+  ]
+ },
+ "Finders Keepers": {
+  "name": "Finders Keepers",
+  "slug": "finders-keepers",
+  "rec": 33,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hevid",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 28
+  },
+  "steps": [
+   {
+    "text": "Infiltrate the Marauder Base — Seize the marauders' goods; Defeat the marauders",
+    "kib": "Graverobber Campsite",
+    "m": 5
+   }
+  ],
+  "turnin": {
+   "npc": "Hevid",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 28
+  },
+  "rewards": {
+   "xp": 358968,
+   "kina": 44000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Avenger Ring",
+    "Title: Worst of the Worst"
+   ]
+  },
+  "prevText": "Required first: Scripture in the Ruins",
+  "conflicts": []
+ },
+ "A Friend's Legacy": {
+  "name": "A Friend's Legacy",
+  "slug": "a-friends-legacy",
+  "rec": 37,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Sculkhi",
+   "place": "Mahindel Cliff",
+   "kib": "Mahindel Cliff",
+   "m": 13
+  },
+  "steps": [
+   {
+    "text": "Talk to Nemon",
+    "kib": "Mahindel Cliff",
+    "m": 132
+   },
+   {
+    "text": "Find Hadala at Safe Haven — Go to Shadow Hall",
+    "kib": "Safe Haven",
+    "m": 183
+   },
+   {
+    "text": "Ask about Hadala's whereabouts — Talk to Dinoh",
+    "kib": "Safe Haven",
+    "m": 200
+   },
+   {
+    "text": "Go to Hadala's old home — Go to the cliff near Moslan Forest",
+    "kib": "Moslan Forest Cliff",
+    "m": 32
+   },
+   {
+    "text": "Check Hadala's condition — Investigate the Old House",
+    "kib": "Moslan Forest Cliff",
+    "m": 57
+   },
+   {
+    "text": "Talk to Hadala",
+    "kib": "Moslan Forest Cliff",
+    "m": 37
+   },
+   {
+    "text": "Pray for Ulgorn — Mourn Ulgorn",
+    "kib": "Moslan Forest Cliff",
+    "m": 41
+   }
+  ],
+  "turnin": {
+   "npc": "Hadala",
+   "place": "Moslan Forest Cliff",
+   "kib": "Moslan Forest Cliff",
+   "m": 37
+  },
+  "rewards": {
+   "xp": 935567,
+   "kina": 58000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Avenger Bracelet",
+    "Title: People Leave Memories"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Bloodstained Rose": {
+  "name": "Bloodstained Rose",
+  "slug": "bloodstained-rose",
+  "rec": 37,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Pordhet",
+   "place": "Abandoned Campsite",
+   "kib": "Abandoned Campsite",
+   "m": 9
+  },
+  "steps": [
+   {
+    "text": "Read the command document handed over by Pordhet",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Discuss the command document — Talk to Pordhet",
+    "kib": "Abandoned Campsite",
+    "m": 9
+   },
+   {
+    "text": "Rescue Pordhet's comrades — Investigate Blood Haven",
+    "kib": "Eastern Gribade Highland Cliff",
+    "m": 143
+   }
+  ],
+  "turnin": {
+   "npc": "Pordhet",
+   "place": "Abandoned Campsite",
+   "kib": "Abandoned Campsite",
+   "m": 9
+  },
+  "rewards": {
+   "xp": 935567,
+   "kina": 58000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Avenger Necklace",
+    "Title: Beasts Leave Behind a Stench"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Herb Pouch Heist": {
+  "name": "Herb Pouch Heist",
+  "slug": "herb-pouch-heist",
+  "rec": 44,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Kunpata",
+   "place": "Kumrica's Cellar",
+   "kib": "Kumrica's Cellar",
+   "m": 26
+  },
+  "steps": [
+   {
+    "text": "Steal Herb Pouch from Black Claw Healer (Lv 41) — Take the Herb Pouch; Defeat interfering Mumu; Defeat Black Claw Healer",
+    "kib": "Kumrica's Cellar",
+    "m": 146
+   }
+  ],
+  "turnin": {
+   "npc": "Kunpata",
+   "place": "Kumrica's Cellar",
+   "kib": "Kumrica's Cellar",
+   "m": null
+  },
+  "rewards": {
+   "xp": 1510373,
+   "kina": 94000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Earrings",
+    "Title: Needs Intensive Care"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list."
+  ]
+ },
+ "A Comrade's Fate": {
+  "name": "A Comrade's Fate",
+  "slug": "a-comrades-fate",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Haz's Apparition",
+   "place": "Collapsed Hall of Fame",
+   "kib": "Collapsed Hall of Fame",
+   "m": 33
+  },
+  "steps": [
+   {
+    "text": "Search for traces of the comrade that Haz is looking for — Recover the Old Bag; Recover the Bloodstained Clothes",
+    "kib": "Collapsed Hall of Fame",
+    "m": 189
+   }
+  ],
+  "turnin": {
+   "npc": "Haz's Apparition",
+   "place": "Collapsed Hall of Fame",
+   "kib": "Collapsed Hall of Fame",
+   "m": 33
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Bracelet",
+    "Title: How Have You Been?"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "A Perfect Wedding": {
+  "name": "A Perfect Wedding",
+  "slug": "a-perfect-wedding",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Romi",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Talk to Benvoli",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the ring courier's last known location",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Examine the Broken Shugo Cart and the Broken Oak Barrel",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Investigate the Highland Cave",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the wedding venue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Speak with the Hall Manager",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Enter the wedding venue",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to where the groom is",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Romi",
+   "place": "outside the wedding venue",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Ring",
+    "Title: Even Better"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver place/Kibelisk; app place 'Steel Hammer Temporary Trading Post' not on Metabot"
+  ]
+ },
+ "I'm a Believer!": {
+  "name": "I'm a Believer!",
+  "slug": "im-a-believer",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Kanes",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Get a gift for Markan — Collect the Drana liquid from Congealed Drana (Lv 12)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Markan",
+   "place": "Creion Campsite",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Necklace",
+    "Title: Gullible"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place."
+  ]
+ },
+ "Another Survivor": {
+  "name": "Another Survivor",
+  "slug": "another-survivor",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hallina",
+   "place": "Nornir Assembly",
+   "kib": "Nornir Assembly",
+   "m": 167
+  },
+  "steps": [
+   {
+    "text": "Find the Nornir survivor at the Healing Spring — Check for Nornir survivors",
+    "kib": "Healing Spring",
+    "m": 37
+   },
+   {
+    "text": "Carry Maya elsewhere — Help Maya",
+    "kib": "Healing Spring",
+    "m": 36
+   },
+   {
+    "text": "Set Maya down near the Healing Spring — Place Maya on the Blanket",
+    "kib": "Healing Spring",
+    "m": 8
+   },
+   {
+    "text": "Contact Hallina — Talk via Selvis",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Collect materials for a Vitality Draught — Magic Gravi leaf, Spring Water; defeat Purifying Forest Magic Gravi (Lv 29)",
+    "kib": "Healing Spring",
+    "m": 38
+   },
+   {
+    "text": "Craft Vitality Draught",
+    "kib": "Healing Spring",
+    "m": 21
+   },
+   {
+    "text": "Feed Vitality Draught to Maya",
+    "kib": "Healing Spring",
+    "m": 8
+   },
+   {
+    "text": "Ask Maya what happened — Talk to Maya",
+    "kib": "Healing Spring",
+    "m": 8
+   }
+  ],
+  "turnin": {
+   "npc": "Hallina",
+   "place": "Healing Spring",
+   "kib": "Healing Spring",
+   "m": 10
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Clash Rune Chest",
+    "Title: Lifeguard"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Rec 45 but objective mobs Lv 29 (Purifying Forest); same giver as An Invitation to the Past (Hallina, Nornir Assembly)"
+  ]
+ },
+ "A Traitor Within": {
+  "name": "A Traitor Within",
+  "slug": "a-traitor-within",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Find the evidence of a traitor",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Deliver the evidence to Baba",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Deliver the interrogation tool",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Rare Theostone Chest",
+    "Title: Lie Detector"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver/turn-in; app's 'Baba · Quai Campsite' — Baba appears only as delivery target in step 2. No giver on Metabot can indicate an auto-start / follow-up quest (cf. Blade of Vengeance) — possibly follows Practice Makes Perfect, Nyerk! (also Baba), unverified"
+  ]
+ },
+ "Spacetime Rift: Asmodian": {
+  "name": "Spacetime Rift: Asmodian",
+  "slug": "spacetime-rift-asmodian",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": "Collapsed Chasm",
+   "kib": "Collapsed Chasm",
+   "m": 4
+  },
+  "steps": [
+   {
+    "text": "Find and enter the rift Uru mentioned — Activate the Spacetime Rift (Altgard)",
+    "kib": "Moslan Forest Dry Shade",
+    "m": 132
+   },
+   {
+    "text": "Do a favor for Uru — Collect Wandering Klaw's Shell; defeat Wandering Klaw (Lv 19) (Verteron)",
+    "kib": "Verteron Fortress Valley",
+    "m": 83
+   }
+  ],
+  "turnin": {
+   "npc": "Uru",
+   "place": "Collapsed Chasm",
+   "kib": "Collapsed Chasm",
+   "m": 4
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Outsider Ring",
+    "Title: Verteron Traveler"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot page name is 'Spacetime Rift' (slug spacetime-rift-asmodian); app calls it 'Spacetime Rift: Asmodian'",
+   "Unlocks at 45 (not 10) — the only regional quests with unlocksAt 45 are the Spacetime Rift series",
+   "Fetch summary attributed Ecco/Odar dialogue to this page — looks like a scrape artefact (that is A Guardian's Sacrifice content); ignored"
+  ]
+ },
+ "Spacetime Rift: Unknown Species": {
+  "name": "Spacetime Rift: Unknown Species",
+  "slug": "spacetime-rift-unknown-species",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": "Collapsed Chasm",
+   "kib": "Collapsed Chasm",
+   "m": 4
+  },
+  "steps": [
+   {
+    "text": "Obtain the weapons Uru mentioned — Kobold Worker's Gear, Kobold Laborer's Pickaxe; defeat Kobold Worker/Laborer (Lv 20) (Verteron)",
+    "kib": "Collapsed Pillar",
+    "m": 106
+   }
+  ],
+  "turnin": {
+   "npc": "Uru",
+   "place": "Collapsed Chasm",
+   "kib": "Collapsed Chasm",
+   "m": 4
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Outsider Earrings",
+    "Kisk Summoning Stone: Personal",
+    "Title: Give and Take"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Spacetime Rift: Unfamiliar Material": {
+  "name": "Spacetime Rift: Unfamiliar Material",
+  "slug": "spacetime-rift-unfamiliar-material-asmodian",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Uru (Verteron)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 213118,
+   "kina": 21000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Outsider Bracelet",
+    "Title: Early Adopter"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
+   "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated"
+  ]
+ },
+ "Spacetime Rift: Difference Between Here and There": {
+  "name": "Spacetime Rift: Difference Between Here and There",
+  "slug": "spacetime-rift-difference-between-here-and-there",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Uru — Collect Aullaeu Forest Odyle Spider Thread; defeat Aullaeu Forest Odyle Spider (Lv 30) (Verteron)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Uru",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Chaser Ring",
+    "Title: Driving the Highway to Hell"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot"
+  ]
+ },
+ "Spacetime Rift: Developing Travel Goods": {
+  "name": "Spacetime Rift: Developing Travel Goods",
+  "slug": "spacetime-rift-developing-travel-goods",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Obtain information about the creatures beyond the rift (Verteron)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": null,
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 896701,
+   "kina": 36000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Chaser Earrings",
+    "Kisk Summoning Stone: Party",
+    "Title: Stay Clear"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver field; Uru named in story text only. App place 'Guide Rest Stop' not on Metabot"
+  ]
+ },
+ "Spacetime Rift: An Honest Shugo": {
+  "name": "Spacetime Rift: An Honest Shugo",
+  "slug": "spacetime-rift-an-honest-shugo",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 32
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Uru — Collect the Highland Crestlich Feather (Verteron)",
+    "kib": "Pilgrim's Rest",
+    "m": 201
+   }
+  ],
+  "turnin": {
+   "npc": "Uru",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 32
+  },
+  "rewards": {
+   "xp": 935567,
+   "kina": 58000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Avenger Ring",
+    "Title: Action over Words"
+   ]
+  },
+  "prevText": "Dialogue: Uru says a new rift appeared nearby; 'head west' (Shirakiki waits for the items) — no quest named",
+  "conflicts": []
+ },
+ "Immortal Isle's Distinct Ecology": {
+  "name": "Immortal Isle's Distinct Ecology",
+  "slug": "immortal-isles-distinct-ecology",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Nivena",
+   "place": "Sanctum Outpost",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Ride the Windstream to the Immortal Isle — Use the Windstream",
+    "kib": "Temporary Retreat",
+    "m": 201
+   },
+   {
+    "text": "Arrive at the Immortal Isle",
+    "kib": "Remote Island",
+    "m": 1535
+   },
+   {
+    "text": "Gather the specimens — Immortal Isle Drana Mutant Specimen; defeat Drana Mutant (Lv 50)",
+    "kib": "Remote Island",
+    "m": 1264
+   }
+  ],
+  "turnin": {
+   "npc": "Nivena",
+   "place": "Temporary Retreat",
+   "kib": "Temporary Retreat",
+   "m": 11
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Soul Codex: Reset",
+    "Title: Going Beyond Time"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot gives no giver Kibelisk (location 'Sanctum Outpost'); app RQ_LOC 'Temporary Retreat 197 m' does not match Metabot giver (Temporary Retreat 11 m is the turn-in; 201 m is step 1)",
+   "Objective mobs Lv 50"
+  ]
+ },
+ "Reality Bites": {
+  "name": "Reality Bites",
+  "slug": "reality-bites",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Bekrin",
+   "place": "Briskwind Shelter",
+   "kib": "Briskwind Shelter",
+   "m": 47
+  },
+  "steps": [
+   {
+    "text": "Obtain food for the refugees — Obtain the Tog Meat",
+    "kib": "Briskwind Shelter",
+    "m": 105
+   }
+  ],
+  "turnin": {
+   "npc": "Bekrin",
+   "place": "Briskwind Shelter",
+   "kib": "Briskwind Shelter",
+   "m": 47
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Kina Chest: 50,000 Kina",
+    "Title: Stomach Filling"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Giver place is Briskwind Shelter (Metabot); app QUEST_AREA 'Battlescar Mound' contradicts (P0-4). Dialogue mentions Battlescar Mound as where Togs are."
+  ]
+ },
+ "Spacetime Rift: Proof": {
+  "name": "Spacetime Rift: Proof",
+  "slug": "spacetime-rift-proof",
+  "rec": 45,
+  "unlocksAt": 45,
+  "giver": {
+   "npc": "Uru",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 32
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Uru — Collect Wild Highland Armadon Shell; defeat Highland Wild Armadon (Lv 33) (Verteron)",
+    "kib": "Beast Hunter Campsite",
+    "m": 80
+   }
+  ],
+  "turnin": {
+   "npc": "Uru",
+   "place": "Graverobber Campsite",
+   "kib": "Graverobber Campsite",
+   "m": 32
+  },
+  "rewards": {
+   "xp": 935567,
+   "kina": 58000,
+   "wisdom": 1,
+   "crystal": 1,
+   "ap": 2000,
+   "items": [
+    "Avenger Earrings",
+    "Kisk Summoning Stone: Legion",
+    "Title: I Believe What I See"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot location field just 'Altgard'; place taken from nearest Kibelisk (Graverobber Campsite 32 m, same as An Honest Shugo)"
+  ]
+ },
+ "Fallout Calmed": {
+  "name": "Fallout Calmed",
+  "slug": "fallout-calmed",
+  "src": "https://metabot.gg/en/aion-2/quests/fallout-calmed",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Lakiba",
+   "place": "Amunta's Hideout",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Visit Amunta's Hideout — Enter the Hideout",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Transform into a Mau for infiltration — Talk to Karumba",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find Chikata's whereabouts — Go to Kumrica's Cellar",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Ask about Chikata's whereabouts — Talk to Kumrica",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Check on Chikata — Investigate the Black Claw Underground Storage",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Amunta",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Odyle x5",
+    "Title: Solo Player"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot page fetched later: shows no giver field (Lakiba only in intro), no turn-in, no Kibelisk; wikily gives giver Lakiba, turn-in Amunta; allthings gives Lakiba at Amunta's Hideout. Giver Kibelisk unknown (Fallout step 2 shows Kibelisk 'Amunta's Hideout' 22 m from the hideout).",
+   "App reward 'Ariel crystal ×2' contradicts wikily (Odyle ×5 + Wisdom Stone + Daevanion Crystal)",
+   "Step 2 'talk to Karumba' — Karumba is the giver of 'Fallout' (app); suggests Fallout precedes Fallout Calmed, not stated"
+  ],
+  "src2": "https://wikily.gg/aion-2/quests/fallout-calmed"
+ },
+ "Lost Memories": {
+  "name": "Lost Memories",
+  "slug": "lost-memories",
+  "src": "https://wikily.gg/aion-2/quests/lost-memories",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Oliver",
+   "place": "Odar's Shade",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Follow Oliver's directions — Go to Oliver's village",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Defeat Blades to enter the village more easily — Defeat 15 Blades",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find the crumbled house — Go to Oliver's house",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find the stash at Oliver's house — Use the lever",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Retrieve the stash — Open the Dust-Covered Chest",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Read the letter in full — Examine the letter",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Lie to Oliver — Talk to Oliver",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Tao",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Earrings",
+    "Title: Little Brat"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained."
+  ]
+ },
+ "Putting a Friend to Rest": {
+  "name": "Putting a Friend to Rest",
+  "slug": "putting-a-friend-to-rest",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Lucian",
+   "place": "Collapsed Hall of Fame",
+   "kib": "Collapsed Hall of Fame",
+   "m": 59
+  },
+  "steps": [
+   {
+    "text": "Find Zephyr's Apparition — Go to the location Lucian mentioned",
+    "kib": "Collapsed Hall of Fame",
+    "m": 138
+   },
+   {
+    "text": "Listen to Zephyr's Apparition — Talk to Zephyr's apparition",
+    "kib": "Collapsed Hall of Fame",
+    "m": 138
+   },
+   {
+    "text": "Deliver Lucian what the apparition had said — Talk to Lucian",
+    "kib": "Collapsed Hall of Fame",
+    "m": 59
+   },
+   {
+    "text": "Collect Balaur gear in Impetusium Square",
+    "kib": "Collapsed Hall of Fame",
+    "m": 105
+   }
+  ],
+  "turnin": {
+   "npc": "Lucian",
+   "place": "Collapsed Hall of Fame",
+   "kib": "Collapsed Hall of Fame",
+   "m": 59
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Odyle x5",
+    "Title: Daditude"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "allthings.how gives pickup 'Outskirts Stall' (turn-in Collapsed Hall of Fame); Metabot giver location Collapsed Hall of Fame 59 m",
+   "App reward 'Ariel crystal' not supported: Metabot/allthings give Odyle x5"
+  ]
+ },
+ "Restoration Materials": {
+  "name": "Restoration Materials",
+  "slug": "restoration-materials",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Keronis",
+   "place": "Victorious Daeva's Statue",
+   "kib": "Victorious Daeva's Statue",
+   "m": 17
+  },
+  "steps": [
+   {
+    "text": "Help Keronis restore the statue — Collect Statue Fragments; collect tough fabric from Soulless Nornir; defeat Soulless Nornir (Lv 24)",
+    "kib": "Victorious Daeva's Statue",
+    "m": 81
+   }
+  ],
+  "turnin": {
+   "npc": "Keronis",
+   "place": "Victorious Daeva's Statue",
+   "kib": "Victorious Daeva's Statue",
+   "m": 17
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Liberator Ring",
+    "Title: Sculptor"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Rec 45 but objective mobs Lv 24"
+  ]
+ },
+ "Fallout": {
+  "name": "Fallout",
+  "slug": "fallout",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Karumba",
+   "place": "Zemurru's Tomb",
+   "kib": "Zemurru's Tomb",
+   "m": 30
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Karumba — Talk to Karumba",
+    "kib": "Zemurru's Tomb",
+    "m": 30
+   },
+   {
+    "text": "Assess the situation at the hideout — Investigate Amunta's Hideout",
+    "kib": "Amunta's Hideout",
+    "m": 22
+   },
+   {
+    "text": "Rescue Amunta — Investigate the Lagta Underground Prison",
+    "kib": "Steel Hammer Temporary Trading Post",
+    "m": 277
+   }
+  ],
+  "turnin": {
+   "npc": "Karumba",
+   "place": "Zemurru's Tomb",
+   "kib": "Zemurru's Tomb",
+   "m": 30
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Clash Rune Chest",
+    "Title: Team Player"
+   ]
+  },
+  "prevText": "Karumba closing line: 'I have a bad feeling we'll need your help again soon enough.' (no quest named)",
+  "conflicts": []
+ },
+ "Mind Your Own Business": {
+  "name": "Mind Your Own Business",
+  "slug": "mind-your-own-business",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Gamilla",
+   "place": "Temporary Retreat",
+   "kib": "Temporary Retreat",
+   "m": 7
+  },
+  "steps": [
+   {
+    "text": "Weaken Balaur surveillance — Destroy Sanctum Watchtowers; defeat the Balaur; defeat Sanctum Watchtower (Lv 18)",
+    "kib": "Temporary Retreat",
+    "m": 50
+   }
+  ],
+  "turnin": {
+   "npc": "Gamilla",
+   "place": "Temporary Retreat",
+   "kib": "Temporary Retreat",
+   "m": 7
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Kina Chest: 50,000 Kina",
+    "Title: Guerilla Fighter"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Workplace Misunderstanding": {
+  "name": "Workplace Misunderstanding",
+  "slug": "workplace-misunderstanding",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Merikiki",
+   "place": "Steel Hammer Merchants HQ",
+   "kib": "Steel Hammer Merchants HQ",
+   "m": 29
+  },
+  "steps": [
+   {
+    "text": "Read the flyer handed over by Merikiki",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Ask about the situation — Talk to Merikiki",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 29
+   },
+   {
+    "text": "Go and mediate — Head towards the argument",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 75
+   },
+   {
+    "text": "Learn about the situation — Talk to Oppokiki",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 73
+   },
+   {
+    "text": "Listen to Crobakhi's side — Talk to Devkhi",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 76
+   },
+   {
+    "text": "Help Devkhi — Collect mined Fafnite Gemstones; defeat Giant Ore Insectoid",
+    "kib": "Steel Hammer Workcamp",
+    "m": 162
+   },
+   {
+    "text": "Report the work's progress to Devkhi — Go to Crobakhi's Tent",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 85
+   }
+  ],
+  "turnin": {
+   "npc": "Crobakhi",
+   "place": "Steel Hammer Merchants HQ",
+   "kib": "Steel Hammer Merchants HQ",
+   "m": 86
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Kina Chest: 50,000 Kina",
+    "Title: Didn't Read the Fine Print"
+   ]
+  },
+  "prevText": "aion2.gaming.tools 'Required Quests': Forgotten Commander (quest 2102800)",
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "requiresSrc": [
+   "https://aion2.gaming.tools/quests/2202064"
+  ],
+  "conflicts": [
+   "Metabot shows no 'Required first'; aion2.gaming.tools lists required quest Forgotten Commander (2102800, not a regional quest — likely Altgard story/episode). Unlock is therefore story-gated, not just Lv 10."
+  ]
+ },
+ "Shugo-of-All-Trades: Asmodian": {
+  "name": "Shugo-of-All-Trades: Asmodian",
+  "slug": "shugo-of-all-trades-asmodian",
+  "rec": 12,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Dari",
+   "place": "Temporary Investigation Base",
+   "kib": "Temporary Investigation Base",
+   "m": 18
+  },
+  "steps": [
+   {
+    "text": "Do a favor for Dari — Retrieve Dari's Materials Bag",
+    "kib": "Creion Campsite",
+    "m": 81
+   }
+  ],
+  "turnin": {
+   "npc": "Dari",
+   "place": "Quai Campsite",
+   "kib": "Quai Campsite",
+   "m": 62
+  },
+  "rewards": {
+   "xp": 14599,
+   "kina": 10000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Cube Expansion Voucher",
+    "Title: Everything Has Its Use"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite"
+  ]
+ },
+ "Spooky Specters": {
+  "name": "Spooky Specters",
+  "slug": "spooky-specters",
+  "rec": 14,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Rizel",
+   "place": "Gravekeeper Camp",
+   "kib": "Gravekeeper Camp",
+   "m": 15
+  },
+  "steps": [
+   {
+    "text": "Find the lost bags — Retrieve the bags",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Rizel",
+   "place": "Gravekeeper Camp",
+   "kib": "Gravekeeper Camp",
+   "m": 15
+  },
+  "rewards": {
+   "xp": 23568,
+   "kina": 12000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Old Mercenary Commander Ring",
+    "Title: Safe and Sound"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ },
+ "Hugo Mercenaries: Past and Present": {
+  "name": "Hugo Mercenaries: Past and Present",
+  "slug": "hugo-mercenaries-past-and-present",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Derk",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Read the letter Derk handed to you — Read Hugo's Letter",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Hear what Derk thinks — Talk to Derk",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the place Derk mentioned — Investigate the old mercenary stronghold",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the Mire Campsite — Talk to Derk",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the memorial site — Go behind Shadow Hall",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Join Derk — Talk to Derk",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Honor Hugo's memory — Leave flowers in front of the memorial",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Derk",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Old Mercenary Commander Earrings",
+    "Title: Even If I Must Give My All"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text"
+  ]
+ },
+ "Missing Mount": {
+  "name": "Missing Mount",
+  "slug": "missing-mount",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Hadala",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Ask for Dinoh's whereabouts at the checkpoint",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Find Dinoh at the place Galorik mentioned",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Track the whereabouts of Dinoh",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Tomgus",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Soul Crystal x10",
+    "Old Mercenary Commander Earrings",
+    "Title: Lingering Warmth"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver/turn-in; giver Hadala and turn-in Tomgus from allthings.how 244374 and aion2.gaming.tools 2202012"
+  ]
+ },
+ "Creion Research Assistant": {
+  "name": "Creion Research Assistant",
+  "slug": "creion-research-assistant",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Benekt",
+   "place": "Creion Campsite",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Go to the place Tefra mentioned",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Discuss the dangers of the puddle",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Use the neutralizer handed over by Tefra",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Assist the Creion in collecting Drakana",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Benekt",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Odyle x5",
+    "Old Mercenary Commander Bracelet",
+    "Title: I Tried So Hard..."
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools"
+  ]
+ },
+ "Odyle Jelly Misappropriation Investigation": {
+  "name": "Odyle Jelly Misappropriation Investigation",
+  "slug": "odyle-jelly-misappropriation-investigation",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "VeKauf",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Check the suspect list for the Odyle Jelly misappropriation incident",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Ask the suspects about Odyle Jelly: Galorik, Tomgus, Markan",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Record the suspect investigation results",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Share the investigation results — Talk to Nemon",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Talk about the Odyle Jelly Storage investigation — Talk to Ulgorn",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Go to the place Nemon mentioned — Investigate the Odyle Jelly Storage",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Galorik",
+   "place": "Galorik's Inspection Area",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Old Mercenary Commander Bracelet",
+    "Title: All Warfare Is Based on Deception"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk."
+  ]
+ },
+ "The Great Curse-Breaking Caper": {
+  "name": "The Great Curse-Breaking Caper",
+  "slug": "the-great-curse-breaking-caper",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Tagar",
+   "place": "Gravekeeper Camp",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Find Ulgorn in the Neglected Crematorium — Talk to Ulgorn",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Read the note handed over by Kolina",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Talk about the content of the note — Talk to Ulgorn",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Try the first step of breaking the curse — Investigate the Old Stone Chamber",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Join Ulgorn at Safe Haven — Talk to Ulgorn",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Read the Lucky Letters (Hadala, Nemon, Dinoh)",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Ulgorn",
+   "place": "Safe Haven",
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Old Mercenary Commander Ring",
+    "Title: IDIOT"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384"
+  ]
+ },
+ "Practice Makes Perfect, Nyerk!": {
+  "name": "Practice Makes Perfect, Nyerk!",
+  "slug": "practice-makes-perfect-nyerk",
+  "rec": 16,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Baba",
+   "place": "Quai Campsite",
+   "kib": null,
+   "m": null
+  },
+  "steps": [
+   {
+    "text": "Accept the training instructor role",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Conduct combat training for the Quai Merchants",
+    "kib": null,
+    "m": null
+   }
+  ],
+  "turnin": {
+   "npc": "Baba",
+   "place": null,
+   "kib": null,
+   "m": null
+  },
+  "rewards": {
+   "xp": 50028,
+   "kina": 14000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Old Mercenary Commander Necklace",
+    "Title: Training Instructor"
+   ]
+  },
+  "prevText": null,
+  "conflicts": [
+   "Metabot shows no giver field (Baba named in story); Baba from allthings.how and gaming.tools. Zone 'Quai Campsite' is a camp, Altgard sub-region is Calderon Canyon per app area (P0-4)."
+  ]
+ },
+ "Another Crisis!": {
+  "name": "Another Crisis!",
+  "slug": "another-crisis",
+  "rec": 45,
+  "unlocksAt": 10,
+  "giver": {
+   "npc": "Snotra",
+   "place": "Steel Hammer Merchants HQ",
+   "kib": "Steel Hammer Merchants HQ",
+   "m": 88
+  },
+  "steps": [
+   {
+    "text": "Answer Snotra's Selvis — Talk via Selvis",
+    "kib": null,
+    "m": null
+   },
+   {
+    "text": "Talk about the content of the Selvis message — Talk to Snotra",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 88
+   },
+   {
+    "text": "Check on the workshop's condition — Investigate the Shuttered Workstation",
+    "kib": "Abandoned Campsite",
+    "m": 187
+   },
+   {
+    "text": "Tell about the situation at the Shuttered Workstation — Talk to Crobakhi",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 86
+   },
+   {
+    "text": "Learn about dealing with the Fafnite dust — Talk to Snotra",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 83
+   },
+   {
+    "text": "Check how Tefra is doing — Talk to Tefra",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 90
+   },
+   {
+    "text": "Reassure Tefra — Console Tefra",
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 88
+   }
+  ],
+  "turnin": {
+   "npc": "Snotra",
+   "place": "Steel Hammer Merchants HQ",
+   "kib": "Steel Hammer Merchants HQ",
+   "m": 84
+  },
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Odyle x5",
+    "Title: Everybody Has to Start Somewhere"
+   ]
+  },
+  "prevText": null,
+  "conflicts": []
+ }
+}

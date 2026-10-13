@@ -1,0 +1,597 @@
+{
+ "pages": {
+  "244371": "AION 2: All Six Asmodian Regional Quests in the Purifying Forest",
+  "244366": "Asmodian Moslan Forest Regional Quests",
+  "244374": "Asmodian regional quests in Safe Haven",
+  "244377": "Sanctum Outpost regional quests (Blade, Fang Legion, Mind Your Own Business, Immortal Isle)",
+  "244384": "Asmodian Regional Quests in Altgard's Smaller Areas (23 quests, 13 zones)",
+  "244363": "Asmodian Regional Quests: Nornir Assembly",
+  "impetusium": "https://allthings.how/aion-2-every-impetusium-square-regional-quest-and-reward-asmodian/",
+  "all": "https://allthings.how/aion-2-regional-quests-all-locations-and-rewards/ (zone list for 57 Asmodian quests; Ravenous Recluse missing there)"
+ },
+ "quests": {
+  "Fight Poison with Poison": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Spirit Guide Viron",
+   "place": "Guide Rest Stop",
+   "rec": 27
+  },
+  "Her Last Favor": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Reden",
+   "place": "Healing Spring",
+   "rec": 30,
+   "text": "With the Poison Blood now cleared from the tree's roots, Reden fears the barrier protecting the children has weakened."
+  },
+  "Restless Spirits": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Spirit Guide Cortis",
+   "place": "Healing Spring",
+   "rec": 45
+  },
+  "Regular Altar Maintenance": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Ivan",
+   "place": "Faded Stump",
+   "rec": 45,
+   "text": "Finish the route at the Wind Altar after checking all four."
+  },
+  "Spacetime Rift: Difference Between Here and There": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Uru",
+   "place": "Guide Rest Stop",
+   "rec": 45,
+   "text": "rift opens at random spots at set times"
+  },
+  "Spacetime Rift: Developing Travel Goods": {
+   "page": "244371",
+   "zone": "Purifying Forest",
+   "giver": "Uru",
+   "place": "Guide Rest Stop",
+   "rec": 45
+  },
+  "Young Elim's Story": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Lulu",
+   "place": "Elim's Rest",
+   "turnin": "Ecco",
+   "rec": 22,
+   "unlocksAt": 10
+  },
+  "A Guardian's Sacrifice": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Ecco",
+   "place": "Collapsed Chasm",
+   "turnin": "Odar",
+   "rec": 22,
+   "unlocksAt": 10
+  },
+  "Sapling Hide-and-Seek": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Nana",
+   "place": "Odar's Shade",
+   "turnin": "Nana",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Always It",
+   "items": [
+    "Odyle x5"
+   ]
+  },
+  "Spacetime Rift: Asmodian": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Uru",
+   "place": "Collapsed Chasm",
+   "rec": 45,
+   "unlocksAt": 45,
+   "text": "Uru sends you through instead across three quests, each given and turned in at the Collapsed Chasm"
+  },
+  "Spacetime Rift: Unknown Species": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Uru",
+   "place": "Collapsed Chasm",
+   "rec": 45,
+   "unlocksAt": 45,
+   "text": "After Uru discovers beings in Altgard unlike any he has seen"
+  },
+  "Spacetime Rift: Unfamiliar Material": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Uru",
+   "place": "Collapsed Chasm",
+   "rec": 45,
+   "unlocksAt": 45
+  },
+  "Lost Memories": {
+   "page": "244366",
+   "zone": "Moslan Forest",
+   "giver": "Oliver",
+   "place": "Elim's Rest",
+   "turnin": "Tao",
+   "rec": 45,
+   "unlocksAt": 10
+  },
+  "Hugo Mercenaries: Past and Present": {
+   "page": "244374",
+   "zone": "Safe Haven",
+   "giver": "Derk",
+   "place": "Safe Haven",
+   "turnin": "Derk",
+   "rec": 16,
+   "unlocksAt": 10,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "Even If I Must Give My All",
+   "items": [
+    "Old Mercenary Commander Earrings"
+   ]
+  },
+  "Missing Mount": {
+   "page": "244374",
+   "zone": "Safe Haven",
+   "giver": "Hadala",
+   "place": "Safe Haven",
+   "turnin": "Tomgus",
+   "rec": 16,
+   "unlocksAt": 10,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "Lingering Warmth",
+   "items": [
+    "Soul Crystal x10",
+    "Old Mercenary Commander Earrings"
+   ]
+  },
+  "I'm a Believer!": {
+   "page": "244374",
+   "zone": "Safe Haven",
+   "giver": "Kanes",
+   "place": "Temporary Investigation Base",
+   "turnin": "Markan (Creion Campsite)",
+   "rec": 45,
+   "unlocksAt": 10
+  },
+  "Blade of Vengeance": {
+   "page": "244377",
+   "zone": "Sanctum Outpost",
+   "giver": "Nemon",
+   "place": "Forest Hideout",
+   "turnin": "Gamilla (Watcher's Tent)",
+   "rec": 22,
+   "unlocksAt": 10,
+   "text": "next quest 'picks up straight after' this one; the two Menrik quests 'tell one story'"
+  },
+  "In the Fang Legion's Name": {
+   "page": "244377",
+   "zone": "Sanctum Outpost",
+   "giver": "Gamilla",
+   "place": "Watcher's Tent",
+   "turnin": "Menrik (Fang Hideout)",
+   "rec": 22,
+   "unlocksAt": 10,
+   "text": "picks up straight after Blade of Vengeance"
+  },
+  "Mind Your Own Business": {
+   "page": "244377",
+   "zone": "Sanctum Outpost",
+   "giver": "Gamilla",
+   "place": "Temporary Retreat",
+   "turnin": "Gamilla",
+   "rec": 45,
+   "unlocksAt": 10,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Guerilla Fighter",
+   "items": [
+    "Kina Chest: 50,000 Kina"
+   ]
+  },
+  "Immortal Isle's Distinct Ecology": {
+   "page": "244377",
+   "zone": "Sanctum Outpost",
+   "giver": "Nivena",
+   "place": "Sanctum Outpost Cliff",
+   "turnin": "Nivena (Temporary Retreat)",
+   "rec": 45,
+   "unlocksAt": 10
+  },
+  "Shugo-of-All-Trades: Asmodian": {
+   "page": "244384",
+   "zone": "Dredgion Crash Site",
+   "giver": "Dari",
+   "place": "Temporary Investigation Base",
+   "rec": 12,
+   "xp": 14599,
+   "kina": 10000,
+   "title": "Everything Has Its Use",
+   "items": [
+    "Cube Expansion Voucher"
+   ]
+  },
+  "Creion Research Assistant": {
+   "page": "244384",
+   "zone": "Dredgion Crash Site",
+   "giver": "Benekt",
+   "place": "Creion Campsite",
+   "rec": 16,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "I Tried So Hard…",
+   "items": [
+    "Odyle x5",
+    "Old Mercenary Commander Bracelet"
+   ]
+  },
+  "Odyle Jelly Misappropriation Investigation": {
+   "page": "244384",
+   "zone": "Dredgion Crash Site",
+   "giver": "VeKauf",
+   "place": "Safe Haven",
+   "rec": 16,
+   "unlocksAt": 10,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "All Warfare Is Based on Deception",
+   "items": [
+    "Old Mercenary Commander Bracelet"
+   ],
+   "turnin": "Galorik (Galorik's Inspection Area)"
+  },
+  "Spooky Specters": {
+   "page": "244384",
+   "zone": "Nameless Cemetery",
+   "giver": "Rizel",
+   "place": "Gravekeeper Camp",
+   "rec": 14,
+   "xp": 23568,
+   "kina": 12000,
+   "title": "Safe and Sound",
+   "items": [
+    "Old Mercenary Commander Ring"
+   ]
+  },
+  "The Great Curse-Breaking Caper": {
+   "page": "244384",
+   "zone": "Nameless Cemetery",
+   "giver": "Tagar",
+   "place": "Gravekeeper Camp",
+   "rec": 16,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "IDIOT",
+   "items": [
+    "Old Mercenary Commander Ring"
+   ]
+  },
+  "Practice Makes Perfect, Nyerk!": {
+   "page": "244384",
+   "zone": "Quai Campsite",
+   "giver": "Baba",
+   "place": "Quai Campsite",
+   "rec": 16,
+   "xp": 50028,
+   "kina": 14000,
+   "title": "Training Instructor",
+   "items": [
+    "Old Mercenary Commander Necklace"
+   ]
+  },
+  "A Traitor Within": {
+   "page": "244384",
+   "zone": "Quai Campsite",
+   "giver": "Baba",
+   "place": "Quai Campsite",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Lie Detector",
+   "items": [
+    "Rare Theostone Chest"
+   ]
+  },
+  "Nine Wonders of Altgard: 1st Leg": {
+   "page": "244384",
+   "zone": "Tranein Highland",
+   "giver": "Tina",
+   "place": "under the Tranein Highland bridge",
+   "rec": 22,
+   "unlocksAt": 10,
+   "text": "Surprised by your speed, she points you to Battlescar Mound Cliff for the next wonder."
+  },
+  "One Last Thing": {
+   "page": "244384",
+   "zone": "Tranein Highland",
+   "giver": "Avent",
+   "place": "Watcher's Tent",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Last Hurrah",
+   "items": [
+    "Odyle x5"
+   ]
+  },
+  "The Future Within the Past": {
+   "page": "244384",
+   "zone": "Uruthumheim",
+   "giver": "Harald",
+   "place": "Abandoned Site",
+   "rec": 30,
+   "text": "After reassembling the last piece of Minusha's Heart"
+  },
+  "Restoration Materials": {
+   "page": "244384",
+   "zone": "Uruthumheim",
+   "giver": "Keronis",
+   "place": "Victorious Daeva's Statue",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Sculptor",
+   "items": [
+    "Liberator Ring"
+   ]
+  },
+  "Pain Unending": {
+   "page": "244384",
+   "zone": "Battlescar Mound",
+   "giver": "Bekrin",
+   "place": "Battlescar Mound",
+   "rec": 32
+  },
+  "Reality Bites": {
+   "page": "244384",
+   "zone": "Battlescar Mound",
+   "giver": "Bekrin",
+   "place": "Briskwind Shelter",
+   "rec": 45
+  },
+  "Hugo Mercenaries: An Old Promise": {
+   "page": "244384",
+   "zone": "Dranactus",
+   "giver": "Hadala",
+   "place": "Briskwind Shelter",
+   "rec": 32,
+   "text": "Hadala reluctantly passes along another letter from Derk"
+  },
+  "A Friend's Legacy": {
+   "page": "244384",
+   "zone": "Mahindel River",
+   "giver": "Sculkhi",
+   "place": "Mahindel Cliff",
+   "rec": 37,
+   "text": "Though the dust crisis has been resolved, Nemon still mourns Ulgorn."
+  },
+  "Bloodstained Rose": {
+   "page": "244384",
+   "zone": "Western Gribade Highland",
+   "giver": "Pordhet",
+   "place": "Abandoned Campsite",
+   "rec": 37
+  },
+  "Ravenous Recluse": {
+   "page": "244384",
+   "zone": "Western Gribade Highland",
+   "giver": "Fiona",
+   "place": "Abandoned Campsite",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Food, Please",
+   "items": [
+    "Kina Chest: 50,000 Kina"
+   ]
+  },
+  "Herb Pouch Heist": {
+   "page": "244384",
+   "zone": "Black Claw Village",
+   "giver": "Kunpata",
+   "place": "Kumrica's Cellar",
+   "rec": 44
+  },
+  "Fallout Calmed": {
+   "page": "244384",
+   "zone": "Eastern Gribade Highland",
+   "giver": "Lakiba",
+   "place": "Amunta's Hideout",
+   "rec": 45,
+   "text": "After the Daybreak Society escaped from prison"
+  },
+  "Another Crisis!": {
+   "page": "244384",
+   "zone": "Fafnite Deposit",
+   "giver": "Snotra",
+   "place": "Steel Hammer Merchants HQ",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Everybody Has to Start Somewhere",
+   "items": [
+    "Odyle x5"
+   ],
+   "text": "Tefra is now Snotra's assistant."
+  },
+  "Workplace Misunderstanding": {
+   "page": "244384",
+   "zone": "Fafnite Deposit",
+   "giver": "Merikiki",
+   "place": "Steel Hammer Merchants HQ",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Didn't Read the Fine Print",
+   "items": [
+    "Kina Chest: 50,000 Kina"
+   ]
+  },
+  "A Perfect Wedding": {
+   "page": "244384",
+   "zone": "Southern Gribade Highland",
+   "giver": "Romi",
+   "place": "Steel Hammer Temporary Trading Post",
+   "rec": 45
+  },
+  "Fallout": {
+   "page": "244384",
+   "zone": "Southern Gribade Highland",
+   "giver": "Karumba",
+   "place": "Zemurru's Tomb",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Team Player",
+   "items": [
+    "Clash Rune Chest"
+   ],
+   "text": "The Lagta Brigade is searching for Amunta, who was taken to the hideout for safety before contact was lost."
+  },
+  "Hugo Mercenaries: Deep Shadow": {
+   "page": "244363",
+   "zone": "Nornir Assembly",
+   "giver": "Hadala",
+   "place": "Hadala's letter, left in Safe Haven",
+   "turnin": "Derk",
+   "rec": 30,
+   "unlocksAt": 10
+  },
+  "An Invitation to the Past: Part 1": {
+   "page": "244363",
+   "zone": "Nornir Assembly",
+   "giver": "Hallina",
+   "place": "roleplay stage inside the village",
+   "turnin": "Hallina",
+   "rec": 30,
+   "unlocksAt": 10,
+   "text": "completes when Hallina 'asks you back for the final act'"
+  },
+  "An Invitation to the Past: Part 2": {
+   "page": "244363",
+   "zone": "Nornir Assembly",
+   "giver": "Hallina",
+   "place": "second roleplay stage",
+   "turnin": "Hallina",
+   "rec": 30,
+   "unlocksAt": 10,
+   "text": "second act of Part 1; 'Enter the second stage to play through the final act.'"
+  },
+  "Farewell, My Instructor": {
+   "page": "244363",
+   "zone": "Nornir Assembly",
+   "giver": "Baba",
+   "place": "at the Assembly",
+   "turnin": "Varron, outside the little house by the Impetusium",
+   "rec": 45,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "My Instructor",
+   "items": [
+    "Artwork: Quai Merchants"
+   ]
+  },
+  "Another Survivor": {
+   "page": "244363",
+   "zone": "Nornir Assembly",
+   "giver": "Hallina",
+   "place": "Nornir Assembly",
+   "turnin": "Hallina",
+   "rec": 45
+  },
+  "Nine Wonders of Altgard: 2nd Leg": {
+   "page": "impetusium",
+   "zone": "Impetusium Square",
+   "giver": "Tina",
+   "place": "Battlescar Mound Cliff",
+   "turnin": "Tina, Nornir Assembly",
+   "rec": 32,
+   "unlocksAt": 10,
+   "text": "'continues Tina's tour of Altgard's landmarks'; Tina points you toward 'the next leg' at the end of the Basfelt Ruins cliff"
+  },
+  "Lest We Forget": {
+   "page": "impetusium",
+   "zone": "Impetusium Square",
+   "giver": "Nemon",
+   "place": "Collapsed Hall of Fame",
+   "turnin": "Nemon, Collapsed Hall of Fame",
+   "rec": 45,
+   "unlocksAt": 10,
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Forever in Our Hearts",
+   "items": [
+    "Artwork: Destruction Archons High Priest Hystan",
+    "Liberator Bracelet"
+   ]
+  },
+  "A Comrade's Fate": {
+   "page": "impetusium",
+   "zone": "Impetusium Square",
+   "giver": "Haz's Apparition",
+   "place": "Collapsed Hall of Fame",
+   "rec": 45,
+   "unlocksAt": 10
+  },
+  "Putting a Friend to Rest": {
+   "page": "impetusium",
+   "zone": "Impetusium Square",
+   "giver": "Lucian",
+   "place": "Outskirts Stall",
+   "turnin": "Lucian, Collapsed Hall of Fame",
+   "rec": 45,
+   "unlocksAt": 10
+  },
+  "Finders Keepers": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  },
+  "Nine Wonders of Altgard: Final Stretch": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  },
+  "Spacetime Rift: An Honest Shugo": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  },
+  "Spacetime Rift: Proof": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  },
+  "Spirit Isle, Where Time Has Stopped": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  },
+  "Traveling Merchant's Conundrum": {
+   "page": "all",
+   "zone": "Basfelt Ruins"
+  }
+ },
+ "thgl": {
+  "One Last Thing": {
+   "url": "https://aion2.th.gl/db/quests/q_2202054",
+   "rec": 45,
+   "unlocksAt": 10,
+   "objective": "Talk to Avent at the Watcher's Tent",
+   "steps": "Recover the chests in the pond; defeat the Balaur near the pond; talk to Avent at the Watcher's Tent",
+   "turnin": "Avent, Watcher's Tent",
+   "xp": 3936438,
+   "kina": 100000,
+   "title": "Last Hurrah",
+   "items": [
+    "Odyle x5"
+   ],
+   "requires": [
+    "Forgotten Commander (q_2102800)"
+   ]
+  }
+ }
+}

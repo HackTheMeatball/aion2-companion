@@ -1,0 +1,5012 @@
+{
+ "quests": [
+  {
+   "name": "Shugo-of-All-Trades: Asmodian",
+   "gate": "g12",
+   "glv": 13,
+   "lv": 12,
+   "where": "Dredgion Crash Site · Dari",
+   "reward": "Cube Expansion Voucher",
+   "k": "g12:2",
+   "area": "Dredgion Crash Site",
+   "poi": [
+    "Temporary Investigation Base",
+    "Dari"
+   ],
+   "loc": {
+    "kib": "Temporary Investigation Base",
+    "m": 18,
+    "place": "Temporary Investigation Base"
+   },
+   "id": "2202044",
+   "after": null
+  },
+  {
+   "name": "Spooky Specters",
+   "gate": "g15",
+   "glv": 15,
+   "lv": 14,
+   "where": "Nameless Cemetery · Rizel",
+   "reward": "ring",
+   "k": "g15:13",
+   "area": "Nameless Cemetery",
+   "poi": [
+    "Gravekeeper Camp",
+    "Rizel"
+   ],
+   "loc": {
+    "kib": "Gravekeeper Camp",
+    "m": 15,
+    "place": "Gravekeeper Camp"
+   },
+   "id": "2202051",
+   "after": null
+  },
+  {
+   "name": "Hugo Mercenaries: Past and Present",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Safe Haven",
+   "reward": "earrings",
+   "k": "g16:3",
+   "area": "Safe Haven",
+   "poi": [
+    "",
+    "Derk"
+   ],
+   "loc": {
+    "place": "Safe Haven"
+   },
+   "id": "2202010",
+   "after": null
+  },
+  {
+   "name": "Missing Mount",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Safe Haven",
+   "reward": "earrings",
+   "k": "g16:4",
+   "area": "Safe Haven",
+   "poi": [
+    "",
+    "Hadala"
+   ],
+   "loc": {
+    "place": "Safe Haven"
+   },
+   "id": "2202012",
+   "after": null
+  },
+  {
+   "name": "Creion Research Assistant",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Dredgion Crash Site · Benekt",
+   "reward": "bracelet",
+   "k": "g16:5",
+   "area": "Dredgion Crash Site",
+   "poi": [
+    "Creion Campsite",
+    "Benekt"
+   ],
+   "loc": {
+    "place": "Creion Campsite"
+   },
+   "id": "2202013",
+   "after": null
+  },
+  {
+   "name": "Odyle Jelly Misappropriation Investigation",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Safe Haven · VeKauf",
+   "reward": "bracelet",
+   "k": "g16:6",
+   "area": "Dredgion Crash Site",
+   "poi": [
+    "",
+    "VeKauf"
+   ],
+   "loc": {
+    "place": "Safe Haven"
+   },
+   "id": "2202014",
+   "after": null
+  },
+  {
+   "name": "The Great Curse-Breaking Caper",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Nameless Cemetery · Tagar",
+   "reward": "ring",
+   "k": "g16:7",
+   "area": "Nameless Cemetery",
+   "poi": [
+    "Gravekeeper Camp",
+    "Tagar"
+   ],
+   "loc": {
+    "place": "Gravekeeper Camp"
+   },
+   "id": "2202015",
+   "after": null
+  },
+  {
+   "name": "Practice Makes Perfect, Nyerk!",
+   "gate": "g16",
+   "glv": 16,
+   "lv": 16,
+   "where": "Quai Campsite · Baba",
+   "reward": "necklace",
+   "k": "g16:8",
+   "area": "Calderon Canyon",
+   "poi": [
+    "",
+    "Baba"
+   ],
+   "loc": {
+    "place": "Quai Campsite"
+   },
+   "id": "2202023",
+   "after": null
+  },
+  {
+   "name": "Blade of Vengeance",
+   "gate": "g22",
+   "glv": 22,
+   "lv": 22,
+   "where": "Sanctum Outpost",
+   "reward": "earrings",
+   "k": "g22:3",
+   "area": "Sanctum Outpost",
+   "poi": [
+    "Forest Hideout",
+    "Nemon"
+   ],
+   "loc": {
+    "place": "Forest Hideout"
+   },
+   "id": "2202016",
+   "after": null
+  },
+  {
+   "name": "In the Fang Legion's Name",
+   "gate": "g22",
+   "glv": 22,
+   "lv": 22,
+   "where": "Sanctum Outpost",
+   "reward": "bracelet · Statue: Selvis",
+   "k": "g22:4",
+   "area": "Sanctum Outpost",
+   "poi": [
+    "Watcher's Tent",
+    "Gamilla"
+   ],
+   "loc": null,
+   "id": "2202017",
+   "after": "Blade of Vengeance"
+  },
+  {
+   "name": "Young Elim's Story",
+   "gate": "g22",
+   "glv": 22,
+   "lv": 22,
+   "where": "Moslan Forest · Lulu",
+   "reward": "necklace",
+   "k": "g22:5",
+   "area": "Moslan Forest",
+   "poi": [
+    "Elim's Rest",
+    "Lulu"
+   ],
+   "loc": {
+    "place": "Elim's Rest"
+   },
+   "id": "2202019",
+   "after": null
+  },
+  {
+   "name": "A Guardian's Sacrifice",
+   "gate": "g22",
+   "glv": 22,
+   "lv": 22,
+   "where": "Moslan Forest · Ecco",
+   "reward": "ring",
+   "k": "g22:6",
+   "area": "Moslan Forest",
+   "poi": [
+    "Collapsed Chasm",
+    "Ecco"
+   ],
+   "loc": {
+    "place": "Collapsed Chasm"
+   },
+   "id": "2202036",
+   "after": "Young Elim's Story"
+  },
+  {
+   "name": "Nine Wonders of Altgard: 1st Leg",
+   "gate": "g22",
+   "glv": 22,
+   "lv": 22,
+   "where": "Tranein Highland · Tina",
+   "reward": "Life Crystal ×5",
+   "k": "g22:7",
+   "area": "Tranein Highland",
+   "poi": [
+    "under the Tranein Highland bridge",
+    "Tina"
+   ],
+   "loc": {
+    "place": "under the Tranein Highland bridge"
+   },
+   "id": "2202053",
+   "after": null
+  },
+  {
+   "name": "Fight Poison with Poison",
+   "gate": "g27",
+   "glv": 27,
+   "lv": 27,
+   "where": "Purifying Forest",
+   "reward": "ring",
+   "k": "g27:3",
+   "area": "Purifying Forest",
+   "poi": [
+    "Guide Rest Stop",
+    "Spirit Guide Viron"
+   ],
+   "loc": {
+    "kib": "Guide Rest Stop",
+    "m": 41,
+    "place": "Guide Rest Stop"
+   },
+   "id": "2202062",
+   "after": null
+  },
+  {
+   "name": "Hugo Mercenaries: Deep Shadow",
+   "gate": "g30",
+   "glv": 30,
+   "lv": 30,
+   "where": "Nornir Assembly",
+   "reward": "necklace",
+   "k": "g30:11",
+   "area": "Nornir Assembly",
+   "poi": [
+    "",
+    "Hadala"
+   ],
+   "loc": null,
+   "id": "2202011",
+   "after": null
+  },
+  {
+   "name": "Her Last Favor",
+   "gate": "g30",
+   "glv": 30,
+   "lv": 30,
+   "where": "Purifying Forest",
+   "reward": "bracelet",
+   "k": "g30:12",
+   "area": "Purifying Forest",
+   "poi": [
+    "Healing Spring",
+    "Reden"
+   ],
+   "loc": {
+    "place": "Healing Spring"
+   },
+   "id": "2202018",
+   "after": null
+  },
+  {
+   "name": "An Invitation to the Past: Part 1",
+   "gate": "g30",
+   "glv": 30,
+   "lv": 30,
+   "where": "Nornir Assembly",
+   "reward": "bracelet · Statue: Urd",
+   "k": "g30:13",
+   "area": "Nornir Assembly",
+   "poi": [
+    "",
+    "Hallina"
+   ],
+   "loc": {
+    "kib": "Nornir Assembly",
+    "m": 167,
+    "place": "Nornir Assembly"
+   },
+   "id": "2202021",
+   "after": null
+  },
+  {
+   "name": "An Invitation to the Past: Part 2",
+   "gate": "g30",
+   "glv": 30,
+   "lv": 30,
+   "where": "Nornir Assembly",
+   "reward": "bracelet · Statue: Urd",
+   "k": "g30:14",
+   "area": "Nornir Assembly",
+   "poi": [
+    "",
+    "Hallina"
+   ],
+   "loc": {
+    "kib": "Nornir Assembly",
+    "m": 109,
+    "place": "Nornir Assembly"
+   },
+   "id": "2202022",
+   "after": "An Invitation to the Past: Part 1"
+  },
+  {
+   "name": "The Future Within the Past",
+   "gate": "g30",
+   "glv": 30,
+   "lv": 30,
+   "where": "Uruthumheim · Harald",
+   "reward": "Clash Rune Chest",
+   "k": "g30:15",
+   "area": "Uruthumheim",
+   "poi": [
+    "Abandoned Site",
+    "Harald"
+   ],
+   "loc": {
+    "place": "Abandoned Site"
+   },
+   "id": "2202037",
+   "after": null
+  },
+  {
+   "name": "Hugo Mercenaries: An Old Promise",
+   "gate": "g32",
+   "glv": 32,
+   "lv": 32,
+   "where": "Dranactus · Hadala",
+   "reward": "Clash Rune Chest",
+   "k": "g32:3",
+   "area": "Dranactus",
+   "poi": [
+    "Briskwind Shelter",
+    "Hadala"
+   ],
+   "loc": {
+    "kib": "Briskwind Shelter",
+    "m": 127,
+    "place": "Briskwind Shelter"
+   },
+   "id": "2202020",
+   "after": null
+  },
+  {
+   "name": "Pain Unending",
+   "gate": "g32",
+   "glv": 32,
+   "lv": 32,
+   "where": "Battlescar Mound · Bekrin",
+   "reward": "bracelet",
+   "k": "g32:4",
+   "area": "Battlescar Mound",
+   "poi": [
+    "",
+    "Bekrin"
+   ],
+   "loc": {
+    "place": "Battlescar Mound"
+   },
+   "id": "2202040",
+   "after": null
+  },
+  {
+   "name": "Nine Wonders of Altgard: 2nd Leg",
+   "gate": "g32",
+   "glv": 32,
+   "lv": 32,
+   "where": "Impetusium Square",
+   "reward": "Hidden Cube key",
+   "k": "g32:5",
+   "area": "Impetusium Square",
+   "poi": [
+    "",
+    "Tina"
+   ],
+   "loc": null,
+   "id": "2202070",
+   "after": "Nine Wonders of Altgard: 1st Leg"
+  },
+  {
+   "name": "Traveling Merchant's Conundrum",
+   "gate": "g32",
+   "glv": 32,
+   "lv": 33,
+   "where": "Basfelt Ruins",
+   "reward": "earrings",
+   "k": "g32:7",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "",
+    "Wandering Merchant Shirakiki"
+   ],
+   "loc": null,
+   "id": "2202029",
+   "after": null
+  },
+  {
+   "name": "Finders Keepers",
+   "gate": "g32",
+   "glv": 32,
+   "lv": 33,
+   "where": "Basfelt Ruins",
+   "reward": "ring",
+   "k": "g32:8",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "Graverobber Campsite",
+    "Hevid"
+   ],
+   "loc": {
+    "kib": "Graverobber Campsite",
+    "m": 28,
+    "place": "Graverobber Campsite"
+   },
+   "id": "2202063",
+   "after": null
+  },
+  {
+   "name": "A Friend's Legacy",
+   "gate": "g37",
+   "glv": 37,
+   "lv": 37,
+   "where": "Mahindel River · Sculkhi",
+   "reward": "bracelet",
+   "k": "g37:4",
+   "area": "Mahindel River",
+   "poi": [
+    "Mahindel Cliff",
+    "Sculkhi"
+   ],
+   "loc": {
+    "kib": "Mahindel Cliff",
+    "m": 13,
+    "place": "Mahindel Cliff"
+   },
+   "id": "2202039",
+   "after": null
+  },
+  {
+   "name": "Bloodstained Rose",
+   "gate": "g37",
+   "glv": 37,
+   "lv": 37,
+   "where": "Western Gribade Highland · Pordhet",
+   "reward": "necklace",
+   "k": "g37:5",
+   "area": "Western Gribade Highland",
+   "poi": [
+    "Abandoned Campsite",
+    "Pordhet"
+   ],
+   "loc": {
+    "kib": "Abandoned Campsite",
+    "m": 9,
+    "place": "Abandoned Campsite"
+   },
+   "id": "2202038",
+   "after": null
+  },
+  {
+   "name": "Herb Pouch Heist",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 44,
+   "where": "Black Claw Village · Kunpata",
+   "reward": "earrings",
+   "k": "g45:7",
+   "area": "Black Claw Village",
+   "poi": [
+    "Kumrica's Cellar",
+    "Kunpata"
+   ],
+   "loc": {
+    "kib": "Kumrica's Cellar",
+    "m": 26,
+    "place": "Kumrica's Cellar"
+   },
+   "id": "2202066",
+   "after": null
+  },
+  {
+   "name": "A Comrade's Fate",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Impetusium Square",
+   "reward": "bracelet",
+   "k": "g45:9",
+   "area": "Impetusium Square",
+   "poi": [
+    "Collapsed Hall of Fame",
+    "Haz's Apparition"
+   ],
+   "loc": {
+    "kib": "Collapsed Hall of Fame",
+    "m": 33,
+    "place": "Collapsed Hall of Fame"
+   },
+   "id": "2202067",
+   "after": null
+  },
+  {
+   "name": "Lest We Forget",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Impetusium Square",
+   "reward": "bracelet · Artwork",
+   "k": "g45:10",
+   "area": "Impetusium Square",
+   "poi": [
+    "",
+    "Nemon"
+   ],
+   "loc": null,
+   "id": "2202046",
+   "after": null
+  },
+  {
+   "name": "A Perfect Wedding",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Southern Gribade Highland · Romi",
+   "reward": "ring",
+   "k": "g45:11",
+   "area": "Southern Gribade Highland",
+   "poi": [
+    "Steel Hammer Temporary Trading Post",
+    "Romi"
+   ],
+   "loc": {
+    "place": "Steel Hammer Temporary Trading Post"
+   },
+   "id": "2202041",
+   "after": null
+  },
+  {
+   "name": "Restoration Materials",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Uruthumheim · Keronis",
+   "reward": "ring",
+   "k": "g45:12",
+   "area": "Uruthumheim",
+   "poi": [
+    "Victorious Daeva's Statue",
+    "Keronis"
+   ],
+   "loc": {
+    "place": "Victorious Daeva's Statue"
+   },
+   "id": "2202058",
+   "after": null
+  },
+  {
+   "name": "Lost Memories",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Moslan Forest · Oliver",
+   "reward": "earrings",
+   "k": "g45:13",
+   "area": "Moslan Forest",
+   "poi": [
+    "Elim's Rest",
+    "Oliver"
+   ],
+   "loc": {
+    "place": "Elim's Rest"
+   },
+   "id": "2202056",
+   "after": null
+  },
+  {
+   "name": "I'm a Believer!",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Dredgion Crash Site",
+   "reward": "necklace",
+   "k": "g45:14",
+   "area": "Safe Haven",
+   "poi": [
+    "Temporary Investigation Base",
+    "Kanes"
+   ],
+   "loc": {
+    "place": "Temporary Investigation Base"
+   },
+   "id": "2202050",
+   "after": null
+  },
+  {
+   "name": "Fallout Calmed",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Eastern Gribade Highland · Lakiba",
+   "reward": "Ariel crystal ×2",
+   "k": "g45:16",
+   "area": "Eastern Gribade Highland",
+   "poi": [
+    "Amunta's Hideout",
+    "Lakiba"
+   ],
+   "loc": {
+    "place": "Amunta's Hideout"
+   },
+   "id": "2202043",
+   "after": null
+  },
+  {
+   "name": "Putting a Friend to Rest",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Impetusium Square",
+   "reward": "Ariel crystal",
+   "k": "g45:17",
+   "area": "Impetusium Square",
+   "poi": [
+    "Collapsed Hall of Fame",
+    "Lucian"
+   ],
+   "loc": null,
+   "id": "2202068",
+   "after": null
+  },
+  {
+   "name": "Sapling Hide-and-Seek",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Moslan Forest · Nana",
+   "reward": "Ariel crystal",
+   "k": "g45:18",
+   "area": "Moslan Forest",
+   "poi": [
+    "Odar's Shade",
+    "Nana"
+   ],
+   "loc": null,
+   "id": "2202057",
+   "after": null
+  },
+  {
+   "name": "One Last Thing",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Tranein Highland · Avent",
+   "reward": "Ariel crystal",
+   "k": "g45:19",
+   "area": "Tranein Highland",
+   "poi": [
+    "Watcher's Tent",
+    "Avent"
+   ],
+   "loc": {
+    "place": "Watcher's Tent"
+   },
+   "id": "2202054",
+   "after": null
+  },
+  {
+   "name": "Another Survivor",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Nornir Assembly",
+   "reward": "Clash Rune Chest",
+   "k": "g45:20",
+   "area": "Nornir Assembly",
+   "poi": [
+    "",
+    "Hallina"
+   ],
+   "loc": {
+    "kib": "Nornir Assembly",
+    "m": 167,
+    "place": "Nornir Assembly"
+   },
+   "id": "2202060",
+   "after": null
+  },
+  {
+   "name": "Fallout",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Southern Gribade Highland · Karumba",
+   "reward": "Clash Rune Chest",
+   "k": "g45:21",
+   "area": "Southern Gribade Highland",
+   "poi": [
+    "Zemurru's Tomb",
+    "Karumba"
+   ],
+   "loc": {
+    "place": "Zemurru's Tomb"
+   },
+   "id": "2202042",
+   "after": null
+  },
+  {
+   "name": "A Traitor Within",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Quai Campsite · Baba",
+   "reward": "Rare Theostone Chest",
+   "k": "g45:22",
+   "area": "Calderon Canyon",
+   "poi": [
+    "",
+    "Baba"
+   ],
+   "loc": {
+    "place": "Quai Campsite"
+   },
+   "id": "2202052",
+   "after": null
+  },
+  {
+   "name": "Regular Altar Maintenance",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Purifying Forest",
+   "reward": "Rare Theostone Chest",
+   "k": "g45:23",
+   "area": "Purifying Forest",
+   "poi": [
+    "Faded Stump",
+    "Ivan"
+   ],
+   "loc": {
+    "place": "Faded Stump"
+   },
+   "id": "2202061",
+   "after": null
+  },
+  {
+   "name": "Restless Spirits",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Purifying Forest",
+   "reward": "Rare Theostone Chest",
+   "k": "g45:24",
+   "area": "Purifying Forest",
+   "poi": [
+    "Healing Spring",
+    "Spirit Guide Cortis"
+   ],
+   "loc": {
+    "place": "Healing Spring"
+   },
+   "id": "2202059",
+   "after": null
+  },
+  {
+   "name": "Nine Wonders of Altgard: Final Stretch",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Basfelt Ruins",
+   "reward": "Cube Expansion Voucher",
+   "k": "g45:25",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "Basfelt Ruins Cliff",
+    "Tina"
+   ],
+   "loc": null,
+   "id": "2202071",
+   "after": null
+  },
+  {
+   "name": "Immortal Isle's Distinct Ecology",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Sanctum Outpost",
+   "reward": "Soul Codex: Reset",
+   "k": "g45:26",
+   "area": "Sanctum Outpost",
+   "poi": [
+    "Sanctum Outpost Cliff",
+    "Nivena"
+   ],
+   "loc": {
+    "kib": "Temporary Retreat",
+    "m": 197,
+    "place": "Sanctum Outpost Cliff"
+   },
+   "id": "2202027",
+   "after": null
+  },
+  {
+   "name": "Spirit Isle, Where Time Has Stopped",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Basfelt Ruins",
+   "reward": "Soul Codex: Reset",
+   "k": "g45:27",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "Basfelt Waterfall, near the Windstream",
+    "a treasure hunter"
+   ],
+   "loc": null,
+   "id": "2202069",
+   "after": null
+  },
+  {
+   "name": "Farewell, My Instructor",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Nornir Assembly",
+   "reward": "Artwork",
+   "k": "g45:28",
+   "area": "Nornir Assembly",
+   "poi": [
+    "",
+    "Baba"
+   ],
+   "loc": null,
+   "id": "2202045",
+   "after": null
+  },
+  {
+   "name": "Mind Your Own Business",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Sanctum Outpost",
+   "reward": "50k Kina chest",
+   "k": "g45:30",
+   "area": "Sanctum Outpost",
+   "poi": [
+    "Temporary Retreat",
+    "Gamilla"
+   ],
+   "loc": null,
+   "id": "2202055",
+   "after": null
+  },
+  {
+   "name": "Reality Bites",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Briskwind Shelter · Bekrin",
+   "reward": "50k Kina chest",
+   "k": "g45:31",
+   "area": "Battlescar Mound",
+   "poi": [
+    "",
+    "Bekrin"
+   ],
+   "loc": {
+    "kib": "Briskwind Shelter",
+    "m": 47,
+    "place": "Briskwind Shelter"
+   },
+   "id": "2202028",
+   "after": null
+  },
+  {
+   "name": "Workplace Misunderstanding",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Steel Hammer Merchants HQ · Merikiki",
+   "reward": "50k Kina chest",
+   "k": "g45:32",
+   "area": "Fafnite Deposit",
+   "poi": [
+    "",
+    "Merikiki"
+   ],
+   "loc": {
+    "place": "Steel Hammer Merchants HQ"
+   },
+   "id": "2202064",
+   "after": null
+  },
+  {
+   "name": "Ravenous Recluse",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Abandoned Campsite · Fiona",
+   "reward": "50k Kina chest",
+   "k": "g45:33",
+   "area": "Western Gribade Highland",
+   "poi": [
+    "",
+    "Fiona"
+   ],
+   "loc": {
+    "place": "Abandoned Campsite"
+   },
+   "id": "2202065",
+   "after": null
+  },
+  {
+   "name": "Another Crisis!",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Steel Hammer Merchants HQ · Snotra",
+   "reward": "Odyle ×5",
+   "k": "g45:34",
+   "area": "Fafnite Deposit",
+   "poi": [
+    "",
+    "Snotra"
+   ],
+   "loc": {
+    "place": "Steel Hammer Merchants HQ"
+   },
+   "id": "2202047",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Asmodian",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Moslan Forest · Uru",
+   "reward": "2k Abyss Points · ring",
+   "k": "g45:36",
+   "area": "Moslan Forest",
+   "poi": [
+    "Collapsed Chasm",
+    "Uru"
+   ],
+   "loc": {
+    "kib": "Collapsed Chasm",
+    "m": 4,
+    "place": "Collapsed Chasm"
+   },
+   "id": "2202026",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Unknown Species",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Moslan Forest · Uru",
+   "reward": "2k AP · earrings · personal Kisk",
+   "k": "g45:37",
+   "area": "Moslan Forest",
+   "poi": [
+    "Collapsed Chasm",
+    "Uru"
+   ],
+   "loc": {
+    "kib": "Collapsed Chasm",
+    "m": 4,
+    "place": "Collapsed Chasm"
+   },
+   "id": "2202030",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Unfamiliar Material",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Moslan Forest · Uru",
+   "reward": "2k AP · bracelet",
+   "k": "g45:38",
+   "area": "Moslan Forest",
+   "poi": [
+    "Collapsed Chasm",
+    "Uru"
+   ],
+   "loc": null,
+   "id": "2202031",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Developing Travel Goods",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Purifying Forest",
+   "reward": "2k AP · earrings · party Kisk",
+   "k": "g45:39",
+   "area": "Purifying Forest",
+   "poi": [
+    "Guide Rest Stop",
+    "Uru"
+   ],
+   "loc": null,
+   "id": "2202033",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Difference Between Here and There",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Purifying Forest",
+   "reward": "2k AP · ring",
+   "k": "g45:40",
+   "area": "Purifying Forest",
+   "poi": [
+    "Guide Rest Stop",
+    "Uru"
+   ],
+   "loc": null,
+   "id": "2202032",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: An Honest Shugo",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Basfelt Ruins",
+   "reward": "2k AP · ring",
+   "k": "g45:41",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "near Graverobber Campsite",
+    "Uru"
+   ],
+   "loc": {
+    "kib": "Graverobber Campsite",
+    "m": 32,
+    "place": "Graverobber Campsite"
+   },
+   "id": "2202034",
+   "after": null
+  },
+  {
+   "name": "Spacetime Rift: Proof",
+   "gate": "g45",
+   "glv": 45,
+   "lv": 45,
+   "where": "Basfelt Ruins",
+   "reward": "2k AP · earrings · legion Kisk",
+   "k": "g45:42",
+   "area": "Basfelt Ruins",
+   "poi": [
+    "",
+    "Uru"
+   ],
+   "loc": null,
+   "id": "2202035",
+   "after": null
+  }
+ ],
+ "areas": [
+  {
+   "name": "Abandoned One's Grave",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:abandoned-one-s-grave",
+   "loc": null
+  },
+  {
+   "name": "Dratona Cave",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Dredgion Crash Site",
+   "k": "g10h:dratona-cave",
+   "loc": {
+    "kib": "Temporary Investigation Base",
+    "m": 240
+   }
+  },
+  {
+   "name": "Dusk Pit",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Calderon Canyon",
+   "k": "g10h:dusk-pit",
+   "loc": {
+    "kib": "Quai Campsite",
+    "m": 200
+   }
+  },
+  {
+   "name": "Hidden Vein Cave",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:hidden-vein-cave",
+   "loc": {
+    "kib": "Safe Haven",
+    "m": 460
+   }
+  },
+  {
+   "name": "Lost Ruins",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:lost-ruins",
+   "loc": null
+  },
+  {
+   "name": "Old Graveyard",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:old-graveyard",
+   "loc": {
+    "kib": "Gravekeeper Camp",
+    "m": 150
+   }
+  },
+  {
+   "name": "Ossuary of the Noble",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:ossuary-of-the-noble",
+   "loc": {
+    "kib": "Neglected Crematorium",
+    "m": 170
+   }
+  },
+  {
+   "name": "Poisonous Plant Habitat",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Nameless Cemetery",
+   "k": "g10h:poisonous-plant-habitat",
+   "loc": {
+    "kib": "Gravekeeper Camp",
+    "m": 310
+   }
+  },
+  {
+   "name": "Smuggler's Cave",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Calderon Canyon",
+   "k": "g10h:smuggler-s-cave",
+   "loc": {
+    "kib": "Watcher's Tent",
+    "m": 180
+   }
+  },
+  {
+   "name": "Treasure Hunter's Residence",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Dredgion Crash Site",
+   "k": "g10h:treasure-hunter-s-residence",
+   "loc": {
+    "kib": "Temporary Investigation Base",
+    "m": 160
+   }
+  },
+  {
+   "name": "Trickster's Den",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Dredgion Crash Site",
+   "k": "g10h:trickster-s-den",
+   "loc": {
+    "kib": "Temporary Investigation Base",
+    "m": 150
+   }
+  },
+  {
+   "name": "Valka's Nest",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Dredgion Crash Site",
+   "k": "g10h:valka-s-nest",
+   "loc": {
+    "kib": "Temporary Investigation Base",
+    "m": 360
+   }
+  },
+  {
+   "name": "Watcher's Temporary Outpost",
+   "kind": "hideout",
+   "lv": 10,
+   "area": "Calderon Canyon",
+   "k": "g10h:watcher-s-temporary-outpost",
+   "loc": {
+    "kib": "Quai Campsite",
+    "m": 160
+   }
+  },
+  {
+   "name": "Abandoned Archon Jail",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:1",
+   "loc": {
+    "kib": "Moslan Forest Cliff",
+    "m": 150,
+    "xp": 36027
+   }
+  },
+  {
+   "name": "Bloodsoaked Confessional",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:2",
+   "loc": {
+    "kib": "Forest Hideout",
+    "m": 140
+   }
+  },
+  {
+   "name": "Blue Dragon's Trap",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Sanctum Outpost",
+   "k": "g15:3",
+   "loc": {
+    "kib": "Temporary Retreat",
+    "m": 80
+   }
+  },
+  {
+   "name": "Fafnite Storage Room",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Sanctum Outpost",
+   "k": "g15:4",
+   "loc": null
+  },
+  {
+   "name": "Fanatics' Den",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Sanctum Outpost",
+   "k": "g15:5",
+   "loc": {
+    "kib": "Temporary Retreat",
+    "m": 390
+   }
+  },
+  {
+   "name": "Fortuneteller's Grave",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:6",
+   "loc": {
+    "kib": "Moslan Forest Dry Shade",
+    "m": 70
+   }
+  },
+  {
+   "name": "Homish's Prison Compound",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Sanctum Outpost",
+   "k": "g15:7",
+   "loc": {
+    "kib": "Temporary Retreat",
+    "m": 240
+   }
+  },
+  {
+   "name": "Howling Den",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:8",
+   "loc": {
+    "kib": "Elim's Rest",
+    "m": 260
+   }
+  },
+  {
+   "name": "Library of Foresight",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:9",
+   "loc": {
+    "kib": "Elim's Rest",
+    "m": 110
+   }
+  },
+  {
+   "name": "Prison of Oblivion",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:10",
+   "loc": {
+    "kib": "Collapsed Chasm",
+    "m": 290
+   }
+  },
+  {
+   "name": "Victims' Cave",
+   "kind": "hideout",
+   "lv": 15,
+   "area": "Moslan Forest",
+   "k": "g15:11",
+   "loc": {
+    "kib": "Collapsed Chasm",
+    "m": 90
+   }
+  },
+  {
+   "name": "Abandoned Memorial Room",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Uruthumheim",
+   "k": "g20:2",
+   "loc": {
+    "kib": "Abandoned Site",
+    "m": 260
+   }
+  },
+  {
+   "name": "Closed Hideout",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Uruthumheim",
+   "k": "g20:3",
+   "loc": {
+    "kib": "Victorious Daeva's Statue",
+    "m": 100
+   }
+  },
+  {
+   "name": "Destroyed Scriptorium",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Purifying Forest",
+   "k": "g20:4",
+   "loc": {
+    "kib": "Faded Stump",
+    "m": 200
+   }
+  },
+  {
+   "name": "Lamnah Base",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Purifying Forest",
+   "k": "g20:5",
+   "loc": {
+    "kib": "Healing Spring",
+    "m": 110
+   }
+  },
+  {
+   "name": "Predator's Lair",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Purifying Forest",
+   "k": "g20:6",
+   "loc": {
+    "kib": "Guide Rest Stop",
+    "m": 140
+   }
+  },
+  {
+   "name": "Unstable Cave",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Purifying Forest",
+   "k": "g20:7",
+   "loc": {
+    "kib": "Briskwind Shelter",
+    "m": 270
+   }
+  },
+  {
+   "name": "Worshiper's Underground Cave",
+   "kind": "hideout",
+   "lv": 20,
+   "area": "Uruthumheim",
+   "k": "g20:8",
+   "loc": {
+    "kib": "Victorious Daeva's Statue",
+    "m": 160
+   }
+  },
+  {
+   "name": "Dark Root Cave",
+   "kind": "hideout",
+   "lv": 25,
+   "area": "Dranactus",
+   "k": "g25:2",
+   "loc": {
+    "kib": "Hidden Cave",
+    "m": 230
+   }
+  },
+  {
+   "name": "Drana Depository",
+   "kind": "hideout",
+   "lv": 25,
+   "area": "Dranactus",
+   "k": "g25:3",
+   "loc": {
+    "kib": "Briskwind Shelter",
+    "m": 280
+   }
+  },
+  {
+   "name": "High Priest's Ruins",
+   "kind": "hideout",
+   "lv": 25,
+   "area": "Dranactus",
+   "k": "g25:4",
+   "loc": {
+    "kib": "Briskwind Shelter",
+    "m": 300,
+    "xp": 410288
+   }
+  },
+  {
+   "name": "Skurv Laborer Den",
+   "kind": "hideout",
+   "lv": 25,
+   "area": "Dranactus",
+   "k": "g25:5",
+   "loc": {
+    "kib": "Dranactus Shore",
+    "m": 120
+   }
+  },
+  {
+   "name": "Twisted Pit",
+   "kind": "hideout",
+   "lv": 25,
+   "area": "Dranactus",
+   "k": "g25:6",
+   "loc": {
+    "kib": "Hidden Cave",
+    "m": 240
+   }
+  },
+  {
+   "name": "All-Curing Cave",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Battlescar Mound",
+   "k": "g30:3",
+   "loc": {
+    "kib": "Battlescar Mound Clifftop",
+    "m": 170,
+    "xp": 661754
+   }
+  },
+  {
+   "name": "Dratona Assembly Area",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Basfelt Ruins",
+   "k": "g30:4",
+   "loc": {
+    "xp": 661754
+   }
+  },
+  {
+   "name": "Final Haven",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Battlescar Mound",
+   "k": "g30:5",
+   "loc": {
+    "kib": "Basfelt Waterfall",
+    "m": 50
+   }
+  },
+  {
+   "name": "Insectoid Tunnel",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Basfelt Ruins",
+   "k": "g30:6",
+   "loc": {
+    "kib": "Basfelt Waterfall Arch Zone",
+    "m": 320,
+    "xp": 661754
+   }
+  },
+  {
+   "name": "Library of Patience",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Basfelt Ruins",
+   "k": "g30:7",
+   "loc": {
+    "kib": "Fissure Cave",
+    "m": 140,
+    "xp": 661754
+   }
+  },
+  {
+   "name": "Library of Wisdom",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Basfelt Ruins",
+   "k": "g30:8",
+   "loc": {
+    "kib": "Basfelt Ruins Cliff",
+    "m": 140,
+    "xp": 661754
+   }
+  },
+  {
+   "name": "Rift Fissure",
+   "kind": "hideout",
+   "lv": 30,
+   "area": "Battlescar Mound",
+   "k": "g30:9",
+   "loc": {
+    "kib": "Basfelt Waterfall",
+    "m": 250
+   }
+  },
+  {
+   "name": "Destruction Archons Armory",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Eastern Gribade Highland",
+   "k": "g35:1",
+   "loc": {
+    "kib": "Steel Hammer Temporary Trading Post",
+    "m": 290
+   }
+  },
+  {
+   "name": "Empty Cave",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Western Gribade Highland",
+   "k": "g35:2",
+   "loc": {
+    "kib": "Zemurru's Tomb",
+    "m": 300
+   }
+  },
+  {
+   "name": "Fungie Habitat",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Eastern Gribade Highland",
+   "k": "g35:3",
+   "loc": {
+    "kib": "Steel Hammer Merchants HQ",
+    "m": 260
+   }
+  },
+  {
+   "name": "Lonely Rock Chasm",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Western Gribade Highland",
+   "k": "g35:4",
+   "loc": {
+    "kib": "Idun's Lake",
+    "m": 140
+   }
+  },
+  {
+   "name": "Odylium Marauder Den",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Eastern Gribade Highland",
+   "k": "g35:5",
+   "loc": null
+  },
+  {
+   "name": "Pirate's Treasure Storage",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Idun's Lake",
+   "k": "g35:6",
+   "loc": {
+    "kib": "Idun's Lake",
+    "m": 110
+   }
+  },
+  {
+   "name": "Place of Rest",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Black Claw Village",
+   "k": "g35:7",
+   "loc": {
+    "kib": "Zemurru's Tomb",
+    "m": 100
+   }
+  },
+  {
+   "name": "Rock Cave",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Eastern Gribade Highland",
+   "k": "g35:8",
+   "loc": {
+    "kib": "Eastern Gribade Highland Cliff",
+    "m": 350
+   }
+  },
+  {
+   "name": "Scale Altar",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Western Gribade Highland",
+   "k": "g35:9",
+   "loc": {
+    "kib": "Abandoned Campsite",
+    "m": 210
+   }
+  },
+  {
+   "name": "Shulak Cave",
+   "kind": "hideout",
+   "lv": 35,
+   "area": "Western Gribade Highland",
+   "k": "g35:10",
+   "loc": {
+    "kib": "Abandoned Campsite",
+    "m": 310
+   }
+  },
+  {
+   "name": "Ascetic's Cave",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Impetusium Square",
+   "k": "g40:2",
+   "loc": null
+  },
+  {
+   "name": "Den of Exiles",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Black Claw Village",
+   "k": "g40:3",
+   "loc": {
+    "kib": "Collapsed Hall of Fame",
+    "m": 220
+   }
+  },
+  {
+   "name": "Kumbahum's Cave",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Black Claw Village",
+   "k": "g40:4",
+   "loc": {
+    "kib": "Kumrica's Cellar",
+    "m": 310
+   }
+  },
+  {
+   "name": "Lagta Fafnite Storage",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Lagta Fortress",
+   "k": "g40:5",
+   "loc": {
+    "kib": "Kumrica's Cellar",
+    "m": 890
+   }
+  },
+  {
+   "name": "Spider Cave",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Fafnite Deposit",
+   "k": "g40:6",
+   "loc": {
+    "kib": "Amunta's Hideout",
+    "m": 230
+   }
+  },
+  {
+   "name": "Tayga Breeding Ground",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Black Claw Village",
+   "k": "g40:7",
+   "loc": {
+    "kib": "Secret Rendezvous Point",
+    "m": 30
+   }
+  },
+  {
+   "name": "Warriors' Rest",
+   "kind": "hideout",
+   "lv": 40,
+   "area": "Impetusium Square",
+   "k": "g40:8",
+   "loc": {
+    "kib": "Collapsed Hall of Fame",
+    "m": 620
+   }
+  },
+  {
+   "name": "Graverobber Den",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 10,
+   "area": "Crypt",
+   "k": "sh:graverobber-den",
+   "loc": {
+    "xp": 16673
+   },
+   "lo": 1,
+   "hi": 13
+  },
+  {
+   "name": "Sanctum Outskirts Watch",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 15,
+   "area": "Silent Hill",
+   "k": "sh:sanctum-outskirts-watch",
+   "loc": null,
+   "lo": 1,
+   "hi": 18
+  },
+  {
+   "name": "Blades Temporary Outpost",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 15,
+   "area": "Tranein Highland",
+   "k": "sh:blades-temporary-outpost",
+   "loc": null,
+   "lo": 1,
+   "hi": 20
+  },
+  {
+   "name": "Corrupted Forester Ruins",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 15,
+   "area": "Moslan Forest",
+   "k": "sh:corrupted-forester-ruins",
+   "loc": {
+    "xp": 54041
+   },
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Logger's Rest Ruins",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 15,
+   "area": "Moslan Forest",
+   "k": "sh:logger-s-rest-ruins",
+   "loc": null,
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Forest Marauder Campsite",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 20,
+   "area": "Purifying Forest",
+   "k": "sh:forest-marauder-campsite",
+   "loc": null,
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Granach's Hideout",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 35,
+   "area": "Eastern Gribade Highland",
+   "k": "sh:granach-s-hideout",
+   "loc": null,
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Latrima Outpost",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 25,
+   "area": "Dranactus",
+   "k": "sh:latrima-outpost",
+   "loc": null,
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Rubek Thieves' Occupied Territory",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 10,
+   "area": "Dredgion Crash Site",
+   "k": "sh:rubek-thieves-occupied-territory",
+   "loc": null,
+   "lo": 1,
+   "hi": 45
+  },
+  {
+   "name": "Flauke Legion Outpost",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 30,
+   "area": "Basfelt Ruins",
+   "k": "sh:flauke-legion-outpost",
+   "loc": {
+    "xp": 381569
+   },
+   "lo": 33,
+   "hi": 48
+  },
+  {
+   "name": "Legion Base Ruins",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 30,
+   "area": "Basfelt Ruins",
+   "k": "sh:legion-base-ruins",
+   "loc": null,
+   "lo": 33,
+   "hi": 48
+  },
+  {
+   "name": "Detlef Thieves Camp",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 35,
+   "area": "Western Gribade Highland",
+   "k": "sh:detlef-thieves-camp",
+   "loc": null,
+   "lo": 37,
+   "hi": 45
+  },
+  {
+   "name": "Barahta Extermination Unit Outpost",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 40,
+   "area": "Idun's Lake",
+   "k": "sh:barahta-extermination-unit-outpost",
+   "loc": null,
+   "lo": 40,
+   "hi": 40
+  },
+  {
+   "name": "Amurahta Surveillance Base",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 40,
+   "area": "Black Claw Village",
+   "k": "sh:amurahta-surveillance-base",
+   "loc": null,
+   "lo": 41,
+   "hi": 45
+  },
+  {
+   "name": "Andsha Forward Base",
+   "kind": "stronghold",
+   "lv": null,
+   "band": 40,
+   "area": "Impetusium Square",
+   "k": "sh:andsha-forward-base",
+   "loc": null,
+   "lo": 44,
+   "hi": 45
+  }
+ ],
+ "gates": [
+  {
+   "id": "g6",
+   "lv": 6,
+   "title": "Wings and Ascension",
+   "blurb": "Two story quests around the lake. Don't delay them.",
+   "items": [
+    {
+     "k": "g6:0",
+     "story": "The Being Beneath the Lake",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"The Being Beneath the Lake\" (unlocks wings) and \"Spread Your Wings\". Its Ascension step is Asahr's quest \"The One Who Perceives\" at Dream Crossroads; finishing it completes that step and gives your first wings.Story quests in Ishalgen · Witch's Cabin · Elvida (after \"Isolated Lake\")"
+    },
+    {
+     "k": "sp:Heart Gore:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 4,
+     "t": "1 ptHeart Gore 1 → 2unlocks at Lv 4"
+    },
+    {
+     "k": "sp:Savage Roar:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 1,
+     "t": "1 ptSavage Roar 1 → 2unlocks at Lv 1"
+    },
+    {
+     "k": "sp:Savage Roar:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 4,
+     "t": "1 ptSavage Roar 2 → 3unlocks at Lv 4"
+    },
+    {
+     "k": "sp:Quick Slice:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 1,
+     "t": "1 ptQuick Slice 1 → 2unlocks at Lv 1"
+    },
+    {
+     "k": "sp:Quick Slice:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 4,
+     "t": "1 ptQuick Slice 2 → 3unlocks at Lv 4"
+    },
+    {
+     "k": "sp:Ambush:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 3,
+     "t": "1 ptAmbush 1 → 2unlocks at Lv 3"
+    },
+    {
+     "k": "sp:Ambush:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 6,
+     "t": "1 ptAmbush 2 → 3unlocks at Lv 6"
+    },
+    {
+     "k": "sp:Exploit Weakness:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 6,
+     "t": "1 ptExploit Weakness 1 → 2unlocks at Lv 6"
+    },
+    {
+     "k": "sp:Shadowstrike:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 1,
+     "t": "1 ptShadowstrike 1 → 2unlocks at Lv 1"
+    },
+    {
+     "k": "sp:Shadowstrike:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 4,
+     "t": "1 ptShadowstrike 2 → 3unlocks at Lv 4"
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "lv": 9,
+   "title": "Enhancement unlocks",
+   "blurb": "Save your stones; only the belt and amulet are always worth it.",
+   "items": [
+    {
+     "k": "g9:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Save your Enhance Stones in the Cube. Enhancei the belt and Revelation amulet once you have them; other gear only if a boss or Sealed Dungeon actually stops you, weapon first. The first real supply is the Lv 10 Sealed Dungeons (1,250 each). Belt enhance scrolls come only from Strongholds (2 each); both are in Dungeons & Strongholds.",
+     "note": "The 5 stones from the Lv 7 quest were likely spent in Pelleir's tutorial, usually on your starting weapon (look for a +1). Extract that weapon once it's replaced to get them back."
+    },
+    {
+     "k": "sp:Heart Gore:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 7,
+     "t": "1 ptHeart Gore 2 → 3unlocks at Lv 7"
+    },
+    {
+     "k": "sp:Savage Roar:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 7,
+     "t": "1 ptSavage Roar 3 → 4unlocks at Lv 7"
+    },
+    {
+     "k": "sp:Quick Slice:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 7,
+     "t": "1 ptQuick Slice 3 → 4unlocks at Lv 7"
+    },
+    {
+     "k": "sp:Ambush:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 9,
+     "t": "1 ptAmbush 3 → 4unlocks at Lv 9"
+    },
+    {
+     "k": "sp:Exploit Weakness:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 9,
+     "t": "1 ptExploit Weakness 2 → 3unlocks at Lv 9"
+    },
+    {
+     "k": "sp:Shadowstrike:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 7,
+     "t": "1 ptShadowstrike 3 → 4unlocks at Lv 7"
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "lv": 10,
+   "title": "Altgard opens",
+   "blurb": "Extraction and pets unlock. Sealed Dungeons and Strongholds open; tick them in Dungeons & Strongholds.",
+   "items": [
+    {
+     "k": "g10:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Extracti gear you've replaced: open the Cube, click the old piece, choose Extract and confirm. Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something."
+    },
+    {
+     "k": "g10:1",
+     "story": "Gathering Essentials",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"Gathering Essentials\" to unlock pets, then set the pet loot filteri.Story quest after \"Survival Supplies\" · Safe Haven · VeKauf",
+     "note": "Pet choice: take Armadon or Tog. All three ride and give the same bonus, but Fossa can be collected later from Fossa soul drops around Lv 24."
+    },
+    {
+     "k": "g10:wisdom",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Use the Wisdom Stones from Sealed Dungeons and quests. Each becomes 1 Skill Pointi only when you use it from your Cube."
+    },
+    {
+     "k": "g10:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Claim Daeva Pass free-track rewards as you earn them."
+    },
+    {
+     "k": "g10:4",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g10h:abandoned-one-s-grave",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Abandoned One's Grave"
+    },
+    {
+     "k": "g10h:dratona-cave",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Dratona Cave"
+    },
+    {
+     "k": "g10h:dusk-pit",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Dusk Pit"
+    },
+    {
+     "k": "g10h:hidden-vein-cave",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Hidden Vein Cave"
+    },
+    {
+     "k": "g10h:lost-ruins",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lost Ruins"
+    },
+    {
+     "k": "g10h:old-graveyard",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Old Graveyard"
+    },
+    {
+     "k": "g10h:ossuary-of-the-noble",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Ossuary of the Noble"
+    },
+    {
+     "k": "g10h:poisonous-plant-habitat",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Poisonous Plant Habitat"
+    },
+    {
+     "k": "g10h:smuggler-s-cave",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Smuggler's Cave"
+    },
+    {
+     "k": "g10h:treasure-hunter-s-residence",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Treasure Hunter's Residence"
+    },
+    {
+     "k": "g10h:trickster-s-den",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Trickster's Den"
+    },
+    {
+     "k": "g10h:valka-s-nest",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Valka's Nest"
+    },
+    {
+     "k": "g10h:watcher-s-temporary-outpost",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Watcher's Temporary Outpost"
+    },
+    {
+     "k": "sp:Heart Gore:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 10,
+     "t": "1 ptHeart Gore 3 → 4unlocks at Lv 10"
+    },
+    {
+     "k": "sp:Savage Roar:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 10,
+     "t": "2 ptsSavage Roar 4 → 5unlocks at Lv 10"
+    },
+    {
+     "k": "sp:Quick Slice:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 10,
+     "t": "2 ptsQuick Slice 4 → 5unlocks at Lv 10"
+    },
+    {
+     "k": "sp:Shadowstrike:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 10,
+     "t": "2 ptsShadowstrike 4 → 5unlocks at Lv 10"
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "lv": 13,
+   "title": "Daevanion board",
+   "blurb": "First Daevanion board (Nezekan) opens at Lv 12; first regional quest.",
+   "items": [
+    {
+     "k": "g12:0",
+     "story": "Urgent Pursuit",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"Urgent Pursuit\" to unlock the Daevanion boardi. Use every Daevanion Crystals from the Cube. Nodes are in the Daevanion board card at the top. Two clusters, from your board: above the centre, Heart Gore with Exploit Weakness 1 branching off its path (11 for both); below the centre, Ambush (7) and Quick Slice (6) share their first two nodes (11 for both), and Exploit Weakness 2 sits 5 past Quick Slice. All five come to 27. Where a node has two routes, take the one with Critical Hit and Attack over HP and Critical Hit resist.Story quest after \"Veiled Truth\" · Quai Campsite · Ulgorn",
+     "note": "Same quest unlocks the Shugo Festival. Leave the festival alone."
+    },
+    {
+     "k": "g12:1",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 12 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g12:2",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Shugo-of-All-Trades: AsmodianDredgion Crash Site · Temporary Investigation Base · DariReward: Cube Expansion Voucher"
+    },
+    {
+     "k": "dv:hg",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Heart Gore"
+    },
+    {
+     "k": "dv:ew",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Exploit Weakness · 1 of 2"
+    },
+    {
+     "k": "dv:amb",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Ambush"
+    },
+    {
+     "k": "dv:qs",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Quick Slice"
+    },
+    {
+     "k": "dv:ew2",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Exploit Weakness · 2 of 2"
+    },
+    {
+     "k": "dv:as",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Assault Stance · 1 of 2"
+    },
+    {
+     "k": "dv:as2",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Assault Stance · 2 of 2"
+    },
+    {
+     "k": "dv:corner",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Cooldown Reduction or Combat Speed corner"
+    },
+    {
+     "k": "dv:ie",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Insignia Explosion"
+    },
+    {
+     "k": "dv:ss",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Shadowstrike"
+    },
+    {
+     "k": "g12:belt",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Noble Belt: the main story hands it to you around Lv 13 (it can't be missed). Enhance it +1 each time you get a Noble Belt Enhance Scroll (2 per Stronghold, see Dungeons &amp; Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%."
+    },
+    {
+     "k": "sp:Heart Gore:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 13,
+     "t": "2 ptsHeart Gore 4 → 5unlocks at Lv 13"
+    },
+    {
+     "k": "sp:Savage Roar:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 13,
+     "t": "2 ptsSavage Roar 5 → 6unlocks at Lv 13"
+    },
+    {
+     "k": "sp:Quick Slice:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 13,
+     "t": "2 ptsQuick Slice 5 → 6unlocks at Lv 13"
+    },
+    {
+     "k": "sp:Ambush:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 12,
+     "t": "2 ptsAmbush 4 → 5unlocks at Lv 12"
+    },
+    {
+     "k": "sp:Rear Smite:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 11,
+     "t": "1 ptRear Smite 1 → 2unlocks at Lv 11"
+    },
+    {
+     "k": "sp:Exploit Weakness:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 12,
+     "t": "1 ptExploit Weakness 3 → 4unlocks at Lv 12"
+    },
+    {
+     "k": "sp:Shadowstrike:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 13,
+     "t": "2 ptsShadowstrike 5 → 6unlocks at Lv 13"
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "lv": 15,
+   "title": "Ring quest and skills",
+   "blurb": "Spooky Specters for a ring, plus four skill upgrades.",
+   "items": [
+    {
+     "k": "g15:0",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g15:1",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Abandoned Archon Jail"
+    },
+    {
+     "k": "g15:2",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Bloodsoaked Confessional"
+    },
+    {
+     "k": "g15:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Blue Dragon's Trap"
+    },
+    {
+     "k": "g15:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fafnite Storage Room"
+    },
+    {
+     "k": "g15:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fanatics' Den"
+    },
+    {
+     "k": "g15:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fortuneteller's Grave"
+    },
+    {
+     "k": "g15:7",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Homish's Prison Compound"
+    },
+    {
+     "k": "g15:8",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Howling Den"
+    },
+    {
+     "k": "g15:9",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Library of Foresight"
+    },
+    {
+     "k": "g15:10",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Prison of Oblivion"
+    },
+    {
+     "k": "g15:11",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Victims' Cave"
+    },
+    {
+     "k": "g15:12",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 14 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g15:13",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spooky SpectersNameless Cemetery · Gravekeeper Camp · RizelReward: ring"
+    },
+    {
+     "k": "g15:14",
+     "opt": false,
+     "hidden": true,
+     "sub": "",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g15:15",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "sp:Insignia Explosion:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 14,
+     "t": "1 ptInsignia Explosion 1 → 2unlocks at Lv 14"
+    },
+    {
+     "k": "sp:Ambush:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 15,
+     "t": "2 ptsAmbush 5 → 6unlocks at Lv 15"
+    },
+    {
+     "k": "sp:Rear Smite:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 14,
+     "t": "1 ptRear Smite 2 → 3unlocks at Lv 14"
+    },
+    {
+     "k": "sp:Exploit Weakness:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 15,
+     "t": "2 ptsExploit Weakness 4 → 5unlocks at Lv 15"
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "lv": 16,
+   "title": "Legions",
+   "blurb": "Unlock Legions; six quests fill your accessory slots.",
+   "items": [
+    {
+     "k": "g16:0",
+     "story": "Buried Atrocities",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"Buried Atrocities\" to unlock Legionsi, then join one.Story quest after \"Dead Men Tell No Tales\" · the Crypt (nearest teleport: Neglected Crematorium) · Ulgorn"
+    },
+    {
+     "k": "g16:monolith",
+     "story": "Empyrean Monolith",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"Empyrean Monolith\", then turn in your Empyrean Tracesi at the Monolith (Resonate).Story quest right after \"Buried Atrocities\" · Ulgorn"
+    },
+    {
+     "k": "g16:2",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 16 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g16:3",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Hugo Mercenaries: Past and PresentSafe Haven · DerkReward: earrings"
+    },
+    {
+     "k": "g16:4",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Missing MountSafe Haven · HadalaReward: earrings"
+    },
+    {
+     "k": "g16:5",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Creion Research AssistantDredgion Crash Site · Creion Campsite · BenektReward: bracelet"
+    },
+    {
+     "k": "g16:6",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Odyle Jelly Misappropriation InvestigationSafe Haven · VeKaufReward: bracelet"
+    },
+    {
+     "k": "g16:7",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "The Great Curse-Breaking CaperNameless Cemetery · Gravekeeper Camp · TagarReward: ring"
+    },
+    {
+     "k": "g16:8",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Practice Makes Perfect, Nyerk!Quai Campsite · BabaReward: necklace"
+    },
+    {
+     "k": "g16:amulet",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Revelation Amulet: the story gives it at Lv 16, just before the Monolith quest. Every Monolith level from 2 gives a Revelation Amulet Enhance Scroll; use each one right away (+1, plus Enhance Stones and Kina, 100% success).",
+     "note": "Belt and amulet to +10 (Rare) cost about 232,000 Kina and 9,280 Enhance Stones each. Later, Substance Morph moves one up a tier and resets it to +0; that's a Lv 45 Kina sink."
+    },
+    {
+     "k": "sp:Heart Gore:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 16,
+     "t": "2 ptsHeart Gore 5 → 6unlocks at Lv 16"
+    },
+    {
+     "k": "sp:Savage Roar:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 16,
+     "t": "2 ptsSavage Roar 6 → 7unlocks at Lv 16"
+    },
+    {
+     "k": "sp:Quick Slice:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 16,
+     "t": "2 ptsQuick Slice 6 → 7unlocks at Lv 16"
+    },
+    {
+     "k": "sp:Shadowstrike:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 16,
+     "t": "2 ptsShadowstrike 6 → 7unlocks at Lv 16"
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "lv": 19,
+   "title": "Skill tier: level 8",
+   "blurb": "Quick Slice, Savage Roar and Shadowstrike reach skill level 8.",
+   "items": [
+    {
+     "k": "sp:Heart Gore:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "2 ptsHeart Gore 6 → 7unlocks at Lv 19"
+    },
+    {
+     "k": "sp:Insignia Explosion:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 17,
+     "t": "1 ptInsignia Explosion 2 → 3unlocks at Lv 17"
+    },
+    {
+     "k": "sp:Savage Roar:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "4 ptsSavage Roar 7 → 8unlocks at Lv 19opens first specialty sloti"
+    },
+    {
+     "k": "sp:Savage Roar:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "freeSavage Roar: pick specialtyunlocks at Lv 19+20% Skill Speed"
+    },
+    {
+     "k": "sp:Quick Slice:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "4 ptsQuick Slice 7 → 8unlocks at Lv 19opens first specialty sloti"
+    },
+    {
+     "k": "sp:Quick Slice:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "freeQuick Slice: pick specialtyunlocks at Lv 19+50% Multi-Hit on hit"
+    },
+    {
+     "k": "sp:Ambush:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 18,
+     "t": "2 ptsAmbush 6 → 7unlocks at Lv 18"
+    },
+    {
+     "k": "sp:Rear Smite:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 17,
+     "t": "1 ptRear Smite 3 → 4unlocks at Lv 17"
+    },
+    {
+     "k": "sp:Exploit Weakness:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 18,
+     "t": "2 ptsExploit Weakness 5 → 6unlocks at Lv 18"
+    },
+    {
+     "k": "sp:Shadowstrike:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "4 ptsShadowstrike 7 → 8unlocks at Lv 19opens first specialty sloti"
+    },
+    {
+     "k": "sp:Shadowstrike:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 19,
+     "t": "freeShadowstrike: pick specialtyunlocks at Lv 19+20% Critical Damage Boost for 10s on hit"
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "lv": 20,
+   "title": "Zikel board",
+   "blurb": "Second Daevanion board and a new batch of Sealed Dungeons.",
+   "items": [
+    {
+     "k": "g20:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Zikel Daevanion boardi opens. Use every Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top."
+    },
+    {
+     "k": "g20:1",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g20:2",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Abandoned Memorial Room"
+    },
+    {
+     "k": "g20:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Closed Hideout"
+    },
+    {
+     "k": "g20:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Destroyed Scriptorium"
+    },
+    {
+     "k": "g20:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lamnah Base"
+    },
+    {
+     "k": "g20:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Predator's Lair"
+    },
+    {
+     "k": "g20:7",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Unstable Cave"
+    },
+    {
+     "k": "g20:8",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Worshiper's Underground Cave"
+    },
+    {
+     "k": "g20:9",
+     "opt": false,
+     "hidden": true,
+     "sub": "",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g20:10",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g20:11",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "dv:z:hg",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Heart Gore"
+    },
+    {
+     "k": "dv:z:ie",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Insignia Explosion"
+    },
+    {
+     "k": "dv:z:qs",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Quick Slice"
+    },
+    {
+     "k": "dv:z:db",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Defense Break · 1 of 2"
+    },
+    {
+     "k": "dv:z:db2",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Defense Break · 2 of 2"
+    },
+    {
+     "k": "dv:z:corner",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Damage Boost corner"
+    },
+    {
+     "k": "sp:Insignia Explosion:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 20,
+     "t": "1 ptInsignia Explosion 3 → 4unlocks at Lv 20"
+    },
+    {
+     "k": "sp:Rear Smite:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 20,
+     "t": "2 ptsRear Smite 4 → 5unlocks at Lv 20"
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "lv": 22,
+   "title": "Stigma slot 1",
+   "blurb": "Stigmas and Expeditions unlock.",
+   "items": [
+    {
+     "k": "g22:0",
+     "story": "Daeva in a Dream",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Complete \"The One Who Hears the Voice\" to unlock Stigmasi and the Pantheon.Ascension quest from Asahr. Opens once your Ascension Gauge is at 100% and the story reaches \"Daeva in a Dream\" (Lv 22). Journal (J) → Ascension tab → Teleport (bottom right) takes you to Asahr."
+    },
+    {
+     "k": "g22:1",
+     "after": "Daeva in a Dream",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Equip Triniel's Dagger. Long-term target is skill level 10. Check first: Metabot puts Illusive Clone in slot 1 and Triniel's Dagger last. If Illusive Clone is equippable at 22, use it here instead."
+    },
+    {
+     "k": "g22:2",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 22 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g22:3",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Blade of VengeanceSanctum Outpost · Forest Hideout · NemonReward: earrings"
+    },
+    {
+     "k": "g22:4",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "In the Fang Legion's NameSanctum Outpost · Watcher's Tent · GamillaAppears after Blade of Vengeance is turned inReward: bracelet · Statue: Selvis"
+    },
+    {
+     "k": "g22:5",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Young Elim's StoryMoslan Forest · Elim's Rest · LuluReward: necklace"
+    },
+    {
+     "k": "g22:6",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "A Guardian's SacrificeMoslan Forest · Collapsed Chasm · EccoAppears after Young Elim's Story is turned inReward: ring"
+    },
+    {
+     "k": "g22:7",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Nine Wonders of Altgard: 1st LegTranein Highland · under the Tranein Highland bridge · TinaReward: Life Crystal ×5"
+    },
+    {
+     "k": "g20:exp",
+     "story": "Daeva in a Dream",
+     "opt": true,
+     "hidden": false,
+     "dv": false,
+     "t": "Krao Cave Expeditioni (Exploration) opens after the story quest \"Daeva in a Dream\": the first dungeon you can run with friends, 1–5 players. Needs item leveli 200."
+    },
+    {
+     "k": "sp:Heart Gore:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 22,
+     "t": "4 ptsHeart Gore 7 → 8unlocks at Lv 22opens first specialty sloti"
+    },
+    {
+     "k": "sp:Heart Gore:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 22,
+     "t": "freeHeart Gore: pick specialtyunlocks at Lv 22Up to +20% Critical Hit when fewer targets are hit"
+    },
+    {
+     "k": "sp:Savage Roar:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 22,
+     "t": "4 ptsSavage Roar 8 → 9unlocks at Lv 22"
+    },
+    {
+     "k": "sp:Quick Slice:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 22,
+     "t": "4 ptsQuick Slice 8 → 9unlocks at Lv 22"
+    },
+    {
+     "k": "sp:Ambush:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 21,
+     "t": "4 ptsAmbush 7 → 8unlocks at Lv 21opens first specialty sloti"
+    },
+    {
+     "k": "sp:Ambush:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 21,
+     "t": "freeAmbush: pick specialtyunlocks at Lv 21Engraves 2 Insignias when it lands as a Back attack"
+    },
+    {
+     "k": "sp:Exploit Weakness:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 21,
+     "t": "2 ptsExploit Weakness 6 → 7unlocks at Lv 21"
+    },
+    {
+     "k": "sp:Shadowstrike:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 22,
+     "t": "4 ptsShadowstrike 8 → 9unlocks at Lv 22"
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "lv": 25,
+   "title": "Supply Requests",
+   "blurb": "Hand in spare items for Abyss Points.",
+   "items": [
+    {
+     "k": "g25:0",
+     "opt": true,
+     "hidden": false,
+     "dv": false,
+     "t": "Hand in spares to Supply Requestsi. Only items you already have and don't need; don't buy for it while leveling. Abyss Points matter mostly at 45."
+    },
+    {
+     "k": "g25:1",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g25:2",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Dark Root Cave"
+    },
+    {
+     "k": "g25:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Drana Depository"
+    },
+    {
+     "k": "g25:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "High Priest's Ruins"
+    },
+    {
+     "k": "g25:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Skurv Laborer Den"
+    },
+    {
+     "k": "g25:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Twisted Pit"
+    },
+    {
+     "k": "g25:7",
+     "opt": false,
+     "hidden": true,
+     "sub": "",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g25:8",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "sp:Heart Gore:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 25,
+     "t": "4 ptsHeart Gore 8 → 9unlocks at Lv 25"
+    },
+    {
+     "k": "sp:Insignia Explosion:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 23,
+     "t": "2 ptsInsignia Explosion 4 → 5unlocks at Lv 23"
+    },
+    {
+     "k": "sp:Savage Roar:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 25,
+     "t": "4 ptsSavage Roar 9 → 10unlocks at Lv 25"
+    },
+    {
+     "k": "sp:Quick Slice:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 25,
+     "t": "4 ptsQuick Slice 9 → 10unlocks at Lv 25"
+    },
+    {
+     "k": "sp:Ambush:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 24,
+     "t": "4 ptsAmbush 8 → 9unlocks at Lv 24"
+    },
+    {
+     "k": "sp:Rear Smite:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 23,
+     "t": "2 ptsRear Smite 5 → 6unlocks at Lv 23"
+    },
+    {
+     "k": "sp:Exploit Weakness:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 24,
+     "t": "4 ptsExploit Weakness 7 → 8unlocks at Lv 24"
+    },
+    {
+     "k": "sp:Shadowstrike:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 25,
+     "t": "4 ptsShadowstrike 9 → 10unlocks at Lv 25"
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "lv": 27,
+   "title": "Stigma slot 2",
+   "blurb": "Illusive Clone goes in.",
+   "items": [
+    {
+     "k": "g27:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Equip Illusive Clone. Long-term target is skill level 20."
+    },
+    {
+     "k": "g27:1",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Put Illusive Clone in row 0 of E (Triniel's Dagger moves to row 1). Open with E, then Q (Shadowstrike)."
+    },
+    {
+     "k": "g27:2",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 27 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g27:3",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fight Poison with PoisonPurifying Forest · Guide Rest Stop · Spirit Guide VironReward: ring"
+    },
+    {
+     "k": "sp:Insignia Explosion:6",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 26,
+     "t": "2 ptsInsignia Explosion 5 → 6unlocks at Lv 26"
+    },
+    {
+     "k": "sp:Ambush:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 27,
+     "t": "4 ptsAmbush 9 → 10unlocks at Lv 27"
+    },
+    {
+     "k": "sp:Rear Smite:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 26,
+     "t": "2 ptsRear Smite 6 → 7unlocks at Lv 26"
+    },
+    {
+     "k": "sp:Exploit Weakness:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 27,
+     "t": "4 ptsExploit Weakness 8 → 9unlocks at Lv 27"
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "lv": 28,
+   "title": "Heart Gore 10 and Urugugu Canyon",
+   "blurb": "Heart Gore reaches its point cap; a party Expedition opens.",
+   "items": [
+    {
+     "k": "g28:exp",
+     "opt": true,
+     "hidden": false,
+     "dv": false,
+     "t": "Urugugu Canyon Expeditioni (Exploration) opens: needs a party of 2–5 and item level 300."
+    },
+    {
+     "k": "sp:Heart Gore:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 28,
+     "t": "4 ptsHeart Gore 9 → 10unlocks at Lv 28"
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "lv": 30,
+   "title": "Daily dungeon and Vaizel board",
+   "blurb": "Daily dungeon unlocks; Vaizel board.",
+   "items": [
+    {
+     "k": "g30:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Vaizel Daevanion boardi opens. Use every Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top."
+    },
+    {
+     "k": "g30:1",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Start the daily dungeon: run Daeva Bio-Research Base for Enhance Stones, not the Kinah or pet-fragment dungeons."
+    },
+    {
+     "k": "g30:2",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g30:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "All-Curing Cave"
+    },
+    {
+     "k": "g30:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Dratona Assembly Area"
+    },
+    {
+     "k": "g30:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Final Haven"
+    },
+    {
+     "k": "g30:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Insectoid Tunnel"
+    },
+    {
+     "k": "g30:7",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Library of Patience"
+    },
+    {
+     "k": "g30:8",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Library of Wisdom"
+    },
+    {
+     "k": "g30:9",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Rift Fissure"
+    },
+    {
+     "k": "g30:10",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 30 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g30:11",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Hugo Mercenaries: Deep ShadowNornir Assembly · HadalaReward: necklace"
+    },
+    {
+     "k": "g30:12",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Her Last FavorPurifying Forest · Healing Spring · RedenReward: bracelet"
+    },
+    {
+     "k": "g30:13",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "An Invitation to the Past: Part 1Nornir Assembly · HallinaReward: bracelet · Statue: Urd"
+    },
+    {
+     "k": "g30:14",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "An Invitation to the Past: Part 2Nornir Assembly · HallinaAppears after An Invitation to the Past: Part 1 is turned inReward: bracelet · Statue: Urd"
+    },
+    {
+     "k": "g30:15",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "The Future Within the PastUruthumheim · Abandoned Site · HaraldReward: Clash Rune Chest"
+    },
+    {
+     "k": "g30:16",
+     "opt": false,
+     "hidden": true,
+     "sub": "",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g30:17",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "dv:v:hg",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Heart Gore"
+    },
+    {
+     "k": "dv:v:ie",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Insignia Explosion"
+    },
+    {
+     "k": "dv:v:qs",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Quick Slice"
+    },
+    {
+     "k": "dv:v:as",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Assault Stance"
+    },
+    {
+     "k": "dv:v:corner",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Critical Damage Boost corner"
+    },
+    {
+     "k": "sp:Insignia Explosion:7",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 29,
+     "t": "2 ptsInsignia Explosion 6 → 7unlocks at Lv 29"
+    },
+    {
+     "k": "sp:Rear Smite:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 29,
+     "t": "4 ptsRear Smite 7 → 8unlocks at Lv 29"
+    },
+    {
+     "k": "sp:Exploit Weakness:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 30,
+     "t": "4 ptsExploit Weakness 9 → 10unlocks at Lv 30"
+    }
+   ]
+  },
+  {
+   "id": "g32",
+   "lv": 32,
+   "title": "Stigma slot 3",
+   "blurb": "Savage Fang, the macro, and five quests.",
+   "items": [
+    {
+     "k": "g32:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Equip Savage Fang. Level 1 is enough for now."
+    },
+    {
+     "k": "g32:1",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Add Savage Fang to E, in the row after Triniel's Dagger. The key grid in Current rotation shows where."
+    },
+    {
+     "k": "g32:2",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 32 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g32:3",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Hugo Mercenaries: An Old PromiseDranactus · Briskwind Shelter · HadalaReward: Clash Rune Chest"
+    },
+    {
+     "k": "g32:4",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Pain UnendingBattlescar Mound · BekrinReward: bracelet"
+    },
+    {
+     "k": "g32:5",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Nine Wonders of Altgard: 2nd LegImpetusium Square · TinaAppears after Nine Wonders of Altgard: 1st Leg is turned inReward: Hidden Cube key"
+    },
+    {
+     "k": "g32:6",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 33 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g32:7",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Traveling Merchant's ConundrumBasfelt Ruins · Wandering Merchant ShirakikiReward: earrings"
+    },
+    {
+     "k": "g32:8",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Finders KeepersBasfelt Ruins · Graverobber Campsite · HevidReward: ring"
+    },
+    {
+     "k": "g32:dreams",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Ascension: \"The One Who Dreams\" (recommended Lv 32).Asahr at Dream Crossroads. Journal (J) → Ascension tab → Teleport (bottom right) takes you to Asahr."
+    },
+    {
+     "k": "sp:Insignia Explosion:8",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 32,
+     "t": "4 ptsInsignia Explosion 7 → 8unlocks at Lv 32opens first specialty sloti"
+    },
+    {
+     "k": "sp:Insignia Explosion:spec",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 32,
+     "t": "freeInsignia Explosion: pick specialtyunlocks at Lv 32+50% Multi-Hit on hit"
+    },
+    {
+     "k": "sp:Rear Smite:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 32,
+     "t": "4 ptsRear Smite 8 → 9unlocks at Lv 32"
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "lv": 35,
+   "title": "Fire Temple",
+   "blurb": "Third party dungeon opens.",
+   "items": [
+    {
+     "k": "g35:0",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g35:1",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Destruction Archons Armory"
+    },
+    {
+     "k": "g35:2",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Empty Cave"
+    },
+    {
+     "k": "g35:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fungie Habitat"
+    },
+    {
+     "k": "g35:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lonely Rock Chasm"
+    },
+    {
+     "k": "g35:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Odylium Marauder Den"
+    },
+    {
+     "k": "g35:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Pirate's Treasure Storage"
+    },
+    {
+     "k": "g35:7",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Place of Rest"
+    },
+    {
+     "k": "g35:8",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Rock Cave"
+    },
+    {
+     "k": "g35:9",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Scale Altar"
+    },
+    {
+     "k": "g35:10",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Shulak Cave"
+    },
+    {
+     "k": "g35:11",
+     "opt": false,
+     "hidden": true,
+     "sub": "",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g35:12",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g35:exp",
+     "opt": true,
+     "hidden": false,
+     "dv": false,
+     "t": "Fire Temple Expeditioni (Exploration) opens: 1–5 players, item level 500."
+    },
+    {
+     "k": "sp:Insignia Explosion:9",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 35,
+     "t": "4 ptsInsignia Explosion 8 → 9unlocks at Lv 35"
+    },
+    {
+     "k": "sp:Rear Smite:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 35,
+     "t": "4 ptsRear Smite 9 → 10unlocks at Lv 35"
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "lv": 37,
+   "title": "Stigma slot 4",
+   "blurb": "Full rotation online; story dungeon nearby.",
+   "items": [
+    {
+     "k": "g37:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Equip Swift Contract. Level 1 is enough for now."
+    },
+    {
+     "k": "g37:1",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Add Swift Contract to E, then run the full rotation on a training dummy.E: Illusive Clone + Swift Contract→Q: Shadowstrike→E: Triniel's Dagger, Savage Fang→Hold both mouse buttons"
+    },
+    {
+     "k": "g37:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Story dungeon around Lv 37. If it stops you, enhance your weapon first; otherwise keep saving."
+    },
+    {
+     "k": "g37:3",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 37 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g37:4",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "A Friend's LegacyMahindel River · Mahindel Cliff · SculkhiReward: bracelet"
+    },
+    {
+     "k": "g37:5",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Bloodstained RoseWestern Gribade Highland · Abandoned Campsite · PordhetReward: necklace"
+    }
+   ]
+  },
+  {
+   "id": "g40",
+   "lv": 40,
+   "title": "Triniel board",
+   "blurb": "Fourth Daevanion board.",
+   "items": [
+    {
+     "k": "g40:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Triniel Daevanion boardi opens. Use every Daevanion Crystals in your Cube, then buy its nodes from the Daevanion board card at the top."
+    },
+    {
+     "k": "g40:1",
+     "opt": false,
+     "hidden": false,
+     "sub": "Sealed Dungeons",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g40:2",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Ascetic's Cave"
+    },
+    {
+     "k": "g40:3",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Den of Exiles"
+    },
+    {
+     "k": "g40:4",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Kumbahum's Cave"
+    },
+    {
+     "k": "g40:5",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lagta Fafnite Storage"
+    },
+    {
+     "k": "g40:6",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spider Cave"
+    },
+    {
+     "k": "g40:7",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Tayga Breeding Ground"
+    },
+    {
+     "k": "g40:8",
+     "kind": "hideout",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Warriors' Rest"
+    },
+    {
+     "k": "g40:9",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g40:10",
+     "opt": false,
+     "hidden": true,
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "dv:t:hg",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Heart Gore"
+    },
+    {
+     "k": "dv:t:ie",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Insignia Explosion"
+    },
+    {
+     "k": "dv:t:qs",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Quick Slice"
+    },
+    {
+     "k": "dv:t:as",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Assault Stance"
+    },
+    {
+     "k": "dv:t:corner",
+     "opt": false,
+     "hidden": false,
+     "dv": true,
+     "t": "Corner"
+    },
+    {
+     "k": "sp:Insignia Explosion:10",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "req": 38,
+     "t": "4 ptsInsignia Explosion 9 → 10unlocks at Lv 38"
+    }
+   ]
+  },
+  {
+   "id": "g45",
+   "lv": 45,
+   "title": "Level cap",
+   "blurb": "Progression shifts from level to gear score.",
+   "items": [
+    {
+     "k": "g45:0",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Finish the remaining Hero and Ascension quests: \"The One Who Witnesses the Nightmare\" (recommended 45) and \"The One Who Swears the Oath\" (recommended 49, so expect it to need gear), both from Asahr.Journal (J) → Ascension tab → Teleport (bottom right) takes you to Asahr."
+    },
+    {
+     "k": "g45:1",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spend your banked Shugo Festival keys."
+    },
+    {
+     "k": "g45:2",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Azphel Daevanion boardi opens. Stat nodes only, paid with Azphel points from Abyss, arena and battlefield shops, not Daevanion Crystals."
+    },
+    {
+     "k": "g45:3",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Ascension Trial timing. Days before reset: reach item level 1,500 first. Reset close: run it at 1,000 rather than waste the week."
+    },
+    {
+     "k": "g45:4",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Abyss Points on Potential Stones, Stigma Shards and Daevanion resources, not a shop gear set."
+    },
+    {
+     "k": "g45:5",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Start Conquest (Krao Cave tier, gear scorei 700). Weapon first, then your weakest slots."
+    },
+    {
+     "k": "g45:6",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 44 <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g45:7",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Herb Pouch HeistBlack Claw Village · Kumrica's Cellar · KunpataReward: earrings"
+    },
+    {
+     "k": "g45:8",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 45 · accessories <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g45:9",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "A Comrade's FateImpetusium Square · Collapsed Hall of Fame · Haz's ApparitionReward: bracelet"
+    },
+    {
+     "k": "g45:10",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lest We ForgetImpetusium Square · NemonReward: bracelet · Artwork"
+    },
+    {
+     "k": "g45:11",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "A Perfect WeddingSouthern Gribade Highland · Steel Hammer Temporary Trading Post · RomiReward: ring"
+    },
+    {
+     "k": "g45:12",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Restoration MaterialsUruthumheim · Victorious Daeva's Statue · KeronisReward: ring"
+    },
+    {
+     "k": "g45:13",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Lost MemoriesMoslan Forest · Elim's Rest · OliverReward: earrings"
+    },
+    {
+     "k": "g45:14",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "I'm a Believer!Dredgion Crash Site · Temporary Investigation Base · KanesReward: necklace"
+    },
+    {
+     "k": "g45:15",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 45 · crystals, runes and upgrades <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g45:16",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Fallout CalmedEastern Gribade Highland · Amunta's Hideout · LakibaReward: Ariel crystal ×2"
+    },
+    {
+     "k": "g45:17",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Putting a Friend to RestImpetusium Square · Collapsed Hall of Fame · LucianReward: Ariel crystal"
+    },
+    {
+     "k": "g45:18",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Sapling Hide-and-SeekMoslan Forest · Odar's Shade · NanaReward: Ariel crystal"
+    },
+    {
+     "k": "g45:19",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "One Last ThingTranein Highland · Watcher's Tent · AventReward: Ariel crystal"
+    },
+    {
+     "k": "g45:20",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Another SurvivorNornir Assembly · HallinaReward: Clash Rune Chest"
+    },
+    {
+     "k": "g45:21",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "FalloutSouthern Gribade Highland · Zemurru's Tomb · KarumbaReward: Clash Rune Chest"
+    },
+    {
+     "k": "g45:22",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "A Traitor WithinQuai Campsite · BabaReward: Rare Theostone Chest"
+    },
+    {
+     "k": "g45:23",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Regular Altar MaintenancePurifying Forest · Faded Stump · IvanReward: Rare Theostone Chest"
+    },
+    {
+     "k": "g45:24",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Restless SpiritsPurifying Forest · Healing Spring · Spirit Guide CortisReward: Rare Theostone Chest"
+    },
+    {
+     "k": "g45:25",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Nine Wonders of Altgard: Final StretchBasfelt Ruins · Basfelt Ruins Cliff · TinaReward: Cube Expansion Voucher"
+    },
+    {
+     "k": "g45:26",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Immortal Isle's Distinct EcologySanctum Outpost · Sanctum Outpost Cliff · NivenaReward: Soul Codex: Reset"
+    },
+    {
+     "k": "g45:27",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spirit Isle, Where Time Has StoppedBasfelt Ruins · Basfelt Waterfall, near the Windstream · a treasure hunterReward: Soul Codex: Reset"
+    },
+    {
+     "k": "g45:28",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Farewell, My InstructorNornir Assembly · BabaReward: Artwork"
+    },
+    {
+     "k": "g45:29",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 45 · Kina and materials <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g45:30",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Mind Your Own BusinessSanctum Outpost · Temporary Retreat · GamillaReward: 50k Kina chest"
+    },
+    {
+     "k": "g45:31",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Reality BitesBriskwind Shelter · BekrinReward: 50k Kina chest"
+    },
+    {
+     "k": "g45:32",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Workplace MisunderstandingSteel Hammer Merchants HQ · MerikikiReward: 50k Kina chest"
+    },
+    {
+     "k": "g45:33",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Ravenous RecluseAbandoned Campsite · FionaReward: 50k Kina chest"
+    },
+    {
+     "k": "g45:34",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Another Crisis!Steel Hammer Merchants HQ · SnotraReward: Odyle ×5"
+    },
+    {
+     "k": "g45:35",
+     "opt": false,
+     "hidden": false,
+     "sub": "Regional quests · Lv 45 · Spacetime Rift <span class=\"term\"><button type=\"button\" class=\"tip\" data-tip=\"regional\" aria-expanded=\"false\" aria-label=\"What is ?\">i</button></span>",
+     "dv": false,
+     "t": ""
+    },
+    {
+     "k": "g45:36",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: AsmodianMoslan Forest · Collapsed Chasm · UruReward: 2k Abyss Points · ring"
+    },
+    {
+     "k": "g45:37",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: Unknown SpeciesMoslan Forest · Collapsed Chasm · UruReward: 2k AP · earrings · personal Kisk"
+    },
+    {
+     "k": "g45:38",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: Unfamiliar MaterialMoslan Forest · Collapsed Chasm · UruReward: 2k AP · bracelet"
+    },
+    {
+     "k": "g45:39",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: Developing Travel GoodsPurifying Forest · Guide Rest Stop · UruReward: 2k AP · earrings · party Kisk"
+    },
+    {
+     "k": "g45:40",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: Difference Between Here and TherePurifying Forest · Guide Rest Stop · UruReward: 2k AP · ring"
+    },
+    {
+     "k": "g45:41",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: An Honest ShugoBasfelt Ruins · near Graverobber Campsite · UruReward: 2k AP · ring"
+    },
+    {
+     "k": "g45:42",
+     "kind": "quest",
+     "opt": false,
+     "hidden": false,
+     "dv": false,
+     "t": "Spacetime Rift: ProofBasfelt Ruins · UruReward: 2k AP · earrings · legion Kisk"
+    }
+   ]
+  }
+ ],
+ "sp": [
+  {
+   "k": "sp:Heart Gore:2",
+   "req": 4,
+   "cost": 1,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:3",
+   "req": 7,
+   "cost": 1,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:4",
+   "req": 10,
+   "cost": 1,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:5",
+   "req": 13,
+   "cost": 2,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:6",
+   "req": 16,
+   "cost": 2,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:7",
+   "req": 19,
+   "cost": 2,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:8",
+   "req": 22,
+   "cost": 4,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:spec",
+   "req": 22,
+   "cost": 0,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:9",
+   "req": 25,
+   "cost": 4,
+   "rank": 0
+  },
+  {
+   "k": "sp:Heart Gore:10",
+   "req": 28,
+   "cost": 4,
+   "rank": 0
+  },
+  {
+   "k": "sp:Insignia Explosion:2",
+   "req": 14,
+   "cost": 1,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:3",
+   "req": 17,
+   "cost": 1,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:4",
+   "req": 20,
+   "cost": 1,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:5",
+   "req": 23,
+   "cost": 2,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:6",
+   "req": 26,
+   "cost": 2,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:7",
+   "req": 29,
+   "cost": 2,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:8",
+   "req": 32,
+   "cost": 4,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:spec",
+   "req": 32,
+   "cost": 0,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:9",
+   "req": 35,
+   "cost": 4,
+   "rank": 1
+  },
+  {
+   "k": "sp:Insignia Explosion:10",
+   "req": 38,
+   "cost": 4,
+   "rank": 1
+  },
+  {
+   "k": "sp:Savage Roar:2",
+   "req": 1,
+   "cost": 1,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:3",
+   "req": 4,
+   "cost": 1,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:4",
+   "req": 7,
+   "cost": 1,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:5",
+   "req": 10,
+   "cost": 2,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:6",
+   "req": 13,
+   "cost": 2,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:7",
+   "req": 16,
+   "cost": 2,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:8",
+   "req": 19,
+   "cost": 4,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:spec",
+   "req": 19,
+   "cost": 0,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:9",
+   "req": 22,
+   "cost": 4,
+   "rank": 2
+  },
+  {
+   "k": "sp:Savage Roar:10",
+   "req": 25,
+   "cost": 4,
+   "rank": 2
+  },
+  {
+   "k": "sp:Quick Slice:2",
+   "req": 1,
+   "cost": 1,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:3",
+   "req": 4,
+   "cost": 1,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:4",
+   "req": 7,
+   "cost": 1,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:5",
+   "req": 10,
+   "cost": 2,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:6",
+   "req": 13,
+   "cost": 2,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:7",
+   "req": 16,
+   "cost": 2,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:8",
+   "req": 19,
+   "cost": 4,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:spec",
+   "req": 19,
+   "cost": 0,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:9",
+   "req": 22,
+   "cost": 4,
+   "rank": 3
+  },
+  {
+   "k": "sp:Quick Slice:10",
+   "req": 25,
+   "cost": 4,
+   "rank": 3
+  },
+  {
+   "k": "sp:Ambush:2",
+   "req": 3,
+   "cost": 1,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:3",
+   "req": 6,
+   "cost": 1,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:4",
+   "req": 9,
+   "cost": 1,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:5",
+   "req": 12,
+   "cost": 2,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:6",
+   "req": 15,
+   "cost": 2,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:7",
+   "req": 18,
+   "cost": 2,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:8",
+   "req": 21,
+   "cost": 4,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:spec",
+   "req": 21,
+   "cost": 0,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:9",
+   "req": 24,
+   "cost": 4,
+   "rank": 4
+  },
+  {
+   "k": "sp:Ambush:10",
+   "req": 27,
+   "cost": 4,
+   "rank": 4
+  },
+  {
+   "k": "sp:Rear Smite:2",
+   "req": 11,
+   "cost": 1,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:3",
+   "req": 14,
+   "cost": 1,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:4",
+   "req": 17,
+   "cost": 1,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:5",
+   "req": 20,
+   "cost": 2,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:6",
+   "req": 23,
+   "cost": 2,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:7",
+   "req": 26,
+   "cost": 2,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:8",
+   "req": 29,
+   "cost": 4,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:9",
+   "req": 32,
+   "cost": 4,
+   "rank": 5
+  },
+  {
+   "k": "sp:Rear Smite:10",
+   "req": 35,
+   "cost": 4,
+   "rank": 5
+  },
+  {
+   "k": "sp:Exploit Weakness:2",
+   "req": 6,
+   "cost": 1,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:3",
+   "req": 9,
+   "cost": 1,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:4",
+   "req": 12,
+   "cost": 1,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:5",
+   "req": 15,
+   "cost": 2,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:6",
+   "req": 18,
+   "cost": 2,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:7",
+   "req": 21,
+   "cost": 2,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:8",
+   "req": 24,
+   "cost": 4,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:9",
+   "req": 27,
+   "cost": 4,
+   "rank": 6
+  },
+  {
+   "k": "sp:Exploit Weakness:10",
+   "req": 30,
+   "cost": 4,
+   "rank": 6
+  },
+  {
+   "k": "sp:Shadowstrike:2",
+   "req": 1,
+   "cost": 1,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:3",
+   "req": 4,
+   "cost": 1,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:4",
+   "req": 7,
+   "cost": 1,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:5",
+   "req": 10,
+   "cost": 2,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:6",
+   "req": 13,
+   "cost": 2,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:7",
+   "req": 16,
+   "cost": 2,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:8",
+   "req": 19,
+   "cost": 4,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:spec",
+   "req": 19,
+   "cost": 0,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:9",
+   "req": 22,
+   "cost": 4,
+   "rank": 7
+  },
+  {
+   "k": "sp:Shadowstrike:10",
+   "req": 25,
+   "cost": 4,
+   "rank": 7
+  }
+ ],
+ "dv": [
+  {
+   "k": "dv:hg",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "a",
+   "t": "Heart Gore"
+  },
+  {
+   "k": "dv:ew",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "p",
+   "t": "Exploit Weakness · 1 of 2",
+   "via": "branches off the Heart Gore path"
+  },
+  {
+   "k": "dv:amb",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "a",
+   "t": "Ambush",
+   "via": "shares its first two nodes with Quick Slice"
+  },
+  {
+   "k": "dv:qs",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "a",
+   "t": "Quick Slice",
+   "via": "shares its first two nodes with Ambush"
+  },
+  {
+   "k": "dv:ew2",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "p",
+   "t": "Exploit Weakness · 2 of 2",
+   "via": "past the Quick Slice node"
+  },
+  {
+   "k": "dv:as",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "p",
+   "t": "Assault Stance · 1 of 2"
+  },
+  {
+   "k": "dv:as2",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "p",
+   "t": "Assault Stance · 2 of 2",
+   "via": "its path also gives Rear Smite +1 (Back Attack Damage Boost)"
+  },
+  {
+   "k": "dv:corner",
+   "board": "Nezekan",
+   "blv": 12,
+   "ty": "c",
+   "t": "Cooldown Reduction or Combat Speed corner",
+   "via": "corner node costs 4 (worked out from your board)"
+  },
+  {
+   "k": "dv:ie",
+   "board": "Nezekan",
+   "blv": 20,
+   "ty": "a",
+   "t": "Insignia Explosion",
+   "via": "bottom edge; about 3–5 with its path (GamesFuze node pick)"
+  },
+  {
+   "k": "dv:ss",
+   "board": "Nezekan",
+   "blv": 20,
+   "ty": "a",
+   "t": "Shadowstrike",
+   "via": "just above Start; about 3–5 with its path (GamesFuze node pick)"
+  },
+  {
+   "k": "dv:z:hg",
+   "board": "Zikel",
+   "blv": 20,
+   "ty": "a",
+   "t": "Heart Gore"
+  },
+  {
+   "k": "dv:z:ie",
+   "board": "Zikel",
+   "blv": 20,
+   "ty": "a",
+   "t": "Insignia Explosion"
+  },
+  {
+   "k": "dv:z:qs",
+   "board": "Zikel",
+   "blv": 20,
+   "ty": "a",
+   "t": "Quick Slice"
+  },
+  {
+   "k": "dv:z:db",
+   "board": "Zikel",
+   "blv": 21,
+   "ty": "p",
+   "t": "Defense Break · 1 of 2"
+  },
+  {
+   "k": "dv:z:db2",
+   "board": "Zikel",
+   "blv": 21,
+   "ty": "p",
+   "t": "Defense Break · 2 of 2"
+  },
+  {
+   "k": "dv:z:corner",
+   "board": "Zikel",
+   "blv": 20,
+   "ty": "c",
+   "t": "Damage Boost corner"
+  },
+  {
+   "k": "dv:v:hg",
+   "board": "Vaizel",
+   "blv": 30,
+   "ty": "a",
+   "t": "Heart Gore"
+  },
+  {
+   "k": "dv:v:ie",
+   "board": "Vaizel",
+   "blv": 30,
+   "ty": "a",
+   "t": "Insignia Explosion"
+  },
+  {
+   "k": "dv:v:qs",
+   "board": "Vaizel",
+   "blv": 30,
+   "ty": "a",
+   "t": "Quick Slice"
+  },
+  {
+   "k": "dv:v:as",
+   "board": "Vaizel",
+   "blv": 30,
+   "ty": "p",
+   "t": "Assault Stance"
+  },
+  {
+   "k": "dv:v:corner",
+   "board": "Vaizel",
+   "blv": 30,
+   "ty": "c",
+   "t": "Critical Damage Boost corner"
+  },
+  {
+   "k": "dv:t:hg",
+   "board": "Triniel",
+   "blv": 40,
+   "ty": "a",
+   "t": "Heart Gore"
+  },
+  {
+   "k": "dv:t:ie",
+   "board": "Triniel",
+   "blv": 40,
+   "ty": "a",
+   "t": "Insignia Explosion"
+  },
+  {
+   "k": "dv:t:qs",
+   "board": "Triniel",
+   "blv": 40,
+   "ty": "a",
+   "t": "Quick Slice"
+  },
+  {
+   "k": "dv:t:as",
+   "board": "Triniel",
+   "blv": 40,
+   "ty": "p",
+   "t": "Assault Stance"
+  },
+  {
+   "k": "dv:t:corner",
+   "board": "Triniel",
+   "blv": 40,
+   "ty": "c",
+   "t": "Corner"
+  }
+ ]
+}

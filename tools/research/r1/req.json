@@ -1,0 +1,642 @@
+{
+ "Forgotten Commander": {
+  "id": "2102800",
+  "type": "Episode 6 'Encountering Zikel's Core', episode quest 16/17",
+  "rec": 45,
+  "unlocksAt": 45,
+  "prev": "Farewells (2102781)",
+  "next": "Daeva Trapped in a Nightmare (2102810)",
+  "giver": "Menrik (gaming.tools) / step 1 Talk to Kiara at Draupnir Entrance (th.gl)",
+  "objective": "Talk to Menrik at Fang Hideout",
+  "dependents": [
+   "Immortal Isle's Distinct Ecology",
+   "Reality Bites",
+   "A Perfect Wedding",
+   "Fallout",
+   "Fallout Calmed",
+   "Farewell, My Instructor",
+   "Another Crisis!",
+   "I'm a Believer!",
+   "A Traitor Within",
+   "One Last Thing",
+   "Mind Your Own Business",
+   "Lost Memories",
+   "Sapling Hide-and-Seek",
+   "Restoration Materials",
+   "Restless Spirits",
+   "Another Survivor",
+   "Regular Altar Maintenance",
+   "Workplace Misunderstanding",
+   "Ravenous Recluse",
+   "A Comrade's Fate",
+   "Putting a Friend to Rest",
+   "Spirit Isle, Where Time Has Stopped",
+   "Nine Wonders of Altgard: Final Stretch",
+   "The One Who Witnesses the Nightmare (not regional)"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2102800",
+   "https://aion2.th.gl/db/quests/q_2102800"
+  ]
+ },
+ "Fallout Calmed": {
+  "requires": [
+   "Fallout",
+   "Forgotten Commander"
+  ],
+  "giver": "Lakiba",
+  "turnin": "Amunta",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202043",
+   "https://aion2.gaming.tools/quests/2202042"
+  ]
+ },
+ "Fallout": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202042"
+  ]
+ },
+ "Workplace Misunderstanding": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202064"
+  ]
+ },
+ "One Last Thing": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Avent",
+  "turnin": "Avent",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202054",
+   "https://aion2.th.gl/db/quests/q_2202054"
+  ]
+ },
+ "Restoration Materials": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "src": [
+   "https://aion2.th.gl/db/quests/q_2202058"
+  ]
+ },
+ "A Guardian's Sacrifice": {
+  "requires": [
+   "Disturbed Balance (story 2102190)",
+   "Young Elim's Story"
+  ],
+  "giver": "Ecco",
+  "turnin": "Odar",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202036"
+  ]
+ },
+ "Blade of Vengeance": {
+  "requires": [
+   "Verdant Melody (story 2102180)"
+  ],
+  "giver": "Nemon",
+  "turnin": "Gamilla",
+  "dependents": [
+   "In the Fang Legion's Name"
+  ],
+  "steps": [
+   "Meet Menrik near the Fang Hideout",
+   "Carry out the operation with Menrik"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202016"
+  ]
+ },
+ "Young Elim's Story": {
+  "requires": [
+   "Disturbed Balance (story 2102190)"
+  ],
+  "giver": "Lulu",
+  "turnin": "Ecco",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202019"
+  ]
+ },
+ "An Invitation to the Past: Part 2": {
+  "requires": [
+   "An Invitation to the Past: Part 1",
+   "Canyon's Secret (story 2102280)"
+  ],
+  "dependents": [
+   "Another Survivor"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202022"
+  ]
+ },
+ "An Invitation to the Past: Part 1": {
+  "requires": [
+   "Canyon's Secret (story 2102280)"
+  ],
+  "dependents": [
+   "An Invitation to the Past: Part 2"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202021"
+  ]
+ },
+ "Finders Keepers": {
+  "requires": [
+   "Scripture in the Ruins (story 2102360)"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202063"
+  ]
+ },
+ "A Friend's Legacy": {
+  "requires": [
+   "Mirror of Greed (story 2102590)",
+   "Missing Mount"
+  ],
+  "giver": "Sculkhi",
+  "turnin": "Hadala",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202039"
+  ]
+ },
+ "Bloodstained Rose": {
+  "requires": [
+   "Mirror of Greed (story 2102590)"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202038"
+  ]
+ },
+ "Fight Poison with Poison": {
+  "requires": [
+   "A Collective Effort (story 2102240)"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202062"
+  ]
+ },
+ "Another Survivor": {
+  "requires": [
+   "An Invitation to the Past: Part 2",
+   "Forgotten Commander"
+  ],
+  "giver": "Hallina",
+  "turnin": "Hallina",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202060"
+  ]
+ },
+ "In the Fang Legion's Name": {
+  "requires": [
+   "Blade of Vengeance",
+   "Odyle Jelly Misappropriation Investigation",
+   "Verdant Melody (story 2102180)"
+  ],
+  "giver": "Gamilla",
+  "turnin": "Menrik",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202017"
+  ]
+ },
+ "Missing Mount": {
+  "requires": [
+   "Empyrean Monolith (story 2102105)"
+  ],
+  "giver": "Hadala",
+  "turnin": "Tomgus",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202012"
+  ]
+ },
+ "Creion Research Assistant": {
+  "requires": [
+   "Empyrean Monolith (story 2102105)"
+  ],
+  "giver": "Benekt",
+  "turnin": "Benekt",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202013"
+  ]
+ },
+ "Nine Wonders of Altgard: Final Stretch": {
+  "requires": [
+   "Forgotten Commander",
+   "Nine Wonders of Altgard: 2nd Leg"
+  ],
+  "giver": "Tina",
+  "turnin": "Tina",
+  "steps": [
+   "Visit Eastern Gribade Highland Tail Island and admire the scenery",
+   "Visit the Impetusium Lower Path and admire the scenery"
+  ],
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Cube Expansion Voucher",
+    "Title: Full of Soul"
+   ]
+  },
+  "src": [
+   "https://aion2.gaming.tools/quests/2202071"
+  ]
+ },
+ "A Traitor Within": {
+  "requires": [
+   "Forgotten Commander",
+   "Hugo Mercenaries: Past and Present",
+   "Practice Makes Perfect, Nyerk!"
+  ],
+  "giver": "Baba",
+  "turnin": "Baba",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202052"
+  ]
+ },
+ "Spirit Isle, Where Time Has Stopped": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Milo",
+  "turnin": "Milo",
+  "steps": [
+   "Ride the Windstream to find Milo on the Spirit Isle, then talk to him",
+   "Go treasure hunting at the Western Root and recover the item resembling a Relic"
+  ],
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Soul Codex: Reset",
+    "Title: Living Fossil"
+   ]
+  },
+  "src": [
+   "https://aion2.gaming.tools/quests/2202069"
+  ]
+ },
+ "Sapling Hide-and-Seek": {
+  "requires": [
+   "A Guardian's Sacrifice",
+   "Forgotten Commander",
+   "Young Elim's Story"
+  ],
+  "giver": "Nana",
+  "turnin": "Nana",
+  "steps": [
+   "Wait for the Elim to hide, then move behind Odar",
+   "Find Nana's hiding spot",
+   "Find Elle's hiding spot",
+   "Find Dart's hiding spot; check a second location",
+   "Talk to Ecco",
+   "Investigate traces of Dart",
+   "Defeat 15 blocking spirits",
+   "Talk to Dart, carry him back",
+   "Set Dart down beneath Odar's Shade"
+  ],
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Odyle x5",
+    "Title: Always It"
+   ]
+  },
+  "src": [
+   "https://aion2.gaming.tools/quests/2202057"
+  ]
+ },
+ "Nine Wonders of Altgard: 2nd Leg": {
+  "requires": [
+   "Last of the Destruction Archons (story 2102340)",
+   "Nine Wonders of Altgard: 1st Leg"
+  ],
+  "dependents": [
+   "Nine Wonders of Altgard: Final Stretch"
+  ],
+  "giver": "Tina",
+  "turnin": "Tina",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202070"
+  ]
+ },
+ "Odyle Jelly Misappropriation Investigation": {
+  "requires": [
+   "Empyrean Monolith (story 2102105)"
+  ],
+  "giver": "VeKauf",
+  "turnin": "Galorik",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202014"
+  ]
+ },
+ "Hugo Mercenaries: Past and Present": {
+  "requires": [
+   "Empyrean Monolith (story 2102105)"
+  ],
+  "giver": "Derk",
+  "turnin": "Derk",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202010"
+  ]
+ },
+ "Practice Makes Perfect, Nyerk!": {
+  "requires": [
+   "Empyrean Monolith (story 2102105)"
+  ],
+  "giver": "Baba",
+  "turnin": "Baba",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202023"
+  ]
+ },
+ "Immortal Isle's Distinct Ecology": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Nivena",
+  "turnin": "Nivena",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202027"
+  ]
+ },
+ "Reality Bites": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Bekrin",
+  "turnin": "Bekrin",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202028"
+  ]
+ },
+ "A Perfect Wedding": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Romi",
+  "turnin": "Romi",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202041"
+  ]
+ },
+ "Farewell, My Instructor": {
+  "requires": [
+   "Forgotten Commander",
+   "Practice Makes Perfect, Nyerk!"
+  ],
+  "giver": "Baba",
+  "turnin": "Varron",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202045"
+  ]
+ },
+ "Another Crisis!": {
+  "requires": [
+   "Creion Research Assistant",
+   "Forgotten Commander"
+  ],
+  "giver": "Snotra",
+  "turnin": "Snotra",
+  "steps": [
+   "Answer Snotra's Selvis call from Tefra",
+   "Talk to Snotra about the message",
+   "Investigate the Shuttered Workstation",
+   "Report the workstation situation to Crobakhi",
+   "Learn about handling the Fafnite dust from Snotra",
+   "Check on Tefra",
+   "Console Tefra"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202047"
+  ]
+ },
+ "I'm a Believer!": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Kanes",
+  "turnin": "Markan",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202050"
+  ]
+ },
+ "Lost Memories": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Oliver",
+  "turnin": "Tao",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202056"
+  ]
+ },
+ "Ravenous Recluse": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Fiona",
+  "turnin": "Fiona",
+  "steps": [
+   "Collect 7 Coastal Slink Meat and 8 Starturtle Meat",
+   "Collect 3 Berrytree Fruit",
+   "Return to Fiona",
+   "Cook Berry Stew on a firepit",
+   "Deliver Berry Stew to Pordhet and Hakor"
+  ],
+  "src": [
+   "https://aion2.gaming.tools/quests/2202065"
+  ]
+ },
+ "A Comrade's Fate": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Haz's Apparition",
+  "turnin": "Haz's Apparition",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202067"
+  ]
+ },
+ "Putting a Friend to Rest": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Lucian",
+  "turnin": "Lucian",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202068"
+  ]
+ },
+ "Nine Wonders of Altgard: 1st Leg": {
+  "requires": [
+   "Verdant Melody (story 2102180)"
+  ],
+  "giver": "Tina",
+  "turnin": "Tina",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202053"
+  ],
+  "note": "dependents list on this page is empty although 2nd Leg lists 1st Leg as required — gaming.tools dependents lists are incomplete; use Required Quests as authoritative"
+ },
+ "Spacetime Rift: Difference Between Here and There": {
+  "requires": [],
+  "giver": "Uru",
+  "turnin": "Uru",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202032"
+  ],
+  "note": "no Required Quests section"
+ },
+ "Spacetime Rift: An Honest Shugo": {
+  "requires": [],
+  "giver": "Uru",
+  "turnin": "Uru",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202034"
+  ],
+  "note": "no Required Quests section"
+ },
+ "Hugo Mercenaries: An Old Promise": {
+  "requires": [
+   "Hugo Mercenaries: Deep Shadow",
+   "Last of the Destruction Archons (story 2102340)"
+  ],
+  "giver": "Hadala",
+  "turnin": "Village Kid",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202020"
+  ]
+ },
+ "Hugo Mercenaries: Deep Shadow": {
+  "requires": [
+   "Canyon's Secret (story 2102280)",
+   "Hugo Mercenaries: Past and Present"
+  ],
+  "dependents": [
+   "Hugo Mercenaries: An Old Promise"
+  ],
+  "src": [
+   "https://aion2.th.gl/db/quests/q_2202011"
+  ]
+ },
+ "Mind Your Own Business": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Gamilla",
+  "turnin": "Gamilla",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202055"
+  ]
+ },
+ "Restless Spirits": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Cortis",
+  "turnin": "Cortis",
+  "steps": [
+   "Talk to Cortis",
+   "Defeat 5 Unruly Slime",
+   "Defeat 10 Cursed Poison Blood",
+   "Return to Cortis"
+  ],
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Rare Theostone Chest",
+    "Title: Volunteer"
+   ]
+  },
+  "src": [
+   "https://aion2.gaming.tools/quests/2202059"
+  ]
+ },
+ "Regular Altar Maintenance": {
+  "requires": [
+   "Forgotten Commander"
+  ],
+  "giver": "Ivan",
+  "turnin": "Ivan",
+  "steps": [
+   "Purify the Water Altar",
+   "Ask Ivan about the altar's condition",
+   "Defeat 7 Cursed Poison Blood",
+   "Ask Ivan whether the Water Altar has improved",
+   "Purify the Earth Altar",
+   "Purify the Fire Altar",
+   "Ask Ivan about the Fire Altar's condition",
+   "Destroy 8 Poison Blood Clots",
+   "Ask Ivan whether the Fire Altar has improved",
+   "Purify the Wind Altar",
+   "Return to Ivan"
+  ],
+  "rewards": {
+   "xp": 3936438,
+   "kina": 100000,
+   "wisdom": 1,
+   "crystal": 1,
+   "items": [
+    "Rare Theostone Chest",
+    "Title: Ritualist"
+   ]
+  },
+  "src": [
+   "https://aion2.gaming.tools/quests/2202061"
+  ]
+ },
+ "The Future Within the Past": {
+  "requires": [
+   "Canyon's Secret (story 2102280)"
+  ],
+  "giver": "Harald",
+  "turnin": "Harald",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202037"
+  ]
+ },
+ "Spacetime Rift: Asmodian": {
+  "requires": [],
+  "giver": "Uru",
+  "turnin": "Uru",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202026"
+  ],
+  "note": "no Required Quests section"
+ },
+ "Spacetime Rift: Unfamiliar Material": {
+  "requires": [],
+  "giver": "Uru",
+  "turnin": "Uru",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202031"
+  ],
+  "note": "no Required Quests section"
+ },
+ "Spacetime Rift: Developing Travel Goods": {
+  "requires": [],
+  "giver": "Uru",
+  "turnin": "Uru",
+  "src": [
+   "https://aion2.gaming.tools/quests/2202033"
+  ],
+  "note": "no Required Quests section"
+ }
+}
