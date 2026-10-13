@@ -101,7 +101,12 @@ jobs:
             if [ -z "$sha" ]; then echo "::warning::No commit sets version $ver in package.json; not releasing it."; continue; fi
             node scripts/release-notes.mjs --version "$ver" > notes.md
             latest=false; [ "$ver" = "$cur" ] && latest=true
-            gh release create "$tag" --target "$sha" --title "$(node scripts/release-notes.mjs --version "$ver" --title)" \
-              --notes-file notes.md --latest="$latest"
-            echo "Released $tag at $sha"
+            # Failures are reported as annotations (readable without log access) with gh's own message.
+            if ! out="$(gh release create "$tag" --target "$sha" \
+                --title "$(node scripts/release-notes.mjs --version "$ver" --title)" \
+                --notes-file notes.md --latest="$latest" 2>&1)"; then
+              echo "::error title=Release $tag failed::$(echo "$out" | tr '\n' ' ')"
+              exit 1
+            fi
+            echo "Released $tag at $sha: $out"
           done
