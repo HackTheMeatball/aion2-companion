@@ -3,7 +3,7 @@
 
    Source layout (0.2 P1):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
-     src/styles/*.css          the styles: fonts.css (the @font-face rules) and app.css; inlined verbatim
+     src/styles/*.css          the styles: fonts.css (the @font-face rules), app.css and brand.css; inlined verbatim
      src/main.js               the app script (ES module), imports src/data/generated.js (written by `npm run gen`)
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and

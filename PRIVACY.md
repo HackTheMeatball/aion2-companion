@@ -1,5 +1,7 @@
 # Privacy
 
+This covers Daeva Companion, the unofficial AION 2 companion at aion2.ishkabytes.com (and its earlier claude.ai version).
+
 **Short version:** no accounts, no analytics, no tracking, no cookies. Your progress stays in your browser.
 
 ## What is stored, and where

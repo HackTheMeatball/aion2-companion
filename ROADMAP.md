@@ -39,6 +39,7 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
 - **0.1.4** — version in the footer, *Report a problem* link with prefilled issue form, issue forms and labels.
 - **0.1.5** — persistent storage request, save-failure warning, self-hosted fonts.
 - **0.1.6** — accessibility fixes with no visible change (screen-reader names, focus, reduced motion, touch), `a11y` suite.
+- **0.1.7** — rebrand to Daeva Companion (name, mark, icons; palette unchanged).
 
 ## Plan
 
@@ -56,7 +57,7 @@ From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
 - (was 0.1.6, invisible): spoken names for the three "i" buttons, focus ring on the Basic/Advanced switch, reduced motion
   everywhere (one smooth-scroll setting), headings and landmarks, Escape closes popovers, larger hit areas without
   changing the look, `touch-action`, `dvh` units, an automated accessibility check in the tests.
-- **0.1.7** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
+- **0.1.8** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
   layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
 - Save safety (visible, design pass first): a "last backup N days ago" line with an export nudge, and an "Add to Home
   Screen" hint on iPhone (home-screen apps keep their data much longer).
@@ -120,6 +121,10 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
 - Data corrections from issues.
 
 ## Unscheduled ideas
+
+- **Colour sprint** (owner wants its own sprint): game-inspired palette, faction and class colours, quest-type and
+  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. One in-game check
+  session first.
 
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).

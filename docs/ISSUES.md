@@ -40,6 +40,8 @@ on purpose: the guide shows nothing rather than an unverified value.
 
 - **Sources card has 300 links** (collapsed per site). The `regress` soft check "<= 60 links" fails by design: `e2`
   requires every source URL to be listed.
+- **Brand art is original** (not game art): `public/favicon.svg`, `public/icons/*.png` and `brand/*.svg` are drawn as code
+  by `tools/brand/build.py` (Daeva Companion, direction C), 2026-10-13. No NC material in them.
 - **Icon provenance not recorded.** The 23 PNGs in `src/assets/icons/` are NC Corporation's art. Record where each file
   came from (site + page URL + date), so any permission request or takedown can be answered quickly. Fill in, then keep:
 

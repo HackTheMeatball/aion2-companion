@@ -3,6 +3,14 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.7 (beta) — 2026-10-13 · Daeva Companion
+
+- New name: **Daeva Companion**, an unofficial companion for AION 2 (the Asmodian Assassin leveling guide is its first
+  part). New compass-and-feather mark in the header, new favicon and home-screen icons (separate maskable icons and an
+  iPhone icon), new name in the tab title, share previews, installed-app name ("Daeva"), footer and 404 page.
+- The page's colours are unchanged; a game-inspired palette is researched for a later release.
+- Same address, same saved progress: nothing to do.
+
 ## 0.1.6 (beta) — 2026-10-13 · accessibility, no visible change
 
 - Screen readers: the "i" buttons beside Strongholds, Sealed Dungeons and Regional quests have names; the Milestones
