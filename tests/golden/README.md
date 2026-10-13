@@ -159,5 +159,16 @@ npm run build && node tests/golden.js --all
 
 ## Cost
 
-About 2,000 states in 2–3 minutes on a 2-vCPU machine with 3 pages (≈ 0.1 CPU-second per state, most of it the
-browser parsing the 450 KB page and running its start-up). See the PR / commit that introduced it for measurements.
+Measured on the 2-vCPU dev VM (Chromium headless shell, 3 pages), Oct 2026:
+
+| Run | Wall | Notes |
+|---|---:|---|
+| verify, 2,000 states, quiet machine | 111 s | ≈ 200 CPU-seconds in all (≈ 0.1 per state: the browser parsing the 450 KB page and running its start-up) |
+| verify, 2,000 states, machine busy with other test runs | 150–204 s | three runs, all identical |
+| inside `npm test` (suites run one at a time on 2 vCPUs) | 153 s | |
+| `--all`, 8,000 states | 560 s | |
+| `--render`, 371 states | 76 s | ≈ 3× the CPU per state; identical snapshots |
+
+The cheap parts are deliberate: no layout or paint (hidden root), images and fonts off, no request interception, a
+snapshot at DOMContentLoaded instead of a sleep, and a fresh browser context every 150 states (a renderer that reloads
+the page hundreds of times grows by gigabytes).
