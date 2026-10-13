@@ -7,7 +7,7 @@
 <!-- @end-web-only -->
 <title>Asmodian Assassin Route</title>
 <!-- @web-only -->
-<meta name="description" content="Aion 2 Asmodian Assassin leveling companion, Lv 1 to 45: story steps, regional quests, Sealed Dungeons, skill points, Daevanion boards and stigmas, with progress saved in your browser.">
+<meta name="description" content="Unofficial, fan-made AION 2 Asmodian Assassin leveling guide, Lv 1 to 45: story steps, regional quests, Sealed Dungeons, skill points, Daevanion boards and stigmas, with progress saved in your browser.">
 <link rel="canonical" href="https://aion2.ishkabytes.com/">
 <meta name="theme-color" content="#110c13">
 <meta name="color-scheme" content="dark">
@@ -15,9 +15,9 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Aion 2 Companion">
-<meta property="og:title" content="Asmodian Assassin Route · Aion 2">
-<meta property="og:description" content="Leveling companion for the Aion 2 Asmodian Assassin, Lv 1 to 45. Fan-made; progress stays in your browser.">
+<meta property="og:site_name" content="Aion 2 Companion (unofficial)">
+<meta property="og:title" content="Asmodian Assassin Route · unofficial Aion 2 guide">
+<meta property="og:description" content="Unofficial leveling guide for the AION 2 Asmodian Assassin, Lv 1 to 45. Fan-made, not affiliated with NCSoft; progress stays in your browser.">
 <meta property="og:url" content="https://aion2.ishkabytes.com/">
 <meta property="og:image" content="https://aion2.ishkabytes.com/icons/icon-512.png">
 <meta name="twitter:card" content="summary">
@@ -1551,7 +1551,7 @@ body.basic #spCard .sphint.warn { display: block !important; }
       <button type="button" class="xfer-btn" id="expBtn" hidden>Export progress</button>
       <label class="xfer-btn">Import progress<input type="file" id="impIn" class="vh" accept=".json,application/json"></label>
       <span class="xfer-msg" id="xferMsg" role="status"></span></div>
-    <p class="fanline">Fan-made and not affiliated with or endorsed by NCSoft; AION 2 names and images belong to NCSoft. Data credits are in <a href="#srcCard" id="srcLink">Sources</a>; most game data comes from <a href="https://metabot.gg/en/aion-2">Metabot</a>.</p>
+    <p class="fanline">Unofficial fan guide, not affiliated with or endorsed by NCSoft (NC Corporation); AION 2 names and game images belong to NC. Game data changes with patches and can be wrong: check in game. Data credits are in <a href="#srcCard" id="srcLink">Sources</a>; most game data comes from <a href="https://metabot.gg/en/aion-2">Metabot</a>. © 2026 hackthemeatball · <a href="https://github.com/hackthemeatball/aion2-companion/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a></p>
   </footer>
 </div>
 
@@ -2344,7 +2344,7 @@ layoutEl.addEventListener("click", e => {
 function renderSources() {
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   document.getElementById("confBody").innerHTML = CONF.map(c => `<p><b>${c.g}</b> · ${c.sub}</p><ul class="conf">${c.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`).join("");
-  document.getElementById("srcBody").innerHTML = `<p class="fine src-intro">Every value in the guide comes from one of these pages (${SOURCES.reduce((t, g) => t + g.links.length, 0)} links, checked Oct 2026). Metabot data is used with credit: each item links to its Metabot page.</p>` +
+  document.getElementById("srcBody").innerHTML = `<p class="fine src-intro">Every sourced value in the guide comes from one of these pages (${SOURCES.reduce((t, g) => t + g.links.length, 0)} links, checked Oct 2026); values seen in game or worked out by the guide are marked in Confidence. Metabot data is used with credit: each item links to its Metabot page.</p>` +
     (() => { /* One row per site: how many pages and what they back; the page list opens per site. Sites with one page share a row. */
       const host = u => u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], name = h => { const k = Object.keys(SRC_SITE).find(d => h.endsWith(d)); return k ? SRC_SITE[k] : h; };
       const by = new Map();
@@ -3132,7 +3132,7 @@ function renderAhead() {
     /* At the cap there's nothing above you: say so instead of an empty box. */
     if (lv >= 45) rows.push(`<a class="ah-row" href="#g45" data-gogate="g45"><span class="ah-lv">Lv 45</span><span class="ah-main"><b>Level cap reached</b><small>Progress now comes from gear score, not levels</small></span></a>`);
     el.hidden = !rows.length;
-    el.innerHTML = rows.length ? `<div class="where-sub">Ahead <span class="ah-ver">verified</span></div>${rows.join("")}` : "";
+    el.innerHTML = rows.length ? `<div class="where-sub">Ahead <span class="ah-ver" title="Each unlock here is backed by two or more independent sources">verified</span></div>${rows.join("")}` : "";
   }
 }
 /* Main story filter (icon right of "Main story"): objectives and ticked objectives are hidden by default;

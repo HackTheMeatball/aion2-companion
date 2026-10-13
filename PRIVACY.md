@@ -14,6 +14,9 @@
 
 Clearing this site's data in your browser deletes your progress — export a backup first.
 
+**claude.ai version:** the artifact build keeps the same progress data in that artifact's own browser storage on claude.ai;
+Anthropic's privacy policy covers claude.ai itself.
+
 ## Requests to other sites
 
 - **Google Fonts** (`fonts.googleapis.com`, `fonts.gstatic.com`): the page loads its three fonts from Google, which
@@ -24,6 +27,12 @@ Clearing this site's data in your browser deletes your progress — export a bac
   [GitHub Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 - **Links** in the guide (Metabot, maps, sources) are only requested when you click them.
 
+## Changes
+
+This page is updated before anything about what the site collects changes. If the site ever adds anything that collects
+data, this page and, where the law requires it, a consent prompt come first.
+
 ## Contact
 
-Questions or concerns: open an issue at <https://github.com/hackthemeatball/aion2-companion/issues>.
+Questions or concerns: open an issue at <https://github.com/hackthemeatball/aion2-companion/issues>. Issues are public,
+so leave out personal details.
