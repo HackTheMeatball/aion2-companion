@@ -1,14 +1,17 @@
-# Aion 2 Companion · Asmodian Assassin Route
+# Aion 2 Companion (unofficial) · Asmodian Assassin Route
 
-A leveling companion for the **Aion 2 Asmodian Assassin**, Lv 1 → 45: what to do next in the story, which regional quests
-are open, Sealed Dungeons and strongholds by level band, skill points, Daevanion boards and stigmas. Free-to-play focused,
-verified data only (two sources, game data, or your own in-game screens), progress ticked by hand.
+A fan-made leveling guide for the **AION 2 Asmodian Assassin**, Lv 1 → 45: what to do next in the story, which regional
+quests are open, Sealed Dungeons and strongholds by level band, skill points, Daevanion boards and stigmas. Free-to-play
+focused. Data is cross-checked: two independent sources, game-database values or the maintainer's in-game screens; anything
+weaker is labelled *single source*, *inferred* or *disputed* in the app's Confidence card. Game data changes with patches,
+so check in game. Progress is ticked by hand.
 
 **Live:** <https://aion2.ishkabytes.com/>
 
-Fan-made and not affiliated with or endorsed by NCSoft. Game names and images belong to NCSoft. Most game data comes from
+Unofficial and fan-made: not affiliated with or endorsed by NCSoft (NC Corporation) or NC America. AION and AION 2 are
+trademarks of NC Corporation; game names and images belong to NC. Most game data comes from
 [Metabot](https://metabot.gg/en/aion-2); every source is credited in the app's *Sources* card and in
-[`data/DATA_SOURCES.md`](data/DATA_SOURCES.md).
+[`data/DATA_SOURCES.md`](data/DATA_SOURCES.md). Listing a source doesn't mean it endorses this guide.
 
 ## Using it
 
@@ -69,5 +72,18 @@ Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before changing anything that 
 
 ## License
 
-Code: [MIT](LICENSE). Game names, icons and other game assets © NCSoft. Data is compiled from the sources credited in
-the app and in `data/DATA_SOURCES.md`; see [LICENSE](LICENSE) for the details (including thegameswiki's CC BY-NC-SA).
+Source-available, not open source. See [LICENSE](LICENSE) for the details.
+
+- **Code:** [PolyForm Strict 1.0.0](https://polyformproject.org/licenses/strict/1.0.0): read it and use it for any
+  noncommercial purpose; no redistribution, no modified versions.
+- **Guide text, data selection, name and artwork:** © 2026 hackthemeatball, all rights reserved. Game facts themselves are
+  free for anyone.
+- **Third-party:** game names and icons © NC Corporation. Data sources are credited in the app and in
+  `data/DATA_SOURCES.md`. Short quotations in `data/claims.json` stay their owners' (thegameswiki: CC BY-NC-SA 4.0).
+- Versions up to 0.1.1 were published under MIT; copies of those keep that license.
+
+## Contributing
+
+Bug reports and data corrections are welcome as [issues](https://github.com/hackthemeatball/aion2-companion/issues)
+(they're public, so leave out personal details). Pull requests with code can only be merged with a written grant that lets
+the maintainer use and relicense the contribution; open an issue first.

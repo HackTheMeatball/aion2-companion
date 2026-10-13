@@ -28,8 +28,17 @@ claude.ai artifact build. Read `docs/ARCHITECTURE.md` before touching state, key
   source" / "inferred" / "disputed" as `data/claims.json` decides.
 - Change `data/*.json`, then `npm run gen`; never hand-edit the `E2-GEN` block. Every new URL must end up in the
   Sources card (gen.py does this) and `data/DATA_SOURCES.md`.
-- Metabot is the main source: credit with plain dofollow links. thegameswiki is CC BY-NC-SA (fine, non-commercial).
-  Don't use Game8. No packet sniffing, memory reading or screenshot parsing (ToS risk; the user doesn't want it).
+- Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
+  CC BY-NC-SA: take facts only, never its wording, into the app; quotes in `claims.json` stay short and credited. Don't use
+  Game8. No packet sniffing, memory reading or screenshot parsing (ToS risk; the user doesn't want it).
+- No new game art (icons, screenshots, maps, logos) without the user's OK; record each icon's source in docs/ISSUES.md.
+
+## Licensing
+
+- Code is PolyForm Strict 1.0.0; guide text, data selection, name and artwork are all rights reserved (LICENSE). Never add
+  MIT or other license headers or files, and don't merge outside code contributions without the user's written grant.
+- User-facing text calls the guide "unofficial" and keeps the phrase "not affiliated with or endorsed by NCSoft"
+  (`tests/site.js`). Don't imply endorsement by NC or any source site.
 
 ## What the user wants
 
