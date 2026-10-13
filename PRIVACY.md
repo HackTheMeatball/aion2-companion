@@ -7,6 +7,11 @@
 - **Your progress** (level, ticked quests and steps, stigma picks, settings) is saved in your browser's `localStorage`
   under the key `aion2-assassin-route-v4` on `aion2.ishkabytes.com`. It never leaves your device. When you import a
   file, the progress it replaces is kept under `aion2-assassin-route-v4:before-import`.
+- **Keeping your progress:** when you come back with saved progress, the site asks your browser to keep its storage
+  (`navigator.storage.persist()`), so it isn't cleared automatically (Safari can clear site data after 7 days without a
+  visit). Your browser decides; Firefox may ask you. The time of the last request is stored under
+  `aion2-assassin-route-v4:persist-asked` so it asks at most once a week. If saving ever fails in your browser, the page
+  says so and offers Export.
 - **Offline copy:** a service worker keeps a copy of the app, its icons and fonts in your browser's cache so it works offline.
   It contains no personal data.
 - **Export progress** downloads a `.json` file to your device; **Import progress** reads a file you pick. Neither is

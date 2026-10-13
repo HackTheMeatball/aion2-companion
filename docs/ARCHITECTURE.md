@@ -24,7 +24,13 @@ no server copy. Rules:
 ### State
 
 `state` is one JSON object, loaded at startup as `Object.assign(DEFAULT(), saved)` and written back by `save()` after
-every change.
+every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
+"couldn't be saved" banner (`#saveWarn`, with the Export action) when `localStorage.setItem` throws and hides it after
+the next write that works; what is written, and under which key, is unchanged.
+
+Other keys: `…:before-import` (see Import below) and, on the standalone site only, `…:persist-asked` (time the page last
+asked `navigator.storage.persist()`; asked only when the page loaded saved progress, at most once a week until the
+browser grants it, so Firefox's prompt doesn't repeat on every visit).
 
 | Field | Meaning |
 |---|---|
@@ -141,7 +147,7 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 
 | Suite | What |
 |---|---|
-| `site` | head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts |
+| `site` | head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
 | `mig1` | v285 save → current build (4 intended differences pinned in `tests/fixtures/e1-migtest-expected.json`), rollback |
 | `mig2` | realistic v287 save → current build, idempotent, rollback |

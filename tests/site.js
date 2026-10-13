@@ -130,6 +130,55 @@ const checkReport = (label, m, want) => {
     await ctx.close();
   }
 
+  /* 2c. persistent storage: asked on the standalone site only, only with saved progress, at most once a week, never in claude.ai */
+  {
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
+    await ctx.addInitScript(() => { if (!navigator.storage) return;
+      navigator.storage.persisted = async () => false;
+      navigator.storage.persist = async () => { localStorage.setItem('__test:persistCalls', String(+(localStorage.getItem('__test:persistCalls') || 0) + 1)); return false; }; });
+    const p = await ctx.newPage(), calls = () => p.evaluate(() => +(localStorage.getItem('__test:persistCalls') || 0));
+    await p.goto(CFG.CUR); await p.waitForTimeout(400);
+    const fresh = await calls();
+    await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 12, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), KEY);
+    await p.reload(); await p.waitForTimeout(400); const first = await calls();
+    await p.reload(); await p.waitForTimeout(400); const again = await calls();
+    await p.evaluate(k => localStorage.setItem(k + ':persist-asked', String(Date.now() - 8 * 864e5)), KEY);
+    await p.reload(); await p.waitForTimeout(400); const week = await calls();
+    await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(400); const art = await calls();
+    ok('persistent storage: not asked without saved progress; asked once with it; not again on reload; again after a week; never in the claude.ai build',
+      fresh === 0 && first === 1 && again === 1 && week === 2 && art === 2, { fresh, first, again, week, art });
+    await ctx.close();
+  }
+
+  /* 2d. a save that throws shows the warning banner with Export; the next save that works hides it; the data is unchanged */
+  {
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 }, acceptDownloads: true });
+    await ctx.addInitScript(k => { const set = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (key, v) { if (key === k && sessionStorage.getItem('__test:failSave') === '1') throw new DOMException('The quota has been exceeded.', 'QuotaExceededError'); return set.call(this, key, v); }; }, KEY);
+    const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(CFG.CUR);
+    await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), KEY);
+    await p.reload(); await p.waitForTimeout(400);
+    const vis = () => p.evaluate(() => { const w = document.getElementById('saveWarn'), r = w.getBoundingClientRect();
+      return { shown: !w.hidden && r.height > 0, text: w.innerText.trim(), exp: !document.getElementById('saveWarnExp').hidden, role: w.getAttribute('role') }; });
+    await p.click('#lvlUp'); await p.waitForTimeout(100);
+    const before = await vis();
+    ok('save warning: hidden while saving works', !before.shown, before);
+    await p.evaluate(() => sessionStorage.setItem('__test:failSave', '1'));
+    await p.click('#lvlUp'); await p.waitForTimeout(100);
+    const failed = await vis(), stored = await p.evaluate(k => JSON.parse(localStorage.getItem(k)).level, KEY);
+    ok('save warning: shown when localStorage.setItem throws, with the Export action', failed.shown && failed.exp && failed.role === 'alert' && /^Your progress couldn.t be saved in this browser\. Export a backup\./.test(failed.text) && stored === 28, { failed, stored });
+    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveWarnExp')]);
+    const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
+    ok('save warning: its Export button downloads the current (unsaved) progress', exported.level === 29 && JSON.stringify(exported) === JSON.stringify(await p.evaluate(() => state)), exported.level);
+    await p.evaluate(() => sessionStorage.setItem('__test:failSave', '0'));
+    await p.click('#lvlDown'); await p.waitForTimeout(100);
+    const back = await vis(), saved = await p.evaluate(k => localStorage.getItem(k) === JSON.stringify(state), KEY);
+    ok('save warning: hidden after the next successful save; saved data is exactly the state, under the same key', !back.shown && saved, { back, saved });
+    ok('save warning: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+
   /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
   {
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
