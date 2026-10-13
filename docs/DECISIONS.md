@@ -7,6 +7,7 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | 0.2 P1 settings | CEO: esbuild turns top-level `const` into `var` until P3 (accepted); CSS not run through esbuild; no minification in 0.2. |
 | D1 | Name | **Ascend Companion**, subtitled as a leveling (later also endgame) companion for AION 2. Web address on hold; the site stays at aion2.ishkabytes.com until the owner decides (every address change needs export/import). |
 | D2 | Hosting | Stay on GitHub Pages for now; move to Cloudflare Pages (same address, PR previews) when convenient. |
 | D3 | Private history | Session transcripts and personal screenshots go to a private repo the owner creates. |
@@ -20,5 +21,5 @@ owner; the CEO records them here and in the department charters they affect.
 | D12 | Footer | Approved as shipped in 0.1.5. |
 | A1 | Item icons | Confirmed in game: leaf gem = Wisdom Stone, square arch tile = Daevanion Crystal (file names fixed). |
 | I2 | MIT versions | v0.1.0 and v0.1.1 stay as they are (MIT for those versions only). |
-| — | Accounts / sign-in | Under evaluation; the CEO follows the consultant's recommendation. |
+| — | Accounts / sign-in | Per the consultant's recommendation (the owner delegated the call): no accounts for now; 0.5 adds an anonymous, end-to-end encrypted sync code; later minors shift by one. |
 | — | Team | In-house departments: Engineering, QA & Release, Tech Lead, Product Design, Data & Research, Support (docs/team). One-off projects: brand identity, mobile & accessibility audit, data-format second opinion. |
