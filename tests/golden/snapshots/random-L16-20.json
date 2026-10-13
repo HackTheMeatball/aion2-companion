@@ -4,8 +4,8 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Main story · then The Longest Night","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -265,10 +265,10 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"7 to pick up · 2 near your story step · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters (near)","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper (near)","+1 more"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 18","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 1/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 23 open at your level"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: A New Lead","s":"Needs Lv 18: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 5 open"}
     ],
@@ -329,14 +329,14 @@
   "random/L16-q31-before-A-stfull": {
     "in": "aa48fa80d4b5",
     "nu": [
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!"]},
       {"t":"Story: Children of the Elim","s":"Needs Lv 21: you're 16. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 5 open"},
       {"t":"Buy Insignia Explosion 2 → 3","s":"Opens at Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Rear Smite 3 → 4","s":"Opens at Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Rear Smite 3 → 4","s":"Opens at Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 6 → 7","s":"Opens at Lv 18 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -393,7 +393,6 @@
     "nu": [
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 22","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 5 open at your level"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
       {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 1 open"}
@@ -457,13 +456,11 @@
     "in": "bb748dd3b19d",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 25","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Voice of Rage","s":"Needs Lv 25: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -588,8 +585,6 @@
   "random/L16-q60-before-B-objs": {
     "in": "557d2f4362bd",
     "nu": [
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+12 more"]},
       {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 16. Level up first. Meanwhile: Strongholds","c":""},
@@ -653,11 +648,10 @@
       {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Exploit Weakness 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 1 near your story step · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+14 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 34","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 19 open at your level"},
+      {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 5 open"}
     ],
@@ -719,8 +713,6 @@
   "random/L16-q70-before-B": {
     "in": "ce106218e0c1",
     "nu": [
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"14 to pick up · 6 follow-ups · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+14 more"]},
       {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 16. Level up first. Meanwhile: Strongholds","c":""},
@@ -838,8 +830,8 @@
       {"t":"Finish Hidden Vein Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:hidden-vein-cave"},
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 1/2 turned in","c":"go \"Show\" rqgo:rq:2202015","x":["new The Great Curse-Breaking Caper","+4 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 15 open at your level"},
@@ -1203,8 +1195,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
       {"t":"Clear Bloodsoaked Confessional and others until Lv 27","s":"Moslan Forest · Kibelisk: Forest Hideout · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Forest Hideout is 140 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 17. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 3 open"}
     ],
@@ -1383,7 +1375,6 @@
     "nu": [
       {"t":"Regional quests","s":"8 to pick up · 5 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+7 more"]},
       {"t":"Clear Treasure Hunter's Residence and others until Lv 36","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Story: Frozen Fafnite","s":"Needs Lv 36: you're 17. Level up first. Meanwhile: Sealed Dungeons","c":""}
     ],
     "ms": [
@@ -1501,7 +1492,6 @@
     "nu": [
       {"t":"Regional quests","s":"8 to pick up · 5 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+7 more"]},
       {"t":"Clear Dratona Cave and others until Lv 37","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 10/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 3 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 17. Level up first. Meanwhile: Sealed Dungeons","c":""}
     ],
@@ -2046,8 +2036,8 @@
     "in": "3cbfa4726c84",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -2116,8 +2106,8 @@
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 29","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -2485,7 +2475,7 @@
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Regional quests","s":"16 to pick up · 6 follow-ups · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+16 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: Treatment","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -3035,8 +3025,8 @@
     "in": "827ddf88b1cc",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -3160,7 +3150,6 @@
       {"t":"Regional quests","s":"3 to pick up · 1 follow-up · 5/9 turned in","c":"go \"Show\" rqgo:rq:2202023","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 22","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 16 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Story: Daeva in a Dream","s":"Needs Lv 22: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 4 open"}
     ],
@@ -3225,8 +3214,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 24","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Prison Break","s":"Needs Lv 24: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -3354,7 +3343,7 @@
       {"t":"Regional quests","s":"7 to pick up · 3 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]","+4 more"]},
       {"t":"Clear Smuggler's Cave and others until Lv 32","s":"Calderon Canyon · Kibelisk: Watcher's Tent · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Watcher's Tent is 180 m away · 2 open at your level"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Complete \"Gathering Essentials\"","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:1"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
       {"t":"Story: The Survivors","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 217 m away · 2 open"}
     ],
@@ -3423,8 +3412,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"14 to pick up · 5 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+13 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 32","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 4 open"}
     ],
@@ -3610,8 +3599,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 1 near your story step · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+14 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 34","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -3735,8 +3724,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"16 to pick up · 6 follow-ups · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+16 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -4169,8 +4158,8 @@
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
       {"t":"Clear Fanatics' Den and others until Lv 24","s":"Sanctum Outpost · Kibelisk: Temporary Retreat · Lv 15–19 · 7/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Retreat is 390 m away · 7 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
       {"t":"Story: Searching for Survivors","s":"Needs Lv 24: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 2 open"}
     ],
@@ -4238,7 +4227,7 @@
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
       {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
       {"t":"Clear Abandoned Memorial Room and others until Lv 25","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: Voice of Rage","s":"Needs Lv 25: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 7 open"}
     ],
@@ -4379,8 +4368,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+12 more"]},
       {"t":"Clear Closed Hideout and others until Lv 32","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 100 m away · 26 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Story: Rescue Operation","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 7 open"}
     ],

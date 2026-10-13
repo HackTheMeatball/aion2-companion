@@ -246,8 +246,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
       {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
@@ -314,7 +314,7 @@
       {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 3 → 4","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -432,8 +432,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"8 to pick up · 2 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","+4 more"]},
       {"t":"Clear Dratona Cave and others until Lv 24","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 2/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 11 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Story: Finding Stolen Relics","s":"Needs Lv 24: you're 11. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -1309,8 +1309,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 18","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: A New Lead","s":"Needs Lv 18: you're 12. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -1376,8 +1376,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 20","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Crossroad","s":"Needs Lv 20: you're 12. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -1511,7 +1511,7 @@
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1627,7 +1627,7 @@
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -1687,7 +1687,7 @@
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1863,8 +1863,8 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Spread Your Wings","s":"Main story · then Signs of a Crash Landing","c":"primary \"Turned in\" story"},
       {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 4/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 9 open at your level"},
       {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 467 m away · 1 open"}
@@ -1930,8 +1930,8 @@
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Main story · then The Longest Night","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
@@ -1993,12 +1993,11 @@
     "in": "d5a94c5390e9",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 18","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: A New Lead","s":"Needs Lv 18: you're 13. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -2114,12 +2113,12 @@
     "nu": [
       {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/17 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]","+10 more"]},
       {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 13. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
-      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 2 → 3","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2233,11 +2232,11 @@
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
       {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 1 near your story step · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]","+11 more"]},
       {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 13. Level up first. Meanwhile: Strongholds","c":""},
-      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2294,12 +2293,12 @@
     "nu": [
       {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
       {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
       {"t":"Regional quests","s":"13 to pick up · 6 follow-ups · 1 near your story step · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+13 more"]},
       {"t":"Story: Farewells","s":"Needs Lv 45: you're 13. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
-      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 2 → 3","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2716,8 +2715,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
       {"t":"Continue the story: Express Daeva Delivery","s":"Main story · then Veiled Truth","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters"]},
       {"t":"Clear Dratona Cave","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 9/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 4 open at your level"},
@@ -2841,8 +2840,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+1 more"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 20","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -3018,12 +3017,12 @@
     "nu": [
       {"t":"Regional quests","s":"10 to pick up · 2 follow-ups · 1 near your story step · 0/12 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]","+6 more"]},
       {"t":"Clear Lost Ruins and others until Lv 30","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 10/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 394 m away · 3 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 1 open"},
       {"t":"Buy Exploit Weakness 4 → 5","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Impact Hit 1 → 2","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 5 → 6","s":"Opens at Lv 16 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Heart Gore 5 → 6","s":"Opens at Lv 16 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 8/11 | overdue | open",
@@ -3085,8 +3084,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"14 to pick up · 5 follow-ups · 1 near your story step · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","+13 more"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 33","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -3209,7 +3208,7 @@
       {"t":"Buy Ambush 5 → 6","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 4 → 5","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Impact Hit 1 → 2","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 9/11 | overdue | open",
@@ -3271,8 +3270,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"15 to pick up · 6 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16] | -> lock(disabled) A Friend's Legacy [Lv 37]","+15 more"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 40","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Treatment","s":"Needs Lv 40: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -3396,7 +3395,7 @@
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Regional quests","s":"31 to pick up · 11 follow-ups · 0/45 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+36 more"]},
       {"t":"Clear Abandoned One's Grave and others until Lv 45","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -3578,8 +3577,8 @@
     "in": "1cea5eb10984",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Signs of a Crash Landing","s":"Main story · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -3703,8 +3702,8 @@
     "in": "dff6e964861f",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters"]},
       {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -4078,8 +4077,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 1 near your story step · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+7 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 30","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
     ],
@@ -4253,8 +4252,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"12 to pick up · 4 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+10 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 32","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
     ],
@@ -4487,8 +4486,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"31 to pick up · 11 follow-ups · 0/45 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present [Lv 16] | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation [Lv 16]","+36 more"]},
       {"t":"Clear Abandoned Archon Jail and others until Lv 45","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 5 open"}
     ],
