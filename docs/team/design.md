@@ -13,8 +13,10 @@ UX of every visible change, accessibility and mobile quality.
 - Original art only for branding; game art stays NC's and limited to existing in-app icons.
 - Review the built result (screenshots at 1500 / 390 px, light and dark if relevant) before it goes to the owner.
 
-**Brand:** the product is named **Ascend Companion** (subtitle along the lines of "Leveling companion for AION 2";
-endgame later). Brand identity project in progress: the owner picks a direction.
+**Brand:** the product is **Daeva Companion** — a full companion for AION 2 (leveling now, endgame and more later);
+subtitle along the lines of "Unofficial companion for AION 2". Identity: direction C, **Compass Quill** (brass and
+parchment compass, red feather needle, deep teal). Source files and alternatives: brand project in the CEO's workspace;
+the chosen assets get committed with the rebrand.
 
 ## Standing notes
 - The owner reads on a phone (iOS) a lot; check mobile first.
