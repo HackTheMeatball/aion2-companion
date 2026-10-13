@@ -1,25 +1,36 @@
 #!/usr/bin/env node
-/* Build both deliverables from src/index.html (no dependencies beyond Node 20).
+/* Build both deliverables from src/ (dev dependency: esbuild; Node 22).
+
+   Source layout (0.2 P1):
+     src/index.html            the page shell: head, markup, and tags naming the files the build inlines
+     src/styles/*.css          the styles: fonts.css (the @font-face rules) and app.css; inlined verbatim
+     src/main.js               the app script (ES module), imports src/data/generated.js (written by `npm run gen`)
+     src/site.js               the standalone site's own script (persistent storage, service worker); site only
+   The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and
+   its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
+   that entry (no minification, no tree shaking, so every top-level name stays a page global, as before modules).
+   src/index.html is not runnable on its own: build, then `npm run serve`.
 
    dist/                       GitHub Pages site
-     index.html                src/index.html with the build markers removed
+     index.html                the shell with styles and scripts inlined, build markers removed
      assets/icons/*.png        the icons the page references (src/assets/icons)
      assets/fonts/*            the self-hosted fonts (WOFF2) and their OFL license texts (src/assets/fonts)
      public/*                  CNAME, robots.txt, sitemap.xml, 404.html, favicon.svg, manifest, manifest icons
      sw.js                     src/sw.js with the build id and precache list filled in
    dist-artifact/index.html    single file for publishing to claude.ai: the <!-- @web-only --> blocks removed
-                               (document skeleton, SEO/PWA head, service worker), icon paths rewritten to the
-                               artifact's /_blob/<id> URLs (scripts/artifact-blobs.json), the fonts' @font-face block
+                               (document skeleton, SEO/PWA head, site.js), icon paths rewritten to the
+                               artifact's /_blob/<id> URLs (scripts/artifact-blobs.json), styles/fonts.css
                                replaced by a script that registers each font file once (FontFace API).
 
    Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it.
-   Placeholders in src/index.html: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
+   Placeholders anywhere in the page: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
    ("site" in dist/, "claude.ai" in dist-artifact/), so the version is never written by hand in the page.
    Usage: node scripts/build.mjs */
 import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSync } from 'esbuild';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -29,17 +40,40 @@ const OPEN = '<!-- @web-only -->', CLOSE = '<!-- @end-web-only -->';
 const die = msg => { console.error('build: ' + msg); process.exit(1); };
 const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); return statSync(f).isDirectory() ? walk(f) : [f]; });
 
-const src = readFileSync(P('src/index.html'), 'utf8');
+const shell = readFileSync(P('src/index.html'), 'utf8');
+
+/* inlining: styles verbatim, scripts as esbuild bundles. esbuild's CSS printer rewrites values (unquoted url(), one
+   unicode-range per line), which the claude.ai font conversion and the test font blocker read, so CSS is not passed
+   through it; it can be once the styles are split into @import partials. */
+const STYLE_TAG = /^<link rel="stylesheet" href="(styles\/[\w.-]+\.css)">\n/gm;
+const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
+const bundles = {};
+const bundle = entry => bundles[entry] ??= (() => {
+  const r = buildSync({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
+    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent' });
+  for (const w of r.warnings) console.warn(`build: esbuild warning in src/${entry}: ${w.text}` + (w.location ? ` (${w.location.file}:${w.location.line})` : ''));
+  const js = r.outputFiles[0].text;
+  if (/^\s*(import|export)\b/m.test(js)) die(`src/${entry}: the bundle still has an import/export statement (it is inlined as a classic script)`);
+  if (/<\/script/i.test(js)) die(`src/${entry}: the bundle contains "</script"`);
+  return js;
+})();
+const inline = html => html
+  .replace(STYLE_TAG, (_, f) => { const css = readFileSync(P('src', f), 'utf8'); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); return `<style>\n${css}</style>\n`; })
+  .replace(SCRIPT_TAG, (_, f) => `<script>\n${bundle(f)}</script>\n`);
+if (!shell.match(STYLE_TAG) || !shell.match(SCRIPT_TAG)) die('src/index.html: no <link rel="stylesheet" href="styles/…"> or <script type="module" src="…"> to inline');
+for (const m of shell.matchAll(/<(link rel="stylesheet"|script)[^>]*>/g)) if (!/^<(link rel="stylesheet" href="styles\/[\w.-]+\.css"|script type="module" src="[\w.-]+\.js")>$/.test(m[0]) && m[0] !== '<script>')
+  die(`src/index.html: "${m[0]}" is not a tag the build inlines (one per line, styles/X.css or X.js)`);
+const src = inline(shell); /* the whole page, markers kept: what the checks below read */
 const blobs = JSON.parse(readFileSync(P('scripts/artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(readFileSync(P('package.json'), 'utf8')).version;
 if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION}" is not X.Y.Z`);
-if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/index.html lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
+if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/ lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
 const stamp = (html, build) => html.replaceAll('__APP_VERSION__', VERSION).replaceAll('__APP_BUILD__', build);
 
 /* markers: balanced, on their own lines, not nested */
 {
   let depth = 0;
-  src.split('\n').forEach((line, i) => {
+  shell.split('\n').forEach((line, i) => {
     const t = line.trim();
     if (t.includes('@web-only') || t.includes('@end-web-only')) {
       if (t !== OPEN && t !== CLOSE) die(`line ${i + 1}: marker must be alone on its line`);
@@ -55,10 +89,10 @@ const ICON_RE = /assets\/icons\/([\w-]+)\.png/g;
 const used = new Set([...src.matchAll(ICON_RE)].map(m => m[1]));
 const shipped = readdirSync(P('src/assets/icons')).filter(f => f.endsWith('.png')).map(f => f.slice(0, -4));
 for (const n of used) {
-  if (!shipped.includes(n)) die(`src/index.html references assets/icons/${n}.png, which is missing`);
+  if (!shipped.includes(n)) die(`src/ references assets/icons/${n}.png, which is missing`);
   if (!blobs[n]) die(`no artifact blob id for ${n} in scripts/artifact-blobs.json`);
 }
-for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/index.html`);
+for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/`);
 
 /* fonts (self-hosted since 0.1.5): every referenced file exists, every shipped file is referenced, each family ships its
    OFL text; no request may go to a font service. The claude.ai build must stay one file, so its @font-face block becomes
@@ -67,10 +101,10 @@ for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not
 const FONT_RE = /assets\/fonts\/([\w-]+\.woff2)/g, FONT_INLINE_MAX = 150 * 1024;
 const fontsUsed = new Set([...src.matchAll(FONT_RE)].map(m => m[1]));
 const fontsShipped = readdirSync(P('src/assets/fonts')).filter(f => f.endsWith('.woff2'));
-for (const f of fontsUsed) if (!fontsShipped.includes(f)) die(`src/index.html references assets/fonts/${f}, which is missing`);
-for (const f of fontsShipped) if (!fontsUsed.has(f)) die(`src/assets/fonts/${f} is not referenced by src/index.html`);
+for (const f of fontsUsed) if (!fontsShipped.includes(f)) die(`src/ references assets/fonts/${f}, which is missing`);
+for (const f of fontsShipped) if (!fontsUsed.has(f)) die(`src/assets/fonts/${f} is not referenced by src/`);
 if (readdirSync(P('src/assets/fonts')).filter(f => /^OFL-.+\.txt$/.test(f)).length < 3) die('src/assets/fonts: an OFL license text is missing');
-for (const [f, html] of [['src/index.html', src], ['public/404.html', readFileSync(P('public/404.html'), 'utf8')]])
+for (const [f, html] of [['src/', src], ['public/404.html', readFileSync(P('public/404.html'), 'utf8')]])
   if (/fonts\.(googleapis|gstatic)\.com/.test(html)) die(`${f} still requests Google Fonts`);
 const fontB64 = Object.fromEntries([...fontsUsed].map(f => [f, readFileSync(P('src/assets/fonts', f)).toString('base64')]));
 const fontInline = Object.values(fontB64).reduce((n, b) => n + b.length, 0);
@@ -81,15 +115,17 @@ const web = stamp(src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site
 if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
-/* artifact page */
-let art = src.replace(/^[ \t]*<!-- @web-only -->\n[\s\S]*?^[ \t]*<!-- @end-web-only -->\n/gm, '');
-art = stamp(art.replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]), 'claude.ai');
+/* artifact page: the web-only blocks go before inlining (site.js is never bundled into it), styles/fonts.css becomes the
+   FontFace script */
+const FONTS_TAG = '<link rel="stylesheet" href="styles/fonts.css">\n';
+let art = shell.replace(/^[ \t]*<!-- @web-only -->\n[\s\S]*?^[ \t]*<!-- @end-web-only -->\n/gm, '');
+if (!art.includes(FONTS_TAG)) die('src/index.html: the styles/fonts.css <link> is missing (or web-only)');
 {
-  const FACE = /@font-face \{ font-family: "([^"]+)"; font-style: normal; font-weight: (\d+); font-display: swap; src: url\("assets\/fonts\/([\w-]+\.woff2)"\) format\("woff2"\); unicode-range: ([^;]+); \}/g;
-  const BLOCK = /<style>\n\/\*[\s\S]*?\*\/\n((?:@font-face [^\n]*\n)+)<\/style>\n/;
-  const m = art.match(BLOCK); if (!m) die('src/index.html: the @font-face <style> block was not found');
-  const faces = [...m[1].matchAll(FACE)].map(x => x.slice(1)), ranges = [...new Set(faces.map(f => f[3]))];
-  if (faces.length !== m[1].trim().split('\n').length) die('src/index.html: an @font-face rule is not in the expected one-line form');
+  const FACE = /^@font-face \{ font-family: "([^"]+)"; font-style: normal; font-weight: (\d+); font-display: swap; src: url\("assets\/fonts\/([\w-]+\.woff2)"\) format\("woff2"\); unicode-range: ([^;]+); \}$/;
+  const css = readFileSync(P('src/styles/fonts.css'), 'utf8').replace(/^\/\*[\s\S]*?\*\/\n/, '');
+  const lines = css.trimEnd().split('\n');
+  if (!lines.length || !lines.every(l => FACE.test(l))) die('src/styles/fonts.css: after its leading comment, every line must be an @font-face rule in the expected one-line form');
+  const faces = lines.map(l => l.match(FACE).slice(1)), ranges = [...new Set(faces.map(f => f[3]))];
   const js = `<script>
 /* claude.ai build (scripts/build.mjs): the self-hosted fonts, each file once, registered with the same family, weight and
    unicode-range as the site's CSS font faces. A face that can't be decoded is skipped (fallback fonts). */
@@ -109,9 +145,10 @@ art = stamp(art.replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]), 'claude.ai');
 })();
 </script>
 `;
-  art = art.replace(BLOCK, () => js);
-  if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
+  art = art.replace(FONTS_TAG, () => js);
 }
+art = stamp(inline(art).replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]), 'claude.ai');
+if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
 for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
   if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
 

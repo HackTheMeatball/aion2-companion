@@ -96,7 +96,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     if (/XP/.test(r.sd) || /XP/.test(r.areas) || r.loc) xp.push(L);
   }
   ok('no dungeon XP in Next up dungeon cards, Dungeons & Strongholds or AREA_LOC (Lv 15–45)', !xp.length, xp);
-  ok('page source has no dungeon XP text', !/XP \(exploration\)|xp": \d/.test(SRC.replace(/const RQ = \[[\s\S]*?\n\];/, '')));
+  ok('page source has no dungeon XP text', !/XP \(exploration\)|xp": \d/.test(SRC.replace(/(?:const|var) RQ = \[[\s\S]*?\n\];/, '') /* esbuild prints top-level const as var */));
   /* 5. Story chain continuous to Forgotten Commander; end-of-data state */
   const sc5 = await p.evaluate(() => { const i0 = QUESTS.findIndex(x => x[1] === 'A New Lead'), tail = QUESTS.slice(i0);
     return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, n]) => !QUEST_STEPS[n]).map(x => x[1]), last: QUESTS[QUESTS.length - 1], afterSoL: QUESTS[QUESTS.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QUESTS.filter(x => x[0] > 40).every(([, n]) => QUEST_LOC[n] && QUEST_LOC[n].giverKib && (QUEST_LOC[n].turninKib || n === 'Blood Barrier')) }; });
@@ -142,7 +142,8 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   Object.entries(PHRASES).forEach(([id, ps]) => [].concat(ps).forEach(x => { if (SRC.includes(x)) oldGone.push(id + ': ' + x); }));
   ok('claims lint: no dropped or replaced wording left (claims.json edits + V1 phrases)', !oldGone.length, oldGone);
   ok('claims lint: every rewrite\'s newText is in the page (C20 / C21 / C28 checked separately)', !newIn.length, newIn);
-  ok('C20: stat tiers are exactly V1\'s', SRC.includes(CLAIMS.find(c => c.id === 'C20').newText));
+  { const t = CLAIMS.find(c => c.id === 'C20').newText; /* esbuild prints the top-level const as var */
+    ok('C20: stat tiers are exactly V1\'s', SRC.includes(t) || SRC.includes(t.replace(/^const /, 'var '))); }
   ok('C21: macro step without "Quick Use 2", with the short-delay wording', SRC.includes('Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.'));
   /* 8. Build data */
   const bd = await p.evaluate(() => ({ plan: STIGMA_PLAN, extra: SP_SKILLS.filter(s => s.extra).map(s => s.n), vz: DV_NODES().filter(n => n.board === 'Vaizel').map(n => n.k + '=' + n.t), tr: DV_NODES().filter(n => n.board === 'Triniel').map(n => n.k + '=' + n.t), flat: SP_STEPS.filter(x => x.s.n === 'Defense Break').map(x => x.req), msExtra: GATES.some(g => g.items.some(it => /^sp:(Assault Stance|Impact Hit|Flash Slice|Storm Rampage|Defense Break|Determination|Heightened Sixth Sense):/.test(it.k || ''))) }));

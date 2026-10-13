@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Data generator: builds the embedded data block of src/index.html from data/*.json.
+"""Data generator: builds the generated data block (src/data/generated.js, via apply.py) from data/*.json.
 
 Usage (from the repo root):  python3 -I tools/gen/gen.py  &&  python3 -I tools/gen/apply.py   (or: npm run gen)
-Output: tools/gen/gen-block.js (the text between the E2-GEN markers in the page), tools/gen/gen-report.json
+Output: tools/gen/gen-block.js (the block between the E2-GEN markers in src/data/generated.js), tools/gen/gen-report.json
         (every consistency check + warnings) and data/DATA_SOURCES.md (every source URL and what it backs).
 Exit status 1 if any consistency check fails.
 
