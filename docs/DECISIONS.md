@@ -8,7 +8,8 @@ owner; the CEO records them here and in the department charters they affect.
 | # | Topic | Decision |
 |---|---|---|
 | — | 0.2 P1 settings | CEO: esbuild turns top-level `const` into `var` until P3 (accepted); CSS not run through esbuild; no minification in 0.2. |
-| D1 | Name | **Ascend Companion**, subtitled as a leveling (later also endgame) companion for AION 2. Web address on hold; the site stays at aion2.ishkabytes.com until the owner decides (every address change needs export/import). |
+| D1 | Name | **Daeva Companion** — a full game companion for AION 2 (leveling now; endgame and more features later), not just a leveling guide. Replaces the earlier "Ascend Companion" (too general). "Daeva Compass" ruled out: an active AION 2 guide site already uses it. Web address on hold; the site stays at aion2.ishkabytes.com until the owner decides (every address change needs export/import). |
+| D1b | Brand | Direction **C, Compass Quill**: a brass and parchment compass whose needle is a red feather, on deep teal. Original art only. |
 | D2 | Hosting | Stay on GitHub Pages for now; move to Cloudflare Pages (same address, PR previews) when convenient. |
 | D3 | Private history | Session transcripts and personal screenshots go to a private repo the owner creates. |
 | D4 | claude.ai version | Owner moves his progress to the site (Export → Import); the artifact is then frozen with a "moved" notice. |
