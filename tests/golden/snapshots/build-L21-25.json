@@ -1,0 +1,2195 @@
+{
+  "build/L22-q35-before-A-cube": {
+    "in": "e3263dae4b09",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-dv": {
+    "in": "d03a654ad54f",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-filters": {
+    "in": "f7f94eb84c6d",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-objs": {
+    "in": "fb4051be5601",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-rqmix": {
+    "in": "a5be87c48677",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run Blade of Vengeance (near)","run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-sppts": {
+    "in": "c32f7ff8b828",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-stfull": {
+    "in": "babcdd205f84",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 2/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-stready": {
+    "in": "fd4181992ccf",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 2/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-A-stwait": {
+    "in": "7d6002c5240c",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 1/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L22-q35-before-B-cube": {
+    "in": "e633f1928bba",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-dv": {
+    "in": "066a850648f2",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-filters": {
+    "in": "1a9cb8c62316",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-objs": {
+    "in": "153294c7be39",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-rqmix": {
+    "in": "f7764380a5c8",
+    "nu": [
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run Blade of Vengeance (near)","run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-sppts": {
+    "in": "db6575e5bfaf",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Now | 0/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-stfull": {
+    "in": "818e019a0967",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 2/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-stready": {
+    "in": "502abfcca326",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 2/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L22-q35-before-B-stwait": {
+    "in": "0b5a3037915d",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Now | 1/15 | current,upnext | open",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "milestone now: Lv 22",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
+      "track": ["Stigma slot 1 now Lv 22"],
+      "ring": "32%",
+      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-A-cube": {
+    "in": "ab319e993101",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-dv": {
+    "in": "b016b3fbd394",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-filters": {
+    "in": "c9bbf3265cf6",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-objs": {
+    "in": "3c2106995449",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-rqmix": {
+    "in": "9dc1d0b45a8c",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-sppts": {
+    "in": "05ebe87fb30a",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Determination 1 → 2","s":"Opens at Lv 25 · 2 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-stfull": {
+    "in": "5e2c4c4c7081",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-stready": {
+    "in": "d6759c95f79b",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-A-stwait": {
+    "in": "a91c2d42b2c1",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 24)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"},
+      {"t":"Buy Ambush 8 → 9","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 7 → 8","s":"Opens at Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 8 → 9","s":"Opens at Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L23-q35-before-B-cube": {
+    "in": "34c901bbdefd",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-dv": {
+    "in": "e97e721bc6b7",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-filters": {
+    "in": "1010cf3ce07b",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-objs": {
+    "in": "f56f1308d8fa",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-rqmix": {
+    "in": "830637b9ee78",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-sppts": {
+    "in": "523208f1f7d9",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-stfull": {
+    "in": "5b9805b8ee17",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-stready": {
+    "in": "61a450e41ffe",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L23-q35-before-B-stwait": {
+    "in": "9f59be971cde",
+    "nu": [
+      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 24)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 4 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | 2 to go | 0/8 | upnext | open",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Daeva in a Dream Lv 22",
+      "quest": "Disturbed Balance",
+      "lv": "Lv 22",
+      "next": "Searching for Survivors Lv 24",
+      "hint": "next milestone at Lv 25",
+      "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 2 levels to go","Lv 27 Stigma slot 2 4 levels to go"],
+      "track": ["Supply Requests next · 2 to go Lv 25"],
+      "ring": "35%",
+      "prog": ["Quests 13/58","Dungeons 31/60","Strongholds 4 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Purifying Forest 29 traces ✓ 4/4","▸ Uruthumheim 16 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]]
+    },
+    "mode": "basic"
+  }
+}

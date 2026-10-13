@@ -5,3 +5,5 @@ tests/out/
 __pycache__/
 *.pyc
 .DS_Store
+# golden master: the extended (--all) snapshots are local only
+tests/golden/snapshots/xrandom-*.json

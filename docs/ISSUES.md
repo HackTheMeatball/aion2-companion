@@ -46,6 +46,16 @@ on purpose: the guide shows nothing rather than an unverified value.
   version, which means either the file names or the icons shown are swapped. Check in game which art is which, then
   either rename the two files (and their two references in `src/index.html` and the blob map) or swap the icons in
   `ITEMS`.
+- **Icon provenance not recorded.** The 23 PNGs in `src/assets/icons/` are NC Corporation's art. Record where each file
+  came from (site + page URL + date), so any permission request or takedown can be answered quickly. Fill in, then keep:
+
+  | File | Source page | Retrieved |
+  |---|---|---|
+  | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
+  | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
+  | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
+  | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
+  | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
 - Pop-out needs Document Picture-in-Picture (Chrome / Edge 116+); the button is hidden elsewhere.
 - Fonts come from Google Fonts (privacy note in PRIVACY.md). Self-hosting them would remove the last third-party
   request; their licenses (OFL) allow it.

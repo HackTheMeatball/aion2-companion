@@ -134,7 +134,14 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 | `mig2` | realistic v287 save → current build, idempotent, rollback |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
+| `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
+
+**Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
+Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
+grouped by kind of change. It is the acceptance test for refactors ("golden identical"). After an intended behaviour
+change, re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
+(Next up cards whose gate isn't met, generated), and commit the snapshots with the change.
 
 Baselines (`tests/baselines/v285.html`, `v287.html`) are the old single-file builds, served from the same origin so
 they share `localStorage` with the current page. Google Fonts is blocked in test browsers (`--with-fonts` to allow).

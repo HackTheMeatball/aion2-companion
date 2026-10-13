@@ -1,51 +1,185 @@
-MIT License
+AION 2 leveling guide (unofficial) by hackthemeatball
+Copyright (c) 2026 hackthemeatball. All rights reserved, except as stated below.
 
-Copyright (c) 2026 hackthemeatball
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This repository holds material under different terms. Find the part that
+applies to what you want to use.
 
 -------------------------------------------------------------------------------
-What the MIT license above covers, and what it doesn't
+1. Code: PolyForm Strict License 1.0.0
 -------------------------------------------------------------------------------
 
-The MIT license applies to the code in this repository: src/ (HTML, CSS,
-JavaScript), scripts/, tests/, tools/ and the project's own artwork
-(public/favicon.svg and public/icons/).
+The code in this repository is licensed under the PolyForm Strict License
+1.0.0, reproduced in full at the end of this file: src/ (HTML structure, CSS,
+JavaScript, src/sw.js), scripts/, tests/, tools/, and public/ except the
+artwork named in part 2.
 
-Game names and assets. AION 2, its class, skill, stigma, item, place and quest
-names, and the skill, stigma and item icons in src/assets/icons/ are the
-property of NCSoft Corporation. They are used for identification in a free,
-non-commercial fan guide. This project is not affiliated with or endorsed by
-NCSoft. They are not covered by the MIT license.
+In short: you may read the code and use it for any noncommercial purpose, but
+you may not distribute it or make changes or new works based on it. Using the
+website itself needs no license.
 
-Data. The files in data/ (and the data block generated from them into
-src/index.html) are compiled from public sources: game-database sites, guides
-and wikis, each credited in the app's Sources card and in data/DATA_SOURCES.md
-with a plain link. Reuse the data with the same attribution. In particular:
+Required Notice: Copyright (c) 2026 hackthemeatball (https://github.com/hackthemeatball/aion2-companion)
 
-  - Metabot (metabot.gg) is the main source; credited with a dofollow link as
-    its terms ask.
-  - thegameswiki.com content is licensed CC BY-NC-SA 4.0
-    (https://creativecommons.org/licenses/by-nc-sa/4.0/). The parts of data/
-    derived from it are shared under the same license: attribution,
-    non-commercial, share-alike. That is compatible with this project as long
-    as it stays non-commercial; anyone reusing those parts must keep them
-    non-commercial too.
-  - Game8 content is deliberately not used (its terms don't allow
-    reproduction).
+-------------------------------------------------------------------------------
+2. Original content: all rights reserved
+-------------------------------------------------------------------------------
+
+The guide's text (milestones, tips, explanations, Confidence and Sources
+wording), the selection and arrangement of the data in data/ and in the data
+block generated from it into src/index.html, the project's name and
+branding, and the project's own artwork (public/favicon.svg, public/icons/) are
+(c) 2026 hackthemeatball, all rights reserved. No license is granted for them.
+
+Game facts themselves (levels, costs, rewards, unlock gates, which quest
+follows which) belong to no one and are free for anyone to use. This
+reservation covers our wording, selection and arrangement, not the facts.
+
+-------------------------------------------------------------------------------
+3. Third-party material (not ours to license)
+-------------------------------------------------------------------------------
+
+AION 2 / NC. AION and AION 2 are trademarks of NC Corporation (formerly
+NCSOFT). AION 2's class, skill, stigma, item, place and quest names are used
+only to identify in-game content. The skill, stigma and item icons in
+src/assets/icons/ are (c) NC Corporation and are not covered by this file; they
+are used in a free, unofficial fan guide. This project is not affiliated with
+or endorsed by NCSoft (NC Corporation) or NC America.
+
+Data sources. Game facts were compiled from public pages, each credited with a
+plain link in the app's Sources card and in data/DATA_SOURCES.md. Metabot
+(metabot.gg) is the main source and is credited with a plain (dofollow) link
+to each page, as its terms require. Listing a source does not mean it endorses
+this project.
+
+Quotations. data/claims.json contains short quotations from source pages,
+kept to document why each claim was accepted. Each quotation remains its
+owner's and links to its page. Quotations from thegameswiki.com are (c)
+thegameswiki contributors, licensed CC BY-NC-SA 4.0
+(https://creativecommons.org/licenses/by-nc-sa/4.0/); we shortened them
+(marked "..."). They may be reused only under that license.
+
+-------------------------------------------------------------------------------
+4. Earlier versions
+-------------------------------------------------------------------------------
+
+Versions 0.1.0 and 0.1.1 (git tags v0.1.0 and v0.1.1) were published with the
+code under the MIT License. Copies obtained from those versions keep the rights
+that license gave. This file governs every later version.
+
+-------------------------------------------------------------------------------
+5. Contributions
+-------------------------------------------------------------------------------
+
+Outside code contributions are accepted only with a signed-off written grant
+that lets hackthemeatball use, relicense and commercialize the contribution.
+Without that, please open an issue instead of a pull request. Bug reports and
+data corrections in issues are welcome; facts reported in an issue may be used
+in the guide.
+
+-------------------------------------------------------------------------------
+PolyForm Strict License 1.0.0 (applies to part 1)
+-------------------------------------------------------------------------------
+
+# PolyForm Strict License 1.0.0
+
+<https://polyformproject.org/licenses/strict/1.0.0>
+
+## Acceptance
+
+In order to get any license under these terms, you must agree
+to them as both strict obligations and conditions to all
+your licenses.
+
+## Copyright License
+
+The licensor grants you a copyright license for the software
+to do everything you might do with the software that would
+otherwise infringe the licensor's copyright in it for any
+permitted purpose, other than distributing the software or
+making changes or new works based on the software.
+
+## Patent License
+
+The licensor grants you a patent license for the software that
+covers patent claims the licensor can license, or becomes able
+to license, that you would infringe by using the software.
+
+## Noncommercial Purposes
+
+Any noncommercial purpose is a permitted purpose.
+
+## Personal Uses
+
+Personal use for research, experiment, and testing for
+the benefit of public knowledge, personal study, private
+entertainment, hobby projects, amateur pursuits, or religious
+observance, without any anticipated commercial application,
+is use for a permitted purpose.
+
+## Noncommercial Organizations
+
+Use by any charitable organization, educational institution,
+public research organization, public safety or health
+organization, environmental protection organization,
+or government institution is use for a permitted purpose
+regardless of the source of funding or obligations resulting
+from the funding.
+
+## Fair Use
+
+You may have "fair use" rights for the software under the
+law. These terms do not limit them.
+
+## No Other Rights
+
+These terms do not allow you to sublicense or transfer any of
+your licenses to anyone else, or prevent the licensor from
+granting licenses to anyone else.  These terms do not imply
+any other licenses.
+
+## Patent Defense
+
+If you make any written claim that the software infringes or
+contributes to infringement of any patent, your patent license
+for the software granted under these terms ends immediately. If
+your company makes such a claim, your patent license ends
+immediately for work on behalf of your company.
+
+## Violations
+
+The first time you are notified in writing that you have
+violated any of these terms, or done anything with the software
+not covered by your licenses, your licenses can nonetheless
+continue if you come into full compliance with these terms,
+and take practical steps to correct past violations, within
+32 days of receiving notice.  Otherwise, all your licenses
+end immediately.
+
+## No Liability
+
+***As far as the law allows, the software comes as is, without
+any warranty or condition, and the licensor will not be liable
+to you for any damages arising out of these terms or the use
+or nature of the software, under any kind of legal claim.***
+
+## Definitions
+
+The **licensor** is the individual or entity offering these
+terms, and the **software** is the software the licensor makes
+available under these terms.
+
+**You** refers to the individual or entity agreeing to these
+terms.
+
+**Your company** is any legal entity, sole proprietorship,
+or other kind of organization that you work for, plus all
+organizations that have control over, are under the control of,
+or are under common control with that organization.  **Control**
+means ownership of substantially all the assets of an entity,
+or the power to direct its management and policies by vote,
+contract, or otherwise.  Control can be direct or indirect.
+
+**Your licenses** are all the licenses granted to you for the
+software under these terms.
+
+**Use** means anything you do with the software requiring one
+of your licenses.
