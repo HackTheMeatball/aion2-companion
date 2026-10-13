@@ -11,6 +11,8 @@
                                artifact's /_blob/<id> URLs (scripts/artifact-blobs.json).
 
    Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it.
+   Placeholders in src/index.html: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
+   ("site" in dist/, "claude.ai" in dist-artifact/), so the version is never written by hand in the page.
    Usage: node scripts/build.mjs */
 import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
@@ -27,6 +29,10 @@ const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); retu
 
 const src = readFileSync(P('src/index.html'), 'utf8');
 const blobs = JSON.parse(readFileSync(P('scripts/artifact-blobs.json'), 'utf8'));
+const VERSION = JSON.parse(readFileSync(P('package.json'), 'utf8')).version;
+if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION}" is not X.Y.Z`);
+if (!src.includes('__APP_VERSION__') || !src.includes('__APP_BUILD__')) die('src/index.html lacks the __APP_VERSION__ / __APP_BUILD__ placeholders');
+const stamp = (html, build) => html.replaceAll('__APP_VERSION__', VERSION).replaceAll('__APP_BUILD__', build);
 
 /* markers: balanced, on their own lines, not nested */
 {
@@ -53,13 +59,14 @@ for (const n of used) {
 for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/index.html`);
 
 /* web page */
-const web = src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, '');
+const web = stamp(src.replace(/^[ \t]*<!-- @(end-)?web-only -->\n/gm, ''), 'site');
+if (/__APP_(VERSION|BUILD)__/.test(web)) die('dist/index.html still contains a placeholder');
 if (!web.startsWith('<!doctype html>')) die('dist/index.html must start with <!doctype html>');
 
 /* artifact page */
 let art = src.replace(/^[ \t]*<!-- @web-only -->\n[\s\S]*?^[ \t]*<!-- @end-web-only -->\n/gm, '');
-art = art.replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]);
-for (const bad of ['assets/icons/', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
+art = stamp(art.replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]), 'claude.ai');
+for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
   if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
 
 /* output */
@@ -82,7 +89,7 @@ writeFileSync(join(DIST, 'sw.js'), sw);
 writeFileSync(join(DIST, 'build.json'), JSON.stringify({ build: BUILD }) + '\n');
 
 const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
-console.log(`build ${BUILD}`);
+console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${used.size} icons as /_blob/<id>`);
 if (!existsSync(join(DIST, 'CNAME'))) die('dist/CNAME missing');
