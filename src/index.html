@@ -2474,6 +2474,7 @@ function renderNow() {
   /* Key placement for new skills/stigmas is already a milestone step ("Put … in row 0 of E"); the Build tab shows a "new" badge. */
   /* Open steps (not skill or board lines, those are above) from a milestone at or below your level. */
   const stepsOf = g => { const out = [], card = document.getElementById(g.id); if (!card) return out;
+    const cur = state.quest ? QUESTS.findIndex(([, n]) => n === state.quest) : -1;
     card.querySelectorAll(":scope > ul.items > li.item").forEach(li => {
       const cb = li.querySelector("input[data-k]"); if (!cb || cb.disabled || state.checks[cb.dataset.k] || li.classList.contains("locked")) return;
       const it = itemByK(cb.dataset.k);
@@ -2484,7 +2485,6 @@ function renderNow() {
       if (it && it.byStory && it.story === state.quest) return;
       /* Story-gated steps (they need a main quest you haven't reached) wait until the story gets there. */
       const need = li.dataset.story || li.dataset.needs;
-      const cur = state.quest ? QUESTS.findIndex(([, n]) => n === state.quest) : -1;
       if (need) { const at = QUESTS.findIndex(([, n]) => n === need); if (at >= 0 && (cur < 0 || at > cur)) return; }
       /* Steps that need a story quest turned in (not just reached): past it, or "Turned in" on the last covered quest (storyEnd). */
       if (it && it.turnedIn) { const at = QUESTS.findIndex(([, n]) => n === it.turnedIn); if (at >= 0 && !(cur > at || (cur === at && state.storyEnd === it.turnedIn))) return; }
