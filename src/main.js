@@ -1,74 +1,18 @@
 /* The app script (entry point). scripts/build.mjs bundles it with esbuild into one classic <script> inlined in the page,
    so its top-level names stay page globals (tests and the site-only script read them). */
-import { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF } from "./data/generated.js";
-const seq = (arr) => '<span class="seq">' + arr.map(s => `<span>${s}</span>`).join('<i>→</i>') + '</span>';
-/* Assassin stat tiers (data/claims.json C20): Critical Hit is top in Metabot, games.gg and GamesFuze; tier 2 = stats exactly two of them
-   rank high. Stats only one ranks (Accuracy, Critical Damage Boost, Double Chance) are left out. */
-const STAT_TIERS = [["Critical Hit"], ["Attack", "Back Attack Damage Boost", "Combat Speed"]];
-/* Where each stat comes from: board stat nodes/corners (player's board, Metabot corners) or gear. Back Attack wasn't on any board path. */
-const STAT_SRC = { "Critical Hit": "BG", "Back Attack Damage Boost": "G", "Attack": "BG", "Combat Speed": "BG" };
+import { AREA_LOC, CONF, RQ, SD_RW, SH_DATA, SOURCES, SRC_SITE, STORY_END } from "./data/generated.js";
+import { ITEMS } from "./data/items.js";
+import { DV_MIN, DV_TYPE, DV_TYPE_ICONS, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, SP_SKILLS, SP_STEPS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
+import { T, mapQ, mapSlug, metaSlug, seq, sub } from "./data/markup.js";
+import { TIPS } from "./data/tips.js";
+import { GATES, STEPS } from "./data/milestones.js";
+import { QUESTS, QUEST_LOC, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./data/story.js";
+import { HIDEOUT_AREA, NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
+import { MIG_V5 } from "./data/migrations.js";
 const statSeqHTML = () => STAT_TIERS.map((t, i) => `<div class="tier"><span class="tier-n">Tier ${i + 1}</span><div class="seq">${t.map(x => `<span>${x}<em class="src">${STAT_SRC[x] || ""}</em></span>`).join("")}</div></div>`).join("");
 
-/* Plain-language explainers, opened with the "i" buttons. Only what sources state; unknown UI locations are called out. */
-const TIPS = {
-  extract: { h: "Extraction (getting rid of old gear)", b: `
-    <p><b>Unlocks at Lv 10.</b> Gear can't be sold to vendors in Aion 2. When you replace a piece, you <b>extract</b> it instead: it's destroyed and you get upgrade materials (like Enhance Stones) back, plus its look as a cosmetic skin. Each extraction costs a little Kina.</p>
-    <p>Only unequipped gear in your Cube can be extracted; potions, scrolls and other items can't.</p>
-    <ol><li>Open your inventory (called <b>the Cube</b>).</li><li>Click the old gear piece.</li><li>In its description panel, click the <b>beaker/flask icon</b> at the bottom right and choose <b>Extract</b>.</li><li>Check what you lose and gain, then <b>Confirm</b>.</li></ol>
-    <p><b>Auto-extract</b> extracts gear automatically as it drops (from loot and monster cubes), so your Cube doesn't fill with old pieces. To set it up:</p>
-    <ol><li>Open <b>the Cube</b>.</li><li>Click <b>Extract</b>.</li><li>Click <b>Settings</b> and turn auto-extraction on.</li><li>Review what it's set to include before saving, especially item grades. Only include grades you'd never equip.</li></ol>
-    <p>Each extraction costs Kina, and auto-extract stops when your Kina runs low. Extracted items are gone; NCSoft only restores mistakes once per account per year, and not guaranteed.</p>
-    <p class="muted">The menu path is from the Korean patch notes that added the feature; the Global client should match, but the exact option names in Settings aren't documented.</p>`,
-    src: "VGC, MeinMMO, KR patch notes (25 Mar 2026) via AION2HUB, NCSoft notice via PositionIsEverything" },
-  wisdom: { h: "Where Skill Points come from", b: `<p>Two sources: <b>character levels</b> grant points automatically, and <b>Wisdom Stone</b> items (from Sealed Dungeons, regional quests and drops) give 1 point each, but only once you use them from the Cube.</p>
-    <p>The skill window's points breakdown lists both sources under "Points Earned", and what you've spent under "Points Used" (shown as Mastery). Earned minus used is what you can spend now.</p>
-    <p><b>Daevanion Crystals</b> work the same way: use them from the Cube to add crystals to the board.</p>`, src: "Metabot item pages; points breakdown confirmed in game" },
-  traces: { h: "Empyrean Traces (feathers)", b: `<p>Collectibles scattered across your faction's main zones, from Altgard onward (none in the starting zone). Altgard has 560. They're marked on the world map.</p>
-    <p>You can carry them from the start, but you can only use them after the Lv 16 story quest "Empyrean Monolith." Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards.</p>
-    <p>Collected feathers stay on the map. To hide them: map <b>Filters</b> (bottom right) → <b>Content</b> → untick <b>Empyrean Trace</b>.</p>`, src: "PlayNews, Selphie1999, allthings.how map" },
-  petfilter: { h: "Pet loot filter", b: `<p>Pets unlock with the story quest "Gathering Essentials" (around Lv 10). Once you have a pet, it picks up loot for you. Its loot filter decides what it grabs and what it leaves, so gray junk stays out of your Cube. No source documents where the menu is; look in your pet's settings once you have one.</p>`, src: "MeinMMO" },
-  kibelisk: { h: "Kibelisk", b: `<p>A travel point. Interact with one to register it, and you can teleport back to it later instead of walking. Activate every one you pass in towns and camps.</p>`, src: "KeenGamer" },
-  guild: { h: "Legion (guild)", b: `<p>Guilds are called <b>Legions</b>. Asmodians unlock them with the quest <b>"Buried Atrocities"</b> (available from Lv 10, recommended Lv 16). Then open the Legion menu, browse groups, check their description and recruitment settings, and join. Joining is free; after leaving one there's a 24-hour wait before joining another.</p>
-    <p>Pick an active group whose play times match yours over a big, quiet roster. Sources disagree on perks: MeinMMO says passive buffs and weekly guild coins, GamesFuze says no bonuses yet. The reliable benefit is people to group with.</p>`, src: "GamesFuze, MeinMMO" },
-  specialty: { h: "Specialty slots", b: `<p>Each active skill gets specialty slots as <b>that skill</b> levels up (not your character): slot 1 at skill level 8, slot 2 at 12, slot 3 at 20. Each slot holds one bonus effect. Unlocking a slot isn't enough: open the skill, click the slot and choose an effect, or you get nothing.</p>`, src: "gameplay.tips, Skycoach, MeinMMO" },
-  respec: { h: "Free respec", b: `<p>The reset button beside your skill point counter refunds every Skill Point you've spent (Daevanion, Arcana and gear levels aren't refunded) and turns off your specialty effects, so re-pick those after a reset.</p>
-    <p>It's free at least until level 31. MeinMMO says it costs Kina after that; allthings.how says it's free and unlimited. Check the button's cost when you reach 31.</p>`, src: "MeinMMO, allthings.how" },
-  daevanion: { h: "Daevanion board", b: `<p>Five talent boards: Nezekan (Lv 12, via the story quest "Urgent Pursuit"), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>
-    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>
-    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Not documented: whether board levels can push a skill past 10, whether they count toward the skill level 8 specialty unlock, and the reset cost.</p>`, src: "Metabot Daevanion guide, Metaroad Assassin boards, AION2HUB, your game" },
-  stcost: { h: "Stigma shard costs", b: `<p>Shards per level, the same for every stigma: levels 1–5 cost 1 each, 6–10 cost 2, 11–15 cost 4, 16–20 cost 8 (75 to reach 20). Learning a stigma is its level 1 (1 shard). Bonus effects switch on at 5, 10, 15 and 20; past 20 needs Superior Stigma Shards.</p><p>You get 1 shard per character level from 23 to 39 (2 per level from 40), plus achievements and shops.</p><p><b>Plan:</b> Triniel's Dagger to 10, then Illusive Clone toward 20 (GamesFuze, Skycoach); the others stay at 1.</p><p>Costs agree in Metabot and allthings.how; check one upgrade tooltip in game.</p>`, src: "Metabot stigma guide, allthings.how, GamesFuze, Skycoach" },
-  stigma: { h: "Stigma", b: `<p>Extra skills that go into special slots, separate from your normal skills. Slots open at 22, 27, 32 and 37, four in total. Level 22's slot unlocks through the quest "The One Who Hears the Voice." Every stigma can be learned from then on, and any stigma fits any slot.</p>`, src: "Metabot, PlayNews, allthings.how, thegameswiki" },
-  hideout: { h: "Sealed Dungeons", b: `<p>Small caves you walk into straight from the open world, marked on the Altgard map. Many are named "… Hideout," but the category is Sealed Dungeon. They are solo: 1 player (Wikily), so a party can't clear one together. The first clear of each pays a one-time reward: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps and a title. Repeat clears don't pay it again.</p>
-    <p>Click a Sealed Dungeon's name to see where it is on a map, with the nearest teleport statue. The level shown is a recommendation; try one early, and come back if it's too hard.</p>`, src: "AION2HUB, allthings.how map, Wikily" },
-  stronghold: { h: "Strongholds", b: `<p>Open-world enemy camps in Altgard, fought outside any instance. Each is a one-time clear: break in, defeat its named commander, then open the treasure chest. That pays 2 Noble Belt Enhance Scrolls and 15,000 Kina (some add a title). Strongholds are the main source of belt scrolls, and the belt is permanent, so clear every one.</p>
-    <p>Altgard has 15. All are listed in Dungeons &amp; Strongholds: inside each level band, or all together under "All strongholds" in its dropdown. The level shown is the range Metabot's map gives; the rest are open at any level.</p>`, src: "Metabot Altgard stronghold map, allthings.how" },
-  regional: { h: "Regional quests", b: `<p>Optional side quests (green markers) in Altgard, picked up from the NPC listed. Each is one-time and pays XP, Kina, a Wisdom Stone, a Daevanion Crystal and often an accessory.</p><p>${RQ_STATS.at10} of the ${RQ_STATS.n} unlock at Lv 10 and the rest at 45, but ${RQ_STATS.story} also wait for a story quest and ${RQ_STATS.chained} follow an earlier regional quest. Next up lists a quest once all of that is met. The level shown is the recommended level, a combat guideline rather than a lock.</p>`, src: "Metabot quest pages, aion2.gaming.tools, aion2.th.gl, allthings.how" },
-  shugo: { h: "Shugo Festival", b: `<p>An hourly set of minigames. Claiming a reward costs a key, and rewards grow with your level. Keys refill daily but stop at a cap, so spend them before you hit it.</p>`, src: "Metabot, GamesFuze, games.gg" },
-  duty: { h: "Duty Quests", b: `<p>Daily missions in the Journal's Duty tab (J). They open at <b>Lv 45</b> on the global servers, not before. 5 rewarded completions a day, shared by every character on the server.</p><p>Rewards include Abyss Points, Kina, Enhancement Stones and Hidden Cube keys. Not the same system as Supply Requests (Lv 25).</p>`, src: "thegameswiki, neonsect, games.gg, KeenGamer, MeinMMO, allthings.how" },
-  supply: { h: "Supply Requests (보급 의뢰)", b: `<p>Opens at <b>Lv 25</b>. You hand in requested materials or gear for <b>Abyss Points</b>. Emergency requests have a daily deadline, Weekly ones run to the weekly reset, and longer-running requests cover crafting and bosses.</p><p>Abyss Points matter mostly at 45, so while leveling hand in only spares you already have.</p>`, src: "Metabot, allthings.how, KeenGamer, games.gg, MeinMMO" },
-  enhance: { h: "Enhancing gear", b: `<p><b>Unlocks at Lv 9</b> (the Lv 7 story quest has you try it once early). Spend Enhance Stones and Kina to raise a gear piece by +1. Higher levels cost more and fail more often.</p>
-    <p><b>Where your stones are:</b> in the Cube with your other items, and the Enhance screen's materials section shows the same count.</p>
-    <p>While leveling you replace gear often. Extracting old gear gives the stones back but not the Kina, so enhancing it mostly burns Kina. Enhance the belt and Revelation amulet (you keep both for good); enhance anything else only when a boss or dungeon actually stops you, weapon first.</p>`, src: "MeinMMO, Metabot; stone location confirmed in game" },
-  macro: { h: "Macro", b: `<p>A single button that fires several skills in order. Build it in the game's macro editor, then put it on your hotbar.</p>`, src: "GamesFuze" },
-  expedition: { h: "Expeditions", b: `<p>Party dungeons, 1–5 or 2–5 players depending on the dungeon. Exploration mode opens after the story quest "Daeva in a Dream" (Krao Cave, around Lv 22; seen in game), then Urugugu Canyon 28 and Fire Temple 35 (the story quests "Canyon's Secret" and "Mirror of Greed" send you into them). Rewards have a weekly cap per dungeon (7 on Metabot and KeenGamer); check the count in game. Conquest mode opens at 45. Each also needs a minimum item level. Sealed Dungeons, the daily dungeon and story instances are solo; Expeditions and the open world are where a party plays together.</p>`, src: "Metabot dungeon guide, thegameswiki, ExpCarry, allthings.how, KeenGamer, games.gg" },
-  gearscore: { h: "Gear score / item level", b: `<p>A number summarizing your equipped gear. Content like Krao Cave has a minimum (item level 700 for Conquest at 45). Separate from combat power, which also counts skills, boards and collections.</p>`, src: "MeinMMO, AION2HUB" },
-};
-/* Item names link to their Metabot database page, which shows the in-game icon. */
-/* Item icons are stored in this artifact (uploaded by the player). Any item line that names one
-   shows the icon large on its right. Items without an icon yet still link to their database page. */
-const ITEMS = {
-  enhance: ["Enhance Stones", "enhance-stone", "assets/icons/enhance-stone.png", "Enhance Stone"],
-  wisdom: ["Wisdom Stones", "wisdom-stone-bound", "assets/icons/wisdom-stone.png", "Wisdom Stone"],
-  crystal: ["Daevanion Crystals", "daevanion-crystal-bound", "assets/icons/daevanion-crystal.png", "Daevanion Crystal"],
-  cubekey: ["Hidden Cube keys", "key-hidden-cube", "", "Key: Hidden Cube"],
-};
 /* "Not in game yet" in Next up (compact): eye with a slash. */
 const EYE_OFF = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7c2 0 3.7.7 5.1 1.6M22 12s-3.6 7-10 7c-2 0-3.7-.7-5.1-1.6"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg>`;
-const EYE = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>`;
-const I = (key, label) => {
-  const [name, slug] = ITEMS[key];
-  return `<a class="itm" data-ico="${key}" href="https://metabot.gg/en/aion-2/items/${slug}" target="_blank" rel="noopener" title="Open in the item database">${label || name}${EYE}</a>`;
-};
 /* Big icons for every item named in a line, shown on its right. */
 const icons = html => {
   const keys = [...new Set([...html.matchAll(/data-ico="(\w+)"/g)].map(m => m[1]))].filter(k => ITEMS[k][2]);
@@ -77,25 +21,9 @@ const icons = html => {
 /* Reduced motion: every scroll the script starts goes through SMOOTH() (instant when the user asks for less motion). */
 const RMQ = window.matchMedia ? matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
 const SMOOTH = () => RMQ.matches ? "auto" : "smooth";
-/* "i" button after a term. `name` is the button's spoken name when the term has no visible label (a section title next to it). */
-const T = (label, key, name) => `<span class="term">${label}<button type="button" class="tip" data-tip="${key}" aria-expanded="false" aria-label="${name || `What is ${label.replace(/<[^>]+>/g, "")}?`}">i</button></span>`;
 
-/* Stigma slots 22 / 27 / 32 / 37. Every stigma is learnable at 22 and fits any slot (data/build.json stigmaRules). Plan: Triniel's
-   Dagger and Illusive Clone first (GamesFuze, Skycoach); Swift Contract before Savage Fang (Metabot, Skycoach; GamesFuze reverses
-   it). The Stigmas card lets you pick what you actually equipped (state.stPick); milestone lines, E stack, rotation and Coming
-   up all follow the pick. */
-const STIGMA_PLAN = ["Triniel's Dagger", "Illusive Clone", "Swift Contract", "Savage Fang"];
-/* Upgrade plan by name (GamesFuze + Skycoach): Triniel's Dagger to 10, then Illusive Clone toward 20. */
-const ST_TARGETS = [["Triniel's Dagger", 10], ["Illusive Clone", 20]];
 /* Effective name per slot 1–4: your pick, else the plan; a name already used by an earlier slot falls to the first free one. */
 function stNames() { const used = []; for (let n = 1; n <= 4; n++) { let nm = (state.stPick || {})[n]; if (!nm || used.includes(nm)) nm = STIGMA_PLAN[n - 1]; if (used.includes(nm)) nm = STIGMA_PLAN.find(x => !used.includes(x)); used.push(nm); } return used; }
-/* Placeholders in milestone text, filled by fillStigmaText() on every update. */
-const stn = n => `<span class="stn" data-slot="${n}">${STIGMA_PLAN[n - 1]}</span>`;
-const eRow = n => `<span class="erow" data-slot="${n}"></span>`;
-const DAEVA = `<b>Use your ${I("crystal")}</b> from the Cube, then spend the crystals on the current board's Heart Gore and Ambush nodes, then a corner.`;
-const sub = (label, note) => ({ sub: label, subNote: note });
-/* Vaizel / Triniel plan nodes (DV_BOARDS, data/build.json); keys dv:v:* / dv:t:*. */
-const dvNodes = b => DV_BOARDS[b].nodes.map(n => ({ k: n.k, dv: true, board: b, blv: DV_BOARDS[b].lv, ty: n.ty, t: n.t, ...(n.via ? { via: n.via } : {}) }));
 /* Each hideout name links to its allthings.how map page (location and nearest teleport). */
 /* Metabot slugs drop apostrophes ("Valka's Nest" → valkas-nest); allthings.how keeps them as hyphens. */
 /* Pin target: Metabot's Altgard interactive map, centred on the marker (the same links its own pages use).
@@ -105,13 +33,7 @@ const SH_QID = Object.fromEntries(SH_DATA.map(s => [s.name, s.qid]));
 const mapFocus = it => it.kind === "stronghold"
   ? `https://metabot.gg/en/aion-2/map/altgard/strongholds?focus=quest:${SH_QID[it.name]}`
   : `https://metabot.gg/en/aion-2/map/altgard/dungeons?focus=dungeon:${metaSlug(it.name)}`;
-const metaSlug = n => n.toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const mapSlug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const hideouts = (names, keyPrefix = "sd") => [{ ...sub("Sealed Dungeons"), group: "hideout" },
-  ...names.map(n => ({ kind: "hideout", name: n, k: `${keyPrefix}:${mapSlug(n)}`, t: `<a class="itm" href="https://metabot.gg/en/aion-2/map/altgard/dungeons?focus=dungeon:${metaSlug(n)}" target="_blank" rel="noopener" title="Show on the Altgard interactive map (Metabot)"><b>${n}</b>${EYE}</a>`, cell: true }))];
 const RQ_BY = Object.fromEntries(RQ.map(q => [q.name, q]));
-/* Node colours match the game: blue = active skill (3), green = passive skill (2), orange = corner (4). Path stat nodes are grey (1). */
-const DV_TYPE = { a: ["dv-a", "active skill"], p: ["dv-p", "passive skill"], c: ["dv-c", "corner"] };
 const dvName = it => `<span class="dvname ${DV_TYPE[it.ty][0]}">${it.t}</span>`;
 const dvMeta = it => `${it.board} · ${DV_TYPE[it.ty][1]}${it.via ? " · " + it.via : ""}${it.blv === 21 ? " · learned at Lv 21" : ""}`;
 /* Daevanion node row: "points spent" box first, then the tick (enabled once a cost is logged). */
@@ -179,9 +101,6 @@ document.getElementById("gates").addEventListener("click", e => {
 }, true);
 /* Quest progress: 0 = not picked up, 1 = in progress (old true values count as 1). */
 const qProg = k => { const v = (state.started || {})[k]; return v === true ? 1 : (v || 0); };
-/* Link a quest giver to the quest's marker on Metabot's Altgard map. */
-const mapQ = (id, who) => `<a class="itm" href="https://metabot.gg/en/aion-2/map/altgard?focus=quest:${id}" target="_blank" rel="noopener" title="Show on the map">${who}${EYE}</a>`;
-const ASC = "Journal (J) → Ascension tab → Teleport (bottom right) takes you to Asahr.";
 /* Zone · spot · quest giver (linked to the quest on Metabot's Altgard map). */
 const qMap = q => [q.zone, q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
 /* What opens a regional quest, in the row's second line: unlock level (if above 10), the story quest, earlier regional quests. */
@@ -204,143 +123,9 @@ const rqAvail = (q, lv = state.level) => {
   return { open: true, ok: !pre.length, pre };
 };
 
-const GATES = [
-  { id: "g6", lv: 6, title: "Wings and Ascension", blurb: "Two story quests around the lake. Don't delay them.", items: [
-    { k: "g6:0", byStory: true, ns: `Complete "The Being Beneath the Lake"`, story: "The Being Beneath the Lake", t: `<b>Complete "The Being Beneath the Lake"</b> (unlocks wings) and <b>"Spread Your Wings"</b>. Its Ascension step is Asahr's quest "The One Who Perceives" at Dream Crossroad; finishing it completes that step.<span class="loc">Story quests in Ishalgen · Witch's Cabin · Elvida (after "Isolated Lake")</span>` },
-  ]},
-  { id: "g9", lv: 9, title: "Enhancement unlocks", blurb: "Save your stones; only the belt and amulet are always worth it.", items: [
-    { k: "g9:0", ns: `Save your ${I("enhance")}`, t: `<b>Save your ${I("enhance")}</b> in the Cube. ${T("Enhance", "enhance")} the belt and Revelation amulet once you have them; other gear only if a boss or Sealed Dungeon actually stops you, weapon first. The first real supply is the Lv 10 Sealed Dungeons (1,250 each). Strongholds are the main source of belt enhance scrolls (2 each); both are in Dungeons & Strongholds.`, note: "The 5 stones from the Lv 7 quest were likely spent in Pelleir's tutorial, usually on your starting weapon (look for a +1). Extract that weapon once it's replaced to get them back." },
-  ]},
-  { id: "g10", lv: 10, title: "Altgard opens", blurb: "Extraction and pets unlock. Sealed Dungeons and Strongholds open; tick them in Dungeons & Strongholds.", items: [
-    { k: "g10:0", ns: `Extract gear you've replaced`, t: `<b>${T("Extract", "extract")} gear you've replaced:</b> open the Cube, click the old piece, choose Extract and confirm. Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something.` },
-    { k: "g10:1", byStory: true, ns: `Complete "Gathering Essentials"`, story: "Gathering Essentials", t: `<b>Complete "Gathering Essentials"</b> to unlock pets, then set the ${T("pet loot filter", "petfilter")}.<span class="loc">Story quest after "Survival Supplies" · Safe Haven · ${mapQ(2102020, "VeKauf")}</span>`, note: "Pet choice: take Armadon or Tog. All three ride and give the same bonus, but Fossa can be collected later from Fossa soul drops around Lv 24." },
-    { k: "g10:wisdom", ns: `Use your ${I("wisdom")}`, t: `<b>Use the ${I("wisdom")} from Sealed Dungeons and quests.</b> Each becomes 1 ${T("Skill Point", "wisdom")} only when you use it from your Cube.` },
-    { k: "g10:5", ns: `Claim Daeva Pass free-track rewards`, t: `<b>Claim Daeva Pass free-track rewards</b> as you earn them.`, upsell: "Premium track costs Quna (real money). Skip it." },
-    ...hideouts(["Abandoned One's Grave","Dratona Cave","Dusk Pit","Hidden Vein Cave","Lost Ruins","Old Graveyard","Ossuary of the Noble","Poisonous Plant Habitat","Smuggler's Cave","Treasure Hunter's Residence","Trickster's Den","Valka's Nest","Watcher's Temporary Outpost"], "g10h"),
-  ]},
-  { id: "g12", lv: 13, title: "Daevanion board", blurb: "First Daevanion board (Nezekan) opens at Lv 12; first regional quest.", items: [
-    { k: "g12:0", byStory: true, ns: `Complete "Urgent Pursuit"`, story: "Urgent Pursuit", t: `<b>Complete "Urgent Pursuit"</b> to unlock the ${T("Daevanion board", "daevanion")}. Use every ${I("crystal")} from the Cube. Nodes are in the Daevanion board card at the top. Two clusters, from your board: above the centre, Heart Gore with Exploit Weakness 1 branching off its path (11 for both); below the centre, Ambush (7) and Quick Slice (6) share their first two nodes (11 for both), and Exploit Weakness 2 sits 5 past Quick Slice. All five come to 27. Where a node has two routes, take the one with Critical Hit and Attack over HP and Critical Hit resist.<span class="loc">Story quest after "Veiled Truth" · Quai Campsite · ${mapQ(2102065, "Ulgorn")}</span>`, note: "Same quest unlocks the Shugo Festival." },
-    { k: "dv:hg", dv: true, board: "Nezekan", blv: 12, ty: "a", t: `Heart Gore` },
-    { k: "dv:ew", dv: true, board: "Nezekan", blv: 12, ty: "p", t: `Exploit Weakness · 1 of 2`, via: "branches off the Heart Gore path" },
-    { k: "dv:amb", dv: true, board: "Nezekan", blv: 12, ty: "a", t: `Ambush`, via: "shares its first two nodes with Quick Slice" },
-    { k: "dv:qs", dv: true, board: "Nezekan", blv: 12, ty: "a", t: `Quick Slice`, via: "shares its first two nodes with Ambush" },
-    { k: "dv:ew2", dv: true, board: "Nezekan", blv: 12, ty: "p", t: `Exploit Weakness · 2 of 2`, via: "past the Quick Slice node" },
-    { k: "dv:as", dv: true, board: "Nezekan", blv: 12, ty: "p", t: `Assault Stance · 1 of 2` },
-    { k: "dv:as2", dv: true, board: "Nezekan", blv: 12, ty: "p", t: `Assault Stance · 2 of 2`, via: "its path also gives Rear Smite +1 (Back Attack Damage Boost)" },
-    { k: "dv:corner", dv: true, board: "Nezekan", blv: 12, ty: "c", t: `Cooldown Reduction or Combat Speed corner`, via: "corner node costs 4 (worked out from your board)" },
-    { k: "dv:ie", dv: true, board: "Nezekan", blv: 20, ty: "a", t: `Insignia Explosion`, via: "bottom edge; path cost inferred, about 3–5 (GamesFuze node pick)" },
-    { k: "dv:ss", dv: true, board: "Nezekan", blv: 20, ty: "a", t: `Shadowstrike`, via: "just above Start; path cost inferred, about 3–5 (GamesFuze node pick)" },
-    { k: "g12:belt", ns: `Enhance the Noble Belt`, t: `<b>Noble Belt:</b> the main story hands it to you around Lv 13 (it can't be missed). Enhance it +1 each time you get a <b>Noble Belt Enhance Scroll</b> (2 per Stronghold, see Dungeons &amp; Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%.` },
-  ]},
-  { id: "g15", lv: 15, title: "Ring quest and skills", blurb: "Spooky Specters for a ring, plus four skill upgrades.", items: [
-    ...hideouts(["Abandoned Archon Jail","Bloodsoaked Confessional","Blue Dragon's Trap","Fafnite Storage Room","Fanatics' Den","Fortuneteller's Grave","Homish's Prison Compound","Howling Den","Library of Foresight","Prison of Oblivion","Victims' Cave"]),
-  ]},
-  { id: "g16", lv: 16, title: "Legions", blurb: "Unlock Legions; six quests fill your accessory slots.", items: [
-    { k: "g16:0", byStory: true, ns: `Complete "Buried Atrocities"`, story: "Buried Atrocities", t: `<b>Complete "Buried Atrocities"</b> to unlock ${T("Legions", "guild")}, then join one.<span class="loc">Story quest after "Dead Men Tell No Tales" · the Crypt (nearest teleport: Neglected Crematorium) · ${mapQ(2102100, "Ulgorn")}</span>` },
-    { k: "g16:monolith", byStory: true, ns: `Complete "Empyrean Monolith"`, story: "Empyrean Monolith", t: `<b>Complete "Empyrean Monolith"</b>, then turn in your ${T("Empyrean Traces", "traces")} at the Monolith (Resonate).<span class="loc">Story quest right after "Buried Atrocities" · ${mapQ(2102105, "Ulgorn")}</span>` },
-    { k: "g16:amulet", ns: `Enhance the Revelation Amulet`, t: `<b>Revelation Amulet:</b> the story gives it at Lv 16, just before the Monolith quest. Every Monolith level from 2 gives a <b>Revelation Amulet Enhance Scroll</b>; use each one right away (+1, plus Enhance Stones and Kina).`, note: "The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier." },
-  ]},
-  { id: "g20", lv: 20, title: "Zikel board", blurb: "Second Daevanion board and a new batch of Sealed Dungeons.", items: [
-    { k: "g20:0", bo: "Zikel", ns: `Zikel board opens`, t: `<b>Zikel ${T("Daevanion board", "daevanion")} opens.</b> Use every ${I("crystal")} in your Cube, then buy its nodes from the Daevanion board card at the top.` },
-    ...hideouts(["Abandoned Memorial Room","Closed Hideout","Destroyed Scriptorium","Lamnah Base","Predator's Lair","Unstable Cave","Worshiper's Underground Cave"]),
-    { k: "dv:z:hg", dv: true, board: "Zikel", blv: 20, ty: "a", t: `Heart Gore` },
-    { k: "dv:z:ie", dv: true, board: "Zikel", blv: 20, ty: "a", t: `Insignia Explosion` },
-    { k: "dv:z:qs", dv: true, board: "Zikel", blv: 20, ty: "a", t: `Quick Slice` },
-    { k: "dv:z:db", dv: true, board: "Zikel", blv: 21, ty: "p", t: `Defense Break · 1 of 2` },
-    { k: "dv:z:db2", dv: true, board: "Zikel", blv: 21, ty: "p", t: `Defense Break · 2 of 2` },
-    { k: "dv:z:corner", dv: true, board: "Zikel", blv: 20, ty: "c", t: `Damage Boost corner` },
-  ]},
-  { id: "g22", lv: 22, title: "Stigma slot 1", blurb: "Stigmas and Expeditions unlock.", items: [
-    { k: "g22:0", ns: `Complete "The One Who Hears the Voice"`, story: "Daeva in a Dream", t: `<b>Complete "The One Who Hears the Voice"</b> to unlock ${T("Stigmas", "stigma")} and the Pantheon.<span class="loc">Ascension quest from Asahr. Opens once your Ascension Gauge is at 100% and the story reaches "Daeva in a Dream" (Lv 22). ${ASC}</span>` },
-    { k: "g22:1", stig: 1, after: "Daeva in a Dream", t: `<b>Equip ${stn(1)}.</b> Plan: Triniel's Dagger, raised to level 10 first. Any stigma fits any slot; if you equipped another, pick it in the Stigmas card.` },
-    { k: "g20:exp", ns: `Krao Cave Expedition opens`, opt: true, map: "krao-cave", story: "Daeva in a Dream", t: `<b>Krao Cave ${T("Expedition", "expedition")} (Exploration) opens</b> after the story quest "Daeva in a Dream": the first dungeon you can run with friends, 1–5 players. Needs ${T("item level", "gearscore")} 200.` },
-  ]},
-  { id: "g25", lv: 25, title: "Supply Requests", blurb: "Hand in spare items for Abyss Points.", items: [
-    { k: "g25:0", ns: `Hand in spares to Supply Requests`, opt: true, t: `<b>Hand in spares to ${T("Supply Requests", "supply")}.</b> Only items you already have and don't need; don't buy for it while leveling. Abyss Points matter mostly at 45.` },
-    ...hideouts(["Dark Root Cave","Drana Depository","High Priest's Ruins","Skurv Laborer Den","Twisted Pit"]),
-  ]},
-  { id: "g27", lv: 27, title: "Stigma slot 2", blurb: "Second stigma goes in.", items: [
-    { k: "g27:0", stig: 2, t: `<b>Equip ${stn(2)}.</b> Plan: Illusive Clone, raised toward level 20 once Triniel's Dagger is at 10.` },
-    { k: "g27:1", eput: 2, t: `<b>Put ${stn(2)} on E</b>${eRow(2)}. Open with E, then Q (Shadowstrike).` },
-  ]},
-  { id: "g30", lv: 30, title: "Daily dungeon and Vaizel board", blurb: "Daily dungeon unlocks; Vaizel board.", items: [
-    { k: "g30:0", bo: "Vaizel", ns: `Vaizel board opens`, t: `<b>Vaizel ${T("Daevanion board", "daevanion")} opens.</b> Use every ${I("crystal")} in your Cube, then buy its nodes from the Daevanion board card at the top.` },
-    { k: "g30:1", ns: `Start the daily dungeon`, t: `<b>Start the daily dungeon:</b> run Daeva Bio-Research Base for ${I("enhance")}.` },
-    ...hideouts(["All-Curing Cave","Dratona Assembly Area","Final Haven","Insectoid Tunnel","Library of Patience","Library of Wisdom","Rift Fissure"]),
-    ...dvNodes("Vaizel"),
-  ]},
-  { id: "g32", lv: 32, title: "Stigma slot 3", blurb: "Third stigma goes in.", items: [
-    { k: "g32:0", stig: 3, t: `<b>Equip ${stn(3)}.</b> Plan: Swift Contract. Level 1 is enough for now.` },
-    { k: "g32:1", eput: 3, t: `<b>Put ${stn(3)} on E</b>${eRow(3)}. Build tab (right edge) → Key setup shows where.` },
-    { k: "g32:dreams", ns: `Ascension quest "The One Who Dreams"`, story: "A Daeva Dreaming Anew", t: `<b>Complete "The One Who Dreams"</b> (recommended Lv 32).<span class="loc">Ascension quest from Asahr at Dream Crossroad. Opens once your Ascension Gauge is at 100% and the story reaches "A Daeva Dreaming Anew" (Lv 32). ${ASC}</span>` },
-  ]},
-  { id: "g35", lv: 35, title: "Fire Temple", blurb: "Third party dungeon opens.", items: [
-    ...hideouts(["Destruction Archons Armory","Empty Cave","Fungie Habitat","Lonely Rock Chasm","Odylium Marauder Den","Pirate's Treasure Storage","Place of Rest","Rock Cave","Scale Altar","Shulak Cave"]),
-    { k: "g35:exp", ns: `Fire Temple Expedition opens`, opt: true, map: "fire-temple", t: `<b>Fire Temple ${T("Expedition", "expedition")} (Exploration) opens</b>: 1–5 players, item level 500.<span class="loc">The story quest "Mirror of Greed" (Lv 37) sends you in.</span>` },
-  ]},
-  { id: "g37", lv: 37, title: "Stigma slot 4", blurb: "Full rotation online; the story takes you into the Fire Temple.", items: [
-    { k: "g37:0", stig: 4, t: `<b>Equip ${stn(4)}.</b> Plan: Savage Fang. Level 1 is enough for now.` },
-    { k: "g37:1", eput: 4, t: `<b>Put ${stn(4)} on E${eRow(4)}, then run the full rotation on a training dummy.</b><span class="rotseq"></span>` },
-    { k: "g37:2", byStory: true, ns: `"Mirror of Greed": the Fire Temple run`, story: "Mirror of Greed", t: `<b>Lv 37 story instance:</b> "Mirror of Greed" sends you into the Fire Temple. If it stops you, enhance your weapon first; otherwise keep saving.` },
-  ]},
-  { id: "g40", lv: 40, title: "Triniel board", blurb: "Fourth Daevanion board.", items: [
-    { k: "g40:0", bo: "Triniel", ns: `Triniel board opens`, t: `<b>Triniel ${T("Daevanion board", "daevanion")} opens.</b> Use every ${I("crystal")} in your Cube, then buy its nodes from the Daevanion board card at the top.` },
-    ...hideouts(["Ascetic's Cave","Den of Exiles","Kumbahum's Cave","Lagta Fafnite Storage","Spider Cave","Tayga Breeding Ground","Warriors' Rest"]),
-    ...dvNodes("Triniel"),
-  ]},
-  { id: "g45", lv: 45, title: "Level cap", blurb: "Progression shifts from level to gear score.", items: [
-    { k: "g45:0", ns: `Finish the Hero and Ascension quests`, story: "Forgotten Commander", turnedIn: "Forgotten Commander", t: `<b>Finish the remaining Hero and Ascension quests:</b> "The One Who Witnesses the Nightmare" (recommended 45) and "The One Who Swears the Oath" (recommended 49, so expect it to need gear), both from Asahr.<span class="loc">"The One Who Witnesses the Nightmare" opens after you turn in "Forgotten Commander"; the next story quest, "Daeva Trapped in a Nightmare", needs it. ${ASC}</span>` },
-    { k: "g45:2", adv: true, opt: true, ns: `Azphel board opens`, t: `<b>Azphel ${T("Daevanion board", "daevanion")} opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.` },
-    { k: "g45:3", adv: true, opt: true, ns: `Time your Ascension Trial`, t: `<b>Ascension Trial timing.</b> Easy needs item level 1,000, Normal 1,500. Run your 3 weekly entries late in the week, after you've raised your item level.` },
-    { k: "g45:4", adv: true, opt: true, ns: `Abyss Points: Stigma Shards first`, t: `<b>Abyss Points:</b> Stigma Shards first, not a full Abyss gear set (KeenGamer's advice; one source).` },
-    { k: "g45:5", adv: true, opt: true, ns: `Start Conquest`, t: `<b>Start Conquest</b> (Krao Cave tier, ${T("item level", "gearscore")} 700). Weapon first, then your weakest slots.` },
-  ]},
-];
 
-const STEPS = [
-  { id: "build", title: "Build plan", blurb: "Where every Skill Point and stat goes.", tag: "Always",
-    items: [
-      { k: "build:0", t: `<b>Skill Points:</b> spend them at each milestone; the Skills card shows the single next upgrade between stops.` },
-      { k: "build:1", t: `<b>Fill every ${T("specialty slot", "specialty")}</b> the moment it unlocks. Empty slots do nothing.` },
-      { k: "build:2", t: `<b>Experiment freely.</b> ${T("Respec is free", "respec")} while you level; check its cost at 31 before you rely on it.` },
-      { k: "build:3", t: `<b>Stat priority</b> for gear and Daevanion paths is in the Build tab (right edge).` },
-      { k: "build:beltamulet", t: `<b>Belt and amulet are the only gear worth enhancing by default.</b> Spend each Noble Belt or Revelation Amulet Enhance Scroll as soon as you get it; you keep both pieces for the whole game.` },
-    ]},
-  { id: "story", title: "Story pace", blurb: "Hero quests give most of your XP to 45.", tag: "Always",
-    items: [
-      { k: "story:0", t: `<b>Keep the Hero quest chain moving.</b> Pause only at milestones.` },
-      { k: "story:1", t: `<b>Activate every ${T("Kibelisk", "kibelisk")}</b> you pass.` },
-      { k: "story:2", t: `<b>Equip better gear immediately.</b> From Lv 10, ${T("extract", "extract")} the old piece. Don't ${T("enhance", "enhance")} leveling gear unless you're stuck.` },
-      { k: "story:3", t: `<b>A regional quest that isn't in the game yet:</b> click "Not in game yet" on it (Next up or its milestone). It comes back after your next Level up, or once the quest before it is turned in.` },
-      { k: "story:4", t: `<b>Pick up ${T("Empyrean Traces", "traces")}</b> (feathers) you pass in Altgard; sweep the rest with the map later.` },
-    ]},
-  { id: "daily", title: "Daily and weekly habits", blurb: "Capped rewards; start each once its milestone unlocks it.", tag: "Daily",
-    items: [
-      { k: "daily:0", t: `<b>${T("Supply Requests", "supply")}</b> (Lv 25): daily Emergency and weekly hand-ins for Abyss Points. Spares only.` },
-      { k: "daily:1", t: `<b>${T("Duty Quests", "duty")}</b> (Lv 45): 5 rewarded a day, shared by every character on the server, from the Journal's Duty tab (J).` },
-      { k: "daily:2", t: `<b>Daily dungeon</b> (Lv 30). Daeva Bio-Research Base for ${I("enhance")}.` },
-      { k: "daily:3", t: `<b>Weekly Command missions</b> from the Command Merchant in the capital: up to 12 a week per server.`, note: "No source gives an unlock level." },
-    ]},
-  { id: "f2p", title: "Free-to-play notes", blurb: "What's paid, so you know what to skip.", tag: "F2P",
-    items: [
-      { k: "f2p:0", t: `<b>Kina is your bottleneck.</b> Without a subscription you can't use the Marketplace or the Kina/Quna exchange, so you can't buy Kina (those, and the subscriber shop, need the $15/month subscription). Spend it on permanent upgrades.` },
-      { k: "f2p:1", t: `<b>Cash shop is mostly cosmetic</b> (outfits, wings, pets, weapon skins); NCSoft says nothing in it affects stats. Nothing in this guide needs it.` },
-      { k: "f2p:2", t: `<b>Daeva Pass:</b> claim the free track; the premium track is per character and costs Quna.`, upsell: "Premium track is paid." },
-    ]},
-  { id: "hold", title: "Don't spend yet", blurb: "The most common early regrets.", tag: "Until 45",
-    items: [
-      { k: "hold:1", t: `<b>${T("Enhancing", "enhance")} leveling gear.</b> Extraction returns the stones but not the Kina. Belt and Revelation amulet are the exceptions; anything else only when stuck.` },
-      { k: "hold:2", t: `<b>Throwing away upgrade fragments.</b> You'll need large amounts; keep them all. A ${T("pet loot filter", "petfilter")} keeps junk out instead.` },
-      { k: "hold:3", t: `<b>Premium materials on quest gear.</b> Save them for gear you'll keep.` },
-    ]},
-];
 
 const KEY = "aion2-assassin-route-v4";
-/* v5 keys (E1, Oct 2026): regional quests are keyed "rq:<quest id>" and Sealed Dungeons "sd:<name>", so moving one to
-   another milestone keeps its ticks; every other item has its old position key written out as an explicit k. This
-   one-time map copies ticks, in-progress marks and dungeon runs from the old position keys (old keys are left in place).
-   Story objective ticks (qsteps / qsub) are keyed by quest name and need no copy. Never reuse a "gN:i" key. */
-const MIG_V5 = {"g12:2": "rq:2202044", "g15:1": "sd:abandoned-archon-jail", "g15:2": "sd:bloodsoaked-confessional", "g15:3": "sd:blue-dragon-s-trap", "g15:4": "sd:fafnite-storage-room", "g15:5": "sd:fanatics-den", "g15:6": "sd:fortuneteller-s-grave", "g15:7": "sd:homish-s-prison-compound", "g15:8": "sd:howling-den", "g15:9": "sd:library-of-foresight", "g15:10": "sd:prison-of-oblivion", "g15:11": "sd:victims-cave", "g15:13": "rq:2202051", "g16:3": "rq:2202010", "g16:4": "rq:2202012", "g16:5": "rq:2202013", "g16:6": "rq:2202014", "g16:7": "rq:2202015", "g16:8": "rq:2202023", "g20:2": "sd:abandoned-memorial-room", "g20:3": "sd:closed-hideout", "g20:4": "sd:destroyed-scriptorium", "g20:5": "sd:lamnah-base", "g20:6": "sd:predator-s-lair", "g20:7": "sd:unstable-cave", "g20:8": "sd:worshiper-s-underground-cave", "g22:3": "rq:2202016", "g22:4": "rq:2202017", "g22:5": "rq:2202019", "g22:6": "rq:2202036", "g22:7": "rq:2202053", "g25:2": "sd:dark-root-cave", "g25:3": "sd:drana-depository", "g25:4": "sd:high-priest-s-ruins", "g25:5": "sd:skurv-laborer-den", "g25:6": "sd:twisted-pit", "g27:3": "rq:2202062", "g30:3": "sd:all-curing-cave", "g30:4": "sd:dratona-assembly-area", "g30:5": "sd:final-haven", "g30:6": "sd:insectoid-tunnel", "g30:7": "sd:library-of-patience", "g30:8": "sd:library-of-wisdom", "g30:9": "sd:rift-fissure", "g30:11": "rq:2202011", "g30:12": "rq:2202018", "g30:13": "rq:2202021", "g30:14": "rq:2202022", "g30:15": "rq:2202037", "g32:3": "rq:2202020", "g32:4": "rq:2202040", "g32:5": "rq:2202070", "g32:7": "rq:2202029", "g32:8": "rq:2202063", "g35:1": "sd:destruction-archons-armory", "g35:2": "sd:empty-cave", "g35:3": "sd:fungie-habitat", "g35:4": "sd:lonely-rock-chasm", "g35:5": "sd:odylium-marauder-den", "g35:6": "sd:pirate-s-treasure-storage", "g35:7": "sd:place-of-rest", "g35:8": "sd:rock-cave", "g35:9": "sd:scale-altar", "g35:10": "sd:shulak-cave", "g37:4": "rq:2202039", "g37:5": "rq:2202038", "g40:2": "sd:ascetic-s-cave", "g40:3": "sd:den-of-exiles", "g40:4": "sd:kumbahum-s-cave", "g40:5": "sd:lagta-fafnite-storage", "g40:6": "sd:spider-cave", "g40:7": "sd:tayga-breeding-ground", "g40:8": "sd:warriors-rest", "g45:7": "rq:2202066", "g45:9": "rq:2202067", "g45:10": "rq:2202046", "g45:11": "rq:2202041", "g45:12": "rq:2202058", "g45:13": "rq:2202056", "g45:14": "rq:2202050", "g45:16": "rq:2202043", "g45:17": "rq:2202068", "g45:18": "rq:2202057", "g45:19": "rq:2202054", "g45:20": "rq:2202060", "g45:21": "rq:2202042", "g45:22": "rq:2202052", "g45:23": "rq:2202061", "g45:24": "rq:2202059", "g45:25": "rq:2202071", "g45:26": "rq:2202027", "g45:27": "rq:2202069", "g45:28": "rq:2202045", "g45:30": "rq:2202055", "g45:31": "rq:2202028", "g45:32": "rq:2202064", "g45:33": "rq:2202065", "g45:34": "rq:2202047", "g45:36": "rq:2202026", "g45:37": "rq:2202030", "g45:38": "rq:2202031", "g45:39": "rq:2202033", "g45:40": "rq:2202032", "g45:41": "rq:2202034", "g45:42": "rq:2202035"};
 function migrateV5(s) {
   if (s.migV5) return false;
   ["checks", "started", "areaRun"].forEach(f => { const o = s[f]; if (!o) return; Object.entries(MIG_V5).forEach(([a, b]) => { if (a in o && !(b in o)) o[b] = o[a]; }); });
@@ -449,32 +234,6 @@ function watchIcons() {
 }
 
 /* ---------- Areas ---------- */
-/* Hideout areas: allthings.how map pages (spot-checked). Quest areas: allthings.how regional quest list. */
-const HIDEOUT_AREA = {
-  /* zones from Metabot's Altgard dungeon table */
-  "Lost Ruins": "Nameless Cemetery", "Fafnite Storage Room": "Sanctum Outpost",
-  "Abandoned One's Grave": "Nameless Cemetery", "Dratona Cave": "Dredgion Crash Site", "Dusk Pit": "Calderon Canyon",
-  "Hidden Vein Cave": "Nameless Cemetery", "Old Graveyard": "Nameless Cemetery", "Ossuary of the Noble": "Nameless Cemetery",
-  "Poisonous Plant Habitat": "Nameless Cemetery", "Smuggler's Cave": "Calderon Canyon", "Treasure Hunter's Residence": "Dredgion Crash Site",
-  "Trickster's Den": "Dredgion Crash Site", "Valka's Nest": "Dredgion Crash Site", "Watcher's Temporary Outpost": "Calderon Canyon",
-  "Abandoned Archon Jail": "Moslan Forest", "Bloodsoaked Confessional": "Moslan Forest", "Blue Dragon's Trap": "Sanctum Outpost",
-  "Fanatics' Den": "Sanctum Outpost", "Fortuneteller's Grave": "Moslan Forest", "Homish's Prison Compound": "Sanctum Outpost",
-  "Howling Den": "Moslan Forest", "Library of Foresight": "Moslan Forest", "Prison of Oblivion": "Moslan Forest", "Victims' Cave": "Moslan Forest",
-  "Abandoned Memorial Room": "Uruthumheim", "Closed Hideout": "Uruthumheim", "Destroyed Scriptorium": "Purifying Forest",
-  "Lamnah Base": "Purifying Forest", "Predator's Lair": "Purifying Forest", "Unstable Cave": "Purifying Forest", "Worshiper's Underground Cave": "Uruthumheim",
-  "Dark Root Cave": "Dranactus", "Drana Depository": "Dranactus", "High Priest's Ruins": "Dranactus", "Skurv Laborer Den": "Dranactus", "Twisted Pit": "Dranactus",
-  "All-Curing Cave": "Battlescar Mound", "Dratona Assembly Area": "Basfelt Ruins", "Final Haven": "Battlescar Mound", "Insectoid Tunnel": "Basfelt Ruins",
-  "Library of Patience": "Basfelt Ruins", "Library of Wisdom": "Basfelt Ruins", "Rift Fissure": "Battlescar Mound",
-  "Destruction Archons Armory": "Eastern Gribade Highland", "Empty Cave": "Western Gribade Highland", "Fungie Habitat": "Eastern Gribade Highland",
-  "Lonely Rock Chasm": "Western Gribade Highland", "Odylium Marauder Den": "Eastern Gribade Highland", "Pirate's Treasure Storage": "Idun's Lake",
-  "Place of Rest": "Black Claw Village", "Rock Cave": "Eastern Gribade Highland", "Scale Altar": "Western Gribade Highland", "Shulak Cave": "Western Gribade Highland",
-  "Ascetic's Cave": "Impetusium Square", "Den of Exiles": "Black Claw Village", "Kumbahum's Cave": "Black Claw Village", "Lagta Fafnite Storage": "Lagta Fortress",
-  "Spider Cave": "Fafnite Deposit", "Tayga Breeding Ground": "Black Claw Village", "Warriors' Rest": "Impetusium Square",
-};
-/* Route data (Oct 2026): nearest Kibelisk (teleport) per story quest giver/turn-in (Metabot quest pages). Sealed Dungeon
-   entrances: AREA_LOC (generated). */
-const QUEST_LOC = {"Preparations for Restoration": {"giverKib": "Nornir Assembly", "giverKibM": 133, "turnin": "Hadala", "turninPlace": "Wind Altar", "turninKib": "Purifying Forest Coastal Cliff", "turninKibM": 89}, "Land of Rifts": {"giverKib": "Faded Stump", "giverKibM": 29, "turnin": "Nemon", "turninPlace": "Water Altar", "turninKib": "Healing Spring", "turninKibM": 303}, "Dying Light": {"giverKib": "Healing Spring", "giverKibM": 303, "turnin": "Grisilla", "turninPlace": "Healing Spring", "turninKib": "Healing Spring", "turninKibM": 22}, "Contaminated Sacred Tree": {"giverKib": "Healing Spring", "giverKibM": 22, "turnin": "Urd", "turninPlace": "Healing Spring"}, "The Past Revealed": {"giverKib": "Healing Spring", "giverKibM": 20, "turnin": "Ulgorn", "turninPlace": "Nornir Assembly", "turninKib": "Nornir Assembly", "turninKibM": 163}, "Canyon's Secret": {"giverKib": "Nornir Assembly", "giverKibM": 163, "turnin": "Ulgorn", "turninPlace": "Nornir Assembly", "turninKib": "Nornir Assembly", "turninKibM": 152}, "Bitter Reality": {"turnin": "Menrik", "turninPlace": "Briskwind Shelter"}, "Eye of the Red Tower": {"giverKib": "Briskwind Shelter", "giverKibM": 63, "turnin": "Menrik", "turninPlace": "North Laborer's Tent", "turninKib": "Hidden Cave", "turninKibM": 301}, "The Survivors": {"turnin": "Menrik", "turninPlace": "Briskwind Shelter"}, "Rescue Operation": {"giverKib": "Briskwind Shelter", "giverKibM": 63, "turnin": "Ulgorn", "turninPlace": "Hidden Cave", "turninKib": "Hidden Cave", "turninKibM": 12}, "Last of the Destruction Archons": {"giverKib": "Hidden Cave", "giverKibM": 12, "turnin": "Nemon", "turninPlace": "Briskwind Shelter", "turninKib": "Briskwind Shelter", "turninKibM": 49}, "A Daeva Dreaming Anew": {"turnin": "Nemon", "turninPlace": "Briskwind Shelter"}, "Last Refuge": {"giverKib": "Briskwind Shelter", "giverKibM": 49, "turnin": "Nemon", "turninPlace": "Basfelt Ruins", "turninKib": "Graverobber Campsite", "turninKibM": 128}, "Scripture in the Ruins": {"giverKib": "Graverobber Campsite", "giverKibM": 128, "turnin": "Ulgorn", "turninPlace": "Graverobber Campsite", "turninKib": "Graverobber Campsite", "turninKibM": 36}, "Blood Monument": {"giverKib": "Graverobber Campsite", "giverKibM": 36, "turnin": "Nemon", "turninPlace": "Destroyed Ruins", "turninKib": "Graverobber Campsite", "turninKibM": 192}, "Impending Threat": {"giverKib": "Graverobber Campsite", "giverKibM": 192, "turnin": "Nemon", "turninPlace": "Fissure Cave", "turninKib": "Fissure Cave", "turninKibM": 14}, "Visible Trap": {"giverKib": "Fissure Cave", "giverKibM": 14, "turnin": "Nemon", "turninPlace": "Shulak Street Stall", "turninKib": "Shulak Street Stall", "turninKibM": 35}, "Destruction Archon Underground Fortress": {"giverKib": "Shulak Street Stall", "giverKibM": 35, "turnin": "Nemon", "turninPlace": "Shulak Street Stall", "turninKib": "Shulak Street Stall", "turninKibM": 25}, "Enemy Territory": {"giverKib": "Shulak Street Stall", "giverKibM": 25, "turnin": "Mannikiki", "turninPlace": "Steel Hammer Workcamp", "turninKib": "Steel Hammer Workcamp", "turninKibM": 53}, "Powder of Death": {"giverKib": "Steel Hammer Workcamp", "giverKibM": 53, "turnin": "Nemon", "turninPlace": "Steel Hammer Workcamp", "turninKib": "Steel Hammer Workcamp", "turninKibM": 33}, "Creion of Gribade": {"giverKib": "Steel Hammer Workcamp", "giverKibM": 33, "turnin": "Mannikiki", "turninPlace": "Steel Hammer Workcamp", "turninKib": "Steel Hammer Workcamp", "turninKibM": 53}, "Frozen Fafnite": {"giverKib": "Steel Hammer Workcamp", "giverKibM": 53, "turnin": "Nemon", "turninPlace": "Steel Hammer Workcamp"}, "Inevitable Encounter": {"giverKib": "Steel Hammer Workcamp", "giverKibM": 50, "turnin": "Pordhet", "turninPlace": "Abandoned Campsite entrance", "turninKib": "Abandoned Campsite", "turninKibM": 9}, "Unveiling the Truth": {"giverKib": "Abandoned Campsite", "giverKibM": 9, "turnin": "Nemon", "turninPlace": "Western Gribade Highland", "turninKib": "Zemurru's Tomb", "turninKibM": 210}, "Lake of Confrontation": {"giverKib": "Zemurru's Tomb", "giverKibM": 210, "turnin": "Nemon", "turninPlace": "Southern Gribade Highland", "turninKib": "Idun's Lake", "turninKibM": 19}, "An Ill Fate's Resolution": {"giverKib": "Idun's Lake", "giverKibM": 19, "turnin": "Nemon", "turninPlace": "Southern Gribade Highland", "turninKib": "Idun's Lake", "turninKibM": 19}, "Mirror of Greed": {"turnin": "Crobakhi", "turninPlace": "Steel Hammer Merchants HQ"}, "Fafnite's Whereabouts": {"giverKib": "Steel Hammer Merchants HQ", "giverKibM": 86, "turnin": "Umbaba", "turninPlace": "Amunta's Hideout", "turninKib": "Amunta's Hideout", "turninKibM": 10}, "Exiled Ritualist": {"giverKib": "Amunta's Hideout", "giverKibM": 10, "turnin": "Amunta", "turninPlace": "Amunta's Hideout", "turninKib": "Amunta's Hideout", "turninKibM": 21}, "Healing Herbs": {"giverKib": "Amunta's Hideout", "giverKibM": 21, "turnin": "Lakiba", "turninPlace": "Amunta's Hideout", "turninKib": "Amunta's Hideout", "turninKibM": 20}, "Treatment": {"giverKib": "Amunta's Hideout", "giverKibM": 20, "turnin": "Amunta", "turninPlace": "Amunta's Hideout", "turninKib": "Amunta's Hideout", "turninKibM": 21}, "Symbol of Liberation": {"giverKib": "Amunta's Hideout", "giverKibM": 21, "turnin": "Amunta", "turninPlace": "Zemurru's Tomb", "turninKib": "Zemurru's Tomb", "turninKibM": 27}, "Searching for Survivors": {"giverKib": "Odar's Shade", "giverKibM": 17, "turnin": "Nemon", "turninPlace": "Uruthumheim", "turninKib": "Victorious Daeva's Statue", "turninKibM": 175}, "Prison Break": {"giverKib": "Victorious Daeva's Statue", "giverKibM": 175, "turnin": "Hadala", "turninPlace": "Minushan Site", "turninKib": "Minushan Site", "turninKibM": 34}, "Finding Stolen Relics": {"giverKib": "Minushan Site", "giverKibM": 34, "turnin": "Gohok", "turninPlace": "Minushan Site"}, "Voice of Rage": {"turnin": "Nemon"}, "Tangled Past": {"turnin": "Urd", "turninPlace": "Nornir Assembly"}, "The High Priest Slumbers": {"giverKib": "Nornir Assembly", "giverKibM": 164, "turnin": "Urd", "turninPlace": "Nornir Assembly"}, "Striving for Coexistence": {"giverKib": "Nornir Assembly", "giverKibM": 164, "turnin": "Varron", "turninKib": "Nornir Assembly", "turninKibM": 133}, "A Collective Effort": {"giverKib": "Purifying Forest Coastal Cliff", "giverKibM": 89, "turnin": "Darmand", "turninPlace": "Faded Stump", "turninKib": "Faded Stump", "turninKibM": 29}};
-const NO_AREA = "Area not documented yet";
 /* Every hideout/quest item with its key, level and area, in milestone order. */
 const AREA_ITEMS = [];
 GATES.forEach(g => g.items.forEach((it, j) => {
@@ -524,14 +283,6 @@ function defaultBand() {
   return String(AREA_BANDS.filter(b => b <= state.level).pop() || AREA_BANDS[0]);
 }
 const SH_LV = it => it.lo === 1 && it.hi === 45 ? "any level" : it.lo === it.hi ? `Lv ${it.lo}` : `Lv ${it.lo}–${it.hi}`;
-/* Empyrean Traces per zone (Metabot's Altgard trace map). Shown as a route hint on each zone header, not tracked:
-   there are 560 and the game's own collection log already counts them. */
-const ZONE_TRACES = { "Impetusium Square": 54, "Immortal Isle": 40, "Black Claw Village": 35, "Moslan Forest": 32, "Basfelt Ruins": 30,
-  "Purifying Forest": 29, "Nameless Cemetery": 28, "Dranactus": 25, "Lagta Fortress": 22, "Sanctum Outpost": 21, "Spirit Isle": 19,
-  "Dredgion Crash Site": 19, "Battlescar Mound": 18, "Uruthumheim": 16, "Western Gribade Highland": 14, "Fafnite Deposit": 12,
-  "Eastern Gribade Highland": 12, "Idun's Lake": 11, "Silent Hill": 11, "Calderon Canyon": 8, "Tranein Highland": 6 };
-const SD_REWARD = "2 Crystals · 2 Wisdom Stones";
-const SH_REWARD = "2 Noble Belt Enhance Scrolls";
 /* One entry point for every "show in Areas" link on the page: open the card, pick the band, scroll to it. */
 function goAreas(band) {
   state.areasCollapsed = false; areaKeep = new Set();
@@ -1281,33 +1032,6 @@ function update() {
   requestAnimationFrame(fitRail);
 }
 
-/* Skill point plan, re-ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown):
-   Heart Gore (5s, crit-gated) and Insignia Explosion (10s, biggest per-level gain, scales with stacks) first; the two no-cooldown
-   fillers next (cast most often; Savage Roar's level-8 specialty is +20% Skill Speed); Ambush (10s); Shadowstrike (20s) last.
-   This order is an inference, not a published build. Gating/costs per Metabot skill pages. */
-const SP_SKILLS = [
-  { n: "Heart Gore", learn: 4, spec: "Up to +20% Critical Hit when fewer targets are hit" },
-  { n: "Insignia Explosion", learn: 14, spec: "+50% Multi-Hit on hit" },
-  { n: "Savage Roar", learn: 1, spec: "+20% Skill Speed" },
-  { n: "Quick Slice", learn: 1, spec: "+50% Multi-Hit on hit" },
-  { n: "Ambush", learn: 3, spec: "Engraves 2 Insignias when it lands as a Back attack" },
-  { n: "Rear Smite", learn: 11, passive: true },
-  { n: "Exploit Weakness", learn: 6, passive: true },
-  { n: "Shadowstrike", learn: 1, spec: "+20% Critical Damage Boost for 10s on hit" },
-];
-/* After the core eight (E2): SP_EXTRA from data/build.json, in its source-backed order (single-source ones flagged). They live in
-   the Skills card and Sync levels only, not in milestones, and come after every core upgrade that's open. */
-SP_EXTRA.forEach(s => SP_SKILLS.push({ ...s, extra: true }));
-/* Total skill points granted by character level (Wikily leveling table; matches the game at Lv 12 = 24, Lv 13 = 28, max 203). */
-const LEVEL_POINTS = [0, 0, 0, 0, 1, 3, 5, 7, 10, 13, 16, 20, 24, 28, 32, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91, 96, 101, 106, 111, 117, 123, 129, 135, 141, 147, 153, 159, 165, 171, 177, 183, 189, 196, 203];
-const spCost = L => L <= 4 ? 1 : L <= 7 ? 2 : 4;
-const SP_STEPS = [];
-SP_SKILLS.forEach((s, rank) => {
-  for (let L = 2; L <= 10; L++) {
-    SP_STEPS.push({ k: `sp:${s.n}:${L}`, s, rank, L, req: s.flat ? s.learn : s.learn + 3 * (L - 2), cost: spCost(L) });
-    if (L === 8 && !s.passive && s.spec) SP_STEPS.push({ k: `sp:${s.n}:spec`, s, rank, L: 8.5, req: s.learn + 18, cost: 0, spec: true });
-  }
-});
 SP_STEPS.sort((a, b) => a.rank - b.rank || a.L - b.L);
 const spLabel = x => x.spec ? `<b>${x.s.n}: pick specialty</b>` : `<b>${x.s.n} ${x.L - 1} → ${x.L}</b>`;
 const spCostTxt = x => x.spec ? "free" : x.cost + " pt" + (x.cost > 1 ? "s" : "");
@@ -1343,24 +1067,6 @@ GATES.forEach((g, i) => {
   }));
 });
 
-/* Asmodian Hero (main story) quests by level: AION2HUB 1–40, cross-checked 2–9 with allthings.how; 41–45 from Metabot (QUESTS_X). */
-const QUESTS = [
-  [1,"Ishalgen"],[2,"A Village in the Fog"],[2,"Prepare to Escape"],[3,"Shadow Forest"],[4,"Isolated Lake"],[5,"The Being Beneath the Lake"],
-  [6,"Spread Your Wings"],[6,"Signs of a Crash Landing"],[7,"Prison Compound Infiltration Plan"],[7,"Brigade Prison Compound Infiltration Operation"],
-  [9,"The Longest Night"],[10,"Finding Nemon"],[10,"Survival Supplies"],[10,"Gathering Essentials"],[11,"Crash Site Rendezvous"],[11,"Contaminated Area"],
-  [12,"Express Daeva Delivery"],[12,"Veiled Truth"],[13,"Urgent Pursuit"],[13,"Cemetery Cleanup"],[14,"Back on the Scent"],[15,"Dead Men Tell No Tales"],
-  [16,"Buried Atrocities"],[16,"Empyrean Monolith"],[18,"A New Lead"],[18,"Malice Laid Bare"],[19,"Broken Fang"],[19,"Watchful Eyes"],
-  [20,"Imminent Threat"],[20,"Crossroad"],[21,"Creeping Shadow"],[21,"Children of the Elim"],[21,"In the Elims' Name"],[22,"Verdant Melody"],
-  [22,"Daeva in a Dream"],[22,"Disturbed Balance"],[24,"Searching for Survivors"],[24,"Prison Break"],[24,"Finding Stolen Relics"],[25,"Voice of Rage"],
-  [25,"Tangled Past"],[26,"The High Priest Slumbers"],[26,"Striving for Coexistence"],[27,"Preparations for Restoration"],[27,"A Collective Effort"],
-  [29,"Land of Rifts"],[30,"Dying Light"],[30,"Contaminated Sacred Tree"],[30,"The Past Revealed"],[30,"Canyon's Secret"],[32,"Bitter Reality"],
-  [32,"Eye of the Red Tower"],[32,"The Survivors"],[32,"Rescue Operation"],[32,"Last of the Destruction Archons"],[32,"A Daeva Dreaming Anew"],
-  [33,"Last Refuge"],[33,"Scripture in the Ruins"],[33,"Blood Monument"],[34,"Impending Threat"],[34,"Visible Trap"],
-  [34,"Destruction Archon Underground Fortress"],[35,"Enemy Territory"],[35,"Powder of Death"],[36,"Creion of Gribade"],[36,"Frozen Fafnite"],
-  [37,"Inevitable Encounter"],[37,"Unveiling the Truth"],[37,"Lake of Confrontation"],[37,"An Ill Fate's Resolution"],[37,"Mirror of Greed"],
-  [40,"Fafnite's Whereabouts"],[40,"Exiled Ritualist"],[40,"Healing Herbs"],[40,"Treatment"],[40,"Symbol of Liberation"],
-  ...QUESTS_X, /* Lv 41-45: data/story-40-45.json (Metabot) */
-];
 /* "Turned in" on the last covered quest is remembered (state.storyEnd); once later quests are added, move on to the next. */
 if (state.storyEnd && state.storyEnd === state.quest) { const i = QUESTS.findIndex(([, n]) => n === state.quest); if (i >= 0 && i < QUESTS.length - 1) { state.quest = QUESTS[i + 1][1]; delete state.storyEnd; save(); } }
 const qInput = document.getElementById("questIn");
@@ -1373,16 +1079,6 @@ function findQuest(txt) {
   const hits = QUESTS.map((q, i) => [i, norm(q[1]).includes(t)]).filter(x => x[1]);
   return hits.length === 1 ? hits[0][0] : (hits.length > 1 ? -2 : -1);
 }
-/* Story quests that unlock something the guide tracks. */
-/* Objectives for each story quest (Metabot quest pages), shown under the current quest. Covered: A New Lead → Forgotten Commander (Lv 45). */
-const QUEST_STEPS = {"A New Lead": ["Take Odyle Jelly — check the Worn Chest (Kibelisk: Safe Haven)", "Deliver the Odyle Jelly — talk to Baba (Quai Campsite)", "Retrieve the Quai Merchants' goods — beat the marauders, loot the Pile of Loot (Fang Hideout)", "Turn in — Menrik, Fang Hideout"], "Malice Laid Bare": ["Interrogate Blades Captive — enter the captive's prison cell (Kibelisk: Fang Hideout)", "Discuss further plans — talk to Menrik (Fang Hideout)", "Collect infiltration materials — Balaur Language Manual, Draconute Superior Soldier weapon, Draconute Tinkerer tissue", "Deliver the transformation materials — talk to Menrik (Fang Hideout)", "Learn the Balaur language — use the Language Artifact (Fang Hideout)", "Turn in — Menrik (Fang Legion), Fang Hideout"], "Broken Fang": ["Execute the infiltration plan — talk to Ulgorn (Altgard)", "Search for the infiltrator — inspect Fallen Member; talk to Draconute Warrior, Ranger, Superior Combatant", "Contact Ulgorn — talk to Ulgorn via Selvis", "Join Ulgorn — talk to Ulgorn", "Hear about the infiltrating legionnaires — talk to Gamilla", "Collect Selvis repair parts — Outpost Probe eyes, Dratona Tinkerer ore (Lv19), Broken Remnants fragments", "Turn in — Gamilla (Fang Legion), Temporary Retreat"], "Watchful Eyes": ["Check if the hiding legionnaires live — talk via Selvis (Altgard)", "Discuss the voice that was heard — talk to Gamilla", "Check for survivors — search Sanctum Dumpsite", "Get the storage key — take it from the Balaur's belongings", "Turn in — Bataar (Fang Legion), Sanctum Dumpsite"], "Imminent Threat": ["Discuss next steps — talk to Ulgorn (Altgard)", "Find the ledger and Zikel's Seal — examine the Barracks Storage", "Join Ulgorn — talk to Ulgorn", "Enter Zikel's Sanctum — examine the Monolith", "Discuss next steps — talk to Nemon", "Turn in — Hadala, Safe Haven"], "Crossroad": ["Check Ulgorn's journal — read Kraki's Journal", "Find Nemon at the inspection area — talk to Nemon", "Go find Nemon's item — head to the Watcher's Tent", "Rendezvous at the Watcher's Tent — talk to Nemon", "Defeat the Balaur guarding the lake — clear the Balaur Skirmishers", "Retrieve the hidden artifact — open the right chest in the pond (decoys exist)", "Turn in — Nemon, Watcher's Tent"], "Creeping Shadow": ["Find out where Urd is — go to Moslan Forest (Kibelisk: Odar's Shade)", "Discuss the discovered corpse — talk to Nemon (Odar's Shade)", "Find out where Urd is — go to Odar's Shade", "Ask why the forest burned — talk to Young Elim Nana (Odar's Shade)", "Search for survivors — examine Nornir Corpse, find Elim & Nornir survivors (Kibelisk: Collapsed Chasm)", "Report to Nemon — talk to Nemon via Selvis", "Avenge the dead Nornir — defeat nearby Blades (Collapsed Chasm)", "Turn in — Nemon, Collapsed Chasm"], "Children of the Elim": ["Gain the Elim's favor — collect Forest Essence; kill Ashen Ursus & Black Ash Basilisk (Lv21)", "Deliver the Forest Essence — talk to Ninir", "Find the Young Elim — go to the marked location", "Find Young Elim survivors — search the Hollow Tree and Fallen Tree", "Discuss search progress — talk to Nemon", "Search the next location — go to the marked location", "Find Young Elim survivors — search the Rotten Tree and Hollow Tree", "Discuss search progress — talk to Nemon", "Go where Nemon said — travel to Elim's Rest", "Turn in — Nemon, Elim's Rest"], "In the Elims' Name": ["Find the hiding young Elim — search with Nemon (Altgard)", "Report the rescued Young Elim — talk to Ninir", "Contact Hadala — talk to Hadala via Selvis", "Find Ecco's whereabouts — go to Odar's Shade", "Turn in — Hadala, Odar's Shade"], "Verdant Melody": ["Investigate the Etheria Rift — rescue Ecco the Forest Spirit", "Ask to awaken Odar — talk to Ecco", "Learn where the Nornir are — talk to Ecco", "Turn in — Ecco (Forest Spirit), Odar's Shade"], "Daeva in a Dream": ["Ascend as a Daeva — complete 'The One Who Hears the Voice' (Altgard)", "Turn in — Ecco (Forest Spirit), Odar's Shade"], "Disturbed Balance": ["Go where Ecco said — Krao Cave Entrance (Kibelisk: Forest Hideout)", "Hear about Krao Cave — talk to Ecco (near Forest Hideout)", "Investigate Krao Cave — finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)", "Turn in — Nemon, Odar's Shade"], "Searching for Survivors": ["Go to Uruthumheim — go to the Abandoned Site", "Assess the situation — talk to Nemon (near the Abandoned Site)", "Gather information on Uruthumheim — defeat the Blades, examine the Nornir Supply Chest, examine the Nornir Corpse (near the Abandoned Site)", "Receive an urgent message — talk via Selvis", "Turn in — Nemon, Northern Altar (near Victorious Daeva's Statue)"], "Prison Break": ["Rescue the prisoners with Nemon — rescue the prisoners (Kibelisk: Victorious Daeva's Statue)", "Turn in — Hadala, Minushan Site"], "Finding Stolen Relics": ["Retrieve the stolen relics — retrieve the Golden Uruthum Statue, retrieve the History of Uruthumheim, retrieve the Fragment of Minusha's Heart, defeat the Ancient Ruins Apparatus (Kibelisk: Minushan Site)", "Turn in — Gohok, Minushan Site"], "Voice of Rage": ["Clear the way to the Eastern Altar — defeat the Balaur in front of the altar, defeat the Mind-Controlled Ancient Soldier and Ranger, destroy the Midsize Fafnium", "Find another Nornir survivor — join Gohok in front of the Eastern Altar", "Turn in — Nemon, in front of the Collapsed Oracle"], "Tangled Past": ["Investigate the Collapsed Oracle — track Urd's whereabouts", "Discuss what to do next — talk to Nemon", "Go where Hallina said — go to the Nornir Assembly", "Meet Nemon at the Nornir Assembly entrance — talk to Nemon", "Turn in — Urd, Nornir Assembly"], "The High Priest Slumbers": ["Check if Hystan's body is safe — go to the Nornir Altar", "Turn in — Urd, Nornir Assembly (Kibelisk: Nornir Assembly)"], "Striving for Coexistence": ["Take a walk around the assembly — talk to Varron (Kibelisk: Nornir Assembly)", "Get potion ingredients from the Soft Breeze Spirit — gather antidote ingredients (Kibelisk: Guide Rest Stop)", "Find supplies for the patients — check the General Goods Chest, check the Garment Chest (Kibelisk: Nornir Assembly)", "Turn in — Varron, Nornir Assembly"], "A Collective Effort": ["Restore the Wind Altar — purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)", "Talk to Ulgorn via Selvis — talk via Selvis", "Relay the message to Hadala — talk to Hadala (Kibelisk: Purifying Forest Coastal Cliff)", "Meet Ulgorn at Guide Rest Stop — talk to Ulgorn (Kibelisk: Guide Rest Stop)", "Clear around the Fire Altar — eliminate the Rift Fragment, defeat the Flame Rock Spider, remove the Vines Corroded by Poison Blood (Kibelisk: Guide Rest Stop)", "Talk to Ulgorn via Selvis — talk via Selvis", "Restore the Fire Altar — purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)", "Report the Fire Altar restored — talk to Ulgorn (Kibelisk: Purifying Forest Sunny Hill)", "Return to Guide Rest Stop — talk to Zaksen (Kibelisk: Guide Rest Stop)", "Turn in — Darmand, Faded Stump"], "Land of Rifts": ["Clear around the Earth Altar — interact with Toxic Aura ×3, defeat Corroded Soil Spirit ×3, defeat Pink Gravi ×5 (Kibelisk: Faded Stump)", "Restore the Earth Altar with Darmand — purify the Earth Altar", "Talk to Nemon via Selvis — talk via Selvis", "Turn in — Nemon, Water Altar (Kibelisk: Healing Spring)"], "Preparations for Restoration": ["Talk to Ulgorn via Selvis — talk via Selvis", "Hear about Nemon's past — talk to Ulgorn (Kibelisk: Nornir Assembly)", "Hear more about Nemon's past — talk to Hadala (Kibelisk: Nornir Assembly)", "Return to Urd — talk to Urd (Kibelisk: Nornir Assembly)", "Seek guidance from Hallina — talk to Hallina (Kibelisk: Nornir Assembly)", "Prepare to restore the Spirit Altar — go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)", "Clear around the Wind Altar — defeat the contaminated spirits, remove Poison Blood Clot (Kibelisk: Guide Rest Stop)", "Talk to Hadala via Selvis — talk via Selvis", "Turn in — Hadala, Wind Altar"], "Dying Light": ["Restore the Water Altar — purify the Water Altar (Kibelisk: Healing Spring)", "Report the restoration of the Water Altar — talk to Nemon (Kibelisk: Healing Spring)", "Clear around the Water Altar — remove Contaminated Water, defeat Water Mist Spirit, defeat Cursed Poison Blood (Kibelisk: Healing Spring)", "Ask about Grisilla's condition — talk to Nemon (Kibelisk: Healing Spring)", "Help heal Grisilla — remove Contaminated Root, defeat Poison Blood Spider, defeat Consumed Klaw (Kibelisk: Healing Spring)", "Talk to Nemon via Selvis — talk via Selvis", "Turn in — Grisilla, Healing Spring"], "Contaminated Sacred Tree": ["Join Grisilla at the root entrance — talk to Grisilla (Kibelisk: Faded Stump)", "Help Grisilla purify the roots — enter the Root of the Sacred Tree (Kibelisk: Faded Stump)", "Deliver the Life Essence — talk to Nemon (Kibelisk: Faded Stump)", "Turn in — Urd, Healing Spring"], "The Past Revealed": ["Meet Urd before the altar — talk to Urd (Kibelisk: Nornir Assembly)", "Go to see the high priest's memories — go to Nornir Altar (Kibelisk: Purifying Forest Coastal Cliff)", "Ask around about the Destruction Archon — talk to Hallina, talk to Varron (Kibelisk: Nornir Assembly)", "Turn in — Ulgorn, Nornir Assembly"], "Canyon's Secret": ["Hear about the valley that was discovered — talk to Dinoh (Kibelisk: Battlescar Mound Clifftop)", "Investigate the Urugugu Canyon — complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)", "Share information gathered from the canyon — talk to Dinoh (Kibelisk: Battlescar Mound Clifftop)", "Turn in — Ulgorn, Nornir Assembly"], "Bitter Reality": ["Join Menrik at Briskwind Shelter — talk to Menrik", "Collect information from refugees — talk to Petra, talk to Bjorik", "Pass on new information to Nemon — talk to Nemon", "Learn the Mau language — use the Language Artifact to learn", "Learn the Mau Language — read the Mau Language Manual", "Turn in — Menrik, Briskwind Shelter"], "Eye of the Red Tower": ["Infiltrate Dranactus — defeat Mumu Worker, defeat Mumu Overseer (Kibelisk: Briskwind Shelter)", "Talk to Menrik via Selvis — talk via Selvis", "Collect Information — collect the Tarzel from the food chest, read the Overseer's Manual (Kibelisk: Briskwind Shelter)", "Explain the situation to Menrik via Selvis — talk via Selvis", "Go to another Laborer's Tent — talk to Laborer Holta, talk to Laborer Teak (Kibelisk: Briskwind Shelter)", "Talk to Nemon via Selvis — talk via Selvis", "Turn in — Menrik, North Laborer's Tent"], "The Survivors": ["Clear up near the Watchtower Camp — defeat Dratona, defeat Enhanced Dratona", "Talk to Nemon via Selvis — talk via Selvis", "Neutralize the Watchtower Camp — enter the Watchtower Camp", "Turn in — Menrik, Briskwind Shelter"], "Rescue Operation": ["Collect supplies to deliver to the Hidden Cave — steal weapons from Draconute Sentinel, steal armor from Draconute Patrol, search for food and recovery potions from the supply chest (Kibelisk: Hidden Cave)", "Find out what is currently happening in the Hidden Cave — join with Menrik (Kibelisk: Hidden Cave)", "Explore the escape route — search for the patrol log (Kibelisk: Hidden Cave)", "Collect materials for Drakan transformation — collect tissue samples from Drakan Guard, steal clothes from Drakan Superior Warmage (Kibelisk: Hidden Cave)", "Return to the Hidden Cave and join with Menrik — go to the Hidden Cave (Kibelisk: Hidden Cave)", "Turn in — Ulgorn, Hidden Cave"], "Last of the Destruction Archons": ["Prepare to infiltrate the underkeep — go to the entrance of the underkeep (Kibelisk: Dranactus Shore)", "Rescue a Destruction Archon — go into the underkeep", "Discuss further plans with the group — talk to Nemon (Kibelisk: Dranactus Shore)", "Find out the current situation of Briskwind Shelter — talk to Ulgorn, talk to Menrik (Kibelisk: Briskwind Shelter)", "Gather intel from Reuben — check how Reuben is doing (Kibelisk: Briskwind Shelter)", "Turn in — Nemon, Briskwind Shelter"], "A Daeva Dreaming Anew": ["Ascend to the next dimension of power as a Daeva — complete The One Who Dreams", "Turn in — Nemon, Briskwind Shelter"], "Last Refuge": ["Join Nemon at the location she mentioned — go to Basfelt Waterfall (Kibelisk: Basfelt Waterfall)", "Find out what is currently happening at Basfelt Waterfall — talk to Ulgorn (Kibelisk: Basfelt Waterfall)", "Ask around to learn what is happening at Basfelt Ruins — talk to Balla, talk to Varatul (Kibelisk: Basfelt Waterfall)", "Talk to the Graverobber — talk to Chedan (Kibelisk: Basfelt Waterfall)", "Discuss plans with the group — talk to Nemon (Kibelisk: Basfelt Waterfall)", "Investigate the Marauder base near the entrance of the ruins — investigate the marauder goods chest, retrieve loot from Marauder Brawler, retrieve antiques from Marauder Watcher, defeat Marauder Brawler, defeat Marauder Watcher (Kibelisk: Graverobber Campsite)", "Report the situation to Nemon — talk via Selvis", "Gather Intel about the Archon from the Graverobber Campsite — talk to Chedan (Kibelisk: Graverobber Campsite)", "Collect accurate intel — talk to Dufaux, talk to Dixie (Kibelisk: Graverobber Campsite)", "Discuss future plans — talk to Nemon at the Graverobber Campsite (Kibelisk: Graverobber Campsite)", "Turn in — Nemon, Basfelt Ruins"], "Scripture in the Ruins": ["Investigate Reuben's Hideout — go to Reuben's Hideout (Kibelisk: Graverobber Campsite)", "Ask the graverobbers — talk to Nemon (Kibelisk: Graverobber Campsite)", "Obtain information about the Fortress and the Scripture — talk to Hevid, talk to Dixie, talk to Dufaux (Kibelisk: Graverobber Campsite)", "Pass on new information to Nemon — talk to Nemon (Kibelisk: Graverobber Campsite)", "Find the loot stolen by marauders — defeat Marauder Warrior ×5, defeat Marauder Ranger ×5, interact with Loot Chest (Kibelisk: Graverobber Campsite)", "Turn in — Ulgorn, Graverobber Campsite"], "Blood Monument": ["Find the secret document Reuben mentioned — go to the Abandoned Ruins (Kibelisk: Shulak Street Stall)", "Gain additional information from Dixie — talk to Dixie (Kibelisk: Graverobber Campsite)", "Do a favor for Graverobber Dixie — defeat Ferocious Cadaver Cleaner, defeat Ruin Agrint, recover belongings of Dixie's fallen comrade (Kibelisk: Graverobber Campsite)", "Talk to Nemon via Selvis — talk via Selvis", "Join Nemon at the Destroyed Ruins — talk to Nemon (Kibelisk: Graverobber Campsite)", "Insert Zikel's Seal into the Blood Monument — operate the Blood Monument (Kibelisk: Graverobber Campsite)", "Turn in — Nemon, Destroyed Ruins"], "Impending Threat": ["Reduce the number of watchful eyes — destroy Activated Large Balaur Totem, defeat Activated Large Balaur Totem (Kibelisk: Fissure Cave)", "Answer Nemon's Selvis Call — talk via Selvis", "Capture a Blades Captive — stealthily capture a prisoner (Kibelisk: Fissure Cave)", "Eliminate tracking Blades — defeat the ruins Blades (Kibelisk: Fissure Cave)", "Accept Nemon's call — talk via Selvis", "Turn in — Nemon, Fissure Cave"], "Visible Trap": ["Defeat the Blades and secure a retreat — defeat Blades Searcher, defeat Blades Messenger (Kibelisk: Fissure Cave)", "Purchase Archon's Sword from the Shulak Street Vendor — talk to Purakhi (Kibelisk: Shulak Street Stall)", "Fulfill Purakhi's request — retrieve the unexploded bomb, collect the Soulless Archon Armor (Kibelisk: Shulak Street Stall)", "Turn in — Nemon, Shulak Street Stall"], "Destruction Archon Underground Fortress": ["Investigate the Destruction Archon Underground Fortress — go to the entrance of the Underground Fortress (Kibelisk: Fissure Cave)", "Learn how to use the Monolith — talk to Nemon (Kibelisk: Fissure Cave)", "Investigate the Destruction Archon Underground Fortress — investigate clues about the core (Kibelisk: Fissure Cave)", "Comfort Nemon — talk to Nemon (Kibelisk: Fissure Cave)", "Turn in — Nemon, Shulak Street Stall"], "Enemy Territory": ["Ask expert Sculkhi for information — talk to Sculkhi (Kibelisk: Mahindel Cliff)", "Join Nemon at the Steel Hammer Merchant HQ — talk to Nemon (Kibelisk: Steel Hammer Merchants HQ)", "Gather information on the Blades' base — talk to Seikhi, talk to Brokhi (Kibelisk: Steel Hammer Merchants HQ)", "Share the gathered information with Nemon — talk to Nemon (Kibelisk: Steel Hammer Merchants HQ)", "Gain the cooperation of the Chief of the Steel Hammer Merchants — talk to Merchant Chief Crobakhi (Kibelisk: Steel Hammer Merchants HQ)", "Deliver supplies to the Steel Hammer Workcamp — collect mined Fafnite Gemstone, retrieve the pickaxes from Contaminated Shulak Worker, defeat Contaminated Shulak Worker (Kibelisk: Gribade Highland Crossroad)", "Turn in — Mannikiki, Steel Hammer Workcamp"], "Powder of Death": ["Clear the path to the Shuttered Workstation — defeat Contaminated Shulak Miner (Kibelisk: Steel Hammer Workcamp)", "Check the Shuttered Workstation situation — enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)", "Listen to a detailed explanation from Mannikiki — talk to Mannikiki (Kibelisk: Steel Hammer Workcamp)", "Find survivors in the east of the deposit — search for survivors around quarry entrance, search for survivors inside central quarry, search for survivors around quarry wall (Kibelisk: Steel Hammer Workcamp)", "Accept Nemon's Call — talk via Selvis", "Find items for the surviving workers — find the worker's lost bag, defeat the dangerous Luminous Cadaver Insectoid (Kibelisk: Steel Hammer Workcamp)", "Turn in — Nemon, Steel Hammer Workcamp"], "Creion of Gribade": ["Go to the Steel Hammer Merchants HQ — ask around about the Creions (Kibelisk: Steel Hammer Merchants HQ)", "Go to the chilly cave — talk to Nemon (Kibelisk: Gribade Highland Crossroad)", "Investigate the Mysterious Grotto — find where the Creions are (Kibelisk: Gribade Highland Crossroad)", "Turn in — Mannikiki, Steel Hammer Workcamp"], "Frozen Fafnite": ["Collect the mined Fafnite Gemstones — collect supplies from the Fafnite cart, defeat Faded Mutant around the supplies, defeat Faded Floater around the supplies (Kibelisk: Steel Hammer Workcamp)", "Return to Mannikiki — talk to Mannikiki (Kibelisk: Steel Hammer Workcamp)", "Meet the Creion — talk to Snotra (Kibelisk: Steel Hammer Workcamp)", "Resolve the Giant Fafnite Gemstone problem — enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)", "Meet outside the Shuttered Workstation — talk to Snotra (Kibelisk: Abandoned Campsite)", "Report the situation to Mannikiki — talk to Mannikiki (Kibelisk: Steel Hammer Workcamp)", "Recover the belongings of the Steel Hammer workers — recover the Miner's belongings, recover the Cart Worker's belongings, recover the Sentinel's belongings, defeat the Faded Predator and Floater that disrupt the recovery (Kibelisk: Steel Hammer Workcamp)", "Report to Nemon — talk via Selvis", "Turn in — Nemon, Steel Hammer Workcamp"], "Inevitable Encounter": ["Join Nemon in front of the Merchant's Yard — talk to Nemon (Kibelisk: Steel Hammer Workcamp)", "Discover the Blades Hideout — enter the Merchant's Yard (Kibelisk: Abandoned Campsite)", "Join Nemon at the Abandoned Campsite entrance — talk to Nemon at the Abandoned Campsite entrance (Kibelisk: Abandoned Campsite)", "Investigate the Abandoned Campsite — enter the Campsite (Kibelisk: Abandoned Campsite)", "Turn in — Pordhet, Abandoned Campsite entrance"], "Unveiling the Truth": ["Defeat the Blades threatening the Abandoned Campsite — defeat the Blades Scout near the campsite, defeat the Blades Sentry near the campsite, check the Reconnaissance Report (Kibelisk: Abandoned Campsite)", "Report the situation to Nemon via Selvis — talk via Selvis", "Return to the Abandoned Campsite — talk to Nemon (Kibelisk: Abandoned Campsite)", "Collect Protection Serum from the Blades — defeat the Blades (Kibelisk: Abandoned Campsite)", "Report the situation to Nemon — talk via Selvis", "Find the Protection Serum in the Blades Camp — examine the Stacked Documents, search the Document Box (Kibelisk: Abandoned Campsite)", "Report the situation to Nemon — talk via Selvis", "Obtain the Blades Supply Storage key — steal the key from Blades Elite Sentinel (Kibelisk: Abandoned Campsite)", "Turn in — Nemon, Western Gribade Highland"], "Lake of Confrontation": ["Search the Blades Supply Storage — enter the Blades Supply Storage (Kibelisk: Zemurru's Tomb)", "Return to the Abandoned Campsite — talk to Pordhet (Kibelisk: Abandoned Campsite)", "Turn in — Nemon, Southern Gribade Highland"], "An Ill Fate's Resolution": ["Prepare to enter Idun's Lake — use Protection Serum", "Go to Idun's Lake — approach Idun's Lake (Kibelisk: Steel Hammer Temporary Trading Post)", "Find the Blades Hideout beneath Idun's Lake — search the hideout entrance beneath the lake (Kibelisk: Steel Hammer Temporary Trading Post)", "Investigate the Blades Hideout — enter the hideout under the lake (Kibelisk: Steel Hammer Temporary Trading Post)", "Turn in — Nemon, Southern Gribade Highland"], "Mirror of Greed": ["Go to the Fire Temple Entrance — talk to Trekhi", "Investigate the Fire Temple — complete the Fire Temple investigation", "Turn in — Crobakhi, Steel Hammer Merchants HQ"], "Fafnite's Whereabouts": ["Locate Amunta's Hideout — talk to Popokiki (Kibelisk: Steel Hammer Merchants HQ)", "Investigate Amunta's Hideout — enter Amunta's Hideout (Kibelisk: Amunta's Hideout)", "Find the escaped Daybreak Society — search the Damaged Wagon Wheel (Kibelisk: Amunta's Hideout)", "Follow the tracks of Daybreak Society who fled — search the Blood-Stained Rock (Kibelisk: Amunta's Hideout)", "Talk to Nemon via Selvis — talk via Selvis", "Lessen the Mau Search Party's watch — defeat the Search Party Sentry and Tayga (Kibelisk: Amunta's Hideout)", "Talk to Nemon via Selvis — talk via Selvis", "Explain the situation to the escaped Mau — talk to the escaped Mau (Kibelisk: Steel Hammer Merchants HQ)", "Find other members of the society — find and talk to Arita, find and talk to Traska (Kibelisk: Amunta's Hideout)", "Turn in — Umbaba, Amunta's Hideout"], "Exiled Ritualist": ["Prepare to rescue Amunta in advance — defeat Black Claw Guard Troopers Searcher, defeat Black Claw Guard Troopers Sentry, remove Black Claw Guard Troopers Totem (Kibelisk: Amunta's Hideout)", "Rescue Amunta from the Prisoners Grotto — enter the Prisoners Grotto (Kibelisk: Eastern Gribade Highland Cliff)", "Turn in — Amunta, Amunta's Hideout"], "Healing Herbs": ["Collect herbs for treatment — collect herbs from the supplies, defeat Drakan Patrol Scout, defeat Drakan Patrol Supporter (Kibelisk: Amunta's Hideout)", "Turn in — Lakiba, Amunta's Hideout"], "Treatment": ["Treat the Fallen Daybreak Society Members — administer herbal medicine to the first member, administer herbal medicine to the second member (Kibelisk: Amunta's Hideout)", "Turn in — Amunta, Amunta's Hideout"], "Symbol of Liberation": ["Collect materials to repair Zemurru's Totem — search the Pile of Broken Totems, collect materials from Drakan Patrol Totem, retrieve the Drakan Patrol Sorcery Talisman, defeat Drakan Patrol Totem (Kibelisk: Eastern Gribade Highland Cliff)", "Deliver totem restoration materials to Amunta — talk to Amunta (Kibelisk: Amunta's Hideout)", "Go to the Steel Hammer Temporary Trading Post — meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)", "Find materials necessary for infiltration — gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)", "Turn in — Amunta, Zemurru's Tomb"]};
-Object.assign(QUEST_STEPS, QUEST_STEPS_X); Object.assign(QUEST_LOC, QUEST_LOC_X);
-/* Only unlocks confirmed by two independent sources or seen in game (re-checked Oct 2026). Dropped as unconfirmed or
-   conflicting: wings (sources disagree on the quest), pets, Daevanion via "Urgent Pursuit" (the first board opens at Lv 12
-   by level), Monolith turn-ins. */
-const STORY_UNLOCKS = { "Buried Atrocities": "Legions", "Daeva in a Dream": "Stigmas (via Asahr) and Expeditions" };
-/* Milestone that covers each unlock, for the "Next unlock" link. */
-const UNLOCK_GATE = { "The Being Beneath the Lake": "g6", "Gathering Essentials": "g10", "Urgent Pursuit": "g12", "Buried Atrocities": "g16", "Empyrean Monolith": "g16", "Daeva in a Dream": "g22" };
 /* Milestones with story-gated steps get an automatic first line: "Reach <quest> in the main story". It ticks
    itself when your current quest reaches it, isn't counted in the milestone's x/y, and shows how far away it is. */
 function renderStoryReqs() {
@@ -1441,29 +1137,6 @@ function fitQuestIn() {
   while (qInput.scrollWidth > qInput.clientWidth + 1 && fs > 11.5) { fs -= .5; qInput.style.fontSize = fs + "px"; }
 }
 window.addEventListener("resize", () => requestAnimationFrame(fitQuestIn));
-/* "Ahead": the next milestone above your level and the next story unlock, merged into one row when the
-   unlock belongs to that milestone. Each row links to its milestone. */
-/* Level unlocks shown under "Ahead": each confirmed by at least two independent sources (Oct 2026):
-   Metabot, thegameswiki (NCSoft KR guidebook data), PlayNews (dungeon livestream), GamesFuze, games.gg, KeenGamer, Wikily, allthings.how.
-   Left out on purpose (one source or none): "accessory sets", enhancement at 9, extraction at 10. */
-const VERIFIED_UNLOCKS = [
-  [12, "Nezekan board", "First Daevanion board", "thegameswiki, Metabot, aion2hub"],
-  [20, "Zikel board", "Second Daevanion board", "thegameswiki, Metabot"],
-  [20, "Krao Cave", "Expedition (Exploration) · item level 200", "PlayNews, thegameswiki, GamesFuze"],
-  [22, "Stigma slot 1", "", "Metabot, PlayNews, KeenGamer"],
-  [25, "Sealed Dungeons", "New batch", "allthings.how, aion2hub"],
-  [25, "Supply Requests", "Hand in items for Abyss Points", "Metabot, allthings.how"],
-  [27, "Stigma slot 2", "", "Metabot, PlayNews, KeenGamer"],
-  [28, "Urugugu Canyon", "Expedition (Exploration) · item level 300 · party 2–5", "Metabot, thegameswiki, ExpCarry, allthings.how, games.gg"],
-  [30, "Vaizel board", "Third Daevanion board", "thegameswiki, Metabot"],
-  [30, "Daily dungeon", "Daeva Bio-Research Base", "Metabot, thegameswiki"],
-  [30, "Sealed Dungeons", "New batch", "allthings.how"],
-  [32, "Stigma slot 3", "", "Metabot, PlayNews, KeenGamer"],
-  [35, "Fire Temple", "Expedition (Exploration) · item level 500", "Metabot, thegameswiki, Wikily, ExpCarry"],
-  [37, "Stigma slot 4", "", "Metabot, PlayNews, KeenGamer"],
-  [40, "Triniel board", "Fourth Daevanion board", "thegameswiki, Metabot"],
-  [45, "Level cap", "Abyss, Ascension Trial, Conquest, Azphel board (PvP stats)", "Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith"],
-].filter(x => !(x[1] === "Sealed Dungeons" && x[3].split(",").length < 2));
 function renderAhead() {
   const el = document.getElementById("ahead"); if (!el) return;
   {
@@ -1610,15 +1283,6 @@ qInput.addEventListener("change", () => {
   update();
 });
 
-/* Key stacks for the hold-to-run setup (K grid): row 0 fires first. Right click = damage line; Q = Shadowstrike alone
-   (positioning, so it never fires by accident); E = opener cooldowns as they unlock. Row order is inferred. */
-/* Insignia Explosion scales with Insignia stacks (Metabot: +12% damage and +10% stun per stack, up to 5) but casts at 0,
-   so it sits above the builders: it fires once Heart Gore and Ambush are on cooldown. */
-const RMB_STACK = lv => lv >= 14 ? ["Heart Gore", "Ambush", "Insignia Explosion", "Savage Roar"]
-  : lv >= 4 ? ["Heart Gore", "Ambush", "Savage Roar"] : lv >= 3 ? ["Ambush", "Savage Roar"] : ["Savage Roar"];
-/* E follows the stigmas you've actually equipped (Stigmas card); buffs first, then damage (the guide's inference, no source
-   gives an order). Before any are ticked, it falls back to the slot levels. */
-const E_ORDER = ["Illusive Clone", "Swift Contract", "Triniel's Dagger", "Savage Fang"];
 const E_STACK = lv => { const eq = typeof STIGMA_SLOTS === "function" ? STIGMA_SLOTS().filter(x => state.checks[x.k]).map(x => x.name) : [];
   return eq.length ? E_ORDER.filter(n => eq.includes(n)).map(n => n + "*") : E_STACK_LV(lv); };
 const E_STACK_LV = lv => { const sl = STIGMA_SLOTS().filter(x => lv >= x.lv).map(x => x.name); return E_ORDER.filter(n => sl.includes(n)).map(n => n + "*"); };
@@ -1862,29 +1526,10 @@ layoutEl.addEventListener("input", e => {
   dvLive();
   renderNow();
 });
-/* Skill icons by skill name (uploaded art); until then the Wisdom Stone icon. */
-const SP_ICONS = {
-  "Heart Gore": "assets/icons/sk-heart-gore.png",
-  "Insignia Explosion": "assets/icons/sk-insignia-explosion.png",
-  "Savage Roar": "assets/icons/sk-savage-roar.png",
-  "Quick Slice": "assets/icons/sk-quick-slice.png",
-  "Ambush": "assets/icons/sk-ambush.png",
-  "Shadowstrike": "assets/icons/sk-shadowstrike.png",
-  "Exploit Weakness": "assets/icons/sk-exploit-weakness.png",
-  "Rear Smite": "assets/icons/sk-rear-smite.png",
-  "Assault Stance": "assets/icons/sk-assault-stance.png",
-  "Defense Break": "assets/icons/sk-defense-break.png",
-};
 /* Small icon before a skill name; an empty slot of the same size when there's no art yet, so names line up. */
 /* No art for a skill/stigma: a small initials square (same look for both). */
 const ini = n => n.split(/\s+/).filter(w => /^[A-Z]/.test(w)).map(w => w[0]).join("").slice(0, 2) || n.slice(0, 2);
 const spMini = n => SP_ICONS[n] ? `<img class="spmini" src="${SP_ICONS[n]}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="spmini ini" aria-hidden="true">${ini(n)}</span>`;
-/* Node icons by node type, cut from the player's screenshots: [not bought, bought]. Types without art yet use the crystal. */
-/* Node art cut from the player's screenshots: [not bought, bought] per node colour. */
-const DV_TYPE_ICONS = {
-  p: ["assets/icons/green-off2.png", "assets/icons/green-on2.png"],
-  a: ["assets/icons/blue-off.png", "assets/icons/blue-on.png"],
-  c: ["assets/icons/orange-off.png", "assets/icons/orange-on.png"] };
 const dvIconSrc = it => { const set = DV_TYPE_ICONS[it.ty]; return set ? set[state.checks[it.k] ? 1 : 0] : ITEMS.crystal[2]; };
 const dvSkill = it => (it.t || "").split(" · ")[0];
 /* The acquired art sits on top, hidden; it fades in while you hover the green "Mark acquired" button. */
@@ -1910,9 +1555,6 @@ document.getElementById("dvBig").addEventListener("click", e => {
   i.addEventListener("keydown", ev => { if (ev.key === "Enter") done(true); if (ev.key === "Escape") done(false); });
   i.addEventListener("blur", () => done(true), { once: true });
 });
-/* Live refresh while typing a cost (no re-render, so the box keeps focus). */
-/* Cheapest a node can be: the node itself (passive 2, active 3, corner 4); its path only adds to that. */
-const DV_MIN = { p: 2, a: 3, c: 4 };
 const dvNeed = it => (state.dvCost || {})[it.k] ?? (DV_MIN[it.ty] || 1);
 function dvNxUpdate() {
   const total = state.dvTotal || 0, left = Math.max(0, total - dvSpent());
@@ -2027,12 +1669,9 @@ function fillStigmaText() {
   const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), post = e.filter(n => !pre.includes(n));
   mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike", post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
 }
-const STIGMA_ICON = { "Illusive Clone": "assets/icons/st-illusive-clone.png", "Swift Contract": "assets/icons/st-swift-contract.png",
-  "Savage Fang": "assets/icons/st-savage-fang.png", "Triniel's Dagger": "assets/icons/st-triniels-dagger.png" };
 const stIco = (name, cls) => STIGMA_ICON[name] ? `<img class="${cls}" src="${STIGMA_ICON[name]}" alt="">` : cls === "st-mini" ? `<span class="st-mini ini" aria-hidden="true">${ini(name)}</span>` : "";
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
 const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
-const ST_COST = L => L <= 5 ? 1 : L <= 10 ? 2 : L <= 15 ? 4 : L <= 20 ? 8 : null; /* shards to reach level L (Metabot) */
 const stLvOf = n => (state.stLv || {})[n] || 1;
 /* Upgrade order: ST_TARGETS in turn, for the stigmas you have equipped. Other stigmas stay at level 1 (the plan's sources). */
 function stPlan() {
