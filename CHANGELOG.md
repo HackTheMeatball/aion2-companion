@@ -3,6 +3,20 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.2 (beta) — 2026-10-13 · licensing and wording
+
+- License: code is now PolyForm Strict 1.0.0 (source-available: noncommercial use, no redistribution or modified
+  versions); guide text, data selection, the project's name and branding, and its artwork are all rights reserved.
+  Versions up to 0.1.1 were MIT and keep that license. See LICENSE. Contributions: issues welcome; code only with a
+  written grant.
+- Wording: the guide is described as unofficial everywhere (README, share cards, installed-app name); footer adds the
+  NC disclaimer, a "check in game" note, copyright and a Privacy link; the Sources card says "every sourced value"; the
+  "verified" badge explains itself.
+- PRIVACY.md: claude.ai build note, a Changes section. CLAUDE.md: licensing and source rules. ISSUES.md: icon
+  provenance to record.
+- ROADMAP.md re-sequenced: foundations (0.2) before correctness (0.3), characters (0.4), new players (0.5), then classes.
+- No change to saved progress.
+
 ## 0.1.1 (beta) — 2026-10-13 · release automation and CI upkeep
 
 - Releases are automatic: after tests and the deploy pass on `main`, CI tags each new version and publishes its GitHub

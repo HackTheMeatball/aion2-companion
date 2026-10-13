@@ -32,46 +32,75 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
 ## Released
 
 - **0.1.0** — repository, standalone site (aion2.ishkabytes.com), offline/PWA, CI. App identical to artifact v291.
+- **0.1.1** — CI upkeep, automatic tags and GitHub Releases, this roadmap.
+- **0.1.2** — licensing (PolyForm Strict code, original content reserved) and unofficial-guide wording.
 
-## 0.1.x — upkeep and housekeeping (patches)
+## Plan
 
-- **0.1.1** — CI upkeep (current Actions versions, runner pinned to Ubuntu 24.04 ahead of the 2026-10-19
-  `ubuntu-latest` change), automatic tags and GitHub Releases, this roadmap.
-- **0.1.2** — Ascension hotfix: story gates for "The One Who Dreams" and the Lv 45 Hero/Ascension step, with sources,
-  so Next up stops offering them before the story opens them. Open question first: which story quest opens
-  "The One Who Dreams" (story data ties it to "A Daeva Dreaming Anew"; inferred until a second source confirms).
-- **0.1.3** — Version in the footer, linked to the changelog; "Report a problem" link to a GitHub issue form prefilled
-  with level, story quest and version; issue labels (`bug`, `data`, `feature`, `ux`) and templates.
-- **0.1.4** — Self-hosted fonts (removes the last third-party request); Wisdom Stone / Daevanion Crystal icon names
-  confirmed in game (needs the user; docs/ISSUES.md).
+Re-sequenced 2026-10-13 after an architecture audit. Principle: fix live bugs now; then build foundations with no
+visible change; then correctness; then class plumbing; then the experience for new users; then class content. Work that
+depends on the data format (the prerequisite audit, class content, onboarding, patch tracking) waits until the format
+exists, so it is done once.
 
-## 0.2 — Next up correctness
+### 0.1.x — fixes and upkeep (patches)
 
-The guide's core promise: it never points at something you can't do yet, and when something is locked it says what
-unlocks it.
+- **0.1.3** — Ascension hotfix: story gates for "The One Who Dreams" and the Lv 45 Hero/Ascension step (database-
+  backed); steps the story has already passed are no longer offered in Next up; text fixes; a `gates` regression suite.
+- **0.1.4** — Version in the footer linked to the changelog; "Report a problem" issue form prefilled with level, story
+  quest and version; issue labels and templates.
+- **0.1.5** — Protect saves: ask the browser for persistent storage, show a warning if a save fails, nudge an export at
+  milestones. Self-hosted fonts (no request to Google). Icon names confirmed in game (needs the owner).
 
-- One requirement model on every step: level, story quest, other quest, item level where verified.
-- Full prerequisite audit of milestone steps, regional quests and unlocks against sources; gaps stay labelled.
-- Blocked steps never shown as actionable; Next up shows the blocker chain ("unlocks after story X · N quests ahead").
-- Ascension progress bar in the Journey card, under the level slider. **Informational only**: stages done / total, the
-  current stage, what the next one unlocks and what gates it. No new inputs; derived from existing ticks and story.
-- Acceptance: a test that walks Lv 1→45 across many save states and asserts Next up never ranks a blocked step first.
+### 0.2 — Foundations (no visible change)
 
-## Later themes (order to be decided)
+Acceptance for every step: the golden-master suite (Next up and milestone output for 2,000 generated saves) is
+identical, all suites green, saves untouched.
 
-- **New player experience (fresh character, Lv 1)**: first-run welcome (what the guide does, Basic vs Advanced, ticking
-  and Level up), Lv 1–10 tuned so it isn't a wall of cards, terms explained where they first appear.
-- **Class framework (Assassin unchanged)**: class-specific data (skills, stigmas, Daevanion boards, rotation, stat
-  priority) split from shared data (story, zones, quests, strongholds, dungeons); class picker; additive, flagged state
-  migration (key stays `aion2-assassin-route-v4`). Acceptance: Assassin saves load unchanged and render identically.
-- **Classes, one per release**: two sources per claim, data + claims entries, class tests, a real character if possible.
-- **Game patch tracking**: "data verified as of game patch X" in the app, and a re-verification pass after major patches.
+1. Golden-master harness (tests only).
+2. Toolchain: ES modules + esbuild, still one static HTML file for both builds.
+3. Data out of code: hand-written data constants move to data modules; the generated block is built, not committed.
+4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests.
+5. Data format v2: stable ids (not display names), shared vs per-class folders, a sources registry with license per
+   source, `verifiedAt` per record, `requires` / `completesWith` on every step, JSON Schema validation, Node generator,
+   a fast CI job (< 2 min). The schema is reviewed by the owner before it is built.
+
+### 0.3 — Next up correctness
+
+- One requirement evaluator for every card, with blocker chains ("unlocks after story X · N quests ahead").
+- Completion derived from the story position (never stored as ticks).
+- The prerequisite audit, written straight into the new format, every gate sourced or labelled.
+- Ascension progress bar in the Journey card (informational only).
+- An invariant test over ~10,000 states: Next up never offers a blocked or already-done step.
+
+### 0.4 — Characters and class framework
+
+- Several characters per browser (the existing save stays the first character, so older versions still read it).
+- Class picker (Assassin only visible until a second class is ready); class data loaded per character.
+
+### 0.5 — New and mid-level players
+
+- First-run welcome; Lv 1–10 tuned so it isn't a wall of cards; terms explained where they first appear.
+- Joining mid-level: set level and story quest, earlier content counted as done.
+
+### 0.6 – 0.12 — one class per release
+
+Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner). Each: two sources per claim, data and
+claims entries, a golden snapshot, an in-game spot check.
+
+### 1.0
+
+All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX review and a docs pass.
+
+### Any time (patches)
+
+- Game patch re-verification, driven by `verifiedAt`.
+- Data corrections from issues.
 
 ## Unscheduled ideas
 
-- Onboarding for players joining mid-level: set level + story quest, mark earlier content done, review.
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).
 - Post-Altgard: Reshanta / Abyss.
-- Release tooling (release-please / changesets) once there are other contributors.
+- Preview deploys for pull requests (owner decision on the host).
+- Release tooling (release-please / changesets) if other contributors join.
 - Elyos (after 1.0).
