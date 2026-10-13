@@ -1,0 +1,91 @@
+/* TEMPORARY MOCK — AION 2 colour proposal (Product Design, 2026-10-13). NOT committed; for the owner's review only.
+   Tokens sampled from the owner's in-game screenshots + Metabot grade table; see colors/report.md. */
+:root {
+  /* surfaces: Atreia night (faction-select field) pulled toward the brand's deep teal */
+  --bg: #0a1318; --panel: #121a21; --panel-2: #19232c; --line: #29343e; --note-head: #06090b;
+  /* text */
+  --fg: #eceff1; --title: #f2e3c4; --muted: #98a2ab; --done: #938c7f;
+  /* interactive accent = brand Quill red ≈ Empyrean feather crimson */
+  --accent: #e0675a; --accent-soft: #e0675a26;
+  /* gold / brass family */
+  --brass: #cfa650; --rule-gold: #8c815e; --story: #ffd35f; --story-badge: #dac35c; --hint: #ffe8b9; --lv-gold: #e4d39f;
+  --btn-gold-hi: #ffe23d; --btn-gold: #e6ac1f; --btn-gold-lo: #b4800d; --btn-ink: #1a1206; --keyword: #ecb145;
+  --warn: var(--keyword);
+  /* quest types */
+  --regional: #56d8b3; --regional-badge: #38a281;
+  /* blue highlight (Quest Complete, selection) */
+  --glow: #3d82bf; --glow-line: #90e1ff; --ice: #ceeaf4;
+  /* factions */
+  --elyos: #6fd6ca; --elyos-glow: #2f9385; --elyos-tint: #b0fffd;
+  --asmo: #c793ee; --asmo-glow: #8534aa; --asmo-tint: #e2d8ff;
+  --faction: var(--asmo); --faction-glow: var(--asmo-glow);
+  /* items */
+  --grade-common: #c3c3c3; --grade-rare: #19e048; --grade-epic: #379aff; --grade-unique: #ffd02b;
+  --grade-heroic: #ff6c00; --grade-mythic: #ff3245; --grade-special: #00ffd8;
+  --upgrade: #74ee15; --item-frame: #33bde0;
+  /* parchment notes */
+  --parchment: #ede2ca; --parchment-edge: #c9b896; --ink: #1f1a14; --ink-2: #4a3f31; --ink-place: #a3200c;
+  --good: #5fbf8a;
+  --display: "Fraunces", Georgia, serif;
+}
+/* ---- application of the tokens (mock) ---- */
+body { background-image: radial-gradient(1100px 480px at 85% -12%, color-mix(in srgb, var(--faction-glow) 22%, transparent) 0%, transparent 62%),
+                         radial-gradient(900px 420px at -10% 110%, #0f2a2e 0%, transparent 60%) !important; }
+h1, h2, .num { font-variation-settings: "opsz" 96, "SOFT" 60, "WONK" 0; }
+h1 { color: var(--title); font-weight: 560; letter-spacing: -.005em; }
+/* faction identity: eyebrow only */
+.eyebrow > span:first-child { color: var(--faction); }
+
+/* primary actions = the game's gold button */
+.lvlup-btn, .ns-btn.primary, .sphero.ok .dvbuy, .dvrow.nx.ok .dvbuy, .qs-next, .cube-btn {
+  background: linear-gradient(180deg, var(--btn-gold-hi) -30%, var(--btn-gold) 45%, var(--btn-gold-lo) 130%) !important;
+  color: var(--btn-ink) !important; border: 1px solid color-mix(in srgb, var(--btn-gold-hi) 70%, transparent) !important;
+  box-shadow: 0 2px 0 #6e4d06 !important; }
+.lvlup-btn:hover { box-shadow: 0 2px 0 #6e4d06, 0 0 14px color-mix(in srgb, var(--btn-gold) 45%, transparent) !important; }
+
+/* main story = gold diamond (game quest tracker) */
+.st .dot, .chain .dot { border-radius: 2px !important; transform: rotate(45deg) scale(.86); }
+.st.prev .dot { background: var(--story-badge); border-color: var(--story-badge); }
+.st.cur .dot { background: var(--accent); border-color: var(--accent); }
+.schip { color: var(--story) !important; border-color: color-mix(in srgb, var(--story-badge) 55%, transparent) !important; }
+.schip::before { content: "◆ "; color: var(--story-badge); }
+
+/* regional quests = teal diamond + teal titles; completed = grey strikethrough */
+.sub-h.rq { color: var(--regional) !important; }
+.sub-h.rq .sub-txt::before { content: "◆"; color: var(--regional-badge); margin-right: 6px; }
+.sub-h.rq ~ li.qrow .txt > b { color: var(--regional); }
+.item input:checked ~ .txt, .sub-h.rq ~ li.qrow input:checked ~ .txt > b { color: var(--done) !important; text-decoration-color: color-mix(in srgb, var(--done) 70%, transparent) !important; }
+/* hints / sub-objective notes = the tracker's pale amber, not warning amber */
+.item .note { color: var(--hint); }
+.item .note::before { content: "✦ "; color: var(--brass); }
+
+/* milestone states: current = accent (unchanged), missed = amber tag + Lv box only, cleared = grey like the game */
+details.step.overdue { border-color: var(--line) !important; }
+.tag.warn { color: var(--keyword); border-color: color-mix(in srgb, var(--keyword) 70%, transparent); }
+details.step.done .num { background: var(--panel-2) !important; border-color: var(--line) !important; color: var(--done) !important; }
+details.step.done .tag { color: var(--done); }
+details.step.done .tag::before { content: "✓ "; }
+.track li.cleared .dot { background: var(--done); border-color: var(--done); }
+.track li.cleared .ms-meta { color: var(--done); }
+
+/* upgrade available = cyan item frame + green arrow (reward window) */
+.sphero.ok .dvico { position: relative; border: 1.5px solid var(--item-frame) !important; box-shadow: inset 0 0 10px color-mix(in srgb, var(--item-frame) 35%, transparent); }
+.sphero.ok .dvico::after { content: ""; position: absolute; left: 3px; top: 3px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 7px solid var(--upgrade); filter: drop-shadow(0 0 2px #000); }
+.soonlist .slv.now, .top-grid .soonlist .slv.now { color: var(--upgrade) !important; }
+.soonlist .slv.now::before { content: "▲ "; font-size: 8px; vertical-align: 1px; }
+
+/* the map / notes card = in-game scroll: dark header, gold title, star rule, parchment, dark ink, red place names */
+section.card.notes:not(.foldcard) { background: radial-gradient(120% 90% at 50% 35%, #f3ead6 0%, var(--parchment) 45%, var(--parchment-edge) 100%); color: var(--ink); border: 1px solid var(--rule-gold); padding-top: 0; overflow: hidden; }
+section.card.notes:not(.foldcard) h2 { margin: 0 -16px 14px; padding: 14px 16px 18px; background: var(--note-head); color: var(--title); font: 500 17px/1.1 var(--display); letter-spacing: .01em; text-transform: none; text-align: center; position: relative; }
+section.card.notes:not(.foldcard) h2::after { content: "✦"; position: absolute; left: 0; right: 0; bottom: 3px; text-align: center; font-size: 11px; color: #fff3cf; text-shadow: 0 0 6px #ffd98a;
+  background: linear-gradient(90deg, transparent 8%, var(--rule-gold) 30%, var(--rule-gold) 46%, transparent 47%, transparent 53%, var(--rule-gold) 54%, var(--rule-gold) 70%, transparent 92%) center / 100% 1px no-repeat; }
+section.card.notes:not(.foldcard) p { color: var(--ink-2); }
+section.card.notes:not(.foldcard) p b { color: var(--ink); }
+.place { color: var(--ink-place); font-weight: 600; }
+
+/* reward toast = Quest Complete banner */
+#rwToast { background: radial-gradient(120% 140% at 50% 0%, color-mix(in srgb, var(--glow) 35%, var(--panel)) 0%, var(--panel) 70%) !important; border-color: color-mix(in srgb, var(--glow) 60%, transparent) !important; color: var(--ice) !important; text-align: center; padding: 10px 22px 14px !important; }
+#rwToast .k { display: block; font: 600 10px var(--body); letter-spacing: .5em; text-transform: uppercase; color: #fff; margin-bottom: 4px; }
+#rwToast .m { display: block; font: 500 16px var(--display); color: var(--ice); }
+#rwToast .rule { display: block; height: 12px; margin-top: 6px; position: relative; background: linear-gradient(90deg, transparent, var(--glow-line) 30%, #fff 50%, var(--glow-line) 70%, transparent) center / 100% 1px no-repeat; }
+#rwToast .rule::after { content: "✦"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); font-size: 12px; color: #fff; text-shadow: 0 0 6px var(--glow-line), 0 0 12px var(--glow); }

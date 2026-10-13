@@ -1,0 +1,203 @@
+{
+ "classes": [
+  {
+   "cls": "Gladiator",
+   "wow": "Warrior",
+   "wow_hex": "#C69B6D",
+   "app": "#b5875a",
+   "cr_panel": 5.5,
+   "cr_wow": 6.95,
+   "deutan": "#a1945b",
+   "protan": "#968a56",
+   "tritan": "#c37d7c",
+   "why": "Two-handed melee bruiser (greatsword/polearm), the plate front-liner: the Warrior archetype."
+  },
+  {
+   "cls": "Templar",
+   "wow": "Paladin",
+   "wow_hex": "#F48CBA",
+   "app": "#F48CBA",
+   "cr_panel": 7.79,
+   "cr_wow": 7.79,
+   "deutan": "#b2b3b7",
+   "protan": "#98a1bc",
+   "tritan": "#ff889d",
+   "why": "Sword-and-shield holy knight and main tank: the Paladin archetype."
+  },
+  {
+   "cls": "Assassin",
+   "wow": "Rogue",
+   "wow_hex": "#FFF468",
+   "app": "#FFF468",
+   "cr_panel": 15.39,
+   "cr_wow": 15.39,
+   "deutan": "#fff370",
+   "protan": "#ffec58",
+   "tritan": "#ffe5d6",
+   "why": "Dual daggers, stealth, back attacks and poisons: the Rogue archetype."
+  },
+  {
+   "cls": "Ranger",
+   "wow": "Hunter",
+   "wow_hex": "#AAD372",
+   "app": "#AAD372",
+   "cr_panel": 10.26,
+   "cr_wow": 10.26,
+   "deutan": "#d6c578",
+   "protan": "#dcc86a",
+   "tritan": "#aecbbc",
+   "why": "Bow, traps and range: the Hunter archetype."
+  },
+  {
+   "cls": "Sorcerer",
+   "wow": "Mage",
+   "wow_hex": "#3FC7EB",
+   "app": "#3FC7EB",
+   "cr_panel": 8.85,
+   "cr_wow": 8.85,
+   "deutan": "#99b1eb",
+   "protan": "#b1c2ed",
+   "tritan": "#00d3d2",
+   "why": "Spellbook elemental nuker (frost/fire), crowd control: the Mage archetype."
+  },
+  {
+   "cls": "Spiritmaster",
+   "wow": "Warlock",
+   "wow_hex": "#8788EE",
+   "app": "#8788EE",
+   "cr_panel": 5.68,
+   "cr_wow": 5.68,
+   "deutan": "#5c8fec",
+   "protan": "#6296f2",
+   "tritan": "#669daf",
+   "why": "Summons spirits, damage over time, fear and debuffs: the Warlock archetype."
+  },
+  {
+   "cls": "Cleric",
+   "wow": "Priest",
+   "wow_hex": "#FFFFFF",
+   "app": "#FFFFFF",
+   "cr_panel": 17.57,
+   "cr_wow": 17.57,
+   "deutan": "#ffffff",
+   "protan": "#ffffff",
+   "tritan": "#ffffff",
+   "why": "Main healer with holy damage: the Priest archetype."
+  },
+  {
+   "cls": "Chanter",
+   "wow": "Druid",
+   "wow_hex": "#FF7C0A",
+   "app": "#FF7C0A",
+   "cr_panel": 6.81,
+   "cr_wow": 6.81,
+   "deutan": "#c2ad00",
+   "protan": "#a38f00",
+   "tritan": "#ff5d6a",
+   "why": "Staff-fighting hybrid: buffs (mantras), heals and melee. Shaman (#0070DD) is the closer archetype but fails CVD against Spiritmaster (see below), Druid is the staff-wielding hybrid healer/fighter."
+  },
+  {
+   "cls": "Brawler (KR/TW only)",
+   "wow": "Evoker (provisional)",
+   "wow_hex": "#33937F",
+   "app": "#33937F",
+   "cr_panel": 4.7,
+   "cr_wow": 4.7,
+   "deutan": "#808081",
+   "protan": "#8e8a7e",
+   "tritan": "#00958d",
+   "why": "Archetype match is Demon Hunter #A330C9 (Fury resource, leaps) but it collides with Spiritmaster under deuteranopia (dE 5.2); Monk (fists) collides with Ranger (6.2), Death Knight with Gladiator (6.7). Evoker teal-green is the only WoW colour that stays >= 12 from all eight. Not in global: decide when it ships."
+  }
+ ],
+ "pairs": [
+  {
+   "mode": "deutan",
+   "a": "Assassin",
+   "b": "Ranger",
+   "de": 12.3
+  },
+  {
+   "mode": "deutan",
+   "a": "Ranger",
+   "b": "Chanter",
+   "de": 11.2
+  },
+  {
+   "mode": "deutan",
+   "a": "Sorcerer",
+   "b": "Spiritmaster",
+   "de": 11.9
+  },
+  {
+   "mode": "protan",
+   "a": "Gladiator",
+   "b": "Chanter",
+   "de": 11.2
+  },
+  {
+   "mode": "protan",
+   "a": "Gladiator",
+   "b": "Brawler (KR/TW only)",
+   "de": 12.4
+  },
+  {
+   "mode": "protan",
+   "a": "Templar",
+   "b": "Sorcerer",
+   "de": 10.2
+  },
+  {
+   "mode": "protan",
+   "a": "Assassin",
+   "b": "Ranger",
+   "de": 10.0
+  },
+  {
+   "mode": "tritan",
+   "a": "Gladiator",
+   "b": "Templar",
+   "de": 12.3
+  },
+  {
+   "mode": "tritan",
+   "a": "Gladiator",
+   "b": "Chanter",
+   "de": 12.1
+  },
+  {
+   "mode": "tritan",
+   "a": "Templar",
+   "b": "Chanter",
+   "de": 10.8
+  },
+  {
+   "mode": "tritan",
+   "a": "Assassin",
+   "b": "Cleric",
+   "de": 11.7
+  }
+ ],
+ "shaman_alt": {
+  "chanter": "#4f83e0",
+  "clashes": [
+   {
+    "mode": "deutan",
+    "a": "Spiritmaster",
+    "b": "Chanter",
+    "de": 6.1
+   },
+   {
+    "mode": "protan",
+    "a": "Assassin",
+    "b": "Ranger",
+    "de": 10.0
+   },
+   {
+    "mode": "protan",
+    "a": "Spiritmaster",
+    "b": "Chanter",
+    "de": 3.4
+   }
+  ]
+ }
+}
