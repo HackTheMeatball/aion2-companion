@@ -1,12 +1,12 @@
 # Architecture
 
-The app is one static HTML page with no framework and no runtime dependencies. Its source is split into a few files
+Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveling guide). The app is one static HTML page with no framework and no runtime dependencies. Its source is split into a few files
 (0.2 P1) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
 
 | Source | What |
 |---|---|
 | `src/index.html` | page shell: head, markup, `@web-only` markers, and the tags naming what is inlined |
-| `src/styles/fonts.css`, `src/styles/app.css` | the styles (the `@font-face` rules; everything else), inlined verbatim |
+| `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim |
 | `src/main.js` | the app script (ES module entry, ≈2,400 lines, still one global scope); imports the generated data |
 | `src/data/generated.js` | the generated data block as an ES module (`npm run gen`; never edit by hand) |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
@@ -17,6 +17,10 @@ The app is one static HTML page with no framework and no runtime dependencies. I
 |---|---|---|
 | `dist/` | GitHub Pages, <https://aion2.ishkabytes.com/> | full `<head>`, icons at `assets/icons/*.png`, manifest, service worker |
 | `dist-artifact/index.html` | claude.ai artifact (single file) | no document skeleton (claude.ai adds one), icons at `/_blob/<id>`, no SW / manifest |
+
+Branding (Daeva Companion) lives in the shared shell (title, header lockup as inline SVG, footer), so the frozen claude.ai
+build (DECISIONS D4) carries the new name too; it needs no new blob. Favicon, manifest and app icons are web-only
+(`public/`), drawn by `tools/brand/build.py` from `brand/`.
 
 ## 1. Saved progress (the part you must not break)
 

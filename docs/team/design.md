@@ -13,8 +13,11 @@ UX of every visible change, accessibility and mobile quality.
 - Original art only for branding; game art stays NC's and limited to existing in-app icons.
 - Review the built result (screenshots at 1500 / 390 px, light and dark if relevant) before it goes to the owner.
 
-**Brand:** the product is named **Ascend Companion** (subtitle along the lines of "Leveling companion for AION 2";
-endgame later). Brand identity project in progress: the owner picks a direction.
+**Brand:** the product is **Daeva Companion**, "Unofficial companion for AION 2" (leveling now; endgame and more later;
+DECISIONS D1). Identity: direction C, **Compass Quill** (D1b): a brass and parchment compass whose needle is a red
+feather, on deep teal. Sources in `brand/`, drawn by `tools/brand/build.py` (which also renders `public/favicon.svg` and
+`public/icons/*.png`; `--sheet DIR` writes a contact sheet). Today only the brand uses C's colours (header lockup,
+favicon, icons, manifest theme colour); the app keeps its plum palette until the owner decides on the full C theme.
 
 ## Standing notes
 - The owner reads on a phone (iOS) a lot; check mobile first.

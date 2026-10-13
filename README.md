@@ -1,6 +1,6 @@
-# Aion 2 Companion (unofficial) · Asmodian Assassin Route
+# Daeva Companion (unofficial) — companion for AION 2
 
-A fan-made leveling guide for the **AION 2 Asmodian Assassin**, Lv 1 → 45: what to do next in the story, which regional
+A fan-made companion for AION 2. Today it is the leveling guide for the **Asmodian Assassin**, Lv 1 → 45: what to do next in the story, which regional
 quests are open, Sealed Dungeons and strongholds by level band, skill points, Daevanion boards and stigmas. Free-to-play
 focused. Data is cross-checked: two independent sources, game-database values or the maintainer's in-game screens; anything
 weaker is labelled *single source*, *inferred* or *disputed* in the app's Confidence card. Game data changes with patches,
@@ -55,11 +55,12 @@ npm run gen                              # regenerate the app's data block from 
 
 ```
 src/index.html          the page shell (head + markup); the build inlines the styles and scripts it names
-src/styles/*.css        styles (fonts.css: the @font-face rules; app.css), inlined verbatim
+src/styles/*.css        styles (fonts.css: the @font-face rules; app.css; brand.css: header lockup), inlined verbatim
 src/main.js             the app script (ES module entry), bundled by esbuild into one inline <script>
 src/data/generated.js   the generated data module (npm run gen; never edit by hand)
 src/site.js             the standalone site's own script (storage persistence, service worker)
 src/assets/             icons and self-hosted fonts
+brand/                  the brand's source SVGs (icon, maskable icon, favicon, wordmark); tools/brand/ draws them
 src/sw.js               service worker template (offline cache), filled in by the build
 public/                 copied to the site root: CNAME, robots.txt, sitemap.xml, 404.html, favicon, manifest + icons
 scripts/build.mjs       builds dist/ and dist-artifact/;  scripts/serve.mjs  local static server
@@ -81,7 +82,7 @@ Source-available, not open source. See [LICENSE](LICENSE) for the details.
 
 - **Code:** [PolyForm Strict 1.0.0](https://polyformproject.org/licenses/strict/1.0.0): read it and use it for any
   noncommercial purpose; no redistribution, no modified versions.
-- **Guide text, data selection, name and artwork:** © 2026 hackthemeatball, all rights reserved. Game facts themselves are
+- **Guide text, data selection, name (Daeva Companion) and artwork:** © 2026 hackthemeatball, all rights reserved. Game facts themselves are
   free for anyone.
 - **Third-party:** game names and icons © NC Corporation. Data sources are credited in the app and in
   `data/DATA_SOURCES.md`. Short quotations in `data/claims.json` stay their owners' (thegameswiki: CC BY-NC-SA 4.0).
