@@ -22,8 +22,26 @@
 <meta property="og:image" content="https://aion2.ishkabytes.com/icons/icon-512.png">
 <meta name="twitter:card" content="summary">
 <!-- @end-web-only -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Fonts are served from this site (src/assets/fonts, SIL OFL 1.1, license texts next to the files): the latin and
+   latin-ext files Google Fonts serves for Marcellus SC, Figtree 400-700 and JetBrains Mono 400/600, declared exactly as
+   Google's CSS declares them (one face per weight and subset; Figtree and JetBrains Mono are variable files shared by
+   their weights), so text renders as it did with Google Fonts. The claude.ai build inlines them (scripts/build.mjs). */
+@font-face { font-family: "Marcellus SC"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/marcellus-sc-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Marcellus SC"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/marcellus-sc-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/figtree-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/figtree-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/figtree-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/figtree-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/figtree-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/figtree-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/figtree-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/figtree-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/jetbrains-mono-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/jetbrains-mono-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/jetbrains-mono-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/jetbrains-mono-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
 <style>
 /* Layout: sticky left rail (level + progress + checkpoint track) beside milestones and route rules; stacks to one column on phones. Single dark theme by choice (Asmodian). */
 :root {
@@ -1376,6 +1394,11 @@ body.basic #spCard .sphint.warn { display: block !important; }
 @media (max-width: 600px) { .sd-tab { padding: 8px 3px; gap: 4px; font-size: 8.5px; letter-spacing: .1em; } .sd-tab .sd-chev { font-size: 11px; } }
 #gates li.sub-h.empty-h { display: none; }
 .fanline { margin: 0; padding: 0 4px; font-size: 12px; color: var(--muted); }
+/* Save failed (storeState): one card above the layout, in the warning color, with the Export action. */
+.savewarn { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding: 10px 16px; font-size: 13px; border-color: var(--warn); color: var(--fg); }
+.savewarn[hidden] { display: none; }
+.savewarn .xfer-btn { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
+.savewarn .xfer-btn:hover { border-color: var(--accent); }
 .fanline a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
 </style>
 <!-- @web-only -->
@@ -1389,6 +1412,9 @@ body.basic #spCard .sphint.warn { display: block !important; }
     <h1>Asmodian Assassin Route</h1>
     <p class="sub">Free-to-play · story first · <b>Next up</b> always shows your next move.</p>
   </header>
+
+  <div class="card savewarn" id="saveWarn" role="alert" hidden><span>Your progress couldn't be saved in this browser. Export a backup.</span>
+    <button type="button" class="xfer-btn" id="saveWarnExp" hidden>Export progress</button></div>
 
   <div class="layout">
     <aside class="rail">
@@ -2036,22 +2062,22 @@ try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) { state 
 /* A fresh browser: the one-time player seeds below are for the saved progress that predates them, so they're marked
    done without running; cleared milestones start folded (Filters → Cleared milestones). Existing saves keep their settings. */
 if (!hadSave) { state.seedLv12 = state.stTriniel1 = state.dvReset1 = true; state.hideCards = true; }
-if (migrateV5(state) && hadSave) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+if (migrateV5(state) && hadSave) { storeState(); }
 /* PLAYER-SEED-START: one-time sync to skill levels reported in game (Oct 10, Lv 12). Runs once per saved progress. */
 if (!state.seedLv12) {
   const lv = { "Quick Slice": 4, "Savage Roar": 5, "Shadowstrike": 5, "Ambush": 5, "Heart Gore": 3, "Exploit Weakness": 4, "Rear Smite": 2, "Insignia Explosion": 1 };
   Object.entries(lv).forEach(([n, v]) => { for (let L = 2; L <= 10; L++) state.checks[`sp:${n}:${L}`] = L <= v; });
   state.stones = 2; state.level = Math.max(state.level || 1, 12); state.seedLv12 = true;
-  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  storeState();
 }
 /* One-time: the player reported Triniel's Dagger learned and equipped (Oct 12, Lv 23), so Stigmas are unlocked too. */
 if (!state.stTriniel1) {
   GATES.forEach(g => g.items.forEach(it => { if (it.stig === 1) state.checks[it.k] = true; }));
   state.checks["g22:0"] = true; state.stLv = Object.assign({ "Triniel's Dagger": 1 }, state.stLv || {}); state.stTriniel1 = true;
-  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  storeState();
 }
 /* One-time board reset: the player re-enters board data from scratch. */
-if (!state.dvReset1) { delete state.dvTotal; delete state.dvCost; delete state.dvPts; delete state.crystals; Object.keys(state.checks).forEach(k => { if (k.startsWith("dv:")) delete state.checks[k]; }); state.dvReset1 = true; try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+if (!state.dvReset1) { delete state.dvTotal; delete state.dvCost; delete state.dvPts; delete state.crystals; Object.keys(state.checks).forEach(k => { if (k.startsWith("dv:")) delete state.checks[k]; }); state.dvReset1 = true; storeState(); }
 /* PLAYER-SEED-END */
 /* An equipped slot keeps the stigma it was equipped with, even if the plan's order changes later. */
 GATES.forEach(g => g.items.forEach(it => { if (it.stig && state.checks[it.k] && !(state.stPick || {})[it.stig]) { state.stPick = state.stPick || {}; state.stPick[it.stig] = STIGMA_PLAN[it.stig - 1]; } }));
@@ -2060,9 +2086,18 @@ GATES.forEach(g => g.items.forEach(it => { if (it.stig && state.checks[it.k] && 
 if (!state.eputSync1) {
   const all = GATES.flatMap(g => g.items);
   all.forEach(it => { if (!it.stig || !state.checks[it.k]) return; const e = all.find(x => x.eput === it.stig); if (e) state.checks[e.k] = true; });
-  state.eputSync1 = true; if (hadSave) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  state.eputSync1 = true; if (hadSave) { storeState(); }
 }
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+/* Every write of the progress goes through storeState(): same key, same data, same moments as before (0.1.5). A write
+   that throws (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
+function storeState() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); setSaveWarn(false); } catch (e) { setSaveWarn(true); }
+}
+function setSaveWarn(on) {
+  const el = document.getElementById("saveWarn"); if (!el || el.hidden === !on) return;
+  el.hidden = !on;
+}
+const save = () => { storeState(); };
 
 const mainEl = document.getElementById("main");
 const layoutEl = document.querySelector(".layout");
@@ -4003,9 +4038,11 @@ dvRespec.addEventListener("click", () => {
    Anywhere else (the standalone site) it is a plain Blob download. */
 (async () => {
   const btn = document.getElementById("expBtn"), msg = document.getElementById("xferMsg");
+  /* the save-failed banner offers the same Export action wherever this button is available */
+  const show = on => { btn.hidden = !on; document.getElementById("saveWarnExp").hidden = !on; };
   const fname = () => `aion2-assassin-progress-${new Date().toISOString().slice(0, 10)}.json`;
   if (!(window.claude && window.claude.use)) {
-    btn.hidden = false;
+    show(true);
     btn.addEventListener("click", () => {
       const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
       a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
@@ -4015,10 +4052,10 @@ dvRespec.addEventListener("click", () => {
   }
   let dl = null; try { dl = await window.claude.use("downloads"); } catch (e) { dl = null; }
   if (!dl) return;
-  btn.hidden = false;
+  show(true);
   btn.addEventListener("click", async () => {
     try { await dl.save({ filename: fname(), data: JSON.stringify(state, null, 1) }); }
-    catch (err) { const c = err && err.code; if (msg && c !== "declined") msg.textContent = c === "rate_limited" ? "A save prompt is already open." : "Export isn't available here."; if (c === "unavailable" || c === "not_granted") btn.hidden = true; }
+    catch (err) { const c = err && err.code; if (msg && c !== "declined") msg.textContent = c === "rate_limited" ? "A save prompt is already open." : "Export isn't available here."; if (c === "unavailable" || c === "not_granted") show(false); }
   });
 })();
 document.getElementById("impIn").addEventListener("change", async e => {
@@ -4036,6 +4073,7 @@ document.getElementById("impIn").addEventListener("change", async e => {
     location.reload();
   };
 });
+document.getElementById("saveWarnExp").addEventListener("click", () => document.getElementById("expBtn").click());
 document.getElementById("srcLink").addEventListener("click", () => { document.getElementById("srcCard").open = true; });
 /* Report a problem: a GitHub issue form (.github/ISSUE_TEMPLATE/bug.yml) whose fields are prefilled through the URL with
    the version, level, story quest, view mode, build and browser. Nothing else from the saved progress goes into the link.
@@ -4058,6 +4096,19 @@ render(); update();
 </script>
 <!-- @web-only -->
 <script>
+/* Ask the browser to keep this site's storage, so the progress in localStorage isn't evicted (Safari / iOS can clear it
+   after 7 days without a visit). Standalone site only. Chrome, Edge and Safari decide without asking; Firefox may show a
+   prompt (it remembers Allow / Don't allow), so this runs only when the page loaded saved progress (not on a first
+   visit) and at most once per browser session (a sessionStorage flag; nothing is added to localStorage). */
+(async () => {
+  const st = navigator.storage;
+  if (!st || typeof st.persist !== "function" || typeof st.persisted !== "function") return;
+  try {
+    if (!hadSave || sessionStorage.getItem(KEY + ":persist-asked") || await st.persisted()) return; /* hadSave: progress existed at load */
+    sessionStorage.setItem(KEY + ":persist-asked", "1");
+    await st.persist();
+  } catch (e) { /* storage unavailable: nothing to protect */ }
+})();
 /* Offline support (standalone site only; never in the claude.ai build). Secure contexts only: https or localhost. */
 if ("serviceWorker" in navigator && (location.protocol === "https:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))) {
   addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });

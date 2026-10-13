@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Test runner: serves dist/ (+ tests/baselines) on a free localhost port and runs every suite against it.
    `npm test` builds first. Usage: node tests/run.mjs [--only e1,mig1,...] [--quick] [--noshots] [--jobs N] [--retries N] [--with-fonts]
-   Google Fonts is blocked in the browsers unless --with-fonts (tests/support/block-web-fonts.cjs).
+   Web fonts (and service workers, except where a suite allows them) are blocked in the browsers unless --with-fonts
+   (tests/support/block-web-fonts.cjs), so layouts render with fallback fonts on every machine.
    A failed suite is re-run once (--retries 0 to turn off) because the update() timing checks (< 15 ms) can trip on a
    busy machine; a pass on retry is reported as FLAKY with the first run's failures, so it stays visible.
 

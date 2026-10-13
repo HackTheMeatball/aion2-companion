@@ -3,6 +3,17 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.5 (beta) — 2026-10-13 · protect saves, self-hosted fonts
+
+- On the site, the app asks your browser to keep its storage (persistent storage), so Safari/iOS is less likely to clear
+  your progress after a week without a visit. Asked at most once per browser session; no new saved data.
+- If saving ever fails (private mode, storage full or blocked), a warning appears with an Export button; it disappears
+  after the next successful save. What is saved, and where, is unchanged.
+- Fonts are served from this site instead of Google Fonts, so no request goes to Google. The fonts (SIL Open Font
+  License 1.1) ship with their license texts. The claude.ai build embeds them.
+- PRIVACY.md and LICENSE updated for the fonts.
+- No change to saved progress.
+
 ## 0.1.4 (beta) — 2026-10-13 · version and problem reports in the app
 
 - Footer: the app's version, linked to this changelog, and a *Report a problem* link that opens a GitHub issue form
