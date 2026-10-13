@@ -17,7 +17,9 @@
      gates    story gates: no Next up step before its story prerequisite or after the story passed it (every story position)
      journey  the user's save from Lv 27 to 45 by clicking; fails on any "!!" line except the known harness issue below
      golden   golden master: ~2,000 generated saves, Next up / milestones / Journey / dungeons / stored state vs
-              tests/golden/snapshots (tests/golden/README.md; `node tests/golden.js --record` after an intended change) */
+              tests/golden/snapshots (tests/golden/README.md; `node tests/golden.js --record` after an intended change)
+     a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
+              spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours */
 import { spawn, execSync } from 'node:child_process';
 import { createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { cpus } from 'node:os';
@@ -58,6 +60,7 @@ const SUITES = {
   mig2: { args: ['tests/e2-migtest.js', V287, CUR, FX285], pass: /E2 MIGRATION CHECK PASSED/ },
   regress: { args: ['tests/regress.js', ...(flag('quick') ? ['--quick'] : []), ...(flag('noshots') ? ['--noshots'] : [])], pass: /hard fail 0\b/ },
   golden: { args: ['tests/golden.js'], pass: /GOLDEN VERIFY PASSED/ },
+  a11y: { args: ['tests/a11y.js'], pass: /A11Y CHECKS PASSED/ },
   journey: { args: ['tests/journey.js'], check: out => {
     const bad = out.split('\n').filter(l => l.includes('!!') && !JOURNEY_KNOWN.some(r => r.test(l)));
     if (!/===== Lv 45/.test(out)) bad.push('journey did not reach Lv 45');
@@ -66,7 +69,7 @@ const SUITES = {
 const only = opt('only') ? opt('only').split(',') : null;
 for (const n of only || []) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const order = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'mig2', 'mig1', 'e4', 'e3', 'site'].filter(n => !only || only.includes(n));
+const order = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'mig2', 'mig1', 'e4', 'e3', 'site'].filter(n => !only || only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));
 
 mkdirSync(OUT, { recursive: true });
