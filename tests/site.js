@@ -50,10 +50,12 @@ const checkReport = (label, m, want) => {
       canonical: (document.querySelector('link[rel=canonical]') || {}).href, manifest: (document.querySelector('link[rel=manifest]') || {}).href,
       icon: (document.querySelector('link[rel=icon]') || {}).href, theme: (document.querySelector('meta[name=theme-color]') || {}).content,
       og: ['og:title', 'og:description', 'og:url', 'og:image', 'og:type'].every(k => !!(document.querySelector(`meta[property="${k}"]`) || {}).content),
-      lang: document.documentElement.lang }));
+      lang: document.documentElement.lang, touch: (document.querySelector('link[rel=apple-touch-icon]') || {}).href,
+      brand: !!document.querySelector('header.top .brand-name[role=img][aria-label="Daeva Companion"]') }));
     ok('head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang',
-      head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Asmodian Assassin Route' && /width=device-width/.test(head.viewport) && head.desc &&
+      head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Daeva Companion · Asmodian Assassin' && /width=device-width/.test(head.viewport) && head.desc &&
       head.canonical === 'https://aion2.ishkabytes.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
+    ok('brand: apple-touch-icon link, Daeva Companion lockup in the header', /icons\/apple-touch-icon\.png$/.test(head.touch) && head.brand, head);
     const foot = await p.evaluate(() => { const f = document.querySelector('.fanline'), links = f ? [...f.querySelectorAll('a')] : [];
       return { text: f ? f.innerText : '', links: links.map(a => [a.textContent, a.getAttribute('href'), a.getAttribute('rel')]) }; });
     const mb = foot.links.find(l => l[0] === 'Metabot');
@@ -99,8 +101,13 @@ const checkReport = (label, m, want) => {
     const ctx = await b.newContext(), p = await ctx.newPage();
     const m = await (await p.request.get(CFG.BASE + '/manifest.webmanifest')).json();
     const icons = await Promise.all(m.icons.map(async i => [i.src, (await p.request.get(CFG.BASE + '/' + i.src)).status()]));
-    ok('manifest: name, start_url, standalone, colors, 192/512 icons all served', m.name && m.short_name && m.start_url && m.display === 'standalone' && m.theme_color === '#110c13' &&
+    ok('manifest: name, start_url, standalone, colors, 192/512 icons all served', m.name && m.short_name && m.start_url && m.display === 'standalone' && m.theme_color === '#0b1b1e' && m.background_color === '#110c13' &&
       ['192x192', '512x512'].every(s => m.icons.some(i => i.sizes === s)) && icons.every(([, s]) => s === 200), { m, icons });
+    ok('manifest: Daeva Companion; separate "any" and "maskable" PNGs at 192 and 512 (no "any maskable")', /^Daeva Companion/.test(m.name) && m.short_name.length <= 12 &&
+      ['any', 'maskable'].every(pu => ['192x192', '512x512'].every(s => m.icons.some(i => i.sizes === s && i.purpose === pu && /\.png$/.test(i.src)))) &&
+      m.icons.every(i => !/ /.test(i.purpose)) && new Set(m.icons.map(i => i.src)).size === m.icons.length, m.icons);
+    const touch = await p.request.get(CFG.BASE + '/icons/apple-touch-icon.png');
+    ok('apple-touch-icon: 180 px PNG served', touch.status() === 200 && touch.headers()['content-type'] === 'image/png' && (await touch.body()).readUInt32BE(16) === 180);
     const r404 = await p.goto(CFG.BASE + '/no-such-page');
     ok('404: status 404 with the styled page and a link home', r404.status() === 404 && /Off the route/.test(await p.innerText('h1')) && await p.getAttribute('a.btn', 'href') === '/');
     const robots = await (await p.request.get(CFG.BASE + '/robots.txt')).text(), cname = await (await p.request.get(CFG.BASE + '/CNAME')).text();
