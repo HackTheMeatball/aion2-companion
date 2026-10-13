@@ -45,6 +45,10 @@ every change.
 - Regional quests: `rq:<quest id>` (Metabot / game id). Sealed Dungeons: `sd:<slug>` (`g10h:` kept for Lv 10).
   Strongholds: `sh:<slug>`. Skills: `sp:<skill>:<level>`. Board nodes: `dv:<node>` (Nezekan), `dv:z:` / `dv:v:` /
   `dv:t:<node>` (Zikel / Vaizel / Triniel).
+- Milestone step gates (read by `stepsOf` for Next up): `story: X` / `after: X` = the story has **reached** X (your
+  current quest is X or later); `turnedIn: X` = X is **turned in** (current quest past X, or X is the last covered
+  quest and `storyEnd` is X); `byStory` = the step *is* story quest X: ticked by *Turned in*, hidden from Next up while
+  you're on X and (display only, no tick written) once you're past it.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.
 
@@ -131,6 +135,7 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
+| `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary

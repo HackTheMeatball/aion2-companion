@@ -8,9 +8,9 @@ that cite the page (`file: record`); *Card group* is where the app lists it. Pag
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-350 URLs · 291 in the Sources card · 59 cited only in the data files
+359 URLs · 300 in the Sources card · 59 cited only in the data files
 
-## Metabot (153)
+## Metabot (157)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -63,7 +63,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Corrupted Forester Ruins](https://metabot.gg/en/aion-2/quests/corrupted-forester-ruins) | Strongholds and Sealed Dungeons | strongholds.json: Corrupted Forester Ruins |
 | [Metabot: Creion of Gribade](https://metabot.gg/en/aion-2/quests/creion-of-gribade) | Main story | story.json: Creion of Gribade |
 | [Metabot: Creion Research Assistant](https://metabot.gg/en/aion-2/quests/creion-research-assistant) | Regional quests | rq.json: Creion Research Assistant; locations.json: quests / Creion Research Assistant |
-| [Metabot: Daeva trapped in a nightmare](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) | Main story | story-40-45.json: Forgotten Commander |
+| [Metabot: Daeva trapped in a nightmare](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) | Main story | story-40-45.json: Forgotten Commander; claims.json: C37 |
 | [Metabot: Daybreak Society](https://metabot.gg/en/aion-2/quests/daybreak-society) | Main story | story-40-45.json: Daybreak Society |
 | [Metabot: Daybreak Society Rescue Operation](https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation) | Main story | story-40-45.json: Daybreak Society Rescue Operation |
 | [Metabot: Destruction Archon Underground Fortress](https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress) | Main story | story.json: Destruction Archon Underground Fortress |
@@ -139,11 +139,15 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Striving for Coexistence](https://metabot.gg/en/aion-2/quests/striving-for-coexistence) | Main story | story.json: Striving for Coexistence |
 | [Metabot: Symbol of Liberation](https://metabot.gg/en/aion-2/quests/symbol-of-liberation) | Main story | story.json: Symbol of Liberation |
 | [Metabot: Tangled Past](https://metabot.gg/en/aion-2/quests/tangled-past) | Main story | story.json: Tangled Past |
+| [Metabot: The Being Beneath the Lake](https://metabot.gg/en/aion-2/quests/the-being-beneath-the-lake) | Tips and rules | claims.json: C38 |
 | [Metabot: The Breaking of the Day](https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day) | Main story | story-40-45.json: The Breaking of the Day |
 | [Metabot: The Future Within the Past](https://metabot.gg/en/aion-2/quests/the-future-within-the-past) | Regional quests | rq.json: The Future Within the Past; locations.json: quests / The Future Within the Past |
 | [Metabot: The Great Curse-Breaking Caper](https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper) | Regional quests | rq.json: The Great Curse-Breaking Caper; locations.json: quests / The Great Curse-Breaking Caper |
 | [Metabot: The High Priest Awakens](https://metabot.gg/en/aion-2/quests/the-high-priest-awakens) | Main story | story-40-45.json: The High Priest Awakens |
 | [Metabot: The High Priest Slumbers](https://metabot.gg/en/aion-2/quests/the-high-priest-slumbers) | Main story | story.json: The High Priest Slumbers |
+| [Metabot: The One Who Dreams](https://metabot.gg/en/aion-2/quests/the-one-who-dreams-asmodian) | Tips and rules | claims.json: C36 |
+| [Metabot: The One Who Perceives](https://metabot.gg/en/aion-2/quests/the-one-who-perceives-asmodian) | Tips and rules | claims.json: C38 |
+| [Metabot: The One Who Witnesses the Nightmare](https://metabot.gg/en/aion-2/quests/the-one-who-witnesses-the-nightmare-asmodian) | Tips and rules | claims.json: C37 |
 | [Metabot: The Past Revealed](https://metabot.gg/en/aion-2/quests/the-past-revealed) | Main story | story.json: The Past Revealed |
 | [Metabot: The Survivors](https://metabot.gg/en/aion-2/quests/the-survivors) | Main story | story.json: The Survivors |
 | [Metabot: Traveling Merchant's Conundrum](https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum) | Regional quests | rq.json: Traveling Merchant's Conundrum; locations.json: quests / Traveling Merchant's Conundrum |
@@ -220,14 +224,17 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [aion2.gaming.tools: Nine Wonders of Altgard: 2nd Leg](https://aion2.gaming.tools/quests/2202070) | Regional quests | rq.json: Nine Wonders of Altgard: 2nd Leg; rq-chains.json: Nine Wonders of Altgard: 2nd Leg (after Nine Wonders of Altgard: 1st Leg); rq-chains.json: Nine Wonders of Altgard: Final Stretch (after Nine Wonders of Altgard: 2nd Leg); rq-chains.json: Nine Wonders of Altgard: 2nd Leg (after Last of the Destruction Archons) |
 | [aion2.gaming.tools: Nine Wonders of Altgard: Final Stretch](https://aion2.gaming.tools/quests/2202071) | Regional quests | rq.json: Nine Wonders of Altgard: Final Stretch; rq-chains.json: Nine Wonders of Altgard: Final Stretch (after Nine Wonders of Altgard: 2nd Leg); rq-chains.json: Nine Wonders of Altgard: Final Stretch (after Forgotten Commander) |
 
-## aion2.th.gl (4)
+## aion2.th.gl (7)
 
 | Page | Card group | Backs |
 |---|---|---|
-| [aion2.th.gl: Forgotten Commander](https://aion2.th.gl/db/quests/q_2102800) | Regional quests | rq-chains.json: A Comrade's Fate (after Forgotten Commander); rq-chains.json: A Perfect Wedding (after Forgotten Commander); rq-chains.json: Restoration Materials (after Forgotten Commander); rq-chains.json: Lost Memories (after Forgotten Commander); rq-chains.json: I'm a Believer! (after Forgotten Commander); rq-chains.json: Fallout Calmed (after Forgotten Commander); rq-chains.json: Putting a Friend to Rest (after Forgotten Commander); rq-chains.json: Sapling Hide-and-Seek (after Forgotten Commander); rq-chains.json: One Last Thing (after Forgotten Commander); rq-chains.json: Another Survivor (after Forgotten Commander); rq-chains.json: Fallout (after Forgotten Commander); rq-chains.json: A Traitor Within (after Forgotten Commander); rq-chains.json: Regular Altar Maintenance (after Forgotten Commander); rq-chains.json: Restless Spirits (after Forgotten Commander); rq-chains.json: Nine Wonders of Altgard: Final Stretch (after Forgotten Commander); rq-chains.json: Immortal Isle's Distinct Ecology (after Forgotten Commander); rq-chains.json: Spirit Isle, Where Time Has Stopped (after Forgotten Commander); rq-chains.json: Farewell, My Instructor (after Forgotten Commander); rq-chains.json: Mind Your Own Business (after Forgotten Commander); rq-chains.json: Reality Bites (after Forgotten Commander); rq-chains.json: Workplace Misunderstanding (after Forgotten Commander); rq-chains.json: Ravenous Recluse (after Forgotten Commander); rq-chains.json: Another Crisis! (after Forgotten Commander) |
+| [aion2.th.gl: A Daeva Dreaming Anew](https://aion2.th.gl/db/quests/q_2102345) | Tips and rules | claims.json: C36 |
+| [aion2.th.gl: Forgotten Commander](https://aion2.th.gl/db/quests/q_2102800) | Regional quests | rq-chains.json: A Comrade's Fate (after Forgotten Commander); rq-chains.json: A Perfect Wedding (after Forgotten Commander); rq-chains.json: Restoration Materials (after Forgotten Commander); rq-chains.json: Lost Memories (after Forgotten Commander); rq-chains.json: I'm a Believer! (after Forgotten Commander); rq-chains.json: Fallout Calmed (after Forgotten Commander); rq-chains.json: Putting a Friend to Rest (after Forgotten Commander); rq-chains.json: Sapling Hide-and-Seek (after Forgotten Commander); rq-chains.json: One Last Thing (after Forgotten Commander); rq-chains.json: Another Survivor (after Forgotten Commander); rq-chains.json: Fallout (after Forgotten Commander); rq-chains.json: A Traitor Within (after Forgotten Commander); rq-chains.json: Regular Altar Maintenance (after Forgotten Commander); rq-chains.json: Restless Spirits (after Forgotten Commander); rq-chains.json: Nine Wonders of Altgard: Final Stretch (after Forgotten Commander); rq-chains.json: Immortal Isle's Distinct Ecology (after Forgotten Commander); rq-chains.json: Spirit Isle, Where Time Has Stopped (after Forgotten Commander); rq-chains.json: Farewell, My Instructor (after Forgotten Commander); rq-chains.json: Mind Your Own Business (after Forgotten Commander); rq-chains.json: Reality Bites (after Forgotten Commander); rq-chains.json: Workplace Misunderstanding (after Forgotten Commander); rq-chains.json: Ravenous Recluse (after Forgotten Commander); rq-chains.json: Another Crisis! (after Forgotten Commander); claims.json: C37 |
 | [aion2.th.gl: Hugo Mercenaries: Deep Shadow](https://aion2.th.gl/db/quests/q_2202011) | Regional quests | rq.json: Hugo Mercenaries: Deep Shadow; rq-chains.json: Hugo Mercenaries: Deep Shadow (after Hugo Mercenaries: Past and Present); rq-chains.json: Hugo Mercenaries: An Old Promise (after Hugo Mercenaries: Deep Shadow); rq-chains.json: Hugo Mercenaries: Deep Shadow (after Canyon's Secret) |
 | [aion2.th.gl: One Last Thing](https://aion2.th.gl/db/quests/q_2202054) | Regional quests | rq.json: One Last Thing; rq-chains.json: One Last Thing (after Forgotten Commander) |
 | [aion2.th.gl: Restoration Materials](https://aion2.th.gl/db/quests/q_2202058) | Regional quests | rq.json: Restoration Materials; rq-chains.json: Restoration Materials (after Forgotten Commander) |
+| [aion2.th.gl: The One Who Witnesses the Nightmare](https://aion2.th.gl/db/quests/q_2602020) | Tips and rules | claims.json: C37 |
+| [aion2.th.gl: The One Who Dreams](https://aion2.th.gl/db/quests/q_2602030) | Tips and rules | claims.json: C36 |
 
 ## AION2HUB (4)
 
@@ -238,11 +245,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [AION2HUB: Asmodian 25–40](https://aion2hub.com/leveling/asmodian-levels-25-40) | Leveling guides, build and tips | Sources card (earlier research snapshot) |
 | [AION2HUB: Elyos levels 10 25](https://aion2hub.com/leveling/elyos-levels-10-25) | Tips and rules | claims.json: C12; claims.json: C13 |
 
-## allthings.how (81)
+## allthings.how (82)
 
 | Page | Card group | Backs |
 |---|---|---|
 | [allthings.how: article 215236](https://allthings.how/?p=215236) | Tips and rules | claims.json: C01; claims.json: C02; claims.json: C03 |
+| [allthings.how: speedrun guide (Ascension Gauge at 22 and 32)](https://allthings.how/?p=232647) | Tips and rules | claims.json: C36 |
 | [allthings.how: article 232911](https://allthings.how/?p=232911) | Skills, boards and stigmas | build.json: levelPoints |
 | [allthings.how: article 234622](https://allthings.how/?p=234622) | Tips and rules | claims.json: C13; claims.json: C23; claims.json: C24 |
 | [allthings.how: article 234744](https://allthings.how/?p=234744) | Tips and rules | claims.json: C15; claims.json: C16; claims.json: C28g |
@@ -462,10 +470,11 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 |---|---|---|
 | [shugo.gg: Lest We Forget](https://shugo.gg/quests/2202046) | Regional quests | rq.json: Lest We Forget |
 
-## Skycoach (3)
+## Skycoach (4)
 
 | Page | Card group | Backs |
 |---|---|---|
+| [Skycoach: Leveling guide](https://skycoach.gg/blog/aion-2/articles/aion-2-leveling-guide) | Tips and rules | claims.json: C36; claims.json: C38 |
 | [Skycoach: Assassin guide](https://skycoach.gg/blog/aion-2/articles/assassin-guide) | Skills, boards and stigmas | build.json: spOrderAfterCore |
 | [Skycoach: Daevanion board](https://skycoach.gg/blog/aion-2/articles/daevanion-board) | Skills, boards and stigmas | build.json: boards |
 | [Skycoach: Skill progression](https://skycoach.gg/blog/aion-2/articles/skill-progression-guide) | Leveling guides, build and tips | Sources card (earlier research snapshot) |

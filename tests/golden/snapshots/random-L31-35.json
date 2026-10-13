@@ -140,7 +140,7 @@
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins · Kibelisk: Graverobber Campsite · Lv 30–34 · 4/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 8 open at your level"},
       {"t":"Run Latrima Outpost","s":"Dranactus · Kibelisk: Battlescar Mound Clifftop · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 163 m away · 1 open"},
       {"t":"Buy Rear Smite 8 → 9","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 3","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -212,7 +212,7 @@
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
       {"t":"Buy Insignia Explosion 7 → 8","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 8 → 9","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Stigma slot 3","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -347,8 +347,8 @@
     "in": "d271ea5c9766",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: The Longest Night","s":"Main story · then Finding Nemon","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"2 to pick up · 3 in progress · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202015","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Hugo Mercenaries: Past and Present","new The Great Curse-Breaking Caper","new Her Last Favor","+14 waiting on the story Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -424,8 +424,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Children of the Elim","s":"0/8 objectives · then In the Elims' Name","c":"primary \"Turned in\" story","o":["Gain the Elim's favor collect Forest Essence kill Ashen Ursus & Black Ash Basilisk Lv21","Deliver the Forest Essence talk to Ninir","Find the Young Elim go to the marked location","+5 more after these"]},
       {"t":"Regional quests","s":"9 to pick up · 0/9 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+3 more","+10 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -502,7 +502,7 @@
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 284 m away · 5 open"},
       {"t":"Buy Insignia Explosion 7 → 8","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 8 → 9","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Stigma slot 3","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -562,7 +562,7 @@
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
       {"t":"Buy Insignia Explosion 7 → 8","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 8 → 9","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Stigma slot 3","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -621,8 +621,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"15 to pick up · 4 follow-ups · 0/19 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+13 more"]},
       {"t":"Clear All-Curing Cave and others until Lv 32","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: The Survivors","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 8 open"}
     ],
@@ -698,7 +698,7 @@
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 163 m away · 5 open"},
       {"t":"Buy Insignia Explosion 7 → 8","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 8 → 9","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Stigma slot 3","s":"Lv 32 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -762,7 +762,7 @@
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Regional quests","s":"15 to pick up · 5 follow-ups · 0/21 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more"]},
       {"t":"Clear All-Curing Cave and others until Lv 32","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 8 open"}
     ],
@@ -951,7 +951,6 @@
     "nu": [
       {"t":"Regional quests","s":"5 to pick up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32]","new Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]"]},
       {"t":"Clear Fortuneteller's Grave and others until Lv 37","s":"Moslan Forest · Kibelisk: Moslan Forest Dry Shade · Lv 15–19 · 9/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Dry Shade is 70 m away · 3 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 31. Level up first. Meanwhile: Sealed Dungeons / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 32)","c":"tag \"Needs 1 shard\""}
     ],
@@ -1389,7 +1388,6 @@
       {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Ambush 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Ambush 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1464,7 +1462,6 @@
   "random/L32-q04-before-B-rqmix": {
     "in": "9b0b300653d0",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1/5 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["run Hugo Mercenaries: Past and Present","run Missing Mount","run Creion Research Assistant","new Pain Unending","+14 waiting on the story Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
@@ -1530,7 +1527,6 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
@@ -1605,7 +1601,6 @@
   "random/L32-q10-lvonly-B-dv": {
     "in": "7c715697bb6d",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Continue the story: The Longest Night","s":"Main story · then Finding Nemon","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["new Pain Unending","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
@@ -1719,14 +1714,14 @@
   "random/L32-q12-rnd141p80-A-objs": {
     "in": "e3bb91fa532f",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
       {"t":"Continue the story: Survival Supplies","s":"Main story · then Gathering Essentials","c":"primary \"Turned in\" story"},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins · Kibelisk: Graverobber Campsite · Lv 30–34 · 3/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 8 open at your level"},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 217 m away · 2 open"},
-      {"t":"Buy Impact Hit 7 → 8","s":"Opens at Lv 33 · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Impact Hit 7 → 8","s":"Opens at Lv 33 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 9 → 10","s":"Opens at Lv 35 · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 10/11 | overdue | open",
@@ -1794,8 +1789,8 @@
   "random/L32-q16-rnd121p50-B-rqmix": {
     "in": "b0c7b28da6af",
     "nu": [
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Continue the story: Express Daeva Delivery","s":"Main story · then Veiled Truth","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 3 in progress · 5/9 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Practice Makes Perfect, Nyerk!","new Pain Unending","+5 waiting on the story Nine Wonders of Altgard: 1st Leg In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins · Kibelisk: Graverobber Campsite · Lv 30–34 · 3/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 24 open at your level"},
@@ -1868,7 +1863,6 @@
   "random/L32-q19-before-B-rqmix": {
     "in": "0751d1dc763a",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1/5 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["run Hugo Mercenaries: Past and Present","run Missing Mount","run Creion Research Assistant","new Pain Unending","+14 waiting on the story Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
@@ -2000,14 +1994,14 @@
   "random/L32-q46-rnd145p50-A-objs": {
     "in": "e9c4b26c457b",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Story: Dying Light","s":"2/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","Turn in Grisilla, Healing Spring"]},
       {"t":"Regional quests","s":"13 to pick up · 2 follow-ups · 1 near your story step · 1/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+9 more","+5 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game"]},
       {"t":"Clear Predator's Lair","s":"Purifying Forest (near your story step) · Kibelisk: Guide Rest Stop · Lv 20–24 · 3/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 17 open at your level"},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
-      {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 9 → 10","s":"Opens at Lv 35 · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 5/11 | overdue | open",
@@ -2075,7 +2069,6 @@
   "random/L32-q52-lvonly-B": {
     "in": "2d39e0dccf9c",
     "nu": [
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
       {"t":"Story: The Survivors","s":"0/3 objectives · then Rescue Operation","c":"primary \"Turned in\" story","o":["Clear up near the Watchtower Camp defeat Dratona defeat Enhanced Dratona","Neutralize the Watchtower Camp enter the Watchtower Camp","Turn in Menrik, Briskwind Shelter"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["new Pain Unending","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
@@ -2136,9 +2129,8 @@
     "in": "6e629b9e2b5e",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Rescue Operation","s":"0/6 objectives · then Last of the Destruction Archons","c":"primary \"Turned in\" story","o":["Collect supplies to deliver to the Hidden Cave steal weapons from Draconute Sentinel steal armor from Draconute Patrol search for food and recovery potions from the supply chest Kibelisk: Hidden Cave","Find out what is currently happening in the Hidden Cave join with Menrik (Kibelisk: Hidden Cave)","Explore the escape route search for the patrol log (Kibelisk: Hidden Cave)","+3 more after these"]},
       {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear Dark Root Cave","s":"Dranactus (near your story step) · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
@@ -2395,11 +2387,11 @@
       {"t":"Regional quests","s":"5 to pick up · 7/12 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Nine Wonders of Altgard: 1st Leg","new Finders Keepers [Lv 33]","new A Friend's Legacy [Lv 37]","new Bloodstained Rose [Lv 37]"]},
       {"t":"Clear Final Haven and others until Lv 40","s":"Battlescar Mound · Kibelisk: Basfelt Waterfall · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall is 50 m away · 10 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Story: Exiled Ritualist","s":"Needs Lv 40: you're 32. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 1 open"},
       {"t":"Buy Impact Hit 7 → 8","s":"Opens at Lv 33 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Insignia Explosion 8 → 9","s":"Opens at Lv 35 · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 10/11 | overdue | open",
@@ -2462,7 +2454,7 @@
     "mode": "advanced"
   },
   "random/L33-q02-before-A-filters": {
-    "in": "bd9007c3d9a4",
+    "in": "e7ab04a4e63b",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 1/2 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -2485,7 +2477,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly | hidden",
       "g28 | Cleared | 1/1 | done | hidden",
       "g30 | Side quests | 5/5 · 4 side | sideonly | hidden",
-      "g32 | Side quests | 6/6 · 4 side | sideonly | hidden",
+      "g32 | Missed | 6/11 | overdue | open",
       "g35 | 2 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -2505,7 +2497,7 @@
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension missed · 1 open Lv 6","Altgard opens missed · 1 open Lv 10","Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 4 side quests Lv 30","Stigma slot 3 cleared · 4 side quests Lv 32","Fire Temple next · 2 to go Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "track": ["Wings and Ascension missed · 1 open Lv 6","Altgard opens missed · 1 open Lv 10","Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 4 side quests Lv 30","Stigma slot 3 missed · 1 open Lv 32","Fire Temple next · 2 to go Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "38%",
       "prog": ["Quests 1 5/58","Dungeons 43/60","Strongholds 7 3/15"]
     },
@@ -2519,6 +2511,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
@@ -2530,8 +2523,8 @@
     "in": "51b3be836c4b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -2662,7 +2655,7 @@
     "mode": "basic"
   },
   "random/L33-q17-before-B-dv": {
-    "in": "1457104b6385",
+    "in": "3cbca9cc43fe",
     "nu": [
       {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 1/2 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -2682,7 +2675,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 4 side | sideonly",
+      "g32 | Missed | 6/11 | overdue | open",
       "g35 | 2 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -2716,6 +2709,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -2976,8 +2970,8 @@
     "in": "63d613aa34e4",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: A New Lead","s":"0/4 objectives · then Malice Laid Bare","c":"primary \"Turned in\" story","o":["Take Odyle Jelly check the Worn Chest (Kibelisk: Safe Haven)","Deliver the Odyle Jelly talk to Baba (Quai Campsite)","Retrieve the Quai Merchants' goods beat the marauders loot the Pile of Loot Fang Hideout","+1 more after these"]},
       {"t":"Regional quests","s":"8 to pick up · 3 in progress · 2 near your story step · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters (near)","run Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+13 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 43 open at your level"},
@@ -3113,8 +3107,8 @@
     "in": "6e889793007b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
       {"t":"Regional quests","s":"14 to pick up · 2 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more","+8 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -3188,8 +3182,8 @@
   "random/L33-q41-rnd119p80-A": {
     "in": "1ef9f525b546",
     "nu": [
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Vaizel board opens","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: The High Priest Slumbers","s":"0/2 objectives · then Striving for Coexistence","c":"primary \"Turned in\" story","o":["Check if Hystan's body is safe go to the Nornir Altar","Turn in Urd, Nornir Assembly (Kibelisk: Nornir Assembly)"]},
       {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 5/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+5 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins · Kibelisk: Graverobber Campsite · Lv 30–34 · 4/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 10 open at your level"},
@@ -3446,14 +3440,14 @@
   "random/L33-q54-rnd108p80-A-rqmix": {
     "in": "94e605c6a9d6",
     "nu": [
-      {"t":"Complete \"Buried Atrocities\"","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
       {"t":"Regional quests","s":"7 to pick up · 3 in progress · 1 follow-up · 1 near your story step · 12/23 turned in","c":"go \"Show\" rqgo:rq:2202036","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Practice Makes Perfect, Nyerk!","new A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg","new The Future Within the Past","+5 more"]},
       {"t":"Clear Skurv Laborer Den","s":"Dranactus (near your story step) · Kibelisk: Dranactus Shore · Lv 25–29 · 4/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Dranactus Shore is 120 m away · 7 open at your level"},
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 10/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 163 m away · 4 open"},
       {"t":"Buy Assault Stance 8 → 9","s":"Opens at Lv 34 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Rear Smite 9 → 10","s":"Opens at Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Rear Smite 9 → 10","s":"Opens at Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Impact Hit 8 → 9","s":"Opens at Lv 36 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 9/11 | overdue | open",
@@ -3686,8 +3680,6 @@
     "in": "6b3ba71d3da8",
     "nu": [
       {"t":"Clear Dratona Assembly Area and others until Lv 37","s":"Basfelt Ruins · Kibelisk: Graverobber Campsite · Lv 30–34 · 5/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 4 open at your level"},
-      {"t":"Complete \"Buried Atrocities\"","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:0"},
-      {"t":"Complete \"Empyrean Monolith\"","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:monolith"},
       {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 33. Level up first. Meanwhile: Sealed Dungeons / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""}
     ],
     "ms": [
@@ -3834,8 +3826,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
       {"t":"Clear All-Curing Cave and others until Lv 40","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 10 open"}
     ],
@@ -3972,8 +3964,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
       {"t":"Clear All-Curing Cave and others until Lv 44","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 33. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 10 open"}
     ],
@@ -4101,7 +4093,7 @@
     "mode": "basic"
   },
   "random/L33-qxx-before-A-sppts": {
-    "in": "0c4f6d0cc30e",
+    "in": "b47c774ffd53",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -4126,7 +4118,7 @@
       "g27 | Missed | 2/7 | overdue | open",
       "g28 | Missed | 1/2 | overdue | open",
       "g30 | Missed | 3/10 | overdue | open",
-      "g32 | Missed | 4/11 | overdue | open",
+      "g32 | Missed | 3/11 | overdue | open",
       "g35 | 2 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -4181,8 +4173,8 @@
     "in": "438cfb83a62d",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4256,8 +4248,8 @@
     "in": "f924386e20a8",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Signs of a Crash Landing","s":"Main story · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4332,8 +4324,8 @@
     "in": "61325454219c",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Crash Site Rendezvous","s":"Main story · then Contaminated Area","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4405,7 +4397,7 @@
     "mode": "basic"
   },
   "random/L34-q15-before-B-filters": {
-    "in": "dc1e318b90ce",
+    "in": "23670a9c8574",
     "nu": [
       {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -4425,7 +4417,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly | hidden",
       "g28 | Cleared | 1/1 | done | hidden",
       "g30 | Side quests | 5/5 · 4 side | sideonly | hidden",
-      "g32 | Side quests | 6/6 · 3 side | sideonly | hidden",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | 1 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -4445,7 +4437,7 @@
       "next": "Express Daeva Delivery Lv 12",
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 1 level to go","Lv 37 Stigma slot 4 3 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
-      "track": ["Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 4 side quests Lv 30","Stigma slot 3 cleared · 3 side quests Lv 32","Fire Temple next · 1 to go Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "track": ["Daevanion board missed · 1 open Lv 13","Legions missed · 2 open Lv 16","Stigma slot 1 missed · 1 open Lv 22","Stigma slot 2 cleared · 1 side quest Lv 27","Daily dungeon and Vaizel board cleared · 4 side quests Lv 30","Stigma slot 3 missed · 1 open Lv 32","Fire Temple next · 1 to go Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "39%",
       "prog": ["Quests 6/58","Dungeons 43/60","Strongholds 7 3/15"]
     },
@@ -4458,6 +4450,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -4694,8 +4687,8 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]},
       {"t":"Regional quests","s":"11 to pick up · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+13 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4832,8 +4825,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
       {"t":"Regional quests","s":"14 to pick up · 2 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more","+8 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4906,8 +4899,8 @@
     "in": "508215e28d6a",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
       {"t":"Regional quests","s":"14 to pick up · 2 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more","+8 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
@@ -4978,7 +4971,7 @@
     "mode": "basic"
   },
   "random/L34-q46-before-A-objs": {
-    "in": "6475ff550841",
+    "in": "f3f0ead28b3c",
     "nu": [
       {"t":"Story: Dying Light","s":"2/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","Turn in Grisilla, Healing Spring"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+7 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -5001,7 +4994,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | 1 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -5033,6 +5026,7 @@
     "store": {
       "areaLv": ["(absent)","30"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -5040,7 +5034,7 @@
     "mode": "advanced"
   },
   "random/L34-q47-before-A": {
-    "in": "3d31ef474355",
+    "in": "e90f222633fe",
     "nu": [
       {"t":"Story: Contaminated Sacred Tree","s":"0/3 objectives · then The Past Revealed","c":"primary \"Turned in\" story","o":["Help Grisilla purify the roots enter the Root of the Sacred Tree (Kibelisk: Faded Stump)","Deliver the Life Essence talk to Nemon (Kibelisk: Faded Stump)","Turn in Urd, Healing Spring"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+7 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -5063,7 +5057,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | 1 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -5094,6 +5088,7 @@
     "store": {
       "areaLv": ["(absent)","30"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -5160,7 +5155,7 @@
     "mode": "advanced"
   },
   "random/L34-q48-before-A-rqmix": {
-    "in": "befda96af250",
+    "in": "2e584fec78a1",
     "nu": [
       {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar (Kibelisk: Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
       {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["run Hugo Mercenaries: Deep Shadow","run An Invitation to the Past: Part 1","run An Invitation to the Past: Part 2","+4 waiting on the story The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -5183,7 +5178,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | 1 to go | 0/2 | upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -5214,6 +5209,7 @@
     "store": {
       "areaLv": ["(absent)","30"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -5569,8 +5565,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"35 to pick up · 11 follow-ups · 0/49 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow | -> lock(disabled) A Traitor Within [Lv 45]","new Odyle Jelly Misappropriation Investigation","+40 more"]},
       {"t":"Clear All-Curing Cave and others until Lv 45","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 34. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 10 open"}
     ],
@@ -5642,8 +5638,8 @@
     "in": "8edd8231c4d9",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Main story · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"4 to pick up · 3 in progress · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202015","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Hugo Mercenaries: Past and Present","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","+1 more","+17 waiting on the story Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
@@ -5714,7 +5710,7 @@
     "mode": "basic"
   },
   "random/L35-q11-before-B-stready": {
-    "in": "e6242a8c8ddd",
+    "in": "f4907eaa7974",
     "nu": [
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
       {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"},
@@ -5736,7 +5732,7 @@
       "g27 | Missed | 5/7 | overdue | open",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Missed | 7/11 | overdue | open",
+      "g32 | Missed | 6/11 | overdue | open",
       "g35 | Now | 0/2 | current,upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -5833,7 +5829,7 @@
     "mode": "advanced"
   },
   "random/L35-q19-before-A-objs": {
-    "in": "d6afa1338081",
+    "in": "29201fb13df7",
     "nu": [
       {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -5855,7 +5851,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Now | 0/2 | current,upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -5889,6 +5885,7 @@
       "hide": ["(absent)",false],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -5903,8 +5900,8 @@
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Dead Men Tell No Tales","s":"Main story · then Buried Atrocities","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+18 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
@@ -6108,7 +6105,7 @@
     "mode": "basic"
   },
   "random/L35-q39-before-A": {
-    "in": "b8e0242161b4",
+    "in": "aac0e4b6b9c0",
     "nu": [
       {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+8 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
@@ -6130,7 +6127,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Now | 0/2 | current,upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -6161,6 +6158,7 @@
     "store": {
       "areaLv": ["(absent)","35"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -6168,7 +6166,7 @@
     "mode": "advanced"
   },
   "random/L35-q49-before-B-cube": {
-    "in": "85b84b6bc51e",
+    "in": "34b0cc362e18",
     "nu": [
       {"t":"Finish Destruction Archons Armory","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:destruction-archons-armory"},
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
@@ -6191,7 +6189,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Cleared | 10/10 | done",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Now | 0/2 | current,upnext | open",
       "g37 | Later | 0/5 | ",
       "g40 | Later | 0/3 | ",
@@ -6222,6 +6220,7 @@
     "store": {
       "areaLv": ["(absent)","35"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g35": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
       "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
@@ -6293,8 +6292,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"15 to pick up · 3 in progress · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Empty Cave and others until Lv 37","s":"Western Gribade Highland (near your story step) · Kibelisk: Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 300 m away · 53 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 11 open"}
     ],
@@ -6372,7 +6371,7 @@
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
       {"t":"Clear Place of Rest and others until Lv 41","s":"Black Claw Village (near your story step) · Kibelisk: Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 100 m away · 53 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 11 open"}
     ],
@@ -6450,8 +6449,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+19 more"]},
       {"t":"Clear Destruction Archons Armory and others until Lv 44","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 35. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 166 m away · 11 open"}
     ],

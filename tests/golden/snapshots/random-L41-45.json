@@ -1,6 +1,6 @@
 {
   "random/L41-q07-before-A": {
-    "in": "a39dc789f2de",
+    "in": "d4d6f9616a3b",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
@@ -9,7 +9,7 @@
       {"t":"Continue the story: Signs of a Crash Landing","s":"Main story · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -25,7 +25,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -60,6 +60,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -68,7 +69,7 @@
     "mode": "advanced"
   },
   "random/L41-q07-before-B": {
-    "in": "e28e6b8cdcef",
+    "in": "04af6bad945f",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Continue the story: Signs of a Crash Landing","s":"Main story · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story"},
@@ -89,7 +90,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -124,6 +125,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -212,7 +214,7 @@
       {"t":"Clear Final Haven","s":"Battlescar Mound · Kibelisk: Basfelt Waterfall · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall is 50 m away · 5 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 3 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -281,7 +283,7 @@
       {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202063","x":["+3 waiting on the story Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -343,8 +345,8 @@
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Scripture in the Ruins","s":"0/3 objectives · then Blood Monument","c":"primary \"Turned in\" story","o":["Investigate Reuben's Hideout go to Reuben's Hideout (Kibelisk: Graverobber Campsite)","Find the loot stolen by marauders defeat Marauder Warrior ×5 defeat Marauder Ranger ×5 interact with Loot Chest Kibelisk: Graverobber Campsite","Turn in Ulgorn, Graverobber Campsite"]},
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 60 open at your level"},
@@ -422,8 +424,8 @@
     "in": "b18d87a5175e",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Inevitable Encounter","s":"0/3 objectives · then Unveiling the Truth","c":"primary \"Turned in\" story","o":["Discover the Blades Hideout enter the Merchant's Yard (Kibelisk: Abandoned Campsite)","Investigate the Abandoned Campsite enter the Campsite (Kibelisk: Abandoned Campsite)","Turn in Pordhet, Abandoned Campsite entrance"]},
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Empty Cave","s":"Western Gribade Highland (near your story step) · Kibelisk: Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 300 m away · 60 open at your level"},
@@ -505,7 +507,7 @@
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
       {"t":"Story: Healing Herbs","s":"0/2 objectives · then Treatment","c":"primary \"Turned in\" story","o":["Collect herbs for treatment collect herbs from the supplies defeat Drakan Patrol Scout defeat Drakan Patrol Supporter Kibelisk: Amunta's Hideout","Turn in Lakiba, Amunta's Hideout"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -568,7 +570,7 @@
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -627,8 +629,8 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
       {"t":"Clear Ascetic's Cave and others until Lv 44","s":"Impetusium Square (near your story step) · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 14 open"}
     ],
@@ -789,7 +791,7 @@
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1003,7 +1005,7 @@
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
       {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1120,7 +1122,7 @@
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
       {"t":"Story: Imminent Threat","s":"0/3 objectives · then Crossroad","c":"primary \"Turned in\" story","o":["Find the ledger and Zikel's Seal examine the Barracks Storage","Enter Zikel's Sanctum examine the Monolith","Turn in Hadala, Safe Haven"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1174,7 +1176,7 @@
     "mode": "advanced"
   },
   "random/L42-q35-before-B-objs": {
-    "in": "5a68a3c9e3b6",
+    "in": "5e51959f43cd",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
@@ -1195,7 +1197,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -1227,6 +1229,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -1235,7 +1238,7 @@
     "mode": "basic"
   },
   "random/L42-q45-before-A-stwait": {
-    "in": "cd919fd406dd",
+    "in": "067b172a4177",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
@@ -1260,7 +1263,7 @@
       "g27 | Missed | 6/7 | overdue | open",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Missed | 7/11 | overdue | open",
+      "g32 | Missed | 6/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 1/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -1363,8 +1366,8 @@
     "nu": [
       {"t":"Finish Ossuary of the Noble","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:ossuary-of-the-noble"},
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
-      {"t":"Complete \"Urgent Pursuit\"","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Vaizel board opens","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Blood Monument","s":"0/4 objectives · then Impending Threat","c":"primary \"Turned in\" story","o":["Find the secret document Reuben mentioned go to the Abandoned Ruins (Kibelisk: Shulak Street Stall)","Do a favor for Graverobber Dixie defeat Ferocious Cadaver Cleaner defeat Ruin Agrint recover belongings of Dixie's fallen comrade Kibelisk: Graverobber Campsite","Insert Zikel's Seal into the Blood Monument operate the Blood Monument (Kibelisk: Graverobber Campsite)","+1 more after these"]},
       {"t":"Regional quests","s":"13 to pick up · 4 follow-ups · 5/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+11 more"]},
       {"t":"Clear Lagta Fafnite Storage","s":"Lagta Fortress · Kibelisk: Kumrica's Cellar · Lv 40–44 · 6/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 890 m away · 13 open at your level"},
@@ -1442,8 +1445,8 @@
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Powder of Death","s":"0/5 objectives · then Creion of Gribade","c":"primary \"Turned in\" story","o":["Clear the path to the Shuttered Workstation defeat Contaminated Shulak Miner (Kibelisk: Steel Hammer Workcamp)","Check the Shuttered Workstation situation enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Find survivors in the east of the deposit search for survivors around quarry entrance search for survivors inside central quarry search for survivors around quarry wall Kibelisk: Steel Hammer Workcamp","+2 more after these"]},
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -1631,8 +1634,8 @@
     "in": "d3a88b4b7779",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Daybreak Society","s":"0/3 objectives · then Daybreak Society Rescue Operation","c":"primary \"Turned in\" story","o":["Investigate the Black Claw Village records check Timeworn Journal check Stacked Documents Kibelisk: Secret Rendezvous Point","Go to the place Nemon mentioned go to the Secret Rendezvous Point (Kibelisk: Secret Rendezvous Point)","Turn in Nemon, Secret Rendezvous Point"]},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
       {"t":"Clear Den of Exiles","s":"Black Claw Village (near your story step) · Kibelisk: Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 220 m away · 60 open at your level"},
@@ -1776,7 +1779,7 @@
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
       {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1838,8 +1841,8 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"16 to pick up · 3 in progress · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
       {"t":"Clear Den of Exiles and others until Lv 43","s":"Black Claw Village (near your story step) · Kibelisk: Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 220 m away · 60 open at your level"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 42. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 14 open"}
     ],
@@ -2220,8 +2223,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Spread Your Wings","s":"Main story · then Signs of a Crash Landing","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -2410,7 +2413,7 @@
     "mode": "basic"
   },
   "random/L43-q15-before-B-dv": {
-    "in": "4ad2fbdb93c4",
+    "in": "7d91f288c6c6",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
@@ -2431,7 +2434,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -2465,6 +2468,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -2473,7 +2477,7 @@
     "mode": "basic"
   },
   "random/L43-q25-before-A-rqmix": {
-    "in": "7dfd587b2ae8",
+    "in": "2630f489c539",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
@@ -2482,7 +2486,7 @@
       {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
       {"t":"Regional quests","s":"3 in progress · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["run Blade of Vengeance","run In the Fang Legion's Name","run Young Elim's Story","+12 waiting on the story A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 125 m away · 10 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2498,7 +2502,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -2530,6 +2534,7 @@
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -2538,7 +2543,7 @@
     "mode": "advanced"
   },
   "random/L43-q27-before-B-objs": {
-    "in": "859965a7df14",
+    "in": "70bd87ea6298",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take it from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]},
@@ -2559,7 +2564,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -2592,6 +2597,7 @@
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -2606,8 +2612,8 @@
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Searching for Survivors","s":"0/3 objectives · then Prison Break","c":"primary \"Turned in\" story","o":["Go to Uruthumheim go to the Abandoned Site","Gather information on Uruthumheim defeat the Blades examine the Nornir Supply Chest examine the Nornir Corpse near the Abandoned Site","Turn in Nemon, Northern Altar (near Victorious Daeva's Statue)"]},
       {"t":"Regional quests","s":"14 to pick up · 2 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more","+10 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -2685,8 +2691,8 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
       {"t":"Regional quests","s":"15 to pick up · 2 follow-ups · 2 near your story step · 0/17 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+11 more","+9 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 60 open at your level"},
@@ -3103,7 +3109,7 @@
     "mode": "basic"
   },
   "random/L43-qxx-before-B-objs": {
-    "in": "848ec35454e6",
+    "in": "aae5e06cc72a",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
@@ -3124,7 +3130,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -3159,6 +3165,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "open.g6": ["(absent)",true],
@@ -3172,8 +3179,8 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Spread Your Wings","s":"Main story · then Signs of a Crash Landing","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new The Great Curse-Breaking Caper","new Her Last Favor","new Pain Unending","new Traveling Merchant's Conundrum","+1 more","+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -3248,7 +3255,7 @@
     "mode": "basic"
   },
   "random/L44-q11-before-A-cube": {
-    "in": "b7dbb5b6c58a",
+    "in": "8c6c7e452ac0",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -3257,7 +3264,7 @@
       {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist","+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3273,7 +3280,7 @@
       "g27 | Side quests | 6/6 · 1 side | sideonly",
       "g28 | Cleared | 2/2 | done",
       "g30 | Side quests | 5/5 · 4 side | sideonly",
-      "g32 | Side quests | 6/6 · 3 side | sideonly",
+      "g32 | Missed | 7/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -3308,6 +3315,7 @@
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -3325,7 +3333,7 @@
       {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3506,7 +3514,7 @@
       {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar (Kibelisk: Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Level cap","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3560,7 +3568,7 @@
     "mode": "advanced"
   },
   "random/L44-q54-before-B": {
-    "in": "3952cab2c174",
+    "in": "bd8ed30cc1ef",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
@@ -3581,7 +3589,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Cleared | 10/10 | done",
-      "g32 | Side quests | 6/6 · 1 side | sideonly",
+      "g32 | Missed | 9/11 | overdue | open",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -3612,6 +3620,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -3797,10 +3806,9 @@
     "mode": "basic"
   },
   "random/L45-q01-before-B-sppts": {
-    "in": "107dc615ef6f",
+    "in": "9b3adf41d028",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+43 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
@@ -3819,7 +3827,7 @@
       "g27 | Missed | 2/7 | overdue | open",
       "g28 | Missed | 1/2 | overdue | open",
       "g30 | Missed | 3/10 | overdue | open",
-      "g32 | Missed | 5/11 | overdue | open",
+      "g32 | Missed | 4/11 | overdue | open",
       "g35 | Missed | 1/3 | overdue | open",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Missed | 2/3 | overdue | open",
@@ -3933,7 +3941,6 @@
     "in": "411138c3ff96",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Continue the story: Spread Your Wings","s":"Main story · then Signs of a Crash Landing","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
@@ -4050,10 +4057,9 @@
     "mode": "advanced"
   },
   "random/L45-q14-before-B-sppts": {
-    "in": "6de99d81c052",
+    "in": "845aee3ad813",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Continue the story: Crash Site Rendezvous","s":"Main story · then Contaminated Area","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+43 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
@@ -4072,7 +4078,7 @@
       "g27 | Missed | 2/7 | overdue | open",
       "g28 | Missed | 1/2 | overdue | open",
       "g30 | Missed | 3/10 | overdue | open",
-      "g32 | Missed | 5/11 | overdue | open",
+      "g32 | Missed | 4/11 | overdue | open",
       "g35 | Missed | 1/3 | overdue | open",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Missed | 2/3 | overdue | open",
@@ -4133,9 +4139,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Continue the story: Empyrean Monolith","s":"Main story · then A New Lead","c":"primary \"Turned in\" story"},
       {"t":"Regional quests","s":"20 to pick up · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+14 more","+38 waiting on the story Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -4213,7 +4218,6 @@
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
@@ -4332,10 +4336,10 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Story: Imminent Threat","s":"0/3 objectives · then Crossroad","c":"primary \"Turned in\" story","o":["Find the ledger and Zikel's Seal examine the Barracks Storage","Enter Zikel's Sanctum examine the Monolith","Turn in Hadala, Safe Haven"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
+      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
     ],
     "ms": [
@@ -4467,10 +4471,10 @@
       {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Story: Searching for Survivors","s":"0/3 objectives · then Prison Break","c":"primary \"Turned in\" story","o":["Go to Uruthumheim go to the Abandoned Site","Gather information on Uruthumheim defeat the Blades examine the Nornir Supply Chest examine the Nornir Corpse near the Abandoned Site","Turn in Nemon, Northern Altar (near Victorious Daeva's Statue)"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
+      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Collapsed Hall of Fame · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Collapsed Hall of Fame is 450 m away · 11 open"}
     ],
     "ms": [
@@ -4658,7 +4662,6 @@
     "in": "1440eb08f015",
     "nu": [
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
       {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 163 m away · 11 open"}
@@ -4720,9 +4723,8 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Frozen Fafnite","s":"0/4 objectives · then Inevitable Encounter","c":"primary \"Turned in\" story","o":["Collect the mined Fafnite Gemstones collect supplies from the Fafnite cart defeat Faded Mutant around the supplies defeat Faded Floater around the supplies Kibelisk: Steel Hammer Workcamp","Resolve the Giant Fafnite Gemstone problem enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Recover the belongings of the Steel Hammer workers recover the Miner's belongings recover the Cart Worker's belongings recover the Sentinel's belongings defeat the Faded Predator and Floater that disrupt the recovery Kibelisk: Steel Hammer Workcamp","+1 more after these"]},
       {"t":"Regional quests","s":"27 to pick up · 5 follow-ups · 0/33 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+26 more","+25 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},
@@ -4855,9 +4857,8 @@
     "in": "290764727225",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
-      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Farewells","s":"0/3 objectives · then Forgotten Commander","c":"primary \"Turned in\" story","o":["Return to Urd go to Nornir Assembly (Kibelisk: Nornir Assembly)","Talk to Urd at Nornir Assembly deliver the news to Urd (Kibelisk: Nornir Assembly)","Turn in Menrik, Fang Hideout"]},
       {"t":"Regional quests","s":"28 to pick up · 6 follow-ups · 1 near your story step · 0/35 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+28 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 60 open at your level"},

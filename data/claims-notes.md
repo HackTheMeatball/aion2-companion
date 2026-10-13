@@ -44,3 +44,10 @@
 - C20 more: Metabot stats page: "Double Chance" and "Multi-hit Chance" are SEPARATE stats -> games.gg Multi-Hit != Double Chance; Double Chance single-source (GamesFuze).
 - R3 notes (build.partial.notes.txt): Metabot daevanion guide: stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%), Azphel 0 skill nodes; Metabot dungeon guide: 7/week exploration; daily dungeon Daeva Bio-Research Base L30.
 - C14: Metabot quest page In the Fang Legion's Name: Rec 22, Unlocks at 10 (R1 resolves all).
+- C36–C38 (0.1.3, ascension gates; added by hand, not by v1_build_claims.py): th.gl "Prerequisites" / "Unlocks" fields
+  (game database) give each ascension quest's story prerequisite in both directions: The One Who Dreams needs "Last of
+  the Destruction Archons" (gate: the next quest, "A Daeva Dreaming Anew", whose only objective is the ascension);
+  The One Who Witnesses the Nightmare needs "Forgotten Commander" (gate: that quest turned in). Gauge at 100% before
+  the Lv 32 ascension: allthings.how speedrun + Skycoach -> verified; no source for a gauge at 45 -> not claimed.
+  Wings: Metabot's DB puts Lesser Daeva Wings on "The Being Beneath the Lake", Skycoach on Perceives -> disputed; the
+  Perceives wording is dropped and the step keeps "(unlocks wings)" on The Being Beneath the Lake (DB field).
