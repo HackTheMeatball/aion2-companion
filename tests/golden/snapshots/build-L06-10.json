@@ -1,0 +1,1109 @@
+{
+  "build/L10-q13-before-A-cube": {
+    "in": "40a6f727f52c",
+    "nu": [
+      {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave In progress [running]","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-dv": {
+    "in": "cdfc9f52f313",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-filters": {
+    "in": "02cc6b5a575a",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-objs": {
+    "in": "7b973fcc45f6",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"],
+      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Gathering Essentials\" yet."}
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-rqmix": {
+    "in": "765b3146cb5c",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-sppts": {
+    "in": "74e546bfd0b4",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-stfull": {
+    "in": "a98e0decc089",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-stready": {
+    "in": "79c0b0cc7587",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-A-stwait": {
+    "in": "6a316393fcef",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L10-q13-before-B-cube": {
+    "in": "3945a25ec099",
+    "nu": [
+      {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave In progress [running]","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-dv": {
+    "in": "f6aa33a718ef",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-filters": {
+    "in": "52acb6a55320",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-objs": {
+    "in": "9ce49fabd58e",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"],
+      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Gathering Essentials\" yet."}
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-rqmix": {
+    "in": "299aefaf37a6",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-sppts": {
+    "in": "f422ab285e92",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-stfull": {
+    "in": "f4b0cb97cbdb",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-stready": {
+    "in": "a28f8da31dd1",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L10-q13-before-B-stwait": {
+    "in": "1fccc2099390",
+    "nu": [
+      {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+      {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+      {"t":"Continue the story: Gathering Essentials","s":"Main story · then Crash Site Rendezvous","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Now | 0/9 | current,upnext | open",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Survival Supplies Lv 10",
+      "quest": "Gathering Essentials",
+      "lv": "Lv 10",
+      "next": "Crash Site Rendezvous Lv 11",
+      "hint": "milestone now: Lv 10",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 2 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 10 levels to go","Lv 16 🔓 Legions 9 story quests · \"Buried Atrocities\""],
+      "track": ["Altgard opens now Lv 10"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  }
+}

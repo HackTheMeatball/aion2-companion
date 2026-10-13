@@ -1,0 +1,2255 @@
+{
+  "build/L27-q44-before-A-cube": {
+    "in": "4a07e33c2629",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-dv": {
+    "in": "49b0e7622764",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-filters": {
+    "in": "4f57a6700d91",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-objs": {
+    "in": "704dd9fac575",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"2/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","Turn in Darmand, Faded Stump"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 2/4","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-rqmix": {
+    "in": "72bdf7fcf11c",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 in progress · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["run Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-sppts": {
+    "in": "0de4222d1b23",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-stfull": {
+    "in": "78e39e6e2802",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 1/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-stready": {
+    "in": "200aa122e44c",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-A-stwait": {
+    "in": "ae05c34ad7fd",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L27-q44-before-B-cube": {
+    "in": "2100fd5680fe",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-dv": {
+    "in": "5de9dd65ada3",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-filters": {
+    "in": "41ded1ed2cca",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-objs": {
+    "in": "3366326a9f03",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"2/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","Turn in Darmand, Faded Stump"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 2/4","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-rqmix": {
+    "in": "c1dd1df9a3c6",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 in progress · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["run Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-sppts": {
+    "in": "94ce7d58dba9",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-stfull": {
+    "in": "12bafd1a098b",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 1/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-stready": {
+    "in": "c8fdc9dcbc88",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L27-q44-before-B-stwait": {
+    "in": "18a6c242dd26",
+    "nu": [
+      {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Now | 0/7 | current,upnext | open",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Preparations for Restoration Lv 27",
+      "quest": "A Collective Effort",
+      "lv": "Lv 27",
+      "next": "Land of Rifts Lv 29",
+      "hint": "milestone now: Lv 27",
+      "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "track": ["Stigma slot 2 now Lv 27"],
+      "ring": "39%",
+      "prog": ["Quests 1 13/58","Dungeons 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","* Lv 25–29 · 5/6 · 1 open","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Latrima Outpost Dranactus · any level","Sealed Dungeons 5/5","2 Crystals · 2 Wisdom Stones each","▸ Dranactus 25 traces ✓ 5/5"]
+    },
+    "store": {
+      "areaLv": ["(absent)","25"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-A-cube": {
+    "in": "1ac9f51d9d1d",
+    "nu": [
+      {"t":"Finish All-Curing Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:all-curing-cave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave In progress [running]","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-dv": {
+    "in": "5b1e6cdfaac3",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-filters": {
+    "in": "f8ad6d8e41f9",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-objs": {
+    "in": "c4dd27963027",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"1/2 objectives · Kibelisk: Nornir Assembly (152 m) · then Bitter Reality","c":"primary \"Turned in\" story","o":["Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow (near)","new Her Last Favor","new An Invitation to the Past: Part 1 (near) | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-rqmix": {
+    "in": "72128a7a7b21",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202037","x":["run Hugo Mercenaries: Deep Shadow","run Her Last Favor","run An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-sppts": {
+    "in": "b4309c88f94a",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-stfull": {
+    "in": "1b63bbf17987",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-stready": {
+    "in": "adf347883160",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-A-stwait": {
+    "in": "62f21d8aa0e0",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L30-q49-before-B-cube": {
+    "in": "fcba3f0ba4bd",
+    "nu": [
+      {"t":"Finish All-Curing Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:all-curing-cave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave In progress [running]","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-dv": {
+    "in": "43e356fe068a",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-filters": {
+    "in": "dbe754d397d3",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-objs": {
+    "in": "b3303f313060",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"1/2 objectives · Kibelisk: Nornir Assembly (152 m) · then Bitter Reality","c":"primary \"Turned in\" story","o":["Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow (near)","new Her Last Favor","new An Invitation to the Past: Part 1 (near) | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-rqmix": {
+    "in": "011c2a5bbf50",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202037","x":["run Hugo Mercenaries: Deep Shadow","run Her Last Favor","run An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-sppts": {
+    "in": "e02811aaadab",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-stfull": {
+    "in": "53a79a80b619",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-stready": {
+    "in": "616107ba0769",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L30-q49-before-B-stwait": {
+    "in": "698c398b5e31",
+    "nu": [
+      {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+      {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+      {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)","Turn in Ulgorn, Nornir Assembly"]},
+      {"t":"Regional quests","s":"4 to pick up · 1 follow-up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202011","x":["new Hugo Mercenaries: Deep Shadow","new Her Last Favor","new An Invitation to the Past: Part 1 | -> lock(disabled) An Invitation to the Past: Part 2","new The Future Within the Past"]},
+      {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 31)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Now | 0/10 | current,upnext | open",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "The Past Revealed Lv 30",
+      "quest": "Canyon's Secret",
+      "lv": "Lv 30",
+      "next": "Bitter Reality Lv 32",
+      "hint": "milestone now: Lv 30",
+      "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "track": ["Daily dungeon and Vaizel board now Lv 30"],
+      "ring": "40%",
+      "prog": ["Quests 4 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]]
+    },
+    "mode": "basic"
+  }
+}

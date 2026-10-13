@@ -1,0 +1,1977 @@
+{
+  "story/L11-q14-before-A": {
+    "in": "d178776c6f46",
+    "nu": [
+      {"t":"Continue the story: Crash Site Rendezvous","s":"Main story · then Contaminated Area","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 3 → 4","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Gathering Essentials Lv 10",
+      "quest": "Crash Site Rendezvous",
+      "lv": "Lv 11",
+      "next": "Contaminated Area Lv 11",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 8 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L11-q14-before-B": {
+    "in": "9d4fa50bb954",
+    "nu": [
+      {"t":"Continue the story: Crash Site Rendezvous","s":"Main story · then Contaminated Area","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Gathering Essentials Lv 10",
+      "quest": "Crash Site Rendezvous",
+      "lv": "Lv 11",
+      "next": "Contaminated Area Lv 11",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 8 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L11-q14-none-A": {
+    "in": "fdee8c94e1ad",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Crash Site Rendezvous","s":"Main story · then Contaminated Area","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Gathering Essentials Lv 10",
+      "quest": "Crash Site Rendezvous",
+      "lv": "Lv 11",
+      "next": "Contaminated Area Lv 11",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 8 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L11-q15-before-A": {
+    "in": "d958cf0159c8",
+    "nu": [
+      {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 3 → 4","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Crash Site Rendezvous Lv 11",
+      "quest": "Contaminated Area",
+      "lv": "Lv 11",
+      "next": "Express Daeva Delivery Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L11-q15-before-B": {
+    "in": "ea9915cb1285",
+    "nu": [
+      {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Crash Site Rendezvous Lv 11",
+      "quest": "Contaminated Area",
+      "lv": "Lv 11",
+      "next": "Express Daeva Delivery Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L11-q15-none-A": {
+    "in": "12eb8f3745bc",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Contaminated Area","s":"Main story · then Express Daeva Delivery","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Crash Site Rendezvous Lv 11",
+      "quest": "Contaminated Area",
+      "lv": "Lv 11",
+      "next": "Express Daeva Delivery Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L11-q16-before-A": {
+    "in": "8b60cb56ac8d",
+    "nu": [
+      {"t":"Continue the story: Express Daeva Delivery","s":"Needs Lv 12: you're 11. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 3 → 4","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 6 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L11-q17-before-A": {
+    "in": "ab2ff330c744",
+    "nu": [
+      {"t":"Continue the story: Veiled Truth","s":"Needs Lv 12: you're 11. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Ambush 4 → 5","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 3 → 4","s":"Opens at Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 2 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Express Daeva Delivery Lv 12",
+      "quest": "Veiled Truth",
+      "lv": "Lv 12",
+      "next": "Urgent Pursuit Lv 13",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 1 level to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 9 levels to go","Lv 16 🔓 Legions 5 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 2 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q16-before-A": {
+    "in": "12a1ce911afd",
+    "nu": [
+      {"t":"Continue the story: Express Daeva Delivery","s":"Main story · then Veiled Truth","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 6 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q16-before-B": {
+    "in": "3470b3117f0b",
+    "nu": [
+      {"t":"Continue the story: Express Daeva Delivery","s":"Main story · then Veiled Truth","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 6 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L12-q16-none-A": {
+    "in": "5a9b60193b2c",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Express Daeva Delivery","s":"Main story · then Veiled Truth","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 6 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 1 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q17-before-A": {
+    "in": "15da8d614aaf",
+    "nu": [
+      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Express Daeva Delivery Lv 12",
+      "quest": "Veiled Truth",
+      "lv": "Lv 12",
+      "next": "Urgent Pursuit Lv 13",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 5 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q17-before-B": {
+    "in": "c58181cd6dff",
+    "nu": [
+      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Express Daeva Delivery Lv 12",
+      "quest": "Veiled Truth",
+      "lv": "Lv 12",
+      "next": "Urgent Pursuit Lv 13",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 5 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L12-q17-none-A": {
+    "in": "4316a2af5da8",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Express Daeva Delivery Lv 12",
+      "quest": "Veiled Truth",
+      "lv": "Lv 12",
+      "next": "Urgent Pursuit Lv 13",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 5 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 1 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q18-before-A": {
+    "in": "c67e3255d8d0",
+    "nu": [
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Continue the story: Urgent Pursuit","s":"Needs Lv 13: you're 12. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L12-q19-before-A": {
+    "in": "d6466e59890a",
+    "nu": [
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 12. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 5 → 6","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Side quests | 8/8 · 1 side | sideonly",
+      "g12 | 1 to go | 0/10 | upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
+      "lv": "Lv 13",
+      "next": "Back on the Scent Lv 14",
+      "hint": "next milestone at Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 8 levels to go","Lv 22 Stigma slot 1 10 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board next · 1 to go Lv 13"],
+      "ring": "10%",
+      "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L13-q18-before-A": {
+    "in": "69ae0f482e55",
+    "nu": [
+      {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Continue the story: Urgent Pursuit","s":"Main story · then Cemetery Cleanup","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 2 → 3","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Impact Hit 1 → 2","s":"Opens at Lv 15 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Now | 1/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "11%",
+      "prog": ["Quests 1/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L13-q18-before-B": {
+    "in": "631771f7a4d2",
+    "nu": [
+      {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Continue the story: Urgent Pursuit","s":"Main story · then Cemetery Cleanup","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Now | 1/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "11%",
+      "prog": ["Quests 1/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L13-q18-none-A": {
+    "in": "77deb879ec1d",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Urgent Pursuit","s":"Main story · then Cemetery Cleanup","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | Now | 0/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 1 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L13-q19-before-A": {
+    "in": "e03301d74740",
+    "nu": [
+      {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
+      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 2 → 3","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Now | 1/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
+      "lv": "Lv 13",
+      "next": "Back on the Scent Lv 14",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "11%",
+      "prog": ["Quests 1/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L13-q19-before-B": {
+    "in": "5c312a89c3ba",
+    "nu": [
+      {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Now | 1/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
+      "lv": "Lv 13",
+      "next": "Back on the Scent Lv 14",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "11%",
+      "prog": ["Quests 1/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L13-q19-none-A": {
+    "in": "1eaa8144b8a7",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Cemetery Cleanup","s":"Main story · then Back on the Scent","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | Now | 0/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
+      "lv": "Lv 13",
+      "next": "Back on the Scent Lv 14",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "0%",
+      "prog": ["Quests 1 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L13-q20-before-A": {
+    "in": "c7f49a5a418e",
+    "nu": [
+      {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
+      {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:0"},
+      {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+      {"t":"Continue the story: Back on the Scent","s":"Needs Lv 14: you're 13. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"},
+      {"t":"Buy Insignia Explosion 1 → 2","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 2 → 3","s":"Opens at Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Now | 1/10 | current,upnext | open",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Cemetery Cleanup Lv 13",
+      "quest": "Back on the Scent",
+      "lv": "Lv 14",
+      "next": "Dead Men Tell No Tales Lv 15",
+      "hint": "milestone now: Lv 13",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 7 levels to go","Lv 22 Stigma slot 1 9 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
+      "track": ["Daevanion board now Lv 13"],
+      "ring": "11%",
+      "prog": ["Quests 1/58","Dungeons 13/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g12": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L14-q20-before-A": {
+    "in": "be4265443ec4",
+    "nu": [
+      {"t":"Continue the story: Back on the Scent","s":"Main story · then Dead Men Tell No Tales","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters"]},
+      {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 467 m away · 1 open"},
+      {"t":"Buy Ambush 5 → 6","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 4 → 5","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Impact Hit 1 → 2","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Side quests | 9/9 · 1 side | sideonly",
+      "g15 | 1 to go | 0/4 | upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Cemetery Cleanup Lv 13",
+      "quest": "Back on the Scent",
+      "lv": "Lv 14",
+      "next": "Dead Men Tell No Tales Lv 15",
+      "hint": "next milestone at Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 6 levels to go","Lv 22 Stigma slot 1 8 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills next · 1 to go Lv 15"],
+      "ring": "11%",
+      "prog": ["Quests 1 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 14/15 · 1 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L14-q20-before-B": {
+    "in": "d8eb5183c815",
+    "nu": [
+      {"t":"Continue the story: Back on the Scent","s":"Main story · then Dead Men Tell No Tales","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters"]},
+      {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 467 m away · 1 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Side quests | 9/9 · 1 side | sideonly",
+      "g15 | 1 to go | 0/4 | upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Cemetery Cleanup Lv 13",
+      "quest": "Back on the Scent",
+      "lv": "Lv 14",
+      "next": "Dead Men Tell No Tales Lv 15",
+      "hint": "next milestone at Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 6 levels to go","Lv 22 Stigma slot 1 8 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills next · 1 to go Lv 15"],
+      "ring": "11%",
+      "prog": ["Quests 1 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 14/15 · 1 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L14-q20-none-A": {
+    "in": "614ea71f8bfd",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Back on the Scent","s":"Main story · then Dead Men Tell No Tales","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters"]},
+      {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 2 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | Missed | 0/10 | overdue | open",
+      "g15 | 1 to go | 0/4 | upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Cemetery Cleanup Lv 13",
+      "quest": "Back on the Scent",
+      "lv": "Lv 14",
+      "next": "Dead Men Tell No Tales Lv 15",
+      "hint": "next milestone at Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 6 levels to go","Lv 22 Stigma slot 1 8 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills next · 1 to go Lv 15"],
+      "ring": "0%",
+      "prog": ["Quests 2 0/58","Dungeons 13 0/60","Strongholds 2 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 0/15 · 15 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit","  Smuggler's Cave","  Watcher's Temporary Outpost","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave","  Treasure Hunter's Residence","  Trickster's Den","  Valka's Nest","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave","  Hidden Vein Cave","  Lost Ruins","  Old Graveyard","  Ossuary of the Noble","  Poisonous Plant Habitat"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L14-q21-before-A": {
+    "in": "01220dc26869",
+    "nu": [
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters"]},
+      {"t":"Continue the story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 14. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 467 m away · 1 open"},
+      {"t":"Buy Ambush 5 → 6","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 4 → 5","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Impact Hit 1 → 2","s":"Opens at Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Side quests | 9/9 · 1 side | sideonly",
+      "g15 | 1 to go | 0/4 | upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Back on the Scent Lv 14",
+      "quest": "Dead Men Tell No Tales",
+      "lv": "Lv 15",
+      "next": "Buried Atrocities unlocks Legions Lv 16",
+      "hint": "next milestone at Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 6 levels to go","Lv 22 Stigma slot 1 8 levels to go","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills next · 1 to go Lv 15"],
+      "ring": "11%",
+      "prog": ["Quests 1 1/58","Dungeons 13/60","Strongholds 1 1/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 · 14/15 · 1 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 13/13","2 Crystals · 2 Wisdom Stones each","▸ Calderon Canyon 8 traces ✓ 3/3","▸ Dredgion Crash Site 19 traces ✓ 4/4","▸ Nameless Cemetery 28 traces ✓ 6/6"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L15-q21-before-A": {
+    "in": "ee2e2f651445",
+    "nu": [
+      {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Continue the story: Dead Men Tell No Tales","s":"Main story · then Buried Atrocities","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 5 open"},
+      {"t":"Buy Heart Gore 5 → 6","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Now | 0/4 | current,upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Back on the Scent Lv 14",
+      "quest": "Dead Men Tell No Tales",
+      "lv": "Lv 15",
+      "next": "Buried Atrocities unlocks Legions Lv 16",
+      "hint": "milestone now: Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 5 levels to go","Lv 22 Stigma slot 1 7 levels to go","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills now Lv 15"],
+      "ring": "12%",
+      "prog": ["Quests 2/58","Dungeons 11 13/60","Strongholds 5 1/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 0/15 · 15 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 0/4","2 Noble Belt Enhance Scrolls each","  Corrupted Forester Ruins Moslan Forest · any level","  Logger's Rest Ruins Moslan Forest · any level","  Sanctum Outskirts Watch Silent Hill · Lv 1–18","  Blades Temporary Outpost Tranein Highland · Lv 1–20","Sealed Dungeons 0/11","2 Crystals · 2 Wisdom Stones each","▾ Moslan Forest 32 traces 0/7","  Abandoned Archon Jail","  Bloodsoaked Confessional","  Fortuneteller's Grave","  Howling Den","  Library of Foresight","  Prison of Oblivion","  Victims' Cave","▾ Sanctum Outpost 21 traces 0/4","  Blue Dragon's Trap","  Fafnite Storage Room","  Fanatics' Den","  Homish's Prison Compound"]
+    },
+    "store": {
+      "areaLv": ["(absent)","15"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L15-q21-before-B": {
+    "in": "7cdf09cc4ac4",
+    "nu": [
+      {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Continue the story: Dead Men Tell No Tales","s":"Main story · then Buried Atrocities","c":"primary \"Turned in\" story"},
+      {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Now | 0/4 | current,upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Back on the Scent Lv 14",
+      "quest": "Dead Men Tell No Tales",
+      "lv": "Lv 15",
+      "next": "Buried Atrocities unlocks Legions Lv 16",
+      "hint": "milestone now: Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 5 levels to go","Lv 22 Stigma slot 1 7 levels to go","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills now Lv 15"],
+      "ring": "12%",
+      "prog": ["Quests 2/58","Dungeons 11 13/60","Strongholds 5 1/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 0/15 · 15 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 0/4","2 Noble Belt Enhance Scrolls each","  Corrupted Forester Ruins Moslan Forest · any level","  Logger's Rest Ruins Moslan Forest · any level","  Sanctum Outskirts Watch Silent Hill · Lv 1–18","  Blades Temporary Outpost Tranein Highland · Lv 1–20","Sealed Dungeons 0/11","2 Crystals · 2 Wisdom Stones each","▾ Moslan Forest 32 traces 0/7","  Abandoned Archon Jail","  Bloodsoaked Confessional","  Fortuneteller's Grave","  Howling Den","  Library of Foresight","  Prison of Oblivion","  Victims' Cave","▾ Sanctum Outpost 21 traces 0/4","  Blue Dragon's Trap","  Fafnite Storage Room","  Fanatics' Den","  Homish's Prison Compound"]
+    },
+    "store": {
+      "areaLv": ["(absent)","15"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "story/L15-q21-none-A": {
+    "in": "4dfd7e6e7351",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Complete \"The Being Beneath the Lake\"","s":"Missed · Lv 6 Wings and Ascension","c":"primary \"Done\" tick:g6:0"},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Continue the story: Dead Men Tell No Tales","s":"Main story · then Buried Atrocities","c":"primary \"Turned in\" story"},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters"]},
+      {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
+      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 378 m away · 6 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 0/11 | overdue | open",
+      "g9 | Missed | 0/7 | overdue | open",
+      "g10 | Missed | 0/9 | overdue | open",
+      "g12 | Missed | 0/10 | overdue | open",
+      "g15 | Now | 0/4 | current,upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Back on the Scent Lv 14",
+      "quest": "Dead Men Tell No Tales",
+      "lv": "Lv 15",
+      "next": "Buried Atrocities unlocks Legions Lv 16",
+      "hint": "milestone now: Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 5 levels to go","Lv 22 Stigma slot 1 7 levels to go","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\""],
+      "track": ["Ring quest and skills now Lv 15"],
+      "ring": "0%",
+      "prog": ["Quests 2 0/58","Dungeons 24 0/60","Strongholds 6 0/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 0/15 · 15 open","* Lv 15–19 · 0/15 · 15 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/4","2 Noble Belt Enhance Scrolls each","  Corrupted Forester Ruins Moslan Forest · any level","  Logger's Rest Ruins Moslan Forest · any level","  Sanctum Outskirts Watch Silent Hill · Lv 1–18","  Blades Temporary Outpost Tranein Highland · Lv 1–20","Sealed Dungeons 0/11","2 Crystals · 2 Wisdom Stones each","▾ Moslan Forest 32 traces 0/7","  Abandoned Archon Jail","  Bloodsoaked Confessional","  Fortuneteller's Grave","  Howling Den","  Library of Foresight","  Prison of Oblivion","  Victims' Cave","▾ Sanctum Outpost 21 traces 0/4","  Blue Dragon's Trap","  Fafnite Storage Room","  Fanatics' Den","  Homish's Prison Compound"]
+    },
+    "store": {
+      "areaLv": ["(absent)","15"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L15-q22-before-A": {
+    "in": "3cb9485163ed",
+    "nu": [
+      {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Clear Abandoned Archon Jail and others until Lv 16","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
+      {"t":"Continue the story: Buried Atrocities","s":"Needs Lv 16: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 5 open"},
+      {"t":"Buy Heart Gore 5 → 6","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Now | 0/4 | current,upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Dead Men Tell No Tales Lv 15",
+      "quest": "Buried Atrocities",
+      "lv": "Lv 16",
+      "next": "Empyrean Monolith Lv 16",
+      "hint": "milestone now: Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 5 levels to go","Lv 22 Stigma slot 1 7 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 12 story quests · \"Daeva in a Dream\""],
+      "track": ["Ring quest and skills now Lv 15"],
+      "ring": "12%",
+      "prog": ["Quests 2/58","Dungeons 11 13/60","Strongholds 5 1/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 0/15 · 15 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 0/4","2 Noble Belt Enhance Scrolls each","  Corrupted Forester Ruins Moslan Forest · any level","  Logger's Rest Ruins Moslan Forest · any level","  Sanctum Outskirts Watch Silent Hill · Lv 1–18","  Blades Temporary Outpost Tranein Highland · Lv 1–20","Sealed Dungeons 0/11","2 Crystals · 2 Wisdom Stones each","▾ Moslan Forest 32 traces 0/7","  Abandoned Archon Jail","  Bloodsoaked Confessional","  Fortuneteller's Grave","  Howling Den","  Library of Foresight","  Prison of Oblivion","  Victims' Cave","▾ Sanctum Outpost 21 traces 0/4","  Blue Dragon's Trap","  Fafnite Storage Room","  Fanatics' Den","  Homish's Prison Compound"]
+    },
+    "store": {
+      "areaLv": ["(absent)","15"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "story/L15-q23-before-A": {
+    "in": "3144a7258c28",
+    "nu": [
+      {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Regional quests","s":"5 to pick up · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present [Lv 16]","new Missing Mount [Lv 16]","new Creion Research Assistant [Lv 16]","new Odyle Jelly Misappropriation Investigation [Lv 16]","new Practice Makes Perfect, Nyerk! [Lv 16]"]},
+      {"t":"Clear Abandoned Archon Jail and others until Lv 16","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 11 open at your level"},
+      {"t":"Continue the story: Empyrean Monolith","s":"Needs Lv 16: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 147 m away · 5 open"},
+      {"t":"Buy Heart Gore 5 → 6","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Quick Slice 6 → 7","s":"Opens at Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Now | 0/4 | current,upnext | open",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Buried Atrocities Lv 16",
+      "quest": "Empyrean Monolith",
+      "lv": "Lv 16",
+      "next": "A New Lead Lv 18",
+      "hint": "milestone now: Lv 15",
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 5 levels to go","Lv 22 Stigma slot 1 7 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 11 story quests · \"Daeva in a Dream\""],
+      "track": ["Ring quest and skills now Lv 15"],
+      "ring": "12%",
+      "prog": ["Quests 5 2/58","Dungeons 11 13/60","Strongholds 5 1/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 0/15 · 15 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
+      "list": ["Strongholds 0/4","2 Noble Belt Enhance Scrolls each","  Corrupted Forester Ruins Moslan Forest · any level","  Logger's Rest Ruins Moslan Forest · any level","  Sanctum Outskirts Watch Silent Hill · Lv 1–18","  Blades Temporary Outpost Tranein Highland · Lv 1–20","Sealed Dungeons 0/11","2 Crystals · 2 Wisdom Stones each","▾ Moslan Forest 32 traces 0/7","  Abandoned Archon Jail","  Bloodsoaked Confessional","  Fortuneteller's Grave","  Howling Den","  Library of Foresight","  Prison of Oblivion","  Victims' Cave","▾ Sanctum Outpost 21 traces 0/4","  Blue Dragon's Trap","  Fafnite Storage Room","  Fanatics' Den","  Homish's Prison Compound"]
+    },
+    "store": {
+      "areaLv": ["(absent)","15"],
+      "hide": ["(absent)",false],
+      "open.g15": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  }
+}

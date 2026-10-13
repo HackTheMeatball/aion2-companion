@@ -1,0 +1,2279 @@
+{
+  "build/L37-q70-before-A-cube": {
+    "in": "9440716a9055",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-dv": {
+    "in": "c099bebe32fb",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-filters": {
+    "in": "ecda354561e9",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Cleared | 11/11 | done | hidden",
+      "g35 | Cleared | 2/2 | done | hidden",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-objs": {
+    "in": "d98989316f92",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"1/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-rqmix": {
+    "in": "ae63ec6b2beb",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 in progress · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["run A Friend's Legacy","run Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-sppts": {
+    "in": "73873631ec3d",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Missed | 8/11 | overdue | open",
+      "g35 | Missed | 1/3 | overdue | open",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-stfull": {
+    "in": "c05bebe380bd",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 1/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-stready": {
+    "in": "1b0e0bafa52f",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-A-stwait": {
+    "in": "f193222c9991",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"},
+      {"t":"Buy Insignia Explosion 9 → 10","s":"Opens at Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L37-q70-before-B-cube": {
+    "in": "8322a54348d1",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-dv": {
+    "in": "a8c60bfa308e",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-filters": {
+    "in": "0d4d60baccfb",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Cleared | 11/11 | done | hidden",
+      "g35 | Cleared | 2/2 | done | hidden",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-objs": {
+    "in": "e2fc9ef3ae4f",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"1/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"],
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-rqmix": {
+    "in": "7b70cd0f4780",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 in progress · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["run A Friend's Legacy","run Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-sppts": {
+    "in": "5454f21fcbe8",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Missed | 8/11 | overdue | open",
+      "g35 | Missed | 1/3 | overdue | open",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-stfull": {
+    "in": "dcca4e8c82fe",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 1/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-stready": {
+    "in": "b0807b9aa9db",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L37-q70-before-B-stwait": {
+    "in": "9dafde037124",
+    "nu": [
+      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+      {"t":"Regional quests","s":"2 to pick up · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["new A Friend's Legacy","new Bloodstained Rose"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 221 m away · 9 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Now | 0/5 | current,upnext | open",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "An Ill Fate's Resolution Lv 37",
+      "quest": "Mirror of Greed",
+      "lv": "Lv 37",
+      "next": "Fafnite's Whereabouts Lv 40",
+      "hint": "milestone now: Lv 37",
+      "ahead": ["Ahead verified","Lv 40 Triniel board Fourth Daevanion board 3 levels to go","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 8 levels to go"],
+      "track": ["Stigma slot 4 now Lv 37"],
+      "ring": "60%",
+      "prog": ["Quests 2 24/58","Dungeons 53/60","Strongholds 9 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","* Lv 35–39 · 10/12 · 2 open","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45","Sealed Dungeons 10/10","2 Crystals · 2 Wisdom Stones each","▸ Black Claw Village 35 traces ✓ 1/1","▸ Eastern Gribade Highland 12 traces ✓ 4/4","▸ Idun's Lake 11 traces ✓ 1/1","▸ Western Gribade Highland 14 traces ✓ 4/4"]
+    },
+    "store": {
+      "areaLv": ["(absent)","35"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-A-cube": {
+    "in": "c086eb2a7f88",
+    "nu": [
+      {"t":"Finish Ascetic's Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:ascetic-s-cave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave In progress [running]","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-dv": {
+    "in": "4547a3ce145d",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"},
+      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-filters": {
+    "in": "f82ad5ea5db9",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"},
+      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Cleared | 11/11 | done | hidden",
+      "g35 | Cleared | 2/2 | done | hidden",
+      "g37 | Cleared | 5/5 | done | hidden",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40","Level cap Lv 45"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-objs": {
+    "in": "93c3965651ed",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"2/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","Find materials necessary for infiltration gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)","Turn in Amunta, Zemurru's Tomb"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"},
+      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"],
+      "subs": {"head":"Objectives 2/5","items":3,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-rqmix": {
+    "in": "f7fe3d36915d",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"},
+      {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-sppts": {
+    "in": "c514d0335967",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Missed | 8/11 | overdue | open",
+      "g35 | Missed | 1/3 | overdue | open",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 0/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-stfull": {
+    "in": "bf22c631da77",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-stready": {
+    "in": "cb00f3a1ca8c",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Missed | 4/5 | overdue | open",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-A-stwait": {
+    "in": "3307ab8a403b",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Missed | 4/5 | overdue | open",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L40-q75-before-B-cube": {
+    "in": "c92ddc7618c0",
+    "nu": [
+      {"t":"Finish Ascetic's Cave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:ascetic-s-cave"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave In progress [running]","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-dv": {
+    "in": "d28d0e58224f",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-filters": {
+    "in": "ebb51dfd6c53",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Cleared | 11/11 | done | hidden",
+      "g35 | Cleared | 2/2 | done | hidden",
+      "g37 | Cleared | 5/5 | done | hidden",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40","Level cap Lv 45"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-objs": {
+    "in": "41e40b2effba",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"2/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","Find materials necessary for infiltration gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)","Turn in Amunta, Zemurru's Tomb"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"],
+      "subs": {"head":"Objectives 2/5","items":3,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-rqmix": {
+    "in": "9362a4229a18",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-sppts": {
+    "in": "b3fa0dc2ff54",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Missed | 8/11 | overdue | open",
+      "g35 | Missed | 1/3 | overdue | open",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 0/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-stfull": {
+    "in": "2c75d45794b8",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Cleared | 11/11 | done",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Cleared | 5/5 | done",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract","4":"Savage Fang"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-stready": {
+    "in": "5628d305d18b",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Missed | 4/5 | overdue | open",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L40-q75-before-B-stwait": {
+    "in": "10148a7df842",
+    "nu": [
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 160 m away · 7 open at your level"},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 217 m away · 10 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Missed | 10/11 | overdue | open",
+      "g35 | Cleared | 3/3 | done",
+      "g37 | Missed | 4/5 | overdue | open",
+      "g40 | Now | 1/3 | current,upnext | open",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
+      "lv": "Lv 40",
+      "next": "Daybreak Society Lv 41",
+      "hint": "milestone now: Lv 40",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) 5 levels to go"],
+      "track": ["Triniel board now Lv 40"],
+      "ring": "62%",
+      "prog": ["Quests 26/58","Dungeons 7 53/60","Strongholds 10 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 0/10 · 8 open","All strongholds · 3/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45 [locked]","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/3","  Den of Exiles","  Kumbahum's Cave","  Tayga Breeding Ground","▾ Fafnite Deposit 12 traces 0/1","  Spider Cave","▾ Impetusium Square 54 traces 0/2","  Ascetic's Cave","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]]
+    },
+    "mode": "basic"
+  }
+}
