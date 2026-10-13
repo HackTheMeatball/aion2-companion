@@ -265,6 +265,10 @@ for x in dun:
     label_of[x["src"]] = x["name"]
     if x.get("kibSrc"): label_of.setdefault(x["kibSrc"], x["name"] + " (exploration quest)")
 for x in src_old: label_of.setdefault(x["url"], x["label"])
+# claims.json sources may name their page ("label"), e.g. quest pages that no other data file cites (0.1.3)
+for c_ in load("data/claims.json"):
+    for s_ in c_["sources"]:
+        if isinstance(s_, dict) and s_.get("label"): label_of.setdefault(s_["url"], s_["label"])
 SITE = [("metabot.gg", "Metabot"), ("aion2.gaming.tools", "aion2.gaming.tools"), ("aion2.th.gl", "aion2.th.gl"), ("allthings.how", "allthings.how"),
         ("thegameswiki.com", "thegameswiki"), ("wikily.gg", "Wikily"), ("gamesfuze.com", "GamesFuze"), ("skycoach.gg", "Skycoach"), ("games.gg", "games.gg"),
         ("keengamer.com", "KeenGamer"), ("mein-mmo.de", "MeinMMO"), ("playnews.gg", "PlayNews"), ("gameplay.tips", "gameplay.tips"), ("gamewith.ai", "GameWith"),
