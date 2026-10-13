@@ -74,7 +74,11 @@ const icons = html => {
   const keys = [...new Set([...html.matchAll(/data-ico="(\w+)"/g)].map(m => m[1]))].filter(k => ITEMS[k][2]);
   return keys.length ? `<span class="icos">${keys.map(k => `<img src="${ITEMS[k][2]}" alt="${ITEMS[k][3]}" title="${ITEMS[k][3]}" loading="lazy" onerror="this.remove()">`).join("")}</span>` : "";
 };
-const T = (label, key) => `<span class="term">${label}<button type="button" class="tip" data-tip="${key}" aria-expanded="false" aria-label="What is ${label.replace(/<[^>]+>/g, "")}?">i</button></span>`;
+/* Reduced motion: every scroll the script starts goes through SMOOTH() (instant when the user asks for less motion). */
+const RMQ = window.matchMedia ? matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
+const SMOOTH = () => RMQ.matches ? "auto" : "smooth";
+/* "i" button after a term. `name` is the button's spoken name when the term has no visible label (a section title next to it). */
+const T = (label, key, name) => `<span class="term">${label}<button type="button" class="tip" data-tip="${key}" aria-expanded="false" aria-label="${name || `What is ${label.replace(/<[^>]+>/g, "")}?`}">i</button></span>`;
 
 /* Stigma slots 22 / 27 / 32 / 37. Every stigma is learnable at 22 and fits any slot (data/build.json stigmaRules). Plan: Triniel's
    Dagger and Illusive Clone first (GamesFuze, Skycoach); Swift Contract before Savage Fang (Metabot, Skycoach; GamesFuze reverses
@@ -533,7 +537,7 @@ function goAreas(band) {
   state.areasCollapsed = false; areaKeep = new Set();
   if (band != null) state.areaLv = String(band);
   save(); update();
-  document.getElementById("areas").scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("areas").scrollIntoView({ behavior: SMOOTH(), block: "start" });
 }
 function renderAreas() {
   const lv = state.level, shOn = state.areaSh !== false, doneOn = state.areaDone !== false;
@@ -575,20 +579,20 @@ function renderAreas() {
   };
   const zoneHead = (z, g, open) => {
     const gd = g.filter(x => state.checks[x.k]).length, tr = ZONE_TRACES[z], rk = state.areaLv + "|" + z;
-    return `<li class="zone-h${gd === g.length ? " done" : ""}"><button type="button" class="zone-btn" data-zone="${rk}" aria-expanded="${open}"><span class="zchev">${open ? "▾" : "▸"}</span>${z}</button>` +
+    return `<li class="zone-h${gd === g.length ? " done" : ""}"><button type="button" class="zone-btn" data-zone="${rk}" aria-expanded="${open}"><span class="zchev" aria-hidden="true">${open ? "▾" : "▸"}</span>${z}</button>` +
       `${tr ? `<a class="ztr" href="https://metabot.gg/en/aion-2/map/altgard/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} traces</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
   };
   const sec = (cls, title, tip, note, list, grouped) => {
     if (!list.length) return "";
     const d = list.filter(x => state.checks[x.k]).length;
     const body = grouped ? [...new Set(list.map(x => x.area))].map(z => { const g = list.filter(x => x.area === z), open = zoneOpen(z, g); return g.some(vis) ? zoneHead(z, g, open) + (open ? g.map(row).join("") : "") : ""; }).join("") : list.map(row).join("");
-    return `<li class="asec ${cls}"><span class="asec-t">${title} ${T("", tip)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>` +
+    return `<li class="asec ${cls}"><span class="asec-t">${title} ${T("", tip, `What are ${title}?`)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>` +
       (body || `<li class="sh-note ok">All cleared${doneOn ? "" : " (hidden)"}.</li>`);
   };
   if (allSh) {
     const bands = [...new Set(shs.map(bandOf))];
     document.getElementById("areaList").innerHTML =
-      `<li class="asec sh"><span class="asec-t">Strongholds ${T("", "stronghold")}</span><span class="asec-n${shs.every(x => state.checks[x.k]) ? " done" : ""}">${shs.filter(x => state.checks[x.k]).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
+      `<li class="asec sh"><span class="asec-t">Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => state.checks[x.k]) ? " done" : ""}">${shs.filter(x => state.checks[x.k]).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
       bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => state.checks[x.k]).length;
         if (!g.some(vis)) return "";
         return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join("");
@@ -646,20 +650,22 @@ function render() {
   });
   watchIcons();
 }
+let tipSeq = 0; /* ids for the "i" popovers (aria-controls) */
 layoutEl.addEventListener("click", e => {
   const btn = e.target.closest(".tip"); if (!btn || btn.closest(".coll")) return;
   e.preventDefault(); e.stopPropagation();
   const li = btn.closest("li");
   const open = btn.getAttribute("aria-expanded") === "true";
   layoutEl.querySelectorAll("li.tipbox").forEach(b => b.remove());
-  layoutEl.querySelectorAll('li .tip[aria-expanded="true"]').forEach(b => b.setAttribute("aria-expanded", "false"));
+  layoutEl.querySelectorAll('li .tip[aria-expanded="true"]').forEach(b => { b.setAttribute("aria-expanded", "false"); b.removeAttribute("aria-controls"); });
   if (open) return;
   const tip = TIPS[btn.dataset.tip]; if (!tip) return;
   const box = document.createElement("li");
   box.className = "tipbox" + (li.classList.contains("sub-h") ? " wide" : "");
   box.innerHTML = `<h4>${tip.h}</h4>${tip.b}<p class="src muted">Source: ${tip.src}</p>`;
+  box.id = "tipbox" + (++tipSeq);
   li.after(box);
-  btn.setAttribute("aria-expanded", "true");
+  btn.setAttribute("aria-expanded", "true"); btn.setAttribute("aria-controls", box.id);
 });
 /* Confidence and Sources, from CONF and SOURCES (generated from data/*.json). Links are plain links (Metabot asks for that). */
 function renderSources() {
@@ -957,7 +963,7 @@ function renderNow() {
   /* One card per action, each laid out like a milestone header (icon box · what · its own control). Only the first
      shows; the rest sit below it in a snap-scroll stack (a sliver of the next one peeks out). */
   const firstSkill = shown.findIndex(a => a.act === "skill");
-  const info = a => a.info ? ` <button type="button" class="tipbtn nsinfo" aria-label="More info">i</button>` : "";
+  const info = (a, i) => a.info ? ` <button type="button" class="tipbtn nsinfo" aria-label="More info" aria-expanded="false" aria-controls="nsInfo${i}">i</button>` : "";
   const control = (a, i) => {
     if (a.later) return `<span class="tag">Later</span>`;
     if (a.tag) return `<span class="tag">${a.tag}</span>`;
@@ -970,10 +976,10 @@ function renderNow() {
   const splitBar = a => { if (!a.bar) return { bar: "", lbl: "" }; const m = a.bar.match(/<span class="nsq-barl">([\s\S]*?)<\/span>/); return { bar: a.bar.replace(/<span class="nsq-barl">[\s\S]*?<\/span>/, ""), lbl: m ? m[1] : "" }; };
   const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · ");
     return `<article class="ns-card${i === 0 ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
-    `<div class="ns-mhead"><div class="num ns-num">${a.ico}</div><div class="title"><h3>${a.t}${info(a)}</h3>${sub ? `<p>${sub}</p>` : ""}${a.info ? `<span class="ns-info">${a.info}</span>` : ""}</div>` +
+    `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${info(a, i)}</h3>${sub ? `<p>${sub}</p>` : ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
-  el.innerHTML = `<h2 class="sec ns-sec">Next up${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</h2>` + (top ? `<div class="ns-stack" id="nsqWrap">${shown.map(card).join("")}</div>`
-    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`);
+  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + (top ? `<div class="ns-stack" id="nsqWrap">${shown.map(card).join("")}</div>`
+    : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`);
   nsAnim = false;
   if (pipWin) syncPipClasses();
   const w = el.querySelector("#nsqWrap"), vw = nsWin();
@@ -1004,7 +1010,7 @@ nowEl.addEventListener("click", e => {
     const src = mainEl.querySelector(`input[data-k="${CSS.escape(k)}"]`);
     if (src && !src.checked) src.click(); else { delete state.started[k]; state.checks[k] = true; rqTicked(k); save(); update(); }
     return; }
-  const ib = e.target.closest(".nsinfo"); if (ib) { e.stopPropagation(); (ib.closest(".ns-card") || ib.closest(".nsq, .nsbox")).classList.toggle("show-info"); return; }
+  const ib = e.target.closest(".nsinfo"); if (ib) { e.stopPropagation(); ib.setAttribute("aria-expanded", String((ib.closest(".ns-card") || ib.closest(".nsq, .nsbox")).classList.toggle("show-info"))); return; }
   const b = e.target.closest("[data-now]"); if (!b) return;
   const a = b.dataset.now;
   /* Completing the top card: it slides up and out, then the queue rises into place. */
@@ -1036,17 +1042,17 @@ nowEl.addEventListener("click", e => {
     /* Last quest the guide covers: remember it's turned in (the card then says to continue in game). */
     if (QUESTS.findIndex(([, n]) => n === state.quest) === QUESTS.length - 1) { state.storyEnd = state.quest; save(); update(); }
     else stepQuest(1); }
-  else if (a === "setquest") { const i = document.getElementById("questIn"); i.scrollIntoView({ behavior: "smooth", block: "center" }); i.focus(); }
+  else if (a === "setquest") { const i = document.getElementById("questIn"); i.scrollIntoView({ behavior: SMOOTH(), block: "center" }); i.focus(); }
   else if (a === "skill") { const box = document.getElementById("spNextBox"); if (box.dataset.sp) { box.checked = true; box.dispatchEvent(new Event("change")); } }
   else if (a === "stup") { const sb = document.querySelector("#stCard [data-stup]"); if (sb) sb.click(); }
   else if (a === "stequip") { const sb = document.querySelector("#stCard [data-sttick]"); if (sb) sb.click(); }
   else if (a === "board") { const bb = document.querySelector("#dvNextList [data-buy]"); if (bb) bb.click(); }
-  else if (a === "boardcost") { const c = document.querySelector("#dvNextList input.dvc"); document.getElementById("dvBox").scrollIntoView({ behavior: "smooth", block: "center" }); if (c) setTimeout(() => c.focus(), 300); }
+  else if (a === "boardcost") { const c = document.querySelector("#dvNextList input.dvc"); document.getElementById("dvBox").scrollIntoView({ behavior: SMOOTH(), block: "center" }); if (c) setTimeout(() => c.focus(), 300); }
   else if (a.startsWith("areas:")) { const v = a.slice(6); goAreas(v === "sh" ? "sh" : +v); }
   else if (a.startsWith("rqgo:")) { /* open the milestone and land on that quest's row */
     const inp = mainEl.querySelector(`input[data-k="${CSS.escape(a.slice(5))}"]`), d = inp && inp.closest("details");
-    if (d) { d.open = true; state.open[d.id] = true; save(); d.classList.add("peek"); d.hidden = false; requestAnimationFrame(() => { const li = inp.closest("li"); li.scrollIntoView({ behavior: "smooth", block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }); } }
-  else if (a.startsWith("gate:")) { const g = document.getElementById(a.slice(5)); if (g) { g.open = true; g.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    if (d) { d.open = true; state.open[d.id] = true; save(); d.classList.add("peek"); d.hidden = false; requestAnimationFrame(() => { const li = inp.closest("li"); li.scrollIntoView({ behavior: SMOOTH(), block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }); } }
+  else if (a.startsWith("gate:")) { const g = document.getElementById(a.slice(5)); if (g) { g.open = true; g.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
 });
 let nsAnim = false, nsRefocus = 0;
 /* "i" next to a "need more" status: where more Wisdom Stones / Daevanion Crystals come from, plus what's open now.
@@ -1058,9 +1064,25 @@ function tipPop(kind) {
   const open = gain ? `<button type="button" class="tiplink" data-tipgo="${rq ? "quest" : "sd"}">${rq ? `${rq} quest${rq === 1 ? "" : "s"}` : ""}${rq && sd ? " + " : ""}${sd ? `${sd} dungeon${sd === 1 ? "" : "s"}` : ""} open now → +${gain}</button>` : "";
   const body = kind === "stones" ? "<b>More Wisdom Stones</b>1 per regional quest · 2 per Sealed Dungeon (first clear). Use them from the Cube."
     : "<b>More crystals</b>+4 per level · 1 per regional quest · 2 per Sealed Dungeon (first clear). Use them from the Cube.";
-  return `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="How to get more">i</button><span class="tippop" role="tooltip">${body}${open ? `<span class="tipopen">${open}</span>` : ""}</span></span>`;
+  const id = "tipPop" + (++tipSeq);
+  return `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="How to get more" aria-expanded="false" aria-controls="${id}">i</button><span class="tippop" id="${id}" role="tooltip">${body}${open ? `<span class="tipopen">${open}</span>` : ""}</span></span>`;
 }
-function tipClick(e) { const t = e.target.closest && e.target.closest(".tipbtn"); (e.currentTarget.nodeType === 9 ? e.currentTarget : document).querySelectorAll(".tipwrap.open").forEach(w => { if (!t || w !== t.parentElement) w.classList.remove("open"); }); if (t) t.parentElement.classList.toggle("open"); }
+function tipClick(e) { const t = e.target.closest && e.target.closest(".tipbtn"); (e.currentTarget.nodeType === 9 ? e.currentTarget : document).querySelectorAll(".tipwrap.open").forEach(w => { if (!t || w !== t.parentElement) tipSet(w, false); }); if (t && t.parentElement.classList.contains("tipwrap")) tipSet(t.parentElement, !t.parentElement.classList.contains("open")); else if (t) t.parentElement.classList.toggle("open"); }
+const tipSet = (w, o) => { w.classList.toggle("open", o); const b = w.querySelector(".tipbtn"); if (b) b.setAttribute("aria-expanded", String(o)); };
+/* Escape closes the open "i" popover (milestone / card tips, Next up info) and returns focus to its button; a popover
+   that is showing on hover hides until the pointer leaves it. */
+function tipEsc(e) {
+  if (e.key !== "Escape") return;
+  const d = e.currentTarget.nodeType === 9 ? e.currentTarget : document, f = d.activeElement;
+  let back = null;
+  d.querySelectorAll('.tip[aria-expanded="true"]').forEach(b => { b.setAttribute("aria-expanded", "false"); b.removeAttribute("aria-controls"); back = back || b; });
+  d.querySelectorAll("li.tipbox").forEach(b => b.remove());
+  d.querySelectorAll(".tipwrap.open").forEach(w => { tipSet(w, false); back = back || w.querySelector(".tipbtn"); });
+  d.querySelectorAll(".tipwrap:hover").forEach(w => { w.classList.add("shut"); w.addEventListener("pointerleave", () => w.classList.remove("shut"), { once: true }); });
+  d.querySelectorAll(".show-info").forEach(c => { c.classList.remove("show-info"); const b = c.querySelector(".nsinfo"); if (b) { b.setAttribute("aria-expanded", "false"); back = back || b; } });
+  if (back && (!f || f === d.body || !f.closest || f.closest(".term, .tipwrap, li.tipbox, .ns-card"))) back.focus();
+}
+document.addEventListener("keydown", tipEsc);
 document.addEventListener("click", tipClick);
 function tipGoClick(e) { const b = e.target.closest && e.target.closest("[data-tipgo]"); if (!b) return; const pb = document.querySelector(`#progRows [data-prog="${b.dataset.tipgo}"]`); if (pb) pb.click(); }
 document.addEventListener("click", tipGoClick);
@@ -1110,6 +1132,7 @@ async function popOutNow() {
   const hint = d.createElement("div"); hint.className = "pip-hint"; hint.textContent = "Space done · ↓ next"; d.body.appendChild(hint);
   /* Clicks that the page handles at document level (info popovers) need the same delegation in this document. */
   [tipClick, tipGoClick, cubeClick, stTickClick, stUpClick, stLvClick].forEach(f => d.addEventListener("click", f));
+  d.addEventListener("keydown", tipEsc);
   d.addEventListener("keydown", e => nsKey(e, true));
   w.addEventListener("pagehide", () => {
     const p = document.getElementById("nsAway"); if (p) p.replaceWith(nowEl); else mainEl.appendChild(nowEl);
@@ -1136,7 +1159,7 @@ function nsKey(e, inPip) {
   const top0 = cards[0].offsetTop, pos = cards.map(c => c.offsetTop - top0);
   let cur = 0; pos.forEach((p, i) => { if (p <= w.scrollTop + 4) cur = i; });
   const n = Math.max(0, Math.min(cards.length - 1, cur + d));
-  w.scrollTo({ top: pos[n], behavior: "smooth" });
+  w.scrollTo({ top: pos[n], behavior: SMOOTH() });
 }
 nowEl.addEventListener("pointerenter", () => { nsHover = true; });
 nowEl.addEventListener("pointerleave", () => { nsHover = false; });
@@ -1245,6 +1268,7 @@ function update() {
   document.getElementById("fOpt").checked = !!state.hideOpt;
   const nOn = [state.hideCards, state.hide, state.hideOpt].filter(Boolean).length;
   document.getElementById("filtN").textContent = nOn || "";
+  document.getElementById("btnFilter").setAttribute("aria-label", nOn ? `Filters, ${nOn} active` : "Filters");
   document.getElementById("btnReset").disabled = !nOn;
   renderNext();
   renderCube();
@@ -1304,7 +1328,7 @@ GATES.sort((a, b) => a.lv - b.lv);
   byGate.forEach((qs, g) => [...new Set(qs.map(q => q.rec))].sort((a, b) => a - b).forEach(r => {
     const grp = qs.filter(q => q.rec === r), parts = grp.length > 8 ? [...new Set(grp.map(why))] : [null];
     parts.forEach(p => { const xs = p == null ? grp : grp.filter(q => why(q) === p);
-      g.items.push({ ...sub(`Regional quests · Lv ${r}${p ? " · " + p : ""} ${T("", "regional")}`), group: "quest" }, ...xs.map(q => rqItem(q, !!p))); }); })); }
+      g.items.push({ ...sub(`Regional quests · Lv ${r}${p ? " · " + p : ""} ${T("", "regional", "What are regional quests?")}`), group: "quest" }, ...xs.map(q => rqItem(q, !!p))); }); })); }
 
 /* Fold each core skill upgrade into the first milestone at or after its unlock level (the extra skills sort after them all). */
 SP_STEPS.filter(x => x.s.extra).forEach(x => { x.gi = 1000 + x.rank; x.gj = x.L; });
@@ -1673,7 +1697,7 @@ document.getElementById("progRows").addEventListener("click", e => {
   if (key === "quest") {
     const g = GATES.find(g => g.items.some(it => it.kind === "quest" && !state.checks[it.k] && rqAvail(it.q, lv).ok))
       || GATES.find(g => g.items.some(it => it.kind === "quest" && !state.checks[it.k]));
-    if (g) { state.open[g.id] = true; save(); update(); const el = document.getElementById(g.id); if (el) { el.open = true; el.scrollIntoView({ behavior: "smooth", block: "start" }); } }
+    if (g) { state.open[g.id] = true; save(); update(); const el = document.getElementById(g.id); if (el) { el.open = true; el.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
     return;
   }
   if (key === "sh") goAreas("sh");
@@ -2007,7 +2031,7 @@ const STIGMA_ICON = { "Illusive Clone": "assets/icons/st-illusive-clone.png", "S
   "Savage Fang": "assets/icons/st-savage-fang.png", "Triniel's Dagger": "assets/icons/st-triniels-dagger.png" };
 const stIco = (name, cls) => STIGMA_ICON[name] ? `<img class="${cls}" src="${STIGMA_ICON[name]}" alt="">` : cls === "st-mini" ? `<span class="st-mini ini" aria-hidden="true">${ini(name)}</span>` : "";
 /* Grey "i" with a popover, same as the Skills/Daevanion "need more" tips. */
-const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs">i</button><span class="tippop" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
+const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
 const ST_COST = L => L <= 5 ? 1 : L <= 10 ? 2 : L <= 15 ? 4 : L <= 20 ? 8 : null; /* shards to reach level L (Metabot) */
 const stLvOf = n => (state.stLv || {})[n] || 1;
 /* Upgrade order: ST_TARGETS in turn, for the stigmas you have equipped. Other stigmas stay at level 1 (the plan's sources). */
@@ -2226,6 +2250,8 @@ document.getElementById("lvlUpBig").addEventListener("click", e => {
   f.innerHTML = `<b>Lv ${to}</b> +${sp} skill pts${dv ? ` · +${dv} crystals` : ""}${sh ? ` · +${sh} shard${sh === 1 ? "" : "s"}` : ""}`;
   f.style.left = cx + "px"; f.style.top = r.top - 6 + "px";
   document.body.appendChild(f); setTimeout(() => f.remove(), 1700);
+  /* Under reduced motion the floating label is hidden (CSS): the gains go in the toast instead. */
+  if (RMQ.matches) rewardToast(f.textContent);
 });
 /* Filter dropdown: funnel button opens a menu of checkboxes + Reset; closes on outside click or Esc. */
 const filtBtn = document.getElementById("btnFilter"), filtMenu = document.getElementById("filtMenu");
@@ -2253,7 +2279,7 @@ layoutEl.addEventListener("click", e => {
   e.preventDefault();
   const d = document.getElementById(a.dataset.gogate); if (!d) return;
   d.hidden = false; d.open = true; state.open[d.id] = true; save();
-  d.scrollIntoView({ behavior: "smooth", block: "start" });
+  d.scrollIntoView({ behavior: SMOOTH(), block: "start" });
 });
 document.getElementById("dvAllBtn").addEventListener("click", () => { state.dvAllOpen = !state.dvAllOpen; save(); renderDaevanion(); });
 /* Undo for the last board node you ticked (from anywhere on the page). It stays until you undo it or tick

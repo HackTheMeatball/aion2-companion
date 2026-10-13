@@ -38,6 +38,7 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
   already passed no longer offered, text fixes, `gates` suite and golden master.
 - **0.1.4** — version in the footer, *Report a problem* link with prefilled issue form, issue forms and labels.
 - **0.1.5** — persistent storage request, save-failure warning, self-hosted fonts.
+- **0.1.6** — accessibility fixes with no visible change (screen-reader names, focus, reduced motion, touch), `a11y` suite.
 
 ## Plan
 
@@ -50,7 +51,9 @@ exists, so it is done once.
 
 From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
 
-- **0.1.6** (invisible): spoken names for the three "i" buttons, focus ring on the Basic/Advanced switch, reduced motion
+- ~~0.1.6~~ shipped (see Released). Invisible items it left for the visible pass: hit areas on bordered pills and the
+  Confidence / Sources summaries.
+- (was 0.1.6, invisible): spoken names for the three "i" buttons, focus ring on the Basic/Advanced switch, reduced motion
   everywhere (one smooth-scroll setting), headings and landmarks, Escape closes popovers, larger hit areas without
   changing the look, `touch-action`, `dvh` units, an automated accessibility check in the tests.
 - **0.1.7** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
