@@ -11,11 +11,16 @@
   owner's OK; nothing about monetization in public files.
 - Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner.
 
+**After every merge to `main`:** watch that run to the end (test, deploy, release). A green PR doesn't prove the
+deploy works; a failed deploy leaves the live site silently on the old build. Confirm `/build.json` changed.
+
 **Releases:** version bump + `## X.Y.Z (beta) — date · summary` CHANGELOG section in one commit (usually on the PR
 branch before merge, so `main` gets one CI run); ROADMAP *Released* list updated. CI tags and publishes after deploy.
 Confirm the release exists and the live site serves the new build (`/build.json`).
 
 ## Standing notes
+- 2026-10-13: deploys failed silently from PR #7 to #9 because the deploy job didn't run `npm ci` after esbuild became
+  a build dependency. Any new build dependency must also work in the deploy job.
 - Tag pushes and branch deletion are blocked from the agent environment; CI creates tags; the owner deletes branches.
 - CI run logs aren't readable from the agent environment; check-run annotations are.
 - Every push to a branch and its PR both run CI (duplicate runs). Candidate tidy-up: run `push` only on `main`.
