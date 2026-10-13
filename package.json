@@ -1,0 +1,25 @@
+{
+  "name": "aion2-companion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aion 2 Asmodian Assassin leveling companion (single-page web app). Live at https://aion2.ishkabytes.com/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackthemeatball/aion2-companion.git"
+  },
+  "homepage": "https://aion2.ishkabytes.com/",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "npm run build && node tests/run.mjs",
+    "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
+    "gen": "python3 -I tools/gen/gen.py && python3 -I tools/gen/apply.py"
+  },
+  "devDependencies": {
+    "playwright": "1.56.0"
+  }
+}
