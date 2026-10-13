@@ -1,0 +1,918 @@
+[
+ {
+  "id": "C01",
+  "lines": [
+   1668,
+   2162,
+   1834
+  ],
+  "claim": "Respec is free until Lv 31, Kina after.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://allthings.how/?p=215236",
+    "quote": "Resets are free and unlimited"
+   },
+   {
+    "url": "https://www.exitlag.com/blog/aion-2-complete-character-progression/",
+    "quote": "You can reset all skills for free anytime during leveling"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+    "quote": "points already spent can be refunded for a fee"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "Respec is free while you level; check the reset button's cost at 31.",
+  "edits": [
+   {
+    "line": 1668,
+    "old": "Respec is free until Lv 31.",
+    "new": "Respec is free while you level; check the reset button's cost at 31."
+   },
+   {
+    "line": 2162,
+    "old": "<b>Experiment freely until 31.</b> ${T(\"Respec is free\", \"respec\")} until then; lock in the build by 31.",
+    "new": "<b>Experiment freely.</b> ${T(\"Respec is free\", \"respec\")} while you level; check its cost at 31 before you rely on it."
+   },
+   {
+    "line": 1834,
+    "old": "(tooltip body)",
+    "new": "keep as is"
+   }
+  ],
+  "note": "No source found that names Lv 31 as a cutoff (MeinMMO, the guide's original source, was not re-found). Line 1834 tooltip already states the dispute correctly and can stay."
+ },
+ {
+  "id": "C02",
+  "lines": [
+   1668
+  ],
+  "claim": "Each skill gains one level every 3 character levels after you learn it.",
+  "verdict": "unverifiable",
+  "sources": [
+   {
+    "url": "https://allthings.how/?p=215236",
+    "quote": "Skill points arrive automatically as your character levels"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+    "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
+   }
+  ],
+  "action": "drop",
+  "newText": "",
+  "edits": [
+   {
+    "line": 1668,
+    "old": "Each skill gains one level every 3 character levels after you learn it. ",
+    "new": ""
+   }
+  ],
+  "note": "No source describes automatic skill levels per N character levels. Not marked as seen in game. Delete the sentence."
+ },
+ {
+  "id": "C03",
+  "lines": [
+   1726
+  ],
+  "claim": "Specialty slots open at skill level 8 / 12 / 20.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+    "quote": "one specialty slot at level 8 ... a second slot at level 12 ... a third slot at level 20"
+   },
+   {
+    "url": "https://gameplay.tips/guides/aion-2-skills-guide-active-passive-and-stigma.html",
+    "quote": "Level 8: one slot is unlocked; Level 12 unlocks the fourth perk and a second slot; Level 20 unlocks the third slot"
+   },
+   {
+    "url": "https://allthings.how/?p=215236",
+    "quote": "The first arrives at level 8, the second at level 12, and the third at level 16, with further slots ... at level 20"
+   }
+  ],
+  "action": "keep",
+  "note": "allthings.how alone puts the third slot at 16; thegameswiki and gameplay.tips (plus Metabot per the guide) agree on 20."
+ },
+ {
+  "id": "C04",
+  "lines": [
+   2166
+  ],
+  "claim": "Hero quests are ~99% of Asmodian XP to 45.",
+  "verdict": "unverifiable",
+  "sources": [
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-leveling-progression-guide-level-1-to-endgame/",
+    "quote": "Episode quests provide most of the experience required to reach the Global launch cap"
+   },
+   {
+    "url": "https://mein-mmo.de/en/leveling-up-quickly-in-aion-2-how-to-gather-as-much-xp-as-possible-for-the-maximum-level-45,1585756/",
+    "quote": "alternatives ... yield significantly less reward than the main quest line"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/hero-quests",
+    "quote": "Hero Quests are the AION 2 main story line"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "Hero quests give most of your XP to 45.",
+  "note": "'Most' has 2 sources; no source gives a percentage."
+ },
+ {
+  "id": "C05",
+  "lines": [
+   2108
+  ],
+  "claim": "'The One Who Witnesses the Nightmare' recommended 45; 'The One Who Swears the Oath' recommended 49; both from Asahr.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/hero-quests",
+    "quote": "The One Who Witnesses the Nightmare: Path of Ascension IV, Level 45; The One Who Swears the Oath: Path of Ascension V, Level 49; every step given by Asahr at the Dream Crossroad"
+   }
+  ],
+  "action": "keep",
+  "note": "Second source is Metabot's quest DB (the guide's original source). '(so expect it to need gear)' is inference but reads as such; keep."
+ },
+ {
+  "id": "C06",
+  "lines": [
+   2111
+  ],
+  "claim": "Ascension Trial: reach item level 1,500 before reset; at reset run it at 1,000.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://gamesfuze.com/guides/aion-2-ascension-trial-guide/",
+    "quote": "Easy: 1,000; Normal: 1,500 ... leave your Ascension Trial runs until later in the week when possible"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/ascension-trial",
+    "quote": "Easy requires 1,000 and Normal requires 1,500"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-11-mistakes-you-must-definitely-avoid-at-launch,1586538/",
+    "quote": "Reaching item level 1,500 gives access to normal difficulty with better rewards"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Ascension Trial timing.</b> Easy needs item level 1,000, Normal 1,500. Run your 3 weekly entries late in the week, after you've raised your item level.",
+  "note": "Numbers verified (3 sources). Rewrite states them as entry levels and uses GamesFuze's timing advice; 3 entries/week per thegameswiki, games.gg, KeenGamer."
+ },
+ {
+  "id": "C07",
+  "lines": [
+   2112
+  ],
+  "claim": "Abyss Points on Potential Stones, Stigma Shards and Daevanion resources, not a shop gear set.",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-leveling-progression-guide-level-1-to-endgame/",
+    "quote": "spend them on Potential Stones, Stigma Shards, Daevanion resources, and amulet-related upgrades ... Do not follow old advice telling you to immediately purchase an entire Abyss equipment set"
+   },
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-daily-and-weekly-checklist-what-to-do-before-each-reset/",
+    "quote": "Spend your Abyss Points on Stigma Shards first"
+   },
+   {
+    "url": "https://gamesfuze.com/?p=91059",
+    "quote": "Its main use is to purchase items from the Battlefield Trade Shop ... Stigma Shards ... powerful gear that's exclusive to that shop"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Abyss Points:</b> Stigma Shards first, not a full Abyss gear set (KeenGamer's advice; one source).",
+  "note": "Both KeenGamer articles are one outlet. GamesFuze confirms Stigma Shards are sold for AP but gives no priority."
+ },
+ {
+  "id": "C08",
+  "lines": [
+   2113,
+   1641
+  ],
+  "claim": "Conquest / Krao Cave Normal needs gear score 700.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-krao-cave-expedition/",
+    "quote": "Conquest: Level 45. Item level: 700. Party: 1-5 players"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/krao-cave",
+    "quote": "Conquest Normal: level 45, item level 700 in the game data. A June 2026 player-compiled table lists 1,000"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>At 45:</b> Krao Cave Conquest needs item level 700.",
+  "edits": [
+   {
+    "line": 1641,
+    "new": "<p><b>At 45:</b> Krao Cave Conquest needs item level 700.</p>"
+   },
+   {
+    "line": 2113,
+    "new": "<b>Start Conquest</b> (Krao Cave tier, item level 700). Weapon first, then your weakest slots."
+   }
+  ],
+  "note": "Sources call it item level, not gear score. Also replace 'gear score' in line 2113."
+ },
+ {
+  "id": "C09",
+  "lines": [
+   2109,
+   1845
+  ],
+  "claim": "Shugo Festival keys are worth far more at 45, so skip it while leveling.",
+  "verdict": "wrong",
+  "sources": [
+   {
+    "url": "https://metabot.gg/en/aion-2/events/shugo-festival",
+    "quote": "Maximum stored: 12, or 21 with a membership. Refill: +3 per day ... the reward-key package rises from 2 to 3 Soul Codex and from 600 to 800 Abyss Points [at 45]; holding out would leave you at the cap"
+   },
+   {
+    "url": "https://gamesfuze.com/guides/aion-2-shugo-festival-guide-how-keys-work-best-rewards-and-when-to-spend-them/",
+    "quote": "a maximum of 12 keys (21 if you have a subscription) ... the rewards you get will improve as your character progresses ... keys are wasted if you sit at the cap"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-daily-weekly-checklist/",
+    "quote": "New ones stop accumulating once you hit the cap"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-11-mistakes-you-must-definitely-avoid-at-launch,1586538/",
+    "quote": "The more keys you have available when reaching maximum level 45, the better"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<p>An hourly set of minigames. Claiming a reward costs a key, and rewards grow with your level. Keys refill daily but stop at a cap, so spend them before you hit it.</p>",
+  "edits": [
+   {
+    "line": 1845,
+    "new": "<p>An hourly set of minigames. Claiming a reward costs a key, and rewards grow with your level. Keys refill daily but stop at a cap, so spend them before you hit it.</p>",
+    "src": "Metabot, GamesFuze, games.gg"
+   },
+   {
+    "line": 2109,
+    "action": "drop"
+   }
+  ],
+  "note": "Only MeinMMO says to save; the cap (Metabot, GamesFuze, games.gg, KeenGamer) means saving wastes refills, and Metabot shows the Lv 45 gain is small. Cap/refill numbers differ (12 and +3/day vs 14 and +2/day), so leave numbers out. Drop line 2109 'Spend your banked Shugo Festival keys.'"
+ },
+ {
+  "id": "C10",
+  "lines": [
+   2090
+  ],
+  "claim": "Story dungeon around Lv 37.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "data/story.json (Metabot quest DB: mirror-of-greed)",
+    "quote": "Mirror of Greed (Lv 37): Go to the Fire Temple Entrance — talk to Trekhi || Investigate the Fire Temple — complete the Fire Temple investigation || Turn in — Crobakhi, Steel Hammer Merchants HQ"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Lv 37 story instance:</b> \"Mirror of Greed\" sends you into the Fire Temple. If it stops you, enhance your weapon first; otherwise keep saving.",
+  "note": "Metabot quest DB field (accepted). The weapon advice is the guide's own; it is kept because it only says what to do if blocked."
+ },
+ {
+  "id": "C11",
+  "lines": [
+   1852
+  ],
+  "claim": "Expeditions pay rewards 7x per dungeon each week; Conquest opens at 45.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-daily-and-weekly-checklist-what-to-do-before-each-reset/",
+    "quote": "Exploration: 7 reward counts per Expedition dungeon each week"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide (via R3 data/build.partial.notes.txt)",
+    "quote": "7/week exploration"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-krao-cave-expedition/",
+    "quote": "weekly final boss kill limits have since been removed"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/krao-cave",
+    "quote": "weekly reward and kill limits were removed on July 1, 2026 (KR/TW)"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-krao-cave-expedition/",
+    "quote": "Conquest: Level 45"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "Rewards have a weekly cap per dungeon (7 on Metabot and KeenGamer); check the count in game.",
+  "note": "Conquest at 45 verified (games.gg, thegameswiki). The 7/week cap is from two sources but KR/TW removed it in July 2026 and games.gg says it's gone. Replace the clause 'and pays rewards 7 times per dungeon each week' with the newText sentence. Urugugu/Fire Temple levels are R3's."
+ },
+ {
+  "id": "C12",
+  "lines": [
+   1840
+  ],
+  "claim": "Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://aion2hub.com/leveling/elyos-levels-10-25",
+    "quote": "every first clear pays the same on Global: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals ... Each hideout is still a one-time clear (no reset)"
+   },
+   {
+    "url": "https://allthings.how/?p=244925",
+    "quote": "Every single clear hands you: 15,000 Kina, 1,250 Enhance Stone, 2 Daevanion Crystal (Bound), 2 Wisdom Stone (Bound), 1 unique title ... a solo instance you enter, clear once"
+   },
+   {
+    "url": "https://allthings.how/aion-2/map/library-of-wisdom/",
+    "quote": "Clearing the dungeon pays 15,000 Kina and 1,250 Enhance Stone, plus 2 each of Sealed Wing Featherdown (Bound), Statue Scrap ... Daevanion Crystal (Bound) and Wisdom Stone (Bound)"
+   }
+  ],
+  "action": "keep",
+  "note": "R2 data/dungeons.json shows the same 2+2/15,000/1,250 on Metabot pages per band."
+ },
+ {
+  "id": "C13",
+  "lines": [
+   1842
+  ],
+  "claim": "Stronghold pays 2 Noble Belt Enhance Scrolls + 15,000 Kina (some a title); belt scrolls come from nowhere else.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://aion2hub.com/leveling/elyos-levels-10-25",
+    "quote": "Each fort is a one-time clear (no reset) and pays out 15,000 Kina and 2 Noble Belt Enhance Scrolls"
+   },
+   {
+    "url": "https://allthings.how/?p=234622",
+    "quote": "rewards two Noble Belt Enhance Scrolls plus 15,000 Kina on completion ... Many players also pick up extra scrolls from green quests and map question marks"
+   },
+   {
+    "url": "https://fandomwire.com/aion-2-noble-belt-enhance-scroll-how-to-upgrade/",
+    "quote": "two Noble Belt Enhance Scrolls upon completion ... only the 15 Strongholds in your character's home region will give you Noble Belt Enhance Scrolls"
+   },
+   {
+    "url": "https://www.playnews.gg/en/guides/aion-2-belt-of-nobility-how-to-get-it-and-upgrade-it",
+    "quote": "obtained only by clearing the world's Garrisons"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "That pays 2 Noble Belt Enhance Scrolls and 15,000 Kina (some add a title). Strongholds are the main source of belt scrolls, and the belt is permanent, so clear every one.",
+  "note": "Rewards verified (3 sources). 'Nowhere else': AION2HUB and PlayNews say only Strongholds; allthings.how reports extras from green quests and '?' markers. Replace the two sentences starting 'That pays'."
+ },
+ {
+  "id": "C14",
+  "lines": [
+   1844
+  ],
+  "claim": "Most regional quests unlock at Lv 10.",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+    "quote": "Rec. level 22; Unlocks at 10"
+   }
+  ],
+  "action": "keep",
+  "note": "Metabot DB field (accepted). R1's data/rq.json unlocksAt for all 58 settles the 'most'; E2 should recount from it."
+ },
+ {
+  "id": "C15",
+  "lines": [
+   1846,
+   2177
+  ],
+  "claim": "Duty Quests: Lv 45, 5 a day per server, reroll; rewards AP, Kina, Enhancement Stones, Hidden Cube keys, gear parts.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/duty-quests",
+    "quote": "On the global service Duties open at level 45 ... 5 a day, reset daily"
+   },
+   {
+    "url": "https://neonsect.com/aion-2/aion-2-level-45-duties/",
+    "quote": "Duties open at Level 45"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-daily-weekly-checklist/",
+    "quote": "You get five per day, and that limit is server-wide"
+   },
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-daily-and-weekly-checklist-what-to-do-before-each-reset/",
+    "quote": "Duty Missions: 5 paid completions a day (Shared Server-Wide Limits)"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-daily-weekly-checklist-perfect-start,1589979/",
+    "quote": "you can complete 5 Duty Quests per day (only with one character per server)"
+   },
+   {
+    "url": "https://allthings.how/?p=234744",
+    "quote": "A Duty mission's base payout is 2,000 Abyss Points, along with Kina, plus one to five random bonus items"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>${T(\"Duty Quests\", \"duty\")}</b> (Lv 45): 5 rewarded a day, shared by every character on the server, from the Journal's Duty tab (J).",
+  "edits": [
+   {
+    "line": 2177,
+    "new": "<b>${T(\"Duty Quests\", \"duty\")}</b> (Lv 45): 5 rewarded a day, shared by every character on the server, from the Journal's Duty tab (J)."
+   },
+   {
+    "line": 1846,
+    "new": "<p>Daily missions in the Journal's Duty tab (J). They open at <b>Lv 45</b> on the global servers, not before. 5 rewarded completions a day, shared by every character on the server.</p><p>Rewards include Abyss Points, Kina, Enhancement Stones and Hidden Cube keys. Not the same system as Supply Requests (Lv 25).</p>",
+    "src": "thegameswiki, neonsect, games.gg, KeenGamer, MeinMMO, allthings.how"
+   }
+  ],
+  "note": "Lv 45, 5/day and server-wide are verified. Reroll appears only in thegameswiki (KR/TW section); 'gear parts' has no source. Tooltip newText below drops both."
+ },
+ {
+  "id": "C16",
+  "lines": [
+   1847,
+   2176
+  ],
+  "claim": "Supply Requests: Lv 25; Emergency daily, weekly and season requests; buy only under ~100 Kina/AP on the Market (Inven); 380-6,000 AP per hand-in and not counting toward AP caps (unconfirmed).",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "https://allthings.how/?p=234744",
+    "quote": "four tabs: Emergency, Weekly, Regular: Craft, and Regular: Boss ... each delivery pays between 380 and 6,000 Abyss Points"
+   },
+   {
+    "url": "https://www.keengamer.com/articles/guides/aion-2-daily-and-weekly-checklist-what-to-do-before-each-reset/",
+    "quote": "a daily board with a 24-hour delivery deadline and a weekly board with a Wednesday delivery deadline"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-daily-weekly-checklist/",
+    "quote": "There are daily, weekly, and longer-term request categories"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-daily-weekly-checklist-perfect-start,1589979/",
+    "quote": "Emergency Supply Requests ... Weekly Supply Requests are the weekly variant"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<p>Opens at <b>Lv 25</b>. You hand in requested materials or gear for <b>Abyss Points</b>. Emergency requests have a daily deadline, Weekly ones run to the weekly reset, and longer-running requests cover crafting and bosses.</p><p>Abyss Points matter mostly at 45, so while leveling hand in only spares you already have.</p>",
+  "note": "Request types verified (4 sources). Drop the Market/Inven paragraph: the Market needs the subscription (C17), so it doesn't apply to an F2P player. Drop the 'Unconfirmed' line: 380-6,000 AP is allthings.how only and the AP-cap claim has no source. Lv 25 is the Metabot unlock table. Line 2176 keeps as is. Tooltip src: \"Metabot, allthings.how, KeenGamer, games.gg, MeinMMO\"."
+ },
+ {
+  "id": "C17",
+  "lines": [
+   2183
+  ],
+  "claim": "F2P: no Marketplace or Kina/Quna exchange without the $15/month subscription.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://www.playnews.gg/en/guides/aion-2-how-the-economy-works-kina-quna-marketplace-and-15-subscription",
+    "quote": "the $15 membership opens access to the Marketplace and to the exchange between the two currencies"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-monetization-explained/",
+    "quote": "Access to the player market ... The currency exchange (Quna to Kina and back) ... The optional membership costs $15 per month"
+   },
+   {
+    "url": "https://massivelyop.com/2026/07/08/aion-2-releases-monetization-plan-with-optional-15-sub-battle-pass-cash-shop-and-founder-packs/",
+    "quote": "optional $15 monthly subscription ... access to the market, the Kina/Quna exchange, a subscriber-only cash shop"
+   }
+  ],
+  "action": "keep"
+ },
+ {
+  "id": "C18",
+  "lines": [
+   2184
+  ],
+  "claim": "Cash shop is cosmetic; NCSoft says no stats.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://www.playnews.gg/en/guides/aion-2-how-the-economy-works-kina-quna-marketplace-and-15-subscription",
+    "quote": "focuses on cosmetics ... no effect on stats"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-monetization-explained/",
+    "quote": "None of these provide combat power or gear advantages ... The premium track ... delivers upgrade materials"
+   },
+   {
+    "url": "https://massivelyop.com/2026/07/08/aion-2-releases-monetization-plan-with-optional-15-sub-battle-pass-cash-shop-and-founder-packs/",
+    "quote": "will focus on cosmetics and consumables ... do not affect gear progression or long-term power"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Cash shop is mostly cosmetic</b> (outfits, wings, pets, weapon skins); NCSoft says nothing in it affects stats. Nothing in this guide needs it.",
+  "note": "MassivelyOP lists consumables, and the premium Daeva Pass gives upgrade materials, so 'cosmetic' alone is too strong."
+ },
+ {
+  "id": "C19",
+  "lines": [
+   2179
+  ],
+  "claim": "Weekly Command scrolls from the capital's Command vendor; no source gives an unlock level.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-daily-weekly-checklist/",
+    "quote": "The Command Merchant in your faction's main area sells weekly Command Missions. The server-wide limit is 12 per week"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-daily-weekly-checklist-perfect-start,1589979/",
+    "quote": "you can buy up to 12 of these quests per server, sold by the command merchant in the capital"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Weekly Command missions</b> from the Command Merchant in the capital: up to 12 a week per server.",
+  "note": "Vendor and cap verified. 'Reroll if rewards lack keys or fragments' has no source; dropped. Keep the existing note 'No source gives an unlock level.' (still true)."
+ },
+ {
+  "id": "C20",
+  "lines": [
+   1806,
+   1807,
+   1808,
+   1777
+  ],
+  "claim": "Stat tiers: [Attack, Critical Hit, Back Attack Damage Boost] > [Accuracy, Critical Damage Boost] > [Double Chance, Combat Speed]; B/G letters.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://metabot.gg/en/aion-2/classes/assassin",
+    "quote": "Attack; Critical Hit; Back Attack Damage Boost; Accuracy Bonus; Evasion Bonus"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-assassin-build-guide/",
+    "quote": "Critical Hit: Highest; Multi-Hit Rate: Very High; Combat Speed: High; Mighty Hit: High; Crit Damage Boost and Back Damage Boost: High"
+   },
+   {
+    "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/",
+    "quote": "1. Critical Hit 2. Damage Boost 3. Attack Power 4. Double Chance ... 6. Combat Speed"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/stats",
+    "quote": "Double Chance and Multi-hit Chance are listed as separate stats"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "const STAT_TIERS = [[\"Critical Hit\"], [\"Attack\", \"Back Attack Damage Boost\", \"Combat Speed\"]];",
+  "edits": [
+   {
+    "line": 1777,
+    "new": "<p class=\"fine tline\">B board · G gear. Only stats two or more sources rank high; order inside a tier varies.</p>"
+   },
+   {
+    "line": 1806,
+    "new": "const STAT_TIERS = [[\"Critical Hit\"], [\"Attack\", \"Back Attack Damage Boost\", \"Combat Speed\"]];"
+   },
+   {
+    "line": 1808,
+    "new": "const STAT_SRC = { \"Critical Hit\": \"BG\", \"Back Attack Damage Boost\": \"G\", \"Attack\": \"BG\", \"Combat Speed\": \"BG\" };"
+   }
+  ],
+  "note": "Critical Hit is top in all 3. Attack (Metabot, GamesFuze), Back Attack Damage Boost (Metabot, games.gg) and Combat Speed (games.gg, GamesFuze) each have 2. Accuracy (Metabot only), Critical Damage Boost (games.gg only) and Double Chance (GamesFuze only; games.gg's Multi-Hit is a different stat per Metabot) have one each, so drop them. The guide's earlier Skycoach/Odealo rankings were not rechecked. Line 1777 newText: 'B board · G gear. Only stats two or more sources rank high; order inside a tier varies.' STAT_SRC: drop the removed keys; B/G letters come from the guide's own board data, not a web claim."
+ },
+ {
+  "id": "C21",
+  "lines": [
+   1790,
+   1791,
+   1792,
+   1793,
+   1794,
+   1795,
+   1796,
+   1797,
+   3383,
+   3384,
+   3385,
+   3386,
+   3387,
+   3388,
+   3389,
+   3390
+  ],
+  "claim": "Rotation and key setup: macro path, 10 ms delay, bottom row fires first, skipped if not ready, Quick Slice alone (would block a stack), hold both clicks, row/E order marked inference.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://www.playnews.gg/en/guides/aion-2-macros-how-to-set-them-up-and-optimize-their-use",
+    "quote": "Esc > Settings > Key Settings, General tab, then the Gameplay section ... Macro; K ... click the Macro button at the top right, click Add Macro ... tries to use the lowest skill in the stack, in a loop ... keep your basic skill key held down"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-macro-this-trick-instantly-increases-your-damage-while-you-only-hold-down-2-keys,1590032/",
+    "quote": "Key Settings / General / Gameplay ... The skill with the highest priority goes at the very bottom ... any skill above would never be used [if a no-cooldown skill sits below] ... holding down both keys at the same time"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = Quick Use 2 (the right-click stack). If ready skills get skipped, add a short delay.</li>",
+  "edits": [
+   {
+    "line": 1792,
+    "new": "<li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = Quick Use 2 (the right-click stack). If ready skills get skipped, add a short delay.</li>"
+   }
+  ],
+  "note": "Key path, Add Macro, bottom-first priority (the grid draws row 0 at the bottom), no-cooldown blocking and holding both buttons all have 2 sources. Only the '10 ms' / '30-50 ms' delay values have no source; the rewrite drops them. 'Quick Use 2' is not in either source; keep it only if it came from his game. Row order and E order are already labelled as inference; keep."
+ },
+ {
+  "id": "C22",
+  "lines": [
+   1836,
+   1837,
+   2110
+  ],
+  "claim": "Board node costs: grey stat 1, green passive 2, blue active 3, orange corner 4 (+1.5%); Azphel paid with Azphel points from PvP shops.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://gamewith.ai/aion2/en/daevanion-planner/assassin",
+    "quote": "1 for common, 2 for rare, 3 for epic and 4 for unique nodes"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide (via R3 data/build.partial.notes.txt)",
+    "quote": "stat 1 (rare 2), active 3, passive 2, corner 4 (+1.5%); Azphel: Azphel currency, 0 skill nodes"
+   },
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/daeva-system-and-daevanion-board",
+    "quote": "Azphel crystal is made by Material Conversion from 10 Fragment: Azphel's Trace and 5 Odyle ... also sold in the Abyss shop for Abyss Points"
+   },
+   {
+    "url": "https://mein-mmo.de/en/aion-2-arkana-daevanion-pet-you-need-to-understand-and-master-these-3-systems,1589883/2/",
+    "quote": "Fragments are earned through victorious participation in the weekly battleground ... Some crystals can also be bought with Abyss Points"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Azphel ${T(\"Daevanion board\", \"daevanion\")} opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+  "edits": [
+   {
+    "line": 2110,
+    "new": "<b>Azphel ${T(\"Daevanion board\", \"daevanion\")} opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals."
+   },
+   {
+    "line": 1836,
+    "old": "Azphel has no skill nodes and uses Azphel points from PvP shops instead.",
+    "new": "Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead."
+   }
+  ],
+  "note": "Node costs verified (Metabot guide, gamewith, plus Metaroad); the gamewith grade-to-colour match (common grey, rare green, epic blue, unique orange) is an assumption. Azphel is paid with its own Azphel crystals, not 'Azphel points'; 'arena' has no source. Also change tooltip line 1836's last sentence."
+ },
+ {
+  "id": "C23",
+  "lines": [
+   2010
+  ],
+  "claim": "Belt and amulet to +10 (Rare) cost about 232,000 Kina and 9,280 stones each; Substance Morph moves one up a tier, resets to +0; Lv 45 Kina sink.",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "https://fandomwire.com/aion-2-noble-belt-enhance-scroll-how-to-upgrade/",
+    "quote": "Rare: 9,280 Enhance Stones and 232,000 Kina ... use Substance Morph to transform it into the next rarity tier"
+   },
+   {
+    "url": "https://allthings.how/?p=234622",
+    "quote": "Rare: 232,000 Kina and 9,280 Enhance Stones ... A successful morph resets the belt to +0 with higher base stats"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier.",
+  "note": "Belt costs verified (2 sources). No source gives the amulet's cost, so 'each' is dropped. '+0 reset' is allthings.how only; 'Lv 45 Kina sink' is inference. Both dropped."
+ },
+ {
+  "id": "C24",
+  "lines": [
+   1991
+  ],
+  "claim": "Noble Belt enhance success is 100%.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://fandomwire.com/aion-2-noble-belt-enhance-scroll-how-to-upgrade/",
+    "quote": "Enhancement attempts have a 100% success rate"
+   },
+   {
+    "url": "https://allthings.how/?p=234622",
+    "quote": "Each enhancement attempt has a 100% success rate"
+   }
+  ],
+  "action": "keep",
+  "note": "Belt only. Line 2010 also says 100% for the amulet, and no source checked here says that; check it in game."
+ },
+ {
+  "id": "C25",
+  "lines": [
+   1825,
+   1826
+  ],
+  "claim": "Empyrean Traces: 560 in Altgard; usable after Lv 16 'Empyrean Monolith'; Monolith at Safe Haven or Nornir Assembly; Resonance up to 30; extras become Power Shards.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+    "quote": "Total: 560 Empyrean Traces in Altgard, across 58 zones"
+   },
+   {
+    "url": "https://allthings.how/aion-2/map/empyrean-traces/",
+    "quote": "Empyrean Traces also appears on the Altgard map, at 560 spots"
+   },
+   {
+    "url": "https://www.playnews.gg/en/guides/empyrean-traces-feathers-in-aion-2-how-to-find-use-and-hide-them-from-the-map",
+    "quote": "The Monolith unlocks during the main quest 'Monolith of the Empyrean Lord' at level 16 ... Surplus feathers can be converted into Power Shards"
+   },
+   {
+    "url": "https://selphie1999gaming.com/game-guides/aion-2/aion-2-empyrean-traces-how-to-use-empyrean-feathers/",
+    "quote": "Once you reach level 16 and complete the Empyrean Monolith main quest ... Faction Monoliths go to max level 30 ... Extra Feathers can be converted into Power Shards"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards.</p>",
+  "note": "560, Lv 16 unlock, max 30, rewards and Power Shards all verified. No source names the Monolith locations (allthings.how lists 2, unnamed), so '(Safe Haven or Nornir Assembly)' is dropped. Line 1825 keeps as is."
+ },
+ {
+  "id": "C26",
+  "lines": [
+   2405,
+   2406,
+   2407,
+   2408
+  ],
+  "claim": "ZONE_TRACES per-zone counts.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+    "quote": "Impetusium Square 54; Immortal Isle 40; Black Claw Village 35; Moslan Forest 32; Basfelt Ruins 30; Purifying Forest 29; Nameless Cemetery 28; Dranactus 25; Lagta Fortress 22; Sanctum Outpost 21; Spirit Isle 19; Dredgion Crash Site 19; Battlescar Mound 18; Uruthumheim 16; Western Gribade Highland 14; Fafnite Deposit 12; Eastern Gribade Highland 12; Idun's Lake 11; Silent Hill 11; Calderon Canyon 8; Tranein Highland 6"
+   }
+  ],
+  "action": "keep",
+  "note": "Matches Metabot's map DB exactly (accepted). allthings.how differs by 1 on two zones (Black Claw 34, Moslan 31). Metabot also lists Safe Haven 25, Nornir Assembly 18 and Southern Gribade Highland 6; add them only if those zones appear as quest zones."
+ },
+ {
+  "id": "C27",
+  "lines": [
+   3663
+  ],
+  "claim": "Board total = 4 crystals per level past 11 + 1 per Daevanion Crystal (confirmed in game at 16/17).",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "in-game (user, Lv 16 and 17)",
+    "quote": "formula confirmed in game at Lv 16 and 17"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/daevanion",
+    "quote": "Filling every node on all 5 boards costs 802 points (no per-level rate given)"
+   }
+  ],
+  "action": "keep",
+  "note": "No web source gives a per-level rate (thegameswiki, Metabot planner and gamewith don't either). In-game evidence counts. The card already flags 'total less than levels alone', which catches a break. E2 could add a one-line prompt to re-check at 20/30/40. Line 1728 still calls the per-level reading Metabot's 'interpretation'; see C28h."
+ },
+ {
+  "id": "C28a",
+  "lines": [
+   1724
+  ],
+  "claim": "Unlock levels (client-data table, Metabot/Wikily): enhancement 9; extraction, crafting, gathering 10; Supply Request 25; daily dungeon 30; Abyss, Market, Ascension Trial, Conquest 45. Treat as one strong source.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://gamesfuze.com/guides/aion-2-ascension-trial-guide/",
+    "quote": "difficulty table lists Character Level 45 for every difficulty"
+   },
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-krao-cave-expedition/",
+    "quote": "Conquest: Level 45"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide (via R3 data/build.partial.notes.txt)",
+    "quote": "Daily: Daeva Bio-Research Base L30"
+   }
+  ],
+  "action": "keep",
+  "note": "Metabot DB fields (accepted); Ascension Trial and Conquest 45 independently confirmed."
+ },
+ {
+  "id": "C28b",
+  "lines": [
+   1725
+  ],
+  "claim": "Stigma slots 22/27/32/37 (five sources); regional quest names and levels (allthings.how, Selphie1999).",
+  "verdict": "verified",
+  "sources": [],
+  "action": "keep",
+  "note": "Stigma slots are R3's scope; regional names and levels are R1's. Not re-fetched here."
+ },
+ {
+  "id": "C28c",
+  "lines": [
+   1726
+  ],
+  "claim": "Specialty slots at 8/12/20 (Metabot, gameplay.tips, Skycoach); leveling order from GamerBlurb; GamesFuze ranks Heart Gore first; respec free until 31.",
+  "verdict": "disputed",
+  "sources": [
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties",
+    "quote": "slot at level 8 ... level 12 ... level 20"
+   },
+   {
+    "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/",
+    "quote": "Skill level priority: 1. Heart Gore 2. Insignia Explosion ..."
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<p><b>Skill points:</b> learn levels, per-level costs and character gates from Metabot's skill pages; specialty slots at skill level 8 / 12 / 20 (Metabot, gameplay.tips, thegameswiki). Leveling order from GamerBlurb's Global build. GamesFuze's build ranks Heart Gore first instead; respec is free while you level if you want to switch.</p>",
+  "note": "Only the respec clause changes (C01); thegameswiki added as a checked source."
+ },
+ {
+  "id": "C28d",
+  "lines": [
+   1727
+  ],
+  "claim": "From your game: 16 points to reach Heart Gore + Ambush on Nezekan.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "in-game (user)",
+    "quote": "16 points to reach Heart Gore + Ambush on Nezekan"
+   }
+  ],
+  "action": "keep"
+ },
+ {
+  "id": "C28e",
+  "lines": [
+   1728
+  ],
+  "claim": "Inferred skill-point order; single-source Daevanion node priority; Sealed Dungeons solo (Wikily, Metabot); disputed first nodes, core skill, passives, stigma order, stat order.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://allthings.how/?p=244925",
+    "quote": "a solo instance you enter, clear once"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<b>Cross-checked:</b> Sealed Dungeons are solo (Metabot/Wikily: 1 player; allthings.how: solo instance).",
+  "note": "Metabot and Wikily count as one source; allthings.how is the needed second. Stat order sentence: replace with 'Stat order (Metabot, games.gg, GamesFuze rank differently; the guide shows only stats two of them rank high).' (C20). Stigma order is R3's. Other labels are already accurate."
+ },
+ {
+  "id": "C28f",
+  "lines": [
+   1728
+  ],
+  "claim": "Daevanion points per level (Metabot calls its reading an interpretation).",
+  "verdict": "single-source",
+  "sources": [
+   {
+    "url": "in-game (user, Lv 16 and 17)",
+    "quote": "4 per level past 11, confirmed in game"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "Daevanion points per level: 4 per level past 11, confirmed in your game at 16 and 17.",
+  "note": "Matches the code comment at 3663 (C27). Move it from the 'Disputed' list to 'From your game'."
+ },
+ {
+  "id": "C28g",
+  "lines": [
+   1729
+  ],
+  "claim": "Settled: Supply Request (Lv 25) and Duty Quests (Lv 45) are separate (Inven, games.gg, GamesFuze, thegameswiki).",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://thegameswiki.com/aion-2/wiki/duty-quests",
+    "quote": "On the global service Duties open at level 45"
+   },
+   {
+    "url": "https://neonsect.com/aion-2/aion-2-level-45-duties/",
+    "quote": "Duties open at Level 45"
+   },
+   {
+    "url": "https://allthings.how/?p=234744",
+    "quote": "Supply ... tabs: Emergency, Weekly, Regular: Craft, Regular: Boss (separate from Duty missions)"
+   }
+  ],
+  "action": "keep"
+ },
+ {
+  "id": "C28h",
+  "lines": [
+   1729
+  ],
+  "claim": "Unverified: Kibelisk and Command scroll unlock timing; exact unlock level for most regional quests.",
+  "verdict": "verified",
+  "sources": [
+   {
+    "url": "https://games.gg/aion-2/guides/aion-2-daily-weekly-checklist/",
+    "quote": "Command Merchant ... no unlock level given"
+   },
+   {
+    "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+    "quote": "Unlocks at 10"
+   }
+  ],
+  "action": "rewrite",
+  "newText": "<p><b>Unverified:</b> Kibelisk and Command mission unlock timing.</p>",
+  "note": "Regional unlock levels come from R1's Metabot pages ('Unlocks at'); drop that clause once E2 merges data/rq.json. Command vendor is now verified, but its unlock level still isn't."
+ }
+]
