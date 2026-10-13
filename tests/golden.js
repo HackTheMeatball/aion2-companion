@@ -77,7 +77,7 @@ function describe(a, b) {
       for (const f of ['s', 'c', 'f', 'i', 'x', 'o']) if (canon(ca[f]) !== canon(cb[f])) out.push([`Next up: card "${norm(cb.t)}" field ${f} changed`, `${JSON.stringify(ca[f])} -> ${JSON.stringify(cb[f])}`]); });
     const common = ta.filter(t => tb.includes(t)), commonB = tb.filter(t => ta.includes(t));
     if (!gone.length && !added.length && canon(common) !== canon(commonB)) out.push(['Next up: same cards, new order', `${ta.join(' / ')} -> ${tb.join(' / ')}`]);
-    if (ta[0] !== tb[0]) out.push([`Next up: top card ${norm(ta[0] || '(none)')} -> ${norm(tb[0] || '(none)')}`, '']);
+    if (ta[0] !== tb[0]) out.push([`Next up: top card changed from ${norm(ta[0] || '(none)')}`, `-> ${tb[0] || '(none)'}`]);
   }
   const byId = xs => Object.fromEntries((xs || []).map(s => [s.split(' | ')[0], s.split(' | ')]));
   for (const f of ['ms', 'rt']) if (canon(a[f]) !== canon(b[f])) {
@@ -96,7 +96,9 @@ function describe(a, b) {
     for (const p of [...new Set([...Object.keys(A), ...Object.keys(B)])]) if (canon(A[p]) !== canon(B[p])) out.push([`stored state after load: ${p.replace(/^checks\..*/, 'checks.<key>')} written differently`, `${p}: ${JSON.stringify(A[p] || null)} -> ${JSON.stringify(B[p] || null)}`]); }
   for (const f of ['keys', 'err', 'mode', 'probeError']) if (canon(a[f]) !== canon(b[f])) out.push([`${f} changed`, `${JSON.stringify(a[f])} -> ${JSON.stringify(b[f])}`]);
   if (!out.length) out.push(['other change', '']);
-  return out;
+  /* a state whose generated save changed: its other changes follow from the new input, so they are grouped apart from
+     the behaviour changes (states with the same input) that a reviewer has to explain */
+  return a.in !== b.in ? out.map(([d, x], i) => [i ? '(new input) ' + d : d, x]) : out;
 }
 function diffReport(before, after, ids) {
   const groups = new Map(), changed = [];
@@ -106,12 +108,17 @@ function diffReport(before, after, ids) {
     changed.push(id);
     for (const [d, detail] of describe(a, b)) { if (!groups.has(d)) groups.set(d, { d, ids: [], detail }); groups.get(d).ids.push(id); }
   }
-  return { changed, groups: [...groups.values()].sort((x, y) => y.ids.length - x.ids.length || (x.d < y.d ? -1 : 1)) };
+  /* behaviour changes first (most states first), then the state-set and input changes and what follows from them */
+  const rank = g => /^(\(new input\)|input:|state (added|removed))/.test(g.d) ? 1 : 0;
+  return { changed, groups: [...groups.values()].sort((x, y) => rank(x) - rank(y) || y.ids.length - x.ids.length || (x.d < y.d ? -1 : 1)) };
 }
 function printReport(rep, nIds, label) {
   if (!rep.changed.length) { console.log(`${label}: all ${nIds} states identical`); return; }
   console.log(`${label}: ${rep.changed.length} of ${nIds} states differ · ${rep.groups.length} kinds of change (most states first):`);
-  rep.groups.slice(0, 60).forEach(g => console.log(`  ${String(g.ids.length).padStart(5)}  ${g.d.slice(0, 150)}\n         e.g. ${g.ids.slice(0, 3).join(', ')}${g.detail ? `\n         ${g.detail.slice(0, 220)}` : ''}`));
+  let sec = -1;
+  rep.groups.slice(0, 60).forEach(g => { const r = /^(\(new input\)|input:|state (added|removed))/.test(g.d) ? 1 : 0;
+    if (r !== sec) { sec = r; console.log(r ? '  -- generated saves added / removed / changed (their other changes follow from the new input):' : '  -- behaviour changes (same input):'); }
+    console.log(`  ${String(g.ids.length).padStart(5)}  ${g.d.slice(0, 150)}\n         e.g. ${g.ids.slice(0, 3).join(', ')}${g.detail ? `\n         ${g.detail.slice(0, 220)}` : ''}`); });
   if (rep.groups.length > 60) console.log(`  … ${rep.groups.length - 60} more kinds in tests/out/golden/diff.md`);
 }
 function writeDiffFiles(rep, before, after) {
