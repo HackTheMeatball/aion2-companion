@@ -17,7 +17,8 @@
     "serve": "node scripts/serve.mjs",
     "test": "npm run build && node tests/run.mjs",
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
-    "gen": "python3 -I tools/gen/gen.py && python3 -I tools/gen/apply.py"
+    "gen": "python3 -I tools/gen/gen.py",
+    "gen:check": "python3 -I tools/gen/gen.py && git diff --exit-code -- tools/gen/gen-block.js tools/gen/gen-report.json data/DATA_SOURCES.md"
   },
   "devDependencies": {
     "axe-core": "4.13.0",
