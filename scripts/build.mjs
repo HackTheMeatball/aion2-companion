@@ -83,6 +83,17 @@ const bundleOne = async entry => {
   if (/<\/script/i.test(js)) die(`src/${entry}: the bundle contains "</script"`);
   return js;
 };
+/* one global namespace until P3: esbuild would silently rename one of two same-named top-level declarations in different
+   modules, breaking the globals the page, site.js and the tests use. Checks every declaration that starts a line
+   (the first name of a multi-name declaration). */
+{
+  const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map();
+  for (const f of ['src/main.js', ...readdirSync(P('src/data')).filter(n => n.endsWith('.js')).map(n => 'src/data/' + n)])
+    for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
+      if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);
+      seen.set(m[1], f);
+    }
+}
 const bundles = Object.fromEntries(await Promise.all([...new Set([...shell.matchAll(SCRIPT_TAG)].map(m => m[1]))].map(async e => [e, await bundleOne(e)])));
 const bundle = entry => bundles[entry];
 const inline = html => html
