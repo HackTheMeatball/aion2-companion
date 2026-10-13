@@ -1384,3 +1384,19 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   #nowStar .rq-wait > summary::after { content: " ▾" / ""; }
   #nowStar .rq-wait[open] > summary::after { content: " ▴" / ""; }
 }
+/* Pointer targets of at least 24 px on the small controls (audit P1-3), the same way as above: an invisible pseudo-element
+   around the control (::after where ::before draws a glyph), sized so it doesn't reach a neighbouring control
+   (tests/a11y.js checks with elementFromPoint). The stigma "change" select is already an invisible layer: it grows itself.
+   Not here: bordered pills (.q-inl, .q-snz, .achip, the card footer pills) and the Confidence / Sources summaries:
+   position: relative changes how their rounded border / rotated arrow is antialiased (screenshots differ), so they
+   wait for the visible 0.1.7 pass (44 px touch buttons). The full-width summaries have no neighbours to reach anyway. */
+.modeseg button, :is(h2, div).sec .ns-pop, .sd-close, .zone-btn, .ms-name, .nsinfo, #nowStar .ns-pin, .trk-sum,
+#nowStar .rq-wait > summary, .jfilt-x { position: relative; }
+.modeseg button::before, :is(h2, div).sec .ns-pop::before, #nowStar .rq-wait > summary::before,
+.ms-name::before, .trk-sum::after { content: ""; position: absolute; inset: -3px 0; }
+.zone-btn::before { content: ""; position: absolute; inset: -4px 0; }
+.sd-close::before { content: ""; position: absolute; inset: -4px -2px; }
+.jfilt-btn::before { content: ""; position: absolute; inset: -3px 0 -3px -1px; }
+.jfilt-x::before { content: ""; position: absolute; inset: -4px -4px -4px -3px; }
+.nsinfo::before, #nowStar .ns-pin::before, .dvi::before { content: ""; position: absolute; inset: -6px; }
+#stCard .st-chg .st-pick { inset: -5px -2px; width: calc(100% + 4px); height: calc(100% + 10px); }
