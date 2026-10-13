@@ -1,20 +1,20 @@
 /* Service worker for the standalone site (never part of the claude.ai build).
-   scripts/build.mjs fills in the build id (content hash) and the precache list (app shell + icons).
+   scripts/build.mjs fills in the build id (content hash) and the precache list (app shell, icons, fonts).
    - index.html / navigations to the app: network first, cached copy when offline.
    - other same-origin files: cache first (the cache is replaced as a whole when the build changes).
-   - Google Fonts: stale-while-revalidate, so the fonts also work offline after the first visit. */
+   - Nothing cross-origin is handled: the fonts are served from this site since 0.1.5. */
 const PREFIX = "aion2-route-";
 const CACHE = PREFIX + "__BUILD__";
-const FONTS = PREFIX + "fonts";
 const PRECACHE = __PRECACHE__;
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
 });
 
+/* Every other aion2-route-* cache is deleted: older builds, and the Google Fonts cache ("aion2-route-fonts") from before 0.1.5. */
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys()
-    .then(keys => Promise.all(keys.filter(k => k.startsWith(PREFIX) && k !== CACHE && k !== FONTS).map(k => caches.delete(k))))
+    .then(keys => Promise.all(keys.filter(k => k.startsWith(PREFIX) && k !== CACHE).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
@@ -33,12 +33,6 @@ async function networkFirst(req) {
   }
 }
 
-async function staleWhileRevalidate(req) {
-  const cache = await caches.open(FONTS), hit = await cache.match(req);
-  const net = fetch(req).then(res => { if (res.ok || res.type === "opaque") cache.put(req, res.clone()); return res; }).catch(() => hit);
-  return hit || net;
-}
-
 self.addEventListener("fetch", e => {
   const req = e.request;
   if (req.method !== "GET") return;
@@ -48,7 +42,5 @@ self.addEventListener("fetch", e => {
     if (shell) { e.respondWith(networkFirst(req)); return; }
     if (req.mode === "navigate") return; /* other pages (404.html, …): plain network */
     e.respondWith(caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req)));
-    return;
   }
-  if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") e.respondWith(staleWhileRevalidate(req));
 });

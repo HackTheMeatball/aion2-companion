@@ -2,7 +2,13 @@
    node tests/site.js  (page at AION_BASE; see tests/config.js) */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
-const FONT_HOST = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
+/* fonts are self-hosted since 0.1.5; the suites block them (tests/support/block-web-fonts.cjs), so their requests fail */
+const FONT_LOCAL = /\/assets\/fonts\/[^/]+\.woff2$/;
+const FONT_FAMILIES = ['Marcellus SC', 'Figtree', 'JetBrains Mono'];
+const FONT_FILES = ['figtree-latin', 'figtree-latin-ext', 'jetbrains-mono-latin', 'jetbrains-mono-latin-ext', 'marcellus-sc-latin', 'marcellus-sc-latin-ext'].map(f => f + '.woff2');
+/* the families whose faces actually loaded, after waiting for the fonts the page uses */
+const loadedFamilies = p => p.evaluate(async () => { await document.fonts.ready; await new Promise(r => setTimeout(r, 300)); await document.fonts.ready;
+  return [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort(); });
 const KEY = 'aion2-assassin-route-v4';
 const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
@@ -28,13 +34,16 @@ const checkReport = (label, m, want) => {
 
   /* 1. standalone page: head, footer, no errors, export as a Blob download, service worker + offline */
   {
-    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 }, acceptDownloads: true }); const p = await ctx.newPage();
-    const errs = [], bad = [];
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 }, acceptDownloads: true, serviceWorkers: 'allow' }); const p = await ctx.newPage();
+    const errs = [], bad = [], reqs = [];
+    p.on('request', r => reqs.push(r.url()));
     p.on('pageerror', e => errs.push(e.message));
     p.on('console', m => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errs.push('console: ' + m.text()); });
-    p.on('requestfailed', r => { if (!FONT_HOST.test(r.url())) bad.push(r.url() + ' ' + (r.failure() || {}).errorText); });
+    p.on('requestfailed', r => { if (!FONT_LOCAL.test(new URL(r.url()).pathname)) bad.push(r.url() + ' ' + (r.failure() || {}).errorText); });
     p.on('response', r => { if (r.status() >= 400) bad.push(r.status() + ' ' + r.url()); });
     await p.goto(CFG.CUR); await p.waitForTimeout(600);
+    /* first load, before the service worker controls the page (this context allows workers; the others block them) */
+    if (process.env.AION_FONTS_BLOCKED) ok('fonts: blocked in the suites (fallback fonts render; --with-fonts lifts this)', !(await loadedFamilies(p)).length);
     const head = await p.evaluate(() => ({
       mode: document.compatMode, charset: document.characterSet, title: document.title,
       viewport: (document.querySelector('meta[name=viewport]') || {}).content, desc: !!(document.querySelector('meta[name=description]') || {}).content,
@@ -79,7 +88,9 @@ const checkReport = (label, m, want) => {
     const off = await p.evaluate(() => ({ cards: document.querySelectorAll('#nowStar .ns-card').length, lv: state.level, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
     ok('offline: the app shell, icons and saved progress load from the cache', off.cards > 0 && off.lv === 27 && off.broken === 0, off);
     await ctx.setOffline(false);
-    ok('no page errors, failed requests or 4xx/5xx (Google Fonts may be unreachable)', !errs.length && !bad.length, { errs, bad });
+    ok('no page errors, failed requests or 4xx/5xx (the blocked font files aside)', !errs.length && !bad.length, { errs, bad });
+    const third = reqs.filter(u => !u.startsWith(CFG.BASE + '/') && !/^(data|blob):/.test(u));
+    ok('no third-party requests (fonts come from this site)', !third.length && reqs.some(u => FONT_LOCAL.test(new URL(u).pathname)), third);
     await ctx.close();
   }
 
@@ -97,6 +108,28 @@ const checkReport = (label, m, want) => {
     await ctx.close();
   }
 
+  /* 2b. self-hosted fonts: no Google Fonts anywhere in the built files; files + OFL texts shipped, served and precached;
+     with the blocker lifted, all three families load in the site, the claude.ai build (inlined) and the 404 page */
+  {
+    const D = path.join(CFG.ROOT, 'dist'), rd = f => fs.readFileSync(path.join(CFG.ROOT, f), 'utf8');
+    const built = { 'dist/index.html': rd('dist/index.html'), 'dist/404.html': rd('dist/404.html'), 'dist/sw.js': rd('dist/sw.js'), 'dist-artifact/index.html': rd('dist-artifact/index.html') };
+    const google = Object.keys(built).filter(f => /fonts\.(googleapis|gstatic)\.com/.test(built[f]));
+    ok('fonts: no fonts.googleapis.com / fonts.gstatic.com in the built HTML or service worker', !google.length, google);
+    const shipped = fs.readdirSync(path.join(D, 'assets', 'fonts')).sort();
+    ok('fonts: six WOFF2 files and three OFL license texts shipped in dist/assets/fonts', JSON.stringify(shipped) === JSON.stringify([...['OFL-Figtree.txt', 'OFL-JetBrainsMono.txt', 'OFL-MarcellusSC.txt'], ...FONT_FILES].sort()), shipped);
+    ok('fonts: every font file is in the service worker precache', FONT_FILES.every(f => built['dist/sw.js'].includes(`"assets/fonts/${f}"`)));
+    const artFiles = [...built['dist-artifact/index.html'].matchAll(/"([\w-]+\.woff2)":"[A-Za-z0-9+/=]{1000,}"/g)].map(x => x[1]).sort();
+    ok('fonts: the claude.ai build inlines each font file once (no font URL, no @font-face)', !/assets\/fonts\/|@font-face/.test(built['dist-artifact/index.html']) && JSON.stringify(artFiles) === JSON.stringify([...FONT_FILES].sort()), artFiles);
+    const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }); await ctx.unrouteAll(); const p = await ctx.newPage();
+    const served = await Promise.all(FONT_FILES.map(async f => { const r = await p.request.get(CFG.BASE + '/assets/fonts/' + f); return [f, r.status(), r.headers()['content-type']]; }));
+    ok('fonts: served as font/woff2', served.every(([, s, t]) => s === 200 && t === 'font/woff2'), served);
+    await p.goto(CFG.CUR); const site = await loadedFamilies(p);
+    await p.goto(CFG.BASE + '/artifact/'); const art = await loadedFamilies(p);
+    await p.goto(CFG.BASE + '/no-such-page'); const nf = await loadedFamilies(p);
+    ok('fonts: Marcellus SC, Figtree and JetBrains Mono load in the site, the claude.ai build and the 404 page', [site, art, nf].every(x => JSON.stringify(x) === JSON.stringify([...FONT_FAMILIES].sort())), { site, art, nf });
+    await ctx.close();
+  }
+
   /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
   {
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
@@ -110,6 +143,7 @@ const checkReport = (label, m, want) => {
     await p.click('#expBtn'); await p.waitForTimeout(200);
     const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).checks !== undefined]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
     ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^aion2-assassin-progress-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
+    if (process.env.AION_FONTS_BLOCKED) ok('artifact build: inlined fonts are blocked in the suites too', !(await loadedFamilies(p)).length);
     const am = await footerMeta(p);
     ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
     checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '5', quest: '(not set)', mode: 'Advanced', build: 'claude.ai' });

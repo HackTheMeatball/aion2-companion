@@ -113,17 +113,25 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 
 ## 4. Build and site
 
-- `scripts/build.mjs`: checks the `<!-- @web-only -->` markers and that every referenced icon exists and has a blob id
-  (`scripts/artifact-blobs.json`), then writes `dist/` (markers stripped; `public/` and icons copied; `sw.js` with the
-  build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed, icons → `/_blob/<id>`).
+- `scripts/build.mjs`: checks the `<!-- @web-only -->` markers, that every referenced icon exists and has a blob id
+  (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing
+  requests Google Fonts; then writes `dist/` (markers stripped; `public/`, icons and fonts copied; `sw.js` with the
+  build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed, icons → `/_blob/<id>`,
+  the `@font-face` block replaced by a script that holds each font file once in base64 and registers the same faces with
+  the FontFace API; capped at 150 KB).
+- Fonts (since 0.1.5): `src/assets/fonts/` holds the latin and latin-ext WOFF2 files Google Fonts serves for Marcellus SC,
+  Figtree and JetBrains Mono, with their SIL OFL 1.1 texts. The `@font-face` rules copy Google's CSS (one face per
+  weight and subset, same unicode ranges; Figtree and JetBrains Mono are variable files shared by their weights), so
+  text renders exactly as before; a weight range per file would render weight 500 mono text differently. The page
+  makes no third-party request.
   It also fills the placeholders `__APP_VERSION__` (from `package.json`) and `__APP_BUILD__` (`site` / `claude.ai`):
   the footer's version link and the "Report a problem" link use them, so the version is never typed into the page.
 - Footer **Report a problem**: opens `.github/ISSUE_TEMPLATE/bug.yml` with its fields prefilled through the URL (field ids
   as query parameters): version, level, story quest, mode, build and user agent, and nothing else from the save. The
   `site` suite pins that list.
-- `src/sw.js`: precaches the shell and icons; network-first for the page, cache-first for the rest, stale-while-
-  revalidate for Google Fonts; old `aion2-route-*` caches are deleted on activate. Registered only on https or
-  localhost, and only in `dist/`.
+- `src/sw.js`: precaches the shell, icons and fonts; network-first for the page, cache-first for the rest; other
+  `aion2-route-*` caches (older builds, the pre-0.1.5 Google Fonts cache) are deleted on activate. Registered only on
+  https or localhost, and only in `dist/`.
 - Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.
 - `scripts/serve.mjs`: static server for `dist/` (+ `/artifact/`, `/_blob/<id>`, and `/__baselines/` for tests).
 
@@ -133,7 +141,7 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 
 | Suite | What |
 |---|---|
-| `site` | head, footer, export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build |
+| `site` | head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts |
 | `e1`…`e4` | functional checks from each polish pass |
 | `mig1` | v285 save → current build (4 intended differences pinned in `tests/fixtures/e1-migtest-expected.json`), rollback |
 | `mig2` | realistic v287 save → current build, idempotent, rollback |
@@ -149,4 +157,7 @@ change, re-record with `node tests/golden.js --record`, review the summary and `
 (Next up cards whose gate isn't met, generated), and commit the snapshots with the change.
 
 Baselines (`tests/baselines/v285.html`, `v287.html`) are the old single-file builds, served from the same origin so
-they share `localStorage` with the current page. Google Fonts is blocked in test browsers (`--with-fonts` to allow).
+they share `localStorage` with the current page. Web fonts are blocked in test browsers so layouts render with
+fallback fonts on every machine (`tests/support/block-web-fonts.cjs`: the self-hosted font files, the claude.ai build's
+inlined fonts, Google Fonts for the baselines; service workers are blocked unless a context allows them, since a worker
+would serve the fonts unrouted). `--with-fonts` lifts all of it.

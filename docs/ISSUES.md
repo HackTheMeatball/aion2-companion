@@ -57,8 +57,6 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
 - Pop-out needs Document Picture-in-Picture (Chrome / Edge 116+); the button is hidden elsewhere.
-- Fonts come from Google Fonts (privacy note in PRIVACY.md). Self-hosting them would remove the last third-party
-  request; their licenses (OFL) allow it.
 
 ## Tooling
 
@@ -67,5 +65,10 @@ on purpose: the guide shows nothing rather than an unverified value.
 - Timing checks (`update()` median < 15 ms) trip on a busy machine (measured 10–17 ms for the same build on a 2-vCPU
   VM). The runner runs half the CPU count in parallel and re-runs a failed suite once, reporting a pass on retry as
   `FLAKY` with the first run's failures. A real slowdown fails both runs.
-- Tests block Google Fonts so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check
-  with the real fonts.
+- Tests block the web fonts (self-hosted files, the claude.ai build's inlined copies, Google Fonts for the baselines) and
+  service workers, so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check with the
+  real fonts.
+- Layout fitting (`fitSkills` etc.) runs in `requestAnimationFrame` and isn't re-run when the web fonts finish loading,
+  so on a slow font load the Skills / Daevanion row can be sized for the fallback font (a few px). Seen while comparing
+  builds in 0.1.5: the claude.ai build registers its inlined fonts before the first fit and comes out 3 px taller than
+  with Google Fonts. Re-running the fit on `document.fonts.ready` would fix it (visible change, needs a test).
