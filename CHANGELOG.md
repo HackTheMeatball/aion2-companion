@@ -3,6 +3,15 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.4 (beta) — 2026-10-13 · version and problem reports in the app
+
+- Footer: the app's version, linked to this changelog, and a *Report a problem* link that opens a GitHub issue form
+  prefilled with version, level, current story quest, mode, build and browser — nothing else from your save. You see
+  and can edit the public form before submitting.
+- Issue forms for problems, data corrections and ideas, with labels (`bug`, `data`, `feature`, `ux`).
+- The version comes from `package.json` at build time in both builds.
+- No change to saved progress.
+
 ## 0.1.3 (beta) — 2026-10-13 · ascension hotfix
 
 - Next up no longer offers "The One Who Dreams" before the story reaches "A Daeva Dreaming Anew", or the Lv 45 Hero and
