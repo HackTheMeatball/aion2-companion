@@ -28,9 +28,9 @@ every change. Every write (`save()` and the one-time steps below) goes through `
 "couldn't be saved" banner (`#saveWarn`, with the Export action) when `localStorage.setItem` throws and hides it after
 the next write that works; what is written, and under which key, is unchanged.
 
-Other keys: `…:before-import` (see Import below) and, on the standalone site only, `…:persist-asked` (time the page last
-asked `navigator.storage.persist()`; asked only when the page loaded saved progress, at most once a week until the
-browser grants it, so Firefox's prompt doesn't repeat on every visit).
+The only other localStorage key is `…:before-import` (see Import below). On the standalone site the page asks
+`navigator.storage.persist()` when it loaded saved progress, at most once per browser session (flag in
+`sessionStorage`, so the localStorage keys stay as they are; the `golden` suite records them).
 
 | Field | Meaning |
 |---|---|

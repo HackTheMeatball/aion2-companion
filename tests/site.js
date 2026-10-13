@@ -130,23 +130,26 @@ const checkReport = (label, m, want) => {
     await ctx.close();
   }
 
-  /* 2c. persistent storage: asked on the standalone site only, only with saved progress, at most once a week, never in claude.ai */
+  /* 2c. persistent storage: asked on the standalone site only, only with saved progress, once per browser session, never in
+     claude.ai; nothing is added to localStorage */
   {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
     await ctx.addInitScript(() => { if (!navigator.storage) return;
       navigator.storage.persisted = async () => false;
-      navigator.storage.persist = async () => { localStorage.setItem('__test:persistCalls', String(+(localStorage.getItem('__test:persistCalls') || 0) + 1)); return false; }; });
-    const p = await ctx.newPage(), calls = () => p.evaluate(() => +(localStorage.getItem('__test:persistCalls') || 0));
+      navigator.storage.persist = async () => { window.name = String(+(window.name || 0) + 1); return false; }; });
+    const p = await ctx.newPage(), calls = () => p.evaluate(() => +(window.name || 0));
     await p.goto(CFG.CUR); await p.waitForTimeout(400);
     const fresh = await calls();
     await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 12, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), KEY);
     await p.reload(); await p.waitForTimeout(400); const first = await calls();
     await p.reload(); await p.waitForTimeout(400); const again = await calls();
-    await p.evaluate(k => localStorage.setItem(k + ':persist-asked', String(Date.now() - 8 * 864e5)), KEY);
-    await p.reload(); await p.waitForTimeout(400); const week = await calls();
+    const lsKeys = await p.evaluate(() => Object.keys(localStorage).sort());
+    await p.evaluate(k => sessionStorage.removeItem(k + ':persist-asked'), KEY);
+    await p.reload(); await p.waitForTimeout(400); const session = await calls();
     await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(400); const art = await calls();
-    ok('persistent storage: not asked without saved progress; asked once with it; not again on reload; again after a week; never in the claude.ai build',
-      fresh === 0 && first === 1 && again === 1 && week === 2 && art === 2, { fresh, first, again, week, art });
+    ok('persistent storage: not asked without saved progress; asked once with it; not again in the same session; again in a new session; never in the claude.ai build',
+      fresh === 0 && first === 1 && again === 1 && session === 2 && art === 2, { fresh, first, again, session, art });
+    ok('persistent storage: nothing added to localStorage', JSON.stringify(lsKeys) === JSON.stringify([KEY]), lsKeys);
     await ctx.close();
   }
 
