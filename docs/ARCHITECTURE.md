@@ -1,7 +1,17 @@
 # Architecture
 
-The app is one HTML file, `src/index.html` (≈4,000 lines: CSS, markup, then one script). No framework, no bundler, no
-runtime dependencies. It is built into two deliverables that must behave the same:
+The app is one static HTML page with no framework and no runtime dependencies. Its source is split into a few files
+(0.2 P1) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
+
+| Source | What |
+|---|---|
+| `src/index.html` | page shell: head, markup, `@web-only` markers, and the tags naming what is inlined |
+| `src/styles/fonts.css`, `src/styles/app.css` | the styles (the `@font-face` rules; everything else), inlined verbatim |
+| `src/main.js` | the app script (ES module entry, ≈2,400 lines, still one global scope); imports the generated data |
+| `src/data/generated.js` | the generated data block as an ES module (`npm run gen`; never edit by hand) |
+| `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
+
+`src/index.html` is not runnable by itself: `npm run build && npm run serve`. The two deliverables must behave the same:
 
 | Build | Where | Differences |
 |---|---|---|
@@ -90,8 +100,8 @@ build still works). Run `mig1` / `mig2`.
 ## 3. Data pipeline
 
 ```
-web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tools/gen/gen.py──▶ tools/gen/gen-block.js ──apply.py──▶ src/index.html
-                                                                  │                (between /* E2-GEN START */ … /* E2-GEN END */)
+web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tools/gen/gen.py──▶ tools/gen/gen-block.js ──apply.py──▶ src/data/generated.js
+                                                                  │                (the block between /* E2-GEN START */ … /* E2-GEN END */, + export list)
                                                                   ├─▶ tools/gen/gen-report.json (405 consistency checks, warnings)
                                                                   └─▶ data/DATA_SOURCES.md (every URL and what it backs)
 ```
@@ -101,7 +111,7 @@ web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tool
   verdicts verified / single-source / inferred / disputed / drop). `claims-notes.md` explains the verdicts.
 - The generated block defines `RQ`, `RQ_STATS`, `QUESTS_X`, `QUEST_STEPS_X`, `QUEST_LOC_X`, `STORY_END`, `SH_DATA`,
   `AREA_LOC`, `SD_RW`, `SP_EXTRA`, `DV_BOARDS`, `SOURCES`, `SRC_SITE`, `CONF`. Never edit it by hand.
-- Hand-written data still in the page: `GATES` / `STEPS` text, `QUESTS` 1–40 and `QUEST_STEPS`, `SP_SKILLS`,
+- Hand-written data still in `src/main.js`: `GATES` / `STEPS` text, `QUESTS` 1–40 and `QUEST_STEPS`, `SP_SKILLS`,
   `STAT_TIERS`, `TIPS`, `VERIFIED_UNLOCKS`, `HIDEOUT_AREA`. Text there follows `claims.json`.
 - Snapshots of earlier page data the generator still reads are in `tools/gen/snapshots/`.
 
@@ -109,8 +119,8 @@ Regenerate after changing `data/`:
 
 ```sh
 npm run gen          # = python3 -I tools/gen/gen.py && python3 -I tools/gen/apply.py; exits 1 if a check fails
-git diff src/index.html data/DATA_SOURCES.md   # review
-npm test             # e4 checks the page carries the current block
+git diff src/data/generated.js data/DATA_SOURCES.md   # review
+npm test             # e4 checks generated.js carries the current block and the page has its values
 ```
 
 `tools/research/` holds the scripts that produced `data/rq.json`, `rq-chains.json`, `build.json` and `claims.json`
@@ -119,12 +129,20 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 
 ## 4. Build and site
 
-- `scripts/build.mjs`: checks the `<!-- @web-only -->` markers, that every referenced icon exists and has a blob id
+- `scripts/build.mjs` assembles the page: each `<link rel="stylesheet" href="styles/X.css">` line of the shell becomes a
+  `<style>` with the file as it is; each `<script type="module" src="X.js"></script>` line becomes one classic `<script>`
+  holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; no minification;
+  no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
+  stays a page global, as before modules. esbuild reprints the code: comments dropped, its own formatting, and
+  top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 239 top-level names is a
+  `window` property). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
+  `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read.
+- It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
   (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing
   requests Google Fonts; then writes `dist/` (markers stripped; `public/`, icons and fonts copied; `sw.js` with the
-  build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed, icons → `/_blob/<id>`,
-  the `@font-face` block replaced by a script that holds each font file once in base64 and registers the same faces with
-  the FontFace API; capped at 150 KB).
+  build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
+  `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each
+  font file once in base64 and registers the same faces with the FontFace API; capped at 150 KB).
 - Fonts (since 0.1.5): `src/assets/fonts/` holds the latin and latin-ext WOFF2 files Google Fonts serves for Marcellus SC,
   Figtree and JetBrains Mono, with their SIL OFL 1.1 texts. The `@font-face` rules copy Google's CSS (one face per
   weight and subset, same unicode ranges; Figtree and JetBrains Mono are variable files shared by their weights), so
@@ -167,3 +185,30 @@ they share `localStorage` with the current page. Web fonts are blocked in test b
 fallback fonts on every machine (`tests/support/block-web-fonts.cjs`: the self-hosted font files, the claude.ai build's
 inlined fonts, Google Fonts for the baselines; service workers are blocked unless a context allows them, since a worker
 would serve the fonts unrouted). `--with-fonts` lifts all of it.
+
+## 6. Standing notes (Tech Lead)
+
+Kept here until `docs/team/tech-lead.md` (PR #6) is on `main`; move them into its *Standing notes* then.
+
+- **0.2 P1 toolchain (esbuild 0.28.2, pinned exactly).** Acceptance used for P1 and reusable for P2+: golden identical
+  without re-recording; markup and CSS of `dist/` and `dist-artifact/` byte-identical to the previous build; scripts
+  equal as token streams to the old script passed through the same esbuild settings (compare with
+  `esbuild --minify-whitespace` on both sides); `update()` measured paired (both builds open side by side, alternating
+  blocks of calls) because single-run medians on the 2-core agent machine vary ±0.3 ms.
+- **Top-level names are globals.** `main.js` is still one global scope; inline `onclick` handlers, `site.js` (`KEY`,
+  `hadSave`) and the suites (`state`, `update()`, `RQ_BY`, …) use them. Until P3 gives modules real imports and
+  exports, keep `treeShaking: false` and keep each entry free of `export` (the build fails if an import/export
+  statement survives bundling). A new module's top-level name must not collide with another module's: esbuild would
+  rename one of them silently.
+- **Static text checks read the built page**, which esbuild reprints: match code by value, not by its source spelling
+  (`const` vs `var`, quotes, comments). e2 and e4 #11 were adapted that way in P1.
+- **Comparing old and new renders:** the page is not deterministic run to run on its own: the icon sizer
+  (`iconSizer`, a ResizeObserver) can settle on 47 or 56 px depending on image decode timing, and layout fitting
+  depends on when fonts load. For screenshot comparisons install Playwright's fake clock, block web fonts
+  (`node --require tests/support/block-web-fonts.cjs`), make lazy images eager and wait until every image is complete;
+  compare DOM (scripts removed), computed styles (sorted per element: Chrome lists custom properties in varying order),
+  stored state, then pixels, and run the same harness old-vs-old to know the noise floor.
+- **Concurrent heavy jobs** (a second Playwright run, other agents' audits) make the `update() < 15 ms` check in
+  `regress` fail; `origin/main` fails it too under load. Run timing-sensitive suites alone.
+- Open PRs that edit the old one-file `src/index.html` must be ported after P1 merges: CSS lines go to
+  `src/styles/app.css`, script lines to `src/main.js`, generated data via `npm run gen`.
