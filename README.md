@@ -39,8 +39,8 @@ Both versions use the same save format, so this works in either direction.
 
 ## Development
 
-Requirements: Node 22+ and Python 3.10+ (only for regenerating data). No runtime dependencies; Playwright is the only
-dev dependency.
+Requirements: Node 22+ and Python 3.10+ (only for regenerating data). No runtime dependencies; dev dependencies are
+esbuild (bundles the app's modules into the single-file page) and Playwright (tests).
 
 ```sh
 npm ci                                   # once
@@ -54,12 +54,17 @@ npm run gen                              # regenerate the app's data block from 
 ```
 
 ```
-src/index.html          the app (one file: HTML + CSS + JS); icons in src/assets/icons/
+src/index.html          the page shell (head + markup); the build inlines the styles and scripts it names
+src/styles/*.css        styles (fonts.css: the @font-face rules; app.css), inlined verbatim
+src/main.js             the app script (ES module entry), bundled by esbuild into one inline <script>
+src/data/generated.js   the generated data module (npm run gen; never edit by hand)
+src/site.js             the standalone site's own script (storage persistence, service worker)
+src/assets/             icons and self-hosted fonts
 src/sw.js               service worker template (offline cache), filled in by the build
 public/                 copied to the site root: CNAME, robots.txt, sitemap.xml, 404.html, favicon, manifest + icons
 scripts/build.mjs       builds dist/ and dist-artifact/;  scripts/serve.mjs  local static server
 data/                   research data (JSON) the app's data block is generated from + DATA_SOURCES.md
-tools/gen/              data generator (gen.py → gen-block.js → apply.py into src/index.html)
+tools/gen/              data generator (gen.py → gen-block.js → apply.py into src/data/generated.js)
 tools/research/         the scripts that built data/*.json (provenance)
 tools/history/          one-time patch scripts from the E2 / E4 passes (provenance, already applied)
 tests/                  Playwright suites, fixtures, baselines (old app versions for migration tests), runner
