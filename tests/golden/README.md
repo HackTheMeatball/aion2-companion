@@ -138,9 +138,10 @@ judged independently of the app's own filtering (`violations.js`):
 - `story-gate`: the step's story quest isn't reached;
 - `done-by-story`: "complete story quest X" with the story already past X (the app only ticks these from its own
   "Turned in" click);
-- `oracle-gate`: a gate the app doesn't model yet (`ORACLE` in `violations.js`: `g32:dreams` after "A Daeva Dreaming
-  Anew", `g45:0` after that and `g32:dreams`; both inferred, as in ROADMAP 0.1.2). Update the oracle when the gate
-  work decides them differently.
+- `oracle-gate`: a gate from the gate table (`ORACLE` in `violations.js`), checked whether or not the app models it:
+  `g32:dreams` once the story reaches "A Daeva Dreaming Anew", `g45:0` once "Forgotten Commander" is turned in (story
+  past it, or on it with `storyEnd` set), as the ascension hotfix implements them (claims C36, C37). Update the table
+  when a gate is decided differently.
 
 Verify fails when the file is out of date, so it can't drift from the snapshots.
 

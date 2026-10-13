@@ -6,16 +6,29 @@
      story-gate     the step names a story quest ("story" field) that the story hasn't reached yet
      done-by-story  the step is "complete story quest X" and the story is already past X, but it isn't ticked
                     (the app only ticks these on its own "Turned in" click; setting the story by hand skips that)
-     oracle-gate    a gate the app doesn't model yet, from ORACLE below (inferred; the 0.1.2 / 0.3 work decides them)
+     oracle-gate    a gate from ORACLE below, checked whether or not the app models it (the ascension hotfix's gates)
    The file is generated, so a fix shows up as a golden diff plus a shorter list. */
 'use strict';
 
-/* Gates the app doesn't have yet. Keep in sync with what the gate fixes decide; when the app models one, the entry can
-   stay (it then simply finds nothing) or go. */
+/* Gates checked independently of the app (the gate table). They match the ascension hotfix (PR #2, fix/ascension-gates):
+     story     the story has reached X (current quest index >= X), like "story"/"after" in the app's stepsOf
+     turnedIn  X is turned in: the story is past X, or X is the current quest and storyEnd === X ("Turned in" on the last
+               covered quest)
+   byStory steps (story quests themselves) are the done-by-story kind above, not oracle entries. Once the app models a
+   gate the entry stays and simply finds nothing. */
 const ORACLE = {
-  'g32:dreams': { story: 'A Daeva Dreaming Anew', why: 'ROADMAP 0.1.2: story data ties "The One Who Dreams" to "A Daeva Dreaming Anew" (inferred)' },
-  'g45:0': { story: 'A Daeva Dreaming Anew', done: ['g32:dreams'], why: 'the Lv 45 Ascension steps follow "The One Who Dreams" (previous Ascension step, inferred)' },
+  'g32:dreams': { story: 'A Daeva Dreaming Anew', why: 'hotfix: "The One Who Dreams" waits for the story to reach "A Daeva Dreaming Anew" (claims C36)' },
+  'g45:0': { turnedIn: 'Forgotten Commander', why: 'hotfix: "The One Who Witnesses the Nightmare" needs "Forgotten Commander" turned in (claims C37)' },
 };
+
+/* Unmet parts of an ORACLE entry for a save (cur = current story index, st = the stored state), as reasons. */
+function oracleMisses(o, cur, st, qIdx, ck) {
+  const why = [];
+  if (o.story) { const at = qIdx(o.story); if (at >= 0 && cur < at) why.push(`story not at "${o.story}" yet`); }
+  if (o.turnedIn) { const at = qIdx(o.turnedIn); if (at >= 0 && !(cur > at || (cur === at && st.storyEnd === o.turnedIn))) why.push(`"${o.turnedIn}" not turned in`); }
+  const miss = (o.done || []).filter(d => !ck[d]); if (miss.length) why.push(`not done: ${miss.join(', ')}`);
+  return why;
+}
 
 function findViolations(C, states, results) {
   const qIdx = n => C.quests.findIndex(q => q[1] === n);
@@ -38,8 +51,7 @@ function findViolations(C, states, results) {
              it (g22:0, an Asahr quest after "Daeva in a Dream"). Only the first kind is done once the story is past it. */
           else if (at >= 0 && cur > at && !ck[k] && (it.byStory || it.ns.includes(`"${it.story}"`))) add('done-by-story', k, `story is past "${it.story}"`); }
         const o = ORACLE[k];
-        if (o) { const at = qIdx(o.story), miss = (o.done || []).filter(d => !ck[d]);
-          if ((at >= 0 && cur < at) || miss.length) add('oracle-gate', k, [at >= 0 && cur < at ? `story not at "${o.story}" yet` : '', miss.length ? `not done: ${miss.join(', ')}` : ''].filter(Boolean).join('; ')); }
+        if (o) { const why = oracleMisses(o, cur, st, qIdx, ck); if (why.length) add('oracle-gate', k, why.join('; ')); }
       } else if (act === 'skill') {
         const mm = /^Buy (.+) (\d+) → (\d+)$/.exec(c.t) || /^Buy (.+) specialty$/.exec(c.t); if (!mm) return;
         const x = mm[3] ? sp.find(y => y.n === mm[1] && y.L === +mm[3]) : sp.find(y => y.n === mm[1] && y.spec);
@@ -68,7 +80,7 @@ function renderReport(C, violations, nStates) {
     const sp = (() => { const s = [...new Set(curs)].sort((a, b) => a - b); return s.length === 1 ? qName(s[0]) : `${qName(s[0])} … ${qName(s[s.length - 1])} (${s.length})`; })();
     L.push(`| ${v.kind} | \`${v.key}\` | ${v.title.replace(/\|/g, '\\|')} | ${g.length} | ${range(g.map(x => x.lv))} | ${sp.replace(/\|/g, '\\|')} | ${g.filter(x => x.rank === 0).length} | ${[...new Set(g.map(x => x.why))].slice(0, 2).join('; ').replace(/\|/g, '\\|')} |`);
   }
-  if (Object.keys(ORACLE).length) { L.push('', '## Inferred gates used (ORACLE)', ''); for (const [k, o] of Object.entries(ORACLE)) L.push(`- \`${k}\`: story at "${o.story}"${o.done ? `, done: ${o.done.join(', ')}` : ''}. ${o.why}`); }
+  if (Object.keys(ORACLE).length) { L.push('', '## Gate table (ORACLE)', ''); for (const [k, o] of Object.entries(ORACLE)) L.push(`- \`${k}\`: ${[o.story ? `story at "${o.story}"` : '', o.turnedIn ? `"${o.turnedIn}" turned in` : '', o.done ? `done: ${o.done.join(', ')}` : ''].filter(Boolean).join(', ')}. ${o.why}`); }
   L.push('', '## States', '');
   for (const g of rows) {
     const v = g[0];
