@@ -40,12 +40,6 @@ on purpose: the guide shows nothing rather than an unverified value.
 
 - **Sources card has 300 links** (collapsed per site). The `regress` soft check "<= 60 links" fails by design: `e2`
   requires every source URL to be listed.
-- **Item icon names may be swapped.** The page's Wisdom Stone uses blob `7b22e1de…` and Daevanion Crystal uses
-  `cf357991…`; locally those files were named `daevanion-crystal.png` and `wisdom-stone.png` respectively. The repo keeps
-  the blob → file mapping exactly as it was (`scripts/artifact-blobs.json`), so the app looks the same as the claude.ai
-  version, which means either the file names or the icons shown are swapped. Check in game which art is which, then
-  either rename the two files (and their two references in `src/index.html` and the blob map) or swap the icons in
-  `ITEMS`.
 - **Icon provenance not recorded.** The 23 PNGs in `src/assets/icons/` are NC Corporation's art. Record where each file
   came from (site + page URL + date), so any permission request or takedown can be answered quickly. Fill in, then keep:
 
