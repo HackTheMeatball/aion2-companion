@@ -37,6 +37,7 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
 - **0.1.3** — Ascension hotfix: story gates for "The One Who Dreams" and the Lv 45 Hero/Ascension step, story steps
   already passed no longer offered, text fixes, `gates` suite and golden master.
 - **0.1.4** — version in the footer, *Report a problem* link with prefilled issue form, issue forms and labels.
+- **0.1.5** — persistent storage request, save-failure warning, self-hosted fonts.
 
 ## Plan
 
@@ -47,8 +48,8 @@ exists, so it is done once.
 
 ### 0.1.x — fixes and upkeep (patches)
 
-- **0.1.5** — Protect saves: ask the browser for persistent storage, show a warning if a save fails, nudge an export at
-  milestones. Self-hosted fonts (no request to Google). Icon names confirmed in game (needs the owner).
+- Icon names confirmed in game (Wisdom Stone / Daevanion Crystal; needs the owner). Export nudge at milestones (needs a
+  UX pass).
 
 ### 0.2 — Foundations (no visible change)
 
