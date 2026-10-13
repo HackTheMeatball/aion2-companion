@@ -15,5 +15,6 @@ WebFetch; these scripts only assemble its results. `brief.md` is the research br
 | `upd_locations.py` | `data/locations.json` (merge helper: JSON on stdin) | |
 
 `r1/build.py`, `r1/chains.py`, `mkbuild.py` and `v1_build_claims.py` reproduce the committed data files byte for byte
-(checked Oct 2026). The merge helpers modify `data/` in place: run them only on purpose and review `git diff data/`.
+(checked Oct 2026). Exception: claims C36–C38 (0.1.3) were added to `data/claims.json` by hand, so
+`v1_build_claims.py` reproduces the file up to C28h. The merge helpers modify `data/` in place: run them only on purpose and review `git diff data/`.
 Run from anywhere with `python3 -I tools/research/<script>`; then `npm run gen`.
