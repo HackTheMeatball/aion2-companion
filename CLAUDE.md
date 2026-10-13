@@ -1,7 +1,7 @@
 # Working rules for AI sessions in this repo
 
 Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
-`main.js` / `data/generated.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
+`main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
 (aion2.ishkabytes.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.
 
@@ -28,7 +28,8 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 - Only verified data: two independent sources, game-database fields (Metabot quest/skill pages, aion2.gaming.tools,
   aion2.th.gl), or the user's in-game screens (the source of truth). Otherwise leave it out, or label it "single
   source" / "inferred" / "disputed" as `data/claims.json` decides.
-- Change `data/*.json`, then `npm run gen`; never hand-edit `src/data/generated.js` (the `E2-GEN` block). Every new URL must end up in the
+- Change `data/*.json`, then `npm run gen`; never hand-edit `tools/gen/gen-block.js` (the `E2-GEN` block; the build makes
+  the module `src/data/generated.js` from it). Hand-written data tables live in `src/data/*.js`, not in `main.js`. Every new URL must end up in the
   Sources card (gen.py does this) and `data/DATA_SOURCES.md`.
 - Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
   CC BY-NC-SA: take facts only, never its wording, into the app; quotes in `claims.json` stay short and credited. Don't use

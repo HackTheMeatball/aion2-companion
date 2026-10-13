@@ -1,14 +1,15 @@
 # Architecture
 
 Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveling guide). The app is one static HTML page with no framework and no runtime dependencies. Its source is split into a few files
-(0.2 P1) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
+(0.2 P1, P2) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
 
 | Source | What |
 |---|---|
 | `src/index.html` | page shell: head, markup, `@web-only` markers, and the tags naming what is inlined |
 | `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim |
-| `src/main.js` | the app script (ES module entry, ≈2,400 lines, still one global scope); imports the generated data |
-| `src/data/generated.js` | the generated data block as an ES module (`npm run gen`; never edit by hand) |
+| `src/main.js` | the app script (ES module entry, ≈2,050 lines, still one global scope): state, migrations, rendering |
+| `src/data/*.js` | hand-written data tables, content as before: `milestones.js` (GATES, STEPS), `story.js` (QUESTS, QUEST_STEPS, QUEST_LOC, unlocks), `tips.js`, `build.js` (skills, stigmas, boards, key stacks, icons), `areas.js`, `items.js`, `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers the tables call: `I`, `T`, `seq`, `hideouts`, …) |
+| `src/data/generated.js` | not a file: the build makes this module from `tools/gen/gen-block.js` (`npm run gen`) |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
 
 `src/index.html` is not runnable by itself: `npm run build && npm run serve`. The two deliverables must behave the same:
@@ -104,8 +105,8 @@ build still works). Run `mig1` / `mig2`.
 ## 3. Data pipeline
 
 ```
-web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tools/gen/gen.py──▶ tools/gen/gen-block.js ──apply.py──▶ src/data/generated.js
-                                                                  │                (the block between /* E2-GEN START */ … /* E2-GEN END */, + export list)
+web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tools/gen/gen.py──▶ tools/gen/gen-block.js ──npm run build──▶ module src/data/generated.js
+                                                                  │                (the block between /* E2-GEN START */ … /* E2-GEN END */; the build adds the export list)
                                                                   ├─▶ tools/gen/gen-report.json (405 consistency checks, warnings)
                                                                   └─▶ data/DATA_SOURCES.md (every URL and what it backs)
 ```
@@ -115,16 +116,19 @@ web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tool
   verdicts verified / single-source / inferred / disputed / drop). `claims-notes.md` explains the verdicts.
 - The generated block defines `RQ`, `RQ_STATS`, `QUESTS_X`, `QUEST_STEPS_X`, `QUEST_LOC_X`, `STORY_END`, `SH_DATA`,
   `AREA_LOC`, `SD_RW`, `SP_EXTRA`, `DV_BOARDS`, `SOURCES`, `SRC_SITE`, `CONF`. Never edit it by hand.
-- Hand-written data still in `src/main.js`: `GATES` / `STEPS` text, `QUESTS` 1–40 and `QUEST_STEPS`, `SP_SKILLS`,
-  `STAT_TIERS`, `TIPS`, `VERIFIED_UNLOCKS`, `HIDEOUT_AREA`. Text there follows `claims.json`.
+- Hand-written data is in `src/data/*.js` (since 0.2 P2): `GATES` / `STEPS` text, `QUESTS` 1–40 and `QUEST_STEPS`,
+  `SP_SKILLS`, `STAT_TIERS`, `TIPS`, `VERIFIED_UNLOCKS`, `HIDEOUT_AREA`, … Text there follows `claims.json`. Data
+  modules import only generated data, other data modules and `markup.js`, never `main.js`; none reads `state` or the
+  DOM (they are evaluated before `main.js`).
 - Snapshots of earlier page data the generator still reads are in `tools/gen/snapshots/`.
 
 Regenerate after changing `data/`:
 
 ```sh
-npm run gen          # = python3 -I tools/gen/gen.py && python3 -I tools/gen/apply.py; exits 1 if a check fails
-git diff src/data/generated.js data/DATA_SOURCES.md   # review
-npm test             # e4 checks generated.js carries the current block and the page has its values
+npm run gen          # = python3 -I tools/gen/gen.py; exits 1 if a check fails
+git diff tools/gen/gen-block.js data/DATA_SOURCES.md   # review
+npm test             # builds (the block becomes the module src/data/generated.js); e4 checks the page has its values
+npm run gen:check    # CI: re-runs gen.py and fails if a committed generated file differs
 ```
 
 `tools/research/` holds the scripts that produced `data/rq.json`, `rq-chains.json`, `build.json` and `claims.json`
@@ -138,8 +142,11 @@ one-time E2 / E4 patch scripts, kept for provenance only.
   holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; no minification;
   no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
   stays a page global, as before modules. esbuild reprints the code: comments dropped, its own formatting, and
-  top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 239 top-level names is a
-  `window` property). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
+  top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 244 top-level names is a
+  `window` property). Modules come first in import order (generated data, then `src/data/*.js`), then `main.js`.
+  The generated data module is made by an esbuild plugin from `tools/gen/gen-block.js`; a real
+  `src/data/generated.js` stops the build, and so does a top-level name declared in two modules (esbuild would rename
+  one of them). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
   `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read.
 - It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
   (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing

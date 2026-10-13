@@ -57,7 +57,7 @@ npm run gen                              # regenerate the app's data block from 
 src/index.html          the page shell (head + markup); the build inlines the styles and scripts it names
 src/styles/*.css        styles (fonts.css: the @font-face rules; app.css; brand.css: header lockup), inlined verbatim
 src/main.js             the app script (ES module entry), bundled by esbuild into one inline <script>
-src/data/generated.js   the generated data module (npm run gen; never edit by hand)
+src/data/*.js           hand-written data tables (milestones, story, tips, build, areas, items…) and their text helpers
 src/site.js             the standalone site's own script (storage persistence, service worker)
 src/assets/             icons and self-hosted fonts
 brand/                  the brand's source SVGs (icon, maskable icon, favicon, wordmark); tools/brand/ draws them
@@ -65,7 +65,7 @@ src/sw.js               service worker template (offline cache), filled in by th
 public/                 copied to the site root: CNAME, robots.txt, sitemap.xml, 404.html, favicon, manifest + icons
 scripts/build.mjs       builds dist/ and dist-artifact/;  scripts/serve.mjs  local static server
 data/                   research data (JSON) the app's data block is generated from + DATA_SOURCES.md
-tools/gen/              data generator (gen.py → gen-block.js → apply.py into src/data/generated.js)
+tools/gen/              data generator (gen.py → gen-block.js; the build turns it into the module src/data/generated.js)
 tools/research/         the scripts that built data/*.json (provenance)
 tools/history/          one-time patch scripts from the E2 / E4 passes (provenance, already applied)
 tests/                  Playwright suites, fixtures, baselines (old app versions for migration tests), runner
