@@ -48,8 +48,18 @@ exists, so it is done once.
 
 ### 0.1.x — fixes and upkeep (patches)
 
-- Icon names confirmed in game (Wisdom Stone / Daevanion Crystal; needs the owner). Export nudge at milestones (needs a
-  UX pass).
+From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
+
+- **0.1.6** (invisible): spoken names for the three "i" buttons, focus ring on the Basic/Advanced switch, reduced motion
+  everywhere (one smooth-scroll setting), headings and landmarks, Escape closes popovers, larger hit areas without
+  changing the look, `touch-action`, `dvh` units, an automated accessibility check in the tests.
+- **0.1.7** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
+  layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
+- Save safety (visible, design pass first): a "last backup N days ago" line with an export nudge, and an "Add to Home
+  Screen" hint on iPhone (home-screen apps keep their data much longer).
+
+Phone layout (Next up near the top, a swipeable stack, Build as a bottom sheet) needs a design pass and touches code
+that 0.2 restructures, so it follows 0.2 step 4.
 
 ### 0.2 — Foundations (no visible change)
 
@@ -62,7 +72,10 @@ identical, all suites green, saves untouched.
 4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests.
 5. Data format v2: stable ids (not display names), shared vs per-class folders, a sources registry with license per
    source, `verifiedAt` per record, `requires` / `completesWith` on every step, JSON Schema validation, Node generator,
-   a fast CI job (< 2 min). The schema is reviewed by the owner before it is built.
+   a fast CI job (< 2 min). The schema gets an independent review, then the owner's, before it is built. A
+   `schemaVersion` field and a pure, tested `merge()` for two saves (groundwork for 0.5) are part of this step.
+
+Step 2 (toolchain) shipped 2026-10-13 with no visible change.
 
 ### 0.3 — Next up correctness
 
@@ -77,12 +90,19 @@ identical, all suites green, saves untouched.
 - Several characters per browser (the existing save stays the first character, so older versions still read it).
 - Class picker (Assassin only visible until a second class is ready); class data loaded per character.
 
-### 0.5 — New and mid-level players
+### 0.5 — Backup and sync
+
+No accounts and no personal data: an anonymous, end-to-end encrypted **sync code**. Your progress is backed up and
+follows you between phone and PC; the server only ever stores encrypted data it can't read. Offline-first (the browser
+copy stays the working copy), merged per item so un-ticking survives, existing saves untouched. Accounts (email codes,
+passkeys, Discord) stay possible later if a feature ever needs them.
+
+### 0.6 — New and mid-level players
 
 - First-run welcome; Lv 1–10 tuned so it isn't a wall of cards; terms explained where they first appear.
 - Joining mid-level: set level and story quest, earlier content counted as done.
 
-### 0.6 – 0.12 — one class per release
+### 0.7 – 0.13 — one class per release
 
 Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner). Each: two sources per claim, data and
 claims entries, a golden snapshot, an in-game spot check.
@@ -101,6 +121,7 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).
 - Post-Altgard: Reshanta / Abyss.
-- Preview deploys for pull requests (owner decision on the host).
+- Preview deploys for pull requests (with the move to Cloudflare Pages).
+- Phone layout pass (see 0.1.x note).
 - Release tooling (release-please / changesets) if other contributors join.
 - Elyos (after 1.0).
