@@ -1,0 +1,77 @@
+# Changelog
+
+Versions before 1.0.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
+used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
+
+## 1.0.0 — 2026-10 · repository and standalone site
+
+- Moved into this repository; published at <https://aion2.ishkabytes.com/> (GitHub Pages) besides the claude.ai artifact.
+  The visible app is unchanged from v291.
+- Proper document head: charset, viewport, description, canonical URL, Open Graph, theme color, favicon, web app manifest.
+- Installable and offline: service worker (network-first for the page, cached icons; cache versioned per build). Only on
+  the standalone site, never in the claude.ai build.
+- Export progress: a plain file download outside claude.ai; inside claude.ai it still uses the artifact's downloads
+  permission. Import unchanged.
+- Footer line: fan-made / not affiliated with NCSoft, data credits (→ Sources card), Metabot credit link.
+- Build (`scripts/build.mjs`) produces both the site (`dist/`) and the claude.ai single file (`dist-artifact/`, icons as
+  `/_blob/<id>`). The data generator and all test suites run from the repo; CI tests every push and deploys `main`.
+
+## v291 — E4 (QA3 findings) + head fix
+
+- "Put <stigma> on E" ticks itself when the slot is marked equipped (one-time `eputSync1` migration for saves that
+  already had equipped slots).
+- Optional steps count only once ticked: milestones with only optional steps left show *Cleared*, not *Missed*.
+- Skills past the plan: "N points spare · no sourced plan past this". Hint shows how many following upgrades your points
+  cover.
+- Level-gated story card suggests what to do meanwhile (Sealed Dungeons, strongholds, highest open expedition, daily
+  dungeon).
+- Stigma "x of y spent" total is stable (92 = all four planned stigmas to their targets).
+- Last Altgard quest: Journey button marks it turned in; end state "Altgard story complete · continue in Reshanta".
+- Regional card: stays while quests are snoozed ("Show again"); "+N waiting on the story" row with an *In my game*
+  override. "single source" tag on single-source skill buys.
+- Data: one zone fix (Nine Wonders of Altgard: 2nd Leg → Battlescar Mound); Sources card wording.
+- Head fix (v291b): empty "Regional quests · Lv N" sub-headings are hidden; Export uses the claude.ai downloads
+  permission.
+
+## v290
+
+Fixes between E3 and E4 (QA3 pass), not separately logged.
+
+## v289 — E3
+
+- Regional quests without any prerequisite data open at their recommended level, not Lv 10; snoozes on them survive
+  Level up until then.
+- Milestone quest rows: *In my game* pill on locked quests; one snooze label ("Not in game yet").
+- Next up: story card always in the stack; stack height follows the visible card; byStory steps tick with the story;
+  board "opens" steps replace the buy card until done; Lv 45 extras are optional and Advanced only.
+- Stigma pick: plain name with "change ▾", "Other…" for any stigma; "needs 1 shard" state.
+- Zones: one zone per giver camp (10 quests moved; e.g. Quai Campsite → Calderon Canyon). Unverified group in Confidence.
+- Layout fixes at 390 / 1100 px; Sources card grouped per site.
+
+## v288 — E2 (data integration)
+
+- All 58 regional quests from verified data: giver, Kibelisk, zone, rewards, recommended and unlock level; 17 regional
+  prerequisites and 43 story gates; quests placed in milestones by level.
+- Main story Lv 41–45 (Daybreak Society … Forgotten Commander) and the end-of-Altgard state.
+- Strongholds (zone, level range, Kibelisk); Sealed Dungeon Kibelisks; dungeon XP removed (mostly unknown).
+- Build: stigma plan Triniel's Dagger, Illusive Clone, Swift Contract, Savage Fang; upgrade plan Triniel's Dagger to 10,
+  then Illusive Clone toward 20; seven skills appended after the core eight; Vaizel / Triniel board nodes; Ariel removed.
+- Every claim re-checked (claims.json): rewritten, dropped or labelled. Confidence and Sources cards generated from data
+  (291 links).
+
+## v287
+
+Fixes after E1, not separately logged (the pre-E2 baseline used by the migration tests).
+
+## v286 — E1 (stable keys, fixes, clean-up)
+
+- Stable keys: regional quests `rq:<id>`, Sealed Dungeons `sd:<slug>`, every other item an explicit key. One-time
+  migration (`migV5`) copies ticks from the old position keys; old keys are left in place.
+- One Next up card per stigma equip; short titles; skills card when the plan is spent; story end handled.
+- Snooze ("not yet") for regional quests; stigma pick per slot with an undo toast.
+- Removed: Paid tasks filter, dead JS, ~450 unused or overridden CSS rules (CSS 136 → 107 KB). `update()` ~3× faster.
+- Export / import progress; new installs start with cleared milestones folded; accessibility fixes.
+
+## v285
+
+Baseline before the polish passes (the migration-test baseline in `tests/baselines/v285.html`).

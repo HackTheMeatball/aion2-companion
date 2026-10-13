@@ -1,0 +1,51 @@
+MIT License
+
+Copyright (c) 2026 hackthemeatball
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+What the MIT license above covers, and what it doesn't
+-------------------------------------------------------------------------------
+
+The MIT license applies to the code in this repository: src/ (HTML, CSS,
+JavaScript), scripts/, tests/, tools/ and the project's own artwork
+(public/favicon.svg and public/icons/).
+
+Game names and assets. AION 2, its class, skill, stigma, item, place and quest
+names, and the skill, stigma and item icons in src/assets/icons/ are the
+property of NCSoft Corporation. They are used for identification in a free,
+non-commercial fan guide. This project is not affiliated with or endorsed by
+NCSoft. They are not covered by the MIT license.
+
+Data. The files in data/ (and the data block generated from them into
+src/index.html) are compiled from public sources: game-database sites, guides
+and wikis, each credited in the app's Sources card and in data/DATA_SOURCES.md
+with a plain link. Reuse the data with the same attribution. In particular:
+
+  - Metabot (metabot.gg) is the main source; credited with a dofollow link as
+    its terms ask.
+  - thegameswiki.com content is licensed CC BY-NC-SA 4.0
+    (https://creativecommons.org/licenses/by-nc-sa/4.0/). The parts of data/
+    derived from it are shared under the same license: attribution,
+    non-commercial, share-alike. That is compatible with this project as long
+    as it stays non-commercial; anyone reusing those parts must keep them
+    non-commercial too.
+  - Game8 content is deliberately not used (its terms don't allow
+    reproduction).
