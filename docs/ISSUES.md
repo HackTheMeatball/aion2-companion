@@ -47,4 +47,3 @@ on purpose: the guide shows nothing rather than an unverified value.
   `FLAKY` with the first run's failures. A real slowdown fails both runs.
 - Tests block Google Fonts so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check
   with the real fonts.
-- CI uses Node 20 (requested); Node 20 reached end of life in April 2026, so move CI and `engines` to Node 22 or 24.

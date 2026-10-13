@@ -36,7 +36,7 @@ Both versions use the same save format, so this works in either direction.
 
 ## Development
 
-Requirements: Node 20+ and Python 3.10+ (only for regenerating data). No runtime dependencies; Playwright is the only
+Requirements: Node 22+ and Python 3.10+ (only for regenerating data). No runtime dependencies; Playwright is the only
 dev dependency.
 
 ```sh
