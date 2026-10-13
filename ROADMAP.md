@@ -34,6 +34,8 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
 - **0.1.0** — repository, standalone site (aion2.ishkabytes.com), offline/PWA, CI. App identical to artifact v291.
 - **0.1.1** — CI upkeep, automatic tags and GitHub Releases, this roadmap.
 - **0.1.2** — licensing (PolyForm Strict code, original content reserved) and unofficial-guide wording.
+- **0.1.3** — Ascension hotfix: story gates for "The One Who Dreams" and the Lv 45 Hero/Ascension step, story steps
+  already passed no longer offered, text fixes, `gates` suite and golden master.
 
 ## Plan
 
@@ -44,8 +46,6 @@ exists, so it is done once.
 
 ### 0.1.x — fixes and upkeep (patches)
 
-- **0.1.3** — Ascension hotfix: story gates for "The One Who Dreams" and the Lv 45 Hero/Ascension step (database-
-  backed); steps the story has already passed are no longer offered in Next up; text fixes; a `gates` regression suite.
 - **0.1.4** — Version in the footer linked to the changelog; "Report a problem" issue form prefilled with level, story
   quest and version; issue labels and templates.
 - **0.1.5** — Protect saves: ask the browser for persistent storage, show a warning if a save fails, nudge an export at

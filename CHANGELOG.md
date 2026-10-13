@@ -3,6 +3,18 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.3 (beta) — 2026-10-13 · ascension hotfix
+
+- Next up no longer offers "The One Who Dreams" before the story reaches "A Daeva Dreaming Anew", or the Lv 45 Hero and
+  Ascension step before "Forgotten Commander" is turned in (game-database prerequisites, aion2.th.gl; claims C36, C37).
+- Story steps you're already past (e.g. "The Being Beneath the Lake", "Urgent Pursuit") are no longer offered in Next
+  up; "The Being Beneath the Lake" now ticks with its story quest.
+- Ascension text: The One Who Dreams needs a full Ascension Gauge; "Dream Crossroad"; "The One Who Hears the Voice";
+  removed the disputed claim that "The One Who Perceives" gives your first wings (C38). Sources card: 291 → 300 links.
+- Tests: new `gates` suite (story-gate sweep over every story position) and the golden master (`golden`, 2,000 generated
+  saves); golden re-recorded for this fix, known Next up gate violations 801 → 0.
+- No change to saved progress: same storage key and item keys, no migration; nothing is ticked automatically.
+
 ## 0.1.2 (beta) — 2026-10-13 · licensing and wording
 
 - License: code is now PolyForm Strict 1.0.0 (source-available: noncommercial use, no redistribution or modified
