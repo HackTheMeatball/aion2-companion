@@ -1,6 +1,6 @@
 {
   "name": "aion2-companion",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "description": "Daeva Companion: unofficial companion for AION 2, currently the Asmodian Assassin leveling guide (single-page web app). Live at https://aion2.ishkabytes.com/",
   "license": "SEE LICENSE IN LICENSE",
@@ -20,6 +20,7 @@
     "gen": "python3 -I tools/gen/gen.py && python3 -I tools/gen/apply.py"
   },
   "devDependencies": {
+    "axe-core": "4.13.0",
     "esbuild": "0.28.2",
     "playwright": "1.56.0"
   }

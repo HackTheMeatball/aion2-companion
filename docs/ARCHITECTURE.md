@@ -177,12 +177,19 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
+| `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open until 0.1.7, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
 grouped by kind of change. It is the acceptance test for refactors ("golden identical"). After an intended behaviour
 change, re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
 (Next up cards whose gate isn't met, generated), and commit the snapshots with the change.
+
+**Accessibility** (since 0.1.6, audit `docs/audits/2026-10-mobile-a11y.md`): the `a11y` suite's `ALLOW` list only
+shrinks: when a rule is fixed, remove it so it can't come back. Motion follows `prefers-reduced-motion` per animation
+(CSS overrides next to each animation, `SMOOTH()` for every script scroll; no blanket duration override, since
+`#rwToast` clears itself on `animationend`). Small controls get their 24 px target from an invisible `::before` /
+`::after` (`src/styles/app.css`, "Pointer targets"); the suite lists them in `HIT`.
 
 Baselines (`tests/baselines/v285.html`, `v287.html`) are the old single-file builds, served from the same origin so
 they share `localStorage` with the current page. Web fonts are blocked in test browsers so layouts render with

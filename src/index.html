@@ -43,7 +43,7 @@
     <button type="button" class="xfer-btn" id="saveWarnExp" hidden>Export progress</button></div>
 
   <div class="layout">
-    <aside class="rail">
+    <aside class="rail" aria-label="Progress and journey">
       <section class="card">
         <h2>Progress</h2>
         <div class="progress-row">
@@ -170,7 +170,7 @@
       </div>
       <section class="nowstar wide" id="nowStar" aria-label="Next up"></section>
 
-      <h2 class="sec">Milestones <small id="gateHint"></small><span class="sec-tools topbar">
+      <div class="sec"><h2 class="sec-h">Milestones <small id="gateHint"></small></h2><span class="sec-tools topbar">
     <div class="filt">
       <button type="button" id="btnFilter" class="filt-btn icon" aria-haspopup="true" aria-expanded="false" aria-controls="filtMenu" title="Filters" aria-label="Filters">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg><span class="filt-n" id="filtN"></span>
@@ -183,7 +183,7 @@
       </div>
     </div>
     <button type="button" id="btnReset" class="filt-btn" title="Turn every filter off">Reset filters</button>
-<button type="button" id="btnExpand" class="sec-btn">Expand all</button></span></h2>
+<button type="button" id="btnExpand" class="sec-btn">Expand all</button></span></div>
       <div class="list" id="gates"></div>
       <h2 class="sec route-h">Route rules <small>apply for the whole climb</small></h2>
       <div class="list" id="steps"></div>
@@ -207,8 +207,8 @@
   </footer>
 </div>
 
-<aside class="statdrawer" id="statDrawer">
-  <button type="button" class="sd-tab" id="sdTab" aria-expanded="false" aria-controls="sdPanel" title="Stat priority and rotation"><span class="sd-chev">‹</span><span class="sd-lbl">Build</span><span class="sd-new" id="sdNew" hidden>new</span></button>
+<aside class="statdrawer" id="statDrawer" aria-label="Build: stat priority and rotation">
+  <button type="button" class="sd-tab" id="sdTab" aria-expanded="false" aria-controls="sdPanel" title="Stat priority and rotation"><span class="sd-chev" aria-hidden="true">‹</span><span class="sd-lbl">Build</span><span class="sd-new" id="sdNew" hidden>new</span></button>
   <div class="sd-panel" id="sdPanel">
     <div class="sd-head"><h2>Stat priority</h2><button type="button" class="sd-close" id="sdClose" aria-label="Close">×</button></div>
         <div class="tiers" id="statSeq"></div>

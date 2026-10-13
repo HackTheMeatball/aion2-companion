@@ -3,6 +3,18 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.6 (beta) — 2026-10-13 · accessibility, no visible change
+
+- Screen readers: the "i" buttons beside Strongholds, Sealed Dungeons and Regional quests have names; the Milestones
+  and Next up headings no longer include their buttons; the filter button says how many filters are on; the two side
+  areas are named; decorative arrows and icons are skipped.
+- Keyboard: Escape closes the "i" popovers; focus rings on the Basic/Advanced switch and the quest field.
+- Reduced motion (system setting): no pulses or scrolling animations; Level up shows its gains in the toast.
+- Touch: larger tap areas on the small controls, no double-tap zoom delay on buttons, panel heights follow the
+  phone's visible screen.
+- An automated accessibility check (`a11y` suite) now runs with every test run.
+- No change to saved progress.
+
 ## 0.1.5 (beta) — 2026-10-13 · protect saves, self-hosted fonts
 
 - On the site, the app asks your browser to keep its storage (persistent storage), so Safari/iOS is less likely to clear

@@ -17,7 +17,7 @@ UX of every visible change, accessibility and mobile quality.
 DECISIONS D1). Identity: direction C, **Compass Quill** (D1b): a brass and parchment compass whose needle is a red
 feather, on deep teal. Sources in `brand/`, drawn by `tools/brand/build.py` (which also renders `public/favicon.svg` and
 `public/icons/*.png`; `--sheet DIR` writes a contact sheet). Today only the brand uses C's colours (header lockup,
-favicon, icons, manifest theme colour); the app keeps its plum palette until the owner decides on the full C theme.
+favicon, icons, manifest theme colour); the app keeps its plum palette until the colour sprint (game-inspired palette; research in docs/research/colors-2026-10/).
 
 ## Standing notes
 - The owner reads on a phone (iOS) a lot; check mobile first.
