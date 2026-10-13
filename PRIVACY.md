@@ -26,6 +26,10 @@ Anthropic's privacy policy covers claude.ai itself.
 - **Hosting:** the site is served by GitHub Pages, which may log IP addresses for security and operations. See the
   [GitHub Privacy Statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 - **Links** in the guide (Metabot, maps, sources) are only requested when you click them.
+- **Report a problem** (footer) opens a new GitHub issue form with these fields filled in from the link: the app version,
+  your level and current story quest in the guide, Basic/Advanced mode, which build you use (site or claude.ai) and your
+  browser's user agent. Nothing else from your progress is included, and nothing is sent until you submit the issue on
+  GitHub, where you can edit or delete any of it first. Issues are public.
 
 ## Changes
 

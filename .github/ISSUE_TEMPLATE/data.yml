@@ -1,0 +1,37 @@
+name: Data correction
+description: A level, cost, reward, unlock, quest order or other game fact in the guide is wrong or missing.
+title: "Data: "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Issues are public.** Don't include personal details. If you attach an in-game screenshot, crop out character names, chat and anything else you'd rather keep private.
+        The guide only uses verified data: a database page (Metabot, aion2.gaming.tools, aion2.th.gl), two independent sources, or an in-game screenshot.
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong?
+      description: The quest, step, skill or card, and the value the guide shows.
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: Correct value
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A link to the page that shows it, or an in-game screenshot (drag it in here).
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Shown at the bottom of the page (for example v0.1.4).
+    validations:
+      required: false

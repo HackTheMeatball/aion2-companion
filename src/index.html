@@ -1551,7 +1551,7 @@ body.basic #spCard .sphint.warn { display: block !important; }
       <button type="button" class="xfer-btn" id="expBtn" hidden>Export progress</button>
       <label class="xfer-btn">Import progress<input type="file" id="impIn" class="vh" accept=".json,application/json"></label>
       <span class="xfer-msg" id="xferMsg" role="status"></span></div>
-    <p class="fanline">Unofficial fan guide, not affiliated with or endorsed by NCSoft (NC Corporation); AION 2 names and game images belong to NC. Game data changes with patches and can be wrong: check in game. Data credits are in <a href="#srcCard" id="srcLink">Sources</a>; most game data comes from <a href="https://metabot.gg/en/aion-2">Metabot</a>. © 2026 hackthemeatball · <a href="https://github.com/hackthemeatball/aion2-companion/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a></p>
+    <p class="fanline">Unofficial fan guide, not affiliated with or endorsed by NCSoft (NC Corporation); AION 2 names and game images belong to NC. Game data changes with patches and can be wrong: check in game. Data credits are in <a href="#srcCard" id="srcLink">Sources</a>; most game data comes from <a href="https://metabot.gg/en/aion-2">Metabot</a>. © 2026 hackthemeatball · <a href="https://github.com/hackthemeatball/aion2-companion/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a> · <a href="https://github.com/hackthemeatball/aion2-companion/blob/main/CHANGELOG.md" id="verLink" target="_blank" rel="noopener" title="What changed in each version">v__APP_VERSION__</a> · <a href="https://github.com/hackthemeatball/aion2-companion/issues/new?template=bug.yml" id="reportLink" target="_blank" rel="noopener" title="Opens a public GitHub issue with the version, level, story quest, mode, build and browser filled in">Report a problem</a></p>
   </footer>
 </div>
 
@@ -4037,6 +4037,19 @@ document.getElementById("impIn").addEventListener("change", async e => {
   };
 });
 document.getElementById("srcLink").addEventListener("click", () => { document.getElementById("srcCard").open = true; });
+/* Report a problem: a GitHub issue form (.github/ISSUE_TEMPLATE/bug.yml) whose fields are prefilled through the URL with
+   the version, level, story quest, view mode, build and browser. Nothing else from the saved progress goes into the link.
+   The href is refreshed when the link is about to be used, so it always carries the current level and quest. */
+const APP_VERSION = "__APP_VERSION__", APP_BUILD = "__APP_BUILD__";
+const reportLink = document.getElementById("reportLink");
+const reportURL = () => {
+  const f = { template: "bug.yml", version: APP_VERSION, level: String(state.level || ""), quest: state.quest || "(not set)",
+    mode: state.mode === "basic" ? "Basic" : "Advanced", build: APP_BUILD, browser: navigator.userAgent };
+  return "https://github.com/hackthemeatball/aion2-companion/issues/new?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
+};
+const refreshReport = () => { reportLink.href = reportURL(); };
+["pointerdown", "focus", "mouseenter", "click", "contextmenu"].forEach(ev => reportLink.addEventListener(ev, refreshReport));
+refreshReport();
 const btnReset = document.getElementById("btnReset");
 /* Reset filters: back to default (all off). Progress is never touched here. */
 btnReset.addEventListener("click", () => { state.hideCards = false; state.hide = false; state.hideOpt = false; save(); update(); });

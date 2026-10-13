@@ -116,6 +116,11 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 - `scripts/build.mjs`: checks the `<!-- @web-only -->` markers and that every referenced icon exists and has a blob id
   (`scripts/artifact-blobs.json`), then writes `dist/` (markers stripped; `public/` and icons copied; `sw.js` with the
   build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed, icons → `/_blob/<id>`).
+  It also fills the placeholders `__APP_VERSION__` (from `package.json`) and `__APP_BUILD__` (`site` / `claude.ai`):
+  the footer's version link and the "Report a problem" link use them, so the version is never typed into the page.
+- Footer **Report a problem**: opens `.github/ISSUE_TEMPLATE/bug.yml` with its fields prefilled through the URL (field ids
+  as query parameters): version, level, story quest, mode, build and user agent, and nothing else from the save. The
+  `site` suite pins that list.
 - `src/sw.js`: precaches the shell and icons; network-first for the page, cache-first for the rest, stale-while-
   revalidate for Google Fonts; old `aion2-route-*` caches are deleted on activate. Registered only on https or
   localhost, and only in `dist/`.

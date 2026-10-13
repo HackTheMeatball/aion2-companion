@@ -5,6 +5,23 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
 const FONT_HOST = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
 const KEY = 'aion2-assassin-route-v4';
 const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
+const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
+const REPO = 'https://github.com/hackthemeatball/aion2-companion';
+/* footer version link + "Report a problem" link: the version comes from package.json; the report URL carries exactly these
+   issue-form fields and nothing else from the save */
+const REPORT_FIELDS = ['template', 'version', 'level', 'quest', 'mode', 'build', 'browser'];
+const footerMeta = p => p.evaluate(() => { const v = document.getElementById('verLink'), r = document.getElementById('reportLink');
+  r.dispatchEvent(new Event('focus'));
+  return { vText: v && v.textContent, vHref: v && v.getAttribute('href'), vPrev: v && v.previousElementSibling && v.previousElementSibling.textContent,
+    rText: r && r.textContent, rHref: r && r.href, rTarget: r && r.target, ua: navigator.userAgent }; });
+const checkReport = (label, m, want) => {
+  let u = null; try { u = new URL(m.rHref); } catch (e) { /* bad URL */ }
+  const keys = u ? [...u.searchParams.keys()] : [], got = u ? Object.fromEntries(u.searchParams) : {};
+  ok(`${label}: "Report a problem" opens the GitHub bug form in a new tab`, m.rText === 'Report a problem' && u && u.origin + u.pathname === REPO + '/issues/new' && m.rTarget === '_blank', m);
+  ok(`${label}: report link carries only version, level, story quest, mode, build and browser`,
+    JSON.stringify(keys) === JSON.stringify(REPORT_FIELDS) && Object.entries({ ...want, browser: m.ua }).every(([k, v]) => got[k] === v), { keys, got, want });
+  ok(`${label}: report link has nothing else from the save`, !/g22|checks|seedLv12|migV5|stTriniel|dvReset/.test(decodeURIComponent(m.rHref)), m.rHref);
+};
 
 (async () => {
   const b = await chromium.launch();
@@ -39,6 +56,13 @@ const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifac
     /* export without window.claude: visible button, plain Blob download of the saved state */
     await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true })), KEY);
     await p.reload(); await p.waitForTimeout(500);
+    const fm = await footerMeta(p);
+    ok('footer: version after the Privacy link equals package.json, links to the CHANGELOG', fm.vText === 'v' + VERSION && fm.vPrev === 'Privacy' && fm.vHref === REPO + '/blob/main/CHANGELOG.md', { fm, VERSION });
+    checkReport('footer', fm, { template: 'bug.yml', version: VERSION, level: '27', quest: 'Preparations for Restoration', mode: 'Advanced', build: 'site' });
+    await p.click('.modeseg [data-mode=basic]'); await p.click('#lvlUp'); await p.waitForTimeout(100);
+    const fm2 = await footerMeta(p), lv2 = await p.evaluate(() => String(state.level));
+    checkReport('footer after a change', fm2, { template: 'bug.yml', version: VERSION, level: lv2, quest: 'Preparations for Restoration', mode: 'Basic', build: 'site' });
+    await p.click('.modeseg [data-mode=advanced]'); await p.click('#lvlDown'); await p.waitForTimeout(100);
     ok('export: button visible outside claude.ai', await p.evaluate(() => !document.getElementById('expBtn').hidden));
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
     const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
@@ -86,6 +110,9 @@ const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifac
     await p.click('#expBtn'); await p.waitForTimeout(200);
     const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).checks !== undefined]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
     ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^aion2-assassin-progress-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
+    const am = await footerMeta(p);
+    ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
+    checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '5', quest: '(not set)', mode: 'Advanced', build: 'claude.ai' });
     ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
     await ctx.close();
   }
