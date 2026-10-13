@@ -1,0 +1,1127 @@
+{
+  "build/L32-q55-before-A-cube": {
+    "in": "f65e37839e50",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-dv": {
+    "in": "82c5e36fd809",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-filters": {
+    "in": "b55e97fcf056",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-objs": {
+    "in": "065a6a8e1ac9",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"1/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-rqmix": {
+    "in": "1cf60e46a361",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 in progress · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["run Hugo Mercenaries: An Old Promise","run Pain Unending","run Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-sppts": {
+    "in": "ce977dce51a0",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-stfull": {
+    "in": "30bb787525fb",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 1/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-stready": {
+    "in": "339bed4f6cda",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-A-stwait": {
+    "in": "6801a83de445",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"},
+      {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L32-q55-before-B-cube": {
+    "in": "5451ed1f562e",
+    "nu": [
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-dv": {
+    "in": "ba14ecf356ee",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-filters": {
+    "in": "ce998d4deeba",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Cleared | 3/3 | done | hidden",
+      "g22 | Cleared | 15/15 | done | hidden",
+      "g25 | Cleared | 8/8 | done | hidden",
+      "g27 | Cleared | 7/7 | done | hidden",
+      "g28 | Cleared | 1/1 | done | hidden",
+      "g30 | Cleared | 10/10 | done | hidden",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-objs": {
+    "in": "20b412ce35ba",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"1/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"],
+      "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-rqmix": {
+    "in": "2d08783f789b",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 in progress · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["run Hugo Mercenaries: An Old Promise","run Pain Unending","run Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-sppts": {
+    "in": "1cce7c8dbd42",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 8/16 | overdue | open",
+      "g25 | Missed | 1/9 | overdue | open",
+      "g27 | Missed | 3/7 | overdue | open",
+      "g28 | Missed | 1/2 | overdue | open",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g28": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-stfull": {
+    "in": "3a9bcc7d6747",
+    "nu": [
+      {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Cleared | 7/7 | done",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 1/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone","3":"Swift Contract"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-stready": {
+    "in": "097589a956b4",
+    "nu": [
+      {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Cleared | 16/16 | done",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger"}]
+    },
+    "mode": "basic"
+  },
+  "build/L32-q55-before-B-stwait": {
+    "in": "1ff5f31fd266",
+    "nu": [
+      {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · Stigma slot 3","c":"primary \"Done\" tick:g32:dreams"},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 180 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Cleared | 3/3 | done",
+      "g22 | Missed | 15/16 | overdue | open",
+      "g25 | Cleared | 9/9 | done",
+      "g27 | Missed | 6/7 | overdue | open",
+      "g28 | Cleared | 2/2 | done",
+      "g30 | Cleared | 10/10 | done",
+      "g32 | Now | 0/11 | current,upnext | open",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
+      "lv": "Lv 32",
+      "next": "Last Refuge Lv 33",
+      "hint": "milestone now: Lv 32",
+      "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
+      "track": ["Stigma slot 3 now Lv 32"],
+      "ring": "49%",
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 7/7","2 Crystals · 2 Wisdom Stones each","▸ Basfelt Ruins 30 traces ✓ 4/4","▸ Battlescar Mound 18 traces ✓ 3/3"]
+    },
+    "store": {
+      "areaLv": ["(absent)","30"],
+      "hide": ["(absent)",false],
+      "open.g22": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2"]]
+    },
+    "mode": "basic"
+  }
+}

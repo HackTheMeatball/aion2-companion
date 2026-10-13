@@ -1,0 +1,1100 @@
+{
+  "build/L20-q29-before-A-cube": {
+    "in": "7159fc03acc4",
+    "nu": [
+      {"t":"Finish Abandoned Memorial Room","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:abandoned-memorial-room"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room In progress [running]","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-dv": {
+    "in": "0bf0ecbffbbb",
+    "nu": [
+      {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-filters": {
+    "in": "4947bcc70562",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-objs": {
+    "in": "9a78a7616612",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"3/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Rendezvous at the Watcher's Tent talk to Nemon","Defeat the Balaur guarding the lake clear the Balaur Skirmishers","Retrieve the hidden artifact open the right chest in the pond (decoys exist)","+1 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"],
+      "subs": {"head":"Objectives 3/7","items":4,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-rqmix": {
+    "in": "37d403b72b07",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-sppts": {
+    "in": "d91c1b786f50",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-stfull": {
+    "in": "4bef760da158",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-stready": {
+    "in": "45906b726583",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-A-stwait": {
+    "in": "fde7aca29111",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"},
+      {"t":"Buy Ambush 7 → 8","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 6 → 7","s":"Opens at Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Defense Break 1 → 2","s":"Opens at Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Stigma slot 1","s":"Lv 22 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "build/L20-q29-before-B-cube": {
+    "in": "d534a949e788",
+    "nu": [
+      {"t":"Finish Abandoned Memorial Room","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:abandoned-memorial-room"},
+      {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room In progress [running]","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-dv": {
+    "in": "62c7d70eecce",
+    "nu": [
+      {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-filters": {
+    "in": "c3f2f888c6af",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done | hidden",
+      "g9 | Cleared | 7/7 | done | hidden",
+      "g10 | Cleared | 9/9 | done | hidden",
+      "g12 | Cleared | 10/10 | done | hidden",
+      "g15 | Cleared | 4/4 | done | hidden",
+      "g16 | Cleared | 13/13 | done | hidden",
+      "g19 | Cleared | 11/11 | done | hidden",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-objs": {
+    "in": "b9d6c7366a21",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"3/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Rendezvous at the Watcher's Tent talk to Nemon","Defeat the Balaur guarding the lake clear the Balaur Skirmishers","Retrieve the hidden artifact open the right chest in the pond (decoys exist)","+1 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"],
+      "subs": {"head":"Objectives 3/7","items":4,"on":0,"end":""}
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-rqmix": {
+    "in": "87e7bf0b4c65",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-sppts": {
+    "in": "2928fab698d5",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 1/11 | overdue | open",
+      "g9 | Missed | 1/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 3/10 | overdue | open",
+      "g15 | Missed | 0/4 | overdue | open",
+      "g16 | Missed | 9/13 | overdue | open",
+      "g19 | Missed | 0/11 | overdue | open",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-stfull": {
+    "in": "35d1d3f84657",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-stready": {
+    "in": "c48e44103440",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "build/L20-q29-before-B-stwait": {
+    "in": "a4d35d9ac63b",
+    "nu": [
+      {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+      {"t":"Story: Crossroad","s":"0/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Check Ulgorn's journal read Kraki's Journal","Find Nemon at the inspection area talk to Nemon","Go find Nemon's item head to the Watcher's Tent","+4 more after these"]},
+      {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 137 m away · 5 open"}
+    ],
+    "ms": [
+      "g6 | Cleared | 11/11 | done",
+      "g9 | Cleared | 7/7 | done",
+      "g10 | Cleared | 9/9 | done",
+      "g12 | Cleared | 10/10 | done",
+      "g15 | Cleared | 4/4 | done",
+      "g16 | Cleared | 13/13 | done",
+      "g19 | Cleared | 11/11 | done",
+      "g20 | Now | 0/3 | current,upnext | open",
+      "g22 | Later | 1/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Imminent Threat Lv 20",
+      "quest": "Crossroad",
+      "lv": "Lv 20",
+      "next": "Creeping Shadow Lv 21",
+      "hint": "milestone now: Lv 20",
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "track": ["Zikel board now Lv 20"],
+      "ring": "26%",
+      "prog": ["Quests 8/58","Dungeons 7 24/60","Strongholds 5 2/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 12/15 · 3 open","* Lv 20–24 · 0/8 · 8 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 2/15"],
+      "list": ["Strongholds 0/1","2 Noble Belt Enhance Scrolls each","  Forest Marauder Campsite Purifying Forest · any level","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Purifying Forest 29 traces 0/4","  Destroyed Scriptorium","  Lamnah Base","  Predator's Lair","  Unstable Cave","▾ Uruthumheim 16 traces 0/3","  Abandoned Memorial Room","  Closed Hideout","  Worshiper's Underground Cave"]
+    },
+    "store": {
+      "areaLv": ["(absent)","20"],
+      "hide": ["(absent)",false],
+      "open.g20": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  }
+}
