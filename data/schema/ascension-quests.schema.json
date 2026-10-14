@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/ascension-quests.schema.json",
   "title": "Ascension quests (shared/<faction>/ascension-quests.json)",
-  "description": "DRAFT (M6). Path of Ascension I–V. Metabot shows no game id for them, so ids are slugs until one is confirmed; completion is derived from the wrapper story quest (storyQuests[].wraps).",
+  "description": "DRAFT (M6). Path of Ascension I–V. No map location (access: teleport). Ids are slugs until a game id is confirmed; completion is derived from the wrapper story quest (storyQuests[].wraps). Next up ranks an Ascension step whose prerequisites are met first (§10).",
   "type": "object",
   "allOf": [
     {
@@ -38,8 +38,7 @@
         "chapter",
         "lv",
         "unlocksAt",
-        "giver",
-        "turnin"
+        "access"
       ],
       "properties": {
         "id": {
@@ -72,18 +71,15 @@
           "type": "boolean",
           "default": true
         },
-        "giver": {
-          "description": "Asahr at Dream Crossroad for chapters I–V (reached by the Journal teleport). Required like every located record (F15); a tick counts toward the last confirmed location.",
-          "$ref": "common.schema.json#/$defs/location"
-        },
         "steps": {
           "type": "array",
           "items": {
             "$ref": "common.schema.json#/$defs/questStep"
           }
         },
-        "turnin": {
-          "$ref": "common.schema.json#/$defs/location"
+        "access": {
+          "description": "Owner correction 2026-10-14: Ascension quests have no map location. They unlock when their prerequisites are met and the player teleports in (Journal → Ascension → Teleport). So no giver/turn-in location, no part in location tie-breaks, and ticking one never updates the derived last confirmed location (§9).",
+          "const": "teleport"
         }
       },
       "unevaluatedProperties": false

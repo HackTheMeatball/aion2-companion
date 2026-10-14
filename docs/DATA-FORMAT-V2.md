@@ -18,7 +18,9 @@ label it has today. What this document sets up for the team:
   Screens are cited by a short code plus the game version, never by file name.
 - **Sync keeps un-ticks** (a small time stamp per item); display settings stay per device.
 - **Next up can know where you are:** every quest giver, turn-in, dungeon and stronghold gets a zone, and "where you
-  last were" is worked out from the last thing you ticked. Nothing new is stored for it.
+  last were" is worked out from the last thing you ticked. Nothing new is stored for it. Ascension quests have no map
+  location (you teleport in), so they never count as "where you are"; instead, an Ascension quest you can do goes to
+  the top of Next up.
 - Every fact records which website and which game version it was checked against, so a patch tells us exactly what to
   re-check. aion2.th.gl is withdrawn and the sites whose terms forbid bots are read by a person only.
 
@@ -52,7 +54,8 @@ Contents: 0 What changed in this revision · 1 Goals · 2 Layout · 3 Ids and sa
 | F15 | `location` with required `zone` on every located record, optional sourced `coords`; zone adjacency in `zones`; last confirmed location derived, never stored. | §9, §10, §13 |
 | F3/F4 | 3 slots at effective skill Lv 8/12/20; 5 choices at 8/8/8/12/16; effective level = bought + board nodes. | §8.2 |
 | Owner answers | Recorded in §14.1. | |
-| Re-check (CEO) | Ascension quests require `giver` / `turnin` with their own zone; specialty choices on effective level; `milestones[].drawbacks` for the fastest track, and the two-track question re-evaluated in 0.3; schemas compile under ajv's full `strict: true` (exact options in the appendix). Also: `skill` required on skill nodes only, at most 5 specialty choices per skill. | §9, §8.2, §6, §14.1, §15, appendix |
+| Re-check (CEO) | Specialty choices on effective level; `milestones[].drawbacks` for the fastest track, and the two-track question re-evaluated in 0.3; schemas compile under ajv's full `strict: true` (exact options in the appendix). Also: `skill` required on skill nodes only, at most 5 specialty choices per skill. | §8.2, §6, §14.1, §15, appendix |
+| Owner correction (2026-10-14) | Ascension quests have **no map location**: `access: "teleport"`, no `giver` / `turnin` (this reverts the re-check's location requirement). They take no part in location tie-breaks, and ticking one never updates the last confirmed location. New Next up priority rule: an Ascension step whose prerequisites are met ranks first, ahead of location and track. | §9, §10, §11, §13.3, §14.1 |
 
 What the review said stands, and stays: the save-key strategy (`key` separate from `id`, frozen name and position
 keys), the three version numbers, the condition grammar with "derived, never written as ticks", provenance on every
@@ -366,11 +369,17 @@ Per character (added to `CHAR_FIELDS` when built, 5c or 0.3):
 
 ## 9. Locations (F15)
 
-**Every located record has a `location`** with `zone` required: story quest `giver` / `turnin`, Ascension quest
-`giver` / `turnin` (both required; Asahr at Dream Crossroad, reached by the Journal teleport; the zone is its own and
-is **not** taken from the wrapper story quest, which is given elsewhere), regional quest `giver` / `turnin`, Sealed
-Dungeon `entrance`, stronghold `location`. Quest objectives may carry a
-`zone` too.
+**Every located record has a `location`** with `zone` required: story quest `giver` / `turnin`, regional quest
+`giver` / `turnin`, Sealed Dungeon `entrance`, stronghold `location`. Quest objectives may carry a `zone` too.
+
+**Ascension quests are not located** (owner, 2026-10-14). They unlock when their prerequisites are met and the player
+teleports in (Journal → Ascension → Teleport), so an `ascensionQuests` record has `access: "teleport"` and no `giver`,
+`turnin` or zone (the schema rejects them). Consequences:
+
+- they take no part in location tie-breaks (no zone, no distance);
+- ticking one, or a step with `ascensionQuest` set (`g22:0`, `g32:dreams`, `g45:0`), **never** updates the last
+  confirmed location: the derivation below skips them;
+- their place in Next up comes from the priority rule in §10 instead.
 
 ```json
 "giver": { "npc": "Dari", "place": "Temporary Investigation Base", "zone": "zone:dredgion-crash-site",
@@ -383,7 +392,7 @@ Dungeon `entrance`, stronghold `location`. Quest objectives may carry a
   check). Distances are hop counts derived from it, never stored. Kibelisk teleports make most trips cheap, so adjacency
   is a tie-breaker for Next up, not a route planner.
 - **Last confirmed location is derived, never stored:** the zone of the located item (or objective) with the most
-  recent change time in the save's per-item change times (`mt`, §13). A tick of a regional quest says the player was
+  recent change time, ignoring Ascension records and steps with `ascensionQuest`, in the save's per-item change times (`mt`, §13). A tick of a regional quest says the player was
   at its turn-in zone; a Sealed Dungeon tick, at its entrance's zone. Because it comes from `mt`, it survives sync and
   needs no field of its own; with no `mt` (old saves) Next up falls back to today's order.
 - Zones referred to by camp or Kibelisk names resolve through `zones[].camps` / `zones[].kibelisks`.
@@ -414,6 +423,17 @@ What 0.3's "what can I do now" ranking reads, all from data or derived:
 | Where the player is | last confirmed location (§9), zone adjacency |
 | Effort | N4 (`effort.minutes`) once F9's measurements exist |
 
+**Next up priority (owner, 2026-10-14).** Ranking keys, in order:
+
+1. **Ascension first:** an Ascension step (an `ascensionQuests` record, or a step with `ascensionQuest` set) whose
+   `requires` is met ranks ahead of everything else, regardless of location or track. "Met" means every evaluable atom
+   holds. Atoms the app can't see (`playerChecked`, e.g. "Ascension Gauge at 100%") don't block it; they are shown on
+   the card as "check in game", as today.
+2. Track (`route`, fastest by default) and location (last confirmed zone, then adjacency) as tie-breakers for
+   everything else, in the order the 0.3 design settles.
+
+This is 0.3 engine behaviour (0.2 keeps today's order); it needs no new data beyond what this format already holds.
+
 ## 11. Collections
 
 | Collection (schema) | Scope | Notes |
@@ -421,7 +441,7 @@ What 0.3's "what can I do now" ranking reads, all from data or derived:
 | `sources` | repo | §5.1 |
 | `gameBuilds` (`game-builds`) | repo | §5.5 |
 | `storyQuests` | faction | `sq:<game id>`, `gameId` required; order via `next` (one path, one `end`); `wraps` (4 records); `inCap: false` past Lv 45; `unlocks`; giver/turn-in with zone. |
-| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; `giver` / `turnin` required (F15); completion from the wrapper. |
+| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; `access: "teleport"`, no location (owner); completion from the wrapper; ranks first in Next up once its prerequisites are met (§10). |
 | `regionalQuests` | faction | prerequisites as atoms with their own sources; `zone` = `giver.zone`; `route`. |
 | `sealedDungeons` | faction | `band` places it; `entrance` with zone; `mapSlug`; `route`. |
 | `strongholds` | faction | `levelRange` (inferred); `location`; `route`. |
@@ -619,7 +639,7 @@ Pure, commutative, associative, idempotent. Per character (0.4: characters match
 | `dvPts`, `crystals` | ignored (retired by `dvReset1`) |
 | one-time flags (`seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, …) | OR |
 | view settings (`mode`, `open`, `hide`, `hideCards`, `hideOpt`, `areaLv`, `zoneOpen`, `showObj`, `showTalk`, `qsShowDone`, `trackOpen`, `trackLater`, `sound`, `dvAllOpen`, `areaDone`, `statOpen`, `areaSh`, `areasCollapsed`) | **not merged: per device** (owner decision) |
-| last confirmed location (F15) | **not a field**: derived after the merge from the merged `mt` (§9), so both devices agree |
+| last confirmed location (F15) | **not a field**: derived after the merge from the merged `mt` (§9), skipping Ascension ticks, so both devices agree |
 
 Derived completions are never in the save, so there is nothing to merge for them.
 
@@ -642,7 +662,8 @@ Derived completions are never in the save, so there is nothing to merge for them
   so a stale backup never outranks newer synced progress. Test: export at T0, tick on device B at T1, import the T0
   export on A, sync; B's tick survives.
 - `mt` is also what location-aware Next up reads (§9): the newest stamp on a located item gives the last confirmed
-  location. No separate location field, nothing extra to sync.
+  location; stamps on Ascension records and steps are skipped (they have no location). No separate location field,
+  nothing extra to sync.
 
 ## 14. Decisions and open items
 
@@ -662,6 +683,7 @@ Derived completions are never in the save, so there is nothing to merge for them
 | Q6 | "Checked on" dates in the app | No per-item dates | §5.3 |
 | Q7 | Daeva Trapped in a Nightmare | Added like any story quest once the owner's check confirms the giver | `storyQuests`, no format change |
 | F15 | Location-aware Next up | Zone on every located record; adjacency; last location derived | §9 |
+| — | Ascension quests (correction) | No map location: unlock when prerequisites are met, the player teleports in. Excluded from location tie-breaks and from the last confirmed location; an Ascension step whose prerequisites are met ranks first in Next up, ahead of location and track. | §9, §10 |
 | F3/F4 | Specialties | 3 slots at effective Lv 8/12/20; 5 choices at 8/8/8/12/16 | §8.2 |
 
 ### 14.2 Still open (none blocks approving the format)
@@ -675,7 +697,6 @@ Derived completions are never in the save, so there is nothing to merge for them
 | Licence and access fields for every site in the registry | Data & Research | 5b |
 | Stigma `maxLevel` on a non-Assassin character; gate semantics (owner check 1) | owner, in game | 0.3 |
 | Owner screen codes (`owner:YYYY-MM-DD-NN`) for screens the data already relies on | owner / private repo | 5b |
-| Dream Crossroad's zone (placeholder `zone:dream-crossroad`, labelled `owner-check` in the sample) | owner, in game | 5b |
 
 ## 15. What 5b and 5c must prove
 
@@ -730,7 +751,7 @@ guide build, skills with specialty choices, stigmas with `maxLevel`, and 7 real 
 read 2026-10-14, build 0.0.4387.0: Start r8c8, Heart Gore r4c5 = `dv:hg`, two corners, a stat node, Insignia
 Explosion r13c7 = `dv:ie`).
 
-**54 broken copies are all rejected for the intended reason**, one or more per must-fix: missing `verifiedAt` /
+**56 broken copies are all rejected for the intended reason**, one or more per must-fix: missing `verifiedAt` /
 `requires` / `completesWith`; unknown field; story id as a slug or without `gameId` (M6); story atom without `is`,
 `done` on a story quest (M7); bad status; source with both `url` and `owner`; owner ref as a URL or without a game
 version (M10); bad build scheme, the old `date` field (M9); `http://` URL; `<script>`, `<span class="loc">`, unknown
@@ -741,6 +762,7 @@ specialty slots not on effective level, specialties as free text, `specPick` on 
 builds, origin `template`, a specialty pick that isn't a choice id (M1); stigma without `maxLevel` (M4); node key
 outside `dv:`, node without row/col (M5); site without `access`, terms that ban automation with `mode: scripted`, an
 unknown licence condition, a licence id with spaces (M8); confidence `when` on a non-claim; an Ascension quest
-without a turn-in or with a giver without zone (F15); a skill node without `skill`, a stat node with one; six specialty
+with a giver or a turn-in location, without `access`, or with an access other than `teleport` (owner correction); a
+skill node without `skill`, a stat node with one; six specialty
 choices; a drawback that is only inferred or has no source. Two positive controls check that `status: owner-check` and
 a sourced drawback are accepted.
