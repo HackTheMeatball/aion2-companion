@@ -8,6 +8,7 @@ const FIX = join(dirname(fileURLToPath(import.meta.url)), '../fixtures');
 const fixture = f => JSON.parse(readFileSync(join(FIX, f), 'utf8'));
 const clone = o => JSON.parse(JSON.stringify(o));
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+const STAMP = { stampV1: true, schemaVersion: 1 };   /* 5c: set on load, written with the next save */
 /* run the load steps; returns the state and what each write stored */
 const run = (M, saved, hadSave = true) => { const state = clone(saved), writes = []; M.migrate(state, hadSave, () => writes.push(clone(state))); return { state, writes }; };
 /* every value of `before` is still in `after` (migrations only add) */
@@ -20,7 +21,8 @@ export default (test, M) => {
   test('fresh browser: seeds marked done without running, cleared milestones folded, nothing written', () => {
     const { state, writes } = run(M, M.DEFAULT(), false);
     assert.deepEqual(writes, []);
-    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, hideCards: true, ...FLAGS });
+    /* 5c: stampV1 also runs (schemaVersion 1; the defaults stamped at time 0, so they never outrank another device's progress) */
+    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, hideCards: true, ...FLAGS, ...STAMP, mt: { level: [0, 5], quest: [0, ['', null]] } });
     assert.deepEqual(C(state).checks, {});
   });
   for (const f of ['fixture-v285.json', 'fixture-user-v285.json', 'fixture-user-2026-10-14-lv39.json']) {
@@ -37,9 +39,12 @@ export default (test, M) => {
       assert.deepEqual(twice.state, once); assert.deepEqual(twice.writes, []);
     });
   }
-  test('owner save 2026-10-14 (Lv 39, current build): loads unchanged and writes nothing', () => {
+  test('owner save 2026-10-14 (Lv 39, current build): loads with only the 5c stamps added (all at time 0) and writes nothing', () => {
     const saved = fixture('fixture-user-2026-10-14-lv39.json'), { state, writes } = run(M, saved);
-    assert.deepEqual(writes, []); assert.deepEqual(state, saved);
+    assert.deepEqual(writes, []);
+    const { mt, ...rest } = state; assert.deepEqual(rest, { ...saved, ...STAMP });
+    const stamps = JSON.stringify(mt).match(/\[\d+,/g); assert.ok(stamps.length > 300 && stamps.every(x => x === '[0,'), 'every stamp at time 0');
+    assert.deepEqual(M.merge(state, saved).checks, saved.checks);
   });
   test('owner save 2026-10-14: Next up ranks in Basic and Advanced without throwing', () => {
     const { state } = run(M, fixture('fixture-user-2026-10-14-lv39.json'));

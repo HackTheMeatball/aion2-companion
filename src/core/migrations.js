@@ -6,6 +6,7 @@ import { GATES } from "../data/milestones.js";
 import { QUESTS } from "../data/story.js";
 import { STIGMA_PLAN } from "../data/build.js";
 import { char } from "./state.js";
+import { SAVE_SCHEMA, stamp } from "./sync.js";
 
 /* E1: copy checks / started / areaRun from the old position keys to rq: / sd: keys (old keys stay). */
 export function migrateV5(s) {
@@ -15,7 +16,7 @@ export function migrateV5(s) {
   s.migV5 = true; return true;
 }
 
-export function migrate(s, hadSave, store) {
+export function migrate(s, hadSave, store, now = 0) {
   const c = char(s);
   /* A fresh browser: the one-time player seeds below are for the saved progress that predates them, so they're marked
      done without running; cleared milestones start folded (Filters → Cleared milestones). Existing saves keep their settings. */
@@ -48,4 +49,10 @@ export function migrate(s, hadSave, store) {
   }
   /* "Turned in" on the last covered quest is remembered (storyEnd); once later quests are added, move on to the next. */
   if (c.storyEnd && c.storyEnd === c.quest) { const i = QUESTS.findIndex(([, n]) => n === c.quest); if (i >= 0 && i < QUESTS.length - 1) { c.quest = QUESTS[i + 1][1]; delete c.storyEnd; store(); } }
+  /* 5c one-time (stampV1): save schemaVersion 1 and per-item change times (mt). What the save already holds is stamped
+     with time 0 (unknown; an imported export's savedAt when it has one, N1), so it never outranks a dated change. Writes
+     nothing: the stamps go out with the next save (the stored save, and so golden's record, stay as they were).
+     Later loads re-stamp, with the page's time, whatever a build without times changed (rollback re-stamp). */
+  if (!s.stampV1) { s.stampV1 = true; s.schemaVersion = Math.max(+s.schemaVersion || 0, SAVE_SCHEMA); stamp(c, s.savedAt ? Math.floor(s.savedAt / 1000) : 0); }
+  else stamp(c, now);
 }

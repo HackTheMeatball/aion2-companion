@@ -211,6 +211,7 @@ export function generate() {
     if (s.storyQuest) check('byStory step requires its own quest: ' + s.id, it.story === sqName(s.storyQuest));
     if (s.optional) it.opt = true; if (s.advancedOnly) it.adv = true; if (s.mapSlug) it.map = s.mapSlug;
     if (s.stigmaSlot) it.stig = s.stigmaSlot; if (s.stigmaKeySlot) it.eput = s.stigmaKeySlot; if (s.opensBoard) it.bo = boardById[s.opensBoard].name;
+    if (s.ascensionQuest) it.ascensionQuest = s.ascensionQuest;   /* no map location: the last-location helper skips it (src/core/sync.js) */
     it.t = buildTok(s.text) + (s.loc ? `<span class="loc">${buildTok(s.loc)}</span>` : '');
     if (s.note) it.note = s.note; if (s.upsell) it.upsell = s.upsell;
     return it;
