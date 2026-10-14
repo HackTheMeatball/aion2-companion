@@ -45,6 +45,12 @@ Serial-only files (never two sessions at once): `.github/workflows/ci.yml`; `tes
 `src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 →
 phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 
+## Cloud environments (owner manages; CEO tells the owner when a domain must be added or removed)
+- **Daeva Companion** (code, reviews, docs): defaults + metabot.gg, daevacompanion.com, daevapath.com (+ subdomains).
+  Recommended 2026-10-14 to remove aion2.th.gl, aion2.gaming.tools (challenge page), aion2.ishkabytes.com (redirect only).
+- **Research (open web)**: full network; the fetching policy in CLAUDE.md still applies.
+- Candidate sources not yet added anywhere: dbaion2.ru (+ dbaion2.online), aion2hub.com (terms check first).
+
 ## Owner feedback
 - 2026-10-14: docs/feedback/2026-10-14-owner.md (F1–F4, F12 feed the v2 schema review; F6–F7 next patch).
 

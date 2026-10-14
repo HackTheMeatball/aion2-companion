@@ -31,9 +31,12 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 - Change `data/*.json`, then `npm run gen`; never hand-edit `tools/gen/gen-block.js` (the `E2-GEN` block; the build makes
   the module `src/data/generated.js` from it). Hand-written data tables live in `src/data/*.js`, not in `main.js`. Every new URL must end up in the
   Sources card (gen.py does this) and `data/DATA_SOURCES.md`.
-- Fetching (owner, 2026-10-14): read robots.txt and the terms page before any content page, and skip a site whose
-  terms ban bots or scraping; obey AI-crawler opt-outs; at most 12 requests/min per host,
-  one at a time, cache 24 h, stop on 403 / 429 / a challenge page and never bypass one. **No automated reading of
+- Fetching (owner, 2026-10-14): read the terms page and robots.txt before any content page. A site that opts out of AI
+  or automated access entirely (names Claude/AI agents, or bans all automated access) is never fetched; the owner
+  checks it by hand. A site that only bans scraping (bulk copying) may get small spot checks to verify a fact: a few
+  pages per task, at least 5 s apart, facts only, no copies kept. Always identify honestly (our User-Agent, never a
+  fake browser) and never bypass a challenge or limit. Otherwise at most 12 requests/min per host, one at a time,
+  cache 24 h, stop on 403 / 429 / a challenge page. **No automated reading of
   aion2.th.gl** (its robots.txt excludes AI agents). Facts sourced from th.gl are re-verified against a permitted source
   (Metabot first) and attributed to it; a fact no permitted source confirms is labelled for an owner in-game check.
 - Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
