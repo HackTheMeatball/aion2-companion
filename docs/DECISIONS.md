@@ -8,7 +8,7 @@ owner; the CEO records them here and in the department charters they affect.
 | # | Topic | Decision |
 |---|---|---|
 | — | Data fetching | Approved: robots.txt and AI opt-outs respected; 12 req/min/host, one at a time, 24 h cache, stop on any block (data-research.md). |
-| — | aion2.th.gl | Automated reading paused (its robots.txt excludes AI agents); owner asks its owner for permission; facts already collected stay, credited. |
+| — | aion2.th.gl | Not used by sessions (its robots.txt excludes AI agents); removed from the Default environment; no outreach for now. th.gl-sourced facts are re-verified against a permitted source (Metabot first) and attributed to it, or labelled for an owner check. |
 | — | Metabot terms | The site is non-commercial today and qualifies; permission is needed before any change to that. |
 | — | Environments | Research sessions: "Research (open web)" (Full network). Code sessions: Default (custom list). |
 | — | 0.3 default mode | Next up defaults to "fastest", with a "completionist" toggle. |

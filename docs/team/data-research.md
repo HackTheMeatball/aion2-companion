@@ -19,7 +19,9 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
   session, until its owner gives permission.
 - At most 12 requests/min per host, one request at a time, 24 h cache; identify as Daeva Companion research in the
   User-Agent (no personal email). Stop at the first 403, 429 or challenge page; never work around one.
-- aion2.th.gl: paused for automated reading (robots.txt excludes AI agents). Facts already collected stay, credited.
+- aion2.th.gl: not read by sessions (robots.txt excludes AI agents); removed from the Default environment. Facts that
+  came from th.gl are re-verified against a permitted source (Metabot first) and attributed to it; anything unconfirmed
+  is labelled for an owner in-game check.
 - Metabot terms: personal, non-commercial use with a dofollow link to the specific page. The site qualifies today.
 - Agreement between two client-derived databases rules out extraction errors only; record the game build next to
   `verifiedAt`, and the owner's in-game screens stay the source of truth.

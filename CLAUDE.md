@@ -33,7 +33,8 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
   Sources card (gen.py does this) and `data/DATA_SOURCES.md`.
 - Fetching (owner, 2026-10-14): obey each site's robots.txt and AI-crawler opt-outs; at most 12 requests/min per host,
   one at a time, cache 24 h, stop on 403 / 429 / a challenge page and never bypass one. **No automated reading of
-  aion2.th.gl** (its robots.txt excludes AI agents) until its owner agrees; the owner checks it in a browser instead.
+  aion2.th.gl** (its robots.txt excludes AI agents). Facts sourced from th.gl are re-verified against a permitted source
+  (Metabot first) and attributed to it; a fact no permitted source confirms is labelled for an owner in-game check.
 - Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
   CC BY-NC-SA: take facts only, never its wording, into the app; quotes in `claims.json` stay short and credited. Don't use
   Game8. No packet sniffing, memory reading or screenshot parsing (ToS risk; the user doesn't want it).
