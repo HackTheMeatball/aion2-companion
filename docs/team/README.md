@@ -18,6 +18,12 @@ memory**: every agent working for a department reads its charter, [CLAUDE.md](..
 One-off projects (consultants) report to the CEO and end with a written report in the scratchpad or `docs/`; their
 recommendations become roadmap items or charter rules.
 
+## Parallel sessions
+
+Work can run as several Claude Code cloud sessions (or threads of a Claude Code Project) at once, each on its own
+branch. Every session starts from `docs/team/PROJECT-INSTRUCTIONS.md` and `docs/team/HANDOFF.md`; a SessionStart hook
+(`scripts/cloud-setup.sh`) installs dependencies. One repository per session.
+
 ## How a change flows
 
 1. **Problem and acceptance** (CEO, with the owner when it's a product call).
