@@ -57,6 +57,8 @@ jobs:
     concurrency:
       group: pages
       cancel-in-progress: false
+    outputs:
+      build_json: ${{ steps.build.outputs.build_json }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -69,17 +71,39 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
       - name: Build
-        run: npm run build
+        id: build
+        # build.json (one line of JSON) goes to the smoke job, which waits for the live site to serve it.
+        run: |
+          npm run build
+          echo "build_json=$(tr -d '\n' < dist/build.json)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
       - id: deployment
         uses: actions/deploy-pages@v5
 
-  # A new version in package.json gets its tag and GitHub Release once it is tested and live. Notes come from its
-  # CHANGELOG section. Versions already tagged are skipped, so ordinary pushes to main do nothing here.
-  release:
+  # The live site must serve what deploy just built: polls /build.json (cache-busted, up to 5 min) until it equals
+  # deploy's dist/build.json, then checks the footer shows package.json's version. A deploy that "succeeds" but never
+  # goes live fails here, before a release is tagged. Failures are ::error annotations.
+  smoke:
     needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Live site serves the deployed build and version
+        env:
+          EXPECTED_BUILD: ${{ needs.deploy.outputs.build_json }}
+        run: node scripts/smoke.mjs --url https://daevacompanion.com --expect "$EXPECTED_BUILD" --timeout 300 --interval 10
+
+  # A new version in package.json gets its tag and GitHub Release once it is tested and live (smoke passed). Notes come
+  # from its CHANGELOG section. Versions already tagged are skipped, so ordinary pushes to main do nothing here.
+  release:
+    needs: [deploy, smoke]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 5

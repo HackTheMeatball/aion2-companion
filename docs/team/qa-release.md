@@ -12,7 +12,9 @@
 - Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner.
 
 **After every merge to `main`:** watch that run to the end (test, deploy, release). A green PR doesn't prove the
-deploy works; a failed deploy leaves the live site silently on the old build. Confirm `/build.json` changed.
+deploy works; a failed deploy leaves the live site silently on the old build. The **smoke** job (scripts/smoke.mjs,
+docs/DEPLOY.md) now checks `/build.json` and the footer version after each deploy and blocks the release if they're
+stale; still confirm it ran green.
 
 **Releases:** version bump + `## X.Y.Z (beta) — date · summary` CHANGELOG section in one commit (usually on the PR
 branch before merge, so `main` gets one CI run); ROADMAP *Released* list updated. CI tags and publishes after deploy.

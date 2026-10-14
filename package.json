@@ -17,6 +17,7 @@
     "serve": "node scripts/serve.mjs",
     "test": "npm run build && node tests/run.mjs",
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
+    "test:core": "node tests/core.mjs",
     "gen": "python3 -I tools/gen/gen.py",
     "gen:check": "python3 -I tools/gen/gen.py && git diff --exit-code -- tools/gen/gen-block.js tools/gen/gen-report.json data/DATA_SOURCES.md"
   },

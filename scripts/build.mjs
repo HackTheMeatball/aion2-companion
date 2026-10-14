@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /* Build both deliverables from src/ (dev dependency: esbuild; Node 22).
 
-   Source layout (0.2 P1, P2):
+   Source layout (0.2 P1–P3):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
      src/styles/*.css          the styles: fonts.css (the @font-face rules), app.css and brand.css; inlined verbatim
      src/main.js               the app script (ES module entry)
      src/data/*.js             the hand-written data tables (and the text helpers they use), imported by main.js
+     src/core/*.js             the pure core (0.2 P3): state, migrations, catalog, requirements, Next up ranking; no DOM
      src/data/generated.js     not a file: the build makes this module from tools/gen/gen-block.js (`npm run gen`
                                writes that from data/*.json), adding an export list of its constants
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
@@ -34,6 +35,7 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statS
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
+import { genModule, generatedData, staleGenerated } from './generated-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -52,27 +54,9 @@ const STYLE_TAG = /^<link rel="stylesheet" href="(styles\/[\w.-]+\.css)">\n/gm;
 const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
 
 /* the generated data module (0.2 P2): built from tools/gen/gen-block.js, never stored in src/ (a stale copy there would
-   shadow nothing but mislead, so the build refuses it). Imported as "./generated.js" from src/data or
-   "./data/generated.js" from src/main.js. */
-const GEN_BLOCK = P('tools/gen/gen-block.js');
-if (existsSync(P('src/data/generated.js'))) die('src/data/generated.js exists: the build makes that module from tools/gen/gen-block.js; delete the file');
-const genModule = () => {
-  const block = readFileSync(GEN_BLOCK, 'utf8').replace(/\n+$/, '');
-  if (!block.startsWith('/* E2-GEN START') || !block.endsWith('/* E2-GEN END */')) die('tools/gen/gen-block.js lacks the E2-GEN markers');
-  const names = [...block.matchAll(/^const (\w+) =/gm)].map(m => m[1]);
-  if (!names.length) die('tools/gen/gen-block.js defines no constants');
-  return `${block}\nexport { ${names.join(', ')} };\n`;
-};
-const generatedData = {
-  name: 'generated-data',
-  setup(b) {
-    b.onResolve({ filter: /^\.\.?\/(data\/)?generated\.js$/ }, a => {
-      if (join(a.resolveDir, a.path) !== P('src/data/generated.js')) return undefined;
-      return { path: 'tools/gen/gen-block.js', namespace: 'generated' };
-    });
-    b.onLoad({ filter: /.*/, namespace: 'generated' }, () => ({ contents: genModule(), loader: 'js', resolveDir: P('src/data'), watchFiles: [GEN_BLOCK] }));
-  },
-};
+   shadow nothing but mislead, so the build refuses it). The esbuild plugin is shared with the Node core tests. */
+if (staleGenerated()) die('src/data/generated.js exists: the build makes that module from tools/gen/gen-block.js; delete the file');
+try { genModule(); } catch (e) { die(e.message); }
 const bundleOne = async entry => {
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
     treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: [generatedData] })
@@ -88,7 +72,7 @@ const bundleOne = async entry => {
    (the first name of a multi-name declaration). */
 {
   const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map();
-  for (const f of ['src/main.js', ...readdirSync(P('src/data')).filter(n => n.endsWith('.js')).map(n => 'src/data/' + n)])
+  for (const f of ['src/main.js', ...['data', 'core'].flatMap(d => readdirSync(P('src', d)).filter(n => n.endsWith('.js')).map(n => `src/${d}/${n}`))])
     for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
       if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);
       seen.set(m[1], f);
