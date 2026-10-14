@@ -6,8 +6,9 @@ Two targets, built from the same source by `npm run build`.
 
 Every push to `main` runs `.github/workflows/ci.yml`: the **test** job (`npm ci`, Playwright's Chromium, `npm test`),
 then, only if it passes, the **deploy** job builds `dist/` and publishes it with `actions/configure-pages`,
-`actions/upload-pages-artifact` and `actions/deploy-pages`. After a successful deploy, the **release** job tags and
-publishes a GitHub Release for every CHANGELOG version that has none yet (see *Releases* below). Pull requests and
+`actions/upload-pages-artifact` and `actions/deploy-pages`. The **smoke** job then checks the live site really serves
+that build (see *Smoke check* below). Only after it passes, the **release** job tags and publishes a GitHub Release for
+every CHANGELOG version that has none yet (see *Releases* below). Pull requests and
 other branches only run the tests.
 
 Runners are pinned to `ubuntu-24.04` rather than `ubuntu-latest`, so a GitHub image change can't silently change test
@@ -34,6 +35,27 @@ results. Move to a newer image on purpose, in its own commit, with a green run.
 4. Optional, recommended: verify `daevacompanion.com` under **Settings → Pages → Verified domains** (account settings) so
    nobody else can claim the subdomain.
 5. The `github-pages` environment is created by the first deploy. If it has deployment-branch rules, allow `main`.
+
+### Smoke check (CI)
+
+`scripts/smoke.mjs` runs in the **smoke** job after every deploy. The deploy job passes its `dist/build.json` as a job
+output (`build_json`); the script:
+
+1. polls `https://daevacompanion.com/build.json` every 10 s for up to 5 min, each request with a fresh `?smoke=…` query
+   and `Cache-Control: no-cache` (so neither the Pages CDN nor a proxy can answer from cache), until it equals that
+   build.json (compared as parsed JSON);
+2. fetches the page the same way and checks the footer version link (`#verLink`, filled in at build time) reads
+   `v<package.json version>`.
+
+Either failure is an `::error` annotation on the run (titles start with "Smoke:") and fails the job, so **release**
+doesn't run: no tag or GitHub Release for a version that isn't live. A failed smoke means the site is still on the old
+build or a stale CDN copy: check the deploy job and `/build.json`, then re-run the failed jobs (re-running smoke alone
+is enough if the deploy did go live late).
+
+Run it by hand: `node scripts/smoke.mjs --expect '{"build":"<id>"}'` against the live site (default `--expect` is the
+local `dist/build.json`), or `npm run build && npm run serve`, then
+`node scripts/smoke.mjs --url http://localhost:8080 --timeout 0`. Options: `--url`, `--expect`, `--version`,
+`--timeout` (s), `--interval` (s). Behind a proxy, Node 22's `fetch` needs `NODE_USE_ENV_PROXY=1`.
 
 ### Checking a deploy
 
