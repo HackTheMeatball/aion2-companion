@@ -3,16 +3,23 @@
 Data & Research, 14 Oct 2026. **Research only: no app code or data file was changed.** Inputs for D8 (next class),
 the 0.7–0.13 research packs, and the data patches that can close ISSUES.md gaps.
 
-Method: `curl` against metabot.gg and aion2.th.gl (the only two source hosts this environment can reach, see §5), parsed
-from page HTML; WebSearch to find guide URLs on blocked sites. Every Metabot field below was checked against our
-Assassin data first (all 22 skill learn levels matched `data/build.json` exactly) before being trusted for the other
-classes. "DB field" means a field both sites say is read from the global client (Metabot: build 0.0.4387.0).
+Method: `curl` against metabot.gg (its robots.txt allows all agents on `/en/aion-2/`; only `/api/`, `/private/` and
+profile pages are disallowed, and none of those was fetched), parsed from page HTML; WebSearch to find guide URLs on
+blocked sites. Every Metabot field below was checked against our Assassin data first (all 22 skill learn levels
+matched `data/build.json` exactly) before being trusted for the other classes. "DB field" means a field Metabot says is
+read from the global client (build 0.0.4387.0).
+
+**Owner rule, 14 Oct 2026: aion2.th.gl is no longer fetched or cited** (its robots.txt excludes AI agents). An earlier
+draft of this report used th.gl as a second database. Every fact taken from it was re-checked on Metabot and is now
+attributed to Metabot; where Metabot doesn't confirm it, it is labelled **owner to check in game**. The cached th.gl
+downloads were deleted. What changed because of this is listed in §7.
 
 ## 1. Summary
 
 - **Game-database coverage is the same for all seven classes, and it is complete.** Skills by level, stigma lists and
-  Daevanion boards come from two independent databases (Metabot, th.gl) that agree on every one of 280 skills and
-  every skill node on all 40 boards. Nothing class-specific in the DB layer blocks any class.
+  Daevanion boards are Metabot client fields for all 280 skills and 40 boards, and Metabot is internally consistent:
+  every skill page's Daevanion nodes match the class's board planner exactly. That is one database (rating B, a
+  usable game-DB field under CLAUDE.md), not two. Nothing class-specific in the DB layer blocks any class.
 - **All 8 classes share one skeleton.** 12 actives learned at 1, 1, 1, 3, 4, 5, 7, 8, 10, 12, 14, 16; 10 passives at
   1, 6, 9, 11, 13, 15, 17, 21, 23, 25; 13 stigmas at 22; specialization choices at skill Lv 8/8/8/12/16 (actives; slots at effective
   Lv 8/12/20, §2.2 note) and 5/10/15/20 (stigmas); 4 Daevanion skill nodes per non-stigma skill; the same five boards (12/20/30/40/45, 134/134/134/168/232
@@ -22,11 +29,11 @@ classes. "DB field" means a field both sites say is read from the global client 
   stats, rotation. For Assassin that came from Metabot + GamesFuze + Skycoach + games.gg. For the other classes the
   guide sites are blocked here (§5), so advice coverage is "Metabot read + candidate URLs found, not read".
 - **There are no class quests** in the global client. Class-specific quest content is limited to class-variant
-  rewards in 4 Episode quests (§2.4).
-- **Several ISSUES.md gaps can now be closed cheaply from DB fields** (§4): prerequisites for 8 of the 10 `noPre`
-  quests (th.gl, confirmed from both ends), all 32 missing quest-giver Kibelisks plus the Blood Barrier turn-in
-  (Metabot), Vaizel/Triniel corner stats and Daevanion path costs (th.gl node grid; the path model reproduces the
-  owner's Nezekan numbers exactly), and Daevanion Crystals per level (Metabot client level table).
+  weapon rewards in 7 Asmodian Episode quests (§2.4).
+- **Several ISSUES.md gaps can now be closed cheaply from Metabot DB fields** (§4): prerequisites for 2 of the 10
+  `noPre` quests (6 more are owner checks, 2 have none), all 32 missing quest-giver Kibelisks plus the Blood Barrier
+  turn-in, Vaizel/Triniel corner stats, Daevanion path costs (Metabot's node grid; the path model reproduces the
+  owner's Nezekan numbers exactly), and Daevanion Crystals per level (client level table).
 - **Recommendation (§6): Gladiator**, unless the owner names a class they or a tester will actually level to 45; that
   answer decides it, because data coverage doesn't separate the classes.
 
@@ -36,8 +43,8 @@ classes. "DB field" means a field both sites say is read from the global client 
 
 | Level | Meaning |
 |---|---|
-| **A** | Two independent game databases agree field by field (or one DB field confirmed from both ends). Usable as data. |
-| **B** | One game database field, not contradicted. Usable as data under CLAUDE.md (game-DB fields count). |
+| **A** | Two independent sources agree field by field (e.g. a DB field plus the owner's screen). Usable as data. |
+| **B** | One game database field (Metabot), not contradicted. Usable as data under CLAUDE.md (game-DB fields count). |
 | **C** | Advice from one source that was read (Metabot editorial or pick rates). Needs a second source, else label *single source*. |
 | **D** | Candidate sources found by search but not read (site blocked here). Not usable until read. |
 | **—** | Nothing found. |
@@ -48,19 +55,19 @@ Same rating in every row unless noted; the per-class differences are in the last
 
 | Area | Gladiator | Templar | Ranger | Sorcerer | Spiritmaster | Cleric | Chanter |
 |---|---|---|---|---|---|---|---|
-| Skills by level (names, type, learn Lv, max Lv) | A | A | A | A | A | A | A |
+| Skills by level (names, type, learn Lv, max Lv) | B | B | B | B | B | B | B |
 | Specialization unlock levels (choices; slots see note) | B | B | B | B | B | B | B |
 | Specialization option texts | B | B | B | B | B | B | B |
-| Stigma list, learn Lv 22, max Lv | A | A | A | A | A | A | A |
+| Stigma list, learn Lv 22, max Lv | B | B | B | B | B | B | B |
 | Stigma slots 22/27/32/37, shard costs | A (class-agnostic, already verified for Assassin) | A | A | A | A | A | A |
 | Stigma picks (which 4) | C + D | C + D | C + D | C + D | C + D | C + D | C + D |
-| Daevanion boards, nodes, costs, corners | A | A | A* | A* | A | A | A* |
-| Daevanion path costs | B (computed, §4.4) | B | B | B | B | B | B |
+| Daevanion boards, nodes, costs, corners | B | B | B | B | B | B | B |
+| Daevanion path costs | B (computed from Metabot's grid, §4.4) | B | B | B | B | B | B |
 | Daevanion node priority (advice) | C | C | C | C | C | C | C |
 | Skill-point order (advice) | D | D | D | D | D | D | D |
 | Stat priority (advice) | C | C | C | C | C | C | C |
 | Class quests | n/a (none exist) | n/a | n/a | n/a | n/a | n/a | n/a |
-| Class-variant quest rewards (4 quests) | B | B | B | B | B | B | B |
+| Class-variant quest rewards (7 quests) | B | B | B | B | B | B | B |
 | Metabot tracked Lv 45 sample shown | 50 chars | 50 chars | 50 chars | not shown | 50 chars | not shown | not shown |
 | Candidate guide URLs (unread; MMOexp / AOEAH excluded) | 8 | 5 | 8 | 6 | 5 | 7 | 7 |
 | Metabot community builds | 0 | 1 | 2 | 3 | 2 | 3 | 0 |
@@ -73,25 +80,20 @@ recalls seeing only 3 at first. So the B rating covers the choice levels; the sl
 are owner-confirmed for Assassin and assumed class-agnostic (same skeleton, §1). This settles the open question in
 the Daevanion tip (`tips.js`: "whether they count toward the skill level 8 specialty unlock").
 
-\* Same nodes and costs, but th.gl's board labels use a different name for some skills than both sites' skill pages:
-Ranger *Melee Shot* (skill page: Melee Fire); Sorcerer *Earth Robe* / *Flame Robe* / *Flame Explosion* (Robe of Earth /
-Robe of Flame / Blaze); Chanter *Charging Smash* (Rushing Smash). Positions and costs match, so these are the same
-nodes; the in-game label needs one look at the board (owner or tester).
-
 Max level: every non-stigma skill is max 40 for all classes. Stigmas are max **40 for Assassin and Ranger, 25 for the
-other six**; both databases agree, so this is client data, not a scrape error. It doesn't touch the Lv 1–45 plan
+other six** on Metabot's skill pages; owner to check in game (one stigma tooltip on a non-Assassin character). It doesn't touch the Lv 1–45 plan
 (stigma Lv 20 is the practical cap; past 20 needs Superior Stigma Shards, `build.json` stigmaCost), but no code should
 hard-code 40.
 
 ### 2.3 Sources per area (URL patterns)
 
-| Area | Source A | Source B |
+| Area | Source | Notes |
 |---|---|---|
 | Class overview, stigma pick rates, editorial stat priority, Daevanion path text | `https://metabot.gg/en/aion-2/classes/<class>` | — |
-| Skill learn Lv, type, max Lv, specializations, Daevanion nodes per skill | `https://metabot.gg/en/aion-2/skills/<skill-slug>` (35 per class) | `https://aion2.th.gl/db/skills/s_<id>` (Learn Level, Category, Max Level; list at `https://aion2.th.gl/db/skills`, 280 entries) |
-| Daevanion boards | `https://metabot.gg/en/aion-2/daevanion/<class>` | `https://aion2.th.gl/db/daevanion/dv_<c><b>` (c = 1 Gladiator, 2 Templar, 3 Ranger, 4 Assassin, 5 Spiritmaster, 6 Sorcerer, 7 Cleric, 8 Chanter; b = 1 Nezekan, 2 Zikel, 3 Vaizel, 4 Triniel, 6 Azphel): Required Level, Nodes, Total Cost, and every node's grid position, grade, effect and cost |
+| Skill learn Lv, type, max Lv, specializations, Daevanion nodes per skill | `https://metabot.gg/en/aion-2/skills/<skill-slug>` (35 per class; listed on the class page) | Fields: "Learned at Lv.", Type, Max level, specializations with required skill level, "These nodes add levels" table |
+| Daevanion boards | `https://metabot.gg/en/aion-2/daevanion/<class>` | The page embeds every board (`boards`: name, needLevel) and node (row, col, type Start / Stat / SkillLevel, grade, cost, label, skillName) |
 | Community builds | `https://metabot.gg/en/aion-2/builds/<class>` (0–3 builds per class; not useful yet) | — |
-| Class-variant rewards | Metabot quest pages, "Reward" table per class | — |
+| Class-variant rewards | Metabot quest pages, "Class rewards" table | All 737 quest URLs in Metabot's sitemap (`https://metabot.gg/sitemaps/aion-2.xml` etc.) scanned |
 | Level table (skill points, stigma points, crystals, slots) | `https://metabot.gg/en/aion-2/leveling` | Wikily (blocked here; already cited for 30–44) |
 
 Candidate advice sources found by WebSearch (pages **not read**: hosts blocked, §5). Listed so the research pack for
@@ -137,33 +139,38 @@ the chosen class knows where to start; KeenGamer's all-classes page covers every
   [class-guides index](https://skycoach.gg/blog/aion-2/class-guides) per search; no other class found.
 
 Quality note: search summaries of these pages disagree on skill names for some classes (e.g. Cleric "Quake",
-"Divine Punishment" do not exist in either database), so any guide must be checked against the DB names in §2.5 before
+"Divine Punishment" do not exist on Metabot), so any guide must be checked against the DB names in §2.5 before
 it counts as a source. ExitLag was rated "low quality" in our earlier notes (C27). **Do not use MMOexp (mmoexp.com) or AOEAH (aoeah.com):
 both sell in-game gold/items (RMT), so they are excluded as sources and not linked.** Mobalytics, vortexgaming,
 pixelnitro, roonby and GamerBlurb have not been assessed.
 
 ### 2.4 Class quests
 
-- th.gl lists 1,206 quests. Their ID ranges split into Episode (21xxxxx Asmodian), Regional (22xxxxx), Wanted/hunt
-  (23xxxxx), Ascension (26xxxxx), Ascension Gauge (27xxxxx), dungeon/exploration and Sealed Dungeons (280–281xxxxx),
-  Strongholds (282xxxxx) and crafting upgrades (29xxxxx). **No class category exists**; the same split holds for Elyos
-  (1xxxxxx). Inferred from the ID taxonomy, not from opening all 1,206 pages.
-- Of the 123 Metabot quest pages our data cites (story + regional), **4 have a per-class reward table**, and none is
-  restricted to a class:
+- Metabot's quest index lists 1,043 quests in 8 types: Episode 179, Regional 122, Exploration 204, Ascension 10,
+  Duty 206, Duty scroll 308, Crafting 12, Daeva gauge 2 ([Metabot quests](https://metabot.gg/en/aion-2/quests)).
+  **No class type exists.** All 737 quest pages in Metabot's sitemap were opened: none has a class field or a class
+  restriction.
+- **7 Asmodian Episode quests have a "Class rewards" table** (one weapon per class); none is in a class-specific
+  chain. Rec. level from Metabot:
 
-  | Quest | Reward (Gladiator / Templar / Assassin / Ranger / Sorcerer / Spiritmaster / Cleric / Chanter) |
+  | Quest (Rec. Lv) | Reward family (Greatsword / Longsword / Dagger / Bow / Spellbook / Orb / Mace / Staff) |
   |---|---|
-  | [Contaminated Sacred Tree](https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree) | Chaser Greatsword / Longsword / Dagger / Bow / Spellbook / Orb / Mace / Staff |
-  | [Enemy Territory](https://metabot.gg/en/aion-2/quests/enemy-territory) | Avenger … (same weapon types) |
-  | [The Breaking of the Day](https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day) | Liberator … |
-  | [Farewells](https://metabot.gg/en/aion-2/quests/farewells) | Spiritforged … |
+  | [Finding Nemon](https://metabot.gg/en/aion-2/quests/finding-nemon) (10) | Strange Karma |
+  | [Empyrean Monolith](https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian) (16) | Old Mercenary Commander |
+  | [Disturbed Balance](https://metabot.gg/en/aion-2/quests/disturbed-balance) (22) | Faded Agate |
+  | [Contaminated Sacred Tree](https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree) (30) | Chaser |
+  | [Enemy Territory](https://metabot.gg/en/aion-2/quests/enemy-territory) (35) | Avenger |
+  | [The Breaking of the Day](https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day) (42) | Liberator |
+  | [Farewells](https://metabot.gg/en/aion-2/quests/farewells) (45) | Spiritforged |
 
+  (An earlier draft said 4; it only scanned the 123 quest pages our data cites. Metabot keeps separate Elyos and
+  Asmodian pages for some quests, e.g. `empyrean-monolith` is Elyos and `empyrean-monolith-asmodian` Asmodian.)
   Data patch candidate: `story-40-45.json` Farewells says "class-specific Spiritforged weapon (Assassin variant not
   named on page)"; Metabot now names it: **Spiritforged Dagger** (DB field, B).
 
-### 2.5 Skills by learn level (all classes; A)
+### 2.5 Skills by learn level (all classes; B)
 
-Names from th.gl (they match Metabot's skill pages). Assassin is in `data/build.json` (`fullSkillList`).
+Names and learn levels from Metabot's class and skill pages. Assassin is in `data/build.json` (`fullSkillList`).
 
 | Learn Lv | Gladiator | Templar | Ranger | Sorcerer | Spiritmaster | Cleric | Chanter |
 |---|---|---|---|---|---|---|---|
@@ -193,7 +200,7 @@ Names from th.gl (they match Metabot's skill pages). Assassin is in `data/build.
 Shared skill names are separate per-class skills (own pages, own effects): Metabot slugs `defiance-templar`,
 `impact-hit-chanter` etc. Never key data by display name alone.
 
-### 2.6 Stigmas (list A; picks C)
+### 2.6 Stigmas (list B; picks C)
 
 Pick rates are Metabot's "of top players run this" (Metabot flags its samples "Low sample"). These are popularity at
 Lv 45, not an equip order by level, and need a second read source before the app recommends them.
@@ -220,47 +227,50 @@ stigma list, board node tables, computed path costs (§4.4), class-variant rewar
 From advice sources (the real cost): skill-point order, four stigmas with equip timing and upgrade priority, first
 Daevanion nodes per board, stat tiers, rotation / E row. Each needs two read sources or a label. The guide sites are
 blocked here (§5), so either the environment allows them or a session with WebFetch reads them.
-In game (owner or tester): the 5 board labels above (Ranger, Sorcerer, Chanter only), one stigma tooltip, the rotation
-on a dummy, and the usual per-release spot check.
+In game (owner or tester): one stigma tooltip (max level 25 vs 40, §2.2), the rotation on a dummy, and the usual
+per-release spot check.
 
 ## 4. Data gaps from ISSUES.md
 
 | # | Gap | Status now | Sources | Cheapest way to close |
 |---|---|---|---|---|
-| 1 | 10 regional quests without prerequisites (`noPre`) | **8 closable**: th.gl "Prerequisites" field, each confirmed from the other end by the story quest's "Unlocks" field (A). 2 (Spacetime Rift: Unknown Species / Proof) have no prerequisite in the DB: Unlock Level 45, spawned by the rift; current `noPre` at 45 is right. Metabot still has no prerequisite field (only "Unlocks at 10"). | see table §4.1 | Data patch: set `requiresStory` + `requiresSrc` (th.gl both URLs) for the 8. No in-game check needed. |
+| 1 | 10 regional quests without prerequisites (`noPre`) | **2 closable (B)**: Metabot's "Required first" field gives Traveling Merchant's Conundrum ← Blood Monument and Lest We Forget ← Zikel's Core. **6 are owner to check in game**: each has a candidate story prerequisite, but no permitted source confirms it (Metabot shows only "Unlocks at 10", and its story pages list no regional unlocks). **2 have none** (B): Spacetime Rift: Unknown Species and Proof show no "Required first" and "Unlocks at 45"; current `noPre` at 45 is right. | §4.1 | Data patch for the 2 (Metabot URLs). The 6: one look each in the quest journal, best batched with PR #19's owner check 1 (same question: offered before / after the story quest is turned in). |
 | 2 | Kibelisks missing: 32 regional givers, Fafnite Storage Room, Blood Barrier turn-in | **33 of 34 closable** (B): Metabot quest pages now print "Nearest Kibelisk: X · N m" for every giver; Blood Barrier giver *and* turn-in are Nemon, Collapsed Hall of Fame (32 m). **Fafnite Storage Room still open**: Metabot gives only the entrance zone (Sanctum Outpost). | `https://metabot.gg/en/aion-2/quests/<slug>`; full list in §4.2 | Data patch from Metabot (same field the existing `kib` values use). Flag the far ones (Pain Unending 309 m, Immortal Isle's Distinct Ecology 197 m, Hugo Mercenaries: Past and Present 185 m, Farewell, My Instructor 168 m): "nearest" can be the wrong side of a cliff. Fafnite: owner screen of the map at the entrance. |
-| 3 | Story gate semantics (accepted vs reached) | **Answered in PR #19** (`docs/research/2026-10-prereq-gates.md` §3): a database prerequisite means **turned in**. Four checks on 2 sites agree, but all four are Ascension gates; for regional quests it is inferred, about 70% confidence. If it holds, the app opens the 51 story-gated regional quests one story quest early. Not built until owner check 1 (PR #19 §11) confirms it. This report adds nothing new: Fight Poison with Poison ← A Collective Effort re-checked on th.gl (agrees with our data). | [PR #19](https://github.com/HackTheMeatball/daeva-companion/pull/19), [th.gl q_2202062](https://aion2.th.gl/db/quests/q_2202062) | Owner check 1 in PR #19: with A Collective Effort open, is Fight Poison with Poison offered at Viron? Then turn it in and look again (expected: not offered → offered). |
+| 3 | Story gate semantics (accepted vs reached) | **Answered in PR #19** (`docs/research/2026-10-prereq-gates.md` §3): a database prerequisite means **turned in**. Four checks on 2 sites agree, but all four are Ascension gates; for regional quests it is inferred, about 70% confidence. If it holds, the app opens the 51 story-gated regional quests one story quest early. Not built until owner check 1 (PR #19 §11) confirms it. Note: PR #19's evidence also leans on th.gl, so it needs the same re-check on Metabot under the new rule. This report adds: Metabot "Required first" gives Fight Poison with Poison ← A Collective Effort (agrees with our data). | [PR #19](https://github.com/HackTheMeatball/daeva-companion/pull/19), [Metabot](https://metabot.gg/en/aion-2/quests/fight-poison-with-poison) | Owner check 1 in PR #19: with A Collective Effort open, is Fight Poison with Poison offered at Viron? Then turn it in and look again (expected: not offered → offered). |
 | 4 | Kibelisk and Command mission unlock levels | Open. Metabot content-unlocks lists 9 level thresholds, 6 Conquest tiers and 18 quest unlocks; neither mission type is there. One search hit (allthings.how ?p=260416, blocked) ties "Duty" missions to Lv 45 + the Abyss (already C15). | [Metabot content unlocks](https://metabot.gg/en/aion-2/content-unlocks) | In game: note the level when the menu entry appears. |
 | 5 | Dungeon XP | Open; no source. Metabot dungeon pages list clear rewards (Asmodian Library of Wisdom still 15,000 Kina, 1,250 Enhance Stones, 2 crystals, 2 Wisdom Stones: matches our data) but no EXP; loot and XP are server-side. | [Metabot Library of Wisdom](https://metabot.gg/en/aion-2/dungeons/library-of-wisdom) | Not worth closing (removed from the UI). Owner can note EXP gained on one clear if ever needed. |
-| 6a | Inferred: Vaizel / Triniel corner stats | **Closable (A)**: th.gl board tables give each Unique node's effect: Vaizel 2× Critical Damage Boost +150 and 2× Critical Damage Tolerance +150; Triniel 3× Multi-hit Chance +150 and 3× Multi-hit Resist +150. Matches `build.json cornerTotalsByBoard` (3% / 4.5%, reading +150 as 1.5%, the same scale Metabot uses). | [th.gl dv_43](https://aion2.th.gl/db/daevanion/dv_43), [dv_44](https://aion2.th.gl/db/daevanion/dv_44) | Claims patch: drop the "inferred" label. |
-| 6b | Inferred: Daevanion path costs | **Closable (B, model-validated)**: th.gl gives every node's grid position. Shortest paths over the 4-neighbour grid from the board centre reproduce the owner-confirmed Nezekan numbers exactly (§4.4). | th.gl dv_41 … dv_44 | Script the path costs per board from th.gl (no in-game check); spot-check one Zikel path in game. |
+| 6a | Inferred: Vaizel / Triniel corner stats | **Closable (B)**: Metabot's Assassin planner gives each Unique node's label: Vaizel 2× Critical Damage Boost +1.5% and 2× Critical Damage Tolerance +1.5%; Triniel 3× Multi-hit Chance +1.5% and 3× Multi-hit Resist +1.5%. Matches `build.json cornerTotalsByBoard` (3% / 4.5%). | [Metabot Assassin Daevanion](https://metabot.gg/en/aion-2/daevanion/assassin) | Claims patch: drop the "inferred" label. |
+| 6b | Inferred: Daevanion path costs | **Closable (B, model-validated)**: Metabot's planner gives every node's grid row/column, cost and the Start node. Shortest paths over the 4-neighbour grid from Start reproduce the owner-confirmed Nezekan numbers exactly (§4.4). | Metabot `daevanion/<class>` | Script the path costs per board from Metabot (no in-game check); spot-check one Zikel path in game. |
 | 6c | Inferred: core skill-point order, right-click row order and E stack | Open (advice). No new source; guide sites blocked. | — | Read GamesFuze/Skycoach/games.gg Assassin pages from an environment that allows them; otherwise keep the label. |
-| 6d | Inferred: stronghold level bands | Open. Neither th.gl (strongholds are "Exploration" quests with no level fields) nor Metabot quest pages give a level. | th.gl q_2820001 … q_2820015 | In game: note the monster level at each stronghold when passing (one tap per stronghold). |
+| 6d | Inferred: stronghold level bands | Open. Metabot's stronghold quest pages give no level field (stronghold quests are type "Exploration" with no Rec. level shown). | [Metabot strongholds map](https://metabot.gg/en/aion-2/map/altgard/strongholds) | Owner to check in game: note the monster level at each stronghold when passing. |
 | 7a | Disputed: respec cost after 31 | Open; no new source (allthings.how, MeinMMO, thegameswiki blocked). | — | In game: open the skill reset dialog on a Lv 31+ character (already on the owner's list). |
 | 7b | Disputed: expedition weekly cap | **New DB evidence**: Metabot's weekly-reset page, read from the client's ticket table, lists "[Exploration] <dungeon> Reward Count: 7, Weekly · Wednesday" per dungeon. Supports KeenGamer (7 per dungeon) against games.gg / thegameswiki ("removed", the latter KR/TW). Metabot itself says "not yet confirmed in game". | [Metabot weekly reset](https://metabot.gg/en/aion-2/weekly-reset) | Re-label C11 as client field + KeenGamer (2 sources) if the owner sees a reward counter on one Exploration entry. |
 | 7c | Disputed: stigma slot 3/4 order | Unchanged. Metabot's Assassin pick rates by slot: Illusive Clone 95%, Swift Contract 90%, Savage Fang 77%, Triniel's Dagger 71% (popularity, not timing). | [Metabot Assassin](https://metabot.gg/en/aion-2/classes/assassin) | Keep both sides shown. |
 | 7d | Disputed: first Daevanion nodes | Unchanged, one more voice: Metabot now says Nezekan's Assault Stance and Exploit Weakness node pairs first, then Zikel's Defense Break (the app starts with Heart Gore and Ambush). | same page | Keep disputed; path costs (6b) at least make each option's price exact. |
 | 7e | Disputed: cash-shop scope | Unchanged; not researched (out of scope). | — | — |
-| 8 | Zone assumption Safe Haven → Dredgion Crash Site (Odyle Jelly Misappropriation Investigation) | Open. Neither DB has a zone field. Metabot step Kibelisks: Safe Haven (giver, 32 m), Galorik's Inspection Area, Mire Campsite; turn-in Galorik. | [Metabot](https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation), [th.gl q_2202014](https://aion2.th.gl/db/quests/q_2202014) | Leave; it only affects grouping. |
-| 9 | "Daeva Trapped in a Nightmare" not in story data | Data ready (A): th.gl q_2102810: Episode 6, Rec/Unlock 45, Previous "Forgotten Commander", Next "Waiting for the Next Journey", objective "Complete The One Who Witnesses the Nightmare", giver Koro (Abyss Base) and turn-in Nemon (Outskirts Stall). Koro as giver comes only from th.gl's description text ("Objective: Talk to Koro at the Abyss Base"), not from a giver field; Nemon is the last step ("Talk to Nemon at the Outskirts Stall"). Metabot's Farewells page lists it as a related Lv 45 quest. Blocked only by the planned 0.3 change. | [th.gl q_2102810](https://aion2.th.gl/db/quests/q_2102810) | Add in the 0.3 requirement audit as planned. |
+| 8 | Zone assumption Safe Haven → Dredgion Crash Site (Odyle Jelly Misappropriation Investigation) | Open. Metabot has no zone field. Its step Kibelisks: Safe Haven (giver, 32 m), Galorik's Inspection Area, Mire Campsite; turn-in Galorik. | [Metabot](https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation) | Leave; it only affects grouping. |
+| 9 | "Daeva Trapped in a Nightmare" not in story data | Data ready (B): Metabot: Episode, Asmodian, Rec. level 45, Unlocks at 45, chapter "Encountering Zikel's Core", Previous quest "Forgotten Commander", Next quest "Waiting for the Next Journey", one objective "Complete The One Who Witnesses the Nightmare", turn-in Nemon at the Outskirts Stall (Kibelisk Outskirts Stall, 21 m). **Giver: owner to check in game.** Metabot shows no start NPC ("unlocks at level 45"); the earlier draft's "Koro at the Abyss Base" came only from th.gl's description text. Blocked only by the planned 0.3 change. | [Metabot](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) | Add in the 0.3 requirement audit as planned; the giver is part of PR #19's owner check 5. |
 | 10 | C27 board re-check prompt / Daevanion points per level (C28f single source) | **Closable (B)**: Metabot's leveling page is the client level table: Daevanion Crystals 4 per level from 12 (136 at 45); skill points match `LEVEL_POINTS` at every level 4–45 (so `levelPoints` 30–44 is no longer single source); stigma points 1 per level 23–39, 2 per level 40–45 (29 at 45), matching `stigmaCost.shardIncome`. | [Metabot leveling](https://metabot.gg/en/aion-2/leveling) | Claims patch for C28f and `levelPoints`. The board-card formula check can then cite a DB field. |
 
-### 4.1 Prerequisites found (th.gl, both ends)
+### 4.1 Prerequisites for the 10 `noPre` quests
 
-| Quest (rq.json) | Prerequisite | Confirmed by the prerequisite's "Unlocks" |
+| Quest (rq.json) | Prerequisite | Status |
 |---|---|---|
-| [The Great Curse-Breaking Caper](https://aion2.th.gl/db/quests/q_2202015) (rec 16) | Empyrean Monolith | [q_2102105](https://aion2.th.gl/db/quests/q_2102105) yes |
-| [Her Last Favor](https://aion2.th.gl/db/quests/q_2202018) (30) | Canyon's Secret | [q_2102280](https://aion2.th.gl/db/quests/q_2102280) yes |
-| [Pain Unending](https://aion2.th.gl/db/quests/q_2202040) (32) | Last of the Destruction Archons | [q_2102340](https://aion2.th.gl/db/quests/q_2102340) yes |
-| [Traveling Merchant's Conundrum](https://aion2.th.gl/db/quests/q_2202029) (33) | Blood Monument | [q_2102370](https://aion2.th.gl/db/quests/q_2102370) yes |
-| [Herb Pouch Heist](https://aion2.th.gl/db/quests/q_2202066) (44) | Daybreak Society Rescue Operation | [q_2102660](https://aion2.th.gl/db/quests/q_2102660) yes |
-| [Lest We Forget](https://aion2.th.gl/db/quests/q_2202046) (45) | Zikel's Core | [q_2102780](https://aion2.th.gl/db/quests/q_2102780) yes |
-| [Shugo-of-All-Trades](https://aion2.th.gl/db/quests/q_2202044) (12) | Contaminated Area | [q_2102040](https://aion2.th.gl/db/quests/q_2102040) yes |
-| [Spooky Specters](https://aion2.th.gl/db/quests/q_2202051) (14) | Cemetery Cleanup | [q_2102070](https://aion2.th.gl/db/quests/q_2102070) yes |
-| [Spacetime Rift: Unknown Species](https://aion2.th.gl/db/quests/q_2202030) (45) | none (Unlock Level 45, rift) | — |
-| [Spacetime Rift: Proof](https://aion2.th.gl/db/quests/q_2202035) (45) | none (Unlock Level 45, rift) | — |
+| [Traveling Merchant's Conundrum](https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum) (rec 33) | Blood Monument | Metabot "Required first" (B) |
+| [Lest We Forget](https://metabot.gg/en/aion-2/quests/lest-we-forget) (45) | Zikel's Core | Metabot "Required first" (B) |
+| [The Great Curse-Breaking Caper](https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper) (16) | Empyrean Monolith? | owner to check in game |
+| [Her Last Favor](https://metabot.gg/en/aion-2/quests/her-last-favor) (30) | Canyon's Secret? | owner to check in game |
+| [Pain Unending](https://metabot.gg/en/aion-2/quests/pain-unending) (32) | Last of the Destruction Archons? | owner to check in game |
+| [Herb Pouch Heist](https://metabot.gg/en/aion-2/quests/herb-pouch-heist) (44) | Daybreak Society Rescue Operation? | owner to check in game |
+| [Shugo-of-All-Trades](https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian) (12) | Contaminated Area? | owner to check in game |
+| [Spooky Specters](https://metabot.gg/en/aion-2/quests/spooky-specters) (14) | Cemetery Cleanup? | owner to check in game |
+| [Spacetime Rift: Unknown Species](https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species) (45) | none; Unlocks at 45 | Metabot (B) |
+| [Spacetime Rift: Proof](https://metabot.gg/en/aion-2/quests/spacetime-rift-proof) (45) | none; Unlocks at 45 | Metabot (B) |
 
-All eight prerequisites are story quests already in `story.json`. Effect on Next up: these quests stop appearing before
+The six "?" candidates came from th.gl and are kept only as the question to ask in game: is the quest offered before
+that story quest is turned in? Until then they stay `noPre`.
+
+All candidate prerequisites are story quests already in `story.json`. Effect on Next up: these quests stop appearing before
 their story quest is done (e.g. Lest We Forget waits for Zikel's Core). Save keys are unaffected.
 
 ### 4.2 Kibelisks found (Metabot "Nearest Kibelisk", giver)
@@ -302,8 +312,8 @@ the patch adds those URLs (they go to the Sources card via `npm run gen`).
 
 ### 4.4 Path-cost model check (6b)
 
-Assassin Nezekan from th.gl dv_41: 88 nodes on an 11×11 grid (rows/cols 3–13), centre (8,8) empty = start. Cost of
-a set of targets = cheapest connected set of nodes from the centre (node-weighted Steiner tree), 4-neighbour moves.
+Assassin Nezekan from Metabot's planner: 88 nodes plus a Start node at (8,8), cost 0, on an 11×11 grid (rows/cols
+3–13). Cost of a set of targets = cheapest connected set of nodes from Start (node-weighted Steiner tree), 4-neighbour moves.
 
 | Target(s) | 4-neighbour model | 8-neighbour model | Owner's board (milestone `g12:0`) |
 |---|---|---|---|
@@ -315,11 +325,13 @@ a set of targets = cheapest connected set of nodes from the centre (node-weighte
 | All five | 27 | 21 | 27 |
 
 The 4-neighbour model matches all six owner numbers; the 8-neighbour one matches none. Board totals check out too:
-every board's node costs sum to its "Total Cost" (134/134/134/168/232) for all 40 boards.
+every board's node costs sum to 134/134/134/168/232 for all 40 boards (8 classes), and each class's skill nodes on
+the planner match its skill pages' "These nodes add levels" tables exactly.
 
 ## 5. Blocked sites (this environment)
 
-The environment's network policy allows **metabot.gg** and **aion2.th.gl** only. Every other source host fails at the
+The environment's network policy allows **metabot.gg** and **aion2.th.gl** only, and **aion2.th.gl is excluded by
+owner rule** (its robots.txt excludes AI agents), so Metabot is the only usable source here. Every other source host fails at the
 proxy (`CONNECT tunnel failed, response 403`), so this is an environment setting, not the sites' bot checks:
 
 aion2.gaming.tools, thegameswiki.com, wikily.gg, games.gg, gamesfuze.com, skycoach.gg, gamewith.ai, keengamer.com,
@@ -327,8 +339,7 @@ allthings.how, playnews.gg, mein-mmo.de, aion2hub.com, exitlag.com, destructoid.
 gameplay.tips, inven.co.kr, aion2.plaync.com, metaroad.gg, daevacompass.com, oslink.io, timesaver.gg, neonsect.com,
 fandomwire.com.
 
-aion2.th.gl works but resets about one connection in three after ~12 s; 4 parallel requests with retries fetched all
-320 skill and board pages without a failure. Metabot answered every request.
+Metabot answered every request. th.gl is not fetched any more (owner rule above).
 
 To read the advice sources for a class pack, the owner can add the needed hosts under the environment's network
 settings (Allowed domains; https://code.claude.com/docs/en/cloud-environments#network-access) — at least gamesfuze.com,
@@ -342,22 +353,46 @@ Rule (ROADMAP 0.7–0.13): (1) a class the owner or a tester will level to 45, t
 1. **Owner / tester: unknown.** Nothing in the repo says who plays what. This criterion matters most in practice: each
    release needs an in-game spot check, and the advice fields (§3) are where the guide can be wrong. **Owner question:
    will you or a tester level one of the seven to 45 in the next weeks? If yes, that class goes next.**
-2. **Coverage does not separate the classes in the DB layer** (all A/B, §2.2). In the advice layer Gladiator and Ranger
-   lead: 8 candidate guides each, a Metabot tracked sample (Sorcerer, Cleric and Chanter show none), and no board-label
-   mismatch for Gladiator (Ranger has one).
+2. **Coverage does not separate the classes in the DB layer** (all B, §2.2). In the advice layer Gladiator and Ranger
+   lead: 8 candidate guides each and a Metabot tracked sample (Sorcerer, Cleric and Chanter show none).
 3. **Shared with Assassin**: every class has the same skeleton. Gladiator shares Defiance and Impact Hit names and a
    melee, Attack › Critical Hit stat profile (Metabot); Ranger shares Defiance and Revitalization Contract and the pure
    "Damage" role. Templar and Chanter also share Impact Hit; Cleric and Chanter are healers (new UI needs: party
    healing has no Assassin equivalent).
 
-**Recommendation: Gladiator** (ties Ranger on coverage, wins on board labels and on melee/greatsword AoE being the
-closest to the Assassin plan's "rotation on a dummy" checks (a judgment call, not data); it is also HANDOFF's default). **Ranger** is the
+**Recommendation: Gladiator** (ties Ranger on coverage; wins on melee/greatsword AoE being the closest to the Assassin plan's "rotation on a dummy" checks (a judgment call, not data); it is also HANDOFF's default). **Ranger** is the
 alternative if the owner prefers a pure damage class. Either way the order should flip to whichever class the owner or
 a tester will actually play (criterion 1).
 
 Not recommended first: **Templar** (fewest candidate guides, tank role needs advice the Assassin plan never had),
-**Cleric / Chanter** (healer support advice, no Metabot sample, Chanter board label mismatch).
+**Cleric / Chanter** (healer support advice, no Metabot sample).
 
 Before starting the Gladiator pack: allow the guide hosts (§5), then read GamesFuze, KeenGamer, Destructoid and
 allthings.how for skill-point order and stigma timing; Metabot's pick rates (Lunge Stance, Zikel's Blessing, Rage
 Burst, Focused Block) are the first source to confirm or dispute.
+
+## 7. th.gl removal: what changed
+
+Owner rule of 14 Oct 2026 (th.gl's robots.txt excludes AI agents). Re-check of every th.gl fact in this report:
+
+| Fact (earlier draft) | Now |
+|---|---|
+| 280 skills: learn level, type, max level | Metabot only (B). Names and levels unchanged. |
+| Stigma max level 40 (Assassin, Ranger) vs 25 (others) | Metabot only; owner to check in game (one tooltip). |
+| 40 boards: levels, totals, nodes, costs, corners | Metabot planner (B), unchanged; Metabot's skill pages and planner agree. |
+| Board-label name mismatches (Ranger, Sorcerer, Chanter) | **Withdrawn**: a th.gl artifact; Metabot's labels match its skill names. |
+| Path-cost model (owner's Nezekan numbers) | Re-run on Metabot's grid: identical results (B). |
+| Quest taxonomy (1,206 quests by ID range) | Replaced by Metabot's index (1,043 quests, 8 types, none class-based). |
+| Class-variant rewards | Metabot; now 7 quests (full sitemap scan), not 4. |
+| 8 `noPre` prerequisites (both ends) | 2 Metabot "Required first" (B); 6 owner to check in game. |
+| Spacetime Rift Unknown Species / Proof: none, Lv 45 | Metabot (B), unchanged. |
+| Fight Poison with Poison ← A Collective Effort | Metabot "Required first" (B). |
+| Daeva Trapped in a Nightmare | Metabot (B) except the giver: owner to check in game. |
+| Corner stats | Metabot planner labels (B). |
+
+**Owner decision needed (outside this report):** th.gl is still cited elsewhere in the repo: 33 unique th.gl URLs
+across `data/claims.json`, `data/rq.json`, `data/rq-chains.json`, `data/DATA_SOURCES.md`, `src/data/tips.js`,
+`tools/gen/`, `tools/research/`, and the source policy in `CLAUDE.md` and `docs/team/data-research.md` (which name th.gl
+as an accepted game database). PR #19 (prerequisite gates) also rests partly on th.gl. Those need the same re-check
+(Metabot or owner check) and a policy edit; this report changes none of them.
+
