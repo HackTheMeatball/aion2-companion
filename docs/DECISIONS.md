@@ -7,6 +7,9 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | Icons | Standing OK: sessions add skill, stigma and item icons from approved sources (Metabot first; served from metabot.gg, no new domain) with provenance in docs/ISSUES.md. Other game art still needs the owner's OK. |
+| — | Ascension quests | No map location (they unlock and the player teleports in). Excluded from location tie-breaks; ticking one doesn't move the last confirmed location. Ascension steps whose prerequisites are met rank first in Next up. |
+| — | Browser automation on no-bot sites | Not used: an AI-driven browser is still automated access. Tier-1 sites get an owner hand-check sheet instead. |
 | — | Sources (#32) | dbaion2.ru / .online rejected for sessions (terms ban bots; owner hand checks only). aion2hub.com approved for spot checks as weak corroboration ("single source, pre-launch client" unless confirmed); added to the "Daeva Companion" environment. Metabot quest/dungeon/stronghold coordinates and nearest-Kibelisk distances may be used, with page links, without asking first (non-commercial, credited). Coverage measurement (L1–L3) approved. |
 | — | Travel model | Next up can weigh "teleport to Kibelisk X, then run N m" against running (Zygor-like), from Metabot coordinates and Kibelisk distances; designed in 0.3. |
 | — | Stigma unlock | Owner recalls Lv 22 (matches Metabot and our data); aion2hub's Lv 23 treated as wrong. Owner recollection, not a screen. |
