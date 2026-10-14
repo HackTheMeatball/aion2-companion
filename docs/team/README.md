@@ -24,6 +24,13 @@ Work can run as several Claude Code cloud sessions (or threads of a Claude Code 
 branch. Every session starts from `docs/team/PROJECT-INSTRUCTIONS.md` and `docs/team/HANDOFF.md`; a SessionStart hook
 (`scripts/cloud-setup.sh`) installs dependencies. One repository per session.
 
+## Models per session
+
+Pick the model when you start a session. Rule of thumb: **Opus** for the CEO chat, Tech Lead code (core, data build, the
+0.3 engine) and reviews of large code changes; **Sonnet** for research reports, CSS/design changes, CI tweaks and
+docs reviews; **Haiku** for mechanical docs (templates, label lists). Agents the CEO starts get a model per task the same
+way. Archive finished sessions.
+
 ## How a change flows
 
 1. **Problem and acceptance** (CEO, with the owner when it's a product call).
