@@ -12,7 +12,12 @@
    5. Hit areas (P1-3): each control with an invisible ::before / ::after hit area (HIT) is at least 24 × 24 px with it,
       and the extension never takes a point from a neighbouring control: for points just inside every control that the
       extension reaches, document.elementFromPoint is compared with the control's pseudo-elements left out of hit
-      testing and with them in; a point the neighbour had and lost is a failure. */
+      testing and with them in; a point the neighbour had and lost is a failure.
+   6. Touch (0.1.9, P1-4 / P3-1; 390 px with touch emulation, fresh and Lv 27 × Basic / Advanced, drawer and panels
+      open): every text field and select at 16 px or more (iPhone Safari zooms below that), the primary buttons
+      (PRIMARY) at least 44 px tall, no text under 11 px (mono) / 12 px (body) except the icon glyphs in GLYPH.
+   7. Story connector (P2-4): on a fresh save no connector line is drawn above the first story row.
+   8. Page zoom (P2-9): at 260 px (150 % zoom on a 390 px phone) the page doesn't scroll sideways. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -23,7 +28,6 @@ const info = (n, d) => console.log('info ' + n + (d !== undefined ? '  · ' + JS
 
 /* Rules still expected until they are fixed (each with the audit item that fixes it). Anything else fails. */
 const ALLOW = {
-  'color-contrast': 'P2-1 (0.1.7, visible): accent text, .num fill, locked dungeon names',
   'scrollable-region-focusable': 'P3-5 (0.1.7): #spSoon / #dvThen / #stSoon scroll without keyboard focus',
 };
 
@@ -31,6 +35,10 @@ const ALLOW = {
 const HIT = ['.tip', '.tipbtn', '#nowStar .q-cb', '#stCard .st-lvctl button', '.modeseg button', '.sec .ns-pop', '.sd-close',
   '.zone-btn', '.ms-name', '.nsinfo', '#nowStar .ns-pin', '.trk-sum',
   '#nowStar .rq-wait > summary', '.jfilt-btn', '.jfilt-x', '.dvi', '#stCard .st-chg .st-pick'];
+
+/* touch: the primary buttons that get 44 px, and the glyphs in fixed boxes that keep their size (icons, not text) */
+const PRIMARY = '.lvlup-btn, .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy';
+const GLYPH = '.tip, .nsinfo, .zchev, .spmini.ini, .st-mini.ini, .filt-n';
 
 const STATES = {
   fresh: () => null,
@@ -171,6 +179,46 @@ async function load(p, state, mode) {
       r = await nb.evaluate(x => ({ show: !!x.closest('.show-info'), exp: x.getAttribute('aria-expanded') }));
       ok('popover: Escape hides the Next up info', !r.show && r.exp === 'false', r);
     }
+    await ctx.close();
+  }
+
+  /* ---------- 6. touch: field sizes, primary buttons, minimum text; 7. story connector ---------- */
+  for (const sn of ['fresh', 'lv27']) for (const mode of ['basic', 'advanced']) {
+    const id = `${sn} ${mode} 390px touch`;
+    const { ctx, p } = await page(390, { isMobile: true, hasTouch: true });
+    await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], mode);
+    await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('sdTab').click();
+      document.querySelectorAll('details').forEach(x => { x.open = true; }); });
+    await p.waitForTimeout(250);
+    const r = await p.evaluate(([PRIMARY, GLYPH]) => {
+      const desc = e => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/).join('.') : '');
+      const vis = e => { const b = e.getBoundingClientRect(), cs = getComputedStyle(e); return b.width > 0 && b.height > 0 && cs.visibility !== 'hidden' && +cs.opacity > 0; };
+      const fields = [...document.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]), select, textarea')]
+        .filter(e => parseFloat(getComputedStyle(e).fontSize) < 16).map(e => desc(e) + ' ' + getComputedStyle(e).fontSize);
+      const prim = [...document.querySelectorAll(PRIMARY)].filter(vis).filter(e => e.getBoundingClientRect().height < 43.5).map(e => desc(e) + ' ' + Math.round(e.getBoundingClientRect().height));
+      const small = [];
+      for (const e of document.querySelectorAll('body *')) {
+        if (!vis(e) || e.closest('svg') || e.closest(GLYPH) || ![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+        const cs = getComputedStyle(e), fs = parseFloat(cs.fontSize), min = /Mono|monospace/.test(cs.fontFamily) ? 11 : 12;
+        if (fs < min - .01) small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
+      }
+      const first = document.querySelector('ul.story > li.st:not(:empty)');
+      const line = first && getComputedStyle(first, '::before').content;
+      return { fields, prim: [...new Set(prim)], small: [...new Set(small)], line };
+    }, [PRIMARY, GLYPH]);
+    ok(`touch ${id}: fields at 16 px or more (no zoom on focus)`, !r.fields.length, r.fields);
+    ok(`touch ${id}: primary buttons at least 44 px tall`, !r.prim.length, r.prim);
+    ok(`touch ${id}: no text under 11 px (mono) / 12 px`, !r.small.length, r.small);
+    if (sn === 'fresh') ok(`story ${id}: no connector above the first story row`, r.line === 'none', r.line);
+    await ctx.close();
+  }
+
+  /* ---------- 8. page zoom: no sideways scroll at 260 px ---------- */
+  for (const mode of ['basic', 'advanced']) {
+    const { ctx, p } = await page(260);
+    await load(p, { ...USER }, mode);
+    const over = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+    ok(`page zoom lv27 ${mode} 260px: no horizontal scroll`, over <= 0, over);
     await ctx.close();
   }
 

@@ -184,7 +184,7 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
-| `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open until 0.1.9, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour |
+| `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour; on touch at 390 px (since 0.1.9) fields ≥ 16 px, primary buttons ≥ 44 px, text ≥ 11 px mono / 12 px; no story connector above the first row; no sideways scroll at 260 px |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
