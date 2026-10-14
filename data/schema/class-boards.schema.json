@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/class-boards.schema.json",
+  "title": "A class's Daevanion plan nodes (classes/<class>/boards.json)",
+  "description": "DRAFT. One record per board with the plan nodes the guide tracks. Replaces the dv items in GATES, DV_BOARDS, build.json boards.<Board> / cornerTotalsByBoard / pathCosts notes.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "classBoards"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/classBoard"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "type",
+        "label",
+        "milestone",
+        "order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^node:[a-z]+:[a-z0-9-]+:[a-z0-9-]+$"
+        },
+        "key": {
+          "description": "Save key: dv:<n> (Nezekan), dv:z:/dv:v:/dv:t:<n>.",
+          "type": "string",
+          "pattern": "^dv:([zvt]:)?[a-z0-9]+$"
+        },
+        "type": {
+          "description": "a = active skill, p = passive skill, c = corner.",
+          "enum": [
+            "a",
+            "p",
+            "c"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "skill": {
+          "type": "string",
+          "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+        },
+        "via": {
+          "type": "string"
+        },
+        "milestone": {
+          "type": "string",
+          "pattern": "^g[0-9]+$"
+        },
+        "order": {
+          "type": "number"
+        },
+        "cost": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/status"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "classBoard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "board",
+        "nodes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^classboard:[a-z]+:[a-z0-9-]+$"
+        },
+        "board": {
+          "type": "string",
+          "pattern": "^board:[a-z0-9-]+$"
+        },
+        "cornerTotals": {
+          "type": "string"
+        },
+        "pathNote": {
+          "type": "string"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

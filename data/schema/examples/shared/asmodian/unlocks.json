@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../unlocks.schema.json",
+  "schemaVersion": 2,
+  "collection": "unlocks",
+  "faction": "asmodian",
+  "records": [
+    { "id": "unlock:stigma-slot-1", "what": "Stigma slot 1", "at": { "level": 22 },
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/content-unlocks" }, { "url": "https://www.playnews.gg/en/guides/aion-2-stigmas-how-to-unlock-them-and-farm-stigma-shards" }],
+      "notes": ["Today VERIFIED_UNLOCKS credits sites by name only (Metabot, PlayNews, KeenGamer); 5b resolves each name to the page URL or flags it."],
+      "verifiedAt": "2026-10-12", "status": "verified" },
+    { "id": "unlock:urugugu-canyon", "what": "Urugugu Canyon", "detail": "Expedition (Exploration) · item level 300 · party 2–5",
+      "at": { "all": [{ "level": 28 }, { "itemLevel": 300, "playerChecked": true }] }, "party": "2–5", "timeLimit": "60 min (allthings.how)", "conquest": { "lv": 45, "itemLevel": 1400 },
+      "storyStep": "Canyon's Secret (rec 30) step 2 'complete the Urugugu Canyon investigation'",
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide" }, { "url": "https://thegameswiki.com/aion-2/wiki/urugugu-canyon" }, { "url": "https://expcarry.com/aion-2-dungeons-guide" }, { "url": "https://allthings.how/?p=244669" }, { "url": "https://games.gg/aion-2/guides/Aion-2-urugugu-canyon-expedition/" }],
+      "verifiedAt": "2026-10-12", "status": "verified",
+      "notes": ["Whether the canyon is enterable before reaching that story step is not verified in game."] },
+    { "id": "unlock:legions", "what": "Legions", "at": { "story": "sq:buried-atrocities", "is": "turnedIn" },
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/content-unlocks" }], "verifiedAt": "2026-10-12", "status": "verified",
+      "notes": ["Today STORY_UNLOCKS + UNLOCK_GATE; the milestone link (g16) moves to the story quest's unlocks.milestone."] }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/zones.schema.json",
+  "title": "Zones (shared/<faction>/zones.json)",
+  "description": "DRAFT. Zone registry: names, Empyrean Trace counts (ZONE_TRACES) and the camps / Kibelisks that belong to the zone (gen.py CAMP_ZONE, now data the build checks against map votes instead of applying).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "zones"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/zone"
+      }
+    }
+  },
+  "$defs": {
+    "zone": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "region",
+        "faction"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "region": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "traces": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "camps": {
+          "description": "Camp and Kibelisk names that resolve to this zone.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

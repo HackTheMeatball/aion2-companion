@@ -1,0 +1,190 @@
+{
+  "$schema": "../../../story-quests.schema.json",
+  "schemaVersion": 2,
+  "collection": "storyQuests",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sq:preparations-for-restoration",
+      "key": "Preparations for Restoration",
+      "name": "Preparations for Restoration",
+      "faction": "asmodian",
+      "lv": 27,
+      "next": "sq:a-collective-effort",
+      "giver": {
+        "npc": "Varron",
+        "place": "Nornir Assembly",
+        "zone": null,
+        "kibelisk": "Nornir Assembly",
+        "meters": 133
+      },
+      "turnin": {
+        "npc": "Hadala",
+        "place": "Wind Altar",
+        "zone": null,
+        "kibelisk": "Purifying Forest Coastal Cliff",
+        "meters": 89
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Talk to Ulgorn via Selvis — talk via Selvis"
+        },
+        {
+          "i": 1,
+          "text": "Hear about Nemon's past — talk to Ulgorn (Kibelisk: Nornir Assembly)"
+        },
+        {
+          "i": 2,
+          "text": "Hear more about Nemon's past — talk to Hadala (Kibelisk: Nornir Assembly)"
+        },
+        {
+          "i": 3,
+          "text": "Return to Urd — talk to Urd (Kibelisk: Nornir Assembly)"
+        },
+        {
+          "i": 4,
+          "text": "Seek guidance from Hallina — talk to Hallina (Kibelisk: Nornir Assembly)"
+        },
+        {
+          "i": 5,
+          "text": "Prepare to restore the Spirit Altar — go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)"
+        },
+        {
+          "i": 6,
+          "text": "Clear around the Wind Altar — defeat the contaminated spirits, remove Poison Blood Clot (Kibelisk: Guide Rest Stop)"
+        },
+        {
+          "i": 7,
+          "text": "Talk to Hadala via Selvis — talk via Selvis"
+        },
+        {
+          "i": 8,
+          "text": "Turn in — Hadala, Wind Altar"
+        }
+      ],
+      "requires": {
+        "story": "sq:striving-for-coexistence",
+        "is": "turnedIn",
+        "basis": "rule",
+        "note": "story quests follow the next chain"
+      },
+      "requiresBasis": "rule",
+      "completesWith": [
+        {
+          "story": "sq:preparations-for-restoration",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "sq:forgotten-commander",
+      "key": "Forgotten Commander",
+      "name": "Forgotten Commander",
+      "faction": "asmodian",
+      "lv": 45,
+      "unlocksAt": 45,
+      "questType": "Episode",
+      "chapter": "Encountering Zikel's Core",
+      "next": null,
+      "end": {
+        "region": "Reshanta",
+        "regionFull": "Chaotic Lower Reshanta",
+        "note": "leaves Altgard: turn-in at Latesran Eastern Root, Chaotic Lower Reshanta. Metabot next = 'Daeva Trapped in a Nightmare' (https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare), not covered."
+      },
+      "giver": {
+        "npc": "Menrik",
+        "place": "Fang Hideout",
+        "zone": null,
+        "kibelisk": "Fang Hideout",
+        "meters": 21
+      },
+      "turnin": {
+        "npc": "Koro",
+        "place": "Latesran Eastern Root",
+        "zone": null,
+        "kibelisk": "Latesran Eastern Root",
+        "meters": 49
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Receive briefing at the Draupnir Entrance — talk to Kiara (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 1,
+          "text": "Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory)"
+        },
+        {
+          "i": 2,
+          "text": "Report the findings from Draupnir investigation — talk to Kiara (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 3,
+          "text": "Receive briefing in front of the Abyss Portal — talk to Ivar (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"
+        }
+      ],
+      "rewards": {
+        "xp": 36328013,
+        "kina": 54000,
+        "wisdom": null,
+        "crystal": null,
+        "items": [
+          "Spiritforged Guard x1",
+          "Resurrection Spiritstone (Bound) x1",
+          "Lesser Manastone (Bound) x5",
+          "Lesser Soulstone (Bound) x5"
+        ]
+      },
+      "requires": {
+        "all": [
+          {
+            "level": 45,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:farewells",
+            "is": "turnedIn",
+            "basis": "rule"
+          }
+        ]
+      },
+      "requiresBasis": "sourced",
+      "completesWith": [
+        {
+          "story": "sq:forgotten-commander",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Unlocks at 45 (all earlier 40-45 story quests say unlocks at 10). Steps are in Altgard; turn-in is in Chaotic Lower Reshanta, so the Altgard story ends here."
+      ]
+    }
+  ]
+}

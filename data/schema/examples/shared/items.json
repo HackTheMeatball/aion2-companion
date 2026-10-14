@@ -1,0 +1,11 @@
+{
+  "$schema": "../../items.schema.json",
+  "schemaVersion": 2,
+  "collection": "items",
+  "records": [
+    { "id": "item:enhance", "key": "enhance", "label": "Enhance Stones", "gameName": "Enhance Stone", "metabotSlug": "enhance-stone", "icon": "assets/icons/enhance-stone.png",
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/items/enhance-stone" }], "verifiedAt": "2026-10-12", "status": "verified" },
+    { "id": "item:cubekey", "key": "cubekey", "label": "Hidden Cube keys", "gameName": "Key: Hidden Cube", "metabotSlug": "key-hidden-cube", "icon": null,
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/items/key-hidden-cube" }], "verifiedAt": "2026-10-12", "status": "verified" }
+  ]
+}

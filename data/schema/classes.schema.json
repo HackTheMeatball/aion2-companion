@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/classes.schema.json",
+  "title": "Class and its plan (classes/<class>/class.json)",
+  "description": "DRAFT. One record: what the class is and the guide's plan for it (mostly advice, so each part carries its own status and sources). Replaces STAT_TIERS, STAT_SRC, SP_SKILLS order, build.json spOrderAfterCore / fullSkillList / stigmaRules.equipOrder, STIGMA_PLAN, ST_TARGETS, E_ORDER, RMB_STACK.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "classes"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/class"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    }
+  },
+  "$defs": {
+    "advice": {
+      "description": "A piece of advice with its own verdict.",
+      "type": "object",
+      "required": [
+        "status",
+        "sources"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "common.schema.json#/$defs/status"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          },
+          "minItems": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "skillRef": {
+      "type": "string",
+      "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+    },
+    "stigmaRef": {
+      "type": "string",
+      "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+    },
+    "class": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "class",
+        "name",
+        "release",
+        "plan"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^class:[a-z]+$"
+        },
+        "class": {
+          "$ref": "common.schema.json#/$defs/classId"
+        },
+        "name": {
+          "type": "string"
+        },
+        "release": {
+          "description": "hidden: data exists but the class picker does not offer it.",
+          "enum": [
+            "released",
+            "hidden"
+          ]
+        },
+        "plan": {
+          "type": "object",
+          "required": [
+            "skillOrder",
+            "stigmaPlan"
+          ],
+          "properties": {
+            "statPriority": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/advice"
+                }
+              ],
+              "properties": {
+                "tiers": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "from": {
+                  "description": "STAT_SRC: B = board, G = gear.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "enum": [
+                      "B",
+                      "G",
+                      "BG"
+                    ]
+                  }
+                },
+                "status": true,
+                "sources": true,
+                "note": true
+              },
+              "unevaluatedProperties": false,
+              "type": "object"
+            },
+            "skillOrder": {
+              "description": "Skill-point order: the core (SP_SKILLS) then the extras (SP_EXTRA). Each entry has its own verdict (single = only one source ranks it).",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "skill",
+                  "status"
+                ],
+                "properties": {
+                  "skill": {
+                    "$ref": "#/$defs/skillRef"
+                  },
+                  "core": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "$ref": "common.schema.json#/$defs/status"
+                  },
+                  "basis": {
+                    "type": "string"
+                  },
+                  "sources": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "common.schema.json#/$defs/sourceRef"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "skillOrderNotes": {
+              "type": "object",
+              "properties": {
+                "skip": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "interleave": {
+                  "type": "string"
+                },
+                "budget": {
+                  "type": "string"
+                },
+                "notFetched": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "stigmaPlan": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/advice"
+                }
+              ],
+              "properties": {
+                "slots": {
+                  "description": "STIGMA_PLAN: stigma per slot.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/stigmaRef"
+                  }
+                },
+                "targets": {
+                  "description": "ST_TARGETS.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "stigma",
+                      "level"
+                    ],
+                    "properties": {
+                      "stigma": {
+                        "$ref": "#/$defs/stigmaRef"
+                      },
+                      "level": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "bySource": {
+                  "description": "Each source's order (research record).",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "status": true,
+                "sources": true,
+                "note": true
+              },
+              "required": [
+                "slots"
+              ],
+              "unevaluatedProperties": false,
+              "type": "object"
+            },
+            "keyStacks": {
+              "description": "RMB_STACK (level thresholds, highest first) and E_ORDER.",
+              "allOf": [
+                {
+                  "$ref": "#/$defs/advice"
+                }
+              ],
+              "properties": {
+                "rightClick": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "minLv",
+                      "skills"
+                    ],
+                    "properties": {
+                      "minLv": {
+                        "type": "integer"
+                      },
+                      "skills": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/$defs/skillRef"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "eOrder": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/stigmaRef"
+                  }
+                },
+                "status": true,
+                "sources": true,
+                "note": true
+              },
+              "unevaluatedProperties": false,
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

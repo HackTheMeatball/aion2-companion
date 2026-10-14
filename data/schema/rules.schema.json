@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/rules.schema.json",
+  "title": "Game rules and tables (shared/rules.json)",
+  "description": "DRAFT. Class-independent numbers the app computes with. Replaces LEVEL_POINTS, spCost, ST_COST, DV_MIN, SD_RW / SD_REWARD, SH_REWARD, build.json _meta.skillRules / levelPoints / stigmaCost / stigmaRules.slots / boards.nodeCosts, dungeon-bands.json. 'Class-independent' is an assumption per rule until the classes-and-gaps report confirms it (appliesTo).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "rules"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "band": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "cost"
+      ],
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "rule": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "kind": {
+                  "const": "levelPoints"
+                },
+                "value": {
+                  "description": "Total skill points by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "skillPointCost"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/band"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "skillLevelGate"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "stepped",
+                    "maxFromPoints"
+                  ],
+                  "properties": {
+                    "stepped": {
+                      "description": "char level for skill level L = learnLv + perLevel*(L-2)",
+                      "type": "object",
+                      "properties": {
+                        "perLevel": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxFromPoints": {
+                      "type": "integer"
+                    },
+                    "maxLevel": {
+                      "type": "integer"
+                    },
+                    "specialtyAt": {
+                      "description": "skill level -> extra char levels for the spec step (SP_STEPS: learn + 18)",
+                      "type": "object",
+                      "properties": {
+                        "skillLevel": {
+                          "type": "integer"
+                        },
+                        "charLevelOffset": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "specialtySlots"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "stigmaShardCost"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/band"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "stigmaSlots"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "nodeCosts"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "stat",
+                    "passive",
+                    "active",
+                    "corner"
+                  ],
+                  "properties": {
+                    "stat": {
+                      "type": "integer"
+                    },
+                    "rareStat": {
+                      "type": "integer"
+                    },
+                    "passive": {
+                      "type": "integer"
+                    },
+                    "active": {
+                      "type": "integer"
+                    },
+                    "corner": {
+                      "type": "integer"
+                    },
+                    "cornerValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "firstClearReward"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "target"
+                  ],
+                  "properties": {
+                    "target": {
+                      "enum": [
+                        "sealedDungeons",
+                        "strongholds"
+                      ]
+                    },
+                    "rewards": {
+                      "$ref": "common.schema.json#/$defs/rewards"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "required": [
+        "id",
+        "kind",
+        "value",
+        "appliesTo"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^rule:[a-z0-9-]+$"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "value": true,
+        "appliesTo": {
+          "description": "'all-classes' or a list of class ids.",
+          "oneOf": [
+            {
+              "const": "all-classes"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/classId"
+              },
+              "minItems": 1
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

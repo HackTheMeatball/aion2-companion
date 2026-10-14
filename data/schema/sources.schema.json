@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/sources.schema.json",
+  "title": "Sources registry (data/sources.json)",
+  "description": "DRAFT. One record per site: who it is, how independent it is, its licence and what the guide may take from it. Every URL in the data must resolve to a site here by host (checked by the 5b build, not by this schema).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "sources"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/site"
+      }
+    },
+    "pages": {
+      "description": "Pages cited only by hand-written guide text (today's tools/gen/snapshots/sources-v287.json), with their Sources-card label and group.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "label",
+          "group"
+        ],
+        "properties": {
+          "url": {
+            "$ref": "common.schema.json#/$defs/httpsUrl"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "group": {
+            "enum": [
+              "rq",
+              "story",
+              "areas",
+              "build",
+              "claims",
+              "old"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "site": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "hosts",
+        "kind",
+        "independenceGroup",
+        "licence",
+        "use",
+        "verifiedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^src:[a-z0-9-]+$"
+        },
+        "name": {
+          "description": "Display name (Sources card per-site rows; today's SITE list in gen.py).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9.-]+\\.[a-z]{2,}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "kind": {
+          "enum": [
+            "game-database",
+            "guide",
+            "news",
+            "wiki",
+            "official",
+            "community",
+            "owner"
+          ]
+        },
+        "independenceGroup": {
+          "description": "Sites in one group count as one source (Metabot and Wikily).",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "licence": {
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "description": "SPDX id where one exists; 'all-rights-reserved' when the terms say so; 'unknown' until Data & Research has read the terms.",
+              "type": "string",
+              "pattern": "^([A-Za-z0-9.+-]+|all-rights-reserved|unknown)$"
+            },
+            "url": {
+              "$ref": "common.schema.json#/$defs/httpsUrl"
+            },
+            "checkedAt": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "additionalProperties": false
+        },
+        "use": {
+          "description": "What the guide may take. Facts are never copyrightable, wording is.",
+          "type": "object",
+          "required": [
+            "facts",
+            "wording",
+            "quotes",
+            "link"
+          ],
+          "properties": {
+            "facts": {
+              "type": "boolean"
+            },
+            "wording": {
+              "description": "May page text appear in the app? (false for every site today.)",
+              "type": "boolean"
+            },
+            "quotes": {
+              "description": "Short credited quotes in claims.json only.",
+              "enum": [
+                "none",
+                "short-credited"
+              ]
+            },
+            "link": {
+              "description": "How the Sources card links it (Metabot: plain dofollow link to the page the data came from).",
+              "enum": [
+                "dofollow",
+                "nofollow",
+                "none"
+              ]
+            },
+            "banned": {
+              "description": "Never cite (Game8).",
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "reach": {
+          "description": "How scripted reads fare (bot checks), so research knows what to expect.",
+          "type": "string",
+          "maxLength": 200
+        },
+        "verifiedAt": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 600
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

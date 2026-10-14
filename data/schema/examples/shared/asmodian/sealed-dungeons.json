@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../sealed-dungeons.schema.json",
+  "schemaVersion": 2,
+  "collection": "sealedDungeons",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sd:abandoned-one-s-grave",
+      "key": "g10h:abandoned-one-s-grave",
+      "name": "Abandoned One's Grave",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 189
+      },
+      "mapSlug": "abandoned-ones-grave",
+      "xp": 11115,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: The Forsaken"
+        ]
+      },
+      "rewardBasis": "clear reward table (Standard); page does not separate first-clear",
+      "bosses": [
+        "Scion Behit (Lv 10)"
+      ],
+      "exploreQuestId": "2810003",
+      "requires": {
+        "level": 10,
+        "basis": "sourced",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/dungeons/abandoned-ones-grave"
+          }
+        ]
+      },
+      "requiresBasis": "sourced",
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/abandoned-ones-grave",
+          "fields": [
+            "band",
+            "zone",
+            "rewards",
+            "bosses"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/abandoned-ones-grave",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "xp"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Metabot page lists no Kibelisk, only entrance zone Nameless Cemetery. Abyss Points 1,000 listed for Elyos only. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810003, step 'Clear Abandoned One's Grave', nearest Kibelisk Neglected Crematorium 189 m; EXP 11,115)."
+      ]
+    }
+  ]
+}

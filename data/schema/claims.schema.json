@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/claims.schema.json",
+  "title": "Text claims (shared/guide/claims.json, classes/<class>/claims.json)",
+  "description": "DRAFT. Replaces data/claims.json. 'lines' and 'edits' (line numbers in the pre-0.2 single file) are retired; appliesTo names the records whose text follows the verdict.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "claims"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": [
+        "id",
+        "claim",
+        "verdict",
+        "sources",
+        "action",
+        "verifiedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^C[0-9]{2}[a-z]?$"
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verdict": {
+          "enum": [
+            "verified",
+            "single-source",
+            "inferred",
+            "disputed",
+            "unverifiable",
+            "wrong"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        },
+        "action": {
+          "enum": [
+            "keep",
+            "rewrite",
+            "drop"
+          ]
+        },
+        "newText": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "appliesTo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "verifiedAt": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/stigmas.schema.json",
+  "title": "Class stigmas (classes/<class>/stigmas.json)",
+  "description": "DRAFT. Replaces build.json stigmas and STIGMA_ICON. Save keys are the stigma names (stLv{name}, stPick{slot: name}).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "stigmas"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stigma"
+      }
+    }
+  },
+  "$defs": {
+    "stigma": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "availableLv"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+        },
+        "key": {
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "name": {
+          "type": "string"
+        },
+        "availableLv": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "icon": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^assets/icons/[a-z0-9-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

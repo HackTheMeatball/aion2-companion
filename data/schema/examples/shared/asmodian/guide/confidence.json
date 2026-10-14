@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../../confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "groups": [
+    { "id": "verified", "title": "Verified", "sub": "two or more independent sources, or game data" },
+    { "id": "disputed", "title": "Disputed", "sub": "sources disagree; the guide says which way it goes" }
+  ],
+  "records": [
+    { "id": "conf:story", "group": "verified", "order": 30, "placeholders": ["storyEndQuest", "storyEndLv"],
+      "text": "Main story to \"{storyEndQuest}\" (Lv {storyEndLv}): objectives and Kibelisks from Metabot quest pages." },
+    { "id": "conf:respec", "group": "disputed", "order": 10, "when": { "C01": "disputed" },
+      "text": "Respec: free while you level; whether it costs Kina after 31 (MeinMMO vs allthings.how, ExitLag)." }
+  ]
+}

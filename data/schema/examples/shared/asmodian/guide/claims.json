@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../../claims.schema.json",
+  "schemaVersion": 2,
+  "collection": "claims",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "C01", "claim": "Respec is free until Lv 31, Kina after.", "verdict": "disputed",
+      "sources": [
+        { "url": "https://allthings.how/?p=215236", "quote": "Resets are free and unlimited" },
+        { "url": "https://www.exitlag.com/blog/aion-2-complete-character-progression/", "quote": "You can reset all skills for free anytime during leveling" },
+        { "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties", "quote": "points already spent can be refunded for a fee" }
+      ],
+      "action": "rewrite", "newText": "Respec is free while you level; check the reset button's cost at 31.",
+      "note": "No source found that names Lv 31 as a cutoff (MeinMMO, the guide's original source, was not re-found).",
+      "appliesTo": ["build:2", "tip:respec", "conf:respec"], "verifiedAt": "2026-10-12"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/skills.schema.json",
+  "title": "Class skills (classes/<class>/skills.json)",
+  "description": "DRAFT. Replaces build.json skills / fullSkillList, SP_SKILLS fields, SP_ICONS. Skill-level steps are generated: key 'sp:<key>:<L>' (L = 2..10) and 'sp:<key>:spec', requires {level: learnLv + 3*(L-2)} (or learnLv when levelGate = flat), completesWith ['tick'].",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "skills"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skill"
+      }
+    }
+  },
+  "$defs": {
+    "skill": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "type",
+        "learnLv",
+        "levelGate"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+        },
+        "key": {
+          "description": "Save-key segment: today the English skill name (sp:Heart Gore:3). Permanent.",
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "active",
+            "passive"
+          ]
+        },
+        "learnLv": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "levelGate": {
+          "description": "stepped: rule:skill-level-gate. flat: every level needs only learnLv (SP_EXTRA flat).",
+          "enum": [
+            "stepped",
+            "flat"
+          ]
+        },
+        "tracked": {
+          "description": "In the Skills card / skill-point plan (SP_SKILLS). false = listed for completeness only (fullSkillList).",
+          "type": "boolean"
+        },
+        "specialties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "skillLv",
+              "options"
+            ],
+            "properties": {
+              "skillLv": {
+                "type": "integer"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "specPick": {
+          "description": "The specialty the guide recommends at skill Lv 8 (SP_SKILLS spec).",
+          "type": "string"
+        },
+        "boardNodes": {
+          "description": "Nodes per board (build.json dvNodes).",
+          "type": "object",
+          "properties": {
+            "perBoard": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            "cost": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "icon": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^assets/icons/[a-z0-9-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

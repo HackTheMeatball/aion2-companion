@@ -1,0 +1,13 @@
+{
+  "$schema": "../../boards.schema.json",
+  "schemaVersion": 2,
+  "collection": "boards",
+  "records": [
+    { "id": "board:nezekan", "name": "Nezekan", "lv": 12, "currency": "Daevanion Crystal (shared pool)", "points": 134, "statNodes": 66, "skillNodes": 22,
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide" }], "verifiedAt": "2026-10-12", "status": "verified", "claims": ["C22"] },
+    { "id": "board:vaizel", "name": "Vaizel", "lv": 30, "currency": "Daevanion Crystal (shared pool)", "points": 134, "statNodes": 66, "skillNodes": 22,
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide" }], "verifiedAt": "2026-10-12", "status": "verified", "claims": ["C22"] },
+    { "id": "board:azphel", "name": "Azphel", "lv": 45, "currency": "Daevanion Crystal: Azphel (own pool)", "points": 232, "statNodes": 152, "skillNodes": 0, "note": "PvP/status stats only",
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/guides/daevanion-guide" }], "verifiedAt": "2026-10-12", "status": "verified", "claims": ["C22"] }
+  ]
+}

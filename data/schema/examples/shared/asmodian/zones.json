@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../zones.schema.json",
+  "schemaVersion": 2,
+  "collection": "zones",
+  "faction": "asmodian",
+  "records": [
+    { "id": "zone:dredgion-crash-site", "name": "Dredgion Crash Site", "region": "Altgard", "faction": "asmodian", "traces": 19,
+      "camps": ["Temporary Investigation Base", "Safe Haven"],
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces", "fields": ["traces"] }, { "inferred": "Camps: majority of the map data (Sealed Dungeon entrances, strongholds, story steps), checked by the build's zone vote.", "fields": ["camps"] }],
+      "verifiedAt": "2026-10-12", "status": "verified", "fieldStatus": { "camps": "inferred" }, "claims": ["C26"] },
+    { "id": "zone:calderon-canyon", "name": "Calderon Canyon", "region": "Altgard", "faction": "asmodian", "traces": 8,
+      "camps": ["Quai Campsite", "Watcher's Tent"],
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces", "fields": ["traces"] }, { "inferred": "Camps: majority of the map data, checked by the build's zone vote.", "fields": ["camps"] }],
+      "verifiedAt": "2026-10-12", "status": "verified", "fieldStatus": { "camps": "inferred" }, "claims": ["C26"] },
+    { "id": "zone:nameless-cemetery", "name": "Nameless Cemetery", "region": "Altgard", "faction": "asmodian", "traces": 28,
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces", "fields": ["traces"] }],
+      "verifiedAt": "2026-10-12", "status": "verified", "claims": ["C26"] },
+    { "id": "zone:tranein-highland", "name": "Tranein Highland", "region": "Altgard", "faction": "asmodian", "traces": 6,
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces", "fields": ["traces"] }],
+      "verifiedAt": "2026-10-12", "status": "verified", "claims": ["C26"] }
+  ]
+}

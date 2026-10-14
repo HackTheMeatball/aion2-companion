@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "skill:assassin:heart-gore", "key": "Heart Gore", "name": "Heart Gore", "type": "active", "learnLv": 4, "levelGate": "stepped", "tracked": true,
+      "specialties": [
+        { "skillLv": 8, "options": ["Absorbs 70, 70% HP", "Engraves 1 Insignia for 10s on hit", "Up to +20% Critical Hit when less targets hit"] },
+        { "skillLv": 12, "options": ["Multi-Hit on hit"] },
+        { "skillLv": 16, "options": ["Resets [Heart Gore] cooldown on landing a Critical Hit"] }
+      ],
+      "specPick": "Up to +20% Critical Hit when fewer targets are hit",
+      "boardNodes": { "perBoard": { "board:nezekan": 1, "board:zikel": 1, "board:vaizel": 1, "board:triniel": 1 }, "cost": 3 },
+      "icon": "assets/icons/sk-heart-gore.png",
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/skills/heart-gore" }], "verifiedAt": "2026-10-12", "status": "verified"
+    },
+    {
+      "id": "skill:assassin:assault-stance", "key": "Assault Stance", "name": "Assault Stance", "type": "passive", "learnLv": 13, "levelGate": "stepped", "tracked": true,
+      "specialties": [],
+      "boardNodes": { "perBoard": { "board:nezekan": 2, "board:vaizel": 1, "board:triniel": 1 }, "cost": 2 },
+      "icon": "assets/icons/sk-assault-stance.png",
+      "note": "Critical Damage Boost +6% at L1, +45% at L40 (Metabot tooltip).",
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/skills/assault-stance" }], "verifiedAt": "2026-10-12", "status": "verified"
+    }
+  ]
+}

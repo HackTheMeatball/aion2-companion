@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/tips.schema.json",
+  "title": "Explainers (shared/guide/tips.json, classes/<class>/tips.json)",
+  "description": "DRAFT. The 'i' popovers. Replaces TIPS.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "tips"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tip"
+      }
+    }
+  },
+  "$defs": {
+    "tip": {
+      "type": "object",
+      "required": [
+        "id",
+        "key",
+        "title",
+        "body",
+        "credit",
+        "verifiedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^tip:[a-z0-9-]+$"
+        },
+        "key": {
+          "description": "data-tip key used by [[tip:<key>|label]].",
+          "type": "string",
+          "pattern": "^[a-z0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/richText"
+        },
+        "credit": {
+          "description": "Source line shown under the explainer, verbatim (today's src).",
+          "type": "string",
+          "maxLength": 300
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C[0-9]{2}[a-z]?$"
+          }
+        },
+        "verifiedAt": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

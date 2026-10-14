@@ -1,0 +1,58 @@
+{
+  "$schema": "../sources.schema.json",
+  "schemaVersion": 2,
+  "collection": "sources",
+  "records": [
+    {
+      "id": "src:metabot", "name": "Metabot", "hosts": ["metabot.gg"], "kind": "game-database", "independenceGroup": "metabot",
+      "licence": { "id": "unknown", "note": "Terms not yet read by Data & Research. Facts only; credit with plain dofollow links to the page the data came from (CLAUDE.md)." },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "reach": "usually readable with curl", "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:wikily", "name": "Wikily", "hosts": ["wikily.gg"], "kind": "game-database", "independenceGroup": "metabot",
+      "licence": { "id": "unknown" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" },
+      "verifiedAt": "2026-10-14", "notes": ["Counts as the same source as Metabot (data-research charter)."]
+    },
+    {
+      "id": "src:aion2-gaming-tools", "name": "aion2.gaming.tools", "hosts": ["aion2.gaming.tools"], "kind": "game-database", "independenceGroup": "aion2-gaming-tools",
+      "licence": { "id": "unknown" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" },
+      "reach": "often blocks scripted reads", "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:allthings-how", "name": "allthings.how", "hosts": ["allthings.how"], "kind": "guide", "independenceGroup": "allthings-how",
+      "licence": { "id": "unknown" },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:thegameswiki", "name": "thegameswiki", "hosts": ["thegameswiki.com"], "kind": "wiki", "independenceGroup": "thegameswiki",
+      "licence": { "id": "CC-BY-NC-SA-4.0", "note": "Facts only into the app, never its wording; quotes in claims stay short and credited (CLAUDE.md)." },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "reach": "often blocks scripted reads", "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:exitlag", "name": "ExitLag", "hosts": ["exitlag.com"], "kind": "guide", "independenceGroup": "exitlag",
+      "licence": { "id": "unknown" },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:game8", "name": "Game8", "hosts": ["game8.co"], "kind": "guide", "independenceGroup": "game8",
+      "licence": { "id": "unknown" },
+      "use": { "facts": false, "wording": false, "quotes": "none", "link": "none", "banned": true },
+      "verifiedAt": "2026-10-14", "notes": ["Never used (CLAUDE.md). Listed so the build can reject its URLs."]
+    },
+    {
+      "id": "src:owner", "name": "In game (owner)", "hosts": ["owner.invalid"], "kind": "owner", "independenceGroup": "owner",
+      "licence": { "id": "all-rights-reserved", "note": "The owner's screens live in the private repo; records cite them with { owner: <private ref> }, never a URL." },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "none" },
+      "verifiedAt": "2026-10-14"
+    }
+  ],
+  "pages": [
+    { "url": "https://aion2hub.com/leveling/asmodian-levels-1-10", "label": "AION2HUB: Asmodian 1–10", "group": "old" }
+  ]
+}

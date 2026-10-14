@@ -1,0 +1,627 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/common.schema.json",
+  "title": "Data format v2: shared definitions",
+  "description": "DRAFT (0.2 step 5a). Definitions every collection schema uses. See docs/DATA-FORMAT-V2.md.",
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "recordId": {
+      "description": "Stable record id: '<kind>:<local>[:<local>…]', lowercase. Written out in the data, never derived from a name or array position at runtime. Never reused once released.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(:[a-z0-9][a-z0-9-]*)+$",
+      "maxLength": 120
+    },
+    "saveKey": {
+      "description": "The key a save stores progress under (checks, started, areaRun, qsteps, state.quest, sp:<key>:<L>). Permanent: may differ from id for records that predate v2 (e.g. story quests are keyed by their English name). Unique within one compiled class bundle.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[^\\u0000-\\u001f]+$"
+    },
+    "classId": {
+      "enum": [
+        "gladiator",
+        "templar",
+        "assassin",
+        "ranger",
+        "sorcerer",
+        "spiritmaster",
+        "cleric",
+        "chanter"
+      ]
+    },
+    "faction": {
+      "enum": [
+        "asmodian",
+        "elyos",
+        "both"
+      ]
+    },
+    "status": {
+      "description": "Record-level verdict, per data/claims.json policy. 'verified' = two independent sources, a game-database field, or the owner's in-game screen.",
+      "enum": [
+        "verified",
+        "single-source",
+        "inferred",
+        "disputed"
+      ]
+    },
+    "httpsUrl": {
+      "type": "string",
+      "pattern": "^https://[^\\s]+$",
+      "maxLength": 500
+    },
+    "sourceRef": {
+      "description": "Where a value comes from. Exactly one of url / owner / inferred. 'fields' names the record fields this source backs (omitted = the whole record).",
+      "type": "object",
+      "oneOf": [
+        {
+          "required": [
+            "url"
+          ],
+          "type": "object"
+        },
+        {
+          "required": [
+            "owner"
+          ],
+          "type": "object"
+        },
+        {
+          "required": [
+            "inferred"
+          ],
+          "type": "object"
+        }
+      ],
+      "properties": {
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "owner": {
+          "description": "The owner's in-game screen: a reference into the private repo (path or note), never a public URL.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "inferred": {
+          "description": "The guide's own reasoning, in one sentence.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "date": {
+          "$ref": "#/$defs/isoDate"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9.\\[\\]]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "section": {
+          "description": "Which part of the page backs it, e.g. 'Required Quests'.",
+          "type": "string",
+          "maxLength": 120
+        },
+        "label": {
+          "description": "Sources-card label when the generated one is not right.",
+          "type": "string",
+          "maxLength": 120
+        },
+        "quote": {
+          "description": "Short supporting quote (claims only; thegameswiki quotes stay short and credited).",
+          "type": "string",
+          "maxLength": 240
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 600
+        }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "description": "Mixin for every fact record.",
+      "type": "object",
+      "required": [
+        "sources",
+        "verifiedAt",
+        "status"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "minItems": 1
+        },
+        "verifiedAt": {
+          "description": "Date the record was last checked against its sources (drives re-verification after patches).",
+          "$ref": "#/$defs/isoDate"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "fieldStatus": {
+          "description": "Per-field verdict where it differs from the record status.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z][A-Za-z0-9.]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/status"
+          }
+        },
+        "claims": {
+          "description": "claims.json ids whose verdicts this record's text follows.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C[0-9]{2}[a-z]?$"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        },
+        "conflicts": {
+          "description": "Where sources disagree and which value was kept.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "location": {
+      "description": "Where an NPC or entrance is. null = not stated by any source checked.",
+      "type": "object",
+      "properties": {
+        "npc": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "place": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "zone": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/recordId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kibelisk": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "meters": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 5000
+        }
+      },
+      "additionalProperties": false
+    },
+    "count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "rewards": {
+      "description": "null = the source does not state it; 0 = it states zero.",
+      "type": "object",
+      "properties": {
+        "xp": {
+          "$ref": "#/$defs/count"
+        },
+        "kina": {
+          "$ref": "#/$defs/count"
+        },
+        "wisdom": {
+          "$ref": "#/$defs/count"
+        },
+        "crystal": {
+          "$ref": "#/$defs/count"
+        },
+        "ap": {
+          "$ref": "#/$defs/count"
+        },
+        "enhance": {
+          "$ref": "#/$defs/count"
+        },
+        "featherdown": {
+          "$ref": "#/$defs/count"
+        },
+        "items": {
+          "description": "In-game item names as the source lists them ('Name xN').",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "questStep": {
+      "description": "One objective. 'i' is its permanent save index (state.qsteps); display order is array order. Never renumber.",
+      "type": "object",
+      "required": [
+        "i",
+        "text"
+      ],
+      "properties": {
+        "i": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "kibelisk": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "meters": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "subs": {
+          "description": "Sub-objectives with permanent indices (state.qsub). Today they are split from text at runtime; v2 writes them out.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "j",
+              "text"
+            ],
+            "properties": {
+              "j": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "atomMeta": {
+      "type": "object",
+      "properties": {
+        "basis": {
+          "enum": [
+            "sourced",
+            "inferred",
+            "owner",
+            "rule",
+            "legacy"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 600
+        }
+      }
+    },
+    "cond": {
+      "description": "Requirement expression. Evaluated by the one requirement evaluator (0.3). Atoms marked playerChecked are shown, never enforced.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "all"
+          ],
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/cond"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "any"
+          ],
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/cond"
+              },
+              "minItems": 2
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "level"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "level": {
+              "description": "Character level >= n.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 99
+            }
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "story"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "story": {
+              "$ref": "#/$defs/recordId"
+            },
+            "is": {
+              "description": "reached (default, DECISIONS D9): current quest is X or later. turnedIn: current quest is past X, or X is the last covered quest and storyEnd is X.",
+              "enum": [
+                "reached",
+                "turnedIn"
+              ],
+              "default": "reached"
+            }
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "done"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "done": {
+              "description": "The step/record with this id is done (ticked or derived).",
+              "$ref": "#/$defs/recordId"
+            }
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "itemLevel"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "itemLevel": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "playerChecked": {
+              "const": true
+            }
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "player"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "player": {
+              "description": "A condition the app cannot see (e.g. 'Ascension Gauge at 100%'). Shown, never enforced.",
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "playerChecked": {
+              "const": true
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "completion": {
+      "description": "Any-of list: the step is done when any entry holds. 'tick' = the player's tick on the step's key. Other entries are derived and never written to the save as ticks.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "const": "tick"
+          },
+          {
+            "$ref": "#/$defs/cond"
+          }
+        ]
+      }
+    },
+    "stepFields": {
+      "description": "Mixin for every trackable step: requires / completesWith are always written out.",
+      "type": "object",
+      "required": [
+        "requires",
+        "requiresBasis",
+        "completesWith"
+      ],
+      "properties": {
+        "requires": {
+          "$ref": "#/$defs/cond"
+        },
+        "requiresBasis": {
+          "description": "sourced: every gate has a source. verified-none: sources checked, no prerequisite. unresearched: nothing checked (today's noPre; the evaluator opens it at its recommended level). inferred: the guide's reasoning. rule: follows from a game rule record. legacy: carried over unchanged from the pre-v2 hand-written data with no recorded source; the 0.3 prerequisite audit sources or labels it.",
+          "enum": [
+            "sourced",
+            "verified-none",
+            "unresearched",
+            "inferred",
+            "rule",
+            "legacy"
+          ]
+        },
+        "completesWith": {
+          "$ref": "#/$defs/completion"
+        }
+      }
+    },
+    "inlineText": {
+      "description": "Guide text: plain text, <b>/<i>/<br>, entities, and [[tokens]] (item, tip, stigma, erow, mapq, asc, daeva, rotseq) the compiler expands to today's HTML.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "<(?!/?(b|i)>|br ?/?>)"
+          },
+          {
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq)[:|\\]])"
+          }
+        ]
+      }
+    },
+    "richText": {
+      "description": "Explainer bodies (tips): inline text plus <p>, <p class=\"muted\">, <ol>, <ul>, <li>.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 6000,
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "<(?!/?(b|i|p|ol|ul|li)>|br ?/?>|p class=\"muted\">)"
+          },
+          {
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq)[:|\\]])"
+          }
+        ]
+      }
+    },
+    "envelope": {
+      "description": "Every data file: { schemaVersion, collection, records }. faction / class say which folder scope the file belongs to.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "collection",
+        "records"
+      ],
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "description": "Data format major version. Additive fields do not bump it; anything else does, and the generator refuses a major it does not know.",
+          "const": 2
+        },
+        "collection": {
+          "enum": [
+            "sources",
+            "storyQuests",
+            "regionalQuests",
+            "sealedDungeons",
+            "strongholds",
+            "zones",
+            "unlocks",
+            "items",
+            "rules",
+            "boards",
+            "milestones",
+            "steps",
+            "tips",
+            "claims",
+            "confidence",
+            "classes",
+            "skills",
+            "classBoards",
+            "stigmas"
+          ]
+        },
+        "faction": {
+          "$ref": "#/$defs/faction"
+        },
+        "class": {
+          "$ref": "#/$defs/classId"
+        },
+        "records": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

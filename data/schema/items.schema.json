@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/items.schema.json",
+  "title": "Items the guide names (shared/items.json)",
+  "description": "DRAFT. Replaces ITEMS. The key is what [[item:<key>]] and data-ico use.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "items"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "label",
+        "gameName",
+        "metabotSlug",
+        "icon"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^item:[a-z0-9-]+$"
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+$"
+        },
+        "label": {
+          "description": "Plural label in guide text.",
+          "type": "string"
+        },
+        "gameName": {
+          "type": "string"
+        },
+        "metabotSlug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "icon": {
+          "description": "assets/icons/… path, or null. Provenance of each icon: docs/ISSUES.md.",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^assets/icons/[a-z0-9-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}
