@@ -14,6 +14,20 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - After a game patch: list affected records and re-verify them (driven by `verifiedAt` once data v2 exists).
 - Per class (0.6+): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
 
+## Fetching policy (owner-approved 2026-10-14)
+- Order per site: robots.txt, then the terms page, then content. Skip a site whose terms ban bots, scrapers or
+  automated access. Respect robots.txt and named AI-crawler opt-outs. A site that opts out is read by the owner in a browser, never by a
+  session, until its owner gives permission.
+- At most 12 requests/min per host, one request at a time, 24 h cache; identify as Daeva Companion research in the
+  User-Agent (no personal email). Stop at the first 403, 429 or challenge page; never work around one.
+- aion2.th.gl: not read by sessions (robots.txt excludes AI agents); removed from the Default environment. Facts that
+  came from th.gl are re-verified against a permitted source (Metabot first) and attributed to it; anything unconfirmed
+  is labelled for an owner in-game check.
+- Metabot terms: personal, non-commercial use with a dofollow link to the specific page. The site qualifies today.
+- Agreement between two client-derived databases rules out extraction errors only; record the game build next to
+  `verifiedAt`, and the owner's in-game screens stay the source of truth.
+- Research sessions run in the "Research (open web)" environment (Full network); code sessions in the Default one.
+
 ## Standing notes
 - aion2.gaming.tools and thegameswiki often block scripted reads; aion2.th.gl and metabot.gg usually work via curl.
 - Ascension quests (Asmodian, Lv 1–45): Perceives (5), Hears the Voice (22), Dreams (32), Witnesses the Nightmare (45);
