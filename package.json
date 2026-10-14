@@ -1,6 +1,6 @@
 {
   "name": "aion2-companion",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "description": "Daeva Companion: unofficial companion for AION 2, currently the Asmodian Assassin leveling guide (single-page web app). Live at https://daevacompanion.com/",
   "license": "SEE LICENSE IN LICENSE",
@@ -17,6 +17,7 @@
     "serve": "node scripts/serve.mjs",
     "test": "npm run build && node tests/run.mjs",
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
+    "test:core": "node tests/core.mjs",
     "gen": "python3 -I tools/gen/gen.py",
     "gen:check": "python3 -I tools/gen/gen.py && git diff --exit-code -- tools/gen/gen-block.js tools/gen/gen-report.json data/DATA_SOURCES.md"
   },

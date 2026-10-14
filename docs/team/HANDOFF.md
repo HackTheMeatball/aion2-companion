@@ -7,7 +7,7 @@ when the state changes; keep it short.
 - **v0.1.8** live at https://daevacompanion.com/ (rebrand in 0.1.7, new address in 0.1.8), plus 0.2 steps 1–3 with
   identical output. Releases v0.1.0–v0.1.8 exist on GitHub. daevapath.com and aion2.ishkabytes.com redirect (301,
   Cloudflare, paths kept).
-- Repository renamed to `HackTheMeatball/daeva-companion` (the old name redirects). PR #15 updates the links.
+- Repository renamed to `HackTheMeatball/daeva-companion` (the old name redirects).
 - The claude.ai artifact is **frozen** with a "moved" banner (Export still works). The owner tracks progress on the site.
 - CI: test → deploy (GitHub Pages) → release, on every push to `main`. PRs run tests only. `main` is not protected yet.
 
@@ -44,6 +44,15 @@ Then: 0.3 requirement engine (sole owner of `src/main.js` while it runs) → blo
 Serial-only files (never two sessions at once): `.github/workflows/ci.yml`; `tests/` while step 4 runs;
 `src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 →
 phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
+
+## Cloud environments (owner manages; CEO tells the owner when a domain must be added or removed)
+- **Daeva Companion** (code, reviews, docs): defaults + metabot.gg, daevacompanion.com, daevapath.com (+ subdomains).
+  Recommended 2026-10-14 to remove aion2.th.gl, aion2.gaming.tools (challenge page), aion2.ishkabytes.com (redirect only).
+- **Research (open web)**: full network; the fetching policy in CLAUDE.md still applies.
+- Candidate sources not yet added anywhere: dbaion2.ru (+ dbaion2.online), aion2hub.com (terms check first).
+
+## Owner feedback
+- 2026-10-14: docs/feedback/2026-10-14-owner.md (F1–F4, F12 feed the v2 schema review; F6–F7 next patch).
 
 ## Waiting on the owner
 - Merge rule (above); PR #15; branch protection settings after CI speed lands (require PR + `ci-ok`, "up to date" off,

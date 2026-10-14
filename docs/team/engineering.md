@@ -13,7 +13,7 @@
 - Full `npm test` before the PR; golden diffs explained line by line or the change is not done.
 - No new game art without the owner's OK.
 
-**Hand-off:** a PR with summary, tests, screenshots (if visible), golden diff summary, proposed CHANGELOG text.
+**Hand-off:** a PR with summary, tests, screenshots (if visible), golden diff summary, proposed CHANGELOG entry in the house format (qa-release.md, "Changelog format").
 
 ## Standing notes
 - `story:` and `after:` both mean "story has reached X"; `turnedIn:` means "X turned in" (added in 0.1.3).

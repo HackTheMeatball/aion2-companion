@@ -50,4 +50,22 @@ through esbuild; the output is not minified.
   (esbuild plugin); `npm run gen:check` (CI, test job) fails if `gen.py` no longer reproduces the committed outputs.
   The generator stays Python until P4's Node generator; then the build can run it and gen-block.js can stop being
   committed.
-- Render templates (`cardHTML`, the Next up view objects) are code, not data; leave them in `main.js` for P3.
+- Render templates (`cardHTML`, the Next up view objects) are code, not data; they stay in `main.js` (P3 moved only
+  the decisions).
+- **0.2 P3 pure core (`src/core/`).** state (key, defaults, `loadState`, `char`, `CHAR_FIELDS`), migrations (`migrate`
+  with an injected `store`), catalog (the GATES / SP_STEPS finishing that used to sit in the middle of `main.js`, areas,
+  lookups), requirements, nextup (`rankNext` → card data; `main.js` `nowCard` renders). Still one global scope: core
+  names are page globals too, so a core export must not reuse a `main.js` name (the build's collision check covers
+  `src/core/`). Core functions take `c = char(state)` or `state` explicitly; the old page names the suites and the
+  v285 / v287 baselines call (`counts`, `STIGMA_SLOTS`, `rqAvail`, `stNames`, `stPlan`, `dvLeftNow`, `checkable`,
+  `itemByK`, `CLEAR_REWARD`, `DV_NODES`) stay callable with their old signatures (wrappers in `main.js`).
+- **Evaluation order matters in the catalog.** AREA_ITEMS is built from the milestones as written, before the skill-only
+  milestones are added and GATES is sorted; regional quests and skill lines are folded in after. The load-time steps
+  now run after that finishing (they used to run before it); only `stig` / `eput` items matter to them, which the
+  finishing doesn't add or reorder. Golden verified identical.
+- **Next up step titles still come from the milestone row's DOM** (`stepHTML`): `.txt` minus tips, location and cost
+  spans, first `<b>`. Pure title extraction would need an HTML parser or a `ns` on every step; the 0.3 engine can add
+  `ns` titles and drop it.
+- **`tests/core.mjs`** bundles `src/core/` with esbuild (platform `neutral`, the generated-data plugin from
+  `scripts/generated-data.mjs`) and imports it from a data: URL: ≈0.1 s to bundle, ≈0.5 s in all. Prefer adding a
+  rule there over a browser suite when it doesn't need layout.

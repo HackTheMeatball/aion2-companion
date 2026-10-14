@@ -7,6 +7,16 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | Data fetching | Approved: robots.txt and AI opt-outs respected; 12 req/min/host, one at a time, 24 h cache, stop on any block (data-research.md). |
+| — | aion2.th.gl | Not used by sessions (its robots.txt excludes AI agents); removed from the "Daeva Companion" environment; no outreach for now. th.gl-sourced facts are re-verified against a permitted source (Metabot first) and attributed to it, or labelled for an owner check. |
+| — | Metabot terms | The site is non-commercial today and qualifies; permission is needed before any change to that. |
+| — | Environments | Research sessions: "Research (open web)" (Full network). Code, review and docs sessions: "Daeva Companion" (custom allowed sites). "Default" is unused. |
+| — | 0.3 default mode | Next up defaults to "fastest", with a "completionist" toggle. |
+| — | Merging | Until branch protection with a required `ci-ok` check is on, nothing merges without the owner's OK. After that the CEO merges invisible changes when green; visible changes always wait for the owner. |
+| — | Work plan | Department plan adopted (ROADMAP, HANDOFF "Now and next"); wave 1 runs six parallel sessions. |
+| D8 | Next class | Rule: a class the owner or a tester will level to 45 first, then best data coverage (classes-and-gaps report), then most shared with Assassin (default Gladiator). Picked when the report lands. |
+| — | Changelog | Structured, neutral changelog in a fixed section order (qa-release.md, "Changelog format"), checked by `scripts/release-notes.mjs`; 0.1.0–0.1.8 rewritten; CI keeps every published GitHub Release title and notes in sync with CHANGELOG.md. QA & Release owns it. |
+| — | Colours | Not now: current colours are placeholders while the foundations are built. Before any colour work, the CEO goes through the research with the owner. |
 | D1c | Address | The owner bought daevacompanion.com and daevapath.com (Cloudflare). The app moves to **https://daevacompanion.com/**; daevapath.com and aion2.ishkabytes.com forward there. Saved progress is per address: users Export on the old address and Import on the new one. |
 
 ## 2026-10-13

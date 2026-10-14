@@ -1,13 +1,14 @@
 # Architecture
 
 Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveling guide). The app is one static HTML page with no framework and no runtime dependencies. Its source is split into a few files
-(0.2 P1, P2) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
+(0.2 P1–P3) that `scripts/build.mjs` inlines back into one HTML file per deliverable with esbuild:
 
 | Source | What |
 |---|---|
 | `src/index.html` | page shell: head, markup, `@web-only` markers, and the tags naming what is inlined |
 | `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim |
-| `src/main.js` | the app script (ES module entry, ≈2,050 lines, still one global scope): state, migrations, rendering |
+| `src/main.js` | the app script (ES module entry, ≈1,760 lines, still one global scope): loading and saving, rendering, event handlers |
+| `src/core/*.js` | the pure core (0.2 P3; no DOM, no storage): `state.js` (key, defaults, loading, `char(state)`), `migrations.js` (load-time steps), `catalog.js` (the data finished into milestones, areas, lookups), `requirements.js` (what is open, done, affordable, next), `nextup.js` (Next up ranking) |
 | `src/data/*.js` | hand-written data tables, content as before: `milestones.js` (GATES, STEPS), `story.js` (QUESTS, QUEST_STEPS, QUEST_LOC, unlocks), `tips.js`, `build.js` (skills, stigmas, boards, key stacks, icons), `areas.js`, `items.js`, `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers the tables call: `I`, `T`, `seq`, `hideouts`, …) |
 | `src/data/generated.js` | not a file: the build makes this module from `tools/gen/gen-block.js` (`npm run gen`) |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
@@ -38,8 +39,8 @@ no server copy. Rules:
 
 ### State
 
-`state` is one JSON object, loaded at startup as `Object.assign(DEFAULT(), saved)` and written back by `save()` after
-every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
+`state` is one JSON object, loaded at startup as `Object.assign(DEFAULT(), saved)` (`loadState`, `src/core/state.js`) and
+written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
 "couldn't be saved" banner (`#saveWarn`, with the Export action) when `localStorage.setItem` throws and hides it after
 the next write that works; what is written, and under which key, is unchanged.
 
@@ -59,6 +60,13 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 | `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings |
 | `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1` | one-time flags (see below) |
 
+**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.4). The save holds view
+settings, one-time flags and one character; the character's fields (`CHAR_FIELDS` in `src/core/state.js`: `checks`,
+`level`, `quest`, `storyEnd`, `qsteps`, `qsub`, `started`, `areaRun`, `rqSnooze`, the stigma, skill-point and board fields,
+`rotSeen`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
+JSON is unchanged; 0.4 changes that one function and the save format. The `core` suite fails on a direct
+`state.<field>` for a character field anywhere in `src/`.
+
 ### Item keys
 
 - Milestone (`GATES`) and route-rule (`STEPS`) items carry an explicit `k`. Older items keep their historical position
@@ -75,17 +83,22 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 
 ### Migrations and one-time steps (in load order)
 
+All of them are `migrate(state, hadSave, store)` in `src/core/migrations.js`; the page passes its `storeState` as `store`,
+called exactly where the page wrote the save before (the `core` suite pins the write points).
+
 1. Fresh browser (no save): the seed flags are set without running; cleared milestones start folded.
 2. `migV5` (E1): `MIG_V5` copies `checks` / `started` / `areaRun` from the 105 old position keys to `rq:` / `sd:` keys.
 3. `seedLv12`, `stTriniel1`, `dvReset1`: one-time player syncs from early versions (only for saves that predate them).
 4. Equipped stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
 5. `eputSync1` (E4): equipped slots get their "Put X on E" step ticked.
-6. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done; the
+6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more.
+7. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done; the
    migrations above run on the reload.
 
-Adding a migration: give it a new flag, make it idempotent and additive, run it after the existing ones, save only if
-`hadSave`, and extend `tests/e2-migtest.js` (realistic old save → new build, reload idempotent, rollback to the old
-build still works). Run `mig1` / `mig2`.
+Adding a migration: give it a new flag, make it idempotent and additive, run it after the existing ones in `migrate()`,
+save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive, idempotent, write points) and extend
+`tests/e2-migtest.js` (realistic old save → new build, reload idempotent, rollback to the old build still works). Run
+`core`, `mig1` / `mig2`.
 
 ## 2. Render pipeline
 
@@ -94,10 +107,13 @@ build still works). Run `mig1` / `mig2`.
   (Cleared / Missed / Now / Side quests), progress ring, then `renderQuest` (Journey), `renderNow` (Next up stack),
   `renderNext` (Skills / Daevanion / Stigmas cards), `renderAhead`, area lists. Layout fitting runs in
   `requestAnimationFrame`, not inside `update()`.
-- **Next up** (`renderNow`) builds one-task cards from: in-progress dungeon, Cube items, skill buy, board node, stigma
-  equip / upgrade, milestone steps, the story card, the regional-quest card, Sealed Dungeon / stronghold picks, Later
-  cards; `dedupeNow` removes duplicates. It can live in a Document Picture-in-Picture window (`#nowStar` moves there).
-- **Regional availability** (`rqAvail`): unlock level (or recommended level for quests with no prerequisite data,
+- **Next up**: `rankNext(state, { basic })` (`src/core/nextup.js`) ranks one-task cards from: in-progress dungeon, Cube
+  items, skill buy, board node, stigma equip / upgrade, milestone steps (`openSteps`: the step gates below), the story
+  card, the regional-quest card, Sealed Dungeon / stronghold picks, Later cards, then applies the Basic filter and the
+  8-card cap. Each card is `{ kind, act, … }` data; `renderNow` turns it into HTML (`nowCard`; a step's title is its `ns`
+  or the first bold phrase of its milestone row). It can live in a Document Picture-in-Picture window (`#nowStar` moves
+  there).
+- **Regional availability** (`rqStatus`, page name `rqAvail`): unlock level (or recommended level for quests with no prerequisite data,
   `rqOpenLv`) + story at/after its story gate + regional prerequisites turned in. Used by Next up, tips, Progress and
   milestone dimming.
 - Basic mode is mostly CSS (`body.basic`) plus a few branches in `renderNow` / `renderNext`.
@@ -170,6 +186,12 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 - Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.
 - `scripts/serve.mjs`: static server for `dist/` (+ `/artifact/`, `/_blob/<id>`, and `/__baselines/` for tests).
 
+**Pure core rules** (0.2 P3): `src/core/` has no DOM, storage, timer or other browser access and imports only data
+modules and other core modules; derived facts are computed, never stored as ticks. Functions take the character
+(`char(state)`) or, where a view setting changes the answer (Optional filter, talk-only objectives), the whole state.
+`main.js` keeps the old global names the suites and the baseline builds call (`counts(g)`, `STIGMA_SLOTS()`,
+`rqAvail(q)`, `stNames()`, `stPlan()`, …) as one-line wrappers bound to the page's state.
+
 ## 5. Tests
 
 `npm test` builds, serves `dist/` on localhost, and runs every suite (`tests/run.mjs`); output in `tests/out/`.
@@ -184,7 +206,8 @@ one-time E2 / E4 patch scripts, kept for provenance only.
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
-| `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open until 0.1.9, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour |
+| `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only), state, migrations (fixtures, additive, idempotent, write points), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node) |
+| `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour; on touch at 390 px (since 0.1.9) fields ≥ 16 px, primary buttons ≥ 44 px, text ≥ 11 px mono / 12 px; no story connector above the first row; no sideways scroll at 260 px |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
