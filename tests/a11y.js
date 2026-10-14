@@ -13,11 +13,15 @@
       and the extension never takes a point from a neighbouring control: for points just inside every control that the
       extension reaches, document.elementFromPoint is compared with the control's pseudo-elements left out of hit
       testing and with them in; a point the neighbour had and lost is a failure.
-   6. Touch (0.1.9, P1-4 / P3-1; 390 px with touch emulation, fresh and Lv 27 × Basic / Advanced, drawer and panels
-      open): every text field and select at 16 px or more (iPhone Safari zooms below that), the primary buttons
-      (PRIMARY) at least 44 px tall, no text under 11 px (mono) / 12 px (body) except the icon glyphs in GLYPH.
+   6. Touch (0.1.9, P1-4 / P3-1; 390 px with touch emulation, fresh / Lv 20 / Lv 27 / Lv 45 × Basic / Advanced,
+      drawer and panels open): every text field and select at 16 px or more (iPhone Safari zooms below that) and the big number
+      fields (BIGNUM) still at 18 px, the primary buttons (PRIMARY) at least 44 px tall, no text under 11 px (mono) /
+      12 px (body) except the icon glyphs in GLYPH.
    7. Story connector (P2-4): on a fresh save no connector line is drawn above the first story row.
-   8. Page zoom (P2-9): at 260 px (150 % zoom on a 390 px phone) the page doesn't scroll sideways. */
+   8. Page zoom (P2-9): at 260 px (150 % zoom on a 390 px phone) the page doesn't scroll sideways.
+   9. Folded cleared steps (P3-2, 390 px, Lv 27 and Lv 45): in every ticked milestone step the warnings (.note) and the
+      location / "Reward:" line (.loc) are visible, and every link or button in the step is either out of the layout
+      (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -38,7 +42,8 @@ const HIT = ['.tip', '.tipbtn', '#nowStar .q-cb', '#stCard .st-lvctl button', '.
 
 /* touch: the primary buttons that get 44 px, and the glyphs in fixed boxes that keep their size (icons, not text) */
 const PRIMARY = '.lvlup-btn, .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy';
-const GLYPH = '.tip, .nsinfo, .zchev, .spmini.ini, .st-mini.ini, .filt-n';
+const GLYPH = '.tip, .tipbtn, .dvi, .nsinfo, .zchev, .cstep-b button, .spmini.ini, .st-mini.ini, .filt-n';
+const BIGNUM = ['lvlNum', 'spPts', 'dvIn', 'stShards'];
 
 const STATES = {
   fresh: () => null,
@@ -48,7 +53,7 @@ const STATES = {
 
 async function load(p, state, mode) {
   await p.goto(CFG.CUR);
-  if (state === 'fixture') await p.evaluate(buildFixture, { L: 45, mode, fx: 'clean' });
+  if (state === 'fixture' || state === 'fixture20') await p.evaluate(buildFixture, { L: state === 'fixture' ? 45 : 20, mode, fx: 'clean' });
   else await p.evaluate(([k, s]) => { localStorage.clear(); if (s) localStorage.setItem(k, JSON.stringify(s)); }, [KEY, state && { ...state, mode }]);
   await p.reload(); await p.waitForTimeout(400);
   if (!state) await p.evaluate(m => { if (document.body.classList.contains('basic') !== (m === 'basic')) document.querySelector(`.modeseg [data-mode="${m}"]`).click(); }, mode);
@@ -183,14 +188,15 @@ async function load(p, state, mode) {
   }
 
   /* ---------- 6. touch: field sizes, primary buttons, minimum text; 7. story connector ---------- */
-  for (const sn of ['fresh', 'lv27']) for (const mode of ['basic', 'advanced']) {
+  /* Lv 20 (generated) adds the Daevanion cost column, "open" board rows and "+N more" objectives */
+  for (const sn of ['fresh', 'lv20', 'lv27', 'lv45']) for (const mode of ['basic', 'advanced']) {
     const id = `${sn} ${mode} 390px touch`;
     const { ctx, p } = await page(390, { isMobile: true, hasTouch: true });
-    await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], mode);
+    await load(p, sn === 'lv20' ? 'fixture20' : typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], mode);
     await p.evaluate(() => { const d = document.getElementById('statDrawer'); if (d && !d.classList.contains('open')) document.getElementById('sdTab').click();
       document.querySelectorAll('details').forEach(x => { x.open = true; }); });
     await p.waitForTimeout(250);
-    const r = await p.evaluate(([PRIMARY, GLYPH]) => {
+    const r = await p.evaluate(([PRIMARY, GLYPH, BIGNUM]) => {
       const desc = e => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/).join('.') : '');
       const vis = e => { const b = e.getBoundingClientRect(), cs = getComputedStyle(e); return b.width > 0 && b.height > 0 && cs.visibility !== 'hidden' && +cs.opacity > 0; };
       const fields = [...document.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]), select, textarea')]
@@ -200,13 +206,15 @@ async function load(p, state, mode) {
       for (const e of document.querySelectorAll('body *')) {
         if (!vis(e) || e.closest('svg') || e.closest(GLYPH) || ![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
         const cs = getComputedStyle(e), fs = parseFloat(cs.fontSize), min = /Mono|monospace/.test(cs.fontFamily) ? 11 : 12;
-        if (fs < min - .01) small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
+        if (fs > 0 && fs < min - .01) /* 0 px: text deliberately not rendered (a folded cleared step) */ small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
       }
       const first = document.querySelector('ul.story > li.st:not(:empty)');
       const line = first && getComputedStyle(first, '::before').content;
-      return { fields, prim: [...new Set(prim)], small: [...new Set(small)], line };
-    }, [PRIMARY, GLYPH]);
+      const big = BIGNUM.map(id => document.getElementById(id)).filter(Boolean).filter(e => getComputedStyle(e).fontSize !== '18px').map(e => desc(e) + ' ' + getComputedStyle(e).fontSize);
+      return { fields, big, prim: [...new Set(prim)], small: [...new Set(small)], line };
+    }, [PRIMARY, GLYPH, BIGNUM]);
     ok(`touch ${id}: fields at 16 px or more (no zoom on focus)`, !r.fields.length, r.fields);
+    ok(`touch ${id}: the big number fields stay at 18 px`, !r.big.length, r.big);
     ok(`touch ${id}: primary buttons at least 44 px tall`, !r.prim.length, r.prim);
     ok(`touch ${id}: no text under 11 px (mono) / 12 px`, !r.small.length, r.small);
     if (sn === 'fresh') ok(`story ${id}: no connector above the first story row`, r.line === 'none', r.line);
@@ -219,6 +227,34 @@ async function load(p, state, mode) {
     await load(p, { ...USER }, mode);
     const over = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     ok(`page zoom lv27 ${mode} 260px: no horizontal scroll`, over <= 0, over);
+    await ctx.close();
+  }
+
+  /* ---------- 9. folded cleared steps on phones ---------- */
+  for (const sn of ['lv27', 'lv45']) {
+    const { ctx, p } = await page(390);
+    await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], 'advanced');
+    await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; }));
+    await p.waitForTimeout(250);
+    const r = await p.evaluate(() => {
+      /* rendered rows only (a done milestone keeps its list collapsed even when open) */
+      const items = [...document.querySelectorAll('#gates li.item')].filter(li => li.querySelector('input:checked') && li.querySelector('.txt') && li.getBoundingClientRect().height);
+      const hiddenKept = [], focusHidden = []; let folded = 0;
+      for (const li of items) {
+        const t = li.querySelector('.txt'), name = (li.querySelector('.txt > b') || t).textContent.trim().slice(0, 40), lr = li.getBoundingClientRect();
+        if (parseFloat(getComputedStyle(t).fontSize) === 0) folded++;
+        const tr = t.getBoundingClientRect(); /* clipped outside .txt (e.g. by a line clamp) counts as hidden */
+        for (const k of t.querySelectorAll(':scope > .note, :scope > .loc')) { const b = k.getBoundingClientRect(); if (!b.width || !b.height || b.bottom > tr.bottom + 1) hiddenKept.push(name + ' ' + k.className); }
+        for (const f of t.querySelectorAll('a[href], button, input, select, summary, [tabindex]')) {
+          if (!f.checkVisibility()) continue; /* display: none somewhere above: not focusable */
+          const b = f.getBoundingClientRect();
+          if (!b.width || !b.height || b.top < lr.top - 1 || b.bottom > lr.bottom + 1) focusHidden.push(name + ' > ' + f.tagName.toLowerCase() + '.' + f.className);
+        }
+      }
+      return { n: items.length, folded, hiddenKept, focusHidden };
+    });
+    ok(`fold ${sn} 390px: ${r.n} ticked steps, ${r.folded} folded; warnings and Reward lines visible`, r.n > 0 && r.folded === r.n && !r.hiddenKept.length, r);
+    ok(`fold ${sn} 390px: no hidden link or button can take focus`, !r.focusHidden.length, r.focusHidden);
     await ctx.close();
   }
 

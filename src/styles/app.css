@@ -1409,22 +1409,29 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
    - Fields at 16 px: iPhone Safari zooms the page when a field under 16 px gets focus.
    - Primary buttons 44 px tall (Level up, Mark spent / equipped / upgraded, the Next up actions).
    - Minimum text: 11 px for mono labels (capitals and digits), 12 px for body text. Not raised: glyphs in fixed boxes
-     ("i" buttons, chevrons, count badges, the skill-initial tiles), which are icons rather than text.
+     ("i" buttons, chevrons, stepper arrows, count badges, the skill-initial tiles), which are icons rather than text.
    Taps: no double-tap zoom on fields and checkbox labels either (buttons already, above). */
 @media (pointer: coarse) {
   a, input, select, label, summary { touch-action: manipulation; }
-  input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea { font-size: 16px !important; }
+  input:where(:not([type=checkbox], [type=radio], [type=range])), select, textarea { font-size: 16px !important; }
+  .lvl-ctl input, .tcard .numctl input { font-size: 18px !important; } /* the big number fields keep their 18 px */
   #questIn { text-overflow: ellipsis; } /* a long quest name no longer shrinks to fit: cut it with an ellipsis rather than mid-word */
   .lvlup-btn { height: 44px; }
   .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy { min-height: 44px; }
   .ms-meta, .sd-tab, .where-sub, .where-sub > span, .dvbh-k, .lvl-ctl label, .numctl label, .ptbig > span, .qs-head > span,
   .khead, .tier-n, :is(h2, div).sec .ns-pop, .stackviz .rn, .lmb, .ah-ver, .q-inl, #nowStar .q-inl, .asec-t, .modeseg button,
-  .behind-pill, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small { font-size: 11px !important; }
+  .behind-pill, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
+  .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new { font-size: 11px !important; }
   .dvcr, .ztr, .ah-main small, #nowStar .ah-main small, :is(h2, div).sec .sec-btn, .qs-sub-loc, .qs-list small, .ns-obj small,
-  .top-grid .soonlist small, #spCard .sphero .dvtext small { font-size: 12px !important; }
+  .top-grid .soonlist small, #spCard .sphero .dvtext small, .ns-obj-more, .cube-btn { font-size: 12px !important; }
 }
-/* Phones (P3-2): a cleared step keeps its first two lines; the rest of its text is clipped (still read by screen
-   readers), so done milestones don't stay screen-high. */
+/* Phones (P3-2): a cleared milestone step folds to its title. The description (bare text, so font-size: 0, plus the
+   extra bold runs, "i" terms and links in it) is hidden; display: none also takes its links and buttons out of the
+   tab order. Kept: status chips, cost, the location / "Reward:" line (.loc), warnings (.note) and the paid note. */
 @media (max-width: 520px) {
-  .item input:checked ~ .txt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+  #gates .item input:checked ~ .txt { font-size: 0; text-decoration: none; }
+  /* the strike moves to the children: drawn from the 0 px parent it would sit at the top of the line */
+  #gates .item input:checked ~ .txt > :is(b:first-of-type, .loc, .note, .upsell) { text-decoration: line-through; text-decoration-color: #9f90a888; }
+  #gates .item input:checked ~ .txt > b:first-of-type { font-size: 15px; }
+  #gates .item input:checked ~ .txt > :is(b ~ b, .term, .itm, .erow, .rotseq, .sr-sub) { display: none; }
 }
