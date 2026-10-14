@@ -23,10 +23,10 @@ export default (test, M) => {
     assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, hideCards: true, ...FLAGS });
     assert.deepEqual(C(state).checks, {});
   });
-  for (const f of ['fixture-v285.json', 'fixture-user-v285.json']) {
+  for (const f of ['fixture-v285.json', 'fixture-user-v285.json', 'fixture-user-2026-10-14-lv39.json']) {
     const saved = fixture(f);
     test(`${f}: only adds (every old value kept)`, () => assert.deepEqual(kept(saved, run(M, saved).state), []));
-    test(`${f}: E1 copies each old position key to its rq: / sd: key`, () => {
+    if (!saved.migV5) test(`${f}: E1 copies each old position key to its rq: / sd: key`, () => {
       const { state } = run(M, saved);
       for (const fld of ['checks', 'started', 'areaRun']) for (const [a, b] of Object.entries(M.MIG_V5))
         if (saved[fld] && a in saved[fld] && !(b in saved[fld])) assert.deepEqual(C(state)[fld][b], saved[fld][a], `${fld} ${a} → ${b}`);
@@ -37,6 +37,14 @@ export default (test, M) => {
       assert.deepEqual(twice.state, once); assert.deepEqual(twice.writes, []);
     });
   }
+  test('owner save 2026-10-14 (Lv 39, current build): loads unchanged and writes nothing', () => {
+    const saved = fixture('fixture-user-2026-10-14-lv39.json'), { state, writes } = run(M, saved);
+    assert.deepEqual(writes, []); assert.deepEqual(state, saved);
+  });
+  test('owner save 2026-10-14: Next up ranks in Basic and Advanced without throwing', () => {
+    const { state } = run(M, fixture('fixture-user-2026-10-14-lv39.json'));
+    for (const basic of [true, false]) assert.ok(Array.isArray(M.rankNext(state, { basic })) , `basic=${basic}`);
+  });
   test('pre-seed save: every one-time step runs, in order, each writing once', () => {
     const { state, writes } = run(M, { checks: {}, level: 5 });
     assert.deepEqual(writes.map(w => Object.keys(FLAGS).filter(k => w[k])), [['migV5'], ['seedLv12', 'migV5'], ['seedLv12', 'stTriniel1', 'migV5'],
