@@ -1,0 +1,215 @@
+{
+  "$schema": "../../../schema/tips.schema.json",
+  "schemaVersion": 2,
+  "collection": "tips",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "tip:daevanion",
+      "key": "daevanion",
+      "title": "Daevanion board",
+      "body": "<p>Five talent boards: Nezekan (Lv 12, via the story quest \"Urgent Pursuit\"), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>\n    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>\n    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Not documented: whether board levels can push a skill past 10, whether they count toward the skill level 8 specialty unlock, and the reset cost.</p>",
+      "credit": "Metabot Daevanion guide, Metaroad Assassin boards, AION2HUB, your game",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C22"
+      ]
+    },
+    {
+      "id": "tip:duty",
+      "key": "duty",
+      "title": "Duty Quests",
+      "body": "<p>Daily missions in the Journal's Duty tab (J). They open at <b>Lv 45</b> on the global servers, not before. 5 rewarded completions a day, shared by every character on the server.</p><p>Rewards include Abyss Points, Kina, Enhancement Stones and Hidden Cube keys. Not the same system as Supply Requests (Lv 25).</p>",
+      "credit": "thegameswiki, neonsect, games.gg, KeenGamer, MeinMMO, allthings.how",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C15"
+      ]
+    },
+    {
+      "id": "tip:enhance",
+      "key": "enhance",
+      "title": "Enhancing gear",
+      "body": "<p><b>Unlocks at Lv 9</b> (the Lv 7 story quest has you try it once early). Spend Enhance Stones and Kina to raise a gear piece by +1. Higher levels cost more and fail more often.</p>\n    <p><b>Where your stones are:</b> in the Cube with your other items, and the Enhance screen's materials section shows the same count.</p>\n    <p>While leveling you replace gear often. Extracting old gear gives the stones back but not the Kina, so enhancing it mostly burns Kina. Enhance the belt and Revelation amulet (you keep both for good); enhance anything else only when a boss or dungeon actually stops you, weapon first.</p>",
+      "credit": "MeinMMO, Metabot; stone location confirmed in game",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:expedition",
+      "key": "expedition",
+      "title": "Expeditions",
+      "body": "<p>Party dungeons, 1–5 or 2–5 players depending on the dungeon. Exploration mode opens after the story quest \"Daeva in a Dream\" (Krao Cave, around Lv 22; seen in game), then Urugugu Canyon 28 and Fire Temple 35 (the story quests \"Canyon's Secret\" and \"Mirror of Greed\" send you into them). Rewards have a weekly cap per dungeon (7 on Metabot and KeenGamer); check the count in game. Conquest mode opens at 45. Each also needs a minimum item level. Sealed Dungeons, the daily dungeon and story instances are solo; Expeditions and the open world are where a party plays together.</p>",
+      "credit": "Metabot dungeon guide, thegameswiki, ExpCarry, allthings.how, KeenGamer, games.gg",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C11"
+      ]
+    },
+    {
+      "id": "tip:extract",
+      "key": "extract",
+      "title": "Extraction (getting rid of old gear)",
+      "body": "\n    <p><b>Unlocks at Lv 10.</b> Gear can't be sold to vendors in Aion 2. When you replace a piece, you <b>extract</b> it instead: it's destroyed and you get upgrade materials (like Enhance Stones) back, plus its look as a cosmetic skin. Each extraction costs a little Kina.</p>\n    <p>Only unequipped gear in your Cube can be extracted; potions, scrolls and other items can't.</p>\n    <ol><li>Open your inventory (called <b>the Cube</b>).</li><li>Click the old gear piece.</li><li>In its description panel, click the <b>beaker/flask icon</b> at the bottom right and choose <b>Extract</b>.</li><li>Check what you lose and gain, then <b>Confirm</b>.</li></ol>\n    <p><b>Auto-extract</b> extracts gear automatically as it drops (from loot and monster cubes), so your Cube doesn't fill with old pieces. To set it up:</p>\n    <ol><li>Open <b>the Cube</b>.</li><li>Click <b>Extract</b>.</li><li>Click <b>Settings</b> and turn auto-extraction on.</li><li>Review what it's set to include before saving, especially item grades. Only include grades you'd never equip.</li></ol>\n    <p>Each extraction costs Kina, and auto-extract stops when your Kina runs low. Extracted items are gone; NCSoft only restores mistakes once per account per year, and not guaranteed.</p>\n    <p class=\"muted\">The menu path is from the Korean patch notes that added the feature; the Global client should match, but the exact option names in Settings aren't documented.</p>",
+      "credit": "VGC, MeinMMO, KR patch notes (25 Mar 2026) via AION2HUB, NCSoft notice via PositionIsEverything",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:gearscore",
+      "key": "gearscore",
+      "title": "Gear score / item level",
+      "body": "<p>A number summarizing your equipped gear. Content like Krao Cave has a minimum (item level 700 for Conquest at 45). Separate from combat power, which also counts skills, boards and collections.</p>",
+      "credit": "MeinMMO, AION2HUB",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C08"
+      ]
+    },
+    {
+      "id": "tip:guild",
+      "key": "guild",
+      "title": "Legion (guild)",
+      "body": "<p>Guilds are called <b>Legions</b>. Asmodians unlock them with the quest <b>\"Buried Atrocities\"</b> (available from Lv 10, recommended Lv 16). Then open the Legion menu, browse groups, check their description and recruitment settings, and join. Joining is free; after leaving one there's a 24-hour wait before joining another.</p>\n    <p>Pick an active group whose play times match yours over a big, quiet roster. Sources disagree on perks: MeinMMO says passive buffs and weekly guild coins, GamesFuze says no bonuses yet. The reliable benefit is people to group with.</p>",
+      "credit": "GamesFuze, MeinMMO",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:hideout",
+      "key": "hideout",
+      "title": "Sealed Dungeons",
+      "body": "<p>Small caves you walk into straight from the open world, marked on the Altgard map. Many are named \"… Hideout,\" but the category is Sealed Dungeon. They are solo: 1 player (Wikily), so a party can't clear one together. The first clear of each pays a one-time reward: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps and a title. Repeat clears don't pay it again.</p>\n    <p>Click a Sealed Dungeon's name to see where it is on a map, with the nearest teleport statue. The level shown is a recommendation; try one early, and come back if it's too hard.</p>",
+      "credit": "AION2HUB, allthings.how map, Wikily",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C12"
+      ]
+    },
+    {
+      "id": "tip:kibelisk",
+      "key": "kibelisk",
+      "title": "Kibelisk",
+      "body": "<p>A travel point. Interact with one to register it, and you can teleport back to it later instead of walking. Activate every one you pass in towns and camps.</p>",
+      "credit": "KeenGamer",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:macro",
+      "key": "macro",
+      "title": "Macro",
+      "body": "<p>A single button that fires several skills in order. Build it in the game's macro editor, then put it on your hotbar.</p>",
+      "credit": "GamesFuze",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:petfilter",
+      "key": "petfilter",
+      "title": "Pet loot filter",
+      "body": "<p>Pets unlock with the story quest \"Gathering Essentials\" (around Lv 10). Once you have a pet, it picks up loot for you. Its loot filter decides what it grabs and what it leaves, so gray junk stays out of your Cube. No source documents where the menu is; look in your pet's settings once you have one.</p>",
+      "credit": "MeinMMO",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:regional",
+      "key": "regional",
+      "title": "Regional quests",
+      "body": "<p>Optional side quests (green markers) in Altgard, picked up from the NPC listed. Each is one-time and pays XP, Kina, a Wisdom Stone, a Daevanion Crystal and often an accessory.</p><p>{rqStats.at10} of the {rqStats.n} unlock at Lv 10 and the rest at 45, but {rqStats.story} also wait for a story quest and {rqStats.chained} follow an earlier regional quest. Next up lists a quest once all of that is met. The level shown is the recommended level, a combat guideline rather than a lock.</p>",
+      "credit": "Metabot quest pages, aion2.gaming.tools, aion2.th.gl, allthings.how",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C14"
+      ]
+    },
+    {
+      "id": "tip:respec",
+      "key": "respec",
+      "title": "Free respec",
+      "body": "<p>The reset button beside your skill point counter refunds every Skill Point you've spent (Daevanion, Arcana and gear levels aren't refunded) and turns off your specialty effects, so re-pick those after a reset.</p>\n    <p>It's free at least until level 31. MeinMMO says it costs Kina after that; allthings.how says it's free and unlimited. Check the button's cost when you reach 31.</p>",
+      "credit": "MeinMMO, allthings.how",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C01"
+      ]
+    },
+    {
+      "id": "tip:shugo",
+      "key": "shugo",
+      "title": "Shugo Festival",
+      "body": "<p>An hourly set of minigames. Claiming a reward costs a key, and rewards grow with your level. Keys refill daily but stop at a cap, so spend them before you hit it.</p>",
+      "credit": "Metabot, GamesFuze, games.gg",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C09"
+      ]
+    },
+    {
+      "id": "tip:specialty",
+      "key": "specialty",
+      "title": "Specialty slots",
+      "body": "<p>Each active skill gets specialty slots as <b>that skill</b> levels up (not your character): slot 1 at skill level 8, slot 2 at 12, slot 3 at 20. Each slot holds one bonus effect. Unlocking a slot isn't enough: open the skill, click the slot and choose an effect, or you get nothing.</p>",
+      "credit": "gameplay.tips, Skycoach, MeinMMO",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C03"
+      ]
+    },
+    {
+      "id": "tip:stcost",
+      "key": "stcost",
+      "title": "Stigma shard costs",
+      "body": "<p>Shards per level, the same for every stigma: levels 1–5 cost 1 each, 6–10 cost 2, 11–15 cost 4, 16–20 cost 8 (75 to reach 20). Learning a stigma is its level 1 (1 shard). Bonus effects switch on at 5, 10, 15 and 20; past 20 needs Superior Stigma Shards.</p><p>You get 1 shard per character level from 23 to 39 (2 per level from 40), plus achievements and shops.</p><p><b>Plan:</b> [[build:stigma:1]] to [[build:stigmaTarget:1]], then [[build:stigma:2]] toward [[build:stigmaTarget:2]] (GamesFuze, Skycoach); the others stay at 1.</p><p>Costs agree in Metabot and allthings.how; check one upgrade tooltip in game.</p>",
+      "credit": "Metabot stigma guide, allthings.how, GamesFuze, Skycoach",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "tip:stigma",
+      "key": "stigma",
+      "title": "Stigma",
+      "body": "<p>Extra skills that go into special slots, separate from your normal skills. Slots open at 22, 27, 32 and 37, four in total. Level 22's slot unlocks through the quest \"The One Who Hears the Voice.\" Every stigma can be learned from then on, and any stigma fits any slot.</p>",
+      "credit": "Metabot, PlayNews, allthings.how, thegameswiki",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C28b"
+      ]
+    },
+    {
+      "id": "tip:stronghold",
+      "key": "stronghold",
+      "title": "Strongholds",
+      "body": "<p>Open-world enemy camps in Altgard, fought outside any instance. Each is a one-time clear: break in, defeat its named commander, then open the treasure chest. That pays 2 Noble Belt Enhance Scrolls and 15,000 Kina (some add a title). Strongholds are the main source of belt scrolls, and the belt is permanent, so clear every one.</p>\n    <p>Altgard has 15. All are listed in Dungeons &amp; Strongholds: inside each level band, or all together under \"All strongholds\" in its dropdown. The level shown is the range Metabot's map gives; the rest are open at any level.</p>",
+      "credit": "Metabot Altgard stronghold map, allthings.how",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C13"
+      ]
+    },
+    {
+      "id": "tip:supply",
+      "key": "supply",
+      "title": "Supply Requests (보급 의뢰)",
+      "body": "<p>Opens at <b>Lv 25</b>. You hand in requested materials or gear for <b>Abyss Points</b>. Emergency requests have a daily deadline, Weekly ones run to the weekly reset, and longer-running requests cover crafting and bosses.</p><p>Abyss Points matter mostly at 45, so while leveling hand in only spares you already have.</p>",
+      "credit": "Metabot, allthings.how, KeenGamer, games.gg, MeinMMO",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C16"
+      ]
+    },
+    {
+      "id": "tip:traces",
+      "key": "traces",
+      "title": "Empyrean Traces (feathers)",
+      "body": "<p>Collectibles scattered across your faction's main zones, from Altgard onward (none in the starting zone). Altgard has 560. They're marked on the world map.</p>\n    <p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards.</p>\n    <p>Collected feathers stay on the map. To hide them: map <b>Filters</b> (bottom right) → <b>Content</b> → untick <b>Empyrean Trace</b>.</p>",
+      "credit": "PlayNews, Selphie1999, allthings.how map",
+      "verifiedAt": "2026-10-12",
+      "claims": [
+        "C25"
+      ]
+    },
+    {
+      "id": "tip:wisdom",
+      "key": "wisdom",
+      "title": "Where Skill Points come from",
+      "body": "<p>Two sources: <b>character levels</b> grant points automatically, and <b>Wisdom Stone</b> items (from Sealed Dungeons, regional quests and drops) give 1 point each, but only once you use them from the Cube.</p>\n    <p>The skill window's points breakdown lists both sources under \"Points Earned\", and what you've spent under \"Points Used\" (shown as Mastery). Earned minus used is what you can spend now.</p>\n    <p><b>Daevanion Crystals</b> work the same way: use them from the Cube to add crystals to the board.</p>",
+      "credit": "Metabot item pages; points breakdown confirmed in game",
+      "verifiedAt": "2026-10-12"
+    }
+  ]
+}

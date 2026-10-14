@@ -1,0 +1,541 @@
+{
+  "$schema": "schema/retired.schema.json",
+  "schemaVersion": 2,
+  "keys": [
+    {
+      "key": "g45:1",
+      "retired": "2026-10-12",
+      "note": "E1: removed milestone step; never reused (docs/ARCHITECTURE.md §1)."
+    },
+    {
+      "key": "hold:0",
+      "retired": "2026-10-12",
+      "note": "E1: removed route-rule item; never reused."
+    },
+    {
+      "key": "g12:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202044 (migV5)."
+    },
+    {
+      "key": "g15:1",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:abandoned-archon-jail (migV5)."
+    },
+    {
+      "key": "g15:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:bloodsoaked-confessional (migV5)."
+    },
+    {
+      "key": "g15:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:blue-dragon-s-trap (migV5)."
+    },
+    {
+      "key": "g15:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:fafnite-storage-room (migV5)."
+    },
+    {
+      "key": "g15:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:fanatics-den (migV5)."
+    },
+    {
+      "key": "g15:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:fortuneteller-s-grave (migV5)."
+    },
+    {
+      "key": "g15:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:homish-s-prison-compound (migV5)."
+    },
+    {
+      "key": "g15:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:howling-den (migV5)."
+    },
+    {
+      "key": "g15:9",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:library-of-foresight (migV5)."
+    },
+    {
+      "key": "g15:10",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:prison-of-oblivion (migV5)."
+    },
+    {
+      "key": "g15:11",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:victims-cave (migV5)."
+    },
+    {
+      "key": "g15:13",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202051 (migV5)."
+    },
+    {
+      "key": "g16:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202010 (migV5)."
+    },
+    {
+      "key": "g16:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202012 (migV5)."
+    },
+    {
+      "key": "g16:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202013 (migV5)."
+    },
+    {
+      "key": "g16:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202014 (migV5)."
+    },
+    {
+      "key": "g16:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202015 (migV5)."
+    },
+    {
+      "key": "g16:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202023 (migV5)."
+    },
+    {
+      "key": "g20:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:abandoned-memorial-room (migV5)."
+    },
+    {
+      "key": "g20:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:closed-hideout (migV5)."
+    },
+    {
+      "key": "g20:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:destroyed-scriptorium (migV5)."
+    },
+    {
+      "key": "g20:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:lamnah-base (migV5)."
+    },
+    {
+      "key": "g20:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:predator-s-lair (migV5)."
+    },
+    {
+      "key": "g20:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:unstable-cave (migV5)."
+    },
+    {
+      "key": "g20:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:worshiper-s-underground-cave (migV5)."
+    },
+    {
+      "key": "g22:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202016 (migV5)."
+    },
+    {
+      "key": "g22:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202017 (migV5)."
+    },
+    {
+      "key": "g22:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202019 (migV5)."
+    },
+    {
+      "key": "g22:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202036 (migV5)."
+    },
+    {
+      "key": "g22:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202053 (migV5)."
+    },
+    {
+      "key": "g25:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:dark-root-cave (migV5)."
+    },
+    {
+      "key": "g25:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:drana-depository (migV5)."
+    },
+    {
+      "key": "g25:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:high-priest-s-ruins (migV5)."
+    },
+    {
+      "key": "g25:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:skurv-laborer-den (migV5)."
+    },
+    {
+      "key": "g25:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:twisted-pit (migV5)."
+    },
+    {
+      "key": "g27:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202062 (migV5)."
+    },
+    {
+      "key": "g30:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:all-curing-cave (migV5)."
+    },
+    {
+      "key": "g30:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:dratona-assembly-area (migV5)."
+    },
+    {
+      "key": "g30:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:final-haven (migV5)."
+    },
+    {
+      "key": "g30:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:insectoid-tunnel (migV5)."
+    },
+    {
+      "key": "g30:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:library-of-patience (migV5)."
+    },
+    {
+      "key": "g30:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:library-of-wisdom (migV5)."
+    },
+    {
+      "key": "g30:9",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:rift-fissure (migV5)."
+    },
+    {
+      "key": "g30:11",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202011 (migV5)."
+    },
+    {
+      "key": "g30:12",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202018 (migV5)."
+    },
+    {
+      "key": "g30:13",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202021 (migV5)."
+    },
+    {
+      "key": "g30:14",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202022 (migV5)."
+    },
+    {
+      "key": "g30:15",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202037 (migV5)."
+    },
+    {
+      "key": "g32:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202020 (migV5)."
+    },
+    {
+      "key": "g32:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202040 (migV5)."
+    },
+    {
+      "key": "g32:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202070 (migV5)."
+    },
+    {
+      "key": "g32:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202029 (migV5)."
+    },
+    {
+      "key": "g32:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202063 (migV5)."
+    },
+    {
+      "key": "g35:1",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:destruction-archons-armory (migV5)."
+    },
+    {
+      "key": "g35:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:empty-cave (migV5)."
+    },
+    {
+      "key": "g35:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:fungie-habitat (migV5)."
+    },
+    {
+      "key": "g35:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:lonely-rock-chasm (migV5)."
+    },
+    {
+      "key": "g35:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:odylium-marauder-den (migV5)."
+    },
+    {
+      "key": "g35:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:pirate-s-treasure-storage (migV5)."
+    },
+    {
+      "key": "g35:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:place-of-rest (migV5)."
+    },
+    {
+      "key": "g35:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:rock-cave (migV5)."
+    },
+    {
+      "key": "g35:9",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:scale-altar (migV5)."
+    },
+    {
+      "key": "g35:10",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:shulak-cave (migV5)."
+    },
+    {
+      "key": "g37:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202039 (migV5)."
+    },
+    {
+      "key": "g37:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202038 (migV5)."
+    },
+    {
+      "key": "g40:2",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:ascetic-s-cave (migV5)."
+    },
+    {
+      "key": "g40:3",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:den-of-exiles (migV5)."
+    },
+    {
+      "key": "g40:4",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:kumbahum-s-cave (migV5)."
+    },
+    {
+      "key": "g40:5",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:lagta-fafnite-storage (migV5)."
+    },
+    {
+      "key": "g40:6",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:spider-cave (migV5)."
+    },
+    {
+      "key": "g40:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:tayga-breeding-ground (migV5)."
+    },
+    {
+      "key": "g40:8",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to sd:warriors-rest (migV5)."
+    },
+    {
+      "key": "g45:7",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202066 (migV5)."
+    },
+    {
+      "key": "g45:9",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202067 (migV5)."
+    },
+    {
+      "key": "g45:10",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202046 (migV5)."
+    },
+    {
+      "key": "g45:11",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202041 (migV5)."
+    },
+    {
+      "key": "g45:12",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202058 (migV5)."
+    },
+    {
+      "key": "g45:13",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202056 (migV5)."
+    },
+    {
+      "key": "g45:14",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202050 (migV5)."
+    },
+    {
+      "key": "g45:16",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202043 (migV5)."
+    },
+    {
+      "key": "g45:17",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202068 (migV5)."
+    },
+    {
+      "key": "g45:18",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202057 (migV5)."
+    },
+    {
+      "key": "g45:19",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202054 (migV5)."
+    },
+    {
+      "key": "g45:20",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202060 (migV5)."
+    },
+    {
+      "key": "g45:21",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202042 (migV5)."
+    },
+    {
+      "key": "g45:22",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202052 (migV5)."
+    },
+    {
+      "key": "g45:23",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202061 (migV5)."
+    },
+    {
+      "key": "g45:24",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202059 (migV5)."
+    },
+    {
+      "key": "g45:25",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202071 (migV5)."
+    },
+    {
+      "key": "g45:26",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202027 (migV5)."
+    },
+    {
+      "key": "g45:27",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202069 (migV5)."
+    },
+    {
+      "key": "g45:28",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202045 (migV5)."
+    },
+    {
+      "key": "g45:30",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202055 (migV5)."
+    },
+    {
+      "key": "g45:31",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202028 (migV5)."
+    },
+    {
+      "key": "g45:32",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202064 (migV5)."
+    },
+    {
+      "key": "g45:33",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202065 (migV5)."
+    },
+    {
+      "key": "g45:34",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202047 (migV5)."
+    },
+    {
+      "key": "g45:36",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202026 (migV5)."
+    },
+    {
+      "key": "g45:37",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202030 (migV5)."
+    },
+    {
+      "key": "g45:38",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202031 (migV5)."
+    },
+    {
+      "key": "g45:39",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202033 (migV5)."
+    },
+    {
+      "key": "g45:40",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202032 (migV5)."
+    },
+    {
+      "key": "g45:41",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202034 (migV5)."
+    },
+    {
+      "key": "g45:42",
+      "retired": "2026-10-12",
+      "note": "E1 position key; its ticks were copied to rq:2202035 (migV5)."
+    }
+  ]
+}

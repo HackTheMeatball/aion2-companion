@@ -1,0 +1,279 @@
+{
+  "$schema": "../../schema/ascension-quests.schema.json",
+  "schemaVersion": 2,
+  "collection": "ascensionQuests",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "asc:dreams",
+      "name": "The One Who Dreams",
+      "chapter": 3,
+      "lv": 32,
+      "unlocksAt": 10,
+      "claims": [
+        "C36"
+      ],
+      "requires": {
+        "all": [
+          {
+            "story": "sq:2102345",
+            "is": "reached",
+            "basis": "legacy",
+            "note": "today's g32:dreams gate (claim C36)"
+          },
+          {
+            "done": "asc:hears-the-voice",
+            "basis": "inferred",
+            "note": "chapter order"
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102345",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+              "note": "its only objective is completing The One Who Dreams"
+            }
+          ]
+        }
+      ],
+      "faction": "asmodian",
+      "access": "teleport",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-one-who-dreams-asmodian",
+          "fields": [
+            "lv",
+            "unlocksAt",
+            "chapter"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "read by Data & Research for prereq-gates §5"
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "notes": [
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5)."
+      ]
+    },
+    {
+      "id": "asc:hears-the-voice",
+      "name": "The One Who Hears the Voice",
+      "chapter": 2,
+      "lv": 22,
+      "unlocksAt": 10,
+      "requires": {
+        "all": [
+          {
+            "story": "sq:2102185",
+            "is": "reached",
+            "basis": "legacy",
+            "note": "today's g22:0 gate"
+          },
+          {
+            "done": "asc:perceives",
+            "basis": "inferred",
+            "note": "chapter order II after I"
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102185",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+              "note": "its objective is completing this quest"
+            }
+          ]
+        }
+      ],
+      "faction": "asmodian",
+      "access": "teleport",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-one-who-hears-the-voice-asmodian",
+          "fields": [
+            "lv",
+            "unlocksAt",
+            "chapter"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "read by Data & Research for prereq-gates §5"
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "notes": [
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5)."
+      ]
+    },
+    {
+      "id": "asc:oath",
+      "name": "The One Who Swears the Oath",
+      "chapter": 5,
+      "lv": 49,
+      "unlocksAt": 10,
+      "inCap": false,
+      "claims": [
+        "C05"
+      ],
+      "requires": {
+        "done": "asc:witnesses",
+        "basis": "inferred",
+        "note": "chapter V after IV"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "faction": "asmodian",
+      "access": "teleport",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-one-who-swears-the-oath-asmodian",
+          "fields": [
+            "lv",
+            "unlocksAt",
+            "chapter"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "read by Data & Research for prereq-gates §5"
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "notes": [
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5)."
+      ]
+    },
+    {
+      "id": "asc:perceives",
+      "name": "The One Who Perceives",
+      "chapter": 1,
+      "lv": 5,
+      "unlocksAt": 5,
+      "requires": {
+        "all": [
+          {
+            "level": 5,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/the-one-who-perceives-asmodian",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2101050",
+            "is": "reached",
+            "basis": "owner-check",
+            "note": "candidate gate \"The Being Beneath the Lake\" (intro text hint only); owner check 6"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2101060",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spread-your-wings",
+              "note": "objective 1 is \"The One Who Perceives Complete\""
+            }
+          ]
+        }
+      ],
+      "faction": "asmodian",
+      "access": "teleport",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-one-who-perceives-asmodian",
+          "fields": [
+            "lv",
+            "unlocksAt",
+            "chapter"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "read by Data & Research for prereq-gates §5"
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "notes": [
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5)."
+      ]
+    },
+    {
+      "id": "asc:witnesses",
+      "name": "The One Who Witnesses the Nightmare",
+      "chapter": 4,
+      "lv": 45,
+      "unlocksAt": 10,
+      "claims": [
+        "C37"
+      ],
+      "requires": {
+        "all": [
+          {
+            "story": "sq:2102800",
+            "is": "turnedIn",
+            "basis": "legacy",
+            "note": "today's g45:0 gate (claim C37)"
+          },
+          {
+            "done": "asc:dreams",
+            "basis": "inferred",
+            "note": "chapter order"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "faction": "asmodian",
+      "access": "teleport",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-one-who-witnesses-the-nightmare-asmodian",
+          "fields": [
+            "lv",
+            "unlocksAt",
+            "chapter"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "read by Data & Research for prereq-gates §5"
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "notes": [
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5).",
+        "Its wrapper, \"Daeva Trapped in a Nightmare\" (2102810), is not in the app yet (owner decision Q7: added after the owner's check), so completion is the tick only."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "../../../schema/confidence.schema.json",
+  "schemaVersion": 2,
+  "collection": "confidence",
+  "faction": "asmodian",
+  "groups": [
+    {
+      "id": "verified",
+      "title": "Verified",
+      "sub": "two or more independent sources, or game data"
+    },
+    {
+      "id": "single-source",
+      "title": "Single source",
+      "sub": "shown, labelled where it's advice"
+    },
+    {
+      "id": "inferred",
+      "title": "Inferred",
+      "sub": "the guide's own reasoning; test it in game"
+    },
+    {
+      "id": "disputed",
+      "title": "Disputed",
+      "sub": "sources disagree; the guide says which way it goes"
+    },
+    {
+      "id": "unverified",
+      "title": "Unverified",
+      "sub": "no source found, so the guide leaves it out"
+    },
+    {
+      "id": "owner",
+      "title": "From your game",
+      "sub": "seen in game, not in a source"
+    }
+  ],
+  "records": [
+    {
+      "id": "conf:abyss-points",
+      "group": "single-source",
+      "order": 140,
+      "text": "Abyss Points: Stigma Shards first (KeenGamer).",
+      "when": {
+        "C07": "single-source"
+      }
+    },
+    {
+      "id": "conf:belt-cost",
+      "group": "single-source",
+      "order": 150,
+      "text": "Belt +10 (Rare) cost: 232,000 Kina and 9,280 Enhance Stones.",
+      "when": {
+        "C23": "single-source"
+      }
+    },
+    {
+      "id": "conf:boards",
+      "group": "verified",
+      "order": 60,
+      "text": "Five Daevanion boards on global: {boardList}; node costs 1 / 2 / 3 / 4.",
+      "placeholders": [
+        "boardList"
+      ],
+      "when": {
+        "C22": "verified"
+      }
+    },
+    {
+      "id": "conf:cash-shop",
+      "group": "disputed",
+      "order": 270,
+      "text": "Cash shop: mostly cosmetic, but consumables and Daeva Pass materials exist (MassivelyOP, games.gg).",
+      "when": {
+        "C18": "disputed"
+      }
+    },
+    {
+      "id": "conf:core-order",
+      "group": "inferred",
+      "order": 190,
+      "text": "Core skill-point order (Heart Gore, Insignia Explosion, Savage Roar, Quick Slice, Ambush, passives, Shadowstrike), ranked from per-level damage and cooldowns."
+    },
+    {
+      "id": "conf:corners",
+      "group": "inferred",
+      "order": 210,
+      "text": "Vaizel and Triniel corner stats (Critical Damage Boost, Multi-Hit Chance), from each board's stat totals; Daevanion path costs."
+    },
+    {
+      "id": "conf:daevanion-points",
+      "group": "owner",
+      "order": 300,
+      "text": "Daevanion points: 4 per level past 11 (checked at 16 and 17)."
+    },
+    {
+      "id": "conf:duty",
+      "group": "verified",
+      "order": 110,
+      "text": "Duty Quests open at 45, 5 a day per server; Supply Requests (25) are a separate system.",
+      "when": {
+        "C15": "verified",
+        "C28g": "verified"
+      }
+    },
+    {
+      "id": "conf:expedition-cap",
+      "group": "disputed",
+      "order": 240,
+      "text": "Expedition weekly reward cap: 7 per dungeon (Metabot, KeenGamer) vs removed (games.gg; KR/TW).",
+      "when": {
+        "C11": "disputed"
+      }
+    },
+    {
+      "id": "conf:expeditions",
+      "group": "verified",
+      "order": 100,
+      "text": "Expeditions: Urugugu Canyon 28 (item level 300, party 2–5) and Fire Temple 35 (item level 500); Conquest at 45."
+    },
+    {
+      "id": "conf:f2p",
+      "group": "verified",
+      "order": 120,
+      "text": "Free-to-play: the Market and the Kina/Quna exchange need the $15 subscription.",
+      "when": {
+        "C17": "verified"
+      }
+    },
+    {
+      "id": "conf:first-nodes",
+      "group": "disputed",
+      "order": 260,
+      "text": "First Daevanion nodes (Metabot's class build vs its board guide, couga54, GamesFuze); the guide blends them. Which core skill first: Heart Gore (Metabot, GamesFuze) or Quick Slice (games.gg, ExpCarry)."
+    },
+    {
+      "id": "conf:heart-gore-ambush",
+      "group": "owner",
+      "order": 290,
+      "text": "16 points to reach Heart Gore + Ambush on Nezekan.",
+      "when": {
+        "C28d": "verified"
+      }
+    },
+    {
+      "id": "conf:key-stacks",
+      "group": "inferred",
+      "order": 200,
+      "text": "Right-click row order and the E stack (buffs first)."
+    },
+    {
+      "id": "conf:level-points",
+      "group": "single-source",
+      "order": 170,
+      "text": "Skill points per level 30–44 (Wikily; 203 at 45 has two sources)."
+    },
+    {
+      "id": "conf:macro-mp",
+      "group": "owner",
+      "order": 310,
+      "text": "Holding left click with the right-click macro keeps MP full."
+    },
+    {
+      "id": "conf:regional",
+      "group": "verified",
+      "order": 20,
+      "text": "Regional quests: giver, Kibelisk, rewards, recommended and unlock level from each quest's Metabot page; prerequisites (an earlier regional quest or a story quest) from aion2.gaming.tools and aion2.th.gl, cross-checked with allthings.how ({rqChained} follow-ups, {rqStoryGated} story-gated).",
+      "placeholders": [
+        "rqChained",
+        "rqStoryGated"
+      ]
+    },
+    {
+      "id": "conf:respec",
+      "group": "disputed",
+      "order": 230,
+      "text": "Respec: free while you level; whether it costs Kina after 31 (MeinMMO vs allthings.how, ExitLag).",
+      "when": {
+        "C01": "disputed"
+      }
+    },
+    {
+      "id": "conf:sealed-dungeons",
+      "group": "verified",
+      "order": 80,
+      "text": "Sealed Dungeons are solo; every sampled band pays 2 Wisdom Stones + 2 crystals on the first clear (Metabot, allthings.how, AION2HUB).",
+      "when": {
+        "C12": "verified"
+      }
+    },
+    {
+      "id": "conf:skill-order-single",
+      "group": "single-source",
+      "order": 180,
+      "text": "Skill points after the four above: {skillOrderSingle} (games.gg).",
+      "placeholders": [
+        "skillOrderSingle"
+      ]
+    },
+    {
+      "id": "conf:skill-order-two-source",
+      "group": "verified",
+      "order": 50,
+      "text": "Skill points after the core eight: {skillOrderTwoSource} (GamesFuze, Skycoach). Per-level costs and gates from Metabot skill pages.",
+      "placeholders": [
+        "skillOrderTwoSource"
+      ]
+    },
+    {
+      "id": "conf:specialty-slots",
+      "group": "verified",
+      "order": 70,
+      "text": "Specialty slots at skill level 8 / 12 / 20.",
+      "when": {
+        "C03": "verified"
+      }
+    },
+    {
+      "id": "conf:stat-tiers",
+      "group": "verified",
+      "order": 130,
+      "text": "Stat tiers: only stats that at least two of Metabot, games.gg and GamesFuze rank high (order inside a tier varies)."
+    },
+    {
+      "id": "conf:stigma-order",
+      "group": "disputed",
+      "order": 250,
+      "text": "Stigma slots 3 and 4: Swift Contract before Savage Fang (Metabot, Skycoach); GamesFuze has the reverse."
+    },
+    {
+      "id": "conf:stigmas",
+      "group": "verified",
+      "order": 40,
+      "text": "Stigma slots 22 / 27 / 32 / 37; every stigma learnable at 22; shard cost per level (Metabot, allthings.how). Upgrade plan: Triniel's Dagger to 10, then Illusive Clone toward 20 (GamesFuze, Skycoach)."
+    },
+    {
+      "id": "conf:story",
+      "group": "verified",
+      "order": 30,
+      "text": "Main story to \"{storyEndQuest}\" (Lv {storyEndLv}): objectives and Kibelisks from Metabot quest pages.",
+      "placeholders": [
+        "storyEndQuest",
+        "storyEndLv"
+      ]
+    },
+    {
+      "id": "conf:stronghold-bands",
+      "group": "inferred",
+      "order": 220,
+      "text": "Stronghold level bands (zone plus the level range on Metabot's map)."
+    },
+    {
+      "id": "conf:strongholds",
+      "group": "verified",
+      "order": 90,
+      "text": "Strongholds pay belt scrolls and Kina, no Wisdom Stones or crystals (Metabot quest pages, AION2HUB, allthings.how, FandomWire)."
+    },
+    {
+      "id": "conf:supply-details",
+      "group": "single-source",
+      "order": 160,
+      "text": "Supply Request details (request types, deadlines).",
+      "when": {
+        "C16": "single-source"
+      }
+    },
+    {
+      "id": "conf:unlock-levels",
+      "group": "verified",
+      "order": 10,
+      "text": "Unlock levels from the client-data table (Metabot, Wikily): enhancement 9; extraction, crafting, gathering 10; Supply Requests 25; daily dungeon 30; Abyss, Market, Ascension Trial, Conquest 45.",
+      "when": {
+        "C28a": "verified"
+      }
+    },
+    {
+      "id": "conf:unlock-timing",
+      "group": "unverified",
+      "order": 280,
+      "text": "Kibelisk and Command mission unlock levels."
+    }
+  ]
+}

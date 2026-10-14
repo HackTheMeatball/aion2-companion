@@ -123,13 +123,13 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   /* #11 zone from the giver */
   r = await p.evaluate(() => ({ z: RQ_BY['Nine Wonders of Altgard: 2nd Leg'].zone, pu: RQ_BY['Pain Unending'].zone }));
   ok('#11 Nine Wonders 2nd Leg in Battlescar Mound (giver Tina at Battlescar Mound Cliff), as Pain Unending', r.z === 'Battlescar Mound' && r.pu === 'Battlescar Mound', r);
-  /* the build makes the module src/data/generated.js from the block and esbuild reprints it into the page, so: every
-     constant the block defines has the same value in the page */
-  const blk = fs.readFileSync(CFG.GEN_BLOCK, 'utf8');
-  const names = [...blk.matchAll(/^const (\w+) =/gm)].map(m => m[1]);
-  const genWant = JSON.stringify(require('vm').runInNewContext(blk + '\n;({' + names.join(',') + '})'));
+  /* the build makes the module src/data/generated.js from data/** (tools/gen/gen.mjs) and esbuild reprints it into the
+     page, so: every constant the generator compiles has the same value in the page */
+  const gen = (await import(path.join(ROOT, 'tools', 'gen', 'gen.mjs'))).generate().constants;
+  const names = Object.keys(gen);
+  const genWant = JSON.stringify(Object.fromEntries(names.map(n => [n, gen[n]])));
   const have = await p.evaluate(ns => JSON.stringify(Object.fromEntries(ns.map(n => [n, eval(n)]))), names);
-  ok('#11 page carries the current generated block (the page has its values)', names.length >= 14 && have === genWant, { names: names.length, same: have === genWant });
+  ok('#11 page carries the current generated data (the page has its values)', names.length >= 14 && have === genWant, { names: names.length, same: have === genWant });
 
   /* #12 Sources card */
   r = await p.evaluate(() => { document.getElementById('srcBody').querySelectorAll('details').forEach(d => d.open = true); const t = document.getElementById('srcBody').textContent; return { n: (t.match(/checked Oct 2026/g) || []).length, early: /Earlier research/.test(t), whats: [...new Set([...document.querySelectorAll('#srcBody .src-what')].map(x => x.textContent))].join(' | '), intro: document.querySelector('#srcBody .src-intro').textContent }; });

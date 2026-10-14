@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+/* Data format v2 checks in Node, no browser, no build (0.2 step 5b): every data file and every schema example against
+   data/schema/ with ajv 8 Ajv2020 { strict: true, allErrors: true }; broken copies of real records must be rejected
+   (so a relaxed schema can't pass silently); then the generator's cross-record checks, and data/DATA_SOURCES.md must be
+   what the generator writes. node tests/schema.mjs  (also in `npm test` and the fast CI job) */
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { ROOT, validateAll, validateDoc } from '../tools/gen/validate.mjs';
+import { dataSourcesMd, generate } from '../tools/gen/gen.mjs';
+
+let n = 0, fail = 0;
+const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 900) : '')); if (!c) fail++; };
+const t0 = Date.now();
+
+const { files, bad } = validateAll();
+ok(`every data file and schema example validates (${files} files)`, !bad.length, bad.map(b => `${b.file}: ${b.errors.slice(0, 3).join('; ')}`));
+
+/* negative controls on real records: each broken copy must fail validation */
+const read = p => JSON.parse(readFileSync(join(ROOT, 'data', p), 'utf8'));
+const broken = (label, p, mutate) => {
+  const doc = read(p); mutate(doc.records[0], doc);
+  ok('rejects: ' + label, validateDoc(join(ROOT, 'data', p), doc).length > 0);
+};
+broken('unknown field on a regional quest', 'shared/asmodian/regional-quests.json', r => { r.bogus = 1; });
+broken('location without a zone', 'shared/asmodian/regional-quests.json', r => { delete r.giver.zone; });
+broken('story atom without "is"', 'shared/asmodian/regional-quests.json', r => { r.requires = { story: 'sq:2102105' }; });
+broken('done on a story quest', 'shared/asmodian/guide/steps.json', r => { r.completesWith = ['tick', { done: 'sq:2102105' }]; });
+broken('http:// source URL', 'shared/asmodian/strongholds.json', r => { r.sources[0].url = r.sources[0].url.replace('https', 'http'); });
+broken('owner ref that is a URL', 'shared/asmodian/strongholds.json', r => { r.sources.push({ owner: { ref: 'https://example.com/x.png', checkedAt: '2026-10-14', build: { scheme: 'client', value: 'unrecorded' }, what: 'x' } }); });
+broken('story id as a slug', 'shared/asmodian/story-quests.json', r => { r.id = 'sq:ishalgen'; });
+broken('<span> in guide text', 'shared/asmodian/guide/steps.json', r => { r.text += '<span class="loc">x</span>'; });
+broken('unknown text token', 'shared/asmodian/guide/steps.json', r => { r.text += ' [[bogus:1]]'; });
+broken('schemaVersion 3', 'shared/rules.json', (r, d) => { d.schemaVersion = 3; });
+broken('stigma without maxLevel', 'classes/assassin/stigmas.json', r => { delete r.maxLevel; });
+broken('skill node without its skill', 'classes/assassin/board-nodes.json', (r, d) => { const x = d.records.find(y => y.type === 'skill'); delete x.skill; });
+broken('specialty pick that is not a choice id', 'classes/assassin/builds.json', r => { r.specialtyPicks['skill:assassin:heart-gore'] = ['Up to +20% Critical Hit']; });
+broken('Ascension quest with a giver', 'shared/asmodian/ascension-quests.json', r => { r.giver = { zone: 'zone:moslan-forest' }; });
+broken('site that bans automation read by script', 'sources.json', r => { r.access = { ...r.access, terms: 'bans-automation', mode: 'scripted' }; });
+
+/* the generator: cross-record checks pass, and the committed DATA_SOURCES.md is current */
+let g = null;
+try { g = generate(); } catch (e) { ok('generator runs', false, e.message); }
+if (g) {
+  ok(`generator: ${g.report.checks.length} cross-record checks pass`, !g.failed.length, g.failed.slice(0, 10));
+  ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g));
+  const c = g.constants;
+  ok('compiled: 87 story quests, 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 87 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
+    [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
+}
+console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);
+console.log(fail ? `SCHEMA CHECKS FAILED (${fail})` : 'SCHEMA CHECKS PASSED');
+process.exit(fail ? 1 : 0);

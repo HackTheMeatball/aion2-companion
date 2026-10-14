@@ -1,0 +1,1243 @@
+{
+  "$schema": "../../schema/strongholds.schema.json",
+  "schemaVersion": 2,
+  "collection": "strongholds",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sh:amurahta-surveillance-base",
+      "key": "sh:amurahta-surveillance-base",
+      "name": "Amurahta Surveillance Base",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820014",
+      "type": "Balaur outpost",
+      "questType": "Exploration",
+      "zone": "zone:black-claw-village",
+      "route": "core",
+      "levelRange": {
+        "lo": 41,
+        "hi": 45
+      },
+      "recLv": null,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:black-claw-village",
+        "kibelisk": "Impetusium Lower Path",
+        "meters": 125
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Amurahta Surveillance Base (Kibelisk: Impetusium Lower Path)",
+          "meters": 180
+        }
+      ],
+      "rewards": {
+        "xp": 4164951,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 41,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/amurahta-surveillance-base",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Recommended level not stated. Step Kibelisk 180 m vs map list 125 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:andsha-forward-base",
+      "key": "sh:andsha-forward-base",
+      "name": "Andsha Forward Base",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820015",
+      "type": "Balaur outpost",
+      "questType": "Exploration",
+      "zone": "zone:impetusium-square",
+      "route": "core",
+      "levelRange": {
+        "lo": 44,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:impetusium-square",
+        "kibelisk": "Collapsed Hall of Fame",
+        "meters": 450
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Andsha Forward Base (Kibelisk: Steel Hammer Temporary Trading Post)",
+          "meters": 466
+        }
+      ],
+      "rewards": {
+        "xp": 4164951,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 44,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/andsha-forward-base",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. CONFLICT: quest step's nearest Kibelisk is Steel Hammer Temporary Trading Post 466 m; map list says Collapsed Hall of Fame 450 m. Top-level kib keeps the map-list value.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:barahta-extermination-unit-outpost",
+      "key": "sh:barahta-extermination-unit-outpost",
+      "name": "Barahta Extermination Unit Outpost",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820013",
+      "type": "Balaur outpost",
+      "questType": "Exploration",
+      "zone": "zone:iduns-lake",
+      "route": "core",
+      "levelRange": {
+        "lo": 40,
+        "hi": 40
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:iduns-lake",
+        "kibelisk": "Eastern Gribade Highland Cliff",
+        "meters": 246
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Barahta Extermination Unit Outpost (Kibelisk: Eastern Gribade Highland Cliff)",
+          "meters": 283
+        }
+      ],
+      "rewards": {
+        "xp": 4164951,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 40,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/barahta-extermination-unit-outpost",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 283 m vs map list 246 m. Map list gives level '40' (single value, not a range).",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:blades-temporary-outpost",
+      "key": "sh:blades-temporary-outpost",
+      "name": "Blades Temporary Outpost",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820005",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:tranein-highland",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 20
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:tranein-highland",
+        "kibelisk": "Moslan Forest Cliff",
+        "meters": 137
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Blades Temporary Outpost (Kibelisk: Moslan Forest Cliff)",
+          "meters": 160
+        }
+      ],
+      "rewards": {
+        "xp": 54041,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blades-temporary-outpost",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 160 m vs map list 137 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:corrupted-forester-ruins",
+      "key": "sh:corrupted-forester-ruins",
+      "name": "Corrupted Forester Ruins",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820004",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Forest Hideout",
+        "meters": 180
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Corrupted Forester Ruins (Kibelisk: Forest Hideout)",
+          "meters": 121
+        }
+      ],
+      "rewards": {
+        "xp": 54041,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/corrupted-forester-ruins",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 121 m vs map list 180 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:detlef-thieves-camp",
+      "key": "sh:detlef-thieves-camp",
+      "name": "Detlef Thieves Camp",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820008",
+      "type": "Bandit hideout",
+      "questType": "Exploration",
+      "zone": "zone:western-gribade-highland",
+      "route": "core",
+      "levelRange": {
+        "lo": 37,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:western-gribade-highland",
+        "kibelisk": "Zemurru's Tomb",
+        "meters": 221
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Detlef Thieves Camp (Kibelisk: Zemurru's Tomb)",
+          "meters": 180
+        }
+      ],
+      "rewards": {
+        "xp": 2033288,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 37,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/detlef-thieves-camp",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 180 m vs map list 221 m.",
+        "allthings.how Western Gribade guide (https://allthings.how/?p=244882): clear grants achievement 'Altgard Stronghold Sweep V' plus a Treasure Chest; no item counts.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:flauke-legion-outpost",
+      "key": "sh:flauke-legion-outpost",
+      "name": "Flauke Legion Outpost",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820011",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "levelRange": {
+        "lo": 33,
+        "hi": 48
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Shulak Street Stall",
+        "meters": 166
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Flauke Legion Outpost (Kibelisk: Shulak Street Stall)",
+          "meters": 138
+        }
+      ],
+      "rewards": {
+        "xp": 381569,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 33,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/flauke-legion-outpost",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 138 m vs map list 166 m.",
+        "allthings.how Basfelt guide (https://allthings.how/?p=247532) also gives 381,569 EXP (2 sources).",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:forest-marauder-campsite",
+      "key": "sh:forest-marauder-campsite",
+      "name": "Forest Marauder Campsite",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820007",
+      "type": "Bandit hideout",
+      "questType": "Exploration",
+      "zone": "zone:purifying-forest",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": null,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Purifying Forest Sunny Hill",
+        "meters": 284
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Forest Marauder Campsite (Kibelisk: Purifying Forest Sunny Hill)",
+          "meters": 247
+        }
+      ],
+      "rewards": {
+        "xp": 788688,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forest-marauder-campsite",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 247 m vs map list 284 m; rec level not stated (page 'Lv. 1', unlocks at 1).",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:granach-s-hideout",
+      "key": "sh:granach-s-hideout",
+      "name": "Granach's Hideout",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820009",
+      "type": "Bandit hideout",
+      "questType": "Exploration",
+      "zone": "zone:eastern-gribade-highland",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:eastern-gribade-highland",
+        "kibelisk": "Eastern Gribade Highland Tail Island",
+        "meters": 217
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Granach's Hideout (Kibelisk: Eastern Gribade Highland Tail Island)",
+          "meters": 230
+        }
+      ],
+      "rewards": {
+        "xp": 4164951,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/granachs-hideout",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 230 m vs map list 217 m.",
+        "allthings.how Eastern Gribade guide (https://allthings.how/?p=244758): clearing and opening the Treasure Chest grants completion rewards and title 'Overthrower!'; no item counts.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:graverobber-den",
+      "key": "sh:graverobber-den",
+      "name": "Graverobber Den",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820001",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:crypt",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 13
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:crypt",
+        "kibelisk": "Galorik's Inspection Area",
+        "meters": 378
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Graverobber Den (Kibelisk: Galorik's Inspection Area)",
+          "meters": 377
+        }
+      ],
+      "rewards": {
+        "xp": 16673,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/graverobber-den",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP; no Kina/Wisdom/Crystal/items. Step Kibelisk 377 m vs map list 378 m.",
+        "Zone 'Crypt' is Metabot's map zone name; not in the app's sub-region list.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:latrima-outpost",
+      "key": "sh:latrima-outpost",
+      "name": "Latrima Outpost",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820012",
+      "type": "Balaur outpost",
+      "questType": "Exploration",
+      "zone": "zone:dranactus",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Battlescar Mound Clifftop",
+        "meters": 163
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Latrima Outpost (Kibelisk: Battlescar Mound Clifftop)",
+          "meters": 160
+        }
+      ],
+      "rewards": {
+        "xp": 615432,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/latrima-outpost",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 160 m vs map list 163 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:legion-base-ruins",
+      "key": "sh:legion-base-ruins",
+      "name": "Legion Base Ruins",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820010",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "levelRange": {
+        "lo": 33,
+        "hi": 48
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Fissure Cave",
+        "meters": 187
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Legion Base Ruins (Kibelisk: Fissure Cave)",
+          "meters": 200
+        }
+      ],
+      "rewards": {
+        "xp": 992631,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 33,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/legion-base-ruins",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 200 m vs map list 187 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:logger-s-rest-ruins",
+      "key": "sh:logger-s-rest-ruins",
+      "name": "Logger's Rest Ruins",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820006",
+      "type": "Bandit hideout",
+      "questType": "Exploration",
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Elim's Rest",
+        "meters": 217
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Logger's Rest Ruins (Kibelisk: Elim's Rest)",
+          "meters": 224
+        }
+      ],
+      "rewards": {
+        "xp": 54041,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/loggers-rest-ruins",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 224 m vs map list 217 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:rubek-thieves-occupied-territory",
+      "key": "sh:rubek-thieves-occupied-territory",
+      "name": "Rubek Thieves' Occupied Territory",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820003",
+      "type": "Bandit hideout",
+      "questType": "Exploration",
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 45
+      },
+      "recLv": null,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven Cliff",
+        "meters": 467
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Rubek Thieves' Occupied Territory (Kibelisk: Safe Haven Cliff)",
+          "meters": 471
+        }
+      ],
+      "rewards": {
+        "xp": 6410,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/rubek-thieves-occupied-territory",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Recommended level not stated (page: 'around level 1', unlocks at 1). Quest page lists only EXP. Step Kibelisk 471 m vs map list 467 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    },
+    {
+      "id": "sh:sanctum-outskirts-watch",
+      "key": "sh:sanctum-outskirts-watch",
+      "name": "Sanctum Outskirts Watch",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820002",
+      "type": "Balaur outpost",
+      "questType": "Exploration",
+      "zone": "zone:silent-hill",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 18
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:silent-hill",
+        "kibelisk": "Silent Hill Mushroom Rock",
+        "meters": 147
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Sanctum Outskirts Watch (Kibelisk: Silent Hill Mushroom Rock)",
+          "meters": 126
+        }
+      ],
+      "rewards": {
+        "xp": 20774,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/sanctum-outskirts-watch",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12",
+          "note": "location: map list (stronghold location)"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 126 m vs map list 147 m.",
+        "Zone 'Silent Hill' is Metabot's map zone name; not in the app's sub-region list.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    }
+  ]
+}

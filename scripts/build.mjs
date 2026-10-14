@@ -7,8 +7,8 @@
      src/main.js               the app script (ES module entry)
      src/data/*.js             the hand-written data tables (and the text helpers they use), imported by main.js
      src/core/*.js             the pure core (0.2 P3): state, migrations, catalog, requirements, Next up ranking; no DOM
-     src/data/generated.js     not a file: the build makes this module from tools/gen/gen-block.js (`npm run gen`
-                               writes that from data/*.json), adding an export list of its constants
+     src/data/generated.js     not a file: the build makes this module from data/** (data format v2) with
+                               tools/gen/gen.mjs, in memory, on every build
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
@@ -35,7 +35,7 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statS
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
-import { genModule, generatedData, staleGenerated } from './generated-data.mjs';
+import { genModule, generatedData, generatedNames, staleGenerated } from './generated-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -53,9 +53,10 @@ const shell = readFileSync(P('src/index.html'), 'utf8');
 const STYLE_TAG = /^<link rel="stylesheet" href="(styles\/[\w.-]+\.css)">\n/gm;
 const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
 
-/* the generated data module (0.2 P2): built from tools/gen/gen-block.js, never stored in src/ (a stale copy there would
-   shadow nothing but mislead, so the build refuses it). The esbuild plugin is shared with the Node core tests. */
-if (staleGenerated()) die('src/data/generated.js exists: the build makes that module from tools/gen/gen-block.js; delete the file');
+/* the generated data module (0.2 step 5b): compiled from data/** by tools/gen/gen.mjs at build time, never stored (a stale
+   copy in src/ would shadow nothing but mislead, so the build refuses it). The esbuild plugin is shared with the Node
+   core tests. A schema error or a failed data check stops the build. */
+if (staleGenerated()) die('src/data/generated.js exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file');
 try { genModule(); } catch (e) { die(e.message); }
 const bundleOne = async entry => {
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
@@ -71,7 +72,7 @@ const bundleOne = async entry => {
    modules, breaking the globals the page, site.js and the tests use. Checks every declaration that starts a line
    (the first name of a multi-name declaration). */
 {
-  const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map();
+  const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map(generatedNames().map(n => [n, 'the generated data module']));
   for (const f of ['src/main.js', ...['data', 'core'].flatMap(d => readdirSync(P('src', d)).filter(n => n.endsWith('.js')).map(n => `src/${d}/${n}`))])
     for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
       if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);

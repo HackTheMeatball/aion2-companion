@@ -18,10 +18,13 @@
     "test": "npm run build && node tests/run.mjs",
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
     "test:core": "node tests/core.mjs",
-    "gen": "python3 -I tools/gen/gen.py",
-    "gen:check": "python3 -I tools/gen/gen.py && git diff --exit-code -- tools/gen/gen-block.js tools/gen/gen-report.json data/DATA_SOURCES.md"
+    "gen": "node tools/gen/gen.mjs",
+    "gen:check": "node tools/gen/gen.mjs && git diff --exit-code -- data/DATA_SOURCES.md",
+    "validate": "node tools/gen/validate.mjs",
+    "test:data": "node tests/schema.mjs"
   },
   "devDependencies": {
+    "ajv": "8.20.0",
     "axe-core": "4.13.0",
     "esbuild": "0.28.2",
     "playwright": "1.56.0"

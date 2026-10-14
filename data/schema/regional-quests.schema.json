@@ -101,6 +101,10 @@
         },
         "route": {
           "$ref": "common.schema.json#/$defs/route"
+        },
+        "order": {
+          "description": "Display order (v1 list order: allthings.how's regional quest list by recommended level). Records are stored sorted by id; the compiler lists quests by this.",
+          "type": "number"
         }
       },
       "unevaluatedProperties": false

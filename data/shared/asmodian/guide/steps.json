@@ -1,0 +1,1081 @@
+{
+  "$schema": "../../../schema/steps.schema.json",
+  "schemaVersion": 2,
+  "collection": "steps",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "build:0",
+      "key": "build:0",
+      "milestone": "build",
+      "order": 10,
+      "text": "<b>Skill Points:</b> spend them at each milestone; the Skills card shows the single next upgrade between stops.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "build:1",
+      "key": "build:1",
+      "milestone": "build",
+      "order": 20,
+      "text": "<b>Fill every [[tip:specialty|specialty slot]]</b> the moment it unlocks. Empty slots do nothing.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C03"
+      ]
+    },
+    {
+      "id": "build:2",
+      "key": "build:2",
+      "milestone": "build",
+      "order": 30,
+      "text": "<b>Experiment freely.</b> [[tip:respec|Respec is free]] while you level; check its cost at 31 before you rely on it.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C01"
+      ]
+    },
+    {
+      "id": "build:3",
+      "key": "build:3",
+      "milestone": "build",
+      "order": 40,
+      "text": "<b>Stat priority</b> for gear and Daevanion paths is in the Build tab (right edge).",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C20"
+      ]
+    },
+    {
+      "id": "build:beltamulet",
+      "key": "build:beltamulet",
+      "milestone": "build",
+      "order": 50,
+      "text": "<b>Belt and amulet are the only gear worth enhancing by default.</b> Spend each Noble Belt or Revelation Amulet Enhance Scroll as soon as you get it; you keep both pieces for the whole game.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "daily:0",
+      "key": "daily:0",
+      "milestone": "daily",
+      "order": 10,
+      "text": "<b>[[tip:supply|Supply Requests]]</b> (Lv 25): daily Emergency and weekly hand-ins for Abyss Points. Spares only.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C28g"
+      ]
+    },
+    {
+      "id": "daily:1",
+      "key": "daily:1",
+      "milestone": "daily",
+      "order": 20,
+      "text": "<b>[[tip:duty|Duty Quests]]</b> (Lv 45): 5 rewarded a day, shared by every character on the server, from the Journal's Duty tab (J).",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C15"
+      ]
+    },
+    {
+      "id": "daily:2",
+      "key": "daily:2",
+      "milestone": "daily",
+      "order": 30,
+      "text": "<b>Daily dungeon</b> (Lv 30). Daeva Bio-Research Base for [[item:enhance]].",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "daily:3",
+      "key": "daily:3",
+      "milestone": "daily",
+      "order": 40,
+      "text": "<b>Weekly Command missions</b> from the Command Merchant in the capital: up to 12 a week per server.",
+      "note": "No source gives an unlock level.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C19"
+      ]
+    },
+    {
+      "id": "f2p:0",
+      "key": "f2p:0",
+      "milestone": "f2p",
+      "order": 10,
+      "text": "<b>Kina is your bottleneck.</b> Without a subscription you can't use the Marketplace or the Kina/Quna exchange, so you can't buy Kina (those, and the subscriber shop, need the $15/month subscription). Spend it on permanent upgrades.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C17"
+      ]
+    },
+    {
+      "id": "f2p:1",
+      "key": "f2p:1",
+      "milestone": "f2p",
+      "order": 20,
+      "text": "<b>Cash shop is mostly cosmetic</b> (outfits, wings, pets, weapon skins); NCSoft says nothing in it affects stats. Nothing in this guide needs it.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C18"
+      ]
+    },
+    {
+      "id": "f2p:2",
+      "key": "f2p:2",
+      "milestone": "f2p",
+      "order": 30,
+      "text": "<b>Daeva Pass:</b> claim the free track; the premium track is per character and costs Quna.",
+      "upsell": "Premium track is paid.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g10:0",
+      "key": "g10:0",
+      "milestone": "g10",
+      "order": 10,
+      "route": "core",
+      "short": "Extract gear you've replaced",
+      "text": "<b>[[tip:extract|Extract]] gear you've replaced:</b> open the Cube, click the old piece, choose Extract and confirm. Only gear in your Cube can be extracted, not what you're wearing, so the option appears once a drop replaces something.",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g10:1",
+      "key": "g10:1",
+      "milestone": "g10",
+      "order": 20,
+      "route": "core",
+      "short": "Complete \"Gathering Essentials\"",
+      "text": "<b>Complete \"Gathering Essentials\"</b> to unlock pets, then set the [[tip:petfilter|pet loot filter]].",
+      "loc": "Story quest after \"Survival Supplies\" · Safe Haven · [[mapq:2102020|VeKauf]]",
+      "note": "Pet choice: take Armadon or Tog. All three ride and give the same bonus, but Fossa can be collected later from Fossa soul drops around Lv 24.",
+      "storyQuest": "sq:2102020",
+      "requires": {
+        "all": [
+          {
+            "level": 10,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102020",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102020",
+          "is": "turnedIn"
+        }
+      ]
+    },
+    {
+      "id": "g10:5",
+      "key": "g10:5",
+      "milestone": "g10",
+      "order": 40,
+      "route": "core",
+      "short": "Claim Daeva Pass free-track rewards",
+      "text": "<b>Claim Daeva Pass free-track rewards</b> as you earn them.",
+      "upsell": "Premium track costs Quna (real money). Skip it.",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g10:wisdom",
+      "key": "g10:wisdom",
+      "milestone": "g10",
+      "order": 30,
+      "route": "core",
+      "short": "Use your [[item:wisdom]]",
+      "text": "<b>Use the [[item:wisdom]] from Sealed Dungeons and quests.</b> Each becomes 1 [[tip:wisdom|Skill Point]] only when you use it from your Cube.",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g12:0",
+      "key": "g12:0",
+      "milestone": "g12",
+      "order": 10,
+      "route": "core",
+      "short": "Complete \"Urgent Pursuit\"",
+      "text": "<b>Complete \"Urgent Pursuit\"</b> to unlock the [[tip:daevanion|Daevanion board]]. Use every [[item:crystal]] from the Cube. Nodes are in the Daevanion board card at the top. [[build:text:nezekan-plan]]",
+      "loc": "Story quest after \"Veiled Truth\" · Quai Campsite · [[mapq:2102065|Ulgorn]]",
+      "note": "Same quest unlocks the Shugo Festival.",
+      "storyQuest": "sq:2102065",
+      "requires": {
+        "all": [
+          {
+            "level": 13,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102065",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102065",
+          "is": "turnedIn"
+        }
+      ]
+    },
+    {
+      "id": "g12:belt",
+      "key": "g12:belt",
+      "milestone": "g12",
+      "order": 120,
+      "route": "core",
+      "short": "Enhance the Noble Belt",
+      "text": "<b>Noble Belt:</b> the main story hands it to you around Lv 13 (it can't be missed). Enhance it +1 each time you get a <b>Noble Belt Enhance Scroll</b> (2 per Stronghold, see Dungeons &amp; Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%.",
+      "requires": {
+        "level": 13,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C24"
+      ]
+    },
+    {
+      "id": "g16:0",
+      "key": "g16:0",
+      "milestone": "g16",
+      "order": 10,
+      "route": "core",
+      "short": "Complete \"Buried Atrocities\"",
+      "text": "<b>Complete \"Buried Atrocities\"</b> to unlock [[tip:guild|Legions]], then join one.",
+      "loc": "Story quest after \"Dead Men Tell No Tales\" · the Crypt (nearest teleport: Neglected Crematorium) · [[mapq:2102100|Ulgorn]]",
+      "storyQuest": "sq:2102100",
+      "requires": {
+        "all": [
+          {
+            "level": 16,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102100",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102100",
+          "is": "turnedIn"
+        }
+      ]
+    },
+    {
+      "id": "g16:amulet",
+      "key": "g16:amulet",
+      "milestone": "g16",
+      "order": 30,
+      "route": "core",
+      "short": "Enhance the Revelation Amulet",
+      "text": "<b>Revelation Amulet:</b> the story gives it at Lv 16, just before the Monolith quest. Every Monolith level from 2 gives a <b>Revelation Amulet Enhance Scroll</b>; use each one right away (+1, plus Enhance Stones and Kina).",
+      "note": "The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier.",
+      "requires": {
+        "level": 16,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C23"
+      ]
+    },
+    {
+      "id": "g16:monolith",
+      "key": "g16:monolith",
+      "milestone": "g16",
+      "order": 20,
+      "route": "core",
+      "short": "Complete \"Empyrean Monolith\"",
+      "text": "<b>Complete \"Empyrean Monolith\"</b>, then turn in your [[tip:traces|Empyrean Traces]] at the Monolith (Resonate).",
+      "loc": "Story quest right after \"Buried Atrocities\" · [[mapq:2102105|Ulgorn]]",
+      "storyQuest": "sq:2102105",
+      "requires": {
+        "all": [
+          {
+            "level": 16,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102105",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102105",
+          "is": "turnedIn"
+        }
+      ]
+    },
+    {
+      "id": "g20:0",
+      "key": "g20:0",
+      "milestone": "g20",
+      "order": 10,
+      "route": "core",
+      "short": "Zikel board opens",
+      "text": "<b>Zikel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "opensBoard": "board:zikel",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g20:exp",
+      "key": "g20:exp",
+      "milestone": "g22",
+      "order": 30,
+      "route": "completionist",
+      "short": "Krao Cave Expedition opens",
+      "text": "<b>Krao Cave [[tip:expedition|Expedition]] (Exploration) opens</b> after the story quest \"Daeva in a Dream\": the first dungeon you can run with friends, 1–5 players. Needs [[tip:gearscore|item level]] 200.",
+      "optional": true,
+      "mapSlug": "krao-cave",
+      "requires": {
+        "all": [
+          {
+            "level": 22,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102185",
+            "is": "reached",
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g22:0",
+      "key": "g22:0",
+      "milestone": "g22",
+      "order": 10,
+      "route": "core",
+      "short": "Complete \"The One Who Hears the Voice\"",
+      "text": "<b>Complete \"The One Who Hears the Voice\"</b> to unlock [[tip:stigma|Stigmas]] and the Pantheon.",
+      "loc": "Ascension quest from Asahr. Opens once your Ascension Gauge is at 100% and the story reaches \"Daeva in a Dream\" (Lv 22). [[asc]]",
+      "ascensionQuest": "asc:hears-the-voice",
+      "requires": {
+        "all": [
+          {
+            "level": 22,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102185",
+            "is": "reached",
+            "basis": "legacy"
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g22:1",
+      "key": "g22:1",
+      "milestone": "g22",
+      "order": 20,
+      "route": "core",
+      "text": "<b>Equip [[stigma:1]].</b> Plan: [[build:stigma:1]], raised to level [[build:stigmaTarget:1]] first. Any stigma fits any slot; if you equipped another, pick it in the Stigmas card.",
+      "stigmaSlot": 1,
+      "requires": {
+        "all": [
+          {
+            "level": 22,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102185",
+            "is": "reached",
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g25:0",
+      "key": "g25:0",
+      "milestone": "g25",
+      "order": 10,
+      "route": "completionist",
+      "short": "Hand in spares to Supply Requests",
+      "text": "<b>Hand in spares to [[tip:supply|Supply Requests]].</b> Only items you already have and don't need; don't buy for it while leveling. Abyss Points matter mostly at 45.",
+      "optional": true,
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g27:0",
+      "key": "g27:0",
+      "milestone": "g27",
+      "order": 10,
+      "route": "core",
+      "text": "<b>Equip [[stigma:2]].</b> Plan: [[build:stigma:2]], raised toward level [[build:stigmaTarget:2]] once [[build:stigma:1]] is at [[build:stigmaTarget:1]].",
+      "stigmaSlot": 2,
+      "requires": {
+        "level": 27,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g27:1",
+      "key": "g27:1",
+      "milestone": "g27",
+      "order": 20,
+      "route": "core",
+      "text": "<b>Put [[stigma:2]] on E</b>[[erow:2]]. Open with E, then [[build:text:opener]].",
+      "stigmaKeySlot": 2,
+      "requires": {
+        "level": 27,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick",
+        {
+          "done": "g27:0",
+          "note": "E4 (eputSync1): done once stigma slot 2 is marked equipped"
+        }
+      ]
+    },
+    {
+      "id": "g30:0",
+      "key": "g30:0",
+      "milestone": "g30",
+      "order": 10,
+      "route": "core",
+      "short": "Vaizel board opens",
+      "text": "<b>Vaizel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "opensBoard": "board:vaizel",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g30:1",
+      "key": "g30:1",
+      "milestone": "g30",
+      "order": 20,
+      "route": "core",
+      "short": "Start the daily dungeon",
+      "text": "<b>Start the daily dungeon:</b> run Daeva Bio-Research Base for [[item:enhance]].",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g32:0",
+      "key": "g32:0",
+      "milestone": "g32",
+      "order": 10,
+      "route": "core",
+      "text": "<b>Equip [[stigma:3]].</b> Plan: [[build:stigma:3]]. Level 1 is enough for now.",
+      "stigmaSlot": 3,
+      "requires": {
+        "level": 32,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g32:1",
+      "key": "g32:1",
+      "milestone": "g32",
+      "order": 20,
+      "route": "core",
+      "text": "<b>Put [[stigma:3]] on E</b>[[erow:3]]. Build tab (right edge) → Key setup shows where.",
+      "stigmaKeySlot": 3,
+      "requires": {
+        "level": 32,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick",
+        {
+          "done": "g32:0",
+          "note": "E4 (eputSync1): done once stigma slot 3 is marked equipped"
+        }
+      ]
+    },
+    {
+      "id": "g32:dreams",
+      "key": "g32:dreams",
+      "milestone": "g32",
+      "order": 30,
+      "route": "core",
+      "short": "Ascension quest \"The One Who Dreams\"",
+      "text": "<b>Complete \"The One Who Dreams\"</b> (recommended Lv 32).",
+      "loc": "Ascension quest from Asahr at Dream Crossroad. Opens once your Ascension Gauge is at 100% and the story reaches \"A Daeva Dreaming Anew\" (Lv 32). [[asc]]",
+      "ascensionQuest": "asc:dreams",
+      "requires": {
+        "all": [
+          {
+            "level": 32,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102345",
+            "is": "reached",
+            "basis": "legacy"
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C36"
+      ]
+    },
+    {
+      "id": "g35:exp",
+      "key": "g35:exp",
+      "milestone": "g35",
+      "order": 20,
+      "route": "completionist",
+      "short": "Fire Temple Expedition opens",
+      "text": "<b>Fire Temple [[tip:expedition|Expedition]] (Exploration) opens</b>: 1–5 players, item level 500.",
+      "loc": "The story quest \"Mirror of Greed\" (Lv 37) sends you in.",
+      "optional": true,
+      "mapSlug": "fire-temple",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g37:0",
+      "key": "g37:0",
+      "milestone": "g37",
+      "order": 10,
+      "route": "core",
+      "text": "<b>Equip [[stigma:4]].</b> Plan: [[build:stigma:4]]. Level 1 is enough for now.",
+      "stigmaSlot": 4,
+      "requires": {
+        "level": 37,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g37:1",
+      "key": "g37:1",
+      "milestone": "g37",
+      "order": 20,
+      "route": "core",
+      "text": "<b>Put [[stigma:4]] on E[[erow:4]], then run the full rotation on a training dummy.</b>[[rotseq]]",
+      "stigmaKeySlot": 4,
+      "requires": {
+        "level": 37,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick",
+        {
+          "done": "g37:0",
+          "note": "E4 (eputSync1): done once stigma slot 4 is marked equipped"
+        }
+      ]
+    },
+    {
+      "id": "g37:2",
+      "key": "g37:2",
+      "milestone": "g37",
+      "order": 30,
+      "route": "core",
+      "short": "\"Mirror of Greed\": the Fire Temple run",
+      "text": "<b>Lv 37 story instance:</b> \"Mirror of Greed\" sends you into the Fire Temple. If it stops you, enhance your weapon first; otherwise keep saving.",
+      "storyQuest": "sq:2102590",
+      "requires": {
+        "all": [
+          {
+            "level": 37,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102590",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102590",
+          "is": "turnedIn"
+        }
+      ],
+      "claims": [
+        "C10"
+      ]
+    },
+    {
+      "id": "g40:0",
+      "key": "g40:0",
+      "milestone": "g40",
+      "order": 10,
+      "route": "core",
+      "short": "Triniel board opens",
+      "text": "<b>Triniel [[tip:daevanion|Daevanion board]] opens.</b> Use every [[item:crystal]] in your Cube, then buy its nodes from the Daevanion board card at the top.",
+      "opensBoard": "board:triniel",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "g45:0",
+      "key": "g45:0",
+      "milestone": "g45",
+      "order": 10,
+      "route": "core",
+      "short": "Finish the Hero and Ascension quests",
+      "text": "<b>Finish the remaining Hero and Ascension quests:</b> \"The One Who Witnesses the Nightmare\" (recommended 45) and \"The One Who Swears the Oath\" (recommended 49, so expect it to need gear), both from Asahr.",
+      "loc": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it. [[asc]]",
+      "ascensionQuest": "asc:witnesses",
+      "requires": {
+        "all": [
+          {
+            "level": 45,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102800",
+            "is": "turnedIn",
+            "basis": "legacy"
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C05",
+        "C37"
+      ]
+    },
+    {
+      "id": "g45:2",
+      "key": "g45:2",
+      "milestone": "g45",
+      "order": 20,
+      "route": "completionist",
+      "short": "Azphel board opens",
+      "text": "<b>Azphel [[tip:daevanion|Daevanion board]] opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals.",
+      "optional": true,
+      "advancedOnly": true,
+      "requires": {
+        "level": 45,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C22"
+      ]
+    },
+    {
+      "id": "g45:3",
+      "key": "g45:3",
+      "milestone": "g45",
+      "order": 30,
+      "route": "completionist",
+      "short": "Time your Ascension Trial",
+      "text": "<b>Ascension Trial timing.</b> Easy needs item level 1,000, Normal 1,500. Run your 3 weekly entries late in the week, after you've raised your item level.",
+      "optional": true,
+      "advancedOnly": true,
+      "requires": {
+        "level": 45,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C06"
+      ]
+    },
+    {
+      "id": "g45:4",
+      "key": "g45:4",
+      "milestone": "g45",
+      "order": 40,
+      "route": "completionist",
+      "short": "Abyss Points: Stigma Shards first",
+      "text": "<b>Abyss Points:</b> Stigma Shards first, not a full Abyss gear set (KeenGamer's advice; one source).",
+      "optional": true,
+      "advancedOnly": true,
+      "requires": {
+        "level": 45,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C07"
+      ]
+    },
+    {
+      "id": "g45:5",
+      "key": "g45:5",
+      "milestone": "g45",
+      "order": 50,
+      "route": "completionist",
+      "short": "Start Conquest",
+      "text": "<b>Start Conquest</b> (Krao Cave tier, [[tip:gearscore|item level]] 700). Weapon first, then your weakest slots.",
+      "optional": true,
+      "advancedOnly": true,
+      "requires": {
+        "level": 45,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C08"
+      ]
+    },
+    {
+      "id": "g6:0",
+      "key": "g6:0",
+      "milestone": "g6",
+      "order": 10,
+      "route": "core",
+      "short": "Complete \"The Being Beneath the Lake\"",
+      "text": "<b>Complete \"The Being Beneath the Lake\"</b> (unlocks wings) and <b>\"Spread Your Wings\"</b>. Its Ascension step is Asahr's quest \"The One Who Perceives\" at Dream Crossroad; finishing it completes that step.",
+      "loc": "Story quests in Ishalgen · Witch's Cabin · Elvida (after \"Isolated Lake\")",
+      "storyQuest": "sq:2101050",
+      "requires": {
+        "all": [
+          {
+            "level": 6,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2101050",
+            "is": "reached",
+            "basis": "rule",
+            "note": "the step is this story quest"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2101050",
+          "is": "turnedIn"
+        }
+      ]
+    },
+    {
+      "id": "g9:0",
+      "key": "g9:0",
+      "milestone": "g9",
+      "order": 10,
+      "route": "core",
+      "short": "Save your [[item:enhance]]",
+      "text": "<b>Save your [[item:enhance]]</b> in the Cube. [[tip:enhance|Enhance]] the belt and Revelation amulet once you have them; other gear only if a boss or Sealed Dungeon actually stops you, weapon first. The first real supply is the Lv 10 Sealed Dungeons (1,250 each). Strongholds are the main source of belt enhance scrolls (2 each); both are in Dungeons & Strongholds.",
+      "note": "The 5 stones from the Lv 7 quest were likely spent in Pelleir's tutorial, usually on your starting weapon (look for a +1). Extract that weapon once it's replaced to get them back.",
+      "requires": {
+        "level": 9,
+        "basis": "rule",
+        "note": "milestone level"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "claims": [
+        "C13"
+      ]
+    },
+    {
+      "id": "hold:1",
+      "key": "hold:1",
+      "milestone": "hold",
+      "order": 10,
+      "text": "<b>[[tip:enhance|Enhancing]] leveling gear.</b> Extraction returns the stones but not the Kina. Belt and Revelation amulet are the exceptions; anything else only when stuck.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "hold:2",
+      "key": "hold:2",
+      "milestone": "hold",
+      "order": 20,
+      "text": "<b>Throwing away upgrade fragments.</b> You'll need large amounts; keep them all. A [[tip:petfilter|pet loot filter]] keeps junk out instead.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "hold:3",
+      "key": "hold:3",
+      "milestone": "hold",
+      "order": 30,
+      "text": "<b>Premium materials on quest gear.</b> Save them for gear you'll keep.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "story:0",
+      "key": "story:0",
+      "milestone": "story",
+      "order": 10,
+      "text": "<b>Keep the Hero quest chain moving.</b> Pause only at milestones.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "story:1",
+      "key": "story:1",
+      "milestone": "story",
+      "order": 20,
+      "text": "<b>Activate every [[tip:kibelisk|Kibelisk]]</b> you pass.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "story:2",
+      "key": "story:2",
+      "milestone": "story",
+      "order": 30,
+      "text": "<b>Equip better gear immediately.</b> From Lv 10, [[tip:extract|extract]] the old piece. Don't [[tip:enhance|enhance]] leveling gear unless you're stuck.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "story:3",
+      "key": "story:3",
+      "milestone": "story",
+      "order": 40,
+      "text": "<b>A regional quest that isn't in the game yet:</b> click \"Not in game yet\" on it (Next up or its milestone). It comes back after your next Level up, or once the quest before it is turned in.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    },
+    {
+      "id": "story:4",
+      "key": "story:4",
+      "milestone": "story",
+      "order": 50,
+      "text": "<b>Pick up [[tip:traces|Empyrean Traces]]</b> (feathers) you pass in Altgard; sweep the rest with the map later.",
+      "requires": {
+        "all": []
+      },
+      "completesWith": [
+        "tick"
+      ]
+    }
+  ]
+}

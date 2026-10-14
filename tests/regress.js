@@ -9,7 +9,7 @@ const CUR = CFG.CUR, V285 = CFG.V285, KEY = 'aion2-assassin-route-v4';
 const QUICK = process.argv.includes('--quick'), NOSHOTS = process.argv.includes('--noshots');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const SRC = fs.readFileSync(CFG.PAGE, 'utf8');
-const RQD = J('data/rq.json'), CH = J('data/rq-chains.json');
+const V1 = require('./support/v1view'), RQD = V1.rq, CH = V1.chains; /* the v1-shaped view of data/** (0.2 step 5b) */
 fs.mkdirSync(SHOTS, { recursive: true });
 const results = []; let hardFail = 0, softFail = 0;
 const rec = (ctx, check, pass, detail, soft) => { results.push({ ...ctx, check, pass: !!pass, ...(soft ? { soft: true } : {}), ...(detail !== undefined && !pass ? { detail } : (detail !== undefined && soft === 'info' ? { detail } : {})) }); if (!pass) soft ? softFail++ : hardFail++; };

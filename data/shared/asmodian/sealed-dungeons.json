@@ -1,0 +1,2910 @@
+{
+  "$schema": "../../schema/sealed-dungeons.schema.json",
+  "schemaVersion": 2,
+  "collection": "sealedDungeons",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sd:abandoned-archon-jail",
+      "key": "sd:abandoned-archon-jail",
+      "name": "Abandoned Archon Jail",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Moslan Forest Cliff",
+        "meters": 150
+      },
+      "mapSlug": "abandoned-archon-jail",
+      "xp": 36027,
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/abandoned-archon-jail/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ],
+          "note": "allthings.how lv15 Moslan Forest; metabot page has no kib/xp; xp from known value"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:abandoned-memorial-room",
+      "key": "sd:abandoned-memorial-room",
+      "name": "Abandoned Memorial Room",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:uruthumheim",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:uruthumheim",
+        "kibelisk": "Abandoned Site",
+        "meters": 260
+      },
+      "mapSlug": "abandoned-memorial-room",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/abandoned-memorial-room/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:abandoned-one-s-grave",
+      "key": "g10h:abandoned-one-s-grave",
+      "name": "Abandoned One's Grave",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 189
+      },
+      "mapSlug": "abandoned-ones-grave",
+      "xp": 11115,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: The Forsaken"
+        ]
+      },
+      "rewardBasis": "clear reward table (Standard); page does not separate first-clear",
+      "bosses": [
+        "Scion Behit (Lv 10)"
+      ],
+      "exploreQuestId": "2810003",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/abandoned-ones-grave",
+          "fields": [
+            "band",
+            "zone",
+            "rewards",
+            "bosses"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/abandoned-ones-grave",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "xp"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Metabot page lists no Kibelisk, only entrance zone Nameless Cemetery. Abyss Points 1,000 listed for Elyos only. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810003, step 'Clear Abandoned One's Grave', nearest Kibelisk Neglected Crematorium 189 m; EXP 11,115)."
+      ]
+    },
+    {
+      "id": "sd:all-curing-cave",
+      "key": "sd:all-curing-cave",
+      "name": "All-Curing Cave",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:battlescar-mound",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:battlescar-mound",
+        "kibelisk": "Battlescar Mound Clifftop",
+        "meters": 170
+      },
+      "mapSlug": "all-curing-cave",
+      "xp": 661754,
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/all-curing-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:ascetic-s-cave",
+      "key": "sd:ascetic-s-cave",
+      "name": "Ascetic's Cave",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:impetusium-square",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:impetusium-square",
+        "kibelisk": "Outskirts Stall",
+        "meters": 160
+      },
+      "mapSlug": "ascetics-cave",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Self-Flagellating"
+        ]
+      },
+      "rewardBasis": "allthings.how reward list (no first-clear distinction)",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://allthings.how/aion-2/map/ascetic-s-cave/",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Not found on Metabot's dungeon list page (list was truncated at Lv 25). allthings.how gives 'roughly 160 m' to the Outskirts Stall teleport statue."
+      ]
+    },
+    {
+      "id": "sd:bloodsoaked-confessional",
+      "key": "sd:bloodsoaked-confessional",
+      "name": "Bloodsoaked Confessional",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Forest Hideout",
+        "meters": 140
+      },
+      "mapSlug": "bloodsoaked-confessional",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/bloodsoaked-confessional/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:blue-dragon-s-trap",
+      "key": "sd:blue-dragon-s-trap",
+      "name": "Blue Dragon's Trap",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:sanctum-outpost",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Temporary Retreat",
+        "meters": 80
+      },
+      "mapSlug": "blue-dragons-trap",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/blue-dragon-s-trap/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:closed-hideout",
+      "key": "sd:closed-hideout",
+      "name": "Closed Hideout",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:uruthumheim",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:uruthumheim",
+        "kibelisk": "Victorious Daeva's Statue",
+        "meters": 100
+      },
+      "mapSlug": "closed-hideout",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: I'll Take You All On"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/closed-hideout",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ]
+    },
+    {
+      "id": "sd:dark-root-cave",
+      "key": "sd:dark-root-cave",
+      "name": "Dark Root Cave",
+      "faction": "asmodian",
+      "band": 25,
+      "zone": "zone:dranactus",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Hidden Cave",
+        "meters": 230
+      },
+      "mapSlug": "dark-root-cave",
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g25)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/dark-root-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:den-of-exiles",
+      "key": "sd:den-of-exiles",
+      "name": "Den of Exiles",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:black-claw-village",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:black-claw-village",
+        "kibelisk": "Collapsed Hall of Fame",
+        "meters": 220
+      },
+      "mapSlug": "den-of-exiles",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Open Up"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/den-of-exiles",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ]
+    },
+    {
+      "id": "sd:destroyed-scriptorium",
+      "key": "sd:destroyed-scriptorium",
+      "name": "Destroyed Scriptorium",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:purifying-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Faded Stump",
+        "meters": 200
+      },
+      "mapSlug": "destroyed-scriptorium",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/destroyed-scriptorium/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:destruction-archons-armory",
+      "key": "sd:destruction-archons-armory",
+      "name": "Destruction Archons Armory",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:eastern-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:eastern-gribade-highland",
+        "kibelisk": "Steel Hammer Temporary Trading Post",
+        "meters": 290
+      },
+      "mapSlug": "destruction-archons-armory",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/destruction-archons-armory/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:drana-depository",
+      "key": "sd:drana-depository",
+      "name": "Drana Depository",
+      "faction": "asmodian",
+      "band": 25,
+      "zone": "zone:dranactus",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Briskwind Shelter",
+        "meters": 280
+      },
+      "mapSlug": "drana-depository",
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g25)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/drana-depository/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:dratona-assembly-area",
+      "key": "sd:dratona-assembly-area",
+      "name": "Dratona Assembly Area",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Graverobber Campsite",
+        "meters": 111
+      },
+      "mapSlug": "dratona-assembly-area",
+      "xp": 661754,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: This Is Not a Drill"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "exploreQuestId": "2810042",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/dratona-assembly-area",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/dratona-assembly-area",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "xp"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Exists (Metabot Altgard dungeon map list + page). Metabot lists no Kibelisk; no allthings.how page found by search. App AREA_LOC xp 661754 not confirmed by this page. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810042, step 'Clear Dratona Assembly Area', nearest Kibelisk Graverobber Campsite 111 m; EXP 661,754). allthings.how Basfelt guide (https://allthings.how/?p=247532) also gives 661,754 EXP for its exploration quest (2 sources)."
+      ]
+    },
+    {
+      "id": "sd:dratona-cave",
+      "key": "g10h:dratona-cave",
+      "name": "Dratona Cave",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 240
+      },
+      "mapSlug": "dratona-cave",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/dratona-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:dusk-pit",
+      "key": "g10h:dusk-pit",
+      "name": "Dusk Pit",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:calderon-canyon",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 200
+      },
+      "mapSlug": "dusk-pit",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/dusk-pit/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:empty-cave",
+      "key": "sd:empty-cave",
+      "name": "Empty Cave",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:western-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:western-gribade-highland",
+        "kibelisk": "Zemurru's Tomb",
+        "meters": 300
+      },
+      "mapSlug": "empty-cave",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/empty-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:fafnite-storage-room",
+      "key": "sd:fafnite-storage-room",
+      "name": "Fafnite Storage Room",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:sanctum-outpost",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": null,
+        "meters": null
+      },
+      "mapSlug": "fafnite-storage-room",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Mission Impossible"
+        ]
+      },
+      "rewardBasis": "clear reward table (Standard); page does not separate first-clear",
+      "bosses": [],
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/fafnite-storage-room",
+          "fields": [
+            "band",
+            "zone",
+            "rewards",
+            "bosses"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Metabot page lists no Kibelisk, only entrance zone Sanctum Outpost.",
+        "No entrance Kibelisk in the v1 data."
+      ]
+    },
+    {
+      "id": "sd:fanatics-den",
+      "key": "sd:fanatics-den",
+      "name": "Fanatics' Den",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:sanctum-outpost",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Temporary Retreat",
+        "meters": 390
+      },
+      "mapSlug": "fanatics-den",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/fanatics-den/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:final-haven",
+      "key": "sd:final-haven",
+      "name": "Final Haven",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:battlescar-mound",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:battlescar-mound",
+        "kibelisk": "Basfelt Waterfall",
+        "meters": 50
+      },
+      "mapSlug": "final-haven",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/final-haven/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:fortuneteller-s-grave",
+      "key": "sd:fortuneteller-s-grave",
+      "name": "Fortuneteller's Grave",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Moslan Forest Dry Shade",
+        "meters": 70
+      },
+      "mapSlug": "fortunetellers-grave",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/fortuneteller-s-grave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:fungie-habitat",
+      "key": "sd:fungie-habitat",
+      "name": "Fungie Habitat",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:eastern-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:eastern-gribade-highland",
+        "kibelisk": "Steel Hammer Merchants HQ",
+        "meters": 260
+      },
+      "mapSlug": "fungie-habitat",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/fungie-habitat/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:hidden-vein-cave",
+      "key": "g10h:hidden-vein-cave",
+      "name": "Hidden Vein Cave",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Safe Haven",
+        "meters": 460
+      },
+      "mapSlug": "hidden-vein-cave",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/hidden-vein-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:high-priest-s-ruins",
+      "key": "sd:high-priest-s-ruins",
+      "name": "High Priest's Ruins",
+      "faction": "asmodian",
+      "band": 25,
+      "zone": "zone:dranactus",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Briskwind Shelter",
+        "meters": 300
+      },
+      "mapSlug": "high-priests-ruins",
+      "xp": 410288,
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g25)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/high-priest-s-ruins/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:homish-s-prison-compound",
+      "key": "sd:homish-s-prison-compound",
+      "name": "Homish's Prison Compound",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:sanctum-outpost",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Temporary Retreat",
+        "meters": 240
+      },
+      "mapSlug": "homishs-prison-compound",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/homish-s-prison-compound/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:howling-den",
+      "key": "sd:howling-den",
+      "name": "Howling Den",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Elim's Rest",
+        "meters": 260
+      },
+      "mapSlug": "howling-den",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/howling-den/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:insectoid-tunnel",
+      "key": "sd:insectoid-tunnel",
+      "name": "Insectoid Tunnel",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Basfelt Waterfall Arch Zone",
+        "meters": 320
+      },
+      "mapSlug": "insectoid-tunnel",
+      "xp": 661754,
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/insectoid-tunnel/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:kumbahum-s-cave",
+      "key": "sd:kumbahum-s-cave",
+      "name": "Kumbahum's Cave",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:black-claw-village",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:black-claw-village",
+        "kibelisk": "Kumrica's Cellar",
+        "meters": 310
+      },
+      "mapSlug": "kumbahums-cave",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/kumbahum-s-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:lagta-fafnite-storage",
+      "key": "sd:lagta-fafnite-storage",
+      "name": "Lagta Fafnite Storage",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:lagta-fortress",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:lagta-fortress",
+        "kibelisk": "Kumrica's Cellar",
+        "meters": 890
+      },
+      "mapSlug": "lagta-fafnite-storage",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/lagta-fafnite-storage/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:lamnah-base",
+      "key": "sd:lamnah-base",
+      "name": "Lamnah Base",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:purifying-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Healing Spring",
+        "meters": 110
+      },
+      "mapSlug": "lamnah-base",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/lamnah-base/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:library-of-foresight",
+      "key": "sd:library-of-foresight",
+      "name": "Library of Foresight",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Elim's Rest",
+        "meters": 110
+      },
+      "mapSlug": "library-of-foresight",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/library-of-foresight/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:library-of-patience",
+      "key": "sd:library-of-patience",
+      "name": "Library of Patience",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Fissure Cave",
+        "meters": 140
+      },
+      "mapSlug": "library-of-patience",
+      "xp": 661754,
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/library-of-patience/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:library-of-wisdom",
+      "key": "sd:library-of-wisdom",
+      "name": "Library of Wisdom",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:basfelt-ruins",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:basfelt-ruins",
+        "kibelisk": "Basfelt Ruins Cliff",
+        "meters": 140
+      },
+      "mapSlug": "library-of-wisdom",
+      "xp": 661754,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Breathtaking Knowledge"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/library-of-wisdom",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only. App AREA_LOC xp value not confirmed by this page."
+      ]
+    },
+    {
+      "id": "sd:lonely-rock-chasm",
+      "key": "sd:lonely-rock-chasm",
+      "name": "Lonely Rock Chasm",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:western-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:western-gribade-highland",
+        "kibelisk": "Idun's Lake",
+        "meters": 140
+      },
+      "mapSlug": "lonely-rock-chasm",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/lonely-rock-chasm/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:lost-ruins",
+      "key": "g10h:lost-ruins",
+      "name": "Lost Ruins",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 394
+      },
+      "mapSlug": "lost-ruins",
+      "xp": 11115,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Engraved in Stone"
+        ]
+      },
+      "rewardBasis": "clear reward table (Standard); page does not separate first-clear",
+      "bosses": [],
+      "exploreQuestId": "2810007",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/lost-ruins",
+          "fields": [
+            "band",
+            "zone",
+            "rewards",
+            "bosses"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lost-ruins",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "xp"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Metabot page lists no Kibelisk, only entrance zone Nameless Cemetery. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810007, step 'Clear Lost Ruins', nearest Kibelisk Neglected Crematorium 394 m; EXP 11,115)."
+      ]
+    },
+    {
+      "id": "sd:odylium-marauder-den",
+      "key": "sd:odylium-marauder-den",
+      "name": "Odylium Marauder Den",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:eastern-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:eastern-gribade-highland",
+        "kibelisk": "Eastern Gribade Highland Cliff",
+        "meters": 34
+      },
+      "mapSlug": "odylium-marauder-den",
+      "xp": 2776634,
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings (qty not stated on Metabot; x2 per allthings.how)",
+          "Title: Of a Convoluted Interior"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard) + allthings.how Eastern Gribade guide (same 2+2)",
+      "exploreQuestId": "2810060",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/odylium-marauder-den",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/odylium-marauder-den",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "xp"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/?p=244758",
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Neither Metabot nor the allthings.how Eastern Gribade guide (https://allthings.how/?p=244758) gives a Kibelisk. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810060, step 'Clear Odylium Marauder Den', nearest Kibelisk Eastern Gribade Highland Cliff 34 m; EXP 2,776,634)."
+      ]
+    },
+    {
+      "id": "sd:old-graveyard",
+      "key": "g10h:old-graveyard",
+      "name": "Old Graveyard",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Gravekeeper Camp",
+        "meters": 150
+      },
+      "mapSlug": "old-graveyard",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/old-graveyard/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:ossuary-of-the-noble",
+      "key": "g10h:ossuary-of-the-noble",
+      "name": "Ossuary of the Noble",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 170
+      },
+      "mapSlug": "ossuary-of-the-noble",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/ossuary-of-the-noble/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:pirate-s-treasure-storage",
+      "key": "sd:pirate-s-treasure-storage",
+      "name": "Pirate's Treasure Storage",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:iduns-lake",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:iduns-lake",
+        "kibelisk": "Idun's Lake",
+        "meters": 110
+      },
+      "mapSlug": "pirates-treasure-storage",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/pirate-s-treasure-storage/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:place-of-rest",
+      "key": "sd:place-of-rest",
+      "name": "Place of Rest",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:black-claw-village",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:black-claw-village",
+        "kibelisk": "Zemurru's Tomb",
+        "meters": 100
+      },
+      "mapSlug": "place-of-rest",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings (qty not stated)",
+          "Title: Get Out!"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/place-of-rest",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ]
+    },
+    {
+      "id": "sd:poisonous-plant-habitat",
+      "key": "g10h:poisonous-plant-habitat",
+      "name": "Poisonous Plant Habitat",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:nameless-cemetery",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Gravekeeper Camp",
+        "meters": 310
+      },
+      "mapSlug": "poisonous-plant-habitat",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/poisonous-plant-habitat/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:predator-s-lair",
+      "key": "sd:predator-s-lair",
+      "name": "Predator's Lair",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:purifying-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Guide Rest Stop",
+        "meters": 140
+      },
+      "mapSlug": "predators-lair",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/predator-s-lair/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:prison-of-oblivion",
+      "key": "sd:prison-of-oblivion",
+      "name": "Prison of Oblivion",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Collapsed Chasm",
+        "meters": 290
+      },
+      "mapSlug": "prison-of-oblivion",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/prison-of-oblivion/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:rift-fissure",
+      "key": "sd:rift-fissure",
+      "name": "Rift Fissure",
+      "faction": "asmodian",
+      "band": 30,
+      "zone": "zone:battlescar-mound",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:battlescar-mound",
+        "kibelisk": "Basfelt Waterfall",
+        "meters": 250
+      },
+      "mapSlug": "rift-fissure",
+      "requires": {
+        "level": 30,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g30)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/rift-fissure/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:rock-cave",
+      "key": "sd:rock-cave",
+      "name": "Rock Cave",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:eastern-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:eastern-gribade-highland",
+        "kibelisk": "Eastern Gribade Highland Cliff",
+        "meters": 350
+      },
+      "mapSlug": "rock-cave",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/rock-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:scale-altar",
+      "key": "sd:scale-altar",
+      "name": "Scale Altar",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:western-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:western-gribade-highland",
+        "kibelisk": "Abandoned Campsite",
+        "meters": 210
+      },
+      "mapSlug": "scale-altar",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/scale-altar/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:shulak-cave",
+      "key": "sd:shulak-cave",
+      "name": "Shulak Cave",
+      "faction": "asmodian",
+      "band": 35,
+      "zone": "zone:western-gribade-highland",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:western-gribade-highland",
+        "kibelisk": "Abandoned Campsite",
+        "meters": 310
+      },
+      "mapSlug": "shulak-cave",
+      "requires": {
+        "level": 35,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g35)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/shulak-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:skurv-laborer-den",
+      "key": "sd:skurv-laborer-den",
+      "name": "Skurv Laborer Den",
+      "faction": "asmodian",
+      "band": 25,
+      "zone": "zone:dranactus",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Dranactus Shore",
+        "meters": 120
+      },
+      "mapSlug": "skurv-laborer-den",
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g25)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/skurv-laborer-den/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:smuggler-s-cave",
+      "key": "g10h:smuggler-s-cave",
+      "name": "Smuggler's Cave",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:calderon-canyon",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Watcher's Tent",
+        "meters": 180
+      },
+      "mapSlug": "smugglers-cave",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/smuggler-s-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:spider-cave",
+      "key": "sd:spider-cave",
+      "name": "Spider Cave",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:fafnite-deposit",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:fafnite-deposit",
+        "kibelisk": "Amunta's Hideout",
+        "meters": 230
+      },
+      "mapSlug": "spider-cave",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/spider-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:tayga-breeding-ground",
+      "key": "sd:tayga-breeding-ground",
+      "name": "Tayga Breeding Ground",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:black-claw-village",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:black-claw-village",
+        "kibelisk": "Secret Rendezvous Point",
+        "meters": 30
+      },
+      "mapSlug": "tayga-breeding-ground",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/tayga-breeding-ground/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:treasure-hunter-s-residence",
+      "key": "g10h:treasure-hunter-s-residence",
+      "name": "Treasure Hunter's Residence",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 160
+      },
+      "mapSlug": "treasure-hunters-residence",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/treasure-hunter-s-residence/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:trickster-s-den",
+      "key": "g10h:trickster-s-den",
+      "name": "Trickster's Den",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 150
+      },
+      "mapSlug": "tricksters-den",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/trickster-s-den/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:twisted-pit",
+      "key": "sd:twisted-pit",
+      "name": "Twisted Pit",
+      "faction": "asmodian",
+      "band": 25,
+      "zone": "zone:dranactus",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": "Hidden Cave",
+        "meters": 240
+      },
+      "mapSlug": "twisted-pit",
+      "rewards": {
+        "wisdom": 2,
+        "crystal": 2,
+        "kina": 15000,
+        "enhance": 1250,
+        "featherdown": 2,
+        "items": [
+          "Statue Scrap: Night Illusion Wings x2",
+          "Title: Photographic Memory"
+        ]
+      },
+      "rewardBasis": "Metabot clear reward table (Standard); first-clear vs repeat not distinguished",
+      "requires": {
+        "level": 25,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g25)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/dungeons/twisted-pit",
+          "fields": [
+            "band",
+            "zone",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ]
+    },
+    {
+      "id": "sd:unstable-cave",
+      "key": "sd:unstable-cave",
+      "name": "Unstable Cave",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:purifying-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Briskwind Shelter",
+        "meters": 270
+      },
+      "mapSlug": "unstable-cave",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/unstable-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ],
+          "note": "page says Purifying Forest; Briskwind Shelter is elsewhere listed in Dranactus - verify"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:valka-s-nest",
+      "key": "g10h:valka-s-nest",
+      "name": "Valka's Nest",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 360
+      },
+      "mapSlug": "valkas-nest",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/valka-s-nest/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:victims-cave",
+      "key": "sd:victims-cave",
+      "name": "Victims' Cave",
+      "faction": "asmodian",
+      "band": 15,
+      "zone": "zone:moslan-forest",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Collapsed Chasm",
+        "meters": 90
+      },
+      "mapSlug": "victims-cave",
+      "requires": {
+        "level": 15,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g15)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/victims-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:warriors-rest",
+      "key": "sd:warriors-rest",
+      "name": "Warriors' Rest",
+      "faction": "asmodian",
+      "band": 40,
+      "zone": "zone:impetusium-square",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:impetusium-square",
+        "kibelisk": "Collapsed Hall of Fame",
+        "meters": 620
+      },
+      "mapSlug": "warriors-rest",
+      "requires": {
+        "level": 40,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g40)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/warriors-rest/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:watcher-s-temporary-outpost",
+      "key": "g10h:watcher-s-temporary-outpost",
+      "name": "Watcher's Temporary Outpost",
+      "faction": "asmodian",
+      "band": 10,
+      "zone": "zone:calderon-canyon",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 160
+      },
+      "mapSlug": "watchers-temporary-outpost",
+      "requires": {
+        "level": 10,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g10)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/watcher-s-temporary-outpost/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    },
+    {
+      "id": "sd:worshiper-s-underground-cave",
+      "key": "sd:worshiper-s-underground-cave",
+      "name": "Worshiper's Underground Cave",
+      "faction": "asmodian",
+      "band": 20,
+      "zone": "zone:uruthumheim",
+      "route": "core",
+      "entrance": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:uruthumheim",
+        "kibelisk": "Victorious Daeva's Statue",
+        "meters": 160
+      },
+      "mapSlug": "worshipers-underground-cave",
+      "requires": {
+        "level": 20,
+        "basis": "rule",
+        "note": "milestone band (the dungeon is listed in milestone g20)"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.",
+          "fields": [
+            "band",
+            "zone"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/worshiper-s-underground-cave/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      }
+    }
+  ]
+}

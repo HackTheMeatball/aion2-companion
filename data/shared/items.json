@@ -1,0 +1,77 @@
+{
+  "$schema": "../schema/items.schema.json",
+  "schemaVersion": 2,
+  "collection": "items",
+  "records": [
+    {
+      "id": "item:crystal",
+      "key": "crystal",
+      "label": "Daevanion Crystals",
+      "gameName": "Daevanion Crystal",
+      "metabotSlug": "daevanion-crystal-bound",
+      "icon": "assets/icons/daevanion-crystal.png",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/items/daevanion-crystal-bound",
+          "label": "Daevanion Crystal"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Icon confirmed in game (DECISIONS A1)."
+      ]
+    },
+    {
+      "id": "item:cubekey",
+      "key": "cubekey",
+      "label": "Hidden Cube keys",
+      "gameName": "Key: Hidden Cube",
+      "metabotSlug": "key-hidden-cube",
+      "icon": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/items/key-hidden-cube",
+          "label": "Key: Hidden Cube"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "item:enhance",
+      "key": "enhance",
+      "label": "Enhance Stones",
+      "gameName": "Enhance Stone",
+      "metabotSlug": "enhance-stone",
+      "icon": "assets/icons/enhance-stone.png",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/items/enhance-stone",
+          "label": "Enhance Stone"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "item:wisdom",
+      "key": "wisdom",
+      "label": "Wisdom Stones",
+      "gameName": "Wisdom Stone",
+      "metabotSlug": "wisdom-stone-bound",
+      "icon": "assets/icons/wisdom-stone.png",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/items/wisdom-stone-bound",
+          "label": "Wisdom Stone"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Icon confirmed in game (DECISIONS A1)."
+      ]
+    }
+  ]
+}
