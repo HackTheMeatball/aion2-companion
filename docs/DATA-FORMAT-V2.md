@@ -52,6 +52,7 @@ Contents: 0 What changed in this revision · 1 Goals · 2 Layout · 3 Ids and sa
 | F15 | `location` with required `zone` on every located record, optional sourced `coords`; zone adjacency in `zones`; last confirmed location derived, never stored. | §9, §10, §13 |
 | F3/F4 | 3 slots at effective skill Lv 8/12/20; 5 choices at 8/8/8/12/16; effective level = bought + board nodes. | §8.2 |
 | Owner answers | Recorded in §14.1. | |
+| Re-check (CEO) | Ascension quests require `giver` / `turnin` with their own zone; specialty choices on effective level; `milestones[].drawbacks` for the fastest track, and the two-track question re-evaluated in 0.3; schemas compile under ajv's full `strict: true` (exact options in the appendix). Also: `skill` required on skill nodes only, at most 5 specialty choices per skill. | §9, §8.2, §6, §14.1, §15, appendix |
 
 What the review said stands, and stays: the save-key strategy (`key` separate from `id`, frozen name and position
 keys), the three version numbers, the condition grammar with "derived, never written as ticks", provenance on every
@@ -260,6 +261,11 @@ build's plan nodes; skill levels by rule) carries `requires` and `completesWith`
 - **`route`** (M11, optional on steps, regional quests, Sealed Dungeons, strongholds): `core` · `filler` ·
   `completionist`. 5b fills it from today (`optional` → `completionist`, else `core`), so nothing changes on screen;
   the owner approves labels milestone by milestone in 0.3 (decision), with "fastest" as the default view.
+- **Confirmed drawbacks of the fastest track** live on the milestone: `milestones[].drawbacks[] {text, status, sources,
+  about}`. Only `verified` or `owner-check` entries with at least one source (the schema rejects `inferred`); `about`
+  names the filler / completionist records whose skipping causes it (e.g. "Skipping Shugo-of-All-Trades: Asmodian
+  loses its Cube Expansion Voucher", from its Metabot rewards). Shown next to the track toggle in 0.3; none exist in
+  the data yet. Whether two tracks make sense at all is re-evaluated in the 0.3 design (§14.1).
 
 Today's special cases:
 
@@ -317,10 +323,10 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 ### 8.2 Specialties (M4, F3/F4)
 
 - **Slots:** 3 per skill, opening at **effective** skill level 8, 12 and 20 (`rule:specialty-slots`, owner screen F4).
-- **Choices:** 5 per active skill, available at skill level 8, 8, 8, 12 and 16 (`skills[].specialtyChoices[]`,
-  numbered 1–5, permanent ids `spec:<class>:<skill>:<n>`, Metabot text plus an optional display `label` where the
+- **Choices:** 5 per active skill, available at **effective** skill level 8, 8, 8, 12 and 16, the same effective level
+  as the slots (`skills[].specialtyChoices[]`, at most 5, numbered 1–5, permanent ids `spec:<class>:<skill>:<n>`, Metabot text plus an optional display `label` where the
   guide words it differently today). Stigma choices at stigma level 5/10/15/20, same shape.
-- **Effective skill level** = highest ticked `sp:<key>:<L>` (1 if none) + the `adds` (default 1) of every owned board
+- **Effective skill level** (used by both the slots and the choices) = highest ticked `sp:<key>:<L>` (1 if none) + the `adds` (default 1) of every owned board
   node whose `skill` is this skill, including nodes outside any build's plan (that is why M5 lists every node).
 - **Save keys:** `sp:<key>:spec` = slot 1 (as today), `sp:<key>:spec2` and `sp:<key>:spec3` reserved for slots 2–3.
 - The old "learn + 18" gate is bug F3 and is **not** a rule in the data. 5b keeps it inside the compiler only, so
@@ -331,7 +337,8 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 
 `classes/<class>/board-nodes.json`: every node of every board (Assassin: 89 + 89 + 89 + 117 + 153 from Metabot's
 planner, build 0.0.4387.0), with `row`, `col`, `type` (`start` · `stat` · `skill` · `unique`), `grade`, `cost`,
-`label`, `skill` and `adds` for skill nodes, `gameId`. Keys: the existing `dv:` key where the node has one (a
+`label`, `skill` and `adds` for skill nodes (`skill` is required on `type: skill` and forbidden on every other
+type, so effective level can't miss or miscount a node), `gameId`. Keys: the existing `dv:` key where the node has one (a
 written-out mapping in 5b), otherwise `dv:<board>:r<row>c<col>`. Two mapping cases need care in 5b:
 
 - **Plan keys for one of several identical nodes** (`dv:as` / `dv:as2`, `dv:ew` / `dv:ew2`, `dv:z:db` / `dv:z:db2`:
@@ -359,8 +366,10 @@ Per character (added to `CHAR_FIELDS` when built, 5c or 0.3):
 
 ## 9. Locations (F15)
 
-**Every located record has a `location`** with `zone` required: story and Ascension quest `giver` / `turnin`,
-regional quest `giver` / `turnin`, Sealed Dungeon `entrance`, stronghold `location`. Quest objectives may carry a
+**Every located record has a `location`** with `zone` required: story quest `giver` / `turnin`, Ascension quest
+`giver` / `turnin` (both required; Asahr at Dream Crossroad, reached by the Journal teleport; the zone is its own and
+is **not** taken from the wrapper story quest, which is given elsewhere), regional quest `giver` / `turnin`, Sealed
+Dungeon `entrance`, stronghold `location`. Quest objectives may carry a
 `zone` too.
 
 ```json
@@ -412,7 +421,7 @@ What 0.3's "what can I do now" ranking reads, all from data or derived:
 | `sources` | repo | §5.1 |
 | `gameBuilds` (`game-builds`) | repo | §5.5 |
 | `storyQuests` | faction | `sq:<game id>`, `gameId` required; order via `next` (one path, one `end`); `wraps` (4 records); `inCap: false` past Lv 45; `unlocks`; giver/turn-in with zone. |
-| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; completion from the wrapper. |
+| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; `giver` / `turnin` required (F15); completion from the wrapper. |
 | `regionalQuests` | faction | prerequisites as atoms with their own sources; `zone` = `giver.zone`; `route`. |
 | `sealedDungeons` | faction | `band` places it; `entrance` with zone; `mapSlug`; `route`. |
 | `strongholds` | faction | `levelRange` (inferred); `location`; `route`. |
@@ -648,7 +657,7 @@ Derived completions are never in the save, so there is nothing to merge for them
 | Q4 | Owner screens | Top authority; disagreements kept; cited by short code + game version | §5.4 |
 | — | Builds per class | One guide build + up to two credited alternatives | §8.1 |
 | — | Custom builds | Start from a listed build; saved per character and in Export; never silently dropped | §8.4 |
-| — | Fastest / completionist | Team proposes labels from today's guide; owner approves per milestone in 0.3 | §6 `route` |
+| — | Fastest / completionist | Team proposes labels from today's guide; owner approves per milestone in 0.3. Confirmed drawbacks of the fastest track are recorded per milestone. **Whether two tracks make sense is re-evaluated in the 0.3 design.** | §6 `route`, `milestones[].drawbacks` |
 | Q5 | English names as save labels | Kept | §3 |
 | Q6 | "Checked on" dates in the app | No per-item dates | §5.3 |
 | Q7 | Daeva Trapped in a Nightmare | Added like any story quest once the owner's check confirms the giver | `storyQuests`, no format change |
@@ -666,12 +675,17 @@ Derived completions are never in the save, so there is nothing to merge for them
 | Licence and access fields for every site in the registry | Data & Research | 5b |
 | Stigma `maxLevel` on a non-Assassin character; gate semantics (owner check 1) | owner, in game | 0.3 |
 | Owner screen codes (`owner:YYYY-MM-DD-NN`) for screens the data already relies on | owner / private repo | 5b |
+| Dream Crossroad's zone (placeholder `zone:dream-crossroad`, labelled `owner-check` in the sample) | owner, in game | 5b |
 
 ## 15. What 5b and 5c must prove
 
 **5b.** Golden identical, all suites green, saves untouched, single-file output for both builds, plus:
 
-1. Schema validation of every data file (ajv 2020-12, strict) in `npm test` and CI.
+1. Schema validation of every data file in `npm test` and CI with ajv 8 `Ajv2020` and exactly
+   `{ strict: true, allErrors: true }` (no relaxed options). Every schema here compiles under that: each `required` in a
+   `oneOf` / `if` branch declares its properties in the same branch (ajv's `strictRequired`), and conditionals sit
+   inside `allOf` next to `unevaluatedProperties` (ajv loses evaluated-property annotations from a top-level failing
+   `if`).
 2. Cross-record checks (today's 417 plus): ids unique repo-wide, keys unique per bundle; every reference resolves
    (`requires`, `done`, `story`, `wraps`, `milestone`, `board`, `skill`, `stigma`, `spec`, `node`, build ids, zones);
    story `next` chain is one path; every URL's host is in `sources.json`, not banned, not withdrawn, and not on a
@@ -695,10 +709,20 @@ an unknown id kept, and a rollback test (5c save → 0.2 build → back). `mig1`
 ## Appendix: validation
 
 JSON Schema draft 2020-12. Until 5b adds a validator to the repo (no new dependency in this step), check from a scratch
-directory outside the repo with ajv 8 (`Ajv2020`, strict), choosing each file's schema by its `collection`.
+directory outside the repo:
 
-Result for this revision: **22 sample files, 75 records**, all valid under ajv 8 (strict) and, independently, Python
-`jsonschema` 4.26. The samples cover story quests with game ids (one with `wraps`, one at the end of the chain), an
+```js
+// npm i ajv@8.20.0 (scratch dir); node validate.mjs <repo>
+const Ajv2020 = require("ajv/dist/2020").default;
+const ajv = new Ajv2020({ strict: true, allErrors: true });   // full strict mode, nothing relaxed
+for (const f of schemaFiles) ajv.addSchema(JSON.parse(read(f)), basename(f));   // all 23 schemas
+// each data file: ajv.getSchema(<schema for its "collection">)(doc)
+```
+
+All 23 schemas also compile on their own under `strict: true` (each one fetched with `ajv.getSchema`).
+
+Result for this revision: **22 sample files, 75 records**, all valid under ajv 8.20.0 with `{ strict: true, allErrors: true }` and,
+independently, Python `jsonschema` 4.26 (`Draft202012Validator`). The samples cover story quests with game ids (one with `wraps`, one at the end of the chain), an
 Ascension quest, regional quests (`noPre`, story-gated, two regional prerequisites, zone corrections), a `g10h:` Sealed
 Dungeon, a stronghold, zones, unlocks, rules (incl. specialty slots, crystals and stigma points per level), boards,
 items, game builds, milestones, shared steps with build tokens (`g12:0`, `g22:1`, `g27:1`), the Assassin class, its
@@ -706,7 +730,7 @@ guide build, skills with specialty choices, stigmas with `maxLevel`, and 7 real 
 read 2026-10-14, build 0.0.4387.0: Start r8c8, Heart Gore r4c5 = `dv:hg`, two corners, a stat node, Insignia
 Explosion r13c7 = `dv:ie`).
 
-**47 broken copies are all rejected for the intended reason**, one or more per must-fix: missing `verifiedAt` /
+**54 broken copies are all rejected for the intended reason**, one or more per must-fix: missing `verifiedAt` /
 `requires` / `completesWith`; unknown field; story id as a slug or without `gameId` (M6); story atom without `is`,
 `done` on a story quest (M7); bad status; source with both `url` and `owner`; owner ref as a URL or without a game
 version (M10); bad build scheme, the old `date` field (M9); `http://` URL; `<script>`, `<span class="loc">`, unknown
@@ -716,5 +740,7 @@ Dungeon key prefix; objective without `i`; milestone without `lv`; rule value of
 specialty slots not on effective level, specialties as free text, `specPick` on a skill (M4); `plan` on a class, four
 builds, origin `template`, a specialty pick that isn't a choice id (M1); stigma without `maxLevel` (M4); node key
 outside `dv:`, node without row/col (M5); site without `access`, terms that ban automation with `mode: scripted`, an
-unknown licence condition, a licence id with spaces (M8); confidence `when` on a non-claim. A positive control checks
-that `status: owner-check` is accepted.
+unknown licence condition, a licence id with spaces (M8); confidence `when` on a non-claim; an Ascension quest
+without a turn-in or with a giver without zone (F15); a skill node without `skill`, a stat node with one; six specialty
+choices; a drawback that is only inferred or has no source. Two positive controls check that `status: owner-check` and
+a sourced drawback are accepted.

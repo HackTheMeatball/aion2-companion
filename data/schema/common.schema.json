@@ -63,19 +63,28 @@
           "required": [
             "url"
           ],
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "url": true
+          }
         },
         {
           "required": [
             "owner"
           ],
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "owner": true
+          }
         },
         {
           "required": [
             "inferred"
           ],
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "inferred": true
+          }
         }
       ],
       "properties": {

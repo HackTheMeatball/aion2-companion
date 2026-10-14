@@ -37,7 +37,9 @@
         "faction",
         "chapter",
         "lv",
-        "unlocksAt"
+        "unlocksAt",
+        "giver",
+        "turnin"
       ],
       "properties": {
         "id": {
@@ -71,6 +73,7 @@
           "default": true
         },
         "giver": {
+          "description": "Asahr at Dream Crossroad for chapters I–V (reached by the Journal teleport). Required like every located record (F15); a tick counts toward the last confirmed location.",
           "$ref": "common.schema.json#/$defs/location"
         },
         "steps": {
@@ -78,6 +81,9 @@
           "items": {
             "$ref": "common.schema.json#/$defs/questStep"
           }
+        },
+        "turnin": {
+          "$ref": "common.schema.json#/$defs/location"
         }
       },
       "unevaluatedProperties": false

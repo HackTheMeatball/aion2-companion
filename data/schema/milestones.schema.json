@@ -84,6 +84,45 @@
             },
             "additionalProperties": false
           }
+        },
+        "drawbacks": {
+          "description": "Confirmed drawbacks of taking only the fastest track (route: core) through this milestone, shown next to the track toggle (0.3). Only verified or owner-confirmed entries; each names the records it is about.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "status",
+              "sources"
+            ],
+            "properties": {
+              "text": {
+                "$ref": "common.schema.json#/$defs/inlineText"
+              },
+              "status": {
+                "enum": [
+                  "verified",
+                  "owner-check"
+                ]
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/sourceRef"
+                },
+                "minItems": 1
+              },
+              "about": {
+                "description": "Records skipped on the fastest track that cause it (route filler / completionist).",
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/recordId"
+                },
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "if": {
@@ -98,13 +137,19 @@
         "required": [
           "lv"
         ],
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "lv": true
+        }
       },
       "else": {
         "required": [
           "tag"
         ],
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "tag": true
+        }
       },
       "additionalProperties": false
     }

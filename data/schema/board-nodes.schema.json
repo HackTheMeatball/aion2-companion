@@ -26,6 +26,31 @@
       "allOf": [
         {
           "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "skill"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "skill"
+            ],
+            "properties": {
+              "skill": true
+            }
+          },
+          "else": {
+            "properties": {
+              "skill": false
+            }
+          }
         }
       ],
       "required": [

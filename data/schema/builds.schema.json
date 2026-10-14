@@ -87,9 +87,15 @@
             "required": [
               "anyNode"
             ],
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "anyNode": true
+            }
           },
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "node": true
+          }
         },
         {
           "required": [
@@ -100,9 +106,16 @@
             "required": [
               "node"
             ],
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "node": true
+            }
           },
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "anyNode": true,
+            "key": true
+          }
         }
       ]
     },
