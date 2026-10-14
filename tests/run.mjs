@@ -18,6 +18,7 @@
      journey  the user's save from Lv 27 to 45 by clicking; fails on any "!!" line except the known harness issue below
      golden   golden master: ~2,000 generated saves, Next up / milestones / Journey / dungeons / stored state vs
               tests/golden/snapshots (tests/golden/README.md; `node tests/golden.js --record` after an intended change)
+     core     the pure core (src/core/) in Node, no browser: state, migrations, catalog, requirements, Next up (< 5 s)
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
               spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours */
 import { spawn, execSync } from 'node:child_process';
@@ -51,6 +52,7 @@ const JOURNEY_KNOWN = [/In my game click failed/];
 
 const SUITES = {
   site: { args: ['tests/site.js'], pass: /SITE CHECKS PASSED/ },
+  core: { args: ['tests/core.mjs'], pass: /CORE CHECKS PASSED/ },
   e1: { args: ['tests/e1test.js', CUR, FX285], pass: /E1 CHECKS PASSED/ },
   e2: { args: ['tests/e2test.js', CUR], pass: /E2 CHECKS PASSED/ },
   e3: { args: ['tests/e3test.js'], pass: /E3 CHECKS PASSED/ },
@@ -69,7 +71,7 @@ const SUITES = {
 const only = opt('only') ? opt('only').split(',') : null;
 for (const n of only || []) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const order = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'mig2', 'mig1', 'e4', 'e3', 'site'].filter(n => !only || only.includes(n));
+const order = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'mig2', 'mig1', 'e4', 'e3', 'site', 'core'].filter(n => !only || only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));
 
 mkdirSync(OUT, { recursive: true });
