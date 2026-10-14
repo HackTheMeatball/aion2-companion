@@ -15,7 +15,8 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - Per class (0.6+): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
 
 ## Fetching policy (owner-approved 2026-10-14)
-- Respect robots.txt and named AI-crawler opt-outs. A site that opts out is read by the owner in a browser, never by a
+- Order per site: robots.txt, then the terms page, then content. Skip a site whose terms ban bots, scrapers or
+  automated access. Respect robots.txt and named AI-crawler opt-outs. A site that opts out is read by the owner in a browser, never by a
   session, until its owner gives permission.
 - At most 12 requests/min per host, one request at a time, 24 h cache; identify as Daeva Companion research in the
   User-Agent (no personal email). Stop at the first 403, 429 or challenge page; never work around one.
