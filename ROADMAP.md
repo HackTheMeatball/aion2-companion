@@ -27,7 +27,11 @@ no running out before 1.0: 1.0 ships when its scope is done.
 4. **Build → test → release.**
 5. **Play with it** in game; what you notice feeds the next objective.
 
-A whole-app UX review every 2–3 minor releases catches drift as features pile up.
+A whole-app UX review every second minor release (first one after 0.2, before 0.3 is built), before 1.0, and after any
+large visible change catches drift as features pile up.
+
+Work runs as parallel sessions, one task and one PR each. Who runs what, and what may run alongside what, is in
+docs/team/HANDOFF.md ("Now and next").
 
 ## Released
 
@@ -57,39 +61,58 @@ From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
   Confidence / Sources summaries.
 - **0.1.9** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
   layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
-- Save safety (visible, design pass first): a "last backup N days ago" line with an export nudge, and an "Add to Home
-  Screen" hint on iPhone (home-screen apps keep their data much longer).
+- Save safety (visible, mockup first, built after 0.2 step 4): a "last backup N days ago" line with one export nudge,
+  and an "Add to Home Screen" hint in iPhone Safari only (home-screen apps keep their data much longer). Never in the
+  claude.ai build.
+- Design tokens (invisible: 0 changed pixels): every colour, size and radius from a token, documented in
+  docs/design-system.md; a test fails on new raw colours. Groundwork for the colour sprint and the phone layout.
+- Release safety (invisible): a post-deploy check that the live site serves this build; faster CI (fast job < 2 min,
+  browser suites in parallel, one required check `ci-ok`); the flaky timing check moved to a non-blocking `perf` suite.
+  Then branch protection on `main` (owner, in GitHub settings).
 
-Phone layout (Next up near the top, a swipeable stack, Build as a bottom sheet) needs a design pass and touches code
-that 0.2 restructures, so it follows 0.2 step 4.
+Phone layout (Next up near the top, a touch-friendly stack, Build as a bottom sheet; audit P1-1, P1-2, P2-5) needs a
+mockup and touches the card code that 0.3 rewires, so it is built after the 0.3 requirement engine, on the design
+tokens.
 
 ### 0.2 — Foundations (no visible change)
 
-Acceptance for every step: the golden-master suite (Next up and milestone output for 2,000 generated saves) is
+Steps here are the audit's P0–P4 (step 4 = P3, step 5 = P4). Acceptance for every step: the golden-master suite (Next up and milestone output for 2,000 generated saves) is
 identical, all suites green, saves untouched.
 
 1. Golden-master harness (tests only).
 2. Toolchain: ES modules + esbuild, still one static HTML file for both builds.
 3. Data out of code: hand-written data constants move to data modules; the generated block is built, not committed.
-4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests.
-5. Data format v2: stable ids (not display names), shared vs per-class folders, a sources registry with license per
-   source, `verifiedAt` per record, `requires` / `completesWith` on every step, JSON Schema validation, Node generator,
-   a fast CI job (< 2 min). The schema gets an independent review, then the owner's, before it is built. A
-   `schemaVersion` field and a pure, tested `merge()` for two saves (groundwork for 0.5) are part of this step.
+4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests; every
+   read of character data goes through one `char(state)` accessor (groundwork for 0.4).
+5. Data format v2, in three parts:
+   - **5a schema** (docs only, can start before step 4 lands): stable ids (not display names), shared vs per-class
+     folders, a sources registry with license per source, `verifiedAt` per record, `requires` / `completesWith` on
+     every step, `schemaVersion`, `merge()` semantics, draft JSON Schemas. Reviewed by Data & Research and by a fresh
+     session with no team context, then by the owner, before anything is built.
+   - **5b build**: data moved to the format, Node generator replaces gen.py, schema validation, the generated block no
+     longer committed. Compiled data equals today's. No data patches while this runs.
+   - **5c saves**: `schemaVersion` added additively behind a flag, and a pure, tested `merge()` for two saves
+     (groundwork for 0.5). Keeping un-ticks through a merge needs a per-item change time in the save (owner decision).
+   5b and 5c can run in parallel; both wait for step 4 and the approved schema.
 
-Steps 1–3 shipped 2026-10-13 with no visible change (golden harness, toolchain, data out of code).
+**0.2.0 is released when 5b and 5c are merged.** Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
+toolchain, data out of code).
 
 ### 0.3 — Next up correctness
 
 - One requirement evaluator for every card, with blocker chains ("unlocks after story X · N quests ahead").
 - Completion derived from the story position (never stored as ticks).
-- The prerequisite audit, written straight into the new format, every gate sourced or labelled.
+- The prerequisite audit, every gate sourced or labelled: researched now as a report (proposed ids, a source per
+  gate), loaded into the new format after 5b.
 - Ascension progress bar in the Journey card (informational only).
 - An invariant test over ~10,000 states: Next up never offers a blocked or already-done step.
+- Deriving completion changes Next up for some saves on purpose: every golden-master difference is listed with its
+  reason and approved by the owner as a product change.
 
 ### 0.4 — Characters and class framework
 
-- Several characters per browser (the existing save stays the first character, so older versions still read it).
+- Several characters per browser (the existing save stays the first character, so older versions still read it; an
+  additive, flagged migration for per-character quest steps; a rollback to 0.3 still reads character 1).
 - Class picker (Assassin only visible until a second class is ready); class data loaded per character.
 
 ### 0.5 — Backup and sync
@@ -106,8 +129,10 @@ passkeys, Discord) stay possible later if a feature ever needs them.
 
 ### 0.7 – 0.13 — one class per release
 
-Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner). Each: two sources per claim, data and
-claims entries, a golden snapshot, an in-game spot check.
+Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner, D8). Each: a research pack
+(report, sourced per field) written ahead, then two sources per claim, data and claims entries, a golden snapshot, an
+in-game spot check. Recommended order rule: a class the owner or a tester will level to 45 first, then best data
+coverage, then most shared with Assassin.
 
 ### 1.0
 
@@ -115,19 +140,20 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
 
 ### Any time (patches)
 
-- Game patch re-verification, driven by `verifiedAt`.
+- Game patch watch: weekly after Global maintenance (Korean patch notes as early warning), report only; a PR only
+  when a claim is affected. Re-verification driven by `verifiedAt` once 5b exists.
 - Data corrections from issues.
 
 ## Unscheduled ideas
 
 - **Colour sprint** (owner wants its own sprint): game-inspired palette, faction and class colours, quest-type and
-  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. One in-game check
-  session first.
+  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. Before it: the
+  owner answers the open colour questions, then one in-game check session (batched with the data checks) using a
+  one-screen checklist. Built on the design tokens.
 
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).
 - Post-Altgard: Reshanta / Abyss.
 - Preview deploys for pull requests (with the move to Cloudflare Pages).
-- Phone layout pass (see 0.1.x note).
 - Release tooling (release-please / changesets) if other contributors join.
 - Elyos (after 1.0).
