@@ -52,11 +52,8 @@ exists, so it is done once.
 
 From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
 
-- ~~0.1.6~~ shipped (see Released). Invisible items it left for the visible pass: hit areas on bordered pills and the
+- The invisible accessibility batch shipped as 0.1.6. Left for the visible pass: hit areas on bordered pills and the
   Confidence / Sources summaries.
-- (was 0.1.6, invisible): spoken names for the three "i" buttons, focus ring on the Basic/Advanced switch, reduced motion
-  everywhere (one smooth-scroll setting), headings and landmarks, Escape closes popovers, larger hit areas without
-  changing the look, `touch-action`, `dvh` units, an automated accessibility check in the tests.
 - **0.1.8** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
   layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
 - Save safety (visible, design pass first): a "last backup N days ago" line with an export nudge, and an "Add to Home
@@ -79,7 +76,7 @@ identical, all suites green, saves untouched.
    a fast CI job (< 2 min). The schema gets an independent review, then the owner's, before it is built. A
    `schemaVersion` field and a pure, tested `merge()` for two saves (groundwork for 0.5) are part of this step.
 
-Step 2 (toolchain) shipped 2026-10-13 with no visible change.
+Steps 1–3 shipped 2026-10-13 with no visible change (golden harness, toolchain, data out of code).
 
 ### 0.3 — Next up correctness
 
