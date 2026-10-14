@@ -8,9 +8,9 @@ owner; the CEO records them here and in the department charters they affect.
 | # | Topic | Decision |
 |---|---|---|
 | — | Data fetching | Approved: robots.txt and AI opt-outs respected; 12 req/min/host, one at a time, 24 h cache, stop on any block (data-research.md). |
-| — | aion2.th.gl | Not used by sessions (its robots.txt excludes AI agents); removed from the Default environment; no outreach for now. th.gl-sourced facts are re-verified against a permitted source (Metabot first) and attributed to it, or labelled for an owner check. |
+| — | aion2.th.gl | Not used by sessions (its robots.txt excludes AI agents); removed from the "Daeva Companion" environment; no outreach for now. th.gl-sourced facts are re-verified against a permitted source (Metabot first) and attributed to it, or labelled for an owner check. |
 | — | Metabot terms | The site is non-commercial today and qualifies; permission is needed before any change to that. |
-| — | Environments | Research sessions: "Research (open web)" (Full network). Code sessions: Default (custom list). |
+| — | Environments | Research sessions: "Research (open web)" (Full network). Code, review and docs sessions: "Daeva Companion" (custom allowed sites). "Default" is unused. |
 | — | 0.3 default mode | Next up defaults to "fastest", with a "completionist" toggle. |
 | — | Merging | Until branch protection with a required `ci-ok` check is on, nothing merges without the owner's OK. After that the CEO merges invisible changes when green; visible changes always wait for the owner. |
 | — | Work plan | Department plan adopted (ROADMAP, HANDOFF "Now and next"); wave 1 runs six parallel sessions. |
