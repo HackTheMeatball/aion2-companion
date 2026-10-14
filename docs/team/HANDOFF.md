@@ -45,6 +45,9 @@ Serial-only files (never two sessions at once): `.github/workflows/ci.yml`; `tes
 `src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 →
 phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 
+## Owner feedback
+- 2026-10-14: docs/feedback/2026-10-14-owner.md (F1–F4, F12 feed the v2 schema review; F6–F7 next patch).
+
 ## Waiting on the owner
 - Merge rule (above); PR #15; branch protection settings after CI speed lands (require PR + `ci-ok`, "up to date" off,
   no force push/deletion, 0 approvals, owner bypass); auto-delete merged branches; labels `needs-info`, `triaged`.
