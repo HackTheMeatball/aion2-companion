@@ -77,7 +77,7 @@ Recorded per state:
 | `rt` | route rules (STEPS): counts, open |
 | `jr` | Journey: previous / current / next story quest, milestone hint, Ahead rows, milestone track, ring, progress rows, objectives summary |
 | `reg` | Dungeons & Strongholds card: band options (selected `*`), section and zone headers, rows with done / running / locked |
-| `store` | the stored state after load vs the input: only changed paths, `[before, after]` (key order ignored) |
+| `store` | the stored state after load vs the input: only changed paths, `[before, after]` (key order ignored); `mt` (5c change times) as a summary: stamp count, count per time, FNV-1a hash |
 | `keys`, `err`, `mode` | other localStorage keys written, page errors, the mode the page ended up in |
 
 ## When the snapshots change
