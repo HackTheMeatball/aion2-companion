@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.areaLv="10"; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Calderon Canyon").forEach(x=>s.checks[x.k]=true); delete s.regionOpen; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(300);
+ const c = () => p.evaluate(() => document.querySelectorAll('#areaList li.item').length);
+ console.log('items', await c()); const el = await p.$('#areas'); await el.screenshot({ path: 'v.png' });
+ await p.click('[data-region="10|Calderon Canyon"]'); await p.waitForTimeout(100); console.log('after expand', await c());
+ await b.close(); })();

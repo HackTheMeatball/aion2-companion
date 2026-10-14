@@ -1,0 +1,11 @@
+checks: 4806 · hard fail 8 · soft fail 221 · 249 s
+HARD FAILS by check:
+  6× a story card exists
+  2× "Turned in" present unless story is level-gated or complete
+SOFT FAILS by check:
+  1× regional quest zones are not camp names (zone vs place)
+  1× regional quests with no prerequisite data (open from Lv 10 regardless of rec)
+  1× Sources card link count is scannable (<= 60 links)
+  138× Next up offers no quest recommended >5 levels above you
+  79× no ellipsis-truncated text in Next up / top cards
+  1× user: Fight Poison with Poison (open in his game) is offered in Next up

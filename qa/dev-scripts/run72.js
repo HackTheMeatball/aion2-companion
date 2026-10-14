@@ -1,0 +1,11 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=20; s.dvTotal=76; delete s.dvAdj; Object.keys(s.checks).filter(x=>x.startsWith('dv:')).forEach(x=>delete s.checks[x]); s.dvCost={}; DV_NODES().slice(0,8).forEach((n,i)=>{s.checks[n.k]=true; s.dvCost[n.k]=i<4?6:5;}); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ console.log('before', await p.textContent('#dvBig'));
+ await p.click('#dvBig .dvsync'); await p.fill('#dvBig .dvsync-in','31'); await p.keyboard.press('Enter'); await p.waitForTimeout(200);
+ console.log('after', await p.textContent('#dvBig'), await p.evaluate(()=>state.dvAdj));
+ await (await p.$('#dvBox')).screenshot({path:'sync.png'});
+ await b.close(); })();

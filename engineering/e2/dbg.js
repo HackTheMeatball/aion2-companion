@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } });
+  await p.goto('file://' + process.argv[2]); await p.waitForTimeout(300);
+  await p.evaluate(() => { const L = 45, st = { checks: {}, level: L, quest: 'Farewells', mode: 'advanced', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, stones: 70, dvTotal: 156, stShards: 3 };
+    GATES.forEach(g => g.items.forEach(it => { if (g.lv < L && !it.sub && !it.dv && it.kind !== 'hideout' && it.kind !== 'quest' && it.k) st.checks[it.k] = true; }));
+    localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(st)); });
+  await p.reload(); await p.waitForTimeout(400);
+  console.log(await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card h3')].map(h => h.innerText)));
+  console.log(await p.evaluate(() => QUESTS.filter(x => x[0] > 40).map(([, n]) => [n, JSON.stringify(QUEST_LOC[n])])));
+  await b.close(); })();

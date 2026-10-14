@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1100}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=19; s.quest="A New Lead"; s.dvTotal=40; Object.keys(s.checks).filter(x=>x.startsWith('dv:')).forEach(x=>delete s.checks[x]); DV_NODES().slice(0,8).forEach(n=>s.checks[n.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ await (await p.$('#nowStar')).screenshot({path:'m1.png'});
+ await (await p.$('#questUnlock')).screenshot({path:'m2.png'});
+ await (await p.$('#dvBox')).screenshot({path:'m3.png'});
+ await b.close(); })();

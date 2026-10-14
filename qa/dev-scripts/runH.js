@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.checks={};['hg','ew','amb','qs','ew2','as','as2','corner'].forEach(k=>st.checks['dv:'+k]=true);st.dvReset1=true;st.dvTotal=76;st.dvCost={'dv:hg':10,'dv:ew':5,'dv:amb':8,'dv:qs':5,'dv:ew2':5,'dv:as':4,'dv:as2':4,'dv:corner':4};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(400);
+const q='#dvNextList .dvrow.nx';
+const info=async()=>p.evaluate(q=>{const r=document.querySelector(q);const bar=r.querySelector('.dvbar').getBoundingClientRect(),l=r.querySelector('.dvbar-l').getBoundingClientRect();return {src:r.querySelector('.dvico img').getAttribute('src'),labelRightGap:Math.round(bar.right-l.right),labelLeftGap:Math.round(l.left-bar.left)}},q);
+console.log('before',await info());
+await p.fill(q+' input.dvc','4');await p.waitForTimeout(200);
+console.log('after',await info());
+await p.fill(q+' input.dvc','');await p.waitForTimeout(200);
+console.log('cleared',await info());
+console.log('ERR',errs);await b.close();})();

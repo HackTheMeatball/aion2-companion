@@ -1,0 +1,12 @@
+const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const ROOT = path.resolve(__dirname, '..', '..'), KEY = 'aion2-assassin-route-v4';
+(async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } });
+  const user = fs.readFileSync(path.join(__dirname, 'fixture-user-v285.json'), 'utf8');
+  await p.goto('file://' + ROOT + '/qa-v285.html'); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, user]); await p.reload(); await p.waitForTimeout(300);
+  await p.goto('file://' + ROOT + '/qa-cur.html'); await p.waitForTimeout(500);
+  const k = 'rq:2202062';
+  const r0 = await p.evaluate(k => { const i = document.querySelector(`#gates input[data-k="${k}"]`), li = i.closest('li'), d = i.closest('details'); d.open = true; return { locked: li.classList.contains('locked'), txt: li.innerText.replace(/\s+/g, ' ').slice(0, 200), gate: d.id, snzHidden: li.querySelector('.q-snz').hidden }; }, k);
+  console.log('before', r0);
+  await p.click(`#gates input[data-k="${k}"]`); await p.waitForTimeout(300);
+  console.log('after', await p.evaluate(k => ({ started: (state.started || {})[k], inNext: [...document.querySelectorAll('#nowStar .ql')].some(x => x.innerText.includes('Fight Poison')) }), k));
+  const g = await p.$('#' + r0.gate); await g.screenshot({ path: path.join(__dirname, 'shots', 'user27-g27-locked-fightpoison.png') });
+  await b.close(); })();

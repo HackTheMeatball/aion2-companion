@@ -1,0 +1,36 @@
+ok   Lv 22 "Verdant Melody" (old ones done): every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 22 "Verdant Melody" (old ones done): "to pick up" counts exactly the open quests (2)
+ok   Lv 22 "Verdant Melody" (old ones done): locked follow-ups only under their prerequisite
+ok   Lv 22 "Verdant Melody" (old ones done): milestone rows dim exactly the quests that aren't open
+ok   Lv 22 "Verdant Melody": every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 22 "Verdant Melody": "to pick up" counts exactly the open quests (10)
+ok   Lv 22 "Verdant Melody": locked follow-ups only under their prerequisite
+ok   Lv 22 "Verdant Melody": milestone rows dim exactly the quests that aren't open
+ok   Lv 22 "Disturbed Balance" (old ones done): every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 22 "Disturbed Balance" (old ones done): "to pick up" counts exactly the open quests (3)
+ok   Lv 22 "Disturbed Balance" (old ones done): locked follow-ups only under their prerequisite
+ok   Lv 22 "Disturbed Balance" (old ones done): milestone rows dim exactly the quests that aren't open
+ok   Lv 22 "Disturbed Balance": every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 22 "Disturbed Balance": "to pick up" counts exactly the open quests (11)
+ok   Lv 22 "Disturbed Balance": locked follow-ups only under their prerequisite
+ok   Lv 22 "Disturbed Balance": milestone rows dim exactly the quests that aren't open
+ok   Lv 25 "Voice of Rage" (old ones done) +prereqs done: every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 25 "Voice of Rage" (old ones done) +prereqs done: "to pick up" counts exactly the open quests (3)
+ok   Lv 25 "Voice of Rage" (old ones done) +prereqs done: locked follow-ups only under their prerequisite
+ok   Lv 25 "Voice of Rage" (old ones done) +prereqs done: milestone rows dim exactly the quests that aren't open
+ok   Lv 25 "Voice of Rage" +prereqs done: every Next up quest row is open in game (level, story, prerequisites)
+ok   Lv 25 "Voice of Rage" +prereqs done: "to pick up" counts exactly the open quests (10)
+ok   Lv 25 "Voice of Rage" +prereqs done: locked follow-ups only under their prerequisite
+ok   Lv 25 "Voice of Rage" +prereqs done: milestone rows dim exactly the quests that aren't open
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.evaluate: TypeError: Cannot read properties of null (reading 'innerText')
+    at eval (eval at evaluate (:290:30), <anonymous>:3:61)
+    at UtilityScript.evaluate (<anonymous>:292:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at nextUp (/tmp/claude-0/-home-claude/3de1c16d-f486-54fd-a3e3-19bf8a09de56/scratchpad/polish/e2/e2test.js:29:23)
+    at /tmp/claude-0/-home-claude/3de1c16d-f486-54fd-a3e3-19bf8a09de56/scratchpad/polish/e2/e2test.js:53:84
+
+Node.js v22.22.0

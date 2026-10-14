@@ -1,0 +1,23 @@
+{
+"Healing Herbs":{"lv":40,"steps":[
+"Collect herbs for treatment — collect herbs from the supplies, defeat Drakan Patrol Scout, defeat Drakan Patrol Supporter (Kibelisk: Amunta's Hideout)",
+"Turn in — Lakiba, Amunta's Hideout"],
+"giver":"Amunta","giverPlace":"Amunta's Hideout","giverKib":"Amunta's Hideout","giverKibM":21,
+"turnin":"Lakiba","turninPlace":"Amunta's Hideout","turninKib":"Amunta's Hideout","turninKibM":20,
+"next":"Treatment","src":"https://metabot.gg/en/aion-2/quests/healing-herbs"},
+"Treatment":{"lv":40,"steps":[
+"Treat the Fallen Daybreak Society Members — administer herbal medicine to the first member, administer herbal medicine to the second member (Kibelisk: Amunta's Hideout)",
+"Turn in — Amunta, Amunta's Hideout"],
+"giver":"Lakiba","giverPlace":"Amunta's Hideout","giverKib":"Amunta's Hideout","giverKibM":20,
+"turnin":"Amunta","turninPlace":"Amunta's Hideout","turninKib":"Amunta's Hideout","turninKibM":21,
+"next":"Symbol of Liberation","src":"https://metabot.gg/en/aion-2/quests/treatment"},
+"Symbol of Liberation":{"lv":40,"steps":[
+"Collect materials to repair Zemurru's Totem — search the Pile of Broken Totems, collect materials from Drakan Patrol Totem, retrieve the Drakan Patrol Sorcery Talisman, defeat Drakan Patrol Totem (Kibelisk: Eastern Gribade Highland Cliff)",
+"Deliver totem restoration materials to Amunta — talk to Amunta (Kibelisk: Amunta's Hideout)",
+"Go to the Steel Hammer Temporary Trading Post — meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)",
+"Find materials necessary for infiltration — gather materials from the Shulak Cart (Kibelisk: Steel Hammer Temporary Trading Post)",
+"Turn in — Amunta, Zemurru's Tomb"],
+"giver":"Amunta","giverPlace":"Amunta's Hideout","giverKib":"Amunta's Hideout","giverKibM":21,
+"turnin":"Amunta","turninPlace":"Zemurru's Tomb","turninKib":"Zemurru's Tomb","turninKibM":27,
+"next":"Daybreak Society","src":"https://metabot.gg/en/aion-2/quests/symbol-of-liberation"}
+}

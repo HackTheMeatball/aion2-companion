@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=16; s.dvTotal=28; s.dvCost={"dv:hg":9,"dv:ew":3}; s.checks["dv:hg"]=true; s.checks["dv:ew"]=true; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const r = () => p.evaluate(() => document.getElementById('dvRemain').innerText + ' | ' + document.querySelector('#dvNextList .dvname').innerText);
+ console.log(await r());
+ await p.click('#dvRespec'); await p.click('#dvRespec'); await p.waitForTimeout(200);
+ console.log(await r(), await p.evaluate(() => document.getElementById('dvIn').value));
+ const el = await p.$('#dvBox'); await el.screenshot({ path: 'l.png' });
+ await b.close(); })();

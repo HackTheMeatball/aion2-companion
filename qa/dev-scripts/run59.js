@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.dvTotal=66; Object.keys(s.checks).filter(x=>x.startsWith('dv:')).forEach(x=>delete s.checks[x]); DV_NODES().slice(0,7).forEach(n=>s.checks[n.k]=true); s.dvCost={"dv:corner":5}; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ console.log(await p.evaluate(()=>document.querySelector('#dvNextList .dvbuy')?.textContent));
+ await p.click('#dvNextList .dvbuy'); await p.waitForTimeout(300);
+ console.log('undo:', JSON.stringify(await p.$eval('#dvUndo', e=>e.innerText)));
+ await b.close(); })();

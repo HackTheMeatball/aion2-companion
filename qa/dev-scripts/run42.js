@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.stones=8; s.dvTotal=36; s.dvCost={"dv:hg":9,"dv:ew":2,"dv:amb":7,"dv:qs":4,"dv:ew2":5,"dv:as":3,"dv:as2":9}; ["dv:hg","dv:ew","dv:amb","dv:qs","dv:ew2","dv:as"].forEach(x=>s.checks[x]=true); SP_STEPS.filter(x=>x.req<=17).forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ console.log(await p.evaluate(()=>[...document.querySelectorAll('.top-grid .tcard')].map(c=>Math.round(c.scrollHeight)+':'+Math.round([...c.children].reduce((m,e)=>Math.max(m,e.getBoundingClientRect().bottom),0)-c.getBoundingClientRect().top)).join(' ')));
+ await (await p.$('.top-grid')).screenshot({path:'tg.png'});
+ await b.close(); })();

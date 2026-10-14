@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1200}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.areaLv="10"; s.areaDone=false; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Nameless Cemetery").forEach(x=>delete s.checks[x.k]); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ console.log('chip checked (hide):', await p.$eval('#areaDoneTog', e=>e.checked));
+ const n = () => p.$$eval('#areaList li.item', l=>l.length);
+ const k = await p.evaluate(()=>AREA_ITEMS.find(x=>x.lv===10&&x.area==="Nameless Cemetery").k);
+ console.log('before', await n());
+ await p.click(`[data-k="${k}"]`); await p.waitForTimeout(300);
+ console.log('300ms', await n(), await p.$eval(`[data-k="${k}"]`, e=>e.closest('li').className).catch(()=>'gone'));
+ await p.waitForTimeout(700); console.log('1000ms', await n());
+ const r = await (await p.$('#areas')).boundingBox(); await p.screenshot({path:'hideclr.png', clip:{x:r.x-10,y:r.y-10,width:r.width+20,height:300}});
+ await b.close(); })();

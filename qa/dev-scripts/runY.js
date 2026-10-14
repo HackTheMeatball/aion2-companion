@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1100}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.checks={};GATES.forEach(g=>{if(g.lv<20)g.items.forEach((it,j)=>st.checks[it.k||g.id+':'+j]=true)});SP_STEPS.forEach(x=>{if(x.req<=20)st.checks[x.k]=true});st.dvTotal=78;st.open={};st.hideOpt=false;localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(700);
+console.log('NU:',await p.evaluate(()=>document.getElementById('nowStar').innerText.replace(/\n+/g,' | ')));
+console.log('g20 count:',await p.evaluate(()=>document.querySelector('#g20 .count').textContent));
+await p.screenshot({path:'y1.png',clip:{x:510,y:0,width:830,height:1100}});
+await p.click('#btnExpand');console.log('btn:',await p.textContent('#btnExpand'));await p.click('#btnExpand');console.log('btn:',await p.textContent('#btnExpand'));
+await p.click('#btnFilter');await p.check('#fOpt');console.log('opt hidden:',await p.evaluate(()=>document.querySelector('#main input[data-k="g20:exp"]').closest('li').hidden),await p.textContent('#filtN'));
+await p.click('#btnReset');console.log('after reset:',await p.evaluate(()=>document.querySelector('#main input[data-k="g20:exp"]').closest('li').hidden));
+console.log('ERR',errs);await b.close();})();

@@ -1,0 +1,131 @@
+import json
+MB="https://metabot.gg/en/aion-2/skills/"
+COST={"2-4":1,"5-7":2,"8-10":4}
+def sk(name,ty,learn,slug,gate,spec=None,note=None,dv=None):
+    d={"name":name,"type":ty,"learnLv":learn,"costs":COST,"gate":gate,"specialties":spec or ([] if ty=="passive" else None),"src":[MB+slug]}
+    if dv: d["dvNodes"]=dv
+    if note: d["note"]=note
+    return d
+STD="char Lv for skill level L (2..10) = learnLv + 3*(L-2)"
+ACT_DV={"Nezekan":1,"Zikel":1,"Vaizel":1,"Triniel":1,"cost":3}
+skills=[
+ sk("Heart Gore","active",4,"heart-gore",STD+" (L10 @ 28)",[{"skillLv":8,"options":["Absorbs 70, 70% HP","Engraves 1 Insignia for 10s on hit","Up to +20% Critical Hit when less targets hit"]},{"skillLv":12,"options":["Multi-Hit on hit"]},{"skillLv":16,"options":["Resets [Heart Gore] cooldown on landing a Critical Hit"]}],dv=ACT_DV),
+ sk("Insignia Explosion","active",14,"insignia-explosion",STD+" (L10 @ 38)",[{"skillLv":8,"options":["Rotate effect","+50% Multi-Hit on hit","Keeps 2 Insignia stacks after Insignia Explosion"]},{"skillLv":12,"options":["+1s Stun duration"]},{"skillLv":16,"options":["-3s cooldown"]}],dv=ACT_DV),
+ sk("Quick Slice","active",1,"quick-slice",STD+" (L10 @ 25)",[{"skillLv":8,"options":["+20% MP restored","Absorbs 70, 70% HP","+50% Multi-Hit on hit"]},{"skillLv":12,"options":["-1s Insignia Explosion cooldown on hit"]},{"skillLv":16,"options":["Ignores Block and Evasion and lands as a Critical Hit"]}],dv=ACT_DV),
+ sk("Flash Slice","active",8,"flash-slice",STD+" (L10 @ 32)",[{"skillLv":8,"options":["Blind lasts 2s longer","Range +6m","Up to 20% more damage when hitting more targets"]},{"skillLv":12,"options":["+1 consecutive use"]},{"skillLv":16,"options":["50% chance to rotate and Stun 3s when hitting a Blind target"]}],note="10s cooldown; moves to opposite side of target within 4m, up to 4 enemies."),
+ sk("Storm Rampage","active",5,"storm-rampage",STD+" (L10 @ 29)",[{"skillLv":8,"options":["Absorbs 500, 500% HP","Restores 120 MP on hit","Changes to mobile skill"]},{"skillLv":12,"options":["Multi-Hit on hit"]},{"skillLv":16,"options":["-1s all skill cooldowns on hit"]}],note="Only usable on a Staggered target within 4m."),
+ sk("Assault Stance","passive",13,"assault-stance",STD+" (L10 @ 37)",note="Critical Damage Boost +6% at L1, +45% at L40 (Metabot tooltip).",dv={"Nezekan":2,"Vaizel":1,"Triniel":1,"cost":2}),
+ sk("Impact Hit","passive",15,"impact-hit-assassin",STD+" (L10 @ 39)",note="L1: Impact-type Chance +11.2%, Double Chance +0.3%."),
+ sk("Defense Break","passive",21,"defense-break",
+    "flat: every skill level 2..10 needs char Lv 21 (Metabot table; differs from the +3/level pattern)",
+    note="On hitting a Staggered/Impact-afflicted target: target Defense -12%, Status Effect Resist -11% for 10s at L1; 20s cooldown. Metabot max-level tooltip numbers conflict.",
+    dv={"Zikel":2,"Vaizel":1,"Triniel":1,"cost":2}),
+ sk("Determination","passive",25,"determination","flat: every skill level 2..10 needs char Lv 25 (Metabot table)",
+    note="Bonus damage on targets at <=30% HP (L1 text) vs 69% in max-level tooltip (Metabot inconsistency).",dv={"Zikel":2,"Vaizel":1,"Triniel":1,"cost":2}),
+ sk("Heightened Sixth Sense","passive",1,"heightened-sixth-sense",STD+" (L10 @ 25)",note="Evasion +200, HP +150, Max HP +6% at L1."),
+ sk("Ambush Stance","passive",17,"ambush-stance",STD+" (L10 @ 41)",note="games.gg: skip in PvE (single source)."),
+]
+# skills listed but not fetched individually
+for n,ty,lv,slug in [("Savage Roar","active",1,"savage-roar"),("Shadowstrike","active",1,"shadowstrike"),("Ambush","active",3,"ambush"),
+    ("Whirlwind Slice","active",7,"whirlwind-slice"),("Infiltrate","active",10,"infiltrate"),("Shadow Fall","active",12,"shadow-fall"),("Defiance","active",16,"defiance-assassin"),
+    ("Exploit Weakness","passive",6,"exploit-weakness"),("Apply Poison","passive",9,"apply-poison"),("Rear Smite","passive",11,"rear-smite"),("Revitalization Contract","passive",23,"revitalization-contract")]:
+    skills.append({"name":n,"type":ty,"learnLv":lv,"costs":COST,"gate":None,"specialties":None,"src":["https://metabot.gg/en/aion-2/classes/assassin"],
+      "note":"Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed."+(" Core skill already in SP_SKILLS (gate/spec there)." if n in ("Savage Roar","Shadowstrike","Ambush","Exploit Weakness","Rear Smite") else "")})
+out={
+ "_meta":{"by":"R3","fetched":"2026-10-12","policy":"Metabot database fields = data (1 source ok). Advice/orders need 2 independent sources; else verdict single/inferred.",
+   "skillRules":{"costsPerLevel":"L2-4: 1 pt, L5-7: 2 pts, L8-10: 4 pts (21 pts per skill 1->10); identical on all 11 Metabot skill pages fetched",
+     "maxFromPoints":10,"maxLevel":40,"above10":"only from gear options, Arcana, Daevanion nodes (thegameswiki skills-and-specialties; gameplay.tips skills guide)",
+     "specialtyOptions":"options unlock at skill Lv 8 (3 options), 12 (4th), 16 (5th); slots: 1 at 8, 2 at 12, 3 at 20 (gameplay.tips; thegameswiki says 8/12/20 slots are KR player reports; Metabot class page 8/12/20)",
+     "sources":[MB+"heart-gore","https://gameplay.tips/guides/aion-2-skills-guide-active-passive-and-stigma.html","https://thegameswiki.com/aion-2/wiki/skills-and-specialties"]},
+   "fullSkillList":{"actives":["Quick Slice 1","Savage Roar 1","Shadowstrike 1","Ambush 3","Heart Gore 4","Storm Rampage 5","Whirlwind Slice 7","Flash Slice 8","Infiltrate 10","Shadow Fall 12","Insignia Explosion 14","Defiance 16"],
+     "passives":["Heightened Sixth Sense 1","Exploit Weakness 6","Apply Poison 9","Rear Smite 11","Assault Stance 13","Impact Hit 15","Ambush Stance 17","Defense Break 21","Revitalization Contract 23","Determination 25"],
+     "sources":["https://metabot.gg/en/aion-2/classes/assassin","https://thegameswiki.com/aion-2/wiki/assassin-skills"],"verdict":"2-source (identical learn levels)"}},
+ "skills":skills,
+ "spOrderAfterCore":{
+   "order":["Assault Stance","Impact Hit","Flash Slice","Storm Rampage","Defense Break","Determination","Heightened Sixth Sense"],
+   "perItem":{
+     "Assault Stance":{"verdict":"2-source","basis":"GamesFuze (passives: Rear Smite+Exploit Weakness, then Assault Stance, then Impact Hit); Skycoach (EW+RS first, then Assault Stance and Impact Hit); games.gg (max RS, Assault Stance, EW, Defense Break, Determination); Metabot class-builds (Nezekan Assault Stance + EW node pairs first)"},
+     "Impact Hit":{"verdict":"2-source","basis":"GamesFuze, Skycoach (after Assault Stance); games.gg says invest but small per-level gain"},
+     "Flash Slice":{"verdict":"2-source","basis":"GamesFuze active priority #6 (after HG, IE, SR, SS, QS); Skycoach Flash Slice to 12"},
+     "Storm Rampage":{"verdict":"2-source","basis":"GamesFuze #7; Skycoach 'Storm Rampage 16, later'"},
+     "Defense Break":{"verdict":"single","basis":"games.gg passive max order (4th). Metabot class-builds recommends its Zikel nodes, which is board advice, not SP."},
+     "Determination":{"verdict":"single","basis":"games.gg (5th in passive max order)"},
+     "Heightened Sixth Sense":{"verdict":"single","basis":"games.gg ('invest')"}},
+   "skip":{"Apply Poison":"games.gg: skip in PvE (single)","Ambush Stance":"games.gg: skip in PvE (single)","Shadow Fall":"games.gg: useless in PvE (single)","Whirlwind Slice":"no source prioritises it","Infiltrate":"Skycoach Lv 8 'fairly early' (single)","Defiance":"Skycoach Lv 8 (single)"},
+   "interleave":"inferred: no source orders passives against actives; R3 put the two 2-source passives first because they are always-on and Assault Stance is named by all four sources",
+   "budget":"core 8 = 168 pts; LEVEL_POINTS[45]=203 -> 35 pts + Wisdom Stones from quests/dungeons. Assault Stance 1->10 = 21, Impact Hit = 21; gates: AS L10 needs char 37, IH L10 needs 39.",
+   "sources":["https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/","https://skycoach.gg/blog/aion-2/articles/assassin-guide","https://games.gg/aion-2/guides/aion-2-assassin-build-guide/","https://metabot.gg/en/aion-2/guides/class-builds-guide"],
+   "verdict":"2-source for Assault Stance > Impact Hit and Flash Slice > Storm Rampage; rest single; interleave inferred",
+   "notFetched":"GamerBlurb (fetch error x2)"},
+ "levelPoints":{"30":111,"31":117,"32":123,"33":129,"34":135,"35":141,"36":147,"37":153,"38":159,"39":165,"40":171,"41":177,"42":183,"43":189,"44":196,"45":203,
+   "sources":["https://wikily.gg/aion-2/leveling","https://allthings.how/?p=232911 (203 at 45 only)"],
+   "verdict":"45=203: 2-source. 30-44: single (Wikily); matches LEVEL_POINTS exactly. App note says game matched at Lv 12/13."},
+ "boards":{
+   "list":[{"name":"Nezekan","lv":12,"currency":"Daevanion Crystal (shared pool)","points":134,"statNodes":66,"skillNodes":22},
+           {"name":"Zikel","lv":20,"currency":"Daevanion Crystal (shared pool)","points":134,"statNodes":66,"skillNodes":22},
+           {"name":"Vaizel","lv":30,"currency":"Daevanion Crystal (shared pool)","points":134,"statNodes":66,"skillNodes":22},
+           {"name":"Triniel","lv":40,"currency":"Daevanion Crystal (shared pool)","points":168,"statNodes":94,"skillNodes":22},
+           {"name":"Azphel","lv":45,"currency":"Daevanion Crystal: Azphel (own pool)","points":232,"statNodes":152,"skillNodes":0,"note":"PvP/status stats only"}],
+   "listSources":["https://metabot.gg/en/aion-2/guides/daevanion-guide","https://metabot.gg/en/aion-2/daevanion/assassin","https://gamewith.ai/aion2/en/daevanion-planner/assassin","https://skycoach.gg/blog/aion-2/articles/daevanion-board"],
+   "listVerdict":"2-source+ : five boards on global, Azphel at 45 (Metabot guide + Metabot assassin board data + GameWith planner; Skycoach gives same levels 20/30/40/45).",
+   "nodeCosts":{"stat":1,"rareStat":2,"passive":2,"active":3,"corner":4,"cornerValue":"+1.5% of a headline stat","sources":["Metabot daevanion-guide","Skycoach daevanion-board","GameWith planner (1/2/3/4 by grade)"],"verdict":"2-source"},
+   "Vaizel":[
+     {"node":"Heart Gore","ty":"a","cost":3,"pathNote":None,"src":[MB+"heart-gore","https://metabot.gg/en/aion-2/daevanion/assassin"]},
+     {"node":"Insignia Explosion","ty":"a","cost":3,"pathNote":None,"src":[MB+"insignia-explosion"]},
+     {"node":"Quick Slice","ty":"a","cost":3,"pathNote":None,"src":[MB+"quick-slice"]},
+     {"node":"Assault Stance","ty":"p","cost":2,"pathNote":"1 node on Vaizel (2 on Nezekan, 0 on Zikel)","src":[MB+"assault-stance"]},
+     {"node":"Defense Break","ty":"p","cost":2,"pathNote":"1 node on Vaizel (2 on Zikel)","src":[MB+"defense-break"]},
+     {"node":"Exploit Weakness / Rear Smite / Ambush / Savage Roar / Shadowstrike / Determination / Impact Hit","ty":"a|p","cost":"3 active / 2 passive","pathNote":"Vaizel lists 22 distinct skills for 22 skill nodes => exactly 1 node per skill (inference from count)","src":["https://metabot.gg/en/aion-2/daevanion/assassin"]},
+     {"node":"Critical Damage Boost corner","ty":"c","cost":4,"pathNote":"Vaizel full-board totals include Critical Damage Boost +3% and Critical Damage Tolerance +3% => two +1.5% Crit Damage Boost corners (inferred from totals; corner positions unknown)","src":["https://metabot.gg/en/aion-2/daevanion/assassin"]}],
+   "Triniel":[
+     {"node":"Heart Gore","ty":"a","cost":3,"pathNote":None,"src":[MB+"heart-gore"]},
+     {"node":"Insignia Explosion","ty":"a","cost":3,"pathNote":None,"src":[MB+"insignia-explosion"]},
+     {"node":"Quick Slice","ty":"a","cost":3,"pathNote":None,"src":[MB+"quick-slice"]},
+     {"node":"Assault Stance","ty":"p","cost":2,"pathNote":None,"src":[MB+"assault-stance"]},
+     {"node":"Defense Break","ty":"p","cost":2,"pathNote":None,"src":[MB+"defense-break"]},
+     {"node":"(all 22 skills, 1 node each)","ty":"a|p","cost":"3/2","pathNote":"22 distinct skills for 22 nodes (inference from count)","src":["https://metabot.gg/en/aion-2/daevanion/assassin"]},
+     {"node":"Multi-Hit Chance corner","ty":"c","cost":4,"pathNote":"Triniel totals: Multi-hit Chance +4.5% and Multi-hit Resist +4.5% (no crit-damage or speed % stat) => +1.5% Multi-Hit Chance corners (inferred). The app's generic 'Corner' can be named this.","src":["https://metabot.gg/en/aion-2/daevanion/assassin"]}],
+   "cornerTotalsByBoard":{"Nezekan":"Combat Speed +3%, Cooldown Reduction +3%","Zikel":"Damage Boost +3%, Damage Tolerance +3%","Vaizel":"Critical Damage Boost +3%, Critical Damage Tolerance +3%","Triniel":"Multi-hit Chance +4.5%, Multi-hit Resist +4.5%","src":"https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule)"},
+   "pathCosts":None,"pathCostsNote":"Metaroad board page refused (provenance) and GameWith grid is unlabelled; Metabot gives no node coordinates. Path costs unknown; keep 'about 3–5 with its path' only as labelled inference or drop.",
+   "Ariel":None,
+   "ArielNote":"Not on global by 45. Metabot (guide + assassin board data) and GameWith list exactly 5 boards with no Ariel; Skycoach: 'Ariel (PvE) and Azphel (PvP): Level 45 … Ariel is currently absent on Global'. MeinMMO and gameplay.tips name Ariel (gameplay.tips also Marchutan, Yustiel) without unlock levels, likely KR info. => tip 'Five boards … Azphel (45)' is right; Ahead row 'Ariel and Azphel boards' is wrong (use 'Azphel board (PvP)').",
+   "skillLevelNote":"Board nodes add +1 'above the normal cap' (Metabot skill pages); none says whether they count toward specialty unlocks."},
+ "stigmas":[
+   {"name":"Illusive Clone","availableLv":22,"src":["https://metabot.gg/en/aion-2/skills/illusive-clone","https://metabot.gg/en/aion-2/classes/assassin","https://thegameswiki.com/aion-2/wiki/stigma-system"],"note":"90s cd; removes Heart Gore cooldown + 20% extra damage for 10s (L1) / 30s (max). Specialties at stigma Lv 5/10/15/20."},
+   {"name":"Triniel's Dagger","availableLv":22,"src":["https://metabot.gg/en/aion-2/classes/assassin","https://thegameswiki.com/aion-2/wiki/stigma-system"]},
+   {"name":"Savage Fang","availableLv":22,"src":["https://metabot.gg/en/aion-2/classes/assassin","https://thegameswiki.com/aion-2/wiki/stigma-system"]},
+   {"name":"Swift Contract","availableLv":22,"src":["https://metabot.gg/en/aion-2/classes/assassin","https://thegameswiki.com/aion-2/wiki/stigma-system"]}],
+ "stigmaRules":{"availability":"All 13 Assassin stigmas learnable at char Lv 22 once 'The One Who Hears the Voice' (third Ascension) is done; no per-stigma acquisition. Sources: Metabot stigma-guide, allthings.how ?p=244997, PlayNews ('unlock any Stigma for your class from the Skills menu'), thegameswiki stigma-system (all 13 at 22). Verdict 2-source+. => Illusive Clone IS learnable at 22 (and at 27).",
+   "slots":"22/27/32/37, 4 on global (Metabot content-unlocks, Metabot stigma-guide, Wikily, allthings.how, PlayNews). thegameswiki: 5 since 25 Mar 2026 on KR/TW.",
+   "equipOrder":{"metabot":["Illusive Clone","Swift Contract","Savage Fang","Triniel's Dagger"],
+      "gamesfuze":["Triniel's Dagger (to 10)","Illusive Clone (to 20)","Savage Fang (1)","Swift Contract (1)"],
+      "skycoach":["Triniel's Dagger (to 10 first)","Illusive Clone (20 main goal)","Swift Contract","Savage Fang (PvE buff at 15)"],
+      "app":["Triniel's Dagger 22","Illusive Clone 27","Savage Fang 32","Swift Contract 37"],
+      "verdict":"No 2-source slot-by-level order. GamesFuze+Skycoach agree TD then IC as top two (supports app slots 1-2; these are priority lists, so equip timing is inferred). Slots 3-4: Metabot+Skycoach put Swift Contract before Savage Fang; GamesFuze the reverse. App's SF 32 / SC 37 is the minority order. Same four stigmas in all three sources (2-source+).",
+      "upgradePriority":"Triniel's Dagger to 10 and Illusive Clone to 20 (GamesFuze + Skycoach, 2-source). App plan 'all to 5, then slot 1 to 10/15' is Metabot general advice (single)."}},
+ "stigmaCost":{"table":"stigma Lv 1-5: 1 shard each, 6-10: 2, 11-15: 4, 16-20: 8 (cumulative 5/15/35/75). Lv 21+: Superior Stigma Shards.","learnCostsShard":True,
+   "shardIncome":"1 point from the Ascension reward (= learn cost of first stigma); +1 per char level 23-39; +2 per level 40-45; cumulative from leveling 5@27, 10@32, 15@37, 19@40, 29@45 (30 incl. Ascension). Shops: Shugo Festival cap 35, Abyss Point Exchange 200, Nightmare 35 (PlayNews; Abyss/Nightmare shops at 45).",
+   "sources":["https://metabot.gg/en/aion-2/guides/stigma-guide","https://allthings.how/?p=244997","https://metabot.gg/en/aion-2/skills/illusive-clone (per-level stigma points 1/2/4/8)","https://www.playnews.gg/en/guides/aion-2-stigmas-how-to-unlock-them-and-farm-stigma-shards (shop caps only)"],
+   "verdict":"2-source (Metabot, allthings.how agree on table, learn=1 shard, income). Not seen on an in-game screen; independence of allthings.how from Metabot not provable. thegameswiki/PlayNews give no numbers.",
+   "implication":"From leveling alone (30 points by 45) TD to 10 (15) + 3 others learned (3) = 18 fits; IC to 20 (75) does not before 45."},
+ "unlocks":[
+   {"what":"Expedition feature (Exploration)","level":None,"quest":"Daeva in a Dream","minItemLevel":None,"party":None,"sources":["https://metabot.gg/en/aion-2/content-unlocks","https://wikily.gg/aion-2/leveling","in-game (user)"],"verdict":"2-source + in game"},
+   {"what":"Krao Cave","level":20,"quest":"Daeva in a Dream (feature gate; seen in game ~22)","minItemLevel":200,"party":"1–5","conquest":{"lv":45,"il":700},"sources":["https://metabot.gg/en/aion-2/guides/dungeon-guide","https://expcarry.com/aion-2-dungeons-guide"]},
+   {"what":"Urugugu Canyon","level":28,"quest":None,"storyStep":"Canyon's Secret (rec 30) step 2 'complete the Urugugu Canyon investigation'","minItemLevel":300,"party":"2–5","timeLimit":"60 min (allthings.how)","conquest":{"lv":45,"il":1400},
+    "sources":["https://metabot.gg/en/aion-2/guides/dungeon-guide","https://thegameswiki.com/aion-2/wiki/urugugu-canyon","https://expcarry.com/aion-2-dungeons-guide","https://allthings.how/?p=244669","https://games.gg/aion-2/guides/Aion-2-urugugu-canyon-expedition/"],
+    "verdict":"Level 28 / IL 300 / 2–5: 4-5 sources (game data). No source names a per-dungeon unlock quest; Metabot Canyon's Secret lists no unlock reward. Whether the canyon is enterable before reaching that story step is NOT verified in game.",
+    "note":"Story step likely runs this expedition (inferred: same name; Wikily's Elyos 'Fire Temple' quest lists the Expedition as its objective). Canyon's Secret reward = Aullaeu Wings. If the step needs the 2–5 party version, the user may need a party for the story; unknown."},
+   {"what":"Fire Temple","level":35,"quest":None,"storyStep":"Mirror of Greed (rec 37) step 2 'complete the Fire Temple investigation'","minItemLevel":500,"party":"1–5","conquest":{"lv":45,"il":2100},
+    "sources":["https://metabot.gg/en/aion-2/guides/dungeon-guide","https://thegameswiki.com/aion-2/wiki/fire-temple","https://wikily.gg/aion-2/dungeon-maps/fire-temple","https://expcarry.com/aion-2-dungeons-guide"],
+    "verdict":"Level 35 / IL 500: 4 sources. Party: 1–5 (Metabot, expcarry); 'up to 5' (Wikily, thegameswiki). No per-dungeon unlock quest named. Not verified in game.",
+    "note":"Elyos counterpart quest 'Fire Temple' (Wikily, rec 37): objective 'Investigate the Fire Temple by entering it', objective type Expedition; journal: a passage 'has opened nearby'. Mirror of Greed reward: Fire Temple Accessory Selection Chest (Metabot). => the story step is a run of this expedition (2 sources, inferred for Asmodian)."},
+   {"what":"Global availability caveat","note":"thegameswiki (Oct 7 2026): NCsoft hadn't listed which Expedition dungeons are open in the global build; its tables are KR/TW (it also says weekly Expedition reward limits were removed there on 1 Jul 2026, while Metabot gives 7 per dungeon per week: disputed for global). Metabot's tables are global client data."}],
+ "unlocksRecommendation":"P0-2: keep 28 / 35 as the listed entry level (multi-source game data) but not as 'verified unlock' unless seen in game; add story chips: Urugugu -> 'Canyon's Secret' (Lv 30) and Fire Temple -> 'Mirror of Greed' (Lv 37) as 'the story sends you in here'. Krao precedent: listed Lv 20, opened at ~22 because of the feature quest; for 28/35 the feature is already unlocked, so no evidence of a later gate.",
+ "dailyDungeon":{"lv":30,"names":["Daeva Bio-Research Base"],"otherNamesKRTW":["Odylium Repository (pet boxes; lv not stated)","Crobahki's Secret Depository (Kina; lv not stated)"],
+   "entries":"14 per week per server, shared by characters (Metabot, thegameswiki); solo (Metabot)",
+   "src":["https://metabot.gg/en/aion-2/content-unlocks","https://wikily.gg/aion-2/leveling","https://metabot.gg/en/aion-2/guides/dungeon-guide","https://thegameswiki.com/aion-2/wiki/daily-dungeons"],
+   "verdict":"Lv 30 unlock: 2-source. Name 'Daeva Bio-Research Base' at 30 with Enhancement Stones: 2-source (Metabot, thegameswiki KR/TW). Other two names single (thegameswiki)."}
+}
+p="/tmp/claude-0/-home-claude/3de1c16d-f486-54fd-a3e3-19bf8a09de56/scratchpad/data/build.json"
+json.dump(out,open(p,"w"),indent=1,ensure_ascii=False)
+print("ok",len(skills))

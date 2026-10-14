@@ -1,0 +1,11 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.qsteps={'Imminent Threat':[0,1]};delete st.qsShowDone;delete st.showObj;localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(400);
+const g=()=>p.evaluate(()=>({n:document.getElementById('jFiltN').textContent,x:!document.getElementById('jFiltX').hidden,subs:document.getElementById('questSubs').innerText.replace(/\n/g,' | ').slice(0,60),doneDis:document.getElementById('jfDone').disabled}));
+console.log('default',await g());
+await p.click('#jFiltBtn');await p.check('#jfObj');console.log('show obj',await g());
+await p.check('#jfDone');console.log('show done',await g());
+await p.click('#jFiltX');console.log('x',await g());
+console.log('ERR',errs);await b.close();})();

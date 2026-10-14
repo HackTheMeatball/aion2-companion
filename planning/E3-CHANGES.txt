@@ -1,0 +1,82 @@
+E3 changes to assassin-route.html (v288 -> v289-E3). Backup before: backup-v288-pre-E3.html; after: backup-v289-E3.html. Not published.
+localStorage key unchanged ('aion2-assassin-route-v4'); no key renamed, removed or reused; no new external requests.
+
+Data (generated block): polish/e2/gen.py was updated (pre-E3 copy: polish/e3/gen.pre-E3.py) and re-run; the page's
+E2-GEN block equals gen-block.js again (python3 -I polish/e2/gen.py && python3 -I polish/e2/apply.py). 403 checks, 0 failed.
+  - RQ rows get "noPre": 1 when the quest has no prerequisite data at all (rq.json requiresStory and requiresRegional both null,
+    no chain edge): 10 quests (the 6 named in the task + Shugo-of-All-Trades, Spooky Specters, Spacetime Rift: Unknown Species / Proof).
+  - P1-9 zones: CAMP_ZONE table in gen.py (giver Kibelisk, else giver place, else a camp-named zone -> zone). Each entry is checked
+    against the map-data votes (Sealed Dungeon entrances via polish/e3/hideout-area-v288.json snapshot + AREA_LOC, dungeons.json,
+    strongholds.json, story steps "<zone> ... (Kibelisk: X)"); new checks: same giver camp/Kibelisk -> one zone; no camp-only zone.
+      Quai Campsite -> Calderon Canyon; Temporary Investigation Base, Safe Haven -> Dredgion Crash Site; Watcher's Tent -> Calderon Canyon;
+      Forest Hideout -> Moslan Forest; Briskwind Shelter -> Dranactus; Zemurru's Tomb -> Western Gribade Highland.
+    Changed quests (10): Hugo Mercenaries: Past and Present, Missing Mount, I'm a Believer! (Safe Haven -> Dredgion Crash Site);
+    Practice Makes Perfect, Nyerk!, A Traitor Within (Quai Campsite -> Calderon Canyon); In the Fang Legion's Name (Sanctum Outpost
+    -> Calderon Canyon); One Last Thing (Tranein Highland -> Calderon Canyon); Blade of Vengeance (Sanctum Outpost -> Moslan Forest);
+    Fallout (Southern -> Western Gribade Highland); Reality Bites (Battlescar Mound -> Dranactus). Report: gen-report.json zoneFix/zoneVotes.
+    ASSUMPTION: Safe Haven has no strict map majority (Hidden Vein Cave, 460 m away, votes Nameless Cemetery); chosen by Safe Haven
+    Cliff (Dredgion Crash Site stronghold) + allthings filing Odyle Jelly (giver at Safe Haven) under Dredgion Crash Site.
+    Nornir Assembly stays a zone (allthings' own sub-region; no zone data puts it anywhere else). Mahindel River / Southern Gribade
+    Highland are sub-regions, kept.
+  - P2-8 CONF: "Kibelisk and Command mission unlock levels" moved from Disputed to a new "Unverified" group.
+  - P2-7 SRC_SITE (hostname -> site name, from gen.py's SITE list) for the Sources card.
+
+F1/P1-1  Next up: story card always in the stack. Cap = first 8 cards + always the story card and the side-content cards
+         (regional quests, Sealed Dungeon, stronghold) and a waiting stigma card. (Was slice(0, 12), which cut the story at Lv 30/45 messy.)
+P0-1     rqOpenLv(q): noPre quests open at max(unlocksAt, rec). Used by rqAvail (Next up, tips, Progress count, milestone dimming).
+         setLevel: a snooze on a noPre quest survives Level up while the new level < its rec; all other snoozes clear as before.
+P0-2     Milestone quest rows: the "Opens once the story reaches …" line (span.rq-req) hides once the quest is picked up or done.
+         Locked rows show a small "In my game" pill: one click = picked up (state.started = 1, same as the box) and clears its snooze.
+P2-1     One snooze label: "Not in game yet" (milestone pill, tooltips, Next up count). Next up uses a compact eye-slash icon button with
+         that label as tooltip/aria-label. STEPS story:3 text updated.
+P1-2     Next up stack height follows the card snapped into view (+30 px peek), refit 140 ms after scrolling stops and on any card resize
+         (ResizeObserver on every card); height transition .18s. Taller cards (story with objectives) are no longer clipped.
+P1-3     Milestone steps flagged byStory (g10:1, g12:0, g16:0, g16:monolith, g37:2) are skipped in Next up while that story quest is the
+         current one, and "Turned in" on the story card ticks them. "<Board> board opens" steps (bo: g20:0, g30:0, g40:0): while open,
+         the board's buy / enter-cost card is not shown (one card; the buy card follows once the step is done).
+P1-4     g45:2–g45:5 (Azphel board, Ascension Trial timing, Abyss Points, Start Conquest) are opt + adv: "Optional" tag in the milestone,
+         Next up cards after the story/side cards (max 3), Advanced only. Counts unchanged unless "hide optional" is on.
+P1-5     Next up quest names wrap (no ellipsis); a follow-up's "→" stays attached to its row.
+P1-6     Stigma slot ready to equip with 0 shards and the stigma not yet learned: "Slot N · needs 1 shard · +1 at Lv L", button
+         "Needs 1 shard" disabled. Next up shows "Equip X" with tag "Needs 1 shard" and no button, after the story. Undo toast unchanged.
+P1-7     ≤600 px header: one column (tag + mode switch / title / tagline) overriding the !important two-column grid.
+P1-8     syncHeroRows: icon grows with the text up to 72 px, then the row height is re-measured with the final icon width (fixes "8 /2 pts"
+         under the button at 1100); icons top-aligned in all three cards. Board header: nowrap + 10 px gap; " acquired" drops when the
+         main column is 681–790 px (container query). Daevanion node subline wraps beside the cost box. Stigma pick no longer truncates
+         (see P2-9).
+P2-2     Stigmas: Basic's single "after this" row and Advanced's Coming up use one row format: −N = shards short counting everything
+         above it (learning cost included). Was: Basic showed the upgrade's cost.
+P2-3     Skills: "+N more upgrades available now"; bar label "X of C pts" (tooltip: points you have); "priority #N" kept on one line.
+P2-4     Later cards: each skill's own next upgrade only, one card per skill (no "Heart Gore 9 → 10" while 8 → 9 is unbought).
+P2-5     No art for a skill/stigma (Impact Hit, Flash Slice, Storm Rampage, Determination, Heightened Sixth Sense, off-plan stigmas):
+         initials square (mini rows and hero), same gold style as the stigma placeholder. Wisdom Stone image no longer used as a skill icon.
+P2-6     Daevanion with every open node bought and a board ahead: "✓ All open nodes acquired · next: Vaizel at Lv 30".
+P2-7     Sources card: one row per site (name · count · which data it backs), page list behind each row; sites with one link share an
+         "Other sites" row. All 291 links stay in the DOM (e2test requires it), collapsed.
+P2-9     Stigma pick: the hero name is plain text again; a small "change ▾" in the subline holds the native select (4 planned minus
+         earlier slots + "Other…"). "Other…" opens a text field: Enter/blur saves state.stPick[n] (any name), Escape cancels.
+         Off-plan names: initials icon, no E-row text (no "row -1"), not in the E stack/rotation (no data for them).
+P2-10    Regional card bar label: "N/M turned in" (milestone level list dropped).
+P2-11    Story input: long quest names shrink to fit (down to 11.5 px) with the full name as tooltip; runs in a frame (update() stays ~10 ms).
+P2-12    "N earned from levels" on both Skills and Stigmas (tooltips explain; Stigmas' says the big number is what's left).
+P2-13    Herb Pouch Heist: milestone Lv 40 (unchanged), Next up only from Lv 44 (P0-1).
+
+Tests (bash polish/qa/map.sh assassin-route.html qa-cur.html; bash icons/map.sh; bash polish/e2/map-pre.sh):
+  polish/qa/regress.js        4806 checks · hard fail 0 · soft fail 3 (before E3: hard 8, soft 221). polish/e3/regress-final.out,
+                              baseline polish/e3/baseline-regress.out. Remaining soft:
+                                - "no prerequisite data (open from Lv 10)": static check reads unlocksAt; behaviour now uses rec (noPre).
+                                  Left so the data keeps rq.json's value.
+                                - Sources link count <= 60: links stay in the DOM (collapsed) because e2test checks every URL is listed.
+                                - user fixture: Fight Poison with Poison not offered at "Preparations for Restoration": the data says it
+                                  needs "A Collective Effort"; the new "In my game" pill is the one-click override.
+  polish/e2/e2test.js         164 ok, E2 CHECKS PASSED. Expectation updated for P0-1 (noPre opens at rec); pre-E3 copy e2test.pre-E3.js.
+  polish/e1/e1test.js         148 ok, E1 CHECKS PASSED (run with the v285 fixture as argv[3]). Updated: pick options end with "Other…";
+                              snooze test at "Canyon's Secret" (at "Dying Light" the only open quest was the snoozed one, so the card
+                              is gone). Pre-E3 copy e1test.pre-E3.js. update() median 11.6 / 11.3 / 8.0 ms.
+  polish/e2/migtest-e2.js     39 ok, E2 MIGRATION CHECK PASSED.
+  polish/e1/migtest.js        same 4 expected diffs as after E2 (gates, steps hold, stigma plan names, gate tags); nothing new.
+  polish/e3/e3test.js         new, 22 ok, E3 CHECKS PASSED (P0-1 snooze/level, P0-2 In my game, P1-6 + Undo, P2-9 Other…, P1-1/3/4,
+                              P2-4, wording, Conf/Sources, zones, no page errors).
+Screenshots: polish/e3/shots/d-{1500,1100,390}-{advanced,basic}-{27,30,37,45}*.png, rq-*.png (regional card), stack-user27-*.png,
+  src.png / conf.png; polish/qa/shots refreshed by the final regress run.
+Helper scripts: polish/e3/peek.js (Next up dump), shots.js, m.js (measure), prof.js, rqcard.js, stack.js.

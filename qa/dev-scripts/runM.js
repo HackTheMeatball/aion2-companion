@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.qsteps={'Imminent Threat':[0,1]};delete st.qsShowDone;delete st.hideObj;localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(400);
+const sub=()=>p.evaluate(()=>document.getElementById('questSubs').innerText.replace(/\n/g,' | ').slice(0,90));
+console.log('default:',await sub(), 'badge', await p.textContent('#jFiltN'));
+await p.click('#jFiltBtn');await p.waitForTimeout(150);
+const card=await p.$('section.card.where');await card.screenshot({path:'m1.png'});
+await p.uncheck('#jfDone');console.log('show done:',await sub(),'badge',await p.textContent('#jFiltN'));
+await p.check('#jfObj');console.log('hide all:',JSON.stringify(await sub()),'badge',await p.textContent('#jFiltN'));
+await p.uncheck('#jfObj');await p.check('#jfDone');console.log('back:',await sub());
+await p.mouse.click(5,5);console.log('menu hidden',await p.evaluate(()=>document.getElementById('jFiltMenu').hidden));
+console.log('ERR',errs);await b.close();})();

@@ -1,0 +1,21 @@
+ok   head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang
+ok   footer: fan-made / not affiliated with NCSoft line
+ok   footer: Sources link + plain (dofollow) Metabot link
+ok   footer: the Sources link opens the Sources card
+ok   all icons load (no broken images)
+ok   export: button visible outside claude.ai
+ok   export: Blob download equals the saved state
+ok   service worker registers on localhost (scope = site root)
+ok   service worker cache is named after the build
+ok   page is controlled by the service worker after a reload
+ok   offline: the app shell, icons and saved progress load from the cache
+ok   no page errors, failed requests or 4xx/5xx (Google Fonts may be unreachable)
+ok   manifest: name, start_url, standalone, colors, 192/512 icons all served
+ok   404: status 404 with the styled page and a link home
+ok   robots.txt allows all + sitemap; CNAME is aion2.ishkabytes.com
+ok   artifact build: every icon is a known /_blob/ id, no relative icon paths
+ok   artifact build: no service worker, manifest, canonical or document skeleton
+ok   artifact build: Export goes through window.claude.use("downloads")
+ok   artifact build: icons load, no service worker, no page errors
+19 ok, 0 failed
+SITE CHECKS PASSED

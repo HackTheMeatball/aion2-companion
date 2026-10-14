@@ -1,0 +1,844 @@
+<title>Asmodian Assassin Route</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: sticky left rail (level + progress + checkpoint track) beside stop points and route rules; stacks to one column on phones. Single dark theme by choice (Asmodian). */
+:root {
+  --bg: #110c13;
+  --panel: #1a1320;
+  --panel-2: #22192a;
+  --line: #33263c;
+  --fg: #ece4ee;
+  --muted: #9f90a8;
+  --accent: #d0506f;
+  --accent-soft: #d0506f26;
+  --good: #5fbf8a;
+  --warn: #e2a64a;
+  --display: "Marcellus SC", "Palatino Linotype", Georgia, serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  background-image: radial-gradient(1200px 500px at 85% -10%, #3a1730 0%, transparent 60%),
+                    radial-gradient(900px 400px at -10% 110%, #221a3d 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; }
+
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 6px 0 6px; text-wrap: balance; letter-spacing: .01em; }
+.sub { color: var(--muted); max-width: 62ch; margin: 0; }
+
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+button {
+  font: 600 13px var(--body); color: var(--fg); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+
+.layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: minmax(0, 1fr); } aside.rail { position: static !important; } }
+
+aside.rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); display: grid; gap: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+@media (max-width: 860px) { aside.rail { max-height: none; overflow: visible; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.card h2, h2.sec { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+h2.sec { margin: 10px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+h2.sec small { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; }
+
+.progress-row { display: flex; align-items: center; gap: 14px; }
+.ring { width: 76px; height: 76px; flex: none; }
+.ring circle { fill: none; stroke-width: 7; }
+.ring .bg { stroke: var(--line); }
+.ring .fg { stroke: var(--accent); stroke-linecap: round; transition: stroke-dashoffset .4s ease; transform: rotate(-90deg); transform-origin: 50% 50%; }
+.ring text { fill: var(--fg); font: 600 16px var(--mono); }
+.big { font-family: var(--display); font-size: 22px; }
+.muted { color: var(--muted); font-size: 13px; }
+
+.lvl-input { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.lvl-input label { font-size: 13px; color: var(--muted); }
+.lvl-input input[type=number] {
+  width: 70px; font: 600 16px var(--mono); color: var(--fg); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
+}
+input[type=range] { width: 100%; accent-color: var(--accent); }
+
+.track ol { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 0; }
+.track li { display: grid; grid-template-columns: 30px 12px minmax(0,1fr); gap: 10px; align-items: center; padding: 3px 0; font-size: 13px; }
+.track a { color: inherit; text-decoration: none; }
+.track a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.track .lv { font: 600 12px var(--mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.track .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); background: var(--bg); }
+.track li.cleared .dot { background: var(--good); border-color: var(--good); }
+.track li.overdue .dot { background: var(--warn); border-color: var(--warn); }
+.track li.next .dot { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.track li.next .lv, .track li.cleared .lv { color: var(--fg); }
+.track li.next .what::after { content: "next"; margin-left: 8px; font: 600 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.track li.overdue .what::after { content: "missed"; margin-left: 8px; font: 600 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--warn); }
+
+main { display: grid; gap: 14px; min-width: 0; }
+.list { display: grid; gap: 14px; }
+details.step { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: 16px; }
+details.step.current { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 10px 40px -20px var(--accent); }
+details.step.overdue { border-color: var(--warn); }
+details.step.done { opacity: .72; }
+summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 52px minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 16px 18px; }
+summary::-webkit-details-marker { display: none; }
+.num { width: 52px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-family: var(--display); font-size: 20px; background: var(--panel-2); border: 1px solid var(--line); line-height: 1; text-align: center; }
+.gate .num { font: 600 15px var(--mono); }
+.gate .num small { display: block; font-size: 9px; letter-spacing: .12em; color: var(--muted); margin-bottom: 2px; }
+details.step.current .num { background: var(--accent); border-color: var(--accent); color: #fff; }
+details.step.current .num small { color: #ffffffcc; }
+details.step.overdue .num { border-color: var(--warn); color: var(--warn); }
+details.step.done .num { background: #5fbf8a22; border-color: var(--good); color: var(--good); }
+.title { min-width: 0; }
+.title h3 { margin: 0; font-size: 17px; font-weight: 700; text-wrap: balance; }
+.title p { margin: 2px 0 0; color: var(--muted); font-size: 13.5px; }
+.meta { display: flex; align-items: center; gap: 10px; }
+.tag { font: 600 11px var(--mono); letter-spacing: .06em; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.tag.now { border-color: var(--accent); color: var(--accent); }
+.tag.warn { border-color: var(--warn); color: var(--warn); }
+.count { font: 600 12px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chev { width: 18px; height: 18px; color: var(--muted); transition: transform .2s; }
+details[open] .chev { transform: rotate(180deg); }
+@media (max-width: 520px) { .tag { display: none; } summary { grid-template-columns: 48px minmax(0,1fr) auto; padding: 14px; } .num { width: 48px; } }
+
+.bar { height: 3px; background: var(--line); }
+.bar span { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+
+.items { list-style: none; margin: 0; padding: 6px 10px 14px; display: grid; gap: 2px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.item { grid-column: 1 / -1; }
+.item.cell { grid-column: auto; }
+.item label { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 12px; padding: 10px; border-radius: 8px; cursor: pointer; }
+.item.cell label { padding: 7px 10px; }
+.item label:hover { background: var(--panel-2); }
+.item input { appearance: none; width: 20px; height: 20px; margin: 2px 0 0; border: 2px solid var(--muted); border-radius: 5px; display: grid; place-items: center; cursor: pointer; }
+.item input:checked { background: var(--accent); border-color: var(--accent); }
+.item input:checked::after { content: ""; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px,-1px); }
+.item b { font-weight: 700; }
+.item .txt { min-width: 0; }
+.item .loc { display: block; font-size: 12px; color: var(--muted); }
+.item .loc em { font-style: normal; color: var(--fg); opacity: .85; }
+.item input:checked + .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: #9f90a888; }
+.item .note { display: block; margin-top: 4px; font-size: 12.5px; color: var(--warn); }
+.hide-done .item:has(input:checked) { display: none; }
+.sub-h { grid-column: 1 / -1; font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 12px 10px 2px; }
+.sub-h span { text-transform: none; letter-spacing: 0; font: 500 12px var(--body); margin-left: 6px; }
+
+.skillplan { border-color: var(--accent); }
+.skillplan .lead { margin: 0 0 12px; max-width: 70ch; }
+.skillplan h2 { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+.lvtag { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; color: var(--accent); }
+.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.plan li label { display: grid; grid-template-columns: 26px minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+.plan li:first-child label { background: var(--accent-soft); }
+.plan li label:hover { background: var(--panel-2); }
+.plan input { appearance: none; width: 20px; height: 20px; margin: 0; border: 2px solid var(--muted); border-radius: 5px; display: grid; place-items: center; cursor: pointer; justify-self: center; }
+.plan input:checked { background: var(--accent); border-color: var(--accent); }
+.plan input:checked::after { content: ""; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px,-1px); }
+.plan .what b { font-weight: 700; }
+.plan .what small { display: block; color: var(--muted); font-size: 12.5px; }
+.plan .spec small { color: var(--warn); }
+.cost { font: 600 12px var(--mono); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.soon { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.soon li { font: 500 12px var(--mono); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; color: var(--muted); }
+.soon li b { color: var(--fg); font-weight: 600; }
+.nextsp { border-color: var(--accent); }
+.quest-in { display: grid; gap: 6px; margin-bottom: 14px; }
+.quest-in label { font-size: 13px; color: var(--muted); }
+.quest-in input { width: 100%; font: 500 14px var(--body); color: var(--fg); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.qstatus { margin: 0; font-size: 12.5px; color: var(--muted); }
+.qstatus b { color: var(--fg); }
+.qstatus.warn { color: var(--warn); }
+.nextsp { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px 28px; }
+.ns-col { min-width: 0; }
+.rot { border-left: 1px solid var(--line); padding-left: 28px; }
+@media (max-width: 640px) { .rot { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 14px; } }
+.lvtag { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; color: var(--accent); margin-left: 6px; }
+.rot .seq span.stig { border-color: var(--accent); color: var(--fg); }
+.rot .fine { margin-top: 8px; }
+.nextrow { display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 10px; align-items: start; cursor: pointer; font-size: 14px; }
+.nextrow input { appearance: none; width: 20px; height: 20px; margin: 1px 0 0; border: 2px solid var(--muted); border-radius: 5px; cursor: pointer; display: grid; place-items: center; }
+.nextrow input:checked { background: var(--accent); border-color: var(--accent); }
+.nextrow b { font-weight: 700; }
+.nextrow small { display: block; color: var(--muted); font-size: 12.5px; }
+.nextrow small.spec { color: var(--warn); }
+.item .cost { float: right; margin-left: 8px; }
+.mini { margin-top: 12px; }
+.mini summary { display: inline; padding: 0; font-size: 12.5px; color: var(--muted); text-decoration: underline dotted; grid-template-columns: none; }
+.empty { color: var(--muted); font-size: 13.5px; padding: 6px 0; }
+.step-n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 600 12px var(--mono); background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.chips span { font: 500 12px var(--mono); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; }
+.fine { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); max-width: 75ch; }
+.tbl { overflow-x: auto; margin-top: 12px; }
+.tbl table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.tbl th { text-align: left; font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.tbl td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.term { white-space: nowrap; }
+.tip {
+  display: inline-grid; place-items: center; width: 17px; height: 17px; margin-left: 4px; padding: 0;
+  border-radius: 50%; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent);
+  font: 700 10px var(--mono); vertical-align: 2px; cursor: pointer;
+}
+.tip[aria-expanded="true"] { background: var(--accent); color: #fff; }
+.tipbox {
+  grid-column: 1 / -1; max-width: 72ch;
+  margin: 0 10px 8px 44px; padding: 12px 14px; border-radius: 8px; background: var(--panel-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--accent); font-size: 13.5px; line-height: 1.5;
+}
+.tipbox h4 { margin: 0 0 4px; font-size: 13px; color: var(--fg); }
+.tipbox p { margin: 0 0 6px; color: var(--muted); }
+.tipbox p:last-child { margin-bottom: 0; }
+.tipbox ol { margin: 4px 0 6px; padding-left: 18px; color: var(--fg); }
+.tipbox .src { font-size: 11.5px; }
+@media (max-width: 520px) { .tipbox { margin-left: 10px; } }
+.seq { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin-top: 6px; }
+.seq span { font: 500 12px var(--mono); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; }
+.seq i { color: var(--muted); font-style: normal; font-size: 12px; }
+
+.notes { display: grid; gap: 10px; font-size: 13.5px; }
+.notes p { margin: 0; color: var(--muted); }
+.notes p b { color: var(--fg); }
+.sources a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.sources { columns: 2 260px; margin: 0; padding-left: 18px; font-size: 13.5px; }
+.sources li { margin-bottom: 6px; break-inside: avoid; }
+footer.foot { margin-top: 28px; display: grid; gap: 14px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Aion 2 · Asmodian · Assassin · 1 → 45</div>
+      <h1>Asmodian Assassin Route</h1>
+      <p class="sub">Push the Hero story for XP. At each stop point, clear the hideouts and regional quests that just opened, then keep moving.</p>
+    </div>
+    <div class="toolbar">
+      <button id="btnHide" aria-pressed="false">Hide completed</button>
+      <button id="btnExpand">Expand all</button>
+      <button id="btnReset">Reset</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="rail">
+      <section class="card">
+        <h2>Progress</h2>
+        <div class="progress-row">
+          <svg class="ring" viewBox="0 0 76 76" aria-hidden="true">
+            <circle class="bg" cx="38" cy="38" r="32"></circle>
+            <circle class="fg" id="ringFg" cx="38" cy="38" r="32"></circle>
+            <text id="ringTxt" x="38" y="43" text-anchor="middle">0%</text>
+          </svg>
+          <div>
+            <div class="big" id="progBig">0 / 0</div>
+            <div class="muted">checklist items done</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Where you are</h2>
+        <div class="quest-in">
+          <label for="questIn">Current main quest</label>
+          <input id="questIn" type="text" list="questList" placeholder="Start typing, e.g. Spread Your Wings" autocomplete="off">
+          <datalist id="questList"></datalist>
+          <p class="qstatus" id="questStatus"></p>
+        </div>
+        <div class="lvl-input">
+          <label for="lvlNum">Current level</label>
+          <input id="lvlNum" type="number" min="1" max="45" value="4">
+        </div>
+        <input id="lvlRange" type="range" min="1" max="45" value="4" aria-label="Current level slider">
+        <div class="track"><ol id="track"></ol></div>
+      </section>
+
+      <section class="card notes">
+        <h2>The map</h2>
+        <p><b>Lv 1–9:</b> Ishalgen, with Aldelle Village as the story hub. No regional quests.</p>
+        <p><b>Lv 10–45:</b> Altgard. 49 one-time hideouts and 58 regional quests, each listed below at its recommended level.</p>
+        <p><b>At 45:</b> Krao Cave Normal needs gear score 700.</p>
+      </section>
+    </aside>
+
+    <main id="main">
+      <section class="card nextsp">
+        <div class="ns-col">
+          <h2>Next skill upgrade</h2>
+          <label class="nextrow" id="spNextRow">
+            <input type="checkbox" id="spNextBox">
+            <span id="spNext"></span>
+          </label>
+          <p class="muted" id="spAfter" style="margin:8px 0 0"></p>
+          <details class="mini">
+            <summary>How skill points work</summary>
+            <p class="fine">Each skill gains one level every 3 character levels after you learn it. Levels 2–4 cost 1 point, 5–7 cost 2, 8–10 cost 4; points stop at 10. Skill level 8 opens the first specialty slot. Each stop point lists the upgrades that opened since the last one, in priority order. Respec is free until Lv 31.</p>
+          </details>
+        </div>
+        <div class="rot ns-col">
+          <h2>Current rotation <span class="lvtag" id="rotLv"></span></h2>
+          <div class="seq" id="rotSeq"></div>
+          <p class="fine" id="rotNote"></p>
+        </div>
+      </section>
+
+      <h2 class="sec">Stop points <small id="gateHint"></small></h2>
+      <div class="list" id="gates"></div>
+      <h2 class="sec">Route rules <small>apply for the whole climb</small></h2>
+      <div class="list" id="steps"></div>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <section class="card notes">
+      <h2>Confidence</h2>
+      <p><b>Unlock levels and quests</b> come from the client-data unlock table on Metabot and Wikily (build 0.0.4387.0): enhancement 9; extraction, crafting, gathering 10; Supply Request 25; daily dungeon 30; Abyss, Market, Ascension Trial and Conquest 45. Both sites likely share one data source, so treat this as one strong source.</p>
+      <p><b>Cross-checked:</b> Stigma slots 22 / 27 / 32 / 37 (five sources). Regional quest names and levels (allthings.how and Selphie1999).</p>
+      <p><b>Skill points:</b> learn levels, per-level costs and character gates from Metabot's skill pages; specialty slots at skill level 8 / 12 / 20 (Metabot, gameplay.tips, Skycoach). Leveling order from GamerBlurb's Global build. GamesFuze's endgame build ranks Heart Gore first instead; respec is free until 31 if you want to switch.</p>
+      <p><b>Single source:</b> hideout names and levels (AION2HUB).</p>
+      <p><b>Unverified:</b> whether Supply Request is the Duty Quest system; Kibelisk and Command scroll unlock timing; exact unlock level for most regional quests.</p>
+    </section>
+    <section class="card">
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href="https://aion2hub.com/leveling/asmodian-levels-1-10" target="_blank" rel="noopener">AION2HUB: Asmodian 1–10</a></li>
+        <li><a href="https://aion2hub.com/leveling/asmodian-levels-10-25" target="_blank" rel="noopener">AION2HUB: Asmodian 10–25</a></li>
+        <li><a href="https://aion2hub.com/leveling/asmodian-levels-25-40" target="_blank" rel="noopener">AION2HUB: Asmodian 25–40</a></li>
+        <li><a href="https://allthings.how/aion-2-regional-quests-all-locations-and-rewards/" target="_blank" rel="noopener">Allthings.how: All regional quests</a></li>
+        <li><a href="https://allthings.how/aion-2-every-asmodian-moslan-forest-regional-quest-and-reward-in-altgard/" target="_blank" rel="noopener">Allthings.how: Moslan Forest</a></li>
+        <li><a href="https://allthings.how/aion-2-every-asmodian-sanctum-outpost-regional-quest-and-reward-in-altgard/" target="_blank" rel="noopener">Allthings.how: Sanctum Outpost</a></li>
+        <li><a href="https://allthings.how/aion-2-every-asmodian-regional-quest-and-reward-in-altgard-s-smaller-areas/" target="_blank" rel="noopener">Allthings.how: Altgard smaller areas</a></li>
+        <li><a href="https://selphie1999gaming.com/game-guides/aion-2/aion-2-side-quests-all-regional-quests-in-altgard-and-verteron/" target="_blank" rel="noopener">Selphie1999: Altgard regional quests</a></li>
+        <li><a href="https://metabot.gg/en/aion-2/classes/assassin" target="_blank" rel="noopener">Metabot: Assassin skills</a></li>
+        <li><a href="https://gamerblurb.com/guides/aion-2-assassin-build-guide-pve-pvp-leveling-global" target="_blank" rel="noopener">GamerBlurb: Assassin leveling build</a></li>
+        <li><a href="https://gameplay.tips/guides/aion-2-skills-guide-active-passive-and-stigma.html" target="_blank" rel="noopener">gameplay.tips: Skills guide</a></li>
+        <li><a href="https://skycoach.gg/blog/aion-2/articles/skill-progression-guide" target="_blank" rel="noopener">Skycoach: Skill progression</a></li>
+        <li><a href="https://metabot.gg/en/aion-2/content-unlocks" target="_blank" rel="noopener">Metabot: Content unlocks</a></li>
+        <li><a href="https://wikily.gg/aion-2/leveling" target="_blank" rel="noopener">Wikily: Leveling and unlocks</a></li>
+        <li><a href="https://www.videogameschronicle.com/guide/aion-2-item-extraction-what-to-do-with-old-gear/" target="_blank" rel="noopener">VGC: Item extraction</a></li>
+        <li><a href="https://mein-mmo.de/en/aion-2-beginner-guide-30-tips-to-make-your-start-significantly-easier,1589348/" target="_blank" rel="noopener">MeinMMO: 30 beginner tips</a></li>
+        <li><a href="https://www.positioniseverything.net/how-to-safely-extract-sell-or-store-items-in-aion-2/" target="_blank" rel="noopener">PositionIsEverything: Extract safely</a></li>
+        <li><a href="https://metabot.gg/en/aion-2/guides/stigma-guide" target="_blank" rel="noopener">Metabot: Stigma guide</a></li>
+        <li><a href="https://www.playnews.gg/en/guides/aion-2-stigmas-how-to-unlock-them-and-farm-stigma-shards" target="_blank" rel="noopener">PlayNews: Stigma unlocks</a></li>
+        <li><a href="https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/" target="_blank" rel="noopener">GamesFuze: Assassin build</a></li>
+        <li><a href="https://mein-mmo.de/en/aion-2-11-mistakes-you-must-definitely-avoid-at-launch,1586538/" target="_blank" rel="noopener">MeinMMO: 11 mistakes</a></li>
+        <li><a href="https://www.keengamer.com/articles/guides/aion-2-leveling-progression-guide-level-1-to-endgame/" target="_blank" rel="noopener">KeenGamer: Leveling and progression</a></li>
+        <li><a href="https://powerupgaming.co.uk/2026/10/05/aion-2-beginners-guide/" target="_blank" rel="noopener">PowerUp Gaming: Beginner's guide</a></li>
+        <li><a href="https://vortexgaming.io/en/postdetail/601044" target="_blank" rel="noopener">Vortex: Assassin skill guide</a></li>
+      </ul>
+      <p class="muted" style="margin:12px 0 0">Progress is saved in this browser only.</p>
+    </section>
+  </footer>
+</div>
+
+<script>
+const seq = (arr) => '<span class="seq">' + arr.map(s => `<span>${s}</span>`).join('<i>→</i>') + '</span>';
+
+/* Plain-language explainers, opened with the "i" buttons. Only what sources state; unknown UI locations are called out. */
+const TIPS = {
+  extract: { h: "Extraction (getting rid of old gear)", b: `
+    <p><b>Unlocks at Lv 10.</b> Gear can't be sold to vendors in Aion 2. When you replace a piece, you <b>extract</b> it instead: it's destroyed and you get upgrade materials (like Enhance Stones) back, plus its look as a cosmetic skin. Each extraction costs a little Kina.</p>
+    <ol><li>Open your inventory (called <b>the Cube</b>).</li><li>Click the old gear piece.</li><li>In its description panel, click the <b>beaker/flask icon</b> at the bottom right and choose <b>Extract</b>.</li><li>Check what you lose and gain, then <b>Confirm</b>.</li></ol>
+    <p><b>Auto-extract</b> is a setting in the Cube that does this automatically. Before turning it on, check which item grades it includes. Extracted items are gone; NCSoft only restores mistakes once per account per year, and not guaranteed.</p>`,
+    src: "VGC, MeinMMO, NCSoft notice via PositionIsEverything" },
+  petfilter: { h: "Pet loot filter", b: `<p>Pets unlock with the story quest "Gathering Essentials" (around Lv 10). Once you have a pet, it picks up loot for you. Its loot filter decides what it grabs and what it leaves, so gray junk stays out of your Cube. No source documents where the menu is; look in your pet's settings once you have one.</p>`, src: "MeinMMO" },
+  kibelisk: { h: "Kibelisk", b: `<p>A travel point. Interact with one to register it, and you can teleport back to it later instead of walking. Activate every one you pass in towns and camps.</p>`, src: "KeenGamer" },
+  guild: { h: "Legion (guild)", b: `<p>Guilds are called <b>Legions</b>. Asmodians unlock them with the quest <b>"Buried Atrocities"</b> (available from Lv 10, recommended Lv 16). Then open the Legion menu, browse groups, check their description and recruitment settings, and join. Joining is free; after leaving one there's a 24-hour wait before joining another.</p>
+    <p>Pick an active group whose play times match yours over a big, quiet roster. Sources disagree on perks: MeinMMO says passive buffs and weekly guild coins, GamesFuze says no bonuses yet. The reliable benefit is people to group with.</p>`, src: "GamesFuze, MeinMMO" },
+  specialty: { h: "Specialty slots", b: `<p>Each active skill gets specialty slots as <b>that skill</b> levels up (not your character): slot 1 at skill level 8, slot 2 at 12, slot 3 at 20. Each slot holds one bonus effect. Unlocking a slot isn't enough: open the skill, click the slot and choose an effect, or you get nothing.</p>`, src: "gameplay.tips, Skycoach, MeinMMO" },
+  respec: { h: "Free respec", b: `<p>Resetting your skill choices is free until level 31, then costs Kina. So experimenting before 31 costs nothing; lock in your build by then.</p>`, src: "MeinMMO" },
+  daevanion: { h: "Daevanion board", b: `<p>A talent board unlocked by the story quest "Urgent Pursuit" (around Lv 12). You spend <b>Daevanion Crystals</b> (from hideouts and regional quests) on nodes. The best nodes give +1 level to a skill you use. More boards open as you level.</p>`, src: "AION2HUB, KeenGamer" },
+  stigma: { h: "Stigma", b: `<p>Extra skills that go into special slots, separate from your normal skills. Slots open at 22, 27, 32 and 37, four in total. Level 22's slot unlocks through the quest "One Who Hears the Voice."</p>`, src: "Metabot, PlayNews" },
+  hideout: { h: "Hideouts (Sealed Dungeons)", b: `<p>Small instanced dungeons you enter alone, marked on the Altgard map. The first clear of each pays a one-time reward: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps and a title. Repeat clears don't pay it again.</p>`, src: "AION2HUB" },
+  stronghold: { h: "Strongholds", b: `<p>Open-world enemy garrisons in Altgard. Clearing one pays Kina and Noble Belt Enhance Scrolls, which you can't get anywhere else. Belt upgrades are permanent, so they're worth every one.</p>`, src: "AION2HUB, KeenGamer" },
+  regional: { h: "Regional quests", b: `<p>Optional side quests (green markers) in Altgard, picked up from the NPC listed. Each pays XP, Kina, a Daevanion Crystal and often an accessory. Do them at their recommended level.</p>`, src: "Allthings.how, Selphie1999" },
+  shugo: { h: "Shugo Festival", b: `<p>An hourly set of minigames (races, jumping, memory tiles). Rewards scale with your level, and claiming one uses a limited key that recharges only once a day. Keys are worth far more at 45, so skip it while leveling.</p>`, src: "MeinMMO" },
+  duty: { h: "Duty Quests", b: `<p>Unlock level not documented; probably the "Supply Request" feature that opens at Lv 25. A daily list of tasks; you can only do a few per day. Each shows possible random rewards, and the ones further left are more likely. Pick tasks that can drop Hidden Cube keys or Ariel's Trace fragments.</p>`, src: "MeinMMO" },
+  enhance: { h: "Enhancing gear", b: `<p><b>Unlocks at Lv 9.</b> Spend Enhance Stones and Kina to raise a gear piece by +1. Higher levels cost more and fail more often, so several pieces at +1 beat one piece at +5 while leveling. The belt and Revelation amulet are exceptions: you keep those, so upgrading them is never wasted.</p>`, src: "MeinMMO" },
+  macro: { h: "Macro", b: `<p>A single button that fires several skills in order. Build it in the game's macro editor, then put it on your hotbar.</p>`, src: "GamesFuze" },
+  gearscore: { h: "Gear score / item level", b: `<p>A number summarizing your equipped gear. Content like Krao Cave has a minimum (700 for Normal). Separate from combat power, which also counts skills, boards and collections.</p>`, src: "MeinMMO, AION2HUB" },
+};
+const T = (label, key) => `<span class="term">${label}<button type="button" class="tip" data-tip="${key}" aria-expanded="false" aria-label="What is ${label.replace(/<[^>]+>/g, "")}?">i</button></span>`;
+
+const DAEVA = `<b>Spend Daevanion Crystals</b> on +1 skill-level nodes for Heart Gore and Insignia Explosion.`;
+const sub = (label, note) => ({ sub: label, subNote: note });
+const hideouts = names => [sub("Hideouts " + T("", "hideout"), "one-time · 1,250 Enhance Stones + 2 Daevanion Crystals each"), ...names.map(n => ({ t: `<b>${n}</b>`, cell: true }))];
+const quests = (label, list) => [sub(label + " " + T("", "regional"), "regional quests"), ...list.map(([n, where, r]) => ({ t: `<b>${n}</b><span class="loc">${where}${r ? ` · <em>${r}</em>` : ""}</span>`, cell: true }))];
+
+const GATES = [
+  { id: "g6", lv: 6, title: "Wings and Ascension", blurb: "Two story quests around the lake. Don't delay them.", items: [
+    { t: `<b>Complete "The Being Beneath the Lake"</b> (unlocks wings) and <b>"Spread Your Wings"</b> with Asahr (Ascension).` },
+  ]},
+  { id: "g9", lv: 9, title: "Enhancement unlocks", blurb: "You can now upgrade gear with Enhance Stones.", items: [
+    { t: `<b>${T("Enhance", "enhance")} your weapon +1</b> with any stones you have, then spread further +1s across pieces.` },
+  ]},
+  { id: "g10", lv: 10, title: "Altgard opens", blurb: "Extraction, pets, hideouts and Strongholds all start here.", items: [
+    { t: `<b>Learn ${T("extraction", "extract")}</b> and extract your replaced gear. If you turn on auto-extract, check which grades it includes first.` },
+    { t: `<b>Complete "Gathering Essentials"</b> to unlock pets, then set the ${T("pet loot filter", "petfilter")}.` },
+    { t: `<b>Clear all 13 Lv 10 Altgard ${T("hideouts", "hideout")}.</b> Includes Dusk Pit and Valka's Nest; check the map for the rest.` },
+    { t: `<b>Clear Altgard ${T("Strongholds", "stronghold")}</b> as you pass them.` },
+  ]},
+  { id: "g12", lv: 13, title: "Daevanion board", blurb: "Board opens via the story; first regional quest.", items: [
+    { t: `<b>Complete "Urgent Pursuit"</b> to unlock the ${T("Daevanion board", "daevanion")}, then spend crystals on +1 skill-level nodes for Heart Gore and Insignia Explosion.`, note: "Same quest unlocks the Shugo Festival. Leave the festival alone." },
+    ...quests("Lv 12", [["Shugo-of-All-Trades: Asmodian", "Dredgion Crash Site · Dari", "Cube Expansion Voucher"]]),
+  ]},
+  { id: "g15", lv: 15, title: "Hideouts, batch 2", blurb: "11 hideouts plus one regional quest.", items: [
+    ...hideouts(["Abandoned Archon Jail","Bloodsoaked Confessional","Blue Dragon's Trap","Fafnite Storage Room","Fanatics' Den","Fortuneteller's Grave","Homish's Prison Compound","Howling Den","Library of Foresight","Prison of Oblivion","Victims' Cave"]),
+    ...quests("Lv 14", [["Spooky Specters", "Nameless Cemetery · Rizel", "ring"]]),
+    sub("After"),
+    { t: DAEVA },
+  ]},
+  { id: "g16", lv: 16, title: "Legion and first accessory set", blurb: "Unlock Legions; six quests fill every accessory slot.", items: [
+    { t: `<b>Complete "Buried Atrocities"</b> to unlock ${T("Legions", "guild")}, then join one.`, note: "Available from Lv 10; pick it up early if you see it." },
+    ...quests("Lv 16", [
+      ["Hugo Mercenaries: Past and Present", "Safe Haven", "earrings"],
+      ["Missing Mount", "Safe Haven", "earrings"],
+      ["Creion Research Assistant", "Dredgion Crash Site · Benekt", "bracelet"],
+      ["Odyle Jelly Misappropriation Investigation", "Safe Haven · VeKauf", "bracelet"],
+      ["The Great Curse-Breaking Caper", "Nameless Cemetery · Tagar", "ring"],
+      ["Practice Makes Perfect, Nyerk!", "Quai Campsite · Baba", "necklace"],
+    ]),
+  ]},
+  { id: "g20", lv: 20, title: "Hideouts, batch 3", blurb: "7 hideouts recommended at Lv 20.", items: [
+    ...hideouts(["Abandoned Memorial Room","Closed Hideout","Destroyed Scriptorium","Lamnah Base","Predator's Lair","Unstable Cave","Worshiper's Underground Cave"]),
+    sub("After"),
+    { t: DAEVA },
+  ]},
+  { id: "g22", lv: 22, title: "Stigma slot 1", blurb: "Stigmas unlock; second accessory set.", items: [
+    { t: `<b>Complete "The One Who Hears the Voice"</b> to unlock ${T("Stigmas", "stigma")} and the Pantheon.` },
+    { t: `<b>Equip Triniel's Dagger.</b> Long-term target is skill level 10.` },
+    ...quests("Lv 22", [
+      ["Blade of Vengeance", "Sanctum Outpost", "earrings"],
+      ["In the Fang Legion's Name", "Sanctum Outpost", "bracelet · Statue: Selvis"],
+      ["Young Elim's Story", "Moslan Forest · Lulu", "necklace"],
+      ["A Guardian's Sacrifice", "Moslan Forest · Ecco", "ring"],
+      ["Nine Wonders of Altgard: 1st Leg", "Tranein Highland · Tina", "Life Crystal ×5"],
+    ]),
+  ]},
+  { id: "g25", lv: 25, title: "Hideouts, batch 4", blurb: "5 hideouts; Supply Requests unlock.", items: [
+    { t: `<b>Check what Supply Request is.</b> It unlocks at Lv 25 and is likely the ${T("Duty Quest", "duty")} system. If it is, start picking tasks that can drop Hidden Cube keys or Ariel's Trace fragments.`, note: "Name match is unconfirmed; tell me what it turns out to be." },
+    ...hideouts(["Dark Root Cave","Drana Depository","High Priest's Ruins","Skurv Laborer Den","Twisted Pit"]),
+    sub("After"),
+    { t: DAEVA },
+  ]},
+  { id: "g27", lv: 27, title: "Stigma slot 2", blurb: "Illusive Clone goes in.", items: [
+    { t: `<b>Equip Illusive Clone.</b> Long-term target is skill level 20.` },
+    { t: `<b>Start the opener:</b> Illusive Clone, then Shadowstrike to get behind the target.` },
+    ...quests("Lv 27", [["Fight Poison with Poison", "Purifying Forest", "ring"]]),
+  ]},
+  { id: "g30", lv: 30, title: "Daily dungeon and batch 5", blurb: "Daily dungeons unlock; 7 hideouts; third accessory set.", items: [
+    { t: `<b>Start the daily dungeon:</b> run Daeva Bio-Research Base for Enhance Stones, not the Kinah or pet-fragment dungeons.` },
+    ...hideouts(["All-Curing Cave","Dratona Assembly Area","Final Haven","Insectoid Tunnel","Library of Patience","Library of Wisdom","Rift Fissure"]),
+    ...quests("Lv 30", [
+      ["Hugo Mercenaries: Deep Shadow", "Nornir Assembly", "necklace"],
+      ["Her Last Favor", "Purifying Forest", "bracelet"],
+      ["An Invitation to the Past: Part 1", "Nornir Assembly", "bracelet · Statue: Urd"],
+      ["An Invitation to the Past: Part 2", "Nornir Assembly", "bracelet · Statue: Urd"],
+      ["The Future Within the Past", "Uruthumheim · Harald", "Clash Rune Chest"],
+    ]),
+    sub("After"),
+    { t: DAEVA },
+  ]},
+  { id: "g32", lv: 32, title: "Stigma slot 3", blurb: "Savage Fang, the macro, and five quests.", items: [
+    { t: `<b>Equip Savage Fang.</b> Level 1 is enough for now.` },
+    { t: `<b>Build the ${T("macro", "macro")}.</b>` + seq(["Savage Fang","Insignia Explosion","Heart Gore","Savage Roar"]) },
+    ...quests("Lv 32", [
+      ["Hugo Mercenaries: An Old Promise", "Dranactus · Hadala", "Clash Rune Chest"],
+      ["Pain Unending", "Battlescar Mound · Bekrin", "bracelet"],
+      ["Nine Wonders of Altgard: 2nd Leg", "Impetusium Square", "Hidden Cube key"],
+    ]),
+    ...quests("Lv 33", [
+      ["Traveling Merchant's Conundrum", "Basfelt Ruins", "earrings"],
+      ["Finders Keepers", "Basfelt Ruins", "ring"],
+    ]),
+  ]},
+  { id: "g35", lv: 35, title: "Hideouts, batch 6", blurb: "10 hideouts recommended at Lv 35.", items: [
+    ...hideouts(["Destruction Archons Armory","Empty Cave","Fungie Habitat","Lonely Rock Chasm","Odylium Marauder Den","Pirate's Treasure Storage","Place of Rest","Rock Cave","Scale Altar","Shulak Cave"]),
+    sub("After"),
+    { t: DAEVA },
+  ]},
+  { id: "g37", lv: 37, title: "Stigma slot 4", blurb: "Full rotation online; story dungeon nearby.", items: [
+    { t: `<b>Equip Swift Contract.</b> Level 1 is enough for now.` },
+    { t: `<b>Run the full rotation on a training dummy.</b>` + seq(["Illusive Clone + Swift Contract","Shadowstrike","Triniel's Dagger","Macro"]) },
+    { t: `<b>Enhance your weapon</b> before the story dungeon around Lv 37.` },
+    ...quests("Lv 37", [
+      ["A Friend's Legacy", "Mahindel River · Sculkhi", "bracelet"],
+      ["Bloodstained Rose", "Western Gribade Highland · Pordhet", "necklace"],
+    ]),
+  ]},
+  { id: "g40", lv: 40, title: "Hideouts, batch 7", blurb: "Last batch and the Stronghold sweep.", items: [
+    ...hideouts(["Ascetic's Cave","Den of Exiles","Kumbahum's Cave","Lagta Fafnite Storage","Spider Cave","Tayga Breeding Ground","Warriors' Rest"]),
+    sub("Then"),
+    { t: `<b>Clear every Altgard garrison Stronghold</b> you haven't done.` },
+    { t: DAEVA },
+  ]},
+  { id: "g45", lv: 45, title: "Level cap", blurb: "Progression shifts from level to gear score.", items: [
+    { t: `<b>Finish the remaining Hero and Ascension quests.</b>` },
+    { t: `<b>Spend your banked Shugo Festival keys.</b>` },
+    { t: `<b>Ascension Trial timing.</b> Days before reset: reach item level 1,500 first. Reset close: run it at 1,000 rather than waste the week.` },
+    { t: `<b>Abyss Points</b> on Potential Stones, Stigma Shards and Daevanion resources, not a shop gear set.` },
+    { t: `<b>Start Conquest</b> (Krao Cave tier, ${T("gear score", "gearscore")} 700). Weapon first, then your weakest slots.` },
+    ...quests("Lv 44", [["Herb Pouch Heist", "Black Claw Village · Kunpata", "earrings"]]),
+    ...quests("Lv 45 · accessories", [
+      ["A Comrade's Fate", "Impetusium Square", "bracelet"],
+      ["Lest We Forget", "Impetusium Square", "bracelet · Artwork"],
+      ["A Perfect Wedding", "Southern Gribade Highland · Romi", "ring"],
+      ["Restoration Materials", "Uruthumheim · Keronis", "ring"],
+      ["Lost Memories", "Moslan Forest · Oliver", "earrings"],
+      ["I'm a Believer!", "Safe Haven", "necklace"],
+    ]),
+    ...quests("Lv 45 · crystals, runes and upgrades", [
+      ["Fallout Calmed", "Eastern Gribade Highland · Lakiba", "Ariel crystal ×2"],
+      ["Putting a Friend to Rest", "Impetusium Square", "Ariel crystal"],
+      ["Sapling Hide-and-Seek", "Moslan Forest · Nana", "Ariel crystal"],
+      ["One Last Thing", "Tranein Highland · Avent", "Ariel crystal"],
+      ["Another Survivor", "Nornir Assembly", "Clash Rune Chest"],
+      ["Fallout", "Southern Gribade Highland · Karumba", "Clash Rune Chest"],
+      ["A Traitor Within", "Quai Campsite · Baba", "Rare Theostone Chest"],
+      ["Regular Altar Maintenance", "Purifying Forest", "Rare Theostone Chest"],
+      ["Restless Spirits", "Purifying Forest", "Rare Theostone Chest"],
+      ["Nine Wonders of Altgard: Final Stretch", "Basfelt Ruins", "Cube Expansion Voucher"],
+      ["Immortal Isle's Distinct Ecology", "Sanctum Outpost", "Soul Codex: Reset"],
+      ["Spirit Isle, Where Time Has Stopped", "Basfelt Ruins", "Soul Codex: Reset"],
+      ["Farewell, My Instructor", "Nornir Assembly", "Artwork"],
+    ]),
+    ...quests("Lv 45 · Kina and materials", [
+      ["Mind Your Own Business", "Sanctum Outpost", "50k Kina chest"],
+      ["Reality Bites", "Briskwind Shelter · Bekrin", "50k Kina chest"],
+      ["Workplace Misunderstanding", "Steel Hammer Merchants HQ · Merikiki", "50k Kina chest"],
+      ["Ravenous Recluse", "Abandoned Campsite · Fiona", "50k Kina chest"],
+      ["Another Crisis!", "Steel Hammer Merchants HQ · Snotra", "Odyle ×5"],
+    ]),
+    ...quests("Lv 45 · Spacetime Rift", [
+      ["Spacetime Rift: Asmodian", "Moslan Forest · Uru", "2k Abyss Points · ring"],
+      ["Spacetime Rift: Unknown Species", "Moslan Forest · Uru", "2k AP · earrings · personal Kisk"],
+      ["Spacetime Rift: Unfamiliar Material", "Moslan Forest · Uru", "2k AP · bracelet"],
+      ["Spacetime Rift: Developing Travel Goods", "Purifying Forest", "2k AP · earrings · party Kisk"],
+      ["Spacetime Rift: Difference Between Here and There", "Purifying Forest", "2k AP · ring"],
+      ["Spacetime Rift: An Honest Shugo", "Basfelt Ruins", "2k AP · ring"],
+      ["Spacetime Rift: Proof", "Basfelt Ruins", "2k AP · earrings · legion Kisk"],
+    ]),
+  ]},
+];
+
+const STEPS = [
+  { id: "build", title: "Build plan", blurb: "Where every Skill Point and stat goes.", tag: "Always",
+    items: [
+      { t: `<b>Skill Points:</b> spend them at each stop point; the left panel shows the single next upgrade between stops.` },
+      { t: `<b>Fill every ${T("specialty slot", "specialty")}</b> the moment it unlocks. Empty slots do nothing.` },
+      { t: `<b>Experiment freely until 31.</b> ${T("Respec is free", "respec")} until then; lock in the build by 31.` },
+      { t: `<b>Gear stat priority.</b>` + seq(["Critical Hit","Damage Boost","Attack Power","Double Chance"]) },
+    ]},
+  { id: "story", title: "Story pace", blurb: "Hero quests are ~99% of Asmodian XP to 45.", tag: "Always",
+    items: [
+      { t: `<b>Keep the Hero quest chain moving.</b> Stop only at stop points.` },
+      { t: `<b>Activate every ${T("Kibelisk", "kibelisk")}</b> you pass.` },
+      { t: `<b>Equip better gear immediately.</b> From Lv 10, ${T("extract", "extract")} the old piece. ${T("Enhance", "enhance")} as +1s across pieces, weapon first.` },
+      { t: `<b>A regional quest you can't solo at its level</b> stays unticked; it turns amber so you catch it later.` },
+    ]},
+  { id: "daily", title: "Daily and weekly habits", blurb: "Capped rewards; start each once its stop point unlocks it.", tag: "Daily",
+    items: [
+      { t: `<b>${T("Duty Quests", "duty")}</b> (likely Supply Request, Lv 25). Pick ones that can drop Hidden Cube keys or Ariel's Trace fragments.` },
+      { t: `<b>Daily dungeon</b> (Lv 30). Daeva Bio-Research Base for Enhance Stones.` },
+      { t: `<b>Weekly Command scrolls</b> from the capital's Command vendor once you find it. Reroll if rewards lack keys or fragments.`, note: "No source gives an unlock level." },
+    ]},
+  { id: "hold", title: "Don't spend yet", blurb: "The most common early regrets.", tag: "Until 45",
+    items: [
+      { t: `<b>${T("Shugo Festival", "shugo")}.</b> Rewards scale with level and keys are limited. Bank them.` },
+      { t: `<b>${T("Stacking enhancement", "enhance")} on one piece.</b> Belt and Revelation amulet are the only exceptions.` },
+      { t: `<b>Throwing away upgrade fragments.</b> You'll need large amounts; keep them all. A ${T("pet loot filter", "petfilter")} keeps junk out instead.` },
+      { t: `<b>Premium materials on quest gear.</b> Save them for gear you'll keep.` },
+    ]},
+];
+
+const KEY = "aion2-assassin-route-v4";
+const DEFAULT = () => ({ checks: {}, level: 5, hide: false, open: {}, quest: "" });
+let state = DEFAULT();
+try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) state = Object.assign(state, s); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+
+const mainEl = document.getElementById("main");
+const gatesEl = document.getElementById("gates");
+const stepsEl = document.getElementById("steps");
+const chev = `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+const checkable = s => s.items.map((it, j) => ({ it, k: it.k || s.id + ":" + j })).filter(x => !x.it.sub);
+
+const cardHTML = (s, num, cls) => `
+  <details class="step ${cls}" id="${s.id}">
+    <summary>
+      <div class="num">${num}</div>
+      <div class="title"><h3>${s.title}</h3><p>${s.blurb}</p></div>
+      <div class="meta"><span class="tag">${s.tag || ""}</span><span class="count"></span>${chev}</div>
+    </summary>
+    <div class="bar"><span></span></div>
+    <ul class="items">
+      ${s.items.map((it, j) => {
+        if (it.sub) return `<li class="sub-h">${it.sub}${it.subNote ? `<span>${it.subNote}</span>` : ""}</li>`;
+        const k = it.k || s.id + ":" + j;
+        return `<li class="item${it.cell ? " cell" : ""}"><label><input type="checkbox" data-k="${k}" ${state.checks[k] ? "checked" : ""}><span class="txt">${it.t}${it.note ? `<span class="note">${it.note}</span>` : ""}</span></label></li>`;
+      }).join("")}
+    </ul>
+  </details>`;
+
+function render() {
+  gatesEl.innerHTML = GATES.map(g => cardHTML(g, `<span><small>LV</small>${g.lv}</span>`, "gate")).join("");
+  stepsEl.innerHTML = STEPS.map((s, i) => cardHTML(s, i + 1, "")).join("");
+  mainEl.querySelectorAll("details.step").forEach(d => {
+    d.addEventListener("toggle", () => { state.open[d.id] = d.open; save(); });
+  });
+}
+mainEl.addEventListener("click", e => {
+  const btn = e.target.closest(".tip"); if (!btn) return;
+  e.preventDefault(); e.stopPropagation();
+  const li = btn.closest("li");
+  const open = btn.getAttribute("aria-expanded") === "true";
+  mainEl.querySelectorAll(".tipbox").forEach(b => b.remove());
+  mainEl.querySelectorAll('.tip[aria-expanded="true"]').forEach(b => b.setAttribute("aria-expanded", "false"));
+  if (open) return;
+  const tip = TIPS[btn.dataset.tip]; if (!tip) return;
+  const box = document.createElement("li");
+  box.className = "tipbox" + (li.classList.contains("sub-h") ? " wide" : "");
+  box.innerHTML = `<h4>${tip.h}</h4>${tip.b}<p class="src muted">Source: ${tip.src}</p>`;
+  li.after(box);
+  btn.setAttribute("aria-expanded", "true");
+});
+mainEl.addEventListener("change", e => {
+  const k = e.target.dataset.k; if (!k) return;
+  state.checks[k] = e.target.checked; save(); update();
+});
+
+const counts = s => { const c = checkable(s); return [c.filter(x => state.checks[x.k]).length, c.length]; };
+
+function update() {
+  const lv = state.level;
+  let total = 0, done = 0;
+  const upcoming = GATES.find(g => { const [c, n] = counts(g); return g.lv >= lv && c < n; });
+
+  GATES.forEach(g => {
+    const d = document.getElementById(g.id), [c, n] = counts(g);
+    total += n; done += c;
+    const complete = c === n, overdue = !complete && g.lv < lv, isNext = g === upcoming;
+    d.querySelector(".count").textContent = `${c}/${n}`;
+    d.querySelector(".bar span").style.width = (c / n * 100) + "%";
+    d.classList.toggle("done", complete);
+    d.classList.toggle("overdue", overdue);
+    d.classList.toggle("current", isNext);
+    const tag = d.querySelector(".tag");
+    tag.className = "tag" + (overdue ? " warn" : isNext ? " now" : "");
+    tag.textContent = complete ? "Cleared" : overdue ? "Missed" : isNext ? (g.lv === lv ? "Now" : `${g.lv - lv} to go`) : "Later";
+    d.open = state.open[g.id] !== undefined ? state.open[g.id] : (isNext || overdue);
+  });
+  STEPS.forEach(s => {
+    const d = document.getElementById(s.id), [c, n] = counts(s);
+    total += n; done += c;
+    d.querySelector(".count").textContent = `${c}/${n}`;
+    d.querySelector(".bar span").style.width = (c / n * 100) + "%";
+    d.classList.toggle("done", c === n);
+    if (state.open[s.id] !== undefined) d.open = state.open[s.id];
+  });
+
+  const pct = total ? Math.round(done / total * 100) : 0;
+  const C = 2 * Math.PI * 32, fg = document.getElementById("ringFg");
+  fg.style.strokeDasharray = C; fg.style.strokeDashoffset = C * (1 - pct / 100);
+  document.getElementById("ringTxt").textContent = pct + "%";
+  document.getElementById("progBig").textContent = `${done} / ${total}`;
+
+  document.getElementById("track").innerHTML = GATES.map(g => {
+    const [c, n] = counts(g), complete = c === n;
+    const cls = complete ? "cleared" : (g.lv < lv ? "overdue" : (g === upcoming ? "next" : ""));
+    return `<li class="${cls}"><span class="lv">${g.lv}</span><span class="dot"></span><a class="what" href="#${g.id}">${g.title}</a></li>`;
+  }).join("");
+
+  document.getElementById("gateHint").textContent = upcoming
+    ? (upcoming.lv === lv ? `stop now: Lv ${lv}` : `next stop at Lv ${upcoming.lv}`)
+    : "all checkpoints cleared";
+  document.getElementById("lvlNum").value = lv;
+  document.getElementById("lvlRange").value = lv;
+  mainEl.classList.toggle("hide-done", state.hide);
+  /* Hide ticked items, and whole cleared cards, when "Hide completed" is on. */
+  mainEl.querySelectorAll("li.item").forEach(li => {
+    const cb = li.querySelector("input[type=checkbox]");
+    li.hidden = state.hide && !!(cb && cb.checked);
+  });
+  mainEl.querySelectorAll("details.step").forEach(d => { d.hidden = state.hide && d.classList.contains("done"); });
+  document.getElementById("btnHide").textContent = state.hide ? "Show completed" : "Hide completed";
+  document.getElementById("btnHide").setAttribute("aria-pressed", String(state.hide));
+  renderNext();
+}
+
+/* Skill point plan: leveling priority (GamerBlurb, Global). Gating/costs per Metabot skill pages. */
+const SP_SKILLS = [
+  { n: "Quick Slice", learn: 1, spec: "+50% Multi-Hit on hit" },
+  { n: "Savage Roar", learn: 1, spec: "+20% Skill Speed" },
+  { n: "Shadowstrike", learn: 1, spec: "+20% Critical Damage Boost for 10s on hit" },
+  { n: "Heart Gore", learn: 4, spec: "Up to +20% Critical Hit when fewer targets are hit" },
+  { n: "Exploit Weakness", learn: 6, passive: true },
+  { n: "Insignia Explosion", learn: 14, spec: "+50% Multi-Hit on hit" },
+  { n: "Rear Smite", learn: 11, passive: true },
+  { n: "Ambush", learn: 3, spec: "Engraves 2 Insignias when it lands as a Back attack" },
+];
+const spCost = L => L <= 4 ? 1 : L <= 7 ? 2 : 4;
+const SP_STEPS = [];
+SP_SKILLS.forEach((s, rank) => {
+  for (let L = 2; L <= 10; L++) {
+    SP_STEPS.push({ k: `sp:${s.n}:${L}`, s, rank, L, req: s.learn + 3 * (L - 2), cost: spCost(L) });
+    if (L === 8 && !s.passive) SP_STEPS.push({ k: `sp:${s.n}:spec`, s, rank, L: 8.5, req: s.learn + 18, cost: 0, spec: true });
+  }
+});
+SP_STEPS.sort((a, b) => a.rank - b.rank || a.L - b.L);
+const spLabel = x => x.spec ? `<b>${x.s.n}: pick specialty</b>` : `<b>${x.s.n} → ${x.L}</b>`;
+const spCostTxt = x => x.spec ? "free" : x.cost + " pt" + (x.cost > 1 ? "s" : "");
+
+/* Skill-only stop points where the gap would otherwise delay key tiers. */
+GATES.push(
+  { id: "g19", lv: 19, title: "Skill tier: level 8", blurb: "Quick Slice, Savage Roar and Shadowstrike reach skill level 8.", items: [] },
+  { id: "g28", lv: 28, title: "Skill tier: Heart Gore 10", blurb: "Heart Gore reaches its point cap.", items: [] },
+);
+GATES.sort((a, b) => a.lv - b.lv);
+
+/* Fold each skill upgrade into the first stop point at or after its unlock level. */
+GATES.forEach((g, i) => {
+  const prev = i ? GATES[i - 1].lv : 0;
+  const steps = SP_STEPS.filter(x => x.req > prev && x.req <= g.lv);
+  if (!steps.length) return;
+  g.items.push(sub("Spend skill points", "top to bottom · save if you can't afford the top line"));
+  steps.forEach(x => g.items.push({
+    k: x.k,
+    t: `<span class="cost">${spCostTxt(x)}</span>${spLabel(x)}${x.spec ? `<span class="loc"><em>${x.s.spec}</em></span>` : (x.L === 8 && !x.s.passive ? `<span class="loc">opens first ${T("specialty slot", "specialty")}</span>` : "")}`,
+  }));
+});
+
+/* Asmodian Hero (main story) quests by level: AION2HUB 1–40, cross-checked 2–9 with allthings.how. */
+const QUESTS = [
+  [1,"Ishalgen"],[2,"A Village in the Fog"],[2,"Prepare to Escape"],[3,"Shadow Forest"],[4,"Isolated Lake"],[5,"The Being Beneath the Lake"],
+  [6,"Spread Your Wings"],[6,"Signs of a Crash Landing"],[7,"Prison Compound Infiltration Plan"],[7,"Brigade Prison Compound Infiltration Operation"],
+  [9,"The Longest Night"],[10,"Finding Nemon"],[10,"Survival Supplies"],[10,"Gathering Essentials"],[11,"Crash Site Rendezvous"],[11,"Contaminated Area"],
+  [12,"Express Daeva Delivery"],[12,"Veiled Truth"],[13,"Urgent Pursuit"],[13,"Cemetery Cleanup"],[14,"Back on the Scent"],[15,"Dead Men Tell No Tales"],
+  [16,"Buried Atrocities"],[16,"Empyrean Monolith"],[18,"A New Lead"],[18,"Malice Laid Bare"],[19,"Broken Fang"],[19,"Watchful Eyes"],
+  [20,"Imminent Threat"],[20,"Crossroad"],[21,"Creeping Shadow"],[21,"Children of the Elim"],[21,"In the Elims' Name"],[22,"Verdant Melody"],
+  [22,"Daeva in a Dream"],[22,"Disturbed Balance"],[24,"Searching for Survivors"],[24,"Prison Break"],[24,"Finding Stolen Relics"],[25,"Voice of Rage"],
+  [25,"Tangled Past"],[26,"The High Priest Slumbers"],[26,"Striving for Coexistence"],[27,"Preparations for Restoration"],[27,"A Collective Effort"],
+  [29,"Land of Rifts"],[30,"Dying Light"],[30,"Contaminated Sacred Tree"],[30,"The Past Revealed"],[30,"Canyon's Secret"],[32,"Bitter Reality"],
+  [32,"Eye of the Red Tower"],[32,"The Survivors"],[32,"Rescue Operation"],[32,"Last of the Destruction Archons"],[32,"A Daeva Dreaming Anew"],
+  [33,"Last Refuge"],[33,"Scripture in the Ruins"],[33,"Blood Monument"],[34,"Impending Threat"],[34,"Visible Trap"],
+  [34,"Destruction Archon Underground Fortress"],[35,"Enemy Territory"],[35,"Powder of Death"],[36,"Creion of Gribade"],[36,"Frozen Fafnite"],
+  [37,"Inevitable Encounter"],[37,"Unveiling the Truth"],[37,"Lake of Confrontation"],[37,"An Ill Fate's Resolution"],[37,"Mirror of Greed"],
+  [40,"Fafnite's Whereabouts"],[40,"Exiled Ritualist"],[40,"Healing Herbs"],[40,"Treatment"],[40,"Symbol of Liberation"],
+];
+const qInput = document.getElementById("questIn");
+document.getElementById("questList").innerHTML = QUESTS.map(([l, n]) => `<option value="${n}">Lv ${l}</option>`).join("");
+const norm = s => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+function findQuest(txt) {
+  const t = norm(txt); if (!t) return null;
+  const exact = QUESTS.findIndex(([, n]) => norm(n) === t);
+  if (exact >= 0) return exact;
+  const hits = QUESTS.map((q, i) => [i, norm(q[1]).includes(t)]).filter(x => x[1]);
+  return hits.length === 1 ? hits[0][0] : (hits.length > 1 ? -2 : -1);
+}
+function renderQuest() {
+  const st = document.getElementById("questStatus");
+  st.className = "qstatus";
+  if (!state.quest) { st.innerHTML = "Pick your quest to place yourself; it sets your level."; return; }
+  const i = QUESTS.findIndex(([, n]) => n === state.quest);
+  if (i < 0) { st.innerHTML = ""; return; }
+  const nxt = QUESTS[i + 1];
+  st.innerHTML = `<b>Lv ${QUESTS[i][0]}</b> quest${nxt ? ` · next: ${nxt[1]} (Lv ${nxt[0]})` : ""}`;
+  if (qInput.value !== state.quest) qInput.value = state.quest;
+}
+qInput.addEventListener("change", () => {
+  const i = findQuest(qInput.value);
+  const st = document.getElementById("questStatus");
+  if (i === null) { state.quest = ""; save(); renderQuest(); return; }
+  if (i < 0) {
+    st.className = "qstatus warn";
+    st.textContent = i === -2 ? "Several quests match; pick one from the list." : "Not in the list. Levels 40–45 aren't covered yet; set your level below.";
+    return;
+  }
+  state.quest = QUESTS[i][1]; save();
+  setLevel(Math.max(QUESTS[i][0], 1));
+});
+
+/* Rotation by level. Stigma-era rotation is GamesFuze's; earlier phases are built from the same principles (get behind, build then spend Insignias, Quick Slice as filler). */
+const ROT = [
+  { lv: 1, seq: ["Shadowstrike", "Savage Roar", "Quick Slice ×N"], note: "Shadowstrike gets you behind the target; Quick Slice is your filler." },
+  { lv: 3, seq: ["Shadowstrike", "Ambush (from behind)", "Savage Roar", "Quick Slice ×N"], note: "Ambush needs you at the target's back." },
+  { lv: 4, seq: ["Shadowstrike", "Ambush", "Heart Gore", "Savage Roar", "Quick Slice ×N"], note: "Fire Heart Gore whenever it's off cooldown." },
+  { lv: 14, seq: ["Shadowstrike", "Ambush", "Savage Roar", "Insignia Explosion", "Heart Gore", "Quick Slice ×N"], note: "Build Insignias, then spend them with Insignia Explosion." },
+  { lv: 22, seq: ["Shadowstrike", "Triniel's Dagger*", "Ambush", "Savage Roar", "Insignia Explosion", "Heart Gore", "Quick Slice ×N"], note: "Triniel's Dagger cuts active cooldowns 10% once you're in position." },
+  { lv: 27, seq: ["Illusive Clone*", "Shadowstrike", "Triniel's Dagger*", "Savage Roar", "Insignia Explosion", "Heart Gore", "Quick Slice ×N"], note: "Open with Illusive Clone." },
+  { lv: 32, seq: ["Illusive Clone*", "Shadowstrike", "Triniel's Dagger*", "Macro: Savage Fang* → Insignia Explosion → Heart Gore → Savage Roar"], note: "Build the macro at this stop point." },
+  { lv: 37, seq: ["Illusive Clone* + Swift Contract*", "Shadowstrike", "Triniel's Dagger*", "Macro"], note: "Full build rotation. Repeat, staying at the target's back." },
+];
+function renderRotation() {
+  const lv = state.level;
+  const r = [...ROT].reverse().find(x => lv >= x.lv);
+  document.getElementById("rotLv").textContent = `at Lv ${lv}`;
+  document.getElementById("rotSeq").innerHTML = r.seq.map(s => `<span class="${s.includes("*") ? "stig" : ""}">${s.replace("*", "")}</span>`).join("<i>→</i>");
+  document.getElementById("rotNote").textContent = r.note + (lv >= 22 ? " Outlined = stigma." : " Early order is inferred from the build's principles, not a source.");
+}
+
+function renderNext() {
+  renderRotation();
+  renderQuest();
+  const lv = state.level;
+  const open = SP_STEPS.filter(x => !state.checks[x.k]);
+  const now = open.filter(x => x.req <= lv);
+  const box = document.getElementById("spNextBox"), row = document.getElementById("spNextRow");
+  const next = now[0];
+  if (next) {
+    box.hidden = false; box.checked = false; box.dataset.sp = next.k;
+    document.getElementById("spNext").innerHTML = `${spLabel(next)} <span class="cost">${spCostTxt(next)}</span>` +
+      (next.spec ? `<small class="spec">${next.s.spec}</small>` : `<small>${now.length - 1} more available at Lv ${lv}</small>`);
+  } else {
+    box.hidden = true;
+    document.getElementById("spNext").innerHTML = `<b>All caught up for Lv ${lv}.</b>`;
+  }
+  const soon = open.filter(x => x.req > lv).sort((a, b) => a.req - b.req || a.rank - b.rank)[0];
+  document.getElementById("spAfter").innerHTML = soon ? `Next unlock: ${soon.s.n} ${soon.spec ? "specialty" : "→ " + soon.L} at Lv ${soon.req}` : "";
+}
+document.getElementById("spNextBox").addEventListener("change", e => {
+  const k = e.target.dataset.sp; if (!k || !e.target.checked) return;
+  state.checks[k] = true; save();
+  const cb = mainEl.querySelector(`input[data-k="${k}"]`); if (cb) cb.checked = true;
+  update();
+});
+
+function setLevel(v) {
+  v = Math.max(1, Math.min(45, parseInt(v, 10) || 1));
+  state.level = v;
+  GATES.forEach(g => delete state.open[g.id]);
+  save(); update();
+}
+document.getElementById("lvlNum").addEventListener("change", e => setLevel(e.target.value));
+document.getElementById("lvlRange").addEventListener("input", e => setLevel(e.target.value));
+document.getElementById("btnHide").addEventListener("click", () => { state.hide = !state.hide; save(); update(); });
+const btnExpand = document.getElementById("btnExpand");
+btnExpand.addEventListener("click", () => {
+  const all = [...mainEl.querySelectorAll("details.step")];
+  const open = !all.every(d => d.open);
+  all.forEach(d => { d.open = open; state.open[d.id] = open; });
+  btnExpand.textContent = open ? "Collapse all" : "Expand all"; save();
+});
+let resetArmed = false;
+const btnReset = document.getElementById("btnReset");
+btnReset.addEventListener("click", () => {
+  if (!resetArmed) { resetArmed = true; btnReset.textContent = "Click again to clear"; setTimeout(() => { resetArmed = false; btnReset.textContent = "Reset"; }, 3000); return; }
+  state = DEFAULT(); save(); render(); update();
+  resetArmed = false; btnReset.textContent = "Reset";
+});
+
+render(); update();
+</script>

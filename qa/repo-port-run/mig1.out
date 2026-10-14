@@ -1,0 +1,32 @@
+ok   gates (expected diff: regional quests re-banded by level (E2), g45:1 dropped (E2 D6), optional steps count only once ticked (E4 #2))
+ok   steps (expected diff: hold:0 dropped (E2 D6); its saved tick stays in state)
+ok   quests
+ok   sd
+ok   sh
+ok   sp
+ok   dv
+ok   ring
+ok   prog
+ok   stigma (expected diff: plan order for unequipped slots 3/4 is now Swift Contract, Savage Fang (E2 D5))
+ok   stLv
+ok   stShards
+ok   rotSeen
+ok   qsteps
+ok   qsub
+ok   level
+ok   quest
+ok   stones
+ok   dvTotal
+ok   pend
+ok   gateTags (expected diff: milestone tags and counts follow the gates change)
+ok   E1 reload idempotent
+ok   old keys left in place
+ok   migV5 flag saved
+ok   localStorage key unchanged (state saved under v4 key)
+ticked keys: fixture 100 · E1 saved 128 (old + copied new keys) · copied: 29 checks, 4 started, 2 areaRun
+ok   rollback to v285 gates
+ok   rollback to v285 quests
+ok   rollback to v285 sd
+ok   rollback to v285 sh
+ok   rollback to v285 ring
+MIGRATION CHECK PASSED

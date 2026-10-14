@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:2400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.areaSh=false; s.areaLv="15"; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const el = await p.$('#areas'); const bb = await el.boundingBox(); await p.screenshot({path:'shhidden.png', clip:{x:bb.x-10,y:bb.y-10,width:bb.width+20,height:240}});
+ await p.click('#shShowBtn'); await p.waitForTimeout(200);
+ console.log(await p.evaluate(()=>state.areaSh+' '+[...document.querySelectorAll('#areaList li.item:not(.grouped) b')].map(b=>b.textContent).join(', ')));
+ await b.close(); })();

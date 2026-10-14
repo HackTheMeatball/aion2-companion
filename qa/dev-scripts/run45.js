@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.dvTotal=32; s.stones=8; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ await p.click('#lvlUpBig'); await p.waitForTimeout(250);
+ const r = await (await p.$('section.where')).boundingBox();
+ await p.screenshot({path:'lvlup.png', clip:{x:r.x-20,y:r.y-60,width:r.width+40,height:160}});
+ console.log(await p.evaluate(()=>[state.level, state.dvTotal, document.getElementById('dvCr').textContent].join(' | ')));
+ await p.click('#lvlDown'); await p.waitForTimeout(100);
+ console.log(await p.evaluate(()=>[state.level, state.dvTotal].join(' | ')));
+ const hd = await p.$eval('.where-head', e=>[e.scrollWidth, e.clientWidth, e.getBoundingClientRect().height]); console.log('head', hd);
+ await b.close(); })();

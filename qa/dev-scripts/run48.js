@@ -1,0 +1,17 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:1600}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.areaLv="10"; s.areaDone=true; s.checks["sh:graverobber-den"]=true; s.checks["sh:rubek-thieves-occupied-territory"]=true; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Dredgion Crash Site").forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const n = () => p.$$eval('#areaList li.item', l=>l.length);
+ console.log('all', await n());
+ await p.click('#areaDoneTog'); await p.waitForTimeout(200); console.log('hide cleared', await n());
+ const first = await p.$eval('#areaList input[data-k]', e=>e.dataset.k);
+ const y0 = await p.$eval('#areaList li.item:last-child', e=>e.getBoundingClientRect().top);
+ await p.click(`#areaList input[data-k="${first}"]`); await p.waitForTimeout(200);
+ const y1 = await p.$eval('#areaList li.item:last-child', e=>e.getBoundingClientRect().top);
+ console.log('after tick', await n(), 'shift', y1-y0);
+ await (await p.$('#areas')).screenshot({path:'cleared.png'});
+ await b.close(); })();

@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=13; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(600);
+ await p.evaluate(() => { const d=document.getElementById('g16'); d.open=true; d.scrollIntoView(); });
+ await p.waitForTimeout(200);
+ await p.click('#g16 .sub-h.rq .tip');
+ await p.waitForTimeout(200);
+ await p.screenshot({ path: 'd.png' });
+ console.log(await p.evaluate(() => document.querySelectorAll('.sub-h.rq').length));
+ await b.close(); })();

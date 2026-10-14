@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.quest="A New Lead"; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const st = () => p.evaluate(()=>[document.getElementById('questPrev').innerText.replace(/\n/g,' '), document.getElementById('questIn').value, document.getElementById('questStatus').innerText.replace(/\n/g,' '), state.level].join(' | '));
+ console.log(await st());
+ await p.click('#questStatus .st-name'); await p.waitForTimeout(150);
+ const r = await (await p.$('ul.story')).boundingBox(); await p.screenshot({path:'roll.png', clip:{x:r.x-10,y:r.y-10,width:r.width+20,height:r.height+20}});
+ await p.waitForTimeout(400); console.log(await st());
+ await p.click('#questPrev .st-name'); await p.waitForTimeout(500); console.log(await st());
+ await p.click('#questPrev .st-name'); await p.waitForTimeout(500); console.log(await st());
+ await b.close(); })();

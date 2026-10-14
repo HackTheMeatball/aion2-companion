@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:820,height:1400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.areaLv="sh"; s.strongholds=2; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ await p.click('[data-k="sh:'+await p.evaluate(()=>mapSlug("Graverobber Den"))+'"]');
+ await p.waitForTimeout(200);
+ await p.click('[data-k="sh:'+await p.evaluate(()=>mapSlug("Rubek Thieves' Occupied Territory"))+'"]');
+ await p.waitForTimeout(200);
+ console.log('count', await p.textContent('#collSh'), await p.$eval('#areaSel', e=>e.selectedOptions[0].textContent));
+ await (await p.$('#areas')).screenshot({path:'sh.png'});
+ await (await p.$('.coll')).screenshot({path:'coll.png'});
+ await b.close(); })();

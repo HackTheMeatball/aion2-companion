@@ -1,0 +1,17 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ const r = () => p.evaluate(() => document.getElementById('dvRemain').innerText + ' | next: ' + (document.querySelector('#dvNextList .txt')||{}).innerText);
+ console.log(await r());
+ console.log('disabled before:', await p.evaluate(() => document.querySelector('#dvNextList input[type=checkbox]').disabled));
+ await p.fill('#dvNextList input.dvc', '6'); await p.waitForTimeout(100);
+ console.log('disabled after:', await p.evaluate(() => [...document.querySelectorAll('input[type=checkbox][data-k="dv:ew"]')].map(c=>c.disabled)), await r());
+ await p.screenshot({ path: 'i.png', clip:{x:390,y:180,width:830,height:470} });
+ await p.click('#dvNextList input[type=checkbox]'); await p.waitForTimeout(200);
+ console.log(await r());
+ await p.evaluate(() => document.getElementById('nowCard').scrollIntoView()); await p.screenshot({ path: 'j.png' });
+ console.log('g13 count:', await p.evaluate(() => document.querySelector('#g12 .count').textContent));
+ await b.close(); })();

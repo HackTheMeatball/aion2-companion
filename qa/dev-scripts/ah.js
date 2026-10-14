@@ -1,0 +1,7 @@
+const { chromium } = require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=23;st.mode='advanced';st.quest='Disturbed Balance';st.checks={};GATES.forEach(g=>{if(g.lv<22)g.items.forEach((it,j)=>{st.checks[it.k||g.id+':'+j]=true})});SP_STEPS.forEach(x=>{if(x.req<=23)st.checks[x.k]=true});DV_NODES().forEach(n=>{if(n.blv<=23)st.checks[n.k]=true});st.dvTotal=100;st.stones=0;localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});await p.reload();await p.waitForTimeout(800);
+console.log(await p.evaluate(()=>document.getElementById('ahead').innerText));
+console.log('--- next up'); console.log(await p.evaluate(()=>[document.querySelector('#nowStar .ns-mhead').innerText.replace(/\n/g,' | '),...[...document.querySelectorAll('#nowStar .nsq')].map(l=>(l.querySelector('button.ns-cb')?'[ ] ':'    ')+l.innerText.replace(/\n/g,' | '))].join('\n')));
+const a=await p.$('#ahead');await a.scrollIntoViewIfNeeded();const bb=await a.boundingBox();await p.screenshot({path:'ahead.png',clip:{x:bb.x-20,y:bb.y-20,width:bb.width+40,height:bb.height+40}});
+const n=await p.$('#nowStar');await n.scrollIntoViewIfNeeded();const nb=await n.boundingBox();await p.screenshot({path:'ns.png',clip:{x:nb.x-5,y:nb.y-5,width:nb.width+10,height:nb.height+10}});
+console.log(errs);await b.close();})()

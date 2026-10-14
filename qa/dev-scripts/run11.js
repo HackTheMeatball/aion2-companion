@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]); await p.waitForTimeout(400);
+ const t = () => p.evaluate(() => document.getElementById('dvNext').innerText.replace(/\n/g,' / '));
+ console.log(await t());
+ await p.click('#dvNextBox'); await p.waitForTimeout(200); console.log(await t());
+ await p.screenshot({ path: 'h.png', clip:{x:390,y:180,width:830,height:420} });
+ await p.reload(); await p.waitForTimeout(300); console.log('after reload:', await t());
+ await b.close(); })();

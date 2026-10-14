@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.checks=st.checks||{};
+['hg','ew','amb','qs','ew2','as','as2','corner'].forEach(k=>st.checks['dv:'+k]=true);st.dvReset1=true;st.dvTotal=76;st.dvCost={'dv:hg':10,'dv:ew':5,'dv:amb':8,'dv:qs':5,'dv:ew2':5,'dv:as':4,'dv:as2':4,'dv:corner':4};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(500);
+const t=await p.evaluate(()=>{const c=[...document.querySelectorAll('.card')].find(c=>/Daevanion/.test(c.querySelector('h2')?.textContent||''));return c?c.innerText.slice(0,700):'nocard'});
+console.log(t);console.log('ERR',errs);
+await p.screenshot({path:'g.png',clip:{x:0,y:0,width:1500,height:1000}});await b.close();})();

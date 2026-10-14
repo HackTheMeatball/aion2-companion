@@ -1,0 +1,11 @@
+import { startServer } from '/home/claude/aion2-companion/scripts/serve.mjs';
+import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.NODE_PATH + '/playwright');
+const { server, port } = await startServer({ baselines: true });
+const b = await chromium.launch(); const p = await b.newPage();
+const msgs = []; p.on('console', m => msgs.push(m.type() + ': ' + m.text())); p.on('pageerror', e => msgs.push('pageerror: ' + e.message));
+const reqs = []; p.on('requestfailed', r => reqs.push('FAILED ' + r.url() + ' ' + r.failure().errorText));
+await p.goto(`http://localhost:${port}/`); await p.waitForTimeout(2000);
+const sw = await p.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await navigator.serviceWorker.ready; return { scope: r && r.scope, active: !!(r && r.active), ctrl: !!navigator.serviceWorker.controller, caches: await caches.keys(), fonts: [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family) }; });
+console.log(JSON.stringify(sw)); console.log(msgs.join('\n')); console.log(reqs.join('\n'));
+await b.close(); server.close();

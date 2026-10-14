@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1100}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.quest="A New Lead"; s.stones=8; s.dvTotal=66; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ console.log(await p.$eval('#nowStar', e=>e.innerText.replace(/\n+/g,' | ')));
+ await (await p.$('#nowStar')).screenshot({path:'nowstar.png'});
+ await p.click('#nowStar .ns-btn.primary'); await p.waitForTimeout(500);
+ console.log('after primary:', await p.evaluate(()=>state.quest));
+ console.log('old now card exists:', await p.evaluate(()=>!!document.getElementById('nowCard')));
+ await b.close(); })();

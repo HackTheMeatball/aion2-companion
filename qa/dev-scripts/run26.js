@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.hideCards=true; delete s.trackLater; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(300);
+ const n = () => p.evaluate(() => [document.querySelectorAll('#track li:not(.trk-toggle)').length, document.getElementById('trkLater').textContent]);
+ console.log(await n()); const el = await p.$('#track'); await el.screenshot({ path: 's.png' });
+ await p.click('#trkLater'); await p.waitForTimeout(100); console.log(await n());
+ await b.close(); })();

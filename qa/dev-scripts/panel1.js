@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1500,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)||'{}'); s.level=20; s.dvReset1=true; s.checks=s.checks||{};
+   const q=QUESTS.filter(x=>x[0]<=20).pop(); s.quest=q[1]; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(600);
+ await p.screenshot({path:'pn-top.png'});
+ await (await p.$('section.card.where')).screenshot({path:'pn-where.png'});
+ console.log(await p.evaluate(()=>({quest:state.quest, hasSteps:!!QUEST_STEPS[state.quest], nSteps:Object.keys(QUEST_STEPS).length, nQuests:QUESTS.length, gates:GATES.map(g=>g.lv+':'+g.title).join(' | '), unlocks:Object.keys(STORY_UNLOCKS).length})));
+ console.log(await p.textContent('#nowStar'));
+ await b.close(); })();

@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.checks={};GATES.forEach(g=>{if(g.lv<20)g.items.forEach((it,j)=>st.checks[it.k||g.id+':'+j]=true)});SP_STEPS.forEach(x=>{if(x.req<=16)st.checks[x.k]=true});st.stones=2;['hg','ew','amb','qs','ew2','as','as2','corner','ie','ss','z:hg','z:ie'].forEach(k=>st.checks['dv:'+k]=true);st.dvTotal=78;st.dvCost={'dv:hg':10,'dv:ew':5,'dv:amb':8,'dv:qs':5,'dv:ew2':5,'dv:as':4,'dv:as2':4,'dv:corner':4,'dv:ie':5,'dv:ss':4,'dv:z:hg':12,'dv:z:ie':12};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(700);
+const ns=()=>p.evaluate(()=>{const t=document.querySelector('#nowStar .ns-pt').innerText;const q=[...document.querySelectorAll('#nsQueue li')].filter(l=>!l.hidden).map(l=>l.querySelector('.nsq-t').innerText);return t+' || '+q.join(' / ')});
+console.log('0:',await ns());
+await p.screenshot({path:'ac1.png',clip:{x:510,y:230,width:830,height:640}});
+await p.click('#nowStar .ns-btn.primary');await p.waitForTimeout(150);console.log('mid out?',await p.evaluate(()=>document.querySelector('#nowStar .ns-primary').className));
+await p.waitForTimeout(900);console.log('1:',await ns());
+await p.click('#nowStar .ns-btn.primary');await p.waitForTimeout(1600);console.log('2:',await ns());
+console.log(await p.evaluate(()=>[...document.querySelectorAll('#main .top-grid > *')].map(c=>c.id+':'+c.offsetHeight)));
+console.log('ERR',errs);await b.close();})();

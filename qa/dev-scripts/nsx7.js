@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => localStorage.setItem('aion2-assassin-route-v4', JSON.stringify({level:23, quest:'Disturbed Balance', mode:'basic'})));
+ await p.reload(); await p.waitForTimeout(600);
+ const r = await p.$eval('#nowStar', e=>{const r=e.getBoundingClientRect();return [r.x,r.y,r.width,r.height];}); console.log(r);
+ await p.mouse.move(r[0]+r[2]/2, r[1]+30); await p.waitForTimeout(100);
+ console.log('hover', await p.evaluate(()=>nsHover), await p.evaluate(([x,y])=>document.elementFromPoint(x,y).outerHTML.slice(0,120), [r[0]+r[2]/2, r[1]+30]));
+ console.log(await p.$eval('#nsqWrap', w=>[w.scrollTop,w.scrollHeight,w.clientHeight,w.children.length, getComputedStyle(w).height]));
+ await p.evaluate(()=>{window.__k=[]; document.addEventListener("keydown",e=>__k.push([e.key,e.defaultPrevented,document.activeElement.tagName,nsHover]),true); document.addEventListener("keydown",e=>__k.push(["bubble",e.key,e.defaultPrevented]));});
+ await p.keyboard.press("ArrowDown"); await p.waitForTimeout(700); console.log(await p.evaluate(()=>JSON.stringify(__k)), await p.$eval("#nsqWrap", w=>w.scrollTop));
+ await p.keyboard.press("Space"); await p.waitForTimeout(1300); console.log(await p.evaluate(()=>JSON.stringify(__k)), await p.$eval("#nowStar .ns-card.first h3", e=>e.textContent));
+ await b.close(); })();

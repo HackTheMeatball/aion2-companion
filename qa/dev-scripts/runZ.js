@@ -1,0 +1,8 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.checks={};GATES.forEach(g=>{if(g.lv<=20)g.items.forEach((it,j)=>st.checks[it.k||g.id+':'+j]=true)});SP_STEPS.forEach(x=>{if(x.req<=20)st.checks[x.k]=true});['hg','ew','amb','qs','ew2','as','as2','corner','ie','ss','z:hg','z:ie'].forEach(k=>st.checks['dv:'+k]=true);st.dvTotal=78;st.dvCost={'dv:hg':10,'dv:ew':5,'dv:amb':8,'dv:qs':5,'dv:ew2':5,'dv:as':4,'dv:as2':4,'dv:corner':4,'dv:ie':5,'dv:ss':4,'dv:z:hg':12,'dv:z:ie':12};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(600);
+console.log(await p.evaluate(()=>document.getElementById('nowStar').innerText.replace(/\n+/g,' | ')));
+await (await p.$('#nowStar')).screenshot({path:'z1.png'});await (await p.$('section.card.where')).screenshot({path:'z2.png'});
+console.log('ERR',errs);await b.close();})();

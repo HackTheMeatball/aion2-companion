@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.checks["sh:graverobber-den"]=true; s.checks["sh:rubek-thieves-occupied-territory"]=true; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Dredgion Crash Site").forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const r = await (await p.$('aside.rail section.card')).boundingBox();
+ await p.screenshot({path:'prog.png', clip:{x:r.x-4,y:r.y-4,width:r.width+8,height:r.height+8}});
+ await p.click('[data-prog="sd"]'); await p.waitForTimeout(600);
+ console.log('areaLv', await p.evaluate(()=>state.areaLv));
+ await p.click('[data-prog="quest"]'); await p.waitForTimeout(600);
+ console.log('scrolled', await p.evaluate(()=>Math.round(scrollY)));
+ await b.close(); })();

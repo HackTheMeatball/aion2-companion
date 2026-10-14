@@ -1,0 +1,41 @@
+ok   no page errors (pre-E2, E2)
+ok   regional quests by name: done / in progress / snooze
+ok   Sealed Dungeons by name: cleared / run
+ok   strongholds by name
+ok   skill lines ticked
+ok   board nodes ticked
+ok   equipped stigmas (slot, name)
+ok   qsteps
+ok   qsub
+ok   questObjDone
+ok   level
+ok   quest
+ok   stones
+ok   dvTotal
+ok   pendSt
+ok   pendCr
+ok   stLv
+ok   stShards
+ok   stPick
+ok   rotSeen
+ok   mode
+ok   hideCards
+ok   storyEnd
+ok   milestone main tasks unchanged except where E2 dropped an item (g45:1)
+     milestone tags that changed (re-banded quests): none
+ok   no cleared milestone turns "Missed"
+ok   every saved key and value kept (incl. removed items g45:1, hold:0)
+ok   localStorage key unchanged, migV5 kept
+ok   E2 reload idempotent (metrics)
+ok   E2 reload idempotent (saved state)
+ok   v285 fixture → E2: quests by name equal v285 → pre-E2
+ok   v285 fixture → E2: Sealed Dungeons equal
+ok   v285 fixture → E2: story ticks equal
+ok   rollback to pre-E2: quests
+ok   rollback to pre-E2: sd
+ok   rollback to pre-E2: sh
+ok   rollback to pre-E2: sp
+ok   rollback to pre-E2: dv
+ok   rollback to pre-E2: qsteps
+ok   rollback to pre-E2: stigma
+E2 MIGRATION CHECK PASSED

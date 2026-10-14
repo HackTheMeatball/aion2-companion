@@ -1,0 +1,14 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.addInitScript(() => { delete window.documentPictureInPicture; Object.defineProperty(window,'documentPictureInPicture',{value:undefined}); });
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => localStorage.setItem('aion2-assassin-route-v4', JSON.stringify({level:23, quest:'Disturbed Balance', mode:'basic'})));
+ await p.reload(); await p.waitForTimeout(600);
+ console.log('pop btn without API:', await p.$$eval('#nowStar [data-nspop]', x=>x.length));
+ const r = await p.$eval('#nowStar', e=>{const r=e.getBoundingClientRect();return [r.x+r.width/2,r.y+30];});
+ await p.mouse.move(r[0], r[1]); await p.focus('#stShards');
+ const h0 = await p.$eval('#nowStar .ns-card.first h3', e=>e.textContent);
+ await p.keyboard.press('Enter'); await p.keyboard.press('ArrowDown'); await p.waitForTimeout(1200);
+ console.log('input-focused keys ignored:', h0 === await p.$eval('#nowStar .ns-card.first h3', e=>e.textContent), await p.$eval('#nsqWrap', w=>w.scrollTop));
+ await b.close(); })();

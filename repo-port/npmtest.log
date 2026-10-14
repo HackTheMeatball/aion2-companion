@@ -1,0 +1,23 @@
+
+> aion2-companion@1.0.0 test
+> npm run build && node tests/run.mjs
+
+
+> aion2-companion@1.0.0 build
+> node scripts/build.mjs
+
+build 67fcaa2a0370
+  dist/index.html            450.6 KB · 34 files · precache 29
+  dist-artifact/index.html   449.3 KB · 23 icons as /_blob/<id>
+serving dist/ at http://127.0.0.1:36045 · 9 suites · 1 at a time · output in tests/out/
+PASS  regress   282 s  checks: 4806 · hard fail 0 · soft fail 2 · 281 s
+PASS  journey   720 s    end-of-level cards: [Altgard story complete | Continue in Reshanta in game · the guide's story ends at "Forgotten Comm
+FAIL  e1         39 s  147 ok, 1 FAIL · E1 CHECKS FAILED (1)
+PASS  e2         51 s  164 ok, 0 FAIL · E2 CHECKS PASSED
+PASS  mig2       12 s  41 ok, 0 FAIL · E2 MIGRATION CHECK PASSED
+PASS  mig1        7 s  30 ok, 0 FAIL · MIGRATION CHECK PASSED
+PASS  e4         31 s  39 ok, 0 FAIL · E4 CHECKS PASSED
+PASS  e3         15 s  22 ok, 0 FAIL · E3 CHECKS PASSED
+PASS  site        7 s  19 ok, 0 FAIL · SITE CHECKS PASSED
+
+8/9 suites passed in 1164 s · FAILED: e1 (see tests/out/<name>.out)

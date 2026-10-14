@@ -1,0 +1,9 @@
+const { chromium } = require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));await p.goto('file://'+process.argv[2]);
+const setup=async mode=>{await p.evaluate(mode=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=23;st.mode=mode;st.quest='Disturbed Balance';st.qsteps={};st.checks={};GATES.forEach(g=>{if(g.lv<22)g.items.forEach((it,j)=>{st.checks[it.k||g.id+':'+j]=true})});st.checks['g22:0']=true;SP_STEPS.forEach(x=>{if(x.req<=23)st.checks[x.k]=true});DV_NODES().forEach(n=>{if(n.blv<=23)st.checks[n.k]=true});st.dvTotal=104;st.pendSt=0;st.pendCr=0;const k=GATES.find(g=>g.id==='g22').items.findIndex(it=>it.kind==='quest');st.started={['g22:'+k]:1};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))},mode);await p.reload();await p.waitForTimeout(800);};
+const shot=async n=>{const e=await p.$('#nowStar');await e.scrollIntoViewIfNeeded();const bb=await e.boundingBox();await p.screenshot({path:n,clip:{x:bb.x-10,y:bb.y-10,width:bb.width+20,height:bb.height+60}});};
+await setup('advanced');await shot('ns_a1.png');
+console.log(await p.evaluate(()=>[...document.querySelectorAll('#nowStar .ns-card')].map(c=>c.querySelector('h3').innerText+' ['+(c.querySelector('.meta').innerText.replace(/\n/g,' '))+']').join('\n')));
+await p.evaluate(()=>{const w=document.getElementById('nsqWrap');w.scrollTop=w.querySelectorAll('.ns-card')[2].offsetTop});await p.waitForTimeout(400);await shot('ns_a2.png');
+await p.click('#nowStar .ns-card.first .ns-btn');await p.waitForTimeout(1500);console.log('after:',await p.evaluate(()=>document.querySelector('#nowStar .ns-card.first h3').innerText));
+await setup('basic');await shot('ns_b1.png');
+console.log(errs);await b.close();})()

@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:1600}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.areaLv="10"; s.checks["sh:graverobber-den"]=true; s.checks["sh:rubek-thieves-occupied-territory"]=true; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Dredgion Crash Site").forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ await (await p.$('#areas')).screenshot({path:'a1.png'});
+ await p.click('#areaShTog'); await p.waitForTimeout(200);
+ console.log('off:', await p.$eval('#areaSel', e=>e.selectedOptions[0].textContent), await p.$$eval('#areaList .asec', es=>es.length));
+ await p.selectOption('#areaSel','sh'); await p.waitForTimeout(200);
+ await (await p.$('#areas')).screenshot({path:'a2.png'});
+ await b.close(); })();

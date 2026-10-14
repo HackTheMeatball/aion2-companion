@@ -1,0 +1,16 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=16; s.dvTotal=10; s.dvCost={}; Object.keys(s.checks).forEach(x=>{if(x.startsWith('dv:'))delete s.checks[x]}); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const st = () => p.evaluate(() => { const c=document.querySelector('#dvNextList input[type=checkbox]'); return [c.disabled, document.querySelector('#dvNextList .dvwarn').textContent, document.querySelector('#g12 input[type=checkbox][data-k="dv:hg"]').disabled]; });
+ console.log('no cost', await st());
+ await p.fill('#dvNextList input.dvc', '12'); await p.waitForTimeout(100); console.log('cost 12 > 10', await st());
+ await p.fill('#dvNextList input.dvc', '9'); await p.waitForTimeout(100); console.log('cost 9', await st());
+ await p.click('#dvNextList input[type=checkbox]'); await p.waitForTimeout(200);
+ console.log(await p.evaluate(() => document.getElementById('dvRemain').innerText));
+ await p.fill('#dvNextList input.dvc', '2'); await p.waitForTimeout(100); console.log('ew cost 2 (1 left)', await st().catch(()=>'x'), await p.evaluate(() => document.querySelector('#dvNextList .dvwarn').textContent));
+ await p.evaluate(() => { const i=document.getElementById('dvIn'); i.value='30'; i.dispatchEvent(new Event('input',{bubbles:true})); }); await p.waitForTimeout(100);
+ console.log('total 30', await p.evaluate(() => [document.querySelector('#dvNextList input[type=checkbox]').disabled, document.querySelector('#dvNextList .dvwarn').textContent]));
+ await b.close(); })();

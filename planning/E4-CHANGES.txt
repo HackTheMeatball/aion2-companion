@@ -1,0 +1,68 @@
+E4 changes to assassin-route.html (v290 -> v291-E4): the 12 QA3 findings (polish/qa3/findings.json), with the coordinator's decisions.
+Backups: before: backup-v290-pre-E4.html; after: backup-v291-E4.html. Not published.
+localStorage key unchanged ('aion2-assassin-route-v4'); no key renamed, removed or reused; one new flag (state.eputSync1); no new external requests.
+
+Reproduce from the backup:
+  cp backup-v290-pre-E4.html assassin-route.html && python3 -I polish/e2/gen.py && python3 -I polish/e2/apply.py && python3 -I polish/e4/patch.py
+  polish/e4/patch.py    every code/text/CSS edit, each an exact single-match replacement (stops if the input drifted).
+  polish/e2/gen.py      updated for #11 and #12 (pre-E4 copy: polish/e4/gen.pre-E4.py); 405 checks, 0 failed (was 403). The page's
+                        E2-GEN block equals polish/e2/gen-block.js (e4test checks it). Only RQ (1 row) and SOURCES titles changed.
+
+ #1  "Put <stigma> on E" (g27:1, g32:1, g37:1) is ticked when its slot is marked equipped: Stigmas card button, Next up "Equipped"
+     (both go through stTickClick) and a direct tick on the milestone's Equip row (layout change handler). Helper eputK(n).
+     One-time migration state.eputSync1 (runs after the stPick pinning at load, saved if there was a save): every slot already
+     marked equipped gets its eput step ticked. Adds ticks only. Drawer note: "closing this panel clears this note" (it never ticked
+     milestones; the wording said it did). The drawer is not used as a mechanism.
+ #2  checkable(): an optional step counts only once ticked (hideOpt still hides all). Milestones left with only unticked optional
+     steps (g22 Krao Cave, g25 Supply Requests, g28 Urugugu, g35 Fire Temple) are "Cleared", not "Missed"; bar width guarded for 0/0.
+     Basic hides optional rows (CSS). Later card: only a milestone with an open required step (not regional quests, optional steps,
+     or skill lines, which have their own Buy cards), so no "Fire Temple · Lv 35" / "Heart Gore 10 and Urugugu Canyon" promises.
+ #3  Skills past the plan: "All planned upgrades spent · N points spare · no sourced plan past this — spend on skills you use";
+     the Build plan link and its two CSS rules are gone; same sphero card.
+ #4  Level-gated story card: one muted line under "Needs Lv X: you're Y. Level up first." —
+     "Meanwhile: Sealed Dungeons / Strongholds / <highest Expedition unlocked> (Lv N+, item level M) / daily dungeon (Lv 30+)".
+     From VERIFIED_UNLOCKS; Sealed Dungeons / Strongholds only while some are open at the level; Krao Cave also needs the story at
+     "Daeva in a Dream". Not shown when the story isn't gated.
+ #5  Skills hint: "+K more your points cover" (K = following open upgrades, in order, the points left after this one pay for), else
+     "N more unlocked · M pts left".
+ #6  Stigmas "x of y spent": y = all 4 planned stigmas to their targets (Triniel's Dagger 10, Illusive Clone 20, the others level 1)
+     = 92, the same before and after a slot opens; x counts the planned stigmas you have equipped, up to their targets.
+ #7  Journey objectives on the last Altgard quest: the button reads "Quest done · mark turned in" and does what Next up's "Turned in"
+     does (byStory ticks, storyEnd); after that the Journey shows "Altgard story complete · continue in Reshanta in game", no button.
+ #8  Regional card stays while anything is snoozed: subline "N not in game yet" (or "None to pick up now"), one compact row with the
+     snoozed names and a "Show again" pill (clears those snoozes). Ranked after the story when nothing in it is open.
+ #9  Regional card: folded "+N waiting on the story ▾" row listing quests at/under your level (rec <= level, unlock level met) that
+     only the story still locks, each with the milestone rows' "In my game" pill (= picked up, clears its snooze). Fold state kept
+     across re-renders. Fight Poison with Poison at "Preparations for Restoration" now shows there.
+     Not done: re-checking that gate's semantics (accepted vs reached) against aion2.gaming.tools.
+ #10 Single-source skill buys: small "single source" tag (muted mono, tooltip names the source) on Next up Buy cards, queue
+     previews and Later cards. Skills card tooltips/hero already said "single source (games.gg)".
+ #11 gen.py rq_zone(): after the CAMP_ZONE rule, a giver standing in a named zone (place is a zone, or "<zone> <spot>") puts the quest
+     in that zone when allthings.how's list disagrees. Changes exactly one quest: Nine Wonders of Altgard: 2nd Leg
+     Impetusium Square -> Battlescar Mound (giver Tina, Battlescar Mound Cliff; same as Pain Unending). Two new gen.py checks.
+ #12 Sources card: "checked Oct 2026" once, in the intro; group titles "Tips and rules" and "Leveling guides, build and tips"
+     (was "Earlier research": AION2HUB leveling pages, allthings/Selphie area lists, GamerBlurb/Vortex/Skycoach/Metaroad/Odealo build
+     pages, MeinMMO/PowerUp/VGC/PositionIsEverything/Insider Gaming tips). All 291 links unchanged.
+
+Tests (bash polish/e4/runall.sh [outdir] maps the pages and runs e1/e2/e3/e4/migtests in parallel):
+  polish/qa/regress.js        4806 checks · hard fail 0 · soft fail 2 (polish/e4/regress.out). The "Fight Poison offered" soft check
+                              now also accepts the new waiting-on-the-story row (pre-E4 copy polish/e4/regress.pre-E4.js). Remaining soft:
+                              noPre static data check, Sources link count (both unchanged from E3). update() median 8.6 ms, max 13.7.
+  polish/e4/e4test.js         new, 39 ok, E4 CHECKS PASSED: every fix above incl. the eputSync1 migration (ticks, saved, one-time,
+                              unequipped slot untouched), Basic hiding, Later cards at 27/34, Meanwhile at 28/30/38 and one line,
+                              hint math, stable stigma total, Journey end + reload, snooze-all + Show again, waiting row + In my game,
+                              single-source tags exactly on single-source skills, zone, generated block in sync, Sources text, no errors.
+  polish/e3/e3test.js         22 ok (P2-3 wording regex updated for #5; pre-E4 copy polish/e4/e3test.pre-E4.js).
+  polish/e2/e2test.js         164 ok, E2 CHECKS PASSED (unchanged).
+  polish/e1/e1test.js         148 ok, E1 CHECKS PASSED (v285 fixture as argv[3]; unchanged).
+  polish/e2/migtest-e2.js     41 ok, PASSED. Extended: E4 migration on the realistic v287 save (g27:1 ticked, g32:1/g37:1 untouched,
+                              eputSync1 saved, Lv 27 not Missed); milestone main-count diff allowed only in milestones with an optional or
+                              "Put on E" step (pre-E4 copy polish/e4/migtest-e2.pre-E4.js).
+  polish/e1/migtest.js        same 4 expected diffs as after E2/E3 (gates, steps, stigma plan names, gate tags); counts in "gates" now
+                              also exclude unticked optional steps.
+  polish/qa3/journey.js       Lv 27 -> 45 on the user's save: no stuck states, no page errors, no duplicate cards. g27:1/g32:1/g37:1 end
+                              ticked; Meanwhile lines at every gated level; snoozed card kept at 30; skills "N points spare" from 42;
+                              stigma total 92 throughout; story end at Forgotten Commander. Its one "!!" line ("In my game click failed")
+                              is the pre-existing harness issue from QA3 (it picks the first [data-ingame] pill, which is hidden); same as before.
+                              Log: polish/qa3/journey.log (QA3's original kept in polish/e4/qa3-before/).
+Screenshots: polish/e4/shots/*.png (polish/e4/shots.js): meanwhile-38, rq-wait-27, rq-snz-30, single-40, spdone-45, basic-38 at 1500/390.

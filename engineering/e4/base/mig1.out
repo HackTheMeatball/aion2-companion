@@ -1,0 +1,40 @@
+FAIL gates 
+  v285: {"g6":[11,11],"g9":[7,7],"g10":[8,8],"g12":[9,10],"g15":[4,5],"g16":[11,13],"g19":[5,11],"g20":[1,3],"g22":[5,16],"g25":[0,9],"g27":[1,7],"g28":[0,2],"g30":[0,10],"g32":[0,11],"g35":[0,3],"g37":[0,5],"g40":[0,2],"g45":[0,38]} 
+  E1:   {"g6":[11,11],"g9":[7,7],"g10":[9,9],"g12":[9,10],"g15":[3,4],"g16":[11,13],"g19":[5,11],"g20":[1,3],"g22":[5,16],"g25":[0,9],"g27":[1,7],"g28":[0,2],"g30":[0,10],"g32":[0,11],"g35":[0,3],"g37":[0,5],"g40":[0,3],"g45":[0,36]}
+FAIL steps 
+  v285: {"build":[1,5],"story":[1,5],"daily":[0,4],"f2p":[0,3],"hold":[1,4]} 
+  E1:   {"build":[1,5],"story":[1,5],"daily":[0,4],"f2p":[0,3],"hold":[0,3]}
+ok   quests
+ok   sd
+ok   sh
+ok   sp
+ok   dv
+ok   ring
+ok   prog
+FAIL stigma 
+  v285: [[1,"Triniel's Dagger",true],[2,"Illusive Clone",false],[3,"Savage Fang",false],[4,"Swift Contract",false]] 
+  E1:   [[1,"Triniel's Dagger",true],[2,"Illusive Clone",false],[3,"Swift Contract",false],[4,"Savage Fang",false]]
+ok   stLv
+ok   stShards
+ok   rotSeen
+ok   qsteps
+ok   qsub
+ok   level
+ok   quest
+ok   stones
+ok   dvTotal
+ok   pend
+FAIL gateTags 
+  v285: ["g6:Cleared:11/11","g9:Cleared:7/7","g10:Cleared:8/8","g12:Missed:9/10","g15:Missed:4/5","g16:Missed:11/13","g19:Missed:5/11","g20:Missed:1/3","g22:Missed:5/16","g25:Now:0/9","g27:Later:1/7","g28:Later:0/2","g30:Later:0/10","g32:Later:0/11","g35:Later:0/3","g37:Later:0/5","g40:Later:0/2","g45:Later:0/38"] 
+  E1:   ["g6:Cleared:11/11","g9:Cleared:7/7","g10:Cleared:9/9","g12:Missed:9/10","g15:Missed:3/4","g16:Missed:11/13","g19:Missed:5/11","g20:Missed:1/3","g22:Missed:5/16","g25:Now:0/9","g27:Later:1/7","g28:Later:0/2","g30:Later:0/10","g32:Later:0/11","g35:Later:0/3","g37:Later:0/5","g40:Later:0/3","g45:Later:0/36"]
+ok   E1 reload idempotent
+ok   old keys left in place
+ok   migV5 flag saved
+ok   localStorage key unchanged (state saved under v4 key)
+ticked keys: fixture 100 · E1 saved 128 (old + copied new keys) · copied: 29 checks, 4 started, 2 areaRun
+ok   rollback to v285 gates
+ok   rollback to v285 quests
+ok   rollback to v285 sd
+ok   rollback to v285 sh
+ok   rollback to v285 ring
+MIGRATION CHECK FAILED (4)

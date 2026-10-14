@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=16; s.dvTotal=28; s.dvCost={"dv:hg":9}; s.checks["dv:hg"]=true; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ await p.evaluate(() => document.getElementById('dvAll').open = true); await p.waitForTimeout(100);
+ const el = await p.$('#dvBox'); await el.screenshot({ path: 'n.png' });
+ await p.fill('#dvAllList input[data-dvc="dv:ew"]', '2'); await p.waitForTimeout(100);
+ console.log('focus kept:', await p.evaluate(() => document.activeElement.dataset.dvc), 'enabled:', await p.evaluate(() => !document.querySelector('#dvAllList input[type=checkbox][data-k="dv:ew"]').disabled));
+ console.log('g12 node rows:', await p.evaluate(() => document.querySelectorAll('#g12 .dvn').length));
+ await b.close(); })();

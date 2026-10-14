@@ -1,0 +1,41 @@
+ok   #1 Next up "Equipped" ticks slot 2 and its "Put on E" step
+ok   #1 Lv 27 milestone Cleared after equipping from Next up
+ok   #1 Stigmas card "Mark equipped" ticks "Put on E" (slot 3)
+ok   #1 milestone row "Equip" tick also ticks "Put on E" (slot 4)
+ok   #1 migration: equipped slots 2/3 get "Put on E"; unequipped slot 4 does not; flag saved
+ok   #1 migration: Lv 27/32 milestones no longer "Missed"
+ok   #1 migration runs once (eputSync1 set: no re-tick)
+ok   #1 drawer note no longer says closing marks it done
+ok   #2 milestones with only unticked optional steps left are Cleared, not Missed
+ok   #2 Basic: no "Missed" milestone at the top; optional rows hidden
+ok   #2 a ticked optional step counts (Supply Requests total +1 once ticked)
+ok   #2 Advanced still lists optional rows
+ok   #2 Lv 27: no "Later" card for an optional-only milestone
+ok   #2 Lv 34: no "Later" card for an optional-only milestone
+ok   #3 past the plan: "N points spare · no sourced plan past this — spend on skills you use", no link, same card style
+ok   #4 Lv 28 gated (Land of Rifts): Meanwhile lists Urugugu (Lv 28+, item level 300); no daily dungeon / Fire Temple
+ok   #4 Meanwhile is one line
+ok   #4 Lv 38 gated: Fire Temple (Lv 35+, item level 500) and daily dungeon (Lv 30+); not Urugugu
+ok   #4 Sealed Dungeons named only while some are open
+ok   #4 not gated: no Meanwhile line
+ok   #5 hint counts only what the points left cover
+ok   #5 no "available now" count beyond the points
+ok   #6 total = full plan (92) before and after equipping slot 2
+ok   #7 last quest, objectives done: button turns it in (no "next quest")
+ok   #7 after turn-in: "Altgard story complete" in Journey and Next up; no dead button anywhere
+ok   #7 still no button after reload
+ok   #8 all open quests snoozed: card stays with "N not in game yet" and "Show again"
+ok   #8 "Show again" clears those snoozes and the rows come back
+ok   #9 folded "+N waiting on the story" row lists Fight Poison with Poison with "In my game"
+ok   #9 only quests at/under your level that the story still locks
+ok   #9 "In my game" = picked up: moves into the quest rows; fold stays open
+ok   #10 two-source skill cards carry no tag
+ok   #10 Next up skill cards: "single source" tag exactly on single-source skills
+ok   #10 Skills card tooltip says single source
+ok   #11 Nine Wonders 2nd Leg in Battlescar Mound (giver Tina at Battlescar Mound Cliff), as Pain Unending
+ok   #11 page carries the current generated block
+ok   #12 check date stated once (intro); no "Earlier research"
+ok   #12 old group named after what it backs
+ok   no page errors
+39 ok, 0 failed
+E4 CHECKS PASSED

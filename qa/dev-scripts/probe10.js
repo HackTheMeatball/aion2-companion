@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:2400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.areaDone=false; s.areaLv="10"; s.checks["sh:graverobber-den"]=true; s.checks["sh:rubek-thieves-occupied-territory"]=true; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const show = async (t) => console.log(t, await p.evaluate(()=>[document.getElementById('areaSel').value, [...document.querySelectorAll('#areaList .asec')].map(s=>s.innerText.replace(/\n/g,' ')).join(' / '), [...document.querySelectorAll('#areaList li.item:not(.grouped) b')].map(b=>b.textContent).join(', ')].join(' | ')));
+ await show('band10 hide-cleared');
+ await p.selectOption('#areaSel','15'); await p.waitForTimeout(200); await show('band15');
+ await p.click('#areaShTog'); await p.waitForTimeout(200); await show('sh off');
+ await p.click('#areaShTog'); await p.waitForTimeout(200); await show('sh on');
+ await p.click('[data-prog="sd"]'); await p.waitForTimeout(400); await show('via progress');
+ await b.close(); })();

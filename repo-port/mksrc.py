@@ -1,0 +1,102 @@
+# One-off: assassin-route.html (claude.ai artifact, v291) -> src/index.html (repo source).
+import re, json
+S='/tmp/claude-0/-home-claude/3de1c16d-f486-54fd-a3e3-19bf8a09de56/scratchpad'; R='/home/claude/aion2-companion'
+h = open(S+'/assassin-route.html', encoding='utf-8').read()
+blobs = json.load(open(R+'/scripts/artifact-blobs.json'))
+for name, b in blobs.items():
+    h = h.replace('/_blob/' + b, f'assets/icons/{name}.png')
+assert '/_blob/' not in h
+
+def rep(old, new, count=1):
+    global h
+    assert h.count(old) == count, (old[:80], h.count(old))
+    h = h.replace(old, new)
+
+# head
+rep('<title>Asmodian Assassin Route</title>\n', '''<!-- @web-only -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- @end-web-only -->
+<title>Asmodian Assassin Route</title>
+<!-- @web-only -->
+<meta name="description" content="Aion 2 Asmodian Assassin leveling companion, Lv 1 to 45: story steps, regional quests, Sealed Dungeons, skill points, Daevanion boards and stigmas, with progress saved in your browser.">
+<link rel="canonical" href="https://aion2.ishkabytes.com/">
+<meta name="theme-color" content="#110c13">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aion 2 Companion">
+<meta property="og:title" content="Asmodian Assassin Route · Aion 2">
+<meta property="og:description" content="Leveling companion for the Aion 2 Asmodian Assassin, Lv 1 to 45. Fan-made; progress stays in your browser.">
+<meta property="og:url" content="https://aion2.ishkabytes.com/">
+<meta property="og:image" content="https://aion2.ishkabytes.com/icons/icon-512.png">
+<meta name="twitter:card" content="summary">
+<!-- @end-web-only -->
+''')
+rep('</style>\n\n<div class="wrap">', '''.fanline { margin: 0; padding: 0 4px; font-size: 12px; color: var(--muted); }
+.fanline a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+</style>
+<!-- @web-only -->
+</head>
+<body>
+<!-- @end-web-only -->
+
+<div class="wrap">''')
+# footer line
+rep('''      <span class="xfer-msg" id="xferMsg" role="status"></span></div>
+  </footer>''', '''      <span class="xfer-msg" id="xferMsg" role="status"></span></div>
+    <p class="fanline">Fan-made and not affiliated with or endorsed by NCSoft; AION 2 names and images belong to NCSoft. Data credits are in <a href="#srcCard" id="srcLink">Sources</a>; most game data comes from <a href="https://metabot.gg/en/aion-2">Metabot</a>.</p>
+  </footer>''')
+# export: claude.ai downloads capability when present, plain Blob download otherwise
+rep('''/* Saving a file goes through the viewer's downloads permission; the button only shows where that's available. */
+(async () => {
+  const btn = document.getElementById("expBtn"), msg = document.getElementById("xferMsg");
+  let dl = null; try { dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; } catch (e) { dl = null; }
+  if (!dl) return;
+  btn.hidden = false;
+  btn.addEventListener("click", async () => {
+    try { await dl.save({ filename: `aion2-assassin-progress-${new Date().toISOString().slice(0, 10)}.json`, data: JSON.stringify(state, null, 1) }); }''',
+'''/* Inside claude.ai, saving a file goes through the viewer's downloads permission (the button only shows where that's available).
+   Anywhere else (the standalone site) it is a plain Blob download. */
+(async () => {
+  const btn = document.getElementById("expBtn"), msg = document.getElementById("xferMsg");
+  const fname = () => `aion2-assassin-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  if (!(window.claude && window.claude.use)) {
+    btn.hidden = false;
+    btn.addEventListener("click", () => {
+      const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
+      a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+    return;
+  }
+  let dl = null; try { dl = await window.claude.use("downloads"); } catch (e) { dl = null; }
+  if (!dl) return;
+  btn.hidden = false;
+  btn.addEventListener("click", async () => {
+    try { await dl.save({ filename: fname(), data: JSON.stringify(state, null, 1) }); }''')
+# "Sources" link in the footer opens the folded card
+rep('''const btnReset = document.getElementById("btnReset");''', '''document.getElementById("srcLink").addEventListener("click", () => { document.getElementById("srcCard").open = true; });
+const btnReset = document.getElementById("btnReset");''')
+# generated-block header names the repo path
+rep('/* E2-GEN START: generated by polish/e2/gen.py from data/*.json', '/* E2-GEN START: generated by tools/gen/gen.py from data/*.json')
+# tail: service worker (web build only) + close the document
+assert h.endswith('render(); update();\n</script>\n'), repr(h[-60:])
+h += '''<!-- @web-only -->
+<script>
+/* Offline support (standalone site only; never in the claude.ai build). Secure contexts only: https or localhost. */
+if ("serviceWorker" in navigator && (location.protocol === "https:" || /^(localhost|127\\.0\\.0\\.1|\\[::1\\])$/.test(location.hostname))) {
+  addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
+}
+</script>
+</body>
+</html>
+<!-- @end-web-only -->
+'''
+open(R+'/src/index.html', 'w', encoding='utf-8').write(h)
+print('ok', len(h))

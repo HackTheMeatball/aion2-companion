@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000},deviceScaleFactor:2});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=21;st.dvReset1=true;st.checks={};['hg','ew','amb','qs','ew2','as','as2','corner','ie','ss','z:hg'].forEach(k=>st.checks['dv:'+k]=true);st.dvTotal=78;st.dvCost={'dv:hg':10,'dv:ew':5,'dv:amb':8,'dv:qs':5,'dv:ew2':5,'dv:as':4,'dv:as2':4,'dv:corner':4,'dv:ie':5,'dv:ss':4,'dv:z:hg':12};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(500);
+const box=await p.$('#dvBox');await box.screenshot({path:'q1.png'});
+await p.fill('#dvNextList input.dvc','3');await p.waitForTimeout(200);
+await p.click('#dvNextList [data-buy]');await p.waitForTimeout(300);
+await box.screenshot({path:'q2.png'});
+console.log('undo now',await p.evaluate(()=>!!document.getElementById('dvUndoBtn')));
+await p.waitForTimeout(10300);console.log('undo after 10s',await p.evaluate(()=>!!document.getElementById('dvUndoBtn')));
+await p.hover('.dvi');await p.waitForTimeout(250);await box.screenshot({path:'q3.png'});
+console.log('ERR',errs);await b.close();})();

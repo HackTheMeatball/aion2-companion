@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => localStorage.setItem('aion2-assassin-route-v4', JSON.stringify({level:23, quest:'Disturbed Balance', mode:'basic'})));
+ await p.reload(); await p.waitForTimeout(500);
+ const box = await (await p.$('#nsqWrap')).boundingBox(); console.log(box);
+ await p.mouse.move(box.x+box.width/2, box.y+10); await p.waitForTimeout(100);
+ console.log(await p.evaluate(()=>({h: nsHover, el: document.elementFromPoint(640, 0)&&0, wrap: (()=>{const w=nowEl.querySelector('#nsqWrap'); return [w.scrollHeight, w.clientHeight, w.children.length, getComputedStyle(w).overflowY]})()})));
+ await p.keyboard.press('ArrowDown'); await p.waitForTimeout(800);
+ console.log(await p.evaluate(()=>nowEl.querySelector('#nsqWrap').scrollTop));
+ await b.close(); })();

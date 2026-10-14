@@ -1,0 +1,18 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; delete s.areaLv; s.areasCollapsed=false; s.areaDone=true; s.checks["sh:graverobber-den"]=true; s.checks["sh:rubek-thieves-occupied-territory"]=true; AREA_ITEMS.filter(x=>x.lv===10&&x.area==="Dredgion Crash Site").forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ console.log('band', await p.evaluate(()=>state.areaLv), await p.$eval('#areaSel', e=>[...e.options].map(o=>o.textContent).join(' | ')));
+ await p.evaluate(()=>document.getElementById('areas').scrollIntoView());
+ await p.waitForTimeout(200);
+ const r = await (await p.$('#areas')).boundingBox();
+ await p.screenshot({path:'areas-a.png', clip:{x:r.x-30,y:Math.max(0,r.y-10),width:r.width+60,height:Math.min(880,r.height+20)}});
+ await p.click('#areasToggle'); await p.waitForTimeout(200);
+ const r2 = await (await p.$('#areas')).boundingBox();
+ await p.screenshot({path:'areas-c.png', clip:{x:r2.x-30,y:r2.y-10,width:r2.width+60,height:r2.height+20}});
+ await p.click('[data-prog="sh"]'); await p.waitForTimeout(500);
+ console.log('after progress jump: collapsed', await p.evaluate(()=>state.areasCollapsed), state => 0, await p.evaluate(()=>state.areaLv));
+ await b.close(); })();

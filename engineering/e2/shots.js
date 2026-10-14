@@ -1,0 +1,24 @@
+const { chromium } = require('playwright');
+const set = (p, L, q, mode, extra = {}) => p.evaluate(({ L, q, mode, extra }) => {
+  const st = { checks: {}, level: L, quest: q, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, stones: 2 * (L - 10), dvTotal: 4 * (L - 11) + 20, stShards: 3, hideCards: true };
+  GATES.forEach(g => g.items.forEach(it => { if (g.lv < L && !it.sub && !it.dv && it.kind !== 'hideout' && it.k) st.checks[it.k] = true; }));
+  SP_STEPS.forEach(x => { if (x.req <= L - 2 && !x.s.extra) st.checks[x.k] = true; });
+  st.checks['g22:0'] = true; st.stLv = { "Triniel's Dagger": 5 }; Object.assign(st, extra);
+  localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(st)); }, { L, q, mode, extra });
+(async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } });
+  await p.goto('file://' + process.argv[2]); await p.waitForTimeout(300); const out = process.argv[3];
+  await set(p, 27, 'A Collective Effort', 'advanced'); await p.reload(); await p.waitForTimeout(500);
+  await p.screenshot({ path: out + '/e2-27-adv.png' });
+  await p.evaluate(() => { const c = document.querySelector('#nowStar .ns-qgrid'); c && c.scrollIntoView({ block: 'center' }); }); await p.waitForTimeout(200);
+  const rq = await p.$('#nowStar'); await rq.screenshot({ path: out + '/e2-27-nextup.png' });
+  await p.evaluate(() => { const d = document.getElementById('g30'); d.hidden = false; d.open = true; d.scrollIntoView(); }); await p.waitForTimeout(200);
+  await (await p.$('#g30')).screenshot({ path: out + '/e2-27-g30.png' });
+  await p.evaluate(() => { const d = document.getElementById('g45'); d.hidden = false; d.open = true; d.scrollIntoView(); }); await p.waitForTimeout(200);
+  await (await p.$('#g45')).screenshot({ path: out + '/e2-27-g45.png' });
+  await p.evaluate(() => { document.getElementById('confCard').open = true; document.getElementById('srcCard').open = true; document.querySelector('#srcBody details').open = true; document.getElementById('confCard').scrollIntoView(); }); await p.waitForTimeout(200);
+  await (await p.$('footer')).screenshot({ path: out + '/e2-footer.png' });
+  await set(p, 45, 'Forgotten Commander', 'basic', { storyEnd: 'Forgotten Commander' }); await p.reload(); await p.waitForTimeout(500);
+  await p.screenshot({ path: out + '/e2-45-basic-end.png' });
+  await p.setViewportSize({ width: 390, height: 850 }); await set(p, 30, "Canyon's Secret", 'advanced'); await p.reload(); await p.waitForTimeout(500);
+  await p.evaluate(() => document.getElementById('nowStar').scrollIntoView()); await p.screenshot({ path: out + '/e2-30-390.png' });
+  await b.close(); })();

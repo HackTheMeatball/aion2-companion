@@ -1,0 +1,81 @@
+E2 changes to assassin-route.html (v287 -> v288-E2). Backup before: backup-v287-pre-E2.html. Not published.
+Reproduce from the backup:  cp backup-v287-pre-E2.html assassin-route.html && python3 -I polish/e2/patch.py && python3 -I polish/e2/gen.py && python3 -I polish/e2/apply.py
+  polish/e2/gen.py     reads data/*.json (+ two snapshots of the v287 page: area-loc-v287.json, sources-v287.json) and writes
+                       polish/e2/gen-block.js (387 consistency checks, 0 failed; report in gen-report.json).
+  polish/e2/apply.py   puts that block between /* E2-GEN START */ … /* E2-GEN END */ at the top of the script.
+  polish/e2/patch.py   all code/text edits, each an exact single-match replacement (stops if the input drifted).
+Generated constants: RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, CONF.
+
+D1 Regional quests (rq.json, rq-chains.json)
+  - RQ generated: giver npc/place, nearest Kibelisk (26/58 have one in the data), zone, rec, unlocksAt, xp, rw, reward line built from
+    the item list (fixes: Invitation Part 1 = earrings, not "bracelet · Statue: Urd"; "Ariel crystal" rows = Odyle ×5; etc.).
+  - after = array of all 17 confirmed regional edges (hard locks, no "inferred" label); story = the 43 story gates. afterBasis removed.
+  - Placement at runtime: milestone with the highest lv <= rec (keys "rq:"+id unchanged). Moves: Shugo-of-All-Trades g12→g10,
+    Spooky Specters g15→g12, Herb Pouch Heist g45→g40. Groups "Regional quests · Lv N"; groups > 8 split by what opens them
+    (Lv 45: after "Forgotten Commander" / Lest We Forget / opens at Lv 45). The 14 hand-written quests(...) groups are gone.
+  - rqAvail(q): unlock level + story at/after its story quest (current or passed, as decided) + regional prereqs turned in.
+    Used by Next up, the "how to get more" tip, Progress → Quests "behind" count and its jump. Next up lists only open quests;
+    locked follow-ups appear only as "→" under a shown prerequisite (multi-prereq aware). Rows above your level get a small
+    "Lv N" tag; tooltip adds XP. Milestone rows of quests that aren't open are dimmed (.locked) and lose the snooze button.
+    Story chips are not shown on quest rows (their second line says "Opens once the story reaches X / after Y is turned in";
+    omitted when the group heading already says it). Snooze kept; rqTicked clears a follow-up's snooze if any prereq is turned in.
+  - TIPS.regional: counts from data (51 of 58 at Lv 10, 43 story-gated, 14 follow-ups); sources updated.
+D2 Story Lv 41–45 (story-40-45.json): 11 quests appended (Daybreak Society … Forgotten Commander) to QUESTS / QUEST_STEPS /
+  QUEST_LOC; chain verified continuous from Symbol of Liberation. End state: Next up "Altgard story complete · Continue in
+  Reshanta in game", Journey "Altgard story complete — continue in Reshanta in game" (before turn-in: "Last Altgard story quest ·
+  turns in at Latesran Eastern Root (Reshanta)"). An E1 save parked at storyEnd=Symbol of Liberation moves to Daybreak Society at load.
+D3 Strongholds (strongholds.json): SH_DATA (zone, lo/hi, Kibelisk, m); SH_QID derived. Stronghold Next up card shows the Kibelisk
+  and distance like dungeons. CLEAR_REWARD for strongholds was already null; now documented and tested (no stone/crystal credit).
+  Sealed Dungeons keep 2+2 via SD_RW (dungeon-bands: 2/2 at every sampled band).
+D4 Dungeons: AREA_LOC generated from the v287 Kibelisks + dungeons.json (filled: Abandoned One's Grave, Lost Ruins, Ascetic's Cave,
+  Dratona Assembly Area, Odylium Marauder Den). All XP removed from AREA_LOC and from the dungeon card; stronghold xp rows dropped.
+D5 Build (build.json)
+  - STIGMA_PLAN = Triniel's Dagger, Illusive Clone, Swift Contract, Savage Fang; g22/g27/g32/g37 texts and blurbs updated
+    ("any stigma fits any slot"). Equipped slots keep their pinned picks (E1 code), so saved slot 1/2 are unaffected.
+  - stPlan: ST_TARGETS = Triniel's Dagger to 10, then Illusive Clone toward 20 (replaces "everything to 5"); card's bar/total and
+    the "done" hero follow it; shard texts in How shards work / tip / TIPS.stcost updated (sources: Metabot + allthings.how).
+  - SP_EXTRA appended after the core 8: Assault Stance, Impact Hit, Flash Slice, Storm Rampage (2-source), Defense Break,
+    Determination, Heightened Sixth Sense (single source: tooltip/hero note "single source (games.gg)"). Costs 1/1/1/2/2/2/4/4/4;
+    flat gates (Defense Break 21, Determination 25). Decision: they live in the Skills card + Sync levels only, NOT in milestones
+    (folding ~60 lines into past milestones would turn cleared milestones "Missed"); they sort after every open core upgrade.
+    No specialty pick for them (no source picks one). Keys sp:<name>:<L> are new names.
+  - Boards: Vaizel/Triniel nodes from DV_BOARDS (keys dv:v:* / dv:t:* unchanged + new dv:v:db, dv:t:db; corners named Critical
+    Damage Boost / Multi-Hit Chance with "inferred from the board's stat totals"). Nezekan path costs labelled "inferred".
+    Ahead Lv 45 row: "Abyss, Ascension Trial, Conquest, Azphel board (PvP stats)" — no Ariel anywhere in the page.
+  - Expeditions: g28/g35 keep level + item level; added "The story quest Canyon's Secret (Lv 30) / Mirror of Greed (Lv 37) sends you
+    in" (a note, not a gate). VERIFIED_UNLOCKS sources/details updated. Daily dungeon names Daeva Bio-Research Base only.
+D6 Claims (claims.json), applied as V1 wrote them: C01 (How points work, build:2), C02 drop, C04 blurb, C06 g45:3, C07 g45:4 (ns
+  "Abyss Points: Stigma Shards first"), C08 map card + g45:5 + gear-score tip, C09 TIPS.shugo, g45:1 dropped, hold:0 dropped and the
+  g12:0 "Leave the festival alone" note trimmed (same wrong claim), C10 g37:2 (now story-gated on Mirror of Greed), C11 expedition
+  tip, C13 stronghold tip + g9:0 "only" wording, C15 daily:1 + TIPS.duty, C16 TIPS.supply, C18 f2p:1, C19 daily:3, C20 STAT_TIERS /
+  STAT_SRC / drawer line, C21 macro steps (no "Quick Use 2", no delay values), C22 g45:2 + daevanion tip, C23 g16:amulet note,
+  C24 amulet "100% success" removed, C25 traces tip. Keys removed (never reused): g45:1, hold:0 — their saved ticks stay in state.
+D7 Confidence and Sources rebuilt from CONF / SOURCES: five short groups (Verified, Single source, Inferred, Disputed, From your
+  game; verdicts read from claims.json/build.json) and 291 links in six collapsible groups (every URL in rq, rq-chains, story,
+  story-40-45, strongholds, dungeons, dungeon-bands, build, claims + the v287 list). Plain rel="noopener" links (dofollow).
+D8 localStorage key unchanged; no migration needed (no key moved). Small CSS: .conf, #srcBody, .srcg, .q-rec.
+
+Tests (all with bash icons/map.sh → test-icons.html):
+  polish/e2/e2test.js      164 ok, 0 fail (E2 CHECKS PASSED): availability vs data over 16 scenarios × 2 tick profiles, Lv 44–45
+                           batch only at/after Forgotten Commander, CLEAR_REWARD + real stronghold/dungeon clicks, no dungeon XP,
+                           story chain + end state (both modes, reload), no Ariel, claims lint, build data, Sources coverage,
+                           no new external requests, no page errors. Output: polish/e2/e2test.out
+  polish/e2/migtest-e2.js  39 ok (E2 MIGRATION CHECK PASSED): realistic v287 save (rq ticks/started, snooze, qsteps/qsub by quest
+                           name, stigma picks, dungeon run, ticks on removed keys) → identical by name in pre-E2 and E2; every saved
+                           key kept; idempotent; v285 fixture → E2 OK; rollback to pre-E2 OK. Fixture: polish/e2/fixture-v287.json
+  polish/e1/e1test.js      148 ok (E1 CHECKS PASSED) after updating 4 expectations E2 changes on purpose (pick order, story end
+                           now at Forgotten Commander, clean fixture excludes extra skills). Pre-E2 copy: e1test.pre-E2.js
+  polish/e1/migtest.js     made key-order-insensitive; v285 → E2: quests/sd/sh/sp/dv/story/ring all equal; 4 expected diffs:
+                           gate x/y (re-banded quests, g45:1 dropped), steps hold (hold:0 dropped), stigma plan names of
+                           unequipped slots 3/4, gate tags derived from those counts.
+  polish/lead/lv.js        clean fixture excludes extra skills (pre-E2 copy lv.pre-E2.js); output polish/e2/run/lv-e2.out, no page
+                           errors (only the existing font/blob load failures of the local test file).
+Screenshots: polish/e2/run/e2-*.png.
+
+Open points / not applied:
+  - Availability follows the decision literally (unlocksAt + known prereqs). 6 quests have no prerequisite data (requiresStory
+    null: Great Curse-Breaking Caper, Her Last Favor, Pain Unending, Traveling Merchant's Conundrum, Herb Pouch Heist, Lest We
+    Forget), so they show in Next up from Lv 10 with an "Lv N" tag (e.g. Herb Pouch Heist Lv 44 at Lv 27). Snooze is the fallback.
+  - Data gaps left as gaps: Fafnite Storage Room Kibelisk; Blood Barrier turn-in Kibelisk; 32 regional quests without a giver
+    Kibelisk; zone "Quai Campsite" for two quests is what rq.json says.
+  - C27 optional re-check prompt at 20/30/40 not added (the board card already flags a total below the level formula).

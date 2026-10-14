@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:+process.argv[3]||1440,height:1100}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.stones=8; s.dvTotal=32; s.dvCost={"dv:hg":9,"dv:ew":2,"dv:amb":7,"dv:qs":4,"dv:ew2":5,"dv:as":3}; ["dv:hg","dv:ew","dv:amb","dv:qs","dv:ew2","dv:as"].forEach(x=>s.checks[x]=true); SP_STEPS.filter(x=>x.req<=17).forEach(x=>s.checks[x.k]=true); localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ console.log(await p.evaluate(()=>{const r=e=>{const b=document.querySelector(e).getBoundingClientRect();return e+' '+Math.round(b.x)+','+Math.round(b.y)+' '+Math.round(b.width)+'x'+Math.round(b.height)}; return ['.top-grid','section.where','#areas','.coll','#main'].map(r).join('\n')}));
+ await p.screenshot({path:'full'+(process.argv[3]||1440)+'.png'});
+ await b.close(); })();

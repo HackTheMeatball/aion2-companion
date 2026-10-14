@@ -1,0 +1,10 @@
+
+> aion2-companion@1.0.0 serve
+> node scripts/serve.mjs --port 8099
+
+serving dist/ at http://localhost:8099/  (claude.ai build at http://localhost:8099/artifact/)
+200 GET /
+200 GET /artifact/
+200 GET /_blob/cf35799132bfb46fdb6dfadf4d05140f
+404 GET /__baselines/v285.html
+404 GET /package.json

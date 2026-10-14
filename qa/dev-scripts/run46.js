@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1440,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=18; s.dvTotal=36; s.dvCost={"dv:hg":9,"dv:ew":2,"dv:amb":7,"dv:qs":4,"dv:ew2":5,"dv:as":3}; ["dv:hg","dv:ew","dv:amb","dv:qs","dv:ew2","dv:as"].forEach(x=>s.checks[x]=true); delete s.checks["dv:as2"]; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ const shot = async n => (await p.$('#dvBox')).screenshot({path:n});
+ const st = () => p.evaluate(()=>{const r=document.querySelector('#dvNextList .dvrow.nx'); return r.className+' | '+r.querySelector('.dvbuy').textContent+' | focus:'+document.activeElement.classList.contains('dvc')});
+ await shot('nx0.png'); console.log(await st());
+ await p.fill('#dvNextList input.dvc','9'); await p.waitForTimeout(150); console.log(await st()); await shot('nx1.png');
+ await p.fill('#dvNextList input.dvc','5'); await p.waitForTimeout(150); console.log(await st()); await shot('nx2.png');
+ await p.click('#dvNextList .dvbuy'); await p.waitForTimeout(300);
+ console.log('bought:', await p.evaluate(()=>state.checks["dv:as2"]), await p.evaluate(()=>document.querySelector('#dvNextList .dvname').textContent));
+ await b.close(); })();

@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:1000}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+process.argv[2]);
+await p.evaluate(()=>{const st=JSON.parse(localStorage.getItem('aion2-assassin-route-v4')||'{}');st.level=20;st.quest='Imminent Threat';st.dvReset1=true;st.qsteps={'Imminent Threat':[0,1]};localStorage.setItem('aion2-assassin-route-v4',JSON.stringify(st))});
+await p.reload();await p.waitForTimeout(400);
+const sub=()=>p.evaluate(()=>document.getElementById('questSubs').innerText.replace(/\n/g,' | ').slice(0,120));
+console.log('open:',await sub()); const card=await p.$('section.card.where');
+await card.screenshot({path:'l1.png'});
+await p.click('#qsFold2');console.log('folded:',await sub());
+await p.click('#qsFold2');console.log('unfolded:',await sub());
+await p.click('#btnFilter');await p.check('#fObj');console.log('fullhide:',JSON.stringify(await sub()),await p.textContent('#filtN'));
+await p.click('#btnReset');console.log('reset:',await sub());
+console.log('ERR',errs);await b.close();})();

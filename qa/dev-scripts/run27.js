@@ -1,0 +1,11 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.quest="A New Lead"; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(300);
+ const el = await p.$('.quest-in'); await el.screenshot({ path: 't.png' });
+ console.log(await p.evaluate(() => document.getElementById('questStatus').innerText));
+ await p.click('[data-gogate]'); await p.waitForTimeout(600);
+ console.log(await p.evaluate(() => [document.getElementById('g22').open, Math.round(document.getElementById('g22').getBoundingClientRect().top)]));
+ await b.close(); })();

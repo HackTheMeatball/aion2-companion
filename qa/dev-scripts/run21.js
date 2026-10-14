@@ -1,0 +1,16 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1280,height:1000}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ await p.evaluate(() => { const d=document.getElementById('g16'); d.open=true; d.scrollIntoView(); });
+ const k = await p.evaluate(() => document.querySelector('#g16 [data-qs]').dataset.qs);
+ const before = await p.evaluate(() => document.querySelector('#g16 .count').textContent);
+ await p.click('#g16 [data-qs]'); await p.waitForTimeout(150);
+ console.log('on:', await p.evaluate((k) => [document.querySelector(`#g16 [data-qs="${k}"]`).classList.contains('on'), state.started[k], document.querySelector(`#g16 input[data-k="${k}"]`).checked], k), before, await p.evaluate(() => document.querySelector('#g16 .count').textContent));
+ await p.waitForTimeout(100);
+ const el = await p.$('#g16'); await el.screenshot({ path: 'p.png' });
+ await p.reload(); await p.waitForTimeout(300);
+ console.log('persist:', await p.evaluate((k) => document.querySelector(`#g16 [data-qs="${k}"]`).classList.contains('on'), k));
+ await b.close(); })();

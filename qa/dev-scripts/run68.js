@@ -1,0 +1,13 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:900}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=19; s.quest="A New Lead"; s.hide=true; s.hideCards=false; s.hidePaid=false; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(500);
+ await p.click('#btnFilter'); await p.waitForTimeout(150);
+ await p.screenshot({path:'filt.png', clip:{x:700,y:0,width:740,height:300}});
+ await p.click('#fCards'); await p.waitForTimeout(200);
+ console.log('state', await p.evaluate(()=>[state.hideCards,state.hide,state.hidePaid].join(',')), await p.textContent('#filtN'));
+ await p.mouse.click(5,5); await p.waitForTimeout(100); console.log('menu hidden', await p.evaluate(()=>document.getElementById('filtMenu').hidden));
+ const h = await (await p.$('h2.sec')).boundingBox(); await p.screenshot({path:'mshead.png', clip:{x:h.x-10,y:h.y-10,width:h.width+20,height:h.height+20}});
+ await b.close(); })();

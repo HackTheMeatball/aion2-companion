@@ -1,0 +1,16 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:1280,height:1400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.areaLv="sh"; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const ticked = () => p.evaluate(()=>Object.keys(state.checks).filter(k=>k.startsWith('sh:')&&state.checks[k]));
+ const vis = () => p.evaluate(()=>[...document.querySelectorAll('#areaList li')].map(l=>l.innerText.replace(/\n/g,' ').slice(0,40)).join(' | '));
+ await p.click('[data-k="sh:graverobber-den"]'); await p.waitForTimeout(200);
+ console.log('after GD', await ticked()); console.log(await vis());
+ await p.click('[data-k="sh:'+await p.evaluate(()=>mapSlug("Rubek Thieves' Occupied Territory"))+'"]'); await p.waitForTimeout(200);
+ console.log('after RT', await ticked()); console.log(await vis());
+ await p.click('[data-region="sh|Crypt"]'); await p.waitForTimeout(200);
+ console.log('after open crypt', await ticked()); console.log(await vis());
+ await b.close(); })();

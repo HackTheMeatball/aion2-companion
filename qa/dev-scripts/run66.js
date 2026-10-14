@@ -1,0 +1,11 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch(); const p = await b.newPage({viewport:{width:1440,height:1100}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=19; s.quest="A New Lead"; s.qsteps={}; s.qsShowDone=false; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const n = () => p.$$eval('#questSubs li', l=>l.length);
+ await p.click('[data-qobj="0"]'); await p.waitForTimeout(300); console.log('300ms', await n(), await p.$eval('#questSubs li', l=>l.className));
+ await p.waitForTimeout(1000); console.log('1300ms', await n(), await p.$eval('.qs-head', e=>e.innerText));
+ await p.click('#qsTog'); await p.waitForTimeout(150); console.log('show done', await n());
+ await b.close(); })();

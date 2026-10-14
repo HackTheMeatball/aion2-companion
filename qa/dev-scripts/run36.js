@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+(async () => { const b = await chromium.launch();
+ const p = await b.newPage({viewport:{width:820,height:1400}});
+ p.on('pageerror', e => console.log('ERR', e.message));
+ await p.goto('file://' + process.argv[2]);
+ await p.evaluate(() => { const k='aion2-assassin-route-v4'; const s=JSON.parse(localStorage.getItem(k)); s.level=17; s.areaLv="sh"; s.checks["sh:"+mapSlug("Graverobber Den")]=true; s.checks["sh:"+mapSlug("Corrupted Forester Ruins")]=true; s.regionOpen={"sh|Crypt":true}; localStorage.setItem(k, JSON.stringify(s)); });
+ await p.reload(); await p.waitForTimeout(400);
+ const el = await p.$('#areas'); const bx = await el.boundingBox();
+ await p.screenshot({path:'sh2.png', clip:{x:bx.x,y:bx.y,width:bx.width,height:520}});
+ await b.close(); })();
