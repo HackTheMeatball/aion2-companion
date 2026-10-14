@@ -3,6 +3,10 @@
 Data & Research, 14 Oct 2026. **Research only: no app code or data file was changed.** Feeds the Sources card, the
 cross-check step of every research pack, and the `sources` registry planned in DATA-FORMAT-V2 (PR 20).
 
+> **Update, 14 Oct 2026 (later the same day):** most hosts that failed in §3 connected on a second pass. §10 records
+> the direct checks and **supersedes the search-snippet rows in §2.2 for the hosts it covers**; §1, §3 and §5 were
+> not rewritten, so where they disagree, §10 wins.
+
 **Evidence labels used below.** *[curl]* = I requested it from this session. *[search]* = only a WebSearch result
 snippet, not verified on the site. *[repo]* = already in our docs. Anything unlabelled is an inference and says so.
 
@@ -240,3 +244,120 @@ https://aion2.app/db, https://gamers4.life/aion-2/database/ja/, https://sagye.kr
 https://gamewith.ai/aion2/en, https://interactivemap.app/aion2/, https://www.th.gl/apps/aion2,
 https://tw.ncsoft.com/aion2/, https://forum.gamer.com.tw/C.php?bsn=82913&snA=1022, Product Hunt/AlternativeTo
 listings for AION2 KINA.
+
+## 10. Addendum: direct checks of the search-only sites (14 Oct 2026, second pass)
+
+Research only; nothing in `src/`, `data/` or `claims.json` changed. Follows the Fetching policy in
+`docs/team/data-research.md` and §7: `robots.txt` first, one request at a time, at least 5 s apart (12/min cap),
+User-Agent `DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, no crawling, nothing bypassed. 44 requests in
+about 7 minutes. **aion2.th.gl was not requested** (as instructed). Labels as in the header: *[curl]* = read in this
+pass; anything unlabelled is my inference and says so.
+
+### 10.1 Outcome per host
+
+| Host | Result | Used? |
+|---|---|---|
+| aion2.gaming.tools | robots.txt 200 (`Allow: /`, `Disallow: /*.webp`, sitemaps `sitemap.txt`, `sitemap-builds.txt`). Home page **403 `cf-mitigated: challenge`** (Cloudflare "Just a moment…"). Stopped for the session. | No page read. **T1 not run** (§10.4). |
+| thegameswiki.com | robots.txt **429**, body is a "Vercel Security Checkpoint". Stopped, no second request. | No |
+| interactivemap.app | robots.txt only. It names GPTBot, ClaudeBot, Claude-Web, anthropic-ai and others and allows them only landing pages (`/aion2/$`); the map itself is closed to AI agents. Skipped under the opt-out rule. | No |
+| www.th.gl | robots.txt only (blocks ClaudeBot, GPTBot etc. by name, as in §4.2). Legal notice **not** fetched, so T4 stays open for th.gl. | No |
+| aion2kina.com | Proxy `CONNECT tunnel failed, 502` on 3 attempts. The third came ~10 s after the second, not after the 120 s the policy asks for; not tried again. | No |
+| tw.ncsoft.com | robots.txt 301 to `www.nc.com`. Not followed (different host, not a database). | No |
+| aion2.plaync.com | robots.txt `Allow: /`. `/` answers 303 to `/en-us/index`; official site, not a database. Not followed. | No |
+| www.inven.co.kr, forum.gamer.com.tw | robots.txt only (nothing AI-specific; `Wget` is blocked on Inven). Not a game database; no page fetched. | No |
+| aion2hub.com, aion2.online, dbaion2.ru, aion2.app, gamers4.life, wikily.gg, gamewith.ai, sagye.kr, aion2.inven.co.kr | Reachable, 200. Details below. | See 10.2, 10.3 |
+
+The change from §3 (18 hosts unreachable, now 15 reachable) is on the environment side. I can't tell whether the
+allow-list changed or the proxy was flaky that day.
+
+### 10.2 What each reachable site says about itself [curl]
+
+Build: **none of the nine pages states a game build in a form comparable to Metabot's `0.0.4387.0`.** The only
+identifiers seen are aion2.app's "Client Build 120" (a news post dated 30 Sep 2026) and aion2hub's "Launch Scale Test
+(playtest) client" for season dates.
+
+| Site | Operator | How it says it gets data | Build / date shown | Coverage (as shown on page) |
+|---|---|---|---|---|
+| **dbaion2.ru** (mirror dbaion2.online) | "Run by one person" (About); independent fan project, RU/EN/DE; contact by form and Telegram | "Names, descriptions, stats, drop tables, rewards and prices are read straight from the game client files"; texts from the game's own localisation; "rebuilt after every patch". Where the client has nothing (server-side drop rates, Korea-only content) "the source is marked separately" | No build number. News dated up to 14 Oct 2026; privacy policy revision 23 Sep 2026 | 9,450 items, 13,494 NPCs and monsters, 1,429 quests, 315 skills, 737 recipes, 35 dungeons, 734 titles, 208 pets. Also map, calculators, Daevanion, player profiles |
+| **aion2hub.com** | "AION2 Hub", unofficial fan-made; owner not named on the page; DPS meter is linked to aionflex.gg | "Read straight from the game client"; season dates "read from the game client (as of 2026-09-19)… from the Launch Scale Test (playtest) client; may change at launch" | Dates only (above) | Item DB, sets, achievements, awakening, monoliths, titles, cosmetics, world objects, drop rates, maps, build planner, leveling guides 1–50 per race, news/patch notes. Page gives no counts |
+| **aion2.app** | Pseudonymous team of four named on /about; contact@aion2.app | Character data, leaderboards and statistics "sourced directly from the Official Aion 2 Open API provided by NCSoft… no manual input". Database method not stated. News posts analyse client builds (e.g. "Inside Client Build 120", ~18 GB client); I infer from this that it also inspects client files, but it does not say so | "Client Build 120", 30 Sep 2026; launch patch of 5 Oct 2026 in its news | Items, monsters, titles, skills, wings, quests, NPCs, map, ranking, builders, guides |
+| **gamers4.life** | "Gamers4Life", fan site; same operator as interactivemap.app (its terms mention "every map at interactivemap.app"); ads (Nitro Ads) plus Ko-fi donations | "Item stats, skill scaling, and drop rates sourced directly from the official client files" | None | 13,408 Item DB entries, 35,763 generated records; 9 languages (EN, KO, 繁, DE, ES, FR, JA, PT, RU); builder, map, drops, hidden cubes, timers |
+| **wikily.gg/aion-2** | NX Software SAS, Paris (legal notice, dated 12 Aug 2024); multi-game wiki platform with a creator community | Method not stated on the pages read | None; "Season 1: 30 Sep 2026 to 16 Dec 2026" | 8 classes, 288 skills, 4,634 items, 135 dungeons, 56 field bosses, 1,792 monsters, 713 quests, 66 quest dungeons, 423 achievements, 497 supply requests |
+| **aion2.online** | WordPress fan site, "© 2025", no operator named | Publishes no data of its own: links out to interactivemap.app, gamers4.life tools and the official site | None | Landing and guides only; not a database |
+| **gamewith.ai/aion2** | Not named on the page | Probabilities and costs "taken from NCSOFT's official probability disclosure for the Korean service (published 2026-09-30)"; links to `probability.plaync.com/aion2`. The page says Global and Taiwan "have not published" (text cut off in my read) | None | Simulators and DBs (enhancement odds, crafting, extraction, wings, pets, dungeon drops), character search for KR/TW/global |
+| **sagye.kr** (A2M) | Personal fan site run with a legion; Discord for contact | Items "collected from Inven's AION 2 DB" (Asmodian side only); cosmetics and pets read from a Google Sheet the legion maintains (5 min cache); stigma specialisations 5–25 "from game tooltips" because Inven's simulator lags | None. Says stigma max level went 20 to 25 in the **Korean** patch of 1 Jul 2026 | Items, skills of 8 classes, pets, cosmetics. Korean server data: preview only |
+| **aion2.inven.co.kr** | Inven (Korean media company) community portal | Not a database page; forum, news and tip boards | None | Community and guides; I did not locate its DB pages |
+
+### 10.3 Terms, robots and licence for reuse of facts
+
+I am not a lawyer. Quotes are short, from the terms pages I read [curl].
+
+| Site | `robots.txt` | Terms found | What it means for us |
+|---|---|---|---|
+| dbaion2.ru | Allows all except `/napi/`, `/api/`, `/admin/` | Footer lists "Terms of use", "Privacy policy", "Advertising"; **I did not fetch Terms of use** (privacy and About only). No licence statement seen | Only candidate that is scriptable, states its method and has no known ban. Terms unread, so **not usable until T4 is done** |
+| aion2hub.com | Allows all except `/api/` | No terms or privacy link on the home page. Footer: "unofficial fan-made companion. Not affiliated with NCSOFT" | No licence either way. Treat as facts-only candidate |
+| aion2.app | Allows all except `/api/`, `/admin`, `/account`, `/login` | Terms (26 Apr 2026): "personal, non-commercial purposes only"; no "scrape, copy, or redistribute Site content without permission"; original content © Aion2.app | **Bans our kind of use.** Human browser reads only, and only with the owner's decision. Its data is partly NCSoft API data (characters), not game-database fields |
+| gamers4.life | Allows all except `/api/`, `/studio/`, `/admin/`, `/_next/` | Terms: "personal, non-commercial use"; not allowed: "republishing our content without written authorization" and "using bots, scrapers, or automated tools" | robots permit it but the terms ban bots, so **no scripted reads**. Same for interactivemap.app, which is the same operator |
+| wikily.gg | Allows all (named AI agents including ClaudeBot get the same rules); disallows `/api/`, `/admin/`, `*/edit`, etc. | Terms (16 Aug 2024): bars reproducing or providing access to the website or its contents by "spidering, scraping or any other technological means"; user content is licensed to Wikily | Terms are written for a platform with accounts and a marketplace, so how they apply to reading public wiki pages is unclear. Treat as bots-unwelcome until the owner decides |
+| sagye.kr | Allows all except `/api/` | Terms (Korean): unofficial fan site, NCSOFT owns the copyright, info "for reference", accuracy not guaranteed. No reuse licence | Korean preview only; collects from Inven |
+| aion2.online, gamewith.ai | aion2.online allows all; gamewith.ai has no robots.txt (404 page) | None found | Not data sources |
+
+**My own slip to report:** I fetched the terms pages after robots.txt but after some page reads. For **gamers4.life**
+(4 requests) and **aion2.app** (6 requests) the terms turned out to ban bots or scraping. All requests followed
+robots.txt and the rate limit, were single pages, and nothing was stored beyond this session's scratch space, but the
+read-terms-first order in §7 should be explicit. Proposed fix: add "read the terms page before the first content page"
+to §7 item 3.
+
+### 10.4 T1: build mapping Metabot to gaming.tools
+
+**Not run.** The precondition was "gaming.tools readable without a challenge". It returned 403 `cf-mitigated: challenge`
+on the first request, so I stopped, as the policy requires. I did not fetch its `sitemap-builds.txt` either: the host
+is challenged, and the policy says stop. That file is listed in its robots.txt and may carry build identifiers; a person
+in a browser could open it as part of T1.
+
+What the pass adds to T1: there are now at least **three build schemes** for what looks like one game client:
+Metabot `0.0.4387.0` [curl, earlier pass], gaming.tools "2.0.6.0" [search], aion2.app "Client Build 120" [curl].
+Global launched on 5 Oct 2026 per aion2.app's news and dbaion2's "Global Launch Known Issues (Updated 10/9)", and
+aion2hub's season dates came from a "Launch Scale Test" client. I did not re-fetch Metabot, so **I don't know whether
+0.0.4387.0 is before or after the launch patch**. Re-reading its footer on a person-approved visit is cheap and would
+settle it.
+
+### 10.5 Effects on §5 (ranking) and §6 (risks)
+
+- **Third primary.** dbaion2.ru is now a real stand-in for gaming.tools (reachable, robots allow, method stated). It
+  is one person's project, and its client-data claim has the same shared-upstream caveat as R1. Its terms are unread.
+- **Counts differ widely for the same game**, which refines R3: quests 713 (Wikily), 1,043 (Metabot), 1,429 (dbaion2);
+  skills 280 / 288 / 315; items 6,671 / 4,634 / 9,450; dungeons 219 / 135 / 35. These are different definitions or
+  different builds, I can't tell which. **Do not compare counts across sites** as a verification step.
+- **Demote** aion2.app, gamers4.life, interactivemap.app and Wikily from "candidates" to "human read only, owner
+  decision" because of their terms. **Keep** aion2hub as a candidate with unknown terms.
+- **Korea preview:** sagye.kr shows the Korean stigma cap at 25 since 1 Jul 2026. Whether Global has it or when is
+  unknown. Do not use for the Lv 1–45 guide.
+- New risk **R7**: sites that share one operator (gamers4.life / interactivemap.app) or copy from each other (sagye.kr
+  from Inven) look like more sources than they are.
+
+### 10.6 Experiments and decisions added
+
+- **T4 (extended).** One request each for dbaion2.ru Terms of use and aion2hub.com (look for a terms page). Needs the
+  owner's OK for dbaion2 as a source.
+- **T5. Quest spot-check on dbaion2.** Take the 20 Asmodian Lv 1–45 quests our data holds with `rq:` ids that have two
+  independent sources already. Open each quest on dbaion2 (one page each, ≤12/min, about 2 minutes) and compare level,
+  prerequisite and rewards. Pass: 20 of 20 match on level and prerequisite. A mismatch is a candidate for T3 or a build
+  difference, not an error in our data. Run only after T4 clears the terms.
+- **T1 stays open** for a person with a browser: the pair (Metabot footer build, gaming.tools build) on one quest page,
+  plus `sitemap-builds.txt`.
+- **Decision 5 (owner).** Adopt "terms that ban bots or scraping = human reads only, even if robots.txt allows" as a
+  rule in §7? I recommend yes; it excludes gamers4.life, aion2.app and probably Wikily.
+- **Decision 6 (owner).** OK to read dbaion2.ru's Terms of use and use it as a scripted third source if the terms allow?
+- **Decision 7 (owner).** Is the th.gl legal notice worth a human read (T4) given its robots rules, or do we drop th.gl
+  from scripted use? Unchanged from decision 1.
+
+### 10.7 Pages read in this pass [curl]
+
+robots.txt of gaming.tools, aion2hub.com, aion2.online, gamewith.ai, thegameswiki.com, wikily.gg, aion2.plaync.com,
+tw.ncsoft.com, dbaion2.ru, aion2.app, gamers4.life, sagye.kr, interactivemap.app, aion2kina.com (failed),
+aion2.inven.co.kr, www.inven.co.kr, forum.gamer.com.tw, www.th.gl. Pages: gaming.tools `/` (403);
+aion2hub.com `/`; aion2.online `/`; dbaion2.ru `/en/`, `/en/about/`, `/en/privacy/`; aion2.app `/`, `/terms`, `/about`,
+`/news/50` (307 to aion2t.com, not followed); gamers4.life `/aion-2/database/`, `/aion-2/database/en/`, `/terms`;
+wikily.gg `/aion-2/`, `/terms-of-service`, `/legal-notice`; gamewith.ai `/aion2/en`; aion2.plaync.com `/` (303, not
+followed); aion2.inven.co.kr `/`; sagye.kr `/db`, `/terms`.
