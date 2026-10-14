@@ -7,6 +7,8 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | Data format v2 review (#30) | Owner approved all recommendations: un-ticks survive sync (per-item change time); view settings don't sync; owner screens outrank databases (disagreement kept, screens cited by short code with game version); per class one guide build + up to two credited alternatives (choices only, two agreeing sources or "single source"); custom builds start from a listed build, saved per character and in Export, never silently dropped; fastest/completionist labels proposed by the team and approved per milestone in 0.3; English names stay as save labels; no per-item "checked on" dates; "Daeva Trapped in a Nightmare" added after the owner's check. |
+| — | Location-aware Next up | Goal: always recommend the next best thing (Zygor-like) for both tracks. Tie-break equal choices by distance from the player's last confirmed location, inferred from the most recently ticked item that has a location (no live tracking). Show confirmed drawbacks of the "fastest" track. Whether two tracks make sense is re-evaluated in the 0.3 design. |
 | — | Data fetching | Approved: robots.txt and AI opt-outs respected; 12 req/min/host, one at a time, 24 h cache, stop on any block (data-research.md). |
 | — | aion2.th.gl | Not used by sessions (its robots.txt excludes AI agents); removed from the "Daeva Companion" environment; no outreach for now. th.gl-sourced facts are re-verified against a permitted source (Metabot first) and attributed to it, or labelled for an owner check. |
 | — | Metabot terms | The site is non-commercial today and qualifies; permission is needed before any change to that. |
