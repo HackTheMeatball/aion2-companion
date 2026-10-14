@@ -45,6 +45,7 @@ docs/team/HANDOFF.md ("Now and next").
 - **0.1.6** — accessibility fixes with no visible change (screen-reader names, focus, reduced motion, touch), `a11y` suite.
 - **0.1.7** — rebrand to Daeva Companion (name, mark, icons; palette unchanged).
 - **0.1.8** — new address: daevacompanion.com.
+- **0.1.9** — touch, contrast and page-zoom fixes (visible accessibility batch from the mobile audit).
 
 ## Plan
 

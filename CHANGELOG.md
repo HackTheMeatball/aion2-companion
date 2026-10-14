@@ -8,6 +8,43 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.1.9 — 2026-10-14
+
+Touch, contrast and page-zoom fixes from the mobile and accessibility audit.
+
+### Changed
+
+- Phones: cleared milestone steps fold to their title; warnings, locations and rewards stay visible.
+- Touch screens: a long quest name in the quest field ends in "…" instead of shrinking to fit.
+
+### Fixed
+
+- The story line no longer runs up into the "Main story" heading on a fresh save or at the first story quest.
+- At high page zoom (layouts about 260 px wide), the Progress rows, the Skills / Daevanion / Stigmas headers and the
+  milestone steps wrap instead of being cut off.
+
+### Accessibility
+
+- Accent-coloured text is slightly lighter (5.0:1 contrast on cards).
+- White text on the accent colour (current milestone number, open "i" button, filter count, "new" tags) sits on a
+  darker accent (5.1:1).
+- Locked Sealed Dungeon names are easier to read (4.7:1).
+- Touch screens: text fields and selects use 16 px text, so iPhone Safari no longer zooms in when one is tapped.
+- Touch screens: Level up, Mark spent / equipped / upgraded and the Next up action buttons are 44 px tall.
+- Touch screens: labels are at least 11 px (monospace) or 12 px (other text).
+- Touch screens: no double-tap zoom on fields, links, checkbox labels and fold-outs.
+- The automated accessibility check now fails on any contrast issue and checks the touch sizes, the story line and
+  page zoom.
+
+### Known issues
+
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+
+### Saved progress
+
+- No change to saved progress.
+
 ## 0.1.8 — 2026-10-14
 
 New address: daevacompanion.com.
