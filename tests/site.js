@@ -12,7 +12,7 @@ const loadedFamilies = p => p.evaluate(async () => { await document.fonts.ready;
 const KEY = 'aion2-assassin-route-v4';
 const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
-const REPO = 'https://github.com/hackthemeatball/aion2-companion';
+const REPO = 'https://github.com/hackthemeatball/daeva-companion';
 /* footer version link + "Report a problem" link: the version comes from package.json; the report URL carries exactly these
    issue-form fields and nothing else from the save */
 const REPORT_FIELDS = ['template', 'version', 'level', 'quest', 'mode', 'build', 'browser'];
