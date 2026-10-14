@@ -15,12 +15,14 @@ freeze while 5b runs.
 2. **8 of the 10 `noPre` quests now have a sourced story gate** (th.gl *Prerequisites* + *Unlocks*; Metabot "Required
    first" also confirms 2 of them). The other 2, Spacetime Rift: Unknown Species and Proof, have no prerequisite on
    either database and unlock at Lv 45, the same as the other five Spacetime Rift quests. `noPre` can be retired.
-3. **Gate semantics (D9, ISSUES "Story gate semantics"): a database prerequisite means the quest is turned in, not
-   reached.** Four independent checks agree (§3). The app currently opens every story-gated regional quest **one
-   story quest early** (51 quests), because it reads `requiresStory: X` as "story has reached X". The Ascension steps
-   already use the correct "turned in" meaning (0.1.3). This is the largest correctness finding. It changes Next up
-   for many saves, so it needs owner approval as a product change (ROADMAP 0.3). It also needs one owner in-game
-   check (§11, check 1) before it is built.
+3. **Gate semantics (D9, ISSUES "Story gate semantics"): a database prerequisite most likely means the quest is turned
+   in, not reached.** For regional quests the confidence is **~70%**: all four checks that agree (§3) are Ascension
+   quests, and no regional quest has been checked. If it holds, the app opens its **43 story-gated regional quests**
+   **one story quest early** today (`RQ_STATS.story`), because it reads `requiresStory: X` as "story has reached X".
+   With the 8 new `noPre` gates (point 2), the proposal gates **51** regional quests on a story quest turned in. The
+   Ascension steps already use "turned in" (0.1.3). This is the largest correctness finding. It changes Next up for
+   many saves, so it needs owner approval as a product change (ROADMAP 0.3). It also needs owner in-game check 1
+   (§11) before it is built.
 4. **Each in-cap Ascension quest is the only objective of a "wrapper" story quest.** These are Spread Your Wings →
    Perceives, Daeva in a Dream → Hears the Voice, A Daeva Dreaming Anew → Dreams, and Daeva Trapped in a Nightmare →
    Witnesses the Nightmare. So Ascension completion can be **derived from the story position**, with no new state.
@@ -90,11 +92,18 @@ Four checks. Each only works if a prerequisite means **turned in**:
 Metabot labels the field **"Required first"**, which also reads as "finish this first". Regional → regional edges
 (e.g. Fallout → Fallout Calmed) are "turned in" in the app already.
 
-**Verdict: inferred, strong (4 consistent checks, 2 sites). Not yet seen in game.** The app is internally
+**Verdict: inferred.** For Ascension quests it is strong: 4 consistent checks on 2 sites. For **regional quests
+it is ~70%**, because all four checks are Ascension quests. The step from there to regional quests assumes the database
+uses one meaning for every *Prerequisites* field. That is plausible, since it is the same field on the same site, but
+no regional quest confirms it. Metabot's "Required first" wording is the only regional-side hint. It is not yet seen
+in game, so it stays on the owner's list as check 1 (§11), which is the deciding test. The app is internally
 inconsistent today. Ascension steps use "turned in" (`story: "A Daeva Dreaming Anew"`, `turnedIn: "Forgotten
-Commander"`), while all 51 story-gated regional quests use "reached" (`rqAvail`: `cur >= storyIdx(q.story)`).
+Commander"`), while the 43 story-gated regional quests (`RQ_STATS.story`) use "reached" (`rqAvail`:
+`cur >= storyIdx(q.story)`).
 
-**Consequence:** every story-gated regional quest moves one story quest later. Examples: Fight Poison with Poison
+**Consequence (if check 1 confirms it):** the 43 quests gated today move one story quest later. The 8 former `noPre`
+quests get a "turned in" gate for the first time (§6), so 51 regional quests in total end up on a story-turned-in
+gate. Examples: Fight Poison with Poison
 opens on Land of Rifts, not on A Collective Effort. The 23 Forgotten-Commander quests open after FC is **turned in**,
 not while it is open. This is an intended golden-master change; list it per ROADMAP 0.3 for owner approval.
 
@@ -330,7 +339,8 @@ data" has nothing left to report.
 | level | rec 45, unlocks at 45 | th.gl + Metabot |
 | previous / next | Forgotten Commander / "Waiting for the Next Journey" (q 2103010: rec 46, **unlocks at 46**) | th.gl both pages, Metabot |
 | objective | "Ascend to the next dimension of power as a Daeva" → complete The One Who Witnesses the Nightmare | Metabot steps (th.gl: 1 step) |
-| turn-in | Nemon, Outskirts Stall (nearest Kibelisk Outskirts Stall, 21 m) | Metabot; giver not shown (likely auto-offered, like the other wrappers: **inferred**) |
+| giver | Koro, Abyss Base | th.gl [2102810](https://aion2.th.gl/db/quests/q_2102810) quest **description text** ("Objective: Talk to Koro at the Abyss Base"), not a structured field. Consistent with Metabot: Koro at the Abyss Base is Forgotten Commander's turn-in. Metabot's page shows no giver |
+| turn-in | Nemon, Outskirts Stall (nearest Kibelisk Outskirts Stall, 21 m) | Metabot; th.gl description step 2 ("Talk to Nemon at the Outskirts Stall") |
 | rewards | none listed | Metabot |
 
 Proposed record: `requires [done sq:2102800, lv 45]`, `completesWith [reached-next]`. There is no next quest inside
@@ -457,26 +467,30 @@ From the findings above; for the 5a schema doc (Tech Lead) and its review.
    chain stays complete without leaking into Next up.
 10. **No new save fields.** Everything here derives from `level`, `quest`, `storyEnd` and `checks`.
 
-Golden-master impact to list for owner approval (ROADMAP 0.3): (a) 51 regional quests open one story quest later;
-(b) 8 former `noPre` quests open on a story gate instead of their recommended level (Herb Pouch Heist moves *earlier*,
-from Lv 44 to Daybreak Society Rescue Operation at Lv 41; Shugo and Spooky one level earlier); (c) `g22:0` /
-`g32:dreams` show done from the story position; (d) the story end moves to Daeva Trapped.
+Golden-master impact to list for owner approval (ROADMAP 0.3): (a) the 43 regional quests that are story-gated today
+(`RQ_STATS.story`) open one story quest later, only if owner check 1 confirms the semantics (~70%, §3); (b) 8 former
+`noPre` quests open on a story gate instead of their recommended level, which makes 51 story-gated quests in total
+(Herb Pouch Heist moves *earlier*, from Lv 44 to Daybreak Society Rescue Operation at Lv 41; Shugo and Spooky one
+level earlier); (c) `g22:0` / `g32:dreams` show done from the story position; (d) the story end moves to Daeva
+Trapped.
 
 ## 11. Owner in-game checks
 
 To batch with the colour-sprint session (HANDOFF). Each check is a concrete observation; screenshots go to the private
 repo.
 
-1. **Gate semantics (blocks §3).** On a character whose current story quest is A Collective Effort (or any open story
+1. **Gate semantics (blocks §3; confidence for regional quests ~70%).** On a character whose current story quest is A Collective Effort (or any open story
    quest that gates a regional quest): is "Fight Poison with Poison" offered at Viron (Guide Rest Stop)? Then turn in
    A Collective Effort and look again. Expected (this report): not offered → offered. Any regional pair works, e.g.
-   Lest We Forget around Zikel's Core.
+   Lest We Forget around Zikel's Core. This is the only check that tests the meaning on a regional quest; all the
+   evidence so far comes from Ascension quests.
 2. **Krao Cave.** Does the Krao Cave Expedition open while "Daeva in a Dream" is open, or only after it is turned in?
 3. **Stigma slot 1.** Does slot 1 open on reaching Lv 22, or only after "The One Who Hears the Voice" is complete?
 4. **Lv 45 finale item level.** Does "The One Who Witnesses the Nightmare" or "Daeva Trapped in a Nightmare" ask for
    an item level (MeinMMO: 1,000)? Note the number if one is shown.
-5. **Daeva Trapped in a Nightmare.** After turning in Forgotten Commander, is it offered automatically, and does it
-   complete as soon as Witnesses is done? (Its turn-in is Nemon at Outskirts Stall.)
+5. **Daeva Trapped in a Nightmare.** After turning in Forgotten Commander, does Koro at the Abyss Base start it
+   (th.gl description text, §7), and does it complete as soon as Witnesses is done? (Its turn-in is Nemon at
+   Outskirts Stall.)
 6. **Perceives gate.** Is "The One Who Perceives" offered before "The Being Beneath the Lake" is turned in? (§5:
    inferred.)
 7. **A `noPre` spot check.** Herb Pouch Heist offered right after Daybreak Society Rescue Operation (Lv 41–44), not
