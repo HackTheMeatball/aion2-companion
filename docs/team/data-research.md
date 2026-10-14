@@ -15,8 +15,14 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - Per class (0.6+): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
 
 ## Fetching policy (owner-approved 2026-10-14)
-- Order per site: robots.txt, then the terms page, then content. Skip a site whose terms ban bots, scrapers or
-  automated access. Respect robots.txt and named AI-crawler opt-outs. A site that opts out is read by the owner in a browser, never by a
+- Before any content page: read the terms page and robots.txt. Then, within reason, do the minimum the site asks:
+  1. **Opts out of AI / automated access entirely** (robots.txt names Claude or AI agents, or terms ban all bots or
+     automated access): never fetched by a session. The owner checks it by hand when needed.
+  2. **Bans scraping only** (bulk or systematic copying): small spot checks are fine to verify a fact we already have
+     from another source: a few pages per task, at least 5 s apart, facts only, nothing stored beyond the session.
+  3. **No restriction**: the limits below.
+- Always identify honestly: our own User-Agent, never a disguised browser; never get around a challenge, block or
+  rate limit. Behaving politely is fine; pretending to be a person is not. A site that opts out is read by the owner in a browser, never by a
   session, until its owner gives permission.
 - At most 12 requests/min per host, one request at a time, 24 h cache; identify as Daeva Companion research in the
   User-Agent (no personal email). Stop at the first 403, 429 or challenge page; never work around one.
