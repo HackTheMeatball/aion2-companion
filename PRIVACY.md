@@ -42,5 +42,5 @@ data, this page and, where the law requires it, a consent prompt come first.
 
 ## Contact
 
-Questions or concerns: open an issue at <https://github.com/hackthemeatball/aion2-companion/issues>. Issues are public,
+Questions or concerns: open an issue at <https://github.com/hackthemeatball/daeva-companion/issues>. Issues are public,
 so leave out personal details.

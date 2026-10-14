@@ -2034,7 +2034,7 @@ const reportLink = document.getElementById("reportLink");
 const reportURL = () => {
   const f = { template: "bug.yml", version: APP_VERSION, level: String(state.level || ""), quest: state.quest || "(not set)",
     mode: state.mode === "basic" ? "Basic" : "Advanced", build: APP_BUILD, browser: navigator.userAgent };
-  return "https://github.com/hackthemeatball/aion2-companion/issues/new?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
+  return "https://github.com/hackthemeatball/daeva-companion/issues/new?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
 };
 const refreshReport = () => { reportLink.href = reportURL(); };
 ["pointerdown", "focus", "mouseenter", "click", "contextmenu"].forEach(ev => reportLink.addEventListener(ev, refreshReport));

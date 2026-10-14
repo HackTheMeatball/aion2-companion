@@ -90,6 +90,6 @@ Source-available, not open source. See [LICENSE](LICENSE) for the details.
 
 ## Contributing
 
-Bug reports and data corrections are welcome as [issues](https://github.com/hackthemeatball/aion2-companion/issues)
+Bug reports and data corrections are welcome as [issues](https://github.com/hackthemeatball/daeva-companion/issues)
 (they're public, so leave out personal details). Pull requests with code can only be merged with a written grant that lets
 the maintainer use and relicense the contribution; open an issue first.
