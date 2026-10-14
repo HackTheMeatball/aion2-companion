@@ -896,14 +896,9 @@
       "verdict": "verified",
       "sources": [
         {
-          "url": "https://aion2.th.gl/db/quests/q_2602030",
-          "label": "The One Who Dreams",
-          "quote": "The One Who Dreams. Prerequisites: Last of the Destruction Archons, The One Who Hears the Voice. Unlocks: The One Who Witnesses the Nightmare"
-        },
-        {
-          "url": "https://aion2.th.gl/db/quests/q_2102345",
-          "label": "A Daeva Dreaming Anew",
-          "quote": "A Daeva Dreaming Anew: Ascend to the next dimension of power as a Daeva. Complete The One Who Dreams"
+          "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+          "quote": "Ascend to the next dimension of power as a Daeva — complete The One Who Dreams",
+          "note": "The wrapper quest: The One Who Dreams must be open by the time the story reaches it (prereq-gates §5). Re-sourced 2026-10-14 (aion2.th.gl withdrawn)."
         },
         {
           "url": "https://metabot.gg/en/aion-2/quests/the-one-who-dreams-asmodian",
@@ -922,27 +917,18 @@
       ],
       "action": "rewrite",
       "newText": "Opens once your Ascension Gauge is at 100% and the story reaches \"A Daeva Dreaming Anew\" (Lv 32).",
-      "note": "Game-database prerequisite (th.gl, both directions: Last of the Destruction Archons lists it under Unlocks). Gated on the quest after Last of the Destruction Archons, i.e. that quest turned in, like g22:0 (Daeva in a Dream). Gauge at 32: allthings.how + Skycoach. In-game name is 'Dream Crossroad' (Metabot, th.gl).",
+      "note": "Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn): the wrapper quest A Daeva Dreaming Anew shows The One Who Dreams is open by then, so the gate is never early. Whether it opens earlier (th.gl named Last of the Destruction Archons as its prerequisite) is owner check 6 (prereq-gates §11). Gauge at 32: allthings.how + Skycoach. In-game name is 'Dream Crossroad' (Metabot).",
       "appliesTo": [
         "g32:dreams",
         "asc:dreams"
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "C37",
       "claim": "\"The One Who Witnesses the Nightmare\" opens after \"Forgotten Commander\" is turned in; the story quest after it, \"Daeva Trapped in a Nightmare\", needs it.",
       "verdict": "verified",
       "sources": [
-        {
-          "url": "https://aion2.th.gl/db/quests/q_2602020",
-          "label": "The One Who Witnesses the Nightmare",
-          "quote": "The One Who Witnesses the Nightmare. Prerequisites: Forgotten Commander, The One Who Dreams. Unlocks: The One Who Swears the Oath"
-        },
-        {
-          "url": "https://aion2.th.gl/db/quests/q_2102800",
-          "quote": "Forgotten Commander. Unlocks: The One Who Witnesses the Nightmare"
-        },
         {
           "url": "https://metabot.gg/en/aion-2/quests/the-one-who-witnesses-the-nightmare-asmodian",
           "label": "The One Who Witnesses the Nightmare",
@@ -951,16 +937,20 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
           "quote": "Ascend to the next dimension of power as a Daeva: Complete The One Who Witnesses the Nightmare"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "note": "Next quest: Daeva Trapped in a Nightmare, whose only objective is The One Who Witnesses the Nightmare, so Witnesses is open by the time Forgotten Commander is turned in (prereq-gates §5). Re-sourced 2026-10-14 (aion2.th.gl withdrawn)."
         }
       ],
       "action": "rewrite",
       "newText": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it.",
-      "note": "g45:0 is gated on Forgotten Commander turned in (state.storyEnd, since it is the last story quest the guide covers). 'Daeva Trapped in a Nightmare' is not in the story data yet (0.3). No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one.",
+      "note": "g45:0 is gated on Forgotten Commander turned in (state.storyEnd, since it is the last story quest the guide covers). 'Daeva Trapped in a Nightmare' is not in the story data yet (0.3). No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one. Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn). Whether Witnesses opens while Forgotten Commander is still open is owner check 5 (prereq-gates §11).",
       "appliesTo": [
         "g45:0",
         "asc:witnesses"
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "C38",

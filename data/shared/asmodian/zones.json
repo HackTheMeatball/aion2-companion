@@ -426,23 +426,39 @@
       "traces": null,
       "sources": [
         {
-          "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
-          "fields": [
-            "name"
-          ]
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-22",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Change Map list: Ishalgen = the starting map"
+          }
         },
         {
-          "inferred": "The Lv 1-9 story quests run on the Ishalgen starting map (milestone g6: \"Story quests in Ishalgen\").",
-          "fields": [
-            "region"
-          ]
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-23",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Ishalgen map, first Kibelisk Aldelle Village"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
-        "The starting map. Used as the zone of the Lv 1-9 story quests, whose v1 data has no location."
-      ]
+        "The starting map (owner screens 22, 23, 36–39); Metabot World_D_Starter is assumed to be it. Used as the zone of the Lv 2–9 story quests, whose data has no location yet."
+      ],
+      "kibelisks": [
+        "Aldelle Village"
+      ],
+      "fieldStatus": {
+        "kibelisks": "verified"
+      }
     },
     {
       "id": "zone:lagta-fortress",

@@ -712,7 +712,7 @@
       "additionalProperties": false
     },
     "ownerRef": {
-      "description": "The owner's in-game screen. 'ref' is an opaque short code (owner:YYYY-MM-DD-NN); the code-to-file map lives only in the private repo (N7). Never a URL or a file name.",
+      "description": "The owner's in-game screen. 'ref' is an opaque short code (owner:YYYY-MM-DD-NN, or owner:YYYY-MM-DD-<set>-NN for a numbered set of screens, e.g. owner:2026-10-14-unlocks-05); the code-to-file map lives only in the private repo (N7). Never a URL or a file name.",
       "type": "object",
       "required": [
         "ref",
@@ -723,7 +723,7 @@
       "properties": {
         "ref": {
           "type": "string",
-          "pattern": "^owner:20[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2,3}$"
+          "pattern": "^owner:20[0-9]{2}-[0-9]{2}-[0-9]{2}-([a-z]+-)?[0-9]{2,3}$"
         },
         "checkedAt": {
           "$ref": "#/$defs/isoDate"

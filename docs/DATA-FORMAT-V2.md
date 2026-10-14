@@ -780,6 +780,8 @@ generator (`tools/gen/gen.mjs`) compiles it into the same constants the app used
 | `unlocks` | optional `credit`, `order` | `VERIFIED_UNLOCKS` shows the credited site names and has a display order; records are stored sorted by id |
 | `regional-quests` | optional `order` | the v1 list order (allthings.how's) is not derivable from `rec` + id and decides Next up and milestone order |
 | `retired` (new) | `data/retired.json`: `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
+| `common` (data corrections) | owner ref `owner:YYYY-MM-DD-<set>-NN` also allowed | the owner's numbered screen sets are cited that way (`owner:2026-10-14-unlocks-05`, docs/research/2026-10-owner-unlocks.md) |
+| `story-quests` (data corrections) | `unlocks.milestone` optional | an unlock before the first milestone (Prepare to Escape: Shop and Closet) has no milestone to link to |
 
 **Compiler rules with no field of their own:** a story atom on a stigma-slot step compiles to v1's `after` (no story
 chip), every other `reached` atom to `story`; a `turnedIn` atom to `story` + `turnedIn`. `DV_BOARDS` (a v1 constant
@@ -790,7 +792,7 @@ nothing reads any more) lists the boards whose plan nodes all open with the boar
 
 - `zone:altgard-unplaced`: story quests whose location the v1 data never held (the §9 data task); `zone:ishalgen`
   for the Lv 1–9 quests on the starting map. Both are labelled (`fieldStatus` owner-check / inferred).
-- aion2.th.gl citations (withdrawn site): reported, not yet re-sourced (the data-correction step after 5b).
+- aion2.th.gl citations (withdrawn site): re-sourced to Metabot or labelled `owner-check` in the data corrections that followed the conversion; since then any citation of a withdrawn site fails the generator.
 - No owner screen codes exist yet (§14.2), so v1 facts "seen in game" carry an `inferred` ref that says so.
 - `VERIFIED_UNLOCKS` credits sites by name only; each such unlock carries a ref saying the pages were not recorded.
 

@@ -173,15 +173,58 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defiance",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
       },
       "notes": [
         "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ],
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:defiance:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Adds [Wrath Burst] Chain Skill"
+        },
+        {
+          "id": "spec:assassin:defiance:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 1,000 Stamina on using [Defiance]"
+        },
+        {
+          "id": "spec:assassin:defiance:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Restores 20% HP on using [Defiance]"
+        },
+        {
+          "id": "spec:assassin:defiance:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+2s Tenacity duration"
+        },
+        {
+          "id": "spec:assassin:defiance:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration"
+        }
       ]
     },
     {
@@ -385,15 +428,58 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/infiltrate",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
       },
       "notes": [
         "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ],
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:infiltrate:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Restores 300 Stamina on landing [Infiltrate]"
+        },
+        {
+          "id": "spec:assassin:infiltrate:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+10m [Infiltrate] range"
+        },
+        {
+          "id": "spec:assassin:infiltrate:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Breaks Protective Shields on landing [Infiltrate]"
+        },
+        {
+          "id": "spec:assassin:infiltrate:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Adds [Dark Strike] Chain Skill"
+        },
+        {
+          "id": "spec:assassin:infiltrate:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+20% [Infiltrate] Blind Chance"
+        }
       ]
     },
     {
@@ -634,15 +720,58 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/shadow-fall",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
       },
       "notes": [
         "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ],
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:shadow-fall:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 1000, 1000% HP"
+        },
+        {
+          "id": "spec:assassin:shadow-fall:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Engraves 3 Insignias for 10s on hit"
+        },
+        {
+          "id": "spec:assassin:shadow-fall:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "-5s cooldown"
+        },
+        {
+          "id": "spec:assassin:shadow-fall:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+1s Knockdown duration"
+        },
+        {
+          "id": "spec:assassin:shadow-fall:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Can be used on targets afflicted with Blind"
+        }
       ]
     },
     {
@@ -773,15 +902,58 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/whirlwind-slice",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelGate": "inferred"
       },
       "notes": [
         "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ],
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:whirlwind-slice:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:assassin:whirlwind-slice:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Changes to AoE damage"
+        },
+        {
+          "id": "spec:assassin:whirlwind-slice:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+16m range"
+        },
+        {
+          "id": "spec:assassin:whirlwind-slice:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+20% Stun Chance"
+        },
+        {
+          "id": "spec:assassin:whirlwind-slice:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "25% chance to reset [Whirlwind Slice] cooldown on Evasion"
+        }
       ]
     }
   ]

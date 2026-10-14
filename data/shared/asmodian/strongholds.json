@@ -26,7 +26,19 @@
         "place": null,
         "zone": "zone:black-claw-village",
         "kibelisk": "Impetusium Lower Path",
-        "meters": 125
+        "meters": 180,
+        "coords": {
+          "map": "altgard",
+          "x": 5128,
+          "y": 5853,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/amurahta-surveillance-base",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -74,9 +86,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/amurahta-surveillance-base",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -84,6 +106,9 @@
       "notes": [
         "Quest page lists only EXP. Recommended level not stated. Step Kibelisk 180 m vs map list 125 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Impetusium Lower Path 125 m (v1); the quest step's marker, the entrance point, gives Impetusium Lower Path 180 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -107,8 +132,20 @@
         "npc": null,
         "place": null,
         "zone": "zone:impetusium-square",
-        "kibelisk": "Collapsed Hall of Fame",
-        "meters": 450
+        "kibelisk": "Steel Hammer Temporary Trading Post",
+        "meters": 466,
+        "coords": {
+          "map": "altgard",
+          "x": 5913,
+          "y": 5632,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/andsha-forward-base",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -156,9 +193,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/andsha-forward-base",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -166,6 +213,9 @@
       "notes": [
         "Quest page lists only EXP. CONFLICT: quest step's nearest Kibelisk is Steel Hammer Temporary Trading Post 466 m; map list says Collapsed Hall of Fame 450 m. Top-level kib keeps the map-list value.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Collapsed Hall of Fame 450 m (v1); the quest step's marker, the entrance point, gives Steel Hammer Temporary Trading Post 466 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -190,7 +240,19 @@
         "place": null,
         "zone": "zone:iduns-lake",
         "kibelisk": "Eastern Gribade Highland Cliff",
-        "meters": 246
+        "meters": 283,
+        "coords": {
+          "map": "altgard",
+          "x": 6064,
+          "y": 5139,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/barahta-extermination-unit-outpost",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -238,9 +300,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/barahta-extermination-unit-outpost",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -248,6 +320,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 283 m vs map list 246 m. Map list gives level '40' (single value, not a range).",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Eastern Gribade Highland Cliff 246 m (v1); the quest step's marker, the entrance point, gives Eastern Gribade Highland Cliff 283 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -272,7 +347,19 @@
         "place": null,
         "zone": "zone:tranein-highland",
         "kibelisk": "Moslan Forest Cliff",
-        "meters": 137
+        "meters": 160,
+        "coords": {
+          "map": "altgard",
+          "x": 3161,
+          "y": 4364,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blades-temporary-outpost",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -320,9 +407,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blades-temporary-outpost",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -330,6 +427,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 160 m vs map list 137 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Moslan Forest Cliff 137 m (v1); the quest step's marker, the entrance point, gives Moslan Forest Cliff 160 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -354,7 +454,19 @@
         "place": null,
         "zone": "zone:moslan-forest",
         "kibelisk": "Forest Hideout",
-        "meters": 180
+        "meters": 121,
+        "coords": {
+          "map": "altgard",
+          "x": 4088,
+          "y": 4302,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/corrupted-forester-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -402,9 +514,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/corrupted-forester-ruins",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -412,6 +534,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 121 m vs map list 180 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Forest Hideout 180 m (v1); the quest step's marker, the entrance point, gives Forest Hideout 121 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -436,7 +561,19 @@
         "place": null,
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 221
+        "meters": 180,
+        "coords": {
+          "map": "altgard",
+          "x": 5235,
+          "y": 5210,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/detlef-thieves-camp",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -484,9 +621,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/detlef-thieves-camp",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -495,6 +642,9 @@
         "Quest page lists only EXP. Step Kibelisk 180 m vs map list 221 m.",
         "allthings.how Western Gribade guide (https://allthings.how/?p=244882): clear grants achievement 'Altgard Stronghold Sweep V' plus a Treasure Chest; no item counts.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Zemurru's Tomb 221 m (v1); the quest step's marker, the entrance point, gives Zemurru's Tomb 180 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -519,7 +669,19 @@
         "place": null,
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Shulak Street Stall",
-        "meters": 166
+        "meters": 138,
+        "coords": {
+          "map": "altgard",
+          "x": 5269,
+          "y": 3466,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/flauke-legion-outpost",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -567,9 +729,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/flauke-legion-outpost",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -578,6 +750,9 @@
         "Quest page lists only EXP. Step Kibelisk 138 m vs map list 166 m.",
         "allthings.how Basfelt guide (https://allthings.how/?p=247532) also gives 381,569 EXP (2 sources).",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Shulak Street Stall 166 m (v1); the quest step's marker, the entrance point, gives Shulak Street Stall 138 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -602,7 +777,19 @@
         "place": null,
         "zone": "zone:purifying-forest",
         "kibelisk": "Purifying Forest Sunny Hill",
-        "meters": 284
+        "meters": 247,
+        "coords": {
+          "map": "altgard",
+          "x": 5014,
+          "y": 3089,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/forest-marauder-campsite",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -650,9 +837,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forest-marauder-campsite",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -660,6 +857,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 247 m vs map list 284 m; rec level not stated (page 'Lv. 1', unlocks at 1).",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Purifying Forest Sunny Hill 284 m (v1); the quest step's marker, the entrance point, gives Purifying Forest Sunny Hill 247 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -684,7 +884,19 @@
         "place": null,
         "zone": "zone:eastern-gribade-highland",
         "kibelisk": "Eastern Gribade Highland Tail Island",
-        "meters": 217
+        "meters": 230,
+        "coords": {
+          "map": "altgard",
+          "x": 6051,
+          "y": 4429,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/granachs-hideout",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -732,9 +944,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/granachs-hideout",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -743,6 +965,9 @@
         "Quest page lists only EXP. Step Kibelisk 230 m vs map list 217 m.",
         "allthings.how Eastern Gribade guide (https://allthings.how/?p=244758): clearing and opening the Treasure Chest grants completion rewards and title 'Overthrower!'; no item counts.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Eastern Gribade Highland Tail Island 217 m (v1); the quest step's marker, the entrance point, gives Eastern Gribade Highland Tail Island 230 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -767,7 +992,19 @@
         "place": null,
         "zone": "zone:crypt",
         "kibelisk": "Galorik's Inspection Area",
-        "meters": 378
+        "meters": 377,
+        "coords": {
+          "map": "altgard",
+          "x": 2772,
+          "y": 2976,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/graverobber-den",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -815,9 +1052,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/graverobber-den",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -826,6 +1073,9 @@
         "Quest page lists only EXP; no Kina/Wisdom/Crystal/items. Step Kibelisk 377 m vs map list 378 m.",
         "Zone 'Crypt' is Metabot's map zone name; not in the app's sub-region list.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Galorik's Inspection Area 378 m (v1); the quest step's marker, the entrance point, gives Galorik's Inspection Area 377 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -850,7 +1100,19 @@
         "place": null,
         "zone": "zone:dranactus",
         "kibelisk": "Battlescar Mound Clifftop",
-        "meters": 163
+        "meters": 160,
+        "coords": {
+          "map": "altgard",
+          "x": 4965,
+          "y": 2483,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/latrima-outpost",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -898,9 +1160,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/latrima-outpost",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -908,6 +1180,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 160 m vs map list 163 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Battlescar Mound Clifftop 163 m (v1); the quest step's marker, the entrance point, gives Battlescar Mound Clifftop 160 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -932,7 +1207,19 @@
         "place": null,
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Fissure Cave",
-        "meters": 187
+        "meters": 200,
+        "coords": {
+          "map": "altgard",
+          "x": 6095,
+          "y": 2994,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/legion-base-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -980,9 +1267,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/legion-base-ruins",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -990,6 +1287,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 200 m vs map list 187 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Fissure Cave 187 m (v1); the quest step's marker, the entrance point, gives Fissure Cave 200 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -1014,7 +1314,19 @@
         "place": null,
         "zone": "zone:moslan-forest",
         "kibelisk": "Elim's Rest",
-        "meters": 217
+        "meters": 224,
+        "coords": {
+          "map": "altgard",
+          "x": 3445,
+          "y": 4714,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/loggers-rest-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1062,9 +1374,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/loggers-rest-ruins",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -1072,6 +1394,9 @@
       "notes": [
         "Quest page lists only EXP. Step Kibelisk 224 m vs map list 217 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Elim's Rest 217 m (v1); the quest step's marker, the entrance point, gives Elim's Rest 224 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -1096,7 +1421,19 @@
         "place": null,
         "zone": "zone:dredgion-crash-site",
         "kibelisk": "Safe Haven Cliff",
-        "meters": 467
+        "meters": 471,
+        "coords": {
+          "map": "altgard",
+          "x": 3958,
+          "y": 2960,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/rubek-thieves-occupied-territory",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1144,9 +1481,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/rubek-thieves-occupied-territory",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -1154,6 +1501,9 @@
       "notes": [
         "Recommended level not stated (page: 'around level 1', unlocks at 1). Quest page lists only EXP. Step Kibelisk 471 m vs map list 467 m.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Safe Haven Cliff 467 m (v1); the quest step's marker, the entrance point, gives Safe Haven Cliff 471 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     },
     {
@@ -1178,7 +1528,19 @@
         "place": null,
         "zone": "zone:silent-hill",
         "kibelisk": "Silent Hill Mushroom Rock",
-        "meters": 147
+        "meters": 126,
+        "coords": {
+          "map": "altgard",
+          "x": 2323,
+          "y": 3483,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/sanctum-outskirts-watch",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1226,9 +1588,19 @@
           ],
           "checkedAt": "2026-10-12",
           "note": "location: map list (stronghold location)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/sanctum-outskirts-watch",
+          "fields": [
+            "location.kibelisk",
+            "location.meters",
+            "location.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"
@@ -1237,6 +1609,9 @@
         "Quest page lists only EXP. Step Kibelisk 126 m vs map list 147 m.",
         "Zone 'Silent Hill' is Metabot's map zone name; not in the app's sub-region list.",
         "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ],
+      "conflicts": [
+        "Nearest Kibelisk: Metabot's Altgard stronghold list gives Silent Hill Mushroom Rock 147 m (v1); the quest step's marker, the entrance point, gives Silent Hill Mushroom Rock 126 m, which is the one tied to a position (location-coverage §6). The step figure is kept."
       ]
     }
   ]

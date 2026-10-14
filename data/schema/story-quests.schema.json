@@ -131,11 +131,8 @@
           "$ref": "common.schema.json#/$defs/rewards"
         },
         "unlocks": {
-          "description": "What turning it in unlocks that the guide tracks (STORY_UNLOCKS) and the milestone that covers it (UNLOCK_GATE).",
+          "description": "What turning it in unlocks that the guide tracks (STORY_UNLOCKS) and the milestone that covers it (UNLOCK_GATE). milestone is optional: an unlock before the first milestone (e.g. Prepare to Escape) has none.",
           "type": "object",
-          "required": [
-            "milestone"
-          ],
           "properties": {
             "text": {
               "type": "string"

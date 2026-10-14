@@ -118,8 +118,10 @@ export function generate() {
   });
   check('58 regional quests', RQ.length === 58, RQ.length);
   check('every regional quest has unlocksAt and rec', RQ.every(x => x.unlocksAt && x.rec));
-  { const cz = {}; for (const q of rqs) for (const a of [q.giver.kibelisk, q.giver.place]) if (a) (cz[a] = cz[a] || new Set()).add(q.zone);
-    check('same giver camp/Kibelisk -> one zone', Object.values(cz).every(v => v.size === 1)); }
+  /* a camp (giver place, or a Kibelisk within 100 m of the giver) belongs to one zone; a nearest Kibelisk further away
+     may lie across a zone border (Pain Unending: Basfelt Waterfall 309 m) */
+  { const cz = {}; for (const q of rqs) for (const a of [q.giver.meters != null && q.giver.meters <= 100 ? q.giver.kibelisk : null, q.giver.place]) if (a) (cz[a] = cz[a] || new Set()).add(q.zone);
+    check('same giver camp/Kibelisk -> one zone', Object.values(cz).every(v => v.size === 1), Object.entries(cz).filter(([, v]) => v.size > 1).map(([k, v]) => [k, [...v]])); }
   check('Nine Wonders of Altgard: 2nd Leg is in Battlescar Mound (E4)', RQ.find(x => x.name === 'Nine Wonders of Altgard: 2nd Leg').zone === 'Battlescar Mound');
   const RQ_STATS = { n: RQ.length, at10: RQ.filter(x => x.unlocksAt === 10).length, story: RQ.filter(x => x.story).length, chained: RQ.filter(x => x.after.length).length, kib: RQ.filter(x => x.kib).length };
 
@@ -154,6 +156,10 @@ export function generate() {
     return { n: s.name, learn: s.learnLv, ...(pick ? { spec: choice(pick).label || choice(pick).text } : {}), ...(s.type === 'passive' ? { passive: true } : {}) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
     return { n: s.name, learn: s.learnLv, ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
+  /* specialties (owner F4, Metabot): every active skill has the 5 choices at effective skill level 8 / 8 / 8 / 12 / 16 */
+  for (const s of skills) if (s.type === 'active') check(`specialty choices 8/8/8/12/16: ${s.name}`, JSON.stringify((s.specialtyChoices || []).map(c => c.skillLv)) === '[8,8,8,12,16]', (s.specialtyChoices || []).map(c => c.skillLv));
+    else check(`passive skill has no specialty choices: ${s.name}`, !s.specialtyChoices);
+  check('specialty slots at effective level 8 / 12 / 20', JSON.stringify(rules['rule:specialty-slots'].value.slots) === '[8,12,20]' && rules['rule:specialty-slots'].value.levelBasis === 'effective');
   for (const [sid, picks] of Object.entries(build.specialtyPicks)) for (const p of picks) check(`specialty pick ${p} is a choice of ${sid}`, (sk(sid).specialtyChoices || []).some(c => c.id === p));
   check('specialty picks: at most 3 slots', Object.values(build.specialtyPicks).every(p => p.length <= rules['rule:specialty-slots'].value.slots.length));
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
@@ -241,7 +247,7 @@ export function generate() {
   const sites = B.sources.records;
   const siteOf = u => { const h = hostOf(u); return sites.find(s => s.hosts.some(x => h === x || h.endsWith('.' + x))); };
   const siteName = u => { const s = siteOf(u); return s ? s.name : hostOf(u); };
-  const SRC_SITE = Object.fromEntries(sites.filter(s => s.kind !== 'owner' && !s.use.banned).flatMap(s => s.hosts.map(h => [h, s.name])));
+  const SRC_SITE = Object.fromEntries(sites.filter(s => s.kind !== 'owner' && !s.use.banned && !s.withdrawn).flatMap(s => s.hosts.map(h => [h, s.name])));
   const pages = B.sources.pages || [];
   const OLD_URLS = new Set(pages.map(p => p.url));
   const labelOf = {}, setdef = (u, l) => { if (!(u in labelOf)) labelOf[u] = l; };
@@ -250,6 +256,8 @@ export function generate() {
   for (const q of rqs) { const p = pageOf(q, ['gameId']); if (p) labelOf[p.url] = q.name; nameOfId[q.gameId] = q.name; }
   for (const q of rqs) for (const a of atomsOf(q.requires)) if (a.story) nameOfId[sqById[a.story].gameId] = sqById[a.story].name;
   for (const s of story) { const p = pageOf(s, ['steps', 'gameId']); if (p) labelOf[p.url] = s.name; }
+  /* any other Metabot quest page a quest cites (e.g. the location pass) is labelled with the quest's name */
+  for (const q of [...rqs, ...story]) for (const s of q.sources || []) if (s.url && /metabot\.gg\/en\/aion-2\/quests\//.test(s.url)) setdef(s.url, q.name);
   for (const a of asc) { const p = pageOf(a, ['chapter']); if (p) labelOf[p.url] = a.name; }
   for (const s of shs) { const p = pageOf(s, ['gameId']); if (p) labelOf[p.url] = s.name; }
   for (const d of sds) { const p = pageOf(d, ['rewards']); if (p) labelOf[p.url] = d.name; }
@@ -309,7 +317,7 @@ export function generate() {
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
     for (const l of [r.giver, r.turnin, r.entrance, r.location].filter(Boolean)) refCheck(r.id, l.zone);
-    if (r.unlocks) check(`${r.id}: unlock milestone resolves`, milestones.some(m => m.id === r.unlocks.milestone));
+    if (r.unlocks && r.unlocks.milestone) check(`${r.id}: unlock milestone resolves`, milestones.some(m => m.id === r.unlocks.milestone));
   }
   for (const e of build.boardPlan) check('board plan milestone resolves: ' + (e.node || e.key), milestones.some(m => m.id === e.milestone));
   for (const s of build.skillOrder) refCheck(build.id, s.skill);
@@ -323,8 +331,8 @@ export function generate() {
     if (s.withdrawn) withdrawnHits.push(`${file} ${r.id}: ${u}`);
     else check(`URL not on a mode:none site: ${u}`, s.access.mode !== 'none');
   }
-  report.debt.withdrawnSiteCitations = withdrawnHits;
-  if (withdrawnHits.length) warn(`${withdrawnHits.length} citations of a withdrawn site (aion2.th.gl): re-source (Metabot first) or label owner-check`);
+  /* a withdrawn site (aion2.th.gl) is never cited: re-source it (Metabot first) or label the fact owner-check (§5.1) */
+  check('no citation of a withdrawn site', !withdrawnHits.length, withdrawnHits.slice(0, 10));
   for (const s of sites) if (s.access.terms === 'bans-automation') check('bans-automation forces human-only or none: ' + s.id, ['human-only', 'none'].includes(s.access.mode));
   for (const s of sites) if (s.access.robots === 'unchecked' || s.access.terms === 'unread') warn(`${s.id}: robots ${s.access.robots}, terms ${s.access.terms}`);
   /* owner refs never look like a URL or a path (schema pattern); verifiedAt = latest checkedAt */

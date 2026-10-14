@@ -62,8 +62,9 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   r = await p.evaluate(() => ({ disputed: CONF.find(c => c.g === 'Disputed').items.some(x => /Not verified/.test(x)), unv: (CONF.find(c => c.g === 'Unverified') || { items: [] }).items, rows: [...document.querySelectorAll('#srcBody .srcg > summary .src-site')].map(x => x.textContent) }));
   ok('P2-8 unverified item not under Disputed', !r.disputed && r.unv.length === 1, r);
   ok('P2-7 Sources: one row per site, Metabot first, sites not repeated', r.rows[0] === 'Metabot' && new Set(r.rows).size === r.rows.length, r.rows);
-  /* P1-9 zones */
-  r = await p.evaluate(() => { const by = {}; RQ.forEach(q => [q.kib, q.place].filter(Boolean).forEach(c => (by[c] = by[c] || new Set()).add(q.zone))); return { multi: Object.entries(by).filter(([, v]) => v.size > 1).map(([k, v]) => [k, [...v]]), camps: RQ.filter(q => ['Quai Campsite', 'Safe Haven'].includes(q.zone)).map(q => q.name) }; });
+  /* P1-9 zones. A camp is the giver's place or a Kibelisk within 100 m of the giver; a nearest Kibelisk further away may
+     lie across a zone border (Pain Unending: Basfelt Waterfall 309 m, Metabot), which is not a camp used as a zone. */
+  r = await p.evaluate(() => { const by = {}; RQ.forEach(q => [q.m != null && q.m <= 100 ? q.kib : null, q.place].filter(Boolean).forEach(c => (by[c] = by[c] || new Set()).add(q.zone))); return { multi: Object.entries(by).filter(([, v]) => v.size > 1).map(([k, v]) => [k, [...v]]), camps: RQ.filter(q => ['Quai Campsite', 'Safe Haven'].includes(q.zone)).map(q => q.name) }; });
   ok('P1-9 zones: one zone per camp; no Quai Campsite / Safe Haven zones', !r.multi.length && !r.camps.length, r);
   ok('no page errors', !errs.length, errs);
   console.log(fail ? `E3 CHECKS FAILED (${fail})` : 'E3 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();

@@ -111,7 +111,19 @@
         "place": null,
         "zone": "zone:nameless-cemetery",
         "kibelisk": "Neglected Crematorium",
-        "meters": 189
+        "meters": 189,
+        "coords": {
+          "map": "altgard",
+          "x": 2374,
+          "y": 3324,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/abandoned-ones-grave",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "abandoned-ones-grave",
       "xp": 11115,
@@ -158,12 +170,23 @@
             "xp"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/abandoned-ones-grave",
+          "fields": [
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Metabot page lists no Kibelisk, only entrance zone Nameless Cemetery. Abyss Points 1,000 listed for Elyos only. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810003, step 'Clear Abandoned One's Grave', nearest Kibelisk Neglected Crematorium 189 m; EXP 11,115)."
+      ],
+      "conflicts": [
+        "Owner check T1 (2026-10-14, main character): teleport to Neglected Crematorium, then 175 m and 180 m to the entrance on two tries vs 189 m on Metabot. Teleport landing spots vary by a few metres, and Metabot measures from the Kibelisk point; 189 m kept (docs/research/2026-10-owner-unlocks.md)."
       ]
     },
     {
@@ -226,7 +249,19 @@
         "place": null,
         "zone": "zone:impetusium-square",
         "kibelisk": "Outskirts Stall",
-        "meters": 160
+        "meters": 165,
+        "coords": {
+          "map": "altgard",
+          "x": 5421,
+          "y": 6017,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/ascetics-cave",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "ascetics-cave",
       "rewards": {
@@ -258,12 +293,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/ascetics-cave",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Not found on Metabot's dungeon list page (list was truncated at Lv 25). allthings.how gives 'roughly 160 m' to the Outskirts Stall teleport statue."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 160 -> 165); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {
@@ -371,7 +419,19 @@
         "place": null,
         "zone": "zone:uruthumheim",
         "kibelisk": "Victorious Daeva's Statue",
-        "meters": 100
+        "meters": 95,
+        "coords": {
+          "map": "altgard",
+          "x": 4138,
+          "y": 3593,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/closed-hideout",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "closed-hideout",
       "rewards": {
@@ -403,12 +463,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/closed-hideout",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 100 -> 95); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {
@@ -470,7 +543,19 @@
         "place": null,
         "zone": "zone:black-claw-village",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 220
+        "meters": 215,
+        "coords": {
+          "map": "altgard",
+          "x": 5306,
+          "y": 5563,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/den-of-exiles",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "den-of-exiles",
       "rewards": {
@@ -502,12 +587,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/den-of-exiles",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 220 -> 215); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {
@@ -661,7 +759,19 @@
         "place": null,
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 111
+        "meters": 111,
+        "coords": {
+          "map": "altgard",
+          "x": 5400,
+          "y": 3172,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/dratona-assembly-area",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "dratona-assembly-area",
       "xp": 661754,
@@ -704,9 +814,17 @@
             "xp"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/dratona-assembly-area",
+          "fields": [
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Exists (Metabot Altgard dungeon map list + page). Metabot lists no Kibelisk; no allthings.how page found by search. App AREA_LOC xp 661754 not confirmed by this page. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810042, step 'Clear Dratona Assembly Area', nearest Kibelisk Graverobber Campsite 111 m; EXP 661,754). allthings.how Basfelt guide (https://allthings.how/?p=247532) also gives 661,754 EXP for its exploration quest (2 sources)."
@@ -862,8 +980,20 @@
         "npc": null,
         "place": null,
         "zone": "zone:sanctum-outpost",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Fang Hideout",
+        "meters": 226,
+        "coords": {
+          "map": "altgard",
+          "x": 2527,
+          "y": 3730,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fafnite-storage-room",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "fafnite-storage-room",
       "rewards": {
@@ -897,9 +1027,19 @@
             "bosses"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fafnite-storage-room",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Metabot page lists no Kibelisk, only entrance zone Sanctum Outpost.",
@@ -1566,7 +1706,19 @@
         "place": null,
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Basfelt Ruins Cliff",
-        "meters": 140
+        "meters": 137,
+        "coords": {
+          "map": "altgard",
+          "x": 5555,
+          "y": 3598,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/library-of-wisdom",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "library-of-wisdom",
       "xp": 661754,
@@ -1599,12 +1751,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/library-of-wisdom",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only. App AREA_LOC xp value not confirmed by this page."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 140 -> 137); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {
@@ -1666,7 +1831,19 @@
         "place": null,
         "zone": "zone:nameless-cemetery",
         "kibelisk": "Neglected Crematorium",
-        "meters": 394
+        "meters": 394,
+        "coords": {
+          "map": "altgard",
+          "x": 2511,
+          "y": 2761,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lost-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "lost-ruins",
       "xp": 11115,
@@ -1711,9 +1888,17 @@
             "xp"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lost-ruins",
+          "fields": [
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Metabot page lists no Kibelisk, only entrance zone Nameless Cemetery. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810007, step 'Clear Lost Ruins', nearest Kibelisk Neglected Crematorium 394 m; EXP 11,115)."
@@ -1732,7 +1917,19 @@
         "place": null,
         "zone": "zone:eastern-gribade-highland",
         "kibelisk": "Eastern Gribade Highland Cliff",
-        "meters": 34
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 5830,
+          "y": 4963,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/odylium-marauder-den",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "odylium-marauder-den",
       "xp": 2776634,
@@ -1779,9 +1976,17 @@
         {
           "url": "https://allthings.how/?p=244758",
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/odylium-marauder-den",
+          "fields": [
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Neither Metabot nor the allthings.how Eastern Gribade guide (https://allthings.how/?p=244758) gives a Kibelisk. Kibelisk/EXP from the dungeon's Exploration quest page (quest 2810060, step 'Clear Odylium Marauder Den', nearest Kibelisk Eastern Gribade Highland Cliff 34 m; EXP 2,776,634)."
@@ -1938,7 +2143,19 @@
         "place": null,
         "zone": "zone:black-claw-village",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 100
+        "meters": 99,
+        "coords": {
+          "map": "altgard",
+          "x": 5324,
+          "y": 5364,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/place-of-rest",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "place-of-rest",
       "rewards": {
@@ -1970,12 +2187,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/place-of-rest",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 100 -> 99); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {
@@ -2589,7 +2819,19 @@
         "place": null,
         "zone": "zone:dranactus",
         "kibelisk": "Hidden Cave",
-        "meters": 240
+        "meters": 236,
+        "coords": {
+          "map": "altgard",
+          "x": 4730,
+          "y": 2343,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/twisted-pit",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "mapSlug": "twisted-pit",
       "rewards": {
@@ -2621,12 +2863,25 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/twisted-pit",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters",
+            "entrance.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
+      ],
+      "conflicts": [
+        "Entrance distance: v1 held a rounded figure (meters 240 -> 236); the dungeon's Exploration-quest page gives the exact one (location-coverage §6)."
       ]
     },
     {

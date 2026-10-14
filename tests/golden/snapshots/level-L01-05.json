@@ -1,575 +1,5 @@
 {
   "level/L01-q00-before-A": {
-    "in": "7270b19e3119",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L01-q00-before-B": {
-    "in": "1b4ef662304c",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "basic"
-  },
-  "level/L01-q00-lvonly-A": {
-    "in": "7270b19e3119",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L01-q00-lvonly-B": {
-    "in": "1b4ef662304c",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "basic"
-  },
-  "level/L01-q00-none-A": {
-    "in": "7270b19e3119",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L01-q00-none-B": {
-    "in": "1b4ef662304c",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "basic"
-  },
-  "level/L01-q00-rnd1p50-A": {
-    "in": "cdac03802811",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 2/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "6%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 2/15","Lv 15–19 (later) · 3/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 2/10","All strongholds · 8/15"],
-      "list": ["Strongholds 2/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L01-q00-rnd1p50-B": {
-    "in": "78a68f79cb44",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 2/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "6%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 2/15","Lv 15–19 (later) · 3/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 2/10","All strongholds · 8/15"],
-      "list": ["Strongholds 2/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "basic"
-  },
-  "level/L01-q00-rnd2p85-A": {
-    "in": "41085f3e4bce",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 2/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "9%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 4/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 1/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 3/10","All strongholds · 12/15"],
-      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L01-q00-rnd2p85-B": {
-    "in": "844ce00a5c65",
-    "nu": [
-      {"t":"Continue the story: Ishalgen","s":"Main story · then A Village in the Fog","c":"primary \"Turned in\" story"}
-    ],
-    "ms": [
-      "g6 | 5 to go | 2/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "",
-      "quest": "Ishalgen",
-      "lv": "Lv 1",
-      "next": "A Village in the Fog Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 22 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 5 to go Lv 6"],
-      "ring": "9%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 4/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 1/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 3/10","All strongholds · 12/15"],
-      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "basic"
-  },
-  "level/L01-q01-before-A": {
     "in": "5ffcc10a2d76",
     "nu": [
       {"t":"Continue the story: A Village in the Fog","s":"Needs Lv 2: you're 1. Level up first.","c":""},
@@ -606,12 +36,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Ishalgen Lv 1",
+      "prev": "",
       "quest": "A Village in the Fog",
       "lv": "Lv 2",
-      "next": "Prepare to Escape Lv 2",
+      "next": "Prepare to Escape unlocks Shop and Closet Lv 2",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 21 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 2 🔓 Shop and Closet your next quest · \"Prepare to Escape\""],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -670,7 +100,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -687,7 +117,518 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-before-A": {
+  "level/L01-qxx-before-B": {
+    "in": "aa9b42c1de04",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "level/L01-qxx-lvonly-A": {
+    "in": "300661bd09c5",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "level/L01-qxx-lvonly-B": {
+    "in": "aa9b42c1de04",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "level/L01-qxx-none-A": {
+    "in": "300661bd09c5",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "level/L01-qxx-none-B": {
+    "in": "aa9b42c1de04",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "level/L01-qxx-rnd1p50-A": {
+    "in": "e452e475b36b",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 2/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "6%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 2/15","Lv 15–19 (later) · 3/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 2/10","All strongholds · 8/15"],
+      "list": ["Strongholds 2/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "level/L01-qxx-rnd1p50-B": {
+    "in": "7f19164e651a",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 2/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "6%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 2/15","Lv 15–19 (later) · 3/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 2/10","All strongholds · 8/15"],
+      "list": ["Strongholds 2/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "level/L01-qxx-rnd2p85-A": {
+    "in": "ce89dc2ae31d",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 2/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "9%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 4/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 1/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 3/10","All strongholds · 12/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "level/L01-qxx-rnd2p85-B": {
+    "in": "4c76754cec7e",
+    "nu": [
+      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
+    ],
+    "ms": [
+      "g6 | 5 to go | 2/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "",
+      "quest": "",
+      "lv": "",
+      "next": "Pick your current quest to place yourself on the story.",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
+      "ring": "9%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 4/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 1/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 3/10","All strongholds · 12/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13 [done]","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "basic"
+  },
+  "level/L02-q01-before-A": {
     "in": "fe7160b43121",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -729,7 +670,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -746,7 +687,7 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-before-B": {
+  "level/L02-q01-before-B": {
     "in": "d890d7e5d596",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
@@ -784,7 +725,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -801,7 +742,7 @@
     },
     "mode": "basic"
   },
-  "level/L02-q02-lvonly-A": {
+  "level/L02-q01-lvonly-A": {
     "in": "fe7160b43121",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -843,7 +784,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -860,7 +801,7 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-lvonly-B": {
+  "level/L02-q01-lvonly-B": {
     "in": "d890d7e5d596",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
@@ -898,7 +839,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -915,7 +856,7 @@
     },
     "mode": "basic"
   },
-  "level/L02-q02-none-A": {
+  "level/L02-q01-none-A": {
     "in": "fe7160b43121",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -957,7 +898,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -974,7 +915,7 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-none-B": {
+  "level/L02-q01-none-B": {
     "in": "d890d7e5d596",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
@@ -1012,7 +953,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1029,7 +970,7 @@
     },
     "mode": "basic"
   },
-  "level/L02-q02-rnd1p50-A": {
+  "level/L02-q01-rnd1p50-A": {
     "in": "4ed72522732a",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -1071,7 +1012,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -1088,7 +1029,7 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-rnd1p50-B": {
+  "level/L02-q01-rnd1p50-B": {
     "in": "3a88c5f3f132",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
@@ -1126,7 +1067,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -1143,7 +1084,7 @@
     },
     "mode": "basic"
   },
-  "level/L02-q02-rnd2p85-A": {
+  "level/L02-q01-rnd2p85-A": {
     "in": "c35d9f68c699",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -1185,7 +1126,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -1202,7 +1143,7 @@
     },
     "mode": "advanced"
   },
-  "level/L02-q02-rnd2p85-B": {
+  "level/L02-q01-rnd2p85-B": {
     "in": "a66d31f77103",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
@@ -1240,7 +1181,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -1257,7 +1198,7 @@
     },
     "mode": "basic"
   },
-  "level/L02-q03-before-A": {
+  "level/L02-q02-before-A": {
     "in": "222c85fe0265",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""},
@@ -1299,7 +1240,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1358,7 +1299,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1375,7 +1316,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-before-A": {
+  "level/L03-q02-before-A": {
     "in": "44403a2eb2ea",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1417,7 +1358,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1434,7 +1375,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-before-B": {
+  "level/L03-q02-before-B": {
     "in": "3ff4e7600092",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
@@ -1472,7 +1413,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1489,7 +1430,7 @@
     },
     "mode": "basic"
   },
-  "level/L03-q03-lvonly-A": {
+  "level/L03-q02-lvonly-A": {
     "in": "44403a2eb2ea",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1531,7 +1472,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1548,7 +1489,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-lvonly-B": {
+  "level/L03-q02-lvonly-B": {
     "in": "3ff4e7600092",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
@@ -1586,7 +1527,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1603,7 +1544,7 @@
     },
     "mode": "basic"
   },
-  "level/L03-q03-none-A": {
+  "level/L03-q02-none-A": {
     "in": "1d0b10e0795c",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1645,7 +1586,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1662,7 +1603,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-none-B": {
+  "level/L03-q02-none-B": {
     "in": "6b22bdbaddb5",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
@@ -1700,7 +1641,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1717,7 +1658,7 @@
     },
     "mode": "basic"
   },
-  "level/L03-q03-rnd1p50-A": {
+  "level/L03-q02-rnd1p50-A": {
     "in": "4ced4f1581e3",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1759,7 +1700,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -1776,7 +1717,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-rnd1p50-B": {
+  "level/L03-q02-rnd1p50-B": {
     "in": "a788d94cb37c",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
@@ -1814,7 +1755,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -1831,7 +1772,7 @@
     },
     "mode": "basic"
   },
-  "level/L03-q03-rnd2p85-A": {
+  "level/L03-q02-rnd2p85-A": {
     "in": "38f4f08fc7bc",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
@@ -1873,7 +1814,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -1890,7 +1831,7 @@
     },
     "mode": "advanced"
   },
-  "level/L03-q03-rnd2p85-B": {
+  "level/L03-q02-rnd2p85-B": {
     "in": "f56bd030cf22",
     "nu": [
       {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
@@ -1928,7 +1869,7 @@
       "lv": "Lv 3",
       "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -1945,7 +1886,7 @@
     },
     "mode": "basic"
   },
-  "level/L03-q04-before-A": {
+  "level/L03-q03-before-A": {
     "in": "16c53cae4b61",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Needs Lv 4: you're 3. Level up first.","c":""},
@@ -1985,9 +1926,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2046,7 +1987,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2063,66 +2004,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q01-lvonly-A": {
-    "in": "91277b8d45a3",
-    "nu": [
-      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
-      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 4 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 2 to go | 3/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "Ishalgen Lv 1",
-      "quest": "A Village in the Fog",
-      "lv": "Lv 2",
-      "next": "Prepare to Escape Lv 2",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 21 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 2 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "level/L04-q04-before-A": {
+  "level/L04-q03-before-A": {
     "in": "4edd7350f485",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
@@ -2162,9 +2044,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2181,7 +2063,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q04-before-B": {
+  "level/L04-q03-before-B": {
     "in": "0f19b995af74",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
@@ -2217,9 +2099,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2236,7 +2118,7 @@
     },
     "mode": "basic"
   },
-  "level/L04-q04-lvonly-A": {
+  "level/L04-q03-lvonly-A": {
     "in": "4edd7350f485",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
@@ -2276,9 +2158,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2295,7 +2177,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q04-lvonly-B": {
+  "level/L04-q03-lvonly-B": {
     "in": "0f19b995af74",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
@@ -2331,9 +2213,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2350,7 +2232,7 @@
     },
     "mode": "basic"
   },
-  "level/L04-q04-none-A": {
+  "level/L04-q03-none-A": {
     "in": "0c6eab04b54b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -2391,9 +2273,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2410,7 +2292,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q04-none-B": {
+  "level/L04-q03-none-B": {
     "in": "8054cc5f7789",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -2447,9 +2329,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2466,7 +2348,7 @@
     },
     "mode": "basic"
   },
-  "level/L04-q04-rnd1p50-A": {
+  "level/L04-q03-rnd1p50-A": {
     "in": "b68a950e5b7a",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
@@ -2506,9 +2388,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -2525,7 +2407,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q04-rnd1p50-B": {
+  "level/L04-q03-rnd1p50-B": {
     "in": "ef1aed6c9d74",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
@@ -2561,9 +2443,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -2580,7 +2462,7 @@
     },
     "mode": "basic"
   },
-  "level/L04-q04-rnd2p85-A": {
+  "level/L04-q03-rnd2p85-A": {
     "in": "4a2eb5711a76",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
@@ -2620,9 +2502,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -2639,7 +2521,7 @@
     },
     "mode": "advanced"
   },
-  "level/L04-q04-rnd2p85-B": {
+  "level/L04-q03-rnd2p85-B": {
     "in": "01df8dd7cbd5",
     "nu": [
       {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
@@ -2675,9 +2557,9 @@
       "prev": "Shadow Forest Lv 3",
       "quest": "Isolated Lake",
       "lv": "Lv 4",
-      "next": "The Being Beneath the Lake Lv 5",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 18 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -2694,7 +2576,7 @@
     },
     "mode": "basic"
   },
-  "level/L04-q05-before-A": {
+  "level/L04-q04-before-A": {
     "in": "3cce2e3b2dcf",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Needs Lv 5: you're 4. Level up first.","c":""},
@@ -2734,9 +2616,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2795,7 +2677,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2812,7 +2694,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q02-lvonly-A": {
+  "level/L05-q01-lvonly-A": {
     "in": "abfa77940854",
     "nu": [
       {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
@@ -2854,7 +2736,7 @@
       "lv": "Lv 2",
       "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2871,7 +2753,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-before-A": {
+  "level/L05-q04-before-A": {
     "in": "e425bbd69ad6",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
@@ -2911,9 +2793,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2930,7 +2812,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-before-B": {
+  "level/L05-q04-before-B": {
     "in": "2d891080e8bb",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
@@ -2966,9 +2848,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2985,7 +2867,7 @@
     },
     "mode": "basic"
   },
-  "level/L05-q05-lvonly-A": {
+  "level/L05-q04-lvonly-A": {
     "in": "e425bbd69ad6",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
@@ -3025,9 +2907,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3044,7 +2926,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-lvonly-B": {
+  "level/L05-q04-lvonly-B": {
     "in": "2d891080e8bb",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
@@ -3080,9 +2962,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3099,7 +2981,7 @@
     },
     "mode": "basic"
   },
-  "level/L05-q05-none-A": {
+  "level/L05-q04-none-A": {
     "in": "d6d432808835",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -3142,9 +3024,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3161,7 +3043,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-none-B": {
+  "level/L05-q04-none-B": {
     "in": "9eb23ecc3dc8",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -3198,9 +3080,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3217,7 +3099,7 @@
     },
     "mode": "basic"
   },
-  "level/L05-q05-rnd1p50-A": {
+  "level/L05-q04-rnd1p50-A": {
     "in": "2f8aa423ffa6",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
@@ -3257,9 +3139,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -3276,7 +3158,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-rnd1p50-B": {
+  "level/L05-q04-rnd1p50-B": {
     "in": "1d339dc35809",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
@@ -3312,9 +3194,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -3331,7 +3213,7 @@
     },
     "mode": "basic"
   },
-  "level/L05-q05-rnd2p85-A": {
+  "level/L05-q04-rnd2p85-A": {
     "in": "9200a05c4eb5",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
@@ -3371,9 +3253,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -3390,7 +3272,7 @@
     },
     "mode": "advanced"
   },
-  "level/L05-q05-rnd2p85-B": {
+  "level/L05-q04-rnd2p85-B": {
     "in": "3a126343e594",
     "nu": [
       {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
@@ -3426,9 +3308,9 @@
       "prev": "Isolated Lake Lv 4",
       "quest": "The Being Beneath the Lake",
       "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "next": "Spread Your Wings unlocks Titles Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 6 🔓 Titles your next quest · \"Spread Your Wings\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -3445,7 +3327,7 @@
     },
     "mode": "basic"
   },
-  "level/L05-q06-before-A": {
+  "level/L05-q05-before-A": {
     "in": "37e638a1272c",
     "nu": [
       {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 5. Level up first.","c":""},
@@ -3487,7 +3369,7 @@
       "lv": "Lv 6",
       "next": "Signs of a Crash Landing Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 16 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 10 🔓 Pets 7 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3546,7 +3428,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]

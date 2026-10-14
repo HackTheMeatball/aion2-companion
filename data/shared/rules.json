@@ -399,6 +399,12 @@
         },
         {
           "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties"
+        },
+        {
+          "inferred": "Owner-confirmed in game (docs/feedback/2026-10-14-owner.md F4: Quick Slice Lv 10 (+3 from board nodes) = 13 shows slots 1 and 2 usable and slot 3 locked; choices at skill Lv 8 (three), 12 and 16). No screen code assigned yet (DATA-FORMAT-V2 §14.2).",
+          "fields": [
+            "value"
+          ]
         }
       ],
       "status": "verified",
@@ -407,7 +413,8 @@
       ],
       "notes": [
         "options unlock at skill Lv 8 (3 options), 12 (4th), 16 (5th); slots: 1 at 8, 2 at 12, 3 at 20 (gameplay.tips; thegameswiki says 8/12/20 slots are KR player reports; Metabot class page 8/12/20)",
-        "Effective skill level = highest ticked sp:<key>:<L> (1 if none) + the adds of every owned board node for the skill (DATA-FORMAT-V2 §8.2). The v1 \"learn + 18\" gate (bug F3) is not a rule: the 0.2 compiler keeps it internally so the output stays identical; 0.3 replaces it."
+        "Effective skill level = highest ticked sp:<key>:<L> (1 if none) + the adds of every owned board node for the skill (DATA-FORMAT-V2 §8.2). The v1 \"learn + 18\" gate (bug F3) is not a rule: the 0.2 compiler keeps it internally so the output stays identical; 0.3 replaces it.",
+        "Owner-confirmed (F4, 2026-10-14): 3 slots per active skill at effective skill level 8 / 12 / 20; the 5 choices at effective level 8 / 8 / 8 / 12 / 16 (skills[].specialtyChoices[].skillLv). Effective = bought levels + Daevanion nodes for the skill. The app still gates slot 1 on \"learn + 18\" (bug F3); the fix is 0.3 behaviour (owner approval)."
       ],
       "verifiedAt": "2026-10-12"
     },

@@ -536,6 +536,11 @@
       "key": "g45:42",
       "retired": "2026-10-12",
       "note": "E1 position key; its ticks were copied to rq:2202035 (migV5)."
+    },
+    {
+      "key": "Ishalgen",
+      "retired": "2026-10-14",
+      "note": "Story quest name key (state.quest / qsteps): Ishalgen is the starting map, not a story quest (owner screen owner:2026-10-14-unlocks-22). A save whose quest is \"Ishalgen\" reads as \"no quest yet\"; the key is never reused."
     }
   ]
 }
