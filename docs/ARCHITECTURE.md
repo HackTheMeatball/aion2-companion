@@ -58,14 +58,27 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 | `stLv{name: lv}`, `stShards`, `stPick{slot: name}` | stigma levels, shards, the stigma picked per slot |
 | `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
 | `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings |
-| `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1` | one-time flags (see below) |
+| `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `stampV1` | one-time flags (see below) |
+| `schemaVersion`, `savedAt`, `mt` | save shape (absent = 0; `1` since 5c), time of the last saved progress change (ms), per-item change times (character field; see Change times below) |
 
 **Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.4). The save holds view
 settings, one-time flags and one character; the character's fields (`CHAR_FIELDS` in `src/core/state.js`: `checks`,
 `level`, `quest`, `storyEnd`, `qsteps`, `qsub`, `started`, `areaRun`, `rqSnooze`, the stigma, skill-point and board fields,
-`rotSeen`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
+`rotSeen`, `mt`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
 JSON is unchanged; 0.4 changes that one function and the save format. The `core` suite fails on a direct
 `state.<field>` for a character field anywhere in `src/`.
+
+### Change times and `merge()` (0.2 step 5c)
+
+`src/core/sync.js`, spec in docs/DATA-FORMAT-V2.md §13. `mt` mirrors the character's synced fields with `[seconds, value]`
+stamps (`null` = removed). Stamps are not written at each mutation: `storeState()` calls `stampSave()`, which diffs the
+character against `mt` and stamps what changed with the write's time, bumped past the item's previous stamp (per-item
+Lamport bump, so a device with a slow clock still wins with a newer edit), and sets `savedAt`; writes that change only
+view settings leave `savedAt` alone, so a reload stores the same text. Older builds carry `mt` along untouched (they
+save the whole object); the next load in a build with times re-stamps their changes. `merge(local, remote)` (not used by
+the UI yet) keeps the later change per item, ORs one-time flags and keeps the local view settings;
+`lastConfirmedLocation(char)` derives the zone of the newest dated tick of a located item, skipping steps with
+`ascensionQuest` (from `data/shared/asmodian/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; `mig2` tests the load / save / rollback path.
 
 ### Item keys
 
@@ -83,8 +96,8 @@ JSON is unchanged; 0.4 changes that one function and the save format. The `core`
 
 ### Migrations and one-time steps (in load order)
 
-All of them are `migrate(state, hadSave, store)` in `src/core/migrations.js`; the page passes its `storeState` as `store`,
-called exactly where the page wrote the save before (the `core` suite pins the write points).
+All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js`; the page passes its `storeState` as `store`,
+called exactly where the page wrote the save before (the `core` suite pins the write points), and its time in seconds as `now`.
 
 1. Fresh browser (no save): the seed flags are set without running; cleared milestones start folded.
 2. `migV5` (E1): `MIG_V5` copies `checks` / `started` / `areaRun` from the 105 old position keys to `rq:` / `sd:` keys.
@@ -92,7 +105,10 @@ called exactly where the page wrote the save before (the `core` suite pins the w
 4. Equipped stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
 5. `eputSync1` (E4): equipped slots get their "Put X on E" step ticked.
 6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more.
-7. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done; the
+7. `stampV1` (0.2 step 5c): `schemaVersion: 1` and `mt`, every value the save holds stamped with time 0 (or the save's
+   `savedAt`: an imported export, N1). Writes nothing itself; the stamps go out with the next write. On later loads it
+   re-stamps, with `now`, whatever a build without change times changed (rollback re-stamp).
+8. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done; the
    migrations above run on the reload.
 
 Adding a migration: give it a new flag, make it idempotent and additive, run it after the existing ones in `migrate()`,
@@ -217,7 +233,7 @@ modules and other core modules; derived facts are computed, never stored as tick
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
 | `schema` | data format v2 in Node, no browser, < 3 s (`node tests/schema.mjs`, `npm run test:data`): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), 15 broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` current |
-| `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only), state, migrations (fixtures, additive, idempotent, write points), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node) |
+| `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only), state, migrations (fixtures, additive, idempotent, write points), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node), sync (change times, `merge()` algebra over generated saves, N1 import, last confirmed location) |
 | `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour; on touch at 390 px (since 0.1.9) fields ≥ 16 px, primary buttons ≥ 44 px, text ≥ 11 px mono / 12 px; no story connector above the first row; no sideways scroll at 260 px |
 
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
