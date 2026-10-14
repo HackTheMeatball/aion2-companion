@@ -26,7 +26,7 @@ through esbuild; the output is not minified.
   `hadSave`) and the suites (`state`, `update()`, `RQ_BY`, …) use them. Until P3 gives modules real imports and
   exports, keep `treeShaking: false` and keep each entry free of `export` (the build fails if an import/export
   statement survives bundling). A new module's top-level name must not collide with another module's: esbuild would
-  rename one of them silently.
+  rename one of them silently (since P2 the build fails on that, for every declaration that starts a line).
 - **Static text checks read the built page**, which esbuild reprints: match code by value, not by its source spelling
   (`const` vs `var`, quotes, comments). e2 and e4 #11 were adapted that way in P1.
 - **Comparing old and new renders:** the page is not deterministic run to run on its own: the icon sizer
@@ -38,4 +38,16 @@ through esbuild; the output is not minified.
 - **Concurrent heavy jobs** (a second Playwright run, other agents' audits) make the `update() < 15 ms` check in
   `regress` fail; `origin/main` fails it too under load. Run timing-sensitive suites alone.
 - Branches that edit the old one-file `src/index.html` must be ported after P1 merges: CSS lines go to
-  `src/styles/app.css`, script lines to `src/main.js`, generated data via `npm run gen`.
+  `src/styles/app.css`, script lines to `src/main.js` (data tables: `src/data/*.js` since P2), generated data via
+  `npm run gen`.
+- **0.2 P2 data out of code.** Data modules (`src/data/*.js`) are evaluated before `main.js`, so they may import only
+  generated data, other data modules and `markup.js` (pure text helpers), never read `state` or the DOM, and never
+  import from `main.js` (it isn't a module others can import from until P3). Moving a table = move its statements and
+  any statement that finishes building it (`SP_EXTRA` append, `Object.assign(QUEST_STEPS, …)`), add `export`, import
+  where used. Proof used: the bundle's top-level names are the same set and its top-level statements the same
+  multiset (each normalised with esbuild `--minify-whitespace`), only reordered; markup and CSS byte-identical.
+- **Generated data:** the build makes the module `src/data/generated.js` from the committed `tools/gen/gen-block.js`
+  (esbuild plugin); `npm run gen:check` (CI, test job) fails if `gen.py` no longer reproduces the committed outputs.
+  The generator stays Python until P4's Node generator; then the build can run it and gen-block.js can stop being
+  committed.
+- Render templates (`cardHTML`, the Next up view objects) are code, not data; leave them in `main.js` for P3.

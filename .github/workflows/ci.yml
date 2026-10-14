@@ -28,6 +28,10 @@ jobs:
       - run: npm ci
       - name: CHANGELOG has an entry for this version
         run: node scripts/release-notes.mjs > /dev/null
+      # The generated data block (tools/gen/gen-block.js, built into the page) must match data/*.json: re-running the
+      # generator (Python, stdlib only) has to reproduce the committed files byte for byte.
+      - name: Generated data is current
+        run: npm run gen:check
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - name: Upload test output (logs, results.json, screenshots)

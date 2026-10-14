@@ -11,7 +11,6 @@ module.exports = {
   V287: BASE + '/__baselines/v287.html',          /* tests/baselines/v287.html: pre-E2 baseline for e2-migtest */
   PAGE: path.join(ROOT, 'dist', 'index.html'),    /* built page source, for static text checks */
   GEN_BLOCK: path.join(ROOT, 'tools', 'gen', 'gen-block.js'),
-  GEN_MODULE: path.join(ROOT, 'src', 'data', 'generated.js'), /* the block as an ES module (tools/gen/apply.py) */
   FIX: path.join(ROOT, 'tests', 'fixtures'),
   OUT: path.join(ROOT, 'tests', 'out'),           /* results, logs, screenshots (git-ignored) */
 };

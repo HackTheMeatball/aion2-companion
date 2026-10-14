@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 /* Build both deliverables from src/ (dev dependency: esbuild; Node 22).
 
-   Source layout (0.2 P1):
+   Source layout (0.2 P1, P2):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
      src/styles/*.css          the styles: fonts.css (the @font-face rules), app.css and brand.css; inlined verbatim
-     src/main.js               the app script (ES module), imports src/data/generated.js (written by `npm run gen`)
+     src/main.js               the app script (ES module entry)
+     src/data/*.js             the hand-written data tables (and the text helpers they use), imported by main.js
+     src/data/generated.js     not a file: the build makes this module from tools/gen/gen-block.js (`npm run gen`
+                               writes that from data/*.json), adding an export list of its constants
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
@@ -30,7 +33,7 @@ import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildSync } from 'esbuild';
+import { build } from 'esbuild';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...p) => join(ROOT, ...p);
@@ -47,16 +50,52 @@ const shell = readFileSync(P('src/index.html'), 'utf8');
    through it; it can be once the styles are split into @import partials. */
 const STYLE_TAG = /^<link rel="stylesheet" href="(styles\/[\w.-]+\.css)">\n/gm;
 const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
-const bundles = {};
-const bundle = entry => bundles[entry] ??= (() => {
-  const r = buildSync({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
-    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent' });
+
+/* the generated data module (0.2 P2): built from tools/gen/gen-block.js, never stored in src/ (a stale copy there would
+   shadow nothing but mislead, so the build refuses it). Imported as "./generated.js" from src/data or
+   "./data/generated.js" from src/main.js. */
+const GEN_BLOCK = P('tools/gen/gen-block.js');
+if (existsSync(P('src/data/generated.js'))) die('src/data/generated.js exists: the build makes that module from tools/gen/gen-block.js; delete the file');
+const genModule = () => {
+  const block = readFileSync(GEN_BLOCK, 'utf8').replace(/\n+$/, '');
+  if (!block.startsWith('/* E2-GEN START') || !block.endsWith('/* E2-GEN END */')) die('tools/gen/gen-block.js lacks the E2-GEN markers');
+  const names = [...block.matchAll(/^const (\w+) =/gm)].map(m => m[1]);
+  if (!names.length) die('tools/gen/gen-block.js defines no constants');
+  return `${block}\nexport { ${names.join(', ')} };\n`;
+};
+const generatedData = {
+  name: 'generated-data',
+  setup(b) {
+    b.onResolve({ filter: /^\.\.?\/(data\/)?generated\.js$/ }, a => {
+      if (join(a.resolveDir, a.path) !== P('src/data/generated.js')) return undefined;
+      return { path: 'tools/gen/gen-block.js', namespace: 'generated' };
+    });
+    b.onLoad({ filter: /.*/, namespace: 'generated' }, () => ({ contents: genModule(), loader: 'js', resolveDir: P('src/data'), watchFiles: [GEN_BLOCK] }));
+  },
+};
+const bundleOne = async entry => {
+  const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
+    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: [generatedData] })
+    .catch(e => die(`src/${entry}: ${e.errors ? e.errors.map(x => x.text + (x.location ? ` (${x.location.file}:${x.location.line})` : '')).join('; ') : e.message}`));
   for (const w of r.warnings) console.warn(`build: esbuild warning in src/${entry}: ${w.text}` + (w.location ? ` (${w.location.file}:${w.location.line})` : ''));
   const js = r.outputFiles[0].text;
   if (/^\s*(import|export)\b/m.test(js)) die(`src/${entry}: the bundle still has an import/export statement (it is inlined as a classic script)`);
   if (/<\/script/i.test(js)) die(`src/${entry}: the bundle contains "</script"`);
   return js;
-})();
+};
+/* one global namespace until P3: esbuild would silently rename one of two same-named top-level declarations in different
+   modules, breaking the globals the page, site.js and the tests use. Checks every declaration that starts a line
+   (the first name of a multi-name declaration). */
+{
+  const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map();
+  for (const f of ['src/main.js', ...readdirSync(P('src/data')).filter(n => n.endsWith('.js')).map(n => 'src/data/' + n)])
+    for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
+      if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);
+      seen.set(m[1], f);
+    }
+}
+const bundles = Object.fromEntries(await Promise.all([...new Set([...shell.matchAll(SCRIPT_TAG)].map(m => m[1]))].map(async e => [e, await bundleOne(e)])));
+const bundle = entry => bundles[entry];
 const inline = html => html
   .replace(STYLE_TAG, (_, f) => { const css = readFileSync(P('src', f), 'utf8'); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); return `<style>\n${css}</style>\n`; })
   .replace(SCRIPT_TAG, (_, f) => `<script>\n${bundle(f)}</script>\n`);
