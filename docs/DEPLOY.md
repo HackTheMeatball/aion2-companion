@@ -22,7 +22,8 @@ results. Move to a newer image on purpose, in its own commit, with a green run.
    (`node scripts/release-notes.mjs`).
 3. After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (title "X.Y.Z — summary", notes =
    that CHANGELOG section, marked latest). Older CHANGELOG versions without a tag are backfilled at the commit that first set them in
-   `package.json`. Don't create tags or releases by hand.
+   `package.json`. Releases that already exist get their title and notes updated whenever their CHANGELOG section
+   changes. Don't create or edit tags or releases by hand.
 
 ### One-time setup (repository settings)
 
