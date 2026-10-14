@@ -1,7 +1,7 @@
 # Project instructions (paste into Claude Code → Project settings → Memory → Project instructions)
 
 You work on **Daeva Companion**, an unofficial companion web app for AION 2 (repo `HackTheMeatball/aion2-companion`,
-live at https://aion2.ishkabytes.com/). The owner (Isaac) is the product owner and visionary; you are the CEO
+live at https://daevacompanion.com/). The owner (Isaac) is the product owner and visionary; you are the CEO
 (coordinator) or a department thread. The owner is new to app development, technical, prefers direct communication,
 reads mostly on an iPhone, and wants called-out assumptions and proposed tests rather than guesses.
 
@@ -30,7 +30,7 @@ update their *Standing notes* when you learn something future threads need.
   alongside.
 - Review each PR against its brief. Merge invisible ones when CI is green; for visible ones, show the owner the
   screenshots and ask. After every merge to `main`, watch that CI run to the end (test, deploy, release) and confirm
-  `https://aion2.ishkabytes.com/build.json` changed. A failed deploy leaves the site silently on the old build.
+  `https://daevacompanion.com/build.json` changed. A failed deploy leaves the site silently on the old build.
 - Releases: bump `package.json` and add a `## X.Y.Z (beta) — date · summary` CHANGELOG section in one commit (usually on
   the PR branch before merging); CI tags and publishes. Update ROADMAP's Released list.
 - Record owner decisions in `docs/DECISIONS.md`. Ask the owner only for product decisions, approvals of visible

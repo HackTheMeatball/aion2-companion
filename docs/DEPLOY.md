@@ -2,7 +2,7 @@
 
 Two targets, built from the same source by `npm run build`.
 
-## GitHub Pages (aion2.ishkabytes.com)
+## GitHub Pages (daevacompanion.com)
 
 Every push to `main` runs `.github/workflows/ci.yml`: the **test** job (`npm ci`, Playwright's Chromium, `npm test`),
 then, only if it passes, the **deploy** job builds `dist/` and publishes it with `actions/configure-pages`,
@@ -26,17 +26,19 @@ results. Move to a newer image on purpose, in its own commit, with a green run.
 ### One-time setup (repository settings)
 
 1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
-2. **Custom domain:** `aion2.ishkabytes.com` → Save. (`public/CNAME` carries the same name; with Actions deploys the
-   setting in the UI is what counts.) DNS already has `CNAME aion2 → hackthemeatball.github.io`.
+2. **Custom domain:** `daevacompanion.com` → Save. (`public/CNAME` carries the same name; with Actions deploys the
+   setting in the UI is what counts.) DNS (Cloudflare, grey cloud / DNS only): `CNAME @ → hackthemeatball.github.io` and `CNAME www → hackthemeatball.github.io`
+   for daevacompanion.com. Since 2026-10-14 the old address aion2.ishkabytes.com and daevapath.com forward here with
+   Cloudflare Redirect Rules (proxied records).
 3. Wait for the DNS check to pass, then tick **Enforce HTTPS** (the certificate can take a few minutes to an hour).
-4. Optional, recommended: verify `ishkabytes.com` under **Settings → Pages → Verified domains** (account settings) so
+4. Optional, recommended: verify `daevacompanion.com` under **Settings → Pages → Verified domains** (account settings) so
    nobody else can claim the subdomain.
 5. The `github-pages` environment is created by the first deploy. If it has deployment-branch rules, allow `main`.
 
 ### Checking a deploy
 
 - The run's **deploy** job links the live URL.
-- `https://aion2.ishkabytes.com/build.json` shows the build id; the service worker cache is named `aion2-route-<id>`.
+- `https://daevacompanion.com/build.json` shows the build id; the service worker cache is named `aion2-route-<id>`.
 - Returning visitors get the new page on their next load (network-first); the service worker swaps the icon cache at
   the same time.
 

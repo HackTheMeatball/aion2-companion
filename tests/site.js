@@ -54,7 +54,7 @@ const checkReport = (label, m, want) => {
       brand: !!document.querySelector('header.top .brand-name[role=img][aria-label="Daeva Companion"]') }));
     ok('head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang',
       head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Daeva Companion · Asmodian Assassin' && /width=device-width/.test(head.viewport) && head.desc &&
-      head.canonical === 'https://aion2.ishkabytes.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
+      head.canonical === 'https://daevacompanion.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
     ok('brand: apple-touch-icon link, Daeva Companion lockup in the header', /icons\/apple-touch-icon\.png$/.test(head.touch) && head.brand, head);
     const foot = await p.evaluate(() => { const f = document.querySelector('.fanline'), links = f ? [...f.querySelectorAll('a')] : [];
       return { text: f ? f.innerText : '', links: links.map(a => [a.textContent, a.getAttribute('href'), a.getAttribute('rel')]) }; });
@@ -111,7 +111,7 @@ const checkReport = (label, m, want) => {
     const r404 = await p.goto(CFG.BASE + '/no-such-page');
     ok('404: status 404 with the styled page and a link home', r404.status() === 404 && /Off the route/.test(await p.innerText('h1')) && await p.getAttribute('a.btn', 'href') === '/');
     const robots = await (await p.request.get(CFG.BASE + '/robots.txt')).text(), cname = await (await p.request.get(CFG.BASE + '/CNAME')).text();
-    ok('robots.txt allows all + sitemap; CNAME is aion2.ishkabytes.com', /Allow: \//.test(robots) && /Sitemap: https:\/\/aion2\.ishkabytes\.com\/sitemap\.xml/.test(robots) && cname.trim() === 'aion2.ishkabytes.com', { robots, cname });
+    ok('robots.txt allows all + sitemap; CNAME is daevacompanion.com', /Allow: \//.test(robots) && /Sitemap: https:\/\/daevacompanion\.com\/sitemap\.xml/.test(robots) && cname.trim() === 'daevacompanion.com', { robots, cname });
     await ctx.close();
   }
 
