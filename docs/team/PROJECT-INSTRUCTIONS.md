@@ -31,7 +31,7 @@ update their *Standing notes* when you learn something future threads need.
 - Review each PR against its brief. Merge invisible ones when CI is green; for visible ones, show the owner the
   screenshots and ask. After every merge to `main`, watch that CI run to the end (test, deploy, release) and confirm
   `https://daevacompanion.com/build.json` changed. A failed deploy leaves the site silently on the old build.
-- Releases: bump `package.json` and add a `## X.Y.Z (beta) — date · summary` CHANGELOG section in one commit (usually on
+- Releases: bump `package.json` and add a CHANGELOG section in the house format (qa-release.md, "Changelog format") in one commit (usually on
   the PR branch before merging); CI tags and publishes. Update ROADMAP's Released list.
 - Record owner decisions in `docs/DECISIONS.md`. Ask the owner only for product decisions, approvals of visible
   changes, and in-game checks; batch questions; offer a recommendation with each.

@@ -119,7 +119,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - name: Tag and publish every CHANGELOG version that has no release yet
+      - name: Tag and publish new CHANGELOG versions; keep existing release notes in sync
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -127,7 +127,21 @@ jobs:
           cur="$(node -p 'require("./package.json").version')"
           for ver in $(node scripts/release-notes.mjs --list); do
             tag="v$ver"
-            if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then continue; fi
+            if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+              # Released already: keep its title and notes in sync with CHANGELOG.md (edits only when they differ).
+              node scripts/release-notes.mjs --version "$ver" > notes.md
+              title="$(node scripts/release-notes.mjs --version "$ver" --title)"
+              have_title="$(gh release view "$tag" --json name -q .name 2>/dev/null || true)"
+              have_body="$(gh release view "$tag" --json body -q .body 2>/dev/null || true)"
+              if [ "$have_title" != "$title" ] || [ "$(printf '%s' "$have_body" | tr -d '\r')" != "$(cat notes.md)" ]; then
+                if out="$(gh release edit "$tag" --title "$title" --notes-file notes.md 2>&1)"; then
+                  echo "::notice title=Updated $tag notes::$title"
+                else
+                  echo "::warning title=Could not update $tag notes::$(echo "$out" | tr '\n' ' ')"
+                fi
+              fi
+              continue
+            fi
             if [ "$ver" = "$cur" ]; then sha="$GITHUB_SHA"; else
               sha="$(git log --reverse --format=%H -G"\"version\": \"$ver\"" -- package.json | head -1)"
             fi
