@@ -3,6 +3,12 @@
 Decisions the owner made, so every department works from the same answers. Newest first. Product calls belong to the
 owner; the CEO records them here and in the department charters they affect.
 
+## 2026-10-14
+
+| # | Topic | Decision |
+|---|---|---|
+| D1c | Address | The owner bought daevacompanion.com and daevapath.com (Cloudflare). The app moves to **https://daevacompanion.com/**; daevapath.com and aion2.ishkabytes.com forward there. Saved progress is per address: users Export on the old address and Import on the new one. |
+
 ## 2026-10-13
 
 | # | Topic | Decision |

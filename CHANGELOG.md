@@ -3,6 +3,14 @@
 Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
 used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
 
+## 0.1.8 (beta) — 2026-10-14 · new address: daevacompanion.com
+
+- Daeva Companion now lives at **https://daevacompanion.com/**. daevapath.com and the old aion2.ishkabytes.com forward
+  there.
+- **Your progress doesn't move by itself** (browsers keep saved data per address): on the old address use *Export
+  progress*, then *Import progress* here.
+- No other change.
+
 ## 0.1.7 (beta) — 2026-10-13 · Daeva Companion
 
 - New name: **Daeva Companion**, an unofficial companion for AION 2 (the Asmodian Assassin leveling guide is its first

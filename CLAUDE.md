@@ -2,7 +2,7 @@
 
 Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
 `main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
-(aion2.ishkabytes.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
+(daevacompanion.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.
 
 ## Never break saved progress

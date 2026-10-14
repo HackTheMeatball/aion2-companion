@@ -1,13 +1,13 @@
 # Privacy
 
-This covers Daeva Companion, the unofficial AION 2 companion at aion2.ishkabytes.com (and its earlier claude.ai version).
+This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.com (and its earlier claude.ai version).
 
 **Short version:** no accounts, no analytics, no tracking, no cookies. Your progress stays in your browser.
 
 ## What is stored, and where
 
 - **Your progress** (level, ticked quests and steps, stigma picks, settings) is saved in your browser's `localStorage`
-  under the key `aion2-assassin-route-v4` on `aion2.ishkabytes.com`. It never leaves your device. When you import a
+  under the key `aion2-assassin-route-v4` on `daevacompanion.com`. It never leaves your device. When you import a
   file, the progress it replaces is kept under `aion2-assassin-route-v4:before-import`.
 - **Keeping your progress:** when you come back with saved progress, the site asks your browser to keep its storage
   (`navigator.storage.persist()`), so it isn't cleared automatically (Safari can clear site data after 7 days without a

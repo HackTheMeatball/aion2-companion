@@ -16,7 +16,7 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 
 | Build | Where | Differences |
 |---|---|---|
-| `dist/` | GitHub Pages, <https://aion2.ishkabytes.com/> | full `<head>`, icons at `assets/icons/*.png`, manifest, service worker |
+| `dist/` | GitHub Pages, <https://daevacompanion.com/> | full `<head>`, icons at `assets/icons/*.png`, manifest, service worker |
 | `dist-artifact/index.html` | claude.ai artifact (single file) | no document skeleton (claude.ai adds one), icons at `/_blob/<id>`, no SW / manifest |
 
 Branding (Daeva Companion) lives in the shared shell (title, header lockup as inline SVG, footer), so the frozen claude.ai

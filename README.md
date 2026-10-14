@@ -6,7 +6,7 @@ focused. Data is cross-checked: two independent sources, game-database values or
 weaker is labelled *single source*, *inferred* or *disputed* in the app's Confidence card. Game data changes with patches,
 so check in game. Progress is ticked by hand.
 
-**Live:** <https://aion2.ishkabytes.com/>
+**Live:** <https://daevacompanion.com/>
 
 Unofficial and fan-made: not affiliated with or endorsed by NCSoft (NC Corporation) or NC America. AION and AION 2 are
 trademarks of NC Corporation; game names and images belong to NC. Most game data comes from
@@ -33,7 +33,7 @@ The guide was first published as a claude.ai artifact. Browsers keep each site's
 carry over by themselves:
 
 1. Open the claude.ai version and click **Export progress** (footer). Allow the download when asked.
-2. Open <https://aion2.ishkabytes.com/> and click **Import progress**, pick that file, then **Replace**.
+2. Open <https://daevacompanion.com/> and click **Import progress**, pick that file, then **Replace**.
 
 Both versions use the same save format, so this works in either direction.
 

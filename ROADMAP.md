@@ -40,6 +40,7 @@ A whole-app UX review every 2–3 minor releases catches drift as features pile 
 - **0.1.5** — persistent storage request, save-failure warning, self-hosted fonts.
 - **0.1.6** — accessibility fixes with no visible change (screen-reader names, focus, reduced motion, touch), `a11y` suite.
 - **0.1.7** — rebrand to Daeva Companion (name, mark, icons; palette unchanged).
+- **0.1.8** — new address: daevacompanion.com.
 
 ## Plan
 
@@ -54,7 +55,7 @@ From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
 
 - The invisible accessibility batch shipped as 0.1.6. Left for the visible pass: hit areas on bordered pills and the
   Confidence / Sources summaries.
-- **0.1.8** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
+- **0.1.9** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
   layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
 - Save safety (visible, design pass first): a "last backup N days ago" line with an export nudge, and an "Add to Home
   Screen" hint on iPhone (home-screen apps keep their data much longer).
