@@ -147,9 +147,10 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
 ## Unscheduled ideas
 
 - **Colour sprint** (owner wants its own sprint): game-inspired palette, faction and class colours, quest-type and
-  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. Before it: the
-  owner answers the open colour questions, then one in-game check session (batched with the data checks) using a
-  one-screen checklist. Built on the design tokens.
+  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. Not before the
+  foundations (0.2–0.4) are solid; current colours are placeholders until then. When it comes up, the CEO stops and
+  goes through the research with the owner first; then the owner answers the open colour questions and does one
+  in-game check session (batched with the data checks) using a one-screen checklist. Built on the design tokens.
 
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).

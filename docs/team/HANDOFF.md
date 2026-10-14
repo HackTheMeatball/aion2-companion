@@ -7,7 +7,7 @@ when the state changes; keep it short.
 - **v0.1.8** live at https://daevacompanion.com/ (rebrand in 0.1.7, new address in 0.1.8), plus 0.2 steps 1–3 with
   identical output. Releases v0.1.0–v0.1.8 exist on GitHub. daevapath.com and aion2.ishkabytes.com redirect (301,
   Cloudflare, paths kept).
-- Repository renamed to `HackTheMeatball/daeva-companion` (the old name redirects). PR #15 updates the links.
+- Repository renamed to `HackTheMeatball/daeva-companion` (the old name redirects).
 - The claude.ai artifact is **frozen** with a "moved" banner (Export still works). The owner tracks progress on the site.
 - CI: test → deploy (GitHub Pages) → release, on every push to `main`. PRs run tests only. `main` is not protected yet.
 
