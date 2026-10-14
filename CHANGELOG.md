@@ -140,7 +140,7 @@ Licensing and unofficial-guide wording.
 - Footer: NCSoft disclaimer, a "check in game" note, copyright and a Privacy link.
 - Sources card says "every sourced value"; the "verified" badge explains itself.
 - PRIVACY.md: note on the claude.ai build and a Changes section.
-- ROADMAP.md re-sequenced: foundations (0.2) before correctness (0.3), characters (0.4), new players, then classes.
+- ROADMAP.md re-sequenced: foundations (0.2) before correctness (0.3), characters (0.4), new players (0.5), then classes.
 
 ### Saved progress
 - Unaffected.

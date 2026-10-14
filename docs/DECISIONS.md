@@ -10,7 +10,7 @@ owner; the CEO records them here and in the department charters they affect.
 | — | Merging | Until branch protection with a required `ci-ok` check is on, nothing merges without the owner's OK. After that the CEO merges invisible changes when green; visible changes always wait for the owner. |
 | — | Work plan | Department plan adopted (ROADMAP, HANDOFF "Now and next"); wave 1 runs six parallel sessions. |
 | D8 | Next class | Rule: a class the owner or a tester will level to 45 first, then best data coverage (classes-and-gaps report), then most shared with Assassin (default Gladiator). Picked when the report lands. |
-| — | Changelog | Structured, neutral changelog in a fixed section order (qa-release.md, "Changelog format"), checked by `scripts/release-notes.mjs`; 0.1.0–0.1.8 rewritten and their GitHub Releases updated to match. QA & Release owns it. |
+| — | Changelog | Structured, neutral changelog in a fixed section order (qa-release.md, "Changelog format"), checked by `scripts/release-notes.mjs`; 0.1.0–0.1.8 rewritten; their published GitHub Releases are edited to match after merge (CI only creates releases). QA & Release owns it. |
 | — | Colours | Not now: current colours are placeholders while the foundations are built. Before any colour work, the CEO goes through the research with the owner. |
 | D1c | Address | The owner bought daevacompanion.com and daevapath.com (Cloudflare). The app moves to **https://daevacompanion.com/**; daevapath.com and aion2.ishkabytes.com forward there. Saved progress is per address: users Export on the old address and Import on the new one. |
 
