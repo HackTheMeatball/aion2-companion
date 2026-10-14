@@ -42,7 +42,9 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 - Metabot is the main source: credit with plain dofollow links to the page the data came from. thegameswiki is
   CC BY-NC-SA: take facts only, never its wording, into the app; quotes in `claims.json` stay short and credited. Don't use
   Game8. No packet sniffing, memory reading or screenshot parsing (ToS risk; the user doesn't want it).
-- No new game art (icons, screenshots, maps, logos) without the user's OK; record each icon's source in docs/ISSUES.md.
+- No new game art (screenshots, maps, logos, map tiles) without the user's OK. Standing OK (owner, 2026-10-14): skill,
+  stigma and item icons may be added from approved sources (Metabot first) without asking, each with its source page,
+  file URL and date recorded in docs/ISSUES.md; a missing icon with no approved source is listed for the owner.
 
 ## Licensing
 
