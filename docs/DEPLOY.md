@@ -16,11 +16,11 @@ results. Move to a newer image on purpose, in its own commit, with a green run.
 ## Releases
 
 1. In one commit: set `version` in `package.json` (`npm version X.Y.Z --no-git-tag-version`) and add a
-   `## X.Y.Z (beta) — YYYY-MM-DD · summary` section at the top of CHANGELOG.md.
-2. Push to `main`. The test job fails early if the version has no CHANGELOG section
+   section at the top of CHANGELOG.md in the house format (docs/team/qa-release.md, "Changelog format").
+2. Push to `main`. The test job fails early if the version has no CHANGELOG section or any section breaks the format
    (`node scripts/release-notes.mjs`).
-3. After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (notes = that CHANGELOG section,
-   marked latest). Older CHANGELOG versions without a tag are backfilled at the commit that first set them in
+3. After the deploy, the release job creates tag `vX.Y.Z` and the GitHub Release (title "X.Y.Z — summary", notes =
+   that CHANGELOG section, marked latest). Older CHANGELOG versions without a tag are backfilled at the commit that first set them in
    `package.json`. Don't create tags or releases by hand.
 
 ### One-time setup (repository settings)

@@ -1,103 +1,186 @@
 # Changelog
 
-Versions before 0.1.0 are the internal build numbers of the single-file claude.ai artifact (`vNNN`). Saved progress has
-used the same `localStorage` key, `aion2-assassin-route-v4`, throughout; every version below loads every earlier save.
+All notable changes to Daeva Companion. Versions follow [semantic versioning](https://semver.org/); 0.x releases are
+beta. Each release lists only the sections that apply, in this order: Added, Changed, Fixed, Data, Accessibility,
+Removed, Action required, Known issues, Saved progress. The format is checked by `scripts/release-notes.mjs`.
 
-## 0.1.8 (beta) — 2026-10-14 · new address: daevacompanion.com
+Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, since before 0.1.0; every version below
+loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
+artifact (`vNNN`) and are kept in their original form.
 
-- Daeva Companion now lives at **https://daevacompanion.com/**. daevapath.com and the old aion2.ishkabytes.com forward
-  there.
-- **Your progress doesn't move by itself** (browsers keep saved data per address): on the old address use *Export
-  progress*, then *Import progress* here.
-- No other change.
+## 0.1.8 — 2026-10-14
 
-## 0.1.7 (beta) — 2026-10-13 · Daeva Companion
+New address: daevacompanion.com.
 
-- New name: **Daeva Companion**, an unofficial companion for AION 2 (the Asmodian Assassin leveling guide is its first
-  part). New compass-and-feather mark in the header, new favicon and home-screen icons (separate maskable icons and an
-  iPhone icon), new name in the tab title, share previews, installed-app name ("Daeva"), footer and 404 page.
-- The page's colours are unchanged; a game-inspired palette is researched for a later release.
-- Same address, same saved progress: nothing to do.
+### Changed
+- The app is now hosted at https://daevacompanion.com/.
+- daevapath.com and aion2.ishkabytes.com redirect to the new address (HTTP 301; paths and query strings are kept).
 
-## 0.1.6 (beta) — 2026-10-13 · accessibility, no visible change
+### Action required
+- Browsers store progress per address, so progress saved on aion2.ishkabytes.com does not appear on the new address
+  automatically. On the old address, use *Export progress*; on the new address, use *Import progress*.
 
-- Screen readers: the "i" buttons beside Strongholds, Sealed Dungeons and Regional quests have names; the Milestones
-  and Next up headings no longer include their buttons; the filter button says how many filters are on; the two side
-  areas are named; decorative arrows and icons are skipped.
-- Keyboard: Escape closes the "i" popovers; focus rings on the Basic/Advanced switch and the quest field.
-- Reduced motion (system setting): no pulses or scrolling animations; Level up shows its gains in the toast.
-- Touch: larger tap areas on the small controls, no double-tap zoom delay on buttons, panel heights follow the
-  phone's visible screen.
-- An automated accessibility check (`a11y` suite) now runs with every test run.
-- No change to saved progress.
+### Known issues
+- On phones, Next up appears far down the page, below the Journey and summary cards. A phone layout is planned.
+- Steps that the story implies are complete are hidden from Next up but stay unticked in their milestone when the story
+  position was set by hand. Derived completion is planned for 0.3.
+- 10 regional quests have no prerequisite data and open at their recommended level; *Not in game yet* hides one if the
+  game disagrees.
+- Story gates are not yet confirmed as "quest accepted" or "quest reached" (e.g. Fight Poison with Poison); the
+  *In my game* pill overrides a gate.
+- Pop-out requires Chrome or Edge 116 or later; the button is hidden in other browsers.
 
-## 0.1.5 (beta) — 2026-10-13 · protect saves, self-hosted fonts
+### Saved progress
+- Unaffected.
 
-- On the site, the app asks your browser to keep its storage (persistent storage), so Safari/iOS is less likely to clear
-  your progress after a week without a visit. Asked at most once per browser session; no new saved data.
-- If saving ever fails (private mode, storage full or blocked), a warning appears with an Export button; it disappears
-  after the next successful save. What is saved, and where, is unchanged.
-- Fonts are served from this site instead of Google Fonts, so no request goes to Google. The fonts (SIL Open Font
-  License 1.1) ship with their license texts. The claude.ai build embeds them.
+## 0.1.7 — 2026-10-13
+
+Rebrand to Daeva Companion.
+
+### Changed
+- New name, Daeva Companion: an unofficial companion for AION 2, starting with the Asmodian Assassin leveling guide.
+- New compass-and-feather mark in the header, new favicon and new home-screen icons (separate maskable icons and an
+  iPhone icon).
+- The new name is used in the tab title, share previews, installed-app name ("Daeva"), footer and 404 page.
+- Page colours are unchanged.
+
+### Saved progress
+- Unaffected; same address.
+
+## 0.1.6 — 2026-10-13
+
+Accessibility improvements with no visible change.
+
+### Added
+- Automated accessibility check (`a11y` test suite) on every test run.
+
+### Accessibility
+- Screen readers: the "i" buttons beside Strongholds, Sealed Dungeons and Regional quests have names.
+- Screen readers: the Milestones and Next up headings no longer include their buttons; the filter button announces
+  how many filters are on.
+- Screen readers: the two side areas are named; decorative arrows and icons are skipped.
+- Keyboard: Escape closes the "i" popovers; the Basic/Advanced switch and the quest field show a focus ring.
+- Reduced motion (system setting): pulses and scrolling animations are off; Level up lists its gains in the toast.
+- Touch: larger tap areas on small controls, no double-tap zoom delay on buttons, panel heights follow the visible
+  screen on phones.
+
+### Saved progress
+- Unaffected.
+
+## 0.1.5 — 2026-10-13
+
+Save protection and self-hosted fonts.
+
+### Added
+- The site asks the browser for persistent storage (at most once per browser session), so Safari on iOS is less likely
+  to clear progress after a week without a visit.
+- A warning with an Export button appears if saving fails (private mode, full or blocked storage); it clears after the
+  next successful save.
+
+### Changed
+- Fonts are served from this site instead of Google Fonts; no request goes to Google. The fonts (SIL Open Font License
+  1.1) ship with their license texts; the claude.ai build embeds them.
 - PRIVACY.md and LICENSE updated for the fonts.
-- No change to saved progress.
 
-## 0.1.4 (beta) — 2026-10-13 · version and problem reports in the app
+### Saved progress
+- Unaffected; no new saved data.
 
-- Footer: the app's version, linked to this changelog, and a *Report a problem* link that opens a GitHub issue form
-  prefilled with version, level, current story quest, mode, build and browser — nothing else from your save. You see
-  and can edit the public form before submitting.
+## 0.1.4 — 2026-10-13
+
+App version and problem reports in the footer.
+
+### Added
+- The footer shows the app version, linked to this changelog.
+- *Report a problem* in the footer opens a GitHub issue form prefilled with version, level, current story quest,
+  mode, build and browser, and nothing else from the save. The form is public and editable before submitting.
 - Issue forms for problems, data corrections and ideas, with labels (`bug`, `data`, `feature`, `ux`).
-- The version comes from `package.json` at build time in both builds.
-- No change to saved progress.
 
-## 0.1.3 (beta) — 2026-10-13 · ascension hotfix
+### Changed
+- Both builds take the version from `package.json` at build time.
 
-- Next up no longer offers "The One Who Dreams" before the story reaches "A Daeva Dreaming Anew", or the Lv 45 Hero and
-  Ascension step before "Forgotten Commander" is turned in (game-database prerequisites, aion2.th.gl; claims C36, C37).
-- Story steps you're already past (e.g. "The Being Beneath the Lake", "Urgent Pursuit") are no longer offered in Next
-  up; "The Being Beneath the Lake" now ticks with its story quest.
-- Ascension text: The One Who Dreams needs a full Ascension Gauge; "Dream Crossroad"; "The One Who Hears the Voice";
-  removed the disputed claim that "The One Who Perceives" gives your first wings (C38). Sources card: 291 → 300 links.
-- Tests: new `gates` suite (story-gate sweep over every story position) and the golden master (`golden`, 2,000 generated
-  saves); golden re-recorded for this fix, known Next up gate violations 801 → 0.
-- No change to saved progress: same storage key and item keys, no migration; nothing is ticked automatically.
+### Saved progress
+- Unaffected.
 
-## 0.1.2 (beta) — 2026-10-13 · licensing and wording
+## 0.1.3 — 2026-10-13
 
-- License: code is now PolyForm Strict 1.0.0 (source-available: noncommercial use, no redistribution or modified
-  versions); guide text, data selection, the project's name and branding, and its artwork are all rights reserved.
-  Versions up to 0.1.1 were MIT and keep that license. See LICENSE. Contributions: issues welcome; code only with a
-  written grant.
-- Wording: the guide is described as unofficial everywhere (README, share cards, installed-app name); footer adds the
-  NC disclaimer, a "check in game" note, copyright and a Privacy link; the Sources card says "every sourced value"; the
-  "verified" badge explains itself.
-- PRIVACY.md: claude.ai build note, a Changes section. CLAUDE.md: licensing and source rules. ISSUES.md: icon
-  provenance to record.
-- ROADMAP.md re-sequenced: foundations (0.2) before correctness (0.3), characters (0.4), new players (0.5), then classes.
-- No change to saved progress.
+Ascension fixes: story gates and story steps already passed.
 
-## 0.1.1 (beta) — 2026-10-13 · release automation and CI upkeep
+### Added
+- Test suites: `gates` (story-gate check over every story position) and `golden` (golden master of 2,000 generated
+  saves). Known Next up gate violations: 801 → 0.
 
-- Releases are automatic: after tests and the deploy pass on `main`, CI tags each new version and publishes its GitHub
-  Release from this changelog (`scripts/release-notes.mjs`); CI fails early if a version has no changelog section.
-- CI: GitHub Actions moved to their current major versions (Node 24 runtime); runners pinned to Ubuntu 24.04 ahead of
-  the `ubuntu-latest` image change.
+### Fixed
+- Next up no longer offers "The One Who Dreams" before the story reaches "A Daeva Dreaming Anew" (claim C36).
+- Next up no longer offers the Lv 45 Hero and Ascension step before "Forgotten Commander" is turned in (claim C37).
+- Story steps already passed (e.g. "The Being Beneath the Lake", "Urgent Pursuit") are no longer offered in Next up.
+- "The Being Beneath the Lake" now ticks with its story quest.
+
+### Data
+- Story gates for the two steps above, from game-database prerequisites (aion2.th.gl).
+- Ascension text: The One Who Dreams requires a full Ascension Gauge; corrected names "Dream Crossroad" and "The One Who
+  Hears the Voice".
+- Sources card: 291 → 300 links.
+
+### Removed
+- The disputed claim that "The One Who Perceives" grants the first wings (claim C38).
+
+### Saved progress
+- Unaffected: same storage key and item keys, no migration, nothing ticked automatically.
+
+## 0.1.2 — 2026-10-13
+
+Licensing and unofficial-guide wording.
+
+### Changed
+- License: code is PolyForm Strict 1.0.0 (source-available: noncommercial use, no redistribution or modified versions).
+  Guide text, data selection, the project's name and branding, and its artwork are all rights reserved. Versions up to
+  0.1.1 were MIT and keep that license. See LICENSE.
+- Contributions: issues are welcome; code contributions require a written grant.
+- The guide is described as unofficial everywhere (README, share cards, installed-app name).
+- Footer: NCSoft disclaimer, a "check in game" note, copyright and a Privacy link.
+- Sources card says "every sourced value"; the "verified" badge explains itself.
+- PRIVACY.md: note on the claude.ai build and a Changes section.
+- ROADMAP.md re-sequenced: foundations (0.2) before correctness (0.3), characters (0.4), new players, then classes.
+
+### Saved progress
+- Unaffected.
+
+## 0.1.1 — 2026-10-13
+
+Automatic releases and CI upkeep.
+
+### Added
+- Automatic releases: after tests and the deploy pass on `main`, CI tags each new version and publishes its GitHub
+  Release from this changelog (`scripts/release-notes.mjs`). CI fails early if a version has no changelog section.
 - ROADMAP.md: 1.0 scope (all classes, Asmodian), versioning, how objectives are worked, the 0.1.x and 0.2 plans.
-- No change to the app.
 
-## 0.1.0 (beta) — 2026-10-12 · repository and standalone site
+### Changed
+- GitHub Actions updated to their current major versions (Node 24 runtime); runners pinned to Ubuntu 24.04.
 
-- Moved into this repository; published at <https://aion2.ishkabytes.com/> (GitHub Pages) besides the claude.ai artifact.
-  The visible app is unchanged from v291.
-- Proper document head: charset, viewport, description, canonical URL, Open Graph, theme color, favicon, web app manifest.
-- Installable and offline: service worker (network-first for the page, cached icons; cache versioned per build). Only on
-  the standalone site, never in the claude.ai build.
-- Export progress: a plain file download outside claude.ai; inside claude.ai it still uses the artifact's downloads
-  permission. Import unchanged.
-- Footer line: fan-made / not affiliated with NCSoft, data credits (→ Sources card), Metabot credit link.
-- Build (`scripts/build.mjs`) produces both the site (`dist/`) and the claude.ai single file (`dist-artifact/`, icons as
-  `/_blob/<id>`). The data generator and all test suites run from the repo; CI tests every push and deploys `main`.
+### Saved progress
+- Unaffected; no change to the app.
+
+## 0.1.0 — 2026-10-12
+
+Repository and standalone site.
+
+### Added
+- Published at https://aion2.ishkabytes.com/ (GitHub Pages) alongside the claude.ai artifact. The app is unchanged
+  from v291.
+- Document head: charset, viewport, description, canonical URL, Open Graph, theme colour, favicon, web app manifest.
+- Installable and offline on the standalone site: service worker (network-first for the page, cached icons, cache
+  versioned per build). Never in the claude.ai build.
+- Footer: fan-made / not affiliated with NCSoft, data credits (linked to the Sources card), Metabot credit link.
+- Build (`scripts/build.mjs`) produces the site (`dist/`) and the claude.ai single file (`dist-artifact/`, icons as
+  `/_blob/<id>`). The data generator and all test suites run from the repository; CI tests every push and deploys
+  `main`.
+
+### Changed
+- Export progress downloads a file directly outside claude.ai; inside claude.ai it still uses the artifact's downloads
+  permission. Import is unchanged.
+
+### Saved progress
+- Unaffected.
 
 ## v291 — E4 (QA3 findings) + head fix
 
