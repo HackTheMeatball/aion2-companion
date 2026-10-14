@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/classes.schema.json",
+  "title": "Class and its plan (classes/<class>/class.json)",
+  "description": "DRAFT. One record per class: what it is and which build is its default (M1). Build choices live in builds.json.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "classes"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/class"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    }
+  },
+  "$defs": {
+    "class": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "class",
+        "name",
+        "release",
+        "defaultBuild"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^class:[a-z]+$"
+        },
+        "class": {
+          "$ref": "common.schema.json#/$defs/classId"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "release": {
+          "description": "hidden: data exists but the class picker does not offer it.",
+          "enum": [
+            "released",
+            "hidden"
+          ]
+        },
+        "defaultBuild": {
+          "type": "string",
+          "pattern": "^build:[a-z]+:[a-z0-9-]+$"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

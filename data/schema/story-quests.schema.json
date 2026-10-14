@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/story-quests.schema.json",
+  "title": "Main story quests (shared/<faction>/story-quests.json)",
+  "description": "DRAFT. One record per Hero/Episode quest. Ids are sq:<game id> (M6). Order is the 'next' chain (validated: one start, one end, no cycles). Replaces story.json, story-40-45.json, QUESTS, QUEST_STEPS, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "storyQuests"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/storyQuest"
+      }
+    }
+  },
+  "$defs": {
+    "storyQuest": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "faction",
+        "gameId",
+        "lv",
+        "next",
+        "steps",
+        "giver",
+        "turnin"
+      ],
+      "properties": {
+        "id": {
+          "description": "sq:<game id> (M6). The English name stays the save key.",
+          "type": "string",
+          "pattern": "^sq:[0-9]{5,9}$"
+        },
+        "key": {
+          "description": "Save key = the English quest name (state.quest, state.qsteps, state.qsub, storyEnd). Permanent even if the game renames the quest.",
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "lv": {
+          "description": "Quest level (QUESTS level today).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99
+        },
+        "unlocksAt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "questType": {
+          "enum": [
+            "Hero",
+            "Episode"
+          ]
+        },
+        "chapter": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "next": {
+          "description": "Next story quest id; null only on the last quest of the chain.",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^sq:[0-9]{5,9}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "end": {
+          "description": "Only on the last covered quest: where the data ends (STORY_END).",
+          "type": "object",
+          "required": [
+            "region"
+          ],
+          "properties": {
+            "region": {
+              "type": "string"
+            },
+            "regionFull": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "giver": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "turnin": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/questStep"
+          }
+        },
+        "rewards": {
+          "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "unlocks": {
+          "description": "What turning it in unlocks that the guide tracks (STORY_UNLOCKS) and the milestone that covers it (UNLOCK_GATE).",
+          "type": "object",
+          "required": [
+            "milestone"
+          ],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "milestone": {
+              "$ref": "common.schema.json#/$defs/recordId"
+            }
+          },
+          "additionalProperties": false
+        },
+        "wraps": {
+          "description": "The Ascension quest this quest's objective completes (4 records). Basis for derived Ascension completion.",
+          "type": "string",
+          "pattern": "^asc:[a-z0-9-]+$"
+        },
+        "inCap": {
+          "description": "false for records past the Lv 45 scope (Waiting for the Next Journey): they keep the chain complete but never reach Next up.",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

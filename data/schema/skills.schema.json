@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/skills.schema.json",
+  "title": "Class skills (classes/<class>/skills.json)",
+  "description": "DRAFT. Game facts only (M1). Per-level steps are generated: key 'sp:<key>:<L>' (L = 2..10), requires {level: learnLv + 3*(L-2)} (learnLv when levelGate = flat), completesWith ['tick']. Specialty slot keys: 'sp:<key>:spec' (slot 1, as today), 'sp:<key>:spec2', 'sp:<key>:spec3' (reserved, M4); they open at effective skill Lv 8 / 12 / 20 (rule:specialty-slots).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "skills"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skill"
+      }
+    }
+  },
+  "$defs": {
+    "skill": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "type",
+        "learnLv",
+        "levelGate"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+        },
+        "key": {
+          "description": "Save-key segment: today the English skill name (sp:Heart Gore:3). Permanent.",
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "description": "F2: active or passive, shown in the UI from 0.3.",
+          "enum": [
+            "active",
+            "passive"
+          ]
+        },
+        "learnLv": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "levelGate": {
+          "description": "stepped: rule:skill-level-gate. flat: every level needs only learnLv (SP_EXTRA flat).",
+          "enum": [
+            "stepped",
+            "flat"
+          ]
+        },
+        "boardNodes": {
+          "description": "Nodes per board (build.json dvNodes).",
+          "type": "object",
+          "properties": {
+            "perBoard": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            "cost": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "icon": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^assets/icons/[a-z0-9-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "specialtyChoices": {
+          "description": "M4: the 5 choices (skill Lv 8/8/8/12/16 for actives), numbered; ids permanent. Builds point at them.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "n",
+              "skillLv",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9
+              },
+              "skillLv": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "description": "The guide's display wording when it differs from the game text (today's SP_SKILLS spec), so 5b output stays identical and the build still points at an id.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "maxItems": 5
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/strongholds.schema.json",
+  "title": "Strongholds (shared/<faction>/strongholds.json)",
+  "description": "DRAFT. Replaces strongholds.json and SH_DATA.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "strongholds"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stronghold"
+      }
+    }
+  },
+  "$defs": {
+    "stronghold": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "faction",
+        "gameId",
+        "zone",
+        "levelRange",
+        "location"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^sh:[a-z0-9-]+$"
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^sh:[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "gameFaction": {
+          "description": "Faction as the quest page states it ('Both').",
+          "type": "string"
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "type": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "questType": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "zone": {
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
+        },
+        "levelRange": {
+          "type": "object",
+          "required": [
+            "lo",
+            "hi"
+          ],
+          "properties": {
+            "lo": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "hi": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "recLv": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "unlocksAt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "location": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/questStep"
+          }
+        },
+        "rewards": {
+          "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

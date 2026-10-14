@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/sources.schema.json",
+  "title": "Sources registry (data/sources.json)",
+  "description": "DRAFT. One record per site: who it is, how independent it is, its licence and what the guide may take from it. Every URL in the data must resolve to a site here by host (checked by the 5b build, not by this schema).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "sources"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/site"
+      }
+    },
+    "pages": {
+      "description": "Pages cited only by hand-written guide text (today's tools/gen/snapshots/sources-v287.json), with their Sources-card label and group.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "label",
+          "group"
+        ],
+        "properties": {
+          "url": {
+            "$ref": "common.schema.json#/$defs/httpsUrl"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "group": {
+            "enum": [
+              "rq",
+              "story",
+              "areas",
+              "build",
+              "claims",
+              "old"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "site": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "hosts",
+        "kind",
+        "independenceGroup",
+        "licence",
+        "access",
+        "use",
+        "verifiedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^src:[a-z0-9-]+$"
+        },
+        "name": {
+          "description": "Display name (Sources card per-site rows; today's SITE list in gen.py).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9.-]+\\.[a-z]{2,}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "kind": {
+          "enum": [
+            "game-database",
+            "guide",
+            "news",
+            "wiki",
+            "official",
+            "community",
+            "owner"
+          ]
+        },
+        "independenceGroup": {
+          "description": "Sites in one group count as one source. Each group needs a reason (groupReason) unless the group has one site.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "licence": {
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "description": "SPDX id where one exists; 'custom' for site-specific terms (conditions say what they require); 'all-rights-reserved'; 'unknown' until Data & Research has read the terms.",
+              "type": "string",
+              "pattern": "^([A-Za-z0-9.+-]+|all-rights-reserved|unknown|custom)$"
+            },
+            "conditions": {
+              "description": "What reuse requires (M8). The build can list every record a condition affects (e.g. non-commercial).",
+              "type": "array",
+              "items": {
+                "enum": [
+                  "attribution-link-to-page",
+                  "dofollow",
+                  "non-commercial",
+                  "no-endorsement",
+                  "share-alike",
+                  "no-redistribution"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "url": {
+              "$ref": "common.schema.json#/$defs/httpsUrl"
+            },
+            "checkedAt": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "additionalProperties": false
+        },
+        "use": {
+          "description": "What the guide may take. Facts are never copyrightable, wording is.",
+          "type": "object",
+          "required": [
+            "facts",
+            "wording",
+            "quotes",
+            "link"
+          ],
+          "properties": {
+            "facts": {
+              "type": "boolean"
+            },
+            "wording": {
+              "description": "May page text appear in the app? (false for every site today.)",
+              "type": "boolean"
+            },
+            "quotes": {
+              "description": "Short credited quotes in claims.json only.",
+              "enum": [
+                "none",
+                "short-credited"
+              ]
+            },
+            "link": {
+              "description": "How the Sources card links it (Metabot: plain dofollow link to the page the data came from).",
+              "enum": [
+                "dofollow",
+                "nofollow",
+                "none"
+              ]
+            },
+            "banned": {
+              "description": "Never cite (Game8).",
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "reach": {
+          "description": "How scripted reads fare (bot checks), so research knows what to expect.",
+          "type": "string",
+          "maxLength": 200
+        },
+        "verifiedAt": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 600
+          }
+        },
+        "access": {
+          "description": "Reading, separate from reuse (M8; DECISIONS 2026-10-14 fetching policy). Build rules: no source ref may be added or changed on a site with mode none; terms bans-automation forces mode human-only or none; unchecked / unread warn.",
+          "type": "object",
+          "required": [
+            "robots",
+            "terms",
+            "mode",
+            "checkedAt"
+          ],
+          "properties": {
+            "robots": {
+              "enum": [
+                "allows",
+                "ai-excluded",
+                "unchecked"
+              ]
+            },
+            "terms": {
+              "enum": [
+                "allows",
+                "bans-automation",
+                "unread"
+              ]
+            },
+            "termsUrl": {
+              "$ref": "common.schema.json#/$defs/httpsUrl"
+            },
+            "mode": {
+              "description": "scripted: polite scripted reads allowed. human-only: a person in a browser. none: not read at all.",
+              "enum": [
+                "scripted",
+                "human-only",
+                "none"
+              ]
+            },
+            "checkedAt": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            }
+          },
+          "additionalProperties": false,
+          "if": {
+            "properties": {
+              "terms": {
+                "const": "bans-automation"
+              }
+            },
+            "type": "object"
+          },
+          "then": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "human-only",
+                  "none"
+                ]
+              }
+            },
+            "type": "object"
+          }
+        },
+        "withdrawn": {
+          "description": "Used before, no longer usable (aion2.th.gl). Differs from banned (never used): the build fails on any URL of a withdrawn site still in the data, so each citation is re-sourced or relabelled owner-check, never dropped silently.",
+          "type": "object",
+          "required": [
+            "date",
+            "reason"
+          ],
+          "properties": {
+            "date": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            },
+            "reason": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "additionalProperties": false
+        },
+        "operator": {
+          "description": "Who runs the site, so sites sharing an operator are visible (data-sources R7).",
+          "type": "string",
+          "maxLength": 120
+        },
+        "upstream": {
+          "description": "Shared upstream of client-extracting databases (N3). Game-database fields from one upstream count once.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "groupReason": {
+          "type": "string",
+          "maxLength": 300
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

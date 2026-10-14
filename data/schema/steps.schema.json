@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/steps.schema.json",
+  "title": "Guide steps (shared/guide/steps.json, classes/<class>/steps.json)",
+  "description": "DRAFT. One tickable line in a milestone or route-rule card. Replaces the GATES/STEPS items (except board nodes -> builds[].boardPlan, hideouts -> sealed-dungeons.json). Shared steps name build choices only through [[build:…]] tokens (M2); a class step is only for text that is true for one class whatever the build.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "steps"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    }
+  },
+  "$defs": {
+    "step": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "milestone",
+        "order",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/recordId"
+        },
+        "key": {
+          "description": "Today's item k, written out (ARCHITECTURE §1). Equal to id for every existing step.",
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "milestone": {
+          "description": "Milestone or route-rule id.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*$"
+        },
+        "order": {
+          "description": "Position in the card (gaps allowed; shared and class steps interleave by it).",
+          "type": "number"
+        },
+        "text": {
+          "description": "Item text (t) without the location line.",
+          "$ref": "common.schema.json#/$defs/inlineText"
+        },
+        "loc": {
+          "description": "Location line (today <span class=\"loc\"> inside t).",
+          "$ref": "common.schema.json#/$defs/inlineText"
+        },
+        "short": {
+          "description": "Next up label (ns).",
+          "$ref": "common.schema.json#/$defs/inlineText"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "upsell": {
+          "description": "Paid-option line.",
+          "type": "string",
+          "maxLength": 200
+        },
+        "optional": {
+          "description": "opt: shown as Optional; hidden by the Optional filter.",
+          "const": true
+        },
+        "advancedOnly": {
+          "description": "adv: Advanced mode only.",
+          "const": true
+        },
+        "mapSlug": {
+          "description": "map: Metabot dungeon-map focus slug for the map button.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "storyQuest": {
+          "description": "byStory: this step IS that story quest (hidden from Next up while it is the current quest).",
+          "type": "string",
+          "pattern": "^sq:[0-9]{5,9}$"
+        },
+        "stigmaSlot": {
+          "description": "stig: equipping stigma slot n (Stigmas card, stPick).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "stigmaKeySlot": {
+          "description": "eput: 'Put slot n on E'.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "opensBoard": {
+          "description": "bo: the board this step opens.",
+          "type": "string",
+          "pattern": "^board:[a-z0-9-]+$"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C[0-9]{2}[a-z]?$"
+          },
+          "uniqueItems": true
+        },
+        "sources": {
+          "description": "Optional: sources for facts the text states that no fact record carries.",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        },
+        "ascensionQuest": {
+          "description": "The Ascension quest this step is about (g6:0, g22:0, g32:dreams, g45:0).",
+          "type": "string",
+          "pattern": "^asc:[a-z0-9-]+$"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

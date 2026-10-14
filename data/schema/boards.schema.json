@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/boards.schema.json",
+  "title": "Daevanion boards (shared/boards.json)",
+  "description": "DRAFT. The boards themselves (game-wide); each class's nodes are in classes/<class>/boards.json. Replaces build.json boards.list / Ariel / BOARDS.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "boards"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/board"
+      }
+    }
+  },
+  "$defs": {
+    "board": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "lv",
+        "currency"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^board:[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lv": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "currency": {
+          "type": "string"
+        },
+        "points": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "statNodes": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "skillNodes": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

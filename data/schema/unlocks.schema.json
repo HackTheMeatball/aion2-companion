@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/unlocks.schema.json",
+  "title": "Content unlocks (shared/<faction>/unlocks.json)",
+  "description": "DRAFT. Informational (not tickable). Replaces VERIFIED_UNLOCKS, build.json unlocks / dailyDungeon / unlocksRecommendation. The 'Ahead' row shows records whose status is verified.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "unlocks"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unlock"
+      }
+    }
+  },
+  "$defs": {
+    "unlock": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "what",
+        "at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^unlock:[a-z0-9-]+$"
+        },
+        "what": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "detail": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "at": {
+          "description": "When it opens.",
+          "$ref": "common.schema.json#/$defs/cond"
+        },
+        "party": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "timeLimit": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "conquest": {
+          "type": "object",
+          "properties": {
+            "lv": {
+              "type": "integer"
+            },
+            "itemLevel": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "storyStep": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entries": {
+          "type": "string",
+          "maxLength": 300
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

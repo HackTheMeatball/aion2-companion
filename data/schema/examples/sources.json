@@ -1,0 +1,76 @@
+{
+  "$schema": "../sources.schema.json",
+  "schemaVersion": 2,
+  "collection": "sources",
+  "records": [
+    {
+      "id": "src:metabot", "name": "Metabot", "hosts": ["metabot.gg"], "kind": "game-database", "independenceGroup": "metabot", "upstream": "global-client",
+      "licence": { "id": "custom", "conditions": ["attribution-link-to-page", "dofollow", "non-commercial", "no-endorsement"], "checkedAt": "2026-10-14",
+        "note": "Terms effective 04/01/2026, 'Data Usage & Attribution' (data-sources §4.1). Non-commercial: permission needed before any ads, donations or paid features (DECISIONS 2026-10-14)." },
+      "access": { "robots": "allows", "terms": "allows", "mode": "scripted", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:wikily", "name": "Wikily", "hosts": ["wikily.gg"], "kind": "wiki", "independenceGroup": "wikily", "operator": "NX Software SAS", "upstream": "global-client",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "allows", "terms": "bans-automation", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" },
+      "verifiedAt": "2026-10-14",
+      "notes": ["Own group (different operator from Metabot, data-sources §10.2); the shared upstream is the client (N3). Terms (16 Aug 2024) bar scraping: a person in a browser only."]
+    },
+    {
+      "id": "src:aion2-gaming-tools", "name": "aion2.gaming.tools", "hosts": ["aion2.gaming.tools"], "kind": "game-database", "independenceGroup": "aion2-gaming-tools", "upstream": "global-client",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "allows", "terms": "unread", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" },
+      "reach": "Cloudflare challenge on scripted reads; read by a person in a browser", "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:aion2-th-gl", "name": "aion2.th.gl", "hosts": ["aion2.th.gl"], "kind": "game-database", "independenceGroup": "aion2-th-gl",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "ai-excluded", "terms": "unread", "mode": "none", "checkedAt": "2026-10-14" },
+      "use": { "facts": false, "wording": false, "quotes": "none", "link": "none" },
+      "withdrawn": { "date": "2026-10-14", "reason": "robots.txt excludes AI agents (owner rule). Its citations are re-sourced (Metabot first) or relabelled owner-check in 5b." },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:thegameswiki", "name": "thegameswiki", "hosts": ["thegameswiki.com"], "kind": "wiki", "independenceGroup": "thegameswiki",
+      "licence": { "id": "CC-BY-NC-SA-4.0", "conditions": ["attribution-link-to-page", "non-commercial", "share-alike"], "note": "Facts only into the app, never its wording; quotes in claims stay short and credited (CLAUDE.md)." },
+      "access": { "robots": "unchecked", "terms": "unread", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "reach": "often blocks scripted reads", "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:allthings-how", "name": "allthings.how", "hosts": ["allthings.how"], "kind": "guide", "independenceGroup": "allthings-how",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "unchecked", "terms": "unread", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "short-credited", "link": "dofollow" },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:playnews", "name": "PlayNews", "hosts": ["playnews.gg"], "kind": "news", "independenceGroup": "playnews",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "unchecked", "terms": "unread", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" },
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:game8", "name": "Game8", "hosts": ["game8.co"], "kind": "guide", "independenceGroup": "game8",
+      "licence": { "id": "unknown" },
+      "access": { "robots": "unchecked", "terms": "unread", "mode": "none", "checkedAt": "2026-10-14" },
+      "use": { "facts": false, "wording": false, "quotes": "none", "link": "none", "banned": true },
+      "verifiedAt": "2026-10-14", "notes": ["Never used (CLAUDE.md). Listed so the build can reject its URLs."]
+    },
+    {
+      "id": "src:owner", "name": "In game (owner)", "hosts": ["owner.invalid"], "kind": "owner", "independenceGroup": "owner",
+      "licence": { "id": "all-rights-reserved", "note": "Screens live in the private repo. Records cite them by short code (owner:YYYY-MM-DD-NN) plus game version; the code-to-file map stays private. Outranks every other source (§5.4)." },
+      "access": { "robots": "allows", "terms": "allows", "mode": "human-only", "checkedAt": "2026-10-14" },
+      "use": { "facts": true, "wording": false, "quotes": "none", "link": "none" },
+      "verifiedAt": "2026-10-14"
+    }
+  ],
+  "pages": [
+    { "url": "https://aion2hub.com/leveling/asmodian-levels-1-10", "label": "AION2HUB: Asmodian 1–10", "group": "old" }
+  ]
+}

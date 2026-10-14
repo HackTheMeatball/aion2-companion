@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/rules.schema.json",
+  "title": "Game rules and tables (shared/rules.json)",
+  "description": "DRAFT. Class-independent numbers the app computes with: LEVEL_POINTS, Daevanion Crystals and stigma points per level (M11), cost tables, stigma slots, specialty slots (effective level, M4), node costs, first-clear rewards. The old 'learn + 18' specialty heuristic is bug F3 and is not a rule (it stays in the 5b compiler only to keep 0.2 output identical; 0.3 fixes it).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "rules"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "band": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "cost"
+      ],
+      "properties": {
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "rule": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "kind": {
+                  "const": "levelPoints"
+                },
+                "value": {
+                  "description": "Total skill points by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "skillPointCost"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/band"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "skillLevelGate"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "stepped",
+                    "maxFromPoints"
+                  ],
+                  "properties": {
+                    "stepped": {
+                      "description": "char level for skill level L = learnLv + perLevel*(L-2)",
+                      "type": "object",
+                      "properties": {
+                        "perLevel": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "maxFromPoints": {
+                      "type": "integer"
+                    },
+                    "maxLevel": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "specialtySlots"
+                },
+                "value": {
+                  "description": "M4/F4: slots unlock at EFFECTIVE skill level = highest ticked sp:<key>:<L> (1 if none) + the 'adds' of every owned board node whose skill is this skill.",
+                  "type": "object",
+                  "required": [
+                    "slots",
+                    "levelBasis"
+                  ],
+                  "properties": {
+                    "slots": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "minItems": 1
+                    },
+                    "levelBasis": {
+                      "const": "effective"
+                    },
+                    "stigmaSlots": {
+                      "description": "Stigma specialty unlocks by stigma level.",
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "stigmaShardCost"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/band"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "stigmaSlots"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "nodeCosts"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "stat",
+                    "passive",
+                    "active",
+                    "corner"
+                  ],
+                  "properties": {
+                    "stat": {
+                      "type": "integer"
+                    },
+                    "rareStat": {
+                      "type": "integer"
+                    },
+                    "passive": {
+                      "type": "integer"
+                    },
+                    "active": {
+                      "type": "integer"
+                    },
+                    "corner": {
+                      "type": "integer"
+                    },
+                    "cornerValue": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "kind": {
+                  "const": "firstClearReward"
+                },
+                "value": {
+                  "type": "object",
+                  "required": [
+                    "target"
+                  ],
+                  "properties": {
+                    "target": {
+                      "enum": [
+                        "sealedDungeons",
+                        "strongholds"
+                      ]
+                    },
+                    "rewards": {
+                      "$ref": "common.schema.json#/$defs/rewards"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "type": "object"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "crystalsPerLevel"
+                },
+                "value": {
+                  "description": "Cumulative total by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "stigmaPointsPerLevel"
+                },
+                "value": {
+                  "description": "Cumulative total by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "required": [
+        "id",
+        "kind",
+        "value",
+        "appliesTo"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^rule:[a-z0-9-]+$"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "value": true,
+        "appliesTo": {
+          "description": "Which characters the rule covers: 'all-classes', a class list, or {classes, faction} (N5: Elyos dungeon rewards differ).",
+          "oneOf": [
+            {
+              "const": "all-classes"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/classId"
+              },
+              "minItems": 1
+            },
+            {
+              "type": "object",
+              "required": [
+                "faction"
+              ],
+              "properties": {
+                "classes": {
+                  "oneOf": [
+                    {
+                      "const": "all-classes"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "common.schema.json#/$defs/classId"
+                      },
+                      "minItems": 1
+                    }
+                  ]
+                },
+                "faction": {
+                  "$ref": "common.schema.json#/$defs/faction"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../strongholds.schema.json",
+  "schemaVersion": 2,
+  "collection": "strongholds",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sh:blades-temporary-outpost",
+      "key": "sh:blades-temporary-outpost",
+      "name": "Blades Temporary Outpost",
+      "faction": "asmodian",
+      "gameFaction": "Both",
+      "gameId": "2820005",
+      "type": "Renegade Daeva camp",
+      "questType": "Exploration",
+      "zone": "zone:tranein-highland",
+      "route": "core",
+      "levelRange": {
+        "lo": 1,
+        "hi": 20
+      },
+      "recLv": 1,
+      "unlocksAt": 1,
+      "location": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:tranein-highland",
+        "kibelisk": "Moslan Forest Cliff",
+        "meters": 137
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear Blades Temporary Outpost (Kibelisk: Moslan Forest Cliff)",
+          "meters": 160
+        }
+      ],
+      "rewards": {
+        "xp": 54041,
+        "kina": null,
+        "wisdom": null,
+        "crystal": null,
+        "items": []
+      },
+      "requires": {
+        "level": 1,
+        "basis": "inferred",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
+          }
+        ],
+        "note": "lo of the map's level range"
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blades-temporary-outpost",
+          "fields": [
+            "gameId",
+            "rewards",
+            "steps"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
+          "fields": [
+            "zone",
+            "levelRange",
+            "location"
+          ],
+          "checkedAt": "2026-10-12"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelRange": "inferred"
+      },
+      "notes": [
+        "Quest page lists only EXP. Step Kibelisk 160 m vs map list 137 m.",
+        "lo/hi = level range on Metabot's Altgard strongholds map list; quest pages say 'Lv. 1 / unlocks at 1' for every stronghold, so recLv is not a usable level."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/regional-quests.schema.json",
+  "title": "Regional quests (shared/<faction>/regional-quests.json)",
+  "description": "DRAFT. Replaces rq.json and rq-chains.json: prerequisites become 'requires' atoms that carry their own sources.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "regionalQuests"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/regionalQuest"
+      }
+    }
+  },
+  "$defs": {
+    "regionalQuest": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "faction",
+        "gameId",
+        "rec",
+        "unlocksAt",
+        "zone",
+        "giver",
+        "turnin",
+        "steps",
+        "rewards"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^rq:[0-9]{5,9}$"
+        },
+        "key": {
+          "description": "Save key 'rq:<game id>' (E1). Equal to id.",
+          "type": "string",
+          "pattern": "^rq:[0-9]{5,9}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "metabotSlug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "rec": {
+          "description": "Recommended level (milestone placement at runtime).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "unlocksAt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "zone": {
+          "description": "Resolved zone id; must equal giver.zone (build check). The source's differing value goes to conflicts.",
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
+        },
+        "giver": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "turnin": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/questStep"
+          }
+        },
+        "rewards": {
+          "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

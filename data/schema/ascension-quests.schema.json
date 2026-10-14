@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/ascension-quests.schema.json",
+  "title": "Ascension quests (shared/<faction>/ascension-quests.json)",
+  "description": "DRAFT (M6). Path of Ascension I–V. No map location (access: teleport). Ids are slugs until a game id is confirmed; completion is derived from the wrapper story quest (storyQuests[].wraps). Next up ranks an Ascension step whose prerequisites are met first (§10).",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "ascensionQuests"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ascension"
+      }
+    }
+  },
+  "$defs": {
+    "ascension": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "faction",
+        "chapter",
+        "lv",
+        "unlocksAt",
+        "access"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^asc:[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "chapter": {
+          "description": "Path of Ascension number (I–V).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        },
+        "lv": {
+          "type": "integer"
+        },
+        "unlocksAt": {
+          "type": "integer"
+        },
+        "inCap": {
+          "type": "boolean",
+          "default": true
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/questStep"
+          }
+        },
+        "access": {
+          "description": "Owner correction 2026-10-14: Ascension quests have no map location. They unlock when their prerequisites are met and the player teleports in (Journal → Ascension → Teleport). So no giver/turn-in location, no part in location tie-breaks, and ticking one never updates the derived last confirmed location (§9).",
+          "const": "teleport"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/confidence.schema.json",
+  "title": "Confidence card (shared/guide/confidence.json, classes/<class>/confidence.json)",
+  "description": "DRAFT. Replaces the CONF text hard-coded in gen.py. An item shows only while its 'when' claims have the stated verdicts; {placeholders} are filled by the compiler from compiled data.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "confidence"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    },
+    "groups": {
+      "description": "Group headings in card order (CONF g / sub).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "sub"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "verified",
+              "single-source",
+              "inferred",
+              "disputed",
+              "unverified",
+              "owner"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "sub": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "group",
+        "order",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^conf:[a-z0-9-]+$"
+        },
+        "group": {
+          "enum": [
+            "verified",
+            "single-source",
+            "inferred",
+            "disputed",
+            "unverified",
+            "owner"
+          ]
+        },
+        "order": {
+          "type": "number"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "placeholders": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "rqChained",
+              "rqStoryGated",
+              "storyEndQuest",
+              "storyEndLv",
+              "boardList",
+              "skillOrderTwoSource",
+              "skillOrderSingle"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "when": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^C[0-9]{2}[a-z]?$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "enum": [
+              "verified",
+              "single-source",
+              "inferred",
+              "disputed",
+              "unverifiable",
+              "wrong"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/board-nodes.schema.json",
+  "title": "Daevanion board nodes (classes/<class>/board-nodes.json)",
+  "description": "DRAFT (M5). Every node on every board of the class, as game facts (Metabot daevanion/<class>, row/col on the planner grid). Needed for effective skill level (M4) and path costs (4-neighbour Steiner tree, classes-and-gaps §4.4). Which nodes to buy is a build choice (builds[].boardPlan).",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "boardNodes"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "skill"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "skill"
+            ],
+            "properties": {
+              "skill": true
+            }
+          },
+          "else": {
+            "properties": {
+              "skill": false
+            }
+          }
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "board",
+        "row",
+        "col",
+        "type",
+        "cost"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^node:[a-z]+:[a-z0-9-]+:r[0-9]+c[0-9]+$"
+        },
+        "key": {
+          "description": "Save key: the existing dv: key for every node that has one today (written-out mapping), else dv:<board>:r<row>c<col>. Full board names cannot collide with the one-letter prefixes.",
+          "type": "string",
+          "pattern": "^dv:(([zvt]:)?[a-z0-9]+|[a-z]+:r[0-9]+c[0-9]+)$"
+        },
+        "board": {
+          "type": "string",
+          "pattern": "^board:[a-z0-9-]+$"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "col": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "type": {
+          "enum": [
+            "start",
+            "stat",
+            "skill",
+            "unique"
+          ]
+        },
+        "grade": {
+          "enum": [
+            "common",
+            "rare",
+            "legend",
+            "unique"
+          ]
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label": {
+          "type": "string"
+        },
+        "skill": {
+          "type": "string",
+          "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+        },
+        "adds": {
+          "description": "Skill levels the node adds (default 1).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{4,9}$"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

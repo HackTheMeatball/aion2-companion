@@ -1,0 +1,303 @@
+{
+  "$schema": "../../../story-quests.schema.json",
+  "schemaVersion": 2,
+  "collection": "storyQuests",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "sq:2102235",
+      "key": "Preparations for Restoration",
+      "name": "Preparations for Restoration",
+      "faction": "asmodian",
+      "gameId": "2102235",
+      "lv": 27,
+      "unlocksAt": 10,
+      "next": "sq:2102240",
+      "giver": {
+        "npc": "Varron",
+        "place": "Nornir Assembly",
+        "zone": "zone:nornir-assembly",
+        "kibelisk": "Nornir Assembly",
+        "meters": 133
+      },
+      "turnin": {
+        "npc": "Hadala",
+        "place": "Wind Altar",
+        "zone": "zone:purifying-forest",
+        "kibelisk": "Purifying Forest Coastal Cliff",
+        "meters": 89
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Talk to Ulgorn via Selvis — talk via Selvis"
+        },
+        {
+          "i": 1,
+          "text": "Hear about Nemon's past — talk to Ulgorn (Kibelisk: Nornir Assembly)",
+          "zone": "zone:nornir-assembly"
+        },
+        {
+          "i": 2,
+          "text": "Hear more about Nemon's past — talk to Hadala (Kibelisk: Nornir Assembly)",
+          "zone": "zone:nornir-assembly"
+        },
+        {
+          "i": 3,
+          "text": "Return to Urd — talk to Urd (Kibelisk: Nornir Assembly)",
+          "zone": "zone:nornir-assembly"
+        },
+        {
+          "i": 4,
+          "text": "Seek guidance from Hallina — talk to Hallina (Kibelisk: Nornir Assembly)",
+          "zone": "zone:nornir-assembly"
+        },
+        {
+          "i": 5,
+          "text": "Prepare to restore the Spirit Altar — go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)"
+        },
+        {
+          "i": 6,
+          "text": "Clear around the Wind Altar — defeat the contaminated spirits, remove Poison Blood Clot (Kibelisk: Guide Rest Stop)"
+        },
+        {
+          "i": 7,
+          "text": "Talk to Hadala via Selvis — talk via Selvis"
+        },
+        {
+          "i": 8,
+          "text": "Turn in — Hadala, Wind Altar"
+        }
+      ],
+      "requires": {
+        "story": "sq:2102230",
+        "is": "turnedIn",
+        "basis": "sourced",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+            "section": "Previous quest",
+            "checkedAt": "2026-10-14"
+          }
+        ]
+      },
+      "completesWith": [
+        {
+          "story": "sq:2102235",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian"
+        },
+        {
+          "inferred": "Giver zone: today's compiled data already treats Nornir Assembly as a zone (gen.py exception).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from the Kibelisk name 'Purifying Forest Coastal Cliff'; to confirm from Metabot's map before 5b.",
+          "fields": [
+            "turnin.zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "fieldStatus": {
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
+      }
+    },
+    {
+      "id": "sq:2102345",
+      "key": "A Daeva Dreaming Anew",
+      "name": "A Daeva Dreaming Anew",
+      "faction": "asmodian",
+      "gameId": "2102345",
+      "lv": 32,
+      "unlocksAt": 10,
+      "next": "sq:2102350",
+      "wraps": "asc:dreams",
+      "giver": {
+        "npc": null,
+        "place": null,
+        "zone": "zone:dranactus",
+        "kibelisk": null,
+        "meters": null
+      },
+      "turnin": {
+        "npc": "Nemon",
+        "place": "Briskwind Shelter",
+        "zone": "zone:dranactus",
+        "kibelisk": null,
+        "meters": null
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Ascend to the next dimension of power as a Daeva — complete The One Who Dreams"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — Nemon, Briskwind Shelter"
+        }
+      ],
+      "requires": {
+        "story": "sq:2102340",
+        "is": "turnedIn",
+        "basis": "sourced",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+            "section": "Previous quest",
+            "checkedAt": "2026-10-14"
+          }
+        ]
+      },
+      "completesWith": [
+        {
+          "story": "sq:2102345",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew"
+        },
+        {
+          "inferred": "Briskwind Shelter is in Dranactus (E3 CAMP_ZONE, map-data majority). The giver is not shown on Metabot; the quest follows a turn-in at Briskwind Shelter.",
+          "fields": [
+            "giver.zone",
+            "turnin.zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "fieldStatus": {
+        "giver.zone": "inferred"
+      }
+    },
+    {
+      "id": "sq:2102800",
+      "key": "Forgotten Commander",
+      "name": "Forgotten Commander",
+      "faction": "asmodian",
+      "gameId": "2102800",
+      "lv": 45,
+      "unlocksAt": 45,
+      "questType": "Episode",
+      "chapter": "Encountering Zikel's Core",
+      "next": null,
+      "end": {
+        "region": "Reshanta",
+        "regionFull": "Chaotic Lower Reshanta",
+        "note": "Today's data ends here. Metabot's next quest, Daeva Trapped in a Nightmare (sq:2102810), joins the chain once the owner confirms its giver (prereq-gates check 5); it then carries 'end'."
+      },
+      "giver": {
+        "npc": "Menrik",
+        "place": "Fang Hideout",
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Fang Hideout",
+        "meters": 21
+      },
+      "turnin": {
+        "npc": "Koro",
+        "place": "Latesran Eastern Root",
+        "zone": "zone:chaotic-lower-reshanta",
+        "kibelisk": "Latesran Eastern Root",
+        "meters": 49
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Receive briefing at the Draupnir Entrance — talk to Kiara (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 1,
+          "text": "Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory)"
+        },
+        {
+          "i": 2,
+          "text": "Report the findings from Draupnir investigation — talk to Kiara (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 3,
+          "text": "Receive briefing in front of the Abyss Portal — talk to Ivar (Kibelisk: Impetusium Lower Path)"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"
+        }
+      ],
+      "rewards": {
+        "xp": 36328013,
+        "kina": 54000,
+        "wisdom": null,
+        "crystal": null,
+        "items": [
+          "Spiritforged Guard x1",
+          "Resurrection Spiritstone (Bound) x1",
+          "Lesser Manastone (Bound) x5",
+          "Lesser Soulstone (Bound) x5"
+        ]
+      },
+      "requires": {
+        "all": [
+          {
+            "level": 45,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102781",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+                "section": "Previous quest"
+              }
+            ]
+          }
+        ]
+      },
+      "completesWith": [
+        {
+          "story": "sq:2102800",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "inferred": "Giver zone: regional quests given at Fang Hideout are filed under Sanctum Outpost (allthings.how zone lists).",
+          "fields": [
+            "giver.zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "giver.zone": "inferred"
+      },
+      "notes": [
+        "Unlocks at 45 (all earlier 40-45 story quests say unlocks at 10). Steps are in Altgard; turn-in is in Chaotic Lower Reshanta, so the Altgard story ends here."
+      ]
+    }
+  ]
+}

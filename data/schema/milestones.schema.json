@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/milestones.schema.json",
+  "title": "Milestones and route rules (shared/guide/milestones.json)",
+  "description": "DRAFT. The cards (GATES and STEPS headers). Their items are 'steps' records (shared or per class) that name the milestone; Sealed Dungeons join by band. Regional quests are still placed at runtime by recommended level.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "milestones"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/milestone"
+      }
+    }
+  },
+  "$defs": {
+    "milestone": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "order",
+        "title",
+        "blurb"
+      ],
+      "properties": {
+        "id": {
+          "description": "Today's GATES/STEPS id (g6 … g45, build, story, daily, f2p, hold). Permanent: links (#g22) and open/fold state use it.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*$"
+        },
+        "kind": {
+          "enum": [
+            "milestone",
+            "routeRule"
+          ]
+        },
+        "order": {
+          "description": "Card order within its kind.",
+          "type": "integer"
+        },
+        "lv": {
+          "description": "Milestone level (milestones only).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "blurb": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "tag": {
+          "description": "Route-rule tag ('Always', 'Daily', …).",
+          "type": "string",
+          "maxLength": 20
+        },
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "sealedDungeonBand",
+              "order"
+            ],
+            "properties": {
+              "sealedDungeonBand": {
+                "type": "integer"
+              },
+              "order": {
+                "description": "Position of the block among the milestone's steps.",
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "drawbacks": {
+          "description": "Confirmed drawbacks of taking only the fastest track (route: core) through this milestone, shown next to the track toggle (0.3). Only verified or owner-confirmed entries; each names the records it is about.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "status",
+              "sources"
+            ],
+            "properties": {
+              "text": {
+                "$ref": "common.schema.json#/$defs/inlineText"
+              },
+              "status": {
+                "enum": [
+                  "verified",
+                  "owner-check"
+                ]
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/sourceRef"
+                },
+                "minItems": 1
+              },
+              "about": {
+                "description": "Records skipped on the fastest track that cause it (route filler / completionist).",
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/recordId"
+                },
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "milestone"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "required": [
+          "lv"
+        ],
+        "type": "object",
+        "properties": {
+          "lv": true
+        }
+      },
+      "else": {
+        "required": [
+          "tag"
+        ],
+        "type": "object",
+        "properties": {
+          "tag": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

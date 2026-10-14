@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/stigmas.schema.json",
+  "title": "Class stigmas (classes/<class>/stigmas.json)",
+  "description": "DRAFT. Replaces build.json stigmas and STIGMA_ICON. Save keys are the stigma names (stLv{name}, stPick{slot: name}).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "stigmas"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stigma"
+      }
+    }
+  },
+  "$defs": {
+    "stigma": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "availableLv",
+        "maxLevel"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+        },
+        "key": {
+          "$ref": "common.schema.json#/$defs/saveKey"
+        },
+        "name": {
+          "type": "string"
+        },
+        "availableLv": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "icon": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^assets/icons/[a-z0-9-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "maxLevel": {
+          "description": "25 for most classes, 40 for Assassin and Ranger (Metabot; owner check pending, classes-and-gaps).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "specialtyChoices": {
+          "description": "Choices at stigma Lv 5/10/15/20 (M4).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "n",
+              "skillLv",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9
+              },
+              "skillLv": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "description": "The guide's display wording when it differs from the game text (today's SP_SKILLS spec), so 5b output stays identical and the build still points at an id.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

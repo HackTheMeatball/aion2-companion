@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/sealed-dungeons.schema.json",
+  "title": "Sealed Dungeons (shared/<faction>/sealed-dungeons.json)",
+  "description": "DRAFT. Replaces dungeons.json, the hideouts() name lists in GATES, HIDEOUT_AREA, AREA_LOC (+ snapshots area-loc-v287 / hideout-area-v288).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "sealedDungeons"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sealedDungeon"
+      }
+    }
+  },
+  "$defs": {
+    "sealedDungeon": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "key",
+        "name",
+        "faction",
+        "band",
+        "zone",
+        "entrance",
+        "mapSlug"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^sd:[a-z0-9-]+$"
+        },
+        "key": {
+          "description": "Save key: 'sd:<slug>', or 'g10h:<slug>' for the Lv 10 batch (kept from E1).",
+          "type": "string",
+          "pattern": "^(sd|g10h):[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "band": {
+          "description": "Level band; the milestone whose includes.sealedDungeonBand equals it lists the dungeon.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "zone": {
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
+        },
+        "entrance": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "mapSlug": {
+          "description": "Metabot map focus slug (today metaSlug(name) at runtime; written out in v2).",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "xp": {
+          "$ref": "common.schema.json#/$defs/count"
+        },
+        "rewards": {
+          "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "rewardBasis": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "bosses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exploreQuestId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

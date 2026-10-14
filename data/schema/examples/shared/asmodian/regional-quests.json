@@ -1,0 +1,416 @@
+{
+  "$schema": "../../../regional-quests.schema.json",
+  "schemaVersion": 2,
+  "collection": "regionalQuests",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "rq:2202044",
+      "key": "rq:2202044",
+      "name": "Shugo-of-All-Trades: Asmodian",
+      "faction": "asmodian",
+      "gameId": "2202044",
+      "metabotSlug": "shugo-of-all-trades-asmodian",
+      "rec": 12,
+      "unlocksAt": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "giver": {
+        "npc": "Dari",
+        "place": "Temporary Investigation Base",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 18
+      },
+      "turnin": {
+        "npc": "Dari",
+        "place": "Quai Campsite",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 62
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Do a favor for Dari — Retrieve Dari's Materials Bag",
+          "kibelisk": "Creion Campsite",
+          "meters": 81
+        }
+      ],
+      "rewards": {
+        "xp": 14599,
+        "kina": 10000,
+        "wisdom": 1,
+        "crystal": 1,
+        "items": [
+          "Cube Expansion Voucher",
+          "Title: Everything Has Its Use"
+        ]
+      },
+      "requires": {
+        "all": [
+          {
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "requiresBasis": "unresearched",
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+          "fields": [
+            "gameId",
+            "rec",
+            "unlocksAt",
+            "giver",
+            "turnin",
+            "steps",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/?p=244384",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "turnin.zone": "inferred"
+      },
+      "conflicts": [
+        "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite",
+        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
+      ],
+      "notes": [
+        "Candidate gate 'Contaminated Area' came only from aion2.th.gl (withdrawn); kept as an owner in-game check, not as data (classes-and-gaps §4.1)."
+      ]
+    },
+    {
+      "id": "rq:2202010",
+      "key": "rq:2202010",
+      "name": "Hugo Mercenaries: Past and Present",
+      "faction": "asmodian",
+      "gameId": "2202010",
+      "metabotSlug": "hugo-mercenaries-past-and-present",
+      "rec": 16,
+      "unlocksAt": 10,
+      "zone": "zone:dredgion-crash-site",
+      "route": "core",
+      "giver": {
+        "npc": "Derk",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": null,
+        "meters": null
+      },
+      "turnin": {
+        "npc": "Derk",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": null,
+        "meters": null
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Read the letter Derk handed to you — Read Hugo's Letter",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 1,
+          "text": "Hear what Derk thinks — Talk to Derk",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 2,
+          "text": "Go to the place Derk mentioned — Investigate the old mercenary stronghold",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 3,
+          "text": "Go to the Mire Campsite — Talk to Derk",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 4,
+          "text": "Go to the memorial site — Go behind Shadow Hall",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 5,
+          "text": "Join Derk — Talk to Derk",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 6,
+          "text": "Honor Hugo's memory — Leave flowers in front of the memorial",
+          "kibelisk": null,
+          "meters": null
+        }
+      ],
+      "rewards": {
+        "xp": 50028,
+        "kina": 14000,
+        "wisdom": 1,
+        "crystal": 1,
+        "items": [
+          "Old Mercenary Commander Earrings",
+          "Title: Even If I Must Give My All"
+        ]
+      },
+      "requires": {
+        "all": [
+          {
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102105",
+            "is": "reached",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202010",
+                "section": "Required Quests"
+              }
+            ],
+            "note": "Database prerequisites mean 'turned in' (prereq-gates §3, ~70%); kept as today's 'reached' until owner check 1."
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+          "fields": [
+            "gameId",
+            "rec",
+            "unlocksAt",
+            "giver",
+            "turnin",
+            "steps",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/?p=244374",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "conflicts": [
+        "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text",
+        "Giver Kibelisk: null — not shown on any fetched source",
+        "zone: allthings.how files it under 'Safe Haven' (a camp); resolved to Dredgion Crash Site via the Safe Haven camp (E3 CAMP_ZONE)"
+      ]
+    },
+    {
+      "id": "rq:2202017",
+      "key": "rq:2202017",
+      "name": "In the Fang Legion's Name",
+      "faction": "asmodian",
+      "gameId": "2202017",
+      "metabotSlug": "in-the-fang-legions-name",
+      "rec": 22,
+      "unlocksAt": 10,
+      "zone": "zone:calderon-canyon",
+      "route": "core",
+      "giver": {
+        "npc": "Gamilla",
+        "place": "Watcher's Tent",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Watcher's Tent",
+        "meters": 6
+      },
+      "turnin": {
+        "npc": "Menrik",
+        "place": "Fang Hideout",
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Fang Hideout",
+        "meters": 143
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Find the whereabouts of Menrik — Talk to the Fang legionnaire",
+          "kibelisk": "Fang Hideout",
+          "meters": 130
+        },
+        {
+          "i": 1,
+          "text": "Read the command document left by Menrik — Read the Fang Command",
+          "kibelisk": null,
+          "meters": null
+        },
+        {
+          "i": 2,
+          "text": "Listen to Aran — Talk to Aran",
+          "kibelisk": "Fang Hideout",
+          "meters": 158
+        },
+        {
+          "i": 3,
+          "text": "Go to the place Aran mentioned — Go to the cave near the Crash Site",
+          "kibelisk": "Mire Campsite",
+          "meters": 90
+        },
+        {
+          "i": 4,
+          "text": "Listen to Aran — Talk to Aran",
+          "kibelisk": "Mire Campsite",
+          "meters": 100
+        },
+        {
+          "i": 5,
+          "text": "Find the whereabouts of Menrik — Go inside the cave",
+          "kibelisk": "Mire Campsite",
+          "meters": 193
+        },
+        {
+          "i": 6,
+          "text": "Find the whereabouts of Menrik — Investigate deep inside the cave",
+          "kibelisk": "Odar's Shade",
+          "meters": 266
+        }
+      ],
+      "rewards": {
+        "xp": 213118,
+        "kina": 21000,
+        "wisdom": 1,
+        "crystal": 1,
+        "items": [
+          "Outsider Bracelet",
+          "Statue: Selvis",
+          "Title: Watch My Back"
+        ]
+      },
+      "requires": {
+        "all": [
+          {
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102180",
+            "is": "reached",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202017",
+                "section": "Required Quests"
+              }
+            ]
+          },
+          {
+            "done": "rq:2202016",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202017",
+                "section": "Required Quests"
+              },
+              {
+                "url": "https://aion2.gaming.tools/quests/2202016",
+                "section": "Dependent quests"
+              },
+              {
+                "url": "https://allthings.how/?p=244377",
+                "quote": "picks up straight after Blade of Vengeance"
+              }
+            ]
+          },
+          {
+            "done": "rq:2202014",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://aion2.gaming.tools/quests/2202017",
+                "section": "Required Quests"
+              }
+            ]
+          }
+        ]
+      },
+      "completesWith": [
+        "tick"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+          "fields": [
+            "gameId",
+            "rec",
+            "unlocksAt",
+            "giver",
+            "turnin",
+            "steps",
+            "rewards"
+          ],
+          "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/?p=244377",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "turnin.zone": "inferred"
+      },
+      "notes": [
+        "allthings.how: picks up straight after Blade of Vengeance"
+      ],
+      "conflicts": [
+        "Metabot turn-in location field says 'Sanctum Outpost, Altgard'; completion text says 'Talk to Menrik at Fang Hideout'",
+        "zone: allthings.how lists 'Sanctum Outpost'; resolved to Calderon Canyon via the giver's camp Watcher's Tent (E3 CAMP_ZONE)"
+      ]
+    }
+  ]
+}
