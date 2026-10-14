@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/game-builds.schema.json",
+  "title": "Observed game builds (data/game-builds.json)",
+  "description": "DRAFT. Build strings seen per numbering scheme (M9), with the date first seen and the patch they belong to when known. Patch-watch becomes 'source refs with a build older than X'.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "gameBuilds"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/build"
+      }
+    }
+  },
+  "$defs": {
+    "build": {
+      "type": "object",
+      "required": [
+        "id",
+        "scheme",
+        "value",
+        "region",
+        "firstSeen"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^gb:[a-z0-9-]+$"
+        },
+        "scheme": {
+          "enum": [
+            "metabot",
+            "gaming-tools",
+            "client",
+            "patch"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "region": {
+          "$ref": "common.schema.json#/$defs/region"
+        },
+        "firstSeen": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        },
+        "lastSeen": {
+          "$ref": "common.schema.json#/$defs/isoDate"
+        },
+        "patch": {
+          "description": "The game patch it belongs to, when known (T1 is open).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "sameAs": {
+          "description": "Builds in other schemes known to be the same client (T1).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^gb:[a-z0-9-]+$"
+          }
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 400
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/builds.schema.json",
+  "title": "Builds (classes/<class>/builds.json)",
+  "description": "DRAFT (M1, owner decision 2026-10-14). Build choices, split from game facts. Per class: one guide build (origin guide, the class's defaultBuild) and up to two credited alternatives (origin community), each credited to the sites it came from; choices only, never their wording. A build needs two agreeing sources or it is 'single-source'. Every reference is a record id the build checks. 5b compiles the default build into today's SP_SKILLS / STIGMA_PLAN / ST_TARGETS / STAT_TIERS / STAT_SRC / RMB_STACK / E_ORDER and the dv plan items.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "builds"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/build"
+      },
+      "minItems": 1,
+      "maxItems": 3
+    }
+  },
+  "$defs": {
+    "planNode": {
+      "description": "A board node the build buys, placed in a milestone like today's dv items. Its save key is the node's key (boardNodes).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "milestone",
+        "order"
+      ],
+      "properties": {
+        "node": {
+          "type": "string",
+          "pattern": "^node:[a-z]+:[a-z0-9-]+:r[0-9]+c[0-9]+$"
+        },
+        "key": {
+          "description": "Only for an anyOf entry: its legacy save key.",
+          "type": "string",
+          "pattern": "^dv:([zvt]:)?[a-z0-9]+$"
+        },
+        "label": {
+          "type": "string"
+        },
+        "via": {
+          "type": "string"
+        },
+        "milestone": {
+          "type": "string",
+          "pattern": "^g[0-9]+$"
+        },
+        "order": {
+          "type": "number"
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/status"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        },
+        "anyNode": {
+          "description": "Legacy 'any one of these' plan keys (dv:corner = any Nezekan corner).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^node:[a-z]+:[a-z0-9-]+:r[0-9]+c[0-9]+$"
+          },
+          "minItems": 2
+        }
+      },
+      "unevaluatedProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "node"
+          ],
+          "not": {
+            "required": [
+              "anyNode"
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        },
+        {
+          "required": [
+            "anyNode",
+            "key"
+          ],
+          "not": {
+            "required": [
+              "node"
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "build": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "class",
+        "name",
+        "origin",
+        "skillOrder",
+        "stigmaSlots"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^build:[a-z]+:[a-z0-9-]+$"
+        },
+        "class": {
+          "$ref": "common.schema.json#/$defs/classId"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "origin": {
+          "description": "guide = the guide's own build; community = an alternative credited to its source sites.",
+          "enum": [
+            "guide",
+            "community"
+          ]
+        },
+        "statPriority": {
+          "type": "object",
+          "properties": {
+            "tiers": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "from": {
+              "description": "B = board, G = gear.",
+              "type": "object",
+              "additionalProperties": {
+                "enum": [
+                  "B",
+                  "G",
+                  "BG"
+                ]
+              }
+            },
+            "status": {
+              "$ref": "common.schema.json#/$defs/status"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/sourceRef"
+              },
+              "minItems": 1
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "tiers",
+            "status",
+            "sources"
+          ],
+          "additionalProperties": false
+        },
+        "skillOrder": {
+          "description": "Skill-point order (core, then extras). A skill is 'in the plan' (today's tracked) iff it appears here.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "skill",
+              "status"
+            ],
+            "properties": {
+              "skill": {
+                "type": "string",
+                "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+              },
+              "core": {
+                "type": "boolean"
+              },
+              "status": {
+                "$ref": "common.schema.json#/$defs/status"
+              },
+              "basis": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/sourceRef"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "skillOrderNotes": {
+          "type": "object",
+          "properties": {
+            "skip": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "interleave": {
+              "type": "string"
+            },
+            "budget": {
+              "type": "string"
+            },
+            "notFetched": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "specialtyPicks": {
+          "description": "Per skill, the choices for slots 1..3 in order (choice ids, M4).",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^skill:[a-z]+:[a-z0-9-]+$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+            },
+            "maxItems": 3
+          }
+        },
+        "stigmaSlots": {
+          "description": "Stigma per slot (today STIGMA_PLAN).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+          }
+        },
+        "stigmaTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "stigma",
+              "level"
+            ],
+            "properties": {
+              "stigma": {
+                "type": "string",
+                "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+              },
+              "level": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "stigmaSpecialtyPicks": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^stigma:[a-z]+:[a-z0-9-]+$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+            }
+          }
+        },
+        "boardPlan": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/planNode"
+          }
+        },
+        "keyStacks": {
+          "type": "object",
+          "properties": {
+            "rightClick": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "minLv",
+                  "skills"
+                ],
+                "properties": {
+                  "minLv": {
+                    "type": "integer"
+                  },
+                  "skills": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^skill:[a-z]+:[a-z0-9-]+$"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "eOrder": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^stigma:[a-z]+:[a-z0-9-]+$"
+              }
+            },
+            "status": {
+              "$ref": "common.schema.json#/$defs/status"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/sourceRef"
+              },
+              "minItems": 1
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "sources"
+          ],
+          "additionalProperties": false
+        },
+        "texts": {
+          "description": "Build-specific prose that shared steps pull with [[build:text:<name>]] (e.g. the Nezekan node narrative in g12:0).",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "common.schema.json#/$defs/inlineText"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

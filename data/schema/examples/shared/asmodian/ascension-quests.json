@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../ascension-quests.schema.json",
+  "schemaVersion": 2,
+  "collection": "ascensionQuests",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "asc:hears-the-voice", "name": "The One Who Hears the Voice", "faction": "asmodian", "chapter": 2, "lv": 22, "unlocksAt": 10,
+      "requires": { "all": [
+        { "story": "sq:2102185", "is": "reached", "basis": "legacy", "note": "today's g22:0 gate" },
+        { "done": "asc:perceives", "basis": "inferred", "note": "chapter order II after I" },
+        { "player": "Ascension Gauge at 100%", "playerChecked": true, "basis": "legacy" }
+      ] },
+      "completesWith": ["tick", { "story": "sq:2102185", "is": "turnedIn", "basis": "sourced", "sources": [{ "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian", "note": "its objective is completing this quest" }] }],
+      "sources": [{ "url": "https://metabot.gg/en/aion-2/quests/the-one-who-hears-the-voice-asmodian" }],
+      "verifiedAt": "2026-10-14", "status": "verified",
+      "notes": ["Giver Asahr at Dream Crossroad (Journal → Ascension → Teleport); zone id assigned when the zone registry covers Dream Crossroad. Derived completion is 0.3 behaviour; 0.2 keeps the tick only."]
+    }
+  ]
+}

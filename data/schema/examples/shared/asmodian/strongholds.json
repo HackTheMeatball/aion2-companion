@@ -14,6 +14,7 @@
       "type": "Renegade Daeva camp",
       "questType": "Exploration",
       "zone": "zone:tranein-highland",
+      "route": "core",
       "levelRange": {
         "lo": 1,
         "hi": 20
@@ -43,14 +44,14 @@
       },
       "requires": {
         "level": 1,
-        "basis": "sourced",
+        "basis": "inferred",
         "sources": [
           {
             "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds"
           }
-        ]
+        ],
+        "note": "lo of the map's level range"
       },
-      "requiresBasis": "sourced",
       "completesWith": [
         "tick"
       ],
@@ -61,7 +62,8 @@
             "gameId",
             "rewards",
             "steps"
-          ]
+          ],
+          "checkedAt": "2026-10-12"
         },
         {
           "url": "https://metabot.gg/en/aion-2/map/altgard/strongholds",
@@ -69,7 +71,8 @@
             "zone",
             "levelRange",
             "location"
-          ]
+          ],
+          "checkedAt": "2026-10-12"
         }
       ],
       "verifiedAt": "2026-10-12",

@@ -5,42 +5,18 @@
   "class": "assassin",
   "records": [
     {
-      "id": "class:assassin", "class": "assassin", "name": "Assassin", "release": "released",
-      "sources": [{ "url": "https://metabot.gg/en/aion-2/classes/assassin" }], "verifiedAt": "2026-10-12", "status": "verified",
-      "plan": {
-        "statPriority": {
-          "tiers": [["Critical Hit"], ["Attack", "Back Attack Damage Boost", "Combat Speed"]],
-          "from": { "Critical Hit": "BG", "Back Attack Damage Boost": "G", "Attack": "BG", "Combat Speed": "BG" },
-          "status": "verified",
-          "sources": [{ "url": "https://metabot.gg/en/aion-2/classes/assassin" }, { "url": "https://games.gg/aion-2/guides/aion-2-assassin-build-guide/" }, { "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/" }],
-          "note": "Only stats at least two of the three rank high (C20)."
-        },
-        "skillOrder": [
-          { "skill": "skill:assassin:heart-gore", "core": true, "status": "inferred", "sources": [{ "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)." }] },
-          { "skill": "skill:assassin:assault-stance", "core": false, "status": "verified", "basis": "GamesFuze (passives: Rear Smite+Exploit Weakness, then Assault Stance)",
-            "sources": [{ "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/" }] }
-        ],
-        "skillOrderNotes": { "skip": { "Apply Poison": "games.gg: skip in PvE (single)" } },
-        "stigmaPlan": {
-          "slots": ["stigma:assassin:triniels-dagger", "stigma:assassin:illusive-clone", "stigma:assassin:swift-contract", "stigma:assassin:savage-fang"],
-          "targets": [{ "stigma": "stigma:assassin:triniels-dagger", "level": 10 }, { "stigma": "stigma:assassin:illusive-clone", "level": 20 }],
-          "bySource": { "metabot": ["Illusive Clone", "Swift Contract", "Savage Fang", "Triniel's Dagger"], "gamesfuze": ["Triniel's Dagger (to 10)", "Illusive Clone (to 20)", "Savage Fang (1)", "Swift Contract (1)"] },
-          "status": "disputed",
-          "sources": [{ "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/" }, { "url": "https://metabot.gg/en/aion-2/guides/stigma-guide" }],
-          "note": "Slots 1–2 and the upgrade targets: two sources. Slots 3–4: Metabot and Skycoach put Swift Contract first, GamesFuze the reverse."
-        },
-        "keyStacks": {
-          "rightClick": [
-            { "minLv": 14, "skills": ["skill:assassin:heart-gore", "skill:assassin:ambush", "skill:assassin:insignia-explosion", "skill:assassin:savage-roar"] },
-            { "minLv": 4, "skills": ["skill:assassin:heart-gore", "skill:assassin:ambush", "skill:assassin:savage-roar"] },
-            { "minLv": 3, "skills": ["skill:assassin:ambush", "skill:assassin:savage-roar"] },
-            { "minLv": 1, "skills": ["skill:assassin:savage-roar"] }
-          ],
-          "eOrder": ["stigma:assassin:illusive-clone", "stigma:assassin:swift-contract", "stigma:assassin:triniels-dagger", "stigma:assassin:savage-fang"],
-          "status": "inferred",
-          "sources": [{ "inferred": "Row order and the E stack (buffs first) are the guide's reasoning; no source gives an order." }]
+      "id": "class:assassin",
+      "class": "assassin",
+      "name": "Assassin",
+      "release": "released",
+      "defaultBuild": "build:assassin:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
         }
-      }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
     }
   ]
 }

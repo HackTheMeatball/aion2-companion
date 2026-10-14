@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/skills.schema.json",
   "title": "Class skills (classes/<class>/skills.json)",
-  "description": "DRAFT. Replaces build.json skills / fullSkillList, SP_SKILLS fields, SP_ICONS. Skill-level steps are generated: key 'sp:<key>:<L>' (L = 2..10) and 'sp:<key>:spec', requires {level: learnLv + 3*(L-2)} (or learnLv when levelGate = flat), completesWith ['tick'].",
+  "description": "DRAFT. Game facts only (M1). Per-level steps are generated: key 'sp:<key>:<L>' (L = 2..10), requires {level: learnLv + 3*(L-2)} (learnLv when levelGate = flat), completesWith ['tick']. Specialty slot keys: 'sp:<key>:spec' (slot 1, as today), 'sp:<key>:spec2', 'sp:<key>:spec3' (reserved, M4); they open at effective skill Lv 8 / 12 / 20 (rule:specialty-slots).",
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/envelope"
@@ -48,6 +48,7 @@
           "type": "string"
         },
         "type": {
+          "description": "F2: active or passive, shown in the UI from 0.3.",
           "enum": [
             "active",
             "passive"
@@ -63,36 +64,6 @@
             "stepped",
             "flat"
           ]
-        },
-        "tracked": {
-          "description": "In the Skills card / skill-point plan (SP_SKILLS). false = listed for completeness only (fullSkillList).",
-          "type": "boolean"
-        },
-        "specialties": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "skillLv",
-              "options"
-            ],
-            "properties": {
-              "skillLv": {
-                "type": "integer"
-              },
-              "options": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "additionalProperties": false
-          }
-        },
-        "specPick": {
-          "description": "The specialty the guide recommends at skill Lv 8 (SP_SKILLS spec).",
-          "type": "string"
         },
         "boardNodes": {
           "description": "Nodes per board (build.json dvNodes).",
@@ -123,6 +94,43 @@
         },
         "note": {
           "type": "string"
+        },
+        "specialtyChoices": {
+          "description": "M4: the 5 choices (skill Lv 8/8/8/12/16 for actives), numbered; ids permanent. Builds point at them.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "n",
+              "skillLv",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9
+              },
+              "skillLv": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "description": "The guide's display wording when it differs from the game text (today's SP_SKILLS spec), so 5b output stays identical and the build still points at an id.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "unevaluatedProperties": false

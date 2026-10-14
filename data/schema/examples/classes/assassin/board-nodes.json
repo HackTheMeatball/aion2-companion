@@ -1,0 +1,179 @@
+{
+  "$schema": "../../../board-nodes.schema.json",
+  "schemaVersion": 2,
+  "collection": "boardNodes",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "node:assassin:nezekan:r3c3",
+      "key": "dv:nezekan:r3c3",
+      "board": "board:nezekan",
+      "row": 3,
+      "col": 3,
+      "type": "unique",
+      "cost": 4,
+      "label": "Combat Speed +1.5%",
+      "gameId": "410033",
+      "grade": "unique",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r3c4",
+      "key": "dv:nezekan:r3c4",
+      "board": "board:nezekan",
+      "row": 3,
+      "col": 4,
+      "type": "stat",
+      "cost": 1,
+      "label": "Attack Bonus +3",
+      "gameId": "410034",
+      "grade": "common",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r4c5",
+      "key": "dv:hg",
+      "board": "board:nezekan",
+      "row": 4,
+      "col": 5,
+      "type": "skill",
+      "cost": 3,
+      "label": "Heart Gore +1",
+      "gameId": "410050",
+      "grade": "legend",
+      "skill": "skill:assassin:heart-gore",
+      "adds": 1,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r8c8",
+      "key": "dv:nezekan:r8c8",
+      "board": "board:nezekan",
+      "row": 8,
+      "col": 8,
+      "type": "start",
+      "cost": 0,
+      "label": "Start",
+      "gameId": "410113",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r13c3",
+      "key": "dv:nezekan:r13c3",
+      "board": "board:nezekan",
+      "row": 13,
+      "col": 3,
+      "type": "unique",
+      "cost": 4,
+      "label": "Cooldown Reduction +1.5%",
+      "gameId": "410183",
+      "grade": "unique",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r13c7",
+      "key": "dv:ie",
+      "board": "board:nezekan",
+      "row": 13,
+      "col": 7,
+      "type": "skill",
+      "cost": 3,
+      "label": "Insignia Explosion +1",
+      "gameId": "410187",
+      "grade": "legend",
+      "skill": "skill:assassin:insignia-explosion",
+      "adds": 1,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    },
+    {
+      "id": "node:assassin:nezekan:r13c13",
+      "key": "dv:nezekan:r13c13",
+      "board": "board:nezekan",
+      "row": 13,
+      "col": 13,
+      "type": "unique",
+      "cost": 4,
+      "label": "Combat Speed +1.5%",
+      "gameId": "410193",
+      "grade": "unique",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified"
+    }
+  ]
+}

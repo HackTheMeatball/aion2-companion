@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/rules.schema.json",
   "title": "Game rules and tables (shared/rules.json)",
-  "description": "DRAFT. Class-independent numbers the app computes with. Replaces LEVEL_POINTS, spCost, ST_COST, DV_MIN, SD_RW / SD_REWARD, SH_REWARD, build.json _meta.skillRules / levelPoints / stigmaCost / stigmaRules.slots / boards.nodeCosts, dungeon-bands.json. 'Class-independent' is an assumption per rule until the classes-and-gaps report confirms it (appliesTo).",
+  "description": "DRAFT. Class-independent numbers the app computes with: LEVEL_POINTS, Daevanion Crystals and stigma points per level (M11), cost tables, stigma slots, specialty slots (effective level, M4), node costs, first-clear rewards. The old 'learn + 18' specialty heuristic is bug F3 and is not a rule (it stays in the 5b compiler only to keep 0.2 output identical; 0.3 fixes it).",
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/envelope"
@@ -107,19 +107,6 @@
                     },
                     "maxLevel": {
                       "type": "integer"
-                    },
-                    "specialtyAt": {
-                      "description": "skill level -> extra char levels for the spec step (SP_STEPS: learn + 18)",
-                      "type": "object",
-                      "properties": {
-                        "skillLevel": {
-                          "type": "integer"
-                        },
-                        "charLevelOffset": {
-                          "type": "integer"
-                        }
-                      },
-                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
@@ -133,10 +120,33 @@
                   "const": "specialtySlots"
                 },
                 "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer"
-                  }
+                  "description": "M4/F4: slots unlock at EFFECTIVE skill level = highest ticked sp:<key>:<L> (1 if none) + the 'adds' of every owned board node whose skill is this skill.",
+                  "type": "object",
+                  "required": [
+                    "slots",
+                    "levelBasis"
+                  ],
+                  "properties": {
+                    "slots": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "minItems": 1
+                    },
+                    "levelBasis": {
+                      "const": "effective"
+                    },
+                    "stigmaSlots": {
+                      "description": "Stigma specialty unlocks by stigma level.",
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
               "type": "object"
@@ -241,6 +251,40 @@
                 }
               },
               "type": "object"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "crystalsPerLevel"
+                },
+                "value": {
+                  "description": "Cumulative total by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "stigmaPointsPerLevel"
+                },
+                "value": {
+                  "description": "Cumulative total by character level, index = level (0..cap).",
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2
+                }
+              }
             }
           ]
         }
@@ -261,7 +305,7 @@
         },
         "value": true,
         "appliesTo": {
-          "description": "'all-classes' or a list of class ids.",
+          "description": "Which characters the rule covers: 'all-classes', a class list, or {classes, faction} (N5: Elyos dungeon rewards differ).",
           "oneOf": [
             {
               "const": "all-classes"
@@ -272,6 +316,32 @@
                 "$ref": "common.schema.json#/$defs/classId"
               },
               "minItems": 1
+            },
+            {
+              "type": "object",
+              "required": [
+                "faction"
+              ],
+              "properties": {
+                "classes": {
+                  "oneOf": [
+                    {
+                      "const": "all-classes"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "common.schema.json#/$defs/classId"
+                      },
+                      "minItems": 1
+                    }
+                  ]
+                },
+                "faction": {
+                  "$ref": "common.schema.json#/$defs/faction"
+                }
+              },
+              "additionalProperties": false
             }
           ]
         }

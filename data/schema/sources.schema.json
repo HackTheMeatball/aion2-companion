@@ -62,6 +62,7 @@
         "kind",
         "independenceGroup",
         "licence",
+        "access",
         "use",
         "verifiedAt"
       ],
@@ -97,7 +98,7 @@
           ]
         },
         "independenceGroup": {
-          "description": "Sites in one group count as one source (Metabot and Wikily).",
+          "description": "Sites in one group count as one source. Each group needs a reason (groupReason) unless the group has one site.",
           "type": "string",
           "pattern": "^[a-z0-9-]+$"
         },
@@ -108,9 +109,24 @@
           ],
           "properties": {
             "id": {
-              "description": "SPDX id where one exists; 'all-rights-reserved' when the terms say so; 'unknown' until Data & Research has read the terms.",
+              "description": "SPDX id where one exists; 'custom' for site-specific terms (conditions say what they require); 'all-rights-reserved'; 'unknown' until Data & Research has read the terms.",
               "type": "string",
-              "pattern": "^([A-Za-z0-9.+-]+|all-rights-reserved|unknown)$"
+              "pattern": "^([A-Za-z0-9.+-]+|all-rights-reserved|unknown|custom)$"
+            },
+            "conditions": {
+              "description": "What reuse requires (M8). The build can list every record a condition affects (e.g. non-commercial).",
+              "type": "array",
+              "items": {
+                "enum": [
+                  "attribution-link-to-page",
+                  "dofollow",
+                  "non-commercial",
+                  "no-endorsement",
+                  "share-alike",
+                  "no-redistribution"
+                ]
+              },
+              "uniqueItems": true
             },
             "url": {
               "$ref": "common.schema.json#/$defs/httpsUrl"
@@ -178,6 +194,98 @@
             "type": "string",
             "maxLength": 600
           }
+        },
+        "access": {
+          "description": "Reading, separate from reuse (M8; DECISIONS 2026-10-14 fetching policy). Build rules: no source ref may be added or changed on a site with mode none; terms bans-automation forces mode human-only or none; unchecked / unread warn.",
+          "type": "object",
+          "required": [
+            "robots",
+            "terms",
+            "mode",
+            "checkedAt"
+          ],
+          "properties": {
+            "robots": {
+              "enum": [
+                "allows",
+                "ai-excluded",
+                "unchecked"
+              ]
+            },
+            "terms": {
+              "enum": [
+                "allows",
+                "bans-automation",
+                "unread"
+              ]
+            },
+            "termsUrl": {
+              "$ref": "common.schema.json#/$defs/httpsUrl"
+            },
+            "mode": {
+              "description": "scripted: polite scripted reads allowed. human-only: a person in a browser. none: not read at all.",
+              "enum": [
+                "scripted",
+                "human-only",
+                "none"
+              ]
+            },
+            "checkedAt": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            }
+          },
+          "additionalProperties": false,
+          "if": {
+            "properties": {
+              "terms": {
+                "const": "bans-automation"
+              }
+            },
+            "type": "object"
+          },
+          "then": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "human-only",
+                  "none"
+                ]
+              }
+            },
+            "type": "object"
+          }
+        },
+        "withdrawn": {
+          "description": "Used before, no longer usable (aion2.th.gl). Differs from banned (never used): the build fails on any URL of a withdrawn site still in the data, so each citation is re-sourced or relabelled owner-check, never dropped silently.",
+          "type": "object",
+          "required": [
+            "date",
+            "reason"
+          ],
+          "properties": {
+            "date": {
+              "$ref": "common.schema.json#/$defs/isoDate"
+            },
+            "reason": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "additionalProperties": false
+        },
+        "operator": {
+          "description": "Who runs the site, so sites sharing an operator are visible (data-sources R7).",
+          "type": "string",
+          "maxLength": 120
+        },
+        "upstream": {
+          "description": "Shared upstream of client-extracting databases (N3). Game-database fields from one upstream count once.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "groupReason": {
+          "type": "string",
+          "maxLength": 300
         }
       },
       "additionalProperties": false

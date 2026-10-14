@@ -9,7 +9,7 @@
       "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
     },
     "recordId": {
-      "description": "Stable record id: '<kind>:<local>[:<local>…]', lowercase. Written out in the data, never derived from a name or array position at runtime. Never reused once released.",
+      "description": "Stable record id: '<kind>:<local>[:<local>…]', lowercase. Written out in the data, never derived from a name or array position at runtime. Never reused once released. Ids of story quests are sq:<game id> (M6).",
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(:[a-z0-9][a-z0-9-]*)+$",
       "maxLength": 120
@@ -41,12 +41,13 @@
       ]
     },
     "status": {
-      "description": "Record-level verdict, per data/claims.json policy. 'verified' = two independent sources, a game-database field, or the owner's in-game screen.",
+      "description": "Record-level verdict (claims.json policy). 'verified' = two independent sources, a game-database field, or the owner's in-game screen (which outranks every other source, §5.4). 'owner-check' = waiting on an in-game look by the owner.",
       "enum": [
         "verified",
         "single-source",
         "inferred",
-        "disputed"
+        "disputed",
+        "owner-check"
       ]
     },
     "httpsUrl": {
@@ -55,7 +56,7 @@
       "maxLength": 500
     },
     "sourceRef": {
-      "description": "Where a value comes from. Exactly one of url / owner / inferred. 'fields' names the record fields this source backs (omitted = the whole record).",
+      "description": "Where a value comes from. Exactly one of url / owner / inferred. 'fields' names the record fields it backs (omitted = the whole record). checkedAt / build / region record when and on which game build it was read (M9); refs added or changed after v2 ships must have checkedAt (a build check, not schema: legacy refs are listed as debt).",
       "type": "object",
       "oneOf": [
         {
@@ -82,10 +83,7 @@
           "$ref": "#/$defs/httpsUrl"
         },
         "owner": {
-          "description": "The owner's in-game screen: a reference into the private repo (path or note), never a public URL.",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 200
+          "$ref": "#/$defs/ownerRef"
         },
         "inferred": {
           "description": "The guide's own reasoning, in one sentence.",
@@ -93,8 +91,15 @@
           "minLength": 1,
           "maxLength": 400
         },
-        "date": {
+        "checkedAt": {
           "$ref": "#/$defs/isoDate"
+        },
+        "build": {
+          "$ref": "#/$defs/gameBuild"
+        },
+        "region": {
+          "$ref": "#/$defs/region",
+          "default": "global"
         },
         "fields": {
           "type": "array",
@@ -106,7 +111,7 @@
           "uniqueItems": true
         },
         "section": {
-          "description": "Which part of the page backs it, e.g. 'Required Quests'.",
+          "description": "Which part of the page backs it, e.g. 'Required first'.",
           "type": "string",
           "maxLength": 120
         },
@@ -144,7 +149,7 @@
           "minItems": 1
         },
         "verifiedAt": {
-          "description": "Date the record was last checked against its sources (drives re-verification after patches).",
+          "description": "Date the record was last checked. When any ref has checkedAt, it must equal the latest one (build check, M9).",
           "$ref": "#/$defs/isoDate"
         },
         "status": {
@@ -154,7 +159,8 @@
           "description": "Per-field verdict where it differs from the record status.",
           "type": "object",
           "propertyNames": {
-            "pattern": "^[A-Za-z][A-Za-z0-9.]*$"
+            "pattern": "^[A-Za-z][A-Za-z0-9.]*$",
+            "type": "string"
           },
           "additionalProperties": {
             "$ref": "#/$defs/status"
@@ -187,8 +193,11 @@
       }
     },
     "location": {
-      "description": "Where an NPC or entrance is. null = not stated by any source checked.",
+      "description": "Where an NPC, entrance or objective is (F15). zone is required on every located record; the rest is null when no source checked states it.",
       "type": "object",
+      "required": [
+        "zone"
+      ],
       "properties": {
         "npc": {
           "type": [
@@ -205,14 +214,8 @@
           "maxLength": 80
         },
         "zone": {
-          "oneOf": [
-            {
-              "$ref": "#/$defs/recordId"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
         },
         "kibelisk": {
           "type": [
@@ -228,6 +231,9 @@
           ],
           "minimum": 0,
           "maximum": 5000
+        },
+        "coords": {
+          "$ref": "#/$defs/coords"
         }
       },
       "additionalProperties": false
@@ -270,6 +276,20 @@
           "items": {
             "type": "string",
             "maxLength": 120
+          }
+        },
+        "byClass": {
+          "description": "Class-variant reward items (N5): 7 Asmodian Episode quests give a class weapon.",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/classId"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            }
           }
         }
       },
@@ -327,6 +347,11 @@
             },
             "additionalProperties": false
           }
+        },
+        "zone": {
+          "description": "Zone of the objective when known (F15: a ticked objective also confirms a location).",
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
         }
       },
       "additionalProperties": false
@@ -339,6 +364,7 @@
             "sourced",
             "inferred",
             "owner",
+            "owner-check",
             "rule",
             "legacy"
           ]
@@ -412,7 +438,8 @@
         {
           "type": "object",
           "required": [
-            "story"
+            "story",
+            "is"
           ],
           "allOf": [
             {
@@ -421,15 +448,15 @@
           ],
           "properties": {
             "story": {
-              "$ref": "#/$defs/recordId"
+              "type": "string",
+              "pattern": "^sq:[0-9]{5,9}$"
             },
             "is": {
-              "description": "reached (default, DECISIONS D9): current quest is X or later. turnedIn: current quest is past X, or X is the last covered quest and storyEnd is X.",
+              "description": "Required on every story atom (M7, no default). reached: current quest is X or later (D9). turnedIn: current quest is past X, or X is the last covered quest and storyEnd is X.",
               "enum": [
                 "reached",
                 "turnedIn"
-              ],
-              "default": "reached"
+              ]
             }
           },
           "unevaluatedProperties": false
@@ -446,8 +473,18 @@
           ],
           "properties": {
             "done": {
-              "description": "The step/record with this id is done (ticked or derived).",
-              "$ref": "#/$defs/recordId"
+              "description": "The step/record with this id is done (ticked or derived). Never a story quest: say {story, is: turnedIn} (M7).",
+              "allOf": [
+                {
+                  "$ref": "#/$defs/recordId"
+                },
+                {
+                  "not": {
+                    "pattern": "^sq:",
+                    "type": "string"
+                  }
+                }
+              ]
             }
           },
           "unevaluatedProperties": false
@@ -518,7 +555,6 @@
       "type": "object",
       "required": [
         "requires",
-        "requiresBasis",
         "completesWith"
       ],
       "properties": {
@@ -526,13 +562,10 @@
           "$ref": "#/$defs/cond"
         },
         "requiresBasis": {
-          "description": "sourced: every gate has a source. verified-none: sources checked, no prerequisite. unresearched: nothing checked (today's noPre; the evaluator opens it at its recommended level). inferred: the guide's reasoning. rule: follows from a game rule record. legacy: carried over unchanged from the pre-v2 hand-written data with no recorded source; the 0.3 prerequisite audit sources or labels it.",
+          "description": "Only what atoms cannot say (N2): unresearched = nothing checked (today's noPre; the evaluator opens it at max(unlocksAt, rec)); verified-none = sources checked, no prerequisite; legacy = carried over from pre-v2 hand-written data with no recorded source (the 0.3 audit sources or relabels it). Omitted = derived by the build from the atoms' basis; a contradiction (legacy here, sourced atoms) fails the build.",
           "enum": [
-            "sourced",
-            "verified-none",
             "unresearched",
-            "inferred",
-            "rule",
+            "verified-none",
             "legacy"
           ]
         },
@@ -542,17 +575,23 @@
       }
     },
     "inlineText": {
-      "description": "Guide text: plain text, <b>/<i>/<br>, entities, and [[tokens]] (item, tip, stigma, erow, mapq, asc, daeva, rotseq) the compiler expands to today's HTML.",
+      "description": "Guide text: plain text, <b>/<i>/<br>, entities, and [[tokens]]. Build tokens (M2) pull the character's build: [[build:stigma:N]], [[build:stigmaTarget:N]], [[build:node:<board>:N]], [[build:skillOrder:N]], [[build:text:<name>]].",
       "type": "string",
       "minLength": 1,
       "maxLength": 2000,
       "not": {
         "anyOf": [
           {
-            "pattern": "<(?!/?(b|i)>|br ?/?>)"
+            "pattern": "<(?!/?(b|i)>|br ?/?>)",
+            "type": "string"
           },
           {
-            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq)[:|\\]])"
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq|build)[:|\\]])",
+            "type": "string"
+          },
+          {
+            "pattern": "\\[\\[build:(?!(stigma|stigmaTarget|node|skillOrder|text):[A-Za-z0-9:-]+\\]\\])",
+            "type": "string"
           }
         ]
       }
@@ -565,10 +604,16 @@
       "not": {
         "anyOf": [
           {
-            "pattern": "<(?!/?(b|i|p|ol|ul|li)>|br ?/?>|p class=\"muted\">)"
+            "pattern": "<(?!/?(b|i|p|ol|ul|li)>|br ?/?>|p class=\"muted\">)",
+            "type": "string"
           },
           {
-            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq)[:|\\]])"
+            "pattern": "\\[\\[(?!(item|tip|stigma|erow|mapq|asc|daeva|rotseq|build)[:|\\]])",
+            "type": "string"
+          },
+          {
+            "pattern": "\\[\\[build:(?!(stigma|stigmaTarget|node|skillOrder|text):[A-Za-z0-9:-]+\\]\\])",
+            "type": "string"
           }
         ]
       }
@@ -592,7 +637,9 @@
         "collection": {
           "enum": [
             "sources",
+            "gameBuilds",
             "storyQuests",
+            "ascensionQuests",
             "regionalQuests",
             "sealedDungeons",
             "strongholds",
@@ -607,8 +654,9 @@
             "claims",
             "confidence",
             "classes",
+            "builds",
             "skills",
-            "classBoards",
+            "boardNodes",
             "stigmas"
           ]
         },
@@ -622,6 +670,107 @@
           "type": "array"
         }
       }
+    },
+    "region": {
+      "enum": [
+        "global",
+        "kr",
+        "tw"
+      ]
+    },
+    "gameBuild": {
+      "description": "Game build a value was read at (M9). scheme says whose numbering it is; value is the string as shown. 'unrecorded' only for owner screens taken before this rule.",
+      "type": "object",
+      "required": [
+        "scheme",
+        "value"
+      ],
+      "properties": {
+        "scheme": {
+          "enum": [
+            "metabot",
+            "gaming-tools",
+            "client",
+            "patch"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "additionalProperties": false
+    },
+    "ownerRef": {
+      "description": "The owner's in-game screen. 'ref' is an opaque short code (owner:YYYY-MM-DD-NN); the code-to-file map lives only in the private repo (N7). Never a URL or a file name.",
+      "type": "object",
+      "required": [
+        "ref",
+        "checkedAt",
+        "build",
+        "what"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^owner:20[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2,3}$"
+        },
+        "checkedAt": {
+          "$ref": "#/$defs/isoDate"
+        },
+        "build": {
+          "$ref": "#/$defs/gameBuild"
+        },
+        "region": {
+          "$ref": "#/$defs/region"
+        },
+        "what": {
+          "description": "What the screen shows, e.g. 'skill window, Quick Slice'.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "additionalProperties": false
+    },
+    "coords": {
+      "description": "Optional map position (F15), always with its own source.",
+      "type": "object",
+      "required": [
+        "map",
+        "x",
+        "y",
+        "sources"
+      ],
+      "properties": {
+        "map": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "route": {
+      "description": "F10 / M11: fast path (core), optional XP (filler) or everything (completionist). 5b fills it from today's behaviour (optional -> completionist, else core); the owner approves labels per milestone in 0.3.",
+      "enum": [
+        "core",
+        "filler",
+        "completionist"
+      ]
     }
   }
 }

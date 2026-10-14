@@ -1,0 +1,300 @@
+{
+  "$schema": "../../../builds.schema.json",
+  "schemaVersion": 2,
+  "collection": "builds",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "build:assassin:guide",
+      "class": "assassin",
+      "name": "Guide build",
+      "origin": "guide",
+      "statPriority": {
+        "tiers": [
+          [
+            "Critical Hit"
+          ],
+          [
+            "Attack",
+            "Back Attack Damage Boost",
+            "Combat Speed"
+          ]
+        ],
+        "from": {
+          "Critical Hit": "BG",
+          "Back Attack Damage Boost": "G",
+          "Attack": "BG",
+          "Combat Speed": "BG"
+        },
+        "status": "verified",
+        "sources": [
+          {
+            "url": "https://metabot.gg/en/aion-2/classes/assassin"
+          },
+          {
+            "url": "https://games.gg/aion-2/guides/aion-2-assassin-build-guide/"
+          },
+          {
+            "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/"
+          }
+        ],
+        "note": "Only stats at least two of the three rank high (C20)."
+      },
+      "skillOrder": [
+        {
+          "skill": "skill:assassin:heart-gore",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:insignia-explosion",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:savage-roar",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:quick-slice",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:ambush",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:rear-smite",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:exploit-weakness",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:shadowstrike",
+          "core": true,
+          "status": "inferred",
+          "sources": [
+            {
+              "inferred": "Ranked from the player's tooltips and Metabot's per-level tables (damage gained per level ÷ cooldown)."
+            }
+          ]
+        },
+        {
+          "skill": "skill:assassin:assault-stance",
+          "core": false,
+          "status": "verified",
+          "basis": "GamesFuze (passives: Rear Smite+Exploit Weakness, then Assault Stance)",
+          "sources": [
+            {
+              "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/"
+            }
+          ]
+        }
+      ],
+      "skillOrderNotes": {
+        "skip": {
+          "Apply Poison": "games.gg: skip in PvE (single)"
+        }
+      },
+      "specialtyPicks": {
+        "skill:assassin:heart-gore": [
+          "spec:assassin:heart-gore:3"
+        ]
+      },
+      "stigmaSlots": [
+        "stigma:assassin:triniels-dagger",
+        "stigma:assassin:illusive-clone",
+        "stigma:assassin:swift-contract",
+        "stigma:assassin:savage-fang"
+      ],
+      "stigmaTargets": [
+        {
+          "stigma": "stigma:assassin:triniels-dagger",
+          "level": 10
+        },
+        {
+          "stigma": "stigma:assassin:illusive-clone",
+          "level": 20
+        }
+      ],
+      "boardPlan": [
+        {
+          "node": "node:assassin:nezekan:r4c5",
+          "label": "Heart Gore",
+          "milestone": "g12",
+          "order": 20,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ]
+        },
+        {
+          "anyNode": [
+            "node:assassin:nezekan:r3c3",
+            "node:assassin:nezekan:r3c13",
+            "node:assassin:nezekan:r13c3",
+            "node:assassin:nezekan:r13c13"
+          ],
+          "key": "dv:corner",
+          "label": "Cooldown Reduction or Combat Speed corner",
+          "via": "corner node costs 4 (worked out from your board)",
+          "milestone": "g12",
+          "order": 90,
+          "requires": {
+            "level": 12,
+            "basis": "rule"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/daevanion/assassin",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "the four Unique corners of Nezekan"
+            }
+          ]
+        },
+        {
+          "node": "node:assassin:nezekan:r13c7",
+          "label": "Insignia Explosion",
+          "via": "bottom edge; path cost inferred, about 3–5 (GamesFuze node pick)",
+          "milestone": "g12",
+          "order": 100,
+          "requires": {
+            "level": 20,
+            "basis": "legacy",
+            "note": "guide's choice; Metabot gives needLevel 12 for this node"
+          },
+          "completesWith": [
+            "tick"
+          ],
+          "status": "inferred",
+          "sources": [
+            {
+              "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/"
+            }
+          ]
+        }
+      ],
+      "keyStacks": {
+        "rightClick": [
+          {
+            "minLv": 14,
+            "skills": [
+              "skill:assassin:heart-gore",
+              "skill:assassin:ambush",
+              "skill:assassin:insignia-explosion",
+              "skill:assassin:savage-roar"
+            ]
+          },
+          {
+            "minLv": 4,
+            "skills": [
+              "skill:assassin:heart-gore",
+              "skill:assassin:ambush",
+              "skill:assassin:savage-roar"
+            ]
+          },
+          {
+            "minLv": 3,
+            "skills": [
+              "skill:assassin:ambush",
+              "skill:assassin:savage-roar"
+            ]
+          },
+          {
+            "minLv": 1,
+            "skills": [
+              "skill:assassin:savage-roar"
+            ]
+          }
+        ],
+        "eOrder": [
+          "stigma:assassin:illusive-clone",
+          "stigma:assassin:swift-contract",
+          "stigma:assassin:triniels-dagger",
+          "stigma:assassin:savage-fang"
+        ],
+        "status": "inferred",
+        "sources": [
+          {
+            "inferred": "Row order and the E stack (buffs first) are the guide's reasoning; no source gives an order."
+          }
+        ]
+      },
+      "texts": {
+        "nezekan-plan": "Two clusters, from your board: above the centre, Heart Gore with Exploit Weakness 1 branching off its path (11 for both); below the centre, Ambush (7) and Quick Slice (6) share their first two nodes (11 for both), and Exploit Weakness 2 sits 5 past Quick Slice. All five come to 27. Where a node has two routes, take the one with Critical Hit and Attack over HP and Critical Hit resist.",
+        "opener": "Q (Shadowstrike)"
+      },
+      "sources": [
+        {
+          "url": "https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/stigma-guide"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "inferred",
+      "conflicts": [
+        "Stigma slots 3–4: Metabot and Skycoach put Swift Contract first, GamesFuze the reverse; the guide follows GamesFuze. Each source's order (today build.json stigmaRules.equipOrder) moves to a new claim in 5b (M1)."
+      ],
+      "notes": [
+        "Today's plan (SP_SKILLS, STIGMA_PLAN, ST_TARGETS, STAT_TIERS, RMB_STACK, E_ORDER, dv items). Up to two credited community builds may join it (owner decision)."
+      ]
+    }
+  ]
+}

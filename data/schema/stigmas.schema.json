@@ -31,7 +31,8 @@
         "id",
         "key",
         "name",
-        "availableLv"
+        "availableLv",
+        "maxLevel"
       ],
       "properties": {
         "id": {
@@ -61,6 +62,48 @@
         },
         "note": {
           "type": "string"
+        },
+        "maxLevel": {
+          "description": "25 for most classes, 40 for Assassin and Ranger (Metabot; owner check pending, classes-and-gaps).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "specialtyChoices": {
+          "description": "Choices at stigma Lv 5/10/15/20 (M4).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "n",
+              "skillLv",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$"
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9
+              },
+              "skillLv": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "description": "The guide's display wording when it differs from the game text (today's SP_SKILLS spec), so 5b output stays identical and the build still points at an id.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "unevaluatedProperties": false

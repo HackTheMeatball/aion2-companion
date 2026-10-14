@@ -64,14 +64,8 @@
           "minimum": 1
         },
         "zone": {
-          "oneOf": [
-            {
-              "$ref": "common.schema.json#/$defs/recordId"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
         },
         "entrance": {
           "$ref": "common.schema.json#/$defs/location"
@@ -100,6 +94,9 @@
         "exploreQuestId": {
           "type": "string",
           "pattern": "^[0-9]{5,9}$"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
         }
       },
       "unevaluatedProperties": false

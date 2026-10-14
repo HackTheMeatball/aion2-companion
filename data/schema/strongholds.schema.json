@@ -74,7 +74,8 @@
           "maxLength": 40
         },
         "zone": {
-          "$ref": "common.schema.json#/$defs/recordId"
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
         },
         "levelRange": {
           "type": "object",
@@ -112,6 +113,9 @@
         },
         "rewards": {
           "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
         }
       },
       "unevaluatedProperties": false

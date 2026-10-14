@@ -80,8 +80,9 @@
           "minimum": 1
         },
         "zone": {
-          "description": "Resolved zone id (E3/E4 camp->zone corrections are applied in the data, the source's value goes to conflicts).",
-          "$ref": "common.schema.json#/$defs/recordId"
+          "description": "Resolved zone id; must equal giver.zone (build check). The source's differing value goes to conflicts.",
+          "type": "string",
+          "pattern": "^zone:[a-z0-9-]+$"
         },
         "giver": {
           "$ref": "common.schema.json#/$defs/location"
@@ -97,6 +98,9 @@
         },
         "rewards": {
           "$ref": "common.schema.json#/$defs/rewards"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
         }
       },
       "unevaluatedProperties": false

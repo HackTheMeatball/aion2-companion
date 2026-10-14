@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/steps.schema.json",
   "title": "Guide steps (shared/guide/steps.json, classes/<class>/steps.json)",
-  "description": "DRAFT. One tickable line in a milestone or route-rule card. Replaces the GATES/STEPS items (except dv nodes -> classes/<class>/boards.json, hideouts -> sealed-dungeons.json). Shared steps must be class-neutral; text that names a class's skills, stigmas or board nodes lives in that class's steps file.",
+  "description": "DRAFT. One tickable line in a milestone or route-rule card. Replaces the GATES/STEPS items (except board nodes -> builds[].boardPlan, hideouts -> sealed-dungeons.json). Shared steps name build choices only through [[build:…]] tokens (M2); a class step is only for text that is true for one class whatever the build.",
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/envelope"
@@ -88,7 +88,7 @@
         "storyQuest": {
           "description": "byStory: this step IS that story quest (hidden from Next up while it is the current quest).",
           "type": "string",
-          "pattern": "^sq:[a-z0-9-]+$"
+          "pattern": "^sq:[0-9]{5,9}$"
         },
         "stigmaSlot": {
           "description": "stig: equipping stigma slot n (Stigmas card, stPick).",
@@ -121,6 +121,14 @@
           "items": {
             "$ref": "common.schema.json#/$defs/sourceRef"
           }
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        },
+        "ascensionQuest": {
+          "description": "The Ascension quest this step is about (g6:0, g22:0, g32:dreams, g45:0).",
+          "type": "string",
+          "pattern": "^asc:[a-z0-9-]+$"
         }
       },
       "unevaluatedProperties": false

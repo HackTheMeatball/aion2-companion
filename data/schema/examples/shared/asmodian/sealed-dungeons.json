@@ -11,6 +11,7 @@
       "faction": "asmodian",
       "band": 10,
       "zone": "zone:nameless-cemetery",
+      "route": "core",
       "entrance": {
         "npc": null,
         "place": null,
@@ -45,7 +46,6 @@
           }
         ]
       },
-      "requiresBasis": "sourced",
       "completesWith": [
         "tick"
       ],
@@ -57,7 +57,8 @@
             "zone",
             "rewards",
             "bosses"
-          ]
+          ],
+          "checkedAt": "2026-10-12"
         },
         {
           "url": "https://metabot.gg/en/aion-2/quests/abandoned-ones-grave",
@@ -65,7 +66,8 @@
             "entrance.kibelisk",
             "entrance.meters",
             "xp"
-          ]
+          ],
+          "checkedAt": "2026-10-12"
         }
       ],
       "verifiedAt": "2026-10-12",

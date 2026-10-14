@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/ascension-quests.schema.json",
+  "title": "Ascension quests (shared/<faction>/ascension-quests.json)",
+  "description": "DRAFT (M6). Path of Ascension I–V. Metabot shows no game id for them, so ids are slugs until one is confirmed; completion is derived from the wrapper story quest (storyQuests[].wraps).",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "ascensionQuests"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ascension"
+      }
+    }
+  },
+  "$defs": {
+    "ascension": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/stepFields"
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "faction",
+        "chapter",
+        "lv",
+        "unlocksAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^asc:[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "faction": {
+          "$ref": "common.schema.json#/$defs/faction"
+        },
+        "gameId": {
+          "type": "string",
+          "pattern": "^[0-9]{5,9}$"
+        },
+        "chapter": {
+          "description": "Path of Ascension number (I–V).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        },
+        "lv": {
+          "type": "integer"
+        },
+        "unlocksAt": {
+          "type": "integer"
+        },
+        "inCap": {
+          "type": "boolean",
+          "default": true
+        },
+        "giver": {
+          "$ref": "common.schema.json#/$defs/location"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/questStep"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

@@ -4,13 +4,67 @@
   "collection": "milestones",
   "faction": "asmodian",
   "records": [
-    { "id": "g10", "kind": "milestone", "order": 30, "lv": 10, "title": "Altgard opens",
+    {
+      "id": "g10",
+      "kind": "milestone",
+      "order": 30,
+      "lv": 10,
+      "title": "Altgard opens",
       "blurb": "Extraction and pets unlock. Sealed Dungeons and Strongholds open; tick them in Dungeons & Strongholds.",
-      "includes": [{ "sealedDungeonBand": 10, "order": 50 }] },
-    { "id": "g16", "kind": "milestone", "order": 60, "lv": 16, "title": "Legions", "blurb": "Unlock Legions; six quests fill your accessory slots." },
-    { "id": "g22", "kind": "milestone", "order": 80, "lv": 22, "title": "Stigma slot 1", "blurb": "Stigmas and Expeditions unlock." },
-    { "id": "g27", "kind": "milestone", "order": 100, "lv": 27, "title": "Stigma slot 2", "blurb": "Second stigma goes in." },
-    { "id": "g45", "kind": "milestone", "order": 160, "lv": 45, "title": "Level cap", "blurb": "Progression shifts from level to gear score." },
-    { "id": "build", "kind": "routeRule", "order": 10, "title": "Build plan", "blurb": "Where every Skill Point and stat goes.", "tag": "Always" }
+      "includes": [
+        {
+          "sealedDungeonBand": 10,
+          "order": 50
+        }
+      ]
+    },
+    {
+      "id": "g12",
+      "kind": "milestone",
+      "order": 40,
+      "lv": 13,
+      "title": "Daevanion board",
+      "blurb": "First Daevanion board (Nezekan) opens at Lv 12; first regional quest."
+    },
+    {
+      "id": "g16",
+      "kind": "milestone",
+      "order": 60,
+      "lv": 16,
+      "title": "Legions",
+      "blurb": "Unlock Legions; six quests fill your accessory slots."
+    },
+    {
+      "id": "g22",
+      "kind": "milestone",
+      "order": 80,
+      "lv": 22,
+      "title": "Stigma slot 1",
+      "blurb": "Stigmas and Expeditions unlock."
+    },
+    {
+      "id": "g27",
+      "kind": "milestone",
+      "order": 100,
+      "lv": 27,
+      "title": "Stigma slot 2",
+      "blurb": "Second stigma goes in."
+    },
+    {
+      "id": "g45",
+      "kind": "milestone",
+      "order": 160,
+      "lv": 45,
+      "title": "Level cap",
+      "blurb": "Progression shifts from level to gear score."
+    },
+    {
+      "id": "build",
+      "kind": "routeRule",
+      "order": 10,
+      "title": "Build plan",
+      "blurb": "Where every Skill Point and stat goes.",
+      "tag": "Always"
+    }
   ]
 }
