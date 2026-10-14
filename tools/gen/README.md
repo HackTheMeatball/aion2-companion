@@ -1,18 +1,21 @@
 # Data generator
 
-`gen.py` turns `data/*.json` into the page's generated data block, `gen-block.js` (between `/* E2-GEN START */` and
-`/* E2-GEN END */`). Nothing is written into `src/`: `npm run build` makes the module `src/data/generated.js` from the
-block (adding an `export { … }` list of its constants) and bundles it with the code that imports it.
+`gen.mjs` compiles the v2 data (`data/**`, spec `docs/DATA-FORMAT-V2.md`) into the module the page imports as
+`src/data/generated.js`. Nothing is written into `src/` and the module is not committed: `npm run build` calls
+`generate()` through the esbuild plugin in `scripts/generated-data.mjs` and inlines the result.
 
 ```sh
-npm run gen         # python3 -I tools/gen/gen.py   (from the repo root)
-npm run gen:check   # the same, then fails if gen-block.js, gen-report.json or DATA_SOURCES.md changed (CI runs it)
+npm run gen         # validate (validate.mjs) + cross-record checks; writes data/DATA_SOURCES.md and out/ (exit 1 on failure)
+npm run validate    # JSON Schema only: every data file and every schema example (ajv 8 Ajv2020, strict, allErrors)
+npm run gen:check   # the same as gen, then fails if data/DATA_SOURCES.md changed (CI runs it)
+node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must be rejected, checks, DATA_SOURCES.md current
 ```
 
-- `gen-block.js` — the generated block (committed; `tests/e4test.js` checks the built page has its values).
-- `gen-report.json` — every consistency check (405, all must pass; `gen.py` exits 1 otherwise) and warnings.
-- `../../data/DATA_SOURCES.md` — every source URL, the data records that cite it, and its Sources-card group.
-- `snapshots/` — data from earlier page versions the generator still reads (AREA_LOC and Sources before E2, Sealed
-  Dungeon zones before E3).
+- `gen.mjs` — `generate()` returns the module text, the compiled constants and a report; `dataSourcesMd()` the
+  Sources listing. The CLI writes `out/generated.js` and `out/gen-report.json` for review (git-ignored).
+- `validate.mjs` — the schema step: all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
+- `../../data/DATA_SOURCES.md` — every source URL, the records that cite it, and its Sources-card group (committed).
+- The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
+  placeholder zone `zone:altgard-unplaced` (DATA-FORMAT-V2 §9 data task).
 
-After regenerating: review `git diff tools/gen/gen-block.js data/`, then `npm test`.
+After changing data: `npm run gen`, review `git diff data/`, then `npm test`.

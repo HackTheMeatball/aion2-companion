@@ -9,8 +9,8 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 | `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim |
 | `src/main.js` | the app script (ES module entry, ≈1,760 lines, still one global scope): loading and saving, rendering, event handlers |
 | `src/core/*.js` | the pure core (0.2 P3; no DOM, no storage): `state.js` (key, defaults, loading, `char(state)`), `migrations.js` (load-time steps), `catalog.js` (the data finished into milestones, areas, lookups), `requirements.js` (what is open, done, affordable, next), `nextup.js` (Next up ranking) |
-| `src/data/*.js` | hand-written data tables, content as before: `milestones.js` (GATES, STEPS), `story.js` (QUESTS, QUEST_STEPS, QUEST_LOC, unlocks), `tips.js`, `build.js` (skills, stigmas, boards, key stacks, icons), `areas.js`, `items.js`, `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers the tables call: `I`, `T`, `seq`, `hideouts`, …) |
-| `src/data/generated.js` | not a file: the build makes this module from `tools/gen/gen-block.js` (`npm run gen`) |
+| `src/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
+| `src/data/generated.js` | not a file: the build compiles this module from `data/**` (data format v2) with `tools/gen/gen.mjs`, in memory |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
 
 `src/index.html` is not runnable by itself: `npm run build && npm run serve`. The two deliverables must behave the same:
@@ -121,35 +121,45 @@ save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive
 ## 3. Data pipeline
 
 ```
-web sources ──(tools/research/*.py, by hand)──▶ data/*.json ──tools/gen/gen.py──▶ tools/gen/gen-block.js ──npm run build──▶ module src/data/generated.js
-                                                                  │                (the block between /* E2-GEN START */ … /* E2-GEN END */; the build adds the export list)
-                                                                  ├─▶ tools/gen/gen-report.json (405 consistency checks, warnings)
-                                                                  └─▶ data/DATA_SOURCES.md (every URL and what it backs)
+web sources ──(research sessions, by hand)──▶ data/** (format v2) ──tools/gen/gen.mjs──▶ module src/data/generated.js (in memory, at build time)
+                                                │                     ├─▶ data/DATA_SOURCES.md (committed: every URL and what it backs)
+                                                │                     └─▶ tools/gen/out/ (npm run gen: gen-report.json, generated.js; not committed)
+                                                └── data/schema/*.schema.json (JSON Schema 2020-12; ajv 8 Ajv2020, strict)
 ```
 
-- `data/*.json` is the source of truth for regional quests (`rq.json`, `rq-chains.json`), story (`story.json`,
-  `story-40-45.json`), strongholds, dungeons, build (skills / boards / stigmas) and text claims (`claims.json`, with
-  verdicts verified / single-source / inferred / disputed / drop). `claims-notes.md` explains the verdicts.
-- The generated block defines `RQ`, `RQ_STATS`, `QUESTS_X`, `QUEST_STEPS_X`, `QUEST_LOC_X`, `STORY_END`, `SH_DATA`,
-  `AREA_LOC`, `SD_RW`, `SP_EXTRA`, `DV_BOARDS`, `SOURCES`, `SRC_SITE`, `CONF`. Never edit it by hand.
-- Hand-written data is in `src/data/*.js` (since 0.2 P2): `GATES` / `STEPS` text, `QUESTS` 1–40 and `QUEST_STEPS`,
-  `SP_SKILLS`, `STAT_TIERS`, `TIPS`, `VERIFIED_UNLOCKS`, `HIDEOUT_AREA`, … Text there follows `claims.json`. Data
-  modules import only generated data, other data modules and `markup.js`, never `main.js`; none reads `state` or the
-  DOM (they are evaluated before `main.js`).
-- Snapshots of earlier page data the generator still reads are in `tools/gen/snapshots/`.
+- **Format v2** (0.2 step 5b; spec `docs/DATA-FORMAT-V2.md`). `data/sources.json` (sites: access, licence, use),
+  `data/game-builds.json`, `data/retired.json` (keys never to be reused), `data/shared/` (rules, boards, items),
+  `data/shared/asmodian/` (story, Ascension and regional quests, Sealed Dungeons, strongholds, zones, unlocks) and its
+  `guide/` (milestones, steps, tips, claims, confidence: the guide's own text), `data/classes/assassin/` (class, skills,
+  stigmas, every board node, builds). One envelope per file (`schemaVersion: 2`, `collection`, records sorted by id).
+  `data/claims-notes.md` explains the claim verdicts.
+- **Generator** (`tools/gen/gen.mjs`, Node, no dependency but ajv): validates every file (`tools/gen/validate.mjs`), runs
+  the cross-record checks (ids unique, keys unique, references resolve, story chain one path, URLs on registered sites
+  and never on a banned or `mode: none` site, `verifiedAt` = latest `checkedAt`, claims ↔ `appliesTo`, retired keys,
+  objective indices, …; about 8,600 checks) and compiles today's constants: `RQ`, `RQ_STATS`, `QUESTS`, `QUEST_STEPS`,
+  `QUEST_LOC`, `STORY_END`, `SH_DATA`, `AREA_LOC`, `HIDEOUT_AREA`, `ZONE_TRACES`, `SD_RW`, `TIPS`, `ITEMS`,
+  `VERIFIED_UNLOCKS`, the guide build's plan constants (`STIGMA_PLAN`, `ST_TARGETS`, `STAT_TIERS`, `SP_SKILLS_CORE`,
+  `SP_EXTRA`, `RMB_ROWS`, `E_ORDER`, …), `SOURCES`, `SRC_SITE`, `CONF`, and `GUIDE_GATES` / `GUIDE_STEPS` (milestone
+  items in their v1 shape with the text tokens left in). It compiles, it does not research: corrected values live in
+  the data, a source's differing value in `conflicts`.
+- **Text tokens** (`[[item:…]]`, `[[tip:…|…]]`, `[[mapq:…|…]]`, `[[stigma:N]]`, `[[erow:N]]`, `[[asc]]`, `[[rotseq]]`)
+  are expanded in code (`expandTokens`, `src/data/markup.js`), so their markup stays in `src/`. Build tokens
+  (`[[build:stigma:N]]`, `[[build:text:…]]`, …) are expanded by the generator with the class's guide build.
+- Data modules import only generated data, other data modules and `markup.js`, never `main.js`; none reads `state` or
+  the DOM (they are evaluated before `main.js`).
 
-Regenerate after changing `data/`:
+Change data:
 
 ```sh
-npm run gen          # = python3 -I tools/gen/gen.py; exits 1 if a check fails
-git diff tools/gen/gen-block.js data/DATA_SOURCES.md   # review
-npm test             # builds (the block becomes the module src/data/generated.js); e4 checks the page has its values
-npm run gen:check    # CI: re-runs gen.py and fails if a committed generated file differs
+npm run gen          # validate + checks; writes data/DATA_SOURCES.md and tools/gen/out/ (exit 1 on any failure)
+node tests/schema.mjs   # schemas, negative controls, checks, DATA_SOURCES.md current (also the `schema` suite)
+npm test             # builds (the module is compiled in memory); e4 checks the page carries the generated values
+npm run gen:check    # CI: fails if data/DATA_SOURCES.md is not what the generator writes
 ```
 
-`tools/research/` holds the scripts that produced `data/rq.json`, `rq-chains.json`, `build.json` and `claims.json`
-(they reproduce the committed files exactly) plus small merge helpers; see its README. `tools/history/` has the
-one-time E2 / E4 patch scripts, kept for provenance only.
+`tools/history/v2-convert/` holds the one-time v1 → v2 conversion script and its log (5b); `tools/history/v1-data/` the
+two v1 files nothing read (`locations.json`, `current-areas-quests.json`). `tools/research/` holds the scripts that
+produced the v1 files (provenance; they no longer match `data/`). `tools/history/` also has the E2 / E4 patch scripts.
 
 ## 4. Build and site
 
@@ -160,9 +170,9 @@ one-time E2 / E4 patch scripts, kept for provenance only.
   stays a page global, as before modules. esbuild reprints the code: comments dropped, its own formatting, and
   top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 244 top-level names is a
   `window` property). Modules come first in import order (generated data, then `src/data/*.js`), then `main.js`.
-  The generated data module is made by an esbuild plugin from `tools/gen/gen-block.js`; a real
-  `src/data/generated.js` stops the build, and so does a top-level name declared in two modules (esbuild would rename
-  one of them). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
+  The generated data module is compiled by an esbuild plugin (`scripts/generated-data.mjs` → `tools/gen/gen.mjs`); a
+  schema error or failed data check stops the build, so does a real `src/data/generated.js`, and so does a top-level
+  name declared in two modules or in a module and the generated data (esbuild would rename one of them). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
   `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read.
 - It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
   (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing
@@ -206,6 +216,7 @@ modules and other core modules; derived facts are computed, never stored as tick
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
+| `schema` | data format v2 in Node, no browser, < 3 s (`node tests/schema.mjs`, `npm run test:data`): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), 15 broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` current |
 | `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only), state, migrations (fixtures, additive, idempotent, write points), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node) |
 | `a11y` | axe-core (pinned devDependency) at 390 / 1500 px in fresh / Lv 27 / Lv 45 × Basic / Advanced, failing on any rule outside the allowlist in `tests/a11y.js` (rules still open, each with its audit item); spoken button names; reduced motion after Level up; Escape on the "i" popovers; hit areas ≥ 24 px that never take a point from a neighbour; on touch at 390 px (since 0.1.9) fields ≥ 16 px, primary buttons ≥ 44 px, text ≥ 11 px mono / 12 px; no story connector above the first row; no sideways scroll at 260 px |
 

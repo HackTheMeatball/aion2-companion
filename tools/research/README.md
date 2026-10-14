@@ -1,5 +1,8 @@
 # Research scripts (provenance)
 
+**v1 only.** Since 0.2 step 5b the data is in format v2 (`data/**`); these scripts built the v1 files, which
+`tools/history/v2-convert/convert.mjs` converted (read them at commit 5a309f3). They no longer write anything current.
+
 How `data/*.json` was built during the R1–R3 / V1 research passes (Oct 2026). Kept so every data file can be traced and
 re-derived. The web research itself (Metabot, aion2.gaming.tools, aion2.th.gl, allthings.how, …) was done by hand / with
 WebFetch; these scripts only assemble its results. `brief.md` is the research brief.

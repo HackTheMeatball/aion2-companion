@@ -5,3 +5,7 @@ single-match replacement on the single-file app of that time (`assassin-route.ht
 directory (the backup from before that pass) and are already applied to `src/index.html`; run against it, they stop at
 the first edit because the original text no longer exists. Kept to explain why the code looks
 the way it does; see CHANGELOG.md for the summary.
+
+- `v2-convert/convert.mjs` (0.2 step 5b): the one-time v1 → v2 data conversion; `conversion-log.txt` lists every value
+  that moved between sources of truth. `v1-data/`: the two v1 files nothing read (`locations.json`,
+  `current-areas-quests.json`), kept for the zone task (DATA-FORMAT-V2 §9).
