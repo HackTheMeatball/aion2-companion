@@ -662,6 +662,7 @@ header .ns-btn.primary { margin-top: 2px; }
 .qs-list li.on small { opacity: .75; }
 .qs-list li.leaving { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
 .qs-end { margin: 6px 0 0; font: 600 12px var(--body); color: var(--good); }
+.qs-wait { margin: 6px 0 0; font: 600 12px var(--body); color: var(--muted); }
 .qs-next { margin-top: 6px; width: 100%; font: 600 12px var(--body); padding: 6px; border-radius: 8px; background: linear-gradient(180deg, #3fbf78, #2a9a5c); color: #06150d; border: 1px solid #5fdc95; cursor: pointer; }
 /* Moved progress bars */
 /* Journey "Ahead" block and the folded milestone list */
