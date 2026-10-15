@@ -164,7 +164,7 @@
       "id": "conf:regional",
       "group": "verified",
       "order": 20,
-      "text": "Regional quests: giver, Kibelisk, rewards, recommended and unlock level from each quest's Metabot page; prerequisites (an earlier regional quest or a story quest) from aion2.gaming.tools and aion2.th.gl, cross-checked with allthings.how ({rqChained} follow-ups, {rqStoryGated} story-gated).",
+      "text": "Regional quests: giver, Kibelisk, rewards, recommended and unlock level from each quest's Metabot page; prerequisites (an earlier regional quest or a story quest) from aion2.gaming.tools, cross-checked with allthings.how ({rqChained} follow-ups, {rqStoryGated} story-gated). Two gates with no permitted source are kept for an in-game check (Hugo Mercenaries: Deep Shadow).",
       "placeholders": [
         "rqChained",
         "rqStoryGated"
@@ -210,7 +210,7 @@
       "id": "conf:specialty-slots",
       "group": "verified",
       "order": 70,
-      "text": "Specialty slots at skill level 8 / 12 / 20.",
+      "text": "Specialty slots at skill level 8 / 12 / 20, Daevanion nodes included (seen in your game); choices at 8 / 8 / 8 / 12 / 16 (Metabot skill pages).",
       "when": {
         "C03": "verified"
       }

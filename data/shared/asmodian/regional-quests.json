@@ -20,15 +20,39 @@
         "npc": "Derk",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 185,
+        "coords": {
+          "map": "altgard",
+          "x": 3016,
+          "y": 2808,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Derk",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven Cliff",
+        "meters": 215,
+        "coords": {
+          "map": "altgard",
+          "x": 3470,
+          "y": 2660,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -139,13 +163,25 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -166,14 +202,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 154
+        "meters": 154,
+        "coords": {
+          "map": "altgard",
+          "x": 4700,
+          "y": 3868,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Derk",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 162
+        "meters": 162,
+        "coords": {
+          "map": "altgard",
+          "x": 5015,
+          "y": 3827,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -240,24 +300,13 @@
           {
             "story": "sq:2102280",
             "is": "reached",
-            "basis": "sourced",
-            "sources": [
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2202011"
-              }
-            ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "basis": "owner-check",
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
           },
           {
             "done": "rq:2202010",
-            "basis": "sourced",
-            "sources": [
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2202011",
-                "section": "Prerequisites"
-              }
-            ],
-            "note": "New edge."
+            "basis": "owner-check",
+            "note": "New edge. Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
           }
         ]
       },
@@ -285,13 +334,16 @@
           ]
         },
         {
-          "url": "https://aion2.th.gl/db/quests/q_2202011",
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow",
           "fields": [
-            "requires"
-          ]
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Giver place inferred from nearest Kibelisk (Nornir Assembly 154 m); Metabot location field just says Altgard. Step 2 sends you to Safe Haven."
@@ -313,15 +365,39 @@
         "npc": "Hadala",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 74,
+        "coords": {
+          "map": "altgard",
+          "x": 3160,
+          "y": 2917,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/missing-mount",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Tomgus",
         "place": null,
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 94,
+        "coords": {
+          "map": "altgard",
+          "x": 3139,
+          "y": 2927,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/missing-mount",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -415,16 +491,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/missing-mount",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in; giver Hadala and turn-in Tomgus from allthings.how 244374 and aion2.gaming.tools 2202012",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -444,15 +532,39 @@
         "npc": "Benekt",
         "place": "Creion Campsite",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Creion Campsite",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3113,
+          "y": 3388,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creion-research-assistant",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Benekt",
         "place": null,
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Creion Campsite",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3113,
+          "y": 3388,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creion-research-assistant",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -552,16 +664,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/creion-research-assistant",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools"
       ]
     },
     {
@@ -580,15 +704,39 @@
         "npc": "VeKauf",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 3183,
+          "y": 2881,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Galorik",
         "place": "Galorik's Inspection Area",
         "zone": "zone:crypt",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Galorik's Inspection Area",
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 3123,
+          "y": 3099,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -699,16 +847,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk."
       ]
     },
     {
@@ -727,15 +887,39 @@
         "npc": "Tagar",
         "place": "Gravekeeper Camp",
         "zone": "zone:nameless-cemetery",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Gravekeeper Camp",
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 2579,
+          "y": 3329,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ulgorn",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 87,
+        "coords": {
+          "map": "altgard",
+          "x": 3284,
+          "y": 2857,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -826,16 +1010,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -855,15 +1051,39 @@
         "npc": "Nemon",
         "place": "Forest Hideout",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Forest Hideout",
+        "meters": 5,
+        "coords": {
+          "map": "altgard",
+          "x": 3976,
+          "y": 4246,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blade-of-vengeance",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Gamilla",
         "place": null,
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Watcher's Tent",
+        "meters": 6,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blade-of-vengeance",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -944,9 +1164,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blade-of-vengeance",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -959,7 +1192,6 @@
         "Giver NPC from aion2.gaming.tools (Nemon); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Gamilla)",
         "Giver place 'Forest Hideout' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Sanctum Outpost\"; the giver's camp / place puts it in Moslan Forest (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -980,14 +1212,38 @@
         "place": "Watcher's Tent",
         "zone": "zone:calderon-canyon",
         "kibelisk": "Watcher's Tent",
-        "meters": 6
+        "meters": 6,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Menrik",
         "place": "Fang Hideout",
         "zone": "zone:calderon-canyon",
         "kibelisk": "Fang Hideout",
-        "meters": 143
+        "meters": 143,
+        "coords": {
+          "map": "altgard",
+          "x": 2604,
+          "y": 3687,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1135,9 +1391,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -1166,15 +1431,39 @@
         "npc": "Spirit Guide Reden",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Healing Spring",
+        "meters": 35,
+        "coords": {
+          "map": "altgard",
+          "x": 4308,
+          "y": 3494,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Spirit Guide Reden",
         "place": "Odar's Shade",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 29,
+        "coords": {
+          "map": "altgard",
+          "x": 3626,
+          "y": 4109,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1235,9 +1524,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -1248,7 +1550,6 @@
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
         "Giver place 'Healing Spring' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -1268,15 +1569,39 @@
         "npc": "Lulu",
         "place": "Elim's Rest",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Elim's Rest",
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 3650,
+          "y": 4593,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/young-elims-story",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ecco",
         "place": null,
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 3610,
+          "y": 4082,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/young-elims-story",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1387,9 +1712,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/young-elims-story",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -1398,8 +1736,7 @@
         "Metabot shows no giver/turn-in/Kibelisk; app giver 'Lulu · Elim's Rest' comes from allthings.how (locations.json place_src); Lulu is named in step text",
         "Giver NPC from aion2.gaming.tools (Lulu); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Ecco)",
-        "Giver place 'Elim's Rest' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Elim's Rest' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -1419,14 +1756,38 @@
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 127
+        "meters": 127,
+        "coords": {
+          "map": "altgard",
+          "x": 4436,
+          "y": 2958,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-an-old-promise",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Village Kid",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
         "kibelisk": "Safe Haven Cliff",
-        "meters": 220
+        "meters": 220,
+        "coords": {
+          "map": "altgard",
+          "x": 3464,
+          "y": 2660,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-an-old-promise",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1544,10 +1905,6 @@
               {
                 "url": "https://aion2.gaming.tools/quests/2202020",
                 "section": "Required Quests"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2202011",
-                "section": "Unlocks"
               }
             ],
             "note": "New edge."
@@ -1588,9 +1945,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/hugo-mercenaries-an-old-promise",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -1620,14 +1986,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 167
+        "meters": 167,
+        "coords": {
+          "map": "altgard",
+          "x": 5020,
+          "y": 3865,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hallina",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 109
+        "meters": 109,
+        "coords": {
+          "map": "altgard",
+          "x": 4749,
+          "y": 3880,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1732,9 +2122,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Dialogue: 'Please participate in the second act if you'd like.'",
@@ -1761,14 +2160,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 109
+        "meters": 109,
+        "coords": {
+          "map": "altgard",
+          "x": 4749,
+          "y": 3880,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-2",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hallina",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 109
+        "meters": 109,
+        "coords": {
+          "map": "altgard",
+          "x": 4749,
+          "y": 3880,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-2",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1867,9 +2290,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-2",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "allthings.how: second act of Part 1; 'Enter the second stage to play through the final act.'"
@@ -1891,15 +2323,39 @@
         "npc": "Baba",
         "place": "Quai Campsite",
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Quai Campsite",
+        "meters": 78,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3470,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Baba",
         "place": null,
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Quai Campsite",
+        "meters": 78,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3470,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1986,9 +2442,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -1996,7 +2465,6 @@
       "conflicts": [
         "Metabot shows no giver field (Baba named in story); Baba from allthings.how and gaming.tools. Zone 'Quai Campsite' is a camp, Altgard sub-region is Calderon Canyon per app area (P0-4).",
         "Zone: allthings.how says 'Quai Campsite', app QUEST_AREA/area says 'Calderon Canyon' (app where='Quai Campsite · Baba')",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Quai Campsite\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -2017,14 +2485,38 @@
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
         "kibelisk": "Collapsed Chasm",
-        "meters": 4
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
         "kibelisk": "Collapsed Chasm",
-        "meters": 4
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2100,9 +2592,18 @@
             "requires"
           ],
           "note": "no Required Quests listed"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "allthings.how: Uru sends you through instead across three quests, each given and turned in at the Collapsed Chasm",
@@ -2130,15 +2631,39 @@
         "npc": "Nivena",
         "place": "Sanctum Outpost",
         "zone": "zone:sanctum-outpost",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Temporary Retreat",
+        "meters": 197,
+        "coords": {
+          "map": "altgard",
+          "x": 2537,
+          "y": 4159,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/immortal-isles-distinct-ecology",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nivena",
         "place": "Temporary Retreat",
         "zone": "zone:sanctum-outpost",
         "kibelisk": "Temporary Retreat",
-        "meters": 11
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 2561,
+          "y": 3971,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/immortal-isles-distinct-ecology",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2195,10 +2720,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202027"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -2239,17 +2760,27 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/immortal-isles-distinct-ecology",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot gives no giver Kibelisk (location 'Sanctum Outpost'); app RQ_LOC 'Temporary Retreat 197 m' does not match Metabot giver (Temporary Retreat 11 m is the turn-in; 201 m is step 1)",
-        "Objective mobs Lv 50",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Objective mobs Lv 50"
       ]
     },
     {
@@ -2269,14 +2800,38 @@
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 47
+        "meters": 47,
+        "coords": {
+          "map": "altgard",
+          "x": 4508,
+          "y": 2907,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/reality-bites",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Bekrin",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 47
+        "meters": 47,
+        "coords": {
+          "map": "altgard",
+          "x": 4508,
+          "y": 2907,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/reality-bites",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2321,10 +2876,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202028"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -2359,9 +2910,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/reality-bites",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Giver place is Briskwind Shelter (Metabot); app QUEST_AREA 'Battlescar Mound' contradicts (P0-4). Dialogue mentions Battlescar Mound as where Togs are.",
@@ -2384,15 +2944,39 @@
         "npc": "Wandering Merchant Shirakiki",
         "place": null,
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Graverobber Campsite",
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 5491,
+          "y": 3117,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": null,
         "place": null,
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Graverobber Campsite",
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 5491,
+          "y": 3117,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2453,16 +3037,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -2483,14 +3079,38 @@
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
         "kibelisk": "Collapsed Chasm",
-        "meters": 4
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
         "kibelisk": "Collapsed Chasm",
-        "meters": 4
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2547,9 +3167,18 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "allthings.how: After Uru discovers beings in Altgard unlike any he has seen",
@@ -2575,15 +3204,39 @@
         "npc": "Uru",
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Collapsed Chasm",
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": null,
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Collapsed Chasm",
+        "meters": 4,
+        "coords": {
+          "map": "altgard",
+          "x": 3536,
+          "y": 4337,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2659,9 +3312,22 @@
             "requires"
           ],
           "note": "no Required Quests listed"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -2670,8 +3336,7 @@
         "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
         "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -2693,15 +3358,39 @@
         "npc": "Uru",
         "place": "Guide Rest Stop",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Guide Rest Stop",
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4766,
+          "y": 3430,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": null,
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Guide Rest Stop",
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4766,
+          "y": 3430,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2777,9 +3466,22 @@
             "requires"
           ],
           "note": "no Required Quests listed"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -2790,8 +3492,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -2810,15 +3511,39 @@
         "npc": "Uru",
         "place": "Guide Rest Stop",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Guide Rest Stop",
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4766,
+          "y": 3430,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": null,
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Guide Rest Stop",
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4766,
+          "y": 3430,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2895,9 +3620,22 @@
             "requires"
           ],
           "note": "no Required Quests listed"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -2905,8 +3643,7 @@
       "conflicts": [
         "Metabot shows no giver field; Uru named in story text only. App place 'Guide Rest Stop' not on Metabot",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -2929,14 +3666,38 @@
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5495,
+          "y": 3118,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5495,
+          "y": 3118,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3006,9 +3767,18 @@
             "requires"
           ],
           "note": "no Required Quests listed"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Dialogue: Uru says a new rift appeared nearby; 'head west' (Shirakiki waits for the items) — no quest named",
@@ -3032,14 +3802,38 @@
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5495,
+          "y": 3118,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Uru",
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5495,
+          "y": 3118,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3096,9 +3890,18 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Metabot location field just 'Altgard'; place taken from nearest Kibelisk (Graverobber Campsite 32 m, same as An Honest Shugo)",
@@ -3125,14 +3928,38 @@
         "place": "Collapsed Chasm",
         "zone": "zone:moslan-forest",
         "kibelisk": "Collapsed Chasm",
-        "meters": 11
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3527,
+          "y": 4331,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Odar",
         "place": "Odar's Shade",
         "zone": "zone:moslan-forest",
         "kibelisk": "Odar's Shade",
-        "meters": 22
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 3616,
+          "y": 4091,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3240,9 +4067,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -3264,15 +4100,39 @@
         "npc": "Harald",
         "place": "Abandoned Site",
         "zone": "zone:uruthumheim",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Site",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 4067,
+          "y": 4074,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-future-within-the-past",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Harald",
         "place": "Abandoned Site",
         "zone": "zone:uruthumheim",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Site",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 4067,
+          "y": 4074,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-future-within-the-past",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3413,17 +4273,29 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-future-within-the-past",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "allthings.how: After reassembling the last piece of Minusha's Heart"
       ],
       "conflicts": [
         "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'",
-        "Giver place 'Abandoned Site' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Abandoned Site' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -3443,14 +4315,38 @@
         "place": "Abandoned Campsite",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Abandoned Campsite",
-        "meters": 9
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 5163,
+          "y": 4858,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/bloodstained-rose",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Pordhet",
         "place": "Abandoned Campsite",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Abandoned Campsite",
-        "meters": 9
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 5163,
+          "y": 4858,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/bloodstained-rose",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3537,9 +4433,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/bloodstained-rose",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
     },
     {
@@ -3559,14 +4464,38 @@
         "place": "Mahindel Cliff",
         "zone": "zone:mahindel-river",
         "kibelisk": "Mahindel Cliff",
-        "meters": 13
+        "meters": 13,
+        "coords": {
+          "map": "altgard",
+          "x": 5490,
+          "y": 3919,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-friends-legacy",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hadala",
         "place": "Moslan Forest Cliff",
         "zone": "zone:moslan-forest",
         "kibelisk": "Moslan Forest Cliff",
-        "meters": 37
+        "meters": 37,
+        "coords": {
+          "map": "altgard",
+          "x": 3199,
+          "y": 4229,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-friends-legacy",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3694,9 +4623,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-friends-legacy",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -3721,15 +4659,39 @@
         "npc": "Bekrin",
         "place": "Battlescar Mound",
         "zone": "zone:battlescar-mound",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Basfelt Waterfall",
+        "meters": 309,
+        "coords": {
+          "map": "altgard",
+          "x": 5211,
+          "y": 2937,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Elena",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Briskwind Shelter",
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 4573,
+          "y": 2908,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3844,9 +4806,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -3857,7 +4832,6 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena).",
         "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -3877,15 +4851,39 @@
         "npc": "Romi",
         "place": "Steel Hammer Temporary Trading Post",
         "zone": "zone:southern-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Steel Hammer Temporary Trading Post",
+        "meters": 35,
+        "coords": {
+          "map": "altgard",
+          "x": 5745,
+          "y": 5231,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-perfect-wedding",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Romi",
         "place": "outside the wedding venue",
         "zone": "zone:southern-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Campsite",
+        "meters": 347,
+        "coords": {
+          "map": "altgard",
+          "x": 4856,
+          "y": 4692,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-perfect-wedding",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3972,10 +4970,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202041"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4016,17 +5010,29 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-perfect-wedding",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Steel Hammer Temporary Trading Post' not on Metabot",
-        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -4046,14 +5052,38 @@
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 30
+        "meters": 30,
+        "coords": {
+          "map": "altgard",
+          "x": 5387,
+          "y": 5266,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fallout",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Karumba",
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 30
+        "meters": 30,
+        "coords": {
+          "map": "altgard",
+          "x": 5387,
+          "y": 5266,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fallout",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4110,10 +5140,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202042"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4148,9 +5174,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fallout",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Karumba closing line: 'I have a bad feeling we'll need your help again soon enough.' (no quest named)",
@@ -4176,15 +5211,39 @@
         "npc": "Lakiba",
         "place": "Amunta's Hideout",
         "zone": "zone:eastern-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Amunta's Hideout",
+        "meters": 57,
+        "coords": {
+          "map": "altgard",
+          "x": 5822,
+          "y": 4670,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fallout-calmed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Amunta",
         "place": null,
         "zone": "zone:eastern-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Amunta's Hideout",
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 5825,
+          "y": 4725,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fallout-calmed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4256,10 +5315,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202043"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4321,9 +5376,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fallout-calmed",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -4334,8 +5402,7 @@
       "conflicts": [
         "Metabot page fetched later: shows no giver field (Lakiba only in intro), no turn-in, no Kibelisk; wikily gives giver Lakiba, turn-in Amunta; allthings gives Lakiba at Amunta's Hideout. Giver Kibelisk unknown (Fallout step 2 shows Kibelisk 'Amunta's Hideout' 22 m from the hideout).",
         "App reward 'Ariel crystal ×2' contradicts wikily (Odyle ×5 + Wisdom Stone + Daevanion Crystal)",
-        "Step 2 'talk to Karumba' — Karumba is the giver of 'Fallout' (app); suggests Fallout precedes Fallout Calmed, not stated",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Step 2 'talk to Karumba' — Karumba is the giver of 'Fallout' (app); suggests Fallout precedes Fallout Calmed, not stated"
       ]
     },
     {
@@ -4355,14 +5422,38 @@
         "place": "Temporary Investigation Base",
         "zone": "zone:dredgion-crash-site",
         "kibelisk": "Temporary Investigation Base",
-        "meters": 18
+        "meters": 18,
+        "coords": {
+          "map": "altgard",
+          "x": 3470,
+          "y": 3280,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Dari",
         "place": "Quai Campsite",
         "zone": "zone:calderon-canyon",
         "kibelisk": "Quai Campsite",
-        "meters": 62
+        "meters": 62,
+        "coords": {
+          "map": "altgard",
+          "x": 2979,
+          "y": 3495,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4423,9 +5514,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -4451,15 +5551,39 @@
         "npc": "Baba",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Nornir Assembly",
+        "meters": 168,
+        "coords": {
+          "map": "altgard",
+          "x": 5022,
+          "y": 3863,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/farewell-my-instructor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Varron",
         "place": "outside the little house by the Impetusium",
         "zone": "zone:nornir-assembly",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Impetusium Lower Path",
+        "meters": 97,
+        "coords": {
+          "map": "altgard",
+          "x": 5285,
+          "y": 6058,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/farewell-my-instructor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "rewards": {
@@ -4497,10 +5621,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202045"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4546,16 +5666,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/farewell-my-instructor",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list."
       ]
     },
     {
@@ -4574,15 +5706,39 @@
         "npc": "Nemon",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Outskirts Stall",
+        "meters": 37,
+        "coords": {
+          "map": "altgard",
+          "x": 5389,
+          "y": 5862,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Outskirts Stall",
+        "meters": 37,
+        "coords": {
+          "map": "altgard",
+          "x": 5389,
+          "y": 5862,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4656,15 +5812,27 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk.",
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -4685,14 +5853,38 @@
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Steel Hammer Merchants HQ",
-        "meters": 88
+        "meters": 88,
+        "coords": {
+          "map": "altgard",
+          "x": 5791,
+          "y": 4233,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/another-crisis",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Snotra",
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Steel Hammer Merchants HQ",
-        "meters": 84
+        "meters": 84,
+        "coords": {
+          "map": "altgard",
+          "x": 5792,
+          "y": 4079,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/another-crisis",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4773,10 +5965,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202047"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4822,9 +6010,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/another-crisis",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "allthings.how: Tefra is now Snotra's assistant."
@@ -4846,15 +6043,39 @@
         "npc": "Kanes",
         "place": "Temporary Investigation Base",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 6,
+        "coords": {
+          "map": "altgard",
+          "x": 3480,
+          "y": 3272,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/im-a-believer",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Markan",
         "place": "Creion Campsite",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Creion Campsite",
+        "meters": 16,
+        "coords": {
+          "map": "altgard",
+          "x": 3118,
+          "y": 3393,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/im-a-believer",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4899,10 +6120,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202050"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -4943,9 +6160,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/im-a-believer",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -4953,7 +6183,6 @@
       "conflicts": [
         "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place.",
         "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -4974,14 +6203,38 @@
         "place": "Gravekeeper Camp",
         "zone": "zone:nameless-cemetery",
         "kibelisk": "Gravekeeper Camp",
-        "meters": 15
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 2578,
+          "y": 3306,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Rizel",
         "place": "Gravekeeper Camp",
         "zone": "zone:nameless-cemetery",
         "kibelisk": "Gravekeeper Camp",
-        "meters": 15
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 2578,
+          "y": 3306,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5036,9 +6289,18 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
@@ -5060,15 +6322,39 @@
         "npc": "Baba",
         "place": "Quai Campsite",
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Quai Campsite",
+        "meters": 78,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3470,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-traitor-within",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Baba",
         "place": null,
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Quai Campsite",
+        "meters": 78,
+        "coords": {
+          "map": "altgard",
+          "x": 3048,
+          "y": 3470,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-traitor-within",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5125,10 +6411,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202052"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -5191,9 +6473,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-traitor-within",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -5204,7 +6499,6 @@
         "Giver NPC from aion2.gaming.tools (Baba); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Baba)",
         "Giver place 'Quai Campsite' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Quai Campsite\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -5224,15 +6518,39 @@
         "npc": "Tina",
         "place": "under the Tranein Highland bridge",
         "zone": "zone:tranein-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Beneath the Tranein Highland Bridge",
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 3263,
+          "y": 3768,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Tina",
         "place": "Safe Haven",
         "zone": "zone:dredgion-crash-site",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 26,
+        "coords": {
+          "map": "altgard",
+          "x": 3170,
+          "y": 2856,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5319,9 +6637,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -5331,8 +6662,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven'",
-        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -5351,15 +6681,39 @@
         "npc": "Avent",
         "place": "Watcher's Tent",
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Watcher's Tent",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3049,
+          "y": 3717,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/one-last-thing",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Avent",
         "place": "Watcher's Tent",
         "zone": "zone:calderon-canyon",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Watcher's Tent",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3049,
+          "y": 3717,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/one-last-thing",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5404,13 +6758,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202054"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2202054"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -5441,18 +6788,24 @@
           ]
         },
         {
-          "url": "https://aion2.th.gl/db/quests/q_2202054",
+          "url": "https://metabot.gg/en/aion-2/quests/one-last-thing",
           "fields": [
-            "requires"
-          ]
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from aion2.th.gl q_2202054, aion2.gaming.tools 2202054, allthings.how 244384. No Kibelisk. (Watcher's Tent is also a Kibelisk name, but distance unknown.)",
+        "Data from aion2.gaming.tools 2202054 and allthings.how 244384 (an aion2.th.gl page used before is withdrawn and no longer cited). Kibelisk from Metabot's quest page (One Last Thing, 2026-10-14).",
         "App reward 'Ariel crystal' not supported: sources give Odyle x5",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Tranein Highland\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -5473,14 +6826,38 @@
         "place": "Temporary Retreat",
         "zone": "zone:sanctum-outpost",
         "kibelisk": "Temporary Retreat",
-        "meters": 7
+        "meters": 7,
+        "coords": {
+          "map": "altgard",
+          "x": 2569,
+          "y": 3957,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/mind-your-own-business",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Gamilla",
         "place": "Temporary Retreat",
         "zone": "zone:sanctum-outpost",
         "kibelisk": "Temporary Retreat",
-        "meters": 7
+        "meters": 7,
+        "coords": {
+          "map": "altgard",
+          "x": 2569,
+          "y": 3957,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/mind-your-own-business",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5525,10 +6902,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202055"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -5563,9 +6936,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/mind-your-own-business",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
     },
     {
@@ -5584,15 +6966,39 @@
         "npc": "Oliver",
         "place": "Odar's Shade",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 41,
+        "coords": {
+          "map": "altgard",
+          "x": 3636,
+          "y": 4089,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lost-memories",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Tao",
         "place": null,
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Forest Hideout",
+        "meters": 8,
+        "coords": {
+          "map": "altgard",
+          "x": 3974,
+          "y": 4242,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lost-memories",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5673,10 +7079,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202056"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -5717,16 +7119,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lost-memories",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained."
       ]
     },
     {
@@ -5745,15 +7159,39 @@
         "npc": "Nana",
         "place": "Odar's Shade",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 24,
+        "coords": {
+          "map": "altgard",
+          "x": 3621,
+          "y": 4110,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nana",
         "place": "Odar's Shade",
         "zone": "zone:moslan-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 24,
+        "coords": {
+          "map": "altgard",
+          "x": 3621,
+          "y": 4110,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5846,10 +7284,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202057"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -5906,17 +7340,29 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot page not reachable (provenance refusal; not surfaced by search). Data from aion2.gaming.tools 2202057 + allthings.how 244366; no Kibelisk available.",
-        "App reward 'Ariel crystal' not supported: sources give Odyle x5 + Wisdom Stone + Daevanion Crystal",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "App reward 'Ariel crystal' not supported: sources give Odyle x5 + Wisdom Stone + Daevanion Crystal"
       ]
     },
     {
@@ -5936,14 +7382,38 @@
         "place": "Victorious Daeva's Statue",
         "zone": "zone:uruthumheim",
         "kibelisk": "Victorious Daeva's Statue",
-        "meters": 17
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 4207,
+          "y": 3634,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/restoration-materials",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Keronis",
         "place": "Victorious Daeva's Statue",
         "zone": "zone:uruthumheim",
         "kibelisk": "Victorious Daeva's Statue",
-        "meters": 17
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 4207,
+          "y": 3634,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/restoration-materials",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5985,13 +7455,6 @@
               {
                 "url": "https://aion2.gaming.tools/quests/2102800",
                 "section": "Dependent quests"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2202058"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -6022,13 +7485,16 @@
           ]
         },
         {
-          "url": "https://aion2.th.gl/db/quests/q_2202058",
+          "url": "https://metabot.gg/en/aion-2/quests/restoration-materials",
           "fields": [
-            "requires"
-          ]
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Rec 45 but objective mobs Lv 24"
@@ -6050,15 +7516,39 @@
         "npc": "Spirit Guide Cortis",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Healing Spring",
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 4266,
+          "y": 3497,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/restless-spirits",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Spirit Guide Cortis",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Healing Spring",
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 4266,
+          "y": 3497,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/restless-spirits",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6121,10 +7611,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202059"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -6153,13 +7639,25 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/restless-spirits",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk."
       ]
     },
     {
@@ -6179,14 +7677,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 167
+        "meters": 167,
+        "coords": {
+          "map": "altgard",
+          "x": 5020,
+          "y": 3865,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/another-survivor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hallina",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 10
+        "meters": 10,
+        "coords": {
+          "map": "altgard",
+          "x": 4271,
+          "y": 3509,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/another-survivor",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6273,10 +7795,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202060"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -6332,9 +7850,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/another-survivor",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -6359,15 +7886,39 @@
         "npc": "Ivan",
         "place": "Faded Stump",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Faded Stump",
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 4733,
+          "y": 3208,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/regular-altar-maintenance",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ivan",
         "place": null,
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Purifying Forest Coastal Cliff",
+        "meters": 98,
+        "coords": {
+          "map": "altgard",
+          "x": 4968,
+          "y": 3471,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/regular-altar-maintenance",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6472,10 +8023,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202061"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -6510,9 +8057,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/regular-altar-maintenance",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -6521,8 +8081,7 @@
         "allthings.how: Finish the route at the Wind Altar after checking all four."
       ],
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk."
       ]
     },
     {
@@ -6542,14 +8101,38 @@
         "place": "Guide Rest Stop",
         "zone": "zone:purifying-forest",
         "kibelisk": "Guide Rest Stop",
-        "meters": 41
+        "meters": 41,
+        "coords": {
+          "map": "altgard",
+          "x": 4778,
+          "y": 3410,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fight-poison-with-poison",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Spirit Guide Viron",
         "place": "Guide Rest Stop",
         "zone": "zone:purifying-forest",
         "kibelisk": "Guide Rest Stop",
-        "meters": 41
+        "meters": 41,
+        "coords": {
+          "map": "altgard",
+          "x": 4778,
+          "y": 3410,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fight-poison-with-poison",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6624,9 +8207,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fight-poison-with-poison",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Required first: A Collective Effort"
@@ -6649,14 +8241,38 @@
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 28
+        "meters": 28,
+        "coords": {
+          "map": "altgard",
+          "x": 5486,
+          "y": 3161,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/finders-keepers",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hevid",
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 28
+        "meters": 28,
+        "coords": {
+          "map": "altgard",
+          "x": 5486,
+          "y": 3161,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/finders-keepers",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6731,9 +8347,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/finders-keepers",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "Required first: Scripture in the Ruins"
@@ -6756,14 +8381,38 @@
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Steel Hammer Merchants HQ",
-        "meters": 29
+        "meters": 29,
+        "coords": {
+          "map": "altgard",
+          "x": 5781,
+          "y": 4146,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/workplace-misunderstanding",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Crobakhi",
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Steel Hammer Merchants HQ",
-        "meters": 86
+        "meters": 86,
+        "coords": {
+          "map": "altgard",
+          "x": 5790,
+          "y": 4231,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/workplace-misunderstanding",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6844,10 +8493,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202064"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -6882,9 +8527,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/workplace-misunderstanding",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "aion2.gaming.tools 'Required Quests': Forgotten Commander (quest 2102800)"
@@ -6909,15 +8563,39 @@
         "npc": "Fiona",
         "place": "Abandoned Campsite",
         "zone": "zone:western-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Campsite",
+        "meters": 79,
+        "coords": {
+          "map": "altgard",
+          "x": 5233,
+          "y": 4891,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/ravenous-recluse",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Fiona",
         "place": null,
         "zone": "zone:western-gribade-highland",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Campsite",
+        "meters": 79,
+        "coords": {
+          "map": "altgard",
+          "x": 5233,
+          "y": 4891,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/ravenous-recluse",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6986,10 +8664,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202065"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -7024,16 +8698,28 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/ravenous-recluse",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page).",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page)."
       ]
     },
     {
@@ -7053,14 +8739,38 @@
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 26
+        "meters": 26,
+        "coords": {
+          "map": "altgard",
+          "x": 4949,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Kunpata",
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": null
+        "meters": 26,
+        "coords": {
+          "map": "altgard",
+          "x": 4949,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7115,9 +8825,20 @@
           "fields": [
             "zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
@@ -7141,14 +8862,38 @@
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 33
+        "meters": 33,
+        "coords": {
+          "map": "altgard",
+          "x": 5475,
+          "y": 5745,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-comrades-fate",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Haz's Apparition",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 33
+        "meters": 33,
+        "coords": {
+          "map": "altgard",
+          "x": 5475,
+          "y": 5745,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-comrades-fate",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7193,10 +8938,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202067"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -7231,9 +8972,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-comrades-fate",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
     },
     {
@@ -7253,14 +9003,38 @@
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 59
+        "meters": 59,
+        "coords": {
+          "map": "altgard",
+          "x": 5459,
+          "y": 5783,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/putting-a-friend-to-rest",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Lucian",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 59
+        "meters": 59,
+        "coords": {
+          "map": "altgard",
+          "x": 5459,
+          "y": 5783,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/putting-a-friend-to-rest",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7323,10 +9097,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202068"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -7361,9 +9131,18 @@
           "fields": [
             "requires"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/putting-a-friend-to-rest",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
         "allthings.how gives pickup 'Outskirts Stall' (turn-in Collapsed Hall of Fame); Metabot giver location Collapsed Hall of Fame 59 m",
@@ -7386,15 +9165,39 @@
         "npc": "Milo",
         "place": "Basfelt Ruins Waterfall",
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Basfelt Waterfall",
+        "meters": 39,
+        "coords": {
+          "map": "altgard",
+          "x": 5472,
+          "y": 2728,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Milo",
         "place": "Spirit Isle",
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Guide's Dwelling",
+        "meters": 55,
+        "coords": {
+          "map": "altgard",
+          "x": 6393,
+          "y": 1894,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7445,10 +9248,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202069"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -7489,17 +9288,29 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot page not reachable; data from wikily.gg (Metabot dataset family) + aion2.gaming.tools 2202069. No Kibelisk.",
-        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place"
       ]
     },
     {
@@ -7518,15 +9329,39 @@
         "npc": "Tina",
         "place": "Battlescar Mound Cliff",
         "zone": "zone:battlescar-mound",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Battlescar Mound Clifftop",
+        "meters": 54,
+        "coords": {
+          "map": "altgard",
+          "x": 5099,
+          "y": 2648,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Tina",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Nornir Assembly",
+        "meters": 77,
+        "coords": {
+          "map": "altgard",
+          "x": 4838,
+          "y": 3924,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7632,9 +9467,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
@@ -7646,7 +9494,6 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly.",
         "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Impetusium Square\"; the giver's camp / place puts it in Battlescar Mound (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -7666,15 +9513,39 @@
         "npc": "Tina",
         "place": null,
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Basfelt Ruins Cliff",
+        "meters": 14,
+        "coords": {
+          "map": "altgard",
+          "x": 5665,
+          "y": 3653,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-final-stretch",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Tina",
         "place": null,
         "zone": "zone:basfelt-ruins",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Impetusium Lower Path",
+        "meters": 14,
+        "coords": {
+          "map": "altgard",
+          "x": 5209,
+          "y": 6022,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-final-stretch",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7725,10 +9596,6 @@
               },
               {
                 "url": "https://aion2.gaming.tools/quests/2202071"
-              },
-              {
-                "url": "https://aion2.th.gl/db/quests/q_2102800",
-                "section": "Unlocks"
               }
             ],
             "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
@@ -7782,17 +9649,29 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-final-stretch",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
         "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings 2nd-Leg text ('the next leg' at the end of the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page.",
-        "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'"
       ]
     }
   ]

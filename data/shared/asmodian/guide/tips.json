@@ -8,9 +8,9 @@
       "id": "tip:daevanion",
       "key": "daevanion",
       "title": "Daevanion board",
-      "body": "<p>Five talent boards: Nezekan (Lv 12, via the story quest \"Urgent Pursuit\"), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>\n    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>\n    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Not documented: whether board levels can push a skill past 10, whether they count toward the skill level 8 specialty unlock, and the reset cost.</p>",
+      "body": "<p>Five talent boards: Nezekan (when you complete the story quest \"Urgent Pursuit\", Lv 13), Zikel (Lv 20), Vaizel (Lv 30), Triniel (Lv 40) and Azphel (Lv 45). You use <b>Daevanion Crystals</b> from the Cube (2 per Sealed Dungeon, 1 per regional quest) to add crystals to the board, then buy nodes connected to the free centre.</p>\n    <p>Grey nodes are stats (1 crystal). Blue nodes add +1 level to an active skill (3 crystals), green nodes to a passive (2 crystals); some passives have two nodes on a board. Orange corner nodes cost 4 and give +1.5% of a big stat. Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead.</p>\n    <p>Like a paragon board: a skill node is a permanent +1 to that skill, on top of the levels you buy with Skill Points (from your game). Board levels count toward a skill's specialty slots (seen in your game). Not documented: whether board levels can push a skill past 10, and the reset cost.</p>",
       "credit": "Metabot Daevanion guide, Metaroad Assassin boards, AION2HUB, your game",
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "claims": [
         "C22"
       ]
@@ -112,8 +112,8 @@
       "key": "regional",
       "title": "Regional quests",
       "body": "<p>Optional side quests (green markers) in Altgard, picked up from the NPC listed. Each is one-time and pays XP, Kina, a Wisdom Stone, a Daevanion Crystal and often an accessory.</p><p>{rqStats.at10} of the {rqStats.n} unlock at Lv 10 and the rest at 45, but {rqStats.story} also wait for a story quest and {rqStats.chained} follow an earlier regional quest. Next up lists a quest once all of that is met. The level shown is the recommended level, a combat guideline rather than a lock.</p>",
-      "credit": "Metabot quest pages, aion2.gaming.tools, aion2.th.gl, allthings.how",
-      "verifiedAt": "2026-10-12",
+      "credit": "Metabot quest pages, aion2.gaming.tools, allthings.how",
+      "verifiedAt": "2026-10-14",
       "claims": [
         "C14"
       ]
@@ -144,9 +144,9 @@
       "id": "tip:specialty",
       "key": "specialty",
       "title": "Specialty slots",
-      "body": "<p>Each active skill gets specialty slots as <b>that skill</b> levels up (not your character): slot 1 at skill level 8, slot 2 at 12, slot 3 at 20. Each slot holds one bonus effect. Unlocking a slot isn't enough: open the skill, click the slot and choose an effect, or you get nothing.</p>",
-      "credit": "gameplay.tips, Skycoach, MeinMMO",
-      "verifiedAt": "2026-10-12",
+      "body": "<p>Each active skill gets three specialty slots as <b>that skill</b> levels up (not your character): slot 1 at skill level 8, slot 2 at 12, slot 3 at 20. Daevanion board nodes for the skill count toward these levels. Each slot holds one of five bonus effects: three open at skill level 8, the fourth at 12 and the fifth at 16. Unlocking a slot isn't enough: open the skill, click the slot and choose an effect, or you get nothing.</p>",
+      "credit": "gameplay.tips, Skycoach, MeinMMO, Metabot skill pages, your game",
+      "verifiedAt": "2026-10-14",
       "claims": [
         "C03"
       ]

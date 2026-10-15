@@ -1,8 +1,8 @@
 {
   "random/L01-q06-rnd121p80-A-stfull": {
-    "in": "a14c54918cad",
+    "in": "92a67fa5acf9",
     "nu": [
-      {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 1. Level up first.","c":""},
+      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -36,12 +36,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Being Beneath the Lake Lv 5",
-      "quest": "Spread Your Wings",
+      "prev": "Spread Your Wings Lv 6",
+      "quest": "Signs of a Crash Landing",
       "lv": "Lv 6",
-      "next": "Signs of a Crash Landing Lv 6",
+      "next": "Prison Compound Infiltration Plan Lv 7",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 16 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 10 🔓 Pets 6 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "9%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 12/15"]
@@ -59,9 +59,9 @@
     "mode": "advanced"
   },
   "random/L01-q08-lvonly-B-stready": {
-    "in": "7b297669d701",
+    "in": "ed3c812def62",
     "nu": [
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 1. Level up first.","c":""}
+      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 5 to go | 0/11 | upnext | open",
@@ -91,12 +91,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Signs of a Crash Landing Lv 6",
-      "quest": "Prison Compound Infiltration Plan",
+      "prev": "Prison Compound Infiltration Plan Lv 7",
+      "quest": "Brigade Prison Compound Infiltration Operation",
       "lv": "Lv 7",
-      "next": "Brigade Prison Compound Infiltration Operation Lv 7",
+      "next": "The Longest Night Lv 9",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 14 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 10 🔓 Pets 4 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -114,9 +114,9 @@
     "mode": "basic"
   },
   "random/L01-q09-rnd100p50-A-objs": {
-    "in": "87a4fa111c2e",
+    "in": "e8bbbba6f6c3",
     "nu": [
-      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 1. Level up first.","c":""},
+      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -150,16 +150,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Prison Compound Infiltration Plan Lv 7",
-      "quest": "Brigade Prison Compound Infiltration Operation",
-      "lv": "Lv 7",
-      "next": "The Longest Night Lv 9",
+      "prev": "Brigade Prison Compound Infiltration Operation Lv 7",
+      "quest": "The Longest Night",
+      "lv": "Lv 9",
+      "next": "Finding Nemon Lv 10",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 13 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 10 🔓 Pets 3 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "5%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 6/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Brigade Prison Compound Infiltration Operation\" yet."}
+      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"The Longest Night\" yet."}
     },
     "reg": {
       "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 1/15","Lv 20–24 (later) · 1/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 2/10","All strongholds · 6/15"],
@@ -174,9 +174,9 @@
     "mode": "advanced"
   },
   "random/L01-q10-rnd100p80-A": {
-    "in": "cffa5bc2f207",
+    "in": "4bfbb1bfe6ac",
     "nu": [
-      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 1. Level up first.","c":""},
+      {"t":"Continue the story: Finding Nemon","s":"Needs Lv 10: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -210,12 +210,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Brigade Prison Compound Infiltration Operation Lv 7",
-      "quest": "The Longest Night",
-      "lv": "Lv 9",
-      "next": "Finding Nemon Lv 10",
+      "prev": "The Longest Night Lv 9",
+      "quest": "Finding Nemon",
+      "lv": "Lv 10",
+      "next": "Survival Supplies Lv 10",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 12 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 10 🔓 Pets 2 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "8%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 11/15"]
@@ -233,9 +233,9 @@
     "mode": "advanced"
   },
   "random/L01-q18-all-B-filters": {
-    "in": "e1326e9ac1f9",
+    "in": "0536e7f64e7c",
     "nu": [
-      {"t":"Continue the story: Urgent Pursuit","s":"Needs Lv 13: you're 1. Level up first.","c":""}
+      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -265,12 +265,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Veiled Truth Lv 12",
-      "quest": "Urgent Pursuit",
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
       "lv": "Lv 13",
-      "next": "Cemetery Cleanup Lv 13",
+      "next": "Back on the Scent Lv 14",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -287,9 +287,9 @@
     "mode": "basic"
   },
   "random/L01-q26-all-B-dv": {
-    "in": "ca54b1ef8815",
+    "in": "b31f3a348459",
     "nu": [
-      {"t":"Story: Broken Fang","s":"Needs Lv 19: you're 1. Level up first.","c":""}
+      {"t":"Story: Watchful Eyes","s":"Needs Lv 19: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -319,12 +319,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Malice Laid Bare Lv 18",
-      "quest": "Broken Fang",
+      "prev": "Broken Fang Lv 19",
+      "quest": "Watchful Eyes",
       "lv": "Lv 19",
-      "next": "Watchful Eyes Lv 19",
+      "next": "Imminent Threat Lv 20",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -342,13 +342,13 @@
     "mode": "basic"
   },
   "random/L01-q33-before-A-sppts": {
-    "in": "513d68ac29be",
+    "in": "7909775d8353",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
-      {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 1. Level up first.","c":""},
+      {"t":"Story: Daeva in a Dream","s":"Needs Lv 22: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"}
@@ -381,12 +381,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "In the Elims' Name Lv 21",
-      "quest": "Verdant Melody",
+      "prev": "Verdant Melody Lv 22",
+      "quest": "Daeva in a Dream",
       "lv": "Lv 22",
-      "next": "Daeva in a Dream unlocks Stigmas (via Asahr) and Expeditions Lv 22",
+      "next": "Disturbed Balance Lv 22",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -404,9 +404,9 @@
     "mode": "advanced"
   },
   "random/L01-q40-lvonly-A-rqmix": {
-    "in": "4e12cd0b0e1e",
+    "in": "332cb4dba23e",
     "nu": [
-      {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 1. Level up first.","c":""},
+      {"t":"Story: The High Priest Slumbers","s":"Needs Lv 26: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
@@ -440,12 +440,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Voice of Rage Lv 25",
-      "quest": "Tangled Past",
-      "lv": "Lv 25",
-      "next": "The High Priest Slumbers Lv 26",
+      "prev": "Tangled Past Lv 25",
+      "quest": "The High Priest Slumbers",
+      "lv": "Lv 26",
+      "next": "Striving for Coexistence Lv 26",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -463,9 +463,9 @@
     "mode": "advanced"
   },
   "random/L01-q46-lvonly-A-objs": {
-    "in": "779dac93039a",
+    "in": "b20fa219389f",
     "nu": [
-      {"t":"Story: Dying Light","s":"Needs Lv 30: you're 1. Level up first.","c":""},
+      {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
@@ -499,16 +499,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Land of Rifts Lv 29",
-      "quest": "Dying Light",
+      "prev": "Dying Light Lv 30",
+      "quest": "Contaminated Sacred Tree",
       "lv": "Lv 30",
-      "next": "Contaminated Sacred Tree Lv 30",
+      "next": "The Past Revealed Lv 30",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
-      "subs": {"head":"Objectives 2/4","items":2,"on":0,"end":""}
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
@@ -522,7 +522,7 @@
     },
     "mode": "advanced"
   },
-  "random/L01-q51-before-B-sppts": {
+  "random/L01-q50-before-B-sppts": {
     "in": "451e5865c178",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -561,7 +561,7 @@
       "lv": "Lv 32",
       "next": "The Survivors Lv 32",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -578,7 +578,7 @@
     },
     "mode": "basic"
   },
-  "random/L01-q55-lvonly-A": {
+  "random/L01-q54-lvonly-A": {
     "in": "2be0d105c17f",
     "nu": [
       {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 1. Level up first.","c":""},
@@ -620,7 +620,7 @@
       "lv": "Lv 32",
       "next": "Last Refuge Lv 33",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -638,9 +638,9 @@
     "mode": "advanced"
   },
   "random/L01-q56-before-A-stwait": {
-    "in": "813cacf2e13a",
+    "in": "c5ff7f7ebf49",
     "nu": [
-      {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 1. Level up first.","c":""},
+      {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
@@ -674,12 +674,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Daeva Dreaming Anew Lv 32",
-      "quest": "Last Refuge",
+      "prev": "Last Refuge Lv 33",
+      "quest": "Scripture in the Ruins",
       "lv": "Lv 33",
-      "next": "Scripture in the Ruins Lv 33",
+      "next": "Blood Monument Lv 33",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -697,9 +697,9 @@
     "mode": "advanced"
   },
   "random/L01-q67-all-B": {
-    "in": "addb5db2d3e6",
+    "in": "c736718a74b1",
     "nu": [
-      {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 1. Level up first.","c":""}
+      {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -729,12 +729,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Inevitable Encounter Lv 37",
-      "quest": "Unveiling the Truth",
+      "prev": "Unveiling the Truth Lv 37",
+      "quest": "Lake of Confrontation",
       "lv": "Lv 37",
-      "next": "Lake of Confrontation Lv 37",
+      "next": "An Ill Fate's Resolution Lv 37",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -751,7 +751,7 @@
     },
     "mode": "basic"
   },
-  "random/L01-q81-all-B-stready": {
+  "random/L01-q80-all-B-stready": {
     "in": "c85c257bed62",
     "nu": [
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
@@ -790,7 +790,7 @@
       "lv": "Lv 44",
       "next": "Lingering Apparitions Lv 44",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -845,7 +845,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "4%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 5/15"]
@@ -904,7 +904,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 11 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 19 levels to go"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go"],
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "10%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 13/15"]
@@ -922,9 +922,9 @@
     "mode": "advanced"
   },
   "random/L02-q02-all-B": {
-    "in": "666af189d793",
+    "in": "f40ac770301f",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Continue the story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -954,12 +954,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Village in the Fog Lv 2",
-      "quest": "Prepare to Escape",
-      "lv": "Lv 2",
-      "next": "Shadow Forest Lv 3",
+      "prev": "Prepare to Escape Lv 2",
+      "quest": "Shadow Forest",
+      "lv": "Lv 3",
+      "next": "Isolated Lake Lv 4",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -977,9 +977,9 @@
     "mode": "basic"
   },
   "random/L02-q06-none-B": {
-    "in": "ce1e887495f4",
+    "in": "2a3ec1dcdbf5",
     "nu": [
-      {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 2. Level up first.","c":""}
+      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -1009,12 +1009,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Being Beneath the Lake Lv 5",
-      "quest": "Spread Your Wings",
+      "prev": "Spread Your Wings Lv 6",
+      "quest": "Signs of a Crash Landing",
       "lv": "Lv 6",
-      "next": "Signs of a Crash Landing Lv 6",
+      "next": "Prison Compound Infiltration Plan Lv 7",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 16 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 10 🔓 Pets 6 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1032,9 +1032,9 @@
     "mode": "basic"
   },
   "random/L02-q09-before-B-filters": {
-    "in": "2dd0a6b1ef90",
+    "in": "019939bb5e2e",
     "nu": [
-      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 2. Level up first.","c":""}
+      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -1064,12 +1064,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Prison Compound Infiltration Plan Lv 7",
-      "quest": "Brigade Prison Compound Infiltration Operation",
-      "lv": "Lv 7",
-      "next": "The Longest Night Lv 9",
+      "prev": "Brigade Prison Compound Infiltration Operation Lv 7",
+      "quest": "The Longest Night",
+      "lv": "Lv 9",
+      "next": "Finding Nemon Lv 10",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 13 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 10 🔓 Pets 3 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1086,69 +1086,13 @@
     "mode": "basic"
   },
   "random/L02-q14-before-A-objs": {
-    "in": "b05ac959f147",
+    "in": "fb30e50dd6d4",
     "nu": [
-      {"t":"Continue the story: Crash Site Rendezvous","s":"Needs Lv 11: you're 2. Level up first.","c":""},
+      {"t":"Continue the story: Contaminated Area","s":"Needs Lv 11: you're 2. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 4 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "Gathering Essentials Lv 10",
-      "quest": "Crash Site Rendezvous",
-      "lv": "Lv 11",
-      "next": "Contaminated Area Lv 11",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 8 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 4 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Crash Site Rendezvous\" yet."}
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "random/L02-q15-lvonly-B-rqmix": {
-    "in": "130ec94075e8",
-    "nu": [
-      {"t":"Continue the story: Contaminated Area","s":"Needs Lv 11: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -1183,7 +1127,63 @@
       "lv": "Lv 11",
       "next": "Express Daeva Delivery Lv 12",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival 3 story quests · \"Urgent Pursuit\""],
+      "track": ["Wings and Ascension next · 4 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
+      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Contaminated Area\" yet."}
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "random/L02-q15-lvonly-B-rqmix": {
+    "in": "c3b508d86463",
+    "nu": [
+      {"t":"Continue the story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":""}
+    ],
+    "ms": [
+      "g6 | 4 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival 2 story quests · \"Urgent Pursuit\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1201,9 +1201,9 @@
     "mode": "basic"
   },
   "random/L02-q24-all-B": {
-    "in": "507e2866539d",
+    "in": "dd3bbfb1f8e4",
     "nu": [
-      {"t":"Story: A New Lead","s":"Needs Lv 18: you're 2. Level up first.","c":""}
+      {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1233,12 +1233,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Empyrean Monolith Lv 16",
-      "quest": "A New Lead",
+      "prev": "A New Lead Lv 18",
+      "quest": "Malice Laid Bare",
       "lv": "Lv 18",
-      "next": "Malice Laid Bare Lv 18",
+      "next": "Broken Fang Lv 19",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 10 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 9 story quests · \"Daeva in a Dream\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -1255,7 +1255,7 @@
     },
     "mode": "basic"
   },
-  "random/L02-q26-none-B-stwait": {
+  "random/L02-q25-none-B-stwait": {
     "in": "71487271b21b",
     "nu": [
       {"t":"Story: Broken Fang","s":"Needs Lv 19: you're 2. Level up first.","c":""}
@@ -1293,7 +1293,7 @@
       "lv": "Lv 19",
       "next": "Watchful Eyes Lv 19",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1311,10 +1311,10 @@
     "mode": "basic"
   },
   "random/L02-q32-all-B-stfull": {
-    "in": "caf9a21ad25f",
+    "in": "fb51c18d3f4d",
     "nu": [
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: In the Elims' Name","s":"Needs Lv 21: you're 2. Level up first.","c":""}
+      {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1344,12 +1344,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Children of the Elim Lv 21",
-      "quest": "In the Elims' Name",
-      "lv": "Lv 21",
-      "next": "Verdant Melody Lv 22",
+      "prev": "In the Elims' Name Lv 21",
+      "quest": "Verdant Melody",
+      "lv": "Lv 22",
+      "next": "Daeva in a Dream unlocks Stigmas (via Asahr) and Expeditions Lv 22",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 2 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -1367,9 +1367,9 @@
     "mode": "basic"
   },
   "random/L02-q32-rnd112p95-B-stfull": {
-    "in": "15f74b96de87",
+    "in": "4574e736b33b",
     "nu": [
-      {"t":"Story: In the Elims' Name","s":"Needs Lv 21: you're 2. Level up first.","c":""}
+      {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 3/11 | upnext | open",
@@ -1399,12 +1399,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Children of the Elim Lv 21",
-      "quest": "In the Elims' Name",
-      "lv": "Lv 21",
-      "next": "Verdant Melody Lv 22",
+      "prev": "In the Elims' Name Lv 21",
+      "quest": "Verdant Melody",
+      "lv": "Lv 22",
+      "next": "Daeva in a Dream unlocks Stigmas (via Asahr) and Expeditions Lv 22",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 2 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\""],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "11%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds ✓ 15/15"]
@@ -1422,10 +1422,10 @@
     "mode": "basic"
   },
   "random/L02-q39-all-B-stready": {
-    "in": "6fda5ca72e11",
+    "in": "61ad2c4459e5",
     "nu": [
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: Voice of Rage","s":"Needs Lv 25: you're 2. Level up first.","c":""}
+      {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1455,12 +1455,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Finding Stolen Relics Lv 24",
-      "quest": "Voice of Rage",
+      "prev": "Voice of Rage Lv 25",
+      "quest": "Tangled Past",
       "lv": "Lv 25",
-      "next": "Tangled Past Lv 25",
+      "next": "The High Priest Slumbers Lv 26",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -1478,9 +1478,9 @@
     "mode": "basic"
   },
   "random/L02-q51-lvonly-A-stwait": {
-    "in": "0f3e21bbdc5a",
+    "in": "fa35893287a3",
     "nu": [
-      {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 2. Level up first.","c":""},
+      {"t":"Story: The Survivors","s":"Needs Lv 32: you're 2. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -1514,12 +1514,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Bitter Reality Lv 32",
-      "quest": "Eye of the Red Tower",
+      "prev": "Eye of the Red Tower Lv 32",
+      "quest": "The Survivors",
       "lv": "Lv 32",
-      "next": "The Survivors Lv 32",
+      "next": "Rescue Operation Lv 32",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1537,13 +1537,13 @@
     "mode": "advanced"
   },
   "random/L02-q55-rnd141p80-A-sppts": {
-    "in": "ab132260dd89",
+    "in": "06254c17095c",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
-      {"t":"Story: A Daeva Dreaming Anew","s":"Needs Lv 32: you're 2. Level up first.","c":""},
+      {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 2. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
@@ -1576,12 +1576,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Last of the Destruction Archons Lv 32",
-      "quest": "A Daeva Dreaming Anew",
-      "lv": "Lv 32",
-      "next": "Last Refuge Lv 33",
+      "prev": "A Daeva Dreaming Anew Lv 32",
+      "quest": "Last Refuge",
+      "lv": "Lv 33",
+      "next": "Scripture in the Ruins Lv 33",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "7%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 9/15"]
@@ -1598,66 +1598,7 @@
     },
     "mode": "advanced"
   },
-  "random/L02-q57-rnd122p20-A": {
-    "in": "d9c01e566007",
-    "nu": [
-      {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 2. Level up first.","c":""},
-      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heightened Sixth Sense 2 → 3","s":"Opens at Lv 4 · 2 levels away · single source","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 4 to go | 0/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "Last Refuge Lv 33",
-      "quest": "Scripture in the Ruins",
-      "lv": "Lv 33",
-      "next": "Blood Monument Lv 33",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
-      "track": ["Wings and Ascension next · 4 to go Lv 6"],
-      "ring": "2%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 3/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 1/12","Lv 40–44 (later) · 1/10","All strongholds · 3/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "random/L02-q58-lvonly-A": {
+  "random/L02-q57-lvonly-A": {
     "in": "0c72158ec97f",
     "nu": [
       {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 2. Level up first.","c":""},
@@ -1699,7 +1640,7 @@
       "lv": "Lv 33",
       "next": "Impending Threat Lv 34",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1716,7 +1657,66 @@
     },
     "mode": "advanced"
   },
-  "random/L02-q67-rnd101p20-A-sppts": {
+  "random/L02-q57-rnd122p20-A": {
+    "in": "c9edf2c12266",
+    "nu": [
+      {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 2. Level up first.","c":""},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heightened Sixth Sense 2 → 3","s":"Opens at Lv 4 · 2 levels away · single source","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 4 to go | 0/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Scripture in the Ruins Lv 33",
+      "quest": "Blood Monument",
+      "lv": "Lv 33",
+      "next": "Impending Threat Lv 34",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
+      "track": ["Wings and Ascension next · 4 to go Lv 6"],
+      "ring": "2%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 3/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 1/12","Lv 40–44 (later) · 1/10","All strongholds · 3/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "random/L02-q66-rnd101p20-A-sppts": {
     "in": "33051bea2795",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -1761,7 +1761,7 @@
       "lv": "Lv 37",
       "next": "Lake of Confrontation Lv 37",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "2%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 3/15"]
@@ -1778,7 +1778,7 @@
     },
     "mode": "advanced"
   },
-  "random/L02-q83-lvonly-A-objs": {
+  "random/L02-q82-lvonly-A-objs": {
     "in": "ad3cecbb7e68",
     "nu": [
       {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 2. Level up first.","c":""},
@@ -1820,7 +1820,7 @@
       "lv": "Lv 44",
       "next": "Zikel's Core Lv 45",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
@@ -1876,7 +1876,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1936,7 +1936,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 10 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 18 levels to go"],
+      "ahead": ["Ahead verified","Lv 3 Stats window Stats (P) 1 level to go","Lv 4 Skills window Skills (K) 2 levels to go"],
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -1954,9 +1954,9 @@
     "mode": "advanced"
   },
   "random/L03-q02-rnd118p20-A-rqmix": {
-    "in": "b337911340c8",
+    "in": "13f9506788e0",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -1990,12 +1990,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Village in the Fog Lv 2",
-      "quest": "Prepare to Escape",
-      "lv": "Lv 2",
-      "next": "Shadow Forest Lv 3",
+      "prev": "Prepare to Escape Lv 2",
+      "quest": "Shadow Forest",
+      "lv": "Lv 3",
+      "next": "Isolated Lake Lv 4",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 20 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 5 🔓 Wings 2 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "1%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 1/15"]
@@ -2013,9 +2013,9 @@
     "mode": "advanced"
   },
   "random/L03-q05-lvonly-B-stwait": {
-    "in": "121e26585eb9",
+    "in": "ef63cc740944",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Needs Lv 5: you're 3. Level up first.","c":""}
+      {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 3. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 3 to go | 3/11 | upnext | open",
@@ -2045,12 +2045,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Isolated Lake Lv 4",
-      "quest": "The Being Beneath the Lake",
-      "lv": "Lv 5",
-      "next": "Spread Your Wings Lv 6",
+      "prev": "The Being Beneath the Lake Lv 5",
+      "quest": "Spread Your Wings",
+      "lv": "Lv 6",
+      "next": "Signs of a Crash Landing Lv 6",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 17 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 10 🔓 Pets 7 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2068,9 +2068,9 @@
     "mode": "basic"
   },
   "random/L03-q18-all-B": {
-    "in": "377f74ef1fe6",
+    "in": "9e1a3ca28fc5",
     "nu": [
-      {"t":"Continue the story: Urgent Pursuit","s":"Needs Lv 13: you're 3. Level up first.","c":""}
+      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 3. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2100,12 +2100,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Veiled Truth Lv 12",
-      "quest": "Urgent Pursuit",
+      "prev": "Urgent Pursuit Lv 13",
+      "quest": "Cemetery Cleanup",
       "lv": "Lv 13",
-      "next": "Cemetery Cleanup Lv 13",
+      "next": "Back on the Scent Lv 14",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -2123,9 +2123,9 @@
     "mode": "basic"
   },
   "random/L03-q20-before-A": {
-    "in": "49846e3109ff",
+    "in": "028e1442b560",
     "nu": [
-      {"t":"Continue the story: Back on the Scent","s":"Needs Lv 14: you're 3. Level up first.","c":""},
+      {"t":"Continue the story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2159,12 +2159,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Cemetery Cleanup Lv 13",
-      "quest": "Back on the Scent",
-      "lv": "Lv 14",
-      "next": "Dead Men Tell No Tales Lv 15",
+      "prev": "Back on the Scent Lv 14",
+      "quest": "Dead Men Tell No Tales",
+      "lv": "Lv 15",
+      "next": "Buried Atrocities unlocks Legions Lv 16",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 16 🔓 Legions your next quest · \"Buried Atrocities\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2182,9 +2182,9 @@
     "mode": "advanced"
   },
   "random/L03-q26-lvonly-A-dv": {
-    "in": "c068bb734057",
+    "in": "547db967f2a0",
     "nu": [
-      {"t":"Story: Broken Fang","s":"Needs Lv 19: you're 3. Level up first.","c":""},
+      {"t":"Story: Watchful Eyes","s":"Needs Lv 19: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2218,12 +2218,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Malice Laid Bare Lv 18",
-      "quest": "Broken Fang",
+      "prev": "Broken Fang Lv 19",
+      "quest": "Watchful Eyes",
       "lv": "Lv 19",
-      "next": "Watchful Eyes Lv 19",
+      "next": "Imminent Threat Lv 20",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2241,9 +2241,9 @@
     "mode": "advanced"
   },
   "random/L03-q27-lvonly-A-stready": {
-    "in": "f4f2db46cca6",
+    "in": "825d4449c92e",
     "nu": [
-      {"t":"Story: Watchful Eyes","s":"Needs Lv 19: you're 3. Level up first.","c":""},
+      {"t":"Story: Imminent Threat","s":"Needs Lv 20: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2277,12 +2277,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Broken Fang Lv 19",
-      "quest": "Watchful Eyes",
-      "lv": "Lv 19",
-      "next": "Imminent Threat Lv 20",
+      "prev": "Watchful Eyes Lv 19",
+      "quest": "Imminent Threat",
+      "lv": "Lv 20",
+      "next": "Crossroad Lv 20",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 6 story quests · \"Daeva in a Dream\""],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2300,9 +2300,9 @@
     "mode": "advanced"
   },
   "random/L03-q57-lvonly-A-rqmix": {
-    "in": "e1d1b415f680",
+    "in": "8952237d47e8",
     "nu": [
-      {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 3. Level up first.","c":""},
+      {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2336,12 +2336,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Last Refuge Lv 33",
-      "quest": "Scripture in the Ruins",
+      "prev": "Scripture in the Ruins Lv 33",
+      "quest": "Blood Monument",
       "lv": "Lv 33",
-      "next": "Blood Monument Lv 33",
+      "next": "Impending Threat Lv 34",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2359,9 +2359,9 @@
     "mode": "advanced"
   },
   "random/L03-q59-none-A-dv": {
-    "in": "ffc5e78c68e1",
+    "in": "7a5c4d6a24fb",
     "nu": [
-      {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 3. Level up first.","c":""},
+      {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -2395,12 +2395,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Blood Monument Lv 33",
-      "quest": "Impending Threat",
+      "prev": "Impending Threat Lv 34",
+      "quest": "Visible Trap",
       "lv": "Lv 34",
-      "next": "Visible Trap Lv 34",
+      "next": "Destruction Archon Underground Fortress Lv 34",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2418,9 +2418,9 @@
     "mode": "advanced"
   },
   "random/L03-q61-none-B-rqmix": {
-    "in": "d8d660204eeb",
+    "in": "a821fd30cf4e",
     "nu": [
-      {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 3. Level up first.","c":""}
+      {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 3. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 3 to go | 0/11 | upnext | open",
@@ -2450,12 +2450,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Visible Trap Lv 34",
-      "quest": "Destruction Archon Underground Fortress",
-      "lv": "Lv 34",
-      "next": "Enemy Territory Lv 35",
+      "prev": "Destruction Archon Underground Fortress Lv 34",
+      "quest": "Enemy Territory",
+      "lv": "Lv 35",
+      "next": "Powder of Death Lv 35",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2472,7 +2472,7 @@
     },
     "mode": "basic"
   },
-  "random/L03-q70-lvonly-A-filters": {
+  "random/L03-q69-lvonly-A-filters": {
     "in": "dc483c133651",
     "nu": [
       {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 3. Level up first.","c":""},
@@ -2514,7 +2514,7 @@
       "lv": "Lv 37",
       "next": "Fafnite's Whereabouts Lv 40",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2530,7 +2530,7 @@
     },
     "mode": "advanced"
   },
-  "random/L03-q77-before-B-sppts": {
+  "random/L03-q76-before-B-sppts": {
     "in": "203b8829a370",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -2569,7 +2569,7 @@
       "lv": "Lv 41",
       "next": "The Breaking of the Day Lv 42",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 9 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 17 levels to go"],
+      "ahead": ["Ahead verified","Lv 4 Skills window Skills (K) 1 level to go","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 6 levels to go"],
       "track": ["Wings and Ascension next · 3 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2587,10 +2587,10 @@
     "mode": "basic"
   },
   "random/L04-q01-lvonly-A-cube": {
-    "in": "8372a530b8be",
+    "in": "06362c0efccf",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
+      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2624,12 +2624,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Ishalgen Lv 1",
-      "quest": "A Village in the Fog",
+      "prev": "A Village in the Fog Lv 2",
+      "quest": "Prepare to Escape",
       "lv": "Lv 2",
-      "next": "Prepare to Escape Lv 2",
+      "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 21 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -2647,9 +2647,9 @@
     "mode": "advanced"
   },
   "random/L04-q03-rnd141p95-A-stfull": {
-    "in": "3748c046e100",
+    "in": "8370f596ef0b",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2683,12 +2683,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Prepare to Escape Lv 2",
-      "quest": "Shadow Forest",
-      "lv": "Lv 3",
-      "next": "Isolated Lake Lv 4",
+      "prev": "Shadow Forest Lv 3",
+      "quest": "Isolated Lake",
+      "lv": "Lv 4",
+      "next": "The Being Beneath the Lake unlocks Wings Lv 5",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 19 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 5 🔓 Wings your next quest · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "7%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 9/15"]
@@ -2706,9 +2706,9 @@
     "mode": "advanced"
   },
   "random/L04-q08-all-A": {
-    "in": "af1592876898",
+    "in": "5a742fd23b16",
     "nu": [
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 4. Level up first.","c":""}
+      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 4. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2738,12 +2738,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Signs of a Crash Landing Lv 6",
-      "quest": "Prison Compound Infiltration Plan",
+      "prev": "Prison Compound Infiltration Plan Lv 7",
+      "quest": "Brigade Prison Compound Infiltration Operation",
       "lv": "Lv 7",
-      "next": "Brigade Prison Compound Infiltration Operation Lv 7",
+      "next": "The Longest Night Lv 9",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go","Lv 16 🔓 Legions 14 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go","Lv 10 🔓 Pets 4 story quests · \"Gathering Essentials\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -2761,10 +2761,10 @@
     "mode": "advanced"
   },
   "random/L04-q45-rnd122p20-B-cube": {
-    "in": "702d44461d06",
+    "in": "b2361d5930b4",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 4. Level up first.","c":""}
+      {"t":"Story: Dying Light","s":"Needs Lv 30: you're 4. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 2 to go | 0/11 | upnext | open",
@@ -2794,12 +2794,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Collective Effort Lv 27",
-      "quest": "Land of Rifts",
-      "lv": "Lv 29",
-      "next": "Dying Light Lv 30",
+      "prev": "Land of Rifts Lv 29",
+      "quest": "Dying Light",
+      "lv": "Lv 30",
+      "next": "Contaminated Sacred Tree Lv 30",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "2%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 3/15"]
@@ -2816,7 +2816,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q53-rnd130p50-A-filters": {
+  "random/L04-q52-rnd130p50-A-filters": {
     "in": "ccdea7c0a3b7",
     "nu": [
       {"t":"Story: Rescue Operation","s":"Needs Lv 32: you're 4. Level up first.","c":""},
@@ -2858,7 +2858,7 @@
       "lv": "Lv 32",
       "next": "Last of the Destruction Archons Lv 32",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "7%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 9/15"]
@@ -2875,10 +2875,10 @@
     "mode": "advanced"
   },
   "random/L04-q56-all-B-cube": {
-    "in": "dd25d9660120",
+    "in": "40ca0750e850",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 4. Level up first.","c":""}
+      {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 4. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2908,12 +2908,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Daeva Dreaming Anew Lv 32",
-      "quest": "Last Refuge",
+      "prev": "Last Refuge Lv 33",
+      "quest": "Scripture in the Ruins",
       "lv": "Lv 33",
-      "next": "Scripture in the Ruins Lv 33",
+      "next": "Blood Monument Lv 33",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -2930,7 +2930,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q57-rnd141p80-B-stready": {
+  "random/L04-q56-rnd141p80-B-stready": {
     "in": "6401cf4b762a",
     "nu": [
       {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 4. Level up first.","c":""}
@@ -2968,7 +2968,7 @@
       "lv": "Lv 33",
       "next": "Blood Monument Lv 33",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "7%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 9/15"]
@@ -2985,7 +2985,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q59-lvonly-A-sppts": {
+  "random/L04-q58-lvonly-A-sppts": {
     "in": "a1e57d5a8074",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -3030,7 +3030,7 @@
       "lv": "Lv 34",
       "next": "Visible Trap Lv 34",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3047,7 +3047,7 @@
     },
     "mode": "advanced"
   },
-  "random/L04-q62-lvonly-B-objs": {
+  "random/L04-q61-lvonly-B-objs": {
     "in": "ed638905796d",
     "nu": [
       {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 4. Level up first.","c":""}
@@ -3085,7 +3085,7 @@
       "lv": "Lv 35",
       "next": "Powder of Death Lv 35",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
@@ -3103,7 +3103,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q63-lvonly-B": {
+  "random/L04-q62-lvonly-B": {
     "in": "47f462fda173",
     "nu": [
       {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 4. Level up first.","c":""}
@@ -3141,7 +3141,7 @@
       "lv": "Lv 35",
       "next": "Creion of Gribade Lv 36",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3158,7 +3158,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q73-lvonly-A-filters": {
+  "random/L04-q72-lvonly-A-filters": {
     "in": "dbfaa1a9675c",
     "nu": [
       {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 4. Level up first.","c":""},
@@ -3200,7 +3200,7 @@
       "lv": "Lv 40",
       "next": "Treatment Lv 40",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3217,10 +3217,10 @@
     "mode": "advanced"
   },
   "random/L04-q76-rnd128p50-B-sppts": {
-    "in": "3be5bbf785b2",
+    "in": "572d8a2fe18d",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 4. Level up first.","c":""}
+      {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 4. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 2 to go | 0/11 | upnext | open",
@@ -3250,12 +3250,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Symbol of Liberation Lv 40",
-      "quest": "Daybreak Society",
+      "prev": "Daybreak Society Lv 41",
+      "quest": "Daybreak Society Rescue Operation",
       "lv": "Lv 41",
-      "next": "Daybreak Society Rescue Operation Lv 41",
+      "next": "The Breaking of the Day Lv 42",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "6%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 8/15"]
@@ -3272,7 +3272,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q80-lvonly-B-filters": {
+  "random/L04-q79-lvonly-B-filters": {
     "in": "499079e20f9e",
     "nu": [
       {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 4. Level up first.","c":""}
@@ -3310,7 +3310,7 @@
       "lv": "Lv 43",
       "next": "The High Priest Awakens Lv 44",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3326,7 +3326,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q81-none-B-stfull": {
+  "random/L04-q80-none-B-stfull": {
     "in": "4540276b8fd4",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -3365,7 +3365,7 @@
       "lv": "Lv 44",
       "next": "Lingering Apparitions Lv 44",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3382,7 +3382,7 @@
     },
     "mode": "basic"
   },
-  "random/L04-q82-lvonly-B-stready": {
+  "random/L04-q81-lvonly-B-stready": {
     "in": "0c7a9fad8d39",
     "nu": [
       {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 4. Level up first.","c":""}
@@ -3420,7 +3420,7 @@
       "lv": "Lv 44",
       "next": "Blood Barrier Lv 44",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3479,7 +3479,7 @@
       "lv": "",
       "next": "Pick your current quest to place yourself on the story.",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 8 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 16 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 5 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 6 levels to go"],
       "track": ["Wings and Ascension next · 2 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3497,9 +3497,9 @@
     "mode": "advanced"
   },
   "random/L05-q01-lvonly-A-stready": {
-    "in": "d76e31585cc2",
+    "in": "a485eb767833",
     "nu": [
-      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
+      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3533,12 +3533,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Ishalgen Lv 1",
-      "quest": "A Village in the Fog",
+      "prev": "A Village in the Fog Lv 2",
+      "quest": "Prepare to Escape",
       "lv": "Lv 2",
-      "next": "Prepare to Escape Lv 2",
+      "next": "Shadow Forest Lv 3",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 21 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 5 🔓 Wings 3 story quests · \"The Being Beneath the Lake\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3555,7 +3555,7 @@
     },
     "mode": "advanced"
   },
-  "random/L05-q07-all-B": {
+  "random/L05-q06-all-B": {
     "in": "05be818f3961",
     "nu": [
       {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 5. Level up first.","c":""}
@@ -3593,7 +3593,7 @@
       "lv": "Lv 6",
       "next": "Prison Compound Infiltration Plan Lv 7",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 15 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 10 🔓 Pets 6 story quests · \"Gathering Essentials\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -3611,128 +3611,13 @@
     "mode": "basic"
   },
   "random/L05-q07-lvonly-A-rqmix": {
-    "in": "612e77925fc4",
+    "in": "832b8fa06ef5",
     "nu": [
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 5. Level up first.","c":""},
+      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 1 to go | 4/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "Spread Your Wings Lv 6",
-      "quest": "Signs of a Crash Landing",
-      "lv": "Lv 6",
-      "next": "Prison Compound Infiltration Plan Lv 7",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 15 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 1 to go Lv 6"],
-      "ring": "0%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
-      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "random/L05-q07-rnd140p20-A": {
-    "in": "0e322f2d27f7",
-    "nu": [
-      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 5. Level up first.","c":""},
-      {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Shadowstrike 3 → 4","s":"Opens at Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
-    ],
-    "ms": [
-      "g6 | 1 to go | 2/11 | upnext | open",
-      "g9 | Later | 0/7 | ",
-      "g10 | Later | 0/9 | ",
-      "g12 | Later | 0/10 | ",
-      "g15 | Later | 0/4 | ",
-      "g16 | Later | 0/13 | ",
-      "g19 | Later | 0/11 | ",
-      "g20 | Later | 0/3 | ",
-      "g22 | Later | 0/15 | ",
-      "g25 | Later | 0/8 | ",
-      "g27 | Later | 0/7 | ",
-      "g28 | Later | 0/1 | ",
-      "g30 | Later | 0/10 | ",
-      "g32 | Later | 0/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
-      "g40 | Later | 0/3 | ",
-      "g45 | Later | 0/32 | "
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "Spread Your Wings Lv 6",
-      "quest": "Signs of a Crash Landing",
-      "lv": "Lv 6",
-      "next": "Prison Compound Infiltration Plan Lv 7",
-      "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 15 story quests · \"Buried Atrocities\""],
-      "track": ["Wings and Ascension next · 1 to go Lv 6"],
-      "ring": "3%",
-      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 4/15"]
-    },
-    "reg": {
-      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 1/15","Lv 20–24 (later) · 1/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 1/10","All strongholds · 4/15"],
-      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
-    },
-    "store": {
-      "areaLv": ["(absent)","10"],
-      "hide": ["(absent)",false],
-      "open.g6": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
-    },
-    "mode": "advanced"
-  },
-  "random/L05-q08-lvonly-B-dv": {
-    "in": "798cf0918cdb",
-    "nu": [
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 1 to go | 4/11 | upnext | open",
@@ -3767,7 +3652,122 @@
       "lv": "Lv 7",
       "next": "Brigade Prison Compound Infiltration Operation Lv 7",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 14 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 10 🔓 Pets 5 story quests · \"Gathering Essentials\""],
+      "track": ["Wings and Ascension next · 1 to go Lv 6"],
+      "ring": "0%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "random/L05-q07-rnd140p20-A": {
+    "in": "58030ca5616b",
+    "nu": [
+      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
+      {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Shadowstrike 3 → 4","s":"Opens at Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"}
+    ],
+    "ms": [
+      "g6 | 1 to go | 2/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Signs of a Crash Landing Lv 6",
+      "quest": "Prison Compound Infiltration Plan",
+      "lv": "Lv 7",
+      "next": "Brigade Prison Compound Infiltration Operation Lv 7",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 10 🔓 Pets 5 story quests · \"Gathering Essentials\""],
+      "track": ["Wings and Ascension next · 1 to go Lv 6"],
+      "ring": "3%",
+      "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 4/15"]
+    },
+    "reg": {
+      "opts": ["* Lv 10–14 (later) · 1/15","Lv 15–19 (later) · 1/15","Lv 20–24 (later) · 1/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 1/10","All strongholds · 4/15"],
+      "list": ["Strongholds 1/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level [done]","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
+    },
+    "store": {
+      "areaLv": ["(absent)","10"],
+      "hide": ["(absent)",false],
+      "open.g6": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]]
+    },
+    "mode": "advanced"
+  },
+  "random/L05-q08-lvonly-B-dv": {
+    "in": "62bd8b87ee45",
+    "nu": [
+      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 5. Level up first.","c":""}
+    ],
+    "ms": [
+      "g6 | 1 to go | 4/11 | upnext | open",
+      "g9 | Later | 0/7 | ",
+      "g10 | Later | 0/9 | ",
+      "g12 | Later | 0/10 | ",
+      "g15 | Later | 0/4 | ",
+      "g16 | Later | 0/13 | ",
+      "g19 | Later | 0/11 | ",
+      "g20 | Later | 0/3 | ",
+      "g22 | Later | 0/15 | ",
+      "g25 | Later | 0/8 | ",
+      "g27 | Later | 0/7 | ",
+      "g28 | Later | 0/1 | ",
+      "g30 | Later | 0/10 | ",
+      "g32 | Later | 0/11 | ",
+      "g35 | Later | 0/2 | ",
+      "g37 | Later | 0/5 | ",
+      "g40 | Later | 0/3 | ",
+      "g45 | Later | 0/32 | "
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Prison Compound Infiltration Plan Lv 7",
+      "quest": "Brigade Prison Compound Infiltration Operation",
+      "lv": "Lv 7",
+      "next": "The Longest Night Lv 9",
+      "hint": "next milestone at Lv 6",
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 10 🔓 Pets 4 story quests · \"Gathering Essentials\""],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -3784,7 +3784,7 @@
     },
     "mode": "basic"
   },
-  "random/L05-q15-all-A": {
+  "random/L05-q14-all-A": {
     "in": "8c058280a13c",
     "nu": [
       {"t":"Continue the story: Contaminated Area","s":"Needs Lv 11: you're 5. Level up first.","c":""}
@@ -3822,7 +3822,7 @@
       "lv": "Lv 11",
       "next": "Express Daeva Delivery Lv 12",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 7 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival 3 story quests · \"Urgent Pursuit\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -3840,9 +3840,9 @@
     "mode": "advanced"
   },
   "random/L05-q19-all-B-dv": {
-    "in": "1fc3bd7bbb52",
+    "in": "2fcd8ec43720",
     "nu": [
-      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 5. Level up first.","c":""}
+      {"t":"Continue the story: Back on the Scent","s":"Needs Lv 14: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3872,12 +3872,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Urgent Pursuit Lv 13",
-      "quest": "Cemetery Cleanup",
-      "lv": "Lv 13",
-      "next": "Back on the Scent Lv 14",
+      "prev": "Cemetery Cleanup Lv 13",
+      "quest": "Back on the Scent",
+      "lv": "Lv 14",
+      "next": "Dead Men Tell No Tales Lv 15",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go","Lv 16 🔓 Legions 3 story quests · \"Buried Atrocities\""],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go","Lv 16 🔓 Legions 2 story quests · \"Buried Atrocities\""],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -3895,9 +3895,9 @@
     "mode": "basic"
   },
   "random/L05-q36-rnd134p95-B": {
-    "in": "6246e8a02807",
+    "in": "150eb101e621",
     "nu": [
-      {"t":"Story: Searching for Survivors","s":"Needs Lv 24: you're 5. Level up first.","c":""}
+      {"t":"Story: Prison Break","s":"Needs Lv 24: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 1 to go | 8/11 | upnext | open",
@@ -3927,12 +3927,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Disturbed Balance Lv 22",
-      "quest": "Searching for Survivors",
+      "prev": "Searching for Survivors Lv 24",
+      "quest": "Prison Break",
       "lv": "Lv 24",
-      "next": "Prison Break Lv 24",
+      "next": "Finding Stolen Relics Lv 24",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "11%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 14/15"]
@@ -3949,7 +3949,7 @@
     },
     "mode": "basic"
   },
-  "random/L05-q49-lvonly-A-filters": {
+  "random/L05-q48-lvonly-A-filters": {
     "in": "ce501c1059ab",
     "nu": [
       {"t":"Story: Canyon's Secret","s":"Needs Lv 30: you're 5. Level up first.","c":""},
@@ -3991,7 +3991,7 @@
       "lv": "Lv 30",
       "next": "Bitter Reality Lv 32",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6","Enhancement unlocks Lv 9","Altgard opens Lv 10","Daevanion board Lv 13","Ring quest and skills Lv 15","Legions Lv 16","Skill tier: level 8 Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -4007,7 +4007,7 @@
     },
     "mode": "advanced"
   },
-  "random/L05-q54-before-B": {
+  "random/L05-q53-before-B": {
     "in": "360b2c999276",
     "nu": [
       {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 5. Level up first.","c":""}
@@ -4045,7 +4045,7 @@
       "lv": "Lv 32",
       "next": "A Daeva Dreaming Anew Lv 32",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -4062,7 +4062,7 @@
     },
     "mode": "basic"
   },
-  "random/L05-q60-rnd139p20-A-objs": {
+  "random/L05-q59-rnd139p20-A-objs": {
     "in": "587217391233",
     "nu": [
       {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 5. Level up first.","c":""},
@@ -4104,7 +4104,7 @@
       "lv": "Lv 34",
       "next": "Destruction Archon Underground Fortress Lv 34",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "2%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 2/15"],
@@ -4122,7 +4122,7 @@
     },
     "mode": "advanced"
   },
-  "random/L05-q66-lvonly-B": {
+  "random/L05-q65-lvonly-B": {
     "in": "41cbb5a83acc",
     "nu": [
       {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 5. Level up first.","c":""}
@@ -4160,7 +4160,7 @@
       "lv": "Lv 37",
       "next": "Unveiling the Truth Lv 37",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
@@ -4177,7 +4177,7 @@
     },
     "mode": "basic"
   },
-  "random/L05-q70-all-B": {
+  "random/L05-q69-all-B": {
     "in": "70d96bbc1025",
     "nu": [
       {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 5. Level up first.","c":""}
@@ -4215,7 +4215,7 @@
       "lv": "Lv 37",
       "next": "Fafnite's Whereabouts Lv 40",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -4233,10 +4233,10 @@
     "mode": "basic"
   },
   "random/L05-q73-all-B-cube": {
-    "in": "b21e8606c0ed",
+    "in": "8a502f0c73f4",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 5. Level up first.","c":""}
+      {"t":"Story: Treatment","s":"Needs Lv 40: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -4266,12 +4266,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Exiled Ritualist Lv 40",
-      "quest": "Healing Herbs",
+      "prev": "Healing Herbs Lv 40",
+      "quest": "Treatment",
       "lv": "Lv 40",
-      "next": "Treatment Lv 40",
+      "next": "Symbol of Liberation Lv 40",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": [],
       "ring": "100%",
       "prog": ["Quests ✓ 58/58","Dungeons ✓ 60/60","Strongholds ✓ 15/15"]
@@ -4288,7 +4288,7 @@
     },
     "mode": "basic"
   },
-  "random/L05-q79-lvonly-B": {
+  "random/L05-q78-lvonly-B": {
     "in": "e99e9ecd614b",
     "nu": [
       {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 5. Level up first.","c":""}
@@ -4326,7 +4326,7 @@
       "lv": "Lv 42",
       "next": "High Priest's Fafnite Lv 43",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 12 Nezekan board First Daevanion board 7 levels to go","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 15 levels to go"],
+      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
       "track": ["Wings and Ascension next · 1 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]

@@ -5,73 +5,6 @@
   "faction": "asmodian",
   "records": [
     {
-      "id": "sq:2100010",
-      "key": "Ishalgen",
-      "name": "Ishalgen",
-      "faction": "asmodian",
-      "gameId": "2100010",
-      "lv": 1,
-      "unlocksAt": 1,
-      "next": "sq:2101010",
-      "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
-      },
-      "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
-      },
-      "steps": [],
-      "requires": {
-        "all": []
-      },
-      "completesWith": [
-        {
-          "story": "sq:2100010",
-          "is": "turnedIn"
-        }
-      ],
-      "sources": [
-        {
-          "url": "https://metabot.gg/en/aion-2/quests/ishalgen",
-          "fields": [
-            "gameId",
-            "next"
-          ],
-          "note": "game id and chain order: docs/research/2026-10-prereq-gates.md §4"
-        },
-        {
-          "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
-          "fields": [
-            "name",
-            "lv"
-          ]
-        },
-        {
-          "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        }
-      ],
-      "verifiedAt": "2026-10-14",
-      "status": "verified",
-      "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
-    },
-    {
       "id": "sq:2101010",
       "key": "A Village in the Fog",
       "name": "A Village in the Fog",
@@ -96,15 +29,7 @@
       },
       "steps": [],
       "requires": {
-        "story": "sq:2100010",
-        "is": "turnedIn",
-        "basis": "sourced",
-        "sources": [
-          {
-            "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
-            "section": "Previous quest"
-          }
-        ]
+        "all": []
       },
       "completesWith": [
         {
@@ -134,6 +59,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-21",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Journal after the tutorial: first quest \"[Lv. 2] A Village in the Fog\" (Meet the Village Chief, talk to Pelleir)"
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -143,7 +79,8 @@
         "turnin.zone": "owner-check"
       },
       "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
+        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\").",
+        "First story quest after the tutorial (owner screen owner:2026-10-14-unlocks-21). Ishalgen, listed before it in v1, is the starting map, not a quest (owner:2026-10-14-unlocks-22)."
       ]
     },
     {
@@ -209,6 +146,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-02",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Shop and Closet: complete \"Prepare to Escape\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -219,7 +167,10 @@
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      ],
+      "unlocks": {
+        "text": "Shop and Closet"
+      }
     },
     {
       "id": "sq:2101030",
@@ -396,6 +347,7 @@
       },
       "steps": [],
       "unlocks": {
+        "text": "Wings",
         "milestone": "g6"
       },
       "requires": {
@@ -437,6 +389,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-12",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Wings: complete \"The Being Beneath the Lake\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -513,6 +476,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-08",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Titles: complete \"Spread Your Wings\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -523,7 +497,11 @@
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      ],
+      "unlocks": {
+        "text": "Titles",
+        "milestone": "g6"
+      }
     },
     {
       "id": "sq:2101070",
@@ -1000,6 +978,7 @@
       },
       "steps": [],
       "unlocks": {
+        "text": "Pets",
         "milestone": "g10"
       },
       "requires": {
@@ -1041,6 +1020,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-11",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Pets: complete \"Gathering Essentials\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -1378,6 +1368,7 @@
       },
       "steps": [],
       "unlocks": {
+        "text": "Daevanion boards and the Shugo Festival",
         "milestone": "g12"
       },
       "requires": {
@@ -1419,6 +1410,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-03",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Daevanion boards and the Shugo Festival: complete \"Urgent Pursuit\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -1723,6 +1725,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-07",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Legion (L): Complete \"Buried Atrocities\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -2868,6 +2881,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-16",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Expedition: Complete \"Daeva in a Dream\""
+          }
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -2980,14 +3004,38 @@
         "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Odar's Shade",
-        "meters": 17
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 3614,
+          "y": 4108,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/searching-for-survivors",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Uruthumheim",
         "zone": "zone:uruthumheim",
         "kibelisk": "Victorious Daeva's Statue",
-        "meters": 175
+        "meters": 175,
+        "coords": {
+          "map": "altgard",
+          "x": 4199,
+          "y": 3824,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/searching-for-survivors",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3055,9 +3103,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/searching-for-survivors",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -3078,14 +3135,38 @@
         "place": "Uruthumheim",
         "zone": "zone:uruthumheim",
         "kibelisk": "Victorious Daeva's Statue",
-        "meters": 175
+        "meters": 175,
+        "coords": {
+          "map": "altgard",
+          "x": 4199,
+          "y": 3824,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/prison-break",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hadala",
         "place": "Minushan Site",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Minushan Site",
-        "meters": 34
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 4407,
+          "y": 4106,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/prison-break",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3141,9 +3222,18 @@
           "fields": [
             "giver.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/prison-break",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3164,14 +3254,38 @@
         "place": "Minushan Site",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Minushan Site",
-        "meters": 34
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 4407,
+          "y": 4106,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/finding-stolen-relics",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Gohok",
         "place": "Minushan Site",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Minushan Site",
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 4407,
+          "y": 4106,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/finding-stolen-relics",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3222,9 +3336,20 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/finding-stolen-relics",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -3244,15 +3369,39 @@
         "npc": "Gohok",
         "place": null,
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Minushan Site",
+        "meters": 34,
+        "coords": {
+          "map": "altgard",
+          "x": 4405,
+          "y": 4107,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/voice-of-rage",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": null,
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Uruthumheim Cliff",
+        "meters": 46,
+        "coords": {
+          "map": "altgard",
+          "x": 4547,
+          "y": 4046,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/voice-of-rage",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3307,9 +3456,22 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/voice-of-rage",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -3329,15 +3491,39 @@
         "npc": "Nemon",
         "place": null,
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Uruthumheim Cliff",
+        "meters": 46,
+        "coords": {
+          "map": "altgard",
+          "x": 4547,
+          "y": 4046,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/tangled-past",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Urd",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Nornir Assembly",
+        "meters": 164,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3830,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/tangled-past",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3405,9 +3591,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/tangled-past",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -3428,14 +3627,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 164
+        "meters": 164,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3830,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-slumbers",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Urd",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Nornir Assembly",
+        "meters": 164,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3830,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-slumbers",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3486,9 +3709,20 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-slumbers",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3509,14 +3743,38 @@
         "place": null,
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 164
+        "meters": 164,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3830,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/striving-for-coexistence",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Varron",
         "place": null,
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 133
+        "meters": 133,
+        "coords": {
+          "map": "altgard",
+          "x": 4982,
+          "y": 3811,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/striving-for-coexistence",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3575,9 +3833,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/striving-for-coexistence",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3598,14 +3865,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 133
+        "meters": 133,
+        "coords": {
+          "map": "altgard",
+          "x": 4982,
+          "y": 3811,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Hadala",
         "place": "Wind Altar",
         "zone": "zone:purifying-forest",
         "kibelisk": "Purifying Forest Coastal Cliff",
-        "meters": 89
+        "meters": 89,
+        "coords": {
+          "map": "altgard",
+          "x": 4975,
+          "y": 3476,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3684,9 +3975,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3707,14 +4007,38 @@
         "place": "Wind Altar",
         "zone": "zone:purifying-forest",
         "kibelisk": "Purifying Forest Coastal Cliff",
-        "meters": 89
+        "meters": 89,
+        "coords": {
+          "map": "altgard",
+          "x": 4975,
+          "y": 3476,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-collective-effort",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Darmand",
         "place": "Faded Stump",
         "zone": "zone:purifying-forest",
         "kibelisk": "Faded Stump",
-        "meters": 29
+        "meters": 29,
+        "coords": {
+          "map": "altgard",
+          "x": 4714,
+          "y": 3233,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-collective-effort",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3797,9 +4121,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-collective-effort",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3820,14 +4153,38 @@
         "place": null,
         "zone": "zone:purifying-forest",
         "kibelisk": "Faded Stump",
-        "meters": 29
+        "meters": 29,
+        "coords": {
+          "map": "altgard",
+          "x": 4714,
+          "y": 3233,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/land-of-rifts",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Water Altar",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 303
+        "meters": 303,
+        "coords": {
+          "map": "altgard",
+          "x": 4274,
+          "y": 3211,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/land-of-rifts",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3886,9 +4243,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/land-of-rifts",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -3909,14 +4275,38 @@
         "place": "Water Altar",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 303
+        "meters": 303,
+        "coords": {
+          "map": "altgard",
+          "x": 4274,
+          "y": 3211,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/dying-light",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Grisilla",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 22
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 4260,
+          "y": 3505,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/dying-light",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -3987,9 +4377,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/dying-light",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4010,14 +4409,38 @@
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 22
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 4260,
+          "y": 3505,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Urd",
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Healing Spring",
+        "meters": 22,
+        "coords": {
+          "map": "altgard",
+          "x": 4260,
+          "y": 3505,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4076,9 +4499,20 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4099,14 +4533,38 @@
         "place": "Healing Spring",
         "zone": "zone:purifying-forest",
         "kibelisk": "Healing Spring",
-        "meters": 20
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 4260,
+          "y": 3509,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-past-revealed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ulgorn",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 163
+        "meters": 163,
+        "coords": {
+          "map": "altgard",
+          "x": 5016,
+          "y": 3829,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-past-revealed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4165,9 +4623,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-past-revealed",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4188,14 +4655,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 163
+        "meters": 163,
+        "coords": {
+          "map": "altgard",
+          "x": 5016,
+          "y": 3829,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/canyons-secret",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ulgorn",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 152
+        "meters": 152,
+        "coords": {
+          "map": "altgard",
+          "x": 4994,
+          "y": 3789,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/canyons-secret",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4254,9 +4745,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/canyons-secret",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4276,15 +4776,39 @@
         "npc": "Nemon",
         "place": null,
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Nornir Assembly",
+        "meters": 153,
+        "coords": {
+          "map": "altgard",
+          "x": 4996,
+          "y": 3791,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/bitter-reality",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Menrik",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Briskwind Shelter",
+        "meters": 63,
+        "coords": {
+          "map": "altgard",
+          "x": 4495,
+          "y": 2893,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/bitter-reality",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4356,9 +4880,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/bitter-reality",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -4379,14 +4916,38 @@
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 63
+        "meters": 63,
+        "coords": {
+          "map": "altgard",
+          "x": 4495,
+          "y": 2893,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/eye-of-the-red-tower",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Menrik",
         "place": "North Laborer's Tent",
         "zone": "zone:dranactus",
         "kibelisk": "Hidden Cave",
-        "meters": 301
+        "meters": 301,
+        "coords": {
+          "map": "altgard",
+          "x": 4584,
+          "y": 2379,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/eye-of-the-red-tower",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4457,9 +5018,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/eye-of-the-red-tower",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4478,16 +5048,40 @@
       "giver": {
         "npc": "Menrik",
         "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "zone": "zone:dranactus",
+        "kibelisk": "Hidden Cave",
+        "meters": 301,
+        "coords": {
+          "map": "altgard",
+          "x": 4584,
+          "y": 2379,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-survivors",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Menrik",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Briskwind Shelter",
+        "meters": 63,
+        "coords": {
+          "map": "altgard",
+          "x": 4495,
+          "y": 2893,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-survivors",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4551,12 +5145,31 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-survivors",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "giver zone from its Kibelisk (Hidden Cave) through the zone records.",
+          "fields": [
+            "giver.zone"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "inferred",
         "turnin.zone": "inferred"
       }
     },
@@ -4574,14 +5187,38 @@
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 63
+        "meters": 63,
+        "coords": {
+          "map": "altgard",
+          "x": 4495,
+          "y": 2893,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/rescue-operation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ulgorn",
         "place": "Hidden Cave",
         "zone": "zone:dranactus",
         "kibelisk": "Hidden Cave",
-        "meters": 12
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 4723,
+          "y": 2112,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/rescue-operation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4648,9 +5285,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/rescue-operation",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4671,14 +5317,38 @@
         "place": "Hidden Cave",
         "zone": "zone:dranactus",
         "kibelisk": "Hidden Cave",
-        "meters": 12
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 4723,
+          "y": 2112,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/last-of-the-destruction-archons",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 49
+        "meters": 49,
+        "coords": {
+          "map": "altgard",
+          "x": 4520,
+          "y": 2878,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/last-of-the-destruction-archons",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4745,9 +5415,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/last-of-the-destruction-archons",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4774,8 +5453,20 @@
         "npc": "Nemon",
         "place": "Briskwind Shelter",
         "zone": "zone:dranactus",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Briskwind Shelter",
+        "meters": 49,
+        "coords": {
+          "map": "altgard",
+          "x": 4520,
+          "y": 2878,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4832,9 +5523,19 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+          "fields": [
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -4855,14 +5556,38 @@
         "place": null,
         "zone": "zone:dranactus",
         "kibelisk": "Briskwind Shelter",
-        "meters": 49
+        "meters": 49,
+        "coords": {
+          "map": "altgard",
+          "x": 4520,
+          "y": 2878,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/last-refuge",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Basfelt Ruins",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 128
+        "meters": 128,
+        "coords": {
+          "map": "altgard",
+          "x": 5403,
+          "y": 3073,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/last-refuge",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -4949,9 +5674,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/last-refuge",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -4972,14 +5706,38 @@
         "place": "Basfelt Ruins",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 128
+        "meters": 128,
+        "coords": {
+          "map": "altgard",
+          "x": 5403,
+          "y": 3073,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/scripture-in-the-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Ulgorn",
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 36
+        "meters": 36,
+        "coords": {
+          "map": "altgard",
+          "x": 5480,
+          "y": 3124,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/scripture-in-the-ruins",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5046,9 +5804,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/scripture-in-the-ruins",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5069,14 +5836,38 @@
         "place": "Graverobber Campsite",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 36
+        "meters": 36,
+        "coords": {
+          "map": "altgard",
+          "x": 5480,
+          "y": 3124,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blood-monument",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Destroyed Ruins",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 192
+        "meters": 192,
+        "coords": {
+          "map": "altgard",
+          "x": 5601,
+          "y": 2977,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blood-monument",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5147,9 +5938,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blood-monument",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5170,14 +5970,38 @@
         "place": "Destroyed Ruins",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Graverobber Campsite",
-        "meters": 192
+        "meters": 192,
+        "coords": {
+          "map": "altgard",
+          "x": 5601,
+          "y": 2977,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/impending-threat",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Fissure Cave",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Fissure Cave",
-        "meters": 14
+        "meters": 14,
+        "coords": {
+          "map": "altgard",
+          "x": 6013,
+          "y": 3164,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/impending-threat",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5244,9 +6068,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/impending-threat",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5267,14 +6100,38 @@
         "place": "Fissure Cave",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Fissure Cave",
-        "meters": 14
+        "meters": 14,
+        "coords": {
+          "map": "altgard",
+          "x": 6013,
+          "y": 3164,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/visible-trap",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Shulak Street Stall",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Shulak Street Stall",
-        "meters": 35
+        "meters": 35,
+        "coords": {
+          "map": "altgard",
+          "x": 5378,
+          "y": 3486,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/visible-trap",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5333,9 +6190,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/visible-trap",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5356,14 +6222,38 @@
         "place": "Shulak Street Stall",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Shulak Street Stall",
-        "meters": 35
+        "meters": 35,
+        "coords": {
+          "map": "altgard",
+          "x": 5378,
+          "y": 3486,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Shulak Street Stall",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Shulak Street Stall",
-        "meters": 25
+        "meters": 25,
+        "coords": {
+          "map": "altgard",
+          "x": 5433,
+          "y": 3469,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5426,9 +6316,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5449,14 +6348,38 @@
         "place": "Shulak Street Stall",
         "zone": "zone:basfelt-ruins",
         "kibelisk": "Shulak Street Stall",
-        "meters": 25
+        "meters": 25,
+        "coords": {
+          "map": "altgard",
+          "x": 5433,
+          "y": 3469,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/enemy-territory",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Mannikiki",
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 53
+        "meters": 53,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4612,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/enemy-territory",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5532,9 +6455,18 @@
           "fields": [
             "giver.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/enemy-territory",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -5555,14 +6487,38 @@
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 53
+        "meters": 53,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4612,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/powder-of-death",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 33
+        "meters": 33,
+        "coords": {
+          "map": "altgard",
+          "x": 5342,
+          "y": 4609,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/powder-of-death",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5633,9 +6589,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/powder-of-death",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -5656,14 +6621,38 @@
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 33
+        "meters": 33,
+        "coords": {
+          "map": "altgard",
+          "x": 5342,
+          "y": 4609,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creion-of-gribade",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Mannikiki",
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 53
+        "meters": 53,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4612,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creion-of-gribade",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5722,9 +6711,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/creion-of-gribade",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -5745,14 +6743,38 @@
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 53
+        "meters": 53,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4612,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/frozen-fafnite",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Steel Hammer Workcamp",
+        "meters": 53,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4612,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/frozen-fafnite",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5831,9 +6853,20 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/frozen-fafnite",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -5854,14 +6887,38 @@
         "place": "Steel Hammer Workcamp",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Steel Hammer Workcamp",
-        "meters": 50
+        "meters": 50,
+        "coords": {
+          "map": "altgard",
+          "x": 5308,
+          "y": 4608,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/inevitable-encounter",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Pordhet",
         "place": "Abandoned Campsite entrance",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Abandoned Campsite",
-        "meters": 9
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 5163,
+          "y": 4858,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/inevitable-encounter",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -5929,9 +6986,18 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/inevitable-encounter",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -5952,14 +7018,38 @@
         "place": "Abandoned Campsite",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Abandoned Campsite",
-        "meters": 9
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 5163,
+          "y": 4858,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/unveiling-the-truth",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Western Gribade Highland",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 210
+        "meters": 210,
+        "coords": {
+          "map": "altgard",
+          "x": 5285,
+          "y": 5115,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/unveiling-the-truth",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6038,9 +7128,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/unveiling-the-truth",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6061,14 +7160,38 @@
         "place": "Western Gribade Highland",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 210
+        "meters": 210,
+        "coords": {
+          "map": "altgard",
+          "x": 5285,
+          "y": 5115,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lake-of-confrontation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Southern Gribade Highland",
         "zone": "zone:iduns-lake",
         "kibelisk": "Idun's Lake",
-        "meters": 19
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 5524,
+          "y": 5074,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lake-of-confrontation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6123,9 +7246,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lake-of-confrontation",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6146,14 +7278,38 @@
         "place": "Southern Gribade Highland",
         "zone": "zone:iduns-lake",
         "kibelisk": "Idun's Lake",
-        "meters": 19
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 5524,
+          "y": 5074,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-ill-fates-resolution",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Southern Gribade Highland",
         "zone": "zone:iduns-lake",
         "kibelisk": "Idun's Lake",
-        "meters": 19
+        "meters": 19,
+        "coords": {
+          "map": "altgard",
+          "x": 5524,
+          "y": 5074,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/an-ill-fates-resolution",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6216,9 +7372,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/an-ill-fates-resolution",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6238,15 +7403,39 @@
         "npc": "Nemon",
         "place": null,
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Idun's Lake",
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 5525,
+          "y": 5075,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/mirror-of-greed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Crobakhi",
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Steel Hammer Merchants HQ",
+        "meters": 86,
+        "coords": {
+          "map": "altgard",
+          "x": 5790,
+          "y": 4231,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/mirror-of-greed",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6306,9 +7495,22 @@
           "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/mirror-of-greed",
+          "fields": [
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -6329,14 +7531,38 @@
         "place": "Steel Hammer Merchants HQ",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Steel Hammer Merchants HQ",
-        "meters": 86
+        "meters": 86,
+        "coords": {
+          "map": "altgard",
+          "x": 5793,
+          "y": 4230,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fafnites-whereabouts",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Umbaba",
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 10
+        "meters": 10,
+        "coords": {
+          "map": "altgard",
+          "x": 5831,
+          "y": 4728,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/fafnites-whereabouts",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6419,9 +7645,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/fafnites-whereabouts",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6442,14 +7677,38 @@
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 10
+        "meters": 10,
+        "coords": {
+          "map": "altgard",
+          "x": 5831,
+          "y": 4728,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/exiled-ritualist",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Amunta",
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 5818,
+          "y": 4722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/exiled-ritualist",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6504,9 +7763,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/exiled-ritualist",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6527,14 +7795,38 @@
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 5818,
+          "y": 4722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/healing-herbs",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Lakiba",
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 20
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 5820,
+          "y": 4728,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/healing-herbs",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6585,9 +7877,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/healing-herbs",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6608,14 +7909,38 @@
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 20
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 5820,
+          "y": 4728,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/treatment",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Amunta",
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 5818,
+          "y": 4722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/treatment",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6666,9 +7991,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/treatment",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6689,14 +8023,38 @@
         "place": "Amunta's Hideout",
         "zone": "zone:fafnite-deposit",
         "kibelisk": "Amunta's Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 5818,
+          "y": 4722,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/symbol-of-liberation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Amunta",
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 27
+        "meters": 27,
+        "coords": {
+          "map": "altgard",
+          "x": 5405,
+          "y": 5269,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/symbol-of-liberation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6759,9 +8117,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/symbol-of-liberation",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6784,14 +8151,38 @@
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 27
+        "meters": 27,
+        "coords": {
+          "map": "altgard",
+          "x": 5405,
+          "y": 5269,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daybreak-society",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Secret Rendezvous Point",
         "zone": "zone:black-claw-village",
         "kibelisk": "Secret Rendezvous Point",
-        "meters": 20
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 4995,
+          "y": 5563,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daybreak-society",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6874,9 +8265,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daybreak-society",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6899,14 +8299,38 @@
         "place": "Secret Rendezvous Point",
         "zone": "zone:black-claw-village",
         "kibelisk": "Secret Rendezvous Point",
-        "meters": 20
+        "meters": 20,
+        "coords": {
+          "map": "altgard",
+          "x": 4995,
+          "y": 5563,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Kumrica",
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -6969,9 +8393,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -6994,14 +8427,38 @@
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Kumrica",
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7061,9 +8518,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-breaking-of-the-day",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7086,14 +8552,38 @@
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/chief-of-the-black-claw",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Kumrica",
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/chief-of-the-black-claw",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7148,9 +8638,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/chief-of-the-black-claw",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7173,14 +8672,38 @@
         "place": "Kumrica's Cellar",
         "zone": "zone:black-claw-village",
         "kibelisk": "Kumrica's Cellar",
-        "meters": 23
+        "meters": 23,
+        "coords": {
+          "map": "altgard",
+          "x": 4945,
+          "y": 5637,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/high-priests-fafnite",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 24
+        "meters": 24,
+        "coords": {
+          "map": "altgard",
+          "x": 5403,
+          "y": 5272,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/high-priests-fafnite",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7251,9 +8774,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/high-priests-fafnite",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7279,14 +8811,38 @@
         "place": "Zemurru's Tomb",
         "zone": "zone:western-gribade-highland",
         "kibelisk": "Zemurru's Tomb",
-        "meters": 24
+        "meters": 24,
+        "coords": {
+          "map": "altgard",
+          "x": 5403,
+          "y": 5272,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-awakens",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 180
+        "meters": 180,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3773,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-awakens",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7349,9 +8905,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-high-priest-awakens",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7374,14 +8939,38 @@
         "place": "Nornir Assembly",
         "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
-        "meters": 180
+        "meters": 180,
+        "coords": {
+          "map": "altgard",
+          "x": 5017,
+          "y": 3773,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lingering-apparitions",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5469,
+          "y": 5751,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/lingering-apparitions",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7452,9 +9041,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/lingering-apparitions",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7477,14 +9075,38 @@
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5469,
+          "y": 5751,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blood-barrier",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Collapsed Hall of Fame",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5469,
+          "y": 5751,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/blood-barrier",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7547,9 +9169,20 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/blood-barrier",
+          "fields": [
+            "giver.coords",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7575,14 +9208,38 @@
         "place": "Collapsed Hall of Fame",
         "zone": "zone:impetusium-square",
         "kibelisk": "Collapsed Hall of Fame",
-        "meters": 32
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 5469,
+          "y": 5751,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/zikels-core",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Nemon",
         "place": null,
         "zone": "zone:impetusium-square",
         "kibelisk": "Outskirts Stall",
-        "meters": 93
+        "meters": 93,
+        "coords": {
+          "map": "altgard",
+          "x": 5272,
+          "y": 5915,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/zikels-core",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7645,9 +9302,18 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/zikels-core",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7673,14 +9339,38 @@
         "place": "Black Claw Village",
         "zone": "zone:impetusium-square",
         "kibelisk": "Outskirts Stall",
-        "meters": 93
+        "meters": 93,
+        "coords": {
+          "map": "altgard",
+          "x": 5272,
+          "y": 5915,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/farewells",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Menrik",
         "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Fang Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/farewells",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -7770,9 +9460,18 @@
           "fields": [
             "giver.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/farewells",
+          "fields": [
+            "giver.coords",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "inferred",
@@ -7798,7 +9497,19 @@
         "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Fang Hideout",
-        "meters": 21
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+              "checkedAt": "2026-10-14",
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
         "npc": "Koro",
@@ -7875,9 +9586,17 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "fields": [
+            "giver.coords"
+          ],
+          "checkedAt": "2026-10-14",
+          "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",

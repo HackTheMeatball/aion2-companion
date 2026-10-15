@@ -8,9 +8,9 @@ that cite the page (`file: record`); *Card group* is where the app lists it. Pag
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/shared/asmodian/guide/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-401 URLs · 400 in the Sources card · 1 cited only in the data files
+414 URLs · 413 in the Sources card · 1 cited only in the data files
 
-## Metabot (202)
+## Metabot (222)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -41,7 +41,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Strongholds](https://metabot.gg/en/aion-2/map/altgard/strongholds) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Amurahta Surveillance Base; shared/asmodian/strongholds.json: Andsha Forward Base; shared/asmodian/strongholds.json: Barahta Extermination Unit Outpost; shared/asmodian/strongholds.json: Blades Temporary Outpost; shared/asmodian/strongholds.json: Corrupted Forester Ruins; shared/asmodian/strongholds.json: Detlef Thieves Camp; shared/asmodian/strongholds.json: Flauke Legion Outpost; shared/asmodian/strongholds.json: Forest Marauder Campsite; shared/asmodian/strongholds.json: Granach's Hideout; shared/asmodian/strongholds.json: Graverobber Den; shared/asmodian/strongholds.json: Latrima Outpost; shared/asmodian/strongholds.json: Legion Base Ruins; shared/asmodian/strongholds.json: Logger's Rest Ruins; shared/asmodian/strongholds.json: Rubek Thieves' Occupied Territory; shared/asmodian/strongholds.json: Sanctum Outskirts Watch; shared/rules.json: rule:sh-first-clear-asmodian |
 | [Metabot: A Collective Effort](https://metabot.gg/en/aion-2/quests/a-collective-effort) | Main story | shared/asmodian/story-quests.json: A Collective Effort |
 | [Metabot: A Comrade's Fate](https://metabot.gg/en/aion-2/quests/a-comrades-fate) | Regional quests | shared/asmodian/regional-quests.json: A Comrade's Fate |
-| [Metabot: A Daeva Dreaming Anew](https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew) | Main story | shared/asmodian/ascension-quests.json: The One Who Dreams; shared/asmodian/story-quests.json: A Daeva Dreaming Anew |
+| [Metabot: A Daeva Dreaming Anew](https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew) | Main story | shared/asmodian/ascension-quests.json: The One Who Dreams; shared/asmodian/guide/claims.json: "The One Who Dreams" (Lv 32) opens once the Ascension Gauge is at 100% and the story reaches "A Daeva Dreaming Anew"; Asahr at Dream Crossroad.; shared/asmodian/story-quests.json: A Daeva Dreaming Anew |
 | [Metabot: A Friend's Legacy](https://metabot.gg/en/aion-2/quests/a-friends-legacy) | Regional quests | shared/asmodian/regional-quests.json: A Friend's Legacy |
 | [Metabot: A Guardian's Sacrifice](https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice) | Regional quests | shared/asmodian/regional-quests.json: A Guardian's Sacrifice |
 | [Metabot: A New Lead](https://metabot.gg/en/aion-2/quests/a-new-lead) | Main story | shared/asmodian/story-quests.json: A New Lead |
@@ -56,6 +56,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Andsha Forward Base](https://metabot.gg/en/aion-2/quests/andsha-forward-base) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Andsha Forward Base |
 | [Metabot: Another Crisis!](https://metabot.gg/en/aion-2/quests/another-crisis) | Regional quests | shared/asmodian/regional-quests.json: Another Crisis! |
 | [Metabot: Another Survivor](https://metabot.gg/en/aion-2/quests/another-survivor) | Regional quests | shared/asmodian/regional-quests.json: Another Survivor |
+| [Metabot: Ascetics cave](https://metabot.gg/en/aion-2/quests/ascetics-cave) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Ascetic's Cave |
 | [Metabot: Back on the Scent](https://metabot.gg/en/aion-2/quests/back-on-the-scent) | Main story | shared/asmodian/story-quests.json: Back on the Scent |
 | [Metabot: Barahta Extermination Unit Outpost](https://metabot.gg/en/aion-2/quests/barahta-extermination-unit-outpost) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Barahta Extermination Unit Outpost |
 | [Metabot: Bitter Reality](https://metabot.gg/en/aion-2/quests/bitter-reality) | Main story | shared/asmodian/story-quests.json: Bitter Reality |
@@ -71,6 +72,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Cemetery Cleanup](https://metabot.gg/en/aion-2/quests/cemetery-cleanup) | Main story | shared/asmodian/story-quests.json: Cemetery Cleanup |
 | [Metabot: Chief of the Black Claw](https://metabot.gg/en/aion-2/quests/chief-of-the-black-claw) | Main story | shared/asmodian/story-quests.json: Chief of the Black Claw |
 | [Metabot: Children of the Elim](https://metabot.gg/en/aion-2/quests/children-of-the-elim) | Main story | shared/asmodian/story-quests.json: Children of the Elim |
+| [Metabot: Closed hideout](https://metabot.gg/en/aion-2/quests/closed-hideout) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Closed Hideout |
 | [Metabot: Contaminated Area](https://metabot.gg/en/aion-2/quests/contaminated-area) | Main story | shared/asmodian/story-quests.json: Contaminated Area |
 | [Metabot: Contaminated Sacred Tree](https://metabot.gg/en/aion-2/quests/contaminated-sacred-tree) | Main story | shared/asmodian/story-quests.json: Contaminated Sacred Tree |
 | [Metabot: Corrupted Forester Ruins](https://metabot.gg/en/aion-2/quests/corrupted-forester-ruins) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Corrupted Forester Ruins |
@@ -84,6 +86,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Daybreak Society](https://metabot.gg/en/aion-2/quests/daybreak-society) | Main story | shared/asmodian/story-quests.json: Daybreak Society |
 | [Metabot: Daybreak Society Rescue Operation](https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation) | Main story | shared/asmodian/story-quests.json: Daybreak Society Rescue Operation |
 | [Metabot: Dead Men Tell No Tales](https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales) | Main story | shared/asmodian/story-quests.json: Dead Men Tell No Tales |
+| [Metabot: Den of exiles](https://metabot.gg/en/aion-2/quests/den-of-exiles) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Den of Exiles |
 | [Metabot: Destruction Archon Underground Fortress](https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress) | Main story | shared/asmodian/story-quests.json: Destruction Archon Underground Fortress |
 | [Metabot: Detlef Thieves Camp](https://metabot.gg/en/aion-2/quests/detlef-thieves-camp) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Detlef Thieves Camp |
 | [Metabot: Disturbed Balance](https://metabot.gg/en/aion-2/quests/disturbed-balance) | Main story | shared/asmodian/story-quests.json: Disturbed Balance |
@@ -94,9 +97,11 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Exiled Ritualist](https://metabot.gg/en/aion-2/quests/exiled-ritualist) | Main story | shared/asmodian/story-quests.json: Exiled Ritualist |
 | [Metabot: Express Daeva Delivery](https://metabot.gg/en/aion-2/quests/express-daeva-delivery) | Main story | shared/asmodian/story-quests.json: Express Daeva Delivery |
 | [Metabot: Eye of the Red Tower](https://metabot.gg/en/aion-2/quests/eye-of-the-red-tower) | Main story | shared/asmodian/story-quests.json: Eye of the Red Tower |
+| [Metabot: Fafnite Storage Room (exploration quest)](https://metabot.gg/en/aion-2/quests/fafnite-storage-room) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Fafnite Storage Room |
 | [Metabot: Fafnite's Whereabouts](https://metabot.gg/en/aion-2/quests/fafnites-whereabouts) | Main story | shared/asmodian/story-quests.json: Fafnite's Whereabouts |
 | [Metabot: Fallout](https://metabot.gg/en/aion-2/quests/fallout) | Regional quests | shared/asmodian/regional-quests.json: Fallout |
 | [Metabot: Fallout Calmed](https://metabot.gg/en/aion-2/quests/fallout-calmed) | Regional quests | shared/asmodian/regional-quests.json: Fallout Calmed |
+| [Metabot: Farewell, My Instructor](https://metabot.gg/en/aion-2/quests/farewell-my-instructor) | Regional quests | shared/asmodian/regional-quests.json: Farewell, My Instructor |
 | [Metabot: Farewells](https://metabot.gg/en/aion-2/quests/farewells) | Main story | shared/asmodian/story-quests.json: Farewells |
 | [Metabot: Fight Poison with Poison](https://metabot.gg/en/aion-2/quests/fight-poison-with-poison) | Regional quests | shared/asmodian/regional-quests.json: Fight Poison with Poison |
 | [Metabot: Finders Keepers](https://metabot.gg/en/aion-2/quests/finders-keepers) | Regional quests | shared/asmodian/regional-quests.json: Finders Keepers |
@@ -104,7 +109,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Finding Stolen Relics](https://metabot.gg/en/aion-2/quests/finding-stolen-relics) | Main story | shared/asmodian/story-quests.json: Finding Stolen Relics |
 | [Metabot: Flauke Legion Outpost](https://metabot.gg/en/aion-2/quests/flauke-legion-outpost) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Flauke Legion Outpost |
 | [Metabot: Forest Marauder Campsite](https://metabot.gg/en/aion-2/quests/forest-marauder-campsite) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Forest Marauder Campsite |
-| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | shared/asmodian/story-quests.json: Forgotten Commander |
+| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/story-quests.json: Forgotten Commander |
 | [Metabot: Frozen Fafnite](https://metabot.gg/en/aion-2/quests/frozen-fafnite) | Main story | shared/asmodian/story-quests.json: Frozen Fafnite |
 | [Metabot: Gathering Essentials](https://metabot.gg/en/aion-2/quests/gathering-essentials) | Main story | shared/asmodian/story-quests.json: Gathering Essentials |
 | [Metabot: Granach's Hideout](https://metabot.gg/en/aion-2/quests/granachs-hideout) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Granach's Hideout |
@@ -123,7 +128,6 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: In the Elims' Name](https://metabot.gg/en/aion-2/quests/in-the-elims-name) | Main story | shared/asmodian/story-quests.json: In the Elims' Name |
 | [Metabot: In the Fang Legion's Name](https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name) | Regional quests | shared/asmodian/guide/claims.json: Most regional quests unlock at Lv 10.; shared/asmodian/guide/claims.json: Unverified: Kibelisk and Command scroll unlock timing; exact unlock level for most regional quests.; shared/asmodian/regional-quests.json: In the Fang Legion's Name |
 | [Metabot: Inevitable Encounter](https://metabot.gg/en/aion-2/quests/inevitable-encounter) | Main story | shared/asmodian/story-quests.json: Inevitable Encounter |
-| [Metabot: Ishalgen](https://metabot.gg/en/aion-2/quests/ishalgen) | Main story | shared/asmodian/story-quests.json: Ishalgen |
 | [Metabot: Isolated Lake](https://metabot.gg/en/aion-2/quests/isolated-lake) | Main story | shared/asmodian/story-quests.json: Isolated Lake |
 | [Metabot: Lake of Confrontation](https://metabot.gg/en/aion-2/quests/lake-of-confrontation) | Main story | shared/asmodian/story-quests.json: Lake of Confrontation |
 | [Metabot: Land of Rifts](https://metabot.gg/en/aion-2/quests/land-of-rifts) | Main story | shared/asmodian/story-quests.json: Land of Rifts |
@@ -131,8 +135,11 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Last Refuge](https://metabot.gg/en/aion-2/quests/last-refuge) | Main story | shared/asmodian/story-quests.json: Last Refuge |
 | [Metabot: Latrima Outpost](https://metabot.gg/en/aion-2/quests/latrima-outpost) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Latrima Outpost |
 | [Metabot: Legion Base Ruins](https://metabot.gg/en/aion-2/quests/legion-base-ruins) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Legion Base Ruins |
+| [Metabot: Lest We Forget](https://metabot.gg/en/aion-2/quests/lest-we-forget) | Regional quests | shared/asmodian/regional-quests.json: Lest We Forget |
+| [Metabot: Library of wisdom](https://metabot.gg/en/aion-2/quests/library-of-wisdom) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Library of Wisdom |
 | [Metabot: Lingering Apparitions](https://metabot.gg/en/aion-2/quests/lingering-apparitions) | Main story | shared/asmodian/story-quests.json: Lingering Apparitions |
 | [Metabot: Logger's Rest Ruins](https://metabot.gg/en/aion-2/quests/loggers-rest-ruins) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Logger's Rest Ruins |
+| [Metabot: Lost Memories](https://metabot.gg/en/aion-2/quests/lost-memories) | Regional quests | shared/asmodian/regional-quests.json: Lost Memories |
 | [Metabot: Lost Ruins (exploration quest)](https://metabot.gg/en/aion-2/quests/lost-ruins) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Lost Ruins |
 | [Metabot: Malice Laid Bare](https://metabot.gg/en/aion-2/quests/malice-laid-bare) | Main story | shared/asmodian/story-quests.json: Malice Laid Bare |
 | [Metabot: Mind Your Own Business](https://metabot.gg/en/aion-2/quests/mind-your-own-business) | Regional quests | shared/asmodian/regional-quests.json: Mind Your Own Business |
@@ -140,9 +147,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Missing Mount](https://metabot.gg/en/aion-2/quests/missing-mount) | Regional quests | shared/asmodian/regional-quests.json: Missing Mount |
 | [Metabot: Nine Wonders of Altgard: 1st Leg](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg) | Regional quests | shared/asmodian/regional-quests.json: Nine Wonders of Altgard: 1st Leg |
 | [Metabot: Nine Wonders of Altgard: 2nd Leg](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg) | Regional quests | shared/asmodian/regional-quests.json: Nine Wonders of Altgard: 2nd Leg |
+| [Metabot: Nine Wonders of Altgard: Final Stretch](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-final-stretch) | Regional quests | shared/asmodian/regional-quests.json: Nine Wonders of Altgard: Final Stretch |
 | [Metabot: Odyle Jelly Misappropriation Investigation](https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation) | Regional quests | shared/asmodian/regional-quests.json: Odyle Jelly Misappropriation Investigation |
 | [Metabot: Odylium Marauder Den (exploration quest)](https://metabot.gg/en/aion-2/quests/odylium-marauder-den) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Odylium Marauder Den |
+| [Metabot: One Last Thing](https://metabot.gg/en/aion-2/quests/one-last-thing) | Regional quests | shared/asmodian/regional-quests.json: One Last Thing |
 | [Metabot: Pain Unending](https://metabot.gg/en/aion-2/quests/pain-unending) | Regional quests | shared/asmodian/regional-quests.json: Pain Unending |
+| [Metabot: Place of rest](https://metabot.gg/en/aion-2/quests/place-of-rest) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Place of Rest |
 | [Metabot: Powder of Death](https://metabot.gg/en/aion-2/quests/powder-of-death) | Main story | shared/asmodian/story-quests.json: Powder of Death |
 | [Metabot: Practice Makes Perfect, Nyerk!](https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk) | Regional quests | shared/asmodian/regional-quests.json: Practice Makes Perfect, Nyerk! |
 | [Metabot: Preparations for Restoration](https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian) | Main story | shared/asmodian/story-quests.json: Preparations for Restoration |
@@ -150,11 +160,15 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Prison Break](https://metabot.gg/en/aion-2/quests/prison-break) | Main story | shared/asmodian/story-quests.json: Prison Break |
 | [Metabot: Prison Compound Infiltration Plan](https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan) | Main story | shared/asmodian/story-quests.json: Prison Compound Infiltration Plan |
 | [Metabot: Putting a Friend to Rest](https://metabot.gg/en/aion-2/quests/putting-a-friend-to-rest) | Regional quests | shared/asmodian/regional-quests.json: Putting a Friend to Rest |
+| [Metabot: Ravenous Recluse](https://metabot.gg/en/aion-2/quests/ravenous-recluse) | Regional quests | shared/asmodian/regional-quests.json: Ravenous Recluse |
 | [Metabot: Reality Bites](https://metabot.gg/en/aion-2/quests/reality-bites) | Regional quests | shared/asmodian/regional-quests.json: Reality Bites |
+| [Metabot: Regular Altar Maintenance](https://metabot.gg/en/aion-2/quests/regular-altar-maintenance) | Regional quests | shared/asmodian/regional-quests.json: Regular Altar Maintenance |
 | [Metabot: Rescue Operation](https://metabot.gg/en/aion-2/quests/rescue-operation) | Main story | shared/asmodian/story-quests.json: Rescue Operation |
+| [Metabot: Restless Spirits](https://metabot.gg/en/aion-2/quests/restless-spirits) | Regional quests | shared/asmodian/regional-quests.json: Restless Spirits |
 | [Metabot: Restoration Materials](https://metabot.gg/en/aion-2/quests/restoration-materials) | Regional quests | shared/asmodian/regional-quests.json: Restoration Materials |
 | [Metabot: Rubek Thieves' Occupied Territory](https://metabot.gg/en/aion-2/quests/rubek-thieves-occupied-territory) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Rubek Thieves' Occupied Territory |
 | [Metabot: Sanctum Outskirts Watch](https://metabot.gg/en/aion-2/quests/sanctum-outskirts-watch) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Sanctum Outskirts Watch |
+| [Metabot: Sapling Hide-and-Seek](https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek) | Regional quests | shared/asmodian/regional-quests.json: Sapling Hide-and-Seek |
 | [Metabot: Scripture in the Ruins](https://metabot.gg/en/aion-2/quests/scripture-in-the-ruins) | Main story | shared/asmodian/story-quests.json: Scripture in the Ruins |
 | [Metabot: Searching for Survivors](https://metabot.gg/en/aion-2/quests/searching-for-survivors) | Main story | shared/asmodian/story-quests.json: Searching for Survivors |
 | [Metabot: Shadow Forest](https://metabot.gg/en/aion-2/quests/shadow-forest) | Main story | shared/asmodian/story-quests.json: Shadow Forest |
@@ -167,6 +181,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Spacetime Rift: Proof](https://metabot.gg/en/aion-2/quests/spacetime-rift-proof) | Regional quests | shared/asmodian/regional-quests.json: Spacetime Rift: Proof |
 | [Metabot: Spacetime Rift: Unfamiliar Material](https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian) | Regional quests | shared/asmodian/regional-quests.json: Spacetime Rift: Unfamiliar Material |
 | [Metabot: Spacetime Rift: Unknown Species](https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species) | Regional quests | shared/asmodian/regional-quests.json: Spacetime Rift: Unknown Species |
+| [Metabot: Spirit Isle, Where Time Has Stopped](https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped) | Regional quests | shared/asmodian/regional-quests.json: Spirit Isle, Where Time Has Stopped |
 | [Metabot: Spooky Specters](https://metabot.gg/en/aion-2/quests/spooky-specters) | Regional quests | shared/asmodian/regional-quests.json: Spooky Specters |
 | [Metabot: Spread Your Wings](https://metabot.gg/en/aion-2/quests/spread-your-wings) | Main story | shared/asmodian/ascension-quests.json: The One Who Perceives; shared/asmodian/story-quests.json: Spread Your Wings |
 | [Metabot: Striving for Coexistence](https://metabot.gg/en/aion-2/quests/striving-for-coexistence) | Main story | shared/asmodian/story-quests.json: Striving for Coexistence |
@@ -189,6 +204,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: The Survivors](https://metabot.gg/en/aion-2/quests/the-survivors) | Main story | shared/asmodian/story-quests.json: The Survivors |
 | [Metabot: Traveling Merchant's Conundrum](https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum) | Regional quests | shared/asmodian/regional-quests.json: Traveling Merchant's Conundrum |
 | [Metabot: Treatment](https://metabot.gg/en/aion-2/quests/treatment) | Main story | shared/asmodian/story-quests.json: Treatment |
+| [Metabot: Twisted pit](https://metabot.gg/en/aion-2/quests/twisted-pit) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Twisted Pit |
 | [Metabot: Unveiling the Truth](https://metabot.gg/en/aion-2/quests/unveiling-the-truth) | Main story | shared/asmodian/story-quests.json: Unveiling the Truth |
 | [Metabot: Urgent Pursuit](https://metabot.gg/en/aion-2/quests/urgent-pursuit) | Main story | shared/asmodian/story-quests.json: Urgent Pursuit |
 | [Metabot: Veiled Truth](https://metabot.gg/en/aion-2/quests/veiled-truth) | Main story | shared/asmodian/story-quests.json: Veiled Truth |
@@ -200,20 +216,24 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Young Elim's Story](https://metabot.gg/en/aion-2/quests/young-elims-story) | Regional quests | shared/asmodian/regional-quests.json: Young Elim's Story |
 | [Metabot: Zikel's Core](https://metabot.gg/en/aion-2/quests/zikels-core) | Main story | shared/asmodian/story-quests.json: Zikel's Core |
 | [Metabot: Ambush](https://metabot.gg/en/aion-2/skills/ambush) | Skills, boards and stigmas | classes/assassin/skills.json: Ambush |
-| [Metabot: Ambush stance](https://metabot.gg/en/aion-2/skills/ambush-stance) | Skills, boards and stigmas | classes/assassin/skills.json: Ambush Stance |
-| [Metabot: Assault stance](https://metabot.gg/en/aion-2/skills/assault-stance) | Skills, boards and stigmas | classes/assassin/skills.json: Assault Stance |
-| [Metabot: Defense break](https://metabot.gg/en/aion-2/skills/defense-break) | Skills, boards and stigmas | classes/assassin/skills.json: Defense Break |
+| [Metabot: Ambush Stance](https://metabot.gg/en/aion-2/skills/ambush-stance) | Skills, boards and stigmas | classes/assassin/skills.json: Ambush Stance |
+| [Metabot: Assault Stance](https://metabot.gg/en/aion-2/skills/assault-stance) | Skills, boards and stigmas | classes/assassin/skills.json: Assault Stance |
+| [Metabot: Defense Break](https://metabot.gg/en/aion-2/skills/defense-break) | Skills, boards and stigmas | classes/assassin/skills.json: Defense Break |
+| [Metabot: Defiance](https://metabot.gg/en/aion-2/skills/defiance) | Skills, boards and stigmas | classes/assassin/skills.json: Defiance |
 | [Metabot: Determination](https://metabot.gg/en/aion-2/skills/determination) | Skills, boards and stigmas | classes/assassin/skills.json: Determination |
-| [Metabot: Flash slice](https://metabot.gg/en/aion-2/skills/flash-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Flash Slice |
-| [Metabot: Heart gore](https://metabot.gg/en/aion-2/skills/heart-gore) | Skills, boards and stigmas | classes/assassin/skills.json: Heart Gore; shared/rules.json: rule:skill-level-gate; shared/rules.json: rule:skill-point-cost; shared/rules.json: rule:specialty-slots |
-| [Metabot: Heightened sixth sense](https://metabot.gg/en/aion-2/skills/heightened-sixth-sense) | Skills, boards and stigmas | classes/assassin/skills.json: Heightened Sixth Sense |
-| [Metabot: Illusive clone](https://metabot.gg/en/aion-2/skills/illusive-clone) | Skills, boards and stigmas | classes/assassin/stigmas.json: Illusive Clone; shared/rules.json: rule:stigma-shard-cost |
-| [Metabot: Impact hit assassin](https://metabot.gg/en/aion-2/skills/impact-hit-assassin) | Skills, boards and stigmas | classes/assassin/skills.json: Impact Hit |
-| [Metabot: Insignia explosion](https://metabot.gg/en/aion-2/skills/insignia-explosion) | Skills, boards and stigmas | classes/assassin/skills.json: Insignia Explosion |
-| [Metabot: Quick slice](https://metabot.gg/en/aion-2/skills/quick-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Quick Slice |
-| [Metabot: Savage roar](https://metabot.gg/en/aion-2/skills/savage-roar) | Skills, boards and stigmas | classes/assassin/skills.json: Savage Roar |
+| [Metabot: Flash Slice](https://metabot.gg/en/aion-2/skills/flash-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Flash Slice |
+| [Metabot: Heart Gore](https://metabot.gg/en/aion-2/skills/heart-gore) | Skills, boards and stigmas | classes/assassin/skills.json: Heart Gore; shared/rules.json: rule:skill-level-gate; shared/rules.json: rule:skill-point-cost; shared/rules.json: rule:specialty-slots |
+| [Metabot: Heightened Sixth Sense](https://metabot.gg/en/aion-2/skills/heightened-sixth-sense) | Skills, boards and stigmas | classes/assassin/skills.json: Heightened Sixth Sense |
+| [Metabot: Illusive Clone](https://metabot.gg/en/aion-2/skills/illusive-clone) | Skills, boards and stigmas | classes/assassin/stigmas.json: Illusive Clone; shared/rules.json: rule:stigma-shard-cost |
+| [Metabot: Impact Hit](https://metabot.gg/en/aion-2/skills/impact-hit-assassin) | Skills, boards and stigmas | classes/assassin/skills.json: Impact Hit |
+| [Metabot: Infiltrate](https://metabot.gg/en/aion-2/skills/infiltrate) | Skills, boards and stigmas | classes/assassin/skills.json: Infiltrate |
+| [Metabot: Insignia Explosion](https://metabot.gg/en/aion-2/skills/insignia-explosion) | Skills, boards and stigmas | classes/assassin/skills.json: Insignia Explosion |
+| [Metabot: Quick Slice](https://metabot.gg/en/aion-2/skills/quick-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Quick Slice |
+| [Metabot: Savage Roar](https://metabot.gg/en/aion-2/skills/savage-roar) | Skills, boards and stigmas | classes/assassin/skills.json: Savage Roar |
+| [Metabot: Shadow Fall](https://metabot.gg/en/aion-2/skills/shadow-fall) | Skills, boards and stigmas | classes/assassin/skills.json: Shadow Fall |
 | [Metabot: Shadowstrike](https://metabot.gg/en/aion-2/skills/shadowstrike) | Skills, boards and stigmas | classes/assassin/skills.json: Shadowstrike |
-| [Metabot: Storm rampage](https://metabot.gg/en/aion-2/skills/storm-rampage) | Skills, boards and stigmas | classes/assassin/skills.json: Storm Rampage |
+| [Metabot: Storm Rampage](https://metabot.gg/en/aion-2/skills/storm-rampage) | Skills, boards and stigmas | classes/assassin/skills.json: Storm Rampage |
+| [Metabot: Whirlwind Slice](https://metabot.gg/en/aion-2/skills/whirlwind-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Whirlwind Slice |
 | [Metabot: Stats](https://metabot.gg/en/aion-2/stats) | Tips and rules | shared/asmodian/guide/claims.json: Stat tiers: [Attack, Critical Hit, Back Attack Damage Boost] > [Accuracy, Critical Damage Boost] > [Double Chance, Combat Speed]; B/G letters. |
 | [Metabot: Terms of service](https://metabot.gg/en/legal/terms-of-service) | — | sources.json: Metabot |
 
@@ -269,23 +289,11 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [aion2.gaming.tools: Nine Wonders of Altgard: 2nd Leg](https://aion2.gaming.tools/quests/2202070) | Regional quests | shared/asmodian/regional-quests.json: Nine Wonders of Altgard: 2nd Leg; shared/asmodian/regional-quests.json: Nine Wonders of Altgard: Final Stretch |
 | [aion2.gaming.tools: Nine Wonders of Altgard: Final Stretch](https://aion2.gaming.tools/quests/2202071) | Regional quests | shared/asmodian/regional-quests.json: Nine Wonders of Altgard: Final Stretch |
 
-## aion2.th.gl (7)
-
-| Page | Card group | Backs |
-|---|---|---|
-| [aion2.th.gl: A Daeva Dreaming Anew](https://aion2.th.gl/db/quests/q_2102345) | Tips and rules | shared/asmodian/guide/claims.json: "The One Who Dreams" (Lv 32) opens once the Ascension Gauge is at 100% and the story reaches "A Daeva Dreaming Anew"; Asahr at Dream Crossroad. |
-| [aion2.th.gl: Forgotten Commander](https://aion2.th.gl/db/quests/q_2102800) | Regional quests | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/regional-quests.json: Immortal Isle's Distinct Ecology; shared/asmodian/regional-quests.json: Reality Bites; shared/asmodian/regional-quests.json: A Perfect Wedding; shared/asmodian/regional-quests.json: Fallout; shared/asmodian/regional-quests.json: Fallout Calmed; shared/asmodian/regional-quests.json: Farewell, My Instructor; shared/asmodian/regional-quests.json: Another Crisis!; shared/asmodian/regional-quests.json: I'm a Believer!; shared/asmodian/regional-quests.json: A Traitor Within; shared/asmodian/regional-quests.json: One Last Thing; shared/asmodian/regional-quests.json: Mind Your Own Business; shared/asmodian/regional-quests.json: Lost Memories; shared/asmodian/regional-quests.json: Sapling Hide-and-Seek; shared/asmodian/regional-quests.json: Restoration Materials; shared/asmodian/regional-quests.json: Restless Spirits; shared/asmodian/regional-quests.json: Another Survivor; shared/asmodian/regional-quests.json: Regular Altar Maintenance; shared/asmodian/regional-quests.json: Workplace Misunderstanding; shared/asmodian/regional-quests.json: Ravenous Recluse; shared/asmodian/regional-quests.json: A Comrade's Fate; shared/asmodian/regional-quests.json: Putting a Friend to Rest; shared/asmodian/regional-quests.json: Spirit Isle, Where Time Has Stopped; shared/asmodian/regional-quests.json: Nine Wonders of Altgard: Final Stretch |
-| [aion2.th.gl: Hugo Mercenaries: Deep Shadow](https://aion2.th.gl/db/quests/q_2202011) | Regional quests | shared/asmodian/regional-quests.json: Hugo Mercenaries: Deep Shadow; shared/asmodian/regional-quests.json: Hugo Mercenaries: An Old Promise |
-| [aion2.th.gl: One Last Thing](https://aion2.th.gl/db/quests/q_2202054) | Regional quests | shared/asmodian/regional-quests.json: One Last Thing |
-| [aion2.th.gl: Restoration Materials](https://aion2.th.gl/db/quests/q_2202058) | Regional quests | shared/asmodian/regional-quests.json: Restoration Materials |
-| [aion2.th.gl: The One Who Witnesses the Nightmare](https://aion2.th.gl/db/quests/q_2602020) | Tips and rules | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it. |
-| [aion2.th.gl: The One Who Dreams](https://aion2.th.gl/db/quests/q_2602030) | Tips and rules | shared/asmodian/guide/claims.json: "The One Who Dreams" (Lv 32) opens once the Ascension Gauge is at 100% and the story reaches "A Daeva Dreaming Anew"; Asahr at Dream Crossroad. |
-
 ## AION2HUB (4)
 
 | Page | Card group | Backs |
 |---|---|---|
-| [AION2HUB: Asmodian 1–10](https://aion2hub.com/leveling/asmodian-levels-1-10) | Main story | shared/asmodian/story-quests.json: Ishalgen; shared/asmodian/story-quests.json: A Village in the Fog; shared/asmodian/story-quests.json: Prepare to Escape; shared/asmodian/story-quests.json: Shadow Forest; shared/asmodian/story-quests.json: Isolated Lake; shared/asmodian/story-quests.json: The Being Beneath the Lake; shared/asmodian/story-quests.json: Spread Your Wings; shared/asmodian/story-quests.json: Signs of a Crash Landing; shared/asmodian/story-quests.json: Prison Compound Infiltration Plan; shared/asmodian/story-quests.json: Brigade Prison Compound Infiltration Operation; shared/asmodian/story-quests.json: The Longest Night; shared/asmodian/zones.json: Ishalgen |
+| [AION2HUB: Asmodian 1–10](https://aion2hub.com/leveling/asmodian-levels-1-10) | Main story | shared/asmodian/story-quests.json: A Village in the Fog; shared/asmodian/story-quests.json: Prepare to Escape; shared/asmodian/story-quests.json: Shadow Forest; shared/asmodian/story-quests.json: Isolated Lake; shared/asmodian/story-quests.json: The Being Beneath the Lake; shared/asmodian/story-quests.json: Spread Your Wings; shared/asmodian/story-quests.json: Signs of a Crash Landing; shared/asmodian/story-quests.json: Prison Compound Infiltration Plan; shared/asmodian/story-quests.json: Brigade Prison Compound Infiltration Operation; shared/asmodian/story-quests.json: The Longest Night |
 | [AION2HUB: Asmodian 10–25](https://aion2hub.com/leveling/asmodian-levels-10-25) | Main story | shared/asmodian/story-quests.json: Finding Nemon; shared/asmodian/story-quests.json: Survival Supplies; shared/asmodian/story-quests.json: Gathering Essentials; shared/asmodian/story-quests.json: Crash Site Rendezvous; shared/asmodian/story-quests.json: Contaminated Area; shared/asmodian/story-quests.json: Express Daeva Delivery; shared/asmodian/story-quests.json: Veiled Truth; shared/asmodian/story-quests.json: Urgent Pursuit; shared/asmodian/story-quests.json: Cemetery Cleanup; shared/asmodian/story-quests.json: Back on the Scent; shared/asmodian/story-quests.json: Dead Men Tell No Tales; shared/asmodian/story-quests.json: Buried Atrocities; shared/asmodian/story-quests.json: Empyrean Monolith; shared/asmodian/story-quests.json: A New Lead; shared/asmodian/story-quests.json: Malice Laid Bare; shared/asmodian/story-quests.json: Broken Fang; shared/asmodian/story-quests.json: Watchful Eyes; shared/asmodian/story-quests.json: Imminent Threat; shared/asmodian/story-quests.json: Crossroad; shared/asmodian/story-quests.json: Creeping Shadow; shared/asmodian/story-quests.json: Children of the Elim; shared/asmodian/story-quests.json: In the Elims' Name; shared/asmodian/story-quests.json: Verdant Melody; shared/asmodian/story-quests.json: Daeva in a Dream; shared/asmodian/story-quests.json: Disturbed Balance; shared/asmodian/story-quests.json: Searching for Survivors; shared/asmodian/story-quests.json: Prison Break; shared/asmodian/story-quests.json: Finding Stolen Relics |
 | [AION2HUB: Asmodian 25–40](https://aion2hub.com/leveling/asmodian-levels-25-40) | Main story | shared/asmodian/story-quests.json: Voice of Rage; shared/asmodian/story-quests.json: Tangled Past; shared/asmodian/story-quests.json: The High Priest Slumbers; shared/asmodian/story-quests.json: Striving for Coexistence; shared/asmodian/story-quests.json: Preparations for Restoration; shared/asmodian/story-quests.json: A Collective Effort; shared/asmodian/story-quests.json: Land of Rifts; shared/asmodian/story-quests.json: Dying Light; shared/asmodian/story-quests.json: Contaminated Sacred Tree; shared/asmodian/story-quests.json: The Past Revealed; shared/asmodian/story-quests.json: Canyon's Secret; shared/asmodian/story-quests.json: Bitter Reality; shared/asmodian/story-quests.json: Eye of the Red Tower; shared/asmodian/story-quests.json: The Survivors; shared/asmodian/story-quests.json: Rescue Operation; shared/asmodian/story-quests.json: Last of the Destruction Archons; shared/asmodian/story-quests.json: A Daeva Dreaming Anew; shared/asmodian/story-quests.json: Last Refuge; shared/asmodian/story-quests.json: Scripture in the Ruins; shared/asmodian/story-quests.json: Blood Monument; shared/asmodian/story-quests.json: Impending Threat; shared/asmodian/story-quests.json: Visible Trap; shared/asmodian/story-quests.json: Destruction Archon Underground Fortress; shared/asmodian/story-quests.json: Enemy Territory; shared/asmodian/story-quests.json: Powder of Death; shared/asmodian/story-quests.json: Creion of Gribade; shared/asmodian/story-quests.json: Frozen Fafnite; shared/asmodian/story-quests.json: Inevitable Encounter; shared/asmodian/story-quests.json: Unveiling the Truth; shared/asmodian/story-quests.json: Lake of Confrontation; shared/asmodian/story-quests.json: An Ill Fate's Resolution; shared/asmodian/story-quests.json: Mirror of Greed; shared/asmodian/story-quests.json: Fafnite's Whereabouts; shared/asmodian/story-quests.json: Exiled Ritualist; shared/asmodian/story-quests.json: Healing Herbs; shared/asmodian/story-quests.json: Treatment; shared/asmodian/story-quests.json: Symbol of Liberation |
 | [AION2HUB: Elyos levels 10 25](https://aion2hub.com/leveling/elyos-levels-10-25) | Tips and rules | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; shared/asmodian/guide/claims.json: Stronghold pays 2 Noble Belt Enhance Scrolls + 15,000 Kina (some a title); belt scrolls come from nowhere else. |

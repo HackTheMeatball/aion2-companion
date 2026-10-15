@@ -44,7 +44,7 @@ if (g) {
   ok(`generator: ${g.report.checks.length} cross-record checks pass`, !g.failed.length, g.failed.slice(0, 10));
   ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g));
   const c = g.constants;
-  ok('compiled: 87 story quests, 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 87 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
+  ok('compiled: 86 story quests (Ishalgen is the starting map, not a quest), 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 86 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);
 }
 console.log(`${n - fail} ok, ${fail} failed (${Date.now() - t0} ms)`);

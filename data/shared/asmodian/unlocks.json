@@ -5,13 +5,87 @@
   "faction": "asmodian",
   "records": [
     {
+      "id": "unlock:closet",
+      "what": "Closet (Alt+O)",
+      "at": {
+        "story": "sq:2101020",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-10",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Closet (Alt+O): Complete \"Prepare to Escape\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-10",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Closet (Alt+O): Complete \"Prepare to Escape\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:daevanion",
+      "what": "Daevanion (U)",
+      "at": {
+        "story": "sq:2102065",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-03",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Daevanion (U): Complete \"Urgent Pursuit\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-03",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Daevanion (U): Complete \"Urgent Pursuit\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
       "id": "unlock:daily-dungeon",
       "what": "Daily dungeon",
       "detail": "Daeva Bio-Research Base",
       "at": {
         "level": 30
       },
-      "credit": "Metabot, thegameswiki",
+      "credit": "Metabot, thegameswiki, your game",
       "order": 100,
       "otherNames": [
         "Odylium Repository (pet boxes; lv not stated)",
@@ -37,19 +111,79 @@
         },
         {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, thegameswiki); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-17",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Daily Dungeon: Reach Level 30"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
+    },
+    {
+      "id": "unlock:enhancement-achievements",
+      "what": "Enhancement and Achievements",
+      "detail": "Enhancement (N), Achievements (Y)",
+      "at": {
+        "level": 9,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 4,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-13",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Enhancement (N): Reach Level 9"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-09",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Achievements (Y): Reach Level 9"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "unlock:expedition-feature",
       "what": "Expedition feature (Exploration)",
       "at": {
         "story": "sq:2102185",
-        "is": "reached",
-        "basis": "legacy",
-        "note": "v1: feature unlocked by \"Daeva in a Dream\" (sources + seen in game)"
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-16",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Expedition: Complete \"Daeva in a Dream\""
+            }
+          }
+        ]
       },
       "sources": [
         {
@@ -59,10 +193,18 @@
           "url": "https://wikily.gg/aion-2/leveling"
         },
         {
-          "inferred": "v1 data: 'in-game (user)': seen in the owner's game; no screen code yet (DATA-FORMAT-V2 §14.2)."
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-16",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Expedition: Complete \"Daeva in a Dream\""
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
         "2-source + in game",
@@ -117,6 +259,43 @@
       "status": "verified"
     },
     {
+      "id": "unlock:journal-customization",
+      "what": "Journal and Customization",
+      "detail": "Journal (J)",
+      "at": {
+        "level": 2,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 1,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-05",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Journal (J): Reach Level 2"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-42",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Customization: Reach Level 2"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
       "id": "unlock:krao-cave",
       "what": "Krao Cave",
       "detail": "Expedition (Exploration) · item level 200",
@@ -156,38 +335,355 @@
       "status": "verified"
     },
     {
+      "id": "unlock:legion",
+      "what": "Legion (L)",
+      "at": {
+        "story": "sq:2102100",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-07",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Legion (L): Complete \"Buried Atrocities\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-07",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Legion (L): Complete \"Buried Atrocities\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
       "id": "unlock:level-cap",
       "what": "Level cap",
       "detail": "Abyss, Ascension Trial, Conquest, Azphel board (PvP stats)",
       "at": {
         "level": 45
       },
-      "credit": "Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith",
+      "credit": "Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith, your game",
       "order": 160,
       "sources": [
         {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-30",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Ascension Trial, Abyss: Reach Level 45 (screens 30–35)"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
+    },
+    {
+      "id": "unlock:lv10-systems",
+      "what": "Crafting and Extraction",
+      "detail": "Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G)",
+      "at": {
+        "level": 10,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 5,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-26",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Crafting (Alt+G): Reach Level 10"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-27",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Essence Extraction (Alt+F): Reach Level 10"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-25",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Substance Morph (Alt+H): Reach Level 10"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-28",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Navigator: Reach Level 10"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-40",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Attendance: Reach Level 10"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-01",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Subscribe (G): Reach Level 10"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:lv45-systems",
+      "what": "More systems at the cap",
+      "detail": "Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank",
+      "at": {
+        "level": 45,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 175,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-15",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Arcana (Alt+V): Reach Level 45"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-30",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Season, Transcendence, Nightmare, Ascension Trial, Abyss, Arena: Reach Level 45 (screens 30–35)"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-41",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Market: Reach Level 45"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-43",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Rank: Reach Level 45"
+          }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-19",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Battlefield: Reach Level 45"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "unlock:nezekan-board",
       "what": "Nezekan board",
       "detail": "First Daevanion board",
       "at": {
-        "level": 12
+        "story": "sq:2102065",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-03",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Daevanion (U): Complete \"Urgent Pursuit\""
+            }
+          }
+        ]
       },
-      "credit": "thegameswiki, Metabot, aion2hub",
-      "order": 10,
       "sources": [
         {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot, aion2hub); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-03",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Daevanion (U): Complete \"Urgent Pursuit\""
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
-      "status": "verified"
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "conflicts": [
+        "v1 listed it as a Lv 12 level unlock (Metabot needLevel 12 on every Nezekan node; thegameswiki, aion2hub). The owner's screen shows the Daevanion window locked until \"Urgent Pursuit\" (Lv 13) is completed; owner screens win (§5.4). Now a story unlock, not a level row."
+      ]
+    },
+    {
+      "id": "unlock:open-from-start",
+      "what": "Cube, Mail, Manage Friends, Combat Analysis",
+      "at": {
+        "level": 1,
+        "basis": "owner"
+      },
+      "sources": [
+        {
+          "inferred": "The owner's screens of a fresh Lv 1 character (2026-10-14, docs/research/2026-10-owner-unlocks.md): Cube, Mail, Manage Friends and Combat Analysis show no lock; no screen number given."
+        }
+      ],
+      "status": "verified",
+      "notes": [
+        "Open from the start (no lock), owner screens of 2026-10-14."
+      ],
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:pantheon",
+      "what": "Pantheon",
+      "at": {
+        "done": "asc:hears-the-voice",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-14",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Pantheon: Complete \"The One Who Hears the Voice\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-14",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Pantheon: Complete \"The One Who Hears the Voice\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:pets",
+      "what": "Pets (Alt+X)",
+      "at": {
+        "story": "sq:2102020",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-11",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Pets (Alt+X): Complete \"Gathering Essentials\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-11",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Pets (Alt+X): Complete \"Gathering Essentials\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "unlock:sealed-dungeons-25",
@@ -224,6 +720,132 @@
       "status": "single-source"
     },
     {
+      "id": "unlock:shop",
+      "what": "Shop (H)",
+      "at": {
+        "story": "sq:2101020",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-02",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Shop (H): Complete \"Prepare to Escape\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-02",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Shop (H): Complete \"Prepare to Escape\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:shugo-festival",
+      "what": "Shugo Festival",
+      "at": {
+        "story": "sq:2102065",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-18",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Shugo Festival: Complete \"Urgent Pursuit\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-18",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Shugo Festival: Complete \"Urgent Pursuit\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:skills-window",
+      "what": "Skills window",
+      "detail": "Skills (K)",
+      "at": {
+        "level": 4,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 3,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-04",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skills (K): Reach Level 4"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "unlock:stats-window",
+      "what": "Stats window",
+      "detail": "Stats (P)",
+      "at": {
+        "level": 3,
+        "basis": "owner"
+      },
+      "credit": "your game",
+      "order": 2,
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-06",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Stats (P): Reach Level 3"
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
+    },
+    {
       "id": "unlock:stigma-slot-1",
       "what": "Stigma slot 1",
       "at": {
@@ -237,7 +859,10 @@
         }
       ],
       "verifiedAt": "2026-10-12",
-      "status": "verified"
+      "status": "verified",
+      "notes": [
+        "Owner recollection (not a screen), 2026-10-14: stigmas unlock at Lv 22, as Metabot says; aion2hub's Lv 23 is treated as wrong (DECISIONS 2026-10-14)."
+      ]
     },
     {
       "id": "unlock:stigma-slot-2",
@@ -294,15 +919,63 @@
       "at": {
         "level": 25
       },
-      "credit": "Metabot, allthings.how",
+      "credit": "Metabot, allthings.how, your game",
       "order": 60,
       "sources": [
         {
           "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, allthings.how); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-24",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Supply Request (Alt+J): Reach Level 25"
+          }
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-14",
       "status": "verified"
+    },
+    {
+      "id": "unlock:title",
+      "what": "Title (Alt+T)",
+      "at": {
+        "story": "sq:2101060",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-08",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Title (Alt+T): Complete \"Spread Your Wings\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-08",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Title (Alt+T): Complete \"Spread Your Wings\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "unlock:triniel-board",
@@ -388,6 +1061,43 @@
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified"
+    },
+    {
+      "id": "unlock:wings",
+      "what": "Wings (Alt+C)",
+      "at": {
+        "story": "sq:2101050",
+        "is": "turnedIn",
+        "basis": "owner",
+        "sources": [
+          {
+            "owner": {
+              "ref": "owner:2026-10-14-unlocks-12",
+              "checkedAt": "2026-10-14",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Wings (Alt+C): Complete \"The Being Beneath the Lake\""
+            }
+          }
+        ]
+      },
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-12",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Wings (Alt+C): Complete \"The Being Beneath the Lake\""
+          }
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-14"
     },
     {
       "id": "unlock:zikel-board",
