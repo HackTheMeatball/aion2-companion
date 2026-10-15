@@ -327,13 +327,17 @@ export function generate(opts = {}) {
   report.proposed = [];
   for (const { id, r } of gateHolders) if (r.proposed) {
     const p = r.proposed, pAtoms = [p.requires, ...(p.completesWith || [])].filter(x => x && typeof x === 'object').flatMap(atomsOf);
-    if (p.status === 'ready') check(`${id}: a ready proposal has no owner-check atom`, !pAtoms.some(a => a.basis === 'owner-check'));
+    /* ready = applied once the owner approves the golden diff; anything resting on an open in-game check or an unsourced (legacy) atom is owner-check */
+    if (p.status === 'ready') check(`${id}: a ready proposal has no owner-check or legacy atom`, !pAtoms.some(a => a.basis === 'owner-check' || a.basis === 'legacy'));
     if (p.requiresBasis === 'verified-none') check(`${id}: proposed verified-none has no prerequisite atoms`, !atomsOf(p.requires).some(a => a.story || a.done));
     report.proposed.push({ id, status: p.status, ...(p.check ? { check: p.check } : {}), basis: p.basis, change: p.change });
   }
-  /* Daevanion: every plan node's proposal carries the same window gate ("Urgent Pursuit" turned in, owner screen) */
-  for (const b of builds) for (const e of b.boardPlan) check(`${b.id} boardPlan ${e.node || e.key}: proposal gates on "Urgent Pursuit" turned in`,
-    !!e.proposed && atomsOf(e.proposed.requires).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
+  /* Daevanion: one window gate, defined once on unlock:daevanion ("Urgent Pursuit" turned in, owner screen); every board's
+     proposal inherits it (plan nodes inherit their board's), so no plan node repeats the story atom */
+  { const ud = R('unlocks').find(u => u.id === 'unlock:daevanion');
+    check('unlock:daevanion opens with "Urgent Pursuit" turned in', !!ud && atomsOf(ud.at).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
+    for (const b of boards) check(`${b.id}: proposal inherits the Daevanion window gate (done unlock:daevanion)`, !!b.proposed && atomsOf(b.proposed.requires).some(a => a.done === 'unlock:daevanion'));
+    for (const bl of builds) for (const e of bl.boardPlan) check(`${bl.id} boardPlan ${e.node || e.key}: no own copy of the window gate`, !(e.proposed && atomsOf(e.proposed.requires).some(a => a.story === 'sq:2102065'))); }
   for (const { r } of all) {
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
