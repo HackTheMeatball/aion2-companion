@@ -14,20 +14,33 @@
       "unlocksAt": 1,
       "next": "sq:2101020",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Andre",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 23
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Ellin",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 4
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Meet the Village Chief — talk to Pelleir (Aldelle Village)"
+        },
+        {
+          "i": 1,
+          "text": "Remember Aldelle Village — bind with the Kibelisk"
+        },
+        {
+          "i": 2,
+          "text": "Turn in — Ellin (Villager), Aldelle Village"
+        }
+      ],
       "requires": {
         "all": []
       },
@@ -70,16 +83,35 @@
             },
             "what": "Journal after the tutorial: first quest \"[Lv. 2] A Village in the Fog\" (Meet the Village Chief, talk to Pelleir)"
           }
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       },
       "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\").",
         "First story quest after the tutorial (owner screen owner:2026-10-14-unlocks-21). Ishalgen, listed before it in v1, is the starting map, not a quest (owner:2026-10-14-unlocks-22)."
       ]
     },
@@ -93,20 +125,33 @@
       "unlocksAt": 1,
       "next": "sq:2101030",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Ellin",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 4
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Stellan",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 48
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Visit the gear supply depot — talk to Stellan (Aldelle Village)"
+        },
+        {
+          "i": 1,
+          "text": "Find gear in the Supply Chest — check the Supply Chest (Aldelle Village)"
+        },
+        {
+          "i": 2,
+          "text": "Turn in — Stellan (Villager), Aldelle Village"
+        }
+      ],
       "requires": {
         "story": "sq:2101010",
         "is": "turnedIn",
@@ -157,17 +202,34 @@
             },
             "what": "Shop and Closet: complete \"Prepare to Escape\""
           }
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/prepare-to-escape",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ],
       "unlocks": {
         "text": "Shop and Closet"
       }
@@ -182,20 +244,41 @@
       "unlocksAt": 1,
       "next": "sq:2101040",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Stellan",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 48
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Pelleir",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 57
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Return to Pelleir — talk to Pelleir (Aldelle Village)"
+        },
+        {
+          "i": 1,
+          "text": "Try the Selvis — talk via Selvis"
+        },
+        {
+          "i": 2,
+          "text": "Search Munihelle Forest — investigate it with Maard (Witch's Cabin)"
+        },
+        {
+          "i": 3,
+          "text": "Find Maard near the village — talk to Maard"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Pelleir (Village Chief), Aldelle Village"
+        }
+      ],
       "requires": {
         "story": "sq:2101020",
         "is": "turnedIn",
@@ -235,17 +318,34 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101040",
@@ -257,20 +357,49 @@
       "unlocksAt": 1,
       "next": "sq:2101050",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Pelleir",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 57
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Elvida",
+        "place": "Witch's Cabin",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Witch's Cabin",
+        "meters": 14
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Hear about the mission — talk to Caldern (Witch's Cabin)"
+        },
+        {
+          "i": 1,
+          "text": "Ask about Elvida — talk to Velhark (Witch's Cabin)"
+        },
+        {
+          "i": 2,
+          "text": "Hear about the search operation — talk to Argit (Witch's Cabin)"
+        },
+        {
+          "i": 3,
+          "text": "Remove the hazards at the lake — defeat the beasts at the lake (Witch's Cabin)"
+        },
+        {
+          "i": 4,
+          "text": "Check the Veil Jewel at Tunapre Lake — check the Veil Jewel"
+        },
+        {
+          "i": 5,
+          "text": "Go to Elvida's residence (Witch's Cabin)"
+        },
+        {
+          "i": 6,
+          "text": "Turn in — Elvida, Witch's Cabin"
+        }
+      ],
       "requires": {
         "story": "sq:2101030",
         "is": "turnedIn",
@@ -310,17 +439,34 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/isolated-lake",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101050",
@@ -332,20 +478,41 @@
       "unlocksAt": 1,
       "next": "sq:2101060",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Elvida",
+        "place": "Witch's Cabin",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Witch's Cabin",
+        "meters": 14
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Asahr",
+        "place": "Ascension Subspace",
         "zone": "zone:ishalgen",
         "kibelisk": null,
         "meters": null
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Check the journal Elvida mentioned — check the Timeworn Journal, check the Worn Tome (Witch's Cabin)"
+        },
+        {
+          "i": 1,
+          "text": "Talk about your resolve to ascend — talk to Elvida (Witch's Cabin)"
+        },
+        {
+          "i": 2,
+          "text": "Go to the path beneath the lake — enter Tunapre Lake Cave"
+        },
+        {
+          "i": 3,
+          "text": "Learn to fly — enter the Ascension Subspace"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Asahr, Ascension Subspace"
+        }
+      ],
       "unlocks": {
         "text": "Wings",
         "milestone": "g6"
@@ -400,17 +567,32 @@
             },
             "what": "Wings: complete \"The Being Beneath the Lake\""
           }
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-being-beneath-the-lake",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101060",
@@ -429,13 +611,26 @@
         "meters": null
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Elvida",
+        "place": "Witch's Cabin",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Witch's Cabin",
+        "meters": 14
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Awaken your Daeva power in the dream — complete 'The One Who Perceives'"
+        },
+        {
+          "i": 1,
+          "text": "Share the outcome — go to the Witch's Cabin (Witch's Cabin)"
+        },
+        {
+          "i": 2,
+          "text": "Turn in — Elvida, Witch's Cabin"
+        }
+      ],
       "wraps": "asc:perceives",
       "requires": {
         "story": "sq:2101050",
@@ -487,17 +682,30 @@
             },
             "what": "Titles: complete \"Spread Your Wings\""
           }
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spread-your-wings",
+          "fields": [
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ],
       "unlocks": {
         "text": "Titles",
         "milestone": "g6"
@@ -513,20 +721,61 @@
       "unlocksAt": 1,
       "next": "sq:2101080",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Argit",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 35
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Garlond",
+        "place": "Abandoned Barracks Site",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Barracks Site",
+        "meters": 9
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Report the situation to Pelleir — talk to Pelleir (Aldelle Village)"
+        },
+        {
+          "i": 1,
+          "text": "Go to Anturn Cliff — go to Milred (Witch's Cabin)"
+        },
+        {
+          "i": 2,
+          "text": "Learn how to get up the cliff — talk to Milred (Witch's Cabin)"
+        },
+        {
+          "i": 3,
+          "text": "Search the airship at the top of Anturn Cliff — ride the Updraft to the top (Witch's Cabin)"
+        },
+        {
+          "i": 4,
+          "text": "Return to Aldelle Village — go to Aldelle Village (Aldelle Village)"
+        },
+        {
+          "i": 5,
+          "text": "Join Garlond at Aldelle Village — talk to Garlond (Aldelle Village)"
+        },
+        {
+          "i": 6,
+          "text": "Introduce Garlond to the chief — talk to Pelleir (Aldelle Village)"
+        },
+        {
+          "i": 7,
+          "text": "Gather supplies at Aldelle Village — take them from the Supply Chest (Aldelle Village)"
+        },
+        {
+          "i": 8,
+          "text": "Join Garlond at the Brigade Camp entrance — talk to Garlond (Aldelle Village)"
+        },
+        {
+          "i": 9,
+          "text": "Turn in — Garlond (Mercenary Commander), Abandoned Barracks Site"
+        }
+      ],
       "requires": {
         "story": "sq:2101060",
         "is": "turnedIn",
@@ -566,17 +815,34 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101080",
@@ -588,20 +854,49 @@
       "unlocksAt": 1,
       "next": "sq:2101090",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Garlond",
+        "place": "Abandoned Barracks Site",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Barracks Site",
+        "meters": 9
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Anders",
+        "place": "In Front of Azrakar Brigade Prison Compound",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Barracks Site",
+        "meters": 185
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Find information on the Azrakar Brigade Prison Compound — defeat Azrakar Watcher, investigate the Azrakar Brigade Command (Abandoned Barracks Site)"
+        },
+        {
+          "i": 1,
+          "text": "Deliver the information to Anders — talk to Anders (Abandoned Barracks Site)"
+        },
+        {
+          "i": 2,
+          "text": "Obtain the key from Balaur — collect the key"
+        },
+        {
+          "i": 3,
+          "text": "Accept the Selvis call — talk via Selvis"
+        },
+        {
+          "i": 4,
+          "text": "Join Anders in front of the camp storage — talk to Anders (Abandoned Barracks Site)"
+        },
+        {
+          "i": 5,
+          "text": "Search the Azrakar Brigade Storage — enter the guard camp storage (Abandoned Barracks Site)"
+        },
+        {
+          "i": 6,
+          "text": "Turn in — Anders (Garlond Mercenaries), In Front of Azrakar Brigade Prison Compound"
+        }
+      ],
       "requires": {
         "story": "sq:2101070",
         "is": "turnedIn",
@@ -641,17 +936,34 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/prison-compound-infiltration-plan",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101090",
@@ -663,20 +975,41 @@
       "unlocksAt": 1,
       "next": "sq:2101100",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Anders",
+        "place": "In Front of Azrakar Brigade Prison Compound",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Abandoned Barracks Site",
+        "meters": 185
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Pelleir",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 57
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Infiltrate the prison compound — enter the compound"
+        },
+        {
+          "i": 1,
+          "text": "Escape from the prison compound — go outside it"
+        },
+        {
+          "i": 2,
+          "text": "Return to Aldelle Village — go to Aldelle Village (Aldelle Village)"
+        },
+        {
+          "i": 3,
+          "text": "Meet with the mercenaries — talk to Hergal (Aldelle Village)"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Pelleir (Village Chief), Aldelle Village"
+        }
+      ],
       "requires": {
         "story": "sq:2101080",
         "is": "turnedIn",
@@ -716,17 +1049,34 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2101100",
@@ -738,11 +1088,11 @@
       "unlocksAt": 1,
       "next": "sq:2102010",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Pelleir",
+        "place": "Aldelle Village",
         "zone": "zone:ishalgen",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Aldelle Village",
+        "meters": 57
       },
       "turnin": {
         "npc": null,
@@ -751,7 +1101,16 @@
         "kibelisk": null,
         "meters": null
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Sleep at the village cabin — go to the village cabin (Aldelle Village)"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — no NPC; escaping from Ishalgen completes the quest"
+        }
+      ],
       "requires": {
         "story": "sq:2101090",
         "is": "turnedIn",
@@ -791,17 +1150,30 @@
             "giver.zone",
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/the-longest-night",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102010",
@@ -988,7 +1360,16 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Receive additional supplies — go to VeKauf (Safe Haven)"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — VeKauf (Militia Supply Officer), Safe Haven"
+        }
+      ],
       "requires": {
         "story": "sq:2102010",
         "is": "turnedIn",
@@ -1054,6 +1435,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/survival-supplies",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1061,10 +1454,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102020",
@@ -1121,7 +1511,20 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Have the Selvis repaired — talk to Markan (Safe Haven)"
+        },
+        {
+          "i": 1,
+          "text": "Check the repaired Selvis — talk via Selvis"
+        },
+        {
+          "i": 2,
+          "text": "Turn in — Dinoh, Safe Haven"
+        }
+      ],
       "unlocks": {
         "text": "Pets",
         "milestone": "g10"
@@ -1202,6 +1605,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/gathering-essentials",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1209,10 +1624,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102030",
@@ -1269,7 +1681,28 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Find Hadala at Galorik's Inspection Area — talk to Hadala (Galorik's Inspection Area)"
+        },
+        {
+          "i": 1,
+          "text": "Collect the neutralizer materials — Poison Flower fruit, Red Shell Mole shell"
+        },
+        {
+          "i": 2,
+          "text": "Report the material collection status — talk via Selvis"
+        },
+        {
+          "i": 3,
+          "text": "Find the herbalist and gather neutralizer materials — talk to Matir"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Ulgorn, Galorik's Inspection Area"
+        }
+      ],
       "requires": {
         "story": "sq:2102020",
         "is": "turnedIn",
@@ -1335,6 +1768,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/crash-site-rendezvous",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1342,10 +1787,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102040",
@@ -1402,7 +1844,28 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Go to the Temporary Investigation Base — talk to Niror (Temporary Investigation Base)"
+        },
+        {
+          "i": 1,
+          "text": "Travel down the canyon — talk to Keller"
+        },
+        {
+          "i": 2,
+          "text": "Collect the neutralizer materials — Drakana from Drana Slime, fragments from Crash Site Kalgolem, eggshells from Dredgion Remnants"
+        },
+        {
+          "i": 3,
+          "text": "Hand over the materials and check the transport supplies — talk to Keller"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Niror (Dispatched Daeva), Temporary Investigation Base"
+        }
+      ],
       "requires": {
         "story": "sq:2102030",
         "is": "turnedIn",
@@ -1468,6 +1931,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/contaminated-area",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1475,10 +1950,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102050",
@@ -1535,7 +2007,16 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Restore the supply route — retrieve the Lost Supplies, defeat Drana Predator, Congealed Drana"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — Ulgorn, Quai Campsite"
+        }
+      ],
       "requires": {
         "story": "sq:2102040",
         "is": "turnedIn",
@@ -1601,6 +2082,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/express-daeva-delivery",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1608,10 +2101,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102060",
@@ -1668,7 +2158,28 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Meet Baba at Quai Campsite — go inside (Quai Campsite)"
+        },
+        {
+          "i": 1,
+          "text": "Assess the situation — talk to Baba (Quai Campsite)"
+        },
+        {
+          "i": 2,
+          "text": "Find the broker's associate — go to Barvir (Quai Campsite)"
+        },
+        {
+          "i": 3,
+          "text": "Get more information about the broker — talk to Barvir (Quai Campsite)"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Ulgorn, Quai Campsite"
+        }
+      ],
       "requires": {
         "story": "sq:2102050",
         "is": "turnedIn",
@@ -1734,6 +2245,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/veiled-truth",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1741,10 +2264,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102065",
@@ -1785,7 +2305,28 @@
         "kibelisk": null,
         "meters": null
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Find out where the broker is — talk to Tagar (Gravekeeper Camp)"
+        },
+        {
+          "i": 1,
+          "text": "Eliminate the hindrance — defeat Corrupted Karas Handmaiden, Hungry Dead (Gravekeeper Camp)"
+        },
+        {
+          "i": 2,
+          "text": "Investigate the Shaded Cave — enter the Shaded Cave"
+        },
+        {
+          "i": 3,
+          "text": "Get invited into the dream — go to the Dream Crossroad"
+        },
+        {
+          "i": 4,
+          "text": "Turn in — Asahr, Dream Crossroad"
+        }
+      ],
       "unlocks": {
         "text": "Daevanion boards and the Shugo Festival",
         "milestone": "g12"
@@ -1863,6 +2404,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1870,10 +2423,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102070",
@@ -1914,7 +2464,32 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Listen to Asahr's advice — talk to Asahr"
+        },
+        {
+          "i": 1,
+          "text": "Discuss further plans — talk to Ulgorn (Gravekeeper Camp)"
+        },
+        {
+          "i": 2,
+          "text": "Ask Tagar for opinions — talk to Tagar (Gravekeeper Camp)"
+        },
+        {
+          "i": 3,
+          "text": "Help the gravekeeper with chores — defeat Vampire Vivel, Rafflesia"
+        },
+        {
+          "i": 4,
+          "text": "Investigate the Graverobber Den — retrieve the items stolen by graverobbers"
+        },
+        {
+          "i": 5,
+          "text": "Turn in — Tagar (Gravekeeper), Gravekeeper Camp"
+        }
+      ],
       "requires": {
         "story": "sq:2102065",
         "is": "turnedIn",
@@ -1975,6 +2550,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/cemetery-cleanup",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -1982,10 +2569,7 @@
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102080",
@@ -2042,7 +2626,16 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Clear the path to the crematorium — defeat Lost Specter, Ancient Revenant Knight; investigate Brok's traces on the corpse"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — Kolina (Gravekeeper's Assistant), Neglected Crematorium"
+        }
+      ],
       "requires": {
         "story": "sq:2102070",
         "is": "turnedIn",
@@ -2108,6 +2701,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/back-on-the-scent",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -2115,10 +2720,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "inferred"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102090",
@@ -2175,7 +2777,24 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Discuss further plans — talk to Ulgorn (Neglected Crematorium)"
+        },
+        {
+          "i": 1,
+          "text": "Clear nearby threats — defeat Evil Black Soul, Grudge Bearing Warrior"
+        },
+        {
+          "i": 2,
+          "text": "Obtain information about Brok — talk to the hiding man"
+        },
+        {
+          "i": 3,
+          "text": "Turn in — Ulgorn, Crypt"
+        }
+      ],
       "requires": {
         "story": "sq:2102080",
         "is": "turnedIn",
@@ -2236,6 +2855,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -2243,10 +2874,7 @@
       "fieldStatus": {
         "giver.zone": "inferred",
         "turnin.zone": "verified"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102100",
@@ -2287,7 +2915,20 @@
         "kibelisk": null,
         "meters": null
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Investigate the Crypt — enter the Crypt"
+        },
+        {
+          "i": 1,
+          "text": "Get invited into the dream — go to the Dream Crossroad"
+        },
+        {
+          "i": 2,
+          "text": "Turn in — Asahr, Dream Crossroad"
+        }
+      ],
       "unlocks": {
         "text": "Legions",
         "milestone": "g16"
@@ -2360,6 +3001,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -2367,10 +3020,7 @@
       "fieldStatus": {
         "giver.zone": "verified",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102105",
@@ -2427,7 +3077,36 @@
           ]
         }
       },
-      "steps": [],
+      "steps": [
+        {
+          "i": 0,
+          "text": "Assess the situation — talk to Nemon"
+        },
+        {
+          "i": 1,
+          "text": "Find Ruins Administrator Ollen — talk to Ollen"
+        },
+        {
+          "i": 2,
+          "text": "Obtain the Empyrean Trace: Altgard — retrieve the trace"
+        },
+        {
+          "i": 3,
+          "text": "Obtain the Empyrean Trace: Altgard — second trace step, no objective text on the page"
+        },
+        {
+          "i": 4,
+          "text": "Resonate with the Monolith — obtain the Revelation Amulet Enhance Scroll"
+        },
+        {
+          "i": 5,
+          "text": "Inform Ollen of the successful resonance — talk to Ollen"
+        },
+        {
+          "i": 6,
+          "text": "Turn in — Nemon, Shadow Hall"
+        }
+      ],
       "unlocks": {
         "milestone": "g16"
       },
@@ -2496,6 +3175,18 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian",
+          "fields": [
+            "steps"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
         }
       ],
       "verifiedAt": "2026-10-15",
@@ -2503,10 +3194,7 @@
       "fieldStatus": {
         "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
-      },
-      "notes": [
-        "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
-      ]
+      }
     },
     {
       "id": "sq:2102110",
