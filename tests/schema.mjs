@@ -36,6 +36,13 @@ broken('skill node without its skill', 'classes/assassin/board-nodes.json', (r, 
 broken('specialty pick that is not a choice id', 'classes/assassin/builds.json', r => { r.specialtyPicks['skill:assassin:heart-gore'] = ['Up to +20% Critical Hit']; });
 broken('Ascension quest with a giver', 'shared/asmodian/ascension-quests.json', r => { r.giver = { zone: 'zone:moslan-forest' }; });
 broken('site that bans automation read by script', 'sources.json', r => { r.access = { ...r.access, terms: 'bans-automation', mode: 'scripted' }; });
+/* 0.3 proposals (`proposed`, docs/design/0.3-requirement-engine.md §7) */
+const P = { requires: { level: 10 }, status: 'ready', change: 'x', basis: 'prereq-gates §6' };
+broken('proposal without status', 'shared/asmodian/regional-quests.json', r => { r.proposed = { ...P, status: undefined }; delete r.proposed.status; });
+broken('owner-check proposal without its check number', 'shared/asmodian/regional-quests.json', r => { r.proposed = { ...P, status: 'owner-check' }; });
+broken('proposal with neither requires nor completesWith', 'shared/asmodian/regional-quests.json', r => { r.proposed = { status: 'ready', change: 'x', basis: 'y' }; });
+broken('proposal naming a story quest in done', 'shared/asmodian/guide/steps.json', r => { r.proposed = { ...P, completesWith: ['tick', { done: 'sq:2102105' }] }; });
+broken('unknown field in a proposal', 'classes/assassin/builds.json', r => { r.boardPlan[0].proposed = { ...P, apply: true }; });
 
 /* the generator: cross-record checks pass, and the committed DATA_SOURCES.md is current */
 let g = null;
@@ -43,6 +50,9 @@ try { g = generate(); } catch (e) { ok('generator runs', false, e.message); }
 if (g) {
   ok(`generator: ${g.report.checks.length} cross-record checks pass`, !g.failed.length, g.failed.slice(0, 10));
   ok('data/DATA_SOURCES.md is current (npm run gen)', readFileSync(join(ROOT, 'data/DATA_SOURCES.md'), 'utf8') === dataSourcesMd(g));
+  /* proposals are data only: the compiled module is byte-identical without them (0.2 behaviour unchanged) */
+  let g0 = null; try { g0 = generate({ dropProposed: true }); } catch (e) { ok('generator runs without proposals', false, e.message); }
+  if (g0) ok(`proposed 0.3 gates are not compiled: module identical without the ${g.report.proposed.length} proposals`, g0.module === g.module && g.report.proposed.length > 0);
   const c = g.constants;
   ok('compiled: 86 story quests (Ishalgen is the starting map, not a quest), 58 regional quests, 15 strongholds, 60 Sealed Dungeons', c.QUESTS.length === 86 && c.RQ.length === 58 && c.SH_DATA.length === 15 && Object.keys(c.HIDEOUT_AREA).length === 60,
     [c.QUESTS.length, c.RQ.length, c.SH_DATA.length, Object.keys(c.HIDEOUT_AREA).length]);

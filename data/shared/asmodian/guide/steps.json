@@ -324,7 +324,36 @@
       ],
       "claims": [
         "C24"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 13,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "story": "sq:2102065",
+              "is": "turnedIn",
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
+                  "fields": [
+                    "rewards"
+                  ],
+                  "checkedAt": "2026-10-14"
+                }
+              ],
+              "note": "the Noble Belt is \"Urgent Pursuit\"'s reward (Metabot)"
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8",
+        "change": "Offered once \"Urgent Pursuit\" is turned in (it gives the Noble Belt), not from Lv 13 alone."
+      }
     },
     {
       "id": "g16:0",
@@ -378,7 +407,36 @@
       ],
       "claims": [
         "C23"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 16,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "story": "sq:2102100",
+              "is": "turnedIn",
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
+                  "fields": [
+                    "rewards"
+                  ],
+                  "checkedAt": "2026-10-14"
+                }
+              ],
+              "note": "the Revelation Amulet is \"Buried Atrocities\"'s reward (Metabot)"
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8",
+        "change": "Offered once \"Buried Atrocities\" is turned in (it gives the Revelation Amulet), not from Lv 16 alone."
+      }
     },
     {
       "id": "g16:monolith",
@@ -479,7 +537,17 @@
           {
             "story": "sq:2102185",
             "is": "reached",
-            "basis": "legacy"
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Upper bound from the wrapper quest (Metabot steps), never early; earlier opening is owner check 6 (prereq-gates §5)."
           },
           {
             "player": "Ascension Gauge at 100%",
@@ -490,7 +558,30 @@
       },
       "completesWith": [
         "tick"
-      ]
+      ],
+      "proposed": {
+        "completesWith": [
+          "tick",
+          {
+            "story": "sq:2102185",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "wrapper rule: its objective is completing \"The One Who Hears the Voice\""
+          }
+        ],
+        "status": "ready",
+        "basis": "prereq-gates §5 (wrapper rule) and §8",
+        "change": "Shows done once the wrapper story quest is turned in, without a tick (derived, never written); steps that need it (stigma slots for g22:0) follow."
+      }
     },
     {
       "id": "g22:1",
@@ -516,7 +607,26 @@
       },
       "completesWith": [
         "tick"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 22,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "done": "g22:0",
+              "basis": "legacy",
+              "note": "Today's code (stigmaSlots / rankNext need g22:0 ticked for every slot), moved into the data. Stigmas via Asahr after \"The One Who Hears the Voice\": STORY_UNLOCKS. Whether slot 1 opens at Lv 22 alone is owner check 3."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8 (owner check 3 open)",
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot opens once \"Daeva in a Dream\" is turned in, without the tick."
+      }
     },
     {
       "id": "g25:0",
@@ -551,7 +661,26 @@
       },
       "completesWith": [
         "tick"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 27,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "done": "g22:0",
+              "basis": "legacy",
+              "note": "Today's code (stigmaSlots / rankNext need g22:0 ticked for every slot), moved into the data. Stigmas via Asahr after \"The One Who Hears the Voice\": STORY_UNLOCKS. Whether slot 1 opens at Lv 22 alone is owner check 3."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8 (owner check 3 open)",
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+      }
     },
     {
       "id": "g27:1",
@@ -624,7 +753,26 @@
       },
       "completesWith": [
         "tick"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 32,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "done": "g22:0",
+              "basis": "legacy",
+              "note": "Today's code (stigmaSlots / rankNext need g22:0 ticked for every slot), moved into the data. Stigmas via Asahr after \"The One Who Hears the Voice\": STORY_UNLOCKS. Whether slot 1 opens at Lv 22 alone is owner check 3."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8 (owner check 3 open)",
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+      }
     },
     {
       "id": "g32:1",
@@ -667,7 +815,17 @@
           {
             "story": "sq:2102345",
             "is": "reached",
-            "basis": "legacy"
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Upper bound from the wrapper quest (Metabot steps), never early; earlier opening is owner check 6 (prereq-gates §5)."
           },
           {
             "player": "Ascension Gauge at 100%",
@@ -681,7 +839,30 @@
       ],
       "claims": [
         "C36"
-      ]
+      ],
+      "proposed": {
+        "completesWith": [
+          "tick",
+          {
+            "story": "sq:2102345",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "wrapper rule: its objective is completing \"The One Who Dreams\""
+          }
+        ],
+        "status": "ready",
+        "basis": "prereq-gates §5 (wrapper rule) and §8",
+        "change": "Shows done once the wrapper story quest is turned in, without a tick (derived, never written); steps that need it (stigma slots for g22:0) follow."
+      }
     },
     {
       "id": "g35:exp",
@@ -718,7 +899,26 @@
       },
       "completesWith": [
         "tick"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 37,
+              "basis": "rule",
+              "note": "milestone level"
+            },
+            {
+              "done": "g22:0",
+              "basis": "legacy",
+              "note": "Today's code (stigmaSlots / rankNext need g22:0 ticked for every slot), moved into the data. Stigmas via Asahr after \"The One Who Hears the Voice\": STORY_UNLOCKS. Whether slot 1 opens at Lv 22 alone is owner check 3."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §8 (owner check 3 open)",
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+      }
     },
     {
       "id": "g37:1",
@@ -814,7 +1014,18 @@
           {
             "story": "sq:2102800",
             "is": "turnedIn",
-            "basis": "legacy"
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+                "fields": [
+                  "steps",
+                  "prev"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Daeva Trapped in a Nightmare (previous quest: Forgotten Commander) has Witnesses as its objective, so \"Forgotten Commander turned in\" is at worst late, never early (claim C37); opening while it is still open is owner check 5. Derived completion waits for Daeva Trapped (sq:2102810) in the data (owner decision Q7) and the g45:0 split (prereq-gates §9.3)."
           },
           {
             "player": "Ascension Gauge at 100%",

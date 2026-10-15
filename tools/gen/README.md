@@ -18,4 +18,8 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
 - The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
   placeholder zone `zone:altgard-unplaced` (DATA-FORMAT-V2 §9 data task).
 
+- `proposed` gates (0.3 audit, DATA-FORMAT-V2 §6) are validated and reference-checked but never compiled;
+  `generate({ dropProposed: true })` strips them, and `tests/schema.mjs` checks the module is identical. The report's
+  `proposed` lists each one (status, check, change) for the 0.3 golden-difference list.
+
 After changing data: `npm run gen`, review `git diff data/`, then `npm test`.

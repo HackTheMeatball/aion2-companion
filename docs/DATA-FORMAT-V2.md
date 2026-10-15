@@ -286,6 +286,14 @@ Today's special cases:
 Behaviour that changes on purpose (derived completion, the wrapper rule, gate semantics) belongs to 0.3, case by case
 with the owner. In 0.2 the compiler emits today's flags, so behaviour is unchanged.
 
+**`proposed` (0.3 prerequisite audit; added after 5b).** A gate that would change behaviour once the 0.3 evaluator
+reads it is stored next to the live one, never in it: `proposed {requires?, requiresBasis?, completesWith?, status,
+check?, change, basis}` on any record with `stepFields` (and a build's plan nodes). `status: ready` = sourced or owner-decided,
+applied in its 0.3 build step once the owner approves the golden-master difference; `owner-check` = waits for the
+numbered in-game check (prereq-gates §11). Applying one replaces `requires`, `requiresBasis` (absent = removed) and
+`completesWith`. The generator checks proposals like live gates and never compiles them (`tests/schema.mjs`: the
+module is identical without them); `npm run gen` lists them. Design: docs/design/0.3-requirement-engine.md §7.
+
 ## 7. Text
 
 Guide text has no code in it. Tokens expand to exactly today's HTML:
@@ -791,6 +799,7 @@ generator (`tools/gen/gen.mjs`) compiles it into the same constants the app used
 | `retired` (new) | `data/retired.json`: `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
 | `common` (data corrections) | owner ref `owner:YYYY-MM-DD-<set>-NN` also allowed | the owner's numbered screen sets are cited that way (`owner:2026-10-14-unlocks-05`, docs/research/2026-10-owner-unlocks.md) |
 | `story-quests` (data corrections) | `unlocks.milestone` optional | an unlock before the first milestone (Prepare to Escape: Shop and Closet) has no milestone to link to |
+| `common` (0.3 audit) | optional `stepFields.proposed` (`$defs/proposedGate`) | the prerequisite gates of docs/research/2026-10-prereq-gates.md that change behaviour wait there, unread by the app, until their 0.3 build step (§6) |
 
 **Compiler rules with no field of their own:** a story atom on a stigma-slot step compiles to v1's `after` (no story
 chip), every other `reached` atom to `story`; a `turnedIn` atom to `story` + `turnedIn`. `DV_BOARDS` (a v1 constant
