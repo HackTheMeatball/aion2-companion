@@ -265,6 +265,8 @@ export function generate() {
   for (const p of pages) setdef(p.url, p.label);
   const refLabels = v => { if (Array.isArray(v)) v.forEach(refLabels); else if (v && typeof v === 'object') { if (v.url && v.label) setdef(v.url, v.label); Object.values(v).forEach(refLabels); } };
   refLabels(claims); refLabels([...items, ...skills, ...stigmas, ...unlocks]);
+  /* a skill's own Metabot page is labelled with the skill's name (not the URL slug: "Shadow Fall", not "Shadow fall") */
+  for (const r of [...skills, ...stigmas]) for (const s of r.sources || []) if (s.url && /metabot\.gg\/en\/aion-2\/skills\//.test(s.url) && s.url.replace(/\/+$/, '').split('/').pop().startsWith(r.id.split(':').pop())) setdef(s.url, r.name);
   const label = u => {
     const s = siteName(u);
     if (u in labelOf) { const l = labelOf[u]; return l.toLowerCase().startsWith(s.toLowerCase()) || OLD_URLS.has(u) ? l : `${s}: ${l}`; }
@@ -331,6 +333,10 @@ export function generate() {
     if (s.withdrawn) withdrawnHits.push(`${file} ${r.id}: ${u}`);
     else check(`URL not on a mode:none site: ${u}`, s.access.mode !== 'none');
   }
+  /* a bare page reference counts too ("aion2.th.gl q_2202054", "aion2.th.gl/…"); a note that only says the site was withdrawn does not */
+  const strsIn = v => typeof v === 'string' ? [v] : Array.isArray(v) ? v.flatMap(strsIn) : v && typeof v === 'object' ? Object.values(v).flatMap(strsIn) : [];
+  const refRes = sites.filter(s => s.withdrawn).flatMap(s => s.hosts).map(h => new RegExp('(^|[^\\w.])' + h.replace(/\./g, '\\.') + '(/\\S|\\s+q_\\d)'));
+  for (const { r, file, coll } of all) if (coll !== 'sources') for (const t of strsIn(r)) if (refRes.some(re => re.test(t)) && !urlsIn(t).some(u => siteOf(u) && siteOf(u).withdrawn)) withdrawnHits.push(`${file} ${r.id}: "${t.slice(0, 80)}"`);
   /* a withdrawn site (aion2.th.gl) is never cited: re-source it (Metabot first) or label the fact owner-check (§5.1) */
   check('no citation of a withdrawn site', !withdrawnHits.length, withdrawnHits.slice(0, 10));
   for (const s of sites) if (s.access.terms === 'bans-automation') check('bans-automation forces human-only or none: ' + s.id, ['human-only', 'none'].includes(s.access.mode));

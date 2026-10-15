@@ -869,9 +869,9 @@ function renderQuest(inUpdate) {
   const st = document.getElementById("questStatus"), pv = document.getElementById("questPrev"), qlv = document.getElementById("questLv");
   st.className = "st next"; pv.innerHTML = ""; qlv.textContent = ""; renderAhead();
   const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${q[1]}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
-  if (!char(state).quest) { st.innerHTML = `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`; return; }
-  const i = QUESTS.findIndex(([, n]) => n === char(state).quest);
-  if (i < 0) { st.innerHTML = ""; return; }
+  /* No quest, or one no longer in the story (e.g. "Ishalgen", the starting map since 0.2): ask for the current quest. */
+  const i = char(state).quest ? QUESTS.findIndex(([, n]) => n === char(state).quest) : -1;
+  if (i < 0) { st.innerHTML = `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`; return; }
   /* Story timeline: previous (dim), current (the input), next; then the next unlock as a callout linked to its milestone. */
   const prev = QUESTS[i - 1], nxt = QUESTS[i + 1];
   pv.innerHTML = row(prev);

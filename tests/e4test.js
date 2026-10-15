@@ -136,5 +136,10 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#12 check date stated once (intro); no "Earlier research"', r.n === 1 && /checked Oct 2026/.test(r.intro) && !r.early, r);
   ok('#12 old group named after what it backs', /Leveling guides, build and tips/.test(r.whats), r.whats);
 
+  /* #13 a save whose quest is no longer a story quest ("Ishalgen" is the starting map since 0.2) asks for the current quest */
+  await set(5, `s.quest = 'Ishalgen';`);
+  r = await p.evaluate(() => document.getElementById('questStatus').textContent.trim());
+  ok('#13 quest "Ishalgen": Journey story row shows "Pick your current quest"', /^Pick your current quest/.test(r), r);
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();

@@ -182,7 +182,6 @@
       "status": "verified",
       "conflicts": [
         "Metabot shows no Kibelisk for giver; place 'Safe Haven' from allthings.how 244374 and finish text",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -514,7 +513,6 @@
       },
       "conflicts": [
         "Metabot shows no giver/turn-in; giver Hadala and turn-in Tomgus from allthings.how 244374 and aion2.gaming.tools 2202012",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -687,8 +685,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot shows no giver/turn-in; Benekt at Creion Campsite from allthings.how 244384 and gaming.tools"
       ]
     },
     {
@@ -871,8 +868,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Zone: allthings.how lists under Dredgion Crash Site but giver place is Safe Haven (P0-4). Metabot shows no giver Kibelisk."
       ]
     },
     {
@@ -1036,7 +1032,6 @@
       },
       "conflicts": [
         "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -1197,7 +1192,6 @@
         "Giver NPC from aion2.gaming.tools (Nemon); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Gamilla)",
         "Giver place 'Forest Hideout' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Sanctum Outpost\"; the giver's camp / place puts it in Moslan Forest (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -1556,7 +1550,6 @@
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
         "Giver place 'Healing Spring' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -1743,8 +1736,7 @@
         "Metabot shows no giver/turn-in/Kibelisk; app giver 'Lulu · Elim's Rest' comes from allthings.how (locations.json place_src); Lulu is named in step text",
         "Giver NPC from aion2.gaming.tools (Lulu); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Ecco)",
-        "Giver place 'Elim's Rest' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Elim's Rest' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -2473,7 +2465,6 @@
       "conflicts": [
         "Metabot shows no giver field (Baba named in story); Baba from allthings.how and gaming.tools. Zone 'Quai Campsite' is a camp, Altgard sub-region is Calderon Canyon per app area (P0-4).",
         "Zone: allthings.how says 'Quai Campsite', app QUEST_AREA/area says 'Calderon Canyon' (app where='Quai Campsite · Baba')",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Quai Campsite\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -2789,8 +2780,7 @@
       },
       "conflicts": [
         "Metabot gives no giver Kibelisk (location 'Sanctum Outpost'); app RQ_LOC 'Temporary Retreat 197 m' does not match Metabot giver (Temporary Retreat 11 m is the turn-in; 201 m is step 1)",
-        "Objective mobs Lv 50",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Objective mobs Lv 50"
       ]
     },
     {
@@ -3069,7 +3059,6 @@
       },
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -3347,8 +3336,7 @@
         "Slug is spacetime-rift-unfamiliar-material-asmodian (metaSlug() would give spacetime-rift-unfamiliar-material)",
         "Metabot gives no giver place/Kibelisk; app has Collapsed Chasm (same as other Uru 213k-XP rifts) — not stated",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Collapsed Chasm' from allthings.how (not on Metabot)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -3504,8 +3492,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place; app 'Guide Rest Stop' (Purifying Forest) not on Metabot",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -3656,8 +3643,7 @@
       "conflicts": [
         "Metabot shows no giver field; Uru named in story text only. App place 'Guide Rest Stop' not on Metabot",
         "Turn-in NPC from aion2.gaming.tools (Uru)",
-        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Guide Rest Stop' from allthings.how (not on Metabot)"
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
@@ -4309,8 +4295,7 @@
       ],
       "conflicts": [
         "Metabot gives no Kibelisk for giver or steps; giver place taken from turn-in text 'Talk to Harald at the Abandoned Site'",
-        "Giver place 'Abandoned Site' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Abandoned Site' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -4847,7 +4832,6 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena).",
         "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -5048,8 +5032,7 @@
       },
       "conflicts": [
         "Metabot shows no giver place/Kibelisk; app place 'Steel Hammer Temporary Trading Post' not on Metabot",
-        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'Steel Hammer Temporary Trading Post' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -5419,8 +5402,7 @@
       "conflicts": [
         "Metabot page fetched later: shows no giver field (Lakiba only in intro), no turn-in, no Kibelisk; wikily gives giver Lakiba, turn-in Amunta; allthings gives Lakiba at Amunta's Hideout. Giver Kibelisk unknown (Fallout step 2 shows Kibelisk 'Amunta's Hideout' 22 m from the hideout).",
         "App reward 'Ariel crystal ×2' contradicts wikily (Odyle ×5 + Wisdom Stone + Daevanion Crystal)",
-        "Step 2 'talk to Karumba' — Karumba is the giver of 'Fallout' (app); suggests Fallout precedes Fallout Calmed, not stated",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Step 2 'talk to Karumba' — Karumba is the giver of 'Fallout' (app); suggests Fallout precedes Fallout Calmed, not stated"
       ]
     },
     {
@@ -5705,8 +5687,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202045 + allthings.how 244363 (Baba 'at the Assembly'). No Kibelisk, no step list."
       ]
     },
     {
@@ -5852,7 +5833,6 @@
         "Metabot page not reachable; data from shugo.gg 2202046 + allthings.how Impetusium page. No Kibelisk.",
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
       ]
     },
@@ -6203,7 +6183,6 @@
       "conflicts": [
         "Rec 45 but objective mobs are Lv 12 (Congealed Drana) and turn-in at Creion Campsite (Dredgion Crash Site) — low-level zone quest; Kanes is 'Safe Haven Militia'. App zone 'Dredgion Crash Site' vs QUEST_AREA 'Safe Haven' (P0-4); Metabot gives no giver place.",
         "Giver place 'Temporary Investigation Base' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Safe Haven\"; the giver's camp / place puts it in Dredgion Crash Site (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -6520,7 +6499,6 @@
         "Giver NPC from aion2.gaming.tools (Baba); Metabot shows none",
         "Turn-in NPC from aion2.gaming.tools (Baba)",
         "Giver place 'Quai Campsite' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Quai Campsite\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -6684,8 +6662,7 @@
       ],
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'under the Tranein Highland bridge' is from another source (not on Metabot). Turn-in text: 'Talk to Tina at Safe Haven'",
-        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Giver place 'under the Tranein Highland bridge' from allthings.how (not on Metabot)"
       ]
     },
     {
@@ -6827,9 +6804,8 @@
       "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from aion2.th.gl q_2202054, aion2.gaming.tools 2202054, allthings.how 244384. No Kibelisk. (Watcher's Tent is also a Kibelisk name, but distance unknown.)",
+        "Data from aion2.gaming.tools 2202054 and allthings.how 244384 (an aion2.th.gl page used before is withdrawn and no longer cited). Kibelisk from Metabot's quest page (One Last Thing, 2026-10-14).",
         "App reward 'Ariel crystal' not supported: sources give Odyle x5",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Tranein Highland\"; the giver's camp / place puts it in Calderon Canyon (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -7164,8 +7140,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot URL refused (provenance); data from wikily.gg. Giver place 'Odar's Shade' per wikily vs app 'Elim's Rest'. Turn-in NPC Tao (wikily) differs from giver; not explained."
       ]
     },
     {
@@ -7387,8 +7362,7 @@
       },
       "conflicts": [
         "Metabot page not reachable (provenance refusal; not surfaced by search). Data from aion2.gaming.tools 2202057 + allthings.how 244366; no Kibelisk available.",
-        "App reward 'Ariel crystal' not supported: sources give Odyle x5 + Wisdom Stone + Daevanion Crystal",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "App reward 'Ariel crystal' not supported: sources give Odyle x5 + Wisdom Stone + Daevanion Crystal"
       ]
     },
     {
@@ -7683,8 +7657,7 @@
       "verifiedAt": "2026-10-14",
       "status": "verified",
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202059 + allthings.how 244371. No Kibelisk."
       ]
     },
     {
@@ -8108,8 +8081,7 @@
         "allthings.how: Finish the route at the Wind Altar after checking all four."
       ],
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk.",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202061 + allthings.how 244371 ('Finish the route at the Wind Altar after checking all four'). No Kibelisk."
       ]
     },
     {
@@ -8747,8 +8719,7 @@
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page).",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Metabot page not reachable; data from aion2.gaming.tools 2202065 + allthings.how 244384. No Kibelisk. Zone Western Gribade Highland per allthings 244384 (missing from allthings list page)."
       ]
     },
     {
@@ -9339,8 +9310,7 @@
       },
       "conflicts": [
         "Metabot page not reachable; data from wikily.gg (Metabot dataset family) + aion2.gaming.tools 2202069. No Kibelisk.",
-        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Turn-in place inferred from gaming.tools step 1 (talk to Milo on the Spirit Isle) — not stated as turn-in place"
       ]
     },
     {
@@ -9524,7 +9494,6 @@
       "conflicts": [
         "Metabot gives no giver place/Kibelisk; app place 'Impetusium Square' not on Metabot. 1st Leg ends 'Talk to Tina at Safe Haven'; 2nd Leg ends at Nornir Assembly.",
         "Giver place 'Battlescar Mound Cliff' from allthings.how (not on Metabot)",
-        "Giver Kibelisk: null — not shown on any fetched source",
         "zone: allthings.how files it under \"Impetusium Square\"; the giver's camp / place puts it in Battlescar Mound (E3 CAMP_ZONE / E4 giver-zone rule)."
       ]
     },
@@ -9702,8 +9671,7 @@
       },
       "conflicts": [
         "Metabot page not reachable; data from aion2.gaming.tools 2202071. Giver place unknown: app 'Basfelt Ruins Cliff' is consistent with allthings 2nd-Leg text ('the next leg' at the end of the Basfelt Ruins cliff) but not stated as the pickup. Zone Basfelt Ruins per allthings list page.",
-        "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'",
-        "Giver Kibelisk: null — not shown on any fetched source"
+        "Unlock level: allthings states 'unlocks at level 10' only for the Verteron (Elyos) Final Stretch; recorded 10 from gaming.tools header 'Level 10'"
       ]
     }
   ]

@@ -68,7 +68,7 @@ for (const q of recs(RQ)) {
 }
 {
   const t = rec(CF, 'conf:regional');
-  t.text = t.text.replace('from aion2.gaming.tools and aion2.th.gl, cross-checked with allthings.how', 'from aion2.gaming.tools, cross-checked with allthings.how; where only aion2.th.gl had it, labelled for an in-game check');
+  t.text = "Regional quests: giver, Kibelisk, rewards, recommended and unlock level from each quest's Metabot page; prerequisites (an earlier regional quest or a story quest) from aion2.gaming.tools, cross-checked with allthings.how ({rqChained} follow-ups, {rqStoryGated} story-gated). Two gates with no permitted source are kept for an in-game check (Hugo Mercenaries: Deep Shadow).";
   const tip = rec(TP, 'tip:regional'); tip.credit = 'Metabot quest pages, aion2.gaming.tools, allthings.how'; tip.verifiedAt = D;
   log('th.gl', 'text: Confidence "Regional quests" and the Regional quests tip credit no longer name aion2.th.gl');
 }
@@ -192,6 +192,15 @@ for (const q of recs(RQ)) {
       const f = [], ch = put(d.entrance, 'entrance', row, row.entrance_kib, row.entrance_kib_m, row.entrance_x, row.entrance_y, 'World_D_A', d.id, f);
       if (ch.some(c => /->/.test(c))) d.conflicts = [...(d.conflicts || []), `Entrance distance: v1 held a rounded figure (${ch.join(', ')}); the dungeon's Exploration-quest page gives the exact one (location-coverage §6).`];
       touch(d, row.page_url, f, ch);
+      /* a superseded rounded figure: the older page keeps backing what still agrees (the Kibelisk), not the distance */
+      for (const c of ch.filter(c => /->/.test(c))) {
+        const fld = 'entrance.' + c.split(' ')[0];
+        for (const s of d.sources) if (s.url && s.url !== row.page_url && s.fields && s.fields.includes(fld)) {
+          s.fields = s.fields.filter(x => x !== fld);
+          s.note = [s.note, `Its ${c.split(' ')[0]} figure (${c.split(' ')[1]}) is rounded; superseded by Metabot's exact one.`].filter(Boolean).join(' ');
+        }
+        d.sources = d.sources.filter(s => !s.fields || s.fields.length);
+      }
       d.sources = d.sources.filter(s => !(s.inferred && /Entrance Kibelisk and distance carried over/.test(s.inferred) && f.length));
     } else if (row.type === 'stronghold') {
       const s = recs(SH).find(x => x.name === row.name); if (!s) throw new Error('sh ' + row.name);
@@ -242,6 +251,28 @@ for (const q of recs(RQ)) {
   dv.verifiedAt = D;
   const cf = rec(CF, 'conf:specialty-slots'); cf.text = 'Specialty slots at skill level 8 / 12 / 20, Daevanion nodes included (seen in your game); choices at 8 / 8 / 8 / 12 / 16 (Metabot skill pages).';
   log('text', 'tip:specialty, tip:daevanion and Confidence "Specialty slots": board nodes count; five choices at 8 / 8 / 8 / 12 / 16 (owner F4, Metabot)');
+}
+
+/* -------------------------------------------- review of #38 (2026-10-15) */
+{
+  /* rq:2202054 cited an aion2.th.gl page in prose; the facts are on aion2.gaming.tools + allthings.how, and Metabot's page now gives the Kibelisk */
+  const q = rec(RQ, 'rq:2202054');
+  const i = q.conflicts.findIndex(c => c.includes('aion2.th.gl q_2202054')); if (i < 0) throw new Error('rq:2202054 note');
+  q.conflicts[i] = "Data from aion2.gaming.tools 2202054 and allthings.how 244384 (an aion2.th.gl page used before is withdrawn and no longer cited). Kibelisk from Metabot's quest page (One Last Thing, 2026-10-14).";
+  log('th.gl', 'rq:2202054: prose citation of an aion2.th.gl page replaced by its permitted sources');
+  /* "Giver Kibelisk: null" conflicts are stale once the Metabot location pass filled the Kibelisk */
+  let n = 0;
+  for (const r of recs(RQ)) if (r.giver && r.giver.kibelisk && r.conflicts) {
+    const k = r.conflicts.length; r.conflicts = r.conflicts.filter(c => !/^Giver Kibelisk: null/.test(c)); n += k - r.conflicts.length;
+    if (!r.conflicts.length) delete r.conflicts;
+  }
+  log('location', `${n} stale "Giver Kibelisk: null" conflicts dropped (the Kibelisk is now on the record, from Metabot)`);
+  /* Nezekan opens with the story quest, not at Lv 12 (owner screen, unlock:daevanion) */
+  const dv = rec(TP, 'tip:daevanion');
+  const from = 'Nezekan (Lv 12, via the story quest "Urgent Pursuit")';
+  if (!dv.body.includes(from)) throw new Error('daevanion tip Nezekan');
+  dv.body = dv.body.replace(from, 'Nezekan (when you complete the story quest "Urgent Pursuit", Lv 13)');
+  log('text', 'tip:daevanion: Nezekan opens with "Urgent Pursuit", not at Lv 12 (owner screen)');
 }
 
 /* ------------------------------------------------------------------ write */
