@@ -4,7 +4,8 @@ Question: the 40 story quests on the placeholder zone `zone:altgard-unplaced` (D
 said 41, the generator's `report.debt.placeholderZone` lists 40): what does each Metabot quest page give for the giver
 and the turn-in, and which zone of our registry (`data/shared/asmodian/zones.json`) does that resolve to?
 Per-quest results: `data/research/story-locations-metabot-2026-10.csv` (40 rows). Script:
-`data/research/scripts-2026-10/story_locations.py`. Requests: `data/research/story-locations-metabot-2026-10.requests.log`.
+`data/research/scripts-2026-10/story_locations.py`. Requests: `data/research/story-locations-metabot-2026-10.requests.log` (completion times only; the ≥ 6 s start spacing
+was enforced by the fetch script but is not logged, so it can't be audited from the log).
 Data change: `tools/history/v2-corrections/2026-10-15-story-locations.mjs` (log in `2026-10-15-story-locations.txt`).
 
 ## 1. Result
@@ -69,6 +70,14 @@ from origin/main, all in the Next up stack, all on a Lv 10–22 story quest (PR 
 - **Village zones.** Either add Metabot's village zones to the registry as zones of their own (sourced from their zone
   pages; resolves 30 sides as `verified`), or list each village as a camp of a field zone (needs an owner check or
   another source per village). Until then they stay on the placeholder.
+  `regional-quests.json` already places two of these villages, both `inferred`, and they disagree: Odar's Shade as
+  Moslan Forest (4 records) and Purifying Forest (rq:2202018 turn-in), Fang Hideout as Calderon Canyon (rq:2202017
+  turn-in), while the dungeon votes in `KIB_AREA` put Fang Hideout in Sanctum Outpost. The answer should cover those
+  regional records too.
+- **Band drop (old rule, now reached more often).** `sdPick` (`src/core/nextup.js`) prefers the story step's zone over
+  the level band, so a character far ahead of the story gets a low-band dungeon: in 19 of the 130 changed states the
+  new pick's band tops out 10+ levels below the character (e.g. Lv 45 on a Lv 10–15 quest: Dratona Cave, Lv 10–14).
+  Owner decision whether "near" may override the band.
 - **Auto-start givers (4):** giver = where the previous quest is turned in? Plausible, not on the page.
 - **Dream Crossroad (2) and Reshanta (1):** need a zone outside the Altgard registry, or stay unlocated.
 - **Proposed owner check (5 min):** in game, open the map at Odar's Shade and at Steel Hammer Workcamp and note the field
