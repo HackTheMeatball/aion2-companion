@@ -402,7 +402,7 @@ export function generate(opts = {}) {
      story atoms carry their chain index i), done = the compiled `completesWith`. Live fields only: `proposed` is never
      read, so the graph is identical without proposals (tests/schema.mjs). Skill lines come from rule:skill-level-gate;
      `requiresBasis: unresearched` (noPre) adds its rule level max(unlocksAt, rec); plan nodes name their board (the board's
-     gate is inherited). Its own module (gate-graph.js), so the page carries none of it until the evaluator is wired in (E2). */
+     gate is inherited). Its own module (gate-graph.js), read by src/core/evaluator.js and requirements.js (since E2). */
   const GATE_GRAPH = (() => {
     const sIdx = Object.fromEntries(chain.map((s, i) => [s.id, i])), bas = a => a.basis ? { basis: a.basis } : {};
     const gate = c => {

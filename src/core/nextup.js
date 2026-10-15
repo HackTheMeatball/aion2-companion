@@ -15,11 +15,12 @@ import { GATES } from "../data/milestones.js";
 import { AREA_LOC } from "../data/generated.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
 import { char } from "./state.js";
-import { checkableOf, countsOf, dvNeed, dvNext, dvSpent, isOpen, objIdxOf, openSteps, qProgOf, rqOpenLv, rqStatus, shardsFromLv,
-  skillBuy, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf, storyIdx } from "./requirements.js";
+import { areaOpen, checkableOf, countsOf, dvNeed, dvNext, dvSpent, gatesOf, isOpen, objIdxOf, openBut, openSteps, qProgOf, rqStatus, rqWaitsOnStory, shardsFromLv,
+  skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf, storyRecGate } from "./requirements.js";
 
 export function rankNext(state, { basic = false } = {}) {
-  const c = char(state), lv = c.level, acts = [];
+  /* every "is it open?" below is the evaluator's (gatesOf, src/core/requirements.js); the ranking is 0.2's */
+  const c = char(state), lv = c.level, acts = [], ev = gatesOf(c);
   const sp = skillBuy(c, lv);
   /* Dungeon or stronghold you went into: finish it first. */
   Object.keys(c.areaRun || {}).filter(k => !c.checks[k]).forEach(k => { const x = AREA_ITEMS.find(y => y.k === k); if (!x) return;
@@ -29,7 +30,7 @@ export function rankNext(state, { basic = false } = {}) {
     /* The upgrades right after it that your current points also cover (queue previews; each becomes the top card in turn). */
     const pts = (LEVEL_POINTS[Math.min(45, Math.max(0, lv))] || 0) + (c.stones || 0) - SP_STEPS.filter(x => c.checks[x.k]).reduce((t, x) => t + x.cost, 0);
     let left = pts - (sp.spec ? 0 : sp.cost);
-    SP_STEPS.filter(x => !c.checks[x.k] && x.req <= lv && x !== sp).sort((a, b) => a.gi - b.gi || a.gj - b.gj).some(x => {
+    skillOpen(c, lv).now.filter(x => x !== sp).some(x => {
       const cost = x.spec ? 0 : x.cost; if (cost > left) return true; left -= cost;
       acts.push({ kind: "skill", x, act: "skill" });
       return acts.length >= 4; }); }
@@ -42,7 +43,7 @@ export function rankNext(state, { basic = false } = {}) {
   else if (dn && dc == null && dLeft > 0) acts.push({ kind: "boardcost", dn, dLeft, act: "boardcost" });
   let stWait = null; /* equip card that needs a shard first: ranked after the story, no button */
   { const sl = stigmaSlots(c), nx = sl.find(x => !c.checks[x.k]), up = stigmaPlan(c)[0];
-    if (nx && nx.lv <= lv && c.checks["g22:0"]) { const r = E_ORDER.filter(n => n === nx.name || sl.some(x => x.name === n && c.checks[x.k])).indexOf(nx.name);
+    if (nx && stigmaEquipOpen(c, nx, ev)) { const r = E_ORDER.filter(n => n === nx.name || sl.some(x => x.name === n && c.checks[x.k])).indexOf(nx.name);
       if (!(c.stLv || {})[nx.name] && !(c.stShards || 0)) { let at = null; for (let L = lv + 1; L <= 45 && at == null; L++) if (shardsFromLv(L) > shardsFromLv(lv)) at = L;
         stWait = { kind: "stwait", nx, at, act: "" }; }
       else acts.push({ kind: "stequip", nx, r, act: "stequip" }); }
@@ -52,11 +53,11 @@ export function rankNext(state, { basic = false } = {}) {
   const hs = here ? openSteps(state, here) : [];
   /* Unlock-type steps at your milestone come before the story; its regional quests (optional side quests) come after it. */
   hs.filter(x => !x.rq && !x.adv).forEach(x => acts.push({ kind: "step", x, g: here, act: "tick:" + x.k }));
-  const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && x.lv <= lv && !c.checks[x.k]).sort((a, b) => bandOf(a) - bandOf(b));
-  const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && bandOf(x) <= lv && (x.it.lo || 0) <= lv && !c.checks[x.k]);
-  /* Story levels are recommended levels, not hard requirements (owner, 2026-10-15). Until 0.3 rewires this, one exception:
-     the first story quest never gates, so a new character in Ishalgen (Lv 1) isn't told to level up before starting. */
-  const qi = c.quest ? QUESTS.findIndex(([, n]) => n === c.quest) : -1, gateLv = qi > 0 ? QUESTS[qi][0] : 0, gated = gateLv > lv;
+  const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(c, x, ev) && !c.checks[x.k]).sort((a, b) => bandOf(a) - bandOf(b));
+  const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && areaOpen(c, x, ev) && !c.checks[x.k]);
+  /* Story levels are recommended levels, not hard requirements (owner, 2026-10-15): the story card's level gate is the
+     kept rule "story-card-recommended-level" (storyRecGate; the first story quest never gates). */
+  const { qi, gateLv, gated } = storyRecGate(c);
   const hereArea = storyAreaOf(storyHereOf(state), KIB_AREA);
   /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));
@@ -68,12 +69,12 @@ export function rankNext(state, { basic = false } = {}) {
      the quest before it is turned in. */
   const snz = c.rqSnooze || {};
   const rqAll = []; GATES.forEach(g => g.items.forEach(it => { if (it.kind !== "quest" || it.hidden) return;
-    const k = it.k, done = !!c.checks[k], run = !done && qProgOf(c, k) > 0, av = rqStatus(c, it.q, lv);
+    const k = it.k, done = !!c.checks[k], run = !done && qProgOf(c, k) > 0, av = rqStatus(c, it.q, lv, ev);
     if (!done && !run && !av.open) return; /* below its unlock level, or the story isn't there yet */
     rqAll.push({ k, g, it, done, run, pre: done || run ? [] : av.pre }); }));
   /* Waiting on the story: at or above its recommended level and unlock level, but the main story isn't at its story quest yet. */
-  const rqWait = []; GATES.forEach(g => g.items.forEach(it => { if (it.kind !== "quest" || it.hidden) return; const k = it.k, q = it.q;
-    if (c.checks[k] || qProgOf(c, k) > 0 || !q.story || q.rec > lv || lv < rqOpenLv(q) || rqStatus(c, q, lv).open) return; rqWait.push({ k, it }); }));
+  const rqWait = []; GATES.forEach(g => g.items.forEach(it => { if (it.kind !== "quest" || it.hidden) return; const k = it.k;
+    if (c.checks[k] || qProgOf(c, k) > 0 || !rqWaitsOnStory(c, it.q, lv, ev)) return; rqWait.push({ k, it }); }));
   /* A follow-up isn't available until the quests before it are turned in. */
   rqAll.forEach(x => { x.lock = x.pre.length > 0; x.snz = !x.done && !x.run && x.k in snz; });
   const rqOpen0 = rqAll.filter(x => !x.done && !x.snz);
@@ -111,7 +112,7 @@ export function rankNext(state, { basic = false } = {}) {
   {
     /* Each skill's own next upgrade only (no jumps past a level you haven't bought), one card per skill. */
     const nextOf = {}; SP_STEPS.filter(x => !c.checks[x.k]).forEach(x => { const n = nextOf[x.s.n]; if (!n || x.L < n.L) nextOf[x.s.n] = x; });
-    const sp2s = Object.values(nextOf).filter(x => x.req > lv && !x.spec).sort((a, b) => a.req - b.req || a.rank - b.rank);
+    const sp2s = Object.values(nextOf).filter(x => !ev.byKey(x.k).open && !x.spec).sort((a, b) => a.req - b.req || a.rank - b.rank);
     /* Only a milestone with a required step still open: not regional quests, optional steps, or skill lines (those have
        their own "Buy" cards above), so a card never promises something that won't show up at that level. Its first step
        that isn't a regional quest; stigma-only milestones show their title ("Stigma slot 2"). */
@@ -131,7 +132,7 @@ export function rankNext(state, { basic = false } = {}) {
 /* The story card: set your quest / story complete / the quest with its objectives. Level-gated (the quest's level is
    above yours): no "Turned in" until its objectives are all ticked, and a "Meanwhile" line of what gives XP at your
    level (verified unlocks only): Sealed Dungeons and Strongholds still to clear, the highest Expedition you've unlocked
-   (Krao Cave also needs "Daeva in a Dream"), the daily dungeon. */
+   (Krao Cave also needs its step's story gate, g20:exp: "Daeva in a Dream" reached), the daily dungeon. */
 function storyCard(state, { qi, gated, gateLv, sdOpen, shOpen }) {
   const c = char(state), lv = c.level;
   if (qi < 0) return { kind: "story", story: true, v: "unset", act: "setquest" };
@@ -139,7 +140,8 @@ function storyCard(state, { qi, gated, gateLv, sdOpen, shOpen }) {
   /* Past the end of the guide's story data: no dead "Turned in"; the story goes on in game. */
   if (!nq && c.storyEnd === c.quest) return { kind: "story", story: true, v: "end", quest: c.quest, act: "" };
   const meanwhile = !gated ? null : (() => {
-    const ex = VERIFIED_UNLOCKS.filter(x => x[0] <= lv && /^Expedition/.test(x[2]) && (x[1] !== "Krao Cave" || qi >= storyIdx("Daeva in a Dream"))).pop();
+    const krao = openBut(gatesOf(c).byKey("g20:exp"), "level");
+    const ex = VERIFIED_UNLOCKS.filter(x => x[0] <= lv && /^Expedition/.test(x[2]) && (x[1] !== "Krao Cave" || krao)).pop();
     const dd = VERIFIED_UNLOCKS.find(x => x[1] === "Daily dungeon");
     return { sd: sdOpen.length > 0, sh: shOpen.length > 0, ex: ex ? { lv: ex[0], name: ex[1], il: (ex[2].match(/item level (\d+)/) || [])[1] || null } : null, dd: dd && dd[0] <= lv ? dd[0] : null }; })();
   const base = { kind: "story", story: true, quest: c.quest, nq, gated, gateLv, lv, meanwhile };

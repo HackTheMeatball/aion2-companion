@@ -1,7 +1,7 @@
 /* The generated data modules, shared by scripts/build.mjs and the Node core tests (tests/core.mjs): an esbuild plugin that
    serves "./generated.js" (from src/data) or "./data/generated.js" (from src/) as the module tools/gen/gen.mjs compiles
    from data/** (data format v2, 0.2 step 5b), and "./gate-graph.js" / "../data/gate-graph.js" as GATE_GRAPH (the live
-   gates, 0.3 E1; only src/core/evaluator.js imports it, so the page carries it once the evaluator is wired in, E2). The
+   gates, 0.3 E1; imported by src/core/evaluator.js and requirements.js, which wires it into the page since E2). The
    modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
