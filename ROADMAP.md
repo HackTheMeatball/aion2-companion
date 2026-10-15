@@ -195,6 +195,11 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
   goes through the research with the owner first; then the owner answers the open colour questions and does one
   in-game check session (batched with the data checks) using a one-screen checklist. Built on the design tokens.
 
+- **iPhone app** (owner, 2026-10-15: "eventually"). Not scheduled; decide after sync (0.6). Likely path: the same web
+  code wrapped as an app (e.g. Capacitor), so the phone layout and offline support carry over; no native rewrite.
+  Questions to answer first: App Store review of an unofficial app using NCSoft's game name and icons (permission or
+  a name / art rework, legal review), Apple developer account (~$99 / year), Metabot's non-commercial condition if the
+  app is ever paid. The desktop app's iOS Simulator only matters once a native build exists.
 - Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
 - Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).
 - Post-Altgard: Reshanta / Abyss.
