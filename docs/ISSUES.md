@@ -59,8 +59,9 @@ on purpose: the guide shows nothing rather than an unverified value.
 - `tests/journey.js` logs one known `!! In my game click failed` line (it clicks the first `[data-ingame]` pill, which
   can be hidden). The runner ignores exactly that line; any other `!!` line fails the suite.
 - Timing checks (`update()` median < 15 ms) trip on a busy machine (measured 10–17 ms for the same build on a 2-vCPU
-  VM). The runner runs half the CPU count in parallel and re-runs a failed suite once, reporting a pass on retry as
-  `FLAKY` with the first run's failures. A real slowdown fails both runs.
+  VM). Since 2026-10-15 they are the non-blocking `perf` suite (`tests/perf.js`, `npm run test:perf`, CI job `perf`
+  warns only), not part of `npm test` or `ci-ok`. The runner still re-runs a failed suite once, reporting a pass on
+  retry as `FLAKY` with the first run's failures.
 - Tests block the web fonts (self-hosted files, the claude.ai build's inlined copies, Google Fonts for the baselines) and
   service workers, so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check with the
   real fonts.
