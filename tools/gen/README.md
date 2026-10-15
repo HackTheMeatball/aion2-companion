@@ -12,14 +12,18 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
 ```
 
 - `gen.mjs` — `generate()` returns the module text, the compiled constants and a report; `dataSourcesMd()` the
-  Sources listing. The CLI writes `out/generated.js` and `out/gen-report.json` for review (git-ignored).
+  Sources listing. The CLI writes `out/generated.js`, `out/gate-graph.js` and `out/gen-report.json` for review (git-ignored).
+- `GATE_GRAPH` (0.3 E1, docs/design/0.3-requirement-engine.md §3): every trackable record's live `requires` /
+  `completesWith` compiled for `src/core/evaluator.js` (skill lines from `rule:skill-level-gate`), with checks that every
+  `done` edge resolves to a node and there is no cycle. It is a second module, `src/data/gate-graph.js` (`gateModule`),
+  so the page carries none of it until the evaluator is wired in (E2).
 - `validate.mjs` — the schema step: all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
 - `../../data/DATA_SOURCES.md` — every source URL, the records that cite it, and its Sources-card group (committed).
 - The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
   placeholder zone `zone:altgard-unplaced` (DATA-FORMAT-V2 §9 data task).
 
 - `proposed` gates (0.3 audit, DATA-FORMAT-V2 §6) are validated and reference-checked but never compiled;
-  `generate({ dropProposed: true })` strips them, and `tests/schema.mjs` checks the module is identical. The report's
+  `generate({ dropProposed: true })` strips them, and `tests/schema.mjs` checks both modules are identical. The report's
   `proposed` lists each one (status, check, change) for the 0.3 golden-difference list.
 
 After changing data: `npm run gen`, review `git diff data/`, then `npm test`.
