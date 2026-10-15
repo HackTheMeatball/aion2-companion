@@ -21,6 +21,9 @@ export function migrate(s, hadSave, store, now = 0) {
   /* A fresh browser: the one-time player seeds below are for the saved progress that predates them, so they're marked
      done without running; cleared milestones start folded (Filters → Cleared milestones). Existing saves keep their settings. */
   if (!hadSave) { s.seedLv12 = s.stTriniel1 = s.dvReset1 = true; s.hideCards = true; }
+  /* A fresh browser starts where a new character does (owner, 2026-10-15): Lv 1, on the first story quest. Only here, not
+     in DEFAULT(): loadState lays a save over DEFAULT(), and a save is never re-defaulted. */
+  if (!hadSave) { c.level = 1; if (QUESTS.length) c.quest = QUESTS[0][1]; }
   if (migrateV5(s) && hadSave) { store(); }
   /* PLAYER-SEED-START: one-time sync to skill levels reported in game (Oct 10, Lv 12). Runs once per saved progress. */
   if (!s.seedLv12) {

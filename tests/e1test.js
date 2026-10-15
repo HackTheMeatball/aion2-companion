@@ -23,7 +23,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   /* 1. Fresh browser: seeds don't run */
   await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForTimeout(400);
   let st = await p.evaluate(() => state);
-  ok('fresh: seeds not applied (level, sp ticks, stigma, stones)', st.level === 5 && !Object.keys(st.checks).some(k => k.startsWith('sp:')) && !st.stLv && !st.stones, { level: st.level, stLv: st.stLv, stones: st.stones });
+  ok('fresh: seeds not applied (level, sp ticks, stigma, stones)', st.level === 1 && st.quest === 'A Village in the Fog' && !Object.keys(st.checks).some(k => k.startsWith('sp:')) && !st.stLv && !st.stones, { level: st.level, stLv: st.stLv, stones: st.stones });
   ok('fresh: seed flags + migV5 set, cleared milestones folded', st.seedLv12 && st.stTriniel1 && st.dvReset1 && st.migV5 && st.hideCards === true);
   /* 2. Saved state without flags: seeds still run (old behaviour); with flags: no-op */
   await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 9, open: {}, quest: '' })), KEY); await p.reload(); await p.waitForTimeout(300);

@@ -21,9 +21,19 @@ export default (test, M) => {
   test('fresh browser: seeds marked done without running, cleared milestones folded, nothing written', () => {
     const { state, writes } = run(M, M.DEFAULT(), false);
     assert.deepEqual(writes, []);
-    /* 5c: stampV1 also runs (schemaVersion 1; the defaults stamped at time 0, so they never outrank another device's progress) */
-    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, hideCards: true, ...FLAGS, ...STAMP, mt: { level: [0, 5], quest: [0, ['', null]] } });
+    /* 0.2.1 (owner, 2026-10-15): a fresh browser starts at Lv 1 on the first story quest.
+       5c: stampV1 also runs (schemaVersion 1; the defaults stamped at time 0, so they never outrank another device's progress) */
+    const q0 = M.QUESTS[0][1];
+    assert.equal(q0, 'A Village in the Fog');
+    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, level: 1, quest: q0, hideCards: true, ...FLAGS, ...STAMP, mt: { level: [0, 1], quest: [0, [q0, null]] } });
     assert.deepEqual(C(state).checks, {});
+  });
+  test('saved progress keeps its level and quest (fresh-browser defaults never apply to a save)', () => {
+    for (const saved of [{ checks: {}, level: 5, quest: '' }, { ...FLAGS, checks: {}, level: 5, quest: '' }, { ...FLAGS, checks: {}, level: 23, quest: M.QUESTS[10][1] }]) {
+      const { state } = run(M, Object.assign(M.DEFAULT(), clone(saved)), true);
+      assert.equal(C(state).quest, saved.quest);
+      assert.equal(C(state).level, saved.seedLv12 ? saved.level : Math.max(saved.level, 12));   /* the old Lv 12 seed still runs on flagless saves */
+    }
   });
   for (const f of ['fixture-v285.json', 'fixture-user-v285.json', 'fixture-user-2026-10-14-lv39.json']) {
     const saved = fixture(f);
