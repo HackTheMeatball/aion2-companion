@@ -51,14 +51,18 @@ Data change: `tools/history/v2-corrections/2026-10-15-story-locations.mjs` (log 
 
 ## 3. What the data change does on screen
 
-The 0.2 Next up already uses the story's turn-in Kibelisk (`QUEST_LOC` → `storyHereOf` → `KIB_AREA`) to prefer the
-Sealed Dungeon and stronghold "near your story step" and to count regional quests near it. 23 story quests (Lv 10–22)
-now have a turn-in Kibelisk and 25 a turn-in NPC, where they had none, so for players on those quests Next up picks the dungeon / stronghold in
-that zone and labels it "(near your story step)"; the story card shows the Kibelisk when the next objective has none.
-Golden master: 155 of 2,000 states differ, all in the Next up stack and all explained by this (PR description lists the
-kinds). Note: `KIB_AREA` votes come from the regional / dungeon / stronghold data, not from the story records' `zone`,
-so a story turn-in still on the placeholder can still get a "near" area through its Kibelisk (e.g. *Empyrean Monolith*:
-Shadow Hall, Kibelisk Safe Haven 245 m → Dredgion Crash Site).
+Next up prefers the Sealed Dungeon and stronghold "near your story step" and counts regional quests near it. At a
+turn-in that area is the story record's own `turnin.zone` (`QUEST_LOC.turninZone` → `storyHereOf` → `storyAreaOf`);
+a turn-in still on the placeholder has no area. Only an objective, which has no zone of its own, still uses its
+Kibelisk's zone vote (`KIB_AREA`, from the regional / dungeon / stronghold data). Before the PR #47 review fix the
+turn-in also used `KIB_AREA`, with no distance limit, so placeholder turn-ins got an area by inference (*Empyrean
+Monolith*: Shadow Hall, Kibelisk Safe Haven 245 m → Dredgion Crash Site) and *Dead Men Tell No Tales* (turn-in Crypt,
+verified) showed Nameless Cemetery.
+
+23 story quests (Lv 10–22) now have a turn-in Kibelisk and 25 a turn-in NPC, where they had none. The story card shows
+the turn-in Kibelisk when the next objective has none. Where the turn-in zone is now a registry zone, Next up picks the
+dungeon / stronghold in that zone and labels it "(near your story step)". Golden master: 130 of 2,000 states differ
+from origin/main, all in the Next up stack, all on a Lv 10–22 story quest (PR description lists the kinds).
 
 ## 4. Open (owner / CEO)
 
