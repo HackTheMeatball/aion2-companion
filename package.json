@@ -16,6 +16,7 @@
     "build": "node scripts/build.mjs",
     "serve": "node scripts/serve.mjs",
     "test": "npm run build && node tests/run.mjs",
+    "test:perf": "npm run build && node tests/run.mjs --only perf",
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
     "test:core": "node tests/core.mjs",
     "gen": "node tools/gen/gen.mjs",

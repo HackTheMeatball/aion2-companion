@@ -25,7 +25,7 @@
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
-const src = fs.readFileSync(path.join(__dirname, 'regress.js'), 'utf8'); const buildFixture = eval('(' + src.match(/function buildFixture[\s\S]*?\n}\n/)[0] + ')');
+const { buildFixture } = require('./support/regress-fixture');
 const USER = JSON.parse(fs.readFileSync(path.join(CFG.FIX, 'fixture-user-v285.json'), 'utf8'));
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 const info = (n, d) => console.log('info ' + n + (d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : ''));
