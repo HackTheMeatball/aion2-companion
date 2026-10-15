@@ -20,6 +20,7 @@
     "test:quick": "npm run build && node tests/run.mjs --quick --noshots",
     "test:core": "node tests/core.mjs",
     "test:equiv": "node tests/equiv.mjs",
+    "test:invariant": "node tests/invariant.mjs",
     "gen": "node tools/gen/gen.mjs",
     "gen:check": "node tools/gen/gen.mjs && git diff --exit-code -- data/DATA_SOURCES.md",
     "validate": "node tools/gen/validate.mjs",
