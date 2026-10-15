@@ -3,7 +3,7 @@
     "in": "63f34e7a4664",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -69,7 +69,7 @@
     "in": "46264349bbc8",
     "nu": [
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -134,7 +134,7 @@
   "build/L12-q16-before-A-filters": {
     "in": "df3afe619ee6",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -196,9 +196,9 @@
     "mode": "advanced"
   },
   "build/L12-q16-before-A-objs": {
-    "in": "7f775226fa0b",
+    "in": "f0eb9dafbd10",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"1/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -243,7 +243,7 @@
       "track": ["Daevanion board next · 1 to go Lv 13"],
       "ring": "10%",
       "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Veiled Truth\" yet."}
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
@@ -252,7 +252,7 @@
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":42,"at":{"0":41,"1790856000":1},"fnv1a":"3c6579bc"}],
+      "mt": ["(absent)",{"stamps":44,"at":{"0":43,"1790856000":1},"fnv1a":"1a4383d1"}],
       "open.g12": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -264,7 +264,7 @@
   "build/L12-q16-before-A-rqmix": {
     "in": "e29263e989e1",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 in progress · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["run Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -333,7 +333,7 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Assault Stance 1 → 2","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -398,7 +398,7 @@
   "build/L12-q16-before-A-stfull": {
     "in": "834e7411d701",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -463,7 +463,7 @@
   "build/L12-q16-before-A-stready": {
     "in": "6af094e304ed",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -528,7 +528,7 @@
   "build/L12-q16-before-A-stwait": {
     "in": "110327dfb85b",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
       {"t":"Buy Heart Gore 4 → 5","s":"Opens at Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -594,7 +594,7 @@
     "in": "c9cc9bfffa5d",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -656,7 +656,7 @@
     "in": "e15f7d3131e5",
     "nu": [
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -717,7 +717,7 @@
   "build/L12-q16-before-B-filters": {
     "in": "f96f0a8aa537",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -775,9 +775,9 @@
     "mode": "basic"
   },
   "build/L12-q16-before-B-objs": {
-    "in": "f9ed04428fec",
+    "in": "cf343df26941",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"1/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -818,7 +818,7 @@
       "track": ["Daevanion board next · 1 to go Lv 13"],
       "ring": "10%",
       "prog": ["Quests 1 0/58","Dungeons 13/60","Strongholds 2 0/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Veiled Truth\" yet."}
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 · 13/15 · 2 open","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
@@ -827,7 +827,7 @@
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":42,"at":{"0":41,"1790856000":1},"fnv1a":"3c6579bc"}],
+      "mt": ["(absent)",{"stamps":44,"at":{"0":43,"1790856000":1},"fnv1a":"1a4383d1"}],
       "open.g12": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -839,7 +839,7 @@
   "build/L12-q16-before-B-rqmix": {
     "in": "3e405175ac5e",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 in progress · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["run Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -901,7 +901,7 @@
     "in": "d5c4bf0eb1fb",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -965,7 +965,7 @@
   "build/L12-q16-before-B-stfull": {
     "in": "4d262812e71e",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -1026,7 +1026,7 @@
   "build/L12-q16-before-B-stready": {
     "in": "05eaa3cbc4b3",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -1087,7 +1087,7 @@
   "build/L12-q16-before-B-stwait": {
     "in": "a38c2f21699c",
     "nu": [
-      {"t":"Continue the story: Veiled Truth","s":"Main story · then Urgent Pursuit","c":"primary \"Turned in\" story"},
+      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],

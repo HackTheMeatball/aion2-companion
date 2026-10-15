@@ -2,7 +2,7 @@
   "random/L06-q20-before-A-dv": {
     "in": "a0e07b4189ad",
     "nu": [
-      {"t":"Continue the story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 6. Level up first.","c":""},
+      {"t":"Story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 6. Level up first.","c":""},
       {"t":"Buy Heart Gore 2 → 3","s":"Opens at Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 3 → 4","s":"Opens at Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 3 → 4","s":"Opens at Lv 7 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -556,7 +556,7 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":""},
+      {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 7. Level up first.","c":""},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 4 levels away","c":"tag \"Later\"","f":"later"}
@@ -620,7 +620,7 @@
     "in": "74386eced713",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 7. Level up first.","c":""}
+      {"t":"Story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 7. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Missed | 3/11 | overdue | open",
@@ -1370,7 +1370,7 @@
   "random/L08-q02-all-B-stwait": {
     "in": "7fc4c873ebaa",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1429,7 +1429,7 @@
   "random/L08-q09-rnd111p80-A": {
     "in": "38e164cc2da8",
     "nu": [
-      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 8. Level up first.","c":""},
+      {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 8. Level up first.","c":""},
       {"t":"Buy Ambush 3 → 4","s":"Opens at Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 2 → 3","s":"Opens at Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1492,7 +1492,7 @@
   "random/L08-q18-lvonly-B": {
     "in": "8f7566a61b37",
     "nu": [
-      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 8. Level up first.","c":""}
+      {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 8. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1551,7 +1551,7 @@
   "random/L08-q21-rnd133p95-A": {
     "in": "b798211356b7",
     "nu": [
-      {"t":"Continue the story: Buried Atrocities","s":"Needs Lv 16: you're 8. Level up first.","c":""},
+      {"t":"Story: Buried Atrocities","s":"Needs Lv 16: you're 8. Level up first.","c":""},
       {"t":"Buy Ambush 3 → 4","s":"Opens at Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 2 → 3","s":"Opens at Lv 9 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2171,7 +2171,7 @@
   "random/L09-q01-all-A-dv": {
     "in": "2deedd0fb363",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2228,10 +2228,10 @@
     "mode": "advanced"
   },
   "random/L09-q03-before-B-objs": {
-    "in": "b03518023b78",
+    "in": "db7412df8af7",
     "nu": [
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | Missed | 10/11 | overdue | open",
@@ -2270,7 +2270,7 @@
       "track": ["Enhancement unlocks now Lv 9"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Isolated Lake\" yet."}
+      "subs": {"head":"Objectives 0/4","items":4,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
@@ -2279,7 +2279,7 @@
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":17,"at":{"0":16,"1790856000":1},"fnv1a":"d5ea28d5"}],
+      "mt": ["(absent)",{"stamps":20,"at":{"0":19,"1790856000":1},"fnv1a":"d859f744"}],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]],
@@ -2292,7 +2292,7 @@
   "random/L09-q07-rnd124p95-A": {
     "in": "7e049fc9f439",
     "nu": [
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Main story · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders (Kibelisk: Abandoned Barracks Site)","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
       {"t":"Buy Heart Gore 3 → 4","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 4 → 5","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 4 → 5","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2356,7 +2356,7 @@
     "in": "8ebf2bd2219f",
     "nu": [
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Continue the story: The Longest Night","s":"Main story · then Finding Nemon","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2416,7 +2416,7 @@
     "in": "29bc9a6473f3",
     "nu": [
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Continue the story: Crash Site Rendezvous","s":"Needs Lv 11: you're 9. Level up first.","c":""},
+      {"t":"Story: Crash Site Rendezvous","s":"Needs Lv 11: you're 9. Level up first.","c":""},
       {"t":"Buy Heart Gore 3 → 4","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 4 → 5","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 4 → 5","s":"Opens at Lv 10 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2481,7 +2481,7 @@
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Save your Enhance Stones","s":"Lv 9 milestone · Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Continue the story: Buried Atrocities","s":"Needs Lv 16: you're 9. Level up first.","c":""}
+      {"t":"Story: Buried Atrocities","s":"Needs Lv 16: you're 9. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Missed | 6/11 | overdue | open",
@@ -3562,7 +3562,7 @@
   "random/L10-q00-all-B-stwait": {
     "in": "de1a7b5ccb94",
     "nu": [
-      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"}
+      {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3621,7 +3621,7 @@
   "random/L10-q04-rnd136p80-B-stwait": {
     "in": "8413ae99e1d7",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Clear Treasure Hunter's Residence","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"}
     ],
     "ms": [
@@ -3684,7 +3684,7 @@
       {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Main story · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story"},
+      {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
       {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
       {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
     ],
@@ -3745,7 +3745,7 @@
   "random/L10-q11-all-B-filters": {
     "in": "29b4fe3b0afc",
     "nu": [
-      {"t":"Continue the story: Survival Supplies","s":"Main story · then Gathering Essentials","c":"primary \"Turned in\" story"}
+      {"t":"Story: Survival Supplies","s":"0/2 objectives · then Gathering Essentials","c":"primary \"Turned in\" story","o":["Receive additional supplies go to VeKauf (Kibelisk: Safe Haven)","Turn in VeKauf (Militia Supply Officer), Safe Haven"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
