@@ -196,6 +196,25 @@ export default (test, M) => {
     for (const n of new Set(M.SP_STEPS.map(x => x.s.n))) for (let lv = 0; lv <= 46; lv++) same(`skillLearned ${n} at Lv ${lv}`, L.skillLearned(n, lv), M.skillLearned(n, lv), 'level ' + lv);
   });
 
+  /* 0.2 read one number (SP_STEPS req) for the Skills card and the Build drawer; the graph compiles its own copy. Move each
+     skill's learn level (its Lv 1 → 2 line, as tests/e4test.js #15 does in the page) and the app must follow it like 0.2. */
+  testB('B. skills: a moved learn level moves the Skills card, the line locks and the drawer with it (F7)', () => {
+    const c0 = { checks: {}, level: 1 };
+    for (const x of M.SP_STEPS.filter(x => x.L === 2)) {
+      const was = x.req;
+      try {
+        for (const req of [was - 1, was + 1, was + 12]) { x.req = req;
+          for (const lv of [was - 1, was, req - 1, req]) { const c = { ...c0, level: lv }, at = `${x.k} req ${req}, Lv ${lv}`;
+            same('skillLearned', L.skillLearned(x.s.n, lv), M.skillLearned(x.s.n, lv), at);
+            same('skillOpen now', L.skillOpen(c).now.map(y => y.k), M.skillOpen(c).now.map(y => y.k), at);
+            same(`skill line ${x.k} locked`, L.skillLineLocked(c, x), !M.openOf(c, x.k), at);
+            same('rotation (right click, Q)', { rmb: M.RMB_STACK(lv).filter(n => L.skillLearned(n, lv)), q: ['Shadowstrike'].filter(n => L.skillLearned(n, lv)) },
+              (({ rmb, q }) => ({ rmb, q }))(M.rotKeys(c, lv)), at); }
+        }
+      } finally { x.req = was; }
+    }
+  });
+
   testB('B. stigmas: equip offer, slot rows, unlocked, the hero\'s "opens Lv", rotation slots at every level', () => {
     states.forEach(({ id, c }) => {
       const ev = M.gatesOf(c);

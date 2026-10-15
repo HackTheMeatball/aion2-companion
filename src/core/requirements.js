@@ -37,6 +37,10 @@ const APP_GRAPH = (() => {
   /* stigma-slot-1-after-g22:0 */
   { const id = idOf[GATES.flatMap(g => g.items).find(it => it.stig === 1).k], n = nodes[id];
     nodes[id] = { ...n, req: { all: [...levelAtoms(n.req), { done: idOf["g22:0"], basis: "legacy" }] } }; }
+  /* Skill lines open at the level the Skills card shows (SP_STEPS req, the same formula as the graph's), read when asked:
+     the card, its "Lv" text and the Build drawer share one number (0.2.2 F7, tests/e4test.js #15). */
+  SP_STEPS.forEach(x => { const id = idOf[x.k], n = nodes[id], { basis } = n.req;
+    nodes[id] = { ...n, get req() { return { level: x.req, basis }; } }; });
   return { story: GATE_GRAPH.story, nodes };
 })();
 /* The evaluator for this character (at level lv, default its own), proposals off, derived completion off. Evaluated
