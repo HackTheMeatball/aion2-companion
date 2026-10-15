@@ -7,6 +7,9 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | Villages as zones | Owner (2026-10-15, 12:56): villages (Odar's Shade, Fang Hideout, …) become zones of their own, following the data (Metabot first). Planned for 0.2.4. |
+| — | New character level | Owner screens (2026-10-15): turning in "A Village in the Fog" (Aldelle Village chief) takes a new character from Lv 1 to Lv 2 (basic rewards 100% EXP and 1.4K; additional reward Life Potion (Bound) ×50). A new character is Lv 2 before "Prepare to Escape". Screens are kept by the owner (private material, not copied into this repo). |
+| — | Story-card edge case | Owner (2026-10-15, 13:05) followed the CEO recommendation: the Lv 44 all-ticked case (Forgotten Commander offers "Turned in" at Lv 44) is fixed inside 0.3 step E4 and shown to the owner with that step's before/after screenshots. |
 | — | Fresh browser | A new browser starts at Lv 1 on the first story quest ("A Village in the Fog"), not Lv 5 with no quest (owner request). Saves are never re-defaulted. Ships as 0.2.1. |
 | — | Patches before 0.3 | Owner followed the CEO's recommendation: more, smaller 0.2.x patches before 0.3.0 (sequence in ROADMAP "0.2.x"); invisible work lands between them. |
 | — | Smart Next up | Owner followed the CEO's recommendation: location-aware Next up, fastest / completionist and catch-up (F1, F9, F10, F15) are their own minor, 0.4, after 0.3 correctness. Later minors move up by one (see the renumber note in ROADMAP; older rows here keep their numbers, e.g. D7 characters "0.4" is now 0.5). |

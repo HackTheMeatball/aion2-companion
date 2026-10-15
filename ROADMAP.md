@@ -117,7 +117,9 @@ release. The order can change.
 - **0.2.3** (released 2026-10-15): story quest locations from Metabot (34 of 71 placeholder quest sides now have a
   zone; 26 quests still on `zone:altgard-unplaced`); stigma unlock cost check (F5: already counted, test added).
 - **0.2.4**: results of the owner's in-game checks (Hugo Mercenaries: Deep Shadow, Ascension openings, Zikel Defense
-  Break node), once the owner has done them; the villages as zones of their own, if the owner agrees.
+  Break node), once the owner has done them; the villages as zones of their own (approved by the owner 2026-10-15, from
+  Metabot data). The alt-character check is done: turning in "A Village in the Fog" takes a new character from Lv 1 to
+  Lv 2 (owner screens, 2026-10-15).
 - **0.2.5**: save safety (the "last backup" line and the iPhone home-screen hint above; mockup first).
 - **0.2.6**: polish: a home for the Route rules card (F11), the remaining phone page-zoom issues, hit areas on the
   Confidence / Sources summaries.
