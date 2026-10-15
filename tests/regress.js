@@ -17,31 +17,8 @@ const rec = (ctx, check, pass, detail, soft) => { results.push({ ...ctx, check, 
 const LEVELS = QUICK ? [25, 27, 30, 32, 37, 40, 44, 45] : Array.from({ length: 21 }, (_, i) => 25 + i);
 const MODES = ['advanced', 'basic'], WIDTHS = [1500, 1100, 390], FIXTURES = ['clean', 'messy'];
 
-/* ---------- fixtures (built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS) ---------- */
-function buildFixture({ L, mode, fx }) {
-  const st = { checks: {}, level: L, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, areaRun: {}, hideCards: true };
-  const qAt = QUESTS.filter(q => q[0] <= L), qAbove = QUESTS.find(q => q[0] > L);
-  st.quest = fx === 'messy' && qAbove ? qAbove[1] : qAt[qAt.length - 1][1];
-  let n = 0;
-  GATES.forEach(g => g.items.forEach(it => { if (!it.k || it.sub || it.hidden) return;
-    if (it.kind === 'quest') return;
-    if (it.dv) { if (it.blv < L) st.checks[it.k] = true; return; }
-    if (g.lv < L) { n++; if (fx === 'clean' || n % 4) st.checks[it.k] = true; } }));
-  RQ.forEach((q, i) => { const k = 'rq:' + q.id; if (q.rec < L - (fx === 'messy' ? 3 : 0) && !(fx === 'messy' && i % 7 === 3)) st.checks[k] = true; });
-  AREA_ITEMS.forEach(x => { if (x.it.kind === 'hideout' ? x.lv < L : (x.it.hi || 45) < L) st.checks[x.k] = true; });
-  SP_STEPS.forEach(x => { if (x.req <= L - 2 && !(x.s && x.s.extra)) st.checks[x.k] = true; });
-  st.stones = 2 * (L - 10); st.stShards = fx === 'messy' ? 7 : 3; st.stLv = { "Triniel's Dagger": fx === 'messy' ? 6 : 5 };
-  st.checks['g22:0'] = true;
-  st.dvCost = {}; DV_NODES().forEach(it => { if (st.checks[it.k]) st.dvCost[it.k] = 5; }); st.dvTotal = Object.keys(st.dvCost).length * 5 + 4;
-  if (fx === 'messy') {
-    st.pendSt = 3; st.pendCr = 2;
-    const sd = AREA_ITEMS.find(x => x.it.kind === 'hideout' && x.lv <= L && !st.checks[x.k]); if (sd) st.areaRun[sd.k] = Date.now() - 6e5;
-    const open = RQ.filter(q => !st.checks['rq:' + q.id] && q.unlocksAt <= L && !q.after.length);
-    open.slice(0, 2).forEach(q => { st.started['rq:' + q.id] = 1; });
-    const sz = open[2]; if (sz) st.rqSnooze = { ['rq:' + sz.id]: L };
-  }
-  localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(st));
-}
+/* ---------- fixtures (built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS): tests/support/regress-fixture.js ---------- */
+const { buildFixture } = require('./support/regress-fixture');
 
 /* ---------- per-state probe (runs in the page) ---------- */
 function probe() {
@@ -144,10 +121,8 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
       if (width === 390) rec(c, 'top Next up button not covered by another element', !r.covered, r.covered);
       /* snapshot of Next up (for the behaviour review) */
       results.push({ ...c, check: 'info: Next up', pass: true, soft: 'info', detail: r.cards.slice(0, 5).map(x => x.title + (x.later ? ' [Later]' : '') + ' | ' + x.sub.slice(0, 90)) });
-      /* Turned in always changes state, and update() timing: width 1500 only */
+      /* Turned in always changes state: width 1500 only. (The update() < 15 ms timing check is in tests/perf.js, non-blocking.) */
       if (width === 1500) {
-        if (mode === 'advanced') { const ms = await p.evaluate(() => { const t = []; for (let i = 0; i < 10; i++) { const a = performance.now(); update(); t.push(performance.now() - a); } t.sort((a, b) => a - b); return (t[4] + t[5]) / 2; });
-          rec(c, 'update() median of 10 under 15 ms', ms < 15, +ms.toFixed(1)); results.push({ ...c, check: 'info: update ms', pass: true, soft: 'info', detail: +ms.toFixed(1) }); }
         const before = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));
         const has = await p.evaluate(() => { const b = [...document.querySelectorAll('#nowStar [data-now="story"]')].pop(); if (!b) return false; b.click(); return true; });
         if (has) { await p.waitForTimeout(700); const after = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));

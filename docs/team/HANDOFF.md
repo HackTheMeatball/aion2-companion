@@ -68,8 +68,8 @@ phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 - Sync (0.5) decisions later: "lose the code = lose the cloud copy", whether view settings sync, retention.
 
 ## Known gotchas
-- The `update() < 15 ms` timing check flakes on busy machines; rerun that suite alone before calling it a failure
-  (moves to a non-blocking `perf` suite in wave 2).
+- The `update() < 15 ms` timing check lives in the non-blocking `perf` suite (`npm run test:perf`; CI job `perf`,
+  not in `ci-ok`): a slow run on a busy machine warns, it doesn't fail the build.
 - `build.json` is a content hash: a docs-only merge keeps the same id, so check a deploy against that run's build.
 - Tag pushes and branch deletion are blocked from agent sessions; CI makes tags; the owner deletes merged branches.
 - Run logs aren't readable from agent sessions; check-run annotations are (`gh api …/check-runs/<id>/annotations`).

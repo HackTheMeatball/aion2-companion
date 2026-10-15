@@ -17,8 +17,8 @@
 
 ## Standing notes
 - `story:` and `after:` both mean "story has reached X"; `turnedIn:` means "X turned in" (added in 0.1.3).
-- The `update() < 15 ms` timing check trips when the shared machine is busy; rerun that suite alone before calling it a
-  failure. Planned fix in 0.2 (move timing to a non-blocking benchmark).
+- The `update() < 15 ms` timing check lives in the non-blocking `perf` suite (`npm run test:perf`, CI job `perf`, a
+  warning only); it trips when the machine is busy, so rerun it alone before calling it a regression.
 - Accessibility (0.1.6): run `node tests/run.mjs --only a11y` after touching markup, focus, motion or controls. Its axe
   allowlist (`ALLOW` in `tests/a11y.js`) only shrinks. Headings hold text only (Milestones / Next up are a `div.sec`
   row with a text-only `h2.sec-h` in `display: contents`); "i" buttons get a spoken name (`T(label, key, name)`).

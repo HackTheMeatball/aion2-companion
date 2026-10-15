@@ -6,6 +6,8 @@ name: Claude
 # simple reviews) to save usage. Only the owner's account can start a run: the repo is public, and the action also requires write access.
 # On an issue Claude works on a new branch (prefix claude/) and links a prefilled PR; on an open PR it pushes to that
 # PR's branch. It cannot merge, approve or rebase. CLAUDE.md applies to every run.
+# Push CI (ci.yml) runs only on main: a claude/ branch pushed from an issue gets CI once its PR is opened (or by hand:
+# Actions → CI → Run workflow).
 
 on:
   issue_comment:
