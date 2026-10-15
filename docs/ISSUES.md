@@ -56,7 +56,9 @@ on purpose: the guide shows nothing rather than an unverified value.
   `journey` run, which crashed at Lv 40 with `fill: Element is not attached`). A milestone tick re-renders the page
   with a deferred `update()` 1150 ms later (1650 ms when its card leaves; `src/main.js`, tick handler), which rebuilds
   `#dvNextList`. Ticking a milestone and then typing a cost into the Daevanion card within ~2 s would lose focus and
-  the typed digits. `journey` now runs on the fake clock, so it no longer hits this window; repro:
+  the typed digits. Second suspect: the `boardcost` Next-up action (`src/main.js`, `a === "boardcost"`) focuses the
+  input it found with `setTimeout(() => c.focus(), 300)`; if a re-render replaced that input meanwhile, focus goes to
+  a detached node and the visible input is never focused. `journey` now runs on the fake clock, so it no longer hits this window; repro:
   `JOURNEY_REALTIME=1 node tests/run.mjs --only journey` (intermittent), or by hand. Fix idea: skip re-rendering a
   focused `.dvc` input in `renderNext`.
 - Pop-out needs Document Picture-in-Picture (Chrome / Edge 116+); the button is hidden elsewhere.
