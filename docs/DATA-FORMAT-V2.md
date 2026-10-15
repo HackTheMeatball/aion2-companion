@@ -623,7 +623,7 @@ objective tick delete the entry.
 
 ### 13.2 `merge(a, b)` (5c)
 
-Pure, commutative, associative, idempotent. Per character (0.4: characters matched by id; character 1 = today's save).
+Pure, commutative, associative, idempotent. Per character (characters, 0.5 since the 2026-10-15 renumber: matched by id; character 1 = today's save).
 
 | Field(s) | Rule (with per-item change times, owner decision) |
 |---|---|

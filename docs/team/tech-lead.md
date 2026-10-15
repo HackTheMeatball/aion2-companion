@@ -10,7 +10,7 @@
 - Rules to enforce once the pure core exists: `core/` has no DOM access; derived facts are never stored as ticks.
 
 **Decisions already made by the owner:** ES modules + esbuild, no framework (0.2); several characters per browser
-(0.4); story gates default to "reached"; hosting stays on GitHub Pages for now (Cloudflare later, same address).
+(0.5, was 0.4 before the 2026-10-15 renumber); story gates default to "reached"; hosting stays on GitHub Pages for now (Cloudflare later, same address).
 
 **CEO decisions (0.2 P1, 2026-10-13):** esbuild's top-level `const`/`let` → `var` is accepted until P3; CSS is not passed
 through esbuild; the output is not minified.

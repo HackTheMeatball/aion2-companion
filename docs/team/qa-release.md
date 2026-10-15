@@ -11,7 +11,10 @@
 - Compliance check (from the legal review): user-facing text says "unofficial" and keeps "not affiliated with or
   endorsed by NCSoft"; every new data URL is in the Sources card and DATA_SOURCES.md; no new game art without the
   owner's OK; nothing about monetization in public files.
-- Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner.
+- Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner. Exception
+  for the 0.2 → 0.3 cycle (DECISIONS 2026-10-15): the CEO may merge and release visible 0.2.x patches after a separate
+  review, under the limits in that row (green CI, `npm test` incl. `mig1` / `mig2` / `journey`); 0.3's Next up behaviour
+  changes and the 0.3.0 release still wait for the owner.
 
 **After every merge to `main`:** watch that run to the end (data + browser shards → ci-ok → deploy → smoke → release). A green PR doesn't prove the
 deploy works; a failed deploy leaves the live site silently on the old build. The **smoke** job (scripts/smoke.mjs,
