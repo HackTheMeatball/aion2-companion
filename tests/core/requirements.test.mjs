@@ -1,5 +1,6 @@
 /* Requirements: what is open, done, affordable or next. */
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 const S = (o = {}) => ({ checks: {}, level: 5, hide: false, open: {}, quest: '', ...FLAGS, ...o });
@@ -78,6 +79,22 @@ export default (test, M) => {
   test('stigma plan: equipped stigmas up to their targets, shard cost per level', () => {
     const s = S({ checks: { 'g22:1': true }, stLv: { [M.STIGMA_PLAN[0]]: 8 } });
     assert.deepEqual(M.stigmaPlan(s).map(x => [x.x.name, x.L, x.cost]), [[M.STIGMA_PLAN[0], 9, 2], [M.STIGMA_PLAN[0], 10, 2]]);
+  });
+  test('F5: learning a stigma is its level 1 and costs 1 point; the plan counts it (owner-confirmed)', () => {
+    /* docs/feedback/2026-10-14-owner.md F5: unlocking costs 1 point and the stigma starts at Lv 1. ST_COST(1) is that
+       learn cost, it matches rule:stigma-shard-cost, upgrades start at Lv 2, and the plan total includes one learn per
+       planned stigma. */
+    const rule = JSON.parse(readFileSync(new URL('../../data/shared/rules.json', import.meta.url), 'utf8')).records.find(r => r.id === 'rule:stigma-shard-cost');
+    for (const { from, to, cost } of rule.value) for (let L = from; L <= to; L++) assert.equal(M.ST_COST(L), cost, `ST_COST(${L})`);
+    assert.equal(M.ST_COST(1), 1);
+    const n = M.STIGMA_PLAN[0], s = S({ checks: { 'g22:1': true } });
+    assert.equal(M.stLvOfC(s, n), 1, 'an equipped stigma starts at Lv 1');
+    const T = M.ST_TARGETS.find(([m]) => m === n)[1], up = M.stigmaPlan(s).filter(x => x.x.name === n);
+    assert.deepEqual(up.map(x => x.L), Array.from({ length: T - 1 }, (_, i) => i + 2), 'upgrades run Lv 2 .. target; Lv 1 is the learn');
+    const stC = t => { let c = 0; for (let L = 1; L <= t; L++) c += M.ST_COST(L); return c; };
+    assert.equal(up.reduce((t, x) => t + x.cost, 0) + M.ST_COST(1), stC(T), 'learn + upgrades = cost to reach the target');
+    const tgt = nm => (M.ST_TARGETS.find(([m]) => m === nm) || [nm, 1])[1];
+    assert.equal(M.STIGMA_PLAN.reduce((t, nm) => t + stC(tgt(nm)), 0), 92, 'plan: Triniel 10 (15) + Illusive Clone 20 (75) + two learned at Lv 1 (1 + 1)');
   });
   test('objectives: talk-only steps hidden unless shown; multi-part steps split', () => {
     assert.equal(M.objLow('Report — talk to Hadala'), true); assert.equal(M.objLow('Turn in — talk to Hadala'), false);
