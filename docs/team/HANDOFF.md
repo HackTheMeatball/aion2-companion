@@ -1,11 +1,10 @@
-# Handoff — state as of 2026-10-14
+# Handoff — state as of 2026-10-15
 
 Everything the CEO session knows that isn't already in DECISIONS, ROADMAP, the charters or CHANGELOG. Update this file
 when the state changes; keep it short.
 
 ## Live
-- **v0.1.8** live at https://daevacompanion.com/ (rebrand in 0.1.7, new address in 0.1.8), plus 0.2 steps 1–3 with
-  identical output. Releases v0.1.0–v0.1.8 exist on GitHub. daevapath.com and aion2.ishkabytes.com redirect (301,
+- **v0.2.3** live at https://daevacompanion.com/ (see the CEO handover below; rebrand in 0.1.7, new address in 0.1.8). Releases v0.1.0–v0.1.8 exist on GitHub. daevapath.com and aion2.ishkabytes.com redirect (301,
   Cloudflare, paths kept).
 - Repository renamed to `HackTheMeatball/daeva-companion` (the old name redirects).
 - The claude.ai artifact is **frozen** with a "moved" banner (Export still works). The owner tracks progress on the site.
