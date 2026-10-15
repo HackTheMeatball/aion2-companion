@@ -15,7 +15,7 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, countsOf, derivedOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
@@ -499,9 +499,11 @@ function storyView(a) {
     if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
     if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`); }
   const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs.length ? `<span class="ns-mean">Meanwhile: ${xs.join(" / ")}</span>` : ""}`;
-  if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act };
+  /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
+  const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
+  if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
   const kibTxt = a.kib ? ` · <span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "";
-  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${kibTxt}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, quest: a.objectives };
+  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${kibTxt}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives };
 }
 function renderNow() {
   const el = nowEl; if (!el) return;
@@ -583,6 +585,7 @@ nowEl.addEventListener("click", e => {
     return; }
   if (a.startsWith("obj:")) { const i = +a.slice(4); char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(i); char(state).qsteps[char(state).quest] = [...cur]; save(); renderQuestSubs(); return; }
   if (a === "story") { /* "Turned in": every objective of the quest counts as done (sub-steps too), then the story moves on. */
+    if (turnInNeedsLv(char(state))) return; /* not below the quest's unlock level (the card shows no button then) */
     const list = QUEST_STEPS[char(state).quest];
     if (list) { char(state).qsteps = char(state).qsteps || {}; char(state).qsteps[char(state).quest] = list.map((_, i) => i); list.forEach((_, i) => setObj(i, true)); save(); }
     /* Milestone steps that are this story quest (byStory) are done with it. */
@@ -1098,17 +1101,17 @@ function renderRotation() {
 /* Progress = one-time clears: permanent rewards (Wisdom Stones, Daevanion Crystals, belt scrolls) you can only
    get once, so they're the only thing worth a running total. "Behind" = open ones at or below your level. */
 function renderCollection() {
-  const lv = char(state).level;
+  const lv = char(state).level, ev = gatesOf(char(state)), cd = k => clearDoneOf(char(state), k, ev); /* ticked, or a quest derived as done */
   const quests = []; GATES.forEach(g => g.items.forEach(it => { if (it.kind === "quest") quests.push({ k: it.k, q: it.q, g }); }));
   const sds = AREA_ITEMS.filter(x => x.it.kind === "hideout"), shs = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
   const rows = [
-    { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !char(state).checks[x.k] && rqAvail(x.q, lv).ok) },
+    { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !cd(x.k) && rqAvail(x.q, lv).ok) },
     { key: "sd", name: "Dungeons", reward: "2 Crystals + 2 Wisdom Stones each", all: sds, behind: sds.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
     { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
   ];
   let D = 0, N = 0;
   document.getElementById("progRows").innerHTML = rows.map(r => {
-    const d = r.all.filter(x => char(state).checks[x.k]).length, n = r.all.length, b = r.behind.length; D += d; N += n;
+    const d = r.all.filter(x => cd(x.k)).length, n = r.all.length, b = r.behind.length; D += d; N += n;
     const full = { quest: "Regional quests", sd: "Sealed Dungeons", sh: "Strongholds" }[r.key];
     return `<button type="button" class="prow${d === n ? " done" : ""}" data-prog="${r.key}" title="${full}: ${d}/${n} · ${r.reward}${b ? ` · ${b} open at or below Lv ${lv} (click to show)` : d === n ? "" : " · caught up for your level"}">` +
       `<span class="prow-top"><span class="prow-name">${r.name}${b ? `<span class="behind-pill">${b}</span>` : ""}</span><span class="prow-n">${d === n ? "✓ " : ""}${d}/${n}</span></span>` +
@@ -1124,8 +1127,8 @@ document.getElementById("progRows").addEventListener("click", e => {
   const b = e.target.closest("[data-prog]"); if (!b) return;
   const lv = char(state).level, key = b.dataset.prog;
   if (key === "quest") {
-    const g = GATES.find(g => g.items.some(it => it.kind === "quest" && !char(state).checks[it.k] && rqAvail(it.q, lv).ok))
-      || GATES.find(g => g.items.some(it => it.kind === "quest" && !char(state).checks[it.k]));
+    const ev = gatesOf(char(state)), open = it => it.kind === "quest" && !clearDoneOf(char(state), it.k, ev);
+    const g = GATES.find(g => g.items.some(it => open(it) && rqAvail(it.q, lv).ok)) || GATES.find(g => g.items.some(open));
     if (g) { state.open[g.id] = true; save(); update(); const el = document.getElementById(g.id); if (el) { el.open = true; el.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
     return;
   }

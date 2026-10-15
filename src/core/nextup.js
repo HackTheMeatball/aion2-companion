@@ -146,7 +146,8 @@ function storyCard(state, { qi, gated, gateLv, sdOpen, shOpen }) {
     const dd = VERIFIED_UNLOCKS.find(x => x[1] === "Daily dungeon");
     return { sd: sdOpen.length > 0, sh: shOpen.length > 0, ex: ex ? { lv: ex[0], name: ex[1], il: (ex[2].match(/item level (\d+)/) || [])[1] || null } : null, dd: dd && dd[0] <= lv ? dd[0] : null }; })();
   const base = { kind: "story", story: true, quest: c.quest, nq, gated, gateLv, lv, meanwhile };
-  const shut = turnInNeedsLv(c) > 0;
+  const turnInLv = turnInNeedsLv(c), shut = turnInLv > 0;
+  if (shut) base.turnInLv = turnInLv;
   if (!list) return { ...base, v: "nolist", act: gated || shut ? "" : "story" };
   const vis = objIdxOf(state, list), allDone = vis.every(i => done.includes(i));
   /* Where to go next, unless the open objective already names its Kibelisk. */

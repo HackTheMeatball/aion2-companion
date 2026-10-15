@@ -96,7 +96,9 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
   box, "done in the story"; the stored tick stays as it was and counts again if the story moves back). Derived the same
   way (E4, switches in `src/core/requirements.js` `GATE_CHANGES`): "Put … on E" once its slot is equipped, `g22:0` /
   `g32:dreams` once their wrapper story quest is turned in, a regional quest once a follow-up of it is picked up or
-  turned in. Milestone counts and tags count derived rows as done.
+  turned in. Milestone counts and tags count derived rows as done; so does the Progress tally of one-time clears
+  (`clearDoneOf`, switch `clearTally`): a derived regional quest counts with its clear reward. The Cube and the stone /
+  crystal totals still only move on a tick, so the reward is never written or counted twice.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.
 
@@ -252,7 +254,9 @@ docs/DEPLOY.md, "CI jobs").
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
 grouped by kind of change. It is the acceptance test for refactors ("golden identical"). After an intended behaviour
 change, run `node tests/golden.js --explain` first (0.3 E4, design §13: attributes every changed state to the smallest
-set of the named changes that reproduces it; table in `tests/out/golden/explain.md` for owner approval), then re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
+set of the named changes that reproduces it; table in `tests/out/golden/explain.md` for owner approval; a stored-state
+difference fails it, except a view flag `open.<milestone>` going absent ↔ true because the change moved that
+milestone in or out of next / Missed, which is listed with its cause), then re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
 (Next up cards whose gate isn't met, generated), and commit the snapshots with the change.
 
 **Accessibility** (since 0.1.6, audit `docs/audits/2026-10-mobile-a11y.md`): the `a11y` suite's `ALLOW` list only

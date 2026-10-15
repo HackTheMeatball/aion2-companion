@@ -54,6 +54,8 @@ export const GATE_CHANGES = {
   "g32:dreams": { apply: "g32:dreams", needs: ["derived"], what: "wrapper rule: \"The One Who Dreams\" done once \"A Daeva Dreaming Anew\" is turned in (proposal)" },
   followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)" },
   turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)" },
+  clearTally: { needs: ["followUps"], what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
+    "turned in) counts with its clear reward (Wisdom Stone + crystal) like a ticked one" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
@@ -74,6 +76,10 @@ export const doneOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return
 /* Done by derivation only (not ticked): the row shows a ticked, disabled box ("done in the story"); its stored tick,
    true, false or absent, is left alone and counts again once the derivation stops holding (A3). The node's result, or null. */
 export const derivedOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return r && r.done === "derived" ? r : null; };
+/* A one-time clear in the Progress tally (its clear reward, CLEAR_REWARD, counted): ticked, or with clearTally a regional
+   quest done by derivation (a follow-up proves you turned it in). Computed, never written: the Cube and the stone /
+   crystal totals only move on a tick (main.js), so a derived quest's reward is counted here and nowhere twice. */
+export const clearDoneOf = (c, k, ev = gatesOf(c)) => !!c.checks[k] || (CHANGES_ON.has("clearTally") && !!derivedOf(c, k, ev));
 /* A node's gate holds apart from its atoms of these kinds ("level", "story", "done"): e.g. a milestone step without its
    milestone's own level, which the callers already pick milestones by. */
 export const openBut = (r, ...kinds) => r.open || r.blockers.every(b => kinds.includes(b.kind));

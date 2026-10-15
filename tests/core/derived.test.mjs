@@ -18,9 +18,10 @@ export default (test, M) => {
   const der = (s, k) => M.derivedOf(M.char(s), k);
 
   test('E4 switches: the page runs with every change on; a proposal turns on the rule it needs; an unknown name throws', () => {
-    assert.deepEqual(ALL, ['derived', 'g22:0', 'g32:dreams', 'followUps', 'turnInLevel']);
+    assert.deepEqual(ALL, ['derived', 'g22:0', 'g32:dreams', 'followUps', 'turnInLevel', 'clearTally']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['g22:0'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['derived', 'g22:0']));
+    withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
     assert.throws(() => M.setGateChanges(['nope']), /unknown change/);
     assert.ok(ALL.every(M.gateChangeOn), 'restored');
@@ -97,6 +98,16 @@ export default (test, M) => {
     withChanges([], () => assert.deepEqual(M.rqStatus(c, q).pre, ['Blade of Vengeance']));
   });
 
+  test('clear reward tally (clearTally): a regional quest derived as done counts like a ticked one; computed, never written', () => {
+    const s = deepFreeze(S({ level: 30, quest: at('Daeva in a Dream', 10), checks: { 'rq:2202016': false }, started: { 'rq:2202017': 1 } })), c = M.char(s);
+    assert.equal(M.clearDoneOf(c, 'rq:2202016'), true, 'derived (its follow-up is picked up), the stored false ignored');
+    assert.equal(M.clearDoneOf(c, 'rq:2202017'), false, 'the follow-up itself is only picked up');
+    assert.ok(M.CLEAR_REWARD('rq:2202016').st > 0, 'the quest has a clear reward');
+    assert.equal(M.clearDoneOf(M.char(S({ checks: { 'rq:2202017': true } })), 'rq:2202017'), true, 'ticked');
+    withChanges(ALL.filter(n => n !== 'clearTally'), () => assert.equal(M.clearDoneOf(c, 'rq:2202016'), false, 'off: the tick only'));
+    assert.equal(c.checks['rq:2202016'], false, 'nothing written');
+  });
+
   test('nothing is written: rankNext, countsOf and the evaluator on deep-frozen saves with derived rows', () => {
     const s = deepFreeze(S({ level: 32, quest: at('A Daeva Dreaming Anew', 2), checks: { 'g16:0': false, 'g22:0': false }, started: { 'rq:2202017': 1 } }));
     const before = JSON.stringify(s);
@@ -120,7 +131,9 @@ export default (test, M) => {
     const s44 = { level: 44, quest: 'Forgotten Commander', qsteps: qs, showTalk: true };
     assert.equal(M.turnInNeedsLv(M.char(S(s44))), 45);
     assert.equal(card(s44).act, '', 'no Turned in at Lv 44');
+    assert.equal(card(s44).turnInLv, 45, 'the card says when (main.js storyView: "Turn in at Lv 45")');
     assert.equal(card({ ...s44, level: 45 }).act, 'story');
+    assert.equal(card({ ...s44, level: 45 }).turnInLv, undefined);
     assert.equal(M.turnInNeedsLv(M.char(S({ ...s44, level: 45 }))), 0);
     withChanges(ALL.filter(n => n !== 'turnInLevel'), () => assert.equal(card(s44).act, 'story', 'without the fix: the E3 bug'));
     /* the quest before it (Farewells, rec 45, no unlock atom) can be turned in at Lv 44: that is how normal play gets here */
