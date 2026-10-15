@@ -108,6 +108,7 @@ const SUITES = {
   journey: { args: ['tests/journey.js'], check: out => {
     const bad = out.split('\n').filter(l => l.includes('!!') && !JOURNEY_KNOWN.some(r => r.test(l)));
     if (!/===== Lv 45/.test(out)) bad.push('journey did not reach Lv 45');
+    if (!/Lv 44 edge: reachable by a real save: yes/.test(out)) bad.push('journey: the Lv 44 "Forgotten Commander" case did not run or did not reach its state');
     return bad; } },
 };
 if (opt('shard') && !SHARDS[opt('shard')]) { console.error(`unknown shard: ${opt('shard')} (${Object.keys(SHARDS).join(', ')})`); process.exit(2); }

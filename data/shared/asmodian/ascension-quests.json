@@ -205,9 +205,21 @@
           },
           {
             "story": "sq:2101050",
-            "is": "reached",
-            "basis": "owner-check",
-            "note": "candidate gate \"The Being Beneath the Lake\" (intro text hint only); owner check 6"
+            "is": "turnedIn",
+            "basis": "owner",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-26",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "The One Who Perceives starts automatically when The Being Beneath the Lake is turned in, and is not offered before (alt character, Lv 2-6; owner check 6a)"
+                }
+              }
+            ]
           }
         ]
       },
@@ -237,12 +249,27 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "read by Data & Research for prereq-gates §5"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-26",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "The One Who Perceives starts automatically when The Being Beneath the Lake is turned in, and is not offered before (alt character; owner check 6a)"
+          },
+          "fields": [
+            "requires"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "notes": [
-        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5)."
+        "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5).",
+        "Gate verified by the owner 2026-10-15 (owner check 6a): it starts automatically when The Being Beneath the Lake is turned in, not before. It is the flight tutorial and rewards the item Ascension: Daeva; the first wings come from The Being Beneath the Lake. Ascension Gauge Level 1 tooltip (owner:2026-10-15-alt-26): needs Verdant Melody Complete, The One Who Hears the Voice (text cut off) and 100% gauge progress; gauge points come from Episode, Regional and Ascension quests, Sealed Dungeons and Strongholds (feeds E8 / check 6b; no gate change)."
       ]
     },
     {

@@ -402,8 +402,11 @@ export function generate(opts = {}) {
      story atoms carry their chain index i), done = the compiled `completesWith`. Live fields only: `proposed` is never
      read, so the graph is identical without proposals (tests/schema.mjs). Skill lines come from rule:skill-level-gate;
      `requiresBasis: unresearched` (noPre) adds its rule level max(unlocksAt, rec); plan nodes name their board (the board's
-     gate is inherited). Its own module (gate-graph.js), read by src/core/evaluator.js and requirements.js (since E2). */
-  const GATE_GRAPH = (() => {
+     gate is inherited). Its own module (gate-graph.js), read by src/core/evaluator.js and requirements.js (since E2).
+     GATE_PROPOSED (0.3 E4, design §13): every record's `proposed` gate compiled the same way, { id: { status, req?, done? } },
+     in a module of its own (gate-proposed.js) that only src/core/evaluator.js reads, and only for the ids in its
+     opts.apply; GATE_GRAPH stays the live gates (identical without proposals, tests/schema.mjs). */
+  const { GATE_GRAPH, GATE_PROPOSED } = (() => {
     const sIdx = Object.fromEntries(chain.map((s, i) => [s.id, i])), bas = a => a.basis ? { basis: a.basis } : {};
     const gate = c => {
       if (!c) return { all: [] };
@@ -418,22 +421,29 @@ export function generate(opts = {}) {
     };
     const cw = xs => (xs || []).map(x => x === 'tick' ? 'tick' : gate(x));
     const nodes = {}, add = (id, n) => { check('GATE_GRAPH: node id unique: ' + id, !(id in nodes)); nodes[id] = n; };
+    /* a record's proposal, compiled like its live gate (a regional quest's req as the oracle reads it: requires and
+       requiresBasis from the proposal, the rule level for "unresearched") */
+    const proposed = {}, prop = (id, r, rq) => { const p = r.proposed; if (!p) return;
+      const pr = 'requires' in p ? p.requires : r.requires;
+      const req = rq ? (p.requiresBasis === 'unresearched' ? { all: [gate(pr), { level: Math.max(r.unlocksAt, r.rec), basis: 'rule' }] } : gate(pr))
+        : 'requires' in p ? gate(p.requires) : undefined;
+      proposed[id] = { status: p.status, ...(req ? { req } : {}), ...(p.completesWith ? { done: cw(p.completesWith) } : {}) }; };
     for (const s of chain) add(s.id, { kind: 'story', key: s.key, req: gate(s.requires), done: cw(s.completesWith) });
     for (const a of asc.slice().sort(byNum('chapter'))) add(a.id, { kind: 'ascension', req: gate(a.requires), done: cw(a.completesWith) });
-    for (const m of msOrder) for (const s of steps.filter(x => x.milestone === m.id).sort(byNum('order'))) add(s.id, { kind: 'step', key: s.key, ms: m.id, req: gate(s.requires), done: cw(s.completesWith) });
+    for (const m of msOrder) for (const s of steps.filter(x => x.milestone === m.id).sort(byNum('order'))) { add(s.id, { kind: 'step', key: s.key, ms: m.id, req: gate(s.requires), done: cw(s.completesWith) }); prop(s.id, s); }
     for (const q of rqs.slice().sort(byNum('order'))) {
       const lv = atomsOf(q.requires).filter(a => a.level !== undefined).map(a => a.level);
       check('GATE_GRAPH: regional level atom = unlocksAt: ' + q.id, lv.length === 1 && lv[0] === q.unlocksAt, lv);
       const req = q.requiresBasis === 'unresearched' ? { all: [gate(q.requires), { level: Math.max(q.unlocksAt, q.rec), basis: 'rule' }] } : gate(q.requires);
-      add(q.id, { kind: 'rq', key: q.key, req, done: cw(q.completesWith), ...(q.requiresBasis ? { rb: q.requiresBasis } : {}) });
+      add(q.id, { kind: 'rq', key: q.key, req, done: cw(q.completesWith), ...(q.requiresBasis ? { rb: q.requiresBasis } : {}) }); prop(q.id, q, true);
     }
     for (const d of sds.slice().sort((a, b) => a.band - b.band || (a.name < b.name ? -1 : 1))) add(d.id, { kind: 'sd', key: d.key, req: gate(d.requires), done: cw(d.completesWith) });
     for (const s of shs.slice().sort((a, b) => a.levelRange.lo - b.levelRange.lo || (a.name < b.name ? -1 : 1))) add(s.id, { kind: 'sh', key: s.key, req: gate(s.requires), done: cw(s.completesWith) });
     for (const u of unlocks.slice().sort((a, b) => (a.order ?? 1e9) - (b.order ?? 1e9) || (a.id < b.id ? -1 : 1))) add(u.id, { kind: 'unlock', req: gate(u.at), done: [gate(u.at)] });   /* done = its `at` holds (no tick) */
-    for (const b of boards.slice().sort(byNum('lv'))) add(b.id, { kind: 'board', req: gate(b.requires), done: [] });
+    for (const b of boards.slice().sort(byNum('lv'))) { add(b.id, { kind: 'board', req: gate(b.requires), done: [] }); prop(b.id, b); }
     for (const m of msOrder) for (const e of build.boardPlan.filter(x => x.milestone === m.id).sort(byNum('order'))) {
       const k = e.node ? nodeById[e.node].key : e.key;
-      add(k, { kind: 'plan', key: k, board: nodeById[e.node || e.anyNode[0]].board, req: gate(e.requires), done: cw(e.completesWith) });
+      add(k, { kind: 'plan', key: k, board: nodeById[e.node || e.anyNode[0]].board, req: gate(e.requires), done: cw(e.completesWith) }); prop(k, e);
     }
     const slg = rules['rule:skill-level-gate'].value, per = slg.stepped.perLevel;
     for (const e of [...build.skillOrder.filter(x => x.core), ...build.skillOrder.filter(x => !x.core)]) {
@@ -454,7 +464,11 @@ export function generate(opts = {}) {
     const dfs = id => { if (mark[id] === 2) return; if (mark[id] === 1) { cyc.push(id); return; } mark[id] = 1; for (const t of edges(id)) if (t in nodes) dfs(t); mark[id] = 2; };
     Object.keys(nodes).forEach(dfs);
     check('GATE_GRAPH: no cycle', !cyc.length, cyc);
-    return { story: chain.map(s => [s.id, s.key]), nodes };
+    /* every proposal is compiled (none dropped) and resolves: done atoms on nodes, story atoms on the chain */
+    check('GATE_PROPOSED: one entry per proposal', Object.keys(proposed).length === report.proposed.length, [Object.keys(proposed).length, report.proposed.length]);
+    for (const [id, p] of Object.entries(proposed)) for (const a of [...(p.req ? atomsOf(p.req) : []), ...(p.done || []).filter(x => x !== 'tick').flatMap(atomsOf)].filter(a => a.done || a.story))
+      check(`GATE_PROPOSED: ${id}: ${a.done ? `done ${a.done} is a node` : `story atom ${a.story} is on the chain, with "is"`}`, a.done ? a.done in nodes : a.i >= 0 && !!a.is);
+    return { GATE_GRAPH: { story: chain.map(s => [s.id, s.key]), nodes }, GATE_PROPOSED: proposed };
   })();
 
   const failed = report.checks.filter(c => !c.pass);
@@ -468,9 +482,12 @@ export function generate(opts = {}) {
   /* GATE_GRAPH: a module of its own (src/data/gate-graph.js), imported only by src/core/evaluator.js */
   const gateModule = '/* Generated by tools/gen/gen.mjs from data/** (data format v2): GATE_GRAPH, the live gates (0.3 requirement engine). Not stored. */\n' +
     `export const GATE_GRAPH = ${J(GATE_GRAPH)};\n`;
+  /* GATE_PROPOSED: the proposals, compiled (src/data/gate-proposed.js), read only by src/core/evaluator.js, per id in opts.apply */
+  const proposedModule = '/* Generated by tools/gen/gen.mjs from data/** (data format v2): GATE_PROPOSED, the 0.3 proposals compiled, applied per id (evaluator opts.apply). Not stored. */\n' +
+    `export const GATE_PROPOSED = ${J(GATE_PROPOSED)};\n`;
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
     gateNodes: Object.keys(GATE_GRAPH.nodes).length };
-  return { module, gateModule, constants: C, gateGraph: GATE_GRAPH, report, failed, sources: SOURCES, siteName, label, all, B };
+  return { module, gateModule, proposedModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, report, failed, sources: SOURCES, siteName, label, all, B };
 }
 
 /* ------------------------------------------------------------------ data/DATA_SOURCES.md */
@@ -506,11 +523,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   mkdirSync(join(ROOT, 'tools/gen/out'), { recursive: true });
   writeFileSync(join(ROOT, 'tools/gen/out/generated.js'), g.module);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-graph.js'), g.gateModule);
+  writeFileSync(join(ROOT, 'tools/gen/out/gate-proposed.js'), g.proposedModule);
   writeFileSync(join(ROOT, 'tools/gen/out/gen-report.json'), JSON.stringify(g.report, null, 1) + '\n');
   writeFileSync(join(ROOT, 'data/DATA_SOURCES.md'), dataSourcesMd(g));
   for (const c of g.failed) console.error('CHECK FAILED: ' + c.check + (c.detail !== undefined ? ' ' + JSON.stringify(c.detail) : ''));
   for (const w of g.report.warnings.filter(w => !/robots unchecked|terms unread/.test(w))) console.log('  warn: ' + w);
   const pr = g.report.proposed, prN = s => pr.filter(p => p.status === s).length;
-  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants + GATE_GRAPH (${g.report.stats.gateNodes} nodes) · ${pr.length} proposed 0.3 gates (${prN('ready')} ready, ${prN('owner-check')} owner-check; not compiled) · data/DATA_SOURCES.md, tools/gen/out/ written (${Date.now() - t0} ms)`);
+  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants + GATE_GRAPH (${g.report.stats.gateNodes} nodes) · ${pr.length} proposed 0.3 gates (${prN('ready')} ready, ${prN('owner-check')} owner-check; in GATE_PROPOSED, applied per id) · data/DATA_SOURCES.md, tools/gen/out/ written (${Date.now() - t0} ms)`);
   process.exit(g.failed.length ? 1 : 0);
 }

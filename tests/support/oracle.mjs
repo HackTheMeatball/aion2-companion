@@ -8,8 +8,10 @@
      O.ids                          every node id, in no particular order (the generator's ids: data ids; plan nodes and
                                     skill lines by save key, as GATE_GRAPH names them)
      O.idOfKey(k)                   the node id of save key k, or null (the oracle doesn't know it)
-     O.at(c, { derived }) → S       one character c (char(state)); derived as in the evaluator: false = a node that can
-                                    be ticked is done by its tick only; true = also by its other completesWith entries
+     O.at(c, { derived, followUps }) → S   one character c (char(state)); derived as in the evaluator: false = a node that
+                                    can be ticked is done by its tick only; true = also by its other completesWith entries;
+                                    followUps: a regional quest ticked or picked up makes the regional quests its sourced /
+                                    owner `done` atoms name done, transitively (design §5.3, Q3)
        S.node(id) → { open, done, blockers } | null
          open      requires holds (playerChecked atoms ignored)
          done      false | "tick" | "derived"
@@ -17,7 +19,8 @@
                    (ahead = idx − pos, + 1 for turnedIn; null with the story unset)
        S.pos                        index of c.quest in the chain, −1 if unset or unknown
      O.chain                        [[id, name]…] in story order
-   apply: Set of record ids whose `proposed` gate is read instead of the live one (§13; empty in E3, as the app). */
+   apply: Set of record ids whose `proposed` gate is read instead of the live one (§13; tests/invariant.mjs loads a
+   second oracle with the app's set, empty since the approved g22:0 / g32:dreams proposals moved to the live data). */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -83,9 +86,22 @@ export function loadOracle({ root, apply = new Set() }) {
   }
   for (const n of nodes.values()) if (n.tickable === undefined) n.tickable = n.completesWith.includes('tick');
 
-  function at(c, { derived = false } = {}) {
+  /* regional quest records by id, for the follow-up rule */
+  const rqById = new Map(rqs.map(q => [q.id, q]));
+  const leaves = a => a.all ? a.all.flatMap(leaves) : a.any ? a.any.flatMap(leaves) : [a];
+
+  function at(c, { derived = false, followUps = false } = {}) {
     const lv = c.level || 0, checks = c.checks || {}, pos = c.quest && sName.has(c.quest) ? sName.get(c.quest) : -1;
     const memo = new Map();
+    /* follow-up rule (design §5.3, Q3): every regional quest the player has ticked or picked up (c.started) was let in by
+       the game, so each regional quest its gate names in a `done` atom backed by a source or the owner was turned in;
+       and so on back along those edges (a breadth-first walk from the ticked and picked-up ones) */
+    const proven = new Set();
+    if (followUps) {
+      const started = c.started || {}, queue = rqs.filter(q => checks[q.key] || started[q.key]).map(q => q.id);
+      for (let i = 0; i < queue.length; i++) for (const a of leaves(nodes.get(queue[i]).requires))
+        if (a.done && rqById.has(a.done) && (a.basis === 'sourced' || a.basis === 'owner') && !proven.has(a.done)) { proven.add(a.done); queue.push(a.done); }
+    }
     /* one atom → the unmet leaves ([] = holds) */
     const unmet = a => {
       if (a.all) return a.all.flatMap(unmet);
@@ -110,6 +126,7 @@ export function loadOracle({ root, apply = new Set() }) {
       let done = false;
       if (n.tickable && n.key !== undefined && checks[n.key]) done = 'tick';
       else if (!n.tickable || derived) { if (n.completesWith.some(e => e !== 'tick' && !unmet(e).length)) done = 'derived'; }
+      if (!done && proven.has(id)) done = 'derived';
       const r = { open: !blockers.length, done, blockers };
       memo.set(id, r);
       return r;

@@ -870,7 +870,7 @@
     },
     {
       "id": "C28h",
-      "claim": "Unverified: Kibelisk and Command scroll unlock timing; exact unlock level for most regional quests.",
+      "claim": "Unverified: Command scroll unlock timing; exact unlock level for most regional quests. (Kibelisk timing owner-verified 2026-10-15.)",
       "verdict": "verified",
       "sources": [
         {
@@ -880,15 +880,26 @@
         {
           "url": "https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name",
           "quote": "Unlocks at 10"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-26",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Kibelisk teleport works right after the first bind; each costs a Return Scroll (Prepare to Escape gives 20, Spread Your Wings 20); Kibelisk tutorial starts after Spread Your Wings is turned in"
+          }
         }
       ],
       "action": "rewrite",
-      "newText": "<p><b>Unverified:</b> Kibelisk and Command mission unlock timing.</p>",
-      "note": "Regional unlock levels come from R1's Metabot pages ('Unlocks at'); drop that clause once E2 merges data/rq.json. Command vendor is now verified, but its unlock level still isn't.",
+      "newText": "<p><b>Unverified:</b> Command mission unlock timing.</p>",
+      "note": "Regional unlock levels come from R1's Metabot pages ('Unlocks at'); drop that clause once E2 merges data/rq.json. Command vendor is now verified, but its unlock level still isn't. Kibelisk timing is owner-verified (2026-10-15): teleport works right after the first bind in A Village in the Fog, each teleport costs a Return Scroll (Prepare to Escape rewards 20, Spread Your Wings 20), and the Kibelisk tutorial starts after Spread Your Wings is turned in. Command scrolls stay unverified.",
       "appliesTo": [
         "conf:unlock-timing"
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-15"
     },
     {
       "id": "C36",
@@ -913,6 +924,17 @@
         {
           "url": "https://skycoach.gg/blog/aion-2/articles/aion-2-leveling-guide",
           "quote": "Before each one, you must satisfy specific quest requirements and fill an Ascension Gauge to 100%."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-26",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Ascension Gauge Lv 1 tooltip: Verdant Melody Complete, The One Who Hears the Voice (cut off), 100% gauge; points from Episode, Regional, Ascension quests, Sealed Dungeons, Strongholds"
+          }
         }
       ],
       "action": "rewrite",
@@ -922,7 +944,7 @@
         "g32:dreams",
         "asc:dreams"
       ],
-      "verifiedAt": "2026-10-14"
+      "verifiedAt": "2026-10-15"
     },
     {
       "id": "C37",
@@ -955,7 +977,7 @@
     {
       "id": "C38",
       "claim": "\"The One Who Perceives\" gives your first wings.",
-      "verdict": "disputed",
+      "verdict": "wrong",
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/quests/the-being-beneath-the-lake",
@@ -970,12 +992,23 @@
         {
           "url": "https://skycoach.gg/blog/aion-2/articles/aion-2-leveling-guide",
           "quote": "The main upgrades are Lesser Wings from The One Who Perceives, Intermediate Wings from The One Who Hears the Voice, Superior Wings from The One Who Dreams"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-26",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "First wings (Lesser Daeva Wings, Bound) are a reward of turning in The Being Beneath the Lake, auto-equipped; The One Who Perceives is the flight tutorial, rewards item Ascension: Daeva"
+          }
         }
       ],
       "action": "drop",
       "newText": "",
-      "note": "Metabot's quest DB puts Lesser Daeva Wings on 'The Being Beneath the Lake' (the step already says it unlocks wings); Perceives rewards 'Ascension: Daeva'. Drop the Perceives wings phrase. Also fixes the in-game names 'Dream Crossroad' and 'The One Who Hears the Voice'.",
-      "verifiedAt": "2026-10-12"
+      "note": "Owner-verified 2026-10-15: the first wings (Lesser Daeva Wings, Bound) come from turning in 'The Being Beneath the Lake' and are auto-equipped; 'The One Who Perceives' is the flight tutorial and rewards the item 'Ascension: Daeva' (matches Metabot). The Skycoach line is wrong. Drop the Perceives wings phrase; the guide text already credits The Being Beneath the Lake (g6:0). Also fixes the in-game names 'Dream Crossroad' and 'The One Who Hears the Voice'.",
+      "verifiedAt": "2026-10-15"
     }
   ]
 }

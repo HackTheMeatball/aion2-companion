@@ -178,4 +178,24 @@ export default (test, M) => {
     assert.equal(M.evaluate({ checks: {}, level: 12, quest: M.QUESTS[qi + 1][1] }).node('unlock:daevanion').done, 'derived');
     assert.equal(M.evaluate({ checks: {}, level: 45, quest: '' }).list().length, Object.keys(M.GATE_GRAPH.nodes).length);
   });
+  test('evaluator, apply (E4): a proposal replaces req / done only for the ids asked for; a proposed completesWith needs derived', () => {
+    const P = { lvl: { status: 'ready', req: { level: 20, basis: 'rule' } }, rch: { status: 'ready', done: ['tick', S('sq:1', 1, 'turnedIn')] } };
+    const c = C({ level: 15, quest: 'Q3' });
+    assert.equal(n(c, 'lvl', { proposed: P }).open, true, 'not applied: the live gate');
+    assert.equal(n(c, 'lvl', { proposed: P, apply: ['lvl'] }).open, false);
+    assert.equal(n(c, 'rch', { proposed: P, apply: ['rch'] }).done, false, 'derived off: the tick only');
+    assert.equal(n(c, 'rch', { proposed: P, apply: ['rch'], derived: true }).via, 'turnedIn sq:1');
+    assert.equal(n(C({ level: 15, checks: { lvl: true } }), 'dn', { proposed: P, apply: ['lvl'] }).open, true, 'a done atom reads the applied node');
+  });
+  test('evaluator, followUps (E4): a ticked or picked-up regional quest proves its sourced / owner done atoms, transitively', () => {
+    const rq = (req, key) => ({ kind: 'rq', key, req, done: ['tick'] });
+    const g = { story: G.story, nodes: { a: rq({ level: 1 }, 'a'), b: rq({ done: 'a', basis: 'sourced' }, 'b'), c: rq({ all: [{ done: 'b', basis: 'owner' }] }, 'c'),
+      x: rq({ level: 1 }, 'x'), y: rq({ done: 'x', basis: 'owner-check' }, 'y') } };
+    const e = (c, o) => M.evaluate({ level: 1, ...c }, { graph: g, followUps: true, ...o });
+    const r = e({ checks: {}, started: { c: 1, y: 1 } });
+    assert.deepEqual(['a', 'b', 'c', 'x', 'y'].map(id => [r.node(id).done, r.node(id).via || null]),
+      [['derived', 'followUp b'], ['derived', 'followUp c'], [false, null], [false, null], [false, null]]);
+    assert.equal(e({ checks: { b: true } }).node('a').done, 'derived');
+    assert.equal(e({ checks: {}, started: { c: 1 } }, { followUps: false }).node('b').done, false);
+  });
 };

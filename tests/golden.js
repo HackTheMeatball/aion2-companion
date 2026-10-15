@@ -11,6 +11,11 @@
               --filter <regex> (only states whose id matches; verify ignores the rest) · --limit N (first N states, smoke runs)
               --render (let the page render; slower. The default hides the page so no layout runs; --render must give
               identical snapshots, which shows the recorded state doesn't depend on layout)
+     node tests/golden.js --explain    attribute every difference to the 0.3 changes behind it (design §13; tests/golden/explain.js):
+              the page with every change on (as it ships) against the snapshots, then the changed states again with every
+              change off, each change alone (with the rules it needs) and each pair; each changed state goes to the smallest
+              set that reproduces it. Fails on a difference no set reproduces, on one that "all off" doesn't undo, and on a
+              stored-state (store) difference. Writes tests/out/golden/explain.md / explain.json; never records.
    Output: tests/out/golden/diff.md and diff.json (every changed state, before/after per field). */
 'use strict';
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
@@ -24,7 +29,7 @@ const KEY = 'aion2-assassin-route-v4';
 const DIR = path.join(CFG.ROOT, 'tests', 'golden'), SNAP = path.join(DIR, 'snapshots'), OUT = path.join(CFG.OUT, 'golden');
 const VIOL = path.join(DIR, 'KNOWN-VIOLATIONS.md');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
-const RECORD = flag('record'), ALL = flag('all'), JOBS = Math.max(1, +(opt('jobs') || process.env.GOLDEN_JOBS || 3));
+const RECORD = flag('record'), EXPLAIN = flag('explain'), ALL = flag('all'), JOBS = Math.max(1, +(opt('jobs') || process.env.GOLDEN_JOBS || 3));
 const RENDER = flag('render');
 const FILTER = opt('filter') ? new RegExp(opt('filter')) : null, LIMIT = opt('limit') ? +opt('limit') : 0;
 const RECYCLE = 150;
@@ -144,9 +149,11 @@ function writeDiffFiles(rep, before, after) {
      Playwright's own defaults, repeated because the last --blink-settings switch wins. */
   const browser = await chromium.launch({ args: ['--host-resolver-rules=MAP fonts.googleapis.com ~NOTFOUND, MAP fonts.gstatic.com ~NOTFOUND',
     ...(RENDER ? [] : ['--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4,imagesEnabled=false'])] });
-  const newCtx = async () => {
+  /* changes: null = the page as it ships; else the names of the 0.3 changes to run with (window.__gateChanges, --explain) */
+  const newCtx = async (changes = null) => {
     const ctx = await browser.newContext({ viewport: { width: 1500, height: 1000 }, serviceWorkers: 'block', reducedMotion: 'reduce' });
     await ctx.clock.setFixedTime(FIXED_NOW);
+    if (changes) await ctx.addInitScript(ch => { window.__gateChanges = ch; }, changes);
     await ctx.addInitScript(installProbe, [KEY, !RENDER]);
     return ctx;
   };
@@ -159,38 +166,50 @@ function writeDiffFiles(rep, before, after) {
   if (FILTER) states = states.filter(s => FILTER.test(s.id));
   if (LIMIT) states = states.slice(0, LIMIT);
   const tGen = Date.now();
-  console.log(`golden: ${states.length} states (${ALL ? 'core + extended' : 'core'}${FILTER ? ', filtered' : ''}) · ${JOBS} pages · ${RECORD ? 'record' : 'verify'}`);
+  console.log(`golden: ${states.length} states (${ALL ? 'core + extended' : 'core'}${FILTER ? ', filtered' : ''}) · ${JOBS} pages · ${RECORD ? 'record' : EXPLAIN ? 'explain' : 'verify'}`);
 
   /* 2. one browser, JOBS contexts (own localStorage each), each pulling states off a shared queue */
-  const results = {}; let next = 0, done = 0, lastLog = Date.now();
-  await Promise.all(Array.from({ length: Math.min(JOBS, states.length) }, async () => {
-    /* a renderer that reloads the page hundreds of times grows by gigabytes: a fresh context every RECYCLE states */
-    let ctx = null, page = null, used = 0;
-    const fresh = async () => { if (ctx) await ctx.close().catch(() => {}); ctx = await newCtx(); page = await ctx.newPage(); used = 0;
-      await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); };
-    const load = async raw => {
-      await page.evaluate(([k, raw]) => { localStorage.clear(); if (raw !== null) localStorage.setItem(k, raw); }, [KEY, raw]);
-      await page.reload({ waitUntil: 'commit' });
-      return page.evaluate(() => window.__golden);
-    };
-    while (next < states.length) {
-      if (!ctx || used++ >= RECYCLE) await fresh();
-      const s = states[next++];
-      /* a crashed or hung page (a busy CI machine) gets one retry in a fresh context; the state itself is the same */
-      let o; try { o = await load(s.raw); } catch (e) { console.log(`  retry ${s.id}: ${String(e.message).split('\n')[0]}`); await fresh(); o = await load(s.raw); }
-      const r = { in: hash(s.raw) };
-      if (o.probeError) r.probeError = o.probeError;
-      for (const f of ['nu', 'ms', 'rt', 'jr', 'reg']) if (o[f] !== undefined) r[f] = o[f];
-      const sd = storeDiff(s.raw, o.stored); if (sd) r.store = sd;
-      if (o.keys && o.keys.length) r.keys = o.keys;
-      if (o.err && o.err.length) r.err = [...new Set(o.err)];
-      r.mode = o.mode;
-      Object.defineProperty(r, 'storedRaw', { value: o.stored, enumerable: false }); /* for the violations report, not saved */
-      results[s.id] = r; done++;
-      if (Date.now() - lastLog > 15000) { lastLog = Date.now(); console.log(`  … ${done}/${states.length} (${((Date.now() - tGen) / 1000).toFixed(0)} s)`); }
-    }
-    await ctx.close();
-  }));
+  const runStates = async (states, changes = null) => {
+    const results = {}; let next = 0, done = 0, lastLog = Date.now();
+    await Promise.all(Array.from({ length: Math.min(JOBS, states.length) }, async () => {
+      /* a renderer that reloads the page hundreds of times grows by gigabytes: a fresh context every RECYCLE states */
+      let ctx = null, page = null, used = 0;
+      const fresh = async () => { if (ctx) await ctx.close().catch(() => {}); ctx = await newCtx(changes); page = await ctx.newPage(); used = 0;
+        await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); };
+      const load = async raw => {
+        await page.evaluate(([k, raw]) => { localStorage.clear(); if (raw !== null) localStorage.setItem(k, raw); }, [KEY, raw]);
+        await page.reload({ waitUntil: 'commit' });
+        return page.evaluate(() => window.__golden);
+      };
+      while (next < states.length) {
+        if (!ctx || used++ >= RECYCLE) await fresh();
+        const s = states[next++];
+        /* a crashed or hung page (a busy CI machine) gets one retry in a fresh context; the state itself is the same */
+        let o; try { o = await load(s.raw); } catch (e) { console.log(`  retry ${s.id}: ${String(e.message).split('\n')[0]}`); await fresh(); o = await load(s.raw); }
+        const r = { in: hash(s.raw) };
+        if (o.probeError) r.probeError = o.probeError;
+        for (const f of ['nu', 'ms', 'rt', 'jr', 'reg']) if (o[f] !== undefined) r[f] = o[f];
+        const sd = storeDiff(s.raw, o.stored); if (sd) r.store = sd;
+        if (o.keys && o.keys.length) r.keys = o.keys;
+        if (o.err && o.err.length) r.err = [...new Set(o.err)];
+        r.mode = o.mode;
+        Object.defineProperty(r, 'storedRaw', { value: o.stored, enumerable: false }); /* for the violations report, not saved */
+        results[s.id] = r; done++;
+        if (Date.now() - lastLog > 15000) { lastLog = Date.now(); console.log(`  … ${done}/${states.length} (${((Date.now() - tGen) / 1000).toFixed(0)} s)`); }
+      }
+      await ctx.close();
+    }));
+    return results;
+  };
+  const results = await runStates(states);
+  if (EXPLAIN) {
+    if (FILTER || LIMIT || ALL) console.log('--explain: attributing the states run (filtered / limited / extended)');
+    const meta = await (async () => { const cx = await newCtx(), pg = await cx.newPage(); await pg.goto(PAGE); const m = await pg.evaluate(() => JSON.parse(JSON.stringify(GATE_CHANGES))); await cx.close(); return m; })();
+    const code = await require('./golden/explain').explain({ states, shipped: results, before: loadSnapshots(), meta, run: runStates, canon, describe, out: OUT, root: CFG.ROOT });
+    await browser.close(); if (server) server.close();
+    console.log(`${states.length} states in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
+    process.exit(code);
+  }
   await browser.close(); if (server) server.close();
   const tRun = Date.now();
 

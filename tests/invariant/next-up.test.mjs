@@ -2,16 +2,18 @@
    tests/invariant/states.mjs, loaded and migrated as the page does, with an independent oracle (tests/support/oracle.mjs:
    the raw v2 data, not GATE_GRAPH and not the evaluator) as the judge:
 
-   1. Next up never offers (a card with an action) a node the oracle says is blocked (its live `requires`, derived off,
-      as the app runs since E2). Rows the player has already started (a regional quest picked up, a dungeon entered)
-      are judged on 2 only: the player's own record says the game let them in.
-   2. Next up never offers a node that is done, ticked or derived (the oracle with every completesWith entry on).
+   1. Next up never offers (a card with an action) a node the oracle says is blocked, judged as the app runs since E4:
+      derived completion on, the wrapper completions g22:0 / g32:dreams (live data), the follow-up rule on (oracle OA). Rows
+      the player has already started (a regional quest picked up, a dungeon entered) are judged on 2 only: the player's
+      own record says the game let them in.
+   2. Next up never offers a node that is done, ticked or derived (the same oracle: every completesWith entry, the
+      wrapper proposals and the follow-up rule).
    3. PENDING: a met Ascension step is the first step card. 0.3 ranking behaviour that isn't built yet (DATA-FORMAT-V2
       §10; E2 keeps 0.2's order): counted, not enforced; its own test fails if its ids go missing, if it counts nothing,
       or once it holds everywhere (then enforce it).
    4. Monotonic: raising the level by one or moving the story on by one never closes an open node except by making it
       done, judged by the app's evaluator and by the oracle (every targeted state and a hashed half of the rest).
-   5. The evaluator (GATE_GRAPH, derived off and on) agrees with the oracle on every node: open, done, and the blockers
+   5. The evaluator (GATE_GRAPH, derived off, on, and on with the app's proposals and follow-ups) agrees with the oracle on every node: open, done, and the blockers
       (level needed, story quest and `ahead`, the `done` atom); a level blocker never shows with the level met (every
       targeted state and the other hashed half; and the oracle must catch three bugs seeded into a copy of the graph).
    6. Nothing is written: rankNext and evaluate run on a deep-frozen save and character.
@@ -28,14 +30,9 @@ const { fnv } = createRequire(import.meta.url)('../golden/states.js');
 
 /* disagreement key → { cause, states }. Key: "<invariant> <card> <node id> [<what blocks it, or how it is done>]".
    states: exactly the state ids that hit it (sorted); a state more or less fails, so a new case can't hide under the key. */
-export const KNOWN = {
-  'blocked story sq:2102800 [level]': { cause: 'Forgotten Commander\'s live gate has its unlock level {level: 45} (sourced, design §7). ' +
-    'The story card is level-gated by the recommended level (kept rule "story-card-recommended-level", storyRecGate) and ' +
-    'still offers "Turned in" once every objective is ticked (rankNext storyCard: act = gated ? (allDone ? "story" : "") : ' +
-    '"story"), so at Lv 44 with all 5 objectives ticked it offers to turn in a quest the game opens at 45. Finding Nemon ' +
-    '(unlock Lv 10) has no objective list, so its gated card has no action. Owner decision (Q10), not changed in E3',
-  states: ['target/objs-all/L44-q85'] },
-};
+/* (E3 pinned "blocked story sq:2102800 [level]" here: "Turned in" on Forgotten Commander at Lv 44 with every objective
+   ticked. E4 fixes it: the turn-in waits for the quest's unlock level, turnInNeedsLv; core nextup.test.mjs pins it.) */
+export const KNOWN = {};
 /* invariant 3's Ascension steps (step nodes; the test fails unless all three exist, so a rename can't empty it) */
 const ASC_IDS = ['g22:0', 'g32:dreams', 'g45:0'];
 
@@ -46,7 +43,9 @@ const kinds = bs => [...new Set(bs.map(b => b.kind === 'done' ? 'done ' + b.of :
 const NO_NODE = new Set(['cube', 'stup']), NO_ACT = new Set(['stwait', 'laterSkill', 'laterStep']);
 
 export default (test, M, X) => {
-  const { states, O, root } = X;
+  const { states, O, OA, APP_APPLY, root } = X;
+  /* the app's evaluator options and the oracle that judges them (E4: derived, the wrapper proposals, the follow-up rule) */
+  const APP = { derived: true, followUps: true };
   const N = M.GATE_GRAPH.nodes, storyId = new Map(O.chain.map(([id, n]) => [n, id]));
   const loaded = [];
   const found = new Map();   /* disagreement key → { n, ex, ids } */
@@ -96,13 +95,13 @@ export default (test, M, X) => {
       let cards;
       try { cards = M.rankNext(s, { basic: s.mode === 'basic' }); }
       catch (e) { errors.push(`${id}: rankNext threw on a frozen save: ${e.message}`); continue; }
-      const o0 = O.at(c), o1 = O.at(c, { derived: true });
+      const o0 = OA.at(c, APP), o1 = o0;
       for (const x of offersOf(cards, c)) {
         if (x.unmapped) { errors.push(`${id}: card kind "${x.card}" has an action but no node mapping in this test`); continue; }
         if (!x.id) { errors.push(`${id}: ${x.card} offers ${x.k}, a key the data doesn't have`); continue; }
         const a = o0.node(x.id), b = o1.node(x.id);
         if (!x.started && !a.open) note(`blocked ${x.card} ${x.id} [${kinds(a.blockers)}]`, id, sig(a.blockers));
-        if (b.done) note(`done ${x.card} ${x.id} [${b.done}]`, id, b.done === 'tick' ? 'ticked' : 'derived from the story or another node');
+        if (b.done) note(`done ${x.card} ${x.id} [${b.done}]`, id, b.done === 'tick' ? 'ticked' : 'derived from the story, a wrapper or a follow-up');
       }
       /* invariant 3 (for information): a met, unfinished Ascension step and the first step card */
       const asc = ASC.filter(n => o0.node(n).open && !o1.node(n).done);
@@ -125,28 +124,32 @@ export default (test, M, X) => {
 
   /* Next up runs on every state. The rest is split for time: evaluator vs oracle on every targeted state plus the half of
      the golden and random ones whose id hashes low, monotonic on the other half plus every targeted state (a hash of the
-     id, not the position, so the split can't alias with the generator's loops). Derived on: every targeted state and a
-     hashed quarter of the rest (derived completion is E4 and the live data has few derivable rows). */
+     id, not the position, so the split can't alias with the generator's loops). Derived on (alone, and as the app runs
+     since E4: with its proposals and the follow-up rule): every targeted state and a hashed quarter of the rest. */
   const targeted = ({ id }) => id.startsWith('target/'), low = ({ id }) => fnv('invariant-split|' + id) < 0.5;
   const cmpList = loaded.filter(x => targeted(x) || low(x)), monoList = loaded.filter(x => targeted(x) || !low(x));
   const withDerived = id => id.startsWith('target/') || fnv('invariant-derived|' + id) < 0.25;
+  /* modes: derived off; on; on with the app's proposals and the follow-up rule (E4) */
+  const MODES = [{ derived: false }, { derived: true }, { derived: true, app: true }];
   const compare = (graph, list) => {
     const diffs = new Map(), bad = (k, id, d) => { const x = diffs.get(k) || { n: 0, ex: `${id} (${d})` }; x.n++; diffs.set(k, x); };
     const ids = O.ids;
-    list.forEach(({ id, c }) => { for (const derived of withDerived(id) ? [false, true] : [false]) {
-      const ev = M.evaluate(c, { derived, ...(graph ? { graph } : {}) }), o = O.at(c, { derived });
+    list.forEach(({ id, c }) => { for (const mode of withDerived(id) ? MODES : MODES.slice(0, 1)) {
+      const { derived } = mode, tag = mode.app ? 'app' : derived;
+      const ev = M.evaluate(c, { derived, ...(mode.app ? { apply: APP_APPLY, followUps: true } : {}), ...(graph ? { graph } : {}) });
+      const o = (mode.app ? OA : O).at(c, { derived, followUps: !!mode.app });
       for (const n of ids) {
         const e = ev.node(n), r = o.node(n);
-        if (e.open !== r.open) bad(`${n} open (derived ${derived}): oracle ${r.open} / evaluator ${e.open}`, id, sig(r.blockers));
-        if (e.done !== r.done) bad(`${n} done (derived ${derived}): oracle ${r.done} / evaluator ${e.done}`, id, '');
-        if ((e.blockers.length || r.blockers.length) && sig(e.blockers) !== sig(r.blockers)) bad(`${n} blockers (derived ${derived})`, id, `oracle ${sig(r.blockers)} / evaluator ${sig(e.blockers)}`);
+        if (e.open !== r.open) bad(`${n} open (derived ${tag}): oracle ${r.open} / evaluator ${e.open}`, id, sig(r.blockers));
+        if (e.done !== r.done) bad(`${n} done (derived ${tag}): oracle ${r.done} / evaluator ${e.done}`, id, '');
+        if ((e.blockers.length || r.blockers.length) && sig(e.blockers) !== sig(r.blockers)) bad(`${n} blockers (derived ${tag})`, id, `oracle ${sig(r.blockers)} / evaluator ${sig(e.blockers)}`);
         if (e.blockers.some(b => b.kind === 'level' && b.need <= c.level)) bad(`${n} level blocker with the level met`, id, sig(e.blockers));
       }
     } });
     return diffs;
   };
 
-  test(`5. evaluator = oracle on every node (open, done, blockers) of ${cmpList.length} states (derived off; on for ${cmpList.filter(x => withDerived(x.id)).length})`, () => {
+  test(`5. evaluator = oracle on every node (open, done, blockers) of ${cmpList.length} states (derived off; on, and on with the app's proposals and follow-ups, for ${cmpList.filter(x => withDerived(x.id)).length})`, () => {
     const inCmp = new Set(cmpList);
     if (!X.only) assert.ok(loaded.filter(targeted).every(x => inCmp.has(x)) && cmpList.length > loaded.length / 2, 'the compared set');
     const diffs = compare(null, cmpList);
@@ -161,9 +164,13 @@ export default (test, M, X) => {
     const rqStory = pickNode('rq', a => a.story && a.is === 'reached'), stepLv = pickNode('step', a => a.level !== undefined), rqDone = pickNode('rq', a => a.done);
     atoms(g.nodes[rqStory].req).find(a => a.story).is = 'turnedIn';
     atoms(g.nodes[stepLv].req).find(a => a.level !== undefined).level++;
+    /* the dropped done atoms the follow-up rule reads (app mode): the quests they name lose that proof too */
+    const cascade = g.nodes[rqDone].req.all.filter(a => a.done && g.nodes[a.done].kind === 'rq' && ['sourced', 'owner'].includes(a.basis)).map(a => a.done);
     g.nodes[rqDone].req = { all: g.nodes[rqDone].req.all.filter(a => !a.done) };
     const hit = new Set([...compare(g, loaded.filter((_, i) => i % 20 === 1)).keys()].map(k => k.split(' ')[0]));
-    assert.deepEqual([...hit].sort(), [rqStory, stepLv, rqDone].sort());
+    const want = [rqStory, stepLv, rqDone];
+    assert.deepEqual(want.filter(n => !hit.has(n)), [], `each seeded bug shows up (hit: ${[...hit].join(' ')})`);
+    assert.deepEqual([...hit].filter(n => !want.includes(n) && !cascade.includes(n)), [], `nothing else differs (hit: ${[...hit].join(' ')})`);
   });
 
   /* one step per state (level or story, picked by a hash of the id; the other when that one can't move), judged twice:
@@ -173,14 +180,14 @@ export default (test, M, X) => {
     const NQ = O.chain.length, moved = { 'level +1': 0, 'story +1': 0 };
     monoList.forEach(({ id, c }) => {
       const ev = M.gatesOf(c), open = ev.list(r => r.open).map(r => r.id), pos = c.quest ? O.chain.findIndex(([, n]) => n === c.quest) : -1;
-      const o = O.at(c), openO = O.ids.filter(n => o.node(n).open);
+      const o = OA.at(c, APP), openO = O.ids.filter(n => o.node(n).open);
       const can = [];
       if (c.level < 45) can.push(['level +1', { ...c, level: c.level + 1 }]);
       if (pos >= 0 && pos + 1 < NQ) { const { storyEnd, ...rest } = c; can.push(['story +1', { ...rest, quest: O.chain[pos + 1][1] }]); }
       const next = can.length < 2 ? can : [can[fnv('invariant-step|' + id) < 0.5 ? 0 : 1]];
       next.forEach(([what]) => moved[what]++);
       for (const [what, c2] of next) {
-        const ev2 = M.gatesOf(c2), o2 = O.at(c2);
+        const ev2 = M.gatesOf(c2), o2 = OA.at(c2, APP);
         for (const n of open) { const r = ev2.node(n); if (!r.open && r.done === false) bad(`${what} closes ${n} (app)`, id); }
         for (const n of openO) { const r = o2.node(n); if (!r.open && !r.done) bad(`${what} closes ${n} (oracle)`, id); }
       }
@@ -190,7 +197,7 @@ export default (test, M, X) => {
   });
 
   test('6. evaluate() leaves a deep-frozen character as it was', () => {
-    for (const { c } of loaded.filter((_, i) => i % 50 === 0)) { const before = JSON.stringify(c); M.evaluate(c, { derived: true }).list(); M.gatesOf(c).list(); assert.equal(JSON.stringify(c), before); }
+    for (const { c } of loaded.filter((_, i) => i % 50 === 0)) { const before = JSON.stringify(c); M.evaluate(c, { derived: true, apply: APP_APPLY, followUps: true }).list(); M.gatesOf(c).list(); assert.equal(JSON.stringify(c), before); }
   });
 
   /* the disagreements, against KNOWN */

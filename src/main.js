@@ -15,9 +15,9 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, countsOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
-  stigmaPlan, stigmaSlots, storyGate, storyIdx } from "./core/requirements.js";
+  setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
@@ -75,21 +75,21 @@ const dvRowHTML = it => {
    Clicking a completed one undoes it. In progress doesn't count toward the milestone. */
 function syncQRun() {
   mainEl.querySelectorAll("#gates li.qrow input[data-k]").forEach(i => {
-    const k = i.dataset.k, run = !char(state).checks[k] && qProg(k) > 0, li = i.closest("li");
+    const k = i.dataset.k, dv = "derived" in i.dataset, done = !!char(state).checks[k] || dv, run = !done && qProg(k) > 0, li = i.closest("li");
     li.classList.toggle("running", run); i.indeterminate = run;
-    i.title = char(state).checks[k] ? "Completed · click to undo" : run ? "In progress · click when turned in" : "Click when you take the quest; click again when turned in";
+    if (!dv) i.title = done ? "Completed · click to undo" : run ? "In progress · click when turned in" : "Click when you take the quest; click again when turned in";
     const txt = li.querySelector(".txt"); let tag = txt && txt.querySelector(":scope > .run-tag");
     if (run && txt && !tag) { tag = document.createElement("span"); tag.className = "run-tag"; tag.textContent = "In progress"; const b = txt.querySelector("b"); b ? b.after(tag) : txt.prepend(tag); }
     if (!run && tag) tag.remove();
     /* "Not in game yet": only for a quest you haven't picked up; pressed = snoozed until your next Level up. */
-    const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !char(state).checks[k] && !run && !!it && !rqAvail(it.q).ok;
+    const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !done && !run && !!it && !rqAvail(it.q).ok;
     li.classList.toggle("locked", shut);
-    if (zb) { zb.hidden = !!char(state).checks[k] || run || shut; zb.setAttribute("aria-pressed", String(zz)); zb.textContent = zz ? "Not in game yet · undo" : "Not in game yet"; }
+    if (zb) { zb.hidden = done || run || shut; zb.setAttribute("aria-pressed", String(zz)); zb.textContent = zz ? "Not in game yet · undo" : "Not in game yet"; }
     /* Locked by the guide's data but already offered in your game: one click marks it picked up (same as its box). */
     const ib = li.querySelector(":scope > .q-inl"); if (ib) ib.hidden = !shut;
     /* What opens it only matters while it isn't picked up. */
-    const rr = li.querySelector(".rq-req"); if (rr) rr.hidden = !!char(state).checks[k] || run;
-    li.classList.toggle("snoozed", zz && !char(state).checks[k] && !run);
+    const rr = li.querySelector(".rq-req"); if (rr) rr.hidden = done || run;
+    li.classList.toggle("snoozed", zz && !done && !run);
   });
 }
 /* Snooze a regional quest the guide shows as available but the game doesn't (char(state).rqSnooze[key] = level it was set at).
@@ -112,6 +112,9 @@ document.getElementById("gates").addEventListener("click", e => {
   if (!char(state).checks[k] && !qProg(k)) { e.preventDefault(); char(state).started[k] = 1; save(); update(); return; }
   delete char(state).started[k];
 }, true);
+/* Test hook (tests/golden.js --explain): the 0.3 E4 changes to run with, set by the runner before the page loads; the
+   page itself runs with all of them on. */
+if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
 /* The save from storage, then the load-time steps (src/core/migrations.js), which write it back where they always did. */
 let { state, hadSave } = (() => { let raw = null; try { raw = localStorage.getItem(KEY); } catch (e) {} return loadState(raw); })();
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
@@ -496,9 +499,11 @@ function storyView(a) {
     if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
     if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`); }
   const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs.length ? `<span class="ns-mean">Meanwhile: ${xs.join(" / ")}</span>` : ""}`;
-  if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act };
+  /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
+  const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
+  if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
   const kibTxt = a.kib ? ` · <span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "";
-  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${kibTxt}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, quest: a.objectives };
+  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${kibTxt}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives };
 }
 function renderNow() {
   const el = nowEl; if (!el) return;
@@ -580,6 +585,7 @@ nowEl.addEventListener("click", e => {
     return; }
   if (a.startsWith("obj:")) { const i = +a.slice(4); char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(i); char(state).qsteps[char(state).quest] = [...cur]; save(); renderQuestSubs(); return; }
   if (a === "story") { /* "Turned in": every objective of the quest counts as done (sub-steps too), then the story moves on. */
+    if (turnInNeedsLv(char(state))) return; /* not below the quest's unlock level (the card shows no button then) */
     const list = QUEST_STEPS[char(state).quest];
     if (list) { char(state).qsteps = char(state).qsteps || {}; char(state).qsteps[char(state).quest] = list.map((_, i) => i); list.forEach((_, i) => setObj(i, true)); save(); }
     /* Milestone steps that are this story quest (byStory) are done with it. */
@@ -795,7 +801,7 @@ function update() {
   document.getElementById("lvlRange").value = lv;
   { const lb = document.getElementById("lvlUpBig"); lb.disabled = lv >= 45; lb.title = lv >= 45 ? "Level cap (45)" : ""; }
   mainEl.classList.toggle("hide-done", state.hide);
-  mainEl.querySelectorAll("input[data-k]").forEach(i => { i.checked = !!char(state).checks[i.dataset.k]; });
+  { const ev = gatesOf(char(state)); mainEl.querySelectorAll("input[data-k]").forEach(i => derivedBox(i, derivedOf(char(state), i.dataset.k, ev))); }
   renderAreas();
   layoutEl.querySelectorAll("li.item").forEach(li => {
     const cb = li.querySelector("input[type=checkbox]");
@@ -826,6 +832,23 @@ function update() {
   requestAnimationFrame(fitRail);
 }
 
+/* A milestone row's box (0.3 E4, design §5): ticked when its tick is stored; done by derivation (r: the evaluator's
+   result) it is ticked and disabled, "done in the story" its accessible name and tooltip. The stored tick (true, false
+   or absent) is left as it is, so a stored false shows again once the story moves back (A3). */
+function derivedBox(i, r) {
+  const li = i.closest("li"), was = "derived" in i.dataset;
+  i.checked = !!r || !!char(state).checks[i.dataset.k];
+  if (r) {
+    if (!was) { i.dataset.derived = i.getAttribute("title") || ""; i.disabled = true; }
+    const by = /^followUp /.test(r.via || "") && RQ_K(r.via.slice(9)), name = ((li && li.querySelector(".txt b")) || (li && li.querySelector(".txt")) || i).textContent.trim();
+    i.title = by ? `done in the story: you have its follow-up "${by.name}"` : "done in the story";
+    i.setAttribute("aria-label", `${name}: done in the story`);
+  } else if (was) {
+    if (i.dataset.derived) i.title = i.dataset.derived; else i.removeAttribute("title");
+    i.removeAttribute("aria-label"); i.disabled = false; delete i.dataset.derived;
+  }
+  if (li) li.classList.toggle("derived", !!r);
+}
 
 const qInput = document.getElementById("questIn");
 document.getElementById("questList").innerHTML = QUESTS.map(([l, n]) => `<option value="${n}">Lv ${l}</option>`).join("");
@@ -967,8 +990,9 @@ function renderQuestSubs(noNow) {
   const done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list), n = vis.filter(i => done.includes(i)).length, N = vis.length, showDone = !!state.qsShowDone;
   const head = `<div class="qs-head"><span>Objectives ${n}/${N}</span></div>`;
   /* Last quest the guide covers: the button turns it in (as Next up's "Turned in"); once turned in, the story continues in game. */
-  const last = questIdx(char(state)) === QUESTS.length - 1;
+  const last = questIdx(char(state)) === QUESTS.length - 1, needLv = turnInNeedsLv(char(state));
   const nextBtn = n !== N ? "" : last && char(state).storyEnd === char(state).quest ? `<p class="qs-end">Altgard story complete · continue in ${STORY_END.region} in game</p>`
+    : needLv ? `<p class="qs-wait">Turn in at Lv ${needLv}: the game opens this quest at Lv ${needLv}</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
   el.innerHTML = head + `<ol class="qs-list">` +
     list.map((t, i) => { const [a, b] = t.split(" — "); if (!vis.includes(i)) return ""; if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
@@ -994,6 +1018,7 @@ document.getElementById("questSubs").addEventListener("change", e => {
 });
 document.getElementById("questSubs").addEventListener("click", e => {
   if (e.target.closest("#qsNext")) {
+    if (turnInNeedsLv(char(state))) return;
     if (questIdx(char(state)) === QUESTS.length - 1) {
       GATES.forEach(g => g.items.forEach(it => { if (it.byStory && it.story === char(state).quest) char(state).checks[it.k] = true; }));
       char(state).storyEnd = char(state).quest; save(); update(); }
@@ -1076,17 +1101,17 @@ function renderRotation() {
 /* Progress = one-time clears: permanent rewards (Wisdom Stones, Daevanion Crystals, belt scrolls) you can only
    get once, so they're the only thing worth a running total. "Behind" = open ones at or below your level. */
 function renderCollection() {
-  const lv = char(state).level;
+  const lv = char(state).level, ev = gatesOf(char(state)), cd = k => clearDoneOf(char(state), k, ev); /* ticked, or a quest derived as done */
   const quests = []; GATES.forEach(g => g.items.forEach(it => { if (it.kind === "quest") quests.push({ k: it.k, q: it.q, g }); }));
   const sds = AREA_ITEMS.filter(x => x.it.kind === "hideout"), shs = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
   const rows = [
-    { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !char(state).checks[x.k] && rqAvail(x.q, lv).ok) },
+    { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !cd(x.k) && rqAvail(x.q, lv).ok) },
     { key: "sd", name: "Dungeons", reward: "2 Crystals + 2 Wisdom Stones each", all: sds, behind: sds.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
     { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
   ];
   let D = 0, N = 0;
   document.getElementById("progRows").innerHTML = rows.map(r => {
-    const d = r.all.filter(x => char(state).checks[x.k]).length, n = r.all.length, b = r.behind.length; D += d; N += n;
+    const d = r.all.filter(x => cd(x.k)).length, n = r.all.length, b = r.behind.length; D += d; N += n;
     const full = { quest: "Regional quests", sd: "Sealed Dungeons", sh: "Strongholds" }[r.key];
     return `<button type="button" class="prow${d === n ? " done" : ""}" data-prog="${r.key}" title="${full}: ${d}/${n} · ${r.reward}${b ? ` · ${b} open at or below Lv ${lv} (click to show)` : d === n ? "" : " · caught up for your level"}">` +
       `<span class="prow-top"><span class="prow-name">${r.name}${b ? `<span class="behind-pill">${b}</span>` : ""}</span><span class="prow-n">${d === n ? "✓ " : ""}${d}/${n}</span></span>` +
@@ -1102,8 +1127,8 @@ document.getElementById("progRows").addEventListener("click", e => {
   const b = e.target.closest("[data-prog]"); if (!b) return;
   const lv = char(state).level, key = b.dataset.prog;
   if (key === "quest") {
-    const g = GATES.find(g => g.items.some(it => it.kind === "quest" && !char(state).checks[it.k] && rqAvail(it.q, lv).ok))
-      || GATES.find(g => g.items.some(it => it.kind === "quest" && !char(state).checks[it.k]));
+    const ev = gatesOf(char(state)), open = it => it.kind === "quest" && !clearDoneOf(char(state), it.k, ev);
+    const g = GATES.find(g => g.items.some(it => open(it) && rqAvail(it.q, lv).ok)) || GATES.find(g => g.items.some(open));
     if (g) { state.open[g.id] = true; save(); update(); const el = document.getElementById(g.id); if (el) { el.open = true; el.scrollIntoView({ behavior: SMOOTH(), block: "start" }); } }
     return;
   }

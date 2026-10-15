@@ -21,7 +21,10 @@
    8. Page zoom (P2-9): at 260 px (150 % zoom on a 390 px phone) the page doesn't scroll sideways.
    9. Folded cleared steps (P3-2, 390 px, Lv 27 and Lv 45): in every ticked milestone step the warnings (.note) and the
       location / "Reward:" line (.loc) are visible, and every link or button in the step is either out of the layout
-      (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus. */
+      (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus.
+  10. Derived rows (0.3 E4, 390 / 1500 px × Basic / Advanced): a row done in the story (byStory, wrapper, regional
+      follow-up) is a ticked, disabled box named "<row>: done in the story" with that tooltip, axe-clean; the same rows
+      in both modes; moving the story back shows the stored false again (box enabled, save untouched). */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -256,6 +259,35 @@ async function load(p, state, mode) {
     ok(`fold ${sn} 390px: ${r.n} ticked steps, ${r.folded} folded; warnings and Reward lines visible`, r.n > 0 && r.folded === r.n && !r.hiddenKept.length, r);
     ok(`fold ${sn} 390px: no hidden link or button can take focus`, !r.focusHidden.length, r.focusHidden);
     await ctx.close();
+  }
+
+  /* ---------- 10. derived rows (0.3 E4): a row done in the story is a ticked, disabled box with a name ---------- */
+  for (const width of [390, 1500]) {
+    const counts = {};
+    for (const mode of ['basic', 'advanced']) {
+      const { ctx, p } = await page(width);
+      await p.goto(CFG.CUR);
+      /* Lv 22, story one quest past "Daeva in a Dream" (g6:0 … g16:monolith byStory, g22:0 wrapper), a stored false on
+         g16:0, "In the Fang Legion's Name" picked up (its prerequisites by follow-up) */
+      await p.evaluate(([k, m]) => { const q = QUESTS[QUESTS.findIndex(x => x[1] === 'Daeva in a Dream') + 1][1];
+        localStorage.setItem(k, JSON.stringify({ checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode: m, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })); }, [KEY, mode]);
+      await p.reload(); await p.waitForTimeout(400);
+      await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
+      const id = `derived ${mode} ${width}px`;
+      const r = await p.evaluate(() => [...document.querySelectorAll('#gates input[data-derived]')].map(i => ({ k: i.dataset.k, checked: i.checked, disabled: i.disabled, label: i.getAttribute('aria-label') || '', title: i.title })));
+      counts[mode] = r.map(x => x.k).sort().join(' ');
+      ok(`${id}: derived rows (byStory, wrapper, follow-up) are ticked and disabled`, ['g16:0', 'g22:0', 'rq:2202016'].every(k => r.some(x => x.k === k)) && r.every(x => x.checked && x.disabled), r);
+      ok(`${id}: each has a name and a tooltip saying "done in the story"`, r.length && r.every(x => /\S: done in the story$/.test(x.label) && /^done in the story/.test(x.title)), r.slice(0, 4));
+      await p.addScriptTag({ content: AXE });
+      const ax = await p.evaluate(async () => (await axe.run('#gates', { resultTypes: ['violations'] })).violations.map(v => ({ id: v.id, n: v.nodes.length, first: v.nodes.slice(0, 2).map(x => x.target.join(' ')) })));
+      ok(`${id}: axe on the milestones, no violations outside the allowlist`, !ax.filter(v => !ALLOW[v.id]).length, ax);
+      /* A3: the story moves back before "Buried Atrocities": the stored false shows again, the box is enabled */
+      const back = await p.evaluate(() => { char(state).quest = 'Buried Atrocities'; update(); const i = document.querySelector('#gates input[data-k="g16:0"]');
+        return { checked: i.checked, disabled: i.disabled, derived: 'derived' in i.dataset, label: i.getAttribute('aria-label'), stored: char(state).checks['g16:0'] }; });
+      ok(`${id}: story moved back: g16:0 unticked and enabled again, its stored false untouched`, !back.checked && !back.disabled && !back.derived && back.label === null && back.stored === false, back);
+      await ctx.close();
+    }
+    ok(`derived ${width}px: the same derived rows in Basic and Advanced`, counts.basic === counts.advanced, counts);
   }
 
   ok('no page errors', !errs.length, errs);

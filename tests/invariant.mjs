@@ -26,11 +26,14 @@ let states = makeStates(M, { root: ROOT, seed });
 const total = states.length;
 if (pickState) states = states.filter(s => s.id.includes(pickState));
 const O = loadOracle({ root: ROOT });
+/* the app runs with the 0.3 E4 changes on (src/core/requirements.js GATE_CHANGES): the oracle with the same proposals applied */
+const APP_APPLY = Object.values(M.GATE_CHANGES).filter(x => x.apply).map(x => x.apply);
+const OA = loadOracle({ root: ROOT, apply: new Set(APP_APPLY) });
 console.log(`seed ${seedHex} · ${states.length} states${pickState ? ` (of ${total}, --state ${pickState})` : ''} · setup ${((performance.now() - t0) / 1000).toFixed(2)} s`);
 
 const R = runner();
 const test = (name, fn) => { const t = performance.now(); R.test(name, fn); console.log(`     ${((performance.now() - t) / 1000).toFixed(2)} s`); };
-const X = { states, O, root: ROOT, TOTAL: pickState ? states.length : TOTAL, seedHex, only: !!pickState };
+const X = { states, O, OA, APP_APPLY, root: ROOT, TOTAL: pickState ? states.length : TOTAL, seedHex, only: !!pickState };
 for (const f of readdirSync(join(ROOT, 'tests/invariant')).filter(f => f.endsWith('.test.mjs')).sort()) {
   if (only && !f.includes(only)) continue;
   console.log(`-- ${f}`);
