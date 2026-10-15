@@ -664,7 +664,11 @@ Derived completions are never in the save, so there is nothing to merge for them
 - **As built (5c):** `mt` sits in the character (a `CHAR_FIELDS` entry; today the save's top level). The quest register
   is `mt.quest = [t, [quest, storyEnd]]`. The one-time step (`stampV1`) stamps what a save already holds with 0 (its
   `savedAt` when it has one), so pre-existing progress never outranks a dated change; a fresh browser's defaults are
-  stamped 0 too. `savedAt` is the time of the last saved *progress* change (view-only writes leave it). Stamps are
+  stamped 0 too (since 0.2.1 a fresh browser starts at Lv 1 on the first story quest). **Story position tie-break:** for
+  the quest register, equal times break on story position before value: the untouched first quest (a fresh browser's
+  default) lowest, then an unset or unknown quest, then later quests by `QUESTS` order, and "turned in" over not; so a
+  fresh browser never resets or clears another device's position. It reads the build's `QUESTS` order, so sync must
+  merge with the same data. `savedAt` is the time of the last saved *progress* change (view-only writes leave it). Stamps are
   taken by diffing at each write, so every mutation site stays as it was.
 - **Clock skew (per-item Lamport bump):** a new stamp is `max(now, previous stamp + 1)` for that item (time-0 stamps stay
   0), so an edit always beats the value it replaced, even on a device whose clock went back or runs behind. Limit: a

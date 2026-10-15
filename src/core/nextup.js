@@ -54,7 +54,9 @@ export function rankNext(state, { basic = false } = {}) {
   hs.filter(x => !x.rq && !x.adv).forEach(x => acts.push({ kind: "step", x, g: here, act: "tick:" + x.k }));
   const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && x.lv <= lv && !c.checks[x.k]).sort((a, b) => bandOf(a) - bandOf(b));
   const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && bandOf(x) <= lv && (x.it.lo || 0) <= lv && !c.checks[x.k]);
-  const qi = c.quest ? QUESTS.findIndex(([, n]) => n === c.quest) : -1, gateLv = qi >= 0 ? QUESTS[qi][0] : 0, gated = gateLv > lv;
+  /* Story levels are recommended levels, not hard requirements (owner, 2026-10-15). Until 0.3 rewires this, one exception:
+     the first story quest never gates, so a new character in Ishalgen (Lv 1) isn't told to level up before starting. */
+  const qi = c.quest ? QUESTS.findIndex(([, n]) => n === c.quest) : -1, gateLv = qi > 0 ? QUESTS[qi][0] : 0, gated = gateLv > lv;
   const sHere = storyHereOf(state), hereArea = (sHere && KIB_AREA[sHere.kib]) || null;
   /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));

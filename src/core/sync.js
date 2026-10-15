@@ -11,7 +11,7 @@
    object) without updating it; the next load in a build with times re-stamps whatever they changed (stamp()). */
 import { char } from "./state.js";
 import { AREA_ITEMS, itemByK } from "./catalog.js";
-import { RQ } from "../data/generated.js";
+import { RQ, QUESTS } from "../data/generated.js";
 import { NO_AREA } from "../data/areas.js";
 
 export const SAVE_SCHEMA = 1;
@@ -35,6 +35,28 @@ export const cmpStamp = ([ta, va], [tb, vb]) => {
   if (ra === 4) return va === vb ? 0 : va < vb ? -1 : 1;
   const ca = mtCanon(va), cb = mtCanon(vb); return ca === cb ? 0 : ca < cb ? -1 : 1;
 };
+
+/* The story position register (mt.quest = [t, [quest, storyEnd]]): on a time tie, the position further along the story
+   wins (storyRank: the untouched first quest lowest, then unset or unknown, then later quests; "turned in" over not),
+   and only then cmpStamp's value order. Two time-0 stamps (saves from before change times, or a fresh browser's
+   default first quest) mean "unknown when", and further progress is the safe pick: a fresh browser's default never
+   resets or clears another device's story position. The ranking reads this build's QUESTS order (fine before sync
+   ships; sync must merge with the same data). */
+/* Rank of a story position on a time tie: removed (tombstone) -3 < the first quest not turned in -2 (a fresh browser's
+   default, which says nothing about progress) < unset or unknown -1 < any later quest (its index). */
+const storyPosOf = q => { const i = typeof q === "string" && q ? QUESTS.findIndex(([, n]) => n === q) : -1; return i; };
+const storyRank = p => { const i = storyPosOf(p[0]); return i === 0 && p[1] == null ? -2 : i; };
+const QUEST_KEY = JSON.stringify(["quest"]);
+const cmpQuestStamp = (a, b) => {
+  if (a[0] !== b[0]) return cmpStamp(a, b);
+  const pa = Array.isArray(a[1]) ? a[1] : [null, null], pb = Array.isArray(b[1]) ? b[1] : [null, null];
+  const ia = a[1] === null ? -3 : storyRank(pa), ib = b[1] === null ? -3 : storyRank(pb);
+  if (ia !== ib) return ia < ib ? -1 : 1;
+  const ea = pa[1] != null ? 1 : 0, eb = pb[1] != null ? 1 : 0;
+  if (ea !== eb) return ea < eb ? -1 : 1;
+  return cmpStamp(a, b);
+};
+export const cmpItem = (key, a, b) => key === QUEST_KEY ? cmpQuestStamp(a, b) : cmpStamp(a, b);
 
 /* The character's timed values, flat: Map "path" → [path, value]; absent and null are the same (not listed). */
 function mtValuesOf(c) {
@@ -105,7 +127,7 @@ export function merge(a, b) {
   const num = x => typeof x === "number" && Number.isFinite(x) && x > 0 ? x : 0;
   ["schemaVersion", "savedAt"].forEach(f => { const v = Math.max(num(a[f]), num(b[f])); if (v || f in a || f in b) out[f] = v; });
   const ia = mtItemsOf(ca), ib = mtItemsOf(cb), win = new Map(ia);
-  ib.forEach((x, key) => { const y = win.get(key); if (!y || cmpStamp(y[1], x[1]) < 0) win.set(key, x); });
+  ib.forEach((x, key) => { const y = win.get(key); if (!y || cmpItem(key, y[1], x[1]) < 0) win.set(key, x); });
   /* rebuild every timed field from the winners; containers that either side had stay (possibly empty) */
   const has = f => (ca[f] && typeof ca[f] === "object") || (cb[f] && typeof cb[f] === "object");
   SYNC_MAPS.forEach(f => { if (has(f)) co[f] = {}; else delete co[f]; });
