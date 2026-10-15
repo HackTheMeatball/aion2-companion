@@ -59,6 +59,10 @@
         },
         "note": {
           "type": "string"
+        },
+        "proposed": {
+          "description": "0.3 window gate (docs/design/0.3-requirement-engine.md §10): the board, and every plan node on it, inherits the gate it names. Not compiled.",
+          "$ref": "common.schema.json#/$defs/proposedGate"
         }
       },
       "unevaluatedProperties": false

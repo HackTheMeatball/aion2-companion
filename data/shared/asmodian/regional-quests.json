@@ -1033,7 +1033,35 @@
       "conflicts": [
         "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102105",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Empyrean Monolith\" (Lv 16) instead of at its recommended Lv 16."
+      }
     },
     {
       "id": "rq:2202016",
@@ -1551,7 +1579,35 @@
         "Metabot shows no giver place/Kibelisk; app place 'Healing Spring' (Purifying Forest) is not on Metabot. Turn-in text says 'Talk to Reden at Odar's Shade' (Moslan Forest). Story references the Young Elim — possible thematic link to Young Elim's Story, not stated.",
         "Giver place 'Healing Spring' from allthings.how (not on Metabot)",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/her-last-favor",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102280",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Canyon's Secret\" (Lv 30) instead of at its recommended Lv 30."
+      }
     },
     {
       "id": "rq:2202019",
@@ -3060,7 +3116,41 @@
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102370",
+              "is": "reached",
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+                  "section": "Required first",
+                  "checkedAt": "2026-10-14"
+                }
+              ],
+              "note": "Metabot \"Required first: Blood Monument\". is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §6 (new gate, Metabot)",
+        "change": "Opens once the story reaches \"Blood Monument\" instead of at its recommended Lv 33 (no prerequisite data today); one more story-gated regional quest."
+      }
     },
     {
       "id": "rq:2202030",
@@ -3186,7 +3276,26 @@
       ],
       "conflicts": [
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "level": 45,
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+              "fields": [
+                "unlocksAt"
+              ]
+            }
+          ]
+        },
+        "requiresBasis": "verified-none",
+        "status": "owner-check",
+        "check": 8,
+        "basis": "prereq-gates §6 (Spacetime Rift)",
+        "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
+      }
     },
     {
       "id": "rq:2202031",
@@ -3909,7 +4018,26 @@
       ],
       "notes": [
         "Spacetime Rift series: No Required Quests on 5 of 7 gaming.tools pages (Unknown Species 2202030 and Proof 2202035 not reachable). Not a chain. Gate: level 45 (Metabot 'Unlocks at 45' on all 7; allthings 244366 'Level 45') plus a rift that 'opens at random spots at set times' (allthings 244371)."
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "level": 45,
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+              "fields": [
+                "unlocksAt"
+              ]
+            }
+          ]
+        },
+        "requiresBasis": "verified-none",
+        "status": "owner-check",
+        "check": 8,
+        "basis": "prereq-gates §6 (Spacetime Rift)",
+        "change": "None on screen (opens at Lv 45 either way); the record moves from \"no prerequisite data\" to \"checked: none\"."
+      }
     },
     {
       "id": "rq:2202036",
@@ -4833,7 +4961,35 @@
         "Metabot gives no giver place/Kibelisk for Bekrin; app has 'Battlescar Mound'. Turn-in at Briskwind Shelter (Elena).",
         "Giver place 'Battlescar Mound' from allthings.how (not on Metabot)",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/pain-unending",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102340",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Last of the Destruction Archons\" (Lv 32) instead of at its recommended Lv 32."
+      }
     },
     {
       "id": "rq:2202041",
@@ -5533,7 +5689,35 @@
       "conflicts": [
         "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102040",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Contaminated Area\" (Lv 11) instead of at its recommended Lv 12."
+      }
     },
     {
       "id": "rq:2202045",
@@ -5782,12 +5966,14 @@
         "basis": "sourced",
         "sources": [
           {
-            "url": "https://shugo.gg/quests/2202046",
+            "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
             "fields": [
               "unlocksAt"
-            ]
+            ],
+            "checkedAt": "2026-10-14"
           }
-        ]
+        ],
+        "note": "Metabot \"Unlocks at\" 10 (prereq-gates §6); shugo.gg (the record's first source) shows only \"Level 45\" without an unlock level (see conflicts)."
       },
       "requiresBasis": "unresearched",
       "completesWith": [
@@ -5834,7 +6020,43 @@
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+                  "fields": [
+                    "unlocksAt"
+                  ],
+                  "checkedAt": "2026-10-14"
+                }
+              ],
+              "note": "Metabot \"Unlocks at\" 10 (prereq-gates §6); the live atom cites shugo.gg, which shows only \"Level 45\" (see conflicts)."
+            },
+            {
+              "story": "sq:2102780",
+              "is": "reached",
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+                  "section": "Required first",
+                  "checkedAt": "2026-10-14"
+                }
+              ],
+              "note": "Metabot \"Required first: Zikel's Core\". is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "ready",
+        "basis": "prereq-gates §6 (new gate, Metabot)",
+        "change": "Opens once the story reaches \"Zikel's Core\" instead of at its recommended Lv 45 (no prerequisite data today); one more story-gated regional quest."
+      }
     },
     {
       "id": "rq:2202047",
@@ -6304,7 +6526,35 @@
       "status": "verified",
       "conflicts": [
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102070",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Cemetery Cleanup\" (Lv 13) instead of at its recommended Lv 14."
+      }
     },
     {
       "id": "rq:2202052",
@@ -8843,7 +9093,35 @@
       "conflicts": [
         "Giver Kunpata is Daybreak Society; prerequisites not checked (no gaming.tools/th.gl page reachable; shugo.gg and gamers4.life show none but they do not show prerequisites for quests that do have them, e.g. The Future Within the Past). Not in Forgotten Commander's dependent list.",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ]
+      ],
+      "proposed": {
+        "requires": {
+          "all": [
+            {
+              "level": 10,
+              "basis": "sourced",
+              "sources": [
+                {
+                  "url": "https://metabot.gg/en/aion-2/quests/herb-pouch-heist",
+                  "fields": [
+                    "unlocksAt"
+                  ]
+                }
+              ]
+            },
+            {
+              "story": "sq:2102660",
+              "is": "reached",
+              "basis": "owner-check",
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+            }
+          ]
+        },
+        "status": "owner-check",
+        "check": 7,
+        "basis": "prereq-gates §6 (noPre candidate)",
+        "change": "If confirmed: opens once the story reaches \"Daybreak Society Rescue Operation\" (Lv 41) instead of at its recommended Lv 44."
+      }
     },
     {
       "id": "rq:2202067",

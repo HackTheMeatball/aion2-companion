@@ -828,13 +828,31 @@
       },
       "steps": [],
       "requires": {
-        "story": "sq:2101100",
-        "is": "turnedIn",
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/finding-nemon",
-            "section": "Previous quest"
+            "story": "sq:2101100",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/finding-nemon",
+                "section": "Previous quest"
+              }
+            ]
+          },
+          {
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/finding-nemon",
+                "fields": [
+                  "unlocksAt"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Metabot \"Unlocks at\" 10 (prereq-gates §4). Equal to the recommended level, which is what the 0.2 story card gates on, so nothing changes; every later quest at unlock 10 inherits it from the chain."
           }
         ]
       },
@@ -9553,13 +9571,31 @@
         ]
       },
       "requires": {
-        "story": "sq:2102781",
-        "is": "turnedIn",
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
-            "section": "Previous quest"
+            "story": "sq:2102781",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+                "section": "Previous quest"
+              }
+            ]
+          },
+          {
+            "level": 45,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+                "fields": [
+                  "unlocksAt"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Metabot \"Unlocks at\" 45 (prereq-gates §4). Equal to the recommended level, which is what the 0.2 story card gates on, so nothing changes; every later quest at unlock 45 inherits it from the chain."
           }
         ]
       },

@@ -129,6 +129,8 @@ the old numbers: read "0.3 design" for those items as 0.4, characters "0.4" as 0
 
 ### 0.3 — Next up correctness
 
+Design and build steps: [docs/design/0.3-requirement-engine.md](docs/design/0.3-requirement-engine.md).
+
 - One requirement evaluator for every card, with blocker chains ("unlocks after story X · N quests ahead").
 - Completion derived from the story position (never stored as ticks).
 - The prerequisite audit, every gate sourced or labelled: researched now as a report (proposed ids, a source per

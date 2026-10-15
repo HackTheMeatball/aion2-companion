@@ -18,8 +18,17 @@
           {
             "story": "sq:2102345",
             "is": "reached",
-            "basis": "legacy",
-            "note": "today's g32:dreams gate (claim C36)"
+            "basis": "sourced",
+            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early; whether it opens earlier is owner check 6 (prereq-gates §5).",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ]
           },
           {
             "done": "asc:hears-the-voice",
@@ -78,8 +87,17 @@
           {
             "story": "sq:2102185",
             "is": "reached",
-            "basis": "legacy",
-            "note": "today's g22:0 gate"
+            "basis": "sourced",
+            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early; whether it opens earlier is owner check 6 (prereq-gates §5).",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+                "fields": [
+                  "steps"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ]
           },
           {
             "done": "asc:perceives",

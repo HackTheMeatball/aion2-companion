@@ -580,8 +580,104 @@
         },
         "completesWith": {
           "$ref": "#/$defs/completion"
+        },
+        "proposed": {
+          "$ref": "#/$defs/proposedGate"
         }
       }
+    },
+    "proposedGate": {
+      "description": "0.3 prerequisite audit (docs/research/2026-10-prereq-gates.md; design: docs/design/0.3-requirement-engine.md §7). The gate this record gets once the 0.3 requirement evaluator reads it. Nothing compiles it: requires / requiresBasis / completesWith above stay what the 0.2 app does, so loading a proposal changes no behaviour (tests/schema.mjs proves the compiled module is identical without them). Checked like requires (references resolve, story atoms carry is, done never names sq:). Applying it replaces requires, requiresBasis (absent = removed) and completesWith with the ones given here, in the design's build step, after the owner approves the golden-master difference (status ready) or after the in-game check it names (status owner-check; until then the live gate stays).",
+      "type": "object",
+      "required": [
+        "status",
+        "change",
+        "basis"
+      ],
+      "properties": {
+        "requires": {
+          "$ref": "#/$defs/cond"
+        },
+        "requiresBasis": {
+          "description": "As stepFields.requiresBasis, for the proposed gate. Absent = the proposed atoms decide.",
+          "enum": [
+            "unresearched",
+            "verified-none",
+            "legacy"
+          ]
+        },
+        "completesWith": {
+          "$ref": "#/$defs/completion"
+        },
+        "status": {
+          "description": "ready = sourced or owner-decided; applied in its build step once the owner approves the listed golden difference. owner-check = waits for the numbered in-game check (prereq-gates §11); the live gate stays until then.",
+          "enum": [
+            "ready",
+            "owner-check"
+          ]
+        },
+        "check": {
+          "description": "Owner in-game check number in docs/research/2026-10-prereq-gates.md §11 (required for status owner-check).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        },
+        "change": {
+          "description": "What the app does differently once applied (one sentence; listed in the golden-master difference report).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "basis": {
+          "description": "Where the proposal comes from: report section and/or owner decision, e.g. \"prereq-gates §6\" or \"DECISIONS 2026-10-14 (Daevanion board gate)\".",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "requires"
+              ],
+              "properties": {
+                "requires": true
+              }
+            },
+            {
+              "required": [
+                "completesWith"
+              ],
+              "properties": {
+                "completesWith": true
+              }
+            }
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "owner-check"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "check"
+            ],
+            "properties": {
+              "check": true
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
     },
     "inlineText": {
       "description": "Guide text: plain text, <b>/<i>/<br>, entities, and [[tokens]]. Build tokens (M2) pull the character's build: [[build:stigma:N]], [[build:stigmaTarget:N]], [[build:node:<board>:N]], [[build:skillOrder:N]], [[build:text:<name>]].",

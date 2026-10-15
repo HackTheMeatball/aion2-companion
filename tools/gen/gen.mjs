@@ -15,7 +15,10 @@ import { fileURLToPath } from 'node:url';
 import { ROOT, dataFiles, validateDoc } from './validate.mjs';
 
 /* ------------------------------------------------------------------ load */
-const loadBundle = () => {
+/* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
+   them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
+const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
+const loadBundle = ({ dropProposed = false } = {}) => {
   const files = dataFiles(), by = {}, schemaErrors = [];
   let retired = null, sources = null;
   for (const f of files) {
@@ -24,6 +27,7 @@ const loadBundle = () => {
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
     if (rel === 'data/retired.json') { retired = doc; continue; }
+    if (dropProposed) stripProposed(doc.records);
     if (doc.collection === 'sources') sources = doc;
     (by[doc.collection] = by[doc.collection] || []).push({ file: rel, doc });
   }
@@ -40,8 +44,8 @@ const hostOf = u => u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
 const byNum = k => (a, b) => a[k] - b[k];
 const atomsOf = c => !c ? [] : c.all ? c.all.flatMap(atomsOf) : c.any ? c.any.flatMap(atomsOf) : [c];
 
-export function generate() {
-  const B = loadBundle(), R = B.recs;
+export function generate(opts = {}) {
+  const B = loadBundle(opts), R = B.recs;
   const report = { checks: [], warnings: [], debt: {} };
   const check = (name, ok, detail) => { report.checks.push({ check: name, pass: !!ok, ...(ok ? {} : { detail }) }); };
   const warn = w => report.warnings.push(w);
@@ -311,12 +315,30 @@ export function generate() {
   /* references */
   const known = new Set(all.map(x => x.r.id));
   const refCheck = (where, id) => check(`${where}: reference ${id} resolves`, known.has(id));
+  /* every gate a record carries: requires / completesWith / unlock `at`, its 0.3 proposal (`proposed`), and a build's plan nodes */
+  const gatesOf = r => [r.requires, ...(r.completesWith || []), r.at, ...(r.proposed ? [r.proposed.requires, ...(r.proposed.completesWith || [])] : [])].filter(x => x && typeof x === 'object');
+  const gateHolders = [...all.map(({ r }) => ({ id: r.id, r })), ...builds.flatMap(b => b.boardPlan.map(e => ({ id: `${b.id} boardPlan ${e.node || e.key}`, r: e })))];
+  for (const { id, r } of gateHolders) for (const c of gatesOf(r)) for (const a of atomsOf(c)) {
+    if (a.story) refCheck(id, a.story);
+    if (a.done) { refCheck(id, a.done); check(`${id}: done never names a story quest`, !a.done.startsWith('sq:')); }
+    if (a.story) check(`${id}: story atom has "is"`, !!a.is);
+  }
+  /* proposals (0.3 audit): a ready one rests on no owner-check atom; each is listed in the report for the golden-difference list */
+  report.proposed = [];
+  for (const { id, r } of gateHolders) if (r.proposed) {
+    const p = r.proposed, pAtoms = [p.requires, ...(p.completesWith || [])].filter(x => x && typeof x === 'object').flatMap(atomsOf);
+    /* ready = applied once the owner approves the golden diff; anything resting on an open in-game check or an unsourced (legacy) atom is owner-check */
+    if (p.status === 'ready') check(`${id}: a ready proposal has no owner-check or legacy atom`, !pAtoms.some(a => a.basis === 'owner-check' || a.basis === 'legacy'));
+    if (p.requiresBasis === 'verified-none') check(`${id}: proposed verified-none has no prerequisite atoms`, !atomsOf(p.requires).some(a => a.story || a.done));
+    report.proposed.push({ id, status: p.status, ...(p.check ? { check: p.check } : {}), basis: p.basis, change: p.change });
+  }
+  /* Daevanion: one window gate, defined once on unlock:daevanion ("Urgent Pursuit" turned in, owner screen); every board's
+     proposal inherits it (plan nodes inherit their board's), so no plan node repeats the story atom */
+  { const ud = R('unlocks').find(u => u.id === 'unlock:daevanion');
+    check('unlock:daevanion opens with "Urgent Pursuit" turned in', !!ud && atomsOf(ud.at).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
+    for (const b of boards) check(`${b.id}: proposal inherits the Daevanion window gate (done unlock:daevanion)`, !!b.proposed && atomsOf(b.proposed.requires).some(a => a.done === 'unlock:daevanion'));
+    for (const bl of builds) for (const e of bl.boardPlan) check(`${bl.id} boardPlan ${e.node || e.key}: no own copy of the window gate`, !(e.proposed && atomsOf(e.proposed.requires).some(a => a.story === 'sq:2102065'))); }
   for (const { r } of all) {
-    for (const c of [r.requires, ...(r.completesWith || []), r.at].filter(x => x && typeof x === 'object')) for (const a of atomsOf(c)) {
-      if (a.story) refCheck(r.id, a.story);
-      if (a.done) { refCheck(r.id, a.done); check(`${r.id}: done never names a story quest`, !a.done.startsWith('sq:')); }
-      if (a.story) check(`${r.id}: story atom has "is"`, !!a.is);
-    }
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
     for (const l of [r.giver, r.turnin, r.entrance, r.location].filter(Boolean)) refCheck(r.id, l.zone);
@@ -420,6 +442,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   writeFileSync(join(ROOT, 'data/DATA_SOURCES.md'), dataSourcesMd(g));
   for (const c of g.failed) console.error('CHECK FAILED: ' + c.check + (c.detail !== undefined ? ' ' + JSON.stringify(c.detail) : ''));
   for (const w of g.report.warnings.filter(w => !/robots unchecked|terms unread/.test(w))) console.log('  warn: ' + w);
-  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants · data/DATA_SOURCES.md, tools/gen/out/ written (${Date.now() - t0} ms)`);
+  const pr = g.report.proposed, prN = s => pr.filter(p => p.status === s).length;
+  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants · ${pr.length} proposed 0.3 gates (${prN('ready')} ready, ${prN('owner-check')} owner-check; not compiled) · data/DATA_SOURCES.md, tools/gen/out/ written (${Date.now() - t0} ms)`);
   process.exit(g.failed.length ? 1 : 0);
 }
