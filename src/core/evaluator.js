@@ -1,7 +1,8 @@
 /* The requirement evaluator (0.3 E1, pure: no DOM, no storage, no clock; docs/design/0.3-requirement-engine.md §3–§5).
    One pass answers, for every trackable thing in GATE_GRAPH (compiled by tools/gen/gen.mjs from the live `requires` /
-   `completesWith` of the data), "done?", "open now?" and, if not, what blocks it. Not wired in yet: the page does not
-   import this module until E2, and tests/core/evaluator-equivalence.test.mjs holds it to today's gate code.
+   `completesWith` of the data), "done?", "open now?" and, if not, what blocks it. Since E2 every gate decision of the
+   page goes through it (src/core/requirements.js gatesOf, with the 0.2 rules the data doesn't hold yet as named
+   KEPT_RULES); tests/equiv/evaluator-equivalence.test.mjs holds both to the frozen 0.2 gate code.
 
    evaluate(c, opts) → Ev, for the character c = char(state); memoised per node, nothing written.
      Ev.node(id) → { id, kind, key, done, via?, open, blockers, root, info, basis, eta } (null for an unknown id)
@@ -10,6 +11,7 @@
        root: the first leaf of the chain (what to do first);  info: playerChecked atoms (shown, never enforced)
        basis: the weakest atom basis of the gate (null when it has no atom);  eta: {level?, quest?, turnIn?}, null when open
      Ev.byKey(k) → Ev.node of the node with save key k;  Ev.list(filter) → every node in catalog order;  Ev.evals → nodes evaluated
+     Ev.atom(gate) → { ok, blockers } of an ad-hoc gate;  Ev.completes(id) → the non-tick completesWith entry that holds, or null
    opts: graph (default GATE_GRAPH; tests pass their own), derived (default false: a node that can be ticked is done by
    its tick only, as today; true adds its other completesWith entries, §5, E4). A node with no tick (story quests,
    unlocks) is always done by its completesWith (the story position). Proposals are not in the graph (E5 / E9). */
@@ -96,6 +98,13 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false } = {}) {
     node,
     byKey: k => ix.byKey.has(k) ? node(ix.byKey.get(k)) : null,
     list: (filter = () => true) => Object.keys(N).map(node).filter(filter),
+    /* an ad-hoc gate (e.g. one story atom, with the chain id) for this character: { ok, blockers }; nothing memoised */
+    atom: g => test(g, { info: [], worst: -1 }),
+    /* the completesWith entry other than "tick" that holds now, whatever opts.derived says ("turnedIn sq:…"), else null:
+       for the 0.2 display rule that hides a byStory step once the story is past it (§5.4); done stays the tick until E4 */
+    completes: id => { const n = N[id]; if (!n) return null;
+      for (const e of n.done) if (e !== "tick" && test(e, { info: [], worst: -1 }).ok) return evVia(e);
+      return null; },
     get evals() { return evals; },
   };
 }

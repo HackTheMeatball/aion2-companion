@@ -15,8 +15,9 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { checkableOf, countsOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, mainCountsOf, objIdxOf, objSubs, qProgOf, rqStatus,
-  rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotNames, stLvOfC, stigmaPlan, stigmaSlots } from "./core/requirements.js";
+import { areaLater, areaOpen, checkableOf, countsOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
+  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
+  stigmaPlan, stigmaSlots, storyGate, storyIdx } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
@@ -211,7 +212,7 @@ function renderAreas() {
   const inBand = v => v === "sh" ? AREA_ITEMS.filter(x => x.it.kind === "stronghold")
     : AREA_ITEMS.filter(x => bandOf(x) === +v && (shOn || x.it.kind !== "stronghold"));
   /* Open at or below your level: the same "behind" rule as the Progress card. */
-  const behind = x => !char(state).checks[x.k] && (x.it.kind === "stronghold" ? bandOf(x) <= lv && x.it.lo <= lv : x.lv <= lv);
+  const behind = x => !char(state).checks[x.k] && areaOpen(char(state), x);
   areaSel.innerHTML = opts.map(v => {
     const xs = inBand(v), left = xs.filter(x => !char(state).checks[x.k]).length, bh = xs.filter(behind).length;
     const label = v === "sh" ? "All strongholds" : `Lv ${v}–${+v + 4}${+v > lv ? " (later)" : ""}`;
@@ -226,7 +227,7 @@ function renderAreas() {
   const row = x => {
     if (!vis(x)) return "";
     const it = x.it, done = !!char(state).checks[x.k], sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];
-    const later = sh ? it.lo > lv : x.lv > lv;
+    const later = areaLater(char(state), x);
     const sub = sh ? `${x.area} · ${SH_LV(it)}` : "";
     const href = mapFocus(it);
     /* Name is plain text (ticks on click); the pin on the right opens its map page. */
@@ -584,7 +585,7 @@ nowEl.addEventListener("click", e => {
     /* Milestone steps that are this story quest (byStory) are done with it. */
     GATES.forEach(g => g.items.forEach(it => { if (it.byStory && it.story === char(state).quest) char(state).checks[it.k] = true; })); save();
     /* Last quest the guide covers: remember it's turned in (the card then says to continue in game). */
-    if (QUESTS.findIndex(([, n]) => n === char(state).quest) === QUESTS.length - 1) { char(state).storyEnd = char(state).quest; save(); update(); }
+    if (questIdx(char(state)) === QUESTS.length - 1) { char(state).storyEnd = char(state).quest; save(); update(); }
     else stepQuest(1); }
   else if (a === "setquest") { const i = document.getElementById("questIn"); i.scrollIntoView({ behavior: SMOOTH(), block: "center" }); i.focus(); }
   else if (a === "skill") { const box = document.getElementById("spNextBox"); if (box.dataset.sp) { box.checked = true; box.dispatchEvent(new Event("change")); } }
@@ -604,7 +605,7 @@ let nsAnim = false, nsRefocus = 0;
 function tipPop(kind) {
   const lv = char(state).level;
   let rq = 0; RQ.forEach(q => { if (!char(state).checks["rq:" + q.id] && rqAvail(q, lv).ok) rq++; });
-  const sd = AREA_ITEMS.filter(x => x.it.kind === "hideout" && x.lv <= lv && !char(state).checks[x.k]).length, gain = rq + 2 * sd;
+  const sd = AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(char(state), x) && !char(state).checks[x.k]).length, gain = rq + 2 * sd;
   const open = gain ? `<button type="button" class="tiplink" data-tipgo="${rq ? "quest" : "sd"}">${rq ? `${rq} quest${rq === 1 ? "" : "s"}` : ""}${rq && sd ? " + " : ""}${sd ? `${sd} dungeon${sd === 1 ? "" : "s"}` : ""} open now → +${gain}</button>` : "";
   const body = kind === "stones" ? "<b>More Wisdom Stones</b>1 per regional quest · 2 per Sealed Dungeon (first clear). Use them from the Cube."
     : "<b>More crystals</b>+4 per level · 1 per regional quest · 2 per Sealed Dungeon (first clear). Use them from the Cube.";
@@ -761,7 +762,7 @@ function update() {
   });
   /* Skill lines that unlock above your level are dimmed with their unlock level, so the order in a milestone
      doesn't look like it contradicts "Next skill upgrade" (which only offers what you can buy now). */
-  mainEl.querySelectorAll("li[data-req]").forEach(li => li.classList.toggle("locked", +li.dataset.req > lv));
+  { const ev = gatesOf(char(state)); mainEl.querySelectorAll("li[data-req]").forEach(li => li.classList.toggle("locked", !ev.byKey(li.querySelector("input[data-k]").dataset.k).open)); }
   STEPS.forEach(s => {
     const d = document.getElementById(s.id), [c, n] = counts(s);
     total += n; done += c;
@@ -839,31 +840,31 @@ function findQuest(txt) {
 /* Milestones with story-gated steps get an automatic first line: "Reach <quest> in the main story". It ticks
    itself when your current quest reaches it, isn't counted in the milestone's x/y, and shows how far away it is. */
 function renderStoryReqs() {
-  const cur = char(state).quest ? QUESTS.findIndex(([, n]) => n === char(state).quest) : -1;
   GATES.forEach(g => {
     const card = document.getElementById(g.id), ul = card && card.querySelector(":scope > ul.items"); if (!ul) return;
     let row = ul.querySelector(":scope > li.storyreq");
-    const reqs = g.items.map(it => it.story || it.after).filter(Boolean).map(n => QUESTS.findIndex(([, q]) => q === n)).filter(i => i >= 0);
+    const reqs = g.items.map(it => it.story || it.after).filter(Boolean).map(storyIdx).filter(i => i >= 0);
     if (!reqs.length) { if (row) row.remove(); return; }
-    const at = Math.max(...reqs), q = QUESTS[at][1], d = cur < 0 ? null : at - cur, ok = d != null && d <= 0;
+    /* the furthest of them; reached or not, and how far (d: quests ahead, null with the story unset), from the evaluator */
+    const q = QUESTS[Math.max(...reqs)][1], { ok, ahead: d } = storyGate(char(state), q);
     if (!row) { row = document.createElement("li"); row.className = "item storyreq"; ul.prepend(row); }
     row.classList.toggle("reached", ok);
     row.hidden = ok && !!state.hide;
-    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : " ahead"}">${ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`}</span><b>Reach "${q}" in the main story</b> <span class="sr-sub">Opens the steps with a story chip and the regional quests below that wait for it.${cur >= 0 && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
+    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : " ahead"}">${ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`}</span><b>Reach "${q}" in the main story</b> <span class="sr-sub">Opens the steps with a story chip and the regional quests below that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
   });
 }
 /* Chip on story-gated steps: how far that quest is from your current main quest. */
 function renderStoryChips() {
-  const cur = char(state).quest ? QUESTS.findIndex(([, n]) => n === char(state).quest) : -1;
+  const c = char(state);
   mainEl.querySelectorAll("li[data-story]").forEach(li => {
     const chip = li.querySelector(".schip"); if (!chip) return;
-    const at = QUESTS.findIndex(([, n]) => n === li.dataset.story);
+    const sg = storyGate(c, li.dataset.story);
     chip.className = "schip";
-    if (cur < 0 || at < 0) { chip.textContent = ""; return; }
-    const d = at - cur;
+    if (!sg || (!sg.ok && sg.ahead == null)) { chip.textContent = ""; return; } /* not on the chain, or the story unset */
+    const d = sg.ahead;
     if (li.classList.contains("qrow")) { chip.textContent = ""; return; } /* quest rows say what opens them in their own text */
-    if (d < 0) chip.textContent = "story: passed";
-    else if (d === 0) { chip.textContent = "your current quest"; chip.classList.add("now"); }
+    if (sg.ok && li.dataset.story !== c.quest) chip.textContent = "story: passed";
+    else if (sg.ok) { chip.textContent = "your current quest"; chip.classList.add("now"); }
     else { chip.textContent = `${d} story quest${d === 1 ? "" : "s"} ahead`; chip.classList.add("ahead"); }
   });
 }
@@ -873,7 +874,7 @@ function renderQuest(inUpdate) {
   st.className = "st next"; pv.innerHTML = ""; qlv.textContent = ""; renderAhead();
   const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${q[1]}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
   /* No quest, or one no longer in the story (e.g. "Ishalgen", the starting map since 0.2): ask for the current quest. */
-  const i = char(state).quest ? QUESTS.findIndex(([, n]) => n === char(state).quest) : -1;
+  const i = questIdx(char(state));
   if (i < 0) { st.innerHTML = `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`; return; }
   /* Story timeline: previous (dim), current (the input), next; then the next unlock as a callout linked to its milestone. */
   const prev = QUESTS[i - 1], nxt = QUESTS[i + 1];
@@ -905,7 +906,7 @@ function renderAhead() {
       const what = xs.map(x => `<b>${x[1]}</b>${x[2] ? ` <span class="ah-d">${x[2]}</span>` : ""}`).join("<br>");
       return `<a class="ah-row"${g ? ` href="#${g.id}" data-gogate="${g.id}"` : ""} title="Sources: ${[...new Set(xs.flatMap(x => x[3].split(", ")))].join(", ")}"><span class="ah-lv">Lv ${L}</span><span class="ah-main"><span class="ah-what">${what}</span><span class="ns-chipbar"><span style="width:${pct}%"></span></span><small>${pl(L - lv, "level")} to go</small></span></a>`;
     });
-    const qi = char(state).quest ? QUESTS.findIndex(([, n]) => n === char(state).quest) : -1;
+    const qi = questIdx(char(state));
     if (qi >= 0) { const ui = QUESTS.slice(qi + 1).findIndex(([, n]) => STORY_UNLOCKS[n]);
       if (ui >= 0) { const uq = QUESTS[qi + 1 + ui], gid = UNLOCK_GATE[uq[1]];
         rows.push(`<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${uq[1]}"</small></span></a>`); } }
@@ -966,7 +967,7 @@ function renderQuestSubs(noNow) {
   const done = (char(state).qsteps || {})[char(state).quest] || [], vis = objIdx(list), n = vis.filter(i => done.includes(i)).length, N = vis.length, showDone = !!state.qsShowDone;
   const head = `<div class="qs-head"><span>Objectives ${n}/${N}</span></div>`;
   /* Last quest the guide covers: the button turns it in (as Next up's "Turned in"); once turned in, the story continues in game. */
-  const last = QUESTS.findIndex(([, q]) => q === char(state).quest) === QUESTS.length - 1;
+  const last = questIdx(char(state)) === QUESTS.length - 1;
   const nextBtn = n !== N ? "" : last && char(state).storyEnd === char(state).quest ? `<p class="qs-end">Altgard story complete · continue in ${STORY_END.region} in game</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
   el.innerHTML = head + `<ol class="qs-list">` +
@@ -993,7 +994,7 @@ document.getElementById("questSubs").addEventListener("change", e => {
 });
 document.getElementById("questSubs").addEventListener("click", e => {
   if (e.target.closest("#qsNext")) {
-    if (QUESTS.findIndex(([, q]) => q === char(state).quest) === QUESTS.length - 1) {
+    if (questIdx(char(state)) === QUESTS.length - 1) {
       GATES.forEach(g => g.items.forEach(it => { if (it.byStory && it.story === char(state).quest) char(state).checks[it.k] = true; }));
       char(state).storyEnd = char(state).quest; save(); update(); }
     else stepQuest(1); }
@@ -1002,7 +1003,7 @@ document.getElementById("questSubs").addEventListener("click", e => {
 /* Click the previous or next quest to step the story; the three rows roll like a drum. Never touches your level:
    a quest's level is only its recommended level, and your real level comes from the game (Level up / − + / slider). */
 function stepQuest(d) {
-  const i = QUESTS.findIndex(([, n]) => n === char(state).quest), j = i + d;
+  const i = questIdx(char(state)), j = i + d;
   if (i < 0 || j < 0 || j >= QUESTS.length) return;
   char(state).quest = QUESTS[j][1]; delete char(state).storyEnd; save();
   update();
@@ -1080,8 +1081,8 @@ function renderCollection() {
   const sds = AREA_ITEMS.filter(x => x.it.kind === "hideout"), shs = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
   const rows = [
     { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !char(state).checks[x.k] && rqAvail(x.q, lv).ok) },
-    { key: "sd", name: "Dungeons", reward: "2 Crystals + 2 Wisdom Stones each", all: sds, behind: sds.filter(x => x.lv <= lv && !char(state).checks[x.k]) },
-    { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => bandOf(x) <= lv && x.it.lo <= lv && !char(state).checks[x.k]) },
+    { key: "sd", name: "Dungeons", reward: "2 Crystals + 2 Wisdom Stones each", all: sds, behind: sds.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
+    { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
   ];
   let D = 0, N = 0;
   document.getElementById("progRows").innerHTML = rows.map(r => {
@@ -1107,7 +1108,7 @@ document.getElementById("progRows").addEventListener("click", e => {
     return;
   }
   if (key === "sh") goAreas("sh");
-  else { const open = AREA_ITEMS.filter(x => x.it.kind === "hideout" && x.lv <= lv && !char(state).checks[x.k]).map(x => x.lv); goAreas(open.length ? Math.min(...open) : defaultBand()); }
+  else { const open = AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(char(state), x) && !char(state).checks[x.k]).map(x => x.lv); goAreas(open.length ? Math.min(...open) : defaultBand()); }
 });
 
 
@@ -1123,7 +1124,7 @@ function renderNext() {
   const box = document.getElementById("spNextBox");
   const next = now[0];
   const overTicked = spent > fromLevels + stones;
-  const ahead = open.filter(x => x.req > lv).sort((a, b) => a.req - b.req || a.rank - b.rank);
+  const ahead = open.filter(x => !now.includes(x)).sort((a, b) => a.req - b.req || a.rank - b.rank);
   /* Hero = what to do next: the next upgrade you can take now, else the next one to unlock. */
   const hero = next || ahead[0];
   const nowCost = now.reduce((t, y) => t + (y.spec ? 0 : y.cost), 0);
@@ -1131,7 +1132,7 @@ function renderNext() {
   const haveAt = x => pts - (next ? nowCost : 0) + (LEVEL_POINTS[Math.min(45, x.req)] || 0) - fromLevels;
   let heroHTML = "";
   if (hero) {
-    const locked = hero.req > lv, cost = hero.spec ? 0 : hero.cost;
+    const locked = !now.includes(hero), cost = hero.spec ? 0 : hero.cost;
     const have = locked ? haveAt(hero) + (next ? 0 : 0) : pts;
     const ok = !locked && (hero.spec || pts >= cost);
     const state_ = hero.spec ? (locked ? "lock" : "ok") : locked ? (have >= cost ? "lock" : "short") : ok ? "ok" : "short";
@@ -1162,7 +1163,7 @@ function renderNext() {
   const spB = SP_STEPS.filter(x => char(state).checks[x.k]).length, spN = SP_STEPS.length;
   document.getElementById("spAfter").innerHTML = rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
-    const avail = x.req <= lv, have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
+    const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
     return `<li class="${x.spec ? "isspec" : ""}" title="${x.spec ? "Specialty: " + x.s.spec : spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${x.spec ? `<span class="spectag">spec</span>` : `<span class="lvarr">${x.L - 1} → ${x.L}</span>`}</span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   const ptsIn = document.getElementById("spPts");
@@ -1178,12 +1179,12 @@ function renderNext() {
    remaining = total − logged costs. Node order lives in the milestones (Nezekan Lv 13, Zikel 20, Vaizel 30, Triniel 40). */
 const dvShort = t => t.replace("Cooldown Reduction or Combat Speed corner", "1 corner: CDR or Speed").replace("Critical Damage Boost corner", "Crit Damage corner").replace("Multi-Hit Chance corner", "Multi-Hit corner");
 function renderDaevanion() {
-  const box = document.getElementById("dvBox"); box.hidden = char(state).level < 12;
+  const box = document.getElementById("dvBox"); box.hidden = !dvOpen(char(state));
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
   document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
   document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}`;
   /* One node at a time: the next unbought node on an unlocked board, in the milestones' order. */
-  const opts = DV_NODES().filter(it => !char(state).checks[it.k] && it.blv <= char(state).level).slice(0, 1), list = document.getElementById("dvNextList");
+  const opts = [dvNext(char(state))].filter(Boolean), list = document.getElementById("dvNextList");
   list.innerHTML = opts.length
     ? opts.map(it => { const cost = (char(state).dvCost || {})[it.k];
         const st = !cost ? `<span class="dvst">enter in-game cost</span>` : cost <= (total - dvSpent(char(state))) ? `<span class="dvst ok">ready to buy</span>` : `<span class="dvst"></span>`;
@@ -1196,7 +1197,7 @@ function renderDaevanion() {
     : (() => { const nl = DV_NODES().find(it => !char(state).checks[it.k]); if (!nl) return null;
         const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv);
         /* Stop point: show the next node you'll buy (on the next board) and a green "all done" status in the button slot. */
-        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${opensAt > char(state).level ? ` board · opens Lv ${at}` : ` · Lv ${at}`}</small></div></div>` +
+        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${!dvOpen(char(state), nl.board) ? ` board · opens Lv ${at}` : ` · Lv ${at}`}</small></div></div>` +
           `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · <span class="nw">next: ${nl.board} at Lv ${at}</span></div></div></div>`; })()
     || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`;
   dvNxUpdate(); renderUndo(); requestAnimationFrame(() => typeof fitSkills === "function" && fitSkills());
@@ -1206,24 +1207,24 @@ function renderDaevanion() {
   const heroB = opts[0] ? opts[0].board : null, nextLocked = !heroB && DV_NODES().find(it => !char(state).checks[it.k]);
   const bName = heroB || (nextLocked && nextLocked.board);
   /* Current board strip, always shown: the board you're buying on (or the last one you finished). Gold "new" right after it opens. */
-  const curB = heroB || ([...DV_NODES()].reverse().find(it => char(state).checks[it.k] && it.blv <= char(state).level) || DV_NODES()[0]).board;
+  const curB = heroB || ([...DV_NODES()].reverse().find(it => char(state).checks[it.k] && openOf(char(state), it.k)) || DV_NODES()[0]).board;
   { const bl = DV_NODES().filter(it => it.board === curB), bd = bl.filter(it => char(state).checks[it.k]).length, isNew = !!heroB && bd === 0, full = bd === bl.length;
     /* Header for the list under it, styled like Skills' "Coming up": board name, bought count, a thin bar. */
     document.getElementById("dvBoard").innerHTML = `<div class="dvbh${isNew ? " new" : ""}${full ? " full" : ""}"><div class="dvbh-top"><span class="dvbh-k">${curB} board${isNew ? ` <span class="dvb-new">New</span>` : ""}</span><span class="dvbh-n">${full ? "✓&nbsp;" : ""}${bd} of ${bl.length}<span class="dvbh-w"> acquired</span></span></div>` +
       `<span class="dvbh-bar"><span style="width:${bd / bl.length * 100}%"></span></span></div>`; }
   let prevB = curB;
   document.getElementById("dvThen").innerHTML = after.length ? `<ul class="soonlist">` + after.map(it => {
-    const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv));
+    const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv)), shutB = !dvOpen(char(state), it.board);
     /* Not open yet: a bar from the last milestone below your level up to the board's level. */
     const fromLv = (GATES.filter(g => g.lv < char(state).level).pop() || { lv: 1 }).lv, pctB = Math.min(100, Math.max(0, (char(state).level - fromLv) / Math.max(1, opensAt - fromLv) * 100));
-    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${opensAt > char(state).level ? `opens Lv ${opensAt} · ${opensAt - char(state).level} to go` : "open"}</span>${opensAt > char(state).level ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
+    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${shutB ? `opens Lv ${opensAt} · ${opensAt - char(state).level} to go` : "open"}</span>${shutB ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
     prevB = it.board;
-    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${it.blv > char(state).level && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${opensAt > char(state).level ? `<span class="nb-tag" title="${it.board} board opens at Lv ${opensAt}">Lv ${opensAt}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
+    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board opens at Lv ${opensAt}">Lv ${opensAt}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
   /* Full plan, grouped by board; boards not yet open are dimmed with their level. */
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });
   document.getElementById("dvAllList").innerHTML = Object.entries(byBoard).map(([b, list]) => {
-    const opens = Math.min(...list.map(it => it.blv)), shut = opens > char(state).level, done = list.filter(it => char(state).checks[it.k]).length;
+    const opens = Math.min(...list.map(it => it.blv)), shut = !dvOpen(char(state), b), done = list.filter(it => char(state).checks[it.k]).length;
     return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? `opens at Lv ${opens}` : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
   }).join("");
   const inp = document.getElementById("dvIn");
@@ -1405,10 +1406,10 @@ const stIco = (name, cls) => STIGMA_ICON[name] ? `<img class="${cls}" src="${STI
 const stTip = () => `<span class="tipwrap"><button type="button" class="tipbtn" aria-label="Stigma shard costs" aria-expanded="false" aria-controls="tipPop${++tipSeq}">i</button><span class="tippop" id="tipPop${tipSeq}" role="tooltip"><b>Shards per level</b>1–5: 1 each · 6–10: 2 · 11–15: 4 · 16–20: 8 (75 to reach 20). Learning a stigma is its level 1. Bonuses at 5, 10, 15, 20.<br><br><b>More shards</b>1 per character level from 23 to 39 (2 from 40), plus achievements and shops.<br><br><b>Plan</b>Triniel's Dagger to 10, then Illusive Clone toward 20.<span class="tipopen">Costs from Metabot and allthings.how; not yet checked in game.</span></span></span>`;
 function renderStigma() {
   const body = document.getElementById("stBody"), card = document.getElementById("stCard"); if (!body) return;
-  const lv = char(state).level, slots = STIGMA_SLOTS(), unlocked = !!char(state).checks["g22:0"], sh = char(state).stShards || 0;
+  const lv = char(state).level, slots = STIGMA_SLOTS(), ev = gatesOf(char(state)), sh = char(state).stShards || 0;
   const si = document.getElementById("stShards"); if (si && document.activeElement !== si) si.value = char(state).stShards != null ? char(state).stShards : "";
   const eqN = slots.filter(x => char(state).checks[x.k]).length, next = slots.find(x => !char(state).checks[x.k]);
-  const canEquip = next && next.lv <= lv && unlocked;
+  const canEquip = next && stigmaEquipOpen(char(state), next, ev);
   const plan = stPlan(), up = plan[0];
   const ico = n => `<span class="dvico st-ico${STIGMA_ICON[n] ? " art" : ""}">${stIco(n, "st-img") || n.split(" ").map(w => w[0]).join("").slice(0, 2)}</span>`;
   const bonusAt = L => [5, 10, 15, 20].find(t => t >= L);
@@ -1438,11 +1439,12 @@ function renderStigma() {
     if (nx) thenRow = soonRow(nx, up.cost + nx.cost);
     else if (next) thenRow = `<li><span class="sname">${stIco(next.name, "st-mini")}${next.name}</span><span class="slv">Lv ${next.lv}</span><span class="sst"></span></li>`;
   } else if (next) {
-    hero = `<div class="sphero st-hero lock"><div class="dvhead">${ico(next.name)}<div class="dvtext"><span class="spname">${next.name}</span><small>Slot ${next.n} · ${next.lv > lv ? `opens Lv ${next.lv}` : "Stigmas not unlocked yet"}</small></div></div>` +
-      `<div class="buyrow"><div class="buystat">${next.lv > lv ? `Slot ${next.n} opens at Lv ${next.lv}` : `Finish "The One Who Hears the Voice" first`}</div></div></div>`;
+    const shut = !slotLevelMet(ev, next);
+    hero = `<div class="sphero st-hero lock"><div class="dvhead">${ico(next.name)}<div class="dvtext"><span class="spname">${next.name}</span><small>Slot ${next.n} · ${shut ? `opens Lv ${next.lv}` : "Stigmas not unlocked yet"}</small></div></div>` +
+      `<div class="buyrow"><div class="buystat">${shut ? `Slot ${next.n} opens at Lv ${next.lv}` : `Finish "The One Who Hears the Voice" first`}</div></div></div>`;
   } else hero = `<div class="sphero st-hero"><div class="dvhead"><span class="dvico st-ico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">Planned upgrades done</span><small>${ST_TARGETS.map(([n, T]) => `${n} ${T}`).join(" · ")}</small></div></div></div>`;
   /* Slots (footer): equipped stigmas get − / + to match the game; the rest show when they open. */
-  document.getElementById("stList").innerHTML = slots.map(x => { const on = !!char(state).checks[x.k], open = x.lv <= lv && (x.n > 1 || unlocked), L = stLvOf(x.name);
+  document.getElementById("stList").innerHTML = slots.map(x => { const on = !!char(state).checks[x.k], open = ev.byKey(x.k).open, L = stLvOf(x.name);
     return `<li class="${on ? "st-on" : ""}"><span class="sname"><span class="st-n">${x.n}</span>${stIco(x.name, "st-mini")}${x.name}</span>` +
       (on ? `<span class="st-lvctl"><button type="button" data-stlv="${x.name}" data-d="-1" aria-label="Level down">−</button><span>Lv ${L}</span><button type="button" data-stlv="${x.name}" data-d="1" aria-label="Level up">+</button></span>`
           : `<span class="slv${open ? " now" : ""}">${open ? "now" : "Lv " + x.lv}</span>`) + `</li>`; }).join("");

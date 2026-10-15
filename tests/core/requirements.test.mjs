@@ -11,12 +11,15 @@ export default (test, M) => {
     assert.equal(M.storyIdx(M.QUESTS[7][1]), 7); assert.equal(M.questIdx(S()), -1); assert.equal(M.questIdx(S({ quest: M.QUESTS[7][1] })), 7);
     assert.equal(M.questIdx(S({ quest: 'Not a quest' })), -1);
   });
+  /* the level a regional quest opens at: its unlock level, or with no prerequisite data (noPre) its recommended level */
+  const openLv = q => q.noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
   test('regional quest: closed below its unlock level and before its story quest, open at it', () => {
     const q = M.RQ.find(q => q.story && !q.after.length && M.storyIdx(q.story) > 0);
     assert.equal(M.rqStatus(S({ level: 45 }), q).open, false);
     assert.equal(M.rqStatus(S({ level: 45, quest: qBefore(q.story) }), q).open, false);
     assert.deepEqual(M.rqStatus(S({ level: 45, quest: qAt(q.story) }), q), { open: true, ok: true, pre: [] });
-    assert.equal(M.rqStatus(S({ level: M.rqOpenLv(q) - 1, quest: qAt(q.story) }), q).open, false);
+    assert.equal(M.rqStatus(S({ level: openLv(q) - 1, quest: qAt(q.story) }), q).open, false);
+    assert.equal(M.rqStatus(S({ level: 5, quest: qAt(q.story) }), q, openLv(q)).open, true, 'lv argument: the gate at that level');
   });
   test('regional quest follow-up: open but not ok until the quests before it are turned in', () => {
     const q = M.RQ.find(q => q.after.length), quest = M.QUESTS[M.QUESTS.length - 1][1];
@@ -25,7 +28,13 @@ export default (test, M) => {
     assert.deepEqual(M.rqStatus(S({ level: 45, quest, checks }), q), { open: true, ok: true, pre: [] });
   });
   test('no prerequisite data (noPre): open from the recommended level', () => {
-    for (const q of M.RQ.filter(q => q.noPre)) assert.equal(M.rqOpenLv(q), Math.max(q.unlocksAt || 0, q.rec));
+    const end = M.QUESTS[M.QUESTS.length - 1][1], qs = M.RQ.filter(q => q.noPre);
+    assert.ok(qs.length > 0);
+    for (const q of qs) {
+      const s = lv => S({ level: lv, quest: end, storyEnd: end, checks: Object.fromEntries(q.after.map(n => ['rq:' + M.RQ_BY[n].id, true])) });
+      assert.equal(M.rqStatus(s(openLv(q) - 1), q).open, false, `${q.name} below Lv ${openLv(q)}`);
+      assert.equal(M.rqStatus(s(openLv(q)), q).ok, true, `${q.name} at Lv ${openLv(q)}`);
+    }
   });
   test('quest progress: true from old saves counts as in progress', () => {
     assert.equal(M.qProgOf(S({ started: { a: true, b: 1 } }), 'a'), 1); assert.equal(M.qProgOf(S(), 'a'), 0);
@@ -112,10 +121,16 @@ export default (test, M) => {
     }
     assert.deepEqual(M.rotKeys(S({ level: 1 }), 1), { rmb: ['Savage Roar'], q: ['Shadowstrike'], e: [] });
   });
-  test('rotation: uses the Skills card unlock rule (SP_STEPS), not the key-stack rows: a later learn level hides the skill', () => {
-    const step = M.SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = step.req;
-    try { step.req = 6; assert.ok(!M.rotKeys(S({ level: 5 }), 5).rmb.includes('Ambush')); assert.ok(M.rotKeys(S({ level: 6 }), 6).rmb.includes('Ambush')); }
-    finally { step.req = was; }
+  test('rotation: uses the Skills card unlock rule (the skill line\'s gate), not the key-stack rows', () => {
+    /* since E2 both read the evaluator's gate of the skill's first line (GATE_GRAPH, rule:skill-level-gate), so the
+       0.2 version of this check (moving SP_STEPS req) no longer reaches it; instead: at every level, the right-click
+       row is the stack minus every skill whose first line the Skills card doesn't offer yet */
+    for (let lv = 1; lv <= 45; lv++) {
+      const now = M.skillOpen(S({ level: lv })).now, card = n => now.some(x => x.s.n === n && x.L === 2);
+      assert.deepEqual(M.rotKeys(S({ level: lv }), lv).rmb, M.RMB_STACK(lv).filter(card), `Lv ${lv}`);
+    }
+    for (const x of M.SP_STEPS.filter(x => x.L === 2)) for (let lv = 1; lv <= 45; lv++)
+      assert.equal(M.skillLearned(x.s.n, lv), M.openOf(S({ level: lv }), x.k), `${x.s.n} at Lv ${lv}: skillLearned = the first line's gate`);
     assert.equal(M.skillLearned('Not a skill', 45), false);
   });
   test('rotation: at every level, every listed skill is one the Skills card has unlocked; stigmas only from their slot level', () => {
