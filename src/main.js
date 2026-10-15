@@ -13,6 +13,7 @@ import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } fro
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
 import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
+import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { checkableOf, countsOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, mainCountsOf, objIdxOf, objSubs, qProgOf, rqStatus,
   shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotNames, stLvOfC, stigmaPlan, stigmaSlots } from "./core/requirements.js";
@@ -112,10 +113,12 @@ document.getElementById("gates").addEventListener("click", e => {
 }, true);
 /* The save from storage, then the load-time steps (src/core/migrations.js), which write it back where they always did. */
 let { state, hadSave } = (() => { let raw = null; try { raw = localStorage.getItem(KEY); } catch (e) {} return loadState(raw); })();
-migrate(state, hadSave, storeState);
-/* Every write of the progress goes through storeState(): same key, same data, same moments as before (0.1.5). A write
+migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
+/* Every write of the progress goes through storeState(): same key, same moments as before (0.1.5); since 5c the save
+   carries per-item change times once the stampV1 step has run (stampSave, src/core/sync.js). A write
    that throws (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
 function storeState() {
+  stampSave(state, Date.now());
   try { localStorage.setItem(KEY, JSON.stringify(state)); setSaveWarn(false); } catch (e) { setSaveWarn(true); }
 }
 function setSaveWarn(on) {

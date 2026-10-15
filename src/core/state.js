@@ -13,6 +13,7 @@ export const CHAR_FIELDS = [
   "checks", "started", "areaRun", "level", "quest", "storyEnd", "qsteps", "qsub", "rqSnooze",
   "stLv", "stShards", "stPick", "stones", "pendSt", "pendCr",
   "dvTotal", "dvCost", "dvAdj", "dvLast", "dvLastAt", "dvPts", "crystals", "rotSeen",
+  "mt", /* per-item change times (5c, src/core/sync.js) */
 ];
 export const char = state => state;
 

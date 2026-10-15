@@ -83,6 +83,14 @@ function storeDiff(inRaw, outRaw) {
   const isO = x => x && typeof x === 'object' && !Array.isArray(x), out = {};
   const C = x => JSON.stringify(x, (k, v) => isO(v) ? Object.fromEntries(Object.keys(v).sort().map(j => [j, v[j]])) : v); /* key order doesn't count */
   const J = x => x === undefined ? '(absent)' : x;
+  /* 5c change times (mt) are recorded as a summary: stamp count, count per time and a hash of the whole object, so any
+     change still shows as a diff without storing ~2 KB of stamps per state (they are checked in full by tests/core/sync
+     and the mig2 suite). */
+  const MT = m => { if (!isO(m)) return m; const at = {}; let n = 0, h = 0x811c9dc5; const t = C(m);
+    for (let i = 0; i < t.length; i++) h = Math.imul(h ^ t.charCodeAt(i), 16777619) >>> 0;
+    (function walk(o) { Object.values(o).forEach(v => { if (Array.isArray(v) && v.length === 2 && typeof v[0] === 'number') { n++; at[v[0]] = (at[v[0]] || 0) + 1; } else if (isO(v)) walk(v); }); })(m);
+    return { stamps: n, at, fnv1a: h.toString(16).padStart(8, '0') }; };
+  for (const o of [a, b]) if (isO(o) && 'mt' in o) o.mt = MT(o.mt);
   if (!isO(a) || !isO(b)) return { '': [J(a), J(b)] };
   for (const k of [...new Set([...Object.keys(a), ...Object.keys(b)])].sort()) {
     const x = a[k], y = b[k];

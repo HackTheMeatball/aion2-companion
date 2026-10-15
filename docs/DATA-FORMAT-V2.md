@@ -661,6 +661,15 @@ Derived completions are never in the save, so there is nothing to merge for them
 - **Import stamps (N1):** entries from an Import that has no `mt` get the export's `savedAt` when it has one, else 0,
   so a stale backup never outranks newer synced progress. Test: export at T0, tick on device B at T1, import the T0
   export on A, sync; B's tick survives.
+- **As built (5c):** `mt` sits in the character (a `CHAR_FIELDS` entry; today the save's top level). The quest register
+  is `mt.quest = [t, [quest, storyEnd]]`. The one-time step (`stampV1`) stamps what a save already holds with 0 (its
+  `savedAt` when it has one), so pre-existing progress never outranks a dated change; a fresh browser's defaults are
+  stamped 0 too. `savedAt` is the time of the last saved *progress* change (view-only writes leave it). Stamps are
+  taken by diffing at each write, so every mutation site stays as it was.
+- **Clock skew (per-item Lamport bump):** a new stamp is `max(now, previous stamp + 1)` for that item (time-0 stamps stay
+  0), so an edit always beats the value it replaced, even on a device whose clock went back or runs behind. Limit: a
+  stamp from a device whose clock ran far ahead wins against concurrent edits of that item until the next edit of the
+  same item (which then bumps past it). A `savedAt` that isn't a positive number (a broken import) counts as absent (0).
 - `mt` is also what location-aware Next up reads (§9): the newest stamp on a located item gives the last confirmed
   location; stamps on Ascension records and steps are skipped (they have no location). No separate location field,
   nothing extra to sync.

@@ -5,7 +5,10 @@
       stigma picks, snoozes, a dungeon run, and one tick on each key E2 removed (g45:1, hold:0).
    2. Load it in pre-E2 and in E2 and compare everything by name (E2 re-bands quests, so milestone counts may move).
    3. Every key that was ticked stays ticked in E2's save; nothing is deleted; reload is idempotent; the v285 fixture still
-      migrates straight into E2; E2's save loads back into pre-E2 with the same progress. */
+      migrates straight into E2; E2's save loads back into pre-E2 with the same progress.
+   4. 5c change times (stampV1): on load the save gains schemaVersion 1 and mt with old values stamped 0; the first change
+      is stamped with its time and sets savedAt, every other value is kept; reload is idempotent; the 5c save loads
+      in pre-E2 with the same progress, an un-tick made there survives the trip back and is re-stamped there. */
 const { chromium } = require('playwright'); const fs = require('fs');
 const [,, PRE, E2, FIX] = process.argv; const KEY = 'aion2-assassin-route-v4';
 const metrics = () => {
@@ -83,6 +86,47 @@ const metrics = () => {
   /* 3. rollback: E2's save back into pre-E2 */
   const D = await run(PRE, JSON.stringify(B.saved));
   for (const k of ['quests', 'sd', 'sh', 'sp', 'dv', 'qsteps', 'stigma']) same('rollback to pre-E2: ' + k, A.m[k], D.m[k]);
+  /* 4. 5c: per-item change times. Pages run with a fixed clock so stamps are predictable. */
+  /* the one-time step itself writes nothing; the page's start-up view writes (folds) then store the flag and the time-0 stamps */
+  const zeroOnly = o => JSON.stringify(o || {}).match(/\[\d+,/g).every(x => x === '[0,');
+  ok('5c: on load, the save gains only stampV1, schemaVersion 1 and mt with every stamp at time 0 (no savedAt)', B.saved.stampV1 === true && B.saved.schemaVersion === 1 && zeroOnly(B.saved.mt) && B.saved.savedAt === undefined, Object.keys(B.saved).filter(k => /stamp|^mt$|schema|savedAt/.test(k)));
+  const T1 = Date.parse('2026-10-14T10:00:00Z'), T2 = Date.parse('2026-10-14T12:00:00Z');
+  /* load `initial` in `file` at time `now`; act() runs in the page and saves; returns metrics and the stored save after load, after act, after a reload */
+  const run5c = async (file, initial, now, act) => {
+    const ctx = await b.newContext(); await ctx.addInitScript(t => { Date.now = () => t; }, now);
+    const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+    await p.goto(file); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, initial]); await p.reload(); await p.waitForTimeout(450);
+    const loaded = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    if (act) { await p.evaluate(act); await p.waitForTimeout(150); }
+    const m = await p.evaluate(metrics), saved = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    await p.reload(); await p.waitForTimeout(350); const m2 = await p.evaluate(metrics), saved2 = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    await ctx.close(); return { loaded, m, saved, m2, saved2, errs };
+  };
+  const untick = k => `(() => { state.checks[${JSON.stringify(k)}] = false; save(); update(); })()`;
+  const E = await run5c(E2, JSON.stringify(B.saved), T1, untick('rq:2202016'));
+  ok('5c: no page errors', !E.errs.length, E.errs);
+  const V = E.saved, stamps = [];
+  const walk = (o, p) => Object.entries(o || {}).forEach(([k, v]) => Array.isArray(v) && v.length === 2 && typeof v[0] === 'number' ? stamps.push([p + k, v]) : walk(v, p + k + '.'));
+  walk(V.mt, '');
+  ok('5c: the first progress change sets savedAt and stamps mt', V.stampV1 === true && V.schemaVersion === 1 && V.savedAt === T1 && stamps.length > 100, [V.stampV1, V.schemaVersion, V.savedAt, stamps.length]);
+  ok('5c: the un-tick is stamped with its save time; every older value is stamped 0 with its value',
+    JSON.stringify(V.mt.checks['rq:2202016']) === JSON.stringify([T1 / 1000, false]) && stamps.every(([k, [t]]) => k === 'checks.rq:2202016' || t === 0) && Object.entries(B.saved.checks).every(([k, v]) => k === 'rq:2202016' || JSON.stringify(V.mt.checks[k]) === JSON.stringify([0, v])),
+    stamps.filter(([k, [t]]) => t !== 0));
+  const changed = Object.keys({ ...B.saved, ...V }).filter(k => !['savedAt', 'mt', 'checks'].includes(k) && JSON.stringify(canon(B.saved[k])) !== JSON.stringify(canon(V[k])));
+  const lostC = Object.entries(B.saved.checks).filter(([k, v]) => k !== 'rq:2202016' && V.checks[k] !== v).map(([k]) => k);
+  ok('5c: additive (every other saved value kept; only the un-tick changed)', !changed.length && !lostC.length && V.checks['rq:2202016'] === false, { changed, lostC });
+  same('5c: reload writes nothing (saved state)', E.saved, E.saved2);
+  same('5c: reload idempotent (metrics)', E.m, E.m2);
+  /* rollback: the 5c save into pre-E2 (a build without change times), an un-tick there, then back */
+  const R = await run5c(PRE, JSON.stringify(V), T2, untick('rq:2202053'));
+  for (const k of ['quests', 'sd', 'sh', 'sp', 'dv', 'qsteps', 'qsub', 'stigma', 'level', 'quest']) if (k !== 'quests') same('5c rollback to pre-E2: ' + k, E.m[k], R.m[k]);
+  const qx = o => Object.fromEntries(Object.entries(o).filter(([n]) => n !== 'Nine Wonders of Altgard: 1st Leg'));
+  same('5c rollback to pre-E2: quests (except the one un-ticked there)', qx(E.m.quests), qx(R.m.quests));
+  ok('5c rollback: pre-E2 keeps mt, stampV1 and schemaVersion in its save', JSON.stringify(R.saved.mt) === JSON.stringify(V.mt) && R.saved.stampV1 === true && R.saved.schemaVersion === 1 && R.saved.checks['rq:2202053'] === false);
+  const F = await run5c(E2, JSON.stringify(R.saved), T2 + 60000, '(() => { save(); })()');
+  ok('5c back from pre-E2: its un-tick is re-stamped at the next load; other stamps unchanged',
+    JSON.stringify(F.saved.mt.checks['rq:2202053']) === JSON.stringify([(T2 + 60000) / 1000, false]) && JSON.stringify(F.saved.mt.checks['rq:2202016']) === JSON.stringify([T1 / 1000, false]) && F.saved.checks['rq:2202053'] === false,
+    [F.saved.mt.checks['rq:2202053'], F.saved.mt.checks['rq:2202016']]);
   console.log(fail ? `E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();
