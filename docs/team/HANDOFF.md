@@ -39,10 +39,11 @@ Wave 2 (each starts when what it names has merged):
   templates; patch-watch routine; icon provenance table.
 
 Then: 0.3 requirement engine (sole owner of `src/main.js` while it runs) → blocker-chain UI + Ascension bar (mockup) →
-0.3.0 → 0.4 characters → phone layout (mockup; on the tokens) → 0.5 sync.
+0.3.0 → 0.4 smart Next up → 0.5 characters → phone layout (mockup; on the tokens) → 0.6 sync (renumbered 2026-10-15,
+ROADMAP).
 
 Serial-only files (never two sessions at once): `.github/workflows/ci.yml`; `tests/` while step 4 runs;
-`src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 →
+`src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 smart Next up → 0.5 →
 phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 
 ## Cloud environments (owner manages; CEO tells the owner when a domain must be added or removed)
@@ -65,7 +66,7 @@ phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 - Colour sprint: answer the open questions (research report §10, 8a–f); one in-game session batched with data checks
   (gate semantics, `noPre` quest levels, Kibelisk / Command unlocks, "Daeva Trapped in a Nightmare", Daevanion points
   at 16/17, respec cost after 31, expedition cap, reset time). Screens go to the private repo.
-- Sync (0.5) decisions later: "lose the code = lose the cloud copy", whether view settings sync, retention.
+- Sync (0.6) decisions later: "lose the code = lose the cloud copy", whether view settings sync, retention.
 
 ## Known gotchas
 - The `update() < 15 ms` timing check flakes on busy machines; rerun that suite alone before calling it a failure

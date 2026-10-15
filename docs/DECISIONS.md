@@ -3,6 +3,15 @@
 Decisions the owner made, so every department works from the same answers. Newest first. Product calls belong to the
 owner; the CEO records them here and in the department charters they affect.
 
+## 2026-10-15
+
+| # | Topic | Decision |
+|---|---|---|
+| — | Fresh browser | A new browser starts at Lv 1 on the first story quest ("A Village in the Fog"), not Lv 5 with no quest (owner request). Saves are never re-defaulted. Ships as 0.2.1. |
+| — | Patches before 0.3 | Owner followed the CEO's recommendation: more, smaller 0.2.x patches before 0.3.0 (sequence in ROADMAP "0.2.x"); invisible work lands between them. |
+| — | Smart Next up | Owner followed the CEO's recommendation: location-aware Next up, fastest / completionist and catch-up (F1, F9, F10, F15) are their own minor, 0.4, after 0.3 correctness. Later minors move up by one. |
+| — | Autonomous 0.2 → 0.3 cycle | Owner (00:31): the CEO runs the cycle overnight and merges itself, starting its own sessions. Rules: merge only with green CI, a sign-off from a separate reviewer that didn't write the work, and save tests passing; saves only ever added to; screenshots of visible changes kept for the owner to check afterwards (undo by a follow-up patch). Held for the owner: 0.3's intended Next up behaviour changes, anything risky or hard to undo, new game art beyond the icon OK, money / accounts / legal. Applies to this cycle only; the normal merge rule returns after 0.3.0 unless the owner says otherwise. |
+
 ## 2026-10-14
 
 | # | Topic | Decision |

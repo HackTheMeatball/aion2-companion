@@ -61,11 +61,11 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 | `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `stampV1` | one-time flags (see below) |
 | `schemaVersion`, `savedAt`, `mt` | save shape (absent = 0; `1` since 5c), time of the last saved progress change (ms), per-item change times (character field; see Change times below) |
 
-**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.4). The save holds view
+**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.5, renumbered from 0.4). The save holds view
 settings, one-time flags and one character; the character's fields (`CHAR_FIELDS` in `src/core/state.js`: `checks`,
 `level`, `quest`, `storyEnd`, `qsteps`, `qsub`, `started`, `areaRun`, `rqSnooze`, the stigma, skill-point and board fields,
 `rotSeen`, `mt`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
-JSON is unchanged; 0.4 changes that one function and the save format. The `core` suite fails on a direct
+JSON is unchanged; 0.5 (characters) changes that one function and the save format. The `core` suite fails on a direct
 `state.<field>` for a character field anywhere in `src/`.
 
 ### Change times and `merge()` (0.2 step 5c)

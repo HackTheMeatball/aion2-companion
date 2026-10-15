@@ -101,6 +101,30 @@ identical, all suites green, saves untouched.
 **0.2.0 released 2026-10-14** (5b and 5c merged). Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
 toolchain, data out of code). 5b part 2 carried owner-approved visible data corrections (#38).
 
+### 0.2.x — patches on the way to 0.3
+
+Planned 2026-10-15 (owner followed the CEO's recommendation). Patches carry fixes, data corrections and polish, never
+new features; invisible work (faster CI, design tokens, the 0.3 engine groundwork) lands between them without a
+release. The order can change.
+
+- **0.2.1**: a fresh browser starts at Lv 1 on the first story quest ("A Village in the Fog") instead of Lv 5 with no
+  quest; saves are never re-defaulted.
+- **0.2.2**: Daevanion up arrow starts at 1 (F6); rotation pop-out lists only unlocked skills (F7); missing skill icons
+  (F8).
+- **0.2.3**: stigma unlock cost (F5); results of the owner's in-game checks (Hugo Mercenaries: Deep Shadow, Ascension
+  openings, Zikel Defense Break node).
+- **0.2.4**: story quest locations: the 41 story quests on the `zone:altgard-unplaced` placeholder, from Metabot.
+- **0.2.5**: save safety (the "last backup" line and the iPhone home-screen hint above; mockup first).
+- **0.2.6**: polish: a home for the Route rules card (F11), the remaining phone page-zoom issues, hit areas on the
+  Confidence / Sources summaries.
+- **0.2.7**: skills marked active / passive (F2; the data exists, display only).
+- Between patches, no release: faster CI and `ci-ok`, then branch protection (owner); design tokens; 0.3 engine design
+  and the prerequisite gates loaded into the data.
+
+**Renumbered 2026-10-15:** Smart Next up was inserted as 0.4, so every later minor moved up by one (characters
+0.4 → 0.5, sync 0.5 → 0.6, new players 0.6 → 0.7, classes 0.7–0.13 → 0.8–0.14). Older decisions, reports and code
+comments keep the old numbers.
+
 ### 0.3 — Next up correctness
 
 - One requirement evaluator for every card, with blocker chains ("unlocks after story X · N quests ahead").
@@ -113,26 +137,40 @@ toolchain, data out of code). 5b part 2 carried owner-approved visible data corr
 - An invariant test over ~10,000 states: Next up never offers a blocked or already-done step.
 - Deriving completion changes Next up for some saves on purpose: every golden-master difference is listed with its
   reason and approved by the owner as a product change.
+- Specialties: all three slots recommended, opening at effective skill level 8, 12 and 20 (F3).
 
-### 0.4 — Characters and class framework
+### 0.4 — Smart Next up
+
+Decided 2026-10-15 (owner followed the CEO's recommendation): its own minor after 0.3, so the ranking is built on a
+correct engine and each release stays testable. 0.3 makes Next up correct; 0.4 makes it smart.
+
+- Location-aware "next best thing" (F15, Zygor-like): tie-break by distance from the last confirmed location; teleport
+  vs run per the travel rules in DECISIONS (Kibelisk unlocks derived from ticks, "1 scroll", an "I'll walk" override,
+  an optional "Prefer running" setting).
+- Fastest (default) and completionist modes; Next up grouped by level band with the range shown (F10); the drawbacks of
+  "fastest" shown.
+- Catch-up: rank by what the player can do now (level, skill points, crystals), not guide order (F1).
+- Filler XP ranking once the owner's XP-per-minute measurements exist (F9).
+
+### 0.5 — Characters and class framework
 
 - Several characters per browser (the existing save stays the first character, so older versions still read it; an
-  additive, flagged migration for per-character quest steps; a rollback to 0.3 still reads character 1).
+  additive, flagged migration for per-character quest steps; a rollback to 0.4 still reads character 1).
 - Class picker (Assassin only visible until a second class is ready); class data loaded per character.
 
-### 0.5 — Backup and sync
+### 0.6 — Backup and sync
 
 No accounts and no personal data: an anonymous, end-to-end encrypted **sync code**. Your progress is backed up and
 follows you between phone and PC; the server only ever stores encrypted data it can't read. Offline-first (the browser
 copy stays the working copy), merged per item so un-ticking survives, existing saves untouched. Accounts (email codes,
 passkeys, Discord) stay possible later if a feature ever needs them.
 
-### 0.6 — New and mid-level players
+### 0.7 — New and mid-level players
 
 - First-run welcome; Lv 1–10 tuned so it isn't a wall of cards; terms explained where they first appear.
 - Joining mid-level: set level and story quest, earlier content counted as done.
 
-### 0.7 – 0.13 — one class per release
+### 0.8 – 0.14 — one class per release
 
 Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner, D8). Each: a research pack
 (report, sourced per field) written ahead, then two sources per claim, data and claims entries, a golden snapshot, an
