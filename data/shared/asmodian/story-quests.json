@@ -494,22 +494,26 @@
       "steps": [
         {
           "i": 0,
-          "text": "Check the journal Elvida mentioned — check the Timeworn Journal, check the Worn Tome (Witch's Cabin)"
+          "text": "Bind with the Witch's Cabin Kibelisk"
         },
         {
           "i": 1,
-          "text": "Talk about your resolve to ascend — talk to Elvida (Witch's Cabin)"
+          "text": "Check the journal Elvida mentioned — check the Timeworn Journal, check the Worn Tome (Witch's Cabin)"
         },
         {
           "i": 2,
-          "text": "Go to the path beneath the lake — enter Tunapre Lake Cave"
+          "text": "Talk about your resolve to ascend — talk to Elvida (Witch's Cabin)"
         },
         {
           "i": 3,
-          "text": "Learn to fly — enter the Ascension Subspace"
+          "text": "Go to the path beneath the lake — enter Tunapre Lake Cave"
         },
         {
           "i": 4,
+          "text": "Learn to fly — enter the Ascension Subspace"
+        },
+        {
+          "i": 5,
           "text": "Turn in — Asahr, Ascension Subspace"
         }
       ],
@@ -585,6 +589,20 @@
             "value": "0.0.4387.0"
           },
           "note": "Metabot quest page: walkthrough steps and Start & turn-in table (story-step fill, issue #65)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-26",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "The first steps of The Being Beneath the Lake bind the Witch's Cabin Kibelisk (alt character, Lv 2-6)"
+          },
+          "fields": [
+            "steps"
+          ]
         }
       ],
       "verifiedAt": "2026-10-15",
