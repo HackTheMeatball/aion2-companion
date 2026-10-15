@@ -8,6 +8,43 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.3 — 2026-10-15
+
+Story-quest zones for 34 more quest sides; stigma unlock cost check.
+
+### Changed
+
+- Next up: the "near your story step" choice (the preferred Sealed Dungeon or stronghold, and the "N near your story
+  step" count on the Regional quests card) can differ for a save on a Lv 10–22 story quest whose turn-in zone is now
+  known. A turn-in that is still a placeholder shows no "near your story step" area.
+- Stigma unlock cost: the guide already counts 1 shard to unlock a stigma, which then starts at Lv 1; no plan or value
+  changes. The owner's in-game confirmation is now recorded on the rule and a test covers it.
+
+### Data
+
+- Story-quest locations: 34 of 71 placeholder quest sides now have a zone, 6 verified (Metabot's Location is a zone in
+  the guide's list) and 28 inferred through the camp list; giver and turn-in NPCs, places, nearest Kibelisk and
+  distances were filled in where missing. All from the Metabot quest pages (game build 0.0.4387.0, checked
+  2026-10-15). Quests still on the placeholder zone: 40 → 26; 37 sides stay placeholders (30 at Metabot villages the
+  guide has no zone for, 4 auto-start givers, 2 Dream Crossroad turn-ins, 1 Reshanta turn-in).
+- Stigma shard cost (rule:stigma-shard-cost, Lv 1–5 = 1 each): owner in-game confirmation added (inferred reference).
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+- The villages Steel Hammer Workcamp, Odar's Shade, Fang Hideout, Minushan Site, Shadow Hall and Sanctum Dumpsite
+  still have no zone of their own; quests there keep the placeholder zone.
+
+### Saved progress
+
+- Unaffected.
+
 ## 0.2.2 — 2026-10-15
 
 Daevanion cost arrow, rotation by level, and five more skill icons.

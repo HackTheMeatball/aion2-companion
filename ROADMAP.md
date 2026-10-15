@@ -48,6 +48,9 @@ docs/team/HANDOFF.md ("Now and next").
 - **0.1.9** — touch, contrast and page-zoom fixes (visible accessibility batch from the mobile audit).
 - **0.2.0** — Foundations: pure core, data format v2 with JSON Schemas and a Node generator, owner-verified unlocks and
   Metabot locations, aion2.th.gl withdrawn, per-item change times and `merge()` in the save.
+- **0.2.1** — a fresh browser starts at Lv 1 on the first story quest instead of Lv 5 with no quest.
+- **0.2.2** — Daevanion up arrow starts at 1, rotation pop-out lists only unlocked skills, missing skill icons.
+- **0.2.3** — story-quest zones for 34 more quest sides (Metabot), stigma unlock cost check.
 
 ## Plan
 
@@ -107,13 +110,14 @@ Planned 2026-10-15 (owner followed the CEO's recommendation). Patches carry smal
 corrections, polish, small display additions); no engine, data-format or save-format work; invisible work (faster CI, design tokens, the 0.3 engine groundwork) lands between them without a
 release. The order can change.
 
-- **0.2.1**: a fresh browser starts at Lv 1 on the first story quest ("A Village in the Fog") instead of Lv 5 with no
-  quest; saves are never re-defaulted.
-- **0.2.2**: Daevanion up arrow starts at 1 (F6); rotation pop-out lists only unlocked skills (F7); missing skill icons
-  (F8).
-- **0.2.3**: stigma unlock cost (F5); results of the owner's in-game checks (Hugo Mercenaries: Deep Shadow, Ascension
-  openings, Zikel Defense Break node).
-- **0.2.4**: story quest locations: the 41 story quests on the `zone:altgard-unplaced` placeholder, from Metabot.
+- **0.2.1** (released 2026-10-15): a fresh browser starts at Lv 1 on the first story quest ("A Village in the Fog")
+  instead of Lv 5 with no quest; saves are never re-defaulted.
+- **0.2.2** (released 2026-10-15): Daevanion up arrow starts at 1 (F6); rotation pop-out lists only unlocked skills
+  (F7); missing skill icons (F8).
+- **0.2.3** (released 2026-10-15): story quest locations from Metabot (34 of 71 placeholder quest sides now have a
+  zone; 26 quests still on `zone:altgard-unplaced`); stigma unlock cost check (F5: already counted, test added).
+- **0.2.4**: results of the owner's in-game checks (Hugo Mercenaries: Deep Shadow, Ascension openings, Zikel Defense
+  Break node), once the owner has done them; the villages as zones of their own, if the owner agrees.
 - **0.2.5**: save safety (the "last backup" line and the iPhone home-screen hint above; mockup first).
 - **0.2.6**: polish: a home for the Route rules card (F11), the remaining phone page-zoom issues, hit areas on the
   Confidence / Sources summaries.
