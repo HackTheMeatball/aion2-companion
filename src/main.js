@@ -16,7 +16,7 @@ import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { checkableOf, countsOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, mainCountsOf, objIdxOf, objSubs, qProgOf, rqStatus,
-  shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotNames, stLvOfC, stigmaPlan, stigmaSlots } from "./core/requirements.js";
+  rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotNames, stLvOfC, stigmaPlan, stigmaSlots } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
@@ -1025,12 +1025,12 @@ qInput.addEventListener("change", () => {
   update();
 });
 
-const E_STACK = lv => { const eq = typeof STIGMA_SLOTS === "function" ? STIGMA_SLOTS().filter(x => char(state).checks[x.k]).map(x => x.name) : [];
-  return eq.length ? E_ORDER.filter(n => eq.includes(n)).map(n => n + "*") : E_STACK_LV(lv); };
-const E_STACK_LV = lv => { const sl = STIGMA_SLOTS().filter(x => lv >= x.lv).map(x => x.name); return E_ORDER.filter(n => sl.includes(n)).map(n => n + "*"); };
+/* The keys at lv hold only what the guide says you have there (rotKeys, src/core/requirements.js: the Skills card's
+   unlock rule for skills, the slot levels for stigmas). E_STACK marks stigmas with "*". */
+const E_STACK = lv => rotKeys(char(state), lv).e.map(n => n + "*");
 /* What's on your keys now, and what's been added since you last looked at the key setup (char(state).rotSeen). */
-const rotNow = lv => { const out = []; RMB_STACK(lv).forEach((n, r) => out.push({ n, key: "Right click", r })); out.push({ n: "Shadowstrike", key: "Q", r: 0 });
-  E_STACK(lv).forEach((n, r) => out.push({ n: n.replace(/\*/g, ""), key: "E", r, stig: true })); return out; };
+const rotNow = lv => { const out = [], k = rotKeys(char(state), lv); k.rmb.forEach((n, r) => out.push({ n, key: "Right click", r })); k.q.forEach(n => out.push({ n, key: "Q", r: 0 }));
+  k.e.forEach((n, r) => out.push({ n, key: "E", r, stig: true })); return out; };
 const rotNew = lv => { const seen = char(state).rotSeen; if (!seen) return []; return rotNow(lv).filter(x => !seen.includes(x.key + ":" + x.n + ":" + x.r)); }; /* moved rows count too */
 const rotMarkSeen = () => { char(state).rotSeen = rotNow(char(state).level).map(x => x.key + ":" + x.n + ":" + x.r); save(); };
 const rotWhere = x => `${x.key}${x.key === "Q" ? "" : `, row ${x.r}${x.r === 0 ? " (fires first)" : ""}`}`;
@@ -1039,7 +1039,7 @@ function renderStacks(lv) {
   const fresh = new Set(rotNew(lv).map(x => x.n));
   const cell = n => n ? `<span class="sk${n.includes("*") ? " stig" : ""}${fresh.has(n.replace(/\*/g, "")) ? " new" : ""}">${n.replace(/\*/g, "")}</span>` : `<span class="sk empty"></span>`;
   /* One grid: shared row numbers on the left, one column per key. */
-  const keys = [RMB_STACK(lv), ["Shadowstrike"], E_STACK(lv)];
+  const k = rotKeys(char(state), lv), keys = [k.rmb, k.q, E_STACK(lv)];
   document.getElementById("stackViz").innerHTML =
     `<span></span><span class="khead">Right click</span><span class="khead">Q</span><span class="khead">E</span>` +
     [3, 2, 1, 0].map(r => `<i class="rn">${r}</i>` + keys.map(k => cell(k[r]).replace('class="sk', `class="sk${r === 0 ? " r0" : ""}`)).join("")).join("") +
@@ -1054,11 +1054,11 @@ function stLaterHTML() {
   return `<div class="st-later"><span class="khead">Coming to E</span><ul>${rows}</ul></div>`;
 }
 function renderRotation() {
-  const lv = char(state).level, e = E_STACK(lv).map(n => n.replace(/\*/g, "")), rmb = RMB_STACK(lv);
+  const lv = char(state).level, { rmb, q, e } = rotKeys(char(state), lv);
   const before = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), after = e.filter(n => !before.includes(n));
   const steps = [];
   if (before.length) steps.push(`<b>E</b> ${before.join(" + ")}`);
-  steps.push(`<b>Q</b> ${spMini("Shadowstrike")}Shadowstrike to get behind the target`);
+  if (q.length) steps.push(`<b>Q</b> ${spMini(q[0])}${q[0]} to get behind the target`);
   if (after.length) steps.push(`<b>E</b> ${after.join(", then ")}`);
   steps.push(`<b>Hold</b> right + left click`);
   document.getElementById("rotLv").textContent = `at Lv ${lv}`;

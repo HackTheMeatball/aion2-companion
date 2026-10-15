@@ -2,7 +2,7 @@
    the save and the catalog. Functions take the character (c = char(state)) or, where a view setting changes the answer
    (the Optional tasks filter, the talk-only objectives filter), the whole state. Nothing here writes. */
 import { QUESTS, QUEST_LOC, QUEST_STEPS } from "../data/story.js";
-import { DV_MIN, LEVEL_POINTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
+import { DV_MIN, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
 import { RQ_BY, DV_NODES, cardRows, itemByK } from "./catalog.js";
 import { char } from "./state.js";
@@ -132,6 +132,18 @@ export const stigmaSlots = c => { const names = slotNames(c);
   return GATES.flatMap(g => g.items.filter(it => it.stig).map(it => ({ n: it.stig, lv: g.lv, gid: g.id, k: it.k, name: names[it.stig - 1], plan: STIGMA_PLAN[it.stig - 1],
     note: it.t.replace(/<b>.*?<\/b>\s*/, "").replace(/<[^>]+>/g, "") }))).sort((a, b) => a.n - b.n); };
 export const stLvOfC = (c, n) => (c.stLv || {})[n] || 1;
+
+/* ---------- Rotation (Build drawer) ---------- */
+/* A skill is yours at lv by the Skills card's rule: its first upgrade (Lv 1 → 2) unlocks at the skill's learn level
+   (SP_STEPS req), and the card offers the skill from then on. A skill outside the plan is unknown to the guide: never yours. */
+export const skillLearned = (name, lv) => SP_STEPS.some(x => x.s.n === name && x.L === 2 && x.req <= lv);
+/* The hold-to-run keys at lv, holding only what the guide says you have there (F7): right click = the build's stack for
+   lv without any skill not learned yet; Q = Shadowstrike once learned; E = the equipped stigmas whose slot is open at lv,
+   else the stigmas of the slots open at lv, in E_ORDER. Row 0 first. */
+export const rotKeys = (c, lv) => {
+  const open = stigmaSlots(c).filter(x => lv >= x.lv), eq = open.filter(x => c.checks[x.k]).map(x => x.name), e = eq.length ? eq : open.map(x => x.name);
+  return { rmb: RMB_STACK(lv).filter(n => skillLearned(n, lv)), q: ["Shadowstrike"].filter(n => skillLearned(n, lv)), e: E_ORDER.filter(n => e.includes(n)) };
+};
 /* Upgrade order: ST_TARGETS in turn, for the stigmas you have equipped. Other stigmas stay at level 1 (the plan's sources). */
 export const stigmaPlan = c => {
   const eq = stigmaSlots(c).filter(x => c.checks[x.k]), steps = [];
