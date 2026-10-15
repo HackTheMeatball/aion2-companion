@@ -52,6 +52,13 @@ on purpose: the guide shows nothing rather than an unverified value.
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+- **Board-cost input can be replaced while typing** (likely, not confirmed; found 2026-10-15 by a real-time
+  `journey` run, which crashed at Lv 40 with `fill: Element is not attached`). A milestone tick re-renders the page
+  with a deferred `update()` 1150 ms later (1650 ms when its card leaves; `src/main.js`, tick handler), which rebuilds
+  `#dvNextList`. Ticking a milestone and then typing a cost into the Daevanion card within ~2 s would lose focus and
+  the typed digits. `journey` now runs on the fake clock, so it no longer hits this window; repro:
+  `JOURNEY_REALTIME=1 node tests/run.mjs --only journey` (intermittent), or by hand. Fix idea: skip re-rendering a
+  focused `.dvc` input in `renderNext`.
 - Pop-out needs Document Picture-in-Picture (Chrome / Edge 116+); the button is hidden elsewhere.
 
 ## Tooling

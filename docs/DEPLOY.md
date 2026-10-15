@@ -44,7 +44,8 @@ to ci-ok's `needs:` (and to deploy's).
 
 So nothing reaches `main` without green tests. GitHub only offers `ci-ok` in the list after it has run at least once.
 
-1. Repository **Settings → Branches → Add branch protection rule** (the classic rule; "Add rule").
+1. Repository **Settings → Branches → Add classic branch protection rule** (not "Add branch ruleset": rulesets have
+   different steps).
 2. **Branch name pattern:** `main`.
 3. Tick **Require a pull request before merging**. Untick **Require approvals** (0 approvals: you merge your own PRs).
 4. Tick **Require status checks to pass before merging**. In the search box type `ci-ok` and pick it. Add nothing
