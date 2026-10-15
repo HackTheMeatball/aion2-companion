@@ -12,6 +12,7 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 | `src/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
 | `src/data/generated.js` | not a file: the build compiles this module from `data/**` (data format v2) with `tools/gen/gen.mjs`, in memory |
 | `src/data/gate-graph.js` | not a file either: `GATE_GRAPH`, the live gates compiled by the same generator; only `src/core/evaluator.js` and `src/core/requirements.js` (the story chain, the kept 0.2 rules) import it |
+| `src/data/gate-proposed.js` | not a file either: `GATE_PROPOSED`, every record's `proposed` gate compiled the same way (0.3 E4); only `src/core/evaluator.js` reads it, and only for the ids in its `opts.apply` |
 | `src/site.js` | the standalone site's own script (storage persistence, service worker registration); `@web-only` |
 
 `src/index.html` is not runnable by itself: `npm run build && npm run serve`. The two deliverables must behave the same:
@@ -91,7 +92,11 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
 - Milestone step gates (read by `stepsOf` for Next up): `story: X` / `after: X` = the story has **reached** X (your
   current quest is X or later); `turnedIn: X` = X is **turned in** (current quest past X, or X is the last covered
   quest and `storyEnd` is X); `byStory` = the step *is* story quest X: ticked by *Turned in*, hidden from Next up while
-  you're on X and (display only, no tick written) once you're past it.
+  you're on X and, since 0.3 E4, done by derivation once you're past it (never written: the row shows a ticked, disabled
+  box, "done in the story"; the stored tick stays as it was and counts again if the story moves back). Derived the same
+  way (E4, switches in `src/core/requirements.js` `GATE_CHANGES`): "Put … on E" once its slot is equipped, `g22:0` /
+  `g32:dreams` once their wrapper story quest is turned in, a regional quest once a follow-up of it is picked up or
+  turned in. Milestone counts and tags count derived rows as done.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.
 
@@ -246,7 +251,8 @@ docs/DEPLOY.md, "CI jobs").
 **Golden master** (`tests/golden/README.md`): records Next up, milestone headers, the Journey card, the Dungeons &
 Strongholds card and the stored state after load for each generated save, and fails on any difference with a summary
 grouped by kind of change. It is the acceptance test for refactors ("golden identical"). After an intended behaviour
-change, re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
+change, run `node tests/golden.js --explain` first (0.3 E4, design §13: attributes every changed state to the smallest
+set of the named changes that reproduces it; table in `tests/out/golden/explain.md` for owner approval), then re-record with `node tests/golden.js --record`, review the summary and `tests/golden/KNOWN-VIOLATIONS.md`
 (Next up cards whose gate isn't met, generated), and commit the snapshots with the change.
 
 **Accessibility** (since 0.1.6, audit `docs/audits/2026-10-mobile-a11y.md`): the `a11y` suite's `ALLOW` list only

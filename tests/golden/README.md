@@ -22,6 +22,7 @@ node tests/golden.js                 # verify (also suite `golden` in npm test /
 node tests/golden.js --record        # re-record snapshots + KNOWN-VIOLATIONS.md
 node tests/golden.js --filter 'L3[0-4]-'   # only matching state ids, while iterating (verify only)
 node tests/golden.js --all           # + 6,000 extended random states (see "Extended set")
+node tests/golden.js --explain       # which 0.3 change makes which difference (tests/golden/explain.js; table in tests/out/golden/explain.md)
 ```
 
 Options: `--jobs N` parallel pages (default 3), `--limit N`, `--render` (see "How a state is recorded").
