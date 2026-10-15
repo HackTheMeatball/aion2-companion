@@ -8,6 +8,56 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.0 — 2026-10-14
+
+Rebuilt guide data with a source for every fact, and in-game unlock corrections.
+
+### Added
+
+- Ahead: feature unlocks seen in game: Lv 2 Journal and Customization, Lv 3 Stats window, Lv 4 Skills window, Lv 9
+  Enhancement and Achievements, Lv 10 Crafting and Extraction, and the systems that open at Lv 45.
+- Journey: the next story quest says what it unlocks: "Prepare to Escape" (Shop, Closet), "The Being Beneath the Lake"
+  (Wings), "Spread Your Wings" (Titles), "Gathering Essentials" (Pets), "Urgent Pursuit" (Daevanion boards, Shugo
+  Festival).
+- Sources: links to the page behind each story quest, Ascension quest, Sealed Dungeon entrance, specialty and item
+  (about 110 more links).
+
+### Changed
+
+- Ishalgen is the starting map, not a story quest; "A Village in the Fog" is the first story quest. A save whose
+  current quest was "Ishalgen" shows "Pick your current quest to place yourself on the story."
+- Next up: stronghold distances are measured to the stronghold entrance, so most change by a few metres, some by up to
+  60 m. Andsha Forward Base's nearest Kibelisk is now Steel Hammer Temporary Trading Post (466 m).
+- Next up: "near your story step" and the suggested stronghold or Sealed Dungeon now use the Kibelisk of every regional
+  quest (58, was 26), so the suggestion changes at some points of the story.
+
+### Data
+
+- Daevanion boards open when "Urgent Pursuit" (Lv 13) is completed, not at Lv 12 (in-game screens, 2026-10-14; the
+  milestone text and the Daevanion tip say so).
+- Sealed Dungeon distances are exact instead of rounded (Metabot Exploration quest pages): Ascetic's Cave 165 m, Closed
+  Hideout 95 m, Twisted Pit 236 m, Library of Wisdom 137 m, Place of Rest 99 m, Den of Exiles 215 m. Fafnite Storage
+  Room: Fang Hideout, 226 m.
+- Regional quests: giver and turn-in Kibelisks for 32 more quests (Metabot quest pages).
+- Specialties: every active skill has 3 specialty slots, opening at skill level 8, 12 and 20, with 5 choices (levels
+  8, 8, 8, 12, 16); Daevanion nodes that raise a skill count toward its level (in-game screens; Metabot skill pages).
+- aion2.th.gl is no longer cited. Its facts are now backed by aion2.gaming.tools or Metabot; the two "Hugo Mercenaries:
+  Deep Shadow" requirements no other source confirms are marked for an in-game check.
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13).
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+
+### Saved progress
+
+- Saves now record when each item was last changed (save schema version 1), groundwork for syncing progress between
+  devices. Existing progress is kept as it is, and earlier versions still load the save.
+
 ## 0.1.9 — 2026-10-14
 
 Touch, contrast and page-zoom fixes from the mobile and accessibility audit.

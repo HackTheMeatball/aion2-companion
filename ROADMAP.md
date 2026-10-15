@@ -46,6 +46,8 @@ docs/team/HANDOFF.md ("Now and next").
 - **0.1.7** — rebrand to Daeva Companion (name, mark, icons; palette unchanged).
 - **0.1.8** — new address: daevacompanion.com.
 - **0.1.9** — touch, contrast and page-zoom fixes (visible accessibility batch from the mobile audit).
+- **0.2.0** — Foundations: pure core, data format v2 with JSON Schemas and a Node generator, owner-verified unlocks and
+  Metabot locations, aion2.th.gl withdrawn, per-item change times and `merge()` in the save.
 
 ## Plan
 
@@ -96,8 +98,8 @@ identical, all suites green, saves untouched.
      (groundwork for 0.5). Keeping un-ticks through a merge needs a per-item change time in the save (owner decision).
    5b and 5c can run in parallel; both wait for step 4 and the approved schema.
 
-**0.2.0 is released when 5b and 5c are merged.** Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
-toolchain, data out of code).
+**0.2.0 released 2026-10-14** (5b and 5c merged). Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
+toolchain, data out of code). 5b part 2 carried owner-approved visible data corrections (#38).
 
 ### 0.3 — Next up correctness
 
