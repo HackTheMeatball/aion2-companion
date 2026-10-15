@@ -99,6 +99,40 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
     const nl = await p.evaluate(() => state.level); if (state28 && !snzChecked) { snzChecked = 1; L('  after Level up snooze for ' + state28 + ' still set: ' + await p.evaluate(k => k in (state.rqSnooze || {}), state28)); } if (nl !== lv + 1) { L('  !! Level up did not advance: ' + nl); break; } lv = nl;
   }
   await p.screenshot({ path: path.join(SH, 'j-end-full.png'), fullPage: true });
+
+  /* Lv 44 edge case (0.3 E4, Q10 follow-up): can a real save stand on "Forgotten Commander" (unlock Lv 45) at Lv 44 with
+     every objective ticked, and is "Turned in" then held back? Only through the page's own controls:
+     A. at Lv 45 tick every objective in the Journey card, then Level −;
+     B. normal play at Lv 44: "Farewells" (rec 45, no unlock level of its own) ticked through and turned in from Next up,
+        then Forgotten Commander's objectives ticked in the Journey card.
+     (C. an imported save can hold any state; Import replaces the save as it is.) */
+  {
+    const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+    const edge = async (name, save, steps) => {
+      const c2 = await b.newContext({ viewport: { width: 1500, height: 1000 } }); if (!REAL) await c2.clock.install();
+      const w2 = ms => REAL ? new Promise(r => setTimeout(r, ms)) : c2.clock.runFor(ms);
+      const q = await c2.newPage(); q.on('pageerror', e => errs.push(e.message));
+      await q.goto(CFG.CUR); await q.evaluate(([k, s]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, { ...FLAGS, open: {}, mode: 'advanced', showObj: true, showTalk: true, qsShowDone: true, ...save }]);
+      await q.reload(); await w2(500);
+      const tickAll = async () => { for (let n = 0; n < 40; n++) { const i = await q.$('#questSubs input[data-qobj]:not(:checked)'); if (!i) break; await i.click(); await w2(1300); } };
+      await steps(q, w2, tickAll);
+      const r = await q.evaluate(() => { const c = char(state), n = (QUEST_STEPS[c.quest] || []).length, card = [...document.querySelectorAll('#nsqWrap .ns-card')].find(x => /Story:|Continue the story/.test(x.innerText));
+        return { lv: c.level, quest: c.quest, objs: ((c.qsteps || {})[c.quest] || []).length, n, turnIn: !!(card && card.querySelector('.ns-btn.primary')), qsNext: !!document.getElementById('qsNext'), wait: (document.querySelector('#questSubs .qs-wait') || {}).textContent || '' }; });
+      const reached = r.lv === 44 && r.quest === 'Forgotten Commander' && r.n > 0 && r.objs === r.n;
+      L(`  Lv 44 edge ${name}: Lv ${r.lv} on "${r.quest}", ${r.objs}/${r.n} objectives → state reached: ${reached}; Next up "Turned in": ${r.turnIn}; Journey button: ${r.qsNext}; "${r.wait}"`);
+      if (r.turnIn || r.qsNext) L(`  !! Lv 44 edge ${name}: "Turned in" offered below the unlock level`);
+      await c2.close(); return reached;
+    };
+    const a = await edge('A (tick at 45, then Level −)', { level: 45, quest: 'Forgotten Commander', checks: {} }, async (q, w2, tickAll) => { await tickAll(); await q.click('#lvlDown'); await w2(900); });
+    const bN = await edge('B (normal play at Lv 44)', { level: 44, quest: 'Farewells', checks: {} }, async (q, w2, tickAll) => {
+      await tickAll();
+      const btn = await q.$('#nsqWrap .ns-card .ns-btn.primary[data-now="story"]');
+      if (btn) { await btn.click(); await w2(1200); } else { const j = await q.$('#qsNext'); if (j) { await j.click(); await w2(900); } }
+      await tickAll(); });
+    L(`  Lv 44 edge: reachable by a real save: ${a || bN ? 'yes' : 'no'} (A Level − after ticking: ${a}; B normal play: ${bN}; C Import: any saved state)`);
+    if (!a || !bN) L('  !! Lv 44 edge: a path the guide expects to reach the state did not (the answer in the PR would be wrong)');
+  }
+  if (errs.length) L('  !! page errors: ' + errs.splice(0).join(' | '));
   fs.writeFileSync(path.join(OUT, 'journey.log'), log.join('\n')); fs.writeFileSync(path.join(OUT, 'journey-state.json'), await S());
   await b.close(); })();
 let state28, inGameDone, snzChecked;

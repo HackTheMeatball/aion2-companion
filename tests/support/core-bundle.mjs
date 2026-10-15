@@ -18,6 +18,7 @@ export async function coreBundle() {
     'export { MIG_V5 } from "./data/migrations.js";',
     'export { RQ, SH_DATA } from "./data/generated.js";',
     'export { GATE_GRAPH } from "./data/gate-graph.js";',
+    'export { GATE_PROPOSED } from "./data/gate-proposed.js";',
   ].join('\n');
   const r = await build({ stdin: { contents: ENTRY, resolveDir: join(ROOT, 'src'), loader: 'js', sourcefile: 'core-entry.js' },
     bundle: true, write: false, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [generatedData] });
