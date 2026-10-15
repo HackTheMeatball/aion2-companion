@@ -617,6 +617,11 @@
               "note": "milestone level"
             },
             {
+              "story": "sq:2102185",
+              "is": "reached",
+              "basis": "legacy"
+            },
+            {
               "done": "g22:0",
               "basis": "legacy",
               "note": "Today's code (stigmaSlots / rankNext need g22:0 ticked for every slot), moved into the data. Stigmas via Asahr after \"The One Who Hears the Voice\": STORY_UNLOCKS. Whether slot 1 opens at Lv 22 alone is owner check 3."
@@ -624,8 +629,8 @@
           ]
         },
         "status": "ready",
-        "basis": "prereq-gates §8 (owner check 3 open)",
-        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot opens once \"Daeva in a Dream\" is turned in, without the tick."
+        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
+        "change": "None by itself: it keeps the live story atom and adds the code rule \"slots wait for g22:0\"; with derived g22:0 the slot opens once \"Daeva in a Dream\" is turned in, without the tick."
       }
     },
     {
@@ -678,7 +683,7 @@
           ]
         },
         "status": "ready",
-        "basis": "prereq-gates §8 (owner check 3 open)",
+        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
         "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
       }
     },
@@ -770,7 +775,7 @@
           ]
         },
         "status": "ready",
-        "basis": "prereq-gates §8 (owner check 3 open)",
+        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
         "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
       }
     },
@@ -916,7 +921,7 @@
           ]
         },
         "status": "ready",
-        "basis": "prereq-gates §8 (owner check 3 open)",
+        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
         "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
       }
     },

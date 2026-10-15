@@ -17,7 +17,7 @@ import { ROOT, dataFiles, validateDoc } from './validate.mjs';
 /* ------------------------------------------------------------------ load */
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
    them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
-const stripProposed = v => { if (Array.isArray(v)) v.forEach(stripProposed); else if (v && typeof v === 'object') { delete v.proposed; Object.values(v).forEach(stripProposed); } };
+const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
 const loadBundle = ({ dropProposed = false } = {}) => {
   const files = dataFiles(), by = {}, schemaErrors = [];
   let retired = null, sources = null;
@@ -331,6 +331,9 @@ export function generate(opts = {}) {
     if (p.requiresBasis === 'verified-none') check(`${id}: proposed verified-none has no prerequisite atoms`, !atomsOf(p.requires).some(a => a.story || a.done));
     report.proposed.push({ id, status: p.status, ...(p.check ? { check: p.check } : {}), basis: p.basis, change: p.change });
   }
+  /* Daevanion: every plan node's proposal carries the same window gate ("Urgent Pursuit" turned in, owner screen) */
+  for (const b of builds) for (const e of b.boardPlan) check(`${b.id} boardPlan ${e.node || e.key}: proposal gates on "Urgent Pursuit" turned in`,
+    !!e.proposed && atomsOf(e.proposed.requires).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
   for (const { r } of all) {
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
