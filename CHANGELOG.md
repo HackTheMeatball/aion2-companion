@@ -35,7 +35,8 @@ A new player starts at level 1 on the first story quest.
 
 ### Saved progress
 
-- No change to saved progress.
+- Unaffected: no save is migrated or re-defaulted. Groundwork for syncing between devices (not yet available):
+  a new browser's default first quest will never override a story position saved on another device.
 
 ## 0.2.0 — 2026-10-14
 
