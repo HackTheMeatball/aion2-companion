@@ -27,17 +27,22 @@ export function objSubs(t) {
 }
 /* The objectives shown (and counted): all of them with "talk-only steps" on (state.showTalk), else the non-talk ones. */
 export const objIdxOf = (state, list) => list.map((t, i) => i).filter(i => state.showTalk || !objLow(list[i]));
-/* Where the story sends you next: the next open objective's Kibelisk, or the turn-in's. */
+/* Where the story sends you next: the next open objective's Kibelisk, or the turn-in's. A turn-in also carries the
+   record's own zone (zone: "" = still a placeholder); an objective has no zone of its own. */
 export function storyHereOf(state) {
   const c = char(state);
   if (!c.quest) return null;
   const list = QUEST_STEPS[c.quest], done = (c.qsteps || {})[c.quest] || [], L = QUEST_LOC[c.quest] || {};
+  const turnin = () => L.turninKib ? { kib: L.turninKib, m: L.turninKibM, zone: L.turninZone } : null;
   if (list) { const i = objIdxOf(state, list).find(i => !done.includes(i));
     if (i != null) { const t = list[i], m = t.match(/\(Kibelisk: ([^)]+)\)/);
-      if (/^Turn in\b/.test(t)) return L.turninKib ? { kib: L.turninKib, m: L.turninKibM } : null;
+      if (/^Turn in\b/.test(t)) return turnin();
       return m ? { kib: m[1] } : null; } } /* no Kibelisk on that objective: say nothing rather than point elsewhere */
-  return L.turninKib ? { kib: L.turninKib, m: L.turninKibM } : null;
+  return turnin();
 }
+/* The zone of the story step, for "near your story step": the record's own zone wins over the Kibelisk's zone vote
+   (KIB_AREA, from regional / dungeon / stronghold data); a placeholder zone means no area, never a guess. */
+export const storyAreaOf = (sHere, kibArea) => !sHere ? null : sHere.zone !== undefined ? sHere.zone || null : kibArea[sHere.kib] || null;
 
 /* ---------- Regional quests ---------- */
 /* Quest progress: 0 = not picked up, 1 = in progress (old true values count as 1). */

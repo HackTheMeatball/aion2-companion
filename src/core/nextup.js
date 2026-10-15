@@ -16,7 +16,7 @@ import { AREA_LOC } from "../data/generated.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
 import { char } from "./state.js";
 import { checkableOf, countsOf, dvNeed, dvNext, dvSpent, isOpen, objIdxOf, openSteps, qProgOf, rqOpenLv, rqStatus, shardsFromLv,
-  skillBuy, stigmaPlan, stigmaSlots, storyHereOf, storyIdx } from "./requirements.js";
+  skillBuy, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf, storyIdx } from "./requirements.js";
 
 export function rankNext(state, { basic = false } = {}) {
   const c = char(state), lv = c.level, acts = [];
@@ -55,7 +55,7 @@ export function rankNext(state, { basic = false } = {}) {
   const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && x.lv <= lv && !c.checks[x.k]).sort((a, b) => bandOf(a) - bandOf(b));
   const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && bandOf(x) <= lv && (x.it.lo || 0) <= lv && !c.checks[x.k]);
   const qi = c.quest ? QUESTS.findIndex(([, n]) => n === c.quest) : -1, gateLv = qi >= 0 ? QUESTS[qi][0] : 0, gated = gateLv > lv;
-  const sHere = storyHereOf(state), hereArea = (sHere && KIB_AREA[sHere.kib]) || null;
+  const hereArea = storyAreaOf(storyHereOf(state), KIB_AREA);
   /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));
   const sdPick = byHigh.find(x => x.area === hereArea) || byHigh[0];
