@@ -261,8 +261,20 @@ export default (test, M) => {
     names.forEach(n => assert.ok(M.QUESTS.some(([, q]) => q === n), n));
     for (const q of [...names, '']) {
       const legacy = load(M, { ...SEEDS, checks: {}, level: 30, quest: q }, 0).state;   /* pre-change-times save: all t = 0 */
-      const want = q || M.QUESTS[0][1];   /* an unset quest loses to the fresh default only because neither is real progress */
+      const want = q;   /* the untouched default ranks below an unset quest too: an unset Lv 30 save stays unset */
       for (const m of [M.merge(fresh, legacy), M.merge(legacy, fresh)]) { assert.equal(C(m).quest, want, `${q || '(unset)'}`); assert.equal(C(m).level, 30); }
+    }
+  });
+  test('fresh default never clears a turned-in marker, a no-quest save or an unknown (renamed) quest', () => {
+    const fresh = load(M, M.DEFAULT(), 0, false).state, last = M.QUESTS[M.QUESTS.length - 1][1];
+    const cases = [{ quest: '', storyEnd: last }, { quest: 'A Quest That Was Renamed' }, {}];
+    for (const extra of cases) {
+      /* through loadState, as the page loads a save: a save stored without a quest field gets DEFAULT()'s "" */
+      const legacy = load(M, M.loadState(JSON.stringify({ ...SEEDS, checks: {}, level: 30, ...extra })).state, 0).state;
+      for (const m of [M.merge(fresh, legacy), M.merge(legacy, fresh)]) {
+        assert.equal(C(m).quest ?? '', extra.quest ?? '', JSON.stringify(extra));
+        assert.equal(C(m).storyEnd ?? null, extra.storyEnd ?? null, JSON.stringify(extra));
+      }
     }
   });
   test('quest tie-break: a turned-in position beats the same quest not turned in; a dated change still beats time 0', () => {

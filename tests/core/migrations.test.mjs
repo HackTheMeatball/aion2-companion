@@ -33,7 +33,7 @@ export default (test, M) => {
     for (const raw of ['{}', '{"checks":{}}', JSON.stringify({ ...FLAGS, checks: {} })]) {
       const { state, hadSave } = M.loadState(raw); assert.equal(hadSave, true, raw);
       const { state: s2 } = run(M, state, hadSave);
-      assert.notEqual(C(s2).quest, M.QUESTS[0][1], raw); assert.notEqual(C(s2).level, 1, raw);
+      assert.equal(C(s2).quest, '', raw); assert.equal(C(s2).level, JSON.parse(raw).seedLv12 ? 5 : 12, raw);   /* DEFAULT() Lv 5; the old Lv 12 seed runs on flagless saves */
     }
   });
   test('saved progress keeps its level and quest (fresh-browser defaults never apply to a save)', () => {

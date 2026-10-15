@@ -37,15 +37,20 @@ export const cmpStamp = ([ta, va], [tb, vb]) => {
 };
 
 /* The story position register (mt.quest = [t, [quest, storyEnd]]): on a time tie, the position further along the story
-   wins (unknown or empty quest lowest, then "turned in" over not), and only then cmpStamp's value order. Two time-0
-   stamps (saves from before change times, or a fresh browser's default first quest) mean "unknown when", and further
-   progress is the safe pick: a fresh browser's default never resets another device's story position. */
+   wins (storyRank: the untouched first quest lowest, then unset or unknown, then later quests; "turned in" over not),
+   and only then cmpStamp's value order. Two time-0 stamps (saves from before change times, or a fresh browser's
+   default first quest) mean "unknown when", and further progress is the safe pick: a fresh browser's default never
+   resets or clears another device's story position. The ranking reads this build's QUESTS order (fine before sync
+   ships; sync must merge with the same data). */
+/* Rank of a story position on a time tie: removed (tombstone) -3 < the first quest not turned in -2 (a fresh browser's
+   default, which says nothing about progress) < unset or unknown -1 < any later quest (its index). */
 const storyPosOf = q => { const i = typeof q === "string" && q ? QUESTS.findIndex(([, n]) => n === q) : -1; return i; };
+const storyRank = p => { const i = storyPosOf(p[0]); return i === 0 && p[1] == null ? -2 : i; };
 const QUEST_KEY = JSON.stringify(["quest"]);
 const cmpQuestStamp = (a, b) => {
   if (a[0] !== b[0]) return cmpStamp(a, b);
   const pa = Array.isArray(a[1]) ? a[1] : [null, null], pb = Array.isArray(b[1]) ? b[1] : [null, null];
-  const ia = a[1] === null ? -2 : storyPosOf(pa[0]), ib = b[1] === null ? -2 : storyPosOf(pb[0]);
+  const ia = a[1] === null ? -3 : storyRank(pa), ib = b[1] === null ? -3 : storyRank(pb);
   if (ia !== ib) return ia < ib ? -1 : 1;
   const ea = pa[1] != null ? 1 : 0, eb = pb[1] != null ? 1 : 0;
   if (ea !== eb) return ea < eb ? -1 : 1;
