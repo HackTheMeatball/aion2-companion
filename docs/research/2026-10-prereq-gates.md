@@ -222,7 +222,7 @@ gate and gauge gate are not sourced here.
 
 | id | Quest | rec / unlock (Metabot) | proposed `requires` | proposed `completesWith` | sources / status |
 |---|---|---|---|---|---|
-| `asc:perceives` | The One Who Perceives | 5 / 5 | `lv 5`; story gate **owner to check in game** (candidate: `done sq:2101050` The Being Beneath the Lake) | `done sq:2101060` (Spread Your Wings: objective 1 is "The One Who Perceives Complete") | [Metabot](https://metabot.gg/en/aion-2/quests/the-one-who-perceives-asmodian) intro "After passing the Lake Guardian's test…" (hint only); [Spread Your Wings](https://metabot.gg/en/aion-2/quests/spread-your-wings) steps. Completion verified, gate owner check 6 |
+| `asc:perceives` | The One Who Perceives | 5 / 5 | `lv 5`; story gate `done sq:2101050` The Being Beneath the Lake, **verified by the owner 2026-10-15** (check 6a) | `done sq:2101060` (Spread Your Wings: objective 1 is "The One Who Perceives Complete") | [Metabot](https://metabot.gg/en/aion-2/quests/the-one-who-perceives-asmodian) intro "After passing the Lake Guardian's test…" (hint only); [Spread Your Wings](https://metabot.gg/en/aion-2/quests/spread-your-wings) steps. Completion verified, gate owner-verified (check 6a) |
 | `asc:hears-the-voice` | The One Who Hears the Voice | 22 / 10 | `reached sq:2102185` (today's app gate); `done asc:perceives`: **inferred** (chapter order II after I); `info "Ascension Gauge 100%"` (existing app text) | `done sq:2102185` (Daeva in a Dream: its objective is completing this quest) | [Metabot](https://metabot.gg/en/aion-2/quests/the-one-who-hears-the-voice-asmodian); [Daeva in a Dream](https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian) steps / `QUEST_STEPS`. Completion verified. The wrapper proves the quest is open **by** Daeva in a Dream; whether it opens a quest earlier is owner to check in game |
 | `asc:dreams` | The One Who Dreams | 32 / 10 | `reached sq:2102345` (today's 0.1.3 gate, claim C36); `done asc:hears-the-voice`: inferred (chapter order); `info gauge 100%` (C36 notes: allthings.how + Skycoach) | `done sq:2102345` (A Daeva Dreaming Anew: its only objective is completing Dreams) | [Metabot](https://metabot.gg/en/aion-2/quests/the-one-who-dreams-asmodian); [A Daeva Dreaming Anew](https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew) steps. Completion verified; gate "open by the wrapper" verified, earlier opening owner to check |
 | `asc:witnesses` | The One Who Witnesses the Nightmare | 45 / 10 | `done sq:2102800` (today's `g45:0` gate, claim C37); `done asc:dreams`: inferred (chapter order) | `done sq:2102810` (Daeva Trapped in a Nightmare: its only objective is completing Witnesses) | [Metabot](https://metabot.gg/en/aion-2/quests/the-one-who-witnesses-the-nightmare-asmodian) (intro: "Upon obtaining Zikel's Core, Asahr called to you"); [Daeva Trapped](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) steps. Completion verified; available by the time Forgotten Commander is turned in (its wrapper's previous quest), so "FC turned in" is at worst late, never early. Whether it opens while FC is open: owner to check (check 5) |
@@ -518,8 +518,12 @@ repo.
 5. **Daeva Trapped in a Nightmare and Witnesses.** Is Witnesses offered while Forgotten Commander is still open, or
    only after it is turned in? After turning in FC, who starts Daeva Trapped (candidate: Koro at the Abyss Base)? Does
    it complete as soon as Witnesses is done? (Its turn-in is Nemon at Outskirts Stall.)
-6. **Ascension gates.** Is "The One Who Perceives" offered before "The Being Beneath the Lake" is turned in? Is "The
-   One Who Hears the Voice" offered on Verdant Melody, or only on Daeva in a Dream? (§5)
+6. **Ascension gates.** (6a) Is "The One Who Perceives" offered before "The Being Beneath the Lake" is turned in?
+   **Answered 2026-10-15 (owner, `owner:2026-10-15-alt-26`): no. It starts automatically when The Being Beneath the Lake
+   is turned in (`done sq:2101050`), and is not offered before.** (6b) Is "The One Who Hears the Voice" offered on
+   Verdant Melody, or only on Daeva in a Dream? Still open (§5). The owner's Ascension Gauge Level 1 tooltip needs
+   Verdant Melody Complete, "The One Who Hears the Voice" (text cut off) and 100% gauge progress; gauge points come from
+   Episode, Regional and Ascension quests, Sealed Dungeons and Strongholds.
 7. **Six `noPre` candidates.** Does each open right after its candidate story quest? Shugo-of-All-Trades after
    Contaminated Area, Spooky Specters after Cemetery Cleanup, The Great Curse-Breaking Caper after Empyrean
    Monolith, Her Last Favor after Canyon's Secret, Pain Unending after Last of the Destruction Archons, Herb Pouch
