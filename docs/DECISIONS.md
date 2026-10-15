@@ -7,6 +7,7 @@ owner; the CEO records them here and in the department charters they affect.
 
 | # | Topic | Decision |
 |---|---|---|
+| — | Teleport rules (0.3 design) | Owner: a Kibelisk unlocks by walking near it; a teleport costs one scroll (~1,000 Kinah; many come from leveling and rewards). Unlocked Kibelisks are derived from ticks (nearest Kibelisk of completed items), never stored; a manual override can be added later. Scrolls are not tracked. A teleport is suggested only when it saves real distance (threshold tuned in game, e.g. ~400 m), shows its cost ("1 scroll"), and each card has an "I'll walk" override; an optional "Prefer running" setting, off by default. |
 | — | Icons | Standing OK: sessions add skill, stigma and item icons from approved sources (Metabot first; served from metabot.gg, no new domain) with provenance in docs/ISSUES.md. Other game art still needs the owner's OK. |
 | — | Ascension quests | No map location (they unlock and the player teleports in). Excluded from location tie-breaks; ticking one doesn't move the last confirmed location. Ascension steps whose prerequisites are met rank first in Next up. |
 | — | Browser automation on no-bot sites | Not used: an AI-driven browser is still automated access. Tier-1 sites get an owner hand-check sheet instead. |
