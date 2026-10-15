@@ -27,7 +27,7 @@
      equiv    Node, no browser: the requirement evaluator and the page's gate functions vs the frozen 0.2 gate rules over the
               2,000 golden states (< 30 s; tests/equiv.mjs). In the `checks` shard (ci.yml has no step of its own for it)
      invariant Node, no browser: over 10,000 seeded states, Next up never offers a blocked or done node, judged by an
-              independent oracle from the raw data (tests/support/oracle.mjs); evaluator = oracle on every node (< 30 s;
+              independent oracle from the raw data (tests/support/oracle.mjs); evaluator = oracle on every node (~20 s, warns > 30 s, fails > 60 s;
               tests/invariant.mjs). In the `checks` shard like equiv (the app can't edit ci.yml to give it a step)
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
