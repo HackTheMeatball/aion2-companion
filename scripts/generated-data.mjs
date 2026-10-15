@@ -1,7 +1,8 @@
-/* The generated data module, shared by scripts/build.mjs and the Node core tests (tests/core.mjs): an esbuild plugin that
+/* The generated data modules, shared by scripts/build.mjs and the Node core tests (tests/core.mjs): an esbuild plugin that
    serves "./generated.js" (from src/data) or "./data/generated.js" (from src/) as the module tools/gen/gen.mjs compiles
-   from data/** (data format v2, 0.2 step 5b). The module is never stored: not in src/, not in tools/. A schema error or a
-   failed data check stops the build. */
+   from data/** (data format v2, 0.2 step 5b), and "./gate-graph.js" / "../data/gate-graph.js" as GATE_GRAPH (the live
+   gates, 0.3 E1; only src/core/evaluator.js imports it, so the page carries it once the evaluator is wired in, E2). The
+   modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,15 +21,18 @@ export const genResult = () => {
   return (cached = g);
 };
 export const genModule = () => genResult().module;
-export const generatedNames = () => Object.keys(genResult().constants);
-export const staleGenerated = () => existsSync(P('src/data/generated.js'));
+export const generatedNames = () => [...Object.keys(genResult().constants), 'GATE_GRAPH'];
+/* file name in src/data -> module text */
+const MODULES = { 'generated.js': () => genResult().module, 'gate-graph.js': () => genResult().gateModule };
+/* a stored copy of a generated module (src/data/generated.js or gate-graph.js), else null */
+export const staleGenerated = () => Object.keys(MODULES).map(f => 'src/data/' + f).find(f => existsSync(P(f))) || null;
 export const generatedData = {
   name: 'generated-data',
   setup(b) {
-    b.onResolve({ filter: /^\.\.?\/(data\/)?generated\.js$/ }, a => {
-      if (join(a.resolveDir, a.path) !== P('src/data/generated.js')) return undefined;
-      return { path: 'data/generated.js', namespace: 'generated' };
+    b.onResolve({ filter: /^\.\.?\/(data\/)?(generated|gate-graph)\.js$/ }, a => {
+      const f = Object.keys(MODULES).find(f => join(a.resolveDir, a.path) === P('src/data', f));
+      return f ? { path: 'data/' + f, namespace: 'generated' } : undefined;
     });
-    b.onLoad({ filter: /.*/, namespace: 'generated' }, () => ({ contents: genModule(), loader: 'js', resolveDir: P('src/data'), watchFiles: dataFiles() }));
+    b.onLoad({ filter: /.*/, namespace: 'generated' }, a => ({ contents: MODULES[a.path.slice('data/'.length)](), loader: 'js', resolveDir: P('src/data'), watchFiles: dataFiles() }));
   },
 };

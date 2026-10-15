@@ -56,7 +56,7 @@ const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
 /* the generated data module (0.2 step 5b): compiled from data/** by tools/gen/gen.mjs at build time, never stored (a stale
    copy in src/ would shadow nothing but mislead, so the build refuses it). The esbuild plugin is shared with the Node
    core tests. A schema error or a failed data check stops the build. */
-if (staleGenerated()) die('src/data/generated.js exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file');
+if (staleGenerated()) die(`${staleGenerated()} exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file`);
 try { genModule(); } catch (e) { die(e.message); }
 const bundleOne = async entry => {
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
