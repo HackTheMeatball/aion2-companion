@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 /* Test runner: serves dist/ (+ tests/baselines) on a free localhost port and runs every suite against it.
-   `npm test` builds first. Usage: node tests/run.mjs [--only e1,mig1,...] [--quick] [--noshots] [--jobs N] [--retries N] [--with-fonts]
+   `npm test` builds first. Usage: node tests/run.mjs [--only e1,mig1,... | --shard <name>] [--quick] [--noshots] [--jobs N] [--retries N] [--with-fonts]
+   With neither --only nor --shard it runs every suite except `perf` (non-blocking; `npm run test:perf` or --only perf).
+   --shard <name> runs one CI shard (SHARDS below; .github/workflows/ci.yml runs one job per shard in parallel).
+   `node tests/run.mjs --check-shards` (no build needed) fails unless every blocking suite is in exactly one shard and
+   the shard names equal the `shard:` matrix list in ci.yml; the CI data job runs it, so a new suite can't be left out.
    Web fonts (and service workers, except where a suite allows them) are blocked in the browsers unless --with-fonts
    (tests/support/block-web-fonts.cjs), so layouts render with fallback fonts on every machine.
-   A failed suite is re-run once (--retries 0 to turn off) because the update() timing checks (< 15 ms) can trip on a
-   busy machine; a pass on retry is reported as FLAKY with the first run's failures, so it stays visible.
+   A failed suite is re-run once (--retries 0 to turn off); a pass on retry is reported as FLAKY with the first run's
+   failures, so it stays visible. (The update() < 15 ms timing checks that used to need this live in `perf` now.)
 
    Suites (each is a standalone Playwright script; output in tests/out/<name>.out):
      site     standalone site + claude.ai build: head, footer, export, service worker/offline, manifest, 404, artifact build
@@ -21,9 +25,10 @@
      core     the pure core (src/core/) in Node, no browser: state, migrations, catalog, requirements, Next up (< 5 s)
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),
-              spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours */
+              spoken names, reduced motion after Level up, Escape on "i" popovers, hit areas vs neighbours
+     perf     update() median < 15 ms at e1's and regress's states (non-blocking: not in the default run or ci-ok) */
 import { spawn, execSync } from 'node:child_process';
-import { createWriteStream, existsSync, mkdirSync } from 'node:fs';
+import { createWriteStream, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { cpus } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,6 +38,30 @@ import { startServer } from '../scripts/serve.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'tests', 'out'), FIX = join(ROOT, 'tests', 'fixtures');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
+
+/* Every suite and how it is selected. NONBLOCKING suites never run by default and are in no shard. */
+const ALL = ['site', 'core', 'schema', 'e1', 'e2', 'e3', 'e4', 'gates', 'mig1', 'mig2', 'regress', 'golden', 'a11y', 'journey', 'perf'];
+const NONBLOCKING = ['perf'];
+/* CI shards for the browser suites, balanced by CI time (a 4-vCPU runner runs 2 suites at a time). core and schema have no
+   browser: the CI data job runs them (tests/core.mjs, tests/schema.mjs) before any shard finishes. */
+const SHARDS = {
+  journey: ['journey'],
+  regress: ['regress'],
+  golden: ['golden', 'a11y', 'mig2', 'mig1', 'site'],
+  checks: ['e1', 'e2', 'gates', 'e4', 'e3'],
+};
+const SHARD_FREE = ['core', 'schema'];
+if (flag('check-shards')) {
+  const bad = [], seen = Object.values(SHARDS).flat().concat(SHARD_FREE);
+  for (const n of ALL.filter(n => !NONBLOCKING.includes(n))) { const c = seen.filter(x => x === n).length; if (c !== 1) bad.push(`${n} is in ${c} shards (needs exactly 1)`); }
+  for (const n of seen) if (!ALL.includes(n) || NONBLOCKING.includes(n)) bad.push(`${n} in a shard is not a blocking suite`);
+  const yml = readFileSync(join(ROOT, '.github', 'workflows', 'ci.yml'), 'utf8'), m = yml.match(/^\s*shard:\s*\[([^\]]*)\]/m);
+  const ci = m ? m[1].split(',').map(x => x.trim()).filter(Boolean) : null;
+  if (!ci) bad.push('no `shard: [...]` matrix list in .github/workflows/ci.yml');
+  else if (ci.slice().sort().join() !== Object.keys(SHARDS).sort().join()) bad.push(`ci.yml shards [${ci}] != tests/run.mjs SHARDS [${Object.keys(SHARDS)}]`);
+  console.log(bad.length ? 'SHARD CHECK FAILED\n' + bad.join('\n') : `SHARD CHECK PASSED (${Object.keys(SHARDS).length} shards: ${Object.entries(SHARDS).map(([k, v]) => k + '=' + v.join('+')).join(' ')})`);
+  process.exit(bad.length ? 1 : 0);
+}
 
 if (!existsSync(join(ROOT, 'dist', 'index.html')) || !existsSync(join(ROOT, 'dist-artifact', 'index.html'))) {
   console.error('dist/ is missing: run `npm run build` (or `npm test`, which builds first)'); process.exit(1);
@@ -65,15 +94,20 @@ const SUITES = {
   regress: { args: ['tests/regress.js', ...(flag('quick') ? ['--quick'] : []), ...(flag('noshots') ? ['--noshots'] : [])], pass: /hard fail 0\b/ },
   golden: { args: ['tests/golden.js'], pass: /GOLDEN VERIFY PASSED/ },
   a11y: { args: ['tests/a11y.js'], pass: /A11Y CHECKS PASSED/ },
+  perf: { args: ['tests/perf.js', ...(flag('quick') ? ['--quick'] : [])], pass: /PERF CHECKS PASSED/ },
   journey: { args: ['tests/journey.js'], check: out => {
     const bad = out.split('\n').filter(l => l.includes('!!') && !JOURNEY_KNOWN.some(r => r.test(l)));
     if (!/===== Lv 45/.test(out)) bad.push('journey did not reach Lv 45');
     return bad; } },
 };
-const only = opt('only') ? opt('only').split(',') : null;
-for (const n of only || []) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
+if (opt('shard') && !SHARDS[opt('shard')]) { console.error(`unknown shard: ${opt('shard')} (${Object.keys(SHARDS).join(', ')})`); process.exit(2); }
+if (opt('shard') && opt('only')) { console.error('use --only or --shard, not both'); process.exit(2); }
+const only = opt('shard') ? SHARDS[opt('shard')] : opt('only') ? opt('only').split(',') : ALL.filter(n => !NONBLOCKING.includes(n));
+for (const n of only) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const order = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'mig2', 'mig1', 'e4', 'e3', 'site', 'core', 'schema'].filter(n => !only || only.includes(n));
+const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'mig2', 'mig1', 'e4', 'e3', 'site', 'core', 'schema'];
+if (Object.keys(SUITES).sort().join() !== ALL.slice().sort().join() || ORDER.slice().sort().join() !== ALL.slice().sort().join()) { console.error('tests/run.mjs: SUITES, ALL and ORDER must list the same suites'); process.exit(2); }
+const order = ORDER.filter(n => only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));
 
 mkdirSync(OUT, { recursive: true });
