@@ -108,6 +108,8 @@ toolchain, data out of code). 5b part 2 carried owner-approved visible data corr
 - The prerequisite audit, every gate sourced or labelled: researched now as a report (proposed ids, a source per
   gate), loaded into the new format after 5b.
 - Ascension progress bar in the Journey card (informational only).
+- Daevanion card: the Nezekan board opens with "Urgent Pursuit" (Lv 13), from the story position, not at Lv 12
+  (owner screens; 0.2.0 known issue).
 - An invariant test over ~10,000 states: Next up never offers a blocked or already-done step.
 - Deriving completion changes Next up for some saves on purpose: every golden-master difference is listed with its
   reason and approved by the owner as a product change.
