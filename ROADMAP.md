@@ -86,7 +86,7 @@ identical, all suites green, saves untouched.
 2. Toolchain: ES modules + esbuild, still one static HTML file for both builds.
 3. Data out of code: hand-written data constants move to data modules; the generated block is built, not committed.
 4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests; every
-   read of character data goes through one `char(state)` accessor (groundwork for 0.4).
+   read of character data goes through one `char(state)` accessor (groundwork for characters, 0.5).
 5. Data format v2, in three parts:
    - **5a schema** (docs only, can start before step 4 lands): stable ids (not display names), shared vs per-class
      folders, a sources registry with license per source, `verifiedAt` per record, `requires` / `completesWith` on
@@ -95,7 +95,7 @@ identical, all suites green, saves untouched.
    - **5b build**: data moved to the format, Node generator replaces gen.py, schema validation, the generated block no
      longer committed. Compiled data equals today's. No data patches while this runs.
    - **5c saves**: `schemaVersion` added additively behind a flag, and a pure, tested `merge()` for two saves
-     (groundwork for 0.5). Keeping un-ticks through a merge needs a per-item change time in the save (owner decision).
+     (groundwork for sync, 0.6). Keeping un-ticks through a merge needs a per-item change time in the save (owner decision).
    5b and 5c can run in parallel; both wait for step 4 and the approved schema.
 
 **0.2.0 released 2026-10-14** (5b and 5c merged). Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
@@ -103,8 +103,8 @@ toolchain, data out of code). 5b part 2 carried owner-approved visible data corr
 
 ### 0.2.x — patches on the way to 0.3
 
-Planned 2026-10-15 (owner followed the CEO's recommendation). Patches carry fixes, data corrections and polish, never
-new features; invisible work (faster CI, design tokens, the 0.3 engine groundwork) lands between them without a
+Planned 2026-10-15 (owner followed the CEO's recommendation). Patches carry small, low-risk changes (fixes, data
+corrections, polish, small display additions); no engine, data-format or save-format work; invisible work (faster CI, design tokens, the 0.3 engine groundwork) lands between them without a
 release. The order can change.
 
 - **0.2.1**: a fresh browser starts at Lv 1 on the first story quest ("A Village in the Fog") instead of Lv 5 with no
@@ -122,8 +122,10 @@ release. The order can change.
   and the prerequisite gates loaded into the data.
 
 **Renumbered 2026-10-15:** Smart Next up was inserted as 0.4, so every later minor moved up by one (characters
-0.4 → 0.5, sync 0.5 → 0.6, new players 0.6 → 0.7, classes 0.7–0.13 → 0.8–0.14). Older decisions, reports and code
-comments keep the old numbers.
+0.4 → 0.5, sync 0.5 → 0.6, new players 0.6 → 0.7, classes 0.7–0.13 → 0.8–0.14). Scope also moved: location-aware
+ranking, fastest / completionist, catch-up and the travel model (F1, F9, F10, F15) were "0.3 design" and are now 0.4;
+0.3 kept its number and its correctness scope. Older decisions, reports, charters, specs, tests and code comments keep
+the old numbers: read "0.3 design" for those items as 0.4, characters "0.4" as 0.5, sync "0.5" as 0.6.
 
 ### 0.3 — Next up correctness
 
@@ -191,7 +193,7 @@ All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX
 
 - **Colour sprint** (owner wants its own sprint): game-inspired palette, faction and class colours, quest-type and
   item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. Not before the
-  foundations (0.2–0.4) are solid; current colours are placeholders until then. When it comes up, the CEO stops and
+  foundations through the class framework (0.2–0.5) are solid; current colours are placeholders until then. When it comes up, the CEO stops and
   goes through the research with the owner first; then the owner answers the open colour questions and does one
   in-game check session (batched with the data checks) using a one-screen checklist. Built on the design tokens.
 

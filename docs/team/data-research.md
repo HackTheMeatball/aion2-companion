@@ -12,7 +12,7 @@ leave it out or label it *single source* / *inferred* / *disputed*. thegameswiki
 - Prefer database fields that confirm a link from both ends (e.g. a quest's prerequisite and the other quest's unlocks).
 - Record what could not be reached (bot checks) instead of guessing.
 - After a game patch: list affected records and re-verify them (driven by `verifiedAt` once data v2 exists).
-- Per class (0.6+): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
+- Per class (0.8+, renumbered 2026-10-15): research plan, data, claims, and a list of items the owner or a tester must confirm in game.
 
 ## Fetching policy (owner-approved 2026-10-14)
 - Before any content page: read the terms page and robots.txt. Then, within reason, do the minimum the site asks:

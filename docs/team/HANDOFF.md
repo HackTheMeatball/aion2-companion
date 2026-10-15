@@ -16,6 +16,9 @@ Parallel Claude Code cloud sessions, one task each, own branch, one PR, never me
 reviews PRs. Merging: until the owner confirms otherwise, **nothing merges without the owner's OK** (the charter rule
 "invisible changes merge on green" returns once branch protection with `ci-ok` is on, if the owner agrees). Visible
 changes always need the owner's approval, mockup first. Session prompts live in the CEO's plan, one per task.
+**Exception for the 0.2 → 0.3 cycle** (owner, 2026-10-15; DECISIONS): the CEO merges and releases 0.2.x patches itself,
+visible ones included, under the limits in that row; 0.3's Next up behaviour changes and the 0.3.0 release still wait
+for the owner. The rule above returns after 0.3.0 unless the owner says otherwise.
 
 ## Now and next
 Wave 1 (start now, no shared files):
