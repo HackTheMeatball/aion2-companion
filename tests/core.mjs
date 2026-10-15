@@ -22,6 +22,7 @@ const ENTRY = [
   'export { SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS, E_ORDER, LEVEL_POINTS } from "./data/build.js";',
   'export { MIG_V5 } from "./data/migrations.js";',
   'export { RQ, SH_DATA } from "./data/generated.js";',
+  'export { GATE_GRAPH } from "./data/gate-graph.js";',
 ].join('\n');
 const r = await build({ stdin: { contents: ENTRY, resolveDir: join(ROOT, 'src'), loader: 'js', sourcefile: 'core-entry.js' },
   bundle: true, write: false, format: 'esm', platform: 'neutral', treeShaking: false, logLevel: 'silent', plugins: [generatedData] });
