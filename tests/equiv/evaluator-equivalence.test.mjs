@@ -15,7 +15,9 @@
       fails on a difference not in KNOWN and on a KNOWN one that no longer occurs. Table: tests/out/evaluator-equivalence.md.
 
    B. what the page runs since E2 (the requirements.js functions main.js and nextup.js call: the evaluator plus the kept
-      rules) against 0.2, with no difference allowed: E2 changes nothing a player sees.
+      rules) against 0.2, with no difference allowed: E2 changes nothing a player sees. Run with the 0.3 E4 changes off
+      (setGateChanges([])): what they change is reviewed per change by tests/golden.js --explain and judged by the
+      invariant suite; with them off the wiring must still be exactly 0.2.
 
    The 0.2 rules from main.js (stronghold band, stigma rows, Daevanion board, story chips) are reimplemented in
    gates-0.2.mjs because main.js doesn't run in Node: drift there would not be seen by A. B calls the app's own
@@ -63,7 +65,8 @@ export default (test, M) => {
   const appDiffs = new Map();
   const same = (what, old, app, id) => { const a = JSON.stringify(old), b = JSON.stringify(app); if (a === b) return;
     const x = appDiffs.get(what) || { n: 0, ex: `${id}: 0.2 ${a.slice(0, 160)} / app ${b.slice(0, 160)}` }; x.n++; appDiffs.set(what, x); };
-  const testB = (name, fn) => test(name, () => { appDiffs.clear(); fn(); assert.deepEqual([...appDiffs].map(([w, x]) => `${w} · ${x.n} states, e.g. ${x.ex}`), [], 'app differs from 0.2'); });
+  const testB = (name, fn) => test(name, () => { appDiffs.clear(); const on = Object.keys(M.GATE_CHANGES).filter(M.gateChangeOn); M.setGateChanges([]);
+    try { fn(); } finally { M.setGateChanges(on); } assert.deepEqual([...appDiffs].map(([w, x]) => `${w} · ${x.n} states, e.g. ${x.ex}`), [], 'app differs from 0.2'); });
   let evs = null;
 
   test(`equivalence: ${states.length} golden states (2,000 core saves) loaded and migrated`, () => {

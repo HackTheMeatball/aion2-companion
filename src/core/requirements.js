@@ -43,9 +43,37 @@ const APP_GRAPH = (() => {
     nodes[id] = { ...n, get req() { return { level: x.req, basis }; } }; });
   return { story: GATE_GRAPH.story, nodes };
 })();
-/* The evaluator for this character (at level lv, default its own), proposals off, derived completion off. Evaluated
-   lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`. */
-export const gatesOf = (c, lv = c.level) => evaluate(lv === c.level ? c : { ...c, level: lv }, { graph: APP_GRAPH });
+/* The behaviour changes of 0.3 E4 (design §5, §13), each a named switch so tests/golden.js --explain can attribute every
+   changed state to the smallest set of them that reproduces it. The page runs with every one on; setGateChanges (the
+   golden runner, the equiv suite) picks a set. A proposal names the rule switch it needs ("needs"), and turning it on
+   turns that on too. Derived values are computed on every evaluation and never written. */
+export const GATE_CHANGES = {
+  derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
+    "once their story quest is turned in, \"Put … on E\" once its slot is equipped)" },
+  "g22:0": { apply: "g22:0", needs: ["derived"], what: "wrapper rule: \"The One Who Hears the Voice\" done once \"Daeva in a Dream\" is turned in (proposal)" },
+  "g32:dreams": { apply: "g32:dreams", needs: ["derived"], what: "wrapper rule: \"The One Who Dreams\" done once \"A Daeva Dreaming Anew\" is turned in (proposal)" },
+  followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)" },
+  turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)" },
+};
+let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
+/* Turn on exactly these changes (and what they need); returns the set now on. */
+export const setGateChanges = names => {
+  const on = new Set();
+  for (const n of names) { if (!GATE_CHANGES[n]) throw new Error("setGateChanges: unknown change " + n); on.add(n); (GATE_CHANGES[n].needs || []).forEach(d => on.add(d)); }
+  CHANGES_ON = on; EV_OPTS = null;
+  return [...on];
+};
+export const gateChangeOn = n => CHANGES_ON.has(n);
+const evOpts = () => EV_OPTS || (EV_OPTS = { graph: APP_GRAPH, derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
+  apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
+/* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
+   page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`. */
+export const gatesOf = (c, lv = c.level) => evaluate(lv === c.level ? c : { ...c, level: lv }, evOpts());
+/* Done: ticked, or derived (from the story, a wrapper quest, a follow-up). A key with no gate node: its tick. */
+export const doneOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return r ? r.done !== false : !!c.checks[k]; };
+/* Done by derivation only (not ticked): the row shows a ticked, disabled box ("done in the story"); its stored tick,
+   true, false or absent, is left alone and counts again once the derivation stops holding (A3). The node's result, or null. */
+export const derivedOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return r && r.done === "derived" ? r : null; };
 /* A node's gate holds apart from its atoms of these kinds ("level", "story", "done"): e.g. a milestone step without its
    milestone's own level, which the callers already pick milestones by. */
 export const openBut = (r, ...kinds) => r.open || r.blockers.every(b => kinds.includes(b.kind));
@@ -68,6 +96,12 @@ export const storyGate = (c, name, is = "reached") => {
 /* Kept rule "story-card-recommended-level": the story card is level-gated when the current quest's recommended level is
    above yours; the first story quest never gates (a new character in Ishalgen isn't told to level up first). */
 export const storyRecGate = c => { const qi = questIdx(c), gateLv = qi > 0 ? QUESTS[qi][0] : 0; return { qi, gateLv, gated: gateLv > c.level }; };
+/* "Turned in" on the current quest waits for the quest's unlock level, a level atom of its live gate (0.3 E4, Q10
+   follow-up: the game won't open it below that level, so it can't be turned in either). The level it still needs, else 0. */
+export const turnInNeedsLv = (c, ev = gatesOf(c)) => {
+  const id = CHANGES_ON.has("turnInLevel") && SQ_ID.get(c.quest); if (!id) return 0;
+  const b = ev.node(id).blockers.find(b => b.kind === "level"); return b ? b.need : 0;
+};
 /* Talk-only steps ("talk to …" with no trip, item or fight; turn-ins are the exception and always show) are hidden by
    default and count as done, so the list is only objectives where you travel, examine, collect, fight or deliver. */
 export const objLow = t => { const [a, b = ""] = t.split(" — "); if (/^Turn in\b/i.test(a)) return false; /* turn-ins always show: they finish the quest */ return /^talk (to|via)\b/i.test(b) && !/^(Deliver|Find|Rendezvous|Go)\b/i.test(a); };
@@ -123,13 +157,13 @@ export const rqWaitsOnStory = (c, q, lv = c.level, ev = gatesOf(c, lv)) => {
 /* ---------- Milestones ---------- */
 /* Sealed Dungeons and Strongholds are tracked in the Areas card, not in milestone counts. Optional tasks count toward
    their milestone only once ticked (an untouched one never makes a milestone "Missed"); the Optional tasks filter
-   (state.hideOpt) hides them entirely. */
+   (state.hideOpt) hides them entirely. Done = ticked or derived (doneOf; 0.3 E4: counts and tags count derived as done). */
 const isAreaKind = it => it.kind === "hideout";
-export const checkableOf = (state, s) => { const c = char(state); return s.items.map((it, j) => ({ it, k: it.k || s.id + ":" + j })).filter(x => !x.it.sub && !x.it.hidden && !x.it.dv && !isAreaKind(x.it) && !(x.it.opt && (state.hideOpt || !c.checks[x.k]))); };
-export const countsOf = (state, s) => { const c = checkableOf(state, s); return [c.filter(x => char(state).checks[x.k]).length, c.length]; };
+export const checkableOf = (state, s, ev = gatesOf(char(state))) => { const c = char(state); return s.items.map((it, j) => ({ it, k: it.k || s.id + ":" + j })).filter(x => !x.it.sub && !x.it.hidden && !x.it.dv && !isAreaKind(x.it) && !(x.it.opt && (state.hideOpt || !doneOf(c, x.k, ev)))); };
+export const countsOf = (state, s, ev = gatesOf(char(state))) => { const c = checkableOf(state, s, ev); return [c.filter(x => doneOf(char(state), x.k, ev)).length, c.length]; };
 /* Main tasks only (regional quests are side content, tracked in Next up), and how many regional quests are still open. */
-export const mainCountsOf = (state, s) => { const c = checkableOf(state, s).filter(x => x.it.kind !== "quest"); return [c.filter(x => char(state).checks[x.k]).length, c.length]; };
-export const sideOpenOf = (state, s) => checkableOf(state, s).filter(x => x.it.kind === "quest" && !char(state).checks[x.k]).length;
+export const mainCountsOf = (state, s, ev = gatesOf(char(state))) => { const c = checkableOf(state, s, ev).filter(x => x.it.kind !== "quest"); return [c.filter(x => doneOf(char(state), x.k, ev)).length, c.length]; };
+export const sideOpenOf = (state, s, ev = gatesOf(char(state))) => checkableOf(state, s, ev).filter(x => x.it.kind === "quest" && !doneOf(char(state), x.k, ev)).length;
 export const isOpen = ([c, n]) => c < n;
 
 /* Open steps of a milestone that Next up may offer, in card order: not done, not a skill or board line (those have
