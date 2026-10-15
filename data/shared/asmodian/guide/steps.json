@@ -628,9 +628,10 @@
             }
           ]
         },
-        "status": "ready",
-        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
-        "change": "None by itself: it keeps the live story atom and adds the code rule \"slots wait for g22:0\"; with derived g22:0 the slot opens once \"Daeva in a Dream\" is turned in, without the tick."
+        "status": "owner-check",
+        "check": 3,
+        "change": "None by itself: it keeps the live story atom and adds the code rule \"slots wait for g22:0\"; with derived g22:0 the slot opens once \"Daeva in a Dream\" is turned in, without the tick.",
+        "basis": "prereq-gates §8; mirrors the 0.2 code rule, but rests on a legacy atom and open owner check 3 (does the stigma system wait for \"The One Who Hears the Voice\"?)"
       }
     },
     {
@@ -682,9 +683,10 @@
             }
           ]
         },
-        "status": "ready",
-        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
-        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+        "status": "owner-check",
+        "check": 3,
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0.",
+        "basis": "prereq-gates §8; mirrors the 0.2 code rule, but rests on a legacy atom and open owner check 3 (does the stigma system wait for \"The One Who Hears the Voice\"?)"
       }
     },
     {
@@ -774,9 +776,10 @@
             }
           ]
         },
-        "status": "ready",
-        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
-        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+        "status": "owner-check",
+        "check": 3,
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0.",
+        "basis": "prereq-gates §8; mirrors the 0.2 code rule, but rests on a legacy atom and open owner check 3 (does the stigma system wait for \"The One Who Hears the Voice\"?)"
       }
     },
     {
@@ -920,9 +923,10 @@
             }
           ]
         },
-        "status": "ready",
-        "basis": "prereq-gates §8; ready because it mirrors the 0.2 code (no change), owner check 3 may later relax slot 1",
-        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0."
+        "status": "owner-check",
+        "check": 3,
+        "change": "None by itself (the code already waits for g22:0); with derived g22:0 the slot needs no tick on g22:0.",
+        "basis": "prereq-gates §8; mirrors the 0.2 code rule, but rests on a legacy atom and open owner check 3 (does the stigma system wait for \"The One Who Hears the Voice\"?)"
       }
     },
     {
