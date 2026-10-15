@@ -1236,10 +1236,12 @@ function renderDaevanion() {
   document.getElementById("dvBox").classList.toggle("act", !!nx && total > 0 && left >= dvNeed(char(state), nx));
   refreshDvGates();
 }
-/* Up/down arrows inside the cost box: step the value and run the normal input handler. */
+/* Up/down arrows inside the cost box: step the value and run the normal input handler. From an empty box, up gives 1
+   (no node costs 0 to buy outright) and down gives 0 ("already got it on the way to another node"), the same as the
+   keyboard arrows in a number field (F6). */
 layoutEl.addEventListener("click", e => {
   const b = e.target.closest("[data-cst]"); if (!b) return;
-  const i = b.closest(".cstep").querySelector("input.dvc"), cur = i.value === "" ? (b.dataset.cst > 0 ? -1 : 1) : +i.value;
+  const i = b.closest(".cstep").querySelector("input.dvc"), cur = i.value === "" ? (b.dataset.cst > 0 ? 0 : 1) : +i.value;
   i.value = Math.max(0, Math.min(200, cur + +b.dataset.cst)); i.dispatchEvent(new Event("input", { bubbles: true }));
 });
 /* Logging a cost enables that node's tick everywhere it appears; totals update live. */

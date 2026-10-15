@@ -141,5 +141,15 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   r = await p.evaluate(() => document.getElementById('questStatus').textContent.trim());
   ok('#13 quest "Ishalgen": Journey story row shows "Pick your current quest"', /^Pick your current quest/.test(r), r);
 
+  /* #14 (F6) Daevanion cost box: from empty, ▴ gives 1 and ▾ gives 0 ("already got it"); 0 stays reachable from 1 (Lv 30: Vaizel opens, its first node has no cost logged) */
+  await set(30);
+  const cst = async (d, clear) => p.evaluate(([d, clear]) => { const row = document.querySelector('#dvNextList .dvrow.nx'), i = row.querySelector('input.dvc');
+    if (clear) { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }
+    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (state.dvCost || {})[k], saved: (JSON.parse(localStorage.getItem('aion2-assassin-route-v4')).dvCost || {})[k] }; }, [d, clear]);
+  r = await cst(1, true); ok('#14 F6: empty cost box, ▴ → 1 (saved as 1)', r.v === '1' && r.cost === 1 && r.saved === 1, r);
+  r = await cst(-1, false); ok('#14 F6: ▾ from 1 → 0 (0 = already bought), saved', r.v === '0' && r.cost === 0 && r.saved === 0, r);
+  r = await cst(-1, true); ok('#14 F6: empty cost box, ▾ → 0', r.v === '0' && r.cost === 0, r);
+  r = await cst(1, false); ok('#14 F6: ▴ from 0 → 1', r.v === '1' && r.cost === 1, r);
+
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
