@@ -16,16 +16,18 @@ duplicate run per push); to test a branch without a PR, run the workflow by hand
 
 ### CI jobs
 
-| Job | Blocking | What | Typical time |
+| Job | Blocking | What | Time (job, 2026-10-15) |
 |---|---|---|---|
-| `data` | yes | no browser: data schemas + cross-record checks, `DATA_SOURCES.md` current, pure core, CHANGELOG format, shard list (`node tests/run.mjs --check-shards`), build | < 1 min |
-| `browser (journey)` | yes | `node tests/run.mjs --shard journey` | ≈ 5 min |
+| `data` | yes | no browser: data schemas + cross-record checks, `DATA_SOURCES.md` current, pure core, CHANGELOG format, shard list (`node tests/run.mjs --check-shards`), build | ≈ 10 s |
+| `browser (journey)` | yes | `node tests/run.mjs --shard journey` | ≈ 4 min |
 | `browser (regress)` | yes | `--shard regress` | ≈ 4 min |
-| `browser (golden)` | yes | `--shard golden`: golden, a11y, mig2, mig1, site | ≈ 4 min |
-| `browser (checks)` | yes | `--shard checks`: e1, e2, gates, e4, e3 | ≈ 3 min |
-| `perf` | **no** | `update()` median < 15 ms (`tests/perf.js`); a slow run is a `::warning` annotation, the job stays green | ≈ 2 min |
+| `browser (golden)` | yes | `--shard golden`: golden, a11y, mig2, mig1, site | ≈ 2.5 min |
+| `browser (checks)` | yes | `--shard checks`: e1, e2, gates, e4, e3 | ≈ 2 min |
+| `perf` | **no** | `update()` median < 15 ms (`tests/perf.js`); a slow run is a `::warning` annotation, the job stays green | ≈ 1 min |
 | `ci-ok` | the required check | succeeds only if every blocking job succeeded (see below) | seconds |
 | `deploy` → `smoke` → `release` | main only | see above | |
+
+Jobs start together, so a PR's result arrives after the slowest shard: ≈ 4 min (was ≈ 13 min with one `test` job).
 
 The shards are defined once, in `SHARDS` in `tests/run.mjs`; the matrix in `ci.yml` lists the same names and the data
 job fails if the two differ or a suite is in no shard (or two). To add a suite: add it to `SUITES`, `ALL` and `ORDER` in
