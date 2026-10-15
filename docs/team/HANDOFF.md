@@ -20,34 +20,40 @@ changes always need the owner's approval, mockup first. Session prompts live in 
 visible ones included, under the limits in that row; 0.3's Next up behaviour changes and the 0.3.0 release still wait
 for the owner. The rule above returns after 0.3.0 unless the owner says otherwise.
 
-## CEO handover (2026-10-15, 03:35 ET) — read this first in a new CEO chat
+## CEO handover (2026-10-15, 09:10 ET) — read this first in a new CEO chat
 
-**Live:** v0.2.2 on daevacompanion.com (0.2.1 fresh start at Lv 1 on the first quest; 0.2.2 F6/F7/F8). 0.2.0 shipped
-the v2 data. Autonomous-merge grant for the 0.2 → 0.3 cycle: DECISIONS 2026-10-15 (limits there).
+**Live:** v0.2.3 on daevacompanion.com. Autonomous-merge grant for the 0.2 → 0.3 cycle: DECISIONS 2026-10-15.
 
-**How work runs now:** `@claude` (Opus) or `@sonnet` (Sonnet, cheaper) in an issue or PR comment starts a Claude Code
-run on GitHub (`.github/workflows/claude.yml`, owner-only). Reviews: ask the bot for "VERDICT: APPROVE / REQUEST
-CHANGES", tell it not to run journey or the full npm test (CI covers it), verify findings yourself. Merge on APPROVE +
-`ci-ok` green. Releases: version bump + CHANGELOG PR, reviewed by `@sonnet`. Branch protection on `main` (require
-`ci-ok`) is still for the owner to turn on (docs/DEPLOY.md checklist).
+**0.3 status:** E0 design (#42), E1 evaluator (#57), E2 wiring (#59) and E3 invariant suite (#61) are merged; all invisible
+(golden master unchanged). E4–E8 change what Next up shows: build only with the owner's go, one `@claude` issue per step,
+then HOLD the PR with a plain list of who is affected plus before/after screenshots. E9 data PRs and E10 follow. The 0.3.0
+release waits for the owner. Follow-ups noted: Q10 edge case (Lv 44 all ticked is offered "Turned in" on a Lv 45 quest,
+fix in E4); optional Daevanion blv / stigma g.lv getter for E4; design §15 has no row for the Ascension-first ranking
+(invariant 3 is a visible PENDING test until it exists); the invariant suite prints a 30 s warning in CI (~32 s in the
+shard), harmless.
 
-**Open PRs:**
-- #42 0.3 E0 engine design + gates as `proposed` data (no behaviour change). Fixes pushed; `@sonnet` re-review asked.
-  When merged: delete scheduled task `trig_013AGyYHU3UP6XxRcA3aHELo`; start 0.3 build steps only with the owner's go
-  (usage), one `@claude` issue per design step; behaviour changes wait for owner approval of the golden diffs.
-- #47 data: F5 stigma cost + story-quest locations (Metabot). Review fix pushed, main merged in (nextup.js conflict
-  resolved keeping both), `@sonnet` re-review asked. When merged: release 0.2.3; delete `trig_01E5SxcpnScWoq22qz7zTdBz`.
+**How work runs:** `@claude` (Opus) or `@sonnet` in an issue/PR comment starts a Claude Code run on GitHub
+(`.github/workflows/claude.yml`, owner-only). Reviews: ask for "VERDICT: APPROVE / REQUEST CHANGES", tell it not to run
+journey or the full npm test, verify findings yourself; reviewers don't run the browser suites, so never trust APPROVE
+alone. **Bot pushes made with GITHUB_TOKEN don't trigger CI**: start it with
+`gh api -X POST repos/HackTheMeatball/daeva-companion/actions/workflows/ci.yml/dispatches -f ref=<branch>` and wait for
+`ci-ok` on the head SHA. Bots often leave only a "Create PR" link: open the PR via REST. GitHub GraphQL is blocked from
+sessions: use `gh api` REST (comment: `issues/N/comments`; merge: `-X PUT pulls/N/merge -f merge_method=squash`).
+Releases: version bump + CHANGELOG PR (qa-release.md), reviewed by `@sonnet`. Branch protection on `main` is still for the
+owner to turn on (docs/DEPLOY.md).
 
-**Owner questions (morning):** villages (Odar's Shade, Fang Hideout, …) as zones of their own (recommend yes, from
-Metabot) vs in-game check per village; alt check: does a new character reach Lv 2 before "Prepare to Escape"
-(story levels as recommendations everywhere is 0.3 work).
+**Open PRs:** none from this cycle. 0.2.4 is planned (ROADMAP): owner in-game checks (Hugo Mercenaries: Deep Shadow,
+Ascension openings, Zikel Defense Break node) and villages as their own zones if the owner agrees.
 
-**Owner tracker:** https://claude.ai/artifact/61L3ghB3E5rR7bfRzENJrC (Dashboard type). Non-technical, mobile-first.
-Update its data files (versions / today / snapshot / gallery JSON: upload as assets, then point the datasets at them);
-"today" items carry ISO `at` times the page turns into "for 1 h"; versions carry `details`, `behind`, `link`.
+**Owner questions:** villages as zones of their own (recommend yes, from Metabot); alt check: does a new character reach
+Lv 2 before "Prepare to Escape"; go-ahead for E4–E8.
 
-**Usage:** owner at ~53% of the weekly limit on 2026-10-15 (resets Tue 03:00 ET). Keep CEO chats short; prefer
-`@sonnet`; no polling loops; check-ins only when something is pending.
+**Owner tracker:** https://claude.ai/artifact/61L3ghB3E5rR7bfRzENJrC (Dashboard type; non-technical, mobile-first).
+Update datasets versions / today / snapshot / gallery: upload the JSON as an asset (Artifact publish `asset: true`), then
+ArtifactData `update` of the dataset `source` and `updated`; "today" items carry ISO `at` times.
+
+**Usage:** owner near the weekly limit (resets Tue 03:00 ET). Keep chats short; prefer `@sonnet`; no polling loops.
+Morning report daily at 9:00 AM ET (scheduled task "Daeva: 9 AM report").
 
 ## Now and next
 Wave 1 (start now, no shared files):
