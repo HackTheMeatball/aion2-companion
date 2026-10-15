@@ -3,10 +3,9 @@ name: Claude
 # @claude in an issue or PR comment (or a new issue) starts a Claude Code run on GitHub's runners, signed in with the
 # owner's Claude subscription (secret CLAUDE_CODE_OAUTH_TOKEN). Docs: https://code.claude.com/docs/en/github-actions
 # Two trigger words: @claude runs Opus (code, saves, hard reviews); @sonnet runs Sonnet (docs, research, data checks,
-# simple reviews) to save usage. Only the owner's account can start a run: the repo is public, and the action also requires write access.
+# simple reviews) to save usage; a comment naming both runs Opus only. Only the owner's account can start a run: the repo is public, and the action also requires write access.
 # On an issue Claude works on a new branch (prefix claude/) and links a prefilled PR; on an open PR it pushes to that
 # PR's branch. It cannot merge, approve or rebase. CLAUDE.md applies to every run.
-# CI runs on pushes to main and on pull requests only: a claude/ branch pushed from an issue gets CI once its PR is open.
 # Push CI (ci.yml) runs only on main: a claude/ branch pushed from an issue gets CI once its PR is opened (or by hand:
 # Actions → CI → Run workflow).
 
@@ -68,14 +67,14 @@ jobs:
   sonnet:
     if: |
       github.actor == 'HackTheMeatball' && (
-        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@sonnet')) ||
-        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@sonnet')) ||
-        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@sonnet')) ||
-        (github.event_name == 'issues' && (contains(github.event.issue.body, '@sonnet') || contains(github.event.issue.title, '@sonnet')))
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@sonnet') && !contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@sonnet') && !contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@sonnet') && !contains(github.event.review.body, '@claude')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@sonnet') || contains(github.event.issue.title, '@sonnet')) && !contains(github.event.issue.body, '@claude') && !contains(github.event.issue.title, '@claude'))
       )
     runs-on: ubuntu-24.04
     timeout-minutes: 240
-    # One run at a time per issue / PR; a new @claude on the same thread waits instead of racing the running one.
+    # One run at a time per issue / PR; a new @sonnet on the same thread waits instead of racing the running one.
     concurrency:
       group: sonnet-${{ github.event.issue.number || github.event.pull_request.number }}
       cancel-in-progress: false
