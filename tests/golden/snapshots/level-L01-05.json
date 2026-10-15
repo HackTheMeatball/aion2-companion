@@ -2,7 +2,7 @@
   "level/L01-q00-before-A": {
     "in": "5ffcc10a2d76",
     "nu": [
-      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
+      {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
@@ -675,7 +675,7 @@
   "level/L02-q01-before-A": {
     "in": "fe7160b43121",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -738,7 +738,7 @@
   "level/L02-q01-before-B": {
     "in": "d890d7e5d596",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -797,7 +797,7 @@
   "level/L02-q01-lvonly-A": {
     "in": "fe7160b43121",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -860,7 +860,7 @@
   "level/L02-q01-lvonly-B": {
     "in": "d890d7e5d596",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -919,7 +919,7 @@
   "level/L02-q01-none-A": {
     "in": "fe7160b43121",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -982,7 +982,7 @@
   "level/L02-q01-none-B": {
     "in": "d890d7e5d596",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 4 to go | 0/11 | upnext | open",
@@ -1041,7 +1041,7 @@
   "level/L02-q01-rnd1p50-A": {
     "in": "4ed72522732a",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -1104,7 +1104,7 @@
   "level/L02-q01-rnd1p50-B": {
     "in": "3a88c5f3f132",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 4 to go | 2/11 | upnext | open",
@@ -1163,7 +1163,7 @@
   "level/L02-q01-rnd2p85-A": {
     "in": "c35d9f68c699",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -1226,7 +1226,7 @@
   "level/L02-q01-rnd2p85-B": {
     "in": "a66d31f77103",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"}
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 4 to go | 2/11 | upnext | open",
@@ -1285,7 +1285,7 @@
   "level/L02-q02-before-A": {
     "in": "222c85fe0265",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""},
+      {"t":"Story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -1411,7 +1411,7 @@
   "level/L03-q02-before-A": {
     "in": "44403a2eb2ea",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1474,7 +1474,7 @@
   "level/L03-q02-before-B": {
     "in": "3ff4e7600092",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 3 to go | 3/11 | upnext | open",
@@ -1533,7 +1533,7 @@
   "level/L03-q02-lvonly-A": {
     "in": "44403a2eb2ea",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1596,7 +1596,7 @@
   "level/L03-q02-lvonly-B": {
     "in": "3ff4e7600092",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 3 to go | 3/11 | upnext | open",
@@ -1655,7 +1655,7 @@
   "level/L03-q02-none-A": {
     "in": "1d0b10e0795c",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -1718,7 +1718,7 @@
   "level/L03-q02-none-B": {
     "in": "6b22bdbaddb5",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 3 to go | 0/11 | upnext | open",
@@ -1777,7 +1777,7 @@
   "level/L03-q02-rnd1p50-A": {
     "in": "4ced4f1581e3",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Shadowstrike 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1840,7 +1840,7 @@
   "level/L03-q02-rnd1p50-B": {
     "in": "a788d94cb37c",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 3 to go | 3/11 | upnext | open",
@@ -1899,7 +1899,7 @@
   "level/L03-q02-rnd2p85-A": {
     "in": "38f4f08fc7bc",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1962,7 +1962,7 @@
   "level/L03-q02-rnd2p85-B": {
     "in": "f56bd030cf22",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
     ],
     "ms": [
       "g6 | 3 to go | 2/11 | upnext | open",
@@ -2021,7 +2021,7 @@
   "level/L03-q03-before-A": {
     "in": "16c53cae4b61",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Needs Lv 4: you're 3. Level up first.","c":""},
+      {"t":"Story: Isolated Lake","s":"Needs Lv 4: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2147,7 +2147,7 @@
   "level/L04-q03-before-A": {
     "in": "4edd7350f485",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2210,7 +2210,7 @@
   "level/L04-q03-before-B": {
     "in": "0f19b995af74",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | 2 to go | 3/11 | upnext | open",
@@ -2269,7 +2269,7 @@
   "level/L04-q03-lvonly-A": {
     "in": "4edd7350f485",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2332,7 +2332,7 @@
   "level/L04-q03-lvonly-B": {
     "in": "0f19b995af74",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | 2 to go | 3/11 | upnext | open",
@@ -2392,7 +2392,7 @@
     "in": "0c6eab04b54b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2456,7 +2456,7 @@
     "in": "8054cc5f7789",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | 2 to go | 0/11 | upnext | open",
@@ -2515,7 +2515,7 @@
   "level/L04-q03-rnd1p50-A": {
     "in": "b68a950e5b7a",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2578,7 +2578,7 @@
   "level/L04-q03-rnd1p50-B": {
     "in": "ef1aed6c9d74",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | 2 to go | 6/11 | upnext | open",
@@ -2637,7 +2637,7 @@
   "level/L04-q03-rnd2p85-A": {
     "in": "4a2eb5711a76",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2700,7 +2700,7 @@
   "level/L04-q03-rnd2p85-B": {
     "in": "01df8dd7cbd5",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"}
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
     ],
     "ms": [
       "g6 | 2 to go | 5/11 | upnext | open",
@@ -2759,7 +2759,7 @@
   "level/L04-q04-before-A": {
     "in": "3cce2e3b2dcf",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Needs Lv 5: you're 4. Level up first.","c":""},
+      {"t":"Story: The Being Beneath the Lake","s":"Needs Lv 5: you're 4. Level up first.","c":""},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2885,7 +2885,7 @@
   "level/L05-q01-lvonly-A": {
     "in": "abfa77940854",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2948,7 +2948,7 @@
   "level/L05-q04-before-A": {
     "in": "e425bbd69ad6",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3011,7 +3011,7 @@
   "level/L05-q04-before-B": {
     "in": "2d891080e8bb",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]}
     ],
     "ms": [
       "g6 | 1 to go | 4/11 | upnext | open",
@@ -3070,7 +3070,7 @@
   "level/L05-q04-lvonly-A": {
     "in": "e425bbd69ad6",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3133,7 +3133,7 @@
   "level/L05-q04-lvonly-B": {
     "in": "2d891080e8bb",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]}
     ],
     "ms": [
       "g6 | 1 to go | 4/11 | upnext | open",
@@ -3195,7 +3195,7 @@
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -3259,7 +3259,7 @@
     "in": "9eb23ecc3dc8",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]}
     ],
     "ms": [
       "g6 | 1 to go | 0/11 | upnext | open",
@@ -3318,7 +3318,7 @@
   "level/L05-q04-rnd1p50-A": {
     "in": "2f8aa423ffa6",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3381,7 +3381,7 @@
   "level/L05-q04-rnd1p50-B": {
     "in": "1d339dc35809",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]}
     ],
     "ms": [
       "g6 | 1 to go | 6/11 | upnext | open",
@@ -3440,7 +3440,7 @@
   "level/L05-q04-rnd2p85-A": {
     "in": "9200a05c4eb5",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"},
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 2 → 3","s":"Opens at Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -3503,7 +3503,7 @@
   "level/L05-q04-rnd2p85-B": {
     "in": "3a126343e594",
     "nu": [
-      {"t":"Continue the story: The Being Beneath the Lake","s":"Main story · then Spread Your Wings","c":"primary \"Turned in\" story"}
+      {"t":"Story: The Being Beneath the Lake","s":"0/5 objectives · then Spread Your Wings","c":"primary \"Turned in\" story","o":["Bind with the Witch's Cabin Kibelisk (Kibelisk: Witch's Cabin)","Check the journal Elvida mentioned check the Timeworn Journal check the Worn Tome Kibelisk: Witch's Cabin","Go to the path beneath the lake enter Tunapre Lake Cave (Kibelisk: Witch's Cabin)","+2 more after these"]}
     ],
     "ms": [
       "g6 | 1 to go | 5/11 | upnext | open",
@@ -3562,7 +3562,7 @@
   "level/L05-q05-before-A": {
     "in": "37e638a1272c",
     "nu": [
-      {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 5. Level up first.","c":""},
+      {"t":"Story: Spread Your Wings","s":"Needs Lv 6: you're 5. Level up first.","c":""},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},

@@ -2,7 +2,7 @@
   "random/L01-q06-rnd121p80-A-stfull": {
     "in": "92a67fa5acf9",
     "nu": [
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 1. Level up first.","c":""},
+      {"t":"Story: Signs of a Crash Landing","s":"Needs Lv 6: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -65,7 +65,7 @@
   "random/L01-q08-lvonly-B-stready": {
     "in": "ed3c812def62",
     "nu": [
-      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 1. Level up first.","c":""}
+      {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 5 to go | 1/11 | upnext | open",
@@ -122,9 +122,9 @@
     "mode": "basic"
   },
   "random/L01-q09-rnd100p50-A-objs": {
-    "in": "e8bbbba6f6c3",
+    "in": "cfbc991218be",
     "nu": [
-      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 1. Level up first.","c":""},
+      {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 1. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -167,7 +167,7 @@
       "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "5%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 6/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"The Longest Night\" yet."}
+      "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 1/15","Lv 20–24 (later) · 1/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 2/10","All strongholds · 6/15"],
@@ -176,7 +176,7 @@
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":12,"at":{"0":11,"1790856000":1},"fnv1a":"cb00abbe"}],
+      "mt": ["(absent)",{"stamps":13,"at":{"0":12,"1790856000":1},"fnv1a":"cf2321fb"}],
       "open.g6": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -251,7 +251,7 @@
   "random/L01-q18-all-B-filters": {
     "in": "0536e7f64e7c",
     "nu": [
-      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 1. Level up first.","c":""}
+      {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 1. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -988,7 +988,7 @@
   "random/L02-q02-all-B": {
     "in": "f40ac770301f",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""}
+      {"t":"Story: Shadow Forest","s":"Needs Lv 3: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1047,7 +1047,7 @@
   "random/L02-q06-none-B": {
     "in": "2a3ec1dcdbf5",
     "nu": [
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 2. Level up first.","c":""}
+      {"t":"Story: Signs of a Crash Landing","s":"Needs Lv 6: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 1/11 | upnext | open",
@@ -1106,7 +1106,7 @@
   "random/L02-q09-before-B-filters": {
     "in": "019939bb5e2e",
     "nu": [
-      {"t":"Continue the story: The Longest Night","s":"Needs Lv 9: you're 2. Level up first.","c":""}
+      {"t":"Story: The Longest Night","s":"Needs Lv 9: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 1/11 | upnext | open",
@@ -1162,9 +1162,9 @@
     "mode": "basic"
   },
   "random/L02-q14-before-A-objs": {
-    "in": "fb30e50dd6d4",
+    "in": "63d576449691",
     "nu": [
-      {"t":"Continue the story: Contaminated Area","s":"Needs Lv 11: you're 2. Level up first.","c":""},
+      {"t":"Story: Contaminated Area","s":"Needs Lv 11: you're 2. Level up first.","c":""},
       {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -1207,7 +1207,7 @@
       "track": ["Wings and Ascension next · 4 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"],
-      "subs": {"head":"","items":0,"on":0,"end":"No objectives recorded for \"Contaminated Area\" yet."}
+      "subs": {"head":"Objectives 1/3","items":2,"on":0,"end":""}
     },
     "reg": {
       "opts": ["* Lv 10–14 (later) · 0/15","Lv 15–19 (later) · 0/15","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
@@ -1216,7 +1216,7 @@
     "store": {
       "areaLv": ["(absent)","10"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"bda8273a"}],
+      "mt": ["(absent)",{"stamps":5,"at":{"0":4,"1790856000":1},"fnv1a":"c14dabc1"}],
       "open.g6": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Savage Roar:0","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1228,7 +1228,7 @@
   "random/L02-q15-lvonly-B-rqmix": {
     "in": "c3b508d86463",
     "nu": [
-      {"t":"Continue the story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":""}
+      {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 4 to go | 1/11 | upnext | open",
@@ -2092,7 +2092,7 @@
   "random/L03-q02-rnd118p20-A-rqmix": {
     "in": "13f9506788e0",
     "nu": [
-      {"t":"Continue the story: Shadow Forest","s":"Main story · then Isolated Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -2155,7 +2155,7 @@
   "random/L03-q05-lvonly-B-stwait": {
     "in": "ef63cc740944",
     "nu": [
-      {"t":"Continue the story: Spread Your Wings","s":"Needs Lv 6: you're 3. Level up first.","c":""}
+      {"t":"Story: Spread Your Wings","s":"Needs Lv 6: you're 3. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 3 to go | 4/11 | upnext | open",
@@ -2214,7 +2214,7 @@
   "random/L03-q18-all-B": {
     "in": "9e1a3ca28fc5",
     "nu": [
-      {"t":"Continue the story: Cemetery Cleanup","s":"Needs Lv 13: you're 3. Level up first.","c":""}
+      {"t":"Story: Cemetery Cleanup","s":"Needs Lv 13: you're 3. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2273,7 +2273,7 @@
   "random/L03-q20-before-A": {
     "in": "028e1442b560",
     "nu": [
-      {"t":"Continue the story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 3. Level up first.","c":""},
+      {"t":"Story: Dead Men Tell No Tales","s":"Needs Lv 15: you're 3. Level up first.","c":""},
       {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 2 → 3","s":"Opens at Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2770,7 +2770,7 @@
     "in": "06362c0efccf",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2833,7 +2833,7 @@
   "random/L04-q03-rnd141p95-A-stfull": {
     "in": "8370f596ef0b",
     "nu": [
-      {"t":"Continue the story: Isolated Lake","s":"Main story · then The Being Beneath the Lake","c":"primary \"Turned in\" story"},
+      {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]},
       {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2896,7 +2896,7 @@
   "random/L04-q08-all-A": {
     "in": "5a742fd23b16",
     "nu": [
-      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 4. Level up first.","c":""}
+      {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 4. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3743,7 +3743,7 @@
   "random/L05-q01-lvonly-A-stready": {
     "in": "a485eb767833",
     "nu": [
-      {"t":"Continue the story: Prepare to Escape","s":"Main story · then Shadow Forest","c":"primary \"Turned in\" story"},
+      {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3806,7 +3806,7 @@
   "random/L05-q06-all-B": {
     "in": "05be818f3961",
     "nu": [
-      {"t":"Continue the story: Signs of a Crash Landing","s":"Needs Lv 6: you're 5. Level up first.","c":""}
+      {"t":"Story: Signs of a Crash Landing","s":"Needs Lv 6: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3865,7 +3865,7 @@
   "random/L05-q07-lvonly-A-rqmix": {
     "in": "832b8fa06ef5",
     "nu": [
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
+      {"t":"Story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
       {"t":"Buy Ambush 2 → 3","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -3929,7 +3929,7 @@
     "in": "58030ca5616b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Continue the story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
+      {"t":"Story: Prison Compound Infiltration Plan","s":"Needs Lv 7: you're 5. Level up first.","c":""},
       {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Shadowstrike 3 → 4","s":"Opens at Lv 7 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -3992,7 +3992,7 @@
   "random/L05-q08-lvonly-B-dv": {
     "in": "62bd8b87ee45",
     "nu": [
-      {"t":"Continue the story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 5. Level up first.","c":""}
+      {"t":"Story: Brigade Prison Compound Infiltration Operation","s":"Needs Lv 7: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | 1 to go | 5/11 | upnext | open",
@@ -4051,7 +4051,7 @@
   "random/L05-q14-all-A": {
     "in": "8c058280a13c",
     "nu": [
-      {"t":"Continue the story: Contaminated Area","s":"Needs Lv 11: you're 5. Level up first.","c":""}
+      {"t":"Story: Contaminated Area","s":"Needs Lv 11: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -4110,7 +4110,7 @@
   "random/L05-q19-all-B-dv": {
     "in": "2fcd8ec43720",
     "nu": [
-      {"t":"Continue the story: Back on the Scent","s":"Needs Lv 14: you're 5. Level up first.","c":""}
+      {"t":"Story: Back on the Scent","s":"Needs Lv 14: you're 5. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
