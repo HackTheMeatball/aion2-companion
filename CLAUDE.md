@@ -27,10 +27,12 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 
 - Only verified data: two independent sources, game-database fields (Metabot quest/skill pages, aion2.gaming.tools,
   aion2.th.gl), or the user's in-game screens (the source of truth). Otherwise leave it out, or label it "single
-  source" / "inferred" / "disputed" as `data/claims.json` decides.
-- Change `data/*.json`, then `npm run gen`; never hand-edit `tools/gen/gen-block.js` (the `E2-GEN` block; the build makes
-  the module `src/data/generated.js` from it). Hand-written data tables live in `src/data/*.js`, not in `main.js`. Every new URL must end up in the
-  Sources card (gen.py does this) and `data/DATA_SOURCES.md`.
+  source" / "inferred" / "disputed" as `data/shared/asmodian/guide/claims.json` decides.
+- Data lives in `data/**` in format v2 (`docs/DATA-FORMAT-V2.md`, JSON Schemas in `data/schema/`). Change the JSON, then
+  `npm run gen` (validates, runs the cross-record checks, rewrites `data/DATA_SOURCES.md`); the build compiles the module
+  `src/data/generated.js` in memory, nothing generated is committed except `DATA_SOURCES.md`. `src/data/*.js` only
+  re-exports and finishes compiled tables; game facts and guide text go in `data/`, never in `main.js`. Every new URL
+  must end up in the Sources card (the generator does this) and `data/DATA_SOURCES.md`.
 - Fetching (owner, 2026-10-14): read the terms page and robots.txt before any content page. A site that opts out of AI
   or automated access entirely (names Claude/AI agents, or bans all automated access) is never fetched; the owner
   checks it by hand. A site that only bans scraping (bulk copying) may get small spot checks to verify a fact: a few

@@ -25,3 +25,16 @@ export const hideouts = (names, keyPrefix = "sd") => [{ ...sub("Sealed Dungeons"
 /* Link a quest giver to the quest's marker on Metabot's Altgard map. */
 export const mapQ = (id, who) => `<a class="itm" href="https://metabot.gg/en/aion-2/map/altgard?focus=quest:${id}" target="_blank" rel="noopener" title="Show on the map">${who}${EYE}</a>`;
 export const ASC = "Journal (J) → Ascension tab → Teleport (bottom right) takes you to Asahr.";
+/* Guide text tokens (data format v2, DATA-FORMAT-V2 §7) -> the HTML the helpers above make. The data holds the tokens; their
+   markup and wording stay here in code. Build tokens ([[build:…]]) are expanded by the generator with the guide build. */
+export const expandTokens = s => s.replace(/\[\[([a-z]+)(?::([^|\]]*))?(?:\|([^\]]*))?\]\]/g, (m, kind, arg, label) => {
+  if (kind === "item") return I(arg, label);
+  if (kind === "tip") return T(label, arg);
+  if (kind === "mapq") return mapQ(arg, label);
+  if (kind === "stigma") return stn(+arg);
+  if (kind === "erow") return eRow(+arg);
+  if (kind === "asc") return ASC;
+  if (kind === "daeva") return DAEVA;
+  if (kind === "rotseq") return `<span class="rotseq"></span>`;
+  throw new Error("unknown text token " + m);
+});

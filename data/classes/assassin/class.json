@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/classes.schema.json",
+  "schemaVersion": 2,
+  "collection": "classes",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "class:assassin",
+      "class": "assassin",
+      "name": "Assassin",
+      "release": "released",
+      "defaultBuild": "build:assassin:guide",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/assassin-skills"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "Skill list (v1 _meta.fullSkillList): actives Quick Slice 1, Savage Roar 1, Shadowstrike 1, Ambush 3, Heart Gore 4, Storm Rampage 5, Whirlwind Slice 7, Flash Slice 8, Infiltrate 10, Shadow Fall 12, Insignia Explosion 14, Defiance 16; passives Heightened Sixth Sense 1, Exploit Weakness 6, Apply Poison 9, Rear Smite 11, Assault Stance 13, Impact Hit 15, Ambush Stance 17, Defense Break 21, Revitalization Contract 23, Determination 25. 2-source (identical learn levels)"
+      ]
+    }
+  ]
+}

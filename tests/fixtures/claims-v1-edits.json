@@ -1,0 +1,146 @@
+{
+ "note": "Frozen from data/claims.json v1 (commit 5a309f3): the claim edits V1 applied. Retired from the data in v2 (appliesTo replaced them); kept here as the e2 claims-lint oracle (old wording must stay gone).",
+ "claims": [
+  {
+   "id": "C01",
+   "edits": [
+    {
+     "line": 1668,
+     "old": "Respec is free until Lv 31.",
+     "new": "Respec is free while you level; check the reset button's cost at 31."
+    },
+    {
+     "line": 2162,
+     "old": "<b>Experiment freely until 31.</b> ${T(\"Respec is free\", \"respec\")} until then; lock in the build by 31.",
+     "new": "<b>Experiment freely.</b> ${T(\"Respec is free\", \"respec\")} while you level; check its cost at 31 before you rely on it."
+    },
+    {
+     "line": 1834,
+     "old": "(tooltip body)",
+     "new": "keep as is"
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "edits": [
+    {
+     "line": 1668,
+     "old": "Each skill gains one level every 3 character levels after you learn it. ",
+     "new": ""
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "edits": [
+    {
+     "line": 1641,
+     "new": "<p><b>At 45:</b> Krao Cave Conquest needs item level 700.</p>"
+    },
+    {
+     "line": 2113,
+     "new": "<b>Start Conquest</b> (Krao Cave tier, item level 700). Weapon first, then your weakest slots."
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "edits": [
+    {
+     "line": 1845,
+     "new": "<p>An hourly set of minigames. Claiming a reward costs a key, and rewards grow with your level. Keys refill daily but stop at a cap, so spend them before you hit it.</p>",
+     "src": "Metabot, GamesFuze, games.gg"
+    },
+    {
+     "line": 2109,
+     "action": "drop"
+    }
+   ]
+  },
+  {
+   "id": "C15",
+   "edits": [
+    {
+     "line": 2177,
+     "new": "<b>${T(\"Duty Quests\", \"duty\")}</b> (Lv 45): 5 rewarded a day, shared by every character on the server, from the Journal's Duty tab (J)."
+    },
+    {
+     "line": 1846,
+     "new": "<p>Daily missions in the Journal's Duty tab (J). They open at <b>Lv 45</b> on the global servers, not before. 5 rewarded completions a day, shared by every character on the server.</p><p>Rewards include Abyss Points, Kina, Enhancement Stones and Hidden Cube keys. Not the same system as Supply Requests (Lv 25).</p>",
+     "src": "thegameswiki, neonsect, games.gg, KeenGamer, MeinMMO, allthings.how"
+    }
+   ]
+  },
+  {
+   "id": "C20",
+   "edits": [
+    {
+     "line": 1777,
+     "new": "<p class=\"fine tline\">B board · G gear. Only stats two or more sources rank high; order inside a tier varies.</p>"
+    },
+    {
+     "line": 1806,
+     "new": "const STAT_TIERS = [[\"Critical Hit\"], [\"Attack\", \"Back Attack Damage Boost\", \"Combat Speed\"]];"
+    },
+    {
+     "line": 1808,
+     "new": "const STAT_SRC = { \"Critical Hit\": \"BG\", \"Back Attack Damage Boost\": \"G\", \"Attack\": \"BG\", \"Combat Speed\": \"BG\" };"
+    }
+   ]
+  },
+  {
+   "id": "C21",
+   "edits": [
+    {
+     "line": 1792,
+     "new": "<li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = Quick Use 2 (the right-click stack). If ready skills get skipped, add a short delay.</li>"
+    }
+   ]
+  },
+  {
+   "id": "C22",
+   "edits": [
+    {
+     "line": 2110,
+     "new": "<b>Azphel ${T(\"Daevanion board\", \"daevanion\")} opens.</b> Stat nodes only, paid with Azphel crystals (from battleground fragments or Abyss Points), not Daevanion Crystals."
+    },
+    {
+     "line": 1836,
+     "old": "Azphel has no skill nodes and uses Azphel points from PvP shops instead.",
+     "new": "Azphel has no skill nodes and uses its own Azphel crystals (from battleground fragments or Abyss Points) instead."
+    }
+   ]
+  },
+  {
+   "id": "C36",
+   "edits": [
+    {
+     "line": 1959,
+     "old": "Asahr at Dream Crossroads. ",
+     "new": "Ascension quest from Asahr at Dream Crossroad. Opens once your Ascension Gauge is at 100% and the story reaches \"A Daeva Dreaming Anew\" (Lv 32). "
+    }
+   ]
+  },
+  {
+   "id": "C38",
+   "edits": [
+    {
+     "line": 1893,
+     "old": "finishing it completes that step and gives your first wings.",
+     "new": "finishing it completes that step."
+    },
+    {
+     "line": 1893,
+     "old": "at Dream Crossroads;",
+     "new": "at Dream Crossroad;"
+    },
+    {
+     "line": 1728,
+     "old": "through the quest \"One Who Hears the Voice.",
+     "new": "through the quest \"The One Who Hears the Voice."
+    }
+   ]
+  }
+ ]
+}

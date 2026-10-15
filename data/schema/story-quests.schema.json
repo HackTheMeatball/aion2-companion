@@ -141,7 +141,9 @@
               "type": "string"
             },
             "milestone": {
-              "$ref": "common.schema.json#/$defs/recordId"
+              "description": "Milestone id (today's ids: g6 … g45).",
+              "type": "string",
+              "pattern": "^g[0-9]+$"
             }
           },
           "additionalProperties": false

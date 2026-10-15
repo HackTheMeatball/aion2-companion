@@ -1,0 +1,218 @@
+{
+  "$schema": "../../../schema/milestones.schema.json",
+  "schemaVersion": 2,
+  "collection": "milestones",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "build",
+      "kind": "routeRule",
+      "order": 10,
+      "title": "Build plan",
+      "blurb": "Where every Skill Point and stat goes.",
+      "tag": "Always"
+    },
+    {
+      "id": "daily",
+      "kind": "routeRule",
+      "order": 30,
+      "title": "Daily and weekly habits",
+      "blurb": "Capped rewards; start each once its milestone unlocks it.",
+      "tag": "Daily"
+    },
+    {
+      "id": "f2p",
+      "kind": "routeRule",
+      "order": 40,
+      "title": "Free-to-play notes",
+      "blurb": "What's paid, so you know what to skip.",
+      "tag": "F2P"
+    },
+    {
+      "id": "g10",
+      "kind": "milestone",
+      "order": 30,
+      "lv": 10,
+      "title": "Altgard opens",
+      "blurb": "Extraction and pets unlock. Sealed Dungeons and Strongholds open; tick them in Dungeons & Strongholds.",
+      "includes": [
+        {
+          "sealedDungeonBand": 10,
+          "order": 50
+        }
+      ]
+    },
+    {
+      "id": "g12",
+      "kind": "milestone",
+      "order": 40,
+      "lv": 13,
+      "title": "Daevanion board",
+      "blurb": "First Daevanion board (Nezekan) opens at Lv 12; first regional quest."
+    },
+    {
+      "id": "g15",
+      "kind": "milestone",
+      "order": 50,
+      "lv": 15,
+      "title": "Ring quest and skills",
+      "blurb": "Spooky Specters for a ring, plus four skill upgrades.",
+      "includes": [
+        {
+          "sealedDungeonBand": 15,
+          "order": 10
+        }
+      ]
+    },
+    {
+      "id": "g16",
+      "kind": "milestone",
+      "order": 60,
+      "lv": 16,
+      "title": "Legions",
+      "blurb": "Unlock Legions; six quests fill your accessory slots."
+    },
+    {
+      "id": "g20",
+      "kind": "milestone",
+      "order": 70,
+      "lv": 20,
+      "title": "Zikel board",
+      "blurb": "Second Daevanion board and a new batch of Sealed Dungeons.",
+      "includes": [
+        {
+          "sealedDungeonBand": 20,
+          "order": 20
+        }
+      ]
+    },
+    {
+      "id": "g22",
+      "kind": "milestone",
+      "order": 80,
+      "lv": 22,
+      "title": "Stigma slot 1",
+      "blurb": "Stigmas and Expeditions unlock."
+    },
+    {
+      "id": "g25",
+      "kind": "milestone",
+      "order": 90,
+      "lv": 25,
+      "title": "Supply Requests",
+      "blurb": "Hand in spare items for Abyss Points.",
+      "includes": [
+        {
+          "sealedDungeonBand": 25,
+          "order": 20
+        }
+      ]
+    },
+    {
+      "id": "g27",
+      "kind": "milestone",
+      "order": 100,
+      "lv": 27,
+      "title": "Stigma slot 2",
+      "blurb": "Second stigma goes in."
+    },
+    {
+      "id": "g30",
+      "kind": "milestone",
+      "order": 110,
+      "lv": 30,
+      "title": "Daily dungeon and Vaizel board",
+      "blurb": "Daily dungeon unlocks; Vaizel board.",
+      "includes": [
+        {
+          "sealedDungeonBand": 30,
+          "order": 30
+        }
+      ]
+    },
+    {
+      "id": "g32",
+      "kind": "milestone",
+      "order": 120,
+      "lv": 32,
+      "title": "Stigma slot 3",
+      "blurb": "Third stigma goes in."
+    },
+    {
+      "id": "g35",
+      "kind": "milestone",
+      "order": 130,
+      "lv": 35,
+      "title": "Fire Temple",
+      "blurb": "Third party dungeon opens.",
+      "includes": [
+        {
+          "sealedDungeonBand": 35,
+          "order": 10
+        }
+      ]
+    },
+    {
+      "id": "g37",
+      "kind": "milestone",
+      "order": 140,
+      "lv": 37,
+      "title": "Stigma slot 4",
+      "blurb": "Full rotation online; the story takes you into the Fire Temple."
+    },
+    {
+      "id": "g40",
+      "kind": "milestone",
+      "order": 150,
+      "lv": 40,
+      "title": "Triniel board",
+      "blurb": "Fourth Daevanion board.",
+      "includes": [
+        {
+          "sealedDungeonBand": 40,
+          "order": 20
+        }
+      ]
+    },
+    {
+      "id": "g45",
+      "kind": "milestone",
+      "order": 160,
+      "lv": 45,
+      "title": "Level cap",
+      "blurb": "Progression shifts from level to gear score."
+    },
+    {
+      "id": "g6",
+      "kind": "milestone",
+      "order": 10,
+      "lv": 6,
+      "title": "Wings and Ascension",
+      "blurb": "Two story quests around the lake. Don't delay them."
+    },
+    {
+      "id": "g9",
+      "kind": "milestone",
+      "order": 20,
+      "lv": 9,
+      "title": "Enhancement unlocks",
+      "blurb": "Save your stones; only the belt and amulet are always worth it."
+    },
+    {
+      "id": "hold",
+      "kind": "routeRule",
+      "order": 50,
+      "title": "Don't spend yet",
+      "blurb": "The most common early regrets.",
+      "tag": "Until 45"
+    },
+    {
+      "id": "story",
+      "kind": "routeRule",
+      "order": 20,
+      "title": "Story pace",
+      "blurb": "Hero quests give most of your XP to 45.",
+      "tag": "Always"
+    }
+  ]
+}

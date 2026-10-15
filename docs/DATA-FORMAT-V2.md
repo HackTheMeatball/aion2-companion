@@ -1,6 +1,6 @@
 # Data format v2
 
-**Status:** revised draft (0.2 step 5a). The independent review
+**Status:** approved; built in 0.2 step 5b (see [§16](#16-5b-as-built) for what the build added or deviated). The independent review
 ([docs/reviews/2026-10-data-format-v2-review.md](reviews/2026-10-data-format-v2-review.md)) approved it with changes.
 This revision applies all of its must-fix items (M1–M11), the owner's answers of 2026-10-14, the owner's new
 requirement F15 (location-aware Next up) and the specialty rule from F3/F4. Nothing is built on it until the owner
@@ -766,3 +766,38 @@ with a giver or a turn-in location, without `access`, or with an access other th
 skill node without `skill`, a stat node with one; six specialty
 choices; a drawback that is only inferred or has no source. Two positive controls check that `status: owner-check` and
 a sourced drawback are accepted.
+
+## 16. 5b as built
+
+The data moved to this format in 0.2 step 5b (conversion script and log: `tools/history/v2-convert/`). The Node
+generator (`tools/gen/gen.mjs`) compiles it into the same constants the app used before; the build runs it in memory.
+
+**Schema changes (additive or bug fixes; the examples still validate):**
+
+| Schema | Change | Why |
+|---|---|---|
+| `story-quests` | `unlocks.milestone` pattern `^g[0-9]+$` | it referenced `recordId`, which needs a colon; milestone ids are `g6` … `g45` (§3) |
+| `unlocks` | optional `credit`, `order` | `VERIFIED_UNLOCKS` shows the credited site names and has a display order; records are stored sorted by id |
+| `regional-quests` | optional `order` | the v1 list order (allthings.how's) is not derivable from `rec` + id and decides Next up and milestone order |
+| `retired` (new) | `data/retired.json`: `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
+
+**Compiler rules with no field of their own:** a story atom on a stigma-slot step compiles to v1's `after` (no story
+chip), every other `reached` atom to `story`; a `turnedIn` atom to `story` + `turnedIn`. `DV_BOARDS` (a v1 constant
+nothing reads any more) lists the boards whose plan nodes all open with the board. `QUESTS_X` / `QUEST_STEPS_X` /
+`QUEST_LOC_X` are the quests above Lv 40. The "learn + 18" specialty gate (F3) stays in `src/data/build.js` (`SP_STEPS`).
+
+**Placeholders and debt the generator reports** (`npm run gen`, `report.debt`):
+
+- `zone:altgard-unplaced`: story quests whose location the v1 data never held (the §9 data task); `zone:ishalgen`
+  for the Lv 1–9 quests on the starting map. Both are labelled (`fieldStatus` owner-check / inferred).
+- aion2.th.gl citations (withdrawn site): reported, not yet re-sourced (the data-correction step after 5b).
+- No owner screen codes exist yet (§14.2), so v1 facts "seen in game" carry an `inferred` ref that says so.
+- `VERIFIED_UNLOCKS` credits sites by name only; each such unlock carries a ref saying the pages were not recorded.
+
+**Facts the format needed that the v1 data did not hold** (read from Metabot on 2026-10-14, build 0.0.4387.0, under its
+terms): every node of the five Assassin boards (537, `https://metabot.gg/en/aion-2/daevanion/assassin`); the specialty
+choices of Savage Roar, Ambush and Shadowstrike (their skill pages). Story game ids and the Ascension records come from
+`docs/research/2026-10-prereq-gates.md` §4–§5. The legacy plan keys map to nodes by the `g12:0` path costs on that grid
+(`dv:ew` r3c7, `dv:ew2` r11c13; `dv:as2` r11c3 is the Assault Stance whose path gives Rear Smite); `dv:z:db` /
+`dv:z:db2` are assigned for an owner check.
+

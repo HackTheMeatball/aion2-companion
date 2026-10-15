@@ -1,0 +1,410 @@
+{
+  "$schema": "../../schema/unlocks.schema.json",
+  "schemaVersion": 2,
+  "collection": "unlocks",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "unlock:daily-dungeon",
+      "what": "Daily dungeon",
+      "detail": "Daeva Bio-Research Base",
+      "at": {
+        "level": 30
+      },
+      "credit": "Metabot, thegameswiki",
+      "order": 100,
+      "otherNames": [
+        "Odylium Repository (pet boxes; lv not stated)",
+        "Crobahki's Secret Depository (Kina; lv not stated)"
+      ],
+      "entries": "14 per week per server, shared by characters (Metabot, thegameswiki); solo (Metabot)",
+      "notes": [
+        "Lv 30 unlock: 2-source. Name 'Daeva Bio-Research Base' at 30 with Enhancement Stones: 2-source (Metabot, thegameswiki KR/TW). Other two names single (thegameswiki).",
+        "Names: Daeva Bio-Research Base"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks"
+        },
+        {
+          "url": "https://wikily.gg/aion-2/leveling"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/daily-dungeons"
+        },
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, thegameswiki); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:expedition-feature",
+      "what": "Expedition feature (Exploration)",
+      "at": {
+        "story": "sq:2102185",
+        "is": "reached",
+        "basis": "legacy",
+        "note": "v1: feature unlocked by \"Daeva in a Dream\" (sources + seen in game)"
+      },
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/content-unlocks"
+        },
+        {
+          "url": "https://wikily.gg/aion-2/leveling"
+        },
+        {
+          "inferred": "v1 data: 'in-game (user)': seen in the owner's game; no screen code yet (DATA-FORMAT-V2 §14.2)."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "2-source + in game",
+        "thegameswiki (Oct 7 2026): NCsoft hadn't listed which Expedition dungeons are open in the global build; its tables are KR/TW (it also says weekly Expedition reward limits were removed there on 1 Jul 2026, while Metabot gives 7 per dungeon per week: disputed for global). Metabot's tables are global client data."
+      ]
+    },
+    {
+      "id": "unlock:fire-temple",
+      "what": "Fire Temple",
+      "detail": "Expedition (Exploration) · item level 500",
+      "at": {
+        "all": [
+          {
+            "level": 35
+          },
+          {
+            "itemLevel": 500,
+            "playerChecked": true
+          }
+        ]
+      },
+      "credit": "Metabot, thegameswiki, Wikily, ExpCarry",
+      "order": 130,
+      "party": "1–5",
+      "conquest": {
+        "lv": 45,
+        "itemLevel": 2100
+      },
+      "storyStep": "Mirror of Greed (rec 37) step 2 'complete the Fire Temple investigation'",
+      "notes": [
+        "Level 35 / IL 500: 4 sources. Party: 1–5 (Metabot, expcarry); 'up to 5' (Wikily, thegameswiki). No per-dungeon unlock quest named. Not verified in game.",
+        "Elyos counterpart quest 'Fire Temple' (Wikily, rec 37): objective 'Investigate the Fire Temple by entering it', objective type Expedition; journal: a passage 'has opened nearby'. Mirror of Greed reward: Fire Temple Accessory Selection Chest (Metabot). => the story step is a run of this expedition (2 sources, inferred for Asmodian)."
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/fire-temple"
+        },
+        {
+          "url": "https://wikily.gg/aion-2/dungeon-maps/fire-temple"
+        },
+        {
+          "url": "https://expcarry.com/aion-2-dungeons-guide"
+        },
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, thegameswiki, Wikily, ExpCarry); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:krao-cave",
+      "what": "Krao Cave",
+      "detail": "Expedition (Exploration) · item level 200",
+      "at": {
+        "all": [
+          {
+            "level": 20
+          },
+          {
+            "itemLevel": 200,
+            "playerChecked": true
+          }
+        ]
+      },
+      "credit": "PlayNews, thegameswiki, GamesFuze",
+      "order": 30,
+      "party": "1–5",
+      "conquest": {
+        "lv": 45,
+        "itemLevel": 700
+      },
+      "notes": [
+        "Feature gate: Daeva in a Dream (feature gate; seen in game ~22)"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide"
+        },
+        {
+          "url": "https://expcarry.com/aion-2-dungeons-guide"
+        },
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: PlayNews, thegameswiki, GamesFuze); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:level-cap",
+      "what": "Level cap",
+      "detail": "Abyss, Ascension Trial, Conquest, Azphel board (PvP stats)",
+      "at": {
+        "level": 45
+      },
+      "credit": "Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith",
+      "order": 160,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, Wikily, GamesFuze, games.gg, thegameswiki, GameWith); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:nezekan-board",
+      "what": "Nezekan board",
+      "detail": "First Daevanion board",
+      "at": {
+        "level": 12
+      },
+      "credit": "thegameswiki, Metabot, aion2hub",
+      "order": 10,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot, aion2hub); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:sealed-dungeons-25",
+      "what": "Sealed Dungeons",
+      "detail": "New batch",
+      "at": {
+        "level": 25
+      },
+      "credit": "allthings.how, aion2hub",
+      "order": 50,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: allthings.how, aion2hub); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:sealed-dungeons-30",
+      "what": "Sealed Dungeons",
+      "detail": "New batch",
+      "at": {
+        "level": 30
+      },
+      "credit": "allthings.how",
+      "order": 110,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: allthings.how); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source"
+    },
+    {
+      "id": "unlock:stigma-slot-1",
+      "what": "Stigma slot 1",
+      "at": {
+        "level": 22
+      },
+      "credit": "Metabot, PlayNews, KeenGamer",
+      "order": 40,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:stigma-slot-2",
+      "what": "Stigma slot 2",
+      "at": {
+        "level": 27
+      },
+      "credit": "Metabot, PlayNews, KeenGamer",
+      "order": 70,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:stigma-slot-3",
+      "what": "Stigma slot 3",
+      "at": {
+        "level": 32
+      },
+      "credit": "Metabot, PlayNews, KeenGamer",
+      "order": 120,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:stigma-slot-4",
+      "what": "Stigma slot 4",
+      "at": {
+        "level": 37
+      },
+      "credit": "Metabot, PlayNews, KeenGamer",
+      "order": 140,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, PlayNews, KeenGamer); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:supply-requests",
+      "what": "Supply Requests",
+      "detail": "Hand in items for Abyss Points",
+      "at": {
+        "level": 25
+      },
+      "credit": "Metabot, allthings.how",
+      "order": 60,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, allthings.how); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:triniel-board",
+      "what": "Triniel board",
+      "detail": "Fourth Daevanion board",
+      "at": {
+        "level": 40
+      },
+      "credit": "thegameswiki, Metabot",
+      "order": 150,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:urugugu-canyon",
+      "what": "Urugugu Canyon",
+      "detail": "Expedition (Exploration) · item level 300 · party 2–5",
+      "at": {
+        "all": [
+          {
+            "level": 28
+          },
+          {
+            "itemLevel": 300,
+            "playerChecked": true
+          }
+        ]
+      },
+      "credit": "Metabot, thegameswiki, ExpCarry, allthings.how, games.gg",
+      "order": 80,
+      "party": "2–5",
+      "timeLimit": "60 min (allthings.how)",
+      "conquest": {
+        "lv": 45,
+        "itemLevel": 1400
+      },
+      "storyStep": "Canyon's Secret (rec 30) step 2 'complete the Urugugu Canyon investigation'",
+      "notes": [
+        "Level 28 / IL 300 / 2–5: 4-5 sources (game data). No source names a per-dungeon unlock quest; Metabot Canyon's Secret lists no unlock reward. Whether the canyon is enterable before reaching that story step is NOT verified in game.",
+        "Story step likely runs this expedition (inferred: same name; Wikily's Elyos 'Fire Temple' quest lists the Expedition as its objective). Canyon's Secret reward = Aullaeu Wings. If the step needs the 2–5 party version, the user may need a party for the story; unknown."
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/guides/dungeon-guide"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/urugugu-canyon"
+        },
+        {
+          "url": "https://expcarry.com/aion-2-dungeons-guide"
+        },
+        {
+          "url": "https://allthings.how/?p=244669"
+        },
+        {
+          "url": "https://games.gg/aion-2/guides/Aion-2-urugugu-canyon-expedition/"
+        },
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: Metabot, thegameswiki, ExpCarry, allthings.how, games.gg); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:vaizel-board",
+      "what": "Vaizel board",
+      "detail": "Third Daevanion board",
+      "at": {
+        "level": 30
+      },
+      "credit": "thegameswiki, Metabot",
+      "order": 90,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "unlock:zikel-board",
+      "what": "Zikel board",
+      "detail": "Second Daevanion board",
+      "at": {
+        "level": 20
+      },
+      "credit": "thegameswiki, Metabot",
+      "order": 20,
+      "sources": [
+        {
+          "inferred": "Credited by site name only in v1 (VERIFIED_UNLOCKS: thegameswiki, Metabot); the pages were not recorded. The 0.3 audit resolves each name to a page."
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    }
+  ]
+}

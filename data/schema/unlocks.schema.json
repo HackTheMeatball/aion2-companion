@@ -83,6 +83,16 @@
         "entries": {
           "type": "string",
           "maxLength": 300
+        },
+        "credit": {
+          "description": "Sites credited on the Ahead row, as the app shows them (VERIFIED_UNLOCKS 4th column). Only records with a credit are listed as verified unlocks.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "order": {
+          "description": "Display order among the credited unlocks (records are stored sorted by id).",
+          "type": "number"
         }
       },
       "unevaluatedProperties": false

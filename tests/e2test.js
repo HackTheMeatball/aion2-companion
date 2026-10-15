@@ -1,9 +1,10 @@
-/* E2 functional checks. Usage: node tests/e2test.js <page URL> (reads data/*.json and dist/index.html).
+/* E2 functional checks. Usage: node tests/e2test.js <page URL> (reads the data through tests/support/v1view.js and dist/index.html).
    Expectations are computed here from the data files and QUESTS order, not from the page's own rqAvail. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const FILE = process.argv[2], ROOT = path.resolve(__dirname, '..'), KEY = 'aion2-assassin-route-v4';
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
-const RQ = J('data/rq.json'), CH = J('data/rq-chains.json'), S45 = J('data/story-40-45.json'), CLAIMS = J('data/claims.json'), SH = J('data/strongholds.json'), BUILD = J('data/build.json');
+const V1 = require('./support/v1view'); /* the v1-shaped view of data/** (0.2 step 5b) */
+const RQ = V1.rq, CH = V1.chains, S45 = V1.story45, CLAIMS = V1.claims, BUILD = V1.build;
 const SRC = fs.readFileSync(require('./config').PAGE, 'utf8');
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (detail !== undefined && !cond ? '  · ' + JSON.stringify(detail).slice(0, 700) : '')); if (!cond) fail++; };
 const PRE = {}, STORY = {}; CH.forEach(e => { if (e.kind === 'regional') (PRE[e.quest] = PRE[e.quest] || []).push(e.after); if (e.kind === 'story') STORY[e.quest] = e.after; });
@@ -102,7 +103,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, n]) => !QUEST_STEPS[n]).map(x => x[1]), last: QUESTS[QUESTS.length - 1], afterSoL: QUESTS[QUESTS.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QUESTS.filter(x => x[0] > 40).every(([, n]) => QUEST_LOC[n] && QUEST_LOC[n].giverKib && (QUEST_LOC[n].turninKib || n === 'Blood Barrier')) }; });
   let chain = 'Daybreak Society', order = []; while (chain) { order.push(chain); chain = S45[chain].next; }
   const qNames = QUESTS.map(x => x[1]), i0 = qNames.indexOf('Symbol of Liberation');
-  ok('story chain continuous: Symbol of Liberation → … → Forgotten Commander matches story-40-45.json next links', JSON.stringify(qNames.slice(i0 + 1)) === JSON.stringify(order) && sc5.last[1] === 'Forgotten Commander' && sc5.last[0] === 45, { tail: qNames.slice(i0 + 1), order });
+  ok('story chain continuous: Symbol of Liberation → … → Forgotten Commander matches the data\'s next links (Lv 41–45)', JSON.stringify(qNames.slice(i0 + 1)) === JSON.stringify(order) && sc5.last[1] === 'Forgotten Commander' && sc5.last[0] === 45, { tail: qNames.slice(i0 + 1), order });
   ok('every story quest from "A New Lead" on has objectives; levels non-decreasing; no duplicates; Lv 41–45 Kibelisks', !sc5.missingSteps.length && sc5.lvSorted && !sc5.dup && sc5.loc45, sc5); /* Blood Barrier: Metabot gives no turn-in Kibelisk */
   await setState(p, { L: 40, q: 'Symbol of Liberation' });
   await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
@@ -126,7 +127,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   for (let L = 25; L <= 45; L++) { await p.evaluate(L => { state.level = L; update(); }, L); if (/Ariel/.test(await p.innerText('#ahead'))) ariel.push(L); }
   ok('Ahead never mentions Ariel (Lv 25–45)', !ariel.length, ariel);
   ok('no "Ariel" anywhere in the page source', !/Ariel/.test(SRC));
-  /* 7. Claims lint (data/claims.json): dropped / rewritten old text gone, new text in */
+  /* 7. Claims lint (claims.json; v1 edits frozen in tests/fixtures/claims-v1-edits.json): dropped / rewritten old text gone, new text in */
   const oldGone = [], newIn = [];
   const plain = s => s.replace(/\$\{T\("([^"]*)", "[^"]*"\)\}/g, '$1').replace(/\$\{I\("[^"]*"\)\}/g, '');
   const SRCP = plain(SRC);
@@ -157,8 +158,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   /* 9. Sources card: every URL in the data files is listed; plain links (no nofollow) */
   const links = await p.evaluate(() => [...document.querySelectorAll('#srcBody a')].map(a => [a.href, a.rel]));
   const hrefs = new Set(links.map(x => x[0]));
-  const dataUrls = new Set(); const walk = v => { if (typeof v === 'string') (v.match(/https?:\/\/[^\s)\]'"]+/g) || []).forEach(u => dataUrls.add(u.replace(/[.,;]+$/, ''))); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
-  ['data/rq.json', 'data/rq-chains.json', 'data/story.json', 'data/story-40-45.json', 'data/strongholds.json', 'data/dungeons.json', 'data/build.json', 'data/claims.json'].forEach(f => walk(J(f)));
+  const dataUrls = V1.dataUrls;   /* every URL in the v2 data records and sources.json pages */
   const norm = u => { try { return new URL(u).href; } catch (e) { return u; } };
   const missing = [...dataUrls].filter(u => !hrefs.has(norm(u)) && !/^https?:\/\/metabot\.gg\/en\/aion-2\/quests\/daeva-trapped/.test(u));
   ok(`Sources card lists every URL in the data files (${dataUrls.size})`, !missing.length, missing);

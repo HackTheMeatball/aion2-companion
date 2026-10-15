@@ -1,0 +1,788 @@
+{
+  "$schema": "../../schema/skills.schema.json",
+  "schemaVersion": 2,
+  "collection": "skills",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "skill:assassin:ambush",
+      "key": "Ambush",
+      "name": "Ambush",
+      "type": "active",
+      "learnLv": 3,
+      "levelGate": "stepped",
+      "icon": "assets/icons/sk-ambush.png",
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed. Core skill already in SP_SKILLS (gate/spec there).",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:ambush:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Engraves 2 Insignias for 10s on landing as a Back attack",
+          "label": "Engraves 2 Insignias when it lands as a Back attack"
+        },
+        {
+          "id": "spec:assassin:ambush:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 300, 300% HP"
+        },
+        {
+          "id": "spec:assassin:ambush:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Breaks Protective Shields on hit"
+        },
+        {
+          "id": "spec:assassin:ambush:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "50% chance to trigger [Whirlwind Slice] on hit"
+        },
+        {
+          "id": "spec:assassin:ambush:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "+2 consecutive uses"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ambush",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:ambush-stance",
+      "key": "Ambush Stance",
+      "name": "Ambush Stance",
+      "type": "passive",
+      "learnLv": 17,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "games.gg: skip in PvE (single source).",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/ambush-stance"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:apply-poison",
+      "key": "Apply Poison",
+      "name": "Apply Poison",
+      "type": "passive",
+      "learnLv": 9,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:assault-stance",
+      "key": "Assault Stance",
+      "name": "Assault Stance",
+      "type": "passive",
+      "learnLv": 13,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "icon": "assets/icons/sk-assault-stance.png",
+      "note": "Critical Damage Boost +6% at L1, +45% at L40 (Metabot tooltip).",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/assault-stance"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:defense-break",
+      "key": "Defense Break",
+      "name": "Defense Break",
+      "type": "passive",
+      "learnLv": 21,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "icon": "assets/icons/sk-defense-break.png",
+      "note": "On hitting a Staggered/Impact-afflicted target: target Defense -12%, Status Effect Resist -11% for 10s at L1; 20s cooldown. Metabot max-level tooltip numbers conflict.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/defense-break"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:defiance",
+      "key": "Defiance",
+      "name": "Defiance",
+      "type": "active",
+      "learnLv": 16,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:determination",
+      "key": "Determination",
+      "name": "Determination",
+      "type": "passive",
+      "learnLv": 25,
+      "levelGate": "flat",
+      "boardNodes": {
+        "perBoard": {
+          "board:zikel": 2,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 2
+      },
+      "icon": null,
+      "note": "Bonus damage on targets at <=30% HP (L1 text) vs 69% in max-level tooltip (Metabot inconsistency).",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/determination"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:exploit-weakness",
+      "key": "Exploit Weakness",
+      "name": "Exploit Weakness",
+      "type": "passive",
+      "learnLv": 6,
+      "levelGate": "stepped",
+      "icon": "assets/icons/sk-exploit-weakness.png",
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed. Core skill already in SP_SKILLS (gate/spec there).",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:flash-slice",
+      "key": "Flash Slice",
+      "name": "Flash Slice",
+      "type": "active",
+      "learnLv": 8,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "10s cooldown; moves to opposite side of target within 4m, up to 4 enemies.",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:flash-slice:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Blind lasts 2s longer"
+        },
+        {
+          "id": "spec:assassin:flash-slice:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Range +6m"
+        },
+        {
+          "id": "spec:assassin:flash-slice:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Up to 20% more damage when hitting more targets"
+        },
+        {
+          "id": "spec:assassin:flash-slice:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+1 consecutive use"
+        },
+        {
+          "id": "spec:assassin:flash-slice:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "50% chance to rotate and Stun 3s when hitting a Blind target"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/flash-slice"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:heart-gore",
+      "key": "Heart Gore",
+      "name": "Heart Gore",
+      "type": "active",
+      "learnLv": 4,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "icon": "assets/icons/sk-heart-gore.png",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:heart-gore:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 70, 70% HP"
+        },
+        {
+          "id": "spec:assassin:heart-gore:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Engraves 1 Insignia for 10s on hit"
+        },
+        {
+          "id": "spec:assassin:heart-gore:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Up to +20% Critical Hit when less targets hit",
+          "label": "Up to +20% Critical Hit when fewer targets are hit"
+        },
+        {
+          "id": "spec:assassin:heart-gore:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:assassin:heart-gore:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Resets [Heart Gore] cooldown on landing a Critical Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:heightened-sixth-sense",
+      "key": "Heightened Sixth Sense",
+      "name": "Heightened Sixth Sense",
+      "type": "passive",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Evasion +200, HP +150, Max HP +6% at L1.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heightened-sixth-sense"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:impact-hit",
+      "key": "Impact Hit",
+      "name": "Impact Hit",
+      "type": "passive",
+      "learnLv": 15,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "L1: Impact-type Chance +11.2%, Double Chance +0.3%.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/impact-hit-assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:infiltrate",
+      "key": "Infiltrate",
+      "name": "Infiltrate",
+      "type": "active",
+      "learnLv": 10,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:insignia-explosion",
+      "key": "Insignia Explosion",
+      "name": "Insignia Explosion",
+      "type": "active",
+      "learnLv": 14,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "icon": "assets/icons/sk-insignia-explosion.png",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:insignia-explosion:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Rotate effect"
+        },
+        {
+          "id": "spec:assassin:insignia-explosion:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:assassin:insignia-explosion:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Keeps 2 Insignia stacks after Insignia Explosion"
+        },
+        {
+          "id": "spec:assassin:insignia-explosion:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "+1s Stun duration"
+        },
+        {
+          "id": "spec:assassin:insignia-explosion:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-3s cooldown"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/insignia-explosion"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:quick-slice",
+      "key": "Quick Slice",
+      "name": "Quick Slice",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "boardNodes": {
+        "perBoard": {
+          "board:nezekan": 1,
+          "board:zikel": 1,
+          "board:vaizel": 1,
+          "board:triniel": 1
+        },
+        "cost": 3
+      },
+      "icon": "assets/icons/sk-quick-slice.png",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:quick-slice:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+20% MP restored"
+        },
+        {
+          "id": "spec:assassin:quick-slice:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Absorbs 70, 70% HP"
+        },
+        {
+          "id": "spec:assassin:quick-slice:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "+50% Multi-Hit on hit"
+        },
+        {
+          "id": "spec:assassin:quick-slice:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-1s Insignia Explosion cooldown on hit"
+        },
+        {
+          "id": "spec:assassin:quick-slice:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Ignores Block and Evasion and lands as a Critical Hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/quick-slice"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:rear-smite",
+      "key": "Rear Smite",
+      "name": "Rear Smite",
+      "type": "passive",
+      "learnLv": 11,
+      "levelGate": "stepped",
+      "icon": "assets/icons/sk-rear-smite.png",
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed. Core skill already in SP_SKILLS (gate/spec there).",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:revitalization-contract",
+      "key": "Revitalization Contract",
+      "name": "Revitalization Contract",
+      "type": "passive",
+      "learnLv": 23,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:savage-roar",
+      "key": "Savage Roar",
+      "name": "Savage Roar",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "icon": "assets/icons/sk-savage-roar.png",
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed. Core skill already in SP_SKILLS (gate/spec there).",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:savage-roar:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "-20% MP consumed"
+        },
+        {
+          "id": "spec:assassin:savage-roar:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% Skill Speed"
+        },
+        {
+          "id": "spec:assassin:savage-roar:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Deals up to 12% more damage when less targets are hit"
+        },
+        {
+          "id": "spec:assassin:savage-roar:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "-1s [Shadowstrike] cooldown on hit"
+        },
+        {
+          "id": "spec:assassin:savage-roar:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Pulls nearby targets on using [Savage Smash]"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/savage-roar",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:shadow-fall",
+      "key": "Shadow Fall",
+      "name": "Shadow Fall",
+      "type": "active",
+      "learnLv": 12,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:shadowstrike",
+      "key": "Shadowstrike",
+      "name": "Shadowstrike",
+      "type": "active",
+      "learnLv": 1,
+      "levelGate": "stepped",
+      "icon": "assets/icons/sk-shadowstrike.png",
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed. Core skill already in SP_SKILLS (gate/spec there).",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:shadowstrike:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "+1s Stun duration"
+        },
+        {
+          "id": "spec:assassin:shadowstrike:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "+20% caster Critical Damage Boost for 10s on hit",
+          "label": "+20% Critical Damage Boost for 10s on hit"
+        },
+        {
+          "id": "spec:assassin:shadowstrike:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "50% chance to inflict Seal for 5s on hit"
+        },
+        {
+          "id": "spec:assassin:shadowstrike:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "50% chance to inflict Root for 5s on hit"
+        },
+        {
+          "id": "spec:assassin:shadowstrike:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "Changes to AoE Skill"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/shadowstrike",
+          "fields": [
+            "specialtyChoices"
+          ],
+          "checkedAt": "2026-10-14",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    },
+    {
+      "id": "skill:assassin:storm-rampage",
+      "key": "Storm Rampage",
+      "name": "Storm Rampage",
+      "type": "active",
+      "learnLv": 5,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Only usable on a Staggered target within 4m.",
+      "specialtyChoices": [
+        {
+          "id": "spec:assassin:storm-rampage:1",
+          "n": 1,
+          "skillLv": 8,
+          "text": "Absorbs 500, 500% HP"
+        },
+        {
+          "id": "spec:assassin:storm-rampage:2",
+          "n": 2,
+          "skillLv": 8,
+          "text": "Restores 120 MP on hit"
+        },
+        {
+          "id": "spec:assassin:storm-rampage:3",
+          "n": 3,
+          "skillLv": 8,
+          "text": "Changes to mobile skill"
+        },
+        {
+          "id": "spec:assassin:storm-rampage:4",
+          "n": 4,
+          "skillLv": 12,
+          "text": "Multi-Hit on hit"
+        },
+        {
+          "id": "spec:assassin:storm-rampage:5",
+          "n": 5,
+          "skillLv": 16,
+          "text": "-1s all skill cooldowns on hit"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/storm-rampage"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "skill:assassin:whirlwind-slice",
+      "key": "Whirlwind Slice",
+      "name": "Whirlwind Slice",
+      "type": "active",
+      "learnLv": 7,
+      "levelGate": "stepped",
+      "icon": null,
+      "note": "Learn level from Metabot class page (+ thegameswiki assassin-skills). Skill page not fetched in R3; costs assumed same 1/2/4 bands as every fetched skill (11 of 11 matched). gate null: two fetched passives use a flat gate, so the +3/level pattern can't be assumed.",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "levelGate": "inferred"
+      },
+      "notes": [
+        "levelGate: no gate in the v1 data (skill page not fetched); \"stepped\" assumed, not used by the guide build."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schema/stigmas.schema.json",
+  "schemaVersion": 2,
+  "collection": "stigmas",
+  "class": "assassin",
+  "records": [
+    {
+      "id": "stigma:assassin:illusive-clone",
+      "key": "Illusive Clone",
+      "name": "Illusive Clone",
+      "availableLv": 22,
+      "icon": "assets/icons/st-illusive-clone.png",
+      "note": "90s cd; removes Heart Gore cooldown + 20% extra damage for 10s (L1) / 30s (max). Specialties at stigma Lv 5/10/15/20.",
+      "maxLevel": 40,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/illusive-clone"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/stigma-system"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40 for Assassin and Ranger, 25 for the other six (Metabot; owner check pending, classes-and-gaps)."
+      ]
+    },
+    {
+      "id": "stigma:assassin:savage-fang",
+      "key": "Savage Fang",
+      "name": "Savage Fang",
+      "availableLv": 22,
+      "icon": "assets/icons/st-savage-fang.png",
+      "maxLevel": 40,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/stigma-system"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40 for Assassin and Ranger, 25 for the other six (Metabot; owner check pending, classes-and-gaps)."
+      ]
+    },
+    {
+      "id": "stigma:assassin:swift-contract",
+      "key": "Swift Contract",
+      "name": "Swift Contract",
+      "availableLv": 22,
+      "icon": "assets/icons/st-swift-contract.png",
+      "maxLevel": 40,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/stigma-system"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40 for Assassin and Ranger, 25 for the other six (Metabot; owner check pending, classes-and-gaps)."
+      ]
+    },
+    {
+      "id": "stigma:assassin:triniels-dagger",
+      "key": "Triniel's Dagger",
+      "name": "Triniel's Dagger",
+      "availableLv": 22,
+      "icon": "assets/icons/st-triniels-dagger.png",
+      "maxLevel": 40,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/classes/assassin"
+        },
+        {
+          "url": "https://thegameswiki.com/aion-2/wiki/stigma-system"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "maxLevel": "single-source"
+      },
+      "notes": [
+        "maxLevel 40 for Assassin and Ranger, 25 for the other six (Metabot; owner check pending, classes-and-gaps)."
+      ]
+    }
+  ]
+}

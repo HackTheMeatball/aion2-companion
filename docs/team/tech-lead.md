@@ -46,10 +46,11 @@ through esbuild; the output is not minified.
   any statement that finishes building it (`SP_EXTRA` append, `Object.assign(QUEST_STEPS, …)`), add `export`, import
   where used. Proof used: the bundle's top-level names are the same set and its top-level statements the same
   multiset (each normalised with esbuild `--minify-whitespace`), only reordered; markup and CSS byte-identical.
-- **Generated data:** the build makes the module `src/data/generated.js` from the committed `tools/gen/gen-block.js`
-  (esbuild plugin); `npm run gen:check` (CI, test job) fails if `gen.py` no longer reproduces the committed outputs.
-  The generator stays Python until P4's Node generator; then the build can run it and gen-block.js can stop being
-  committed.
+- **Generated data (0.2 step 5b):** the build compiles the module `src/data/generated.js` from `data/**` in memory
+  (`tools/gen/gen.mjs` via the esbuild plugin); nothing generated is committed except `data/DATA_SOURCES.md`, which
+  `npm run gen:check` (CI `data` job) keeps current. Acceptance used for 5b, reusable: dump every export of every data
+  module in Node on both trees (`src/data/*.js` + generated, functions probed at 0..50) and deep-compare; golden
+  identical; the page's values equal the generator's (e4 #11).
 - Render templates (`cardHTML`, the Next up view objects) are code, not data; they stay in `main.js` (P3 moved only
   the decisions).
 - **0.2 P3 pure core (`src/core/`).** state (key, defaults, `loadState`, `char`, `CHAR_FIELDS`), migrations (`migrate`

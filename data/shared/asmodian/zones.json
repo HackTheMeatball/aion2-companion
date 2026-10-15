@@ -1,0 +1,836 @@
+{
+  "$schema": "../../schema/zones.schema.json",
+  "schemaVersion": 2,
+  "collection": "zones",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "zone:altgard-unplaced",
+      "name": "Altgard (zone not recorded)",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": null,
+      "sources": [
+        {
+          "inferred": "Placeholder: the v1 data has no location for these quests (DATA-FORMAT-V2 §9 data task). The generator lists every record that uses it."
+        }
+      ],
+      "verifiedAt": "2026-10-14",
+      "status": "owner-check",
+      "notes": [
+        "Not a game zone. A record pointing here still needs its zone (Metabot quest page or owner check)."
+      ]
+    },
+    {
+      "id": "zone:basfelt-ruins",
+      "name": "Basfelt Ruins",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 30,
+      "kibelisks": [
+        "Basfelt Ruins Cliff",
+        "Basfelt Waterfall Arch Zone",
+        "Fissure Cave",
+        "Graverobber Campsite",
+        "Shulak Street Stall"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:battlescar-mound",
+      "name": "Battlescar Mound",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 18,
+      "kibelisks": [
+        "Basfelt Waterfall",
+        "Battlescar Mound Clifftop"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:black-claw-village",
+      "name": "Black Claw Village",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 35,
+      "kibelisks": [
+        "Impetusium Lower Path",
+        "Kumrica's Cellar",
+        "Secret Rendezvous Point"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:calderon-canyon",
+      "name": "Calderon Canyon",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 8,
+      "camps": [
+        "Quai Campsite",
+        "Watcher's Tent"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "camps"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "camps": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:crypt",
+      "name": "Crypt",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": null,
+      "kibelisks": [
+        "Galorik's Inspection Area"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      }
+    },
+    {
+      "id": "zone:dranactus",
+      "name": "Dranactus",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 25,
+      "camps": [
+        "Briskwind Shelter"
+      ],
+      "kibelisks": [
+        "Dranactus Shore",
+        "Hidden Cave"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "camps",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "camps": "inferred",
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:dredgion-crash-site",
+      "name": "Dredgion Crash Site",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 19,
+      "camps": [
+        "Temporary Investigation Base",
+        "Safe Haven"
+      ],
+      "kibelisks": [
+        "Safe Haven Cliff"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "camps",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "camps": "inferred",
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:eastern-gribade-highland",
+      "name": "Eastern Gribade Highland",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 12,
+      "kibelisks": [
+        "Eastern Gribade Highland Cliff",
+        "Eastern Gribade Highland Tail Island",
+        "Steel Hammer Temporary Trading Post"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:fafnite-deposit",
+      "name": "Fafnite Deposit",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 12,
+      "kibelisks": [
+        "Amunta's Hideout",
+        "Steel Hammer Merchants HQ"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:iduns-lake",
+      "name": "Idun's Lake",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 11,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:immortal-isle",
+      "name": "Immortal Isle",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 40,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:impetusium-square",
+      "name": "Impetusium Square",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 54,
+      "kibelisks": [
+        "Collapsed Hall of Fame",
+        "Outskirts Stall"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:ishalgen",
+      "name": "Ishalgen",
+      "region": "Ishalgen",
+      "faction": "asmodian",
+      "traces": null,
+      "sources": [
+        {
+          "url": "https://aion2hub.com/leveling/asmodian-levels-1-10",
+          "fields": [
+            "name"
+          ]
+        },
+        {
+          "inferred": "The Lv 1-9 story quests run on the Ishalgen starting map (milestone g6: \"Story quests in Ishalgen\").",
+          "fields": [
+            "region"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "The starting map. Used as the zone of the Lv 1-9 story quests, whose v1 data has no location."
+      ]
+    },
+    {
+      "id": "zone:lagta-fortress",
+      "name": "Lagta Fortress",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 22,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:mahindel-river",
+      "name": "Mahindel River",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": null,
+      "kibelisks": [
+        "Mahindel Cliff"
+      ],
+      "sources": [
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      }
+    },
+    {
+      "id": "zone:moslan-forest",
+      "name": "Moslan Forest",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 32,
+      "camps": [
+        "Forest Hideout"
+      ],
+      "kibelisks": [
+        "Collapsed Chasm",
+        "Elim's Rest",
+        "Moslan Forest Cliff",
+        "Moslan Forest Dry Shade"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "camps",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "camps": "inferred",
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:nameless-cemetery",
+      "name": "Nameless Cemetery",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 28,
+      "kibelisks": [
+        "Gravekeeper Camp",
+        "Neglected Crematorium"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:nornir-assembly",
+      "name": "Nornir Assembly",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": null,
+      "sources": [
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "notes": [
+        "A camp the v1 data already treats as a zone (gen.py exception for regional quest zones)."
+      ]
+    },
+    {
+      "id": "zone:purifying-forest",
+      "name": "Purifying Forest",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 29,
+      "kibelisks": [
+        "Faded Stump",
+        "Guide Rest Stop",
+        "Healing Spring",
+        "Purifying Forest Sunny Hill"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:sanctum-outpost",
+      "name": "Sanctum Outpost",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 21,
+      "kibelisks": [
+        "Temporary Retreat"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:silent-hill",
+      "name": "Silent Hill",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 11,
+      "kibelisks": [
+        "Silent Hill Mushroom Rock"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:southern-gribade-highland",
+      "name": "Southern Gribade Highland",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": null,
+      "sources": [
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified"
+    },
+    {
+      "id": "zone:spirit-isle",
+      "name": "Spirit Isle",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 19,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:tranein-highland",
+      "name": "Tranein Highland",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 6,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:uruthumheim",
+      "name": "Uruthumheim",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 16,
+      "kibelisks": [
+        "Abandoned Site",
+        "Victorious Daeva's Statue"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    },
+    {
+      "id": "zone:western-gribade-highland",
+      "name": "Western Gribade Highland",
+      "region": "Altgard",
+      "faction": "asmodian",
+      "traces": 14,
+      "camps": [
+        "Zemurru's Tomb"
+      ],
+      "kibelisks": [
+        "Abandoned Campsite"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/empyrean-traces",
+          "fields": [
+            "traces"
+          ]
+        },
+        {
+          "inferred": "Zone name as the v1 data uses it (allthings.how area guides, Metabot map tables); camps and Kibelisks from the v1 map-data zone votes (gen.py CAMP_ZONE, checked by the build).",
+          "fields": [
+            "name",
+            "camps",
+            "kibelisks"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "verified",
+      "fieldStatus": {
+        "camps": "inferred",
+        "kibelisks": "inferred"
+      },
+      "claims": [
+        "C26"
+      ]
+    }
+  ]
+}
