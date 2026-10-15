@@ -8,6 +8,35 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.1 — 2026-10-15
+
+A new player starts at level 1 on the first story quest.
+
+### Changed
+
+- A new browser starts at Lv 1 on the first story quest, "A Village in the Fog" (was Lv 5 with no quest picked).
+  Saved progress keeps its level and quest.
+- Next up no longer tells a Lv 1 character to reach Lv 2 before the first story quest: story levels are recommended
+  levels, not requirements.
+
+### Accessibility
+
+- Touch screens: the "unlocks …" line under a story step is 12 px (was 11.5 px).
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+
+### Saved progress
+
+- No change to saved progress.
+
 ## 0.2.0 — 2026-10-14
 
 Rebuilt guide data with a source for every fact, and in-game unlock corrections.
