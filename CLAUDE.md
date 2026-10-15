@@ -25,8 +25,8 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 
 ## Data and source policy
 
-- Only verified data: two independent sources, game-database fields (Metabot quest/skill pages, aion2.gaming.tools,
-  aion2.th.gl), or the user's in-game screens (the source of truth). Otherwise leave it out, or label it "single
+- Only verified data: two independent sources, game-database fields (Metabot quest/skill pages, aion2.gaming.tools),
+  or the user's in-game screens (the source of truth). Otherwise leave it out, or label it "single
   source" / "inferred" / "disputed" as `data/shared/asmodian/guide/claims.json` decides.
 - Data lives in `data/**` in format v2 (`docs/DATA-FORMAT-V2.md`, JSON Schemas in `data/schema/`). Change the JSON, then
   `npm run gen` (validates, runs the cross-record checks, rewrites `data/DATA_SOURCES.md`); the build compiles the module
