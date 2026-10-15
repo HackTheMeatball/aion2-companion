@@ -20,6 +20,35 @@ changes always need the owner's approval, mockup first. Session prompts live in 
 visible ones included, under the limits in that row; 0.3's Next up behaviour changes and the 0.3.0 release still wait
 for the owner. The rule above returns after 0.3.0 unless the owner says otherwise.
 
+## CEO handover (2026-10-15, 03:35 ET) — read this first in a new CEO chat
+
+**Live:** v0.2.2 on daevacompanion.com (0.2.1 fresh start at Lv 1 on the first quest; 0.2.2 F6/F7/F8). 0.2.0 shipped
+the v2 data. Autonomous-merge grant for the 0.2 → 0.3 cycle: DECISIONS 2026-10-15 (limits there).
+
+**How work runs now:** `@claude` (Opus) or `@sonnet` (Sonnet, cheaper) in an issue or PR comment starts a Claude Code
+run on GitHub (`.github/workflows/claude.yml`, owner-only). Reviews: ask the bot for "VERDICT: APPROVE / REQUEST
+CHANGES", tell it not to run journey or the full npm test (CI covers it), verify findings yourself. Merge on APPROVE +
+`ci-ok` green. Releases: version bump + CHANGELOG PR, reviewed by `@sonnet`. Branch protection on `main` (require
+`ci-ok`) is still for the owner to turn on (docs/DEPLOY.md checklist).
+
+**Open PRs:**
+- #42 0.3 E0 engine design + gates as `proposed` data (no behaviour change). Fixes pushed; `@sonnet` re-review asked.
+  When merged: delete scheduled task `trig_013AGyYHU3UP6XxRcA3aHELo`; start 0.3 build steps only with the owner's go
+  (usage), one `@claude` issue per design step; behaviour changes wait for owner approval of the golden diffs.
+- #47 data: F5 stigma cost + story-quest locations (Metabot). Review fix pushed, main merged in (nextup.js conflict
+  resolved keeping both), `@sonnet` re-review asked. When merged: release 0.2.3; delete `trig_01E5SxcpnScWoq22qz7zTdBz`.
+
+**Owner questions (morning):** villages (Odar's Shade, Fang Hideout, …) as zones of their own (recommend yes, from
+Metabot) vs in-game check per village; alt check: does a new character reach Lv 2 before "Prepare to Escape"
+(story levels as recommendations everywhere is 0.3 work).
+
+**Owner tracker:** https://claude.ai/artifact/61L3ghB3E5rR7bfRzENJrC (Dashboard type). Non-technical, mobile-first.
+Update its data files (versions / today / snapshot / gallery JSON: upload as assets, then point the datasets at them);
+"today" items carry ISO `at` times the page turns into "for 1 h"; versions carry `details`, `behind`, `link`.
+
+**Usage:** owner at ~53% of the weekly limit on 2026-10-15 (resets Tue 03:00 ET). Keep CEO chats short; prefer
+`@sonnet`; no polling loops; check-ins only when something is pending.
+
 ## Now and next
 Wave 1 (start now, no shared files):
 | Lane | Task | Files |
