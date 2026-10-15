@@ -205,7 +205,7 @@ const checkReport = (label, m, want) => {
     if (process.env.AION_FONTS_BLOCKED) ok('artifact build: inlined fonts are blocked in the suites too', !(await loadedFamilies(p)).length);
     const am = await footerMeta(p);
     ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
-    checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '5', quest: '(not set)', mode: 'Advanced', build: 'claude.ai' });
+    checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '1', quest: 'A Village in the Fog', mode: 'Advanced', build: 'claude.ai' });   /* 0.2.1: fresh browser = Lv 1, first quest */
     ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
     await ctx.close();
   }
