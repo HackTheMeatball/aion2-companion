@@ -83,7 +83,9 @@ export function generate(opts = {}) {
   const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(x => x.text)]));
   const LOC = s => { const o = {}; const put = (k, v) => { if (v !== null && v !== undefined) o[k] = v; };
     put('giverKib', s.giver.kibelisk); put('giverKibM', s.giver.meters); put('turnin', s.turnin.npc); put('turninPlace', s.turnin.place);
-    put('turninKib', s.turnin.kibelisk); put('turninKibM', s.turnin.meters); return o; };
+    put('turninKib', s.turnin.kibelisk); put('turninKibM', s.turnin.meters);
+    /* the turn-in's own zone for "near your story step"; "" = a placeholder (owner-check), so no area */
+    if (s.turnin.zone) o.turninZone = zones[s.turnin.zone].status === 'owner-check' ? '' : zname(s.turnin.zone); return o; };
   const QUEST_LOC = Object.fromEntries(chain.map(s => [s.name, LOC(s)]).filter(([, o]) => Object.keys(o).length));
   const X = chain.filter(s => s.lv > 40);   /* Lv 41-45: the v1 block's separate constants, kept for the page globals */
   const QUESTS_X = X.map(s => [s.lv, s.name]);

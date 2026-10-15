@@ -19,7 +19,7 @@ const ENTRY = [
   ...CORE.map(f => `export * from "./core/${f}";`),
   'export { GATES, STEPS } from "./data/milestones.js";',
   'export { QUESTS, QUEST_STEPS, QUEST_LOC } from "./data/story.js";',
-  'export { SP_STEPS, STIGMA_PLAN, E_ORDER, LEVEL_POINTS } from "./data/build.js";',
+  'export { SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS, E_ORDER, LEVEL_POINTS } from "./data/build.js";',
   'export { MIG_V5 } from "./data/migrations.js";',
   'export { RQ, SH_DATA } from "./data/generated.js";',
 ].join('\n');

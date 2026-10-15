@@ -820,11 +820,27 @@
         "meters": null
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Hans",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 96,
+        "coords": {
+          "map": "altgard",
+          "x": 3236,
+          "y": 2764,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/finding-nemon",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -879,18 +895,39 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): no giver on the page (quest starts by itself). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/finding-nemon",
+          "fields": [
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -906,18 +943,50 @@
       "unlocksAt": 10,
       "next": "sq:2102020",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Hans",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 96,
+        "coords": {
+          "map": "altgard",
+          "x": 3236,
+          "y": 2764,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/survival-supplies",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "VeKauf",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 3183,
+          "y": 2881,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/survival-supplies",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -954,18 +1023,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/survival-supplies",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -981,18 +1076,50 @@
       "unlocksAt": 10,
       "next": "sq:2102030",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "VeKauf",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 32,
+        "coords": {
+          "map": "altgard",
+          "x": 3183,
+          "y": 2881,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/gathering-essentials",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Dinoh",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 89,
+        "coords": {
+          "map": "altgard",
+          "x": 3153,
+          "y": 2930,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/gathering-essentials",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "unlocks": {
@@ -1033,13 +1160,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-11",
             "checkedAt": "2026-10-14",
@@ -1049,13 +1169,46 @@
             },
             "what": "Pets: complete \"Gathering Essentials\""
           }
+        },
+        {
+          "inferred": "Giver zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
+            "turnin.zone"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/gathering-essentials",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1071,18 +1224,50 @@
       "unlocksAt": 10,
       "next": "sq:2102040",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Dinoh",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 89,
+        "coords": {
+          "map": "altgard",
+          "x": 3153,
+          "y": 2930,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/crash-site-rendezvous",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Galorik's Inspection Area",
+        "zone": "zone:crypt",
+        "kibelisk": "Galorik's Inspection Area",
+        "meters": 49,
+        "coords": {
+          "map": "altgard",
+          "x": 3121,
+          "y": 3134,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/crash-site-rendezvous",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1119,18 +1304,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Galorik's Inspection Area), a camp / Kibelisk of Crypt in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/crash-site-rendezvous",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1146,18 +1357,50 @@
       "unlocksAt": 10,
       "next": "sq:2102050",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Galorik's Inspection Area",
+        "zone": "zone:crypt",
+        "kibelisk": "Galorik's Inspection Area",
+        "meters": 49,
+        "coords": {
+          "map": "altgard",
+          "x": 3121,
+          "y": 3134,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/contaminated-area",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Niror",
+        "place": "Temporary Investigation Base",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 10,
+        "coords": {
+          "map": "altgard",
+          "x": 3476,
+          "y": 3275,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/contaminated-area",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1194,18 +1437,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Galorik's Inspection Area), a camp / Kibelisk of Crypt in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Temporary Investigation Base), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/contaminated-area",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1221,18 +1490,50 @@
       "unlocksAt": 10,
       "next": "sq:2102060",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Temporary Investigation Base",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Temporary Investigation Base",
+        "meters": 14,
+        "coords": {
+          "map": "altgard",
+          "x": 3474,
+          "y": 3279,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/express-daeva-delivery",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Quai Campsite",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 30,
+        "coords": {
+          "map": "altgard",
+          "x": 2960,
+          "y": 3457,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/express-daeva-delivery",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1269,18 +1570,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Temporary Investigation Base), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Quai Campsite), a camp / Kibelisk of Calderon Canyon in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/express-daeva-delivery",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1296,18 +1623,50 @@
       "unlocksAt": 10,
       "next": "sq:2102065",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Quai Campsite",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 30,
+        "coords": {
+          "map": "altgard",
+          "x": 2960,
+          "y": 3457,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/veiled-truth",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Quai Campsite",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 71,
+        "coords": {
+          "map": "altgard",
+          "x": 3050,
+          "y": 3436,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/veiled-truth",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1344,18 +1703,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Quai Campsite), a camp / Kibelisk of Calderon Canyon in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Quai Campsite), a camp / Kibelisk of Calderon Canyon in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/veiled-truth",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1371,15 +1756,31 @@
       "unlocksAt": 10,
       "next": "sq:2102070",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Quai Campsite",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Quai Campsite",
+        "meters": 71,
+        "coords": {
+          "map": "altgard",
+          "x": 3050,
+          "y": 3436,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Asahr",
+        "place": "Dream Crossroad",
         "zone": "zone:altgard-unplaced",
         "kibelisk": null,
         "meters": null
@@ -1423,13 +1824,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-03",
             "checkedAt": "2026-10-14",
@@ -1439,12 +1833,42 @@
             },
             "what": "Daevanion boards and the Shugo Festival: complete \"Urgent Pursuit\""
           }
+        },
+        {
+          "inferred": "Giver zone from Metabot's Location (Quai Campsite), a camp / Kibelisk of Calderon Canyon in the zone records.",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): no map point and no Location on the page. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "inferred",
         "turnin.zone": "owner-check"
       },
       "notes": [
@@ -1468,11 +1892,27 @@
         "meters": null
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Tagar",
+        "place": "Gravekeeper Camp",
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Gravekeeper Camp",
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 2579,
+          "y": 3329,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/cemetery-cleanup",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1509,18 +1949,39 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): no giver on the page (quest starts by itself). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Gravekeeper Camp), a camp / Kibelisk of Nameless Cemetery in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/cemetery-cleanup",
+          "fields": [
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1536,18 +1997,50 @@
       "unlocksAt": 10,
       "next": "sq:2102090",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Tagar",
+        "place": "Gravekeeper Camp",
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Gravekeeper Camp",
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 2579,
+          "y": 3329,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/back-on-the-scent",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Kolina",
+        "place": "Neglected Crematorium",
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 2393,
+          "y": 3134,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/back-on-the-scent",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1584,18 +2077,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Gravekeeper Camp), a camp / Kibelisk of Nameless Cemetery in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Neglected Crematorium), a camp / Kibelisk of Nameless Cemetery in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/back-on-the-scent",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1611,18 +2130,50 @@
       "unlocksAt": 10,
       "next": "sq:2102100",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Kolina",
+        "place": "Neglected Crematorium",
+        "zone": "zone:nameless-cemetery",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 2393,
+          "y": 3134,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Crypt",
+        "zone": "zone:crypt",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 270,
+        "coords": {
+          "map": "altgard",
+          "x": 2328,
+          "y": 2869,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [],
       "requires": {
@@ -1659,18 +2210,39 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Neglected Crematorium), a camp / Kibelisk of Nameless Cemetery in the zone records.",
           "fields": [
-            "giver.zone",
-            "turnin.zone"
+            "giver.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords",
+            "turnin.zone"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "verified"
       },
       "notes": [
         "No objectives or route data in the v1 data (story.json starts at Lv 24; QUEST_STEPS at \"A New Lead\")."
@@ -1686,15 +2258,31 @@
       "unlocksAt": 10,
       "next": "sq:2102105",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Ulgorn",
+        "place": "Crypt",
+        "zone": "zone:crypt",
+        "kibelisk": "Neglected Crematorium",
+        "meters": 270,
+        "coords": {
+          "map": "altgard",
+          "x": 2328,
+          "y": 2869,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Asahr",
+        "place": "Dream Crossroad",
         "zone": "zone:altgard-unplaced",
         "kibelisk": null,
         "meters": null
@@ -1738,13 +2326,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-07",
             "checkedAt": "2026-10-14",
@@ -1754,12 +2335,37 @@
             },
             "what": "Legion (L): Complete \"Buried Atrocities\""
           }
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): no map point and no Location on the page. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "giver.zone",
+            "turnin.npc",
+            "turnin.place"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "verified",
         "turnin.zone": "owner-check"
       },
       "notes": [
@@ -1776,18 +2382,50 @@
       "unlocksAt": 10,
       "next": "sq:2102110",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Ulgorn",
+        "place": "Shadow Hall",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 245,
+        "coords": {
+          "map": "altgard",
+          "x": 3394,
+          "y": 2705,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Nemon",
+        "place": "Shadow Hall",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 245,
+        "coords": {
+          "map": "altgard",
+          "x": 3394,
+          "y": 2705,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4); giver and turn-in share one marker (S·T)"
+            }
+          ]
+        }
       },
       "steps": [],
       "unlocks": {
@@ -1827,14 +2465,40 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Shadow Hall is not a registry zone, camp or Kibelisk; Kibelisk Safe Haven is 245 m away (over the 100 m camp rule). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Shadow Hall is not a registry zone, camp or Kibelisk; Kibelisk Safe Haven is 245 m away (over the 100 m camp rule). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -1854,18 +2518,50 @@
       "unlocksAt": 10,
       "next": "sq:2102115",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Nemon",
+        "place": "Shadow Hall",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Safe Haven",
+        "meters": 245,
+        "coords": {
+          "map": "altgard",
+          "x": 3396,
+          "y": 2708,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-new-lead",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Menrik",
+        "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Fang Hideout",
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-new-lead",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -1919,14 +2615,40 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Shadow Hall is not a registry zone, camp or Kibelisk; Kibelisk Safe Haven is 245 m away (over the 100 m camp rule). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-new-lead",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -1943,18 +2665,50 @@
       "unlocksAt": 10,
       "next": "sq:2102120",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Menrik",
+        "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Fang Hideout",
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/malice-laid-bare",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Menrik",
+        "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Fang Hideout",
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/malice-laid-bare",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4); giver and turn-in share one marker (S·T)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2016,14 +2770,40 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/malice-laid-bare",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -2040,18 +2820,50 @@
       "unlocksAt": 10,
       "next": "sq:2102130",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Menrik",
+        "place": "Fang Hideout",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Fang Hideout",
+        "meters": 21,
+        "coords": {
+          "map": "altgard",
+          "x": 2667,
+          "y": 3577,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/broken-fang",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Gamilla",
+        "place": "Temporary Retreat",
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Temporary Retreat",
+        "meters": 7,
+        "coords": {
+          "map": "altgard",
+          "x": 2569,
+          "y": 3957,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/broken-fang",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2117,18 +2929,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Temporary Retreat), a camp / Kibelisk of Sanctum Outpost in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/broken-fang",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "turnin.zone": "inferred"
       }
     },
     {
@@ -2141,18 +2979,50 @@
       "unlocksAt": 10,
       "next": "sq:2102140",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Gamilla",
+        "place": "Temporary Retreat",
+        "zone": "zone:sanctum-outpost",
+        "kibelisk": "Temporary Retreat",
+        "meters": 7,
+        "coords": {
+          "map": "altgard",
+          "x": 2569,
+          "y": 3957,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/watchful-eyes",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Bataar",
+        "place": "Sanctum Dumpsite",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Temporary Retreat",
+        "meters": 401,
+        "coords": {
+          "map": "altgard",
+          "x": 2252,
+          "y": 4211,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/watchful-eyes",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2210,17 +3080,43 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Temporary Retreat), a camp / Kibelisk of Sanctum Outpost in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Sanctum Dumpsite is not a registry zone, camp or Kibelisk; Kibelisk Temporary Retreat is 401 m away (over the 100 m camp rule). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/watchful-eyes",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "inferred",
         "turnin.zone": "owner-check"
       }
     },
@@ -2234,18 +3130,50 @@
       "unlocksAt": 10,
       "next": "sq:2102150",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Bataar",
+        "place": "Sanctum Dumpsite",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Temporary Retreat",
+        "meters": 401,
+        "coords": {
+          "map": "altgard",
+          "x": 2252,
+          "y": 4211,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/imminent-threat",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Hadala",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 87,
+        "coords": {
+          "map": "altgard",
+          "x": 3284,
+          "y": 2854,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/imminent-threat",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2307,18 +3235,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Sanctum Dumpsite is not a registry zone, camp or Kibelisk; Kibelisk Temporary Retreat is 401 m away (over the 100 m camp rule). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/imminent-threat",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "turnin.zone": "inferred"
       }
     },
     {
@@ -2331,18 +3285,50 @@
       "unlocksAt": 10,
       "next": "sq:2102160",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Hadala",
+        "place": "Safe Haven",
+        "zone": "zone:dredgion-crash-site",
+        "kibelisk": "Safe Haven",
+        "meters": 87,
+        "coords": {
+          "map": "altgard",
+          "x": 3284,
+          "y": 2854,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/crossroad",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Watcher's Tent",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Watcher's Tent",
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 3049,
+          "y": 3719,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/crossroad",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2408,18 +3394,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Safe Haven), a camp / Kibelisk of Dredgion Crash Site in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Watcher's Tent), a camp / Kibelisk of Calderon Canyon in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/crossroad",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       }
     },
     {
@@ -2432,18 +3444,50 @@
       "unlocksAt": 10,
       "next": "sq:2102170",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Watcher's Tent",
+        "zone": "zone:calderon-canyon",
+        "kibelisk": "Watcher's Tent",
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 3049,
+          "y": 3719,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creeping-shadow",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Collapsed Chasm",
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Collapsed Chasm",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3540,
+          "y": 4330,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/creeping-shadow",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2513,18 +3557,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Watcher's Tent), a camp / Kibelisk of Calderon Canyon in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Collapsed Chasm), a camp / Kibelisk of Moslan Forest in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/creeping-shadow",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       }
     },
     {
@@ -2537,18 +3607,50 @@
       "unlocksAt": 10,
       "next": "sq:2102175",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Collapsed Chasm",
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Collapsed Chasm",
+        "meters": 11,
+        "coords": {
+          "map": "altgard",
+          "x": 3540,
+          "y": 4330,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/children-of-the-elim",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Elim's Rest",
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Elim's Rest",
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 3640,
+          "y": 4605,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/children-of-the-elim",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2626,18 +3728,44 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Collapsed Chasm), a camp / Kibelisk of Moslan Forest in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from Metabot's Location (Elim's Rest), a camp / Kibelisk of Moslan Forest in the zone records.",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/children-of-the-elim",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "inferred",
+        "turnin.zone": "inferred"
       }
     },
     {
@@ -2650,18 +3778,50 @@
       "unlocksAt": 10,
       "next": "sq:2102180",
       "giver": {
-        "npc": null,
-        "place": null,
-        "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "npc": "Nemon",
+        "place": "Elim's Rest",
+        "zone": "zone:moslan-forest",
+        "kibelisk": "Elim's Rest",
+        "meters": 9,
+        "coords": {
+          "map": "altgard",
+          "x": 3640,
+          "y": 4605,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/in-the-elims-name",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Hadala",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 12,
+        "coords": {
+          "map": "altgard",
+          "x": 3609,
+          "y": 4107,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/in-the-elims-name",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2719,17 +3879,43 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone from Metabot's Location (Elim's Rest), a camp / Kibelisk of Moslan Forest in the zone records.",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/in-the-elims-name",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "inferred",
         "turnin.zone": "owner-check"
       }
     },
@@ -2743,18 +3929,50 @@
       "unlocksAt": 10,
       "next": "sq:2102185",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Nemon",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 3614,
+          "y": 4108,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/verdant-melody",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Ecco",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 17,
+        "coords": {
+          "map": "altgard",
+          "x": 3614,
+          "y": 4108,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/verdant-melody",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4); giver and turn-in share one marker (S·T)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2808,14 +4026,40 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/verdant-melody",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -2839,11 +4083,27 @@
         "meters": null
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Ecco",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 3612,
+          "y": 4104,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2894,13 +4154,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-16",
             "checkedAt": "2026-10-14",
@@ -2910,9 +4163,37 @@
             },
             "what": "Expedition: Complete \"Daeva in a Dream\""
           }
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): no giver on the page (quest starts by itself). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "fields": [
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -2929,18 +4210,50 @@
       "unlocksAt": 10,
       "next": "sq:2102200",
       "giver": {
-        "npc": null,
-        "place": null,
+        "npc": "Ecco",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 3612,
+          "y": 4104,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/disturbed-balance",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4)"
+            }
+          ]
+        }
       },
       "turnin": {
-        "npc": null,
-        "place": null,
+        "npc": "Nemon",
+        "place": "Odar's Shade",
         "zone": "zone:altgard-unplaced",
-        "kibelisk": null,
-        "meters": null
+        "kibelisk": "Odar's Shade",
+        "meters": 15,
+        "coords": {
+          "map": "altgard",
+          "x": 3612,
+          "y": 4104,
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/disturbed-balance",
+              "checkedAt": "2026-10-15",
+              "build": {
+                "scheme": "metabot",
+                "value": "0.0.4387.0"
+              },
+              "note": "marker position in map pixels (≈ 1 m, docs/research/2026-10-location-coverage.md §4); giver and turn-in share one marker (S·T)"
+            }
+          ]
+        }
       },
       "steps": [
         {
@@ -2994,14 +4307,40 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
           "fields": [
-            "giver.zone",
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
             "turnin.zone"
           ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/disturbed-balance",
+          "fields": [
+            "giver.npc",
+            "giver.place",
+            "giver.kibelisk",
+            "giver.meters",
+            "giver.coords",
+            "turnin.npc",
+            "turnin.place",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "turnin.coords"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
@@ -3111,12 +4450,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -3130,6 +4463,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Odar's Shade is not a registry zone, camp or Kibelisk; Kibelisk Odar's Shade is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -3230,12 +4569,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "turnin.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "giver.zone"
@@ -3249,6 +4582,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Minushan Site is not a registry zone, camp or Kibelisk; Kibelisk Minushan Site is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -3349,13 +4688,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/finding-stolen-relics",
           "fields": [
             "giver.coords",
@@ -3365,6 +4697,18 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Minushan Site is not a registry zone, camp or Kibelisk; Kibelisk Minushan Site is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Minushan Site is not a registry zone, camp or Kibelisk; Kibelisk Minushan Site is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -3385,7 +4729,7 @@
       "next": "sq:2102220",
       "giver": {
         "npc": "Gohok",
-        "place": null,
+        "place": "Minushan Site",
         "zone": "zone:altgard-unplaced",
         "kibelisk": "Minushan Site",
         "meters": 34,
@@ -3404,8 +4748,8 @@
       },
       "turnin": {
         "npc": "Nemon",
-        "place": null,
-        "zone": "zone:altgard-unplaced",
+        "place": "Uruthumheim",
+        "zone": "zone:uruthumheim",
         "kibelisk": "Uruthumheim Cliff",
         "meters": 46,
         "coords": {
@@ -3469,13 +4813,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/voice-of-rage",
           "fields": [
             "giver.kibelisk",
@@ -3487,13 +4824,33 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Minushan Site is not a registry zone, camp or Kibelisk; Kibelisk Minushan Site is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/voice-of-rage",
+          "fields": [
+            "giver.place",
+            "turnin.place",
+            "turnin.zone"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "turnin.zone": "verified"
       }
     },
     {
@@ -3507,8 +4864,8 @@
       "next": "sq:2102225",
       "giver": {
         "npc": "Nemon",
-        "place": null,
-        "zone": "zone:altgard-unplaced",
+        "place": "Uruthumheim",
+        "zone": "zone:uruthumheim",
         "kibelisk": "Uruthumheim Cliff",
         "meters": 46,
         "coords": {
@@ -3599,12 +4956,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -3622,12 +4973,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/tangled-past",
+          "fields": [
+            "giver.place",
+            "giver.zone"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "verified",
         "turnin.zone": "inferred"
       }
     },
@@ -4792,8 +6156,8 @@
       "next": "sq:2102310",
       "giver": {
         "npc": "Nemon",
-        "place": null,
-        "zone": "zone:altgard-unplaced",
+        "place": "Nornir Assembly",
+        "zone": "zone:nornir-assembly",
         "kibelisk": "Nornir Assembly",
         "meters": 153,
         "coords": {
@@ -4888,12 +6252,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -4911,12 +6269,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/bitter-reality",
+          "fields": [
+            "giver.place",
+            "giver.zone"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "verified",
         "turnin.zone": "inferred"
       }
     },
@@ -5531,12 +6902,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -5551,6 +6916,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): no giver on the page (quest starts by itself). Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -6463,12 +7834,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "turnin.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "giver.zone"
@@ -6482,6 +7847,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -6602,13 +7973,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/powder-of-death",
           "fields": [
             "giver.coords",
@@ -6616,6 +7980,18 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -6724,13 +8100,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/creion-of-gribade",
           "fields": [
             "giver.coords",
@@ -6738,6 +8107,18 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -6866,13 +8247,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/frozen-fafnite",
           "fields": [
             "giver.coords",
@@ -6882,6 +8256,18 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -6994,12 +8380,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -7013,6 +8393,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Steel Hammer Workcamp is not a registry zone, camp or Kibelisk; Kibelisk Steel Hammer Workcamp is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -7419,8 +8805,8 @@
       "next": "sq:2102600",
       "giver": {
         "npc": "Nemon",
-        "place": null,
-        "zone": "zone:altgard-unplaced",
+        "place": "Southern Gribade Highland",
+        "zone": "zone:southern-gribade-highland",
         "kibelisk": "Idun's Lake",
         "meters": 20,
         "coords": {
@@ -7503,12 +8889,6 @@
           ]
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "turnin.zone"
@@ -7526,12 +8906,25 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/mirror-of-greed",
+          "fields": [
+            "giver.place",
+            "giver.zone"
+          ],
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "note": "Metabot quest page: Start & turn-in table and map markers (Data & Research, data/research/story-locations-metabot-2026-10.csv)"
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
+        "giver.zone": "verified",
         "turnin.zone": "inferred"
       }
     },
@@ -9468,12 +10861,6 @@
           "checkedAt": "2026-10-12"
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "turnin.zone"
-          ]
-        },
-        {
           "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
           "fields": [
             "giver.zone"
@@ -9487,6 +10874,12 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",
@@ -9617,19 +11010,24 @@
           "checkedAt": "2026-10-12"
         },
         {
-          "inferred": "Zone not recorded in the v1 data (DATA-FORMAT-V2 §9 data task): placeholder zone.",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
           "fields": [
             "giver.coords"
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "inferred": "Giver zone not found (Metabot quest page read 2026-10-15): Location Fang Hideout is not a registry zone, camp or Kibelisk; Kibelisk Fang Hideout is in no zone record. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone not found (Metabot quest page read 2026-10-15): on map Abyss_Reshanta_A (Chaotic Lower Reshanta, Location Latesran Eastern Root), outside the Altgard zone registry. Placeholder zone kept for an owner check (data/research/story-locations-metabot-2026-10.csv).",
+          "fields": [
+            "turnin.zone"
+          ]
         }
       ],
       "verifiedAt": "2026-10-14",

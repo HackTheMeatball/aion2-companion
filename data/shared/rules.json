@@ -525,13 +525,20 @@
         {
           "url": "https://www.playnews.gg/en/guides/aion-2-stigmas-how-to-unlock-them-and-farm-stigma-shards",
           "note": "shop caps only"
+        },
+        {
+          "inferred": "Owner-confirmed in game (docs/feedback/2026-10-14-owner.md F5): unlocking (learning) a stigma costs 1 point and the stigma then starts at Lv 1, i.e. the Lv 1 entry of this table. Upgrade costs (Lv 2+) are not owner-checked. No screen code assigned yet (DATA-FORMAT-V2 §14.2).",
+          "fields": [
+            "value"
+          ]
         }
       ],
       "status": "verified",
       "notes": [
         "stigma Lv 1-5: 1 shard each, 6-10: 2, 11-15: 4, 16-20: 8 (cumulative 5/15/35/75). Lv 21+: Superior Stigma Shards.",
         "2-source (Metabot, allthings.how agree on table, learn=1 shard, income). Not seen on an in-game screen; independence of allthings.how from Metabot not provable. thegameswiki/PlayNews give no numbers.",
-        "From leveling alone (30 points by 45) TD to 10 (15) + 3 others learned (3) = 18 fits; IC to 20 (75) does not before 45."
+        "From leveling alone (30 points by 45) TD to 10 (15) + 3 others learned (3) = 18 fits; IC to 20 (75) does not before 45.",
+        "F5 (owner, 2026-10-14): learn = Lv 1 = 1 point. The app already counts it: ST_COST(1) = 1 is the learn cost (Mark equipped takes 1 shard), upgrades start at Lv 2, and the Stigmas card plan total sums Lv 1..target per planned stigma (92 for the guide build). Pinned by the core test \"F5: learning a stigma is its level 1\"."
       ],
       "verifiedAt": "2026-10-12"
     },

@@ -45,6 +45,41 @@ export default (test, M) => {
     const q = M.QUESTS[M.QUESTS.length - 1][1], c = M.rankNext(S({ level: 45, quest: q, storyEnd: q })).find(c => c.story);
     assert.deepEqual([c.v, c.act], ['end', '']);
   });
+  /* "Near your story step" (PR #47 review finding 1): the story record's own turn-in zone, never a Kibelisk guess.
+     atTurnin = the turn-in is the next open step (every objective before it ticked). */
+  const atTurnin = (q, lv) => { const n = (M.QUEST_STEPS[q] || []).length;
+    return S({ level: lv, quest: q, showTalk: true, qsteps: n ? { [q]: Array.from({ length: n - 1 }, (_, i) => i) } : {} }); };
+  const areaAt = s => M.storyAreaOf(M.storyHereOf(s), M.KIB_AREA), cardArea = s => M.rankNext(s).filter(c => ['sd', 'sh', 'rq'].includes(c.kind)).map(c => c.hereArea);
+  test('near your story step: a placeholder turn-in zone gives no area, even with a Kibelisk that has a zone vote', () => {
+    for (const [q, lv] of [['Empyrean Monolith', 16], ['Verdant Melody', 22], ['Watchful Eyes', 19], ['Farewells', 45]]) {
+      const s = atTurnin(q, lv), h = M.storyHereOf(s);
+      assert.equal(h.zone, '', q + ' turn-in zone is the placeholder'); assert.ok(M.KIB_AREA[h.kib], q + ' Kibelisk has a vote (the old guess)');
+      assert.equal(areaAt(s), null, q); assert.ok(cardArea(s).length && cardArea(s).every(a => a === null), q);
+    }
+  });
+  test('near your story step: a real record zone wins over the Kibelisk vote (Dead Men Tell No Tales: Crypt, not Nameless Cemetery)', () => {
+    const s = atTurnin('Dead Men Tell No Tales', 15), h = M.storyHereOf(s);
+    assert.deepEqual([h.kib, h.zone, M.KIB_AREA[h.kib]], ['Neglected Crematorium', 'Crypt', 'Nameless Cemetery']);
+    assert.equal(areaAt(s), 'Crypt'); assert.ok(cardArea(s).every(a => a === 'Crypt'));
+    const sd = M.rankNext(s).find(c => c.kind === 'sd'); assert.notEqual(sd.pick.area, 'Nameless Cemetery');
+  });
+  test('near your story step: unchanged where the turn-in zone was known before PR #47 (Lv 24+); objectives keep the Kibelisk vote', () => {
+    /* Before: KIB_AREA[turninKib] for every quest. Now: the record zone. They differ only where listed here:
+       - Lake of Confrontation / An Ill Fate's Resolution turn in at Idun's Lake (a zone with its own dungeon and
+         stronghold); the Kibelisk "Idun's Lake" votes Western Gribade Highland;
+       - the turn-in Kibelisk has no vote, so there was no area: Preparations for Restoration, Visible Trap, Destruction
+         Archon Underground Fortress (zones known before), Voice of Rage (zone added by PR #47);
+       - Farewells' turn-in zone is still the placeholder. */
+    const CHANGED = { 'Lake of Confrontation': "Idun's Lake", "An Ill Fate's Resolution": "Idun's Lake", 'Preparations for Restoration': 'Purifying Forest',
+      'Visible Trap': 'Basfelt Ruins', 'Destruction Archon Underground Fortress': 'Basfelt Ruins', 'Voice of Rage': 'Uruthumheim', Farewells: null }, bad = [];
+    M.QUESTS.filter(([l]) => l >= 24).forEach(([l, q]) => { const L = M.QUEST_LOC[q] || {}; if (!L.turninKib) return;
+      const want = q in CHANGED ? CHANGED[q] : M.KIB_AREA[L.turninKib] || null, got = areaAt(atTurnin(q, l));
+      if (got !== want) bad.push(`${q}: ${got} ≠ ${want}`);
+      if (q in CHANGED && want === (M.KIB_AREA[L.turninKib] || null)) bad.push(`${q}: listed as changed but isn't`); });
+    assert.deepEqual(bad, []);
+    const [l, q] = M.QUESTS.find(([, n]) => (M.QUEST_STEPS[n] || []).some(t => /^(?!Turn in).*\(Kibelisk: /.test(t))), s = S({ level: l, quest: q, showTalk: true });
+    const h = M.storyHereOf(s); assert.ok(h && !('zone' in h), q); assert.equal(areaAt(s), M.KIB_AREA[h.kib] || null, q);
+  });
   test('gate sweep: every story position at its level, one below and 45 — exactly one story card; no actionable step before its level or story gate, or after the story passed it', () => {
     const bad = [];
     const gateOf = it => it && (it.story || it.after);
