@@ -4,7 +4,8 @@
    With neither --only nor --shard it runs every suite except `perf` (non-blocking; `npm run test:perf` or --only perf).
    --shard <name> runs one CI shard (SHARDS below; .github/workflows/ci.yml runs one job per shard in parallel).
    `node tests/run.mjs --check-shards` (no build needed) fails unless every blocking suite is in exactly one shard and
-   the shard names equal the `shard:` matrix list in ci.yml; the CI data job runs it, so a new suite can't be left out.
+   the shard names equal the `shard:` matrix list in ci.yml, and a ci.yml step runs each browser-free suite (core,
+   schema); the CI data job runs it, so a suite can't be left out.
    Web fonts (and service workers, except where a suite allows them) are blocked in the browsers unless --with-fonts
    (tests/support/block-web-fonts.cjs), so layouts render with fallback fonts on every machine.
    A failed suite is re-run once (--retries 0 to turn off); a pass on retry is reported as FLAKY with the first run's
@@ -50,13 +51,15 @@ const SHARDS = {
   golden: ['golden', 'a11y', 'mig2', 'mig1', 'site'],
   checks: ['e1', 'e2', 'gates', 'e4', 'e3'],
 };
-const SHARD_FREE = ['core', 'schema'];
+/* ...and the CI data job must really run them (checked below against ci.yml's text). */
+const SHARD_FREE = { core: /npm run test:core|node tests\/core\.mjs/, schema: /npm run test:data|node tests\/schema\.mjs/ };
 if (flag('check-shards')) {
-  const bad = [], seen = Object.values(SHARDS).flat().concat(SHARD_FREE);
+  const bad = [], seen = Object.values(SHARDS).flat().concat(Object.keys(SHARD_FREE));
   for (const n of ALL.filter(n => !NONBLOCKING.includes(n))) { const c = seen.filter(x => x === n).length; if (c !== 1) bad.push(`${n} is in ${c} shards (needs exactly 1)`); }
   for (const n of seen) if (!ALL.includes(n) || NONBLOCKING.includes(n)) bad.push(`${n} in a shard is not a blocking suite`);
   const yml = readFileSync(join(ROOT, '.github', 'workflows', 'ci.yml'), 'utf8'), m = yml.match(/^\s*shard:\s*\[([^\]]*)\]/m);
   const ci = m ? m[1].split(',').map(x => x.trim()).filter(Boolean) : null;
+  for (const [n, re] of Object.entries(SHARD_FREE)) if (!yml.split('\n').some(l => /^\s*(- )?run:/.test(l) && re.test(l))) bad.push(`${n} is in no shard, but no ci.yml step runs it (${re})`);
   if (!ci) bad.push('no `shard: [...]` matrix list in .github/workflows/ci.yml');
   else if (ci.slice().sort().join() !== Object.keys(SHARDS).sort().join()) bad.push(`ci.yml shards [${ci}] != tests/run.mjs SHARDS [${Object.keys(SHARDS)}]`);
   console.log(bad.length ? 'SHARD CHECK FAILED\n' + bad.join('\n') : `SHARD CHECK PASSED (${Object.keys(SHARDS).length} shards: ${Object.entries(SHARDS).map(([k, v]) => k + '=' + v.join('+')).join(' ')})`);
