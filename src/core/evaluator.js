@@ -17,6 +17,9 @@ import { GATE_GRAPH } from "../data/gate-graph.js";
 
 /* strongest first; an atom without a basis counts as legacy (carried over, no recorded source) */
 const EV_BASES = ["sourced", "owner", "rule", "inferred", "owner-check", "legacy"];
+const EV_RANK = Object.fromEntries(EV_BASES.map((b, i) => [b, i]));
+/* a met gate (shared: nothing writes to a result) */
+const EV_MET = Object.freeze({ ok: true, blockers: Object.freeze([]) });
 const EV_KIND_ORDER = { story: 0, level: 1, done: 2 };
 /* per graph: story name → chain index (the save stores the name), story id → index, save key → node id */
 const evIndex = new WeakMap();
@@ -33,24 +36,25 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false } = {}) {
   const N = graph.nodes, ix = evIndexOf(graph), checks = c.checks || {}, lv = c.level || 0;
   /* pos: index of the current quest in the story chain, -1 if unset or unknown */
   const pos = c.quest && ix.byName.has(c.quest) ? ix.byName.get(c.quest) : -1;
-  const memo = new Map(), busy = new Set();
+  const memo = new Map(), BUSY = {};
   let evals = 0;
 
-  /* one gate → { ok, blockers }; playerChecked atoms go to info, atom bases to bases */
-  const test = (g, info, bases) => {
-    if (g.all) { const r = g.all.map(x => test(x, info, bases)); return { ok: r.every(x => x.ok), blockers: r.flatMap(x => x.blockers) }; }
-    if (g.any) { const r = g.any.map(x => test(x, info, bases)); if (r.some(x => x.ok)) return { ok: true, blockers: [] };
-      return { ok: false, blockers: r.reduce((a, b) => b.blockers.length < a.blockers.length ? b : a).blockers }; }   /* the cheapest branch */
-    if (g.playerChecked) { info.push(g); return { ok: true, blockers: [] }; }
-    bases.push(g.basis || "legacy");
-    if (g.level !== undefined) return lv >= g.level ? { ok: true, blockers: [] } : { ok: false, blockers: [{ kind: "level", need: g.level, have: lv }] };
+  /* one gate → { ok, blockers }; playerChecked atoms go to acc.info, the weakest atom basis to acc.worst */
+  const test = (g, acc) => {
+    if (g.all) { let bs = null; for (const x of g.all) { const r = test(x, acc); if (!r.ok) bs = bs ? bs.concat(r.blockers) : r.blockers; }
+      return bs ? { ok: false, blockers: bs } : EV_MET; }
+    if (g.any) { let best = null; for (const x of g.any) { const r = test(x, acc); if (r.ok) best = EV_MET; else if (!best || (!best.ok && r.blockers.length < best.blockers.length)) best = r; }
+      return best || { ok: false, blockers: [] }; }   /* none holds: the cheapest branch (fewest blockers) */
+    if (g.playerChecked) { acc.info.push(g); return EV_MET; }
+    acc.worst = Math.max(acc.worst, EV_RANK[g.basis] ?? EV_RANK.legacy);
+    if (g.level !== undefined) return lv >= g.level ? EV_MET : { ok: false, blockers: [{ kind: "level", need: g.level, have: lv }] };
     if (g.story) {
       const i = ix.byId.get(g.story), name = graph.story[i][1], turnIn = g.is === "turnedIn";
       const ok = pos >= 0 && (turnIn ? pos > i || (pos === i && c.storyEnd === name) : pos >= i);
-      return ok ? { ok, blockers: [] } : { ok, blockers: [{ kind: "story", quest: g.story, name, ahead: pos < 0 ? null : i - pos + (turnIn ? 1 : 0), ...(turnIn ? { turnIn } : {}) }] };
+      return ok ? EV_MET : { ok, blockers: [{ kind: "story", quest: g.story, name, ahead: pos < 0 ? null : i - pos + (turnIn ? 1 : 0), ...(turnIn ? { turnIn } : {}) }] };
     }
     if (g.done) { const y = node(g.done); if (!y) throw new Error(`evaluate: unknown node ${g.done}`);
-      return y.done !== false ? { ok: true, blockers: [] } : { ok: false, blockers: [{ kind: "done", of: g.done, chain: y.blockers }] }; }
+      return y.done !== false ? EV_MET : { ok: false, blockers: [{ kind: "done", of: g.done, chain: y.blockers }] }; }
     throw new Error("evaluate: unknown atom " + JSON.stringify(g));
   };
   const rootOf = bs => { const b = bs[0]; return !b ? null : b.kind === "done" && b.chain.length ? rootOf(b.chain) : b; };
@@ -66,23 +70,25 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false } = {}) {
   };
 
   function node(id) {
-    if (memo.has(id)) return memo.get(id);
+    const m = memo.get(id);
+    if (m === BUSY) throw new Error(`evaluate: cycle at ${id}`);   /* the generator rejects cycles; a test graph might not */
+    if (m) return m;
     const n = N[id];
     if (!n) return null;
-    if (busy.has(id)) throw new Error(`evaluate: cycle at ${id}`);   /* the generator rejects cycles; a test graph might not */
-    busy.add(id); evals++;
-    const info = [], bases = [];
+    memo.set(id, BUSY); evals++;
+    const acc = { info: [], worst: -1 };
     /* a plan node inherits its board's gate (§10) */
-    const req = test(n.board ? { all: [n.req, N[n.board].req] } : n.req, info, bases);
-    const blockers = req.blockers.map((b, j) => [b, j]).sort((a, b) => EV_KIND_ORDER[a[0].kind] - EV_KIND_ORDER[b[0].kind] || a[1] - b[1]).map(([b]) => b);
+    const req = test(n.board ? { all: [n.req, N[n.board].req] } : n.req, acc);
+    const blockers = req.blockers.length < 2 ? req.blockers
+      : req.blockers.map((b, j) => [b, j]).sort((a, b) => EV_KIND_ORDER[a[0].kind] - EV_KIND_ORDER[b[0].kind] || a[1] - b[1]).map(([b]) => b);
     let done = false, via = null;
     const tickable = n.done.includes("tick");
     if (tickable && n.key !== undefined && checks[n.key]) done = "tick";
-    else if (!tickable || derived) for (const e of n.done) if (e !== "tick" && test(e, [], []).ok) { done = "derived"; via = evVia(e); break; }
-    const worst = bases.reduce((w, b) => Math.max(w, EV_BASES.indexOf(b)), -1);
-    const r = { id, kind: n.kind, key: n.key, done, ...(via ? { via } : {}), open: req.ok, blockers, root: rootOf(blockers), info,
-      basis: worst < 0 ? null : EV_BASES[worst], eta: req.ok ? null : etaOf(blockers) };
-    busy.delete(id); memo.set(id, r);
+    else if (!tickable || derived) for (const e of n.done) if (e !== "tick" && test(e, { info: [], worst: -1 }).ok) { done = "derived"; via = evVia(e); break; }
+    const r = { id, kind: n.kind, key: n.key, done, open: req.ok, blockers, root: rootOf(blockers), info: acc.info,
+      basis: acc.worst < 0 ? null : EV_BASES[acc.worst], eta: req.ok ? null : etaOf(blockers) };
+    if (via) r.via = via;
+    memo.set(id, r);
     return r;
   }
 
