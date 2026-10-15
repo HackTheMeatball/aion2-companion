@@ -48,7 +48,7 @@ function mtValuesOf(c) {
 }
 /* The stamps in mt, flat: Map "path" → [path, [t, value]]. Malformed entries are skipped. */
 const MT_DEPTH = { checks: 1, started: 1, areaRun: 1, rqSnooze: 1, stLv: 1, stPick: 1, dvCost: 1, qsteps: 2, qsub: 3 };
-const isMtStamp = x => Array.isArray(x) && x.length === 2 && typeof x[0] === "number";
+const isMtStamp = x => Array.isArray(x) && x.length === 2 && typeof x[0] === "number" && Number.isFinite(x[0]) && x[0] >= 0;
 function mtStampsOf(mt) {
   const out = new Map();
   const walk = (o, p, d) => { if (!o || typeof o !== "object" || Array.isArray(o)) return;
@@ -58,6 +58,12 @@ function mtStampsOf(mt) {
 }
 const mtSetIn = (o, p, v) => { let x = o; p.slice(0, -1).forEach(k => { if (!x[k] || typeof x[k] !== "object" || Array.isArray(x[k])) x[k] = {}; x = x[k]; }); x[p[p.length - 1]] = v; };
 
+/* A new stamp is strictly later than the one it replaces (per-item Lamport bump), so an edit on a device whose clock
+   went back or runs behind still beats the value it changed. Time-0 stamps (unknown) stay 0. */
+const mtNext = (prev, t) => t > 0 && typeof prev === "number" ? Math.max(t, prev + 1) : t;
+/* Seconds from a stored ms time; anything that isn't a positive finite number (a broken import) gives 0. */
+export const mtSecOf = ms => typeof ms === "number" && Number.isFinite(ms) && ms > 0 ? Math.floor(ms / 1000) : 0;
+
 /* Stamp every timed value of the character that differs from its stamp (or has none) with time t; a value that is gone
    gets a tombstone. Returns the number of stamps written. Used (1) by every save, so each change carries the time it
    was saved, (2) at load, so changes made by a build without times (rollback) are stamped then, (3) once by the
@@ -66,8 +72,8 @@ export function stamp(c, t) {
   const vals = mtValuesOf(c), st = mtStampsOf(c.mt);
   let n = 0;
   const mt = c.mt && typeof c.mt === "object" && !Array.isArray(c.mt) ? c.mt : (c.mt = {});
-  vals.forEach(([p, v], key) => { const s0 = st.get(key); if (!s0 || !mtSame(s0[1][1], v)) { mtSetIn(mt, p, [t, v]); n++; } });
-  st.forEach(([p, s0], key) => { if (!vals.has(key) && s0[1] !== null) { mtSetIn(mt, p, [t, null]); n++; } });
+  vals.forEach(([p, v], key) => { const s0 = st.get(key); if (!s0 || !mtSame(s0[1][1], v)) { mtSetIn(mt, p, [mtNext(s0 && s0[1][0], t), v]); n++; } });
+  st.forEach(([p, s0], key) => { if (!vals.has(key) && s0[1] !== null) { mtSetIn(mt, p, [mtNext(s0[0], t), null]); n++; } });
   return n;
 }
 /* What storeState() runs before each write (the page passes Date.now()). savedAt (ms) is the time of the last saved
@@ -76,7 +82,7 @@ export function stamp(c, t) {
    stored as they are. */
 export function stampSave(save, nowMs) {
   if (!save.stampV1) return;
-  if (stamp(char(save), Math.floor(nowMs / 1000))) save.savedAt = nowMs;
+  if (stamp(char(save), mtSecOf(nowMs))) save.savedAt = nowMs;
 }
 
 /* The character's timed items for merging: Map "path" → [path, [t, value]]; a value with no matching stamp counts as
@@ -92,11 +98,12 @@ function mtItemsOf(c) {
    Character: per item, the later change wins (an un-tick dated after a tick survives); flags: OR; schemaVersion and
    savedAt: the larger. View settings, unknown top-level fields and the local-only character fields (dvLast, dvLastAt,
    dvPts, crystals) stay the local save's: the synced part (syncedPart) is commutative, associative and idempotent.
-   Neither input is changed. */
+   Neither input is changed, and the result shares no objects with them. */
 export function merge(a, b) {
   const out = JSON.parse(JSON.stringify(a)), ca = char(a), cb = char(b), co = char(out);
   ONE_TIME_FLAGS.forEach(f => { if (a[f] || b[f]) out[f] = true; });
-  ["schemaVersion", "savedAt"].forEach(f => { const v = Math.max(+a[f] || 0, +b[f] || 0); if (v || f in a || f in b) out[f] = v; });
+  const num = x => typeof x === "number" && Number.isFinite(x) && x > 0 ? x : 0;
+  ["schemaVersion", "savedAt"].forEach(f => { const v = Math.max(num(a[f]), num(b[f])); if (v || f in a || f in b) out[f] = v; });
   const ia = mtItemsOf(ca), ib = mtItemsOf(cb), win = new Map(ia);
   ib.forEach((x, key) => { const y = win.get(key); if (!y || cmpStamp(y[1], x[1]) < 0) win.set(key, x); });
   /* rebuild every timed field from the winners; containers that either side had stay (possibly empty) */
@@ -111,7 +118,8 @@ export function merge(a, b) {
   delete co.quest; delete co.storyEnd;
   const mt = {};
   [...win.keys()].sort().forEach(key => {
-    const [p, s0] = win.get(key), v = s0[1], f = p[0];
+    /* a copy: the result shares no objects with the inputs (values can be lists or objects: rotSeen, customBuild) */
+    const [p, s1] = win.get(key), s0 = JSON.parse(JSON.stringify(s1)), v = s0[1], f = p[0];
     mtSetIn(mt, p, s0);
     if (v === null) return;
     if (SYNC_MAPS.includes(f)) { co[f] = co[f] || {}; co[f][p[1]] = v; }

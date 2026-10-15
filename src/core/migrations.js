@@ -6,7 +6,7 @@ import { GATES } from "../data/milestones.js";
 import { QUESTS } from "../data/story.js";
 import { STIGMA_PLAN } from "../data/build.js";
 import { char } from "./state.js";
-import { SAVE_SCHEMA, stamp } from "./sync.js";
+import { SAVE_SCHEMA, mtSecOf, stamp } from "./sync.js";
 
 /* E1: copy checks / started / areaRun from the old position keys to rq: / sd: keys (old keys stay). */
 export function migrateV5(s) {
@@ -53,6 +53,6 @@ export function migrate(s, hadSave, store, now = 0) {
      with time 0 (unknown; an imported export's savedAt when it has one, N1), so it never outranks a dated change. Writes
      nothing: the stamps go out with the next save (the stored save, and so golden's record, stay as they were).
      Later loads re-stamp, with the page's time, whatever a build without times changed (rollback re-stamp). */
-  if (!s.stampV1) { s.stampV1 = true; s.schemaVersion = Math.max(+s.schemaVersion || 0, SAVE_SCHEMA); stamp(c, s.savedAt ? Math.floor(s.savedAt / 1000) : 0); }
+  if (!s.stampV1) { s.stampV1 = true; s.schemaVersion = Math.max(+s.schemaVersion || 0, SAVE_SCHEMA); stamp(c, mtSecOf(s.savedAt)); }
   else stamp(c, now);
 }

@@ -129,6 +129,30 @@ export default (test, M) => {
     const m = M.merge(a, b); C(m).checks['g22:1'] = true; const a2 = save(M, m, 300);
     assert.equal(C(M.merge(a2, b)).checks['g22:1'], true); assert.equal(C(M.merge(b, a2)).checks['g22:1'], true);
   });
+  /* clock skew: B takes A's tick through a merge, then un-ticks with a clock earlier than A's tick time */
+  const skew = (label, tTick, tUntick) => test(`merge: ${label}: the un-tick still survives, in both orders`, () => {
+    const A = load(M, { ...SEEDS, checks: {}, level: 20, quest: '' }, 0).state;
+    C(A).checks['g22:1'] = true; C(A).started = { 'rq:2202017': 1 }; const a = save(M, A, tTick);
+    const B = M.merge(load(M, { ...SEEDS, checks: {}, level: 20, quest: '' }, 0).state, a);
+    C(B).checks['g22:1'] = false; delete C(B).started['rq:2202017']; const b = save(M, B, tUntick);
+    assert.ok(C(b).mt.checks['g22:1'][0] > tTick && C(b).mt.started['rq:2202017'][0] > tTick, 'stamps bumped past the tick');
+    for (const m of [M.merge(a, b), M.merge(b, a)]) { assert.equal(C(m).checks['g22:1'], false); assert.deepEqual(C(m).started, {}); }
+  });
+  skew('clock set back on one device', 1760440000, 1760000000);
+  skew('device running 1 h behind', 1760440000, 1760440000 - 3600 + 60);
+  test('stamps: time-0 stamps stay 0 (no bump for unknown times)', () => {
+    const st = load(M, { ...SEEDS, checks: { 'g6:0': true }, level: 5, quest: '' }, 0).state;
+    C(st).checks['g6:0'] = false; M.stamp(C(st), 0); assert.deepEqual(C(st).mt.checks['g6:0'], [0, false]);
+  });
+  test('merge: the result shares no objects with its inputs', () => {
+    const A = load(M, { ...SEEDS, checks: {}, level: 30, quest: '' }, 0).state, B = clone(A);
+    C(B).customBuild = { base: 'build:assassin:guide', nodes: ['n1'] }; C(B).rotSeen = ['a:1:0']; C(B).qsteps = { 'Land of Rifts': [1] };
+    const b = save(M, B, 100), a = save(M, A, 50), bCopy = clone(b), aCopy = clone(a);
+    for (const m of [M.merge(a, b), M.merge(b, a)]) {
+      C(m).customBuild.nodes.push('x'); C(m).rotSeen.push('y'); C(m).qsteps['Land of Rifts'].push(9); C(m).mt.level[0] = -1; C(m).mt.customBuild[1].nodes.push('z'); C(m).checks.zz = true;
+    }
+    assert.deepEqual([a, b], [aCopy, bCopy]);
+  });
   test('merge: a removal is a dated tombstone (started, snooze, objective)', () => {
     const A = load(M, { ...SEEDS, checks: {}, level: 20, quest: 'Land of Rifts', started: { 'rq:2202017': 1 }, rqSnooze: { 'rq:2202040': 26 }, qsteps: { 'Land of Rifts': [0, 1] } }, 0).state, B = clone(A);
     delete C(A).started['rq:2202017']; C(A).qsteps['Land of Rifts'] = [0]; const a = save(M, A, 100);
@@ -175,6 +199,9 @@ export default (test, M) => {
       const A = load(M, Object.assign(clone(exported), { seedLv12: true, stTriniel1: true, dvReset1: true }), T0 + 100).state;
       for (const m of [M.merge(A, b), M.merge(b, A)]) { assert.equal(C(m).checks['g22:1'], false, label + ': B\'s un-tick survives'); assert.equal(C(m).checks['g32:0'], true, label + ': B\'s tick survives'); }
     }
+    for (const bad of ['1760000000000', -5, null, true, { t: 1 }, 1e400 * 0])
+      assert.deepEqual(C(load(M, { ...old, savedAt: bad }, 5000).state).mt.checks, { 'g22:1': [0, true] }, 'invalid savedAt ' + JSON.stringify(bad) + ' → stamps at 0');
+    assert.equal(M.merge({ checks: {}, savedAt: 'x' }, { checks: {}, savedAt: 5 }).savedAt, 5);
     const withSavedAt = load(M, { ...old, savedAt: 777000 }, 5000).state;
     assert.deepEqual(C(withSavedAt).mt.checks, { 'g22:1': [777, true] }, 'an export with savedAt but no mt: stamped with savedAt');
   });
