@@ -114,7 +114,7 @@ const used = new Set([...src.matchAll(ICON_RE)].map(m => m[1]));
 const shipped = readdirSync(P('src/assets/icons')).filter(f => f.endsWith('.png')).map(f => f.slice(0, -4));
 for (const n of used) {
   if (!shipped.includes(n)) die(`src/ references assets/icons/${n}.png, which is missing`);
-  if (!blobs[n]) die(`no artifact blob id for ${n} in scripts/artifact-blobs.json`);
+  if (!(n in blobs)) die(`no artifact blob id for ${n} in scripts/artifact-blobs.json (null = not uploaded yet)`);
 }
 for (const n of shipped) if (!used.has(n)) die(`src/assets/icons/${n}.png is not referenced by src/`);
 
@@ -171,7 +171,12 @@ if (!art.includes(FONTS_TAG)) die('src/index.html: the styles/fonts.css <link> i
 `;
   art = art.replace(FONTS_TAG, () => js);
 }
-art = stamp(inline(art).replace(ICON_RE, (_, n) => '/_blob/' + blobs[n]), 'claude.ai');
+/* An icon added after the claude.ai artifact was frozen (DECISIONS D4) has no blob id until someone uploads it to the
+   artifact: null in scripts/artifact-blobs.json. The artifact build drops it (its quoted path becomes ""), so the page
+   shows the initials square there, as before the icon existed. Such an icon may only be referenced as a quoted string. */
+const NO_BLOB = /(["'])assets\/icons\/([\w-]+)\.png\1/g;
+art = stamp(inline(art).replace(NO_BLOB, (m, q, n) => blobs[n] === null ? q + q : m)
+  .replace(ICON_RE, (_, n) => blobs[n] ? '/_blob/' + blobs[n] : die(`assets/icons/${n}.png has no blob id and is not a quoted string`)), 'claude.ai');
 if (art.includes('@font-face')) die('dist-artifact/index.html still has an @font-face rule');
 for (const bad of ['__APP_VERSION__', '__APP_BUILD__', 'assets/icons/', 'assets/fonts/', 'fonts.googleapis', 'fonts.gstatic', 'serviceWorker', 'manifest.webmanifest', '<!doctype', '<head>', '<body>'])
   if (art.includes(bad)) die(`dist-artifact/index.html still contains "${bad}"`);
@@ -198,5 +203,5 @@ writeFileSync(join(DIST, 'build.json'), JSON.stringify({ build: BUILD }) + '\n')
 const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
 console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
-console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${used.size} icons as /_blob/<id> · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
+console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${[...used].filter(n => blobs[n]).length} icons as /_blob/<id>${[...used].some(n => blobs[n] === null) ? ` · ${[...used].filter(n => blobs[n] === null).length} without a blob id (initials there)` : ''} · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
 if (!existsSync(join(DIST, 'CNAME'))) die('dist/CNAME missing');

@@ -192,8 +192,11 @@ const checkReport = (label, m, want) => {
   /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
   {
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
-    const ids = [...art.matchAll(/\/_blob\/([0-9a-f]{32})/g)].map(x => x[1]), known = new Set(Object.values(blobs));
-    ok('artifact build: every icon is a known /_blob/ id, no relative icon paths', ids.length >= Object.keys(blobs).length && ids.every(i => known.has(i)) && !/assets\/icons\//.test(art), ids.length);
+    const ids = [...art.matchAll(/\/_blob\/([0-9a-f]{32})/g)].map(x => x[1]), known = new Set(Object.values(blobs).filter(Boolean));
+    ok('artifact build: every icon is a known /_blob/ id, no relative icon paths', ids.length >= known.size && ids.every(i => known.has(i)) && [...known].every(i => ids.includes(i)) && !/assets\/icons\//.test(art), ids.length);
+    /* Icons with no blob id yet (null: added after the artifact was frozen) ship on the site only; the artifact shows initials. */
+    const noBlob = Object.keys(blobs).filter(n => blobs[n] === null), web = fs.readFileSync(path.join(CFG.ROOT, 'dist', 'index.html'), 'utf8');
+    ok('artifact build: icons without a blob id are on the site build and in dist/assets/icons, absent from the artifact', noBlob.every(n => web.includes(`assets/icons/${n}.png`) && fs.existsSync(path.join(CFG.ROOT, 'dist', 'assets', 'icons', n + '.png')) && !art.includes(n + '.png')), noBlob);
     ok('artifact build: no service worker, manifest, canonical or document skeleton', !/serviceWorker|manifest\.webmanifest|rel="canonical"|<!doctype|<head>|<body>/i.test(art) && art.startsWith('<title>'));
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } });
     await ctx.addInitScript(() => { window.__saved = []; window.claude = { use: async name => name === 'downloads' ? { save: async o => { window.__saved.push(o); } } : null }; });
@@ -207,6 +210,8 @@ const checkReport = (label, m, want) => {
     ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
     checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '1', quest: 'A Village in the Fog', mode: 'Advanced', build: 'claude.ai' });   /* 0.2.1: fresh browser = Lv 1, first quest */
     ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
+    const ini = await p.evaluate(() => Object.entries(SP_ICONS).filter(([, v]) => !v).map(([n]) => [n, /class="spmini ini"/.test(spMini(n))]));
+    ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', ini.length === noBlob.filter(n => n.startsWith('sk-')).length && ini.every(x => x[1]), ini);
     await ctx.close();
   }
 

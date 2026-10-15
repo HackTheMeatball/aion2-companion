@@ -191,7 +191,8 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   name declared in two modules or in a module and the generated data (esbuild would rename one of them). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
   `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read.
 - It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
-  (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing
+  (`scripts/artifact-blobs.json`; `null` = not uploaded to the artifact yet: the artifact build drops that icon's quoted path,
+  so the page shows the initials square there), and that the fonts are all shipped and referenced with their OFL texts and nothing
   requests Google Fonts; then writes `dist/` (markers stripped; `public/`, icons and fonts copied; `sw.js` with the
   build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
   `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each

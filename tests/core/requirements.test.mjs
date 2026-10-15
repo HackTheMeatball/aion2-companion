@@ -85,4 +85,35 @@ export default (test, M) => {
     const list = ['Report — talk to Hadala', 'Go — kill 3 wolves'];
     assert.deepEqual(M.objIdxOf(S(), list), [1]); assert.deepEqual(M.objIdxOf(S({ showTalk: true }), list), [0, 1]);
   });
+  /* F7: the Build drawer's rotation lists only what the guide says you have at your level. */
+  const learnLv = n => M.SP_STEPS.find(x => x.s.n === n && x.L === 2).req, all = k => [...k.rmb, ...k.q, ...k.e];
+  test('rotation: a skill is absent below its learn level and present from it (Ambush 3, Heart Gore 4, Insignia Explosion 14)', () => {
+    for (const n of ['Ambush', 'Heart Gore', 'Insignia Explosion']) {
+      const L = learnLv(n);
+      assert.ok(!M.rotKeys(S({ level: L - 1 }), L - 1).rmb.includes(n), `${n} listed at Lv ${L - 1}`);
+      assert.ok(M.rotKeys(S({ level: L }), L).rmb.includes(n), `${n} missing at Lv ${L}`);
+    }
+    assert.deepEqual(M.rotKeys(S({ level: 1 }), 1), { rmb: ['Savage Roar'], q: ['Shadowstrike'], e: [] });
+  });
+  test('rotation: uses the Skills card unlock rule (SP_STEPS), not the key-stack rows: a later learn level hides the skill', () => {
+    const step = M.SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = step.req;
+    try { step.req = 6; assert.ok(!M.rotKeys(S({ level: 5 }), 5).rmb.includes('Ambush')); assert.ok(M.rotKeys(S({ level: 6 }), 6).rmb.includes('Ambush')); }
+    finally { step.req = was; }
+    assert.equal(M.skillLearned('Not a skill', 45), false);
+  });
+  test('rotation: at every level, every listed skill is one the Skills card has unlocked; stigmas only from their slot level', () => {
+    for (let lv = 1; lv <= 45; lv++) {
+      const k = M.rotKeys(S({ level: lv }), lv);
+      for (const n of [...k.rmb, ...k.q]) assert.ok(learnLv(n) <= lv, `${n} at Lv ${lv}`);
+      const open = M.stigmaSlots(S()).filter(x => lv >= x.lv).map(x => x.name);
+      assert.deepEqual(k.e, M.E_ORDER.filter(n => open.includes(n)), `E at Lv ${lv}`);
+    }
+  });
+  test('rotation: an equipped stigma waits for its slot level; equipped ones replace the open-slot fallback', () => {
+    const sl = M.stigmaSlots(S()), s2 = sl.find(x => x.n === 2), s1 = sl.find(x => x.n === 1);
+    const c = S({ checks: { [s1.k]: true, [s2.k]: true } });
+    assert.deepEqual(M.rotKeys(c, s2.lv - 1).e, [s1.name]);
+    assert.deepEqual(new Set(M.rotKeys(c, s2.lv).e), new Set([s1.name, s2.name]));
+    assert.ok(!all(M.rotKeys(c, s1.lv - 1)).includes(s1.name));
+  });
 };

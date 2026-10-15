@@ -42,16 +42,26 @@ on purpose: the guide shows nothing rather than an unverified value.
   requires every source URL to be listed.
 - **Brand art is original** (not game art): `public/favicon.svg`, `public/icons/*.png` and `brand/*.svg` are drawn as code
   by `tools/brand/build.py` (Daeva Companion, direction C), 2026-10-13. No NC material in them.
-- **Icon provenance not recorded.** The 23 PNGs in `src/assets/icons/` are NC Corporation's art. Record where each file
-  came from (site + page URL + date), so any permission request or takedown can be answered quickly. Fill in, then keep:
+- **Icon provenance not recorded** for the first 23 PNGs. All PNGs in `src/assets/icons/` are NC Corporation's art. Record
+  where each file came from (site + page URL + file URL + date), so any permission request or takedown can be answered
+  quickly. Fill in, then keep:
 
   | File | Source page | Retrieved |
   |---|---|---|
+  | sk-impact-hit.png | <https://metabot.gg/en/aion-2/skills/impact-hit-assassin> · file <https://metabot.gg/web/aion2/skills/13760000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-flash-slice.png | <https://metabot.gg/en/aion-2/skills/flash-slice> · file <https://metabot.gg/web/aion2/skills/13050000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-storm-rampage.png | <https://metabot.gg/en/aion-2/skills/storm-rampage> · file <https://metabot.gg/web/aion2/skills/13340000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-determination.png | <https://metabot.gg/en/aion-2/skills/determination> · file <https://metabot.gg/web/aion2/skills/13800000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-heightened-sixth-sense.png | <https://metabot.gg/en/aion-2/skills/heightened-sixth-sense> · file <https://metabot.gg/web/aion2/skills/13710000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
   | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
   | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+- **Icons not in the claude.ai artifact yet.** The five skill icons above (added 2026-10-15 under the standing icon OK)
+  have no `/_blob/` id: `scripts/artifact-blobs.json` lists them as `null`, so `dist-artifact` shows the initials square
+  for those skills, as before. To add them there, upload each PNG to the artifact's asset store and put its id in
+  `scripts/artifact-blobs.json` (docs/DEPLOY.md). The artifact is frozen (DECISIONS D4), so this may never be needed.
 - **Board-cost input can be replaced while typing** (likely, not confirmed; found 2026-10-15 by a real-time
   `journey` run, which crashed at Lv 40 with `fill: Element is not attached`). A milestone tick re-renders the page
   with a deferred `update()` 1150 ms later (1650 ms when its card leaves; `src/main.js`, tick handler), which rebuilds

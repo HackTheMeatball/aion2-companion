@@ -123,7 +123,8 @@ workflow run's deploy job.) Saved progress is unaffected either way.
 referenced as `/_blob/<id>` (the artifact's uploaded assets, ids in `scripts/artifact-blobs.json`), no service worker
 or manifest. Publish it to the **same artifact URL** as an update so its users keep their progress (claude.ai storage
 is per artifact). If an icon is added or changed, upload it to the artifact's asset store and put its new id in
-`scripts/artifact-blobs.json` before building.
+`scripts/artifact-blobs.json` before building. Until then the icon's entry is `null`: the build still passes and the
+artifact shows the initials square for it.
 
 Preview locally: `npm run build && npm run serve`, then open `http://localhost:8080/artifact/` (the server maps
 `/_blob/<id>` to the local icons).
