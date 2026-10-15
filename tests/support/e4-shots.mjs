@@ -14,11 +14,11 @@ mkdirSync(OUT, { recursive: true });
 const { server, url } = await startServer({});
 const b = await chromium.launch();
 
-/* save: the stored state; quest(QUESTS) picks the story quest in the page; shots: [selector, file suffix] */
+/* save: the stored state; quest(QUESTS) picks the story quest in the page; shots: [selector, file suffix, text the element must hold] */
 const CASES = [
   { name: '1-milestone-derived', save: { level: 22, checks: { 'g16:amulet': true }, open: { g16: true } }, quest: 'Daeva in a Dream+1', shots: [['#g16', '']] },
-  { name: '2-regional-follow-up', save: { level: 22, checks: {}, started: { 'rq:2202017': 1 }, open: { g22: true } }, quest: 'Daeva in a Dream+1', shots: [['#g22', ''], ['#nowStar', '-nextup']] },
-  { name: '3-lv44-forgotten-commander', save: { level: 44, checks: {}, showObj: true, showTalk: true, qsShowDone: true }, quest: 'Forgotten Commander', objs: true, shots: [['#nowStar', '-nextup'], ['#questSubs', '-journey']] },
+  { name: '2-regional-follow-up', save: { level: 22, checks: {}, started: { 'rq:2202017': 1 }, open: { g22: true } }, quest: 'Daeva in a Dream+1', shots: [['#g22', ''], ['#nsqWrap .ns-card', '-nextup', /Regional/]] },
+  { name: '3-lv44-forgotten-commander', save: { level: 44, checks: {}, showObj: true, showTalk: true, qsShowDone: true }, quest: 'Forgotten Commander', objs: true, shots: [['#nsqWrap .ns-card', '-nextup', /Forgotten Commander/], ['#questSubs', '-journey']] },
 ];
 for (const c of CASES) for (const when of ['before', 'after']) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });
@@ -32,8 +32,8 @@ for (const c of CASES) for (const when of ['before', 'after']) {
     localStorage.clear(); localStorage.setItem(k, JSON.stringify(st));
   }, [KEY, { ...FLAGS, open: {}, ...c.save }, c.quest, !!c.objs]);
   await p.reload(); await p.waitForTimeout(600);
-  for (const [sel, suf] of c.shots) {
-    const el = p.locator(sel).first(); await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(150);
+  for (const [sel, suf, hasText] of c.shots) {
+    const el = p.locator(sel, hasText ? { hasText } : {}).first(); await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(150);
     await el.screenshot({ path: join(OUT, `${c.name}${suf}-${when}.png`) });
   }
   await ctx.close();
