@@ -39,8 +39,8 @@ Both versions use the same save format, so this works in either direction.
 
 ## Development
 
-Requirements: Node 22+ and Python 3.10+ (only for regenerating data). No runtime dependencies; dev dependencies are
-esbuild (bundles the app's modules into the single-file page) and Playwright (tests).
+Requirements: Node 22+. No runtime dependencies; dev dependencies are esbuild (bundles the app's modules into the
+single-file page), ajv (validates the data against `data/schema/`) and Playwright (tests).
 
 ```sh
 npm ci                                   # once
@@ -50,7 +50,8 @@ npm run serve                            # http://localhost:8080/  (claude.ai bu
 npm test                                 # build, then every suite against dist/ (≈10–20 min)
 npm run test:quick                       # build, then the suites with a smaller regression matrix and no screenshots
 node tests/run.mjs --only e1,mig1        # selected suites (after a build)
-npm run gen                              # regenerate the app's data block from data/*.json
+npm run gen                              # validate data/**, run the cross-record checks, rewrite data/DATA_SOURCES.md
+npm run test:data                        # schema suite only (no browser, ≈1 s)
 ```
 
 ```

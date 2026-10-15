@@ -394,11 +394,33 @@ const sealedDungeons = SD_GROUPS.flatMap(({ band, names, prefix }) => names.map(
     if (d.src2) sources.push({ ...ref(d.src2), checkedAt: d.fetched });
   }
   if (!d || !d.src) sources.push({ inferred: "Zone from Metabot's Altgard dungeon table, as carried in v1 HIDEOUT_AREA (src/data/areas.js; the page URL was not recorded); band = the milestone that lists it.", fields: ['band', 'zone'] });
-  const fromSnap = loc && !(d && d.kib);
-  const l1 = LOC1.areas[n];
-  if (fromSnap && l1 && l1.src && l1.kib === loc.kib && l1.m === loc.m) sources.push({ url: l1.src, fields: ['entrance.kibelisk', 'entrance.meters'], ...(l1.note ? { note: l1.note } : {}) });
-  else if (fromSnap) sources.push({ inferred: 'Entrance Kibelisk and distance carried over from the page data before E2 (tools/gen/snapshots/area-loc-v287.json: allthings.how map pages; no page URL recorded for this one).', fields: ['entrance.kibelisk', 'entrance.meters'] });
+  /* Entrance and EXP not covered by a Metabot Exploration-quest page (kibSrc / xpSrc) came from allthings.how map pages
+     (the v1 AREA_LOC, archived in data/locations.json with each page URL). Cite that page wherever the archived values
+     match, and mark the field single-source (one guide site); without a recorded page, say so. */
+  const entFromQuest = !!(d && d.kibSrc), l1 = LOC1.areas[n];
   const xp = d && d.xp != null ? d.xp : (areaOld[n] || {}).xp;
+  const xpFromQuest = !!(d && d.xpSrc && d.xp != null);
+  const atPage = l1 && l1.src ? sources.find(s => s.url === l1.src) : null;
+  const entByPage = !!(loc && !entFromQuest && l1 && l1.src && l1.kib === loc.kib && l1.m === loc.m);
+  const xpByPage = !!(xp != null && !xpFromQuest && l1 && l1.src && l1.xp === xp);
+  const xpOwnSrc = xpByPage && l1.xp_src ? l1.xp_src : null;   /* the article that states the EXP, when v1 recorded one */
+  if (xpOwnSrc) sources.push({ url: xpOwnSrc, fields: ['xp'] });
+  const pageFields = [...(entByPage ? ['entrance.kibelisk', 'entrance.meters'] : []), ...(xpByPage && !xpOwnSrc ? ['xp'] : [])];
+  if (pageFields.length) {
+    if (atPage) atPage.fields = [...new Set([...(atPage.fields || []), ...pageFields])];
+    else sources.push({ url: l1.src, fields: pageFields, ...(l1.note ? { note: l1.note } : {}) });
+  }
+  /* Ascetic's Cave: its own page is the allthings.how map page and states the distance ("roughly 160 m") */
+  const ownPage = d && d.src && /allthings\.how\/aion-2\/map\//.test(d.src) ? sources.find(s => s.url === d.src) : null;
+  const entByOwn = !!(loc && !entFromQuest && !entByPage && ownPage);
+  if (entByOwn) ownPage.fields = [...new Set([...ownPage.fields, 'entrance.kibelisk', 'entrance.meters'])];
+  const entNoPage = !!(loc && !entFromQuest && !entByPage && !entByOwn);
+  if (entNoPage) sources.push({ inferred: 'Entrance Kibelisk and distance carried over from the page data before E2 (tools/gen/snapshots/area-loc-v287.json: allthings.how map pages; no page URL recorded for this one).', fields: ['entrance.kibelisk', 'entrance.meters'] });
+  const xpNoPage = xp != null && !xpFromQuest && !xpByPage;
+  if (xpNoPage) sources.push({ inferred: 'EXP carried over from the page data before E2 (allthings.how map pages); no page URL recorded for this one.', fields: ['xp'] });
+  const fromSnap = loc && !entFromQuest;
+  const fieldStatus = { ...(fromSnap ? { entrance: 'single-source' } : {}), ...(xp != null && !xpFromQuest ? { xp: 'single-source' } : {}) };
+  for (const [what, ok] of [['entrance', !loc || entFromQuest || entByPage || entByOwn], ['xp', xp == null || xpFromQuest || xpByPage]]) if (!ok) note('SD', n, what, 'has no recorded page (labelled)');
   const rec = {
     id: 'sd:' + mapSlug(n), key: `${prefix}:${mapSlug(n)}`, name: n, faction: 'asmodian', band, zone: zid(z), route: 'core',
     entrance: { npc: null, place: null, zone: zid(z), kibelisk: loc ? loc.kib : null, meters: loc ? loc.m ?? null : null },
@@ -408,7 +430,7 @@ const sealedDungeons = SD_GROUPS.flatMap(({ band, names, prefix }) => names.map(
     ...(d && d.bosses ? { bosses: d.bosses } : {}), ...(d && d.exploreQid ? { exploreQuestId: String(d.exploreQid) } : {}),
     requires: { level: band, basis: 'rule', note: 'milestone band (the dungeon is listed in milestone g' + band + ')' }, completesWith: ['tick'],
     sources, verifiedAt: d ? d.fetched : D12, status: 'verified',
-    ...(fromSnap ? { fieldStatus: { entrance: 'single-source' } } : {}),
+    ...(Object.keys(fieldStatus).length ? { fieldStatus } : {}),
   };
   const notes = []; if (d && d.notes) notes.push(d.notes);
   if (d && d.rewards && d.rewards.abyssPoints) notes.push(`Abyss Points ${d.rewards.abyssPoints} (Elyos column only).`);
@@ -433,8 +455,13 @@ const strongholds = shJ.map(s => {
     requires: { level: s.lo, basis: 'inferred', sources: [{ url: s.mapSrc }], note: "lo of the map's level range" }, completesWith: ['tick'],
     sources: [{ url: s.src, fields: ['gameId', 'rewards', 'steps'], checkedAt: s.fetched }, { url: s.mapSrc, fields: ['zone', 'levelRange', 'location'], checkedAt: s.fetched, ...(s.kibSrc && !/^https/.test(s.kibSrc) ? { note: 'location: ' + s.kibSrc } : {}) }],
     verifiedAt: s.fetched, status: 'verified', fieldStatus: { levelRange: 'inferred' },
+    ...(() => { /* v1 data/locations.json: an allthings.how article that also states the exploration-quest EXP */
+      const l1 = LOC1.areas[s.name]; if (!l1 || !l1.src || l1.xp == null) return {};
+      if (l1.xp !== (s.rewards || {}).xp) { note('§12.8 stronghold xp differs:', s.name, l1.xp, 'v2', (s.rewards || {}).xp); return {}; }
+      return { __xpSrc: { url: l1.src, fields: ['rewards.xp'], ...(l1.note ? { note: l1.note } : {}) } }; })(),
     notes: [...(s.notes || []), ...(s.levelBasis ? [s.levelBasis] : [])],
   };
+  if (r.__xpSrc) { r.sources.push(r.__xpSrc); delete r.__xpSrc; }
   return r;
 });
 

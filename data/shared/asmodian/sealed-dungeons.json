@@ -41,7 +41,8 @@
           "url": "https://allthings.how/aion-2/map/abandoned-archon-jail/",
           "fields": [
             "entrance.kibelisk",
-            "entrance.meters"
+            "entrance.meters",
+            "xp"
           ],
           "note": "allthings.how lv15 Moslan Forest; metabot page has no kib/xp; xp from known value"
         }
@@ -49,7 +50,8 @@
       "verifiedAt": "2026-10-12",
       "status": "verified",
       "fieldStatus": {
-        "entrance": "single-source"
+        "entrance": "single-source",
+        "xp": "single-source"
       }
     },
     {
@@ -200,6 +202,12 @@
           ]
         },
         {
+          "url": "https://allthings.how/?p=247635",
+          "fields": [
+            "xp"
+          ]
+        },
+        {
           "url": "https://allthings.how/aion-2/map/all-curing-cave/",
           "fields": [
             "entrance.kibelisk",
@@ -210,7 +218,8 @@
       "verifiedAt": "2026-10-12",
       "status": "verified",
       "fieldStatus": {
-        "entrance": "single-source"
+        "entrance": "single-source",
+        "xp": "single-source"
       }
     },
     {
@@ -255,13 +264,18 @@
           "fields": [
             "band",
             "zone",
-            "rewards"
+            "rewards",
+            "entrance.kibelisk",
+            "entrance.meters"
           ],
           "checkedAt": "2026-10-12"
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      },
       "notes": [
         "Not found on Metabot's dungeon list page (list was truncated at Lv 25). allthings.how gives 'roughly 160 m' to the Outskirts Stall teleport statue."
       ]
@@ -403,10 +417,20 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/closed-hideout/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      },
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
       ]
@@ -502,10 +526,20 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/den-of-exiles/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      },
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
       ]
@@ -1170,6 +1204,12 @@
           ]
         },
         {
+          "url": "https://allthings.how/?p=247464",
+          "fields": [
+            "xp"
+          ]
+        },
+        {
           "url": "https://allthings.how/aion-2/map/high-priest-s-ruins/",
           "fields": [
             "entrance.kibelisk",
@@ -1180,7 +1220,8 @@
       "verifiedAt": "2026-10-12",
       "status": "verified",
       "fieldStatus": {
-        "entrance": "single-source"
+        "entrance": "single-source",
+        "xp": "single-source"
       }
     },
     {
@@ -1309,6 +1350,12 @@
           ]
         },
         {
+          "url": "https://allthings.how/?p=247532",
+          "fields": [
+            "xp"
+          ]
+        },
+        {
           "url": "https://allthings.how/aion-2/map/insectoid-tunnel/",
           "fields": [
             "entrance.kibelisk",
@@ -1319,7 +1366,8 @@
       "verifiedAt": "2026-10-12",
       "status": "verified",
       "fieldStatus": {
-        "entrance": "single-source"
+        "entrance": "single-source",
+        "xp": "single-source"
       }
     },
     {
@@ -1540,6 +1588,12 @@
           ]
         },
         {
+          "url": "https://allthings.how/?p=247532",
+          "fields": [
+            "xp"
+          ]
+        },
+        {
           "url": "https://allthings.how/aion-2/map/library-of-patience/",
           "fields": [
             "entrance.kibelisk",
@@ -1550,7 +1604,8 @@
       "verifiedAt": "2026-10-12",
       "status": "verified",
       "fieldStatus": {
-        "entrance": "single-source"
+        "entrance": "single-source",
+        "xp": "single-source"
       }
     },
     {
@@ -1599,10 +1654,27 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/?p=247532",
+          "fields": [
+            "xp"
+          ]
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/library-of-wisdom/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source",
+        "xp": "single-source"
+      },
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only. App AREA_LOC xp value not confirmed by this page."
       ]
@@ -1970,10 +2042,20 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/place-of-rest/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      },
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
       ]
@@ -2621,10 +2703,20 @@
             "rewards"
           ],
           "checkedAt": "2026-10-12"
+        },
+        {
+          "url": "https://allthings.how/aion-2/map/twisted-pit/",
+          "fields": [
+            "entrance.kibelisk",
+            "entrance.meters"
+          ]
         }
       ],
       "verifiedAt": "2026-10-12",
       "status": "verified",
+      "fieldStatus": {
+        "entrance": "single-source"
+      },
       "notes": [
         "Band reward sample. Metabot page lists no Kibelisk or EXP; kib/m carried over from the app's existing AREA_LOC (allthings.how). Abyss Points 1,000 listed for Elyos only."
       ]

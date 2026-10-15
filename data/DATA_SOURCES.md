@@ -8,7 +8,7 @@ that cite the page (`file: record`); *Card group* is where the app lists it. Pag
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/shared/asmodian/guide/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-394 URLs · 393 in the Sources card · 1 cited only in the data files
+401 URLs · 400 in the Sources card · 1 cited only in the data files
 
 ## Metabot (202)
 
@@ -290,7 +290,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [AION2HUB: Asmodian 25–40](https://aion2hub.com/leveling/asmodian-levels-25-40) | Main story | shared/asmodian/story-quests.json: Voice of Rage; shared/asmodian/story-quests.json: Tangled Past; shared/asmodian/story-quests.json: The High Priest Slumbers; shared/asmodian/story-quests.json: Striving for Coexistence; shared/asmodian/story-quests.json: Preparations for Restoration; shared/asmodian/story-quests.json: A Collective Effort; shared/asmodian/story-quests.json: Land of Rifts; shared/asmodian/story-quests.json: Dying Light; shared/asmodian/story-quests.json: Contaminated Sacred Tree; shared/asmodian/story-quests.json: The Past Revealed; shared/asmodian/story-quests.json: Canyon's Secret; shared/asmodian/story-quests.json: Bitter Reality; shared/asmodian/story-quests.json: Eye of the Red Tower; shared/asmodian/story-quests.json: The Survivors; shared/asmodian/story-quests.json: Rescue Operation; shared/asmodian/story-quests.json: Last of the Destruction Archons; shared/asmodian/story-quests.json: A Daeva Dreaming Anew; shared/asmodian/story-quests.json: Last Refuge; shared/asmodian/story-quests.json: Scripture in the Ruins; shared/asmodian/story-quests.json: Blood Monument; shared/asmodian/story-quests.json: Impending Threat; shared/asmodian/story-quests.json: Visible Trap; shared/asmodian/story-quests.json: Destruction Archon Underground Fortress; shared/asmodian/story-quests.json: Enemy Territory; shared/asmodian/story-quests.json: Powder of Death; shared/asmodian/story-quests.json: Creion of Gribade; shared/asmodian/story-quests.json: Frozen Fafnite; shared/asmodian/story-quests.json: Inevitable Encounter; shared/asmodian/story-quests.json: Unveiling the Truth; shared/asmodian/story-quests.json: Lake of Confrontation; shared/asmodian/story-quests.json: An Ill Fate's Resolution; shared/asmodian/story-quests.json: Mirror of Greed; shared/asmodian/story-quests.json: Fafnite's Whereabouts; shared/asmodian/story-quests.json: Exiled Ritualist; shared/asmodian/story-quests.json: Healing Herbs; shared/asmodian/story-quests.json: Treatment; shared/asmodian/story-quests.json: Symbol of Liberation |
 | [AION2HUB: Elyos levels 10 25](https://aion2hub.com/leveling/elyos-levels-10-25) | Tips and rules | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; shared/asmodian/guide/claims.json: Stronghold pays 2 Noble Belt Enhance Scrolls + 15,000 Kina (some a title); belt scrolls come from nowhere else. |
 
-## allthings.how (75)
+## allthings.how (82)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -311,7 +311,10 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [allthings.how: article 244902](https://allthings.how/?p=244902) | Strongholds and Sealed Dungeons | shared/rules.json: rule:sd-first-clear-asmodian |
 | [allthings.how: article 244925](https://allthings.how/?p=244925) | Tips and rules | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; shared/asmodian/guide/claims.json: Inferred skill-point order; single-source Daevanion node priority; Sealed Dungeons solo (Wikily, Metabot); disputed first nodes, core skill, passives, stigma order, stat order. |
 | [allthings.how: article 244997](https://allthings.how/?p=244997) | Skills, boards and stigmas | shared/rules.json: rule:stigma-points-per-level; shared/rules.json: rule:stigma-shard-cost |
-| [allthings.how: article 247532](https://allthings.how/?p=247532) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Dratona Assembly Area; shared/asmodian/strongholds.json: Flauke Legion Outpost |
+| [allthings.how: article 247464](https://allthings.how/?p=247464) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: High Priest's Ruins |
+| [allthings.how: article 247483](https://allthings.how/?p=247483) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Graverobber Den |
+| [allthings.how: article 247532](https://allthings.how/?p=247532) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Dratona Assembly Area; shared/asmodian/sealed-dungeons.json: Insectoid Tunnel; shared/asmodian/sealed-dungeons.json: Library of Patience; shared/asmodian/sealed-dungeons.json: Library of Wisdom; shared/asmodian/strongholds.json: Flauke Legion Outpost |
+| [allthings.how: article 247635](https://allthings.how/?p=247635) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: All-Curing Cave |
 | [Allthings.how: Moslan Forest](https://allthings.how/aion-2-every-asmodian-moslan-forest-regional-quest-and-reward-in-altgard/) | Leveling guides, build and tips | Sources card (earlier research snapshot) |
 | [Allthings.how: Altgard smaller areas](https://allthings.how/aion-2-every-asmodian-regional-quest-and-reward-in-altgard-s-smaller-areas/) | Leveling guides, build and tips | Sources card (earlier research snapshot) |
 | [Allthings.how: Sanctum Outpost](https://allthings.how/aion-2-every-asmodian-sanctum-outpost-regional-quest-and-reward-in-altgard/) | Leveling guides, build and tips | Sources card (earlier research snapshot) |
@@ -323,7 +326,9 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [allthings.how: Ascetic's Cave](https://allthings.how/aion-2/map/ascetic-s-cave/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Ascetic's Cave |
 | [allthings.how: Bloodsoaked Confessional](https://allthings.how/aion-2/map/bloodsoaked-confessional/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Bloodsoaked Confessional |
 | [allthings.how: Blue Dragon's Trap](https://allthings.how/aion-2/map/blue-dragon-s-trap/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Blue Dragon's Trap |
+| [allthings.how: Closed Hideout](https://allthings.how/aion-2/map/closed-hideout/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Closed Hideout |
 | [allthings.how: Dark Root Cave](https://allthings.how/aion-2/map/dark-root-cave/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Dark Root Cave |
+| [allthings.how: Den of Exiles](https://allthings.how/aion-2/map/den-of-exiles/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Den of Exiles |
 | [allthings.how: Destroyed Scriptorium](https://allthings.how/aion-2/map/destroyed-scriptorium/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Destroyed Scriptorium |
 | [allthings.how: Destruction Archons Armory](https://allthings.how/aion-2/map/destruction-archons-armory/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Destruction Archons Armory |
 | [allthings.how: Drana Depository](https://allthings.how/aion-2/map/drana-depository/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Drana Depository |
@@ -345,11 +350,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [allthings.how: Lamnah Base](https://allthings.how/aion-2/map/lamnah-base/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Lamnah Base |
 | [allthings.how: Library of Foresight](https://allthings.how/aion-2/map/library-of-foresight/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Library of Foresight |
 | [allthings.how: Library of Patience](https://allthings.how/aion-2/map/library-of-patience/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Library of Patience |
-| [allthings.how: Library of wisdom](https://allthings.how/aion-2/map/library-of-wisdom/) | Tips and rules | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time. |
+| [allthings.how: Library of Wisdom](https://allthings.how/aion-2/map/library-of-wisdom/) | Strongholds and Sealed Dungeons | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; shared/asmodian/sealed-dungeons.json: Library of Wisdom |
 | [allthings.how: Lonely Rock Chasm](https://allthings.how/aion-2/map/lonely-rock-chasm/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Lonely Rock Chasm |
 | [allthings.how: Old Graveyard](https://allthings.how/aion-2/map/old-graveyard/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Old Graveyard |
 | [allthings.how: Ossuary of the Noble](https://allthings.how/aion-2/map/ossuary-of-the-noble/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Ossuary of the Noble |
 | [allthings.how: Pirate's Treasure Storage](https://allthings.how/aion-2/map/pirate-s-treasure-storage/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Pirate's Treasure Storage |
+| [allthings.how: Place of Rest](https://allthings.how/aion-2/map/place-of-rest/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Place of Rest |
 | [allthings.how: Poisonous Plant Habitat](https://allthings.how/aion-2/map/poisonous-plant-habitat/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Poisonous Plant Habitat |
 | [allthings.how: Predator's Lair](https://allthings.how/aion-2/map/predator-s-lair/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Predator's Lair |
 | [allthings.how: Prison of Oblivion](https://allthings.how/aion-2/map/prison-of-oblivion/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Prison of Oblivion |
@@ -363,6 +369,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [allthings.how: Tayga Breeding Ground](https://allthings.how/aion-2/map/tayga-breeding-ground/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Tayga Breeding Ground |
 | [allthings.how: Treasure Hunter's Residence](https://allthings.how/aion-2/map/treasure-hunter-s-residence/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Treasure Hunter's Residence |
 | [allthings.how: Trickster's Den](https://allthings.how/aion-2/map/trickster-s-den/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Trickster's Den |
+| [allthings.how: Twisted Pit](https://allthings.how/aion-2/map/twisted-pit/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Twisted Pit |
 | [allthings.how: Unstable Cave](https://allthings.how/aion-2/map/unstable-cave/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Unstable Cave |
 | [allthings.how: Valka's Nest](https://allthings.how/aion-2/map/valka-s-nest/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Valka's Nest |
 | [allthings.how: Victims' Cave](https://allthings.how/aion-2/map/victims-cave/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Victims' Cave |
