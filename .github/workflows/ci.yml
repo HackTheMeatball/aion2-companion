@@ -1,7 +1,9 @@
 name: CI
 
 on:
+  # Branch pushes run CI through their pull request only (no duplicate run per push); main runs on every push (deploy).
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -15,9 +17,11 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 # Runner pinned (not ubuntu-latest) so an image change can't silently change test results; move it on purpose.
+# Blocking jobs: data + every browser shard. ci-ok sums them up (the one required check); deploy needs it.
 jobs:
   # Fast feedback on data and code (target < 2 min, no browser): JSON Schema validation of every v2 data file (ajv,
-  # strict), the generator's cross-record checks, data/DATA_SOURCES.md current, the pure core in Node, and a build.
+  # strict), the generator's cross-record checks, data/DATA_SOURCES.md current, the pure core in Node, the CHANGELOG
+  # format, the CI shard list, and a build.
   data:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
@@ -36,12 +40,23 @@ jobs:
         run: npm run gen:check
       - name: Pure core (Node)
         run: npm run test:core
+      - name: CHANGELOG has an entry for this version
+        run: node scripts/release-notes.mjs > /dev/null
+      - name: Every blocking suite is in exactly one browser shard
+        run: node tests/run.mjs --check-shards
       - name: Build both deliverables
         run: npm run build
 
-  test:
+  # The browser suites of tests/run.mjs, one job per shard (SHARDS in tests/run.mjs; the data job checks this list
+  # matches). fail-fast off, so every shard reports.
+  browser:
+    name: browser (${{ matrix.shard }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [journey, regress, golden, checks]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -49,21 +64,73 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: CHANGELOG has an entry for this version
-        run: node scripts/release-notes.mjs > /dev/null
       - run: npx playwright install --with-deps chromium
-      - run: npm test
+      - run: npm run build
+      - run: node tests/run.mjs --shard ${{ matrix.shard }}
       - name: Upload test output (logs, results.json, screenshots)
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: test-output
+          name: test-output-${{ matrix.shard }}
           path: tests/out/
           retention-days: 7
           if-no-files-found: ignore
 
+  # Non-blocking: update() < 15 ms (tests/perf.js). Wall-clock timing on a shared runner flakes, so a slow run is a
+  # ::warning annotation, never a red check. Not in ci-ok; deploy doesn't wait for it.
+  perf:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - id: perf
+        continue-on-error: true
+        run: node tests/run.mjs --only perf --retries 0
+      - name: Report
+        if: always()
+        run: |
+          f=tests/out/perf/results.json
+          if [ -f "$f" ]; then
+            node -e 'const r=require("./"+process.argv[1]),s=r.map(x=>x.ms).sort((a,b)=>a-b),bad=r.filter(x=>!x.pass);console.log(`::notice title=perf::update() over ${r.length} states: median ${s[s.length>>1]} ms, max ${s[s.length-1]} ms`);for(const x of bad)console.log(`::warning title=perf (non-blocking)::${x.name}: ${x.ms} ms`)' "$f"
+          fi
+          if [ "${{ steps.perf.outcome }}" != "success" ]; then echo "::warning title=perf (non-blocking)::tests/perf.js failed (see the warnings above, or tests/out/perf.out); ci-ok does not depend on it."; fi
+      - name: Upload perf output
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output-perf
+          path: tests/out/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # The one required check (branch protection on main requires `ci-ok`). Runs even when a needed job failed or was
+  # cancelled (if: always()) and fails unless every blocking job succeeded; a skipped blocking job counts as a failure.
+  ci-ok:
+    if: always()
+    needs: [data, browser]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: All blocking jobs succeeded
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          node -e '
+            const n = JSON.parse(process.env.RESULTS), bad = Object.entries(n).filter(([, v]) => v.result !== "success");
+            for (const [k, v] of Object.entries(n)) console.log(`${k}: ${v.result}`);
+            if (!Object.keys(n).length) { console.log("::error title=ci-ok::no blocking jobs"); process.exit(1); }
+            for (const [k, v] of bad) console.log(`::error title=ci-ok::${k} ${v.result}`);
+            process.exit(bad.length ? 1 : 0);'
+
   deploy:
-    needs: [data, test]
+    needs: [data, browser, ci-ok]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10

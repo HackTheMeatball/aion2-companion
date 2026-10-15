@@ -8,6 +8,67 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.2 — 2026-10-15
+
+Daevanion cost arrow, rotation by level, and five more skill icons.
+
+### Added
+
+- Icons for Impact Hit, Flash Slice, Storm Rampage, Determination and Heightened Sixth Sense in the Skills card, Next
+  up and on Daevanion node badges (from Metabot). The claude.ai version keeps the initials for these five.
+
+### Fixed
+
+- Daevanion: the up arrow in an empty node cost box set the cost to 0; it now sets 1. The down arrow still sets 0 for
+  a node already bought on the way to another.
+- Build drawer: the rotation and key setup listed a stigma marked equipped before its slot opens (for example
+  Triniel's Dagger on E below Lv 22); they now list only skills the Skills card has unlocked at your level and
+  stigmas whose slot is open.
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+
+### Saved progress
+
+- Unaffected.
+
+## 0.2.1 — 2026-10-15
+
+A new player starts at level 1 on the first story quest.
+
+### Changed
+
+- A new browser starts at Lv 1 on the first story quest, "A Village in the Fog" (was Lv 5 with no quest picked).
+  Saved progress keeps its level and quest.
+- Next up no longer tells a Lv 1 character to reach Lv 2 before the first story quest: story levels are recommended
+  levels, not requirements.
+
+### Accessibility
+
+- Touch screens: the "unlocks …" line under a story step is 12 px (was 11.5 px).
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+
+### Saved progress
+
+- Unaffected: no save is migrated or re-defaulted. Groundwork for syncing between devices (not yet available):
+  a new browser's default first quest will never override a story position saved on another device.
+
 ## 0.2.0 — 2026-10-14
 
 Rebuilt guide data with a source for every fact, and in-game unlock corrections.

@@ -42,16 +42,35 @@ on purpose: the guide shows nothing rather than an unverified value.
   requires every source URL to be listed.
 - **Brand art is original** (not game art): `public/favicon.svg`, `public/icons/*.png` and `brand/*.svg` are drawn as code
   by `tools/brand/build.py` (Daeva Companion, direction C), 2026-10-13. No NC material in them.
-- **Icon provenance not recorded.** The 23 PNGs in `src/assets/icons/` are NC Corporation's art. Record where each file
-  came from (site + page URL + date), so any permission request or takedown can be answered quickly. Fill in, then keep:
+- **Icon provenance not recorded** for the first 23 PNGs. All PNGs in `src/assets/icons/` are NC Corporation's art. Record
+  where each file came from (site + page URL + file URL + date), so any permission request or takedown can be answered
+  quickly. Fill in, then keep:
 
   | File | Source page | Retrieved |
   |---|---|---|
+  | sk-impact-hit.png | <https://metabot.gg/en/aion-2/skills/impact-hit-assassin> · file <https://metabot.gg/web/aion2/skills/13760000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-flash-slice.png | <https://metabot.gg/en/aion-2/skills/flash-slice> · file <https://metabot.gg/web/aion2/skills/13050000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-storm-rampage.png | <https://metabot.gg/en/aion-2/skills/storm-rampage> · file <https://metabot.gg/web/aion2/skills/13340000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-determination.png | <https://metabot.gg/en/aion-2/skills/determination> · file <https://metabot.gg/web/aion2/skills/13800000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
+  | sk-heightened-sixth-sense.png | <https://metabot.gg/en/aion-2/skills/heightened-sixth-sense> · file <https://metabot.gg/web/aion2/skills/13710000.webp> (256 px WebP → 128 px PNG) | 2026-10-15 |
   | blue-off.png, blue-on.png, green-off2.png, green-on2.png, orange-off.png, orange-on.png | | |
   | daevanion-crystal.png, enhance-stone.png, wisdom-stone.png | | |
   | sk-ambush.png, sk-assault-stance.png, sk-defense-break.png, sk-exploit-weakness.png, sk-heart-gore.png | | |
   | sk-insignia-explosion.png, sk-quick-slice.png, sk-rear-smite.png, sk-savage-roar.png, sk-shadowstrike.png | | |
   | st-illusive-clone.png, st-savage-fang.png, st-swift-contract.png, st-triniels-dagger.png | | |
+- **Icons not in the claude.ai artifact yet.** The five skill icons above (added 2026-10-15 under the standing icon OK)
+  have no `/_blob/` id: `scripts/artifact-blobs.json` lists them as `null`, so `dist-artifact` shows the initials square
+  for those skills, as before. To add them there, upload each PNG to the artifact's asset store and put its id in
+  `scripts/artifact-blobs.json` (docs/DEPLOY.md). The artifact is frozen (DECISIONS D4), so this may never be needed.
+- **Board-cost input can be replaced while typing** (likely, not confirmed; found 2026-10-15 by a real-time
+  `journey` run, which crashed at Lv 40 with `fill: Element is not attached`). A milestone tick re-renders the page
+  with a deferred `update()` 1150 ms later (1650 ms when its card leaves; `src/main.js`, tick handler), which rebuilds
+  `#dvNextList`. Ticking a milestone and then typing a cost into the Daevanion card within ~2 s would lose focus and
+  the typed digits. Second suspect: the `boardcost` Next-up action (`src/main.js`, `a === "boardcost"`) focuses the
+  input it found with `setTimeout(() => c.focus(), 300)`; if a re-render replaced that input meanwhile, focus goes to
+  a detached node and the visible input is never focused. `journey` now runs on the fake clock, so it no longer hits this window; repro:
+  `JOURNEY_REALTIME=1 node tests/run.mjs --only journey` (intermittent), or by hand. Fix idea: skip re-rendering a
+  focused `.dvc` input in `renderNext`.
 - Pop-out needs Document Picture-in-Picture (Chrome / Edge 116+); the button is hidden elsewhere.
 
 ## Tooling
@@ -59,8 +78,9 @@ on purpose: the guide shows nothing rather than an unverified value.
 - `tests/journey.js` logs one known `!! In my game click failed` line (it clicks the first `[data-ingame]` pill, which
   can be hidden). The runner ignores exactly that line; any other `!!` line fails the suite.
 - Timing checks (`update()` median < 15 ms) trip on a busy machine (measured 10–17 ms for the same build on a 2-vCPU
-  VM). The runner runs half the CPU count in parallel and re-runs a failed suite once, reporting a pass on retry as
-  `FLAKY` with the first run's failures. A real slowdown fails both runs.
+  VM). Since 2026-10-15 they are the non-blocking `perf` suite (`tests/perf.js`, `npm run test:perf`, CI job `perf`
+  warns only), not part of `npm test` or `ci-ok`. The runner still re-runs a failed suite once, reporting a pass on
+  retry as `FLAKY` with the first run's failures.
 - Tests block the web fonts (self-hosted files, the claude.ai build's inlined copies, Google Fonts for the baselines) and
   service workers, so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check with the
   real fonts.

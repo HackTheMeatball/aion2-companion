@@ -16,6 +16,9 @@ Parallel Claude Code cloud sessions, one task each, own branch, one PR, never me
 reviews PRs. Merging: until the owner confirms otherwise, **nothing merges without the owner's OK** (the charter rule
 "invisible changes merge on green" returns once branch protection with `ci-ok` is on, if the owner agrees). Visible
 changes always need the owner's approval, mockup first. Session prompts live in the CEO's plan, one per task.
+**Exception for the 0.2 → 0.3 cycle** (owner, 2026-10-15; DECISIONS): the CEO merges and releases 0.2.x patches itself,
+visible ones included, under the limits in that row; 0.3's Next up behaviour changes and the 0.3.0 release still wait
+for the owner. The rule above returns after 0.3.0 unless the owner says otherwise.
 
 ## Now and next
 Wave 1 (start now, no shared files):
@@ -39,10 +42,11 @@ Wave 2 (each starts when what it names has merged):
   templates; patch-watch routine; icon provenance table.
 
 Then: 0.3 requirement engine (sole owner of `src/main.js` while it runs) → blocker-chain UI + Ascension bar (mockup) →
-0.3.0 → 0.4 characters → phone layout (mockup; on the tokens) → 0.5 sync.
+0.3.0 → 0.4 smart Next up → 0.5 characters → phone layout (mockup; on the tokens) → 0.6 sync (renumbered 2026-10-15,
+ROADMAP).
 
 Serial-only files (never two sessions at once): `.github/workflows/ci.yml`; `tests/` while step 4 runs;
-`src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 →
+`src/styles/app.css` (0.1.9 → tokens → phone layout); `src/main.js` (step 4 → save safety / 5c → 0.3 engine → 0.4 smart Next up → 0.5 →
 phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 
 ## Cloud environments (owner manages; CEO tells the owner when a domain must be added or removed)
@@ -65,11 +69,11 @@ phone layout); `data/*.json` and `tools/gen/` are frozen while 5b runs.
 - Colour sprint: answer the open questions (research report §10, 8a–f); one in-game session batched with data checks
   (gate semantics, `noPre` quest levels, Kibelisk / Command unlocks, "Daeva Trapped in a Nightmare", Daevanion points
   at 16/17, respec cost after 31, expedition cap, reset time). Screens go to the private repo.
-- Sync (0.5) decisions later: "lose the code = lose the cloud copy", whether view settings sync, retention.
+- Sync (0.6) decisions later: "lose the code = lose the cloud copy", whether view settings sync, retention.
 
 ## Known gotchas
-- The `update() < 15 ms` timing check flakes on busy machines; rerun that suite alone before calling it a failure
-  (moves to a non-blocking `perf` suite in wave 2).
+- The `update() < 15 ms` timing check lives in the non-blocking `perf` suite (`npm run test:perf`; CI job `perf`,
+  not in `ci-ok`): a slow run on a busy machine warns, it doesn't fail the build.
 - `build.json` is a content hash: a docs-only merge keeps the same id, so check a deploy against that run's build.
 - Tag pushes and branch deletion are blocked from agent sessions; CI makes tags; the owner deletes merged branches.
 - Run logs aren't readable from agent sessions; check-run annotations are (`gh api …/check-runs/<id>/annotations`).

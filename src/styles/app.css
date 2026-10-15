@@ -1423,7 +1423,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   .behind-pill, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
   .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new { font-size: 11px !important; }
   .dvcr, .ztr, .ah-main small, #nowStar .ah-main small, :is(h2, div).sec .sec-btn, .qs-sub-loc, .qs-list small, .ns-obj small,
-  .top-grid .soonlist small, #spCard .sphero .dvtext small, .ns-obj-more, .cube-btn { font-size: 12px !important; }
+  .top-grid .soonlist small, #spCard .sphero .dvtext small, .ns-obj-more, .cube-btn, .st .unl { font-size: 12px !important; }
 }
 /* Phones (P3-2): a cleared milestone step folds to its title. The description (bare text, so font-size: 0, plus the
    extra bold runs, "i" terms and links in it) is hidden; display: none also takes its links and buttons out of the

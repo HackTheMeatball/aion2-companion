@@ -253,4 +253,34 @@ export default (test, M) => {
     const st = load(M, { ...SEEDS, checks: {}, level: 20, quest: '' }, 0).state; C(st).checks['g6:0'] = true; save(M, st, 100);
     assert.deepEqual(M.lastConfirmedLocation(C(st), k => k === 'g6:0' ? 'zone:ishalgen' : null), { key: 'g6:0', t: 100, zone: 'zone:ishalgen' });
   });
+  test('fresh browser (Lv 1, first quest) never resets another device\'s story position in merge()', () => {
+    const fresh = load(M, M.DEFAULT(), 0, false).state;
+    assert.equal(C(fresh).quest, M.QUESTS[0][1]);
+    /* the review's cases: quests whose names sort before the first quest's, an unset quest, and a later quest */
+    const names = ['A New Lead', 'A Collective Effort', 'A Daeva Dreaming Anew', M.QUESTS[10][1]];
+    names.forEach(n => assert.ok(M.QUESTS.some(([, q]) => q === n), n));
+    for (const q of [...names, '']) {
+      const legacy = load(M, { ...SEEDS, checks: {}, level: 30, quest: q }, 0).state;   /* pre-change-times save: all t = 0 */
+      const want = q;   /* the untouched default ranks below an unset quest too: an unset Lv 30 save stays unset */
+      for (const m of [M.merge(fresh, legacy), M.merge(legacy, fresh)]) { assert.equal(C(m).quest, want, `${q || '(unset)'}`); assert.equal(C(m).level, 30); }
+    }
+  });
+  test('fresh default never clears a turned-in marker, a no-quest save or an unknown (renamed) quest', () => {
+    const fresh = load(M, M.DEFAULT(), 0, false).state, last = M.QUESTS[M.QUESTS.length - 1][1];
+    const cases = [{ quest: '', storyEnd: last }, { quest: 'A Quest That Was Renamed' }, {}];
+    for (const extra of cases) {
+      /* through loadState, as the page loads a save: a save stored without a quest field gets DEFAULT()'s "" */
+      const legacy = load(M, M.loadState(JSON.stringify({ ...SEEDS, checks: {}, level: 30, ...extra })).state, 0).state;
+      for (const m of [M.merge(fresh, legacy), M.merge(legacy, fresh)]) {
+        assert.equal(C(m).quest ?? '', extra.quest ?? '', JSON.stringify(extra));
+        assert.equal(C(m).storyEnd ?? null, extra.storyEnd ?? null, JSON.stringify(extra));
+      }
+    }
+  });
+  test('quest tie-break: a turned-in position beats the same quest not turned in; a dated change still beats time 0', () => {
+    const q = M.QUESTS[M.QUESTS.length - 1][1], a = load(M, { ...SEEDS, checks: {}, level: 20, quest: q }, 0).state, b = load(M, { ...SEEDS, checks: {}, level: 20, quest: q, storyEnd: q }, 0).state;
+    for (const m of [M.merge(a, b), M.merge(b, a)]) assert.equal(C(m).storyEnd, q);
+    const c = load(M, { ...SEEDS, checks: {}, level: 20, quest: M.QUESTS[2][1] }, 0).state; C(c).quest = M.QUESTS[1][1]; save(M, c, 500);   /* a dated move back */
+    for (const m of [M.merge(c, b), M.merge(b, c)]) assert.equal(C(m).quest, M.QUESTS[1][1]);
+  });
 };

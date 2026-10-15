@@ -61,10 +61,10 @@
       "hide": ["(absent)",false],
       "level": ["(absent)",12],
       "migV5": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":80,"at":{"0":79,"1790856000":1},"fnv1a":"22ec8315"}],
+      "mt": ["(absent)",{"stamps":80,"at":{"0":79,"1790856000":1},"fnv1a":"74aaad29"}],
       "open": ["(absent)",{"g6":true,"g9":true,"g10":true,"g12":true}],
       "quest": ["(absent)",""],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
       "seedLv12": ["(absent)",true],
@@ -79,17 +79,14 @@
   "special/fresh-no-save": {
     "in": "7927e7144bd4",
     "nu": [
-      {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
-      {"t":"Buy Exploit Weakness 1 → 2","s":"Opens at Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Flash Slice 1 → 2","s":"Opens at Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Rear Smite 1 → 2","s":"Opens at Lv 11 · 6 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Continue the story: A Village in the Fog","s":"Main story · then Prepare to Escape","c":"primary \"Turned in\" story"},
+      {"t":"Buy Ambush 1 → 2","s":"Opens at Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 1 → 2","s":"Opens at Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Storm Rampage 1 → 2","s":"Opens at Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
-      "g6 | 1 to go | 0/11 | upnext | open",
+      "g6 | 5 to go | 0/11 | upnext | open",
       "g9 | Later | 0/7 | ",
       "g10 | Later | 0/9 | ",
       "g12 | Later | 0/10 | ",
@@ -117,12 +114,12 @@
     ],
     "jr": {
       "prev": "",
-      "quest": "",
-      "lv": "",
-      "next": "Pick your current quest to place yourself on the story.",
+      "quest": "A Village in the Fog",
+      "lv": "Lv 2",
+      "next": "Prepare to Escape unlocks Shop and Closet Lv 2",
       "hint": "next milestone at Lv 6",
-      "ahead": ["Ahead verified","Lv 9 Enhancement and Achievements Enhancement (N), Achievements (Y) 4 levels to go","Lv 10 Crafting and Extraction Crafting (Alt+G), Essence Extraction (Alt+F), Substance Morph (Alt+H), Navigator, Attendance, Subscribe (G) 5 levels to go"],
-      "track": ["Wings and Ascension next · 1 to go Lv 6"],
+      "ahead": ["Ahead verified","Lv 2 Journal and Customization Journal (J) 1 level to go","Lv 3 Stats window Stats (P) 2 levels to go","Lv 2 🔓 Shop and Closet your next quest · \"Prepare to Escape\""],
+      "track": ["Wings and Ascension next · 5 to go Lv 6"],
       "ring": "0%",
       "prog": ["Quests 0/58","Dungeons 0/60","Strongholds 0/15"]
     },
@@ -131,7 +128,7 @@
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Graverobber Den Crypt · Lv 1–13","  Rubek Thieves' Occupied Territory Dredgion Crash Site · any level","Sealed Dungeons 0/13","2 Crystals · 2 Wisdom Stones each","▾ Calderon Canyon 8 traces 0/3","  Dusk Pit [locked]","  Smuggler's Cave [locked]","  Watcher's Temporary Outpost [locked]","▾ Dredgion Crash Site 19 traces 0/4","  Dratona Cave [locked]","  Treasure Hunter's Residence [locked]","  Trickster's Den [locked]","  Valka's Nest [locked]","▾ Nameless Cemetery 28 traces 0/6","  Abandoned One's Grave [locked]","  Hidden Vein Cave [locked]","  Lost Ruins [locked]","  Old Graveyard [locked]","  Ossuary of the Noble [locked]","  Poisonous Plant Habitat [locked]"]
     },
     "store": {
-      "": [null,{"checks":{},"level":5,"hide":false,"open":{"g6":true},"quest":"","dvReset1":true,"stTriniel1":true,"seedLv12":true,"hideCards":true,"migV5":true,"eputSync1":true,"stampV1":true,"schemaVersion":1,"mt":{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"4bad7571"},"areaLv":"10","rotSeen":["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"],"savedAt":1790856000000}]
+      "": [null,{"checks":{},"level":1,"hide":false,"open":{"g6":true},"quest":"A Village in the Fog","dvReset1":true,"stTriniel1":true,"seedLv12":true,"hideCards":true,"migV5":true,"eputSync1":true,"stampV1":true,"schemaVersion":1,"mt":{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"5c0cef32"},"areaLv":"10","rotSeen":["Right click:Savage Roar:0","Q:Shadowstrike:0"],"savedAt":1790856000000}]
     },
     "mode": "advanced"
   },
@@ -337,12 +334,12 @@
       "eputSync1": ["(absent)",true],
       "hide": ["(absent)",false],
       "migV5": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":80,"at":{"0":79,"1790856000":1},"fnv1a":"ff6a0141"}],
+      "mt": ["(absent)",{"stamps":80,"at":{"0":79,"1790856000":1},"fnv1a":"2df89785"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g6": ["(absent)",true],
       "open.g9": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0","E:Triniel's Dagger:0"]],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Savage Roar:2","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
       "seedLv12": ["(absent)",true],

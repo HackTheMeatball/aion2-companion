@@ -10,7 +10,7 @@
 - Rules to enforce once the pure core exists: `core/` has no DOM access; derived facts are never stored as ticks.
 
 **Decisions already made by the owner:** ES modules + esbuild, no framework (0.2); several characters per browser
-(0.4); story gates default to "reached"; hosting stays on GitHub Pages for now (Cloudflare later, same address).
+(0.5, was 0.4 before the 2026-10-15 renumber); story gates default to "reached"; hosting stays on GitHub Pages for now (Cloudflare later, same address).
 
 **CEO decisions (0.2 P1, 2026-10-13):** esbuild's top-level `const`/`let` → `var` is accepted until P3; CSS is not passed
 through esbuild; the output is not minified.
@@ -35,8 +35,8 @@ through esbuild; the output is not minified.
   (`node --require ./tests/support/block-web-fonts.cjs`), make lazy images eager and wait until every image is complete;
   compare DOM (scripts removed), computed styles (sorted per element: Chrome lists custom properties in varying order),
   stored state, then pixels, and run the same harness old-vs-old to know the noise floor.
-- **Concurrent heavy jobs** (a second Playwright run, other agents' audits) make the `update() < 15 ms` check in
-  `regress` fail; `origin/main` fails it too under load. Run timing-sensitive suites alone.
+- **Concurrent heavy jobs** (a second Playwright run, other agents' audits) make the `update() < 15 ms` check fail;
+  `origin/main` fails it too under load. It is in the non-blocking `perf` suite (`npm run test:perf`); run it alone.
 - Branches that edit the old one-file `src/index.html` must be ported after P1 merges: CSS lines go to
   `src/styles/app.css`, script lines to `src/main.js` (data tables: `src/data/*.js` since P2), generated data via
   `npm run gen`.

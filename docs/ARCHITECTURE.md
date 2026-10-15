@@ -61,11 +61,11 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 | `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `stampV1` | one-time flags (see below) |
 | `schemaVersion`, `savedAt`, `mt` | save shape (absent = 0; `1` since 5c), time of the last saved progress change (ms), per-item change times (character field; see Change times below) |
 
-**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.4). The save holds view
+**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.5, renumbered from 0.4). The save holds view
 settings, one-time flags and one character; the character's fields (`CHAR_FIELDS` in `src/core/state.js`: `checks`,
 `level`, `quest`, `storyEnd`, `qsteps`, `qsub`, `started`, `areaRun`, `rqSnooze`, the stigma, skill-point and board fields,
 `rotSeen`, `mt`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
-JSON is unchanged; 0.4 changes that one function and the save format. The `core` suite fails on a direct
+JSON is unchanged; 0.5 (characters) changes that one function and the save format. The `core` suite fails on a direct
 `state.<field>` for a character field anywhere in `src/`.
 
 ### Change times and `merge()` (0.2 step 5c)
@@ -119,7 +119,7 @@ save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive
 ## 2. Render pipeline
 
 - `render()` builds the static DOM once: milestone cards (`GATES`) and route rules (`STEPS`) via `cardHTML`.
-- `update()` runs after every change (≈10 ms; a test keeps it under 15 ms): milestone counts and tags
+- `update()` runs after every change (≈10 ms; the non-blocking `perf` suite checks it stays under 15 ms): milestone counts and tags
   (Cleared / Missed / Now / Side quests), progress ring, then `renderQuest` (Journey), `renderNow` (Next up stack),
   `renderNext` (Skills / Daevanion / Stigmas cards), `renderAhead`, area lists. Layout fitting runs in
   `requestAnimationFrame`, not inside `update()`.
@@ -191,7 +191,8 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   name declared in two modules or in a module and the generated data (esbuild would rename one of them). CSS is not passed through esbuild: its printer rewrites values (unquoted `url()`, one
   `unicode-range` entry per line) that the claude.ai font conversion and the test font blocker read.
 - It then checks the `<!-- @web-only -->` markers (in the shell), that every referenced icon exists and has a blob id
-  (`scripts/artifact-blobs.json`), and that the fonts are all shipped and referenced with their OFL texts and nothing
+  (`scripts/artifact-blobs.json`; `null` = not uploaded to the artifact yet: the artifact build drops that icon's quoted path,
+  so the page shows the initials square there), and that the fonts are all shipped and referenced with their OFL texts and nothing
   requests Google Fonts; then writes `dist/` (markers stripped; `public/`, icons and fonts copied; `sw.js` with the
   build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
   `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each
@@ -220,7 +221,9 @@ modules and other core modules; derived facts are computed, never stored as tick
 
 ## 5. Tests
 
-`npm test` builds, serves `dist/` on localhost, and runs every suite (`tests/run.mjs`); output in `tests/out/`.
+`npm test` builds, serves `dist/` on localhost, and runs every suite except `perf` (`tests/run.mjs`); output in
+`tests/out/`. CI runs the same suites in parallel shards (`--shard <name>`, `SHARDS` in `tests/run.mjs`;
+docs/DEPLOY.md, "CI jobs").
 
 | Suite | What |
 |---|---|
@@ -229,7 +232,8 @@ modules and other core modules; derived facts are computed, never stored as tick
 | `mig1` | v285 save → current build (4 intended differences pinned in `tests/fixtures/e1-migtest-expected.json`), rollback |
 | `mig2` | realistic v287 save → current build, idempotent, rollback |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
-| `journey` | the user's save from Lv 27 to 45 by clicking through Next up |
+| `journey` | the user's save from Lv 27 to 45 by clicking through Next up (page timers on Playwright's fake clock; `JOURNEY_REALTIME=1` for real pauses) |
+| `perf` | non-blocking, not in `npm test`: `update()` median < 15 ms at e1's and regress's states (`npm run test:perf`) |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
 | `schema` | data format v2 in Node, no browser, < 3 s (`node tests/schema.mjs`, `npm run test:data`): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), 15 broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` current |

@@ -3,15 +3,20 @@
 **Owns:** the test suites, CI, the golden master, merging and releases.
 
 **Standing checklist (every PR)**
-- PR CI green on the head commit; full suite green locally when the change touches app code or data.
+- PR CI green on the head commit: the **ci-ok** check (it sums up data + every browser shard; docs/DEPLOY.md, "CI
+  jobs"); full suite green locally when the change touches app code or data. **perf** is non-blocking: a warning
+  there is a note on the PR (rerun `npm run test:perf` alone before calling it a regression), not a red PR.
 - Golden: if snapshots change, read the diff summary; every behaviour change must be explained by the PR. Re-record only
   then, and check `tests/golden/KNOWN-VIOLATIONS.md` only shrinks.
 - Compliance check (from the legal review): user-facing text says "unofficial" and keeps "not affiliated with or
   endorsed by NCSoft"; every new data URL is in the Sources card and DATA_SOURCES.md; no new game art without the
   owner's OK; nothing about monetization in public files.
-- Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner.
+- Merge rule: fixes, docs, tests and invisible changes merge when green; visible changes wait for the owner. Exception
+  for the 0.2 → 0.3 cycle (DECISIONS 2026-10-15): the CEO may merge and release visible 0.2.x patches after a separate
+  review, under the limits in that row (green CI, `npm test` incl. `mig1` / `mig2` / `journey`); 0.3's Next up behaviour
+  changes and the 0.3.0 release still wait for the owner.
 
-**After every merge to `main`:** watch that run to the end (test, deploy, release). A green PR doesn't prove the
+**After every merge to `main`:** watch that run to the end (data + browser shards → ci-ok → deploy → smoke → release). A green PR doesn't prove the
 deploy works; a failed deploy leaves the live site silently on the old build. The **smoke** job (scripts/smoke.mjs,
 docs/DEPLOY.md) now checks `/build.json` and the footer version after each deploy and blocks the release if they're
 stale; still confirm it ran green.
@@ -47,5 +52,12 @@ One-line summary ending in a period (<= 80 characters).
 - 2026-10-13: deploys failed silently from PR #7 to #9 because the deploy job didn't run `npm ci` after esbuild became
   a build dependency. Any new build dependency must also work in the deploy job.
 - Tag pushes and branch deletion are blocked from the agent environment; CI creates tags; the owner deletes branches.
-- CI run logs aren't readable from the agent environment; check-run annotations are.
-- Every push to a branch and its PR both run CI (duplicate runs). Candidate tidy-up: run `push` only on `main`.
+- `gh` may not be authenticated in the agent environment; the GitHub MCP tools read job conclusions, timings
+  (`list_workflow_jobs`), annotations and job logs (`get_job_logs`).
+- Since 2026-10-15 `push` runs CI only on `main`; branches run it through their PR (no duplicate runs). A branch with
+  no PR: Actions → CI → Run workflow.
+- CI layout (2026-10-15): fast `data` job (< 1 min, no browser), browser suites sharded across a matrix (`SHARDS` in
+  tests/run.mjs, checked against ci.yml by the data job), non-blocking `perf`, one required check `ci-ok`. The
+  `update() < 15 ms` checks moved from e1/regress to `perf` (tests/perf.js); the journey suite runs on Playwright's
+  fake clock (`JOURNEY_REALTIME=1` for real pauses). Job logs are readable through the GitHub MCP `get_job_logs`.
+- Branch protection on `main` (owner): require a PR and `ci-ok`; checklist in docs/DEPLOY.md.

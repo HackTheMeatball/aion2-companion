@@ -1,7 +1,7 @@
 /* E4 functional checks (QA3 findings 1-12). node tests/e4test.js  (page at AION_BASE; see tests/config.js) */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const ROOT = path.resolve(__dirname, '..'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
-const src = fs.readFileSync(path.join(__dirname, 'regress.js'), 'utf8'); const buildFixture = eval('(' + src.match(/function buildFixture[\s\S]*?\n}\n/)[0] + ')');
+const { buildFixture } = require('./support/regress-fixture');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 (async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } }); const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(CFG.CUR);
@@ -140,6 +140,28 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await set(5, `s.quest = 'Ishalgen';`);
   r = await p.evaluate(() => document.getElementById('questStatus').textContent.trim());
   ok('#13 quest "Ishalgen": Journey story row shows "Pick your current quest"', /^Pick your current quest/.test(r), r);
+
+  /* #14 (F6) Daevanion cost box: from empty, ▴ gives 1 and ▾ gives 0 ("already got it"); 0 stays reachable from 1 (Lv 30: Vaizel opens, its first node has no cost logged) */
+  await set(30);
+  const cst = async (d, clear) => p.evaluate(([d, clear]) => { const row = document.querySelector('#dvNextList .dvrow.nx'), i = row.querySelector('input.dvc');
+    if (clear) { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }
+    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (state.dvCost || {})[k], saved: (JSON.parse(localStorage.getItem('aion2-assassin-route-v4')).dvCost || {})[k] }; }, [d, clear]);
+  r = await cst(1, true); ok('#14 F6: empty cost box, ▴ → 1 (saved as 1)', r.v === '1' && r.cost === 1 && r.saved === 1, r);
+  r = await cst(-1, false); ok('#14 F6: ▾ from 1 → 0 (0 = already bought), saved', r.v === '0' && r.cost === 0 && r.saved === 0, r);
+  r = await cst(-1, true); ok('#14 F6: empty cost box, ▾ → 0', r.v === '0' && r.cost === 0, r);
+  r = await cst(1, false); ok('#14 F6: ▴ from 0 → 1', r.v === '1' && r.cost === 1, r);
+
+  /* #15 (F7) Build drawer rotation: only skills the guide says you have at your level (Skills card unlock rule) */
+  const low = async L => { await p.evaluate(([k, L]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: L, mode: 'advanced', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, L]);
+    await p.reload(); await p.waitForTimeout(300);
+    return p.evaluate(() => { document.querySelector('#statDrawer details.mini').open = true; const t = id => document.getElementById(id).innerText.replace(/\s+/g, ' ');
+      return { chain: t('rotChain'), play: t('rotPlay'), grid: [...document.querySelectorAll('#stackViz .sk:not(.empty):not(.ghost)')].map(x => x.textContent) }; }); };
+  const at2 = await low(2), at3 = await low(3), at13 = await low(13), at14 = await low(14);
+  ok('#15 F7: Lv 2: Ambush (learned at 3) is not in the rotation or the key grid', !/Ambush/.test(at2.chain + at2.play) && !at2.grid.includes('Ambush') && /Savage Roar/.test(at2.chain), at2);
+  ok('#15 F7: Lv 3: Ambush is in the right-click chain and the key grid', /Ambush/.test(at3.chain) && at3.grid.includes('Ambush'), at3);
+  ok('#15 F7: Lv 13 without / Lv 14 with Insignia Explosion', !/Insignia Explosion/.test(at13.chain) && !at13.grid.includes('Insignia Explosion') && /Insignia Explosion/.test(at14.chain) && at14.grid.includes('Insignia Explosion'), [at13, at14]);
+  r = await p.evaluate(() => { const st = SP_STEPS.find(x => x.s.n === 'Ambush' && x.L === 2), was = st.req; st.req = 15; renderRotation(); const out = document.getElementById('rotChain').innerText; st.req = was; renderRotation(); return out; });
+  ok('#15 F7: the drawer follows the Skills card unlock level (Ambush moved to Lv 15 → gone at Lv 14)', !/Ambush/.test(r) && /Heart Gore/.test(r), r);
 
   ok('no page errors', !errs.length, errs);
   console.log(`${n - fail} ok, ${fail} failed`); console.log(fail ? `E4 CHECKS FAILED (${fail})` : 'E4 CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0); })();
