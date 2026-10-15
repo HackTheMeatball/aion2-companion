@@ -3,7 +3,7 @@
    the raw v2 data, not GATE_GRAPH and not the evaluator) as the judge:
 
    1. Next up never offers (a card with an action) a node the oracle says is blocked, judged as the app runs since E4:
-      derived completion on, the wrapper proposals g22:0 / g32:dreams applied, the follow-up rule on (oracle OA). Rows
+      derived completion on, the wrapper completions g22:0 / g32:dreams (live data), the follow-up rule on (oracle OA). Rows
       the player has already started (a regional quest picked up, a dungeon entered) are judged on 2 only: the player's
       own record says the game let them in.
    2. Next up never offers a node that is done, ticked or derived (the same oracle: every completesWith entry, the

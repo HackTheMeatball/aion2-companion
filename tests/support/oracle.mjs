@@ -19,8 +19,8 @@
                    (ahead = idx − pos, + 1 for turnedIn; null with the story unset)
        S.pos                        index of c.quest in the chain, −1 if unset or unknown
      O.chain                        [[id, name]…] in story order
-   apply: Set of record ids whose `proposed` gate is read instead of the live one (§13; since E4 the app applies the
-   g22:0 / g32:dreams wrapper completions: tests/invariant.mjs loads a second oracle with the app's set). */
+   apply: Set of record ids whose `proposed` gate is read instead of the live one (§13; tests/invariant.mjs loads a
+   second oracle with the app's set, empty since the approved g22:0 / g32:dreams proposals moved to the live data). */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 

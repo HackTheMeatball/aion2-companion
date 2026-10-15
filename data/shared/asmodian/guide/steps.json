@@ -557,31 +557,23 @@
         ]
       },
       "completesWith": [
-        "tick"
-      ],
-      "proposed": {
-        "completesWith": [
-          "tick",
-          {
-            "story": "sq:2102185",
-            "is": "turnedIn",
-            "basis": "sourced",
-            "sources": [
-              {
-                "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
-                "fields": [
-                  "steps"
-                ],
-                "checkedAt": "2026-10-14"
-              }
-            ],
-            "note": "wrapper rule: its objective is completing \"The One Who Hears the Voice\""
-          }
-        ],
-        "status": "ready",
-        "basis": "prereq-gates §5 (wrapper rule) and §8",
-        "change": "Shows done once \"Daeva in a Dream\" is turned in (its objective is this quest), without a tick (derived, never written); the stigma slots that wait for g22:0 follow."
-      }
+        "tick",
+        {
+          "story": "sq:2102185",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+              "fields": [
+                "steps"
+              ],
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "note": "wrapper rule: its objective is completing \"The One Who Hears the Voice\""
+        }
+      ]
     },
     {
       "id": "g22:1",
@@ -843,34 +835,26 @@
         ]
       },
       "completesWith": [
-        "tick"
+        "tick",
+        {
+          "story": "sq:2102345",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
+              "fields": [
+                "steps"
+              ],
+              "checkedAt": "2026-10-14"
+            }
+          ],
+          "note": "wrapper rule: its objective is completing \"The One Who Dreams\""
+        }
       ],
       "claims": [
         "C36"
-      ],
-      "proposed": {
-        "completesWith": [
-          "tick",
-          {
-            "story": "sq:2102345",
-            "is": "turnedIn",
-            "basis": "sourced",
-            "sources": [
-              {
-                "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
-                "fields": [
-                  "steps"
-                ],
-                "checkedAt": "2026-10-14"
-              }
-            ],
-            "note": "wrapper rule: its objective is completing \"The One Who Dreams\""
-          }
-        ],
-        "status": "ready",
-        "basis": "prereq-gates §5 (wrapper rule) and §8",
-        "change": "Shows done once \"A Daeva Dreaming Anew\" is turned in (its only objective is this quest), without a tick (derived, never written)."
-      }
+      ]
     },
     {
       "id": "g35:exp",

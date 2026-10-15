@@ -49,9 +49,8 @@ const APP_GRAPH = (() => {
    turns that on too. Derived values are computed on every evaluation and never written. */
 export const GATE_CHANGES = {
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
-    "once their story quest is turned in, \"Put … on E\" once its slot is equipped)" },
-  "g22:0": { apply: "g22:0", needs: ["derived"], what: "wrapper rule: \"The One Who Hears the Voice\" done once \"Daeva in a Dream\" is turned in (proposal)" },
-  "g32:dreams": { apply: "g32:dreams", needs: ["derived"], what: "wrapper rule: \"The One Who Dreams\" done once \"A Daeva Dreaming Anew\" is turned in (proposal)" },
+    "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
+    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)" },
   followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)" },
   turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)" },
   clearTally: { needs: ["followUps"], what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +

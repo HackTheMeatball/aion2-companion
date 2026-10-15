@@ -1,6 +1,6 @@
 /* Derived completion and the other 0.3 E4 changes (docs/design/0.3-requirement-engine.md §5, §13, §16 Q3 / Q4 / Q10),
    on the live data through the page's gate functions (src/core/requirements.js gatesOf, doneOf, derivedOf, countsOf,
-   turnInNeedsLv) and Next up: one case per derivation kind (story quest, byStory step, wrapper proposal, "Put … on E",
+   turnInNeedsLv) and Next up: one case per derivation kind (story quest, byStory step, wrapper quest, "Put … on E",
    regional follow-up), the switches tests/golden.js --explain uses, A3 (a stored false shows again once the story moves
    back), nothing written, and the Lv 44 "Turned in" on Forgotten Commander. */
 import assert from 'node:assert/strict';
@@ -17,10 +17,9 @@ export default (test, M) => {
   const withChanges = (names, fn) => { const on = ALL.filter(M.gateChangeOn); M.setGateChanges(names); try { return fn(); } finally { M.setGateChanges(on); } };
   const der = (s, k) => M.derivedOf(M.char(s), k);
 
-  test('E4 switches: the page runs with every change on; a proposal turns on the rule it needs; an unknown name throws', () => {
-    assert.deepEqual(ALL, ['derived', 'g22:0', 'g32:dreams', 'followUps', 'turnInLevel', 'clearTally']);
+  test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
+    assert.deepEqual(ALL, ['derived', 'followUps', 'turnInLevel', 'clearTally']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
-    withChanges(['g22:0'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['derived', 'g22:0']));
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
     assert.throws(() => M.setGateChanges(['nope']), /unknown change/);
@@ -57,16 +56,16 @@ export default (test, M) => {
     assert.equal(d1, d0 + 2, `derived rows count (${d0} → ${d1})`);
   });
 
-  test('wrapper rule, proposal g22:0: "The One Who Hears the Voice" done once "Daeva in a Dream" is turned in; stigmas follow', () => {
+  test('wrapper rule, g22:0 (live since owner approval): "The One Who Hears the Voice" done once "Daeva in a Dream" is turned in; stigmas follow', () => {
     const past = S({ level: 22, quest: at('Daeva in a Dream', 1) }), on = S({ level: 22, quest: 'Daeva in a Dream' });
     assert.equal(der(past, 'g22:0').via, 'turnedIn sq:2102185');
     assert.equal(der(on, 'g22:0'), null);
     assert.equal(M.stigmaUnlocked(M.char(past)), true, 'the stigma slots that wait for g22:0 open');
-    withChanges(['derived'], () => assert.equal(der(past, 'g22:0'), null, 'derived alone: the live completesWith is the tick only'));
-    withChanges(['g22:0'], () => assert.ok(der(past, 'g22:0')));
+    withChanges(['derived'], () => assert.ok(der(past, 'g22:0'), 'the live completesWith holds with derived'));
+    withChanges([], () => assert.equal(der(past, 'g22:0'), null, 'without derived: the tick only, as in 0.2'));
   });
 
-  test('wrapper rule, proposal g32:dreams: done once "A Daeva Dreaming Anew" is turned in; g45:0 is never derived (Q9 / E10)', () => {
+  test('wrapper rule, g32:dreams (live since owner approval): done once "A Daeva Dreaming Anew" is turned in; g45:0 is never derived (Q9 / E10)', () => {
     assert.equal(der(S({ level: 32, quest: at('A Daeva Dreaming Anew', 1) }), 'g32:dreams').via, 'turnedIn sq:2102345');
     assert.equal(der(S({ level: 32, quest: 'A Daeva Dreaming Anew' }), 'g32:dreams'), null);
     const last = M.QUESTS[M.QUESTS.length - 1][1];

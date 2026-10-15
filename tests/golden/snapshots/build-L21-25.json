@@ -3,9 +3,9 @@
     "in": "e3263dae4b09",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -20,7 +20,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -68,9 +68,9 @@
   "build/L22-q34-before-A-dv": {
     "in": "d03a654ad54f",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -86,7 +86,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -134,9 +134,9 @@
   "build/L22-q34-before-A-filters": {
     "in": "f7f94eb84c6d",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -152,7 +152,7 @@
       "g16 | Cleared | 13/13 | done | hidden",
       "g19 | Cleared | 11/11 | done | hidden",
       "g20 | Cleared | 3/3 | done | hidden",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -199,9 +199,9 @@
   "build/L22-q34-before-A-objs": {
     "in": "fb4051be5601",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -217,7 +217,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -266,9 +266,9 @@
   "build/L22-q34-before-A-rqmix": {
     "in": "a5be87c48677",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
-      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run Blade of Vengeance (near)","run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Regional quests","s":"1 to pick up · 2 in progress · 1 follow-up · 1 near your story step · 1/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Insignia Explosion 4 → 5","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 5 → 6","s":"Opens at Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -284,7 +284,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 2/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -311,7 +311,7 @@
       "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
       "track": ["Stigma slot 1 now Lv 22"],
       "ring": "32%",
-      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+      "prog": ["Quests 3 9/58","Dungeons 31/60","Strongholds 4 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -336,9 +336,9 @@
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -350,7 +350,7 @@
       "g16 | Missed | 9/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 1/3 | overdue | open",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -607,9 +607,9 @@
     "in": "e633f1928bba",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -621,7 +621,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -669,9 +669,9 @@
   "build/L22-q34-before-B-dv": {
     "in": "066a850648f2",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -683,7 +683,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -731,9 +731,9 @@
   "build/L22-q34-before-B-filters": {
     "in": "1a9cb8c62316",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -745,7 +745,7 @@
       "g16 | Cleared | 13/13 | done | hidden",
       "g19 | Cleared | 11/11 | done | hidden",
       "g20 | Cleared | 3/3 | done | hidden",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -792,9 +792,9 @@
   "build/L22-q34-before-B-objs": {
     "in": "153294c7be39",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"1/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -806,7 +806,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -855,9 +855,9 @@
   "build/L22-q34-before-B-rqmix": {
     "in": "f7764380a5c8",
     "nu": [
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
-      {"t":"Regional quests","s":"1 to pick up · 3 in progress · 1 follow-up · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run Blade of Vengeance (near)","run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Regional quests","s":"1 to pick up · 2 in progress · 1 follow-up · 1 near your story step · 1/5 turned in","c":"go \"Show\" rqgo:rq:2202053","x":["run In the Fang Legion's Name","run Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -869,7 +869,7 @@
       "g16 | Cleared | 13/13 | done",
       "g19 | Cleared | 11/11 | done",
       "g20 | Cleared | 3/3 | done",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 2/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
@@ -896,7 +896,7 @@
       "ahead": ["Ahead verified","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 3 levels to go","Lv 27 Stigma slot 2 5 levels to go"],
       "track": ["Stigma slot 1 now Lv 22"],
       "ring": "32%",
-      "prog": ["Quests 3 8/58","Dungeons 31/60","Strongholds 4 3/15"]
+      "prog": ["Quests 3 9/58","Dungeons 31/60","Strongholds 4 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","* Lv 20–24 · 7/8 · 1 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -918,9 +918,9 @@
     "in": "db6575e5bfaf",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · Stigma slot 1","c":"primary \"Done\" tick:g22:0"},
       {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)","Turn in Nemon, Odar's Shade"]},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 2 near your story step · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance (near) | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story (near) | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg"]},
+      {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
     "ms": [
@@ -932,7 +932,7 @@
       "g16 | Missed | 9/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 1/3 | overdue | open",
-      "g22 | Now | 0/15 | current,upnext | open",
+      "g22 | Now | 1/15 | current,upnext | open",
       "g25 | Later | 0/8 | ",
       "g27 | Later | 0/7 | ",
       "g28 | Later | 0/1 | ",
