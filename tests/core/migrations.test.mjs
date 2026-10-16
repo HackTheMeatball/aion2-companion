@@ -9,6 +9,7 @@ const fixture = f => JSON.parse(readFileSync(join(FIX, f), 'utf8'));
 const clone = o => JSON.parse(JSON.stringify(o));
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 const STAMP = { stampV1: true, schemaVersion: 1 };   /* 5c: set on load, written with the next save */
+const BACKUP = { backup: { since: 0 }, backup1: true }; /* 0.2.5: the nudge baseline at the load clock (run() passes none: 0) */
 /* run the load steps; returns the state and what each write stored */
 const run = (M, saved, hadSave = true) => { const state = clone(saved), writes = []; M.migrate(state, hadSave, () => writes.push(clone(state))); return { state, writes }; };
 /* every value of `before` is still in `after` (migrations only add) */
@@ -26,7 +27,7 @@ export default (test, M) => {
        position, so the default first quest never outranks another device's progress: sync.test.mjs) */
     const q0 = M.QUESTS[0][1];
     assert.equal(q0, 'A Village in the Fog');
-    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, level: 1, quest: q0, hideCards: true, ...FLAGS, ...STAMP, mt: { level: [0, 1], quest: [0, [q0, null]] } });
+    assert.deepEqual({ ...state, checks: undefined }, { ...M.DEFAULT(), checks: undefined, level: 1, quest: q0, hideCards: true, ...FLAGS, ...STAMP, ...BACKUP, mt: { level: [0, 1], quest: [0, [q0, null]] } });
     assert.deepEqual(C(state).checks, {});
   });
   test('a stored save without level or quest is not re-defaulted (loadState + migrate)', () => {
@@ -57,10 +58,10 @@ export default (test, M) => {
       assert.deepEqual(twice.state, once); assert.deepEqual(twice.writes, []);
     });
   }
-  test('owner save 2026-10-14 (Lv 39, current build): loads with only the 5c stamps added (all at time 0) and writes nothing', () => {
+  test('owner save 2026-10-14 (Lv 39, current build): loads with only the 5c stamps (all at time 0) and the 0.2.5 backup baseline added and writes nothing', () => {
     const saved = fixture('fixture-user-2026-10-14-lv39.json'), { state, writes } = run(M, saved);
     assert.deepEqual(writes, []);
-    const { mt, ...rest } = state; assert.deepEqual(rest, { ...saved, ...STAMP });
+    const { mt, ...rest } = state; assert.deepEqual(rest, { ...saved, ...STAMP, ...BACKUP });
     const stamps = JSON.stringify(mt).match(/\[\d+,/g); assert.ok(stamps.length > 300 && stamps.every(x => x === '[0,'), 'every stamp at time 0');
     assert.deepEqual(M.merge(state, saved).checks, saved.checks);
   });
@@ -91,5 +92,45 @@ export default (test, M) => {
     assert.equal(C(state).quest, M.QUESTS[4][1]); assert.equal(C(state).storyEnd, undefined); assert.equal(writes.length, 1);
     const last = M.QUESTS[M.QUESTS.length - 1][1], end = run(M, { ...FLAGS, checks: {}, level: 45, quest: last, storyEnd: last });
     assert.equal(C(end.state).quest, last); assert.equal(C(end.state).storyEnd, last); assert.deepEqual(end.writes, []);
+  });
+
+  /* ---------- 0.2.5 backup1: the export nudge's baseline (docs/design/0.2.5-save-safety.md §4) ---------- */
+  const NOW = 1760000000;   /* seconds, as main.js passes it */
+  const runAt = (saved, hadSave, now) => { const state = clone(saved), writes = []; M.migrate(state, hadSave, () => writes.push(clone(state)), now); return { state, writes }; };
+  test('backup1: backup = { since: now in ms } for a saved and a fresh browser', () => {
+    for (const hadSave of [true, false]) {
+      const { state } = runAt(hadSave ? { ...FLAGS, checks: { 'g6:0': true }, level: 20, quest: '' } : M.DEFAULT(), hadSave, NOW);
+      assert.deepEqual(state.backup, { since: NOW * 1000 }, `hadSave ${hadSave}`); assert.equal(state.backup1, true);
+    }
+  });
+  test('backup1: adds only backup and its flag (the rest deep-equal a run with the step already done)', () => {
+    for (const f of ['fixture-v285.json', 'fixture-user-v285.json', 'fixture-user-2026-10-14-lv39.json']) {
+      const saved = fixture(f), a = runAt(saved, true, NOW), b = runAt({ ...saved, backup1: true }, true, NOW);
+      const { backup, backup1, ...rest } = a.state, { backup1: _b, ...restB } = b.state;
+      assert.deepEqual(rest, restB, f); assert.equal(b.state.backup, saved.backup, f);
+      assert.deepEqual(kept(saved, a.state), [], f);
+    }
+  });
+  test('backup1: idempotent (a second load, even with a later clock, changes nothing)', () => {
+    const once = runAt({ ...FLAGS, checks: {}, level: 20 }, true, NOW).state, twice = runAt(once, true, NOW + 30 * 86400);
+    assert.deepEqual(twice.state, once); assert.deepEqual(twice.writes, []);
+  });
+  test('backup1: an existing backup object is left as it is, malformed fields included', () => {
+    for (const b of [{ lastExportAt: 1759000000000, nudgeAt: 1759100000000 }, { since: -5, lastExportAt: 'yesterday' }, {}]) {
+      const { state } = runAt({ ...FLAGS, checks: {}, level: 20, backup: clone(b) }, true, NOW);
+      assert.deepEqual(state.backup, b); assert.equal(state.backup1, true);
+    }
+  });
+  test('backup1: a malformed backup (string, array, null, number) is replaced without throwing', () => {
+    for (const b of ['x', [1, 2], null, 7]) {
+      const { state } = runAt({ ...FLAGS, checks: {}, level: 20, backup: b }, true, NOW);
+      assert.deepEqual(state.backup, { since: NOW * 1000 }, JSON.stringify(b));
+    }
+  });
+  test('backup1: writes nothing (store() is called exactly as often as without the step)', () => {
+    for (const [saved, hadSave] of [[{ checks: {}, level: 5 }, true], [{ ...FLAGS, checks: {}, level: 20 }, true], [M.DEFAULT(), false]]) {
+      const a = runAt(saved, hadSave, NOW), b = runAt({ ...saved, backup1: true }, hadSave, NOW);
+      assert.equal(a.writes.length, b.writes.length, JSON.stringify(saved));
+    }
   });
 };
