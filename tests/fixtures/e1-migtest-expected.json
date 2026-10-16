@@ -1,8 +1,8 @@
 {
  "gates": {
-  "why": "regional quests re-banded by level (E2), g45:1 dropped (E2 D6), optional steps count only once ticked (E4 #2), derived rows count as done (0.3 E4, owner-approved 2026-10-15)",
+  "why": "regional quests re-banded by level (E2), g45:1 dropped (E2 D6), optional steps count only once ticked (E4 #2), derived rows count as done (0.3 E4, owner-approved 2026-10-15); g22: the optional Krao Cave Expedition row is done once Disturbed Balance is past (derived, 0.3 E9, owner 2026-10-15), so it counts, 6/16",
   "v285": {"g10":[8,8],"g12":[9,10],"g15":[4,5],"g16":[11,13],"g19":[5,11],"g20":[1,3],"g22":[5,16],"g25":[0,9],"g27":[1,7],"g28":[0,2],"g30":[0,10],"g32":[0,11],"g35":[0,3],"g37":[0,5],"g40":[0,2],"g45":[0,38],"g6":[11,11],"g9":[7,7]},
-  "current": {"g10":[9,9],"g12":[9,10],"g15":[3,4],"g16":[12,13],"g19":[5,11],"g20":[1,3],"g22":[5,15],"g25":[0,8],"g27":[1,7],"g28":[0,1],"g30":[0,10],"g32":[0,11],"g35":[0,2],"g37":[0,5],"g40":[0,3],"g45":[0,32],"g6":[11,11],"g9":[7,7]}
+  "current": {"g10":[9,9],"g12":[9,10],"g15":[3,4],"g16":[12,13],"g19":[5,11],"g20":[1,3],"g22":[6,16],"g25":[0,8],"g27":[1,7],"g28":[0,1],"g30":[0,10],"g32":[0,11],"g35":[0,2],"g37":[0,5],"g40":[0,3],"g45":[0,32],"g6":[11,11],"g9":[7,7]}
  },
  "steps": {
   "why": "hold:0 dropped (E2 D6); its saved tick stays in state",
@@ -17,7 +17,7 @@
  "gateTags": {
   "why": "milestone tags and counts follow the gates change",
   "v285": ["g6:Cleared:11/11","g9:Cleared:7/7","g10:Cleared:8/8","g12:Missed:9/10","g15:Missed:4/5","g16:Missed:11/13","g19:Missed:5/11","g20:Missed:1/3","g22:Missed:5/16","g25:Now:0/9","g27:Later:1/7","g28:Later:0/2","g30:Later:0/10","g32:Later:0/11","g35:Later:0/3","g37:Later:0/5","g40:Later:0/2","g45:Later:0/38"],
-  "current": ["g6:Cleared:11/11","g9:Cleared:7/7","g10:Cleared:9/9","g12:Missed:9/10","g15:Missed:3/4","g16:Missed:12/13","g19:Missed:5/11","g20:Missed:1/3","g22:Missed:5/15","g25:Now:0/8","g27:Later:1/7","g28:Later:0/1","g30:Later:0/10","g32:Later:0/11","g35:Later:0/2","g37:Later:0/5","g40:Later:0/3","g45:Later:0/32"]
+  "current": ["g6:Cleared:11/11","g9:Cleared:7/7","g10:Cleared:9/9","g12:Missed:9/10","g15:Missed:3/4","g16:Missed:12/13","g19:Missed:5/11","g20:Missed:1/3","g22:Missed:6/16","g25:Now:0/8","g27:Later:1/7","g28:Later:0/1","g30:Later:0/10","g32:Later:0/11","g35:Later:0/2","g37:Later:0/5","g40:Later:0/3","g45:Later:0/32"]
  },
  "ring": {
   "why": "a regional quest derived as done (a picked-up follow-up proves it) counts in the Progress tally (0.3 E4 clearTally, owner-approved 2026-10-15)",

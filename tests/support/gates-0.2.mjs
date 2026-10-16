@@ -17,8 +17,14 @@ export const gates02 = M => {
   const questIdx = c => c.quest ? storyIdx(c.quest) : -1;
 
   /* requirements.js */
-  const rqOpenLv = q => q.noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
+  /* E9 (2026-10-15, owner check 1): Shugo-of-All-Trades and Spooky Specters gained a story gate in the data (their row now has
+     story + no noPre). 0.2 had neither, so the frozen rules see them as they were; the page does the same with the switch
+     regionalTurnedIn off (src/core/requirements.js APP_GRAPH_0_2). Nothing else of the frozen rules changes. */
+  const NEW_RQ_GATE = new Set(["2202044", "2202051"]);
+  const rq0 = q => NEW_RQ_GATE.has(q.id) ? { ...q, story: null, noPre: 1 } : q;
+  const rqOpenLv = q => (q = rq0(q)).noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
   const rqStatus = (c, q, lv = c.level) => {
+    q = rq0(q);
     if (lv < rqOpenLv(q)) return { open: false, ok: false, pre: [] };
     if (q.story) { const at = storyIdx(q.story), cur = c.quest ? storyIdx(c.quest) : -1; if (at >= 0 && (cur < 0 || cur < at)) return { open: false, ok: false, pre: [] }; }
     const pre = q.after.filter(n => !c.checks["rq:" + RQ_BY[n].id]);
@@ -34,7 +40,7 @@ export const gates02 = M => {
       if (/^(sp|dv):/.test(k) || (row.opt && !(it && it.adv))) return;
       if (it && (it.stig || it.eput)) return;
       if (it && it.byStory && it.story === c.quest) return;
-      const need = row.story || row.after;
+      const need = (rq && row.q && NEW_RQ_GATE.has(row.q.id) ? null : row.story) || row.after;
       if (need) { const at = QUESTS.findIndex(([, n]) => n === need); if (at >= 0 && (cur < 0 || at > cur)) return; }
       if (it && it.turnedIn) { const at = QUESTS.findIndex(([, n]) => n === it.turnedIn); if (at >= 0 && !(cur > at || (cur === at && c.storyEnd === it.turnedIn))) return; }
       if (it && it.byStory) { const at = QUESTS.findIndex(([, n]) => n === it.story); if (at >= 0 && cur > at) return; }
@@ -54,7 +60,7 @@ export const gates02 = M => {
   /* Sealed Dungeons / strongholds offered (and main.js "behind", Progress, Areas jump) */
   const areaOpen = (c, x) => x.it.kind === "stronghold" ? bandOf(x) <= c.level && (x.it.lo || 0) <= c.level : x.lv <= c.level;
   /* regional quest waiting on the story (not ticked or picked up: the caller's part) */
-  const rqWait = (c, q, lv = c.level) => !(!q.story || q.rec > lv || lv < rqOpenLv(q) || rqStatus(c, q, lv).open);
+  const rqWait = (c, q, lv = c.level) => !(!rq0(q).story || q.rec > lv || lv < rqOpenLv(q) || rqStatus(c, q, lv).open);
   /* story card: level-gated on the current quest's recommended level, never on the first quest */
   const storyGated = c => { const qi = questIdx(c), gateLv = qi > 0 ? QUESTS[qi][0] : 0; return { qi, gateLv, gated: gateLv > c.level }; };
   /* "Meanwhile": Krao Cave also needs "Daeva in a Dream" (qi ≥ 0 there: the card is level-gated) */

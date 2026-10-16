@@ -13,13 +13,17 @@ export default (test, M) => {
   });
   /* the level a regional quest opens at: its unlock level, or with no prerequisite data (noPre) its recommended level */
   const openLv = q => q.noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
-  test('regional quest: closed below its unlock level and before its story quest, open at it', () => {
+  /* a regional quest's story gate is "turned in" (owner check 1, 2026-10-15): the story is past its quest, so the quest after it */
+  const qAfter = n => M.QUESTS[M.storyIdx(n) + 1][1];
+  test('regional quest: closed below its unlock level and before its story quest is turned in, open once it is', () => {
     const q = M.RQ.find(q => q.story && !q.after.length && M.storyIdx(q.story) > 0);
+    assert.equal(q.turnedIn, true, 'the story gate is turned in');
     assert.equal(M.rqStatus(S({ level: 45 }), q).open, false);
     assert.equal(M.rqStatus(S({ level: 45, quest: qBefore(q.story) }), q).open, false);
-    assert.deepEqual(M.rqStatus(S({ level: 45, quest: qAt(q.story) }), q), { open: true, ok: true, pre: [] });
-    assert.equal(M.rqStatus(S({ level: openLv(q) - 1, quest: qAt(q.story) }), q).open, false);
-    assert.equal(M.rqStatus(S({ level: 5, quest: qAt(q.story) }), q, openLv(q)).open, true, 'lv argument: the gate at that level');
+    assert.equal(M.rqStatus(S({ level: 45, quest: qAt(q.story) }), q).open, false, 'on the story quest, not yet turned in');
+    assert.deepEqual(M.rqStatus(S({ level: 45, quest: qAfter(q.story) }), q), { open: true, ok: true, pre: [] });
+    assert.equal(M.rqStatus(S({ level: openLv(q) - 1, quest: qAfter(q.story) }), q).open, false);
+    assert.equal(M.rqStatus(S({ level: 5, quest: qAfter(q.story) }), q, openLv(q)).open, true, 'lv argument: the gate at that level');
   });
   test('regional quest follow-up: open but not ok until the quests before it are turned in', () => {
     const q = M.RQ.find(q => q.after.length), quest = M.QUESTS[M.QUESTS.length - 1][1];

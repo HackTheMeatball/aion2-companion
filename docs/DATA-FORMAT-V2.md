@@ -250,10 +250,11 @@ build's plan nodes; skill levels by rule) carries `requires` and `completesWith`
 | `{ "story": "sq:<id>", "is": "reached" }` | current quest is X or later (D9) |
 | `{ "story": "sq:<id>", "is": "turnedIn" }` | current quest is past X, or X is the last covered quest and `storyEnd` is X |
 | `{ "done": "<id>" }` | that step/record is done (ticked or derived). **Never `sq:`** (M7): story completion is `{story, is: turnedIn}`. |
+| `{ "storyStep": "sq:…", "i": n }` | objective `i` of that story quest is ticked in `state.qsteps` (E9, 2026-10-15). `completesWith` only: it derives a stronghold or an "Expedition opens" row from a story step, never written |
 | `{ "itemLevel": n, "playerChecked": true }`, `{ "player": "…", "playerChecked": true }` | shown, never enforced |
 
-- **`is` is required** on every story atom (M7). Owner check 1 (reached vs turned in, prereq-gates §3, ~70% "turned
-  in") then changes specific labelled atoms, not a silent default.
+- **`is` is required** on every story atom (M7). Owner check 1 (reached vs turned in, prereq-gates §3) was answered "turned in"
+  for regional quests on 2026-10-15 (issue #69): their atoms say `turnedIn`; no silent default.
 - Every atom may carry `basis` (`sourced` · `inferred` · `owner` · `owner-check` · `rule` · `legacy`), `sources`,
   `note`. No `not`.
 - **One confidence layer (N2).** `requiresBasis` is optional and only says what atoms can't: `unresearched` (today's
@@ -261,6 +262,8 @@ build's plan nodes; skill levels by rule) carries `requires` and `completesWith`
   no recorded source; the 0.3 audit sources or relabels it). Otherwise the build derives the record's gate basis from
   its atoms (the weakest wins) and fails on a contradiction.
 - **`completesWith`** is any-of; `"tick"` is the player's tick, anything else is derived and never written as a tick.
+- **Story step notes (E9).** A story `steps[]` entry may carry `note` (one line, ≤ 120 characters, shown after the step text),
+  `noteBasis` (`owner` · `inferred`; required with `note`) and `noteSources`. The step `text` stays what the source says.
 - **`route`** (M11, optional on steps, regional quests, Sealed Dungeons, strongholds): `core` · `filler` ·
   `completionist`. 5b fills it from today (`optional` → `completionist`, else `core`), so nothing changes on screen;
   the owner approves labels milestone by milestone in 0.3 (decision), with "fastest" as the default view.

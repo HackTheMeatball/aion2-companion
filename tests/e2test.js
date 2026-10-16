@@ -25,7 +25,7 @@ async function setState(p, { L, q, mode = 'advanced', extra = {}, ticks = {} }) 
 const expect = (QUESTS, st) => { const idx = n => QUESTS.findIndex(x => x[1] === n), cur = st.quest ? idx(st.quest) : -1, done = n => !!st.checks['rq:' + RQ.find(r => r.name === n).id];
   /* E3 (P0-1): a quest with no prerequisite data at all opens at its recommended level. */
   const noPre = r => r.requiresStory == null && r.requiresRegional == null && !STORY[r.name] && !(PRE[r.name] || []).length;
-  const out = {}; RQ.forEach(r => { const lvOk = st.level >= (noPre(r) ? Math.max(r.unlocksAt, r.rec) : r.unlocksAt), s = STORY[r.name], sOk = !s || (cur >= 0 && cur >= idx(s)), pre = (PRE[r.name] || []).filter(n => !done(n));
+  const out = {}; RQ.forEach(r => { const lvOk = st.level >= (noPre(r) ? Math.max(r.unlocksAt, r.rec) : r.unlocksAt), s = STORY[r.name], sOk = !s || (cur >= 0 && (cur > idx(s) || (cur === idx(s) && st.storyEnd === s))),   /* E9 (owner check 1, 2026-10-15): the story quest is turned in */ pre = (PRE[r.name] || []).filter(n => !done(n));
     out[r.name] = { open: lvOk && sOk, ok: lvOk && sOk && !pre.length, pre }; }); return out; };
 const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test((c.querySelector('h3') || {}).innerText || ''));
   if (!card) return { card: false, rows: [], sub: '' };
@@ -65,8 +65,8 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     const msBad = ms.filter(x => { const r = RQ.find(q => 'rq:' + q.id === x.k), e = exp[r.name], done = !!st.checks[x.k]; return !done && (x.locked !== !e.ok || (x.locked && !x.snzHidden)); });
     ok(`${label}: milestone rows dim exactly the quests that aren't open`, !msBad.length, msBad.slice(0, 5));
   }
-  /* 2. Lv 44–45 batch: only once "Forgotten Commander" is the current (or a passed) quest */
-  for (const [q, end, want] of [['Farewells', false, false], ["Zikel's Core", false, false], ['Forgotten Commander', false, true], ['Forgotten Commander', true, true]]) {
+  /* 2. Lv 44–45 batch: only once "Forgotten Commander" is turned in (E9, owner check 1: a regional gate is "turned in"; it is the last covered quest, so storyEnd) */
+  for (const [q, end, want] of [['Farewells', false, false], ["Zikel's Core", false, false], ['Forgotten Commander', false, false], ['Forgotten Commander', true, true]]) {
     await setState(p, { L: 45, q, extra: end ? { storyEnd: 'Forgotten Commander' } : {} });
     const all = await p.evaluate(names => { const ids = names.map(n => RQ_BY[n].id); return ids.map(id => rqAvail(RQ.find(r => r.id === id)).open); }, BATCH);
     const nu = await nextUp(p), inNu = nu.rows.filter(r => BATCH.includes(r.name)).length, m = nu.sub.match(/(\d+) to pick up/);
@@ -77,7 +77,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   const rw = await p.evaluate(() => ({ sh: AREA_ITEMS.filter(x => x.it.kind === 'stronghold').map(x => CLEAR_REWARD(x.k)), sd: [...new Set(AREA_ITEMS.filter(x => x.it.kind === 'hideout').map(x => JSON.stringify(CLEAR_REWARD(x.k))))], rq: [...new Set(RQ.map(q => JSON.stringify(CLEAR_REWARD('rq:' + q.id))))] }));
   ok('CLEAR_REWARD: every stronghold null, every Sealed Dungeon {2,2}, every regional quest {1,1}', rw.sh.every(x => x === null) && rw.sd.join() === '{"st":2,"cr":2}' && rw.rq.join() === '{"st":1,"cr":1}', rw);
   await p.selectOption('#areaSel', 'sh'); await p.waitForTimeout(200);
-  const shk = await p.evaluate(() => document.querySelector('#areaList input[data-k^="sh:"]').dataset.k);
+  const shk = await p.evaluate(() => document.querySelector('#areaList input[data-k^="sh:"]:not(:disabled)').dataset.k);   /* a stronghold the story already cleared (Graverobber Den, E9) shows a disabled tick */
   await p.click(`#areaList input[data-k="${shk}"]`); await p.waitForTimeout(150); await p.click(`#areaList input[data-k="${shk}"]`); await p.waitForTimeout(400);
   let r3 = await p.evaluate(k => ({ done: state.checks[k], st: state.pendSt || 0, cr: state.pendCr || 0, toast: (document.getElementById('rwToast') || {}).innerText || '' }), shk);
   ok('clearing a stronghold in Dungeons & Strongholds credits no stones or crystals', r3.done === true && r3.st === 0 && r3.cr === 0 && !/Wisdom|crystal/.test(r3.toast), r3);

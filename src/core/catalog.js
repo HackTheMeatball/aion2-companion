@@ -61,7 +61,7 @@ GATES.sort((a, b) => a.lv - b.lv);
 const qMap = q => [q.zone, q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
 /* What opens a regional quest, in the row's second line: unlock level (if above 10), the story quest, earlier regional quests. */
 /* inGroup: the group heading already says it (story quest or unlock level), so the row doesn't repeat it. */
-const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? `once the story reaches <em>${q.story}</em>` : "",
+const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? (q.turnedIn ? `once <em>${q.story}</em> is turned in` : `once the story reaches <em>${q.story}</em>`) : "",
   q.after.length ? `after ${q.after.map(n => `<em>${n}</em>`).join(" and ")} ${q.after.length > 1 ? "are" : "is"} turned in` : ""].filter(Boolean);
   return xs.length ? `<span class="rq-req"><br>Opens ${xs.join(", ")}</span>` : ""; };
 /* A regional quest row (key "rq:" + id, so where it sits never touches its ticks). lv = recommended level. */

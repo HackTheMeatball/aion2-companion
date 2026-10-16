@@ -27,7 +27,9 @@ function recordsOf(root, meta) {
   for (const [n, m] of Object.entries(meta)) {
     if (m.apply) { const r = steps.find(s => s.id === m.apply) || rqs.find(q => q.id === m.apply);
       out[n] = { records: [m.apply], change: r && r.proposed ? r.proposed.change : m.what }; continue; }
-    if (n === 'derived') out[n] = { records: steps.filter(s => s.completesWith.includes('tick') && s.completesWith.some(e => e !== 'tick')).map(s => s.id), change: m.what };
+    if (n === 'regionalTurnedIn') out[n] = { records: rqs.filter(q => leaves(q.requires).some(a => a.story && a.is === 'turnedIn')).map(q => `${q.id} ${q.name}`), change: m.what };
+    else if (n === 'storyStepDerived') out[n] = { records: ['sh:graverobber-den', 'g20:exp', 'g35:exp'], change: m.what };
+    else if (n === 'derived') out[n] = { records: steps.filter(s => s.completesWith.includes('tick') && s.completesWith.some(e => e !== 'tick')).map(s => s.id), change: m.what };
     else if (n === 'followUps' || n === 'clearTally') out[n] = { records: [...new Set(rqs.flatMap(q => leaves(q.requires).filter(a => a.done && rqName.has(a.done) && ['sourced', 'owner'].includes(a.basis)).map(a => a.done)))].sort()
       .map(id => `${id} ${rqName.get(id)}`), change: m.what };
     else if (n === 'turnInLevel') out[n] = { records: story.filter(s => leaves(s.requires).some(a => a.level !== undefined)).map(s => `${s.id} ${s.key}`), change: m.what };
@@ -67,12 +69,13 @@ function viewFlag(p, A, B, a, b, canon) {
 }
 
 async function explain({ states, shipped, before, meta, run, canon, describe, out, root }) {
-  const names = Object.keys(meta);
-  const eff = set => { const on = new Set(); for (const n of set) { on.add(n); (meta[n].needs || []).forEach(d => on.add(d)); } return names.filter(n => on.has(n)); };
+  const all = Object.keys(meta), base = all.filter(n => meta[n].baseline);   /* baseline = already approved and in the snapshots: on in every run, never explained */
+  const names = all.filter(n => !meta[n].baseline);
+  const eff = set => { const on = new Set(base); for (const n of set) { on.add(n); (meta[n].needs || []).forEach(d => on.add(d)); } return all.filter(n => on.has(n)); };
   const errors = [], flags = []; /* flags: view flags, { id, path, cause } */
   const changed = states.filter(s => before[s.id] && canon(before[s.id]) !== canon(shipped[s.id]));
   const noSnap = states.filter(s => !before[s.id]);
-  console.log(`explain: ${changed.length} of ${states.length} states differ from the snapshots with every change on (${names.join(', ')})`);
+  console.log(`explain: ${changed.length} of ${states.length} states differ from the snapshots with every change on (${names.join(', ')}; already in the snapshots: ${base.join(', ') || 'none'})`);
   if (noSnap.length) errors.push(`${noSnap.length} states have no snapshot (e.g. ${noSnap[0].id}): explain compares against the snapshots of the base build`);
   for (const s of changed) {
     const a = before[s.id], b = shipped[s.id];
@@ -86,7 +89,7 @@ async function explain({ states, shipped, before, meta, run, canon, describe, ou
   }
 
   /* 1. every change off: each changed state must be its snapshot again */
-  const off = changed.length ? await run(changed, []) : {};
+  const off = changed.length ? await run(changed, base) : {};
   const notUndone = new Set(changed.filter(s => canon(off[s.id]) !== canon(before[s.id])).map(s => s.id));
   for (const id of notUndone) errors.push(`${id}: still differs with every change off (a change no switch covers)`);
   console.log(`explain: every change off: ${changed.length - notUndone.size} of ${changed.length} back to their snapshot`);
@@ -131,7 +134,7 @@ async function explain({ states, shipped, before, meta, run, canon, describe, ou
     ...rows.map((r, i) => {
       const rc = r.set.map(n => recs[n] || { records: [], change: '' });
       const records = rc.flatMap(x => x.records), change = rc.map(x => x.change).filter(Boolean).join(' / ');
-      return `| ${i + 1} | ${names2(r.set)}${r.set.length > 2 ? ' **(triple)**' : ''}${r.eff.length > r.set.length ? ` (with ${names2(r.eff.filter(n => !r.set.includes(n)))})` : ''} | ${cell(records.slice(0, 12).join(', ') + (records.length > 12 ? `, … (${records.length})` : ''))} | ${cell(change)} | ${r.ids.length}: ${cell(byGroup(r.ids))} | ${cell(r.top.join('<br>') + (r.more > 0 ? `<br>… ${r.more} more kinds` : ''))} | \`${r.sample}\`<br>${cell(r.sd.join('<br>').slice(0, 700))} |`;
+      return `| ${i + 1} | ${names2(r.set)}${r.set.length > 2 ? ' **(triple)**' : ''}${r.eff.filter(n => !r.set.includes(n) && !base.includes(n)).length ? ` (with ${names2(r.eff.filter(n => !r.set.includes(n) && !base.includes(n)))})` : ''} | ${cell(records.slice(0, 12).join(', ') + (records.length > 12 ? `, … (${records.length})` : ''))} | ${cell(change)} | ${r.ids.length}: ${cell(byGroup(r.ids))} | ${cell(r.top.join('<br>') + (r.more > 0 ? `<br>… ${r.more} more kinds` : ''))} | \`${r.sample}\`<br>${cell(r.sd.join('<br>').slice(0, 700))} |`;
     }),
     ...(flags.length ? ['', '## View flags (`open.<milestone>`, attributed to auto-open)', '',
       'A milestone card unfolds by itself while it is next or Missed and nothing is stored for it, and its toggle handler saves ' +

@@ -96,8 +96,11 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
   box, "done in the story"; the stored tick stays as it was and counts again if the story moves back). Derived the same
   way (E4, switches in `src/core/requirements.js` `GATE_CHANGES`): "Put … on E" once its slot is equipped, `g22:0` /
   `g32:dreams` once their wrapper story quest is turned in, a regional quest once a follow-up of it is picked up or
-  turned in. Milestone counts and tags count derived rows as done; so does the Progress tally of one-time clears
-  (`clearDoneOf`, switch `clearTally`): a derived regional quest counts with its clear reward. The Cube and the stone /
+  turned in, the Krao Cave / Fire Temple "Expedition opens" rows and the Graverobber Den stronghold once their story step
+  is ticked (`storyStep` atom) or the story quest turned in (E9). A regional quest's story gate is "turned in"
+  (switch `regionalTurnedIn`, off = the 0.2 "reached"). Milestone counts and tags count derived rows as done; so does
+  the Progress tally of one-time clears
+  (`clearDoneOf`, switch `clearTally`): a derived regional quest or stronghold counts with its clear reward. The Cube and the stone /
   crystal totals still only move on a tick, so the reward is never written or counted twice.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.

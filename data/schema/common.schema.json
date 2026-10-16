@@ -321,6 +321,25 @@
           "minLength": 1,
           "maxLength": 400
         },
+        "note": {
+          "description": "One line our guide adds to the objective (e.g. that it is your first Expedition run). Shown after the text; the text itself stays what the source says.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "noteBasis": {
+          "description": "Required with note. owner = the owner confirmed it; inferred = shown as 'probably' until the owner confirms.",
+          "enum": [
+            "owner",
+            "inferred"
+          ]
+        },
+        "noteSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
         "kibelisk": {
           "type": [
             "string",
@@ -466,6 +485,30 @@
                 "reached",
                 "turnedIn"
               ]
+            }
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "storyStep",
+            "i"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/atomMeta"
+            }
+          ],
+          "properties": {
+            "storyStep": {
+              "description": "A step (objective) of this story quest is ticked: objective i (its permanent index) of the quest is ticked in state.qsteps (ticks are only written while that quest is current). Derived completion only (completesWith); say {story, is: turnedIn} for the whole quest.",
+              "type": "string",
+              "pattern": "^sq:[0-9]{5,9}$"
+            },
+            "i": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           "unevaluatedProperties": false

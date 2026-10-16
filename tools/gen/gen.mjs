@@ -80,7 +80,9 @@ export function generate(opts = {}) {
   for (const s of story) check('story id is sq:<gameId>: ' + s.name, s.id === 'sq:' + s.gameId);
   const QUESTS = chain.map(s => [s.lv, s.name]);
   const sqName = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].name; };
-  const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(x => x.text)]));
+  /* a step's own note (our line about it, e.g. a first Expedition run) follows its text */
+  const stepText = x => x.note ? `${x.text.replace(/\.$/, '')}. ${x.note}` : x.text;
+  const QUEST_STEPS = Object.fromEntries(chain.filter(s => s.steps.length).map(s => [s.name, s.steps.map(stepText)]));
   const LOC = s => { const o = {}; const put = (k, v) => { if (v !== null && v !== undefined) o[k] = v; };
     put('giverKib', s.giver.kibelisk); put('giverKibM', s.giver.meters); put('turnin', s.turnin.npc); put('turninPlace', s.turnin.place);
     put('turninKib', s.turnin.kibelisk); put('turninKibM', s.turnin.meters);
@@ -89,7 +91,7 @@ export function generate(opts = {}) {
   const QUEST_LOC = Object.fromEntries(chain.map(s => [s.name, LOC(s)]).filter(([, o]) => Object.keys(o).length));
   const X = chain.filter(s => s.lv > 40);   /* Lv 41-45: the v1 block's separate constants, kept for the page globals */
   const QUESTS_X = X.map(s => [s.lv, s.name]);
-  const QUEST_STEPS_X = Object.fromEntries(X.map(s => [s.name, s.steps.map(x => x.text)]));
+  const QUEST_STEPS_X = Object.fromEntries(X.map(s => [s.name, s.steps.map(stepText)]));
   const QUEST_LOC_X = Object.fromEntries(X.map(s => [s.name, LOC(s)]));
   const STORY_END = { quest: last.name, lv: last.lv, turnin: last.turnin.npc, place: last.turnin.place, region: last.end.region, regionFull: last.end.regionFull };
   check('last story quest turns in in Reshanta', STORY_END.region === 'Reshanta');
@@ -116,7 +118,7 @@ export function generate(opts = {}) {
     if (q.rewards.ap) its.unshift(`${Math.floor(q.rewards.ap / 1000)}k Abyss Points`);
     let place = q.giver.place || ''; if (place === zone) place = '';
     const row = { name: q.name, id: q.gameId, rec: q.rec, unlocksAt: q.unlocksAt, zone, place, npc: q.giver.npc || '', kib: q.giver.kibelisk, m: q.giver.meters,
-      after, story: st.length ? sqName(st[0].story) : null, reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 } };
+      after, story: st.length ? sqName(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 } };
     if (q.requiresBasis === 'unresearched') row.noPre = 1;
     check('regional: zone = giver zone: ' + q.name, q.zone === q.giver.zone);
     check('regional: id = key = rq:<gameId>: ' + q.name, q.id === 'rq:' + q.gameId && q.key === q.id);
@@ -324,6 +326,7 @@ export function generate(opts = {}) {
     if (a.story) refCheck(id, a.story);
     if (a.done) { refCheck(id, a.done); check(`${id}: done never names a story quest`, !a.done.startsWith('sq:')); }
     if (a.story) check(`${id}: story atom has "is"`, !!a.is);
+    if (a.storyStep) { refCheck(id, a.storyStep); const sq = story.find(s => s.id === a.storyStep); check(`${id}: storyStep ${a.storyStep} #${a.i} is a step of that quest`, !!sq && sq.steps.some(x => x.i === a.i)); }
   }
   /* proposals (0.3 audit): a ready one rests on no owner-check atom; each is listed in the report for the golden-difference list */
   report.proposed = [];
@@ -414,6 +417,7 @@ export function generate(opts = {}) {
       if (c.any) return { any: c.any.map(gate) };
       if (c.level !== undefined) return { level: c.level, ...bas(c) };
       if (c.story) return { story: c.story, i: sIdx[c.story] ?? -1, is: c.is, ...bas(c) };
+      if (c.storyStep) return { storyStep: c.storyStep, i: c.i, q: sIdx[c.storyStep] ?? -1, ...bas(c) };
       if (c.done) return { done: c.done, ...bas(c) };
       if (c.itemLevel !== undefined) return { itemLevel: c.itemLevel, playerChecked: true, ...bas(c) };
       if (c.player) return { player: c.player, playerChecked: true, ...bas(c) };

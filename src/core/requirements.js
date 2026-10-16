@@ -48,13 +48,17 @@ const APP_GRAPH = (() => {
    golden runner, the equiv suite) picks a set. A proposal names the rule switch it needs ("needs"), and turning it on
    turns that on too. Derived values are computed on every evaluation and never written. */
 export const GATE_CHANGES = {
+  regionalTurnedIn: { what: "regional quests open when their story quest is turned in, not when it is reached (owner check 1, 2026-10-15: " +
+    "Shugo-of-All-Trades and Spooky Specters are not offered while the quest before them is current); those two also gain the story gate they lacked" },
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
     "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
-    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)" },
-  followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)" },
-  turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)" },
-  clearTally: { needs: ["followUps"], what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
-    "turned in) counts with its clear reward (Wisdom Stone + crystal) like a ticked one" },
+    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)", baseline: true },
+  storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once Cemetery Cleanup's " +
+    "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in" },
+  followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)", baseline: true },
+  turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)", baseline: true },
+  clearTally: { needs: ["followUps"], baseline: true, what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
+    "turned in), or the Graverobber Den stronghold done by Cemetery Cleanup, counts with its clear reward (Wisdom Stone + crystal; belt scrolls) like a ticked one" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
@@ -65,7 +69,23 @@ export const setGateChanges = names => {
   return [...on];
 };
 export const gateChangeOn = n => CHANGES_ON.has(n);
-const evOpts = () => EV_OPTS || (EV_OPTS = { graph: APP_GRAPH, derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
+/* The 0.2 form of the regional gates, for the page with regionalTurnedIn off: every story atom of a regional quest "reached", and the two
+   quests that had no story gate (Shugo-of-All-Trades, Spooky Specters: "noPre", they opened at their recommended level) back on that rule. */
+const RQ_NO_STORY_GATE = new Set(["rq:2202044", "rq:2202051"]);
+const APP_GRAPH_0_2 = (() => {
+  const down = (g, noPre) => g.all ? { all: g.all.map(x => down(x, noPre)) } : g.any ? { any: g.any.map(x => down(x, noPre)) }
+    : g.story ? (noPre ? { level: Math.max(noPre.unlocksAt, noPre.rec), basis: "rule" } : { ...g, is: "reached" }) : g;
+  const nodes = { ...APP_GRAPH.nodes };
+  for (const [id, n] of Object.entries(nodes)) if (n.kind === "rq") nodes[id] = { ...n, req: down(n.req, RQ_NO_STORY_GATE.has(id) && RQ.find(q => "rq:" + q.id === id)) };
+  return { story: APP_GRAPH.story, nodes };
+})();
+/* ...and without storyStepDerived: the three rows E9 gave a story completion (Graverobber Den, the Krao Cave and Fire Temple Expedition rows) are tick-only again. */
+const STORY_STEP_ROWS = ["sh:graverobber-den", "g20:exp", "g35:exp"];
+const withoutStoryStep = g => { const nodes = { ...g.nodes }; for (const id of STORY_STEP_ROWS) nodes[id] = { ...nodes[id], done: ["tick"] }; return { story: g.story, nodes }; };
+const APP_GRAPHS = {};
+const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), k = (a ? "t" : "r") + (b ? "s" : "n");
+  return APP_GRAPHS[k] || (APP_GRAPHS[k] = (b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2))); };
+const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
   apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
 /* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
    page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`. */

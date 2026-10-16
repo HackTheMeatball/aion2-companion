@@ -35,8 +35,23 @@
     {
       "id": "C02",
       "claim": "Each skill gains one level every 3 character levels after you learn it.",
-      "verdict": "unverifiable",
+      "verdict": "wrong",
       "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/heart-gore",
+          "note": "Skill pages list the character level each skill level needs (learn level + 3 per level) and the 1 / 2 / 4 point costs"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-00",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs Lv 10 for Lv 5 and costs 2 points; Storm Rampage Lv 2 needs Lv 8 for Lv 3"
+          }
+        },
         {
           "url": "https://allthings.how/?p=215236",
           "quote": "Skill points arrive automatically as your character levels"
@@ -46,10 +61,15 @@
           "quote": "mastery skills are learned automatically when the character reaches the required level; levels beyond 10 come from items, Arcana and Daevanion boards"
         }
       ],
-      "action": "drop",
-      "newText": "",
-      "note": "No source describes automatic skill levels per N character levels. Not marked as seen in game. Delete the sentence.",
-      "verifiedAt": "2026-10-12"
+      "action": "rewrite",
+      "newText": "<p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Savage Roar, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>",
+      "note": "The claim is wrong: skills do not gain levels on their own. Real rule (rule:skill-level-gate, rule:skill-point-cost; owner screens 2026-10-15): skill level L needs character level learnLv + 3 × (L − 2) and points cost 1 / 2 / 4 per level (L2–4 / 5–7 / 8–10). The guide text now says that, in \"Where Skill Points come from\".",
+      "verifiedAt": "2026-10-15",
+      "appliesTo": [
+        "tip:wisdom",
+        "rule:skill-level-gate",
+        "rule:skill-point-cost"
+      ]
     },
     {
       "id": "C03",
@@ -661,15 +681,26 @@
         {
           "url": "https://selphie1999gaming.com/game-guides/aion-2/aion-2-empyrean-traces-how-to-use-empyrean-feathers/",
           "quote": "Once you reach level 16 and complete the Empyrean Monolith main quest ... Faction Monoliths go to max level 30 ... Extra Feathers can be converted into Power Shards"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-00",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "\"Signs of a Crash Landing\" rewards 1,000 Power Shards (Bound) and opens the Power Shard settings tutorial"
+          }
         }
       ],
       "action": "rewrite",
-      "newText": "<p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards.</p>",
-      "note": "560, Lv 16 unlock, max 30, rewards and Power Shards all verified. No source names the Monolith locations (allthings.how lists 2, unnamed), so '(Safe Haven or Nornir Assembly)' is dropped. Line 1825 keeps as is.",
+      "newText": "<p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards. You first get Power Shards from \"Signs of a Crash Landing\" (Lv 6).</p>",
+      "note": "560, Lv 16 unlock, max 30, rewards and Power Shards all verified. No source names the Monolith locations (allthings.how lists 2, unnamed), so '(Safe Haven or Nornir Assembly)' is dropped. Line 1825 keeps as is. Owner screens 2026-10-15: \"Signs of a Crash Landing\" (Lv 6) gives 1,000 Power Shards (Bound) and opens the Power Shard settings tutorial, so that is where the guide says you first get them.",
       "appliesTo": [
         "tip:traces"
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-15"
     },
     {
       "id": "C26",

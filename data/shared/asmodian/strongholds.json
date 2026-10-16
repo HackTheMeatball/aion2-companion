@@ -1037,7 +1037,43 @@
         "note": "lo of the map's level range"
       },
       "completesWith": [
-        "tick"
+        "tick",
+        {
+          "storyStep": "sq:2102070",
+          "i": 4,
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-chat-03",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Cemetery Cleanup step \"Investigate the Graverobber Den\" counts as clearing the stronghold; the map shows Graverobber Den with the cleared check mark"
+              }
+            }
+          ]
+        },
+        {
+          "story": "sq:2102070",
+          "is": "turnedIn",
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-chat-03",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Cemetery Cleanup step \"Investigate the Graverobber Den\" counts as clearing the stronghold; the map shows Graverobber Den with the cleared check mark"
+              }
+            }
+          ]
+        }
       ],
       "sources": [
         {
@@ -1075,9 +1111,23 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-chat-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Cemetery Cleanup step \"Investigate the Graverobber Den\" counts as clearing the stronghold; the map shows Graverobber Den with the cleared check mark"
+          },
+          "fields": [
+            "completesWith"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "levelRange": "inferred"

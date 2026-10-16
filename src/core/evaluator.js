@@ -42,7 +42,7 @@ const evIndexOf = g => {
     evIndex.set(g, x); }
   return x;
 };
-const evVia = e => e.story ? `${e.is} ${e.story}` : e.done ? `done ${e.done}` : e.level !== undefined ? `level ${e.level}` : JSON.stringify(e);
+const evVia = e => e.story ? `${e.is} ${e.story}` : e.storyStep ? `step ${e.storyStep}#${e.i}` : e.done ? `done ${e.done}` : e.level !== undefined ? `level ${e.level}` : JSON.stringify(e);
 
 export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null, proposed = GATE_PROPOSED, followUps = false } = {}) {
   const N = graph.nodes, ix = evIndexOf(graph), checks = c.checks || {}, lv = c.level || 0;
@@ -82,6 +82,10 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
       const i = ix.byId.get(g.story), name = graph.story[i][1], turnIn = g.is === "turnedIn";
       const ok = pos >= 0 && (turnIn ? pos > i || (pos === i && c.storyEnd === name) : pos >= i);
       return ok ? EV_MET : { ok, blockers: [{ kind: "story", quest: g.story, name, ahead: pos < 0 ? null : i - pos + (turnIn ? 1 : 0), ...(turnIn ? { turnIn } : {}) }] };
+    }
+    if (g.storyStep) {   /* objective i of that story quest is ticked (state.qsteps, by quest name); only completesWith uses it */
+      const name = graph.story[g.q][1];
+      return ((c.qsteps || {})[name] || []).includes(g.i) ? EV_MET : { ok: false, blockers: [{ kind: "step", quest: g.storyStep, name, i: g.i }] };
     }
     if (g.done) { const y = node(g.done); if (!y) throw new Error(`evaluate: unknown node ${g.done}`);
       return y.done !== false ? EV_MET : { ok: false, blockers: [{ kind: "done", of: g.done, chain: y.blockers }] }; }

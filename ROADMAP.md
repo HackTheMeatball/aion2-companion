@@ -157,6 +157,11 @@ correct engine and each release stays testable. 0.3 makes Next up correct; 0.4 m
 - Location-aware "next best thing" (F15, Zygor-like): tie-break by distance from the last confirmed location; teleport
   vs run per the travel rules in DECISIONS (Kibelisk unlocks derived from ticks, "1 scroll", an "I'll walk" override,
   an optional "Prefer running" setting).
+- Travel notes (owner, 2026-10-15; no app change before this release):
+  - **Kibelisk binding** happens on proximity, roughly within 30–40 m. Use **25 m** as the "assume bound" cut-off (owner,
+    19:20 ET: "25m just to be safe"): within 25 m of a quest step, assume the Kibelisk is bound; 25–150 m gets a one-time
+    "Bind X" nudge row; beyond that, say nothing.
+  - **Teleport** works from the first bind and costs a Return Scroll.
 - Fastest (default) and completionist modes; Next up grouped by level band with the range shown (F10); the drawbacks of
   "fastest" shown.
 - Catch-up: rank by what the player can do now (level, skill points, crystals), not guide order (F1).

@@ -222,7 +222,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Defiance](https://metabot.gg/en/aion-2/skills/defiance) | Skills, boards and stigmas | classes/assassin/skills.json: Defiance |
 | [Metabot: Determination](https://metabot.gg/en/aion-2/skills/determination) | Skills, boards and stigmas | classes/assassin/skills.json: Determination |
 | [Metabot: Flash Slice](https://metabot.gg/en/aion-2/skills/flash-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Flash Slice |
-| [Metabot: Heart Gore](https://metabot.gg/en/aion-2/skills/heart-gore) | Skills, boards and stigmas | classes/assassin/skills.json: Heart Gore; shared/rules.json: rule:skill-level-gate; shared/rules.json: rule:skill-point-cost; shared/rules.json: rule:specialty-slots |
+| [Metabot: Heart Gore](https://metabot.gg/en/aion-2/skills/heart-gore) | Skills, boards and stigmas | classes/assassin/skills.json: Heart Gore; shared/asmodian/guide/claims.json: Each skill gains one level every 3 character levels after you learn it.; shared/rules.json: rule:skill-level-gate; shared/rules.json: rule:skill-point-cost; shared/rules.json: rule:specialty-slots |
 | [Metabot: Heightened Sixth Sense](https://metabot.gg/en/aion-2/skills/heightened-sixth-sense) | Skills, boards and stigmas | classes/assassin/skills.json: Heightened Sixth Sense |
 | [Metabot: Illusive Clone](https://metabot.gg/en/aion-2/skills/illusive-clone) | Skills, boards and stigmas | classes/assassin/stigmas.json: Illusive Clone; shared/rules.json: rule:stigma-shard-cost |
 | [Metabot: Impact Hit](https://metabot.gg/en/aion-2/skills/impact-hit-assassin) | Skills, boards and stigmas | classes/assassin/skills.json: Impact Hit |
