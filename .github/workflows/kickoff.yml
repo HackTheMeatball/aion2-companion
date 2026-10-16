@@ -7,7 +7,7 @@ name: Kickoff
 #   - [next] #128 opus alone      "alone": starts only when nothing else is in flight, and nothing starts beside it
 # This workflow (no model for the choice) runs after CI on main goes green (that is, after every merge, since
 # auto-merge dispatches CI on main), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
-# lines; a started line whose issue is closed is dropped), starts queued items from the top until 3 are in flight, and rewrites each started line to
+# lines; a started line whose issue is closed is dropped, one with no PR after 5 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
 # "- [started <time>] #N model" so neither the planner nor a second run starts it again. The build run implements the
 # issue on a new claude/ branch and opens the PR; pipeline.yml and auto-merge.yml take it from there.
 
@@ -47,17 +47,28 @@ jobs:
             const issue = (await github.rest.issues.get({ owner, repo, issue_number: STATE })).data;
             const body = issue.body || '';
             let lines = body.split('\n');
+            const refs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
+              .map((p) => p.head.ref).filter((r) => /^claude\//.test(r));
             // A started item whose issue is now closed (its PR merged) is done: drop its line so it stops counting.
+            // One with no PR 5 h after it started (blocked, handed to Opus, failed or timed out) is marked "stalled"
+            // so it frees its slot; the planner reads why and re-queues it or raises a To-do.
             let pruned = false;
             const kept = [];
             for (const l of lines) {
-              const s = l.match(/^- \[started [^\]]*\] #(\d+)/);
-              if (s && (await github.rest.issues.get({ owner, repo, issue_number: Number(s[1]) })).data.state === 'closed') { pruned = true; continue; }
+              const s = l.match(/^- \[started ([^\]]*)\] #(\d+)(.*)$/);
+              if (s) {
+                const n = Number(s[2]);
+                if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.state === 'closed') { pruned = true; continue; }
+                if (!refs.some((r) => r.startsWith(`claude/issue-${n}-`)) && Date.now() - Date.parse(s[1]) > 5 * 3600e3) {
+                  kept.push(`- [stalled ${s[1]}] #${n}${s[3]}`); pruned = true;
+                  await github.rest.issues.createComment({ owner, repo, issue_number: n,
+                    body: 'Kickoff: no PR 5 h after this build started; marked stalled in #114 for the CEO planner.' });
+                  continue;
+                }
+              }
               kept.push(l);
             }
             lines = kept;
-            const refs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
-              .map((p) => p.head.ref).filter((r) => /^claude\//.test(r));
             const openPrs = refs.length;
             // A started item that already has its PR open is counted once, through the PR.
             const started = lines.filter((l) => { const s = l.match(/^- \[started [^\]]*\] #(\d+)/);
@@ -79,11 +90,13 @@ jobs:
               inflight++;
               if (alone) break;
             }
-            if (!picked.length) {
-              if (pruned) await github.rest.issues.update({ owner, repo, issue_number: STATE, body: lines.join('\n') });
-              return core.info('nothing to start');
-            }
+            if (!picked.length && !pruned) return core.info('nothing to start');
+            // Read-modify-write of a shared issue: if someone (the planner) edited it meanwhile, start nothing and
+            // leave their edit; the next merge or a dispatch retries on the fresh body.
+            const now = (await github.rest.issues.get({ owner, repo, issue_number: STATE })).data.body || '';
+            if (now !== body) { core.warning('#114 changed during this run; nothing started, retry later'); return; }
             await github.rest.issues.update({ owner, repo, issue_number: STATE, body: lines.join('\n') });
+            if (!picked.length) return core.info('nothing to start');
             for (const p of picked) await github.rest.issues.createComment({ owner, repo, issue_number: p.issue,
               body: `Kickoff: started a build on this issue (${p.model.includes('opus') ? 'Opus' : 'Sonnet'}). It will open a claude/ PR when done.` });
             core.notice(`started: ${picked.map((p) => '#' + p.issue).join(', ')}`);
@@ -128,7 +141,7 @@ jobs:
           prompt: |
             You build issue #${{ matrix.item.issue }} in ${{ github.repository }}. Read CLAUDE.md first and follow it, then `gh issue view ${{ matrix.item.issue }} --comments` for the spec.
             Create a branch named claude/issue-${{ matrix.item.issue }}-${{ github.run_id }} from main, implement the issue, and make sure `npm test` is green before committing (use `node tests/run.mjs --only <suites>` after `npm run build` while iterating). Never skip, disable or weaken a test or check.
-            Commit with a clear message, `git push origin HEAD`, then open the PR: `gh pr create --base main --title "<short title>" --body "<what changed and how it was tested>\n\nCloses #${{ matrix.item.issue }}"`. CI and the review start on their own.
+            Commit with a clear message, `git push origin HEAD`, then write the PR body to a file (what changed and how it was tested, then a blank line, then a line that is exactly `Closes #${{ matrix.item.issue }}`) and open the PR: `gh pr create --base main --title "<short title>" --body-file <that file>`. CI and the review start on their own.
             ${{ contains(matrix.item.model, 'sonnet') && 'Sonnet limits (owner routing rule): if the work would touch src/core/, save/sync/migration/storage code, a gate''s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.' || '' }}
             If the issue cannot be done safely (unverifiable game data, an owner decision), do not push. Post one comment on the issue starting "Blocked:" with the reason in one or two lines.
           claude_args: |
