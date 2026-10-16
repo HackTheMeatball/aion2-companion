@@ -62,15 +62,17 @@ Pick one option per row. The recommendation is a starting point, not a decision.
 | # | Question | Options | Recommended | Owner decision |
 |---|---|---|---|---|
 | 1 | Theme scope | A. Dark only. B. Add a light theme (system setting plus toggle). C. Light later; get the tokens ready now | **A**, then C. One theme is less to keep correct; tokenising first makes B cheap later | |
-| 2 | Palette direction | A. Keep today's plum and rose. B. Game-inspired palette from `docs/research/colors-2026-10/`. C. Brand palette (brass, teal) across the app | **A** until B has a full contrast table; today's palette is stable and tested | |
+| 2 | Palette direction | A. Keep today's plum and rose. B. Game-inspired palette from `docs/research/colors-2026-10/`. C. Brand palette (brass, teal) across the app | **B** once it has a full contrast table (DECISIONS calls today's colours placeholders until this sprint); A only as a fallback | |
 | 3 | Raw hex colours | A. Move all to tokens. B. Tokenise only repeated ones (`#e6b450`, the greens). C. Leave as is | **B** first, then A | |
 | 4 | `--muted` text | A. Keep. B. Lighten until small text passes 4.5:1 everywhere | **B** if any measured pair fails; otherwise A | |
 | 5 | Focus ring | A. Keep 2 px `--accent`. B. Add an inner `--fg` ring for two-tone contrast. C. 3 px | **A** if every surface measures 3:1; otherwise B | |
 | 6 | State colours | A. Colour only. B. Colour plus icon or text for done, overdue, current | **B** for any state shown by colour alone | |
 | 7 | Brand colour in the app | A. Header and footer only (today). B. Also link hover and small accents | **A** | |
 | 8 | Contrast target | A. WCAG AA. B. AA, plus AAA for body text | **A**; B for body text only if it costs nothing | |
-| 9 | Class colours (next class) | A. WoW mapping from the research. B. None | **B** until a second class ships | |
+| 9 | When to apply the class colours | WoW mapping already approved (DECISIONS, "Class colours"). A. With the second class. B. Now, for the class badge only | **A** | |
 | 10 | Sprint order | A. Tokens, then measure, then change values. B. Change values as you go | **A** | |
+
+These rows add to the owner's open approvals in `docs/research/colors-2026-10/report.md` §10, item 8 (HANDOFF lists them as the sprint's first step): (a) gold primary buttons, (b) Asmodian violet accent, (c) parchment for The map only or other lore cards, (d) grey for done / Cleared, (e) Chanter orange, (f) a `grade` field on rewards. Answer those there; this sheet does not repeat them.
 
 Owner notes:
 

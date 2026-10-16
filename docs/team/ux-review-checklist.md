@@ -19,7 +19,7 @@ and `tests/a11y.js`. Answer each line yes, no or n/a. Any "no" needs a fix or a 
 ## Behaviour
 - [ ] **Manual progress.** Nothing ticks or levels up by itself. Level changes only through Level up, −, + or the slider.
 - [ ] **Basic mode = essentials only.** Anything not essential is hidden in Basic, and Basic still reads complete.
-- [ ] **Saved progress is safe.** Same `localStorage` key, no new or renamed item keys, nothing that reads old saves differently.
+- [ ] **Saved progress is safe.** Same `localStorage` key (`aion2-assassin-route-v4`). No renamed, reused or position-derived item keys; new keys follow `rq:<id>` / `sd:<slug>`; any migration only adds, runs once behind a new flag, and is covered in `tests/e2-migtest.js`. Nothing reads old saves differently.
   If a change could touch saves, `mig1`, `mig2` and `journey` ran.
 - [ ] **Correct to Lv 45.** The change holds at Lv 1, 27 and 45 without the user reporting a problem. Empty and full states look right.
 - [ ] **Both builds identical.** Site and artifact look the same; the artifact is still one file with `/_blob/` icons and no service worker.
