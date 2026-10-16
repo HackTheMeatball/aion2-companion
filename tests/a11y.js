@@ -335,20 +335,26 @@ async function load(p, state, mode) {
     await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
     await p.reload(); await p.waitForTimeout(400);
     const r = await p.evaluate(() => {
-      const out = { shown: 0, bad: [], names: new Set() };
+      const out = { rows: 0, checked: 0, bad: [], names: new Set(), levels: 0, empty: [] };
       const names = SP_SKILLS.map(s => s.n).sort((a, b) => b.length - a.length);
       for (let lv = 1; lv <= 45; lv++) {
-        char(state).level = lv; update();
-        for (const el of document.querySelectorAll('#spHero .spname, #spSoon .sname')) {
-          const text = el.textContent.trim(), n = names.find(x => text.startsWith(x)); if (!n) continue;
+        char(state).level = lv; update(); out.levels++;
+        /* every skill row in the DOM: the hero (not the "All planned upgrades spent" card) and each Coming up row */
+        const rows = [...document.querySelectorAll('#spHero .sphero:not(.spdone) .spname, #spSoon .sname')];
+        if (!rows.length && !document.querySelector('#spHero .spdone')) out.empty.push(lv);
+        for (const el of rows) {
+          out.rows++;
+          const text = el.textContent.trim(), n = names.find(x => text.startsWith(x));
+          if (!n) { out.bad.push(`Lv ${lv}: no recognised skill name in "${text.slice(0, 40)}"`); continue; }
           const tag = el.querySelector('.sptype'), want = SP_SKILLS.find(s => s.n === n).passive ? 'Passive' : 'Active';
-          out.shown++; out.names.add(n);
+          out.checked++; out.names.add(n);
           if (!tag || tag.textContent !== want || !el.textContent.includes(want)) out.bad.push(`Lv ${lv} ${n}: ${tag ? tag.textContent : 'no tag'} (want ${want})`);
         }
       }
-      return { shown: out.shown, skills: out.names.size, bad: out.bad.slice(0, 5), hasBoth: SP_SKILLS.some(s => s.passive) && SP_SKILLS.some(s => !s.passive) };
+      return { rows: out.rows, checked: out.checked, levels: out.levels, empty: out.empty, skills: out.names.size, bad: out.bad.slice(0, 5), hasBoth: SP_SKILLS.some(s => s.passive) && SP_SKILLS.some(s => !s.passive) };
     });
-    ok(`${mode} 390px: every skill on the Skills card has an Active / Passive tag matching the data (${r.shown} rows, ${r.skills} skills)`, r.shown > 0 && r.skills > 1 && r.hasBoth && !r.bad.length, r);
+    ok(`${mode} 390px: every skill row on the Skills card has an Active / Passive tag matching the data (${r.rows} rows, all ${r.checked} checked, ${r.skills} skills, ${r.levels} levels)`,
+      r.rows > 0 && r.checked === r.rows && r.levels === 45 && !r.empty.length && r.skills > 1 && r.hasBoth && !r.bad.length, r);
     await ctx.close();
   }
 
