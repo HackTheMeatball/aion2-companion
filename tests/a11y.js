@@ -311,21 +311,21 @@ async function load(p, state, mode) {
   /* ---------- 12. the Ascension label is one line on a phone (owner, 2026-10-16): 390 px, touch (the 12 px phone size), Basic,
      at every story position and at 4 / 4 (all four steps ticked), no ellipsis needed. The suites block web fonts (fallback
      fonts, tests/run.mjs), but this is a width check in the font users get, so it adds the shipped Figtree 400 itself. ---------- */
-  {
-    const { ctx, p } = await page(390, { hasTouch: true });
+  for (const [W, mode] of [[390, 'basic'], [360, 'basic'], [360, 'advanced']]) {
+    const { ctx, p } = await page(W, { hasTouch: true });
     await p.goto(CFG.CUR);
-    await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode: 'basic', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), KEY);
+    await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
     await p.reload(); await p.waitForTimeout(400);
     const FIG = fs.readFileSync(path.join(__dirname, '..', 'src', 'assets', 'fonts', 'figtree-latin.woff2')).toString('base64');
     const r = await p.evaluate(async fig => {
       const f = new FontFace('Figtree', Uint8Array.from(atob(fig), ch => ch.charCodeAt(0)), { weight: '400' }); document.fonts.add(await f.load());
       const s = () => document.querySelector('#asc .asc-txt'), out = { size: getComputedStyle(s()).fontSize, font: f.status, n: 0, want: QUESTS.length + 2, wide: [] };
-      const fits = () => { const t = s(); out.n++; if (t.scrollWidth > t.clientWidth && out.wide.length < 3) out.wide.push(`${t.textContent} (${t.scrollWidth} > ${t.clientWidth})`); };
+      const fits = () => { const t = s(); out.n++; if ((t.scrollWidth > t.clientWidth || t.scrollHeight > t.clientHeight + 1) && out.wide.length < 3) out.wide.push(`${t.textContent} (${t.scrollWidth} > ${t.clientWidth})`); };
       for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
       Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:0': true }); update(); fits();
       return out;
     }, FIG);
-    ok(`Ascension label one line at 390px (touch, Basic, ${r.size} Figtree): ${r.n} positions, none wider than the card`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
+    ok(`Ascension label never clipped at ${W}px (touch, ${mode}, ${r.size} Figtree, wraps rather than cuts off): ${r.n} positions`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
     await ctx.close();
   }
 
