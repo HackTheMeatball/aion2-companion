@@ -9,7 +9,7 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 | `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim |
 | `src/main.js` | the app script (ES module entry, ≈1,760 lines, still one global scope): loading and saving, rendering, event handlers |
 | `src/core/*.js` | the pure core (0.2 P3; no DOM, no storage): `state.js` (key, defaults, loading, `char(state)`), `migrations.js` (load-time steps), `catalog.js` (the data finished into milestones, areas, lookups), `requirements.js` (what is open, done, affordable, next), `nextup.js` (Next up ranking), `evaluator.js` (0.3 requirement evaluator over `GATE_GRAPH`; since 0.3 E2 the page asks it for every gate through `requirements.js` `gatesOf`, with the named 0.2 `KEPT_RULES`) |
-| `src/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
+| `src/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, SP_SLOTS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), `migrations.js` (MIG_V5), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
 | `src/data/generated.js` | not a file: the build compiles this module from `data/**` (data format v2) with `tools/gen/gen.mjs`, in memory |
 | `src/data/gate-graph.js` | not a file either: `GATE_GRAPH`, the live gates compiled by the same generator; only `src/core/evaluator.js` and `src/core/requirements.js` (the story chain, the kept 0.2 rules) import it |
 | `src/data/gate-proposed.js` | not a file either: `GATE_PROPOSED`, every record's `proposed` gate compiled the same way (0.3 E4); only `src/core/evaluator.js` reads it, and only for the ids in its `opts.apply` |
@@ -87,7 +87,9 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
 - Milestone (`GATES`) and route-rule (`STEPS`) items carry an explicit `k`. Older items keep their historical position
   key written out (`"g22:1"`, `"build:0"`); never derive a key from an array index.
 - Regional quests: `rq:<quest id>` (Metabot / game id). Sealed Dungeons: `sd:<slug>` (`g10h:` kept for Lv 10).
-  Strongholds: `sh:<slug>`. Skills: `sp:<skill>:<level>`. Board nodes: `dv:<node>` (Nezekan), `dv:z:` / `dv:v:` /
+  Strongholds: `sh:<slug>`. Skills: `sp:<skill>:<level>`; specialty slots `sp:<skill>:spec`, `:spec2`, `:spec3` (0.3 E7: open
+  at effective skill level 8 / 12 / 20, the evaluator's `skillLv` atom = highest ticked line + owned plan board nodes on the
+  skill; slots 2 / 3 are `SP_SLOTS`, no milestone rows, written only when ticked). Board nodes: `dv:<node>` (Nezekan), `dv:z:` / `dv:v:` /
   `dv:t:<node>` (Zikel / Vaizel / Triniel).
 - Milestone step gates (read by `stepsOf` for Next up): `story: X` / `after: X` = the story has **reached** X (your
   current quest is X or later); `turnedIn: X` = X is **turned in** (current quest past X, or X is the last covered

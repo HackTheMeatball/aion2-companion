@@ -288,6 +288,14 @@ export const skillOpen = (c, lv = c.level) => { const ev = gatesOf(c, lv), open 
    pick for the slot when there is one and its choice is open at that level (design §9), else null ("pick a specialty"). With
    specialtySlots off, slot 1's pick as before. */
 export const skillLvOf = (c, x, ev = gatesOf(c)) => ev.skillLv(GATE_GRAPH.nodes[x.k].skill);
+/* The highest effective level the plan reaches for slot x's skill: every line (rule:skill-level-gate, 10) + every plan node
+   on it. A slot above it (slot 3 always: 14 at most; slot 2 of a skill with fewer than 2 plan nodes) is listed in the Skills
+   card only, never the card's hero (Q5); in game other board nodes or gear can still get there. */
+const PLAN_REACH = {};
+export const planReachOf = x => { const sid = GATE_GRAPH.nodes[x.k].skill;
+  if (!(sid in PLAN_REACH)) { const ns = Object.values(GATE_GRAPH.nodes);
+    PLAN_REACH[sid] = Math.max(...ns.filter(n => n.kind === "skill" && n.skill === sid).map(n => n.L)) + ns.filter(n => n.kind === "plan" && n.skill === sid).reduce((t, n) => t + (n.adds ?? 1), 0); }
+  return PLAN_REACH[sid]; };
 export const specPickOf = (c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
   if (!CHANGES_ON.has("specialtySlots")) return x.slot === 1 ? { t: x.s.spec, lv: x.slotLv } : null;
   return p && skillLvOf(c, x, ev) >= p.lv ? p : null; };

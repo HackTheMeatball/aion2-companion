@@ -135,14 +135,14 @@
   "special/pre-eput-L30": {
     "in": "41d422b4e093",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+4 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
-      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -353,10 +353,10 @@
   "special/story-end-turned-in": {
     "in": "e745eaec89e8",
     "nu": [
-      {"t":"Buy Assault Stance 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Buy Assault Stance 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
+      {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
+      {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty · guide pick (-3s cooldown) at skill Lv 16","c":"tag \"After the one above\""},
+      {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Finish the Hero and Ascension quests","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:0"},
       {"t":"Altgard story complete","s":"Continue in Reshanta in game · the guide's story ends at \"Forgotten Commander\"","c":""},
       {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
@@ -421,6 +421,7 @@
   "special/unknown-quest-name": {
     "in": "3cd60ce6b4a4",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},

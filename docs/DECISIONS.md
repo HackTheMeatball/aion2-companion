@@ -3,6 +3,15 @@
 Decisions the owner made, so every department works from the same answers. Newest first. Product calls belong to the
 owner; the CEO records them here and in the department charters they affect.
 
+## 2026-10-16
+
+| # | Topic | Decision |
+|---|---|---|
+| Q5 | Specialty slot 3 (0.3 E7) | CEO, under the standing approval (design §16 Q5): slot 3 opens at effective skill level 20, which skill points (10) plus the plan's board nodes (at most 4 per skill) cannot reach (max 14). It is listed in the Skills card only ("slot 3 · skill 20"), never in Next up and never the card's hero. The same holds for any slot above what the plan reaches for its skill (slot 2 of Savage Roar, Shadowstrike and Ambush, which have fewer than 2 plan nodes): listed, not offered, since the app can't see board nodes bought off the plan. Whether gear or other nodes raise skill level, and a per-skill "+N" input, stay open for the owner. |
+| Q6 | Specialty picks for slots 2 and 3 (0.3 E7) | CEO, under the standing approval, with the owner's instruction on #75 ("use only picks labelled 2+ sources"; research PR #77 read at `d25bd29`): slots 2 and 3 carry only picks that two or more publishers put in that slot: Heart Gore 4 / 5, Quick Slice 4 / 5, Insignia Explosion 5 (slot 2), Savage Roar 4 (slot 2). Contested, disputed, single-source and missing picks get no recommendation ("pick a specialty"); no single-source labels are shown because none is used. Metabot has no picks. |
+| — | Picks array → slots (0.3 E7) | `builds.json` `specialtyPicks[skill]` is positional: entry n is the pick for slot n. A slot names its pick only once the pick's choice is open at the skill's effective level (design §9); before that it says "pick a specialty · guide pick (…) at skill Lv N" (Insignia Explosion slot 2: -3s cooldown needs skill 16). The sources' swap of the skill-16 choice over the slot 1 pick (Heart Gore, Quick Slice) is not modelled: it needs effective 16, above the 14 the plan reaches; the positional array gives the end state the sources agree on at 20. Revisit if gear or off-plan nodes are tracked. |
+| — | Specialty scope (0.3 E7) | Slots 1–3 on the six core active skills that have a slot 1 pick (Heart Gore, Insignia Explosion, Savage Roar, Quick Slice, Ambush, Shadowstrike). Flash Slice and Storm Rampage (extra skills, no slot 1 pick yet; Storm Rampage slot 1 is contested) get no slot rows; their slot 2 research (Flash Slice 4, Storm Rampage 4) waits for a slot 1 decision. Slots 2 / 3 are no milestone rows (milestone counts and tags are unchanged); keys `sp:<skill>:spec2` / `:spec3` are written only on a tick. |
+
 ## 2026-10-15
 
 | # | Topic | Decision |

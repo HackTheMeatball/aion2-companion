@@ -76,6 +76,10 @@ export default (test, M) => {
     assert.ok(!M.skillOpen(c).now.some(x => x.slot === 3));
     assert.ok(M.skillOpen(c).open.some(x => x.slot === 3), 'slot 3 is still listed (Skills card)');
     assert.ok(!M.rankNext(S({ checks: all })).some(a => a.x && a.x.slot === 3));
+    /* what the plan reaches per skill (the Skills card lists a slot above it but never makes it the hero) */
+    const reach = Object.fromEntries(slot1.map(x => [x.s.n, M.planReachOf(x)]));
+    for (const x of slot1) assert.equal(reach[x.s.n], M.evaluate({ checks: all, level: 45 }).skillLv(skillOf(x)), x.s.n);
+    assert.ok(Object.values(reach).every(r => r < 20) && Math.max(...Object.values(reach)) === 14, JSON.stringify(reach));
   });
 
   test('picks per slot (Q6): the build\'s pick once its choice is open at the effective level; else none ("pick a specialty")', () => {

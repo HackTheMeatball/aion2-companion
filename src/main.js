@@ -16,7 +16,7 @@ import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
-  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
+  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 
@@ -1160,9 +1160,9 @@ function renderNext() {
   const next = now[0];
   const overTicked = spent > fromLevels + stones;
   const ahead = open.filter(x => !now.includes(x)).sort((a, b) => a.req - b.req || a.rank - b.rank);
-  /* Hero = what to do next: the next upgrade you can take now, else the next one to unlock (never specialty slot 3, out of
-     reach inside Lv 45: Q5). */
-  const hero = next || ahead.find(x => x.slot !== 3);
+  /* Hero = what to do next: the next upgrade you can take now, else the next one to unlock (never a specialty slot the plan
+     can't reach, such as slot 3: Q5). */
+  const hero = next || ahead.find(x => !x.spec || planReachOf(x) >= x.slotLv);
   const nowCost = now.reduce((t, y) => t + (y.spec ? 0 : y.cost), 0);
   /* Points you'll have when x unlocks: spare now (after buying what's open) + level points gained by then. */
   const haveAt = x => pts - (next ? nowCost : 0) + (LEVEL_POINTS[Math.min(45, x.req)] || 0) - fromLevels;
@@ -1200,9 +1200,10 @@ function renderNext() {
   document.getElementById("spAfter").innerHTML = rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
     const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
-    /* a specialty slot waits for a skill level, not a character level; slot 3 is past what points and plan nodes reach (Q5) */
-    if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${x.slot === 3 ? " · past Lv 45: skill points and board nodes reach 14" : ""}">` +
-      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    /* a specialty slot waits for a skill level, not a character level, and is free (never short of points); slot 3 is past
+       what points and plan nodes reach (Q5) */
+    if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
+      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst ok">✓</span></li>`;
     return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   const ptsIn = document.getElementById("spPts");

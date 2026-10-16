@@ -50,7 +50,9 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
 
   /* #3 Skills past the plan */
   await set(45, `Object.keys(s.checks).forEach(k => k.startsWith('sp:') && delete s.checks[k]);` + `s.stones = 400;`);
-  await p.evaluate(() => { SP_STEPS.forEach(x => { state.checks[x.k] = true; }); save(); }); await p.reload(); await p.waitForTimeout(400);
+  /* 0.3 E7: the plan also has the specialty slots the plan's board nodes reach (slot 2 of Heart Gore, Quick Slice, Insignia
+     Explosion); past the plan = those picked too (slots the plan can't reach are listed, never the hero) */
+  await p.evaluate(() => { SP_STEPS.forEach(x => { state.checks[x.k] = true; }); SP_SLOTS.filter(x => planReachOf(x) >= x.slotLv).forEach(x => { state.checks[x.k] = true; }); save(); }); await p.reload(); await p.waitForTimeout(400);
   r = await p.evaluate(() => ({ t: document.querySelector('#spHero .spdone') && document.querySelector('#spHero .spdone').innerText.replace(/\s+/g, ' '), a: document.querySelectorAll('#spHero a').length, cls: document.querySelector('#spHero > div').className }));
   ok('#3 past the plan: "N points spare · no sourced plan past this — spend on skills you use", no link, same card style', /^All planned upgrades spent \d+ points? spare · no sourced plan past this — spend on skills you use$/.test(r.t) && r.a === 0 && /sphero/.test(r.cls), r);
 
@@ -114,7 +116,8 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   const tagRows = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm); return { nm, single: !!(s && s.s.single), tag: !!c.querySelector('.ss-tag') }; }));
   await set(41, `s.stones = 300;`); const r0 = await tagRows();
   ok('#10 two-source skill cards carry no tag', r0.length && r0.every(x => !x.single && !x.tag), r0);
-  await set(41, `SP_STEPS.forEach(x => { s.checks[x.k] = !x.s.single; }); s.stones = 300;`);
+  /* everything but the single-source skills bought, specialty slots 2 / 3 too (0.3 E7), so the single-source lines are the rows left */
+  await set(41, `SP_STEPS.forEach(x => { s.checks[x.k] = !x.s.single; }); SP_SLOTS.forEach(x => { s.checks[x.k] = true; }); s.stones = 300;`);
   r = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].filter(c => /^Buy /.test(c.querySelector('h3').innerText)).map(c => { const nm = c.querySelector('h3 b').innerText.replace(/ \d+ → \d+$| specialty$/, ''); const s = SP_STEPS.find(x => x.s.n === nm); return { nm, single: !!(s && s.s.single), tag: !!c.querySelector('.ss-tag') }; }));
   ok('#10 Next up skill cards: "single source" tag exactly on single-source skills', r.some(x => x.single) && r.every(x => x.single === x.tag), r);
   r = await p.evaluate(() => [...document.querySelectorAll('#spSoon > li')].map(li => [li.innerText.replace(/\s+/g, ' '), li.title]).filter(([t]) => /Heightened Sixth Sense|Determination/.test(t)));

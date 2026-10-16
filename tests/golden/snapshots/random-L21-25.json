@@ -75,6 +75,7 @@
   "random/L21-q05-all-B-rqmix": {
     "in": "1f1b6b89b961",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Spread Your Wings","s":"0/3 objectives · then Signs of a Crash Landing","c":"primary \"Turned in\" story","o":["Awaken your Daeva power in the dream complete 'The One Who Perceives'","Share the outcome go to the Witch's Cabin (Kibelisk: Witch's Cabin)","Turn in Elvida, Witch's Cabin"]}
     ],
     "ms": [
@@ -354,6 +355,7 @@
   "random/L21-q29-before-B-stready": {
     "in": "3c97f7289ae7",
     "nu": [
+      {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","o":["Find out where Urd is go to Moslan Forest (Kibelisk: Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
     ],
@@ -488,13 +490,13 @@
     "in": "7fb881930bce",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
       {"t":"Story: The High Priest Slumbers","s":"Needs Lv 26: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
       {"t":"Buy Heart Gore 7 → 8","s":"Opens at Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 8 → 9","s":"Opens at Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Quick Slice 8 → 9","s":"Opens at Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Quick Slice 8 → 9","s":"Opens at Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -554,6 +556,7 @@
     "in": "b2bf913bc24a",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 1 near your story step · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27] (near)"]},
       {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 4 open"}
@@ -615,6 +618,7 @@
   "random/L21-q44-before-B-stready": {
     "in": "ffab905fc2d9",
     "nu": [
+      {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 1 near your story step · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27] (near)"]},
       {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 4 open"}
@@ -676,6 +680,7 @@
   "random/L21-q50-all-B": {
     "in": "4a0e0e10b195",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 21. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -944,6 +949,7 @@
   "random/L22-q35-all-A-stfull": {
     "in": "f29ed60d8a50",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Searching for Survivors","s":"Needs Lv 24: you're 22. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
@@ -1004,6 +1010,7 @@
   "random/L22-q43-all-A": {
     "in": "c9adb8e9245e",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 22. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -1344,6 +1351,7 @@
   "random/L22-q75-all-B": {
     "in": "284be095030e",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 22. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -1677,6 +1685,7 @@
   "random/L23-q29-all-B-stready": {
     "in": "f0bde0fb84b7",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Creeping Shadow","s":"0/5 objectives · then Children of the Elim","c":"primary \"Turned in\" story","o":["Find out where Urd is go to Moslan Forest (Kibelisk: Odar's Shade)","Find out where Urd is go to Odar's Shade","Search for survivors examine Nornir Corpse find Elim & Nornir survivors Kibelisk: Collapsed Chasm","+2 more after these"]}
     ],
@@ -1889,6 +1898,7 @@
     "in": "e3cdb9eefdd0",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Canyon's Secret","s":"Needs Lv 30: you're 23. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -2416,6 +2426,7 @@
     "in": "d93ed5b21cf6",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]}
     ],
     "ms": [
@@ -2834,6 +2845,7 @@
   "random/L24-q51-all-B-dv": {
     "in": "9e85fd347183",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: The Survivors","s":"Needs Lv 32: you're 24. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -3104,6 +3116,7 @@
   "random/L24-q85-all-B": {
     "in": "5346eeeffbeb",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 24. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":"tag \"Turn in at Lv 45\""}
     ],
     "ms": [
@@ -3227,6 +3240,7 @@
   "random/L25-q07-all-B-dv": {
     "in": "6cc637217290",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders (Kibelisk: Abandoned Barracks Site)","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]}
     ],
     "ms": [
@@ -4075,6 +4089,7 @@
   "random/L25-q62-all-A-filters": {
     "in": "be3a4710285e",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Powder of Death","s":"Needs Lv 35: you're 25. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -4271,6 +4286,7 @@
   "random/L25-q77-all-A-stfull": {
     "in": "68e2da8bc2af",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 25. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
@@ -4331,6 +4347,7 @@
   "random/L25-q77-all-B": {
     "in": "61f746dd7531",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 25. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
@@ -4390,6 +4407,7 @@
   "random/L25-q85-all-A-stready": {
     "in": "5885ef45ed20",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 25. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":"tag \"Turn in at Lv 45\""}
     ],
