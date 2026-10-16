@@ -10,7 +10,7 @@ artifact (`vNNN`) and are kept in their original form.
 
 ## 0.3.0 — 2026-10-16
 
-Next up correctness: one requirement check for every card, and the story's last quest.
+Next up correctness: one requirement check per card, and the story's last quest.
 
 ### Added
 
