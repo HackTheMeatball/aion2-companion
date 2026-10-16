@@ -47,7 +47,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: A New Lead](https://metabot.gg/en/aion-2/quests/a-new-lead) | Main story | shared/asmodian/story-quests.json: A New Lead |
 | [Metabot: A Perfect Wedding](https://metabot.gg/en/aion-2/quests/a-perfect-wedding) | Regional quests | shared/asmodian/regional-quests.json: A Perfect Wedding |
 | [Metabot: A Traitor Within](https://metabot.gg/en/aion-2/quests/a-traitor-within) | Regional quests | shared/asmodian/regional-quests.json: A Traitor Within |
-| [Metabot: A Village in the Fog](https://metabot.gg/en/aion-2/quests/a-village-in-the-fog) | Main story | shared/asmodian/story-quests.json: A Village in the Fog |
+| [Metabot: A Village in the Fog](https://metabot.gg/en/aion-2/quests/a-village-in-the-fog) | Main story | shared/asmodian/story-quests.json: A Village in the Fog; shared/asmodian/zones.json: Aldelle Village |
 | [Metabot: Abandoned One's Grave (exploration quest)](https://metabot.gg/en/aion-2/quests/abandoned-ones-grave) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Abandoned One's Grave |
 | [Metabot: Amurahta Surveillance Base](https://metabot.gg/en/aion-2/quests/amurahta-surveillance-base) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Amurahta Surveillance Base |
 | [Metabot: An Ill Fate's Resolution](https://metabot.gg/en/aion-2/quests/an-ill-fates-resolution) | Main story | shared/asmodian/story-quests.json: An Ill Fate's Resolution |
