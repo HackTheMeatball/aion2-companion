@@ -73,6 +73,14 @@
       "blurb": "Unlock Legions; six quests fill your accessory slots."
     },
     {
+      "id": "g19",
+      "kind": "milestone",
+      "order": 65,
+      "lv": 19,
+      "title": "Skill tier: level 8",
+      "blurb": "Quick Slice, Savage Roar and Shadowstrike reach skill level 8."
+    },
+    {
       "id": "g20",
       "kind": "milestone",
       "order": 70,
@@ -115,6 +123,26 @@
       "lv": 27,
       "title": "Stigma slot 2",
       "blurb": "Second stigma goes in."
+    },
+    {
+      "id": "g28",
+      "kind": "milestone",
+      "order": 105,
+      "lv": 28,
+      "title": "Heart Gore 10 and Urugugu Canyon",
+      "blurb": "Heart Gore reaches its point cap; a party Expedition opens.",
+      "items": [
+        {
+          "key": "g28:exp",
+          "order": 10,
+          "gateNode": false,
+          "short": "Urugugu Canyon Expedition opens",
+          "text": "<b>Urugugu Canyon [[tip:expedition|Expedition]] (Exploration) opens</b>: needs a party of 2–5 and item level 300.",
+          "loc": "The story quest \"Canyon's Secret\" (Lv 30) sends you in.",
+          "optional": true,
+          "mapSlug": "urugugu-canyon"
+        }
+      ]
     },
     {
       "id": "g30",

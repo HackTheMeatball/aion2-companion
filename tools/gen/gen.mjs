@@ -199,6 +199,16 @@ export function generate(opts = {}) {
   const RMB_ROWS = build.keyStacks.rightClick.map(r => ({ minLv: r.minLv, skills: r.skills.map(id => sk(id).name) })).sort((a, b) => b.minLv - a.minLv);
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
   const LEVEL_POINTS = rules['rule:level-points'].value;
+  /* game rules the build tables use (0.4 P2a; src/data/build.js spCost, SPEC_SLOT_LV, DV_MIN, ST_COST): cost bands
+     [{ from, to, cost }] that run without a gap over the levels they price, slot levels, node costs by node type */
+  const bands = (id, lo, hi) => { const v = rules[id].value;
+    check(`${id}: bands run ${lo}–${hi} without a gap`, v.length > 0 && v[0].from === lo && v[v.length - 1].to === hi && v.every((b, i) => b.from <= b.to && (!i || b.from === v[i - 1].to + 1)), v);
+    return v.map(({ from, to, cost }) => ({ from, to, cost })); };
+  const RULE_SKILL_POINT_COST = bands('rule:skill-point-cost', 2, rules['rule:skill-level-gate'].value.maxFromPoints);
+  const RULE_SHARD_COST = bands('rule:stigma-shard-cost', 1, 20);
+  const RULE_SPEC_SLOTS = rules['rule:specialty-slots'].value.slots;
+  const nc = rules['rule:node-costs'].value, RULE_NODE_COSTS = { passive: nc.passive, active: nc.active, corner: nc.corner };
+  check('rule:node-costs: passive / active / corner are numbers', Object.values(RULE_NODE_COSTS).every(Number.isInteger), RULE_NODE_COSTS);
   check('exactly one guide build, at most two community builds', builds.filter(b => b.origin === 'guide').length === 1 && builds.filter(b => b.origin === 'community').length <= 2);
   /* build tokens in shared text expand with the guide build (0.3 follows the player's build) */
   const buildTok = t => t.replace(/\[\[build:(stigma|stigmaTarget|text|node|skillOrder):([A-Za-z0-9:-]+)\]\]/g, (m, kind, arg) => {
@@ -247,9 +257,13 @@ export function generate(opts = {}) {
     if (s.note) it.note = s.note; if (s.upsell) it.upsell = s.upsell;
     return it;
   };
+  /* a milestone's own card-only line (milestones.json items, gateNode: false): the item shape of a step, no gate node */
+  const msItemOf = x => ({ k: x.key, ...(x.short ? { ns: buildTok(x.short) } : {}), ...(x.optional ? { opt: true } : {}), ...(x.mapSlug ? { map: x.mapSlug } : {}),
+    t: buildTok(x.text) + (x.loc ? `<span class="loc">${buildTok(x.loc)}</span>` : '') });
   const GUIDE = msOrder.map(m => {
     const parts = [
       ...steps.filter(s => s.milestone === m.id).map(s => ({ order: s.order, items: [itemOf(s)] })),
+      ...(m.items || []).map(x => ({ order: x.order, items: [msItemOf(x)] })),
       ...(m.includes || []).map(x => { const ds = sdByBand(x.sealedDungeonBand); return { order: x.order, items: [{ hideouts: ds.map(d => d.name), keyPrefix: ds[0].key.split(':')[0] }] }; }),
       ...build.boardPlan.filter(e => e.milestone === m.id).map(e => ({ order: e.order, items: [dvItem(e)] })),
     ].sort(byNum('order'));
@@ -259,6 +273,8 @@ export function generate(opts = {}) {
   });
   const GUIDE_GATES = GUIDE.filter((g, i) => msOrder[i].kind === 'milestone'), GUIDE_STEPS = GUIDE.filter((g, i) => msOrder[i].kind === 'routeRule');
   for (const s of steps) check('step key = id: ' + s.id, s.key === s.id && milestones.some(m => m.id === s.milestone));
+  /* cards in order are milestones in level order (the catalog no longer sorts them) */
+  check('milestones: card order = level order', GUIDE_GATES.every((g, i) => !i || GUIDE_GATES[i - 1].lv <= g.lv), GUIDE_GATES.map(g => g.lv));
 
   /* ---------------------------------------------------------------- tips, items, unlocks */
   const TIPS = Object.fromEntries(tips.map(t => [t.key, { h: t.title, b: buildTok(t.body).replace(/\{rqStats\.(\w+)\}/g, (m, k) => { if (!(k in RQ_STATS)) throw new Error(m); return RQ_STATS[k]; }), src: t.credit }]));
@@ -346,6 +362,7 @@ export function generate(opts = {}) {
   { const ids = {}; for (const { r, file } of all) { if (r.id in ids) check('id unique repo-wide: ' + r.id, false, [ids[r.id], file]); ids[r.id] = file; } check('ids unique repo-wide', true); }
   { const keys = {}; for (const { r, coll } of all) if (r.key !== undefined && !['items', 'tips', 'skills', 'stigmas'].includes(coll)) { if (r.key in keys) check('save key unique: ' + r.key, false, [keys[r.key], coll]); keys[r.key] = coll; }
     for (const e of build.boardPlan) if (e.key) { if (e.key in keys) check('save key unique: ' + e.key, false); keys[e.key] = 'boardPlan'; }
+    for (const m of milestones) for (const x of m.items || []) { if (x.key in keys) check('save key unique: ' + x.key, false); keys[x.key] = 'milestone items'; }
     const ret = new Set((B.retired ? B.retired.keys : []).map(x => x.key));
     for (const k of Object.keys(keys)) check('retired key never reused: ' + k, !ret.has(k)); }
   /* references */
@@ -511,6 +528,8 @@ export function generate(opts = {}) {
     const dfs = id => { if (mark[id] === 2) return; if (mark[id] === 1) { cyc.push(id); return; } mark[id] = 1; for (const t of edges(id)) if (t in nodes) dfs(t); mark[id] = 2; };
     Object.keys(nodes).forEach(dfs);
     check('GATE_GRAPH: no cycle', !cyc.length, cyc);
+    /* a milestone's own items (gateNode: false) never get a node: openSteps treats a row without one as never offered */
+    for (const m of milestones) for (const x of m.items || []) check(`GATE_GRAPH: milestone item ${x.key} has no node`, x.gateNode === false && !Object.values(nodes).some(n => n.key === x.key) && !(x.key in nodes));
     /* every proposal is compiled (none dropped) and resolves: done atoms on nodes, story atoms on the chain */
     check('GATE_PROPOSED: one entry per proposal', Object.keys(proposed).length === report.proposed.length, [Object.keys(proposed).length, report.proposed.length]);
     for (const [id, p] of Object.entries(proposed)) for (const a of [...(p.req ? atomsOf(p.req) : []), ...(p.done || []).filter(x => x !== 'tick').flatMap(atomsOf)].filter(a => a.done || a.story))
@@ -522,7 +541,8 @@ export function generate(opts = {}) {
   /* ---------------------------------------------------------------- the module */
   const C = { RQ, RQ_STATS, QUESTS_X, QUEST_STEPS_X, QUEST_LOC_X, STORY_END, SH_DATA, AREA_LOC, SD_RW, SP_EXTRA, DV_BOARDS, SOURCES, SRC_SITE, CONF,
     QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, ASCENSION, GUIDE_GATES, GUIDE_STEPS, TIPS, ITEMS, HIDEOUT_AREA, ZONE_TRACES, SD_REWARD, SH_REWARD,
-    STAT_TIERS, STAT_SRC, STIGMA_PLAN, ST_TARGETS, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, SP_ICONS, STIGMA_ICON };
+    STAT_TIERS, STAT_SRC, STIGMA_PLAN, ST_TARGETS, SP_SKILLS_CORE, LEVEL_POINTS, RMB_ROWS, E_ORDER, SP_ICONS, STIGMA_ICON,
+    RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, RULE_NODE_COSTS, RULE_SHARD_COST };
   const J = v => JSON.stringify(v);
   const module = '/* Generated by tools/gen/gen.mjs from data/** (data format v2). Not stored: the build makes it on every run. */\n' +
     Object.entries(C).map(([k, v]) => `export const ${k} = ${J(v)};`).join('\n') + '\n';

@@ -2,7 +2,7 @@
    over them. Evaluated once, before src/main.js, in this order (moved from main.js; the order is kept because some
    tables are read before others are finished):
    1. Sealed Dungeons and Strongholds (AREA_ITEMS) from the milestones as written, with their level bands.
-   2. Skill upgrades sorted; two skill-only milestones added; milestones sorted by level.
+   2. Skill upgrades sorted (the milestones arrive in level order from the guide pack, skill-only ones like g19 included).
    3. Regional quests (RQ) placed into milestones by recommended level; skill lines folded into milestones.
    Keys never depend on where an item ends up (docs/ARCHITECTURE.md §1). */
 import { AREA_LOC, RQ, SD_RW, SH_DATA } from "../data/generated.js";
@@ -48,14 +48,6 @@ SP_STEPS.sort((a, b) => a.rank - b.rank || a.L - b.L);
 const spLabel = x => x.spec ? `<b>${x.s.n}: pick specialty</b>` : `<b>${x.s.n} ${x.L - 1} → ${x.L}</b>`;
 export const spCostTxt = x => x.spec ? "free" : x.cost + " pt" + (x.cost > 1 ? "s" : "");
 
-/* Skill-only milestones where the gap would otherwise delay key tiers. */
-GATES.push(
-  { id: "g19", lv: 19, title: "Skill tier: level 8", blurb: "Quick Slice, Savage Roar and Shadowstrike reach skill level 8.", items: [] },
-  { id: "g28", lv: 28, title: "Heart Gore 10 and Urugugu Canyon", blurb: "Heart Gore reaches its point cap; a party Expedition opens.", items: [
-    { k: "g28:exp", ns: `Urugugu Canyon Expedition opens`, opt: true, map: "urugugu-canyon", t: `<b>Urugugu Canyon ${T("Expedition", "expedition")} (Exploration) opens</b>: needs a party of 2–5 and item level 300.<span class="loc">The story quest "Canyon's Secret" (Lv 30) sends you in.</span>` },
-  ] },
-);
-GATES.sort((a, b) => a.lv - b.lv);
 
 /* Zone · spot · quest giver (linked to the quest on Metabot's Altgard map). */
 const qMap = q => [q.zone, q.place && q.place !== q.zone ? q.place : "", q.id ? mapQ(q.id, q.npc || "map") : (q.npc || "map")].filter(Boolean).join(" · ");
