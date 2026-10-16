@@ -797,7 +797,7 @@ header .ns-btn.primary { margin-top: var(--space-2); }
 .asc-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); height: 4px; }
 .asc-bar span { border-radius: var(--radius-2); background: var(--line); }
 .asc-bar span.on { background: var(--good); }
-.asc-txt { display: block; margin-top: var(--space-5); font-size: 11.5px; line-height: 1.35; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.asc-txt { display: block; margin-top: var(--space-5); font-size: 11.5px; line-height: 1.35; color: var(--muted); overflow-wrap: anywhere; }
 .trk-wrap { margin-top: var(--space-2); }
 .trk-wrap > summary { cursor: pointer; list-style: none; display: flex; gap: var(--space-6); align-items: center; margin: 0; padding: var(--space-4) 0; border-radius: var(--radius-4); }
 .trk-wrap[open] > summary { margin-bottom: var(--space-4); }
