@@ -129,9 +129,20 @@
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202010"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -451,9 +462,20 @@
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202012"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -624,9 +646,20 @@
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202013"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -807,9 +840,20 @@
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202014"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -970,18 +1014,40 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102105",
+            "is": "turnedIn",
+            "basis": "owner",
+            "note": "Owner-confirmed 2026-10-15 (Empyrean Monolith check, 20:12 ET): not offered while Empyrean Monolith is current, offered once it is turned in. No other permitted source names a prerequisite (Metabot renders none).",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
+              }
             ]
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -1023,45 +1089,30 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-08",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+          },
+          "fields": [
+            "requires"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102105",
-              "is": "turnedIn",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once \"Empyrean Monolith\" is turned in (Lv 16) instead of at its recommended Lv 16."
-      }
+        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384"
+      ]
     },
     {
       "id": "rq:2202016",
@@ -2458,9 +2509,20 @@
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202023"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -5651,7 +5713,7 @@
             "sources": [
               {
                 "owner": {
-                  "ref": "owner:2026-10-15-chat-01",
+                  "ref": "owner:2026-10-15-alt-04",
                   "checkedAt": "2026-10-15",
                   "build": {
                     "scheme": "client",
@@ -5704,7 +5766,7 @@
         },
         {
           "owner": {
-            "ref": "owner:2026-10-15-chat-01",
+            "ref": "owner:2026-10-15-alt-04",
             "checkedAt": "2026-10-15",
             "build": {
               "scheme": "client",
@@ -6505,7 +6567,7 @@
             "sources": [
               {
                 "owner": {
-                  "ref": "owner:2026-10-15-chat-02",
+                  "ref": "owner:2026-10-15-alt-05",
                   "checkedAt": "2026-10-15",
                   "build": {
                     "scheme": "client",
@@ -6552,7 +6614,7 @@
         },
         {
           "owner": {
-            "ref": "owner:2026-10-15-chat-02",
+            "ref": "owner:2026-10-15-alt-05",
             "checkedAt": "2026-10-15",
             "build": {
               "scheme": "client",

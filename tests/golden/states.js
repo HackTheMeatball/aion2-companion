@@ -22,7 +22,7 @@ function catalogInPage() {
     questSteps: Object.fromEntries(Object.entries(QUEST_STEPS).map(([q, l]) => [q, l.length])),
     gates: GATES.map(g => ({ id: g.id, lv: g.lv, title: g.title, items: g.items.filter(it => it.k).map(it => it2(g, it)) })),
     steps: STEPS.map(s => ({ id: s.id, items: s.items.filter(it => it.k).map(it => it.k) })),
-    rq: RQ.map(q => ({ id: String(q.id), name: q.name, rec: q.rec, unlocksAt: q.unlocksAt || 0, story: (q.id === '2202044' || q.id === '2202051') ? '' : q.story || '' /* E9: Shugo / Spooky gained a story gate; the generated saves stay what they were, so --explain sees only behaviour */, after: q.after || [] })),
+    rq: RQ.map(q => ({ id: String(q.id), name: q.name, rec: q.rec, unlocksAt: q.unlocksAt || 0, story: ['2202044', '2202051', '2202015'].includes(String(q.id)) ? '' : q.story || '' /* E9: Shugo / Spooky / Curse-Breaking Caper gained a story gate; the generated saves stay what they were, so --explain sees only behaviour */, after: q.after || [] })),
     areas: AREA_ITEMS.map(x => ({ k: x.k, kind: x.it.kind, lv: x.lv, lo: x.it.lo || 0, hi: x.it.hi || 45 })),
     sp: SP_STEPS.map(x => ({ k: x.k, req: x.req, cost: x.cost, spec: !!x.spec, extra: !!(x.s && x.s.extra), n: x.s.n, L: x.L })),
     stigmaPlan: STIGMA_PLAN.slice(),

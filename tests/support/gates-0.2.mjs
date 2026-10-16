@@ -17,10 +17,11 @@ export const gates02 = M => {
   const questIdx = c => c.quest ? storyIdx(c.quest) : -1;
 
   /* requirements.js */
-  /* E9 (2026-10-15, owner check 1): Shugo-of-All-Trades and Spooky Specters gained a story gate in the data (their row now has
-     story + no noPre). 0.2 had neither, so the frozen rules see them as they were; the page does the same with the switch
-     regionalTurnedIn off (src/core/requirements.js APP_GRAPH_0_2). Nothing else of the frozen rules changes. */
-  const NEW_RQ_GATE = new Set(["2202044", "2202051"]);
+  /* E9 (2026-10-15, owner check 1): Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking Caper (Empyrean Monolith
+     check, 20:12 ET) gained a story gate in the data (their row now has story + no noPre). 0.2 had neither, so the frozen rules see
+     them as they were; the page does the same with the switch regionalTurnedIn off (src/core/requirements.js APP_GRAPH_0_2).
+     Nothing else of the frozen rules changes. */
+  const NEW_RQ_GATE = new Set(["2202044", "2202051", "2202015"]);
   const rq0 = q => NEW_RQ_GATE.has(q.id) ? { ...q, story: null, noPre: 1 } : q;
   const rqOpenLv = q => (q = rq0(q)).noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
   const rqStatus = (c, q, lv = c.level) => {

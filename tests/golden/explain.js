@@ -21,15 +21,18 @@ const fs = require('fs'), path = require('path');
 function recordsOf(root, meta) {
   const read = f => JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8')).records;
   const steps = read('shared/asmodian/guide/steps.json'), rqs = read('shared/asmodian/regional-quests.json'), story = read('shared/asmodian/story-quests.json');
+  const shs = read('shared/asmodian/strongholds.json');
   const leaves = a => !a ? [] : a.all ? a.all.flatMap(leaves) : a.any ? a.any.flatMap(leaves) : [a];
+  const byStep = r => (r.completesWith || []).some(e => e && e.storyStep);
   const rqName = new Map(rqs.map(q => [q.id, q.name]));
   const out = {};
   for (const [n, m] of Object.entries(meta)) {
     if (m.apply) { const r = steps.find(s => s.id === m.apply) || rqs.find(q => q.id === m.apply);
       out[n] = { records: [m.apply], change: r && r.proposed ? r.proposed.change : m.what }; continue; }
     if (n === 'regionalTurnedIn') out[n] = { records: rqs.filter(q => leaves(q.requires).some(a => a.story && a.is === 'turnedIn')).map(q => `${q.id} ${q.name}`), change: m.what };
-    else if (n === 'storyStepDerived') out[n] = { records: ['sh:graverobber-den', 'g20:exp', 'g35:exp'], change: m.what };
-    else if (n === 'derived') out[n] = { records: steps.filter(s => s.completesWith.includes('tick') && s.completesWith.some(e => e !== 'tick')).map(s => s.id), change: m.what };
+    else if (n === 'storyStepDerived') out[n] = { records: [...shs, ...steps].filter(byStep).map(r => r.id), change: m.what };
+    else if (n === 'stepNotes') out[n] = { records: story.flatMap(s => s.steps.filter(x => x.note).map(x => `${s.id} #${x.i} ${s.name}`)), change: m.what };
+    else if (n === 'derived') out[n] = { records: steps.filter(s => !byStep(s) && s.completesWith.includes('tick') && s.completesWith.some(e => e !== 'tick')).map(s => s.id), change: m.what };
     else if (n === 'followUps' || n === 'clearTally') out[n] = { records: [...new Set(rqs.flatMap(q => leaves(q.requires).filter(a => a.done && rqName.has(a.done) && ['sourced', 'owner'].includes(a.basis)).map(a => a.done)))].sort()
       .map(id => `${id} ${rqName.get(id)}`), change: m.what };
     else if (n === 'turnInLevel') out[n] = { records: story.filter(s => leaves(s.requires).some(a => a.level !== undefined)).map(s => `${s.id} ${s.key}`), change: m.what };

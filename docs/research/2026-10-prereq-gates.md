@@ -21,7 +21,7 @@ records that still cite th.gl are listed in §10.
    source confirms, so they are owner to check in game. The 2 Spacetime Rift quests unlock at Lv 45 (Metabot); that
    they have *no* prerequisite is owner to check in game.
 3. **Gate semantics (D9, ISSUES "Story gate semantics"): answered 2026-10-15 (owner check 1): "turned in" for regional
-   quests (two for two, §3 update). The text below is the report as written on 2026-10-14, before the answer.** Today the app opens its **43 story-gated regional quests** (`RQ_STATS.story`) on "story
+   quests (two for two, then all 6 Empyrean Monolith quests; §3 update). The text below is the report as written on 2026-10-14, before the answer.** Today the app opens its **43 story-gated regional quests** (`RQ_STATS.story`) on "story
    has reached X". If a database prerequisite means "X turned in", all 43 open **one story quest early**. Adding the
    2 confirmed new gates makes 45 story-gated quests, and 51 if all 6 candidates are confirmed. My estimate that
    "turned in" is right for regional quests is **~70%**. The evidence behind it came from Ascension quests on th.gl,
@@ -112,10 +112,11 @@ the 43 stay as they are and only the Ascension steps' convention needs a comment
 "Contaminated Area" is the current quest; it appears in the Regional tab and tracker (not accepted, 0/50) once
 Contaminated Area is turned in. "Spooky Specters" is not offered while "Cemetery Cleanup" is the current quest; once that
 is turned in it appears in the Regional tab (giver Rizel, Gravekeeper Camp, Lv 14). Both fit "turned in" and neither fits
-"reached", two for two, so the check is **answered (one regional quest, then a second; the Lv 16 Empyrean Monolith
-check stays pending as confirmation)**. Every story-gated regional quest in `regional-quests.json` (the 43 live ones, the
-2 Metabot-confirmed new ones and the 4 other candidates' proposals) now says `is: turnedIn`, and both quests are live
-with the owner source (`owner:2026-10-15-chat-01`, `-02`). The app runs it as the switch `regionalTurnedIn`
+"reached", two for two, so the check is **answered (one regional quest, then a second)**. **Confirmed at 20:12 ET
+(`owner:2026-10-15-alt-08`): all 6 regional quests gated on Empyrean Monolith (Lv 16) appeared only after it was turned
+in**, so The Great Curse-Breaking Caper's candidate gate is live too and the 5 sourced Monolith gates carry the owner ref. Every story-gated regional quest in `regional-quests.json` (the 43 live ones, the
+2 Metabot-confirmed new ones, the 3 owner-confirmed candidates and the 3 other candidates' proposals) now says
+`is: turnedIn`, and the owner-confirmed quests are live with the owner source (`owner:2026-10-15-alt-04`, `-05`, `-08`). The app runs it as the switch `regionalTurnedIn`
 (src/core/requirements.js GATE_CHANGES), so `node tests/golden.js --explain` can show who sees what change.
 
 **D9 fit:** D9 keeps "story has reached X" as the default and adds "turned in" as a separate gate. Either answer fits
@@ -259,12 +260,12 @@ check 1.
 |---|---|---|---|---|---|---|
 | `rq:2202044` | Shugo-of-All-Trades: Asmodian | 12 / 10 | `lv 10`, `turnedIn sq:2102040` (Contaminated Area) | live since 2026-10-15 (was `noPre`: opened at rec Lv 12) | [Metabot](https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian) unlock 10; owner 2026-10-15 | **answered (owner, in game, check 7)** |
 | `rq:2202051` | Spooky Specters | 14 / 10 | `lv 10`, `turnedIn sq:2102070` (Cemetery Cleanup) | live since 2026-10-15 (was `noPre`: opened at rec Lv 14) | [Metabot](https://metabot.gg/en/aion-2/quests/spooky-specters) unlock 10; owner 2026-10-15 | **answered (owner, in game, check 7): giver Rizel, Gravekeeper Camp** |
-| `rq:2202010` | Hugo Mercenaries: Past and Present | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present) unlock 10; Empyrean Monolith: gaming.tools 2202010 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
-| `rq:2202012` | Missing Mount | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/missing-mount) unlock 10; Empyrean Monolith: gaming.tools 2202012 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
-| `rq:2202013` | Creion Research Assistant | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/creion-research-assistant) unlock 10; Empyrean Monolith: gaming.tools 2202013 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
-| `rq:2202014` | Odyle Jelly Misappropriation Investigation | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation) unlock 10; Empyrean Monolith: gaming.tools 2202014 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
-| `rq:2202015` | The Great Curse-Breaking Caper | 16 / 10 | `lv 10`, candidate `done sq:2102105` (Empyrean Monolith) | `noPre`: opens at rec Lv 16 | [Metabot](https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper) unlock 10 | **candidate gate: owner to check in game** |
-| `rq:2202023` | Practice Makes Perfect, Nyerk! | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk) unlock 10; Empyrean Monolith: gaming.tools 2202023 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
+| `rq:2202010` | Hugo Mercenaries: Past and Present | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/hugo-mercenaries-past-and-present) unlock 10; Empyrean Monolith: gaming.tools 2202010, owner (`alt-08`) | existing edge; gate is turned in (check 1 answered 2026-10-15; confirmed in game 20:12 ET) |
+| `rq:2202012` | Missing Mount | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/missing-mount) unlock 10; Empyrean Monolith: gaming.tools 2202012, owner (`alt-08`) | existing edge; gate is turned in (check 1 answered 2026-10-15; confirmed in game 20:12 ET) |
+| `rq:2202013` | Creion Research Assistant | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/creion-research-assistant) unlock 10; Empyrean Monolith: gaming.tools 2202013, owner (`alt-08`) | existing edge; gate is turned in (check 1 answered 2026-10-15; confirmed in game 20:12 ET) |
+| `rq:2202014` | Odyle Jelly Misappropriation Investigation | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/odyle-jelly-misappropriation-investigation) unlock 10; Empyrean Monolith: gaming.tools 2202014, owner (`alt-08`) | existing edge; gate is turned in (check 1 answered 2026-10-15; confirmed in game 20:12 ET) |
+| `rq:2202015` | The Great Curse-Breaking Caper | 16 / 10 | `lv 10`, `turnedIn sq:2102105` (Empyrean Monolith) | live since 2026-10-15 (was `noPre`: opened at rec Lv 16) | [Metabot](https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper) unlock 10; owner 2026-10-15 (`alt-08`) | **answered (owner, in game, check 7)** |
+| `rq:2202023` | Practice Makes Perfect, Nyerk! | 16 / 10 | `lv 10`, `done sq:2102105` (Empyrean Monolith) | reached Empyrean Monolith | [Metabot](https://metabot.gg/en/aion-2/quests/practice-makes-perfect-nyerk) unlock 10; Empyrean Monolith: gaming.tools 2202023, owner (`alt-08`) | existing edge; gate is turned in (check 1 answered 2026-10-15; confirmed in game 20:12 ET) |
 | `rq:2202016` | Blade of Vengeance | 22 / 10 | `lv 10`, `done sq:2102180` (Verdant Melody) | reached Verdant Melody | [Metabot](https://metabot.gg/en/aion-2/quests/blade-of-vengeance) unlock 10; Verdant Melody: gaming.tools 2202016 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
 | `rq:2202017` | In the Fang Legion's Name | 22 / 10 | `lv 10`, `done sq:2102180` (Verdant Melody), `done rq:2202016` (Blade of Vengeance), `done rq:2202014` (Odyle Jelly Misappropriation Investigation) | reached Verdant Melody + Blade of Vengeance, Odyle Jelly Misappropriation Investigation ticked | [Metabot](https://metabot.gg/en/aion-2/quests/in-the-fang-legions-name) unlock 10; Verdant Melody: gaming.tools 2202017; Blade of Vengeance: allthings.how 244377, gaming.tools 2202016, gaming.tools 2202017; Odyle Jelly Misappropriation Investigation: gaming.tools 2202017 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
 | `rq:2202019` | Young Elim's Story | 22 / 10 | `lv 10`, `done sq:2102190` (Disturbed Balance) | reached Disturbed Balance | [Metabot](https://metabot.gg/en/aion-2/quests/young-elims-story) unlock 10; Disturbed Balance: gaming.tools 2202019 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
@@ -331,7 +332,7 @@ turned in (edges from `rq-chains.json`):
 | Lest We Forget | **story gate confirmed** | after Zikel's Core (Lv 45) | Lv 45 | [Metabot](https://metabot.gg/en/aion-2/quests/lest-we-forget) "Required first" (rq.json cites shugo.gg for this quest) |
 | Shugo-of-All-Trades: Asmodian | **owner-confirmed 2026-10-15: once Contaminated Area (Lv 11) is turned in** | live | Lv 12 (before) | owner, in game |
 | Spooky Specters | **owner-confirmed 2026-10-15: once Cemetery Cleanup (Lv 13) is turned in** | live | Lv 14 (before) | owner, in game |
-| The Great Curse-Breaking Caper | candidate: after Empyrean Monolith (Lv 16), the same gate as its 5 Lv 16 neighbours | **owner to check in game** | Lv 16 | none permitted |
+| The Great Curse-Breaking Caper | **owner-confirmed 2026-10-15 (20:12 ET): once Empyrean Monolith (Lv 16) is turned in**, the same gate as its 5 Lv 16 neighbours | live | Lv 16 (before) | owner, in game (`alt-08`) |
 | Her Last Favor | candidate: after Canyon's Secret (Lv 30) | **owner to check in game** | Lv 30 | none permitted |
 | Pain Unending | candidate: after Last of the Destruction Archons (Lv 32) | **owner to check in game** | Lv 32 | none permitted |
 | Herb Pouch Heist | candidate: after Daybreak Society Rescue Operation (Lv 41) | **owner to check in game** | Lv 44 | none permitted |
@@ -516,9 +517,10 @@ Whether that is acceptable should be checked from a machine that can reach it.
 To batch with the colour-sprint session (HANDOFF). Each check is a concrete observation; screenshots go to the private
 repo.
 
-1. **Gate semantics: answered 2026-10-15 (one regional quest; Lv 16 Empyrean Monolith check pending as confirmation).**
+1. **Gate semantics: answered 2026-10-15, "turned in".**
    Owner: Shugo-of-All-Trades is not offered while Contaminated Area is current and appears once it is turned in
-   (`owner:2026-10-15-chat-01`); Spooky Specters likewise after Cemetery Cleanup (`-02`). "Turned in", 2 for 2. The
+   (`owner:2026-10-15-alt-04`); Spooky Specters likewise after Cemetery Cleanup (`-05`). "Turned in", 2 for 2. Confirmed
+   by the Lv 16 Empyrean Monolith check (20:12 ET, `-08`): all 6 of its regional quests appeared only after it was turned in. The
    original check: **Gate semantics (estimate for regional quests was ~70%, no permitted source).** On a character whose
    current story quest is A Collective Effort: is "Fight Poison with Poison" offered at Viron (Guide Rest Stop)? Then
    turn in A Collective Effort and look again. "Turned in" predicts not offered → offered. Any regional pair works,
@@ -537,8 +539,9 @@ repo.
    Verdant Melody, or only on Daeva in a Dream? Still open (§5). The owner's Ascension Gauge Level 1 tooltip needs
    Verdant Melody Complete, "The One Who Hears the Voice" (text cut off) and 100% gauge progress; gauge points come from
    Episode, Regional and Ascension quests, Sealed Dungeons and Strongholds.
-7. **Six `noPre` candidates.** **Shugo-of-All-Trades and Spooky Specters answered 2026-10-15 (owner): each opens once
-   its candidate story quest is turned in (live gates, `done sq:2102040` and `done sq:2102070`).** Four are still open.
+7. **Six `noPre` candidates.** **Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking Caper answered 2026-10-15
+   (owner): each opens once its candidate story quest is turned in (live gates, `turnedIn sq:2102040`, `sq:2102070` and
+   `sq:2102105`).** Three are still open.
    Does each open right after its candidate story quest? Shugo-of-All-Trades after
    Contaminated Area, Spooky Specters after Cemetery Cleanup, The Great Curse-Breaking Caper after Empyrean
    Monolith, Her Last Favor after Canyon's Secret, Pain Unending after Last of the Destruction Archons, Herb Pouch
@@ -553,8 +556,8 @@ respec cost after 31, expedition cap, reset time.
 
 ## 12. Story steps that clear a stronghold or run an Expedition (owner, 2026-10-15)
 
-Added with issue #69. Evidence is the owner's: the in-game map and "from memory" at 19:37 and 19:40 ET (chat refs
-`owner:2026-10-15-chat-03`, `-04`). I matched every story step's text against all stronghold and Sealed Dungeon
+Added with issue #69. Evidence is the owner's: the in-game map and "from memory" at 19:37 and 19:40 ET (owner refs
+`owner:2026-10-15-alt-06`, `-07`). I matched every story step's text against all stronghold and Sealed Dungeon
 names; only one matched by name.
 
 | Story quest | Step | What it is | Status |

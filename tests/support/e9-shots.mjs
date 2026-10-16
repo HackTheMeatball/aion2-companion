@@ -28,6 +28,9 @@ const CASES = [
   { name: '5-krao-cave-row-and-step-note', save: { level: 22, checks: {}, showObj: true, showTalk: true, open: { g22: true } }, quest: 'Disturbed Balance', steps: [0, 1], shots: [['#g22', ''], ['#questSubs', '-journey']] },
   { name: '6-fire-temple-step-note', save: { level: 37, checks: {}, showObj: true, showTalk: true, open: { g35: true } }, quest: 'Mirror of Greed', steps: [0], shots: [['#g35', ''], ['#questSubs', '-journey']] },
   { name: '7-pet-note-removed', save: { level: 10, checks: {}, open: { g10: true } }, quest: 'Finding Nemon', shots: [['#g10', '']] },
+  /* Empyrean Monolith check (owner, 20:12 ET): The Great Curse-Breaking Caper waits for Empyrean Monolith to be turned in, like its 5 neighbours */
+  { name: '8-curse-breaking-caper-on-empyrean-monolith', save: { level: 16, checks: {}, open: { g16: true } }, quest: 'Empyrean Monolith', shots: [['#g16', ''], ['#nsqWrap .ns-card', '-nextup', /Regional/]] },
+  { name: '9-curse-breaking-caper-monolith-turned-in', save: { level: 16, checks: {}, open: { g16: true } }, quest: 'Empyrean Monolith+1', shots: [['#g16', ''], ['#nsqWrap .ns-card', '-nextup', /Regional/]] },
 ];
 for (const c of CASES) for (const when of ['before', 'after']) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });

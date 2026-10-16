@@ -263,7 +263,9 @@ build's plan nodes; skill levels by rule) carries `requires` and `completesWith`
   its atoms (the weakest wins) and fails on a contradiction.
 - **`completesWith`** is any-of; `"tick"` is the player's tick, anything else is derived and never written as a tick.
 - **Story step notes (E9).** A story `steps[]` entry may carry `note` (one line, ≤ 120 characters, shown after the step text),
-  `noteBasis` (`owner` · `inferred`; required with `note`) and `noteSources`. The step `text` stays what the source says.
+  `noteBasis` (`owner` · `inferred`; required with `note`, and an inferred note says "probably", checked by gen) and
+  `noteSources`. The step `text` stays what the source says; gen compiles notes into `QUEST_STEP_NOTES`, never into
+  `QUEST_STEPS` (whose text the page parses).
 - **`route`** (M11, optional on steps, regional quests, Sealed Dungeons, strongholds): `core` · `filler` ·
   `completionist`. 5b fills it from today (`optional` → `completionist`, else `core`), so nothing changes on screen;
   the owner approves labels milestone by milestone in 0.3 (decision), with "fastest" as the default view.

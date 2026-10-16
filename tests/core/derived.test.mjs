@@ -18,7 +18,7 @@ export default (test, M) => {
   const der = (s, k) => M.derivedOf(M.char(s), k);
 
   test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
-    assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally']);
+    assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
@@ -45,14 +45,25 @@ export default (test, M) => {
   test('Expedition rows (g20:exp Krao Cave, g35:exp Fire Temple): done by the story step ticked or the quest turned in', () => {
     for (const [row, quest, i] of [['g20:exp', 'Disturbed Balance', 2], ['g35:exp', 'Mirror of Greed', 1]]) {
       const done = s => M.doneOf(M.char(s), row);
-      assert.match(M.QUEST_STEPS[quest][i], /This is your first run of the .* Expedition\.$/, quest + ' step note');
+      assert.match(M.objTextOf(quest, i), /This is your first run of the .* Expedition\.$/, quest + ' step note');
       assert.equal(done(S({ quest })), false);
       assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), true);
       assert.equal(done(S({ quest: at(quest, 1) })), true);
       withChanges(['regionalTurnedIn', 'derived'], () => assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), false, 'off without storyStepDerived'));
     }
-    assert.match(M.QUEST_STEPS["Canyon's Secret"][1], /first run of the Urugugu Canyon Expedition\.$/);
-    assert.match(M.QUEST_STEPS['Forgotten Commander'][1], /This is probably your first run of the Draupnir Expedition\.$/, 'inferred until the owner confirms');
+    assert.match(M.objTextOf("Canyon's Secret", 1), /first run of the Urugugu Canyon Expedition\.$/);
+    assert.match(M.objTextOf('Forgotten Commander', 1), /This is probably your first run of the Draupnir Expedition\.$/, 'inferred until the owner confirms');
+  });
+  test('story step notes: shown after the objective (switch stepNotes), never part of the text the page parses', () => {
+    const noted = Object.entries(M.QUEST_STEP_NOTES).flatMap(([q, o]) => Object.keys(o).map(i => [q, +i]));
+    assert.deepEqual(noted.map(([q, i]) => `${q} #${i}`).sort(), ["Canyon's Secret #1", 'Disturbed Balance #2', 'Forgotten Commander #1', 'Mirror of Greed #1']);
+    for (const [q, i] of noted) {
+      const t = M.QUEST_STEPS[q][i];
+      assert.doesNotMatch(t, /first run/, q + ': the objective text stays what the source says');
+      assert.ok(M.objTextOf(q, i).startsWith(t.replace(/\.$/, '')) && M.objTextOf(q, i).endsWith(M.QUEST_STEP_NOTES[q][i]), q + ': note after the text');
+      withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.equal(M.objTextOf(q, i), t, q + ': off without stepNotes'));
+    }
+    assert.equal(M.objTextOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0], 'an objective without a note is its text');
   });
   test('regional quests open when the story quest is turned in (switch regionalTurnedIn); Shugo-of-All-Trades and Spooky Specters gained that gate', () => {
     const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;

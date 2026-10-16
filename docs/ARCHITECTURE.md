@@ -99,9 +99,13 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
   turned in, the Krao Cave / Fire Temple "Expedition opens" rows and the Graverobber Den stronghold once their story step
   is ticked (`storyStep` atom) or the story quest turned in (E9). A regional quest's story gate is "turned in"
   (switch `regionalTurnedIn`, off = the 0.2 "reached"). Milestone counts and tags count derived rows as done; so does
-  the Progress tally of one-time clears
-  (`clearDoneOf`, switch `clearTally`): a derived regional quest or stronghold counts with its clear reward. The Cube and the stone /
-  crystal totals still only move on a tick, so the reward is never written or counted twice.
+  the Progress tally of one-time clears (`clearDoneOf`, switch `clearTally`): a derived regional quest or stronghold
+  counts with its clear reward. The Cube and the stone / crystal totals still only move on a tick, so the reward is
+  never written or counted twice.
+- Story objective ticks (`qsteps`, `qsub`) are keyed by quest name and the objective's permanent `i` (gen checks
+  `i` = position, never renumbered). The objective text in `QUEST_STEPS` is parsed (sub-steps, Kibelisk, talk-only), so
+  a step `note` lives in its own table `QUEST_STEP_NOTES` and is only joined on for display (`objTextOf`, switch
+  `stepNotes`); a note can never change a sub-step count or a save index.
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.
 
