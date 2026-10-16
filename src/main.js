@@ -15,7 +15,7 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs, objTextOf,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
@@ -206,22 +206,25 @@ function goAreas(band) {
 }
 function renderAreas() {
   const lv = char(state).level, shOn = state.areaSh !== false, doneOn = state.areaDone !== false;
+  /* done = ticked or derived (a stronghold a story quest clears, E9); derived rows show a disabled tick like the milestones' */
+  const evA = gatesOf(char(state)), ad = x => doneOf(char(state), x.k, evA);
+  const derive = () => document.querySelectorAll("#areaList input[data-k]").forEach(i => derivedBox(i, derivedOf(char(state), i.dataset.k, evA)));
   document.getElementById("areaShTog").checked = shOn;
   document.getElementById("areaDoneTog").checked = !doneOn;
-  const vis = x => doneOn || !char(state).checks[x.k] || areaKeep.has(x.k);
+  const vis = x => doneOn || !ad(x) || areaKeep.has(x.k);
   const opts = [...AREA_BANDS.map(String), "sh"];
   if (!opts.includes(state.areaLv)) state.areaLv = defaultBand();
   const allSh = state.areaLv === "sh";
   const inBand = v => v === "sh" ? AREA_ITEMS.filter(x => x.it.kind === "stronghold")
     : AREA_ITEMS.filter(x => bandOf(x) === +v && (shOn || x.it.kind !== "stronghold"));
   /* Open at or below your level: the same "behind" rule as the Progress card. */
-  const behind = x => !char(state).checks[x.k] && areaOpen(char(state), x);
+  const behind = x => !ad(x) && areaOpen(char(state), x);
   areaSel.innerHTML = opts.map(v => {
-    const xs = inBand(v), left = xs.filter(x => !char(state).checks[x.k]).length, bh = xs.filter(behind).length;
+    const xs = inBand(v), left = xs.filter(x => !ad(x)).length, bh = xs.filter(behind).length;
     const label = v === "sh" ? "All strongholds" : `Lv ${v}–${+v + 4}${+v > lv ? " (later)" : ""}`;
     return `${v === "sh" ? '<option disabled>──────────</option>' : ""}<option value="${v}"${v === state.areaLv ? " selected" : ""}>${label} · ${xs.length - left}/${xs.length}${left ? (bh && +v <= lv ? ` · ${bh} open` : "") : " ✓"}</option>`;
   }).join("");
-  const cur = inBand(state.areaLv), curD = cur.filter(x => char(state).checks[x.k]).length, curB = cur.filter(behind).length;
+  const cur = inBand(state.areaLv), curD = cur.filter(x => ad(x)).length, curB = cur.filter(behind).length;
 
   /* Sorted by zone so neighbours sit together. */
   const xs = cur.sort((a, b) => (allSh ? bandOf(a) - bandOf(b) : 0) || (a.area === NO_AREA) - (b.area === NO_AREA) || a.area.localeCompare(b.area) || a.it.name.localeCompare(b.it.name));
@@ -229,7 +232,7 @@ function renderAreas() {
   const mapIco = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 1 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>`;
   const row = x => {
     if (!vis(x)) return "";
-    const it = x.it, done = !!char(state).checks[x.k], sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];
+    const it = x.it, done = !!ad(x), sh = it.kind === "stronghold", run = !done && !!(char(state).areaRun || {})[x.k];
     const later = areaLater(char(state), x);
     const sub = sh ? `${x.area} · ${SH_LV(it)}` : "";
     const href = mapFocus(it);
@@ -239,17 +242,17 @@ function renderAreas() {
   /* Region header: bigger than the rows; a finished region folds shut (after a short beat, so the row you just
      ticked doesn't vanish under the cursor). Click the header to open or close any region. */
   const zoneOpen = (z, g) => {
-    const rk = state.areaLv + "|" + z, ov = (state.zoneOpen || {})[rk], done = g.every(x => char(state).checks[x.k]);
+    const rk = state.areaLv + "|" + z, ov = (state.zoneOpen || {})[rk], done = g.every(x => ad(x));
     return ov !== undefined ? !!ov : !done || !!(zoneJustDone[rk] && Date.now() - zoneJustDone[rk] < 700);
   };
   const zoneHead = (z, g, open) => {
-    const gd = g.filter(x => char(state).checks[x.k]).length, tr = ZONE_TRACES[z], rk = state.areaLv + "|" + z;
+    const gd = g.filter(x => ad(x)).length, tr = ZONE_TRACES[z], rk = state.areaLv + "|" + z;
     return `<li class="zone-h${gd === g.length ? " done" : ""}"><button type="button" class="zone-btn" data-zone="${rk}" aria-expanded="${open}"><span class="zchev" aria-hidden="true">${open ? "▾" : "▸"}</span>${z}</button>` +
       `${tr ? `<a class="ztr" href="https://metabot.gg/en/aion-2/map/altgard/empyrean-traces" target="_blank" rel="noopener" title="${tr} Empyrean Traces (feathers) in this zone: grab them while you're here">${tr} traces</a>` : ""}<span class="zn">${gd === g.length ? "✓ " : ""}${gd}/${g.length}</span></li>`;
   };
   const sec = (cls, title, tip, note, list, grouped) => {
     if (!list.length) return "";
-    const d = list.filter(x => char(state).checks[x.k]).length;
+    const d = list.filter(x => ad(x)).length;
     const body = grouped ? [...new Set(list.map(x => x.area))].map(z => { const g = list.filter(x => x.area === z), open = zoneOpen(z, g); return g.some(vis) ? zoneHead(z, g, open) + (open ? g.map(row).join("") : "") : ""; }).join("") : list.map(row).join("");
     return `<li class="asec ${cls}"><span class="asec-t">${title} ${T("", tip, `What are ${title}?`)}</span><span class="asec-n${d === list.length ? " done" : ""}">${d}/${list.length}</span></li><li class="sh-note">${note}</li>` +
       (body || `<li class="sh-note ok">All cleared${doneOn ? "" : " (hidden)"}.</li>`);
@@ -257,16 +260,18 @@ function renderAreas() {
   if (allSh) {
     const bands = [...new Set(shs.map(bandOf))];
     document.getElementById("areaList").innerHTML =
-      `<li class="asec sh"><span class="asec-t">Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => char(state).checks[x.k]) ? " done" : ""}">${shs.filter(x => char(state).checks[x.k]).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
-      bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => char(state).checks[x.k]).length;
+      `<li class="asec sh"><span class="asec-t">Strongholds ${T("", "stronghold", "What are Strongholds?")}</span><span class="asec-n${shs.every(x => ad(x)) ? " done" : ""}">${shs.filter(x => ad(x)).length}/${shs.length}</span></li><li class="sh-note">${SH_REWARD} each</li>` +
+      bands.map(bd => { const g = shs.filter(x => bandOf(x) === bd), d = g.filter(x => ad(x)).length;
         if (!g.some(vis)) return "";
         return `<li class="shband${d === g.length ? " done" : ""}"><span>Lv ${bd}${bd > lv ? " (later)" : ""}</span><span>${d}/${g.length}</span></li>` + g.map(row).join(""); }).join("");
+    derive();
     return;
   }
   document.getElementById("areaList").innerHTML =
     sec("sh", "Strongholds", "stronghold", SH_REWARD + " each", shs, false) +
     sec("sd" + (shs.length ? " split" : ""), "Sealed Dungeons", "hideout", SD_REWARD + " each", sds, true);
   document.querySelectorAll("#areaList li.running input[data-k]").forEach(i => { i.indeterminate = true; });
+  derive();
 }
 /* Two clicks per clear: the first marks it "in progress" (you went in), the second marks it cleared. Clicking a
    cleared one undoes it. In-progress runs show at the top of Next up so you finish what you started. */
@@ -487,7 +492,7 @@ function rqExtraHTML(a) {
   /* Snoozed ("Not in game yet", counted in the subline): one compact row with their names and one control that shows them again. */
   const zRow = a.snz.length ? `<li class="qg rq-aux"><span class="rq-auxt" title="Not in game yet: hidden until your next Level up">${a.snz.map(x => x.it.name).join(", ")}</span><button type="button" class="q-inl" data-unsnz="${a.snz.map(x => x.k).join("|")}">Show again</button></li>` : "";
   /* Waiting on the story: folded; each quest gets the milestone rows' "In my game" (= picked up). */
-  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="Opens once the story reaches ${x.it.q.story}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
+  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
   return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
 function storyView(a) {
@@ -643,7 +648,7 @@ function nsObjHTML() {
   const vis = objIdx(list), open = list.map((t, i) => [t, i]).filter(([, i]) => vis.includes(i) && !done.includes(i));
   /* First three open objectives; the rest wait their turn (all of them are in the Journey card). */
   const cap = pipWin ? 2 : 3, more = open.length - cap; /* the pop-out window is short */
-  return open.length ? `<ul class="ns-obj">${open.slice(0, cap).map(([t, i]) => { const [a, b] = t.split(" — "); const sl = subListHTML(i, "data-nssub"); return `<li class="${sl ? "has-sub" : ""}"><label><input type="checkbox" data-nsobj="${i}"><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("")}${more > 0 ? `<li class="ns-obj-more">+${more} more after these</li>` : ""}</ul>` : "";
+  return open.length ? `<ul class="ns-obj">${open.slice(0, cap).map(([, i]) => { const [a, b] = objTextOf(char(state).quest, i).split(" — "); const sl = subListHTML(i, "data-nssub"); return `<li class="${sl ? "has-sub" : ""}"><label><input type="checkbox" data-nsobj="${i}"><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("")}${more > 0 ? `<li class="ns-obj-more">+${more} more after these</li>` : ""}</ul>` : "";
 }
 nowEl.addEventListener("change", e => {
   const sq = e.target.dataset && e.target.dataset.nssub, st = (f, t) => nsWin().setTimeout(f, t);
@@ -778,7 +783,7 @@ function update() {
     if (state.open[s.id] !== undefined) d.open = state.open[s.id];
   });
 
-  total += AREA_ITEMS.length; done += AREA_ITEMS.filter(x => char(state).checks[x.k]).length;
+  { const evT = gatesOf(char(state)); total += AREA_ITEMS.length; done += AREA_ITEMS.filter(x => doneOf(char(state), x.k, evT)).length; }
 
   /* Cleared milestones follow the toolbar's "Hide cleared milestones" toggle; missed and upcoming always show. */
   const trackRows = GATES.map(g => {
@@ -995,7 +1000,7 @@ function renderQuestSubs(noNow) {
     : needLv ? `<p class="qs-wait">Turn in at Lv ${needLv}: the game opens this quest at Lv ${needLv}</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
   el.innerHTML = head + `<ol class="qs-list">` +
-    list.map((t, i) => { const [a, b] = t.split(" — "); if (!vis.includes(i)) return ""; if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
+    list.map((t, i) => { if (!vis.includes(i)) return ""; const [a, b] = objTextOf(char(state).quest, i).split(" — "); if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
     nextBtn;
 }
 document.getElementById("questSubs").addEventListener("change", e => {
@@ -1107,7 +1112,7 @@ function renderCollection() {
   const rows = [
     { key: "quest", name: "Quests", reward: "Wisdom Stone + Daevanion Crystal each", all: quests, behind: quests.filter(x => !cd(x.k) && rqAvail(x.q, lv).ok) },
     { key: "sd", name: "Dungeons", reward: "2 Crystals + 2 Wisdom Stones each", all: sds, behind: sds.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
-    { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !char(state).checks[x.k]) },
+    { key: "sh", name: "Strongholds", reward: "2 belt scrolls each", all: shs, behind: shs.filter(x => areaOpen(char(state), x) && !cd(x.k)) },
   ];
   let D = 0, N = 0;
   document.getElementById("progRows").innerHTML = rows.map(r => {

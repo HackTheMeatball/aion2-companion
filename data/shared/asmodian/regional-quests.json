@@ -124,14 +124,25 @@
           },
           {
             "story": "sq:2102105",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202010"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -299,9 +310,9 @@
           },
           {
             "story": "sq:2102280",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "owner-check",
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
           },
           {
             "done": "rq:2202010",
@@ -446,14 +457,25 @@
           },
           {
             "story": "sq:2102105",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202012"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -619,14 +641,25 @@
           },
           {
             "story": "sq:2102105",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202013"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -802,14 +835,25 @@
           },
           {
             "story": "sq:2102105",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202014"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -970,18 +1014,40 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102105",
+            "is": "turnedIn",
+            "basis": "owner",
+            "note": "Owner-confirmed 2026-10-15 (Empyrean Monolith check, 20:12 ET): not offered while Empyrean Monolith is current, offered once it is turned in. No other permitted source names a prerequisite (Metabot renders none).",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
+              }
             ]
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -1023,45 +1089,30 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-08",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+          },
+          "fields": [
+            "requires"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/the-great-curse-breaking-caper",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102105",
-              "is": "reached",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Empyrean Monolith\" (Lv 16) instead of at its recommended Lv 16."
-      }
+        "Metabot shows no Kibelisk; giver place Gravekeeper Camp from allthings.how 244384"
+      ]
     },
     {
       "id": "rq:2202016",
@@ -1147,14 +1198,14 @@
           },
           {
             "story": "sq:2102180",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202016"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -1344,14 +1395,14 @@
           },
           {
             "story": "sq:2102180",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202017"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202016",
@@ -1597,16 +1648,16 @@
             },
             {
               "story": "sq:2102280",
-              "is": "reached",
+              "is": "turnedIn",
               "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
             }
           ]
         },
         "status": "owner-check",
         "check": 7,
         "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Canyon's Secret\" (Lv 30) instead of at its recommended Lv 30."
+        "change": "If confirmed: opens once \"Canyon's Secret\" is turned in (Lv 30) instead of at its recommended Lv 30."
       }
     },
     {
@@ -1723,14 +1774,14 @@
           },
           {
             "story": "sq:2102190",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202019"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -1945,14 +1996,14 @@
           },
           {
             "story": "sq:2102340",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202020"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202011",
@@ -2139,14 +2190,14 @@
           },
           {
             "story": "sq:2102280",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202021"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -2284,14 +2335,14 @@
           },
           {
             "story": "sq:2102280",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202022"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202021",
@@ -2453,14 +2504,25 @@
           },
           {
             "story": "sq:2102105",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202023"
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-08",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Empyrean Monolith (Lv 16): none of the 6 regional quests it gates is offered while it is the current quest; all 6 appear only once it is turned in"
+                }
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15); confirmed for this quest in game (Empyrean Monolith check, 20:12 ET)."
           }
         ]
       },
@@ -2767,7 +2829,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -2778,7 +2840,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202027"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -2923,7 +2985,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -2934,7 +2996,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202028"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -3134,7 +3196,7 @@
             },
             {
               "story": "sq:2102370",
-              "is": "reached",
+              "is": "turnedIn",
               "basis": "sourced",
               "sources": [
                 {
@@ -3143,13 +3205,13 @@
                   "checkedAt": "2026-10-14"
                 }
               ],
-              "note": "Metabot \"Required first: Blood Monument\". is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+              "note": "Metabot \"Required first: Blood Monument\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
             }
           ]
         },
         "status": "ready",
         "basis": "prereq-gates §6 (new gate, Metabot)",
-        "change": "Opens once the story reaches \"Blood Monument\" instead of at its recommended Lv 33 (no prerequisite data today); one more story-gated regional quest."
+        "change": "opens once \"Blood Monument\" is turned in instead of at its recommended Lv 33 (no prerequisite data today); one more story-gated regional quest."
       }
     },
     {
@@ -4135,14 +4197,14 @@
           },
           {
             "story": "sq:2102190",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202036"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202019",
@@ -4362,14 +4424,14 @@
           },
           {
             "story": "sq:2102280",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202037"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -4522,14 +4584,14 @@
           },
           {
             "story": "sq:2102590",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202038"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -4695,14 +4757,14 @@
           },
           {
             "story": "sq:2102590",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202039"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202012",
@@ -4979,16 +5041,16 @@
             },
             {
               "story": "sq:2102340",
-              "is": "reached",
+              "is": "turnedIn",
               "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
             }
           ]
         },
         "status": "owner-check",
         "check": 7,
         "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Last of the Destruction Archons\" (Lv 32) instead of at its recommended Lv 32."
+        "change": "If confirmed: opens once \"Last of the Destruction Archons\" is turned in (Lv 32) instead of at its recommended Lv 32."
       }
     },
     {
@@ -5117,7 +5179,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -5128,7 +5190,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202041"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -5287,7 +5349,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -5298,7 +5360,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202042"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -5459,7 +5521,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -5473,7 +5535,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202043"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202042",
@@ -5630,18 +5692,40 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102040",
+            "is": "turnedIn",
+            "basis": "owner",
+            "note": "Turned in, not merely reached: owner check 1 answered in game 2026-10-15 (Shugo-of-All-Trades and Spooky Specters are not offered while the gating story quest is current; both appear once it is turned in). Flipped from \"reached\" (D9).",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-04",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Regional tab: Shugo-of-All-Trades is not offered while Contaminated Area is the current quest; it appears (not accepted, 0/50) once Contaminated Area is turned in"
+                }
+              }
             ]
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -5679,45 +5763,30 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-04",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Regional tab: Shugo-of-All-Trades is not offered while Contaminated Area is the current quest; it appears (not accepted, 0/50) once Contaminated Area is turned in"
+          },
+          "fields": [
+            "requires"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
         "turnin.zone": "inferred"
       },
       "conflicts": [
-        "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite",
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102040",
-              "is": "reached",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Contaminated Area\" (Lv 11) instead of at its recommended Lv 12."
-      }
+        "Metabot NPC table lists turn-in location 'Calderon Canyon'; steps/dialogue say Quai Campsite"
+      ]
     },
     {
       "id": "rq:2202045",
@@ -5796,7 +5865,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -5807,7 +5876,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202045"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202023",
@@ -6040,7 +6109,7 @@
             },
             {
               "story": "sq:2102780",
-              "is": "reached",
+              "is": "turnedIn",
               "basis": "sourced",
               "sources": [
                 {
@@ -6049,13 +6118,13 @@
                   "checkedAt": "2026-10-14"
                 }
               ],
-              "note": "Metabot \"Required first: Zikel's Core\". is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+              "note": "Metabot \"Required first: Zikel's Core\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
             }
           ]
         },
         "status": "ready",
         "basis": "prereq-gates §6 (new gate, Metabot)",
-        "change": "Opens once the story reaches \"Zikel's Core\" instead of at its recommended Lv 45 (no prerequisite data today); one more story-gated regional quest."
+        "change": "opens once \"Zikel's Core\" is turned in instead of at its recommended Lv 45 (no prerequisite data today); one more story-gated regional quest."
       }
     },
     {
@@ -6178,7 +6247,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -6189,7 +6258,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202047"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202013",
@@ -6333,7 +6402,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -6344,7 +6413,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202050"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -6477,18 +6546,40 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
+            ]
+          },
+          {
+            "story": "sq:2102070",
+            "is": "turnedIn",
+            "basis": "owner",
+            "note": "Turned in, not merely reached: owner check 1 answered in game 2026-10-15 (Shugo-of-All-Trades and Spooky Specters are not offered while the gating story quest is current; both appear once it is turned in). Flipped from \"reached\" (D9).",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-15-alt-05",
+                  "checkedAt": "2026-10-15",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Regional tab: Spooky Specters is not offered while Cemetery Cleanup is the current quest; once it is turned in it appears (giver Rizel, Gravekeeper Camp, Lv 14)"
+                }
+              }
             ]
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -6520,41 +6611,24 @@
           ],
           "checkedAt": "2026-10-14",
           "note": "Metabot quest page markers (Data & Research, data/research/locations-metabot-2026-10.csv)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-05",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Regional tab: Spooky Specters is not offered while Cemetery Cleanup is the current quest; once it is turned in it appears (giver Rizel, Gravekeeper Camp, Lv 14)"
+          },
+          "fields": [
+            "requires"
+          ]
         }
       ],
-      "verifiedAt": "2026-10-14",
-      "status": "verified",
-      "conflicts": [
-        "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/spooky-specters",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102070",
-              "is": "reached",
-              "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
-            }
-          ]
-        },
-        "status": "owner-check",
-        "check": 7,
-        "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Cemetery Cleanup\" (Lv 13) instead of at its recommended Lv 14."
-      }
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
     },
     {
       "id": "rq:2202052",
@@ -6652,7 +6726,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -6663,7 +6737,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202052"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202010",
@@ -6842,14 +6916,14 @@
           },
           {
             "story": "sq:2102180",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202053"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -6999,7 +7073,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7010,7 +7084,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202054"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -7143,7 +7217,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7154,7 +7228,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202055"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -7320,7 +7394,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7331,7 +7405,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202056"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -7525,7 +7599,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7536,7 +7610,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202057"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202036",
@@ -7699,7 +7773,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7707,7 +7781,7 @@
                 "section": "Dependent quests"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -7852,7 +7926,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -7863,7 +7937,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202059"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -8036,7 +8110,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -8047,7 +8121,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202060"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202022",
@@ -8264,7 +8338,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -8275,7 +8349,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202061"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -8418,14 +8492,14 @@
           },
           {
             "story": "sq:2102240",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202062"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -8558,14 +8632,14 @@
           },
           {
             "story": "sq:2102360",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202063"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -8734,7 +8808,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -8745,7 +8819,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202064"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -8905,7 +8979,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -8916,7 +8990,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202065"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -9111,16 +9185,16 @@
             },
             {
               "story": "sq:2102660",
-              "is": "reached",
+              "is": "turnedIn",
               "basis": "owner-check",
-              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"reached\" like every regional story gate today (D9); owner check 1 (prereq-gates §3) decides reached vs turned in for all of them at once."
+              "note": "Candidate gate: no permitted source names a prerequisite (Metabot renders none). is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
             }
           ]
         },
         "status": "owner-check",
         "check": 7,
         "basis": "prereq-gates §6 (noPre candidate)",
-        "change": "If confirmed: opens once the story reaches \"Daybreak Society Rescue Operation\" (Lv 41) instead of at its recommended Lv 44."
+        "change": "If confirmed: opens once \"Daybreak Society Rescue Operation\" is turned in (Lv 41) instead of at its recommended Lv 44."
       }
     },
     {
@@ -9207,7 +9281,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -9218,7 +9292,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202067"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -9366,7 +9440,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -9377,7 +9451,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202068"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -9517,7 +9591,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -9528,7 +9602,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202069"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           }
         ]
       },
@@ -9681,14 +9755,14 @@
           },
           {
             "story": "sq:2102340",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
                 "url": "https://aion2.gaming.tools/quests/2202070"
               }
             ],
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202053",
@@ -9865,7 +9939,7 @@
           },
           {
             "story": "sq:2102800",
-            "is": "reached",
+            "is": "turnedIn",
             "basis": "sourced",
             "sources": [
               {
@@ -9876,7 +9950,7 @@
                 "url": "https://aion2.gaming.tools/quests/2202071"
               }
             ],
-            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). v1 gate meaning kept: the story has reached it (D9; owner check 1 may change it to turnedIn)."
+            "note": "Forgotten Commander = Episode 6 'Encountering Zikel's Core', episode quest 16/17, rec/unlock 45, follows 'Farewells' (2102781). NOT in app QUESTS (story stops at Lv 40). Gate meaning is turned in (owner check 1, 2026-10-15)."
           },
           {
             "done": "rq:2202070",

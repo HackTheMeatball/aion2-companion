@@ -125,14 +125,26 @@
         {
           "url": "https://allthings.how/?p=232911",
           "note": "203 at 45 only"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-01",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window points earned at character Lv 4 / 7 / 10 / 11 = 1 / 7 / 16 / 20, all matching the table"
+          }
         }
       ],
       "status": "single-source",
       "notes": [
         "45=203: 2-source. 30-44: single (Wikily); matches LEVEL_POINTS exactly. App note says game matched at Lv 12/13.",
-        "LEVEL_POINTS comment: Wikily leveling table; matches the game at Lv 12 = 24, Lv 13 = 28, max 203."
+        "LEVEL_POINTS comment: Wikily leveling table; matches the game at Lv 12 = 24, Lv 13 = 28, max 203.",
+        "Owner screens 2026-10-15: points earned at Lv 4 / 7 / 10 / 11 = 1 / 7 / 16 / 20, all match (with Lv 12 = 24 and Lv 13 = 28 seen earlier). Status stays single-source: Lv 30–44 still rest on Wikily alone; 45 has two sources."
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-15"
     },
     {
       "id": "rule:node-costs",
@@ -331,14 +343,29 @@
         },
         {
           "url": "https://thegameswiki.com/aion-2/wiki/skills-and-specialties"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 needs character Lv 10 for Lv 5; Storm Rampage Lv 2 needs Lv 8 for Lv 3 (matches learnLv + 3 × (L − 2) for learn Lv 1 and Lv 5). Skills do not level by themselves"
+          }
         }
       ],
       "status": "verified",
       "notes": [
         "only from gear options, Arcana, Daevanion nodes (thegameswiki skills-and-specialties; gameplay.tips skills guide)",
-        "Character level for skill level L = learnLv + 3 × (L − 2) (Metabot skill pages); some passives use a flat gate (skills[].levelGate)."
+        "Character level for skill level L = learnLv + 3 × (L − 2) (Metabot skill pages); some passives use a flat gate (skills[].levelGate).",
+        "Owner screens 2026-10-15 (alt set) confirm the stepped gate at Lv 7: Savage Roar Lv 4 → Lv 5 needs Lv 10; Storm Rampage Lv 2 → Lv 3 needs Lv 8. A skill does not level by itself: it is bought with points, and each level also needs its character level."
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-15",
+      "claims": [
+        "C02"
+      ]
     },
     {
       "id": "rule:skill-point-cost",
@@ -364,13 +391,28 @@
       "sources": [
         {
           "url": "https://metabot.gg/en/aion-2/skills/heart-gore"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-15-alt-03",
+            "checkedAt": "2026-10-15",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Skill window at Lv 7: Savage Roar Lv 4 → Lv 5 costs 2 points (the L5–7 band)"
+          }
         }
       ],
       "status": "verified",
       "notes": [
-        "L2-4: 1 pt, L5-7: 2 pts, L8-10: 4 pts (21 pts per skill 1->10); identical on all 11 Metabot skill pages fetched"
+        "L2-4: 1 pt, L5-7: 2 pts, L8-10: 4 pts (21 pts per skill 1->10); identical on all 11 Metabot skill pages fetched",
+        "Owner screen 2026-10-15: Savage Roar Lv 4 → Lv 5 costs 2 points (L5–7 band)."
       ],
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-15",
+      "claims": [
+        "C02"
+      ]
     },
     {
       "id": "rule:specialty-slots",

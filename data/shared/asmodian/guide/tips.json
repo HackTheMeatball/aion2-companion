@@ -196,7 +196,7 @@
       "id": "tip:traces",
       "key": "traces",
       "title": "Empyrean Traces (feathers)",
-      "body": "<p>Collectibles scattered across your faction's main zones, from Altgard onward (none in the starting zone). Altgard has 560. They're marked on the world map.</p>\n    <p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards.</p>\n    <p>Collected feathers stay on the map. To hide them: map <b>Filters</b> (bottom right) → <b>Content</b> → untick <b>Empyrean Trace</b>.</p>",
+      "body": "<p>Collectibles scattered across your faction's main zones, from Altgard onward (none in the starting zone). Altgard has 560. They're marked on the world map.</p>\n    <p>You can carry them from the start, but you can only use them after the Lv 16 story quest \"Empyrean Monolith.\" Then go to your faction's Monolith, interact and press <b>Resonate</b>. That raises the Monolith's Resonance level (up to 30) for Amulet Enhance Scrolls, Amplify Stone fragments, titles and Soul Codex resets. Past Resonance 30, extra feathers convert to Power Shards. You first get Power Shards from \"Signs of a Crash Landing\" (Lv 6).</p>\n    <p>Collected feathers stay on the map. To hide them: map <b>Filters</b> (bottom right) → <b>Content</b> → untick <b>Empyrean Trace</b>.</p>",
       "credit": "PlayNews, Selphie1999, allthings.how map",
       "verifiedAt": "2026-10-12",
       "claims": [
@@ -207,9 +207,12 @@
       "id": "tip:wisdom",
       "key": "wisdom",
       "title": "Where Skill Points come from",
-      "body": "<p>Two sources: <b>character levels</b> grant points automatically, and <b>Wisdom Stone</b> items (from Sealed Dungeons, regional quests and drops) give 1 point each, but only once you use them from the Cube.</p>\n    <p>The skill window's points breakdown lists both sources under \"Points Earned\", and what you've spent under \"Points Used\" (shown as Mastery). Earned minus used is what you can spend now.</p>\n    <p><b>Daevanion Crystals</b> work the same way: use them from the Cube to add crystals to the board.</p>",
-      "credit": "Metabot item pages; points breakdown confirmed in game",
-      "verifiedAt": "2026-10-12"
+      "body": "<p>Two sources: <b>character levels</b> grant points automatically, and <b>Wisdom Stone</b> items (from Sealed Dungeons, regional quests and drops) give 1 point each, but only once you use them from the Cube.</p>\n    <p>The skill window's points breakdown lists both sources under \"Points Earned\", and what you've spent under \"Points Used\" (shown as Mastery). Earned minus used is what you can spend now.</p>\n    <p>Skills don't level up by themselves: you spend points, and each skill level also needs a character level. Skill level L opens at the level you learned the skill + 3 × (L − 2). Savage Roar, learned at Lv 1, reaches skill level 5 at Lv 10. Each level costs 1 point (levels 2–4), 2 points (5–7) or 4 points (8–10).</p>\n    <p><b>Daevanion Crystals</b> work the same way: use them from the Cube to add crystals to the board.</p>",
+      "credit": "Metabot item and skill pages; points breakdown and skill level gates confirmed in game",
+      "verifiedAt": "2026-10-15",
+      "claims": [
+        "C02"
+      ]
     }
   ]
 }

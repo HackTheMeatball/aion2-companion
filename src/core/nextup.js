@@ -23,7 +23,7 @@ export function rankNext(state, { basic = false } = {}) {
   const c = char(state), lv = c.level, acts = [], ev = gatesOf(c);
   const sp = skillBuy(c, lv);
   /* Dungeon or stronghold you went into: finish it first. */
-  Object.keys(c.areaRun || {}).filter(k => !c.checks[k]).forEach(k => { const x = AREA_ITEMS.find(y => y.k === k); if (!x) return;
+  Object.keys(c.areaRun || {}).filter(k => !doneOf(c, k, ev)).forEach(k => { const x = AREA_ITEMS.find(y => y.k === k); if (!x) return;
     acts.push({ kind: "run", x, act: "tick:" + k }); });
   if ((c.pendSt || 0) + (c.pendCr || 0) > 0) acts.push({ kind: "cube", st: c.pendSt, cr: c.pendCr, act: "usecube" });
   if (sp) { acts.push({ kind: "skill", x: sp, first: true, act: "skill" });
@@ -53,8 +53,8 @@ export function rankNext(state, { basic = false } = {}) {
   const hs = here ? openSteps(state, here) : [];
   /* Unlock-type steps at your milestone come before the story; its regional quests (optional side quests) come after it. */
   hs.filter(x => !x.rq && !x.adv).forEach(x => acts.push({ kind: "step", x, g: here, act: "tick:" + x.k }));
-  const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(c, x, ev) && !c.checks[x.k]).sort((a, b) => bandOf(a) - bandOf(b));
-  const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && areaOpen(c, x, ev) && !c.checks[x.k]);
+  const sdOpen = AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev)).sort((a, b) => bandOf(a) - bandOf(b));
+  const shOpen = AREA_ITEMS.filter(x => x.it.kind === "stronghold" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev));
   /* Story levels are recommended levels, not hard requirements (owner, 2026-10-15): the story card's level gate is the
      kept rule "story-card-recommended-level" (storyRecGate; the first story quest never gates). */
   const { qi, gateLv, gated } = storyRecGate(c);
@@ -62,7 +62,7 @@ export function rankNext(state, { basic = false } = {}) {
   /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));
   const sdPick = byHigh.find(x => x.area === hereArea) || byHigh[0];
-  const bandCount = (kind, bd) => { const xs = AREA_ITEMS.filter(x => x.it.kind === kind && bandOf(x) === bd); return { bd, d: xs.filter(x => c.checks[x.k]).length, n: xs.length }; };
+  const bandCount = (kind, bd) => { const xs = AREA_ITEMS.filter(x => x.it.kind === kind && bandOf(x) === bd); return { bd, d: xs.filter(x => doneOf(c, x.k, ev)).length, n: xs.length }; };
   const sdCard = sdOpen.length ? { kind: "sd", pick: sdPick, loc: AREA_LOC[sdPick.it.name] || {}, open: sdOpen.length, gated, gateLv, hereArea, band: bandCount("hideout", bandOf(sdPick)), act: "areas:" + bandOf(sdPick) } : null;
   /* Regional quests as one card: take them all, finish them in any order. Available = the quest's own recommended level
      (RQ rec), not its milestone's level. "Not in game yet" (rqSnooze) hides a quest until your next Level up or until
@@ -106,7 +106,7 @@ export function rankNext(state, { basic = false } = {}) {
     acts.push({ kind: "adv", adv: true, x, g, act: "tick:" + x.k }));
   const shPick = shOpen.find(x => x.area === hereArea) || [...shOpen].sort((a, b) => (b.it.lo || 0) - (a.it.lo || 0) || (a.it.hi || 45) - (b.it.hi || 45))[0];
   const shAll = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
-  const shCard = shOpen.length ? { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => c.checks[x.k]).length, total: shAll.length, hereArea, act: "areas:sh" } : null;
+  const shCard = shOpen.length ? { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, act: "areas:sh" } : null;
   if (shCard) acts.push(shCard);
   /* The queue's tail: the next actions that open with a level (skill upgrade, milestone step). */
   {

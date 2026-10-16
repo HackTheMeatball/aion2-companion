@@ -5,15 +5,34 @@ on purpose: the guide shows nothing rather than an unverified value.
 
 ## Data gaps
 
-- **Regional quests without prerequisite data** (10): Great Curse-Breaking Caper, Her Last Favor, Pain Unending,
-  Traveling Merchant's Conundrum, Herb Pouch Heist, Lest We Forget, Shugo-of-All-Trades, Spooky Specters, Spacetime
-  Rift: Unknown Species / Proof. They open at their recommended level (`noPre`); *Not in game yet* is the fallback if
-  the game disagrees. The `regress` soft check "no prerequisite data (open from Lv 10)" reports these by design.
+- **Regional quests without prerequisite data** (7): Her Last Favor, Pain Unending, Traveling Merchant's Conundrum,
+  Herb Pouch Heist, Lest We Forget, Spacetime Rift: Unknown Species / Proof. They open at their recommended level
+  (`noPre`); *Not in game yet* is the fallback if the game disagrees. The `regress` soft check "no prerequisite data
+  (open from Lv 10)" reports these by design. Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking Caper
+  got their story gate from the owner's in-game checks (2026-10-15, #69).
 - **Kibelisks missing**: 32 regional quest givers, Fafnite Storage Room (Metabot lists only the entrance zone, Sanctum
   Outpost), the Blood Barrier turn-in.
 - **Story gate semantics**: whether a story gate means "quest accepted" or "quest reached" was not re-checked against
   aion2.gaming.tools (E4 #9). Example: Fight Poison with Poison at "Preparations for Restoration" (data says it needs
   "A Collective Effort"); the *In my game* pill is the one-click override.
+  **Answered 2026-10-15 (owner, in game, #69): "turned in"** for regional quests (Shugo-of-All-Trades after Contaminated
+  Area, Spooky Specters after Cemetery Cleanup). Every regional story gate now says `turnedIn`. Confirmed by the Lv 16
+  Empyrean Monolith check (20:12 ET): all 6 of its regional quests appeared only after it was turned in.
+- **Owner refs of 2026-10-15 (alt character, #69)**: the screens are in the private repo, one code per finding,
+  numbered in the order the alt reached them. Build is unrecorded for all of them.
+
+  | Ref | Finding | Cited in |
+  |---|---|---|
+  | `owner:2026-10-15-alt-01` | Skill points earned at Lv 4 / 7 / 10 / 11 = 1 / 7 / 16 / 20 (matches the table) | `rule:level-points` |
+  | `owner:2026-10-15-alt-02` | "Signs of a Crash Landing" (Lv 6) gives 1,000 Power Shards (Bound) | claim C25, `tip:traces` |
+  | `owner:2026-10-15-alt-03` | Skill window at Lv 7: skill-level gate (Savage Roar Lv 5 needs Lv 10, Storm Rampage Lv 3 needs Lv 8) and the 2-point cost of Lv 5 | claim C02, `rule:skill-level-gate`, `rule:skill-point-cost` |
+  | `owner:2026-10-15-alt-04` | Shugo-of-All-Trades is not offered while Contaminated Area is current, appears once it is turned in | `rq:2202044` |
+  | `owner:2026-10-15-alt-05` | Spooky Specters is not offered while Cemetery Cleanup is current, appears once it is turned in | `rq:2202051` |
+  | `owner:2026-10-15-alt-06` | Cemetery Cleanup step 4 clears the Graverobber Den stronghold (map check mark) | `sh:graverobber-den` |
+  | `owner:2026-10-15-alt-07` | Disturbed Balance / Canyon's Secret / Mirror of Greed investigation steps are the first Krao Cave / Urugugu Canyon / Fire Temple Expedition runs (from memory) | `g20:exp`, `g35:exp`, the three story step notes |
+  | `owner:2026-10-15-alt-08` | Empyrean Monolith (Lv 16): all 6 regional quests it gates appear only once it is turned in | `rq:2202010`, `-12`, `-13`, `-14`, `-15`, `-23` |
+
+  `owner:2026-10-15-alt-26` (#68, Lv 2–6 checks) is an earlier code of the same set.
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.
 - **Inferred (labelled in the app)**: core skill-point order, right-click row order and E stack, Vaizel / Triniel

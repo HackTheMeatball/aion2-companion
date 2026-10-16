@@ -50,8 +50,21 @@ const KNOWN = {
   'stigma g37:0 open: 0.2 false / evaluator true': ST_G22 + ' [kept rule "stigma-equip-after-g22:0"]',
 };
 
+/* E9 (2026-10-15, owner check 1): every regional quest's story gate is "turned in" (the quest after the gate's quest), not "reached"; Shugo-of-All-Trades
+   and Spooky Specters also gained a story gate (they were open from their recommended level). The 0.2 form is the page's with the switch regionalTurnedIn
+   off, held to the frozen rules by B; here the live data is compared with 0.2 and each regional quest that differs is known by its record. */
+const RQ_TURNED_IN = 'live story gate is "turned in" (owner check 1, 2026-10-15; data/shared/asmodian/regional-quests.json); 0.2 opened the quest when the story ' +
+  'reached it [switch "regionalTurnedIn", held to 0.2 by B]';
+const regionalKnown = M => {
+  const out = {}, atoms = g => g.all ? g.all.flatMap(atoms) : g.any ? g.any.flatMap(atoms) : [g];
+  for (const [id, n] of Object.entries(M.GATE_GRAPH.nodes)) if (n.kind === 'rq' && atoms(n.req).some(a => a.story && a.is === 'turnedIn'))
+    for (const f of ['open', 'open without regional prerequisites']) for (const d of ['true / evaluator false', 'false / evaluator true']) out[`rq ${id} ${f}: 0.2 ${d}`] = RQ_TURNED_IN;
+  return out;
+};
+
 export default (test, M) => {
   const L = gates02(M);
+  const ALLOWED = regionalKnown(M);   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
   /* the golden states, built from the catalog the page would hand catalogInPage() (same data, same core) */
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
@@ -155,9 +168,10 @@ export default (test, M) => {
     mkdirSync(join(ROOT, 'tests/out'), { recursive: true });
     writeFileSync(join(ROOT, 'tests/out/evaluator-equivalence.md'), ['# Evaluator vs 0.2 (golden states, proposals off, derived off)', '',
       `${states.length} states. ${rows.length} difference(s), each kept on screen by the named rule.`, '', '| Difference | States | Example | Cause |', '|---|---|---|---|',
-      ...rows.map(([d, x]) => `| ${d} | ${x.n} | ${x.ex} | ${KNOWN[d] || '**unknown**'} |`), ''].join('\n'));
-    for (const [d, x] of rows) console.log(`     ${KNOWN[d] ? 'known' : 'NEW  '} ${d} · ${x.n} states, e.g. ${x.ex}`);
-    assert.deepEqual(rows.filter(([d]) => !KNOWN[d]).map(([d]) => d), [], 'differences not in KNOWN');
+      ...rows.map(([d, x]) => `| ${d} | ${x.n} | ${x.ex} | ${KNOWN[d] || ALLOWED[d] || '**unknown**'} |`), ''].join('\n'));
+    for (const [d, x] of rows) console.log(`     ${KNOWN[d] || ALLOWED[d] ? 'known' : 'NEW  '} ${d} · ${x.n} states, e.g. ${x.ex}`);
+    assert.deepEqual(rows.filter(([d]) => !KNOWN[d] && !ALLOWED[d]).map(([d]) => d), [], 'differences not in KNOWN');
+    assert.ok(rows.some(([d]) => ALLOWED[d]), 'the regional "turned in" gates do differ from 0.2 somewhere');
     assert.deepEqual(Object.keys(KNOWN).filter(d => !diffs.has(d)), [], 'KNOWN differences that no longer occur');
     const named = new Set(Object.values(KNOWN).flatMap(v => [...v.matchAll(/"([a-z0-9:-]+)"/g)].map(m => m[1])).filter(r => r in M.KEPT_RULES));
     assert.deepEqual([...named].sort(), ['stigma-equip-after-g22:0', 'stigma-slot-1-after-g22:0', 'stronghold-band'], 'each difference names the kept rule that covers it');

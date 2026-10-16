@@ -18,12 +18,66 @@ export default (test, M) => {
   const der = (s, k) => M.derivedOf(M.char(s), k);
 
   test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
-    assert.deepEqual(ALL, ['derived', 'followUps', 'turnInLevel', 'clearTally']);
+    assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
     assert.throws(() => M.setGateChanges(['nope']), /unknown change/);
     assert.ok(ALL.every(M.gateChangeOn), 'restored');
+  });
+
+  /* E9 (owner, 2026-10-15): story steps that clear a stronghold or run an Expedition, and the regional story gates */
+  test('Graverobber Den: done by Cemetery Cleanup step 4 ticked or the quest turned in; derived, never written; off without "storyStepDerived"', () => {
+    const k = 'sh:graverobber-den', key = M.AREA_ITEMS.find(x => x.it.name === 'Graverobber Den').k, cc = 'Cemetery Cleanup';
+    const done = s => M.doneOf(M.char(s), key), step4 = { [cc]: [4] };
+    assert.equal(done(S({ quest: cc })), false);
+    assert.equal(done(S({ quest: cc, qsteps: { [cc]: [3] } })), false, 'another step does not clear it');
+    assert.equal(done(S({ quest: cc, qsteps: step4 })), true);
+    assert.equal(done(S({ quest: at(cc, 1) })), true, 'turned in (the next quest is current)');
+    assert.equal(done(S({ quest: at(cc, -1), qsteps: step4 })), true, 'a stored objective tick counts wherever the story is now (it is only written on that quest)');
+    const s = S({ quest: cc, qsteps: step4 });
+    assert.equal(M.derivedOf(M.char(s), key).via.startsWith('step '), true);
+    assert.equal(s.checks[key], undefined, 'nothing is written');
+    assert.equal(M.clearDoneOf(M.char(s), key), true, 'Progress counts it like a ticked clear (clearTally)');
+    withChanges(['regionalTurnedIn', 'derived', 'followUps', 'turnInLevel'], () => { assert.equal(done(s), false); assert.equal(M.clearDoneOf(M.char(s), key), false); });
+    assert.equal(k, 'sh:graverobber-den');
+  });
+  test('Expedition rows (g20:exp Krao Cave, g35:exp Fire Temple): done by the story step ticked or the quest turned in', () => {
+    for (const [row, quest, i] of [['g20:exp', 'Disturbed Balance', 2], ['g35:exp', 'Mirror of Greed', 1]]) {
+      const done = s => M.doneOf(M.char(s), row);
+      assert.match(M.objTextOf(quest, i), /This is your first run of the .* Expedition\.$/, quest + ' step note');
+      assert.equal(done(S({ quest })), false);
+      assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), true);
+      assert.equal(done(S({ quest: at(quest, 1) })), true);
+      withChanges(['regionalTurnedIn', 'derived'], () => assert.equal(done(S({ quest, qsteps: { [quest]: [i] } })), false, 'off without storyStepDerived'));
+    }
+    assert.match(M.objTextOf("Canyon's Secret", 1), /first run of the Urugugu Canyon Expedition\.$/);
+    assert.match(M.objTextOf('Forgotten Commander', 1), /This is probably your first run of the Draupnir Expedition\.$/, 'inferred until the owner confirms');
+  });
+  test('story step notes: shown after the objective (switch stepNotes), never part of the text the page parses', () => {
+    const noted = Object.entries(M.QUEST_STEP_NOTES).flatMap(([q, o]) => Object.keys(o).map(i => [q, +i]));
+    assert.deepEqual(noted.map(([q, i]) => `${q} #${i}`).sort(), ["Canyon's Secret #1", 'Disturbed Balance #2', 'Forgotten Commander #1', 'Mirror of Greed #1']);
+    for (const [q, i] of noted) {
+      const t = M.QUEST_STEPS[q][i];
+      assert.doesNotMatch(t, /first run/, q + ': the objective text stays what the source says');
+      assert.ok(M.objTextOf(q, i).startsWith(t.replace(/\.$/, '')) && M.objTextOf(q, i).endsWith(M.QUEST_STEP_NOTES[q][i]), q + ': note after the text');
+      withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.equal(M.objTextOf(q, i), t, q + ': off without stepNotes'));
+    }
+    assert.equal(M.objTextOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0], 'an objective without a note is its text');
+  });
+  test('regional quests open when the story quest is turned in (switch regionalTurnedIn); Shugo-of-All-Trades and Spooky Specters gained that gate', () => {
+    const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
+    const f = rq('Fight Poison with Poison');
+    assert.equal(f.turnedIn, true);
+    assert.equal(st(f.name, f.story), false, 'on the story quest: not yet');
+    assert.equal(st(f.name, at(f.story, 1)), true, 'turned in');
+    withChanges(['derived'], () => { assert.equal(st(f.name, f.story), true, '0.2: reached is enough'); });
+    for (const [n, gate] of [['Shugo-of-All-Trades: Asmodian', 'Contaminated Area'], ['Spooky Specters', 'Cemetery Cleanup']]) {
+      assert.equal(rq(n).story, gate);
+      assert.equal(st(n, gate), false, n + ': not offered while ' + gate + ' is current');
+      assert.equal(st(n, at(gate, 1)), true, n + ': appears once ' + gate + ' is turned in');
+      withChanges([], () => { assert.equal(st(n, at(gate, 1), 11), false, '0.2: from its recommended level'); });
+    }
   });
 
   test('story quests: done once the story is past them (or on the last one with storyEnd), never ticked', () => {

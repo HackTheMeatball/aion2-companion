@@ -157,12 +157,12 @@ export default (test, M, X) => {
   });
 
   /* the oracle can fail: three seeded evaluator bugs (a compiled gate changed behind the oracle's back) must each show up */
-  test('5. the oracle catches seeded evaluator bugs (story "reached" → "turnedIn", level + 1, a dropped done atom)', () => {
+  test('5. the oracle catches seeded evaluator bugs (story "turnedIn" → "reached", level + 1, a dropped done atom)', () => {
     if (X.only) return;   /* --state: too few states to hit every seeded bug */
     const g = JSON.parse(JSON.stringify(M.GATE_GRAPH)), atoms = r => r.all ? r.all.flatMap(atoms) : r.any ? r.any.flatMap(atoms) : [r];
     const pickNode = (kind, f) => Object.keys(g.nodes).find(n => g.nodes[n].kind === kind && atoms(g.nodes[n].req).some(f));
-    const rqStory = pickNode('rq', a => a.story && a.is === 'reached'), stepLv = pickNode('step', a => a.level !== undefined), rqDone = pickNode('rq', a => a.done);
-    atoms(g.nodes[rqStory].req).find(a => a.story).is = 'turnedIn';
+    const rqStory = pickNode('rq', a => a.story && a.is === 'turnedIn'), stepLv = pickNode('step', a => a.level !== undefined), rqDone = pickNode('rq', a => a.done);
+    atoms(g.nodes[rqStory].req).find(a => a.story).is = 'reached';
     atoms(g.nodes[stepLv].req).find(a => a.level !== undefined).level++;
     /* the dropped done atoms the follow-up rule reads (app mode): the quests they name lose that proof too */
     const cascade = g.nodes[rqDone].req.all.filter(a => a.done && g.nodes[a.done].kind === 'rq' && ['sourced', 'owner'].includes(a.basis)).map(a => a.done);

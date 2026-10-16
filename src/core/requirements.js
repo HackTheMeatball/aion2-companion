@@ -2,7 +2,7 @@
    the save and the catalog. Functions take the character (c = char(state)) or, where a view setting changes the answer
    (the Optional tasks filter, the talk-only objectives filter), the whole state. Nothing here writes.
    Every "is it open?" answer comes from the evaluator (gatesOf below, 0.3 E2); this file only asks it. */
-import { QUESTS, QUEST_LOC, QUEST_STEPS } from "../data/story.js";
+import { QUESTS, QUEST_LOC, QUEST_STEPS, QUEST_STEP_NOTES } from "../data/story.js";
 import { DV_MIN, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
 import { RQ } from "../data/generated.js";
@@ -48,13 +48,21 @@ const APP_GRAPH = (() => {
    golden runner, the equiv suite) picks a set. A proposal names the rule switch it needs ("needs"), and turning it on
    turns that on too. Derived values are computed on every evaluation and never written. */
 export const GATE_CHANGES = {
+  regionalTurnedIn: { what: "regional quests open when their story quest is turned in, not when it is reached (owner check 1, 2026-10-15: " +
+    "Shugo-of-All-Trades and Spooky Specters are not offered while the quest before them is current; Empyrean Monolith check, 20:12 ET: all 6 of its " +
+    "regional quests appear only once it is turned in); those two and The Great Curse-Breaking Caper also gain the story gate they lacked" },
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
     "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
-    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)" },
-  followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)" },
-  turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)" },
-  clearTally: { needs: ["followUps"], what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
-    "turned in) counts with its clear reward (Wisdom Stone + crystal) like a ticked one" },
+    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)", baseline: true },
+  storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once Cemetery Cleanup's " +
+    "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in" },
+  followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)", baseline: true },
+  turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)", baseline: true },
+  clearTally: { needs: ["followUps"], baseline: true, what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
+    "turned in), or the Graverobber Den stronghold done by Cemetery Cleanup, counts with its clear reward (Wisdom Stone + crystal; belt scrolls) like a ticked one" },
+  /* not a gate: guide text only, a switch so --explain attributes the states that show it */
+  stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
+    "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
@@ -65,7 +73,24 @@ export const setGateChanges = names => {
   return [...on];
 };
 export const gateChangeOn = n => CHANGES_ON.has(n);
-const evOpts = () => EV_OPTS || (EV_OPTS = { graph: APP_GRAPH, derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
+/* The 0.2 form of the regional gates, for the page with regionalTurnedIn off: every story atom of a regional quest "reached", and the three
+   quests that had no story gate (Shugo-of-All-Trades, Spooky Specters, The Great Curse-Breaking Caper: "noPre", they opened at their
+   recommended level) back on that rule. Same list in tests/support/gates-0.2.mjs and tests/golden/states.js. */
+const RQ_NO_STORY_GATE = new Set(["rq:2202044", "rq:2202051", "rq:2202015"]);
+const APP_GRAPH_0_2 = (() => {
+  const down = (g, noPre) => g.all ? { all: g.all.map(x => down(x, noPre)) } : g.any ? { any: g.any.map(x => down(x, noPre)) }
+    : g.story ? (noPre ? { level: Math.max(noPre.unlocksAt, noPre.rec), basis: "rule" } : { ...g, is: "reached" }) : g;
+  const nodes = { ...APP_GRAPH.nodes };
+  for (const [id, n] of Object.entries(nodes)) if (n.kind === "rq") nodes[id] = { ...n, req: down(n.req, RQ_NO_STORY_GATE.has(id) && RQ.find(q => "rq:" + q.id === id)) };
+  return { story: APP_GRAPH.story, nodes };
+})();
+/* ...and without storyStepDerived: the three rows E9 gave a story completion (Graverobber Den, the Krao Cave and Fire Temple Expedition rows) are tick-only again. */
+const STORY_STEP_ROWS = ["sh:graverobber-den", "g20:exp", "g35:exp"];
+const withoutStoryStep = g => { const nodes = { ...g.nodes }; for (const id of STORY_STEP_ROWS) nodes[id] = { ...nodes[id], done: ["tick"] }; return { story: g.story, nodes }; };
+const APP_GRAPHS = {};
+const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), k = (a ? "t" : "r") + (b ? "s" : "n");
+  return APP_GRAPHS[k] || (APP_GRAPHS[k] = (b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2))); };
+const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
   apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
 /* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
    page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`. */
@@ -121,6 +146,10 @@ export function objSubs(t) {
   let verb = ""; parts = parts.map(x => { const v = x.match(/^([a-z]+(?: to| the)?)\s/); if (v && /^[a-z]/.test(x)) { verb = v[1]; return x; } return verb && /^[A-Z]/.test(x) && !/^(Lv|Balaur|Draconute|Outpost|Dratona|Broken)/.test(x) ? verb + " " + x : x; });
   return parts.length > 1 ? parts : [];
 }
+/* An objective as shown: its text, then our note on it if it has one (QUEST_STEP_NOTES, switch stepNotes). Display only:
+   objLow / objSubs / storyHereOf read QUEST_STEPS, so a note never adds sub-steps or moves a Kibelisk. */
+export const objTextOf = (quest, i) => { const t = QUEST_STEPS[quest][i], n = CHANGES_ON.has("stepNotes") && (QUEST_STEP_NOTES[quest] || {})[i];
+  return n ? `${t.replace(/\.$/, "")}. ${n}` : t; };
 /* The objectives shown (and counted): all of them with "talk-only steps" on (state.showTalk), else the non-talk ones. */
 export const objIdxOf = (state, list) => list.map((t, i) => i).filter(i => state.showTalk || !objLow(list[i]));
 /* Where the story sends you next: the next open objective's Kibelisk, or the turn-in's. A turn-in also carries the

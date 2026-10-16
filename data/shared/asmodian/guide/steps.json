@@ -212,7 +212,6 @@
       "short": "Complete \"Gathering Essentials\"",
       "text": "<b>Complete \"Gathering Essentials\"</b> to unlock pets, then set the [[tip:petfilter|pet loot filter]].",
       "loc": "Story quest after \"Survival Supplies\" · Safe Haven · [[mapq:2102020|VeKauf]]",
-      "note": "Pet choice: take Armadon or Tog. All three ride and give the same bonus, but Fossa can be collected later from Fossa soul drops around Lv 24.",
       "storyQuest": "sq:2102020",
       "requires": {
         "all": [
@@ -514,7 +513,43 @@
         ]
       },
       "completesWith": [
-        "tick"
+        "tick",
+        {
+          "storyStep": "sq:2102190",
+          "i": 2,
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "The story step that enters the Expedition is your first run of it (owner, from memory, 2026-10-15 19:40 ET)"
+              }
+            }
+          ]
+        },
+        {
+          "story": "sq:2102190",
+          "is": "turnedIn",
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "The story step that enters the Expedition is your first run of it (owner, from memory, 2026-10-15 19:40 ET)"
+              }
+            }
+          ]
+        }
       ]
     },
     {
@@ -873,7 +908,43 @@
         "note": "milestone level"
       },
       "completesWith": [
-        "tick"
+        "tick",
+        {
+          "storyStep": "sq:2102590",
+          "i": 1,
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "The story step that enters the Expedition is your first run of it (owner, from memory, 2026-10-15 19:40 ET)"
+              }
+            }
+          ]
+        },
+        {
+          "story": "sq:2102590",
+          "is": "turnedIn",
+          "basis": "owner",
+          "sources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "The story step that enters the Expedition is your first run of it (owner, from memory, 2026-10-15 19:40 ET)"
+              }
+            }
+          ]
+        }
       ]
     },
     {

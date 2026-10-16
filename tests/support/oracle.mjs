@@ -114,6 +114,10 @@ export function loadOracle({ root, apply = new Set() }) {
         if (ok === null) throw new Error('oracle: story atom without is: ' + JSON.stringify(a));
         return ok ? [] : [{ kind: 'story', quest: a.story, ahead: pos < 0 ? null : i - pos + (a.is === 'turnedIn' ? 1 : 0) }];
       }
+      if (a.storyStep) {
+        const i = sIdx.get(a.storyStep); if (i === undefined) throw new Error('oracle: storyStep atom off the chain: ' + a.storyStep);
+        return ((c.qsteps || {})[chain[i][1]] || []).includes(a.i) ? [] : [{ kind: 'step', quest: a.storyStep, i: a.i }];
+      }
       if (a.done) { const y = node(a.done); if (!y) throw new Error('oracle: done atom on an unknown node: ' + a.done);
         return y.done ? [] : [{ kind: 'done', of: a.done }]; }
       throw new Error('oracle: unknown atom ' + JSON.stringify(a));

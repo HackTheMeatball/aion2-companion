@@ -4968,7 +4968,22 @@
         },
         {
           "i": 2,
-          "text": "Investigate Krao Cave — finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)"
+          "text": "Investigate Krao Cave — finish the investigation (Kibelisk: Dawn Legion Temporary Outpost)",
+          "note": "This is your first run of the Krao Cave Expedition.",
+          "noteBasis": "owner",
+          "noteSources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Owner, from memory (2026-10-15 19:40 ET): the Disturbed Balance step \"Investigate Krao Cave\" is the Krao Cave Expedition run"
+              }
+            }
+          ]
         },
         {
           "i": 3,
@@ -6779,7 +6794,22 @@
         },
         {
           "i": 1,
-          "text": "Investigate the Urugugu Canyon — complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)"
+          "text": "Investigate the Urugugu Canyon — complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream)",
+          "note": "This is your first run of the Urugugu Canyon Expedition.",
+          "noteBasis": "owner",
+          "noteSources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Owner, from memory (2026-10-15 19:40 ET): the Canyon's Secret step \"Complete the Urugugu Canyon investigation\" is the Urugugu Canyon Expedition run"
+              }
+            }
+          ]
         },
         {
           "i": 2,
@@ -9550,7 +9580,22 @@
         },
         {
           "i": 1,
-          "text": "Investigate the Fire Temple — complete the Fire Temple investigation"
+          "text": "Investigate the Fire Temple — complete the Fire Temple investigation",
+          "note": "This is your first run of the Fire Temple Expedition.",
+          "noteBasis": "owner",
+          "noteSources": [
+            {
+              "owner": {
+                "ref": "owner:2026-10-15-alt-07",
+                "checkedAt": "2026-10-15",
+                "build": {
+                  "scheme": "client",
+                  "value": "unrecorded"
+                },
+                "what": "Owner, from memory (2026-10-15 19:40 ET): the Mirror of Greed step \"Complete the Fire Temple investigation\" is the Fire Temple Expedition run (also inferred from 2 sources in unlocks.json)"
+              }
+            }
+          ]
         },
         {
           "i": 2,
@@ -11638,7 +11683,14 @@
         },
         {
           "i": 1,
-          "text": "Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory)"
+          "text": "Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory)",
+          "note": "This is probably your first run of the Draupnir Expedition.",
+          "noteBasis": "inferred",
+          "noteSources": [
+            {
+              "inferred": "Inferred from the step name and the other three Expedition steps; the owner confirms it at Lv 45"
+            }
+          ]
         },
         {
           "i": 2,
