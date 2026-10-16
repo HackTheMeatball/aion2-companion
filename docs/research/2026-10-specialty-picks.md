@@ -25,7 +25,7 @@ upstream (a creator's video, the same client data) are noted where I could tell.
 - **Slot-specific counts (12 skills):** a 2+ source slot 2 for **4** skills (Heart Gore 4, Quick Slice 4, Storm
   Rampage 4, Flash Slice 4); a 2+ source slot 3 for **2** (Heart Gore 5, Quick Slice 5);
   both slots for **2** (Heart Gore, Quick Slice). Single-source: Storm Rampage slot 3 (5), Whirlwind Slice slot 2 (2),
-  Defiance slot 2 (4), Savage Roar slot 3 (3). Disputed: Savage Roar slot 2, Insignia Explosion slot 2, Ambush slot 2.
+  Defiance slot 2 (4), Savage Roar slot 3 (3). Contested: Savage Roar slot 2. Disputed: Insignia Explosion slot 2, Ambush slot 2, Whirlwind Slice slot 1.
   Insignia Explosion slot 3 is contested. GamesFuze lists picks per skill but not per slot, so it is not counted as a slot
   witness anywhere. Shadowstrike, Infiltrate, Shadow Fall and most third slots are gaps. Many picks are named by several
   guides but as a different step (for example pick 5 on Storm Rampage), which is why the slot counts are lower than the
@@ -53,7 +53,7 @@ Slot 1 is the pick already in `builds.json` where one exists (kept, not re-resea
 | Heart Gore | yes | **3** (contested) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
 | Insignia Explosion | yes | **2** (2+ sources) | **5** (disputed) | **3** (contested) | disputed / contested |
 | Quick Slice | yes | **3** (contested) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
-| Savage Roar | yes | **2** (contested) | **4** (disputed) | (none; single-source) | disputed / single-source |
+| Savage Roar | yes | **2** (contested) | **4** (contested) | (none; single-source) | contested / single-source |
 | Storm Rampage | yes | **1** (contested) | **4** (2+ sources) | **5** (single-source) | 2+ sources / single-source |
 | Flash Slice | yes | **2** (2+ sources) | **4** (2+ sources) | (none; gap) | 2+ sources / gap |
 | Shadowstrike | yes | **2** (2+ sources) | (none; gap) | (none; gap) | gap / gap |
@@ -139,7 +139,7 @@ Choices (from `data/classes/assassin/skills.json`):
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
 | 1 | 8 | **2** +50% Multi-Hit on hit | 8 | 2+ sources | SC, CP, AM-PvE, TR-L (each first) | Existing pick, kept. First pick in every PvE guide except TR-D. |
-| 2 | 12 | **5** -3s cooldown | 16 | disputed | CP-Grobs (replaces its 2nd pick from 16), AM-PvE (2nd). Against: SC and TR-L put pick 3 second (CP-Grobs does too before 16). GF is not slot-ordered and is not counted. | -3s cooldown, the late damage pick (needs skill 16). Two publishers for 5 and two for 3 in this slot, so disputed and not proposed. |
+| 2 | 12 | **5** -3s cooldown | 16 | disputed | CP-Grobs (replaces its 2nd pick from 16), AM-PvE (2nd). Against: SC and TR-L put pick 3 second. CP-Grobs is counted once, for 5 (it has 3 second only before 16), so it is two against two. GF is not slot-ordered and is not counted. | -3s cooldown, the late damage pick (needs skill 16). Two publishers for 5 and two for 3 in this slot, so disputed and not proposed. |
 | 3 | 20 | **3** Keeps 2 Insignia stacks after Insignia Explosion | 20 | contested | AM-PvE (3rd). Against: SC and TR-L put pick 5 third. | Keeping 2 Insignia stacks makes the next cast full sooner. One publisher (AM) for 3 here against two (SC, TR-L) for 5; the order 5, 2, 3 in section 4.1 is a design choice, not evidence. |
 
 ### Quick Slice
@@ -179,7 +179,7 @@ Choices (from `data/classes/assassin/skills.json`):
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
 | 1 | 8 | **2** +20% Skill Speed | 8 | contested | TR-L, TR-D (1st). Against: SC and CP list -20% MP (pick 1) first. GF is not slot-ordered and is not counted. | Existing pick, kept, but contested: one publisher puts Skill Speed first, two put -20% MP first. Every guide names Skill Speed somewhere. |
-| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | disputed | TR-L, TR-D (2nd) for 4. Against: SC and CP put pick 2 second. GF is not slot-ordered and is not counted. | -1s Shadowstrike cooldown on hit keeps you behind the target. One publisher for 4 here, two for pick 2 (the Skill Speed that is our slot 1); disputed and not proposed. |
+| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | contested | TR-L, TR-D (2nd) for 4. Against: SC and CP put pick 2 second. GF is not slot-ordered and is not counted. | -1s Shadowstrike cooldown on hit keeps you behind the target. One publisher for 4 here, two for pick 2 (the Skill Speed that is our slot 1); disputed and not proposed. |
 | 3 | 20 | (none) | | single-source | 3 (TR-L, TR-D third; CP-aLuckyRO suggests it without an order). No guide puts 1 third. | Pick 3 (fewer-targets bonus) is single-source (TR); not proposed, since SC and CP want pick 1 in the set. AM-PvP names 3 but is PvP and not counted. |
 
 ### Storm Rampage
@@ -397,7 +397,7 @@ Flash Slice 2 and 4). Slot 1 entries are the picks already in `builds.json`, lef
 
 Not proposed: Storm Rampage. Its slot 2 (4) is 2+ sources, but slot 1 (1) is contested and the array cannot skip a
 slot, so the owner should pick slot 1 first (then `[1, 4]` or `[2, 4]`); its slot 3 (5) is single-source. Also not proposed:
-Insignia Explosion slots 2 (disputed) and 3 (contested), Savage Roar slots 2 (disputed) and 3 (single-source), Ambush
+Insignia Explosion slots 2 (disputed) and 3 (contested), Savage Roar slots 2 (contested) and 3 (single-source), Ambush
 slots 2 (disputed) and 3 (gap), and every gap. Infiltrate, Whirlwind Slice, Shadow Fall and Defiance are not in
 `skillOrder`; their researched picks are in section 3 only.
 
@@ -421,7 +421,7 @@ already cited elsewhere; CP, AM and TR are new.
 **5.3 Labels in the UI.** `single-source` and `disputed` picks should carry the label (CLAUDE.md data policy). In this
 set: single-source: Storm Rampage slot 3, Savage Roar slot 3, Whirlwind Slice slot 2, Defiance slot 2, Shadow Fall
 slot 1; contested: Heart Gore slot 1, Quick Slice slot 1, Storm Rampage slot 1, Savage Roar slot 1, Insignia Explosion
-slot 3, Ambush slot 1; disputed: Savage Roar slot 2, Insignia Explosion slot 2, Ambush slot 2, Whirlwind Slice slot 1.
+slot 3, Ambush slot 1; disputed: Insignia Explosion slot 2, Ambush slot 2, Whirlwind Slice slot 1; contested: Savage Roar slot 2.
 
 **5.4 Tests.** Extend the build checks in `tests/` for "every pick is a choice of its skill, picks are distinct and at
 most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never break saved progress"). Save keys
@@ -432,10 +432,10 @@ most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never
 - **No PvE pick for slots 2 and 3:** Shadowstrike (PvP panels name 3 then 4 or 5), Infiltrate, Shadow Fall, Flash Slice
   slot 3, Ambush slot 3, Defiance slot 3.
 - **Disputed:** Ambush slot 2 (2 in aion2turkiye, 4 in aion2-meta); Whirlwind Slice slot 1 (1 in aion2-meta, 2 in
-  aion2turkiye); Savage Roar slot 2 (4 in aion2turkiye, 2 in Skycoach and Corpus); Insignia Explosion slot 2 (5 in
+  aion2turkiye); Insignia Explosion slot 2 (5 in
   Corpus and aion2-meta, 3 in Skycoach and aion2turkiye). An owner decision or an in-game test settles
   these.
-- **Contested (slot 1 is outside this task):** Heart Gore 3, Quick Slice 3, Storm Rampage 1, Savage Roar 2, Ambush 1; Insignia Explosion slot 3.
+- **Contested (slot 1 is outside this task):** Heart Gore 3, Quick Slice 3, Storm Rampage 1, Savage Roar 2, Ambush 1; Insignia Explosion slot 3; Savage Roar slot 2 (4 in aion2turkiye against 2 in Skycoach and Corpus).
 - **Single-source:** see 5.3.
 - **Unread sources worth an owner glance:** games.gg (403 for scripts) and thegameswiki (429) are already in our source
   list; GamerBlurb and expcarry name Claude in robots.txt.
