@@ -51,8 +51,10 @@ From HANDOFF and the Sonnet guard in claude.yml:
   waves wait for what "Depends on" names.
 - **Serial files** (never two open branches editing them at once, unless the row says how they split):
   `src/main.js` render areas (by card), `src/main.js` save/storage area, `tests/golden/snapshots`, `data/**` gate fields
-  (`requires` / `completesWith` / `is`), `tools/gen/`, `src/styles/app.css`, `.github/workflows/ci.yml`,
-  `package.json` + `CHANGELOG.md` (releases).
+  (`requires` / `completesWith` / `is`), `tools/gen/`, `src/styles/app.css`, `.github/workflows/ci.yml`, `tests/a11y.js`,
+  `package.json` + `CHANGELOG.md` (releases). Each has a lane name for the #114 queue (`lanes:` on a `- [next]` line,
+  kickoff.yml): `main.js`, `golden`, `mig` (mig1 pin / `tests/e2-migtest.js`), `gates`, `gen`, `app.css`, `ci`, `a11y`,
+  `release`; `lanes:none` for an item that touches none.
 - Builder "O" = `@claude` (Opus), "S" = `@sonnet` (Sonnet). Reviewer "S" / "O" the same; "S+O" = both.
 
 ## Step table
