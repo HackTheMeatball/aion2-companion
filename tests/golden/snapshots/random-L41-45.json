@@ -144,7 +144,7 @@
     "mode": "basic"
   },
   "random/L41-q14-all-B-sppts": {
-    "in": "0a37f67abe53",
+    "in": "4690be849056",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]}
@@ -195,7 +195,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"4edbf3e0"}],
+      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"482d09cf"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -220,11 +220,11 @@
     },
     "mode": "basic"
   },
-  "random/L41-q51-rnd136p80-A-stwait": {
-    "in": "e8916705f8b6",
+  "random/L41-q52-rnd136p80-A-stwait": {
+    "in": "71275246d19d",
     "nu": [
       {"t":"Triniel board opens","s":"Missed · Lv 40 Triniel board","c":"primary \"Done\" tick:g40:0"},
-      {"t":"Story: The Survivors","s":"0/3 objectives · then Rescue Operation","c":"primary \"Turned in\" story","o":["Clear up near the Watchtower Camp defeat Dratona defeat Enhanced Dratona","Neutralize the Watchtower Camp enter the Watchtower Camp","Turn in Menrik, Briskwind Shelter"]},
+      {"t":"Story: Rescue Operation","s":"0/6 objectives · then Last of the Destruction Archons","c":"primary \"Turned in\" story","o":["Collect supplies to deliver to the Hidden Cave steal weapons from Draconute Sentinel steal armor from Draconute Patrol search for food and recovery potions from the supply chest Kibelisk: Hidden Cave","Find out what is currently happening in the Hidden Cave join with Menrik (Kibelisk: Hidden Cave)","Explore the escape route search for the patrol log (Kibelisk: Hidden Cave)","+3 more after these"]},
       {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 11/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Nine Wonders of Altgard: 1st Leg","+5 more","+2 waiting on the story Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
       {"t":"Clear Final Haven","s":"Battlescar Mound · Kibelisk: Basfelt Waterfall · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Basfelt Waterfall is 50 m away · 5 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
@@ -259,10 +259,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Eye of the Red Tower Lv 32",
-      "quest": "The Survivors",
+      "prev": "The Survivors Lv 32",
+      "quest": "Rescue Operation",
       "lv": "Lv 32",
-      "next": "Rescue Operation Lv 32",
+      "next": "Last of the Destruction Archons Lv 32",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -277,7 +277,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":260,"at":{"0":259,"1790856000":1},"fnv1a":"ce1539ef"}],
+      "mt": ["(absent)",{"stamps":260,"at":{"0":259,"1790856000":1},"fnv1a":"5d499e77"}],
       "open.g19": ["(absent)",true],
       "open.g22": ["(absent)",true],
       "open.g27": ["(absent)",true],
@@ -293,14 +293,14 @@
     },
     "mode": "advanced"
   },
-  "random/L41-q54-before-A-dv": {
-    "in": "685101d5d1be",
+  "random/L41-q55-before-A-dv": {
+    "in": "7d8161d1d48e",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
+      {"t":"Story: Last Refuge","s":"0/4 objectives · then Scripture in the Ruins","c":"primary \"Turned in\" story","o":["Join Nemon at the location she mentioned go to Basfelt Waterfall (Kibelisk: Basfelt Waterfall)","Find out what is currently happening at Basfelt Waterfall talk to Ulgorn (Kibelisk: Basfelt Waterfall)","Investigate the Marauder base near the entrance of the ruins investigate the marauder goods chest retrieve loot from Marauder Brawler retrieve antiques from Marauder Watcher defeat Marauder Brawler defeat Marauder Watcher Kibelisk: Graverobber Campsite","+1 more after these"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202063","x":["+3 waiting on the story Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
@@ -333,10 +333,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Last of the Destruction Archons Lv 32",
-      "quest": "A Daeva Dreaming Anew",
-      "lv": "Lv 32",
-      "next": "Last Refuge Lv 33",
+      "prev": "A Daeva Dreaming Anew Lv 32",
+      "quest": "Last Refuge",
+      "lv": "Lv 33",
+      "next": "Scripture in the Ruins Lv 33",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -351,7 +351,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":257,"at":{"0":256,"1790856000":1},"fnv1a":"c65db1dc"}],
+      "mt": ["(absent)",{"stamps":257,"at":{"0":256,"1790856000":1},"fnv1a":"8f0910e0"}],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -362,8 +362,8 @@
     },
     "mode": "advanced"
   },
-  "random/L41-q56-none-A-stready": {
-    "in": "ce044cb41e23",
+  "random/L41-q57-none-A-stready": {
+    "in": "3e0ca3e0444d",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -372,10 +372,10 @@
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Scripture in the Ruins","s":"0/3 objectives · then Blood Monument","c":"primary \"Turned in\" story","o":["Investigate Reuben's Hideout go to Reuben's Hideout (Kibelisk: Graverobber Campsite)","Find the loot stolen by marauders defeat Marauder Warrior ×5 defeat Marauder Ranger ×5 interact with Loot Chest Kibelisk: Graverobber Campsite","Turn in Ulgorn, Graverobber Campsite"]},
-      {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+15 more","+4 waiting on the story Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
-      {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 60 open at your level"},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 13 open"}
+      {"t":"Story: Blood Monument","s":"0/4 objectives · then Impending Threat","c":"primary \"Turned in\" story","o":["Find the secret document Reuben mentioned go to the Abandoned Ruins (Kibelisk: Shulak Street Stall)","Do a favor for Graverobber Dixie defeat Ferocious Cadaver Cleaner defeat Ruin Agrint recover belongings of Dixie's fallen comrade Kibelisk: Graverobber Campsite","Insert Zikel's Seal into the Blood Monument operate the Blood Monument (Kibelisk: Graverobber Campsite)","+1 more after these"]},
+      {"t":"Regional quests","s":"17 to pick up · 5 follow-ups · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+16 more","+3 waiting on the story Traveling Merchant's Conundrum In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
+      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
+      {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -405,16 +405,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Last Refuge Lv 33",
-      "quest": "Scripture in the Ruins",
+      "prev": "Scripture in the Ruins Lv 33",
+      "quest": "Blood Monument",
       "lv": "Lv 33",
-      "next": "Blood Monument Lv 33",
+      "next": "Impending Threat Lv 34",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap next · 4 to go Lv 45"],
       "ring": "1%",
-      "prog": ["Quests 16 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
+      "prog": ["Quests 17 0/58","Dungeons 60 0/60","Strongholds 13 1/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","Lv 30–34 · 0/9 · 9 open","Lv 35–39 · 0/12 · 12 open","* Lv 40–44 · 0/10 · 9 open","All strongholds · 1/15"],
@@ -423,7 +423,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":8,"at":{"0":7,"1790856000":1},"fnv1a":"b18059a4"}],
+      "mt": ["(absent)",{"stamps":8,"at":{"0":7,"1790856000":1},"fnv1a":"16e6b347"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -450,13 +450,13 @@
     },
     "mode": "advanced"
   },
-  "random/L41-q65-none-B-sppts": {
-    "in": "b18d87a5175e",
+  "random/L41-q66-none-B-sppts": {
+    "in": "5c813085b3b7",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Inevitable Encounter","s":"0/3 objectives · then Unveiling the Truth","c":"primary \"Turned in\" story","o":["Discover the Blades Hideout enter the Merchant's Yard (Kibelisk: Abandoned Campsite)","Investigate the Abandoned Campsite enter the Campsite (Kibelisk: Abandoned Campsite)","Turn in Pordhet, Abandoned Campsite entrance"]},
+      {"t":"Story: Unveiling the Truth","s":"0/5 objectives · then Lake of Confrontation","c":"primary \"Turned in\" story","o":["Defeat the Blades threatening the Abandoned Campsite defeat the Blades Scout near the campsite defeat the Blades Sentry near the campsite check the Reconnaissance Report Kibelisk: Abandoned Campsite","Collect Protection Serum from the Blades defeat the Blades (Kibelisk: Abandoned Campsite)","Find the Protection Serum in the Blades Camp examine the Stacked Documents search the Document Box Kibelisk: Abandoned Campsite","+2 more after these"]},
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Empty Cave","s":"Western Gribade Highland (near your story step) · Kibelisk: Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 300 m away · 60 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
@@ -490,10 +490,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Frozen Fafnite Lv 36",
-      "quest": "Inevitable Encounter",
+      "prev": "Inevitable Encounter Lv 37",
+      "quest": "Unveiling the Truth",
       "lv": "Lv 37",
-      "next": "Unveiling the Truth Lv 37",
+      "next": "Lake of Confrontation Lv 37",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -508,7 +508,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":4,"at":{"0":3,"1790856000":1},"fnv1a":"a0308e9e"}],
+      "mt": ["(absent)",{"stamps":4,"at":{"0":3,"1790856000":1},"fnv1a":"c1137fe3"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -534,14 +534,14 @@
     },
     "mode": "basic"
   },
-  "random/L41-q72-before-A-rqmix": {
-    "in": "a6537d0e7d43",
+  "random/L41-q73-before-A-rqmix": {
+    "in": "cb278b876b4b",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Healing Herbs","s":"0/2 objectives · then Treatment","c":"primary \"Turned in\" story","o":["Collect herbs for treatment collect herbs from the supplies defeat Drakan Patrol Scout defeat Drakan Patrol Supporter Kibelisk: Amunta's Hideout","Turn in Lakiba, Amunta's Hideout"]},
+      {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member Kibelisk: Amunta's Hideout","Turn in Amunta, Amunta's Hideout"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
@@ -573,10 +573,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Exiled Ritualist Lv 40",
-      "quest": "Healing Herbs",
+      "prev": "Healing Herbs Lv 40",
+      "quest": "Treatment",
       "lv": "Lv 40",
-      "next": "Treatment Lv 40",
+      "next": "Symbol of Liberation Lv 40",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -591,7 +591,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"4031fe7f"}],
+      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"de225179"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -601,15 +601,15 @@
     },
     "mode": "advanced"
   },
-  "random/L41-q80-before-A-stfull": {
-    "in": "3c304a0d9eba",
+  "random/L41-q81-before-A-stfull": {
+    "in": "170636525b63",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
     ],
@@ -641,10 +641,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "High Priest's Fafnite Lv 43",
-      "quest": "The High Priest Awakens",
+      "prev": "The High Priest Awakens Lv 44",
+      "quest": "Lingering Apparitions",
       "lv": "Lv 44",
-      "next": "Lingering Apparitions Lv 44",
+      "next": "Blood Barrier Lv 44",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -659,7 +659,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"680cf7c7"}],
+      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"565718ae"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -669,15 +669,15 @@
     },
     "mode": "advanced"
   },
-  "random/L41-q82-none-B": {
-    "in": "631c529a2f25",
+  "random/L41-q83-none-B": {
+    "in": "90be6b9a6254",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
-      {"t":"Clear Ascetic's Cave and others until Lv 44","s":"Impetusium Square (near your story step) · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
+      {"t":"Clear Ascetic's Cave and others until Lv 45","s":"Impetusium Square (near your story step) · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+      {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 41. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
     ],
@@ -709,10 +709,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Lingering Apparitions Lv 44",
-      "quest": "Blood Barrier",
-      "lv": "Lv 44",
-      "next": "Zikel's Core Lv 45",
+      "prev": "Blood Barrier Lv 44",
+      "quest": "Zikel's Core",
+      "lv": "Lv 45",
+      "next": "Farewells Lv 45",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -727,7 +727,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"97bb70b7"}],
+      "mt": ["(absent)",{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"12e004e8"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -1067,14 +1067,14 @@
     },
     "mode": "advanced"
   },
-  "random/L42-q24-lvonly-A": {
-    "in": "ad99daee0d15",
+  "random/L42-q25-lvonly-A": {
+    "in": "c93d339a1453",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Malice Laid Bare","s":"0/5 objectives · then Broken Fang","c":"primary \"Turned in\" story","o":["Interrogate Blades Captive enter the captive's prison cell (Kibelisk: Fang Hideout)","Collect infiltration materials Balaur Language Manual Draconute Superior Soldier weapon Draconute Tinkerer tissue","Deliver the transformation materials talk to Menrik (Fang Hideout)","+2 more after these"]},
+      {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
@@ -1106,12 +1106,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A New Lead Lv 18",
-      "quest": "Malice Laid Bare",
-      "lv": "Lv 18",
-      "next": "Broken Fang Lv 19",
+      "prev": "Malice Laid Bare Lv 18",
+      "quest": "Broken Fang",
+      "lv": "Lv 19",
+      "next": "Watchful Eyes Lv 19",
       "hint": "next milestone at Lv 45",
-      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 9 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap next · 3 to go Lv 45"],
       "ring": "68%",
@@ -1124,7 +1124,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"cf8e9413"}],
+      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"0d0c27a9"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1134,11 +1134,11 @@
     },
     "mode": "advanced"
   },
-  "random/L42-q25-all-B": {
-    "in": "93b0f75b4cb6",
+  "random/L42-q26-all-B": {
+    "in": "1699a7047168",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Broken Fang","s":"0/3 objectives · then Watchful Eyes","c":"primary \"Turned in\" story","o":["Search for the infiltrator inspect Fallen Member talk to Draconute Warrior talk to Ranger talk to Superior Combatant","Collect Selvis repair parts Outpost Probe eyes Dratona Tinkerer ore (Lv19) Broken Remnants fragments","Turn in Gamilla (Fang Legion), Temporary Retreat"]}
+      {"t":"Story: Watchful Eyes","s":"0/3 objectives · then Imminent Threat","c":"primary \"Turned in\" story","o":["Check for survivors search Sanctum Dumpsite","Get the storage key take it from the Balaur's belongings","Turn in Bataar (Fang Legion), Sanctum Dumpsite"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1168,12 +1168,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Malice Laid Bare Lv 18",
-      "quest": "Broken Fang",
+      "prev": "Broken Fang Lv 19",
+      "quest": "Watchful Eyes",
       "lv": "Lv 19",
-      "next": "Watchful Eyes Lv 19",
+      "next": "Imminent Threat Lv 20",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 8 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 7 story quests · \"Daeva in a Dream\""],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
       "track": [],
       "ring": "100%",
@@ -1186,7 +1186,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"c315bb43"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"85360dd5"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1329,14 +1329,14 @@
     },
     "mode": "basic"
   },
-  "random/L42-q44-before-A-stwait": {
-    "in": "067b172a4177",
+  "random/L42-q45-before-A-stwait": {
+    "in": "01d655d7fdfa",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
+      {"t":"Story: Dying Light","s":"0/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Restore the Water Altar purify the Water Altar (Kibelisk: Healing Spring)","Clear around the Water Altar remove Contaminated Water defeat Water Mist Spirit defeat Cursed Poison Blood Kibelisk: Healing Spring","Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","+1 more after these"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202011","x":["+9 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 43)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 10 open"}
@@ -1369,10 +1369,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Collective Effort Lv 27",
-      "quest": "Land of Rifts",
-      "lv": "Lv 29",
-      "next": "Dying Light Lv 30",
+      "prev": "Land of Rifts Lv 29",
+      "quest": "Dying Light",
+      "lv": "Lv 30",
+      "next": "Contaminated Sacred Tree Lv 30",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -1387,7 +1387,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":214,"at":{"0":213,"1790856000":1},"fnv1a":"927ab10a"}],
+      "mt": ["(absent)",{"stamps":214,"at":{"0":213,"1790856000":1},"fnv1a":"1b24693d"}],
       "open.g22": ["(absent)",true],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
@@ -1463,16 +1463,16 @@
     },
     "mode": "basic"
   },
-  "random/L42-q57-rnd119p80-B-cube": {
-    "in": "d59ce67b1adb",
+  "random/L42-q58-rnd119p80-B-cube": {
+    "in": "a7680b284e18",
     "nu": [
       {"t":"Finish Ossuary of the Noble","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:ossuary-of-the-noble"},
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Vaizel board opens","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
-      {"t":"Story: Blood Monument","s":"0/4 objectives · then Impending Threat","c":"primary \"Turned in\" story","o":["Find the secret document Reuben mentioned go to the Abandoned Ruins (Kibelisk: Shulak Street Stall)","Do a favor for Graverobber Dixie defeat Ferocious Cadaver Cleaner defeat Ruin Agrint recover belongings of Dixie's fallen comrade Kibelisk: Graverobber Campsite","Insert Zikel's Seal into the Blood Monument operate the Blood Monument (Kibelisk: Graverobber Campsite)","+1 more after these"]},
+      {"t":"Story: Impending Threat","s":"0/4 objectives · then Visible Trap","c":"primary \"Turned in\" story","o":["Reduce the number of watchful eyes destroy Activated Large Balaur Totem defeat Activated Large Balaur Totem Kibelisk: Fissure Cave","Capture a Blades Captive stealthily capture a prisoner (Kibelisk: Fissure Cave)","Eliminate tracking Blades defeat the ruins Blades (Kibelisk: Fissure Cave)","+1 more after these"]},
       {"t":"Regional quests","s":"12 to pick up · 4 follow-ups · 6/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more"]},
-      {"t":"Clear Lagta Fafnite Storage","s":"Lagta Fortress · Kibelisk: Kumrica's Cellar · Lv 40–44 · 6/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 890 m away · 13 open at your level"},
+      {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 4/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 13 open at your level"},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 43)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
     ],
@@ -1504,10 +1504,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Scripture in the Ruins Lv 33",
-      "quest": "Blood Monument",
-      "lv": "Lv 33",
-      "next": "Impending Threat Lv 34",
+      "prev": "Blood Monument Lv 33",
+      "quest": "Impending Threat",
+      "lv": "Lv 34",
+      "next": "Visible Trap Lv 34",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1522,7 +1522,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"9fd3659f"}],
+      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"efc87e0d"}],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "open.g19": ["(absent)",true],
@@ -1632,7 +1632,7 @@
     "mode": "advanced"
   },
   "random/L42-q68-all-A-stfull": {
-    "in": "5a347dd6bfb5",
+    "in": "08d16dddb239",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
@@ -1684,7 +1684,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":348,"at":{"0":347,"1790856000":1},"fnv1a":"824b8cf0"}],
+      "mt": ["(absent)",{"stamps":348,"at":{"0":347,"1790856000":1},"fnv1a":"765da657"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1693,11 +1693,11 @@
     },
     "mode": "advanced"
   },
-  "random/L42-q75-all-B-dv": {
-    "in": "d86128924cfb",
+  "random/L42-q76-all-B-dv": {
+    "in": "d0cd87313ad2",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Daybreak Society","s":"0/3 objectives · then Daybreak Society Rescue Operation","c":"primary \"Turned in\" story","o":["Investigate the Black Claw Village records check Timeworn Journal check Stacked Documents Kibelisk: Secret Rendezvous Point","Go to the place Nemon mentioned go to the Secret Rendezvous Point (Kibelisk: Secret Rendezvous Point)","Turn in Nemon, Secret Rendezvous Point"]}
+      {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk: Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1727,10 +1727,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Symbol of Liberation Lv 40",
-      "quest": "Daybreak Society",
+      "prev": "Daybreak Society Lv 41",
+      "quest": "Daybreak Society Rescue Operation",
       "lv": "Lv 41",
-      "next": "Daybreak Society Rescue Operation Lv 41",
+      "next": "The Breaking of the Day Lv 42",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -1745,7 +1745,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":372,"at":{"0":371,"1790856000":1},"fnv1a":"c47b7af6"}],
+      "mt": ["(absent)",{"stamps":372,"at":{"0":371,"1790856000":1},"fnv1a":"87f6dd69"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1754,13 +1754,13 @@
     },
     "mode": "basic"
   },
-  "random/L42-q75-none-B-sppts": {
-    "in": "d3a88b4b7779",
+  "random/L42-q76-none-B-sppts": {
+    "in": "a44a50184add",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Daybreak Society","s":"0/3 objectives · then Daybreak Society Rescue Operation","c":"primary \"Turned in\" story","o":["Investigate the Black Claw Village records check Timeworn Journal check Stacked Documents Kibelisk: Secret Rendezvous Point","Go to the place Nemon mentioned go to the Secret Rendezvous Point (Kibelisk: Secret Rendezvous Point)","Turn in Nemon, Secret Rendezvous Point"]},
+      {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk: Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
       {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
       {"t":"Clear Den of Exiles","s":"Black Claw Village (near your story step) · Kibelisk: Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 215 m away · 60 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 43)","c":"tag \"Needs 1 shard\""},
@@ -1794,10 +1794,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Symbol of Liberation Lv 40",
-      "quest": "Daybreak Society",
+      "prev": "Daybreak Society Lv 41",
+      "quest": "Daybreak Society Rescue Operation",
       "lv": "Lv 41",
-      "next": "Daybreak Society Rescue Operation Lv 41",
+      "next": "The Breaking of the Day Lv 42",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1812,7 +1812,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":4,"at":{"0":3,"1790856000":1},"fnv1a":"282deaf2"}],
+      "mt": ["(absent)",{"stamps":4,"at":{"0":3,"1790856000":1},"fnv1a":"76308730"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -1838,12 +1838,12 @@
     },
     "mode": "basic"
   },
-  "random/L42-q76-lvonly-B-stready": {
-    "in": "8b19763135e5",
+  "random/L42-q77-lvonly-B-stready": {
+    "in": "e981eb76f55c",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
-      {"t":"Story: Daybreak Society Rescue Operation","s":"0/3 objectives · then The Breaking of the Day","c":"primary \"Turned in\" story","o":["Distract the Black Claw soldiers destroy the Balaur Sacred Totem defeat Mumu Watcher defeat Tamed Tayga Kibelisk: Kumrica's Cellar","Rescue the Daybreak Society member follow the tracks of the Society Member (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
+      {"t":"Story: The Breaking of the Day","s":"0/3 objectives · then Chief of the Black Claw","c":"primary \"Turned in\" story","o":["Prepare to infiltrate Muqaka's Quarters collect an entry permit from the supply chest (Kibelisk: Kumrica's Cellar)","Prepare to infiltrate Muqaka's Quarters obtain Chief's Bodyguard's vambraces obtain Chief's Sentinel's weapon defeat Chief's Bodyguard defeat Chief's Sentinel defeat Black Claw Manduri Scout Kibelisk: Kumrica's Cellar","Turn in Kumrica, Kumrica's Cellar"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
     ],
     "ms": [
@@ -1874,10 +1874,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Daybreak Society Lv 41",
-      "quest": "Daybreak Society Rescue Operation",
-      "lv": "Lv 41",
-      "next": "The Breaking of the Day Lv 42",
+      "prev": "Daybreak Society Rescue Operation Lv 41",
+      "quest": "The Breaking of the Day",
+      "lv": "Lv 42",
+      "next": "Chief of the Black Claw Lv 42",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1892,7 +1892,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":228,"at":{"0":227,"1790856000":1},"fnv1a":"0f8dbc7f"}],
+      "mt": ["(absent)",{"stamps":228,"at":{"0":227,"1790856000":1},"fnv1a":"0b08c1d2"}],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
@@ -1905,14 +1905,14 @@
     },
     "mode": "basic"
   },
-  "random/L42-q78-before-A": {
-    "in": "761f4f0d414f",
+  "random/L42-q79-before-A": {
+    "in": "28c4ca651bc9",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]},
+      {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 42. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
@@ -1944,10 +1944,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Breaking of the Day Lv 42",
-      "quest": "Chief of the Black Claw",
-      "lv": "Lv 42",
-      "next": "High Priest's Fafnite Lv 43",
+      "prev": "Chief of the Black Claw Lv 42",
+      "quest": "High Priest's Fafnite",
+      "lv": "Lv 43",
+      "next": "The High Priest Awakens Lv 44",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1962,7 +1962,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"209f6969"}],
+      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"099afb10"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1972,20 +1972,20 @@
     },
     "mode": "advanced"
   },
-  "random/L42-q79-none-A-rqmix": {
-    "in": "02420a621e10",
+  "random/L42-q80-none-A-rqmix": {
+    "in": "faa0b6464139",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"16 to pick up · 3 in progress · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202012","x":["run Shugo-of-All-Trades: Asmodian","run Spooky Specters","run Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
-      {"t":"Clear Den of Exiles and others until Lv 43","s":"Black Claw Village (near your story step) · Kibelisk: Collapsed Hall of Fame · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Collapsed Hall of Fame is 215 m away · 60 open at your level"},
+      {"t":"Clear Ascetic's Cave and others until Lv 44","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 42. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+      {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 42. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 43)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village (near your story step) · Kibelisk: Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
+      {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -2015,10 +2015,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Chief of the Black Claw Lv 42",
-      "quest": "High Priest's Fafnite",
-      "lv": "Lv 43",
-      "next": "The High Priest Awakens Lv 44",
+      "prev": "High Priest's Fafnite Lv 43",
+      "quest": "The High Priest Awakens",
+      "lv": "Lv 44",
+      "next": "Lingering Apparitions Lv 44",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -2033,7 +2033,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":7,"at":{"0":6,"1790856000":1},"fnv1a":"f35fd4a4"}],
+      "mt": ["(absent)",{"stamps":7,"at":{"0":6,"1790856000":1},"fnv1a":"b909004e"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -2059,11 +2059,11 @@
     },
     "mode": "advanced"
   },
-  "random/L42-q80-all-B": {
-    "in": "7efa0f069de4",
+  "random/L42-q81-all-B": {
+    "in": "2bce2f51b68f",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 42. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""}
+      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 42. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2093,10 +2093,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "High Priest's Fafnite Lv 43",
-      "quest": "The High Priest Awakens",
+      "prev": "The High Priest Awakens Lv 44",
+      "quest": "Lingering Apparitions",
       "lv": "Lv 44",
-      "next": "Lingering Apparitions Lv 44",
+      "next": "Blood Barrier Lv 44",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -2111,7 +2111,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"2e04aacc"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"66e1b3f4"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2120,12 +2120,12 @@
     },
     "mode": "basic"
   },
-  "random/L42-q84-before-B": {
-    "in": "50c2b544435d",
+  "random/L42-q85-before-B": {
+    "in": "c10d75f270ac",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget [Lv 45]"]},
-      {"t":"Story: Farewells","s":"Needs Lv 45: you're 42. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+      {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 42. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\""},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
     ],
     "ms": [
@@ -2156,10 +2156,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Zikel's Core Lv 45",
-      "quest": "Farewells",
+      "prev": "Farewells Lv 45",
+      "quest": "Forgotten Commander",
       "lv": "Lv 45",
-      "next": "Forgotten Commander Lv 45",
+      "next": "Daeva Trapped in a Nightmare Lv 45",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -2174,7 +2174,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"a85af2e9"}],
+      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"f506098a"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -2185,7 +2185,7 @@
     "mode": "basic"
   },
   "random/L42-qxx-all-B-objs": {
-    "in": "a6a1985d46af",
+    "in": "3afa8aad4be6",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
@@ -2236,7 +2236,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"eed11f38"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"bb4741e7"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2332,7 +2332,7 @@
     "mode": "advanced"
   },
   "random/L43-q03-all-A-filters": {
-    "in": "c6d154ee2b10",
+    "in": "fcc12caa5678",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Isolated Lake","s":"0/4 objectives · then The Being Beneath the Lake","c":"primary \"Turned in\" story","o":["Remove the hazards at the lake defeat the beasts at the lake (Kibelisk: Witch's Cabin)","Check the Veil Jewel at Tunapre Lake check the Veil Jewel (Kibelisk: Witch's Cabin)","Go to Elvida's residence (Kibelisk: Witch's Cabin)","+1 more after these"]}
@@ -2382,7 +2382,7 @@
     },
     "store": {
       "areaLv": ["(absent)","40"],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"231e5103"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"8050fcfe"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2543,7 +2543,7 @@
     "mode": "basic"
   },
   "random/L43-q10-all-B": {
-    "in": "ec8add1ec7b0",
+    "in": "36eb73d61149",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"}
@@ -2594,7 +2594,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"96453da5"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"bf601a94"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2603,11 +2603,11 @@
     },
     "mode": "basic"
   },
-  "random/L43-q14-before-B-dv": {
-    "in": "7d91f288c6c6",
+  "random/L43-q15-before-B-dv": {
+    "in": "2085b7d8dfa6",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+      {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 10 open"}
     ],
@@ -2639,12 +2639,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Crash Site Rendezvous Lv 11",
-      "quest": "Contaminated Area",
-      "lv": "Lv 11",
-      "next": "Express Daeva Delivery Lv 12",
+      "prev": "Contaminated Area Lv 11",
+      "quest": "Express Daeva Delivery",
+      "lv": "Lv 12",
+      "next": "Veiled Truth Lv 12",
       "hint": "next milestone at Lv 45",
-      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival 3 story quests · \"Urgent Pursuit\""],
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival 2 story quests · \"Urgent Pursuit\""],
       "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
       "track": ["Level cap next · 2 to go Lv 45"],
       "ring": "53%",
@@ -2657,7 +2657,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":234,"at":{"0":233,"1790856000":1},"fnv1a":"80e6d124"}],
+      "mt": ["(absent)",{"stamps":234,"at":{"0":233,"1790856000":1},"fnv1a":"c79f429d"}],
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
@@ -2898,14 +2898,14 @@
     },
     "mode": "advanced"
   },
-  "random/L43-q44-none-B-dv": {
-    "in": "85907c28ec3e",
+  "random/L43-q45-none-B-dv": {
+    "in": "f77800433484",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
+      {"t":"Story: Dying Light","s":"0/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Restore the Water Altar purify the Water Altar (Kibelisk: Healing Spring)","Clear around the Water Altar remove Contaminated Water defeat Water Mist Spirit defeat Cursed Poison Blood Kibelisk: Healing Spring","Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","+1 more after these"]},
       {"t":"Regional quests","s":"14 to pick up · 2 follow-ups · 2 near your story step · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+10 more","+10 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 60 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 44)","c":"tag \"Needs 1 shard\""},
@@ -2939,10 +2939,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Collective Effort Lv 27",
-      "quest": "Land of Rifts",
-      "lv": "Lv 29",
-      "next": "Dying Light Lv 30",
+      "prev": "Land of Rifts Lv 29",
+      "quest": "Dying Light",
+      "lv": "Lv 30",
+      "next": "Contaminated Sacred Tree Lv 30",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -2957,7 +2957,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":32,"at":{"0":31,"1790856000":1},"fnv1a":"aa8e9b65"}],
+      "mt": ["(absent)",{"stamps":32,"at":{"0":31,"1790856000":1},"fnv1a":"895207ec"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -2983,11 +2983,11 @@
     },
     "mode": "basic"
   },
-  "random/L43-q63-lvonly-B-sppts": {
-    "in": "1efe58baf81a",
+  "random/L43-q64-lvonly-B-sppts": {
+    "in": "1f75fd706d7b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Creion of Gribade","s":"0/4 objectives · then Frozen Fafnite","c":"primary \"Turned in\" story","o":["Go to the Steel Hammer Merchants HQ ask around about the Creions (Kibelisk: Steel Hammer Merchants HQ)","Go to the chilly cave talk to Nemon (Kibelisk: Gribade Highland Crossroad)","Investigate the Mysterious Grotto find where the Creions are (Kibelisk: Gribade Highland Crossroad)","+1 more after these"]},
+      {"t":"Story: Frozen Fafnite","s":"0/4 objectives · then Inevitable Encounter","c":"primary \"Turned in\" story","o":["Collect the mined Fafnite Gemstones collect supplies from the Fafnite cart defeat Faded Mutant around the supplies defeat Faded Floater around the supplies Kibelisk: Steel Hammer Workcamp","Resolve the Giant Fafnite Gemstone problem enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Recover the belongings of the Steel Hammer workers recover the Miner's belongings recover the Cart Worker's belongings recover the Sentinel's belongings defeat the Faded Predator and Floater that disrupt the recovery Kibelisk: Steel Hammer Workcamp","+1 more after these"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
     ],
     "ms": [
@@ -3018,10 +3018,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Powder of Death Lv 35",
-      "quest": "Creion of Gribade",
+      "prev": "Creion of Gribade Lv 36",
+      "quest": "Frozen Fafnite",
       "lv": "Lv 36",
-      "next": "Frozen Fafnite Lv 36",
+      "next": "Inevitable Encounter Lv 37",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -3036,7 +3036,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":155,"at":{"0":154,"1790856000":1},"fnv1a":"0933061e"}],
+      "mt": ["(absent)",{"stamps":155,"at":{"0":154,"1790856000":1},"fnv1a":"657c0f48"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -3061,93 +3061,6 @@
       "stampV1": ["(absent)",true]
     },
     "mode": "basic"
-  },
-  "random/L43-q69-rnd113p50-A": {
-    "in": "6568b7fc487d",
-    "nu": [
-      {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Buy Quick Slice 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Buy Quick Slice 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
-      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
-      {"t":"Regional quests","s":"5 to pick up · 2/7 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Fight Poison with Poison","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg","new Finders Keepers"]},
-      {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk: Kumrica's Cellar · Lv 40–44 · 4/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 25 open at your level"},
-      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 44)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 6 open"}
-    ],
-    "ms": [
-      "g6 | Missed | 9/11 | overdue | open",
-      "g9 | Missed | 5/7 | overdue | open",
-      "g10 | Missed | 5/9 | overdue | open",
-      "g12 | Missed | 7/10 | overdue | open",
-      "g15 | Missed | 2/4 | overdue | open",
-      "g16 | Missed | 11/13 | overdue | open",
-      "g19 | Missed | 7/11 | overdue | open",
-      "g20 | Missed | 1/3 | overdue | open",
-      "g22 | Missed | 14/16 | overdue | open",
-      "g25 | Missed | 5/8 | overdue | open",
-      "g27 | Missed | 4/7 | overdue | open",
-      "g28 | Cleared | 1/1 | done",
-      "g30 | Missed | 7/10 | overdue | open",
-      "g32 | Missed | 4/11 | overdue | open",
-      "g35 | Missed | 0/2 | overdue | open",
-      "g37 | Missed | 2/5 | overdue | open",
-      "g40 | Missed | 1/3 | overdue | open",
-      "g45 | 2 to go | 0/32 | upnext | open"
-    ],
-    "rt": [
-      "build | 0/5",
-      "story | 0/5",
-      "daily | 0/4",
-      "f2p | 0/3",
-      "hold | 0/3"
-    ],
-    "jr": {
-      "prev": "An Ill Fate's Resolution Lv 37",
-      "quest": "Mirror of Greed",
-      "lv": "Lv 37",
-      "next": "Fafnite's Whereabouts Lv 40",
-      "hint": "next milestone at Lv 45",
-      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
-      "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
-      "track": ["Level cap next · 2 to go Lv 45"],
-      "ring": "48%",
-      "prog": ["Quests 5 21/58","Dungeons 25 35/60","Strongholds 6 8/15"]
-    },
-    "reg": {
-      "opts": ["Lv 10–14 · 11/15 · 4 open","Lv 15–19 · 4/15 · 11 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 3/6 · 3 open","Lv 30–34 · 6/9 · 3 open","Lv 35–39 · 8/12 · 4 open","* Lv 40–44 · 4/10 · 5 open","All strongholds · 8/15"],
-      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 4/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 2/3","  Den of Exiles [done]","  Kumbahum's Cave","  Tayga Breeding Ground [done]","▸ Fafnite Deposit 12 traces ✓ 1/1","▾ Impetusium Square 54 traces 1/2","  Ascetic's Cave [done]","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
-    },
-    "store": {
-      "areaLv": ["(absent)","40"],
-      "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":160,"at":{"0":159,"1790856000":1},"fnv1a":"54bec194"}],
-      "open.g10": ["(absent)",true],
-      "open.g12": ["(absent)",true],
-      "open.g15": ["(absent)",true],
-      "open.g16": ["(absent)",true],
-      "open.g19": ["(absent)",true],
-      "open.g20": ["(absent)",true],
-      "open.g22": ["(absent)",true],
-      "open.g25": ["(absent)",true],
-      "open.g27": ["(absent)",true],
-      "open.g30": ["(absent)",true],
-      "open.g32": ["(absent)",true],
-      "open.g35": ["(absent)",true],
-      "open.g37": ["(absent)",true],
-      "open.g40": ["(absent)",true],
-      "open.g45": ["(absent)",true],
-      "open.g6": ["(absent)",true],
-      "open.g9": ["(absent)",true],
-      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
-      "savedAt": ["(absent)",1790856000000],
-      "schemaVersion": ["(absent)",1],
-      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}],
-      "stampV1": ["(absent)",true]
-    },
-    "mode": "advanced"
   },
   "random/L43-q70-lvonly-B": {
     "in": "82234f649f99",
@@ -3212,11 +3125,98 @@
     },
     "mode": "basic"
   },
-  "random/L43-q70-lvonly-B-sppts": {
-    "in": "ed03390d8287",
+  "random/L43-q70-rnd113p50-A": {
+    "in": "343e66a99264",
+    "nu": [
+      {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
+      {"t":"Buy Quick Slice 4 → 5","s":"2 pts","c":"tag \"After the one above\""},
+      {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
+      {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+      {"t":"Story: Fafnite's Whereabouts","s":"0/6 objectives · then Exiled Ritualist","c":"primary \"Turned in\" story","o":["Investigate Amunta's Hideout enter Amunta's Hideout (Kibelisk: Amunta's Hideout)","Find the escaped Daybreak Society search the Damaged Wagon Wheel (Kibelisk: Amunta's Hideout)","Follow the tracks of Daybreak Society who fled search the Blood-Stained Rock (Kibelisk: Amunta's Hideout)","+3 more after these"]},
+      {"t":"Regional quests","s":"5 to pick up · 2/7 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Fight Poison with Poison","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg","new Finders Keepers"]},
+      {"t":"Clear Kumbahum's Cave","s":"Black Claw Village · Kibelisk: Kumrica's Cellar · Lv 40–44 · 4/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Kumrica's Cellar is 310 m away · 25 open at your level"},
+      {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 44)","c":"tag \"Needs 1 shard\""},
+      {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 6 open"}
+    ],
+    "ms": [
+      "g6 | Missed | 9/11 | overdue | open",
+      "g9 | Missed | 5/7 | overdue | open",
+      "g10 | Missed | 5/9 | overdue | open",
+      "g12 | Missed | 7/10 | overdue | open",
+      "g15 | Missed | 2/4 | overdue | open",
+      "g16 | Missed | 11/13 | overdue | open",
+      "g19 | Missed | 7/11 | overdue | open",
+      "g20 | Missed | 1/3 | overdue | open",
+      "g22 | Missed | 14/16 | overdue | open",
+      "g25 | Missed | 5/8 | overdue | open",
+      "g27 | Missed | 4/7 | overdue | open",
+      "g28 | Cleared | 1/1 | done",
+      "g30 | Missed | 7/10 | overdue | open",
+      "g32 | Missed | 4/11 | overdue | open",
+      "g35 | Missed | 1/3 | overdue | open",
+      "g37 | Missed | 3/5 | overdue | open",
+      "g40 | Missed | 1/3 | overdue | open",
+      "g45 | 2 to go | 0/32 | upnext | open"
+    ],
+    "rt": [
+      "build | 0/5",
+      "story | 0/5",
+      "daily | 0/4",
+      "f2p | 0/3",
+      "hold | 0/3"
+    ],
+    "jr": {
+      "prev": "Mirror of Greed Lv 37",
+      "quest": "Fafnite's Whereabouts",
+      "lv": "Lv 40",
+      "next": "Exiled Ritualist Lv 40",
+      "hint": "next milestone at Lv 45",
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
+      "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
+      "track": ["Level cap next · 2 to go Lv 45"],
+      "ring": "48%",
+      "prog": ["Quests 5 21/58","Dungeons 25 35/60","Strongholds 6 8/15"]
+    },
+    "reg": {
+      "opts": ["Lv 10–14 · 11/15 · 4 open","Lv 15–19 · 4/15 · 11 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 3/6 · 3 open","Lv 30–34 · 6/9 · 3 open","Lv 35–39 · 8/12 · 4 open","* Lv 40–44 · 4/10 · 5 open","All strongholds · 8/15"],
+      "list": ["Strongholds 0/3","2 Noble Belt Enhance Scrolls each","  Amurahta Surveillance Base Black Claw Village · Lv 41–45","  Barahta Extermination Unit Outpost Idun's Lake · Lv 40","  Andsha Forward Base Impetusium Square · Lv 44–45 [locked]","Sealed Dungeons 4/7","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 2/3","  Den of Exiles [done]","  Kumbahum's Cave","  Tayga Breeding Ground [done]","▸ Fafnite Deposit 12 traces ✓ 1/1","▾ Impetusium Square 54 traces 1/2","  Ascetic's Cave [done]","  Warriors' Rest","▾ Lagta Fortress 22 traces 0/1","  Lagta Fafnite Storage"]
+    },
+    "store": {
+      "areaLv": ["(absent)","40"],
+      "hide": ["(absent)",false],
+      "mt": ["(absent)",{"stamps":160,"at":{"0":159,"1790856000":1},"fnv1a":"212b8127"}],
+      "open.g10": ["(absent)",true],
+      "open.g12": ["(absent)",true],
+      "open.g15": ["(absent)",true],
+      "open.g16": ["(absent)",true],
+      "open.g19": ["(absent)",true],
+      "open.g20": ["(absent)",true],
+      "open.g22": ["(absent)",true],
+      "open.g25": ["(absent)",true],
+      "open.g27": ["(absent)",true],
+      "open.g30": ["(absent)",true],
+      "open.g32": ["(absent)",true],
+      "open.g35": ["(absent)",true],
+      "open.g37": ["(absent)",true],
+      "open.g40": ["(absent)",true],
+      "open.g45": ["(absent)",true],
+      "open.g6": ["(absent)",true],
+      "open.g9": ["(absent)",true],
+      "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Triniel's Dagger:1"]],
+      "savedAt": ["(absent)",1790856000000],
+      "schemaVersion": ["(absent)",1],
+      "stPick": ["(absent)",{"1":"Triniel's Dagger","2":"Illusive Clone"}],
+      "stampV1": ["(absent)",true]
+    },
+    "mode": "advanced"
+  },
+  "random/L43-q71-lvonly-B-sppts": {
+    "in": "cd48df4b9ac3",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Fafnite's Whereabouts","s":"0/6 objectives · then Exiled Ritualist","c":"primary \"Turned in\" story","o":["Investigate Amunta's Hideout enter Amunta's Hideout (Kibelisk: Amunta's Hideout)","Find the escaped Daybreak Society search the Damaged Wagon Wheel (Kibelisk: Amunta's Hideout)","Follow the tracks of Daybreak Society who fled search the Blood-Stained Rock (Kibelisk: Amunta's Hideout)","+3 more after these"]},
+      {"t":"Story: Exiled Ritualist","s":"0/3 objectives · then Healing Herbs","c":"primary \"Turned in\" story","o":["Prepare to rescue Amunta in advance defeat Black Claw Guard Troopers Searcher defeat Black Claw Guard Troopers Sentry remove Black Claw Guard Troopers Totem Kibelisk: Amunta's Hideout","Rescue Amunta from the Prisoners Grotto enter the Prisoners Grotto (Kibelisk: Eastern Gribade Highland Cliff)","Turn in Amunta, Amunta's Hideout"]},
       {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
     ],
     "ms": [
@@ -3247,10 +3247,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Mirror of Greed Lv 37",
-      "quest": "Fafnite's Whereabouts",
+      "prev": "Fafnite's Whereabouts Lv 40",
+      "quest": "Exiled Ritualist",
       "lv": "Lv 40",
-      "next": "Exiled Ritualist Lv 40",
+      "next": "Healing Herbs Lv 40",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -3265,7 +3265,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":155,"at":{"0":154,"1790856000":1},"fnv1a":"ae8bff13"}],
+      "mt": ["(absent)",{"stamps":155,"at":{"0":154,"1790856000":1},"fnv1a":"91f37351"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -3291,11 +3291,11 @@
     },
     "mode": "basic"
   },
-  "random/L43-q73-all-B-rqmix": {
-    "in": "c3e874f8f8ff",
+  "random/L43-q74-all-B-rqmix": {
+    "in": "f8d2b6e1218f",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Treatment","s":"0/2 objectives · then Symbol of Liberation","c":"primary \"Turned in\" story","o":["Treat the Fallen Daybreak Society Members administer herbal medicine to the first member administer herbal medicine to the second member Kibelisk: Amunta's Hideout","Turn in Amunta, Amunta's Hideout"]}
+      {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3325,10 +3325,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Healing Herbs Lv 40",
-      "quest": "Treatment",
+      "prev": "Treatment Lv 40",
+      "quest": "Symbol of Liberation",
       "lv": "Lv 40",
-      "next": "Symbol of Liberation Lv 40",
+      "next": "Daybreak Society Lv 41",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 2 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -3343,7 +3343,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"4a0db72d"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"eb6ed9ba"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -3508,14 +3508,14 @@
     },
     "mode": "basic"
   },
-  "random/L44-q10-before-A-cube": {
-    "in": "8c6c7e452ac0",
+  "random/L44-q11-before-A-cube": {
+    "in": "c989419ed54e",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-      {"t":"Continue the story: Finding Nemon","s":"Main story · then Survival Supplies","c":"primary \"Turned in\" story"},
+      {"t":"Story: Survival Supplies","s":"0/2 objectives · then Gathering Essentials","c":"primary \"Turned in\" story","o":["Receive additional supplies go to VeKauf (Kibelisk: Safe Haven)","Turn in VeKauf (Militia Supply Officer), Safe Haven"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist","+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
       {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 11 open"},
       {"t":"Level cap","s":"Lv 45 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -3548,12 +3548,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Longest Night Lv 9",
-      "quest": "Finding Nemon",
+      "prev": "Finding Nemon Lv 10",
+      "quest": "Survival Supplies",
       "lv": "Lv 10",
-      "next": "Survival Supplies Lv 10",
+      "next": "Gathering Essentials unlocks Pets Lv 10",
       "hint": "next milestone at Lv 45",
-      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go","Lv 10 🔓 Pets 2 story quests · \"Gathering Essentials\""],
+      "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go","Lv 10 🔓 Pets your next quest · \"Gathering Essentials\""],
       "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
       "track": ["Level cap next · 1 to go Lv 45"],
       "ring": "53%",
@@ -3566,7 +3566,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":206,"at":{"0":205,"1790856000":1},"fnv1a":"4eca8b9a"}],
+      "mt": ["(absent)",{"stamps":206,"at":{"0":205,"1790856000":1},"fnv1a":"c3b96399"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
@@ -3650,13 +3650,13 @@
     },
     "mode": "advanced"
   },
-  "random/L44-q34-lvonly-B-rqmix": {
-    "in": "9ca8a7d6825e",
+  "random/L44-q35-lvonly-B-rqmix": {
+    "in": "94659e35ea3b",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
+      {"t":"Story: Searching for Survivors","s":"0/3 objectives · then Prison Break","c":"primary \"Turned in\" story","o":["Go to Uruthumheim go to the Abandoned Site","Gather information on Uruthumheim defeat the Blades examine the Nornir Supply Chest examine the Nornir Corpse near the Abandoned Site","Turn in Nemon, Northern Altar (near Victorious Daeva's Statue)"]},
       {"t":"Regional quests","s":"1 in progress · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["run Herb Pouch Heist"]},
-      {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest (near your story step) · Kibelisk: Forest Hideout · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 11 open"}
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3686,10 +3686,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Daeva in a Dream Lv 22",
-      "quest": "Disturbed Balance",
-      "lv": "Lv 22",
-      "next": "Searching for Survivors Lv 24",
+      "prev": "Disturbed Balance Lv 22",
+      "quest": "Searching for Survivors",
+      "lv": "Lv 24",
+      "next": "Prison Break Lv 24",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -3704,7 +3704,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"0cd35b6f"}],
+      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"90eeda8d"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -3714,11 +3714,11 @@
     },
     "mode": "basic"
   },
-  "random/L44-q41-lvonly-B": {
-    "in": "d711a58e38b6",
+  "random/L44-q42-lvonly-B": {
+    "in": "9d6e22899035",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
+      {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist"]},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 11 open"}
     ],
@@ -3750,10 +3750,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The High Priest Slumbers Lv 26",
-      "quest": "Striving for Coexistence",
-      "lv": "Lv 26",
-      "next": "Preparations for Restoration Lv 27",
+      "prev": "Striving for Coexistence Lv 26",
+      "quest": "Preparations for Restoration",
+      "lv": "Lv 27",
+      "next": "A Collective Effort Lv 27",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -3768,7 +3768,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"272d6eaf"}],
+      "mt": ["(absent)",{"stamps":232,"at":{"0":231,"1790856000":1},"fnv1a":"657de58f"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -3846,13 +3846,13 @@
     },
     "mode": "advanced"
   },
-  "random/L44-q53-before-B": {
-    "in": "bd8ed30cc1ef",
+  "random/L44-q54-before-B": {
+    "in": "a5e87bd11722",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist","+3 waiting on the story Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 11 open"}
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3868,7 +3868,7 @@
       "g27 | Cleared | 7/7 | done",
       "g28 | Cleared | 2/2 | done",
       "g30 | Cleared | 10/10 | done",
-      "g32 | Missed | 9/11 | overdue | open",
+      "g32 | Side quests | 6/6 · 1 side | sideonly",
       "g35 | Cleared | 3/3 | done",
       "g37 | Missed | 2/5 | overdue | open",
       "g40 | Side quests | 2/2 · 1 side | sideonly",
@@ -3882,13 +3882,13 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Rescue Operation Lv 32",
-      "quest": "Last of the Destruction Archons",
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
       "lv": "Lv 32",
-      "next": "A Daeva Dreaming Anew Lv 32",
+      "next": "Last Refuge Lv 33",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
-      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
+      "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap next · 1 to go Lv 45"],
       "ring": "65%",
       "prog": ["Quests 1 23/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
@@ -3900,8 +3900,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":227,"at":{"0":226,"1790856000":1},"fnv1a":"2d0211e8"}],
-      "open.g32": ["(absent)",true],
+      "mt": ["(absent)",{"stamps":228,"at":{"0":227,"1790856000":1},"fnv1a":"22c73670"}],
       "open.g37": ["(absent)",true],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
@@ -3912,17 +3911,17 @@
     },
     "mode": "basic"
   },
-  "random/L44-q53-lvonly-A-stfull": {
-    "in": "548fc51fae63",
+  "random/L44-q54-lvonly-A-stfull": {
+    "in": "367311e76dec",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
       {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist"]},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 11 open"}
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -3952,10 +3951,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Rescue Operation Lv 32",
-      "quest": "Last of the Destruction Archons",
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
       "lv": "Lv 32",
-      "next": "A Daeva Dreaming Anew Lv 32",
+      "next": "Last Refuge Lv 33",
       "hint": "next milestone at Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -3970,7 +3969,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"392fe4da"}],
+      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"2a59382e"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -3980,11 +3979,11 @@
     },
     "mode": "advanced"
   },
-  "random/L44-q78-all-A": {
-    "in": "7b6d611e32c6",
+  "random/L44-q79-all-A": {
+    "in": "dd30614686ae",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Chief of the Black Claw","s":"0/2 objectives · then High Priest's Fafnite","c":"primary \"Turned in\" story","o":["Rescue Nemon at Muqaka's Quarters go to Muqaka's Quarters (Kibelisk: Kumrica's Cellar)","Turn in Kumrica, Kumrica's Cellar"]}
+      {"t":"Story: High Priest's Fafnite","s":"0/3 objectives · then The High Priest Awakens","c":"primary \"Turned in\" story","o":["Go deeper into Lagta Fortress talk to the Fafnite Storage Watcher (Kibelisk: Kumrica's Cellar)","Find the High Priest's Fafnite go to the Fafnite Storage (Kibelisk: Kumrica's Cellar)","Turn in Nemon, Zemurru's Tomb"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -4014,10 +4013,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Breaking of the Day Lv 42",
-      "quest": "Chief of the Black Claw",
-      "lv": "Lv 42",
-      "next": "High Priest's Fafnite Lv 43",
+      "prev": "Chief of the Black Claw Lv 42",
+      "quest": "High Priest's Fafnite",
+      "lv": "Lv 43",
+      "next": "The High Priest Awakens Lv 44",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap Abyss, Ascension Trial, Conquest, Azphel board (PvP stats) More systems at the cap Arcana (Alt+V), Season, Transcendence, Nightmare, Arena, Battlefield, Market, Rank 1 level to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -4032,7 +4031,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"3dd92aa9"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"477e853d"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4187,7 +4186,7 @@
     "mode": "basic"
   },
   "random/L45-q02-all-B-objs": {
-    "in": "ee096687f42d",
+    "in": "f929e9e4771a",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Shadow Forest","s":"0/3 objectives · then Isolated Lake","c":"primary \"Turned in\" story","o":["Search Munihelle Forest investigate it with Maard (Kibelisk: Witch's Cabin)","Find Maard near the village talk to Maard (Kibelisk: Aldelle Village)","Turn in Pelleir (Village Chief), Aldelle Village"]}
@@ -4239,7 +4238,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"067055ee"}],
+      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"58509fad"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4314,7 +4313,7 @@
     "mode": "basic"
   },
   "random/L45-q13-all-A-stwait": {
-    "in": "f61e32211845",
+    "in": "939b553702ad",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
@@ -4366,7 +4365,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":336,"at":{"0":335,"1790856000":1},"fnv1a":"a2046426"}],
+      "mt": ["(absent)",{"stamps":336,"at":{"0":335,"1790856000":1},"fnv1a":"9364d835"}],
       "open.g22": ["(absent)",true],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
@@ -4611,7 +4610,7 @@
     "mode": "basic"
   },
   "random/L45-q28-all-B-objs": {
-    "in": "7893da49f35f",
+    "in": "559dfdd6f9dd",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Crossroad","s":"3/7 objectives · then Creeping Shadow","c":"primary \"Turned in\" story","o":["Rendezvous at the Watcher's Tent talk to Nemon","Defeat the Balaur guarding the lake clear the Balaur Skirmishers","Retrieve the hidden artifact open the right chest in the pond (decoys exist)","+1 more after these"]}
@@ -4663,7 +4662,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":346,"at":{"0":345,"1790856000":1},"fnv1a":"38c473d4"}],
+      "mt": ["(absent)",{"stamps":346,"at":{"0":345,"1790856000":1},"fnv1a":"031362bd"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4758,7 +4757,7 @@
     "mode": "advanced"
   },
   "random/L45-q32-all-B": {
-    "in": "e889327b71d3",
+    "in": "810394d28254",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Verdant Melody","s":"0/2 objectives · then Daeva in a Dream","c":"primary \"Turned in\" story","o":["Investigate the Etheria Rift rescue Ecco the Forest Spirit","Turn in Ecco (Forest Spirit), Odar's Shade"]}
@@ -4809,7 +4808,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"04d6a33d"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"702d1676"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4818,14 +4817,14 @@
     },
     "mode": "basic"
   },
-  "random/L45-q35-lvonly-A-dv": {
-    "in": "9fbf33660cf5",
+  "random/L45-q36-lvonly-A-dv": {
+    "in": "19d10ca8227c",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Searching for Survivors","s":"0/3 objectives · then Prison Break","c":"primary \"Turned in\" story","o":["Go to Uruthumheim go to the Abandoned Site","Gather information on Uruthumheim defeat the Blades examine the Nornir Supply Chest examine the Nornir Corpse near the Abandoned Site","Turn in Nemon, Northern Altar (near Victorious Daeva's Statue)"]},
+      {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
       {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202026","x":["new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","new Spacetime Rift: An Honest Shugo","+1 more","+24 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game Lest We Forget In my game"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
       {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
@@ -4859,10 +4858,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Disturbed Balance Lv 22",
-      "quest": "Searching for Survivors",
+      "prev": "Searching for Survivors Lv 24",
+      "quest": "Prison Break",
       "lv": "Lv 24",
-      "next": "Prison Break Lv 24",
+      "next": "Finding Stolen Relics Lv 24",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -4877,7 +4876,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"aac321cb"}],
+      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"bc6b83a9"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -4888,7 +4887,7 @@
     "mode": "advanced"
   },
   "random/L45-q43-all-A-sppts": {
-    "in": "31fad7c8db33",
+    "in": "074302bb6e12",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -4942,7 +4941,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"f790a1b7"}],
+      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"417bf55c"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -4967,11 +4966,11 @@
     },
     "mode": "advanced"
   },
-  "random/L45-q50-all-A": {
-    "in": "7eeb1bfa2123",
+  "random/L45-q51-all-A": {
+    "in": "06b1a68c9e19",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Eye of the Red Tower","s":"0/4 objectives · then The Survivors","c":"primary \"Turned in\" story","o":["Infiltrate Dranactus defeat Mumu Worker defeat Mumu Overseer Kibelisk: Briskwind Shelter","Collect Information collect the Tarzel from the food chest read the Overseer's Manual Kibelisk: Briskwind Shelter","Go to another Laborer's Tent talk to Laborer Holta talk to Laborer Teak Kibelisk: Briskwind Shelter","+1 more after these"]}
+      {"t":"Story: The Survivors","s":"0/3 objectives · then Rescue Operation","c":"primary \"Turned in\" story","o":["Clear up near the Watchtower Camp defeat Dratona defeat Enhanced Dratona","Neutralize the Watchtower Camp enter the Watchtower Camp","Turn in Menrik, Briskwind Shelter"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -5001,10 +5000,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Bitter Reality Lv 32",
-      "quest": "Eye of the Red Tower",
+      "prev": "Eye of the Red Tower Lv 32",
+      "quest": "The Survivors",
       "lv": "Lv 32",
-      "next": "The Survivors Lv 32",
+      "next": "Rescue Operation Lv 32",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -5019,7 +5018,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"4f37d30c"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"97694f56"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -5028,13 +5027,13 @@
     },
     "mode": "advanced"
   },
-  "random/L45-q53-lvonly-B-filters": {
-    "in": "1440eb08f015",
+  "random/L45-q54-lvonly-B-filters": {
+    "in": "edbf9fb68a72",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
+      {"t":"Story: A Daeva Dreaming Anew","s":"0/2 objectives · then Last Refuge","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Dreams","Turn in Nemon, Briskwind Shelter"]},
       {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202026","x":["new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","new Spacetime Rift: An Honest Shugo","+1 more","+24 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game Lest We Forget In my game"]},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 11 open"}
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -5064,10 +5063,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Rescue Operation Lv 32",
-      "quest": "Last of the Destruction Archons",
+      "prev": "Last of the Destruction Archons Lv 32",
+      "quest": "A Daeva Dreaming Anew",
       "lv": "Lv 32",
-      "next": "A Daeva Dreaming Anew Lv 32",
+      "next": "Last Refuge Lv 33",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5081,7 +5080,7 @@
     },
     "store": {
       "areaLv": ["(absent)","40"],
-      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"f761a1a4"}],
+      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"9173bed8"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -5091,8 +5090,8 @@
     },
     "mode": "basic"
   },
-  "random/L45-q64-none-A-stwait": {
-    "in": "a3b43e168afa",
+  "random/L45-q65-none-A-stwait": {
+    "in": "eb1f279bfc0b",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -5100,11 +5099,11 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Frozen Fafnite","s":"0/4 objectives · then Inevitable Encounter","c":"primary \"Turned in\" story","o":["Collect the mined Fafnite Gemstones collect supplies from the Fafnite cart defeat Faded Mutant around the supplies defeat Faded Floater around the supplies Kibelisk: Steel Hammer Workcamp","Resolve the Giant Fafnite Gemstone problem enter the Shuttered Workstation (Kibelisk: Abandoned Campsite)","Recover the belongings of the Steel Hammer workers recover the Miner's belongings recover the Cart Worker's belongings recover the Sentinel's belongings defeat the Faded Predator and Floater that disrupt the recovery Kibelisk: Steel Hammer Workcamp","+1 more after these"]},
+      {"t":"Story: Inevitable Encounter","s":"0/3 objectives · then Unveiling the Truth","c":"primary \"Turned in\" story","o":["Discover the Blades Hideout enter the Merchant's Yard (Kibelisk: Abandoned Campsite)","Investigate the Abandoned Campsite enter the Campsite (Kibelisk: Abandoned Campsite)","Turn in Pordhet, Abandoned Campsite entrance"]},
       {"t":"Regional quests","s":"26 to pick up · 5 follow-ups · 0/32 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+25 more","+26 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game Lest We Forget In my game"]},
-      {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
+      {"t":"Clear Empty Cave","s":"Western Gribade Highland (near your story step) · Kibelisk: Zemurru's Tomb · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 300 m away · 60 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
+      {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland (near your story step) · Kibelisk: Zemurru's Tomb · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 14 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -5134,10 +5133,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Creion of Gribade Lv 36",
-      "quest": "Frozen Fafnite",
-      "lv": "Lv 36",
-      "next": "Inevitable Encounter Lv 37",
+      "prev": "Frozen Fafnite Lv 36",
+      "quest": "Inevitable Encounter",
+      "lv": "Lv 37",
+      "next": "Unveiling the Truth Lv 37",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5152,7 +5151,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":5,"at":{"0":4,"1790856000":1},"fnv1a":"c2c321d9"}],
+      "mt": ["(absent)",{"stamps":5,"at":{"0":4,"1790856000":1},"fnv1a":"64baf5e8"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -5178,11 +5177,11 @@
     },
     "mode": "advanced"
   },
-  "random/L45-q82-all-B": {
-    "in": "ac8e1791bb4a",
+  "random/L45-q83-all-B": {
+    "in": "fe3e86830e54",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Blood Barrier","s":"0/2 objectives · then Zikel's Core","c":"primary \"Turned in\" story","o":["Weaken the Subspace Aura destroy the Incomplete Subspace Rift defeat Remnant of Subspace defeat the Balaur Dispatch Kibelisk: Collapsed Hall of Fame","Turn in Nemon, Collapsed Hall of Fame"]}
+      {"t":"Story: Zikel's Core","s":"0/3 objectives · then Farewells","c":"primary \"Turned in\" story","o":["Acquire the Empyrean Core enter the Impetusium (Kibelisk: Collapsed Hall of Fame)","Join with Nemon outside the Impetusium go to the outskirts of the Impetusium (Kibelisk: Outskirts Stall)","Turn in Nemon, outskirts of the Impetusium"]}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -5212,10 +5211,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Lingering Apparitions Lv 44",
-      "quest": "Blood Barrier",
-      "lv": "Lv 44",
-      "next": "Zikel's Core Lv 45",
+      "prev": "Blood Barrier Lv 44",
+      "quest": "Zikel's Core",
+      "lv": "Lv 45",
+      "next": "Farewells Lv 45",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -5230,7 +5229,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"5c507f52"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"f59c7946"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -5239,14 +5238,14 @@
     },
     "mode": "basic"
   },
-  "random/L45-q84-none-B-stwait": {
-    "in": "290764727225",
+  "random/L45-q85-none-B-stwait": {
+    "in": "8eb83ab8239f",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Farewells","s":"0/3 objectives · then Forgotten Commander","c":"primary \"Turned in\" story","o":["Return to Urd go to Nornir Assembly (Kibelisk: Nornir Assembly)","Talk to Urd at Nornir Assembly deliver the news to Urd (Kibelisk: Nornir Assembly)","Turn in Menrik, Fang Hideout"]},
-      {"t":"Regional quests","s":"28 to pick up · 6 follow-ups · 1 near your story step · 0/35 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+28 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Story: Forgotten Commander","s":"0/2 objectives · then Daeva Trapped in a Nightmare","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
+      {"t":"Regional quests","s":"28 to pick up · 6 follow-ups · 0/35 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+28 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
       {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 14 open"}
@@ -5279,10 +5278,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Zikel's Core Lv 45",
-      "quest": "Farewells",
+      "prev": "Farewells Lv 45",
+      "quest": "Forgotten Commander",
       "lv": "Lv 45",
-      "next": "Forgotten Commander Lv 45",
+      "next": "Daeva Trapped in a Nightmare Lv 45",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5297,7 +5296,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":5,"at":{"0":4,"1790856000":1},"fnv1a":"bb2cd753"}],
+      "mt": ["(absent)",{"stamps":5,"at":{"0":4,"1790856000":1},"fnv1a":"2da7dbde"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -5324,7 +5323,7 @@
     "mode": "basic"
   },
   "random/L45-qxx-all-B-cube": {
-    "in": "f94a7f43ab4c",
+    "in": "1692082abd78",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -5376,7 +5375,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"5b4143fa"}],
+      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"0627cf4d"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],

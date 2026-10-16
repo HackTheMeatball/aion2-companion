@@ -1,15 +1,15 @@
 {
-  "build/L45-q85-before-A-cube": {
-    "in": "0043192cf481",
+  "build/L45-q86-before-A-cube": {
+    "in": "3e84e40804a8",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -40,16 +40,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -58,7 +58,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"3dfa2c29"}],
+      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"7a463593"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -68,17 +68,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-dv": {
-    "in": "1ef6f0df75b1",
+  "build/L45-q86-before-A-dv": {
+    "in": "3a0b8baccbc6",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -109,16 +109,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -127,7 +127,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"ce11254f"}],
+      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"92b9850d"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -137,17 +137,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-filters": {
-    "in": "5e7a8f013dbc",
+  "build/L45-q86-before-A-filters": {
+    "in": "d9a7f9826ba0",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -178,16 +178,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -195,7 +195,7 @@
     },
     "store": {
       "areaLv": ["(absent)","40"],
-      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"101115a0"}],
+      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"3b62a2fc"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -205,18 +205,18 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-objs": {
-    "in": "92d13343a120",
+  "build/L45-q86-before-A-objs": {
+    "in": "1923c7fee352",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"1/2 objectives · Kibelisk: Latesran Eastern Root (49 m)","c":"primary \"Turned in\" story","o":["Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"1/2 objectives · Kibelisk: Outskirts Stall (21 m)","c":"primary \"Turned in\" story","o":["Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 3 near your story step · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate (near)","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest (near)","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
-      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square (near your story step) · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -246,16 +246,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"],
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"],
       "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
     },
     "reg": {
@@ -265,7 +265,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"38c9aca5"}],
+      "mt": ["(absent)",{"stamps":234,"at":{"0":233,"1790856000":1},"fnv1a":"7ac54e1a"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -275,17 +275,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-rqmix": {
-    "in": "3ce7fc2bea83",
+  "build/L45-q86-before-A-rqmix": {
+    "in": "2fb016e005c2",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"7 to pick up · 3 in progress · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202026","x":["run A Comrade's Fate","run A Perfect Wedding","run Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","+4 more","+21 waiting on the story Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"27 to pick up · 3 in progress · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202058","x":["run A Comrade's Fate","run A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -316,16 +316,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -334,7 +334,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"9e82b8c5"}],
+      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"808bb4c1"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -344,17 +344,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-sppts": {
-    "in": "231686fdf6f7",
+  "build/L45-q86-before-A-sppts": {
+    "in": "a1d8d3cf8814",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
-      {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -385,16 +385,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -403,7 +403,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":156,"at":{"0":155,"1790856000":1},"fnv1a":"dbab745e"}],
+      "mt": ["(absent)",{"stamps":156,"at":{"0":155,"1790856000":1},"fnv1a":"8834e70a"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -429,17 +429,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-stfull": {
-    "in": "363df08ca2b5",
+  "build/L45-q86-before-A-stfull": {
+    "in": "da994304b33e",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
-      {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -470,16 +470,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -488,7 +488,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":238,"at":{"0":237,"1790856000":1},"fnv1a":"a47075e2"}],
+      "mt": ["(absent)",{"stamps":238,"at":{"0":237,"1790856000":1},"fnv1a":"9acace8e"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -498,17 +498,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-stready": {
-    "in": "0ecddd016112",
+  "build/L45-q86-before-A-stready": {
+    "in": "04315dc66d4e",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
-      {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -539,16 +539,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -557,7 +557,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"99bfbadc"}],
+      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"75a937c2"}],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
@@ -570,17 +570,17 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-A-stwait": {
-    "in": "212c7a479830",
+  "build/L45-q86-before-A-stwait": {
+    "in": "337ba3cf8ee9",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
       {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
-      {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -611,16 +611,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -629,7 +629,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":226,"at":{"0":225,"1790856000":1},"fnv1a":"82334aa4"}],
+      "mt": ["(absent)",{"stamps":226,"at":{"0":225,"1790856000":1},"fnv1a":"3b9721ae"}],
       "open.g22": ["(absent)",true],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
@@ -642,13 +642,14 @@
     },
     "mode": "advanced"
   },
-  "build/L45-q85-before-B-cube": {
-    "in": "b0fb67818f11",
+  "build/L45-q86-before-B-cube": {
+    "in": "74e88ac037e6",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -679,16 +680,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -697,7 +698,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"3dfa2c29"}],
+      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"7a463593"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -707,12 +708,13 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-dv": {
-    "in": "8fffbbea4203",
+  "build/L45-q86-before-B-dv": {
+    "in": "c81183c067ae",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -743,16 +745,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -761,7 +763,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"ce11254f"}],
+      "mt": ["(absent)",{"stamps":262,"at":{"0":261,"1790856000":1},"fnv1a":"92b9850d"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -771,12 +773,13 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-filters": {
-    "in": "1b29d36d0d70",
+  "build/L45-q86-before-B-filters": {
+    "in": "db46c3637b8d",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -807,16 +810,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -824,7 +827,7 @@
     },
     "store": {
       "areaLv": ["(absent)","40"],
-      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"101115a0"}],
+      "mt": ["(absent)",{"stamps":233,"at":{"0":232,"1790856000":1},"fnv1a":"3b62a2fc"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -834,13 +837,14 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-objs": {
-    "in": "a6ee8b8d6a76",
+  "build/L45-q86-before-B-objs": {
+    "in": "79abdcbc0d3a",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"1/2 objectives · Kibelisk: Latesran Eastern Root (49 m)","c":"primary \"Turned in\" story","o":["Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
-      {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"1/2 objectives · Kibelisk: Outskirts Stall (21 m)","c":"primary \"Turned in\" story","o":["Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 3 near your story step · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate (near)","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest (near)","+25 more"]},
+      {"t":"Run Andsha Forward Base","s":"Impetusium Square (near your story step) · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -870,16 +874,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"],
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"],
       "subs": {"head":"Objectives 1/2","items":1,"on":0,"end":""}
     },
     "reg": {
@@ -889,7 +893,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":235,"at":{"0":234,"1790856000":1},"fnv1a":"38c9aca5"}],
+      "mt": ["(absent)",{"stamps":234,"at":{"0":233,"1790856000":1},"fnv1a":"7ac54e1a"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -899,12 +903,13 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-rqmix": {
-    "in": "e4d906f840d5",
+  "build/L45-q86-before-B-rqmix": {
+    "in": "226559dfb1dd",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"7 to pick up · 3 in progress · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202026","x":["run A Comrade's Fate","run A Perfect Wedding","run Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","+4 more","+21 waiting on the story Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"27 to pick up · 3 in progress · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202058","x":["run A Comrade's Fate","run A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -935,16 +940,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -953,7 +958,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"9e82b8c5"}],
+      "mt": ["(absent)",{"stamps":237,"at":{"0":236,"1790856000":1},"fnv1a":"808bb4c1"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -963,12 +968,13 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-sppts": {
-    "in": "4f5e9612ae0d",
+  "build/L45-q86-before-B-sppts": {
+    "in": "a9d0b7fead32",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -999,16 +1005,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -1017,7 +1023,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":156,"at":{"0":155,"1790856000":1},"fnv1a":"dbab745e"}],
+      "mt": ["(absent)",{"stamps":156,"at":{"0":155,"1790856000":1},"fnv1a":"8834e70a"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -1043,13 +1049,14 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-stfull": {
-    "in": "8d7331a2b160",
+  "build/L45-q86-before-B-stfull": {
+    "in": "aeabff61d1da",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -1080,16 +1087,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -1098,7 +1105,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":238,"at":{"0":237,"1790856000":1},"fnv1a":"a47075e2"}],
+      "mt": ["(absent)",{"stamps":238,"at":{"0":237,"1790856000":1},"fnv1a":"9acace8e"}],
       "open.g45": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0","E:Illusive Clone:0","E:Swift Contract:1","E:Triniel's Dagger:2","E:Savage Fang:3"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1108,13 +1115,14 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-stready": {
-    "in": "bbc0e8403818",
+  "build/L45-q86-before-B-stready": {
+    "in": "57177aa0c628",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · then put it on E, row 0 (fires first)","c":"primary \"Equipped\" stequip"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
     "ms": [
@@ -1145,16 +1153,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -1163,7 +1171,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"99bfbadc"}],
+      "mt": ["(absent)",{"stamps":229,"at":{"0":228,"1790856000":1},"fnv1a":"75a937c2"}],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
       "open.g37": ["(absent)",true],
@@ -1176,12 +1184,13 @@
     },
     "mode": "basic"
   },
-  "build/L45-q85-before-B-stwait": {
-    "in": "9b0fba423e14",
+  "build/L45-q86-before-B-stwait": {
+    "in": "f5572890be66",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Forgotten Commander","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
-      {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget","new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","+2 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
+      {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:witness"},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"0/2 objectives","c":"primary \"Turned in\" story","o":["Ascend to the next dimension of power as a Daeva complete The One Who Witnesses the Nightmare","Turn in Nemon, Outskirts Stall"]},
+      {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},
       {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
     ],
@@ -1213,16 +1222,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "milestone now: Lv 45",
       "ahead": ["Ahead verified","Lv 45 Level cap reached Progress now comes from gear score, not levels"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Level cap now Lv 45"],
       "ring": "68%",
-      "prog": ["Quests 8 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
+      "prog": ["Quests 30 27/58","Dungeons ✓ 60/60","Strongholds 11 4/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","Lv 30–34 · 7/9 · 2 open","Lv 35–39 · 10/12 · 2 open","* Lv 40–44 · 8/10 · 2 open","All strongholds · 4/15"],
@@ -1231,7 +1240,7 @@
     "store": {
       "areaLv": ["(absent)","40"],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":226,"at":{"0":225,"1790856000":1},"fnv1a":"82334aa4"}],
+      "mt": ["(absent)",{"stamps":226,"at":{"0":225,"1790856000":1},"fnv1a":"3b9721ae"}],
       "open.g22": ["(absent)",true],
       "open.g27": ["(absent)",true],
       "open.g32": ["(absent)",true],
