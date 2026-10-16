@@ -283,4 +283,20 @@ export default (test, M) => {
     const c = load(M, { ...SEEDS, checks: {}, level: 20, quest: M.QUESTS[2][1] }, 0).state; C(c).quest = M.QUESTS[1][1]; save(M, c, 500);   /* a dated move back */
     for (const m of [M.merge(c, b), M.merge(b, c)]) assert.equal(C(m).quest, M.QUESTS[1][1]);
   });
+
+  /* ---------- 0.2.5: backup times describe this browser's copy; they stay local ---------- */
+  test('backup1 is not a synced one-time flag; syncedPart has neither backup nor backup1', () => {
+    assert.ok(!M.ONE_TIME_FLAGS.includes('backup1'));
+    const st = load(M, { ...SEEDS, checks: { 'g6:0': true }, level: 20, quest: '' }, 1000).state;
+    assert.deepEqual(st.backup, { since: 1000000 }); const p = S(st);
+    assert.ok(!('backup' in p) && !('backup1' in p));
+  });
+  test('merge keeps the local backup and backup1 and never copies the remote ones', () => {
+    const a = load(M, { ...SEEDS, checks: { 'g6:0': true }, level: 20, quest: '' }, 1000).state;
+    const b = load(M, { ...SEEDS, checks: { 'g22:1': true }, level: 22, quest: '' }, 2000).state;
+    b.backup = { since: 2000000, lastExportAt: 2100000, nudgeAt: 2200000, a2hsAt: 2300000 };
+    assert.deepEqual(M.merge(a, b).backup, { since: 1000000 }); assert.deepEqual(M.merge(b, a).backup, b.backup);
+    const noBk = clone(a); delete noBk.backup; delete noBk.backup1;
+    const m = M.merge(noBk, b); assert.ok(!('backup' in m) && !('backup1' in m));
+  });
 };

@@ -127,6 +127,23 @@ const metrics = () => {
   ok('5c back from pre-E2: its un-tick is re-stamped at the next load; other stamps unchanged',
     JSON.stringify(F.saved.mt.checks['rq:2202053']) === JSON.stringify([(T2 + 60000) / 1000, false]) && JSON.stringify(F.saved.mt.checks['rq:2202016']) === JSON.stringify([T1 / 1000, false]) && F.saved.checks['rq:2202053'] === false,
     [F.saved.mt.checks['rq:2202053'], F.saved.mt.checks['rq:2202016']]);
+  /* 5. 0.2.5 backup1: the v287 save in the current build at a fixed clock gains only backup = { since: the page clock }
+     and backup1 (run B, with the real clock, got the same with its own time); a reload changes nothing; pre-E2 keeps both
+     through an un-tick there; back in the current build, since has not moved. */
+  const T3 = Date.parse('2026-10-16T12:00:00Z'), omitBk = o => { const { backup, backup1, ...r } = o; return r; };
+  const G = await run5c(E2, fix287, T3, null);
+  ok('backup1: no page errors', !G.errs.length, G.errs);
+  ok('backup1: the save gains backup = { since: page clock } and backup1', JSON.stringify(G.loaded.backup) === JSON.stringify({ since: T3 }) && G.loaded.backup1 === true, [G.loaded.backup, G.loaded.backup1]);
+  same('backup1: nothing else differs from the same save loaded with the real clock (run B)', omitBk(G.loaded), omitBk(B.saved));
+  ok('backup1: run B (real clock) got a real-time baseline', B.saved.backup1 === true && B.saved.backup && B.saved.backup.since > T1 && Object.keys(B.saved.backup).join() === 'since', B.saved.backup);
+  const lostG = []; for (const f of ['checks', 'started', 'areaRun', 'rqSnooze']) Object.entries(S[f] || {}).forEach(([k, v]) => { if (JSON.stringify((G.loaded[f] || {})[k]) !== JSON.stringify(v)) lostG.push(f + ':' + k); });
+  ok('backup1: every saved key and value of the v287 save kept', !lostG.length, lostG);
+  same('backup1: reload writes nothing (saved state)', G.saved, G.saved2);
+  const R3 = await run5c(PRE, JSON.stringify(G.saved), T3 + 3600e3, untick('rq:2202053'));
+  ok('backup1 rollback: pre-E2 keeps backup and backup1 in its save after an un-tick there',
+    JSON.stringify(R3.saved.backup) === JSON.stringify({ since: T3 }) && R3.saved.backup1 === true && R3.saved.checks['rq:2202053'] === false, [R3.saved.backup, R3.saved.backup1]);
+  const G2 = await run5c(E2, JSON.stringify(R3.saved), T3 + 7200e3, '(() => { save(); })()');
+  ok('backup1 back from pre-E2: since is still the first load\'s clock (not moved by the later one)', JSON.stringify(G2.saved.backup) === JSON.stringify({ since: T3 }) && G2.saved.backup1 === true, G2.saved.backup);
   console.log(fail ? `E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();

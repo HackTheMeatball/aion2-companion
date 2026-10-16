@@ -14,6 +14,8 @@ import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
 import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
+/* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
+import { importBackup, markExport } from "./core/backup.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
@@ -1791,6 +1793,9 @@ dvRespec.addEventListener("click", () => {
   if (!(window.claude && window.claude.use)) {
     show(true);
     btn.addEventListener("click", () => {
+      /* 0.2.5: the export time is stored before the file is built, so the file equals the save at the moment of export
+         (the browser doesn't say whether the file was kept, hence "Last backup", not "saved") */
+      markExport(state, Date.now()); save();
       const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
       a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -1816,6 +1821,8 @@ document.getElementById("impIn").addEventListener("change", async e => {
     /* The progress being replaced is kept one step back under a separate key. Imported files never re-run the one-time seeds. */
     try { localStorage.setItem(KEY + ":before-import", JSON.stringify(state)); } catch (err) {}
     Object.assign(data, { seedLv12: true, stTriniel1: true, dvReset1: true });
+    /* 0.2.5: the file's backup times are another copy's; the import itself counts as a backup here (src/core/backup.js) */
+    importBackup(data, Date.now());
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (err) { msg.textContent = "Couldn't save in this browser."; return; }
     location.reload();
   };
