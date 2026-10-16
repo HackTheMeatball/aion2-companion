@@ -4,7 +4,8 @@ name: Auto-merge
 # A PR qualifies only when ALL of these hold:
 #   - it comes from a claude/ branch in this repo, targets main, is open, not a draft, and has no "hold" label;
 #   - the required check ci-ok succeeded on its current head commit;
-#   - the latest claude[bot] review comment says "VERDICT: APPROVE" and was written after the head commit.
+#   - the latest claude[bot] review comment says "VERDICT: APPROVE", was written after the head commit, and names the head's
+#     short SHA (e.g. "Review of abc1234"), so a review of an older commit can't cover a newer one pushed later.
 # It squash-merges pinned to that head commit, then starts CI on main so deploy, smoke and release run
 # (a merge made by this workflow does not fire the normal push trigger).
 # Pause it for one PR: add the label "hold". Stop it: Actions tab -> Auto-merge -> "..." -> Disable workflow.
@@ -54,6 +55,7 @@ jobs:
               const last = reviews[reviews.length - 1];
               if (!last || !/VERDICT:\s*APPROVE/.test(last.body) || /VERDICT:\s*CHANGES/.test(last.body)) { core.info(`#${pr.number}: no approving review`); continue; }
               if (Date.parse(last.updated_at) < headAt) { core.info(`#${pr.number}: approval older than the head commit`); continue; }
+              if (!last.body.includes(sha.slice(0, 7))) { core.info(`#${pr.number}: approval does not name the head ${sha.slice(0, 7)}`); continue; }
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
                 core.notice(`Merged #${pr.number}`); merged++;
