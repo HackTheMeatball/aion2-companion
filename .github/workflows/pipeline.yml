@@ -1,0 +1,227 @@
+name: Pipeline
+
+# Owner request (2026-10-16, "smart mode"): move a claude/ PR to its next step the moment GitHub reports something,
+# instead of waiting for the scheduled check-in. Every step here is mechanical; planning, releases and the tracker stay
+# with the scheduled CEO task (state issue "CEO pipeline state").
+#   - CI green on a PR's current head, and no review newer than the head  -> a review run (Sonnet; Opus for risky paths).
+#   - CI red on the head: first failure -> re-run the failed jobs once (no model); second failure -> a fix run.
+#   - Latest claude[bot] review says VERDICT: CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#   - At most 3 fix rounds per PR (Sonnet, Sonnet, Opus; Opus from round 1 for risky paths). Then the PR gets the label
+#     "stuck" and the pipeline leaves it to the CEO. A comment containing "pipeline:reset" starts the count again.
+# Risky paths follow the routing rule (docs/team/DISPATCH.md): src/core/, save/storage/migration code, gate
+# requires/completesWith, golden snapshots, the mig1 pin, tools/gen/, data/schema/, .github/, or > 300 changed lines.
+# Label "opus" forces Opus; label "hold" or "stuck" stops this workflow for that PR. Merging stays with auto-merge.yml.
+# Runs use the owner's Claude subscription (CLAUDE_CODE_OAUTH_TOKEN), like claude.yml.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: PR number
+        required: true
+      step:
+        description: review or fix
+        required: true
+        default: review
+
+permissions:
+  contents: read
+
+jobs:
+  decide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && startsWith(github.event.workflow_run.head_branch, 'claude/')) ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.user.login == 'claude[bot]')
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      actions: write
+      checks: read
+    outputs:
+      step: ${{ steps.d.outputs.step }}
+      pr: ${{ steps.d.outputs.pr }}
+      branch: ${{ steps.d.outputs.branch }}
+      sha: ${{ steps.d.outputs.sha }}
+      model: ${{ steps.d.outputs.model }}
+      prompt: ${{ steps.d.outputs.prompt }}
+    steps:
+      - id: d
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const ev = context.eventName, p = context.payload;
+            const none = (why) => { core.info(`no step: ${why}`); core.setOutput('step', 'none'); };
+            let prNum, want, reason = '';
+            if (ev === 'workflow_run') {
+              const wr = p.workflow_run;
+              prNum = wr.pull_requests && wr.pull_requests[0] && wr.pull_requests[0].number;
+              if (!prNum) {
+                const open = (await github.rest.pulls.list({ owner, repo, state: 'open', head: `${owner}:${wr.head_branch}` })).data;
+                prNum = open[0] && open[0].number;
+              }
+              if (!prNum) return none(`no open PR for ${wr.head_branch}`);
+              if (wr.conclusion === 'success') want = 'review';
+              else if (wr.conclusion === 'failure') {
+                const pr0 = (await github.rest.pulls.get({ owner, repo, pull_number: prNum })).data;
+                if (pr0.head.sha !== wr.head_sha) return none('CI run is for an older head');
+                if (wr.run_attempt === 1) {
+                  await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id });
+                  return none(`re-running failed jobs of CI run ${wr.id} once`);
+                }
+                want = 'fix'; reason = `CI failed twice on the head commit: run ${wr.html_url} (read the failed jobs with \`gh run view ${wr.id} --log-failed\`).`;
+              } else return none(`CI ${wr.conclusion}`);
+            } else if (ev === 'issue_comment') {
+              const body = p.comment.body || '';
+              prNum = p.issue.number;
+              if (/VERDICT:\s*CHANGES/.test(body)) { want = 'fix'; reason = `The latest review asked for changes: ${p.comment.html_url}. Fix every blocking finding in it.`; }
+              else if (/^\s*Needs @claude \(Opus\):/m.test(body)) { want = 'fix'; reason = `A Sonnet run handed this to Opus: ${p.comment.html_url}.`; }
+              else if (/^\s*Pipeline stuck:/m.test(body)) {
+                await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
+                return none('a run reported it is stuck; labelled');
+              } else return none('comment needs no step');
+            } else {
+              prNum = Number(p.inputs.pr); want = p.inputs.step === 'fix' ? 'fix' : 'review';
+              reason = 'Started by hand: read the latest review comment and the latest CI run on the head, and fix what they report.';
+            }
+
+            const pr = (await github.rest.pulls.get({ owner, repo, pull_number: prNum })).data;
+            const labels = pr.labels.map((l) => l.name);
+            if (pr.state !== 'open' || pr.draft) return none('PR not open or draft');
+            if (!pr.head.repo || pr.head.repo.full_name !== `${owner}/${repo}` || !/^claude\//.test(pr.head.ref)) return none('not a claude/ branch in this repo');
+            if (labels.includes('hold') || labels.includes('stuck')) return none('labelled hold/stuck');
+            if (ev === 'workflow_run' && pr.head.sha !== p.workflow_run.head_sha) return none('CI run is for an older head');
+
+            const sha = pr.head.sha;
+            const headAt = Date.parse((await github.rest.repos.getCommit({ owner, repo, ref: sha })).data.commit.committer.date);
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: prNum, per_page: 100 });
+            const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNum, per_page: 100 });
+            const changed = files.reduce((n, f) => n + f.additions + f.deletions, 0);
+            const riskyPath = /^(src\/core\/|tools\/gen\/|data\/schema\/|tests\/golden|tests\/e2-migtest|\.github\/)/;
+            const riskyPatch = /localStorage|migrat|\brequires\b|completesWith|mig1/;
+            const risky = labels.includes('opus') || changed > 300
+              || files.some((f) => riskyPath.test(f.filename) || ((/^src\/main\.js$|^data\//.test(f.filename)) && riskyPatch.test(f.patch || '')));
+
+            if (want === 'review') {
+              const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
+                .some((r) => r.status === 'completed' && r.conclusion === 'success');
+              if (!ok) return none('ci-ok not green on the head');
+              const verdicts = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && /VERDICT:\s*(APPROVE|CHANGES)/.test(c.body || ''));
+              if (verdicts.some((c) => Date.parse(c.updated_at) >= headAt)) return none('a review of this head exists');
+              const model = risky ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
+              core.setOutput('model', model);
+              core.setOutput('prompt', [
+                `You review pull request #${prNum} in ${owner}/${repo}, head commit ${sha}. CI (ci-ok) is green on this head, so do not run the test suites.`,
+                `Read CLAUDE.md, then \`gh pr view ${prNum}\` and \`gh pr diff ${prNum}\`; open files in the checkout for context.`,
+                'Check: correctness; the CLAUDE.md rules (verified data only with labels, the save rule, no weakened tests or checks, data in data/ not main.js, Sources card, licensing and "unofficial" text, both builds identical); missing tests for new behaviour.',
+                `Then post exactly one comment with \`gh pr comment ${prNum} --body-file <file>\`: first line "Review of ${sha.slice(0, 7)}", then at most 12 short lines of findings, blocking ones first and marked BLOCKING.`,
+                'The last line is `VERDICT: APPROVE` or `VERDICT: CHANGES`. Write the word VERDICT only on that last line. Use CHANGES only for blocking problems; list nits and still APPROVE.',
+              ].join('\n'));
+            } else {
+              let since = 0;
+              for (const c of comments) if (/pipeline:reset/.test(c.body || '')) since = Date.parse(c.created_at);
+              const round = comments.filter((c) => Date.parse(c.created_at) > since && /<!-- pipeline:fix /.test(c.body || '')).length + 1;
+              if (round > 3) {
+                await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
+                await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body: 'Pipeline: 3 fix rounds did not get this PR green and approved. Labelled `stuck` for the CEO check-in.' });
+                return none('fix rounds used up; labelled stuck');
+              }
+              const opus = risky || round >= 3 || /Needs @claude \(Opus\)/.test(reason);
+              const model = opus ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNum,
+                body: `<!-- pipeline:fix round=${round} -->\nPipeline: fix round ${round} of 3 on ${sha.slice(0, 7)} (${opus ? 'Opus' : 'Sonnet'}). ${reason}` });
+              core.setOutput('model', model);
+              core.setOutput('prompt', [
+                `You fix pull request #${prNum} in ${owner}/${repo}, branch ${pr.head.ref} (checked out), head commit ${sha}.`,
+                reason,
+                'Read CLAUDE.md first and follow it. Find the root cause and fix it on this branch. Never skip, disable or weaken a test or check to get green; if an expectation must change on purpose, say why in the commit.',
+                opus ? '' : 'Sonnet limits (owner routing rule): if the fix would touch src/core/, save/sync/migration/storage code, a gate\'s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment starting "Needs @claude (Opus):" with the reason, then stop.',
+                'Run `npm test` and make sure it is green before committing (use `node tests/run.mjs --only <suites>` after `npm run build` while iterating).',
+                `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it.`,
+                'If it cannot be fixed safely (unverifiable game data, an owner decision, an outside failure), do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
+              ].filter(Boolean).join('\n'));
+            }
+            core.setOutput('step', want);
+            core.setOutput('pr', String(prNum));
+            core.setOutput('branch', pr.head.ref);
+            core.setOutput('sha', sha);
+
+  run:
+    needs: decide
+    if: needs.decide.outputs.step == 'review' || needs.decide.outputs.step == 'fix'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    concurrency:
+      group: pipeline-pr-${{ needs.decide.outputs.pr }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: write
+    steps:
+      # A queued run may be stale by the time it starts: skip it if the head moved (or, for a review, one now exists).
+      - id: recheck
+        uses: actions/github-script@v7
+        env:
+          PR: ${{ needs.decide.outputs.pr }}
+          SHA: ${{ needs.decide.outputs.sha }}
+          STEP: ${{ needs.decide.outputs.step }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr = (await github.rest.pulls.get({ owner, repo, pull_number: Number(process.env.PR) })).data;
+            let go = pr.state === 'open' && pr.head.sha === process.env.SHA;
+            if (go && process.env.STEP === 'review') {
+              const headAt = Date.parse((await github.rest.repos.getCommit({ owner, repo, ref: pr.head.sha })).data.commit.committer.date);
+              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr.number, per_page: 100 });
+              go = !comments.some((c) => c.user && c.user.login === 'claude[bot]' && /VERDICT:/.test(c.body || '') && Date.parse(c.updated_at) >= headAt);
+            }
+            core.info(go ? 'still current' : 'stale, skipping');
+            core.setOutput('go', String(go));
+      - if: steps.recheck.outputs.go == 'true'
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.decide.outputs.branch }}
+          fetch-depth: 1
+          # Not persisted: the action pushes as the Claude GitHub App, so its pushes trigger CI (see claude.yml).
+          persist-credentials: false
+      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'fix'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'fix'
+        run: npm ci && npx playwright install --with-deps chromium
+      - if: steps.recheck.outputs.go == 'true'
+        uses: anthropics/claude-code-action@v1
+        env:
+          CLAUDE_BRANCH: ${{ needs.decide.outputs.branch }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: ${{ needs.decide.outputs.prompt }}
+          # The CI run or review that started this was made by the Claude app or by this workflow, not a person.
+          allowed_bots: "claude,github-actions"
+          additional_permissions: |
+            actions: read
+          claude_args: |
+            --model ${{ needs.decide.outputs.model }}
+            --max-turns 300
+            --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr comment:*),Bash(gh run view:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
+      # Auto-merge also reacts to the review comment itself; this dispatch is a backstop in case that event is missed.
+      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'review'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'auto-merge.yml', ref: 'main' });
