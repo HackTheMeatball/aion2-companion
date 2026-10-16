@@ -355,7 +355,7 @@ quests "across three quests", which hints at an order. It is labelled **single s
 | level | rec 45, unlocks at 45 | Metabot |
 | previous / next | Forgotten Commander / "Waiting for the Next Journey" (rec 46, **unlocks at 46**) | Metabot, both pages |
 | objective | "Ascend to the next dimension of power as a Daeva" → complete The One Who Witnesses the Nightmare | Metabot steps |
-| giver | **owner to check in game**. Candidate: Koro at the Abyss Base, who is Forgotten Commander's turn-in on Metabot. The first draft cited th.gl's description text for this, and Metabot's page names no giver | Metabot (FC turn-in) |
+| giver | Koro at the Abyss Base: **owner's own lookup 2026-10-16** (`owner:2026-10-16-daeva-trapped-01`, claim C41), single source until he sees it in game at Lv 45. Koro is Forgotten Commander's turn-in on Metabot (marker "Abyss Base"); Metabot's page names no giver | owner; Metabot (FC turn-in) |
 | turn-in | Nemon, Outskirts Stall (nearest Kibelisk Outskirts Stall, 21 m) | Metabot |
 | rewards | none listed | Metabot |
 

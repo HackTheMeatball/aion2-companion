@@ -79,4 +79,5 @@ owner; the CEO records them here and in the department charters they affect.
 | A1 | Item icons | Confirmed in game: leaf gem = Wisdom Stone, square arch tile = Daevanion Crystal (file names fixed). |
 | I2 | MIT versions | v0.1.0 and v0.1.1 stay as they are (MIT for those versions only). |
 | — | Accounts / sign-in | Per the consultant's recommendation (the owner delegated the call): no accounts for now; 0.5 adds an anonymous, end-to-end encrypted sync code; later minors shift by one. |
+| — | Daeva Trapped in a Nightmare (Q7, #108) | Owner, 2026-10-16 03:14 ET: his own lookup (`owner:2026-10-16-daeva-trapped-01`) gives the giver, Koro at the Abyss Base. Added in 0.3 E10 as the last story quest; the giver is labelled single source until he sees it in game at Lv 45 (claim C41). `g45:0` is split into `g45:witness` (Q9). |
 | — | Team | In-house departments: Engineering, QA & Release, Tech Lead, Product Design, Data & Research, Support (docs/team). One-off projects: brand identity, mobile & accessibility audit, data-format second opinion. |
