@@ -23,12 +23,14 @@ way. P3c changes the key and the shape; without one place to change, P3c would t
 
 Every suite and support script writes and reads saves only through it.
 
-**Seeding through the old build stops.** `tests/journey.js:21`, `tests/regress.js:152` and `:175` and `tests/lib.js:7`
-load the user's save into the v285 baseline first and let today's migrations carry it into the current build. After
-P3c that chain is gone. So here, before the break: load each of those saves the way the suite does today, take the flat
-state the current build stores after its migrations, commit it as a new fixture (`tests/fixtures/user-*.flat.json`,
-with the script that made it under `tests/support/`), and seed the suite from that fixture with `writeSave` on the
-current page. Each suite's result must not change.
+**Old-shape fixtures stop relying on the app's migrations.** `tests/journey.js:21`, `tests/regress.js:152` and `:175`
+and `tests/lib.js:7` load the user's save into the v285 baseline first and let today's migrations carry it into the
+current build; `tests/e1test.js:98` and the fixtures `tests/golden.js` adds load pre-0.3 saves (`fixture-v285.json` and
+others in `tests/fixtures/`) straight into the current page. After P3c no migration runs. So here, before the break:
+for every such use (the list above is the minimum; `grep -rn "fixtures/" tests` for the rest, except `mig1` / `mig2`),
+load the save the way the suite does today, take the flat state the current build stores after its load steps, commit it
+as a new fixture (`tests/fixtures/*.flat.json`, with the script that made it under `tests/support/`), and seed the
+suite from that fixture through `writeSave`. Each suite's result must not change.
 
 ## Appetite
 
@@ -52,11 +54,13 @@ M (100–300 lines across about 30 files, mostly one-line swaps).
 - [ ] A small `core` (Node) test pins `toStored` as the identity for today's shape.
 - [ ] `journey`, `regress` and `tests/lib.js` no longer open `CFG.V285`; only `mig1` / `mig2` do (paste the `grep`).
       `journey` still reaches Lv 45 with the Lv 44 edge case, and `regress` reports hard fail 0.
+- [ ] Outside `mig1` / `mig2`, no suite loads a pre-0.3 fixture into the page; each now reads a `*.flat.json` (the PR
+      body lists old fixture → new fixture → suites).
 - [ ] `npm test` green.
 
 ## Files (owns)
 
-`tests/support/save.js` (new), `tests/fixtures/user-*.flat.json` and their script (new), and the save lines of
+`tests/support/save.js` (new), `tests/fixtures/*.flat.json` and their script (new), and the save lines of
 `tests/**` (not `tests/baselines/`, not snapshots, not existing fixtures).
 
 ## Lanes, model, order
