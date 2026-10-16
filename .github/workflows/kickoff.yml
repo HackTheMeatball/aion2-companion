@@ -12,7 +12,7 @@ name: Kickoff
 # doesn't overlap. In-flight lanes come from each open PR's changed files plus the lanes on its started line.
 # This workflow (no model for the choice) runs after CI on main goes green (that is, after every merge, since
 # auto-merge dispatches CI on main), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
-# lines; a started line whose issue is closed is dropped, one with no PR after 5 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
+# lines; a started line whose issue is closed is dropped, one with no PR after 9 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
 # "- [started <time>] #N model" so neither the planner nor a second run starts it again. The build run implements the
 # issue on a new claude/ branch and opens the PR; pipeline.yml and auto-merge.yml take it from there.
 
@@ -49,6 +49,7 @@ jobs:
             const { owner, repo } = context.repo;
             const STATE = 114, MAX = 3;
             const LANES = ['golden', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
+            // Keep in step with lanes() in the refresh job below (same rules, two copies).
             const lanesOfFiles = (files) => {
               const out = new Set();
               for (const f of files) {
@@ -77,7 +78,8 @@ jobs:
             const busy = new Set();
             for (const p of prs) for (const x of lanesOfFiles(await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: p.number, per_page: 100 }))) busy.add(x);
             // A started item whose issue is now closed (its PR merged) is done: drop its line so it stops counting.
-            // One with no PR 5 h after it started (blocked, handed to Opus, failed or timed out) is marked "stalled"
+            // One with no PR 9 h after it started (blocked, handed to Opus, failed or timed out; 9 h covers a 4 h build plus
+            // its one Restart re-run) is marked "stalled"
             // so it frees its slot; the planner reads why and re-queues it or raises a To-do.
             let pruned = false;
             const kept = [], stalled = [];
@@ -86,7 +88,7 @@ jobs:
               if (s) {
                 const n = Number(s[2]);
                 if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.state === 'closed') { pruned = true; continue; }
-                if (!refs.some((r) => r.startsWith(`claude/issue-${n}-`)) && Date.now() - Date.parse(s[1]) > 5 * 3600e3) {
+                if (!refs.some((r) => r.startsWith(`claude/issue-${n}-`)) && Date.now() - Date.parse(s[1]) > 9 * 3600e3) {
                   kept.push(`- [stalled ${s[1]}] #${n}${s[3]}`); pruned = true; stalled.push(n);
                   continue;
                 }
@@ -131,7 +133,7 @@ jobs:
             await github.rest.issues.update({ owner, repo, issue_number: STATE, body: lines.join('\n') });
             // Comments only after #114 was written, so a retried run doesn't comment twice.
             for (const n of stalled) await github.rest.issues.createComment({ owner, repo, issue_number: n,
-              body: 'Kickoff: no PR 5 h after this build started; marked stalled in #114 for the CEO planner.' });
+              body: 'Kickoff: no PR 9 h after this build started; marked stalled in #114 for the CEO planner.' });
             if (!picked.length) return core.info('nothing to start');
             for (const p of picked) await github.rest.issues.createComment({ owner, repo, issue_number: p.issue,
               body: `Kickoff: started a build on this issue (${p.model.includes('opus') ? 'Opus' : 'Sonnet'}). It will open a claude/ PR when done.` });
@@ -192,7 +194,7 @@ jobs:
   #     branch (a push made with this workflow's token starts no CI by itself).
   #   - Conflicting, or golden/mig involved: pipeline.yml step=merge (a model run; Opus for golden/mig).
   refresh:
-    if: github.event_name == 'workflow_run'
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
@@ -205,6 +207,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const merged = (await github.rest.repos.getCommit({ owner, repo, ref: context.payload.workflow_run.head_sha })).data.files || [];
+            // Keep in step with lanesOfFiles() in the pick job above (same rules, two copies).
             const lanes = (files) => {
               const out = new Set();
               for (const f of files) {

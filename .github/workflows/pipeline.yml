@@ -130,7 +130,9 @@ jobs:
               const main = (await github.rest.repos.getBranch({ owner, repo, branch: 'main' })).data.commit.sha.slice(0, 7);
               if (comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(`<!-- pipeline:merge main=${main} `)))
                 return none(`a merge run for main ${main} exists`);
-              const golden = files.some((f) => /^(tests\/golden|tests\/e2-migtest)/.test(f.filename) || /mig1/.test(f.patch || ''));
+              // Golden or the mig1 pin on either side (the PR, or main since the PR's base) may need a re-record: Opus.
+              const mainFiles = (await github.rest.repos.compareCommitsWithBasehead({ owner, repo, basehead: `${pr.base.sha}...main` })).data.files || [];
+              const golden = [...files, ...mainFiles].some((f) => /^(tests\/golden|tests\/e2-migtest)/.test(f.filename) || /mig1/.test(f.patch || ''));
               const opus = risky || golden;
               core.setOutput('model', opus ? 'claude-opus-5-5' : 'claude-sonnet-5-5');
               core.setOutput('note', `<!-- pipeline:merge main=${main} -->\nPipeline: bringing main (${main}) into this branch (${opus ? 'Opus' : 'Sonnet'}), because it conflicts with main or shares a serial file with the last merge.`);

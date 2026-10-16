@@ -4,8 +4,8 @@ name: Restart
 # usage cap, a crash in the action) used to sit dead until the hourly CEO planner noticed it. This re-runs the failed
 # or cancelled jobs of a Claude, Pipeline or Kickoff run once, at once, with no model:
 #   - Pipeline fix/review: the re-run re-checks the head first. If the dead run had already pushed, the new head's CI
-#     drives the next step instead (and the re-run skips); otherwise it starts again on the branch as it stands. A fix
-#     re-run posts its own fix-round marker, so it counts toward the 3-round limit.
+#     drives the next step instead (and the re-run skips); otherwise it starts again on the branch as it stands. A re-run
+#     reuses the fix-round marker of attempt 1, so a dead run costs no extra round.
 #   - Kickoff build: the build prompt continues an existing claude/issue-N-<run id> branch (the id is the same on a
 #     re-run) instead of starting over.
 #   - Claude (@claude/@sonnet): claude-code-action runs the same comment again.
