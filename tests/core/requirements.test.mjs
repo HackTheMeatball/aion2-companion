@@ -157,4 +157,16 @@ export default (test, M) => {
     assert.deepEqual(new Set(M.rotKeys(c, s2.lv).e), new Set([s1.name, s2.name]));
     assert.ok(!all(M.rotKeys(c, s1.lv - 1)).includes(s1.name));
   });
+  test('gatesPass: one evaluator per character and level inside a pass, a fresh one outside it', () => {
+    const c = M.char(S({ level: 20 }));
+    assert.notEqual(M.gatesOf(c), M.gatesOf(c), 'outside a pass every call evaluates');
+    const r0 = M.gatesRuns();
+    const [a, b, lv, other, nested] = M.gatesPass(() => [M.gatesOf(c), M.gatesOf(c), M.gatesOf(c, 30), M.gatesOf({ ...c }), M.gatesPass(() => M.gatesOf(c))]);
+    assert.equal(a, b); assert.equal(nested, a, 'a nested pass shares the outer one');
+    assert.notEqual(lv, a, 'another level gets its own');
+    assert.notEqual(other, a, 'another character object gets its own');
+    assert.equal(M.gatesRuns() - r0, 3);
+    assert.notEqual(M.gatesOf(c), a, 'the cache ends with the pass');
+    assert.throws(() => M.gatesPass(() => { throw new Error('x'); })); assert.notEqual(M.gatesOf(c), M.gatesOf(c), 'and ends on a throw too');
+  });
 };

@@ -4,6 +4,8 @@
    (or `node tests/run.mjs --only perf` after `npm run build`). Same states the checks used before they moved here:
      e1       Lv 30 "Dying Light", Advanced, clean save, at 1500 / 1100 / 390 px (median = 6th of 10 sorted)
      regress  Lv 25-45 (--quick: 8 levels) x clean / messy, Advanced, 1500 px (median = mean of 5th and 6th of 10)
+   Warm-up: 3 untimed update() calls before the 10 timed ones. The blocking guard for update()'s cost is a count, not a
+   time: regress checks one update() builds at most a few gate evaluators (gatesRuns), on any machine.
    Writes tests/out/perf/results.json. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const CFG = require('./config');
@@ -14,7 +16,8 @@ const LEVELS = QUICK ? [25, 27, 30, 32, 37, 40, 44, 45] : Array.from({ length: 2
 fs.mkdirSync(OUT, { recursive: true });
 let fail = 0; const results = [];
 const ok = (name, ms) => { const pass = ms < LIMIT; results.push({ name, ms: +ms.toFixed(1), pass }); console.log((pass ? 'ok   ' : 'FAIL ') + name + '  · ' + ms.toFixed(1) + ' ms'); if (!pass) fail++; };
-const times = p => p.evaluate(() => { const t = []; for (let i = 0; i < 10; i++) { const a = performance.now(); update(); t.push(performance.now() - a); } return t.sort((a, b) => a - b); });
+/* 3 untimed warm-up calls first: the first update() after a reload pays for JIT and cold caches, not for the render */
+const times = p => p.evaluate(() => { for (let i = 0; i < 3; i++) update(); const t = []; for (let i = 0; i < 10; i++) { const a = performance.now(); update(); t.push(performance.now() - a); } return t.sort((a, b) => a - b); });
 (async () => {
   const b = await chromium.launch(); const errs = [];
   { /* e1 */

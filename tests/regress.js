@@ -15,6 +15,7 @@ const results = []; let hardFail = 0, softFail = 0;
 const rec = (ctx, check, pass, detail, soft) => { results.push({ ...ctx, check, pass: !!pass, ...(soft ? { soft: true } : {}), ...(detail !== undefined && !pass ? { detail } : (detail !== undefined && soft === 'info' ? { detail } : {})) }); if (!pass) soft ? softFail++ : hardFail++; };
 
 const LEVELS = QUICK ? [25, 27, 30, 32, 37, 40, 44, 45] : Array.from({ length: 21 }, (_, i) => 25 + i);
+const MAX_EVALS = 3; /* evaluators per update(): 1 today (its own level); headroom for a look at another level */
 const MODES = ['advanced', 'basic'], WIDTHS = [1500, 1100, 390], FIXTURES = ['clean', 'messy'];
 
 /* ---------- fixtures (built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS): tests/support/regress-fixture.js ---------- */
@@ -123,6 +124,10 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
       results.push({ ...c, check: 'info: Next up', pass: true, soft: 'info', detail: r.cards.slice(0, 5).map(x => x.title + (x.later ? ' [Later]' : '') + ' | ' + x.sub.slice(0, 90)) });
       /* Turned in always changes state: width 1500 only. (The update() < 15 ms timing check is in tests/perf.js, non-blocking.) */
       if (width === 1500) {
+        /* update()'s cost, machine-independent: one render shares one evaluator per character and level (gatesPass,
+           src/core/requirements.js). Without it every gatesOf built a fresh one, ~500 per update(), most of the 0.3 E4 slowdown. */
+        const runs = await p.evaluate(() => { const a = gatesRuns(); update(); return gatesRuns() - a; });
+        rec(c, `update() builds at most ${MAX_EVALS} gate evaluators`, runs <= MAX_EVALS, { runs });
         const before = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));
         const has = await p.evaluate(() => { const b = [...document.querySelectorAll('#nowStar [data-now="story"]')].pop(); if (!b) return false; b.click(); return true; });
         if (has) { await p.waitForTimeout(700); const after = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));

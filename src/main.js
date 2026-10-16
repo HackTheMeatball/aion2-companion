@@ -19,7 +19,7 @@ import { importBackup, markExport } from "./core/backup.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
-  setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv, chainsOn, rqReqOf, stepChipOf, storyLineOf } from "./core/requirements.js";
+  setGateChanges, gatesPass, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv, chainsOn, rqReqOf, stepChipOf, storyLineOf } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 import { ascensionOf } from "./core/ascension.js";
 
@@ -762,7 +762,9 @@ function dedupeNow() {
     });
   });
 }
-function update() {
+/* One gatesPass: every gatesOf for this character during the render shares one evaluator (src/core/requirements.js). */
+function update() { gatesPass(updatePass); }
+function updatePass() {
   const lv = char(state).level;
   let total = 0, done = 0;
   /* The milestone you're working toward: its main tasks aren't done (regional quests alone don't hold it). */

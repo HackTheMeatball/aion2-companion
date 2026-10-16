@@ -144,8 +144,25 @@ const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANG
 const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
   apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
 /* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
-   page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`. */
-export const gatesOf = (c, lv = c.level) => evaluate(lv === c.level ? c : { ...c, level: lv }, evOpts());
+   page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`.
+   Inside gatesPass(fn) the same character object, level and options give the same evaluator: update() asks ~500
+   times per render, and a fresh one each time was 60% of its cost. The character must not change while fn runs
+   (update() only reads it; every write is in a handler that calls update() afterwards). */
+let PASS = null, RUNS = 0;
+/* how many evaluators gatesOf has built (tests/e1test.js: one update() builds only a few) */
+export const gatesRuns = () => RUNS;
+export function gatesPass(fn) {
+  if (PASS) return fn();
+  PASS = { opts: evOpts(), chars: new WeakMap() };
+  try { return fn(); } finally { PASS = null; }
+}
+export const gatesOf = (c, lv = c.level) => {
+  const o = evOpts(), run = () => (RUNS++, evaluate)(lv === c.level ? c : { ...c, level: lv }, o);
+  if (!PASS || PASS.opts !== o) return run();
+  let m = PASS.chars.get(c); if (!m) PASS.chars.set(c, m = new Map());
+  let ev = m.get(lv); if (!ev) m.set(lv, ev = run());
+  return ev;
+};
 /* Done: ticked, or derived (from the story, a wrapper quest, a follow-up). A key with no gate node: its tick. */
 export const doneOf = (c, k, ev = gatesOf(c)) => { const r = ev.byKey(k); return r ? r.done !== false : !!c.checks[k]; };
 /* Done by derivation only (not ticked): the row shows a ticked, disabled box ("done in the story"); its stored tick,
