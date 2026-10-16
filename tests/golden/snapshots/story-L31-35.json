@@ -258,7 +258,6 @@
   "story/L31-q53-before-A": {
     "in": "0302dd8fe267",
     "nu": [
-      {"t":"Regional quests","s":"2 to pick up · 1 near your story step · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise [Lv 32] (near)","new Nine Wonders of Altgard: 2nd Leg [Lv 32]"]},
       {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 31. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 5 open"},
       {"t":"Buy Insignia Explosion 7 → 8","s":"Opens at Lv 32 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -301,7 +300,7 @@
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 1 level to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 4 levels to go"],
       "track": ["Stigma slot 3 next · 1 to go Lv 32"],
       "ring": "49%",
-      "prog": ["Quests 2 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+      "prog": ["Quests 19/58","Dungeons 43/60","Strongholds 5 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -525,7 +524,7 @@
       {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"}
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -536,7 +535,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -562,11 +561,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -734,7 +733,7 @@
       {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear Dark Root Cave","s":"Dranactus (near your story step) · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 8 open"}
+      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -745,7 +744,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -771,11 +770,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -943,7 +942,7 @@
       {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"}
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -954,7 +953,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -980,11 +979,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -1152,7 +1151,7 @@
       {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear Dark Root Cave","s":"Dranactus (near your story step) · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 8 open"}
+      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -1163,7 +1162,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -1189,11 +1188,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -1225,7 +1224,7 @@
     "in": "73538c3cd0db",
     "nu": [
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
-      {"t":"Regional quests","s":"3 to pick up · 1 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise (near)","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["new Pain Unending","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 5 open"},
       {"t":"Stigma slot 4","s":"Lv 37 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
@@ -1266,7 +1265,7 @@
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
       "ring": "49%",
-      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+      "prog": ["Quests 1 19/58","Dungeons 43/60","Strongholds 5 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -1289,7 +1288,7 @@
     "in": "9fdb1420da9d",
     "nu": [
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
-      {"t":"Regional quests","s":"3 to pick up · 1 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise (near)","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
+      {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202040","x":["new Pain Unending","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 5 open"}
     ],
@@ -1329,7 +1328,7 @@
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
       "ring": "49%",
-      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+      "prog": ["Quests 1 19/58","Dungeons 43/60","Strongholds 5 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -1358,10 +1357,10 @@
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Last of the Destruction Archons","s":"0/5 objectives · then A Daeva Dreaming Anew","c":"primary \"Turned in\" story","o":["Prepare to infiltrate the underkeep go to the entrance of the underkeep (Kibelisk: Dranactus Shore)","Rescue a Destruction Archon go into the underkeep","Find out the current situation of Briskwind Shelter talk to Ulgorn talk to Menrik Kibelisk: Briskwind Shelter","+2 more after these"]},
-      {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+15 more"]},
+      {"t":"Regional quests","s":"16 to pick up · 4 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+14 more","+2 waiting on the story Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game"]},
       {"t":"Clear Dark Root Cave","s":"Dranactus (near your story step) · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 8 open"}
+      {"t":"Run Latrima Outpost","s":"Dranactus (near your story step) · Kibelisk: Battlescar Mound Clifftop · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Battlescar Mound Clifftop is 160 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -1372,7 +1371,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -1398,11 +1397,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -1573,7 +1572,7 @@
       {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+15 more"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 8 open"}
+      {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 7 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -1584,7 +1583,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -1610,11 +1609,11 @@
       "hint": "milestone now: Lv 32",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
-      "ring": "0%",
-      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 8 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 16 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 7 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48 [locked]","  Legion Base Ruins Basfelt Ruins · Lv 33–48 [locked]","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -1709,7 +1708,7 @@
   "story/L32-q56-before-A": {
     "in": "6c9413956a14",
     "nu": [
-      {"t":"Regional quests","s":"4 to pick up · 1 near your story step · 0/4 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg","new Finders Keepers [Lv 33] (near)"]},
+      {"t":"Regional quests","s":"3 to pick up · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202020","x":["new Hugo Mercenaries: An Old Promise","new Pain Unending","new Nine Wonders of Altgard: 2nd Leg"]},
       {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 32. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300) / daily dungeon (Lv 30+)","c":""},
       {"t":"Equip Swift Contract","s":"Stigma slot 3 is open · needs 1 shard (+1 at Lv 33)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -1751,7 +1750,7 @@
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 3 levels to go","Lv 37 Stigma slot 4 5 levels to go"],
       "track": ["Stigma slot 3 now Lv 32"],
       "ring": "49%",
-      "prog": ["Quests 4 19/58","Dungeons 43/60","Strongholds 5 3/15"]
+      "prog": ["Quests 3 19/58","Dungeons 43/60","Strongholds 5 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -1974,7 +1973,7 @@
       {"t":"Regional quests","s":"17 to pick up · 5 follow-ups · 1 near your story step · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+16 more","+1 waiting on the story Finders Keepers In my game"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound (near your story step) · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -1985,7 +1984,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -2011,11 +2010,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
       "track": ["Fire Temple next · 2 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 17 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 17 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -2048,7 +2047,7 @@
     "in": "64670084afcb",
     "nu": [
       {"t":"Story: Scripture in the Ruins","s":"0/3 objectives · then Blood Monument","c":"primary \"Turned in\" story","o":["Investigate Reuben's Hideout go to Reuben's Hideout (Kibelisk: Graverobber Campsite)","Find the loot stolen by marauders defeat Marauder Warrior ×5 defeat Marauder Ranger ×5 interact with Loot Chest Kibelisk: Graverobber Campsite","Turn in Ulgorn, Graverobber Campsite"]},
-      {"t":"Regional quests","s":"2 to pick up · 2 near your story step · 3/5 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum (near)","new Finders Keepers (near)"]},
+      {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 3/4 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum (near)","+1 waiting on the story Finders Keepers In my game"]},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"},
       {"t":"Buy Insignia Explosion 8 → 9","s":"Opens at Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 9 → 10","s":"Opens at Lv 35 · 2 levels away","c":"tag \"Later\"","f":"later"},
@@ -2090,7 +2089,7 @@
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
       "track": ["Fire Temple next · 2 to go Lv 35"],
       "ring": "51%",
-      "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+      "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9 · 2 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -2113,7 +2112,7 @@
     "in": "edbfb5ff7aa9",
     "nu": [
       {"t":"Story: Scripture in the Ruins","s":"0/3 objectives · then Blood Monument","c":"primary \"Turned in\" story","o":["Investigate Reuben's Hideout go to Reuben's Hideout (Kibelisk: Graverobber Campsite)","Find the loot stolen by marauders defeat Marauder Warrior ×5 defeat Marauder Ranger ×5 interact with Loot Chest Kibelisk: Graverobber Campsite","Turn in Ulgorn, Graverobber Campsite"]},
-      {"t":"Regional quests","s":"2 to pick up · 2 near your story step · 3/5 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum (near)","new Finders Keepers (near)"]},
+      {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 3/4 turned in","c":"go \"Show\" rqgo:rq:2202029","x":["new Traveling Merchant's Conundrum (near)","+1 waiting on the story Finders Keepers In my game"]},
       {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 7 open"}
     ],
     "ms": [
@@ -2152,7 +2151,7 @@
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
       "track": ["Fire Temple next · 2 to go Lv 35"],
       "ring": "51%",
-      "prog": ["Quests 2 22/58","Dungeons 43/60","Strongholds 7 3/15"]
+      "prog": ["Quests 1 22/58","Dungeons 43/60","Strongholds 7 3/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","Lv 15–19 · 13/15 · 2 open","Lv 20–24 · 7/8 · 1 open","Lv 25–29 · 5/6 · 1 open","* Lv 30–34 · 7/9 · 2 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 3/15"],
@@ -2181,10 +2180,10 @@
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Story: Scripture in the Ruins","s":"0/3 objectives · then Blood Monument","c":"primary \"Turned in\" story","o":["Investigate Reuben's Hideout go to Reuben's Hideout (Kibelisk: Graverobber Campsite)","Find the loot stolen by marauders defeat Marauder Warrior ×5 defeat Marauder Ranger ×5 interact with Loot Chest Kibelisk: Graverobber Campsite","Turn in Ulgorn, Graverobber Campsite"]},
-      {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
+      {"t":"Regional quests","s":"17 to pick up · 5 follow-ups · 1 near your story step · 0/23 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+16 more","+1 waiting on the story Finders Keepers In my game"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -2195,7 +2194,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -2221,11 +2220,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
       "track": ["Fire Temple next · 2 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 17 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -2394,7 +2393,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 34)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -2405,7 +2404,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -2431,11 +2430,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 2 levels to go","Lv 37 Stigma slot 4 4 levels to go"],
       "track": ["Fire Temple next · 2 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -2797,7 +2796,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -2808,7 +2807,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -2834,11 +2833,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 1 level to go","Lv 37 Stigma slot 4 3 levels to go"],
       "track": ["Fire Temple next · 1 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -3005,7 +3004,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -3016,7 +3015,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -3042,11 +3041,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 1 level to go","Lv 37 Stigma slot 4 3 levels to go"],
       "track": ["Fire Temple next · 1 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -3213,7 +3212,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 43 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 35)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -3224,7 +3223,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -3250,11 +3249,11 @@
       "hint": "next milestone at Lv 35",
       "ahead": ["Ahead verified","Lv 35 Fire Temple Expedition (Exploration) · item level 500 1 level to go","Lv 37 Stigma slot 4 3 levels to go"],
       "track": ["Fire Temple next · 1 to go Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 10 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 43 0/60","Strongholds 9 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","* Lv 30–34 · 0/9 · 9 open","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Flauke Legion Outpost Basfelt Ruins · Lv 33–48","  Legion Base Ruins Basfelt Ruins · Lv 33–48","Sealed Dungeons 0/7","2 Crystals · 2 Wisdom Stones each","▾ Basfelt Ruins 30 traces 0/4","  Dratona Assembly Area","  Insectoid Tunnel","  Library of Patience","  Library of Wisdom","▾ Battlescar Mound 18 traces 0/3","  All-Curing Cave","  Final Haven","  Rift Fissure"]
     },
     "store": {
@@ -3549,7 +3548,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 11 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -3560,7 +3559,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -3586,11 +3585,11 @@
       "hint": "milestone now: Lv 35",
       "ahead": ["Ahead verified","Lv 37 Stigma slot 4 2 levels to go","Lv 40 Triniel board Fourth Daevanion board 5 levels to go"],
       "track": ["Fire Temple now Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 53 0/60","Strongholds 10 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","Lv 30–34 · 0/9 · 9 open","* Lv 35–39 · 0/12 · 11 open","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","Lv 30–34 · 0/9 · 9 open","* Lv 35–39 · 0/12 · 11 open","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45 [locked]","Sealed Dungeons 0/10","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/1","  Place of Rest","▾ Eastern Gribade Highland 12 traces 0/4","  Destruction Archons Armory","  Fungie Habitat","  Odylium Marauder Den","  Rock Cave","▾ Idun's Lake 11 traces 0/1","  Pirate's Treasure Storage","▾ Western Gribade Highland 14 traces 0/4","  Empty Cave","  Lonely Rock Chasm","  Scale Altar","  Shulak Cave"]
     },
     "store": {
@@ -3757,7 +3756,7 @@
       {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more"]},
       {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
       {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 36)","c":"tag \"Needs 1 shard\""},
-      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 11 open"}
+      {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 10 open"}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -3768,7 +3767,7 @@
       "g16 | Missed | 2/13 | overdue | open",
       "g19 | Missed | 0/11 | overdue | open",
       "g20 | Missed | 0/3 | overdue | open",
-      "g22 | Missed | 1/15 | overdue | open",
+      "g22 | Missed | 2/16 | overdue | open",
       "g25 | Missed | 0/8 | overdue | open",
       "g27 | Missed | 0/7 | overdue | open",
       "g28 | Missed | 0/1 | overdue | open",
@@ -3794,11 +3793,11 @@
       "hint": "milestone now: Lv 35",
       "ahead": ["Ahead verified","Lv 37 Stigma slot 4 2 levels to go","Lv 40 Triniel board Fourth Daevanion board 5 levels to go"],
       "track": ["Fire Temple now Lv 35"],
-      "ring": "0%",
-      "prog": ["Quests 18 0/58","Dungeons 53 0/60","Strongholds 11 0/15"]
+      "ring": "1%",
+      "prog": ["Quests 18 0/58","Dungeons 53 0/60","Strongholds 10 1/15"]
     },
     "reg": {
-      "opts": ["Lv 10–14 · 0/15 · 15 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","Lv 30–34 · 0/9 · 9 open","* Lv 35–39 · 0/12 · 11 open","Lv 40–44 (later) · 0/10","All strongholds · 0/15"],
+      "opts": ["Lv 10–14 · 1/15 · 14 open","Lv 15–19 · 0/15 · 15 open","Lv 20–24 · 0/8 · 8 open","Lv 25–29 · 0/6 · 6 open","Lv 30–34 · 0/9 · 9 open","* Lv 35–39 · 0/12 · 11 open","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
       "list": ["Strongholds 0/2","2 Noble Belt Enhance Scrolls each","  Granach's Hideout Eastern Gribade Highland · any level","  Detlef Thieves Camp Western Gribade Highland · Lv 37–45 [locked]","Sealed Dungeons 0/10","2 Crystals · 2 Wisdom Stones each","▾ Black Claw Village 35 traces 0/1","  Place of Rest","▾ Eastern Gribade Highland 12 traces 0/4","  Destruction Archons Armory","  Fungie Habitat","  Odylium Marauder Den","  Rock Cave","▾ Idun's Lake 11 traces 0/1","  Pirate's Treasure Storage","▾ Western Gribade Highland 14 traces 0/4","  Empty Cave","  Lonely Rock Chasm","  Scale Altar","  Shulak Cave"]
     },
     "store": {
