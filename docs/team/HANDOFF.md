@@ -31,6 +31,12 @@ fix in E4); optional Daevanion blv / stigma g.lv getter for E4; design §15 has 
 (invariant 3 is a visible PENDING test until it exists); the invariant suite prints a 30 s warning in CI (~32 s in the
 shard), harmless.
 
+**Routing rule (owner, 2026-10-15, after #69 went to Sonnet by mistake):** `@claude` (Opus) for anything touching
+`src/core/`, saves/sync/migrations, a gate's `requires`/`completesWith`, golden re-records or the mig1 pin, or a change
+over about 300 lines. `@sonnet` only for reviews, docs, research and small data fixes. Before posting a trigger, the CEO
+checks the issue against this list. The Sonnet job's prompt refuses such work and replies "Needs @claude (Opus)"
+(`.github/workflows/claude.yml`). When in doubt, use Opus.
+
 **How work runs:** `@claude` (Opus) or `@sonnet` in an issue/PR comment starts a Claude Code run on GitHub
 (`.github/workflows/claude.yml`, owner-only). Reviews: ask for "VERDICT: APPROVE / REQUEST CHANGES", tell it not to run
 journey or the full npm test, verify findings yourself; reviewers don't run the browser suites, so never trust APPROVE

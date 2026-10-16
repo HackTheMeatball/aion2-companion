@@ -104,4 +104,5 @@ jobs:
           claude_args: |
             --model claude-sonnet-5-5
             --max-turns 400
+            --append-system-prompt "ROUTING GUARD (owner rule, 2026-10-15): this is the Sonnet run, for reviews, docs, research and small data fixes only. Before editing anything, check whether the task needs any of these: src/core/**; save, sync, migration or storage code in src/main.js; the requires or completesWith fields of anything under data/; tests/golden snapshots (--record) or the mig1 pin; or more than about 300 changed lines. If it needs any of them, do not edit. Post one comment that starts with 'Needs @claude (Opus):' and gives the reason in one line, then stop. Reviewing such changes, without editing them, is fine."
             --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
