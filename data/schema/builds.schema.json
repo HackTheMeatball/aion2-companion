@@ -298,6 +298,14 @@
                   "$ref": "common.schema.json#/$defs/httpsUrl"
                 },
                 "minItems": 2
+              },
+              "owner": {
+                "description": "Owner screens that witness the choice in game (its text and unlock level). They back the choice, not the slot order: the '2+ sources' label still rests on the slot witnesses in 'sources'.",
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/ownerRef"
+                },
+                "minItems": 1
               }
             },
             "additionalProperties": false

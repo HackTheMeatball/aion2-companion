@@ -20,7 +20,7 @@
             "story": "sq:2102345",
             "is": "reached",
             "basis": "sourced",
-            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early; whether it opens earlier is owner check 6 (prereq-gates §5).",
+            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early. Owner 2026-10-16: no separate in-game check; the gate stands on its sources (prereq-gates §5, §11 check 6).",
             "sources": [
               {
                 "url": "https://metabot.gg/en/aion-2/quests/a-daeva-dreaming-anew",
@@ -84,13 +84,16 @@
       "lv": 22,
       "unlocksAt": 10,
       "guideStep": "g22:0",
+      "claims": [
+        "C39"
+      ],
       "requires": {
         "all": [
           {
             "story": "sq:2102185",
             "is": "reached",
             "basis": "sourced",
-            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early; whether it opens earlier is owner check 6 (prereq-gates §5).",
+            "note": "Upper bound from the wrapper quest (Metabot steps: its objective is this Ascension quest), so the gate is never early. Owner 2026-10-16: no separate in-game check; the gate stands on its sources (prereq-gates §5, §11 check 6).",
             "sources": [
               {
                 "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
