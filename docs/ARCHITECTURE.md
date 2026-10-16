@@ -123,9 +123,11 @@ called exactly where the page wrote the save before (the `core` suite pins the w
 5. `eputSync1` (E4): equipped slots get their "Put X on E" step ticked.
 6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more (0.3 E10: a
    save that ended at "Forgotten Commander" moves on to "Daeva Trapped in a Nightmare").
-7. `g45Split1` (0.3 E10): a true `g45:0` tick (retired: it meant "Witnesses and Oath") is copied once to `g45:witness`
-   ("Witnesses" only, DATA-FORMAT-V2 N6), unless that key already has a value; `g45:0` stays. The flag is set only when
-   there is a tick to copy, so no other save is written.
+7. `g45Split1` (0.3 E10): a true `g45:0` tick (retired: it meant "Witnesses and Oath") is copied to `g45:witness`
+   ("Witnesses" only, DATA-FORMAT-V2 N6), unless that key already has a value (unticking stores `false`, so an untick is
+   never overridden); `g45:0` stays. The copy is checked on every load, not only before the flag: a `g45:0` tick can
+   arrive after the flag is set (an older build on another device, or a rollback). The flag is a marker, set only when
+   there is a tick, so no other save is written.
 8. `stampV1` (0.2 step 5c): `schemaVersion: 1` and `mt`, every value the save holds stamped with time 0 (or the save's
    `savedAt`: an imported export, N1). Writes nothing itself; the stamps go out with the next write. On later loads it
    re-stamps, with `now`, whatever a build without change times changed (rollback re-stamp).

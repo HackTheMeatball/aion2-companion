@@ -114,5 +114,12 @@ export default (test, M) => {
       const r = run(M, { ...FLAGS, checks, level: 45, quest: 'Forgotten Commander' });
       assert.equal('g45:witness' in C(r.state).checks, false); assert.equal(r.state.g45Split1, undefined); assert.deepEqual(r.writes, []);
     }
+    /* late tick: the flag is already set (synced, or an earlier tick), then an older build ticks g45:0. It is still copied */
+    const late = run(M, { ...FLAGS, g45Split1: true, checks: { 'g45:0': true }, level: 45, quest: 'Forgotten Commander' });
+    assert.equal(C(late.state).checks['g45:witness'], true); assert.equal(C(late.state).checks['g45:0'], true); assert.equal(late.writes.length, 1);
+    assert.deepEqual(run(M, late.writes[0]).writes, [], 'late copy idempotent');
+    /* ...but with the flag set, a deliberate untick (false) is never overridden and nothing is written */
+    const lateOff = run(M, { ...FLAGS, g45Split1: true, checks: { 'g45:0': true, 'g45:witness': false }, level: 45, quest: 'Forgotten Commander' });
+    assert.equal(C(lateOff.state).checks['g45:witness'], false); assert.deepEqual(lateOff.writes, []);
   });
 };

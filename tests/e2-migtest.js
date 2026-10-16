@@ -144,6 +144,14 @@ const metrics = () => {
   ok('E10: rollback to v287 keeps g45:0 ticked and its Lv 45 count', Gback.saved.checks['g45:0'] === true && Gback.m.gatesMain.g45 === Gpre.m.gatesMain.g45, [Gpre.m.gatesMain.g45, Gback.m.gatesMain.g45]);
   const N10 = await run(E2, fix287);
   ok('E10: a save without g45:0 gains neither g45:witness nor the flag', !('g45:witness' in N10.saved.checks) && N10.saved.g45Split1 === undefined, [N10.saved.checks['g45:witness'], N10.saved.g45Split1]);
+  /* Late tick: the flag is already set (ORed in by sync), then an older build ticks g45:0 and syncs it here; g45:witness
+     is absent. The current page still copies it; a deliberate untick (false) is left alone. */
+  const L10 = await run(E2, JSON.stringify({ ...S10, g45Split1: true }));
+  ok('E10 late tick: g45:0 ticked after the flag is set is still copied; g45:0 kept', !L10.errs.length && L10.saved.checks['g45:witness'] === true && L10.saved.checks['g45:0'] === true && L10.saved.g45Split1 === true,
+    [L10.errs, L10.saved.checks['g45:witness'], L10.saved.checks['g45:0']]);
+  same('E10 late tick: reload idempotent (saved state)', L10.saved, L10.saved2);
+  const U10 = await run(E2, JSON.stringify({ ...S10, g45Split1: true, checks: { ...S10.checks, 'g45:witness': false } }));
+  ok('E10 late tick: an unticked g45:witness (false) is never overridden', !U10.errs.length && U10.saved.checks['g45:witness'] === false, [U10.errs, U10.saved.checks['g45:witness']]);
   console.log(fail ?`E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();
