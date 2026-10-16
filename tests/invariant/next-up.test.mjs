@@ -156,6 +156,39 @@ export default (test, M, X) => {
     assert.deepEqual([...diffs].slice(0, 12).map(([k, x]) => `${k} · ${x.n}×, e.g. ${x.ex}`), [], `${diffs.size} differences`);
   });
 
+  /* E6 (design §4, §12 row 5): the blocker text the cards show (src/core/blockers.js, on the page's own evaluator) never names
+     something already done, and its "N quests ahead" is the oracle's distance; every milestone's "Reach / Turn in" line
+     the same. Judged by the oracle as the app runs (OA, derived on, follow-ups), on the states compared with derivation on. */
+  test('5. blocker text (E6) never names a done node, and its distance is the oracle\'s (every node, every milestone line)', () => {
+    const bad = new Map(), note5 = (k, id, d) => { const x = bad.get(k) || { n: 0, ex: `${id} (${d})` }; x.n++; bad.set(k, x); };
+    const storyNode = new Map(O.chain.map(([sid, n]) => [n, sid])), list = cmpList.filter(x => withDerived(x.id));
+    let texts = 0, lines = 0;
+    for (const { id, c } of list) {
+      const ev = M.gatesOf(c), o = OA.at(c, APP);
+      for (const n of O.ids) {
+        const e = ev.node(n), ch = M.blockerChain(e, ev); if (!ch) continue;
+        texts++;
+        for (const x of ch.names) if (o.node(x).done) note5(`${n} names done ${x}`, id, ch.text);
+        const lf = ch.leaf;
+        if (lf && lf.kind === 'story') {
+          const ob = (function find(bs) { for (const b of bs) { if (b.kind === 'story' && b.quest === lf.quest) return b; if (b.kind === 'done') { const r = find(o.node(b.of).blockers); if (r) return r; } } return null; })(o.node(n).blockers);
+          if (!ob) note5(`${n} story leaf ${lf.quest} not an oracle blocker`, id, ch.text);
+          else if (ob.ahead !== lf.ahead) note5(`${n} ahead`, id, `oracle ${ob.ahead} / text ${ch.text}`);
+        }
+        if (lf && lf.kind === 'level' && lf.need <= c.level) note5(`${n} level text with the level met`, id, ch.text);
+      }
+      for (const g of M.GATES) {
+        const L = M.storyLineOf(c, g, ev); if (!L || L.ok) continue;
+        lines++;
+        const sid = storyNode.get(L.q), r = o.node(sid), pos = c.quest ? O.chain.findIndex(([, q]) => q === c.quest) : -1, i = O.chain.findIndex(([x]) => x === sid);
+        if (L.turnIn ? r.done : pos >= i) note5(`${g.id} line names "${L.q}" done`, id, L.chip);
+        if (pos >= 0 && L.ahead !== i - pos + (L.turnIn ? 1 : 0)) note5(`${g.id} line ahead`, id, `${L.ahead} vs ${i - pos}`);
+      }
+    }
+    assert.ok(X.only || (texts > 10000 && lines > 1000), `checked ${texts} texts, ${lines} lines`);
+    assert.deepEqual([...bad].slice(0, 12).map(([k, x]) => `${k} · ${x.n}×, e.g. ${x.ex}`), [], `${bad.size} differences (${texts} texts, ${lines} lines in ${list.length} states)`);
+  });
+
   /* the oracle can fail: three seeded evaluator bugs (a compiled gate changed behind the oracle's back) must each show up */
   test('5. the oracle catches seeded evaluator bugs (story "turnedIn" → "reached", level + 1, a dropped done atom)', () => {
     if (X.only) return;   /* --state: too few states to hit every seeded bug */
