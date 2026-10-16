@@ -5,13 +5,15 @@
    Usage: npm run build && node tests/support/e10-shots.mjs */
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { dirname, extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..'), OUT = join(ROOT, 'tests/out/e10-shots');
 const DIRS = { before: join(ROOT, 'tests/out/main-wt/dist'), after: join(ROOT, 'dist') };
-const KEY = 'aion2-assassin-route-v4', FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+const { writeSave } = createRequire(import.meta.url)('./save.js');
+const FLAGS ={ seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
 mkdirSync(OUT, { recursive: true });
 const serve = dir => new Promise(res => { const s = createServer((req, r) => { let f = join(dir, decodeURIComponent(new URL(req.url, 'http://x').pathname)); if (existsSync(f) && statSync(f).isDirectory()) f = join(f, 'index.html');
@@ -42,7 +44,7 @@ for (const c of CASES) for (const when of ['before', 'after']) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });
   const p = await ctx.newPage();
   await p.goto(servers[when].url + '/');
-  await p.evaluate(([k, s]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, { ...FLAGS, open: {}, hideCards: false, mode: 'advanced', ...(c[when] || c.save) }]);
+  await writeSave(p, { ...FLAGS, open: {}, hideCards: false, mode: 'advanced', ...(c[when] || c.save) }, { fresh: true });
   await p.reload(); await p.waitForTimeout(600);
   for (const [sel, suf, hasText] of c.rowKey ? [row(c.rowKey[when])] : c.shots) {
     const el = p.locator(sel, hasText ? { hasText } : {}).first();

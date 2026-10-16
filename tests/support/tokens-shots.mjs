@@ -17,7 +17,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..'), OUT = join(
 const WT = join(ROOT, 'tests/out/main-wt');
 const DIRS = { before: { site: join(WT, 'dist'), artifact: join(WT, 'dist-artifact') }, after: { site: join(ROOT, 'dist'), artifact: join(ROOT, 'dist-artifact') } };
 for (const w of Object.values(DIRS)) for (const d of Object.values(w)) if (!existsSync(join(d, 'index.html'))) { console.error('missing build: ' + d); process.exit(2); }
-const { buildFixture } = createRequire(import.meta.url)('./regress-fixture.js');
+const { writeFixture } = createRequire(import.meta.url)('./regress-fixture.js');
+const { writeSave } = createRequire(import.meta.url)('./save.js');
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp' };
 mkdirSync(OUT, { recursive: true });
 const serve = dir => new Promise(res => { const s = createServer((req, r) => { let f = join(dir, decodeURIComponent(new URL(req.url, 'http://x').pathname)); if (existsSync(f) && statSync(f).isDirectory()) f = join(f, 'index.html');
@@ -42,8 +43,8 @@ const shoot = async (c, when) => {
   const ctx = await b.newContext({ viewport: { width: c.width, height: c.width === 390 ? 844 : 900 }, colorScheme: c.scheme, reducedMotion: 'reduce', serviceWorkers: 'block' });
   const p = await ctx.newPage(), errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(servers[when + ':' + c.build].url + '/');
-  if (c.L) await p.evaluate(buildFixture, { L: c.L, mode: c.mode, fx: 'clean' });
-  else await p.evaluate(m => { localStorage.clear(); localStorage.setItem('aion2-assassin-route-v4', JSON.stringify({ mode: m })); }, c.mode);
+  if (c.L) await writeFixture(p, { L: c.L, mode: c.mode, fx: 'clean' });
+  else await writeSave(p, { mode: c.mode }, { fresh: true });
   await p.reload(); await p.waitForTimeout(500);
   if (c.extra === 'drawer') { await p.evaluate(() => document.querySelector('.sd-tab').click()); await p.waitForTimeout(400); }
   if (c.extra === 'open') { await p.evaluate(() => document.querySelectorAll('details').forEach(d => { d.open = true; })); await p.waitForTimeout(300); }

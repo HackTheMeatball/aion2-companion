@@ -42,7 +42,7 @@ Ids describe the recipe: `level/L32-q49-before-A` = Lv 32, story at `QUESTS[49]`
 | `build/` | 198 | at Lv 10–45: stigma slots empty / ready / all equipped, unspent skill points, Cube items + dungeon in progress, board crystals, regional quests in progress / snoozed, story objectives, view filters |
 | `random/` | the rest up to 2,000 | recipes from a seeded PRNG, anything combined (story anywhere, any tick rule) |
 | `special/` | 6 | no save, `{}`, a save from before the player seeds and the E4 sync (migrations run), story end, unknown quest name |
-| `fixture/` | 2 | `tests/fixtures/fixture-v285.json` and `fixture-user-v285.json` (v285 saves: the E1 migration runs) |
+| `fixture/` | 2 | the v285 saves `tests/fixtures/fixture-v285.json` and `fixture-user-v285.json` as the current build stores them after loading them (`fixture-v285.flat.json`, `fixture-user-v285.flat.json`, made by `tests/support/make-flat-fixtures.mjs`; 0.4 P3a). The page loads the flat fixture; `in` and `store` are recorded against the v285 save it was made from, so the snapshots match only if the flat fixture gives the same stored state |
 
 Tick rules: `before` = what a player who kept up has done (lower milestones, regional quests below the level whose
 story gate is reached, dungeons/strongholds below, skills 2 levels behind, earlier boards); `lvonly` = the same by level
@@ -57,7 +57,8 @@ summary reports it as "input: generated save changed".
 ## How a state is recorded
 
 Each worker page (one browser, `--jobs` contexts, recycled every 150 states) sets `localStorage` to exactly the
-state (`aion2-assassin-route-v4`; nothing else is written) and reloads. An init script takes the snapshot at
+state (under the save key, `SAVE_KEY` in `tests/support/save.js`, as `storedText()` writes it; nothing else is
+written) and reloads. An init script takes the snapshot at
 `DOMContentLoaded`, which is right after the app's synchronous start-up (`render(); update();`, migrations included):
 that is the "idle" point, with no sleeps. The clock is fixed (`2026-10-01T12:00Z`), fonts are blocked, the service
 worker is blocked.

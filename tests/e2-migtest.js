@@ -10,7 +10,9 @@
       is stamped with its time and sets savedAt, every other value is kept; reload is idempotent; the 5c save loads
       in pre-E2 with the same progress, an un-tick made there survives the trip back and is re-stamped there. */
 const { chromium } = require('playwright'); const fs = require('fs');
-const [,, PRE, E2, FIX] = process.argv; const KEY = 'aion2-assassin-route-v4';
+const [,, PRE, E2, FIX] = process.argv;
+/* the v4 key: this check carries v4-era saves between the v287 baseline and the current page (tests/support/save.js) */
+const { V4_KEY: KEY, writeRaw, readRaw } = require('./support/save');
 const metrics = () => {
   const out = { quests: {}, sd: {}, sh: {}, sp: [], dv: [], gatesMain: {}, gateTags: {} };
   GATES.forEach(g => { out.gatesMain[g.id] = mainCounts(g).join('/'); const d = document.getElementById(g.id); out.gateTags[g.id] = d.querySelector('.tag').textContent;
@@ -29,9 +31,9 @@ const metrics = () => {
   const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (detail !== undefined && !cond ? '\n   ' + JSON.stringify(detail).slice(0, 600) : '')); if (!cond) fail++; };
   const run = async (file, initial) => {
     const ctx = await b.newContext(); const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(file); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, initial]); await p.reload(); await p.waitForTimeout(450);
-    const m = await p.evaluate(metrics); const saved = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
-    await p.reload(); await p.waitForTimeout(350); const m2 = await p.evaluate(metrics); const saved2 = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    await p.goto(file); await writeRaw(p, initial, { key: KEY }); await p.reload(); await p.waitForTimeout(450);
+    const m = await p.evaluate(metrics); const saved = JSON.parse(await readRaw(p, { key: KEY }));
+    await p.reload(); await p.waitForTimeout(350); const m2 = await p.evaluate(metrics); const saved2 = JSON.parse(await readRaw(p, { key: KEY }));
     await ctx.close(); return { m, m2, saved, saved2, errs };
   };
   /* 1. realistic v287 state */
@@ -95,11 +97,11 @@ const metrics = () => {
   const run5c = async (file, initial, now, act) => {
     const ctx = await b.newContext(); await ctx.addInitScript(t => { Date.now = () => t; }, now);
     const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(file); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, initial]); await p.reload(); await p.waitForTimeout(450);
-    const loaded = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    await p.goto(file); await writeRaw(p, initial, { key: KEY }); await p.reload(); await p.waitForTimeout(450);
+    const loaded = JSON.parse(await readRaw(p, { key: KEY }));
     if (act) { await p.evaluate(act); await p.waitForTimeout(150); }
-    const m = await p.evaluate(metrics), saved = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
-    await p.reload(); await p.waitForTimeout(350); const m2 = await p.evaluate(metrics), saved2 = JSON.parse(await p.evaluate(k => localStorage.getItem(k), KEY));
+    const m = await p.evaluate(metrics), saved = JSON.parse(await readRaw(p, { key: KEY }));
+    await p.reload(); await p.waitForTimeout(350); const m2 = await p.evaluate(metrics), saved2 = JSON.parse(await readRaw(p, { key: KEY }));
     await ctx.close(); return { loaded, m, saved, m2, saved2, errs };
   };
   const untick = k => `(() => { state.checks[${JSON.stringify(k)}] = false; save(); update(); })()`;
