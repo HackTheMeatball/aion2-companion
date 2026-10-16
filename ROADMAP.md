@@ -75,6 +75,8 @@ and reviewed. Patches (0.X.Y) skip it.
   engine steps went live here).
 - **0.2.5** — backup line, 14-day backup reminder, iPhone home-screen tip.
 - **0.2.6** — phone layout fixes, Route rules card moved, one gate evaluation per update.
+- **0.3.0** — Next up correctness: one requirement check per card, completion derived from the story, blocker
+  chains, the story's last quest (Lv 45).
 
 ## Plan (redrawn 2026-10-16)
 
@@ -85,17 +87,13 @@ old "0.4 Smart Next up" as 0.5 here, an old "0.5 characters" as 0.4 (save shape)
 
 **Decided (owner, 2026-10-16, 4:30 PM ET):** the Engine split comes right after 0.3.0. Engine code carries no AION 2 or
 Assassin reference; all game data lives outside the engine, in packs. 0.3.0 ships first and nothing here competes with
-it (owner, 4:34 PM ET).
+it (owner, 4:34 PM ET); 0.3.0 went live 2026-10-16, 5:11 PM ET.
 
 **Risk, called out:** two classes per minor assumes a tester (the owner or another player) can do each class's in-game
 spot check. If only one class can be checked per minor, 0.7–0.9 become one class each and 1.0 moves out by three
 minors. Research packs for every class start early (below) so data is never the bottleneck.
 
-### 0.3.0 — Next up correctness (in flight)
-
-All engine steps (E1–E10) are merged; most went live in 0.2.4. 0.3.0 is the version bump and CHANGELOG. Unchanged.
-
-### 0.3.x — patches while 0.4 is planned
+### 0.3.x — patches while 0.4 is planned (0.3.0 released 2026-10-16)
 
 - Bug #105: `fitRail()` race at load (Basic rail width differs between loads).
 - Data corrections from issues; owner checks as they arrive (C41 Koro at Lv 45; the Home Screen storage check).
