@@ -14,7 +14,9 @@ A second game's Next up would need the engine edited.
 - The engine's `rankNext(state, { basic })` collects candidate cards from the engine's own producers (milestone steps,
   the story card, Later cards) and from the pack's `nextUpProducers` (P0), then applies today's order rules, the Basic
   filter and the 8-card cap. Same signature, same output.
-- The AION 2 producers live in `src/packs/aion2/nextup.js`.
+- The AION 2 producers live in `src/packs/aion2/nextup.js`. Each returns `{ phase, card, keep?, queue?, L? }` entries
+  (P0 §2, "Next up phases"); the card objects stay as they are today. The engine's story card takes the pack's
+  `story.levelGate`, `story.here` and `story.meanwhile`.
 
 ## Appetite
 

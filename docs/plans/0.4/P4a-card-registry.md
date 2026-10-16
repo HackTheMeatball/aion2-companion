@@ -16,7 +16,9 @@ the same file, which is why `main.js` is a serial lane.
   it calls the cards' functions with the element the shell gives it).
 - `render()` / `update()` call the registry for registered cards and the old list for the rest, in today's order.
 - **Two cards through it as the proof:** Sources and Confidence (`renderSources`, the `srcCard` / `confCard` markup)
-  move verbatim to `src/cards/sources.js` and register themselves.
+  move verbatim to `src/cards/sources.js` (code, exporting their specs; `main.js` registers them, P0 §4) and
+  `src/cards/sources.html` (markup), which `scripts/build.mjs` puts back in place of the shell's
+  `<!-- @card cards/sources.html -->` line (P0 §4; both builds, a missing file or leftover line fails the build).
 - **`tests/support/dom-snapshot.mjs`**: writes `document.body.outerHTML` (and the stored save) for a fixed list of
   states (fresh; Lv 13, 27, 30, 45; Basic and Advanced; 390 and 1500 px) to a folder, and compares two folders. P4b,
   P4c and P5a–d use it: their PRs paste "identical" for the states.
@@ -43,7 +45,8 @@ M (100–300 lines; the moved card code counts once).
 
 ## Files (owns)
 
-`src/core/cards.js` (new), `src/cards/sources.js` (new), `src/main.js`, `src/index.html`,
+`src/core/cards.js` (new), `src/cards/sources.js` and `src/cards/sources.html` (new), `scripts/build.mjs` (the
+`@card` include step), `src/main.js`, `src/index.html`,
 `tests/support/dom-snapshot.mjs` (new), `tests/core/cards.test.mjs` (new), docs/ARCHITECTURE.md §2.
 
 ## Lanes, model, order
