@@ -40,6 +40,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   |---|---|---|
   | `owner:2026-10-16-hugo-01` | Turned in Hugo Mercenaries: Past and Present (screenshot); Deep Shadow was not offered afterwards, so Past and Present alone does not open it | `rq:2202011` (prereq-gates §11 check 9) |
   | `owner:2026-10-16-hugo-02` | Owner, by hand on th.gl + in-game observation (screenshot, 03:07 ET): Deep Shadow needs Canyon's Secret + Past and Present and unlocks An Old Promise; both edges owner-confirmed. th.gl is not cited | `rq:2202011` (check 9 answered) |
+  | `owner:2026-10-16-quickslice-01` | Quick Slice tooltip (screenshot, 03:05 ET), Lv 7 (+1), slot 1 open, two slots locked: +20% MP restored; Absorbs 0.7% HP; +50% Multi-Hit on hit; Lv 12: −1s [Insignia Explosion] cooldown on hit; Lv 16: "Ignores Block and Evasion and lands a…" (cut off, not completed) | `specialtyEvidence` `spec:assassin:quick-slice:4`, claim C40 |
   | `owner:2026-10-16-zikel-01` | Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based), i.e. `r12c11` and `r6c7` in Metabot's 15×15 frame | `dv:z:db`, `dv:z:db2` |
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.

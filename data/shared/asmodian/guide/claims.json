@@ -1059,6 +1059,42 @@
         "asc:hears-the-voice"
       ],
       "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C40",
+      "claim": "Quick Slice specialty slot 2: \"-1s Insignia Explosion cooldown on hit\" (choice 4, unlocks at skill Lv 12).",
+      "verdict": "verified",
+      "sources": [
+        {
+          "url": "https://aion2-meta.com/guides/assassin/",
+          "note": "Slot witness (PvE column, slot 2)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "note": "Slot witness (Leveling / Dungeon panels, slot 2)."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/skills/quick-slice",
+          "note": "The choice list (choice 4 at skill Lv 12)."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-16-quickslice-01",
+            "checkedAt": "2026-10-16",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Quick Slice tooltip, Lv 7 (+1): +20% MP restored; Absorbs 0.7% HP; +50% Multi-Hit on hit; Lv 12: -1s [Insignia Explosion] cooldown on hit; Lv 16: text cut off"
+          }
+        }
+      ],
+      "action": "keep",
+      "note": "The owner's in-game tooltip (2026-10-16, 03:05 ET) shows the slot-2 pick is a real Quick Slice choice that unlocks at skill Lv 12. The slot order rests on the two slot witnesses (specialtyEvidence). The Lv 16 choice text is cut off on the screen and is not completed here.",
+      "appliesTo": [
+        "build:assassin:guide"
+      ],
+      "verifiedAt": "2026-10-16"
     }
   ]
 }

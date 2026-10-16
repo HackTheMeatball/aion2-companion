@@ -228,7 +228,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Impact Hit](https://metabot.gg/en/aion-2/skills/impact-hit-assassin) | Skills, boards and stigmas | classes/assassin/skills.json: Impact Hit |
 | [Metabot: Infiltrate](https://metabot.gg/en/aion-2/skills/infiltrate) | Skills, boards and stigmas | classes/assassin/skills.json: Infiltrate |
 | [Metabot: Insignia Explosion](https://metabot.gg/en/aion-2/skills/insignia-explosion) | Skills, boards and stigmas | classes/assassin/skills.json: Insignia Explosion |
-| [Metabot: Quick Slice](https://metabot.gg/en/aion-2/skills/quick-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Quick Slice |
+| [Metabot: Quick Slice](https://metabot.gg/en/aion-2/skills/quick-slice) | Skills, boards and stigmas | classes/assassin/skills.json: Quick Slice; shared/asmodian/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12). |
 | [Metabot: Savage Roar](https://metabot.gg/en/aion-2/skills/savage-roar) | Skills, boards and stigmas | classes/assassin/skills.json: Savage Roar |
 | [Metabot: Shadow Fall](https://metabot.gg/en/aion-2/skills/shadow-fall) | Skills, boards and stigmas | classes/assassin/skills.json: Shadow Fall |
 | [Metabot: Shadowstrike](https://metabot.gg/en/aion-2/skills/shadowstrike) | Skills, boards and stigmas | classes/assassin/skills.json: Shadowstrike |
@@ -241,7 +241,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 
 | Page | Card group | Backs |
 |---|---|---|
-| [aion2-meta: Assassin](https://aion2-meta.com/guides/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build |
+| [aion2-meta: Assassin](https://aion2-meta.com/guides/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build; shared/asmodian/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12). |
 
 ## aion2.gaming.tools (47)
 
@@ -308,7 +308,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 
 | Page | Card group | Backs |
 |---|---|---|
-| [aion2turkiye: Assassin](https://aion2turkiye.com/en/class/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build |
+| [aion2turkiye: Assassin](https://aion2turkiye.com/en/class/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build; shared/asmodian/guide/claims.json: Quick Slice specialty slot 2: "-1s Insignia Explosion cooldown on hit" (choice 4, unlocks at skill Lv 12). |
 
 ## allthings.how (82)
 
