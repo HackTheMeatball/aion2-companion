@@ -33,7 +33,7 @@ one. A site that only bans scraping gets a few spot checks, 5 s apart, facts onl
 
 Work from `verifiedAt` (oldest first) and the build. Check in this order:
 
-1. **Level gates**: story and regional quest levels, `noPre` quests, unlock levels, Sealed Dungeon entry levels, the four
+1. **Level gates**: story and regional quest levels, `noPre` quests, unlock levels, Sealed Dungeon entry levels, the
    Ascension quests in `ascension-quests.json` (currently Lv 5, 22, 32, 45 and 49).
 2. **Quest givers and locations**: giver, zone, turn-in NPC, prerequisite and unlock links (confirm from both ends).
 3. **Skill and stigma values**: skill levels, unlock levels, costs, stigma slots, Daevanion board nodes and costs.
