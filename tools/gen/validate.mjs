@@ -26,8 +26,8 @@ export const compiler = () => {
   return ajv;
 };
 
-/* every data file under data/ (not schema/, research/) */
-export const dataFiles = () => walk(join(ROOT, 'data')).filter(f => f.endsWith('.json') && !/\/data\/(schema|research)\//.test(f));
+/* every JSON file under data/packs/: the data files and the pack manifests (pack.json) */
+export const dataFiles = () => walk(join(ROOT, 'data/packs')).filter(f => f.endsWith('.json'));
 
 /* returns [{file, errors}] for files that fail; doc is the parsed file */
 export const validateDoc = (file, doc) => {
