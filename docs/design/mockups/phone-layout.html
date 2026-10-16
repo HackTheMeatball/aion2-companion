@@ -12,7 +12,7 @@ body { margin: 0; background: #000; color: var(--fg); font: 15px/1.45 var(--body
 .pad { padding: 0 14px; }
 .mono { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
-/* sticky bar: the level is always in reach (replaces scrolling to the top for -/+ and Level up) */
+/* sticky bar: the level is always in reach (the only Level up on phone widths; Journey's #lvlUpBig is hidden there) */
 .bar { position: sticky; top: 0; z-index: 2; background: var(--panel); border-bottom: 1px solid var(--line); padding: 8px 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
 .lv { font: 500 13px var(--mono); }
 .lv b { font-size: 22px; color: var(--fg); }
@@ -20,6 +20,8 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 .track i { display: block; height: 100%; width: 58%; background: var(--accent); }
 .btn { min-height: 44px; min-width: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); font: 600 14px var(--body); padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; }
 .btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: #fff; }
+/* Level up = .lvlup-btn, app.css:501 (green gradient, no colour change) */
+.btn.lvup { background: linear-gradient(180deg, #3fbf78, #2a9a5c); border: 1px solid #5fdc95; color: #06150d; font-weight: 700; box-shadow: 0 2px 0 #1d6f42; }
 .seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 10px 0; }
 .seg .btn { border: 0; border-radius: 0; background: none; color: var(--muted); }
 .seg .on { background: var(--panel-2); color: var(--fg); box-shadow: inset 0 -2px var(--accent); }
@@ -45,20 +47,20 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 
 <!-- 1. Top of the page: sticky level bar, 44 px mode switch, Next up first -->
 <div class="ph" id="p1"><div class="lbl">1 · top, Basic</div>
-  <div class="bar"><span class="lv">LV <b>39</b></span><span class="track"><i></i></span><button class="btn primary" style="min-height:44px">Level up</button></div>
-  <div class="pad" style="padding-top:12px"><span class="mono">Aion 2 · Asmodian · Assassin</span><h1>Asmodian Assassin Route</h1>
+  <div class="bar"><span class="lv">LV <b>39</b></span><span><span class="mono" style="font-size:9px">Level progress</span><span class="track" style="display:block"><i></i></span></span><button class="btn lvup">Level up</button></div>
+  <div class="pad" style="padding-top:12px"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><h1>Asmodian Assassin Route</h1>
     <div class="seg"><span class="btn on">Basic</span><span class="btn">Advanced</span></div></div>
-  <div class="pad"><span class="mono">Next up · 1 of 4</span></div>
   <div class="card first"><div class="row"><span class="num">⛏</span><div><h3>Clear Destruction Archons Armory</h3><p>and others until Lv 40 · 3/10</p></div></div>
-    <div class="actions"><span class="btn">Show</span><span class="btn primary">Mark cleared</span></div></div>
+    <div class="actions"><span class="btn">Show</span></div></div>
   <div class="card"><div class="row"><span class="num" style="background:var(--panel-2);color:var(--muted)">2</span><div><h3>Regional quests</h3><p>Eastern Gribade Highland · 2 open</p></div></div></div>
   <div class="card fold" style="margin-top:12px"><span>Journey · Lv 39 → 40</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Progress</span><span class="more">Open ▾</span></div>
   <div class="card fold"><span>Dungeons &amp; Strongholds</span><span class="more">Open ▾</span></div>
   <div class="tabs"><span class="on">Route</span><span>Gear</span><span>Build</span></div></div>
 
 <!-- 2. Further down: gear cards as uniform folds, 44+ px rows -->
 <div class="ph" id="p2"><div class="lbl">2 · lower, Basic</div>
-  <div class="bar"><span class="lv">LV <b>39</b></span><span class="track"><i></i></span><button class="btn primary">Level up</button></div>
+  <div class="bar"><span class="lv">LV <b>39</b></span><span><span class="mono" style="font-size:9px">Level progress</span><span class="track" style="display:block"><i></i></span></span><button class="btn lvup">Level up</button></div>
   <div class="card"><span class="mono">Skills</span><div class="row" style="margin-top:10px"><span class="num">Q</span><div><h3>Skill name → N</h3><p>Spend 1 point</p></div></div><div class="actions"><span class="btn primary">Mark spent</span></div></div>
   <div class="card"><span class="mono">Daevanion</span><div class="row" style="margin-top:10px"><span class="num">D</span><div><h3>Next node · n DP</h3><p>Have n</p></div></div><div class="actions"><span class="btn">−</span><span class="btn" style="flex:2">n</span><span class="btn">+</span></div></div>
   <div class="card"><span class="mono">Stigmas</span><div class="row" style="margin-top:10px"><span class="num">S</span><div><h3>Equip stigma name</h3><p>Shards n</p></div></div></div>
@@ -68,7 +70,7 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 
 <!-- 3. Build as a bottom sheet from the tab bar -->
 <div class="ph" id="p3"><div class="lbl">3 · Build sheet</div>
-  <div class="bar"><span class="lv">LV <b>39</b></span><span class="track"><i></i></span><button class="btn primary">Level up</button></div>
+  <div class="bar"><span class="lv">LV <b>39</b></span><span><span class="mono" style="font-size:9px">Level progress</span><span class="track" style="display:block"><i></i></span></span><button class="btn lvup">Level up</button></div>
   <div class="scrim"></div>
   <div class="sheet"><div class="grab"></div><div class="row" style="grid-template-columns:1fr auto"><h3 style="font:400 18px var(--display)">Stat priority</h3><span class="btn">Close</span></div>
     <div class="prio"><span>Stat 1</span><span class="mono">value</span></div>
