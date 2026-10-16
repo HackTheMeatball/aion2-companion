@@ -76,8 +76,8 @@ From HANDOFF and the Sonnet guard in claude.yml:
 
 | Step | Issue / PR | Touches | Builder (why) | Reviewer | Depends on | Conflicts with | Group | Owner input | Size |
 |---|---|---|---|---|---|---|---|---|---|
-| E9 part 2 + 0.2.4 owner checks (checks 7, 8; Hugo Mercenaries: Deep Shadow; Ascension openings; Zikel Defense Break node) | — | `data/shared/asmodian/*` gate fields, board plan, `claims.json`; golden | O: gate fields + golden | S+O | owner's in-game checks; W0 merged (golden) | golden; any `data/` gate PR | W1 | **in-game checks** | M |
-| 0.2.4 villages as zones | — | `data/shared/asmodian/zones*` + `location.zone` on records; `DATA_SOURCES.md` | S: data, no gate fields (the guard escalates if golden moves) | S | W0 merged; merge after E9 part 2 | E9 part 2 (same JSON files, different fields: merge E9 first) | W1 | none (approved 2026-10-15) | M |
+| E9 part 2 + 0.2.4 owner checks (checks 7, 8; Hugo Mercenaries: Deep Shadow; Ascension openings; Zikel Defense Break node) | — | `data/packs/aion2/asmodian/*` gate fields, board plan, `claims.json`; golden | O: gate fields + golden | S+O | owner's in-game checks; W0 merged (golden) | golden; any `data/` gate PR | W1 | **in-game checks** | M |
+| 0.2.4 villages as zones | — | `data/packs/aion2/asmodian/zones*` + `location.zone` on records; `DATA_SOURCES.md` | S: data, no gate fields (the guard escalates if golden moves) | S | W0 merged; merge after E9 part 2 | E9 part 2 (same JSON files, different fields: merge E9 first) | W1 | none (approved 2026-10-15) | M |
 | 0.2.5 save safety build | — | `src/main.js` save/storage area, export, `site.js` checks | O: saves | S+O | #80 mockup approved; E6–E8 merged | `main.js` save area (0.5 C1 later); `app.css` (absorb design tokens first) | W1 | mockup OK | M |
 | 0.2.7 skills active / passive (F2) | — | Skills card render | S: display only, data exists | S | E7 merged (same card) | Skills card; E7 | W1 | none | S |
 | Design tokens (0 changed pixels) | — | `src/styles/*.css`, `docs/design-system.md`, a raw-colour test | O: > 300 lines | S | none (CSS only) | `app.css` (0.2.6, phone layout) | W1 | none | L |
@@ -91,7 +91,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
 
 | Step | Issue / PR | Touches | Builder (why) | Reviewer | Depends on | Conflicts with | Group | Owner input | Size |
 |---|---|---|---|---|---|---|---|---|---|
-| N1 travel data: Kibelisks, coordinates, distances (Metabot) | — | new `data/shared/asmodian/kibelisks.json`, schema, generator | O: schema + generator. Research in a **cloud session** (web) | S | #79 | `tools/gen/` (F1) | W3 | none | M |
+| N1 travel data: Kibelisks, coordinates, distances (Metabot) | — | new `data/packs/aion2/asmodian/kibelisks.json`, schema, generator | O: schema + generator. Research in a **cloud session** (web) | S | #79 | `tools/gen/` (F1) | W3 | none | M |
 | N2 location tie-break + derived Kibelisk binds (25 m / 150 m) | — | `src/core/nextup.js` `rankNext`, evaluator rule, `lastConfirmedLocation` | O: engine + golden | S+O | N1, 0.3.0 | golden; `rankNext` | W3 | none (rules decided) | L |
 | N3 fastest / completionist + level bands (F10) | — | core ranking, Next up render, a view setting in the save | O: engine + save field + golden | S+O | N2 | golden; Next up card | W4 | **mockup**; fastest drawbacks list | L |
 | N4 travel UI: teleport vs run, "1 scroll", "I'll walk", "Bind X" nudge, "Prefer running" | — | Next up card render, setting in the save | O: save field, > 300 lines | S+O | N2 | Next up card (N3) | W5 | **mockup** | L |
@@ -125,7 +125,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
 | Y3 sync UI (code create / enter, status) | — | settings render | O: save calls | S | Y1, Y2 | settings card | W11 | **mockup** | M |
 | 0.6.0 release + UX review after 0.6 | — | release files, `docs/reviews/` | S | S / O | Y1–Y3 | releases | W11 | owner approval | S + M |
 | P1 first run welcome (shown once, flag in the save) | — | welcome render, save flag | O: save field | S | 0.6.0 | top-of-page render | W12 | **mockup** | M |
-| P2 Lv 1–10 tuning + terms explained where they first appear | — | `data/shared/asmodian/guide/*` text, tips | S: guide text, no gates | S | P1 | `guide/*.json` | W12 | none | M |
+| P2 Lv 1–10 tuning + terms explained where they first appear | — | `data/packs/aion2/asmodian/assassin/guide/*` text, tips | S: guide text, no gates | S | P1 | `guide/*.json` | W12 | none | M |
 | P3 join mid-level (set level and story quest; earlier content derived done) | — | core derivation, save writes | O: engine + saves | S+O | 0.6.0 | save area; golden | W12 | **mockup** | L |
 | 0.7.0 release | — | release files | S | S | P1–P3 | releases | W12 | owner approval | S |
 
@@ -135,7 +135,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
 |---|---|---|---|---|---|---|---|---|---|
 | D8 pick the class and a tester | — | DECISIONS | owner | — | PR #82 | none | now | **D8 + a named tester** | — |
 | R1 research pack (29 skill pages, stigma picks, two advice sources) | — | `docs/research/` | S in a **cloud session** (web; fetching rules, 7 s apart) | O | D8 | none | any wave after D8 (W3+) | **GamesFuze / thegameswiki by hand** | M |
-| G1 class data: board nodes, skills, stigmas, `class.json` | — | `data/classes/<class>/` | O: > 300 lines (537 nodes) | S | F1–F6, R1 | `data/` | W13 | none | L |
+| G1 class data: board nodes, skills, stigmas, `class.json` | — | `data/packs/<game>/classes/<class>/` | O: > 300 lines (537 nodes) | S | F1–F6, R1 | `data/` | W13 | none | L |
 | G2 guide build: skill order, stigmas, board plan, key stacks ("single source" labels) | — | `builds.json`, `claims.json` | S: advice data, no gates | O (claims labels) | G1 | `claims.json` | W13 | second source or "single source" OK | M |
 | G3 icons (22 skills, 4 stigmas, Metabot) | — | `assets`, `docs/ISSUES.md` provenance | S (Haiku sub-agent fits in a cloud session) | S | G1 | none | W13 | none (standing icon OK) | S |
 | G4 class golden snapshot + spot check + 0.8.0 release | — | `tests/golden`, release files | O: golden | S+O | G1–G3 | golden; releases | W14 | **in-game spot check (Lv 7 Skills window, stigma max level)** | M |

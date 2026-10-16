@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/strongholds.schema.json",
-  "title": "Strongholds (shared/<faction>/strongholds.json)",
+  "title": "Strongholds (packs/<game>/<faction>/strongholds.json)",
   "description": "DRAFT. Replaces strongholds.json and SH_DATA.",
   "allOf": [
     {

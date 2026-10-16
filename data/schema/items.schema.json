@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/items.schema.json",
-  "title": "Items the guide names (shared/items.json)",
+  "title": "Items the guide names (packs/<game>/items.json)",
   "description": "DRAFT. Replaces ITEMS. The key is what [[item:<key>]] and data-ico use.",
   "allOf": [
     {

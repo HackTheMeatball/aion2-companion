@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/zones.schema.json",
-  "title": "Zones (shared/<faction>/zones.json)",
+  "title": "Zones (packs/<game>/<faction>/zones.json)",
   "description": "DRAFT. Zone registry and adjacency (F15): names, Empyrean Trace counts (ZONE_TRACES) and the camps / Kibelisks that belong to the zone (gen.py CAMP_ZONE, now data the build checks against map votes instead of applying).",
   "allOf": [
     {

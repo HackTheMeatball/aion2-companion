@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/regional-quests.schema.json",
-  "title": "Regional quests (shared/<faction>/regional-quests.json)",
+  "title": "Regional quests (packs/<game>/<faction>/regional-quests.json)",
   "description": "DRAFT. Replaces rq.json and rq-chains.json: prerequisites become 'requires' atoms that carry their own sources.",
   "allOf": [
     {

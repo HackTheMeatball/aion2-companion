@@ -1,11 +1,13 @@
 # Data generator
 
-`gen.mjs` compiles the v2 data (`data/**`, spec `docs/DATA-FORMAT-V2.md`) into the module the page imports as
+`gen.mjs` compiles the v2 data (the packs in `data/packs/`, spec `docs/DATA-FORMAT-V2.md`) into the module the page imports as
 `src/data/generated.js`. Nothing is written into `src/` and the module is not committed: `npm run build` calls
 `generate()` through the esbuild plugin in `scripts/generated-data.mjs` and inlines the result.
 
 ```sh
 npm run gen         # validate (validate.mjs) + cross-record checks; writes data/DATA_SOURCES.md and out/ (exit 1 on failure)
+node tools/gen/gen.mjs --pack <id> --root <dir>   # another pack / packs root (defaults: aion2/asmodian/assassin, data/packs);
+                    # not the default: its DATA_SOURCES.md goes to out/, data/DATA_SOURCES.md is left alone
 npm run validate    # JSON Schema only: every data file and every schema example (ajv 8 Ajv2020, strict, allErrors)
 npm run gen:check   # the same as gen, then fails if data/DATA_SOURCES.md changed (CI runs it)
 node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must be rejected, checks, DATA_SOURCES.md current
@@ -17,7 +19,12 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
   `completesWith` compiled for `src/core/evaluator.js` (skill lines from `rule:skill-level-gate`), with checks that every
   `done` edge resolves to a node and there is no cycle. It is a second module, `src/data/gate-graph.js` (`gateModule`),
   so the page carries none of it until the evaluator is wired in (E2).
-- `validate.mjs` — the schema step: all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
+- `packs.mjs` — `resolvePacks({ root, pack })`: reads each `pack.json` (`data/schema/pack.schema.json`), resolves the
+  chain (parent, then `uses`, then the pack; depth first, each pack once) and returns the listed files in load order.
+  Fails on a manifest that fails its schema or names another folder, an unknown `parent` / `uses`, a cycle, a listed
+  file that is missing and a JSON file in a pack folder that no manifest lists (DATA-FORMAT-V2 §2.1).
+  `generate({ root, pack })` passes them through; `tests/schema.mjs` checks broken copies of `data/packs` are rejected.
+- `validate.mjs` — the schema step (pack manifests included): all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
 - `../../data/DATA_SOURCES.md` — every source URL, the records that cite it, and its Sources-card group (committed).
 - The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
   placeholder zone `zone:altgard-unplaced` (DATA-FORMAT-V2 §9 data task).

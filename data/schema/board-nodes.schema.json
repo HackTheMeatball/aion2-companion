@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/board-nodes.schema.json",
-  "title": "Daevanion board nodes (classes/<class>/board-nodes.json)",
+  "title": "Daevanion board nodes (packs/<game>/classes/<class>/board-nodes.json)",
   "description": "DRAFT (M5). Every node on every board of the class, as game facts (Metabot daevanion/<class>, row/col on the planner grid). Needed for effective skill level (M4) and path costs (4-neighbour Steiner tree, classes-and-gaps §4.4). Which nodes to buy is a build choice (builds[].boardPlan).",
   "type": "object",
   "allOf": [

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/steps.schema.json",
-  "title": "Guide steps (shared/guide/steps.json, classes/<class>/steps.json)",
+  "title": "Guide steps (packs/<game>/<faction>/<class>/guide/steps.json)",
   "description": "DRAFT. One tickable line in a milestone or route-rule card. Replaces the GATES/STEPS items (except board nodes -> builds[].boardPlan, hideouts -> sealed-dungeons.json). Shared steps name build choices only through [[build:…]] tokens (M2); a class step is only for text that is true for one class whatever the build.",
   "allOf": [
     {

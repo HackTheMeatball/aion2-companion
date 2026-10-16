@@ -1,6 +1,6 @@
 /* Milestones (GATES) and route rules (STEPS): text and item keys. Keys are permanent (docs/ARCHITECTURE.md §1).
-   Since 0.2 step 5b they are compiled from data/shared/asmodian/guide/ (milestones.json, steps.json), the Sealed Dungeons
-   (sealed-dungeons.json) and the guide build's board plan (data/classes/assassin/builds.json) by tools/gen/gen.mjs, in
+   Since 0.2 step 5b they are compiled from data/packs/aion2/asmodian/assassin/guide/ (milestones.json, steps.json), the Sealed Dungeons
+   (sealed-dungeons.json) and the guide build's board plan (data/packs/aion2/asmodian/assassin/builds.json) by tools/gen/gen.mjs, in
    their v1 item shape with the text tokens left in; this module turns the tokens into HTML (markup.js) and the Sealed
    Dungeon blocks into their rows. Every export is still a page global (scripts/build.mjs). */
 import { GUIDE_GATES, GUIDE_STEPS } from "./generated.js";

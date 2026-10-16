@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/skills.schema.json",
-  "title": "Class skills (classes/<class>/skills.json)",
+  "title": "Class skills (packs/<game>/classes/<class>/skills.json)",
   "description": "DRAFT. Game facts only (M1). Per-level steps are generated: key 'sp:<key>:<L>' (L = 2..10), requires {level: learnLv + 3*(L-2)} (learnLv when levelGate = flat), completesWith ['tick']. Specialty slot keys: 'sp:<key>:spec' (slot 1, as today), 'sp:<key>:spec2', 'sp:<key>:spec3' (reserved, M4); they open at effective skill Lv 8 / 12 / 20 (rule:specialty-slots).",
   "allOf": [
     {

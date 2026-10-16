@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/stigmas.schema.json",
-  "title": "Class stigmas (classes/<class>/stigmas.json)",
+  "title": "Class stigmas (packs/<game>/classes/<class>/stigmas.json)",
   "description": "DRAFT. Replaces build.json stigmas and STIGMA_ICON. Save keys are the stigma names (stLv{name}, stPick{slot: name}).",
   "allOf": [
     {

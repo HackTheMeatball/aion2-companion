@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/classes.schema.json",
-  "title": "Class and its plan (classes/<class>/class.json)",
+  "title": "Class and its plan (packs/<game>/classes/<class>/class.json)",
   "description": "DRAFT. One record per class: what it is and which build is its default (M1). Build choices live in builds.json.",
   "allOf": [
     {

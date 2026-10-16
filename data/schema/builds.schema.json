@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/builds.schema.json",
-  "title": "Builds (classes/<class>/builds.json)",
+  "title": "Builds (packs/<game>/<faction>/<class>/builds.json)",
   "description": "DRAFT (M1, owner decision 2026-10-14). Build choices, split from game facts. Per class: one guide build (origin guide, the class's defaultBuild) and up to two credited alternatives (origin community), each credited to the sites it came from; choices only, never their wording. A build needs two agreeing sources or it is 'single-source'. Every reference is a record id the build checks. 5b compiles the default build into today's SP_SKILLS / STIGMA_PLAN / ST_TARGETS / STAT_TIERS / STAT_SRC / RMB_STACK / E_ORDER and the dv plan items.",
   "type": "object",
   "allOf": [

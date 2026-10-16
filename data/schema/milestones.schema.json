@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/milestones.schema.json",
-  "title": "Milestones and route rules (shared/guide/milestones.json)",
+  "title": "Milestones and route rules (packs/<game>/<faction>/<class>/guide/milestones.json)",
   "description": "DRAFT. The cards (GATES and STEPS headers). Their items are 'steps' records (shared or per class) that name the milestone; Sealed Dungeons join by band. Regional quests are still placed at runtime by recommended level.",
   "allOf": [
     {

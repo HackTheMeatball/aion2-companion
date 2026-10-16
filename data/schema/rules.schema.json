@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/rules.schema.json",
-  "title": "Game rules and tables (shared/rules.json)",
+  "title": "Game rules and tables (packs/<game>/rules.json)",
   "description": "DRAFT. Class-independent numbers the app computes with: LEVEL_POINTS, Daevanion Crystals and stigma points per level (M11), cost tables, stigma slots, specialty slots (effective level, M4), node costs, first-clear rewards. The old 'learn + 18' specialty heuristic is bug F3 and is not a rule (it stays in the 5b compiler only to keep 0.2 output identical; 0.3 fixes it).",
   "allOf": [
     {
