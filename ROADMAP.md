@@ -97,6 +97,7 @@ minors. Research packs for every class start early (below) so data is never the 
 ### 0.3.x — patches while 0.4 is planned (0.3.0 released 2026-10-16)
 
 - Bug #105: `fitRail()` race at load (Basic rail width differs between loads).
+- #136: the 0.3.0 CHANGELOG's Lv 45 quest name and its saved-progress note (docs/reviews/0.3-lookback.md).
 - Data corrections from issues; owner checks as they arrive (C41 Koro at Lv 45; the Home Screen storage check).
 
 ### 0.4 — Engine and packs (invisible)
@@ -170,18 +171,18 @@ acceptance tests, is its plan file.
 | [P0](docs/plans/0.4/P0-engine-contract.md) | No written contract for packs → design doc: code layout, pack hooks, card registry interface, AION 2 term list | M (docs) | `docs/design/0.4-engine-contract.md` | Opus | none |
 | [P1](docs/plans/0.4/P1-pack-folders.md) | Data has no pack boundaries → `data/packs/…` with manifests; the generator builds a pack chain; compiled output byte-identical | M | `data/**` (moves), `data/schema/pack.schema.json`, `tools/gen/`, `tests/schema.mjs`, `tests/support/oracle.mjs` paths | Opus | gen, gates |
 | [P2a](docs/plans/0.4/P2a-rules-from-data.md) | Code copies of data rules → costs and slot levels read from `rule:*`; two milestones into the guide data | S–M | `src/data/build.js`, `src/core/catalog.js`, the pack's `guide/milestones.json`, `tools/gen/` | Opus | gen, gates |
-| [P2b](docs/plans/0.4/P2b-pack-code.md) | AION 2 code inside the engine → moved to `src/packs/aion2/` behind P0's hooks | L | `src/core/{catalog,requirements,ascension,blockers}.js`, `src/data/*.js`, `src/packs/aion2/**`, `src/main.js` imports, `tests/core/` | Opus | main.js |
+| [P2b](docs/plans/0.4/P2b-pack-code.md) | AION 2 code inside the engine → moved to `src/packs/aion2/` behind P0's hooks | L | `src/core/{catalog,requirements,ascension,blockers,migrations,evaluator}.js`, `src/data/*.js`, `src/packs/aion2/**`, `src/main.js` imports, module paths in `scripts/`, `tests/core/` | Opus | main.js |
 | [P2c](docs/plans/0.4/P2c-nextup-producers.md) | Next up ranks AION 2 kinds in the engine → engine ranks, pack produces cards | M | `src/core/nextup.js`, `src/packs/aion2/nextup.js`, `tests/core/nextup*` | Opus | none |
-| [P3a](docs/plans/0.4/P3a-test-save-helper.md) | Save key and v4 shape spread over 30 test files → one helper writes and reads every test save | M | `tests/**` except snapshots | Opus | golden, mig |
+| [P3a](docs/plans/0.4/P3a-test-save-helper.md) | Save key and v4 shape spread over 32 test files, old fixtures fed through the migrations → one helper writes and reads every test save; migrated flat fixtures | M | `tests/**` except snapshots, baselines and existing fixtures | Opus | golden, mig |
 | [P3b](docs/plans/0.4/P3b-storage-adapter.md) | `localStorage` called from the page → storage adapter; same key, same bytes | S–M | `src/core/storage.js`, `src/shell/storage-web.js`, `src/main.js` save area, `src/site.js` | Opus | main.js |
 | [P3c](docs/plans/0.4/P3c-save-v5.md) | Save shaped for one Assassin → save v5: neutral key, character slots, clean break | L | `src/core/{state,migrations,sync,backup}.js`, `src/data/migrations.js` (deleted), `src/main.js` save area, save tests, golden snapshots, `PRIVACY.md`, `docs/ARCHITECTURE.md` §1 | Opus | main.js, mig, golden |
-| [P4a](docs/plans/0.4/P4a-card-registry.md) | Every card hard-wired in the page script → registry; first two cards mounted through it | M | `src/core/cards.js`, `src/main.js`, `src/index.html`, `src/cards/` | Opus | main.js |
+| [P4a](docs/plans/0.4/P4a-card-registry.md) | Every card hard-wired in the page script → registry; first two cards mounted through it | M | `src/core/cards.js`, `src/main.js`, `src/index.html`, `src/cards/sources.js`, `tests/support/dom-snapshot.mjs` | Opus | main.js |
 | [P4b](docs/plans/0.4/P4b-pack-cards.md) | AION 2 cards in the page script → moved verbatim to `src/packs/aion2/cards/` | L | `src/main.js`, `src/index.html`, `src/packs/aion2/cards/**` | Opus | main.js |
 | [P4c](docs/plans/0.4/P4c-engine-cards.md) | Engine cards in the page script → moved verbatim to `src/cards/`; `main.js` is the shell | L | `src/main.js`, `src/index.html`, `src/cards/**` | Opus | main.js |
-| [P5a](docs/plans/0.4/P5a-nextup-card.md) | Next up card neutral | M | `src/cards/nextup.js`, pack renderers | Opus | none |
+| [P5a](docs/plans/0.4/P5a-nextup-card.md) | Next up and Later cards neutral | M | `src/cards/nextup.js`, `src/cards/ahead.js`, pack renderers | Opus | none |
 | [P5b](docs/plans/0.4/P5b-milestone-cards.md) | Milestone and Route rules cards neutral | M | `src/cards/milestones.js`, `src/cards/route.js`, pack row renderers | Opus | none |
 | [P5c](docs/plans/0.4/P5c-journey-card.md) | Journey card neutral (Ascension bar becomes a pack section) | M | `src/cards/journey.js`, `src/packs/aion2/cards/ascension.js` | Opus | none |
-| [P5d](docs/plans/0.4/P5d-sources-cards.md) | Sources and Confidence cards neutral | S | `src/cards/sources.js` | Sonnet | none |
+| [P5d](docs/plans/0.4/P5d-sources-cards.md) | Sources, Confidence and Undo cards neutral | S | `src/cards/sources.js`, `src/cards/undo.js` | Sonnet | none |
 | [P6](docs/plans/0.4/P6-fake-pack.md) | Nothing proves the engine is game-neutral → a fake game pack + conformance suite in Node | M | `tests/fixtures/packs/fakegame/`, `tests/conformance.mjs`, `tests/run.mjs` | Opus | none |
 | [P7](docs/plans/0.4/P7-budgets.md) | Nothing stops the page growing → blocking byte and element budgets | S | `scripts/build.mjs`, `tests/site.js` | Sonnet | none |
 | [P8](docs/plans/0.4/P8-done-check.md) | "No AION 2 term" is a claim, not a test → term scan over engine, engine cards and shell | S | `tests/core/purity.test.mjs` | Sonnet | none |
