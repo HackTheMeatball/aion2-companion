@@ -272,7 +272,7 @@ check 1.
 | `rq:2202036` | A Guardian's Sacrifice | 22 / 10 | `lv 10`, `done sq:2102190` (Disturbed Balance), `done rq:2202019` (Young Elim's Story) | reached Disturbed Balance + Young Elim's Story ticked | [Metabot](https://metabot.gg/en/aion-2/quests/a-guardians-sacrifice) unlock 10; Disturbed Balance: gaming.tools 2202036; Young Elim's Story: allthings.how 244366, gaming.tools 2202036 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
 | `rq:2202053` | Nine Wonders of Altgard: 1st Leg | 22 / 10 | `lv 10`, `done sq:2102180` (Verdant Melody) | reached Verdant Melody | [Metabot](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg) unlock 10; Verdant Melody: gaming.tools 2202053 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
 | `rq:2202062` | Fight Poison with Poison | 27 / 10 | `lv 10`, `done sq:2102240` (A Collective Effort) | reached A Collective Effort | [Metabot](https://metabot.gg/en/aion-2/quests/fight-poison-with-poison) unlock 10; A Collective Effort: gaming.tools 2202062, Metabot "Required first" | existing edge; gate is turned in (check 1 answered 2026-10-15) |
-| `rq:2202011` | Hugo Mercenaries: Deep Shadow | 30 / 10 | `lv 10`, `done sq:2102280` (Canyon's Secret), `done rq:2202010` (Hugo Mercenaries: Past and Present) | reached Canyon's Secret + Hugo Mercenaries: Past and Present ticked | [Metabot](https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow) unlock 10; Canyon's Secret: only th.gl, inferred from the owner's 2026-10-16 check; Hugo Mercenaries: Past and Present: only th.gl; owner 2026-10-16 (`owner:2026-10-16-hugo-01`): not offered after Past and Present was turned in | both edges kept (owner-check); Past and Present alone ruled out (check 9) |
+| `rq:2202011` | Hugo Mercenaries: Deep Shadow | 30 / 10 | `lv 10`, `done sq:2102280` (Canyon's Secret), `done rq:2202010` (Hugo Mercenaries: Past and Present) | reached Canyon's Secret + Hugo Mercenaries: Past and Present ticked | [Metabot](https://metabot.gg/en/aion-2/quests/hugo-mercenaries-deep-shadow) unlock 10; Canyon's Secret + Hugo Mercenaries: Past and Present: owner 2026-10-16, by hand on th.gl + in game (`owner:2026-10-16-hugo-02`; `owner:2026-10-16-hugo-01`: not offered after Past and Present alone) | both edges owner-confirmed (check 9 answered 2026-10-16) |
 | `rq:2202018` | Her Last Favor | 30 / 10 | `lv 10`, candidate `done sq:2102280` (Canyon's Secret) | `noPre`: opens at rec Lv 30 | [Metabot](https://metabot.gg/en/aion-2/quests/her-last-favor) unlock 10 | **candidate gate: owner to check in game** |
 | `rq:2202021` | An Invitation to the Past: Part 1 | 30 / 10 | `lv 10`, `done sq:2102280` (Canyon's Secret) | reached Canyon's Secret | [Metabot](https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1) unlock 10; Canyon's Secret: gaming.tools 2202021 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
 | `rq:2202022` | An Invitation to the Past: Part 2 | 30 / 10 | `lv 10`, `done sq:2102280` (Canyon's Secret), `done rq:2202021` (An Invitation to the Past: Part 1) | reached Canyon's Secret + An Invitation to the Past: Part 1 ticked | [Metabot](https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-2) unlock 10; Canyon's Secret: gaming.tools 2202022; An Invitation to the Past: Part 1: allthings.how 244363, gaming.tools 2202021, gaming.tools 2202022, https://metabot.gg/en/aion-2/quests/an-invitation-to-the-past-part-1 | existing edge; gate is turned in (check 1 answered 2026-10-15) |
@@ -502,7 +502,7 @@ or in a data patch before the freeze.
 | `CLAUDE.md` (source policy), `docs/team/data-research.md` | th.gl listed as a game-database source | – | remove th.gl; add the robots.txt rule (owner edits CLAUDE.md) |
 | `data/claims.json` C36, C37 (+ `claims-notes.md`) | Ascension gates for Dreams / Witnesses (th.gl Prerequisites / Unlocks) | wrapper quests on Metabot show each is open **by** its wrapper | re-source to Metabot step text ("open by the wrapper": verified); "not earlier" → owner check |
 | `data/rq-chains.json`, 24 entries | th.gl listed alongside gaming.tools (23 Forgotten Commander edges, One Last Thing) | gaming.tools 2102800 "Dependent quests" / 2202054 | drop the th.gl URL; the gaming.tools citation remains |
-| `data/rq-chains.json`: Hugo Mercenaries: Deep Shadow ← Canyon's Secret, ← Past and Present | **th.gl only** | none (Metabot renders no chain block for it) | owner to check in game (check 9) |
+| `data/rq-chains.json`: Hugo Mercenaries: Deep Shadow ← Canyon's Secret, ← Past and Present | **th.gl only** | none (Metabot renders no chain block for it) | owner-confirmed 2026-10-16 (check 9, `owner:2026-10-16-hugo-02`) |
 | `data/rq.json` `requiresSrc` | Hugo Mercenaries: Deep Shadow, Restoration Materials, One Last Thing | Restoration Materials: gaming.tools 2102800 via rq-chains; One Last Thing: gaming.tools 2202054 | drop th.gl; Deep Shadow as above |
 | `data/DATA_SOURCES.md`, Sources card (`tools/gen/gen-block.js`, built pages) | 7 th.gl links | – | removed by `npm run gen` once the data above is changed |
 | `src/data/tips.js` (Regional quests tip) | **user-facing** source line "Metabot quest pages, aion2.gaming.tools, aion2.th.gl, allthings.how" | the other three | drop "aion2.th.gl" (text change → owner approval) |
@@ -552,11 +552,11 @@ repo.
    giver or the map marker as each one appears.
 8. **Spacetime Rift.** At Lv 45, are all seven offered at once with nothing else needed, or one after another?
 9. **Hugo Mercenaries: Deep Shadow.** Does it need Canyon's Secret (and Past and Present) done? It is the one
-   existing edge with only th.gl behind it. **Partly answered 2026-10-16 (owner, in game, `owner:2026-10-16-hugo-01`):**
+   existing edge with only th.gl behind it. **Answered 2026-10-16 (owner).** In game (`owner:2026-10-16-hugo-01`):
    after turning in Past and Present (Lv 16, Derk at Safe Haven), Deep Shadow was **not** offered, so Past and Present
-   alone does not open it. That fits the Canyon's Secret edge (story, ~Lv 30) but doesn't observe it, so both edges stay
-   as they are (`owner-check`; Canyon's Secret inferred, not observed). The owner checks th.gl by hand; his result lands
-   as a follow-up.
+   alone does not open it. By hand on th.gl + that observation (`owner:2026-10-16-hugo-02`, 03:07 ET): prerequisites
+   Canyon's Secret + Past and Present; it unlocks Hugo Mercenaries: An Old Promise, which matches the existing
+   gaming.tools 2202020 edge. Both edges are owner-confirmed (`basis: owner`); th.gl itself is not cited.
 
 Already on the HANDOFF list and unchanged by this report: Kibelisk / Command unlock levels, Daevanion points at 16/17,
 respec cost after 31, expedition cap, reset time.
