@@ -236,7 +236,7 @@ export default (test, M) => {
   test('last location: Ascension steps, unlocated steps and un-ticks never move it', () => {
     const st = load(M, { ...SEEDS, checks: {}, level: 20, quest: '' }, 0).state;
     C(st).checks['rq:' + rq0.id] = true; save(M, st, 100);
-    for (const k of ['g22:0', 'g32:dreams', 'g45:0']) { assert.ok(M.isAscensionKey(k), k); C(st).checks[k] = true; }
+    for (const k of ['g22:0', 'g32:dreams', 'g45:witness']) { assert.ok(M.isAscensionKey(k), k); C(st).checks[k] = true; }
     save(M, st, 200);
     C(st).checks['g6:0'] = true; C(st).checks['rq:' + rq1.id] = false; save(M, st, 300);
     assert.deepEqual(M.lastConfirmedLocation(C(st)), { key: 'rq:' + rq0.id, t: 100, zone: rq0.zone });

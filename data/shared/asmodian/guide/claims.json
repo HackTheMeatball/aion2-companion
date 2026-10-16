@@ -138,7 +138,7 @@
       "action": "keep",
       "note": "Second source is Metabot's quest DB (the guide's original source). '(so expect it to need gear)' is inference but reads as such; keep.",
       "appliesTo": [
-        "g45:0",
+        "g45:witness",
         "asc:oath"
       ],
       "verifiedAt": "2026-10-12"
@@ -998,9 +998,9 @@
       ],
       "action": "rewrite",
       "newText": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it.",
-      "note": "The step is gated on Forgotten Commander turned in. Since 0.3 E10 'Daeva Trapped in a Nightmare' (sq:2102810) is the last covered story quest, so turning it in completes Witnesses by the wrapper rule. No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one. Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn); Daeva Trapped page re-read 2026-10-16. Whether Witnesses opens while Forgotten Commander is still open is owner check 5 (prereq-gates §11).",
+      "note": "g45:witness is gated on Forgotten Commander turned in. Since 0.3 E10 'Daeva Trapped in a Nightmare' (sq:2102810) is the last covered story quest, so turning it in completes Witnesses by the wrapper rule. No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one. Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn); Daeva Trapped page re-read 2026-10-16. Whether Witnesses opens while Forgotten Commander is still open is owner check 5 (prereq-gates §11).",
       "appliesTo": [
-        "g45:0",
+        "g45:witness",
         "asc:witnesses",
         "sq:2102810"
       ],

@@ -127,6 +127,23 @@ const metrics = () => {
   ok('5c back from pre-E2: its un-tick is re-stamped at the next load; other stamps unchanged',
     JSON.stringify(F.saved.mt.checks['rq:2202053']) === JSON.stringify([(T2 + 60000) / 1000, false]) && JSON.stringify(F.saved.mt.checks['rq:2202016']) === JSON.stringify([T1 / 1000, false]) && F.saved.checks['rq:2202053'] === false,
     [F.saved.mt.checks['rq:2202053'], F.saved.mt.checks['rq:2202016']]);
-  console.log(fail ? `E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
+  /* 5. 0.3 E10 (g45Split1): g45:0 ("Witnesses and Oath") is retired and narrowed to g45:witness. A v287 save with g45:0 ticked:
+     the current page copies the tick once, keeps g45:0, saves the flag; reload writes nothing; the save rolls back to v287 with
+     g45:0 still ticked there. A v287 save without the tick gains neither the key nor the flag. */
+  const S10 = JSON.parse(fix287); S10.checks['g45:0'] = true; S10.level = 45; S10.quest = 'Forgotten Commander';
+  const G = await run(E2, JSON.stringify(S10)), Gpre = await run(PRE, JSON.stringify(S10));
+  ok('E10: no page errors', !G.errs.length && !Gpre.errs.length, [G.errs, Gpre.errs]);
+  ok('E10: g45:0 -> g45:witness ticked once; g45:0 kept; g45Split1 saved', G.saved.checks['g45:witness'] === true && G.saved.checks['g45:0'] === true && G.saved.g45Split1 === true,
+    [G.saved.checks['g45:witness'], G.saved.checks['g45:0'], G.saved.g45Split1]);
+  const lost10 = Object.entries(S10.checks).filter(([k, v]) => G.saved.checks[k] !== v).map(([k]) => k);
+  ok('E10: additive (every saved tick kept)', !lost10.length, lost10);
+  const H10 = await run(E2, JSON.stringify({ ...S10, checks: { ...S10.checks, 'g45:0': undefined } }));   /* the same save without the tick */
+  ok('E10: the Lv 45 milestone counts Witnesses as done (one more than the same save without g45:0)', +G.m.gatesMain.g45.split('/')[0] === +H10.m.gatesMain.g45.split('/')[0] + 1, [H10.m.gatesMain.g45, G.m.gatesMain.g45]);
+  same('E10: reload idempotent (saved state)', G.saved, G.saved2);
+  const Gback = await run(PRE, JSON.stringify(G.saved));
+  ok('E10: rollback to v287 keeps g45:0 ticked and its Lv 45 count', Gback.saved.checks['g45:0'] === true && Gback.m.gatesMain.g45 === Gpre.m.gatesMain.g45, [Gpre.m.gatesMain.g45, Gback.m.gatesMain.g45]);
+  const N10 = await run(E2, fix287);
+  ok('E10: a save without g45:0 gains neither g45:witness nor the flag', !('g45:witness' in N10.saved.checks) && N10.saved.g45Split1 === undefined, [N10.saved.checks['g45:witness'], N10.saved.g45Split1]);
+  console.log(fail ?`E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();

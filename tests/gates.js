@@ -26,13 +26,13 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   for (let i = 0; i < Q.length; i++) for (const L of [...new Set([Q[i][0], 45])]) {
     const cs = await at(L, Q[i][1]), tag = `Lv${L}@${Q[i][1]}`;
     if (i < iDream && has(cs, 'g32:dreams')) bad.dreams.push(tag);
-    if (i <= iFC && has(cs, 'g45:0')) bad.g45.push(tag);
+    if (i <= iFC && has(cs, 'g45:witness')) bad.g45.push(tag);
     if (i > iLake && has(cs, 'g6:0')) bad.g6.push(tag);
     /* no card asks you to complete a story quest you're already past */
     cs.forEach(c => { const j = Q.findIndex(([, n]) => c.h.includes(`Complete "${n}"`)); if (j >= 0 && j < i) bad.passed.push(`${tag}: ${c.h}`); });
   }
   ok('g32:dreams ("The One Who Dreams") not offered before "A Daeva Dreaming Anew"', !bad.dreams.length, bad.dreams);
-  ok('g45:0 not offered before "Forgotten Commander" is turned in (story on it or before, no storyEnd)', !bad.g45.length, bad.g45);
+  ok('g45:witness not offered before "Forgotten Commander" is turned in (story on it or before, no storyEnd)', !bad.g45.length, bad.g45);
   ok('g6:0 not offered once the story is past "The Being Beneath the Lake"', !bad.g6.length, bad.g6);
   ok('no "Complete <story quest>" card for a story quest already passed', !bad.passed.length, bad.passed);
 
@@ -40,7 +40,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   let cs = await at(32, 'A Daeva Dreaming Anew');
   ok('g32:dreams offered at Lv 32 on "A Daeva Dreaming Anew"', has(cs, 'g32:dreams'), cs);
   cs = await at(45, 'Daeva Trapped in a Nightmare');
-  ok('g45:0 offered at Lv 45 once "Forgotten Commander" is turned in (story on "Daeva Trapped in a Nightmare")', has(cs, 'g45:0'), cs);
+  ok('g45:witness offered at Lv 45 once "Forgotten Commander" is turned in (story on "Daeva Trapped in a Nightmare")', has(cs, 'g45:witness'), cs);
   cs = await at(6, 'Isolated Lake');
   ok('g6:0 not offered before its story quest either (story gate)', !has(cs, 'g6:0'), cs);
 
@@ -49,19 +49,19 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   let r = await p.evaluate(() => ({ g6: !!state.checks['g6:0'], g12: !!state.checks['g12:0'], saved: JSON.parse(localStorage.getItem('aion2-assassin-route-v4')).checks }));
   ok('past byStory steps are not ticked automatically (state and save unchanged)', !r.g6 && !r.g12 && !r.saved['g6:0'] && !r.saved['g12:0'], r);
 
-  /* Turned in on "Forgotten Commander", in the UI: the story moves on to "Daeva Trapped in a Nightmare" and g45:0 appears; Basic mode too. */
+  /* Turned in on "Forgotten Commander", in the UI: the story moves on to "Daeva Trapped in a Nightmare" and g45:witness appears; Basic mode too. */
   await at(45, 'Forgotten Commander', { mode: 'basic' });
-  r = await p.evaluate(() => [...document.querySelectorAll('#nsqWrap [data-now^="tick:g45:0"]')].length);
-  ok('Basic, Lv 45 on "Forgotten Commander" (not turned in): no g45:0 card', r === 0, r);
+  r = await p.evaluate(() => [...document.querySelectorAll('#nsqWrap [data-now^="tick:g45:witness"]')].length);
+  ok('Basic, Lv 45 on "Forgotten Commander" (not turned in): no g45:witness card', r === 0, r);
   await p.evaluate(() => document.querySelector('#nsqWrap [data-now="story"]').click()); await p.waitForTimeout(300);
-  r = await p.evaluate(() => ({ quest: state.quest, end: state.storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:0"]') }));
-  ok('Basic: "Turned in" on "Forgotten Commander" -> on "Daeva Trapped in a Nightmare", g45:0 card offered', r.quest === 'Daeva Trapped in a Nightmare' && !r.end && r.card, r);
+  r = await p.evaluate(() => ({ quest: state.quest, end: state.storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:witness"]') }));
+  ok('Basic: "Turned in" on "Forgotten Commander" -> on "Daeva Trapped in a Nightmare", g45:witness card offered', r.quest === 'Daeva Trapped in a Nightmare' && !r.end && r.card, r);
 
   /* Text fixes (claims C36-C38). */
-  const t = await p.evaluate(() => ({ g6: itemByK('g6:0').t, g32: itemByK('g32:dreams').t, g45: itemByK('g45:0').t, html: document.documentElement.innerHTML }));
+  const t = await p.evaluate(() => ({ g6: itemByK('g6:0').t, g32: itemByK('g32:dreams').t, g45: itemByK('g45:witness').t, html: document.documentElement.innerHTML }));
   ok('g6:0 no longer credits Perceives with the first wings; "Dream Crossroad"', !/gives your first wings/.test(t.g6) && /Dream Crossroad;/.test(t.g6), t.g6);
   ok('g32:dreams says Ascension Gauge 100% and "A Daeva Dreaming Anew"', /Ascension Gauge is at 100%/.test(t.g32) && /A Daeva Dreaming Anew/.test(t.g32) && !/Crossroads/.test(t.g32), t.g32);
-  ok('g45:0 says it opens after "Forgotten Commander" is turned in', /opens after you turn in "Forgotten Commander"/.test(t.g45), t.g45);
+  ok('g45:witness says it opens after "Forgotten Commander" is turned in', /opens after you turn in "Forgotten Commander"/.test(t.g45), t.g45);
   ok('no "Dream Crossroads" and no bare "One Who Hears the Voice." quest name in the page', !/Dream Crossroads/.test(t.html) && !/quest "One Who Hears the Voice/.test(t.html));
 
   ok('no page errors', !errs.length, errs);

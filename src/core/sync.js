@@ -21,7 +21,7 @@ const SYNC_MAPS = ["checks", "started", "areaRun", "rqSnooze", "stLv", "stPick",
 const SYNC_REGS = ["level", "stones", "pendSt", "pendCr", "stShards", "dvTotal", "dvAdj", "rotSeen", "buildId", "customBuild"];
 /* One-time flags: merged with OR (seedDv…seedDv4: retired flags early builds wrote). Every other top-level field that
    isn't character data is a view setting (per device). */
-export const ONE_TIME_FLAGS = ["seedLv12", "stTriniel1", "dvReset1", "migV5", "eputSync1", "stampV1", "seedDv", "seedDv2", "seedDv3", "seedDv4"];
+export const ONE_TIME_FLAGS = ["seedLv12", "stTriniel1", "dvReset1", "migV5", "eputSync1", "g45Split1", "stampV1", "seedDv", "seedDv2", "seedDv3", "seedDv4"];
 
 /* canonical JSON (object keys sorted), for comparing values */
 const mtCanon = v => JSON.stringify(v, (k, x) => x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(y => [y, x[y]])) : x);

@@ -53,8 +53,10 @@ export default (test, M) => {
     const g22 = M.GATES.find(g => g.id === 'g22'), g45 = M.GATES.find(g => g.id === 'g45'), ks = (s, g) => M.openSteps(s, g).map(x => x.k);
     assert.ok(!ks(S({ level: 22, quest: qBefore('Daeva in a Dream') }), g22).includes('g22:0'));
     assert.ok(ks(S({ level: 22, quest: 'Daeva in a Dream' }), g22).includes('g22:0'));
-    assert.ok(!ks(S({ level: 45, quest: 'Forgotten Commander' }), g45).includes('g45:0'));
-    assert.ok(ks(S({ level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' }), g45).includes('g45:0'));
+    assert.ok(!ks(S({ level: 45, quest: 'Forgotten Commander' }), g45).includes('g45:witness'));
+    assert.ok(ks(S({ level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' }), g45).includes('g45:witness'));
+    assert.ok(ks(S({ level: 45, quest: 'Daeva Trapped in a Nightmare' }), g45).includes('g45:witness'), 'E10: on its wrapper quest');
+    assert.ok(!ks(S({ level: 45, quest: 'Daeva Trapped in a Nightmare', storyEnd: 'Daeva Trapped in a Nightmare' }), g45).includes('g45:witness'), 'E10: done once the wrapper is turned in');
   });
   test('open steps: a step that is a story quest (byStory) is never offered (the story card and "Turned in" cover it)', () => {
     const g6 = M.GATES.find(g => g.id === 'g6'), q = 'The Being Beneath the Lake';

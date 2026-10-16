@@ -322,7 +322,7 @@ async function load(p, state, mode) {
       const s = () => document.querySelector('#asc .asc-txt'), out = { size: getComputedStyle(s()).fontSize, font: f.status, n: 0, want: QUESTS.length + 2, wide: [] };
       const fits = () => { const t = s(); out.n++; if (t.scrollWidth > t.clientWidth && out.wide.length < 3) out.wide.push(`${t.textContent} (${t.scrollWidth} > ${t.clientWidth})`); };
       for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
-      Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:0': true }); update(); fits();
+      Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:witness': true }); update(); fits();
       return out;
     }, FIG);
     ok(`Ascension label one line at 390px (touch, Basic, ${r.size} Figtree): ${r.n} positions, none wider than the card`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
