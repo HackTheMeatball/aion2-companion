@@ -1,0 +1,136 @@
+# Phone layout: audit, proposal, patch plan
+
+Docs only (issue #81). No change to `src/`. Mockup: [`mockups/phone-layout.html`](mockups/phone-layout.html); screenshots in
+[`mockups/phone/`](mockups/phone/). Builds on [`docs/audits/2026-10-mobile-a11y.md`](../audits/2026-10-mobile-a11y.md)
+(P1-1, P1-2, P2-5) and ROADMAP 0.2.6.
+
+Not covered: nothing here was checked on a real iPhone; the 195 / 260 px page-zoom widths were not re-run (see 2.4).
+The mockup text is placeholder, not game data.
+
+## 1. Method
+
+- `npm run build` at v0.2.3 (`6c2196c1a203`), served from `dist/` with `scripts/serve.mjs`.
+- Chromium via Playwright, 390×844, DPR 2, `isMobile` + `hasTouch` (so `pointer: coarse` matches).
+- Save: `tests/fixtures/fixture-user-2026-10-14-lv39.json` (the owner's Lv 39 save) with `mode` set to `basic` or `advanced`.
+- Shots: `mockups/phone/before-{basic,advanced}-full.png` plus one per card (`header.top`, Progress, Journey, Dungeons &
+  Strongholds, The map (Advanced only), Skills, Daevanion, Stigmas, Next up, Confidence, Sources). Milestones and Route
+  rules are not cards (`.sec`), so they only appear in the full-page shots. The Build drawer was not captured.
+- Probe: every visible button, link, summary, input and select under 44 px (the `::before` hit-area extensions are not
+  counted, so this overstates what a finger sees), inputs under 16 px, text under 11 px, elements past the right edge.
+  The probe runs on a fresh page: a full-page screenshot on the same page changed the emulation and made the 16 px /
+  11 px rules look unapplied.
+
+## 2. Findings (390 px, Lv 39 fixture)
+
+### 2.1 Card order (the biggest one)
+
+| | Basic | Advanced |
+|---|---|---|
+| Page height | 3,300 px | 7,102 px |
+| Next up starts at | 2,118 px (2.5 screens) | 3,738 px (4.4 screens) |
+
+`aside.rail` (Progress, Journey, Dungeons & Strongholds, The map, Skills, Daevanion, Stigmas) is stacked before `#main`
+(Next up, Milestones, Route rules), then Confidence and Sources. The thing the user opens the site for is below seven
+cards. Same as P1-1, slightly better than in the 2026-10-13 audit (2,210 / 4,240 px). In Advanced the Journey card alone
+is 963 px (the current story step with its objectives); it pushes everything else down.
+
+### 2.2 Tap targets under 44 px
+
+Counts are elements in the page, 390 px.
+
+| Control | Size | Count (Basic / Advanced) | Note |
+|---|---|---|---|
+| Inline links (`a`) | 16 px tall | 202 / 182 | mostly Sources and prose; prose links are fine under WCAG 2.5.8 (inline exception), list-row links are not |
+| Checkboxes | 20 px | 7 / 64 | Advanced: all objective, Milestone and Sealed Dungeon ticks; some inputs are 14 px (small ones in the objective sub-lists) |
+| Daevanion / Shards −/+ (`numctl`) | 26×26 | 8 / 8 | |
+| `.q-inl` ("In my game") | 22 px | 1 / 32 | 10.5 px mono text as well |
+| `.tip` "i" | 17×17 | 4 / 19 | glyph in a fixed box |
+| `a.amap` map pin | 26×26 | 5 / 5 | |
+| Sync fields (`sync0`…) | 52×26 | 0 / 15 | |
+| Level −/+ in Journey | visible buttons about 38 px | Advanced | the probe also lists 6 buttons named "Level down" at 14×18 px; I did not identify which control that is |
+| Basic / Advanced switch | about 25 px tall | 1 | the most-used control on the page |
+| Filter icon and × in Journey | about 20 px | | |
+
+Already fine: Level up, the Next up action buttons and Mark spent (44 px under `pointer: coarse`).
+
+Confidence and Sources (ROADMAP 0.2.6): the folded cards measure 63 and 53 px tall, so the summary row is not too short.
+What is not verified is that the whole row is the hit area rather than only the heading text; check on a device before
+writing a patch for it (the summary is a `<summary>` with an `<h2>` child, so the default is the whole row).
+
+### 2.3 Page zoom (iPhone Safari zooms into a focused field under 16 px)
+
+At 390 px with coarse pointer: no field is under 16 px, no overflow (`scrollWidth` 390), text under 11 px is only icon
+glyphs (`.tip`, chevrons, `tipbtn`), which the 0.1.9 rule excludes on purpose. So the 0.1.9 fix holds in emulation.
+Not testable here: real Safari behaviour (double-tap zoom, the focus zoom on the number inputs that are styled 18 px).
+Double-tap on −/+ is covered by `touch-action: manipulation` on buttons.
+
+### 2.4 "Remaining phone page-zoom issues" (0.2.6)
+
+I could not reproduce these at 390 px. The audit's P2-9 cases (195 px: `.progress-row` clipping; 260 px: Daevanion −/+
+overflow) need 195 / 260 / 640 px runs, which I did not do. Treat as open until someone re-runs them; step 5 below
+is that re-run plus the `flex-wrap` fix.
+
+### 2.5 Wrapping and layout (seen in the screenshots)
+
+- Next up card (`before-basic-nowstar.png`): title wraps over two lines, the "i" button sits alone on its own line, then
+  zone / level / count wrap to three lines; the action button ("Show") is small and right-aligned, 20 px below the text.
+- Dungeons & Strongholds: the level-range select touches the "STRONGHOLDS" heading with no gap; locked rows are dimmed
+  far enough to be hard to read (`before-basic-areas.png`).
+- Basic / Advanced pill sits between the eyebrow and the page title; the title wraps to two lines.
+- Journey (Advanced): Level −/+, slider and Level up are inside the card at the top of the page, so on a long scroll
+  the level controls are out of reach. Objectives are a full-width stack of 6+ rows with 20 px checkboxes.
+- Cards are uniform in padding (14 px) and corner radius; that part is already good.
+
+## 3. Proposal
+
+Tokens: the repo has no `docs/design-system.md` (HANDOFF and ROADMAP refer to it). The tokens are the `:root` block of
+`src/styles/app.css`: `--bg --panel --panel-2 --line --fg --muted --accent --accent-text --accent-fill --good --warn`
+and the three font stacks. The mockup uses only those; it adds no colour.
+
+1. **Order: Next up first.** ≤ 860 px: header, (sticky level bar), Next up, Journey (folded in Basic), Milestones,
+   Skills / Daevanion / Stigmas, Dungeons & Strongholds, The map, Route rules, Confidence, Sources. Next up lands at
+   about 400 px instead of 2,118.
+2. **Sticky level bar**: `LV 39`, progress, **Level up** (44 px, `--accent-fill`, as now). Replaces scrolling to Journey.
+   Level −/+ and the slider stay in Journey (Advanced); the intent from CLAUDE.md, that the level changes only through
+   Level up / − / + / slider, is unchanged.
+3. **44 px targets** on touch: Basic/Advanced switch as two 44 px halves; −/+ steppers 44×44; `.q-inl` and "i" get a
+   44 px hit area through the existing `::before { inset: -Npx }` pattern (visual size unchanged); list-row links and
+   checkboxes get row-wide labels of at least 44 px; folded cards `min-height: 48px`.
+4. **Next up on phones**: first card full width with the action(s) directly under the text (full-width, 44 px, primary =
+   `--accent-fill`); later cards compact (number tile + title + one line); "1 of N" instead of the nested scroll stack
+   (P1-2).
+5. **Bottom tab bar** (Route · Gear · Build), 52 px, safe-area padding. Build opens as a bottom sheet with a scrim and
+   grab handle (P2-5; `dvh`, not `vh`), replacing the 19 px side tab with 8.5 px text.
+6. **Folded by default on phones**: Journey (Basic), Dungeons & Strongholds, Confidence, Sources, each a uniform
+   48 px summary row ("Open ▾" in `--accent-text`).
+
+Mockup frames (`mockups/phone/after-*.png`, from `phone-layout.html`): `after-top-basic`, `after-lower-basic`,
+`after-build-sheet`. They are static HTML, not the product; labels and values are placeholders.
+
+## 4. Patch plan (0.2.6+)
+
+CSS-only means `src/styles/app.css` (and at most static markup in `src/index.html`); it does not touch `src/main.js`,
+`src/core/`, saves or `data/`. Those can ship in parallel with 0.3 work.
+
+| # | Patch | Files | Serial? | Size | Visible |
+|---|---|---|---|---|---|
+| A | 44 px hit areas on −/+, "i", `.q-inl`, map pins, checkbox rows; Basic/Advanced switch 44 px | CSS | no | S | hit areas no; switch yes |
+| B | Gap under the area select; locked-row contrast; folded-card `min-height` | CSS | no | S | yes (small) |
+| C | Page-zoom re-run at 195 / 260 / 640 px; `flex-wrap` on `.progress-row`, `.ns-head` if it fails | CSS (+ test) | no | S | yes |
+| D | Route rules card home (F11, ROADMAP 0.2.6) | `src/index.html` markup + CSS | no, unless it needs JS to place it | S | yes, owner |
+| E | Card order on phones: Next up first | CSS `order` with `display: contents` on the rail, or a JS move | CSS version no; JS version **`src/main.js`** | M | yes, owner |
+| F | Sticky level bar | `src/index.html` + CSS; **`src/main.js`** if the bar needs its own live level | **yes** | M | yes, owner |
+| G | Next up "1 of N" pager and compact later cards | **`src/main.js`** (`renderNow`) | **yes**, after 0.3 | L | yes, owner |
+| H | Bottom tab bar and Build bottom sheet | **`src/main.js`** (drawer code) + CSS | **yes** | M | yes, owner |
+
+Order: A, B, C, D ship as 0.2.6 (all CSS-only). E can follow if done in CSS (needs a check that `display: contents` keeps
+the landmark and tab order; the audit preferred a JS move for that reason). F, G, H touch `src/main.js`
+and the card code that 0.3 rewires, so they wait for 0.3 and then go one at a time in the order F, G, H, each rebased on
+the previous one. Tests: A–E change 390 px layout expectations in `regress` / `e1` (the audit noted this); the
+golden master is unaffected. Run `mig1`, `mig2`, `journey` only for patches that touch `main.js` (F–H).
+
+## 5. Open questions for the owner
+
+- Basic mode: is a Next-up-only first screen what you want, with Journey folded, or should Journey stay open?
+- Tab bar: Route · Gear · Build is a guess; Skills, Daevanion and Stigmas could be a single "Gear" tab or stay in the page flow.
+- Please check on the iPhone: whole-row tap on Confidence / Sources, and whether any field still zooms on focus.
