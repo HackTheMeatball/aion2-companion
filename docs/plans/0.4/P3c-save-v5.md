@@ -49,7 +49,7 @@ carries ten load-time steps for saves from before 0.3, including one player's sk
 - **`core`:** `char()` on v5, `labelOf` (with and without a name), `merge()` per slot (one-sided slots, both sides,
   view settings local), the fresh-start shape, `newId` injected.
 - **Fixtures:** P3a's `toStored(flat)` wraps a flat test state into v5; `journey`, `regress`, `e1`–`e4`, `gates`,
-  `a11y`, `golden` run on it. That's fixture conversion in the tests; the app never sees an old shape.
+  `a11y`, `golden` run on it (P3a already moved the user's-save suites off the v285 baseline onto flat fixtures). That's fixture conversion in the tests; the app never sees an old shape.
 - **Golden:** the stored-state part of every snapshot changes once (new shape). Run `node tests/golden.js --explain`
   first: Next up, milestone headers, Journey and the Dungeons card must show **no** difference; then
   `--record` and commit the snapshots with the reason.

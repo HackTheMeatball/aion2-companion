@@ -23,13 +23,21 @@ way. P3c changes the key and the shape; without one place to change, P3c would t
 
 Every suite and support script writes and reads saves only through it.
 
+**Seeding through the old build stops.** `tests/journey.js:21`, `tests/regress.js:152` and `:175` and `tests/lib.js:7`
+load the user's save into the v285 baseline first and let today's migrations carry it into the current build. After
+P3c that chain is gone. So here, before the break: load each of those saves the way the suite does today, take the flat
+state the current build stores after its migrations, commit it as a new fixture (`tests/fixtures/user-*.flat.json`,
+with the script that made it under `tests/support/`), and seed the suite from that fixture with `writeSave` on the
+current page. Each suite's result must not change.
+
 ## Appetite
 
 M (100–300 lines across about 30 files, mostly one-line swaps).
 
 ## No-gos
 
-- No change under `src/`, no change to `tests/baselines/`, no snapshot or fixture JSON change.
+- No change under `src/`, no change to `tests/baselines/`, no snapshot change, no existing fixture changed (the new
+  flat fixtures are added beside them).
 - No assertion removed or loosened; a check that reads the raw stored text keeps reading the raw text (through
   `readRaw(page)` if needed).
 - `mig1` / `mig2` keep writing the old key into the old baseline builds; they use `V4_KEY` explicitly.
@@ -42,11 +50,14 @@ M (100–300 lines across about 30 files, mostly one-line swaps).
 - [ ] Golden identical, no snapshot changed; `mig1`, `mig2`, `journey`, `regress`, `e1`–`e4`, `site`, `a11y`, `gates`
       green.
 - [ ] A small `core` (Node) test pins `toStored` as the identity for today's shape.
+- [ ] `journey`, `regress` and `tests/lib.js` no longer open `CFG.V285`; only `mig1` / `mig2` do (paste the `grep`).
+      `journey` still reaches Lv 45 with the Lv 44 edge case, and `regress` reports hard fail 0.
 - [ ] `npm test` green.
 
 ## Files (owns)
 
-`tests/support/save.js` (new) and the save lines of `tests/**` (not `tests/baselines/`, not snapshots or fixtures).
+`tests/support/save.js` (new), `tests/fixtures/user-*.flat.json` and their script (new), and the save lines of
+`tests/**` (not `tests/baselines/`, not snapshots, not existing fixtures).
 
 ## Lanes, model, order
 
