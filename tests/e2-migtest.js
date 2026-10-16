@@ -127,7 +127,32 @@ const metrics = () => {
   ok('5c back from pre-E2: its un-tick is re-stamped at the next load; other stamps unchanged',
     JSON.stringify(F.saved.mt.checks['rq:2202053']) === JSON.stringify([(T2 + 60000) / 1000, false]) && JSON.stringify(F.saved.mt.checks['rq:2202016']) === JSON.stringify([T1 / 1000, false]) && F.saved.checks['rq:2202053'] === false,
     [F.saved.mt.checks['rq:2202053'], F.saved.mt.checks['rq:2202016']]);
-  /* 5. 0.2.5 backup1: the v287 save in the current build at a fixed clock gains only backup = { since: the page clock }
+  /* 5. 0.3 E10 (g45Split1): g45:0 ("Witnesses and Oath") is retired and narrowed to g45:witness. A v287 save with g45:0 ticked:
+     the current page copies the tick once, keeps g45:0, saves the flag; reload writes nothing; the save rolls back to v287 with
+     g45:0 still ticked there. A v287 save without the tick gains neither the key nor the flag. */
+  const S10 = JSON.parse(fix287); S10.checks['g45:0'] = true; S10.level = 45; S10.quest = 'Forgotten Commander';
+  const G10 = await run(E2, JSON.stringify(S10)), Gpre = await run(PRE, JSON.stringify(S10));
+  ok('E10: no page errors', !G10.errs.length && !Gpre.errs.length, [G10.errs, Gpre.errs]);
+  ok('E10: g45:0 -> g45:witness ticked once; g45:0 kept; g45Split1 saved', G10.saved.checks['g45:witness'] === true && G10.saved.checks['g45:0'] === true && G10.saved.g45Split1 === true,
+    [G10.saved.checks['g45:witness'], G10.saved.checks['g45:0'], G10.saved.g45Split1]);
+  const lost10 = Object.entries(S10.checks).filter(([k, v]) => G10.saved.checks[k] !== v).map(([k]) => k);
+  ok('E10: additive (every saved tick kept)', !lost10.length, lost10);
+  const H10 = await run(E2, JSON.stringify({ ...S10, checks: { ...S10.checks, 'g45:0': undefined } }));   /* the same save without the tick */
+  ok('E10: the Lv 45 milestone counts Witnesses as done (one more than the same save without g45:0)', +G10.m.gatesMain.g45.split('/')[0] === +H10.m.gatesMain.g45.split('/')[0] + 1, [H10.m.gatesMain.g45, G10.m.gatesMain.g45]);
+  same('E10: reload idempotent (saved state)', G10.saved, G10.saved2);
+  const Gback = await run(PRE, JSON.stringify(G10.saved));
+  ok('E10: rollback to v287 keeps g45:0 ticked and its Lv 45 count', Gback.saved.checks['g45:0'] === true && Gback.m.gatesMain.g45 === Gpre.m.gatesMain.g45, [Gpre.m.gatesMain.g45, Gback.m.gatesMain.g45]);
+  const N10 = await run(E2, fix287);
+  ok('E10: a save without g45:0 gains neither g45:witness nor the flag', !('g45:witness' in N10.saved.checks) && N10.saved.g45Split1 === undefined, [N10.saved.checks['g45:witness'], N10.saved.g45Split1]);
+  /* Late tick: the flag is already set (ORed in by sync), then an older build ticks g45:0 and syncs it here; g45:witness
+     is absent. The current page still copies it; a deliberate untick (false) is left alone. */
+  const L10 = await run(E2, JSON.stringify({ ...S10, g45Split1: true }));
+  ok('E10 late tick: g45:0 ticked after the flag is set is still copied; g45:0 kept', !L10.errs.length && L10.saved.checks['g45:witness'] === true && L10.saved.checks['g45:0'] === true && L10.saved.g45Split1 === true,
+    [L10.errs, L10.saved.checks['g45:witness'], L10.saved.checks['g45:0']]);
+  same('E10 late tick: reload idempotent (saved state)', L10.saved, L10.saved2);
+  const U10 = await run(E2, JSON.stringify({ ...S10, g45Split1: true, checks: { ...S10.checks, 'g45:witness': false } }));
+  ok('E10 late tick: an unticked g45:witness (false) is never overridden', !U10.errs.length && U10.saved.checks['g45:witness'] === false, [U10.errs, U10.saved.checks['g45:witness']]);
+  /* 6. 0.2.5 backup1: the v287 save in the current build at a fixed clock gains only backup = { since: the page clock }
      and backup1 (run B, with the real clock, got the same with its own time); a reload changes nothing; pre-E2 keeps both
      through an un-tick there; back in the current build, since has not moved. */
   const T3 = Date.parse('2026-10-16T12:00:00Z'), omitBk = o => { const { backup, backup1, ...r } = o; return r; };

@@ -541,6 +541,11 @@
       "key": "Ishalgen",
       "retired": "2026-10-14",
       "note": "Story quest name key (state.quest / qsteps): Ishalgen is the starting map, not a story quest (owner screen owner:2026-10-14-unlocks-22). A save whose quest is \"Ishalgen\" reads as \"no quest yet\"; the key is never reused."
+    },
+    {
+      "key": "g45:0",
+      "retired": "2026-10-16",
+      "note": "0.3 E10 (design §16 Q9, DATA-FORMAT-V2 N6): narrowed to \"The One Who Witnesses the Nightmare\" under the new key g45:witness (it bundled the Lv 49 Oath); its true ticks are copied there unless g45:witness has a value (g45Split1, every load). Never reused."
     }
   ]
 }

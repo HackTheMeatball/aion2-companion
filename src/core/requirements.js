@@ -55,7 +55,8 @@ export const GATE_CHANGES = {
     "regional quests appear only once it is turned in); those two and The Great Curse-Breaking Caper also gain the story gate they lacked", baseline: true },
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
     "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
-    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)", baseline: true },
+    "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15; g45:witness once " +
+    "\"Daeva Trapped in a Nightmare\" is turned in: 0.3 E10)", baseline: true },
   storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once Cemetery Cleanup's " +
     "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in", baseline: true },
   followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)", baseline: true },

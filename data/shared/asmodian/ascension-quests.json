@@ -284,7 +284,7 @@
       "chapter": 4,
       "lv": 45,
       "unlocksAt": 10,
-      "guideStep": "g45:0",
+      "guideStep": "g45:witness",
       "claims": [
         "C37"
       ],
@@ -294,7 +294,7 @@
             "story": "sq:2102800",
             "is": "turnedIn",
             "basis": "legacy",
-            "note": "today's g45:0 gate (claim C37)"
+            "note": "the g45:witness gate (claim C37)"
           },
           {
             "done": "asc:dreams",
@@ -304,7 +304,19 @@
         ]
       },
       "completesWith": [
-        "tick"
+        "tick",
+        {
+          "story": "sq:2102810",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+              "checkedAt": "2026-10-16",
+              "note": "its only objective is completing The One Who Witnesses the Nightmare"
+            }
+          ]
+        }
       ],
       "faction": "asmodian",
       "access": "teleport",
@@ -324,7 +336,7 @@
       "status": "verified",
       "notes": [
         "No map location: unlocks when its prerequisites are met and the player teleports in (Journal → Ascension → Teleport; owner, 2026-10-14). Metabot gives no prerequisite field for Ascension quests (prereq-gates §5).",
-        "Its wrapper, \"Daeva Trapped in a Nightmare\" (2102810), is not in the app yet (owner decision Q7: added after the owner's check), so completion is the tick only."
+        "Its wrapper, \"Daeva Trapped in a Nightmare\" (sq:2102810), is in the story data since 0.3 E10 (owner decision Q7, answered 2026-10-16): turning it in completes this quest (wrapper rule, design §5)."
       ]
     }
   ]

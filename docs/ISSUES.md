@@ -41,6 +41,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | `owner:2026-10-16-hugo-01` | Turned in Hugo Mercenaries: Past and Present (screenshot); Deep Shadow was not offered afterwards, so Past and Present alone does not open it | `rq:2202011` (prereq-gates §11 check 9) |
   | `owner:2026-10-16-hugo-02` | Owner, by hand on th.gl + in-game observation (screenshot, 03:07 ET): Deep Shadow needs Canyon's Secret + Past and Present and unlocks An Old Promise; both edges owner-confirmed. th.gl is not cited | `rq:2202011` (check 9 answered) |
   | `owner:2026-10-16-quickslice-01` | Quick Slice tooltip (screenshot, 03:05 ET), Lv 7 (+1), slot 1 open, two slots locked: +20% MP restored; Absorbs 0.7% HP; +50% Multi-Hit on hit; Lv 12: −1s [Insignia Explosion] cooldown on hit; Lv 16: "Ignores Block and Evasion and lands a…" (cut off, not completed) | `specialtyEvidence` `spec:assassin:quick-slice:4`, claim C40 |
+  | `owner:2026-10-16-daeva-trapped-01` | Owner's own lookup (03:14 ET, #108; th.gl checked by hand, not cited): Daeva Trapped in a Nightmare is given by Koro at the Abyss Base; objectives: complete The One Who Witnesses the Nightmare, then talk to Nemon at the Outskirts Stall; previous Forgotten Commander, next Waiting for the Next Journey (story 89/89) | `sq:2102810` giver (single source), claim C41 |
   | `owner:2026-10-16-zikel-01` | Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based), i.e. `r12c11` and `r6c7` in Metabot's 15×15 frame | `dv:z:db`, `dv:z:db2` |
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.
@@ -49,10 +50,16 @@ on purpose: the guide shows nothing rather than an unverified value.
   expedition weekly cap, stigma slot 3/4 order, first Daevanion nodes, cash-shop scope. See the Confidence card.
 - **Zone assumption**: Safe Haven → Dredgion Crash Site has no strict map majority (Hidden Vein Cave, 460 m away, votes
   Nameless Cemetery). Chosen from the Safe Haven Cliff stronghold and allthings.how's filing (E3 P1-9).
-- **"Daeva Trapped in a Nightmare" is not in the story data** (0.1.3). It follows "Forgotten Commander" (Lv 45, only
-  objective: complete "The One Who Witnesses the Nightmare"; th.gl q_2102810, Metabot). Adding it changes the story end
-  state (`storyEnd` moves saves on, mig1's pinned diffs change), so it is left for the 0.3 requirement audit. Until
-  then `g45:0` is gated on "Forgotten Commander" turned in (`turnedIn`, i.e. past it or `storyEnd`).
+- **"Daeva Trapped in a Nightmare" (`sq:2102810`) is the last story quest in the data since 0.3 E10** (#108; owner decision
+  Q7, `owner:2026-10-16-daeva-trapped-01`). Metabot confirms everything except the giver: **Koro at the Abyss Base is single
+  source** (the owner's own lookup, claim C41; Metabot's page names no giver, though Forgotten Commander turns in at Koro,
+  marker "Abyss Base"). Owner check at Lv 45: the giver and where he stands (zone `zone:altgard-unplaced` until then).
+  The owner's lookup shows "Steps: 1" but two numbered lines; the second (talk to Nemon at the Outskirts Stall) is
+  Metabot's turn-in, so the record has one objective plus the turn-in.
+- **"Waiting for the Next Journey" is not in the data** (story quest 89/89 on the owner's lookup). Metabot's Asmodian page:
+  chapter 7 "Shadows Cast Everywhere", recommended and unlocks at **Lv 46**, one step "Wait for the right time" (Altgard),
+  no giver, turn-in or id. It is past the Lv 45 cap, so it is only named in the end-of-story text ("next in game … at Lv
+  46", `end.next` / `end.nextLv`). Owner check if the guide ever goes past Lv 45: its giver, turn-in and id.
 - C27 (optional board re-check prompt at Lv 20/30/40) not added; the board card already flags a total below the
   level formula.
 
@@ -67,8 +74,8 @@ on purpose: the guide shows nothing rather than an unverified value.
   Screen copy starts empty: import your file there." No permitted source says whether a Home Screen web app shares the
   Safari tab's storage (docs/design/0.2.5-save-safety.md §2), so the sentence is left out until checked: add the site to
   the Home Screen from a Safari tab with progress, open it, and see whether the progress is there.
-- **`g45:0` story chip** says "your current quest" while "Forgotten Commander" is open; the step itself waits in Next
-  up until that quest is turned in.
+- **`g45:witness` story chip** (`g45:0` until 0.3 E10) says "your current quest" while "Forgotten Commander" is open;
+  the step itself waits in Next up until that quest is turned in.
 
 - **Sources card has 300 links** (collapsed per site). The `regress` soft check "<= 60 links" fails by design: `e2`
   requires every source URL to be listed.

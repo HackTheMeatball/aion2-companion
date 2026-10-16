@@ -324,7 +324,7 @@ async function load(p, state, mode) {
       const fits = () => { const t = s(), cs = getComputedStyle(t), right = t.getBoundingClientRect().right, card = document.getElementById('asc').getBoundingClientRect().right;
         out.n++; if ((cs.whiteSpace === 'nowrap' || cs.textOverflow !== 'clip' || right > card + 0.5 || t.scrollWidth > t.clientWidth) && out.wide.length < 3) out.wide.push(`${t.textContent} (${cs.whiteSpace}, ${cs.textOverflow}, right ${right} vs card ${card})`); };
       for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
-      Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:0': true }); update(); fits();
+      Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:witness': true }); update(); fits();
       out.mode = (document.querySelector('.modeseg [data-mode][aria-pressed="true"]') || {}).dataset?.mode;
       return out;
     }, FIG);

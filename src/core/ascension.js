@@ -1,7 +1,7 @@
 /* The Ascension bar (0.3 E8, pure: no DOM; docs/design/0.3-requirement-engine.md §11). Informational only: it reads the
    evaluator (gatesOf) and the ticks, and writes nothing. The 4 in-cap chapters (ASCENSION, inCap) are its segments; a
    chapter is filled when its node is done (derived from its wrapper story quest, §5) or its guide step is ticked
-   (ASCENSION step: g6:0, g22:0, g32:dreams, g45:0). The Ascension Gauge stays a player atom: never read, only named. */
+   (ASCENSION step: g6:0, g22:0, g32:dreams, g45:witness). The Ascension Gauge stays a player atom: never read, only named. */
 import { ASCENSION } from "../data/story.js";
 import { gatesOf } from "./requirements.js";
 
