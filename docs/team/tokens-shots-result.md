@@ -8,3 +8,7 @@ to 3 times, both sides; a real CSS difference differs on every attempt).
 
 site-390-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
 
+## Batch 2: `^site-1100-` (24 cases): 24 identical, 0 differ, 0 re-shot
+
+site-1100-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
+
