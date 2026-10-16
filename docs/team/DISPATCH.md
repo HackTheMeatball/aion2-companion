@@ -17,6 +17,8 @@ G1–G4); `.github/workflows/claude.yml` and `ci.yml`.
   marked "running"; the CEO fills in the numbers.
 - The GitHub plan is assumed to be Free (20 concurrent jobs on GitHub-hosted runners). On Pro (40) the Actions limit
   stops mattering and the serial files are the only limit.
+- ROADMAP (0.2.6 section) says the phone layout is built after the 0.3 engine, on the design tokens; HANDOFF orders it
+  after 0.5. This plan follows HANDOFF (W9) because it rewrites every card render; the owner can move it earlier.
 - Added to the routing rule, conservatively: `tools/gen/**` and `data/schema/**` (the data format) count as Opus work.
   The owner's rule doesn't name them; "when in doubt, Opus" covers it.
 
@@ -55,22 +57,22 @@ From HANDOFF and the Sonnet guard in claude.yml:
 
 | Step | Issue / PR | Touches | Builder (why) | Reviewer | Depends on | Conflicts with | Group | Owner input | Size |
 |---|---|---|---|---|---|---|---|---|---|
-| E6 blocker-chain text | running | `src/main.js` Later cards, milestone chips, regional rows, Daevanion "opens …"; core chain formatting; invariant 5 | O: engine output + likely golden | S+O | E5 (#78) | E7 / E8 in `main.js`; golden | W0 | none (standing approval) | L |
-| E7 specialty slots (F3) | running | `src/core` effective skill level, `SP_STEPS` rule node, Skills card | O: core + Next up change + golden | S+O | E5 | E6 / E8 in `main.js`; golden; 0.2.7 (Skills card) | W0 | Q5 / Q6 answered by recommendation; picks may ship empty | L |
-| E8 Ascension progress bar | running | Journey card render, core count 0–4 / 4 | O: core cases | S | E5 | E6 / E7 in `main.js` | W0 | none | M |
-| 0.4 design | #79 | `docs/design/` | S was used (docs) | O (it sets the engine plan) | none | none | W0 | approve the step list | M |
-| 0.2.5 save-safety spec + mockup | #80 | `docs/` | S (docs) | S | none | none | W0 | mockup OK (CEO under the 0.2 → 0.3 grant) | S |
-| Phone layout audit + mockup | #81 | `docs/` | S (docs) | S | none | none | W0 | mockup OK (owner: visible, after 0.3) | M |
-| Next-class research | PR #82 | `docs/research/` | done | S | none | none | W0 | D8 | — |
-| This plan | #84 | `docs/team/DISPATCH.md` | O (planning) | S | none | none | W0 | none | M |
+| E6 blocker-chain text | #74 (running) | `src/main.js` Later cards, milestone chips, regional rows, Daevanion "opens …"; core chain formatting; invariant 5 | O: engine output + likely golden | S+O | E5 (#78) | E7 / E8 in `main.js`; golden | W0 | none: the standing approval covers merging; the owner sees the before/after screenshots in the final 0.3 review | L |
+| E7 specialty slots (F3) | #75 (running) | `src/core` effective skill level, `SP_STEPS` rule node, Skills card | O: core + Next up change + golden | S+O | E5 | E6 / E8 in `main.js`; golden; 0.2.7 (Skills card) | W0 | Q5 / Q6 answered by recommendation; picks may ship empty | L |
+| E8 Ascension progress bar | #76 (running) | Journey card render, core count 0–4 / 4 | O: core cases | S | E5 | E6 / E7 in `main.js` | W0 | none: as E6 | M |
+| 0.4 design | #79 / PR #85 | `docs/design/` | S was used (docs) | O (it sets the engine plan) | none | none | W0 | approve the step list | M |
+| 0.2.5 save-safety spec + mockup | #80 / PR #86 | `docs/` | S (docs) | S | none | none | W0 | mockup OK (CEO under the 0.2 → 0.3 grant) | S |
+| Phone layout audit + mockup | #81 / PR #87 | `docs/` | S (docs) | S | none | none | W0 | mockup OK (owner: visible, after 0.3) | M |
+| Next-class research | #82 (merged) | `docs/research/` | done | S | none | none | W0 | D8 | — |
+| This plan | #84 / PR #88 | `docs/team/DISPATCH.md` | O (planning: it sets the routing for every later step) | S | none | none | W0 | none | M |
 
 ### 0.2.x patches and the end of 0.3
 
 | Step | Issue / PR | Touches | Builder (why) | Reviewer | Depends on | Conflicts with | Group | Owner input | Size |
 |---|---|---|---|---|---|---|---|---|---|
 | E9 part 2 + 0.2.4 owner checks (checks 7, 8; Hugo Mercenaries: Deep Shadow; Ascension openings; Zikel Defense Break node) | — | `data/shared/asmodian/*` gate fields, board plan, `claims.json`; golden | O: gate fields + golden | S+O | owner's in-game checks; W0 merged (golden) | golden; any `data/` gate PR | W1 | **in-game checks** | M |
-| 0.2.4 villages as zones | — | `data/shared/asmodian/zones*` + `location.zone` on records; `DATA_SOURCES.md` | S: data, no gate fields (the guard escalates if golden moves) | S | W0 merged | E9 part 2 (same JSON files, different fields: merge E9 first) | W1 | none (approved 2026-10-15) | M |
-| 0.2.5 save safety build | — | `src/main.js` save/storage area, export, `site.js` checks | O: saves | S+O | #80 mockup approved; E6–E8 merged | `main.js` save area (0.5 C1 later) | W1 | mockup OK | M |
+| 0.2.4 villages as zones | — | `data/shared/asmodian/zones*` + `location.zone` on records; `DATA_SOURCES.md` | S: data, no gate fields (the guard escalates if golden moves) | S | W0 merged; merge after E9 part 2 | E9 part 2 (same JSON files, different fields: merge E9 first) | W1 | none (approved 2026-10-15) | M |
+| 0.2.5 save safety build | — | `src/main.js` save/storage area, export, `site.js` checks | O: saves | S+O | #80 mockup approved; E6–E8 merged | `main.js` save area (0.5 C1 later); `app.css` (absorb design tokens first) | W1 | mockup OK | M |
 | 0.2.7 skills active / passive (F2) | — | Skills card render | S: display only, data exists | S | E7 merged (same card) | Skills card; E7 | W1 | none | S |
 | Design tokens (0 changed pixels) | — | `src/styles/*.css`, `docs/design-system.md`, a raw-colour test | O: > 300 lines | S | none (CSS only) | `app.css` (0.2.6, phone layout) | W1 | none | L |
 | E10 "Daeva Trapped" record, `g45:0` split, `STORY_END` | — | `data/` story records + gates, key retire (`g45:witness`), mig1 re-pin (`E1MIG_WRITE_EXPECTED=1`) | O: gates + keys + mig pin | S+O | **owner Q7**; E9 part 2 merged (golden) | golden; mig1 pin; story data | W1–W2, when Q7 lands | **Q7 (giver confirmed in game)** | M |
@@ -111,7 +113,7 @@ From HANDOFF and the Sonnet guard in claude.yml:
 
 | Step | Issue / PR | Touches | Builder (why) | Reviewer | Depends on | Conflicts with | Group | Owner input | Size |
 |---|---|---|---|---|---|---|---|---|---|
-| Y0 sync design (crypto, server, retention) | — | `docs/design/` | O: security + saves | S+O | 0.5.0 | none | W8 (docs, early) | **hosting / cost (money)**; "lose the code = lose the cloud copy"; retention | M |
+| Y0 sync design (crypto, server, retention) | — | `docs/design/` | O: security + saves | S+O | none (docs, written early) | none | W8 (docs, early) | **hosting / cost (money)**; "lose the code = lose the cloud copy"; retention | M |
 | Y1 encryption + sync client on `merge()` | — | `src/core/sync.js`, storage | O: saves + crypto | S+O | Y0 approved | save area | W10 | none | L |
 | Y2 server (no accounts, stores ciphertext only) | — | new service + deploy config; maybe `ci.yml` | O: infra + security | S+O | Y0; **owner creates the account** | `ci.yml` | W10 | **account, cost** | L |
 | Y3 sync UI (code create / enter, status) | — | settings render | O: save calls | S | Y1, Y2 | settings card | W11 | **mockup** | M |
@@ -147,7 +149,7 @@ says who merges first.
 
 | Wave | Runs at once | Max concurrent runs | Merge order inside the wave |
 |---|---|---|---|
-| **W0** (now) | E6, E7, E8, #79, #80, #81, #82, #84 | 3 Opus builders + docs/review runs (≈ 8) | docs first (#80, #81, #82, #84, then #79 after its Opus review); then **E8 → E6 → E7** (smallest `main.js` footprint and no expected golden change first; E7 last because it changes Next up and the Skills card) |
+| **W0** (now) | E6, E7, E8, #79, #80, #81, #82, #84 | 3 Opus builders + docs/review runs (≈ 8) | docs first (#82 merged; #80, #81, #84, then #79 after its review); then **E8 → E6 → E7** (smallest `main.js` footprint and no expected golden change first; E7 last because it changes Next up and the Skills card) |
 | **W1** | E9 part 2 (when the checks are in), villages, 0.2.5 build, 0.2.7, design tokens; E10 if Q7 is in | 3 Opus (E9p2, 0.2.5, tokens) + 1 Sonnet (villages or 0.2.7) + reviews | tokens (CSS only) → 0.2.7 → **0.2.4 release** (E9p2 + villages, in that order) → 0.2.5 build → **0.2.5 release** → E10 |
 | **W2** | 0.2.6 polish, 0.3.0 release pack, pending docs items; R1 can start once D8 is in | 1 Sonnet build + docs + 1 cloud research session | 0.2.6 → **0.2.6 / 0.2.7 release** → **0.3.0** (owner review) |
 | **W3** | N1 travel data → N2 tie-break (N2 starts on N1's branch or after it merges), R1 | 2 Opus + 1 cloud research | N1 → N2 |
