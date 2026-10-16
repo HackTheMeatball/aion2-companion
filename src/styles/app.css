@@ -1370,6 +1370,19 @@ body.basic #spCard .sphint.warn { display: block !important; }
 .savewarn[hidden] { display: none; }
 .savewarn .xfer-btn { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
 .savewarn .xfer-btn:hover { border-color: var(--accent); }
+/* 0.2.5 save safety (standalone site only; docs/design/0.2.5-save-safety.md). The "Last backup" line sits under the
+   export row's text in one block, so the two buttons stay together; amber from 14 days. The export nudge and the
+   Home Screen hint share one quiet card in the save-failed banner's slot and layout (normal border, dismissible). */
+.xfer-text { display: flex; flex-direction: column; gap: 2px; }
+.backup-line { color: var(--muted); }
+.backup-line.stale { color: var(--warn); }
+.backup-line:empty { display: none; }
+.nudge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding: 10px 16px; font-size: 13px; }
+.nudge span { flex: 1 1 24ch; }
+.nudge .xfer-btn, .nudge .nudge-x { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
+.nudge .xfer-btn:hover, .nudge .nudge-x:hover { border-color: var(--accent); }
+.nudge[hidden] { display: none; }
+@media (pointer: coarse) { .nudge button { min-height: 44px; } }
 .fanline a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
 /* ---- 0.1.6 accessibility (no visible change at rest) ---- */
 /* Focus rings where all: unset / outline: none removed them (the input field's ring also shows on click: text fields match :focus-visible). */
