@@ -64,16 +64,17 @@ export const GATE_CHANGES = {
   /* not a gate: guide text only, a switch so --explain attributes the states that show it */
   stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
     "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
-  /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF) */
-  merchantGate: { records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
+  /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF).
+     baseline since E8: recorded in the snapshots by #78, so --explain keeps them on (else every E5 state reads "still differs with every change off") */
+  merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
     "instead of at its recommended Lv 33 (no prerequisite data before)" },
-  lestWeForgetGate: { records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
+  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
     "instead of at its recommended Lv 45 (no prerequisite data before)" },
-  beltGate: { records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
+  beltGate: { baseline: true, records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
     "2026-10-15), not from Lv 13 alone" },
-  amuletGate: { records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
+  amuletGate: { baseline: true, records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
     "Metabot, owner screen 2026-10-15), not from Lv 16 alone" },
-  daevanionGate: { records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
+  daevanionGate: { baseline: true, records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
     "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
   /* E6: not a gate, the words for one (design §4, src/core/blockers.js); a switch so --explain attributes the states that show them */
   blockerText: { what: "blocker-chain text (E6, design §4): Next up's Later cards, the milestone chips and \"Reach / Turn in\" line, the regional rows " +
