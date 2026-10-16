@@ -193,7 +193,10 @@ export const stepChipOf = (c, k, story, ev = gatesOf(c)) => {
   const ch = r.done === false ? blockerChain(r, ev, { omit: ["level"] }) : null;
   if (ch) { const lf = ch.leaf;
     if (lf && lf.kind === "story" && lf.ahead == null) return null;
-    return { text: ch.text, cls: !ch.hop && lf && lf.kind === "story" && questsAhead(lf) === 0 ? "now" : "ahead" }; }
+    /* a plain story leaf: the chip keeps to its distance ("your current quest — turn it in", "2 quests ahead"), the full
+       line goes in its title, so the chip stays one line at 390 px */
+    const plainStory = !ch.hop && lf && lf.kind === "story";
+    return { text: plainStory ? aheadText(lf) : ch.text, title: ch.text, cls: plainStory && questsAhead(lf) === 0 ? "now" : "ahead" }; }
   const sg = storyGate(c, story); if (!sg || (!sg.ok && sg.ahead == null)) return null;
   return sg.ok ? (story === c.quest ? { text: "your current quest", cls: "now" } : { text: "story: passed", cls: "" })
     : { text: leafText({ kind: "story", name: story, ahead: sg.ahead }), cls: "ahead" };

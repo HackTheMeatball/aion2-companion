@@ -899,7 +899,7 @@ function renderStoryChips() {
     chip.className = "schip";
     /* E6: from the step's own gate (turned in where it waits for that), in the words of src/core/blockers.js */
     if (E6) { const cb = li.querySelector("input[data-k]"), x = li.classList.contains("qrow") || !cb ? null : stepChipOf(c, cb.dataset.k, li.dataset.story, ev);
-      chip.textContent = x ? x.text : ""; if (x && x.cls) chip.classList.add(x.cls); return; }
+      chip.textContent = x ? x.text : ""; if (x && x.title) chip.title = capFirst(x.title); else chip.removeAttribute("title"); if (x && x.cls) chip.classList.add(x.cls); return; }
     const sg = storyGate(c, li.dataset.story);
     if (!sg || (!sg.ok && sg.ahead == null)) { chip.textContent = ""; return; } /* not on the chain, or the story unset */
     const d = sg.ahead;
@@ -1244,8 +1244,10 @@ function renderDaevanion() {
     : (() => { const nl = DV_NODES().find(it => !char(state).checks[it.k]); if (!nl) return null;
         const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv), w = dvWaitOf(char(state), nl.board);
         /* Stop point: show the next node you'll buy (on the next board) and a green "all done" status in the button slot. */
-        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${w ? ` board · ${w.story ? dvWhy(w) : `opens Lv ${at}`}` : ` · Lv ${at}`}</small></div></div>` +
-          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · <span class="nw">next: ${nl.board} ${w && w.story ? dvWhy(w).replace(/^opens /, "") : `at Lv ${at}`}</span></div></div></div>`; })()
+        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${w ? ` board · ${w.story ? dvWhy(w).split(" · ")[0] : `opens Lv ${at}`}` : ` · Lv ${at}`}</small></div></div>` +
+          /* E6: the hero's one-line small text keeps the quest, the status below it the distance (both fit at 390 px; nothing said twice) */
+          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · ${w && w.story && dvWhy(w).split(" · ")[1] ? `<span class="nw">next: ${nl.board}</span> · <span class="nw">${dvWhy(w).split(" · ")[1]}</span>`
+            : `<span class="nw">next: ${nl.board} ${w && w.story ? dvWhy(w).replace(/^opens /, "") : `at Lv ${at}`}</span>`}</div></div></div>`; })()
     || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`;
   dvNxUpdate(); renderUndo(); requestAnimationFrame(() => typeof fitSkills === "function" && fitSkills());
   /* "Then": the next few nodes after this one (same order), like Skills' Coming up. */

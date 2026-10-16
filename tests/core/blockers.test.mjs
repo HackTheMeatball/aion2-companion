@@ -57,8 +57,10 @@ export default (test, M) => {
     assert.equal(L({ quest: '', level: 13 }).chip, '', 'story unset: the page says "set your quest"');
     /* the belt's chip says the same as the line (it used to read "your current quest" on Urgent Pursuit: reached) */
     const chip = o => M.stepChipOf(C(o), 'g12:belt', up);
-    assert.deepEqual(chip({ quest: up, level: 13 }), { text: 'unlocks after "Urgent Pursuit" · your current quest — turn it in', cls: 'now' });
-    assert.deepEqual(chip({ quest: at(up, -2), level: 13 }), { text: 'unlocks after "Urgent Pursuit" · 2 quests ahead', cls: 'ahead' });
+    assert.deepEqual(chip({ quest: up, level: 13 }), { text: 'your current quest — turn it in', title: 'unlocks after "Urgent Pursuit" · your current quest — turn it in', cls: 'now' });
+    assert.deepEqual(chip({ quest: at(up, -2), level: 13 }), { text: '2 quests ahead', title: 'unlocks after "Urgent Pursuit" · 2 quests ahead', cls: 'ahead' });
+    /* a chain with a hop keeps its whole text (it names the step before) */
+    assert.equal(M.stepChipOf(C({ quest: at('Daeva in a Dream', -3), level: 22 }), 'g22:1', 'Daeva in a Dream').text, 'after "The One Who Hears the Voice" (opens on "Daeva in a Dream" · 3 quests ahead)');
     assert.deepEqual(chip({ quest: at(up, 1), level: 13 }), { text: 'story: passed', cls: '' });
     assert.equal(chip({ quest: '', level: 13 }), null, 'story unset: empty chip, as before');
     /* a step gated on "reached": the line reads "Reach" where no row waits for a turn-in */
