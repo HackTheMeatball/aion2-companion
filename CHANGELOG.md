@@ -8,6 +8,65 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.4 — 2026-10-16
+
+Active / Passive skills, three specialty slots, locked-item text, Ascension bar.
+
+### Added
+
+- Skills card: each skill shows an Active or Passive label.
+- Skills: three specialty slots per skill. They unlock at skill Lv 8, 12 and 20 (counting the Daevanion bonus on that
+  skill), not at the skill's learn level + 18. A slot names the guide's pick only where two sources agree (Heart Gore
+  and Quick Slice, slots 2 and 3); the others read "pick a specialty". Slot 3 is listed in the Skills card only.
+- Journey card: an Ascension progress bar, 0 to 4 of 4 chapters, with the next chapter named. It is informational; it
+  changes nothing you have ticked.
+- Locked items say why: a quest, skill line or Daevanion board that is still locked names what it waits for, such as
+  `unlocks after "Urgent Pursuit" · 2 quests ahead` or `Needs Lv 20`, instead of a bare level.
+- Items that are provably done (for example a quest whose follow-up you already ticked, or a dungeon cleared by a
+  quest step you turned in) show as done without you ticking them. Nothing is written to your save for these.
+- Story quests: steps for 22 quests and giver / turn-in details for the 10 Ishalgen quests, from Metabot; a first-run
+  note on four story steps (Draupnir marked "probably").
+
+### Changed
+
+- Villages as zones: Aldelle Village is its own zone (Ishalgen), with its nearest Kibelisk; 10 story quest sides
+  moved there. "Near your story step" can differ for a save on one of those quests.
+- Regional quest gates: Shugo of All Trades, Spooky Specters and The Great Curse-Breaking Caper open once their story
+  quest is turned in (owner-confirmed in game). Traveling Merchant's Conundrum now waits for Blood Monument, and Lest
+  We Forget for Zikel's Core. The Noble Belt and the amulet wait for their story quest to be turned in.
+- Hugo Mercenaries: Deep Shadow needs both Canyon's Secret and Hugo Mercenaries: Past and Present (owner-confirmed;
+  Past and Present alone did not open it).
+- Skills: a skill's point cost and level gate use the rule seen in game (learn level + 3 per level, 1 / 2 / 4 points).
+- Daevanion: a board that is held only by a quest says `opens after "Urgent Pursuit"` (the Nezekan board opens with
+  it, Lv 13) instead of "opens Lv 12".
+- Skills: Quick Slice's second specialty unlocks at skill Lv 12.
+
+### Data
+
+- Zikel Defense Break nodes: confirmed by the owner in game.
+- Ascension openings: the open check is closed on sources (no data change).
+- Villages: Aldelle Village zone and the 10 re-pointed quest sides from the Metabot quest pages (build 0.0.4387.0,
+  checked 2026-10-15); Farewells' giver is in Black Claw Village.
+- Specialty picks for slots 2 and 3: only those with two independent sources.
+- Alt-character findings Lv 2 to 16 (owner screens, 2026-10-15) added to the quest and skill rules.
+
+### Accessibility
+
+- The Active / Passive label and the Ascension bar are checked for contrast, name and size at 390 px in Basic and
+  Advanced.
+
+### Known issues
+
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+- The villages Steel Hammer Workcamp, Odar's Shade, Fang Hideout, Minushan Site, Shadow Hall and Sanctum Dumpsite
+  still have no zone of their own; quests there keep the placeholder zone.
+
+### Saved progress
+
+- Unaffected.
+
 ## 0.2.3 — 2026-10-15
 
 Story-quest zones for 34 more quest sides; stigma unlock cost check.
