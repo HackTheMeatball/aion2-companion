@@ -267,6 +267,42 @@
             "maxItems": 3
           }
         },
+        "specialtyEvidence": {
+          "description": "Allow-list for specialty picks beyond slot 1 (0.3 E7): per choice id, the slot it fills, its evidence label and the slot witnesses (build source URLs). The generator rejects a slot 2 / 3 pick without a '2+ sources' entry here.",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^spec:[a-z]+:[a-z0-9-]+:[1-9]$",
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "slot",
+              "label",
+              "sources"
+            ],
+            "properties": {
+              "slot": {
+                "type": "integer",
+                "minimum": 2,
+                "maximum": 3
+              },
+              "label": {
+                "enum": [
+                  "2+ sources"
+                ]
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/httpsUrl"
+                },
+                "minItems": 2
+              }
+            },
+            "additionalProperties": false
+          }
+        },
         "stigmaSlots": {
           "description": "Stigma per slot (today STIGMA_PLAN).",
           "type": "array",

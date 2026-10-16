@@ -18,11 +18,13 @@ import { ROOT, dataFiles, validateDoc } from './validate.mjs';
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
    them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
 const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
-const loadBundle = ({ dropProposed = false } = {}) => {
+/* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks) */
+const loadBundle = ({ dropProposed = false, mutate = null } = {}) => {
   const files = dataFiles(), by = {}, schemaErrors = [];
   let retired = null, sources = null;
   for (const f of files) {
     const doc = JSON.parse(readFileSync(f, 'utf8')), rel = relative(ROOT, f);
+    if (mutate) mutate(rel, doc);
     const errs = validateDoc(f, doc);
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
@@ -180,6 +182,13 @@ export function generate(opts = {}) {
   check('specialty picks: at most 3 slots', Object.values(build.specialtyPicks).every(p => p.length <= rules['rule:specialty-slots'].value.slots.length));
   /* one choice never fills two slots */
   for (const [sid, picks] of Object.entries(build.specialtyPicks)) check(`specialty picks of ${sid} are distinct`, new Set(picks).size === picks.length, picks);
+  /* a pick beyond slot 1 needs a '2+ sources' entry in specialtyEvidence for that slot, witnessed by two or more publishers
+     (hosts) that the build cites for specialtyPicks (owner on #75; research #77 at 8dd047d); no stale entries */
+  const spEv = build.specialtyEvidence || {}, spSrc = new Set((build.sources || []).filter(r => r.url && (r.fields || []).includes('specialtyPicks')).map(r => r.url));
+  for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i) return; const ev = spEv[p];
+    check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence`, ev && ev.slot === i + 1 && ev.label === '2+ sources' && ev.sources.every(u => spSrc.has(u))
+      && new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2, ev || 'no specialtyEvidence entry'); });
+  for (const p of Object.keys(spEv)) check(`specialtyEvidence ${p} backs a pick in its slot`, Object.values(build.specialtyPicks).some(ps => ps[spEv[p].slot - 1] === p));
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
   const STAT_TIERS = build.statPriority.tiers, STAT_SRC = build.statPriority.from;
