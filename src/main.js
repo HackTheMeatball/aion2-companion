@@ -14,6 +14,8 @@ import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
 import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
+/* the save is read and written only through this storage (interface: src/core/storage.js) */
+import { webStorage as saveStore } from "./shell/storage-web.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
@@ -122,14 +124,14 @@ document.getElementById("gates").addEventListener("click", e => {
    page itself runs with all of them on. */
 if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
 /* The save from storage, then the load-time steps (src/core/migrations.js), which write it back where they always did. */
-let { state, hadSave } = (() => { let raw = null; try { raw = localStorage.getItem(KEY); } catch (e) {} return loadState(raw); })();
+let { state, hadSave } = loadState(saveStore.get(KEY));
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
 /* Every write of the progress goes through storeState(): same key, same moments as before (0.1.5); since 5c the save
    carries per-item change times once the stampV1 step has run (stampSave, src/core/sync.js). A write
-   that throws (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
+   that fails (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
 function storeState() {
   stampSave(state, Date.now());
-  try { localStorage.setItem(KEY, JSON.stringify(state)); setSaveWarn(false); } catch (e) { setSaveWarn(true); }
+  setSaveWarn(!saveStore.set(KEY, JSON.stringify(state)));
 }
 function setSaveWarn(on) {
   const el = document.getElementById("saveWarn"); if (!el || el.hidden === !on) return;
@@ -1823,11 +1825,11 @@ document.getElementById("impIn").addEventListener("change", async e => {
   document.getElementById("impNo").onclick = () => { msg.textContent = ""; };
   document.getElementById("impGo").onclick = () => {
     /* The progress being replaced is kept one step back under a separate key. Imported files never re-run the one-time seeds. */
-    try { localStorage.setItem(KEY + ":before-import", JSON.stringify(state)); } catch (err) {}
+    saveStore.set(KEY + ":before-import", JSON.stringify(state));
     Object.assign(data, { seedLv12: true, stTriniel1: true, dvReset1: true });
     /* 0.2.5: the file's backup times are another copy's; the import itself counts as a backup here (src/core/backup.js) */
     importBackup(data, Date.now());
-    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (err) { msg.textContent = "Couldn't save in this browser."; return; }
+    if (!saveStore.set(KEY, JSON.stringify(data))) { msg.textContent = "Couldn't save in this browser."; return; }
     location.reload();
   };
 });
