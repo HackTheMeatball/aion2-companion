@@ -119,6 +119,12 @@ jobs:
             const risky = labels.includes('opus') || changed > 300
               || files.some((f) => riskyPath.test(f.filename) || ((/^src\/main\.js$|^data\//.test(f.filename)) && riskyPatch.test(f.patch || '')));
 
+            // The Claude app can't push .github/workflows/ (no workflows permission): a bot fix or merge there is a wasted run.
+            if (want !== 'review' && files.some((f) => /^\.github\/workflows\//.test(f.filename))) {
+              await github.rest.issues.addLabels({ owner, repo, issue_number: prNum, labels: ['stuck'] });
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body: 'Pipeline: this PR changes .github/workflows/, which the bots cannot push. Labelled `stuck`: a session with git push applies the fix.' });
+              return none('workflow files: bots cannot push the fix');
+            }
             if (want === 'merge') {
               // One merge run per PR per main commit: kickoff can dispatch again after the next merge.
               const main = (await github.rest.repos.getBranch({ owner, repo, branch: 'main' })).data.commit.sha.slice(0, 7);
