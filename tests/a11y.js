@@ -216,14 +216,17 @@ async function load(p, state, mode) {
         const cs = getComputedStyle(e), fs = parseFloat(cs.fontSize), min = /Mono|monospace/.test(cs.fontFamily) ? 11 : 12;
         if (fs > 0 && fs < min - .01) /* 0 px: text deliberately not rendered (a folded cleared step) */ small.push((e.parentElement ? desc(e.parentElement) + ' > ' : '') + desc(e) + ' ' + fs);
       }
+      const tgt = [...document.querySelectorAll('.modeseg button, .numctl button')].filter(vis).map(e => [desc(e), e.getBoundingClientRect()])
+        .filter(([, b]) => b.width < 43.5 || b.height < 43.5).map(([d, b]) => d + ' ' + Math.round(b.width) + 'x' + Math.round(b.height));
       const first = document.querySelector('ul.story > li.st:not(:empty)');
       const line = first && getComputedStyle(first, '::before').content;
       const big = BIGNUM.map(id => document.getElementById(id)).filter(Boolean).filter(e => getComputedStyle(e).fontSize !== '18px').map(e => desc(e) + ' ' + getComputedStyle(e).fontSize);
-      return { fields, big, prim: [...new Set(prim)], small: [...new Set(small)], line };
+      return { tgt: [...new Set(tgt)], fields, big, prim: [...new Set(prim)], small: [...new Set(small)], line };
     }, [PRIMARY, GLYPH, BIGNUM]);
     ok(`touch ${id}: fields at 16 px or more (no zoom on focus)`, !r.fields.length, r.fields);
     ok(`touch ${id}: the big number fields stay at 18 px`, !r.big.length, r.big);
     ok(`touch ${id}: primary buttons at least 44 px tall`, !r.prim.length, r.prim);
+    ok(`touch ${id}: mode switch and number steppers at least 44 px (phone patch A)`, !r.tgt.length, r.tgt);
     ok(`touch ${id}: no text under 11 px (mono) / 12 px`, !r.small.length, r.small);
     if (sn === 'fresh') ok(`story ${id}: no connector above the first story row`, r.line === 'none', r.line);
     await ctx.close();
