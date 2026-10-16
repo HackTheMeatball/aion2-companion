@@ -8,6 +8,35 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.7 — 2026-10-16
+
+Skills card marks each skill as Active or Passive.
+
+### Added
+
+- Skills card: every skill shows an "Active" or "Passive" label next to its name, as text rather than colour alone.
+  The label comes from the skill's type in the guide data; no plan or value changes.
+
+### Changed
+
+- Accessibility and layout checks now cover the new label on all 45 levels. No visible change.
+
+### Known issues
+
+- The Daevanion card still shows the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Skills: only the first specialty slot is offered, and it unlocks at the skill's learn level + 18 instead of skill
+  level 8. Planned for 0.3.
+- Story levels after the first quest still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+- The villages Steel Hammer Workcamp, Odar's Shade, Fang Hideout, Minushan Site, Shadow Hall and Sanctum Dumpsite
+  still have no zone of their own; quests there keep the placeholder zone.
+
+### Saved progress
+
+- Unaffected.
+
 ## 0.2.3 — 2026-10-15
 
 Story-quest zones for 34 more quest sides; stigma unlock cost check.
