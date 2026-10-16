@@ -239,7 +239,9 @@ async function load(p, state, mode) {
   for (const sn of ['lv27', 'lv45']) {
     const { ctx, p } = await page(390);
     await load(p, typeof STATES[sn] === 'function' ? STATES[sn]() : STATES[sn], 'advanced');
-    await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; }));
+    /* every card, the cleared ones too (hidden by "hide cleared cards"): at Lv 45 on "Forgotten Commander" the only ticked row
+       of a shown card was g45's story line, which since E6 waits for that quest's turn-in (unticked), so check them all */
+    await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
     await p.waitForTimeout(250);
     const r = await p.evaluate(() => {
       /* rendered rows only (a done milestone keeps its list collapsed even when open) */
