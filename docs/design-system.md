@@ -35,6 +35,7 @@ measured ones from the token comments; the sprint's result table (colour-sprint 
 | `--fg` | `#ece4ee` | body text |
 | `--muted` | `#9f90a8` | secondary text, labels, checkbox borders |
 | `--muted-strike` | `#9f90a888` | the line through a ticked step |
+| `--muted-66` | `#9f90a866` | border of the Active / Passive tag (`.sptype`) |
 | `--accent` | `#d0506f` | "act now": current step border, focus ring, current dot. 4.4:1 on panels, so never small text |
 | `--accent-soft` | `#d0506f26` | accent wash: pressed buttons, halo around the current dot |
 | `--accent-text` | `#da5d7b` | accent as text on panels (5.0:1) |

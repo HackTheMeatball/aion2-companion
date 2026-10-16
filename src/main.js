@@ -1203,7 +1203,7 @@ function renderNext() {
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
     heroHTML = `<div class="sphero ${state_}${hero.spec ? " spec" : ""}">` +
       `<div class="dvhead">${SP_ICONS[hero.s.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[hero.s.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(hero.s.n)}</span>`}` +
-      `<div class="dvtext"><span class="spname">${hero.s.n} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
+      `<div class="dvtext"><span class="spname">${hero.s.n} ${spType(hero.s)} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
       (hero.spec || locked ? `<span class="dvbar-ph"></span>` : `<div class="dvbar"><div class="dvtrack"><span style="width:${pct}%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this upgrade costs ${cost}"><b>${Math.min(pts, cost)}</b> of ${cost} pt${cost === 1 ? "" : "s"}</span></div>`) + `</div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" id="spBuy">${btn}</button>` : `<div class="buystat">${btn}${tipPop("stones")}</div>`}</div>` +
 
@@ -1229,8 +1229,8 @@ function renderNext() {
     /* a specialty slot waits for a skill level, not a character level, and is free (never short of points, so an empty
        status like the Stigmas card's slot row, not the green "points covered" ✓); slot 3 is past what points and plan nodes reach (Q5) */
     if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
-      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
-    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+      `<span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${spType(x.s)} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   const ptsIn = document.getElementById("spPts");
   if (document.activeElement !== ptsIn) ptsIn.value = stones;
@@ -1337,6 +1337,8 @@ layoutEl.addEventListener("input", e => {
 /* Small icon before a skill name; an empty slot of the same size when there's no art yet, so names line up. */
 /* No art for a skill/stigma: a small initials square (same look for both). */
 const ini = n => n.split(/\s+/).filter(w => /^[A-Z]/.test(w)).map(w => w[0]).join("").slice(0, 2) || n.slice(0, 2);
+/* Active / Passive tag (0.2.7): skills.json "type" via the compiled s.passive flag; text, not colour only */
+const spType = s => `<span class="sptype">${s.passive ? "Passive" : "Active"}</span>`;
 const spMini = n => SP_ICONS[n] ? `<img class="spmini" src="${SP_ICONS[n]}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="spmini ini" aria-hidden="true">${ini(n)}</span>`;
 const dvIconSrc = it => { const set = DV_TYPE_ICONS[it.ty]; return set ? set[char(state).checks[it.k] ? 1 : 0] : ITEMS.crystal[2]; };
 const dvSkill = it => (it.t || "").split(" · ")[0];
