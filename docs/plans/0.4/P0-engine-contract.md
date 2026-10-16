@@ -49,8 +49,8 @@ M, docs only (one design doc, about 200–300 lines).
 
 - [ ] `docs/design/0.4-engine-contract.md` exists and covers 1–6 above, each as its own section.
 - [ ] Every AION 2 spot listed under Problem appears in the hook map (point 2) with its target hook.
-- [ ] The split table (point 3) lists every top-level name of the five core files and `src/data/*.js` (check: `grep -c
-      "^export" ` per file equals the rows for that file).
+- [ ] The split table (point 3) lists every top-level name of the five core files and `src/data/*.js` (check: each
+      file's count of `^export` lines equals its rows).
 - [ ] The term list has at least the audit's keywords and a false-positive list.
 - [ ] ROADMAP 0.4 P2b, P2c, P4a, P5a–d plan files are consistent with the doc; where the doc changes one of them, the PR
       edits that plan file in `docs/plans/0.4/` too and says so.
