@@ -326,6 +326,32 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
+  /* ---------- 13. Active / Passive tags on the Skills card (0.2.7, F2): 390 px, Basic and Advanced, every level 1-45: each skill
+     shown (the hero and every Coming up row, specialty rows too) carries a visible "Active" / "Passive" tag, and it matches
+     the data (skills.json type, compiled to SP_SKILLS[].passive). The tag is text, so it is in the accessible name. ---------- */
+  for (const mode of ['basic', 'advanced']) {
+    const { ctx, p } = await page(390);
+    await p.goto(CFG.CUR);
+    await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
+    await p.reload(); await p.waitForTimeout(400);
+    const r = await p.evaluate(() => {
+      const out = { shown: 0, bad: [], names: new Set() };
+      const names = SP_SKILLS.map(s => s.n).sort((a, b) => b.length - a.length);
+      for (let lv = 1; lv <= 45; lv++) {
+        char(state).level = lv; update();
+        for (const el of document.querySelectorAll('#spHero .spname, #spSoon .sname')) {
+          const text = el.textContent.trim(), n = names.find(x => text.startsWith(x)); if (!n) continue;
+          const tag = el.querySelector('.sptype'), want = SP_SKILLS.find(s => s.n === n).passive ? 'Passive' : 'Active';
+          out.shown++; out.names.add(n);
+          if (!tag || tag.textContent !== want || !el.textContent.includes(want)) out.bad.push(`Lv ${lv} ${n}: ${tag ? tag.textContent : 'no tag'} (want ${want})`);
+        }
+      }
+      return { shown: out.shown, skills: out.names.size, bad: out.bad.slice(0, 5), hasBoth: SP_SKILLS.some(s => s.passive) && SP_SKILLS.some(s => !s.passive) };
+    });
+    ok(`${mode} 390px: every skill on the Skills card has an Active / Passive tag matching the data (${r.shown} rows, ${r.skills} skills)`, r.shown > 0 && r.skills > 1 && r.hasBoth && !r.bad.length, r);
+    await ctx.close();
+  }
+
   ok('no page errors', !errs.length, errs);
   console.log(fail ? `A11Y CHECKS FAILED (${fail})` : 'A11Y CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0);
 })();
