@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="../../../src/styles/app.css">
 <style>
 /* NEW in 0.2.5 (these rules would go into src/styles/app.css) */
+/* the line sits under the existing text in one block, so the two buttons always stay together (390 px: they wrap as a pair) */
+.xfer-text { display: flex; flex-direction: column; gap: 2px; }
 .backup-line { color: var(--muted); }
 .backup-line.stale { color: var(--warn); }
 .nudge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding: 10px 16px; font-size: 13px; }
@@ -39,23 +41,23 @@ html[data-theme="light"] body { background-image: none; }
   <h1>0.2.5 save safety: mockup</h1>
 
   <section class="mock-case" id="c1">
-    <h2>1 · Last backup line (footer, Basic and full)</h2>
-    <p>Sits in the existing export row. Muted; turns amber text only when 14 days or more have passed. No new card.</p>
+    <h2>1 · Last backup line (footer, Basic and full; standalone site only)</h2>
+    <p>Sits in the existing export row, on its own line under the existing text, so the two buttons stay together. Muted; amber from 14 days (same day count as the nudge). No new card.</p>
     <div class="mock-frame">
       <span class="tag-mode">Never exported</span>
-      <div class="xfer"><span>Progress is saved in this browser only.</span><span class="backup-line">No backup yet.</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line">No backup yet.</span></span>
         <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
       <span class="tag-mode">Recent</span>
-      <div class="xfer"><span>Progress is saved in this browser only.</span><span class="backup-line">Last backup: 3 days ago.</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line">Last backup: 3 days ago.</span></span>
         <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
       <span class="tag-mode">14 days or more</span>
-      <div class="xfer"><span>Progress is saved in this browser only.</span><span class="backup-line stale">Last backup: 16 days ago.</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line stale">Last backup: 16 days ago.</span></span>
         <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
     </div>
   </section>
 
   <section class="mock-case" id="c2">
-    <h2>2 · Export nudge (one slim card under the header, Basic and full)</h2>
+    <h2>2 · Export nudge (one slim card under the header, Basic and full; standalone site only)</h2>
     <p>Same layout as the existing save-failed banner (<code>.card</code>, one row, buttons on the right) but quiet: normal border, <code>role="status"</code>, dismissible.</p>
     <div class="mock-frame">
       <span class="tag-mode">Full mode</span>
@@ -70,7 +72,7 @@ html[data-theme="light"] body { background-image: none; }
   </section>
 
   <section class="mock-case" id="c3">
-    <h2>3 · Add to Home Screen hint (iPhone Safari only, once)</h2>
+    <h2>3 · Add to Home Screen hint (iPhone Safari on the standalone site only, once)</h2>
     <p>Same card, same position. If the nudge would show too, the nudge wins and the hint waits for a later visit.</p>
     <div class="mock-frame">
       <div class="card nudge" role="status"><span>Safari can clear a site's saved data after a week unused. To keep your progress, export it, then tap Share and Add to Home Screen. The Home Screen copy starts empty: import your file there.</span>
