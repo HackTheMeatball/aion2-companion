@@ -94,8 +94,9 @@ for (const c of CASES) {
     if (before.equals(after) || (d = await pixelDiff(before, after)).n === 0) { d = null; if (a) { retried++; console.log(`  ${n}: identical on attempt ${a + 1}`); } break; }
   }
   writeFileSync(join(OUT, n + '-before.png'), before); writeFileSync(join(OUT, n + '-after.png'), after);
-  if (!d) { same++; continue; }
+  if (!d) { same++; console.log(`  ${n}: identical`); continue; }
   if (d.diff) writeFileSync(join(OUT, n + '-diff.png'), Buffer.from(d.diff, 'base64'));
+  console.log(`  ${n}: DIFFERS`);
   bad.push(`${n}: ${d.n < 0 ? 'size ' + d.size : d.n + ' px differ in ' + d.box + ' (' + d.size + ')'}`);
 }
 await b.close(); for (const x of Object.values(servers)) x.s.close();
