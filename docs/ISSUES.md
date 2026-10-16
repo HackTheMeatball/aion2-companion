@@ -118,7 +118,10 @@ on purpose: the guide shows nothing rather than an unverified value.
   can be hidden). The runner ignores exactly that line; any other `!!` line fails the suite.
 - Timing checks (`update()` median < 15 ms) trip on a busy machine (measured 10–17 ms for the same build on a 2-vCPU
   VM). Since 2026-10-15 they are the non-blocking `perf` suite (`tests/perf.js`, `npm run test:perf`, CI job `perf`
-  warns only), not part of `npm test` or `ci-ok`. The runner still re-runs a failed suite once, reporting a pass on
+  warns only), not part of `npm test` or `ci-ok`. 2026-10-16: most of the slowdown was a real regression, not the machine
+  (0.3 E4: every `gatesOf` built a fresh evaluator, ~500 per `update()`); `update()` now runs in one `gatesPass` and
+  `regress` blocks on the machine-independent count (`gatesRuns`, at most 3 evaluators per `update()`). Same 4-vCPU
+  cloud VM, perf alone: median over the 45 states 9.9 ms (perf.js added) → 17 ms (main) → 11 ms (fix). The runner still re-runs a failed suite once, reporting a pass on
   retry as `FLAKY` with the first run's failures.
 - Tests block the web fonts (self-hosted files, the claude.ai build's inlined copies, Google Fonts for the baselines) and
   service workers, so layout checks are machine-independent; run `node tests/run.mjs --with-fonts` to check with the
