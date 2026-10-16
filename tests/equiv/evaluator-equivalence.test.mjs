@@ -31,7 +31,7 @@ import { fileURLToPath } from 'node:url';
 import { gates02 } from '../support/gates-0.2.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const { catalogInPage, generate } = createRequire(import.meta.url)('../golden/states.js');
+const { catalogInPage, generate, fixtureStates } = createRequire(import.meta.url)('../golden/states.js');
 
 /* difference key → cause [kept rule]. Key: "<kind> <save key> <field>: 0.2 <value> / evaluator <value>". */
 const SH = 'live gate {level: levelRange.lo} (basis inferred); 0.2 files each stronghold under a Sealed Dungeon band ' +
@@ -85,7 +85,7 @@ export default (test, M) => {
   /* the golden states, built from the catalog the page would hand catalogInPage() (same data, same core) */
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
-  const fixtures = ['fixture-v285.json', 'fixture-user-v285.json'].map(f => ({ name: f.replace(/\.json$/, ''), raw: JSON.stringify(JSON.parse(readFileSync(join(ROOT, 'tests/fixtures', f), 'utf8'))) }));
+  const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
   const states = generate(C, { fixtures }).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
   const N = M.GATE_GRAPH.nodes;
   const diffs = new Map(), seen = { step: new Set(), rq: new Set(), plan: new Set(), skill: new Set() };

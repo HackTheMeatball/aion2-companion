@@ -1,8 +1,9 @@
 /* Golden master: the deterministic save-state generator (see tests/golden/README.md).
 
    Input: the page's catalog (catalogInPage() below runs in the page once: QUESTS, GATES, RQ, AREA_ITEMS, SP_STEPS, ...).
-   Output: [{ id, tier, raw }] sorted by id, where raw is the exact localStorage string for 'aion2-assassin-route-v4' (null = no
-   save at all).
+   Output: [{ id, tier, raw }] sorted by id, where raw is the exact text stored under the save key (SAVE_KEY,
+   tests/support/save.js: storedText() of the flat state; null = no save at all). A fixture state may also carry `src`,
+   the pre-0.3 save it was made from (see fixtureStates()).
 
    Stability rules (so a data change shows up as a few changed snapshots, not as a reshuffled matrix):
    - Every state has a descriptive id built from its recipe, never from its position in a list.
@@ -12,6 +13,7 @@
    - Tick rules ("before", "all") are applied to the current catalog, so a new milestone step is ticked by the rules
      that cover it. Such a change shows up as a changed input hash (kind "input") in the verify summary. */
 'use strict';
+const { storedText, flatFixture } = require('../support/save');
 
 /* ---------- runs in the page (serialised by Playwright; must be self-contained) ---------- */
 function catalogInPage() {
@@ -122,7 +124,7 @@ function makeGen(C) {
 const CORE = 2000, EXTENDED = 6000, SPECIAL = 6;
 function generate(C, { fixtures = [], all = false } = {}) {
   const G = makeGen(C), out = new Map(), NQ = C.quests.length;
-  const add = (group, r, tier = 'core') => { const i = group + '/' + G.id(r); if (!out.has(i)) out.set(i, { id: i, tier, raw: JSON.stringify(G.state(r)) }); };
+  const add = (group, r, tier = 'core') => { const i = group + '/' + G.id(r); if (!out.has(i)) out.set(i, { id: i, tier, raw: storedText(G.state(r)) }); };
 
   /* story: every story position at its own level, one level below it (story level-gated), and at Lv 45;
      empty ticks (the audit's sweep) and "kept up" ticks; Basic at the quest's own level */
@@ -161,14 +163,23 @@ function generate(C, { fixtures = [], all = false } = {}) {
      end of the story data, and the real fixtures (tests/fixtures) */
   const sp = (n, raw) => out.set('special/' + n, { id: 'special/' + n, tier: 'core', raw });
   sp('fresh-no-save', null);
-  sp('empty-object', '{}');
-  sp('pre-seeds-L12', JSON.stringify({ checks: {}, level: 12, quest: C.quests[G.onTrack(12)][1], open: {} }));
-  sp('pre-eput-L30', JSON.stringify({ ...G.state({ lv: 30, qi: G.onTrack(30), ticks: 'before', mode: 'advanced', b: 'stfull' }), eputSync1: undefined }));
-  { const last = C.quests[NQ - 1][1]; sp('story-end-turned-in', JSON.stringify({ ...G.state({ lv: 45, qi: NQ - 1, ticks: 'before', mode: 'advanced' }), storyEnd: last })); }
-  sp('unknown-quest-name', JSON.stringify({ ...G.state({ lv: 30, qi: -1, ticks: 'before', mode: 'advanced' }), quest: 'A quest renamed in a patch' }));
-  for (const f of fixtures) out.set('fixture/' + f.name, { id: 'fixture/' + f.name, tier: 'core', raw: f.raw });
+  sp('empty-object', storedText({}));
+  sp('pre-seeds-L12', storedText({ checks: {}, level: 12, quest: C.quests[G.onTrack(12)][1], open: {} }));
+  sp('pre-eput-L30', storedText({ ...G.state({ lv: 30, qi: G.onTrack(30), ticks: 'before', mode: 'advanced', b: 'stfull' }), eputSync1: undefined }));
+  { const last = C.quests[NQ - 1][1]; sp('story-end-turned-in', storedText({ ...G.state({ lv: 45, qi: NQ - 1, ticks: 'before', mode: 'advanced' }), storyEnd: last })); }
+  sp('unknown-quest-name', storedText({ ...G.state({ lv: 30, qi: -1, ticks: 'before', mode: 'advanced' }), quest: 'A quest renamed in a patch' }));
+  for (const f of fixtures) out.set('fixture/' + f.name, { id: 'fixture/' + f.name, tier: 'core', raw: f.raw, ...(f.src != null ? { src: f.src } : {}) });
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }
 
-module.exports = { catalogInPage, generate, fnv };
+/* The real fixtures: the pre-0.3 saves tests/fixtures/fixture-v285.json and fixture-user-v285.json as the current build
+   stores them after loading them (tests/fixtures/*.flat.json, made by tests/support/make-flat-fixtures.mjs on golden's
+   clock), under their old names, so the state ids (fixture/fixture-v285, fixture/fixture-user-v285) don't change.
+   readSrc(file) -> the pre-0.3 text, when the caller wants it as `src`: tests/golden.js records the input hash and the
+   stored-state diff against it, so the snapshots stay what they were when the page loaded the old save itself. */
+const FIXTURES = [['fixture-v285', 'fixture-v285.flat.json'], ['fixture-user-v285', 'fixture-user-v285.flat.json']];
+const fixtureStates = (readSrc = null) => FIXTURES.map(([name, flat]) => ({ name, raw: storedText(flatFixture(flat)),
+  ...(readSrc ? { src: JSON.stringify(JSON.parse(readSrc(name + '.json'))) } : {}) }));
+
+module.exports = { catalogInPage, generate, fixtureStates, fnv };

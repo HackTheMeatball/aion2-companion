@@ -28,10 +28,11 @@
   11. Ascension bar (0.3 E8, same saves as 10): shown in Basic and Advanced, a progressbar named "Ascension" with its value
       (aria-valuenow / max / valuetext), the same label in both modes, axe-clean. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
-const KEY = 'aion2-assassin-route-v4';
+const { writeSave, clearSave, flatFixture } = require('./support/save');
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
-const { buildFixture } = require('./support/regress-fixture');
-const USER = JSON.parse(fs.readFileSync(path.join(CFG.FIX, 'fixture-user-v285.json'), 'utf8'));
+const { writeFixture } = require('./support/regress-fixture');
+/* the user's v285 save (Lv 27) as the current build stores it after loading it (tests/support/make-flat-fixtures.mjs) */
+const USER = flatFixture('fixture-user-v285.flat.json');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 const info = (n, d) => console.log('info ' + n + (d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : ''));
 
@@ -58,8 +59,9 @@ const STATES = {
 
 async function load(p, state, mode) {
   await p.goto(CFG.CUR);
-  if (state === 'fixture' || state === 'fixture20') await p.evaluate(buildFixture, { L: state === 'fixture' ? 45 : 20, mode, fx: 'clean' });
-  else await p.evaluate(([k, s]) => { localStorage.clear(); if (s) localStorage.setItem(k, JSON.stringify(s)); }, [KEY, state && { ...state, mode }]);
+  if (state === 'fixture' || state === 'fixture20') await writeFixture(p, { L: state === 'fixture' ? 45 : 20, mode, fx: 'clean' });
+  else if (state) await writeSave(p, { ...state, mode }, { fresh: true });
+  else await clearSave(p);
   await p.reload(); await p.waitForTimeout(400);
   if (!state) await p.evaluate(m => { if (document.body.classList.contains('basic') !== (m === 'basic')) document.querySelector(`.modeseg [data-mode="${m}"]`).click(); }, mode);
   await p.waitForTimeout(150);
@@ -279,8 +281,8 @@ async function load(p, state, mode) {
       await p.goto(CFG.CUR);
       /* Lv 22, story one quest past "Daeva in a Dream" (g6:0 … g16:monolith byStory, g22:0 wrapper), a stored false on
          g16:0, "In the Fang Legion's Name" picked up (its prerequisites by follow-up) */
-      await p.evaluate(([k, m]) => { const q = QUESTS[QUESTS.findIndex(x => x[1] === 'Daeva in a Dream') + 1][1];
-        localStorage.setItem(k, JSON.stringify({ checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode: m, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })); }, [KEY, mode]);
+      const q = await p.evaluate(() => QUESTS[QUESTS.findIndex(x => x[1] === 'Daeva in a Dream') + 1][1]);
+      await writeSave(p, { checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
       await p.reload(); await p.waitForTimeout(400);
       await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
       const id = `derived ${mode} ${width}px`;
@@ -318,7 +320,7 @@ async function load(p, state, mode) {
   for (const [W, mode] of [[390, 'basic'], [360, 'basic'], [360, 'advanced']]) {
     const { ctx, p } = await page(W, { hasTouch: true });
     await p.goto(CFG.CUR);
-    await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
+    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
     await p.reload(); await p.waitForTimeout(400);
     const FIG = fs.readFileSync(path.join(__dirname, '..', 'src', 'assets', 'fonts', 'figtree-latin.woff2')).toString('base64');
     const r = await p.evaluate(async fig => {
@@ -343,7 +345,7 @@ async function load(p, state, mode) {
   for (const mode of ['basic', 'advanced']) {
     const { ctx, p } = await page(390);
     await p.goto(CFG.CUR);
-    await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
+    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
     await p.reload(); await p.waitForTimeout(400);
     const r = await p.evaluate(TYPES => {
       const out = { rows: 0, checked: 0, bad: [], names: new Set(), levels: 0, empty: [] };
@@ -383,7 +385,8 @@ async function load(p, state, mode) {
     for (const c of cases) {
       const { ctx, p } = await page(c.width, c.opts);
       await p.goto(CFG.CUR);
-      await p.evaluate(([k, s, d]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify({ ...s, backup: d >= 14 ? { lastExportAt: Date.now() - d * 864e5 } : { since: Date.now() - d * 864e5 } })); }, [KEY, { ...BASE, mode: c.mode }, c.days]);
+      const now = await p.evaluate(() => Date.now()), d = c.days; /* the page's clock */
+      await writeSave(p, { ...BASE, mode: c.mode, backup: d >= 14 ? { lastExportAt: now - d * 864e5 } : { since: now - d * 864e5 } }, { fresh: true });
       await p.reload(); await p.waitForTimeout(400);
       await p.addScriptTag({ content: AXE });
       const r = await p.evaluate(async card => {

@@ -2,7 +2,8 @@
    ticks in v285 and E1 (compared by name, since E1's keys differ), and E1 must keep the old keys. */
 const { chromium } = require('playwright'); const fs = require('fs');
 const [,, V285, E1, FIX] = process.argv; const fix = fs.readFileSync(FIX, 'utf8');
-const KEY = 'aion2-assassin-route-v4';
+/* the v4 key: this check carries a v4-era save from the v285 baseline into the current page and back (tests/support/save.js) */
+const { V4_KEY: KEY, writeRaw, readRaw } = require('./support/save');
 /* Four differences from v285 are on purpose (CHANGELOG / E2-E4): quests re-banded into milestones by level and g45:1 dropped (gates),
    hold:0 dropped (steps), stigma plan order for unequipped slots 3/4 (stigma), milestone tags derived from those counts (gateTags).
    They are pinned, both sides, in tests/fixtures/e1-migtest-expected.json: any other change to them still fails.
@@ -28,10 +29,10 @@ const metrics = () => {
   const b = await chromium.launch(); let fail = 0;
   const run = async (file, label, initial) => {
     const ctx = await b.newContext(); const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(file); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, initial]); await p.reload(); await p.waitForTimeout(400);
-    const m = await p.evaluate(metrics); const saved = await p.evaluate(k => localStorage.getItem(k), KEY);
+    await p.goto(file); await writeRaw(p, initial, { key: KEY }); await p.reload(); await p.waitForTimeout(400);
+    const m = await p.evaluate(metrics); const saved = await readRaw(p, { key: KEY });
     // second load: idempotent
-    await p.reload(); await p.waitForTimeout(300); const m2 = await p.evaluate(metrics); const saved2 = await p.evaluate(k => localStorage.getItem(k), KEY);
+    await p.reload(); await p.waitForTimeout(300); const m2 = await p.evaluate(metrics); const saved2 = await readRaw(p, { key: KEY });
     await ctx.close(); if (errs.length) { console.log(label, 'PAGE ERRORS', errs); fail++; }
     return { m, m2, saved: JSON.parse(saved), saved2: JSON.parse(saved2) };
   };

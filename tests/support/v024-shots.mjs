@@ -3,6 +3,7 @@
    "before" and "after" are two builds: run it on the base commit with `before`, then on the change with `after`.
    Writes tests/out/v024-shots/<case>-<tag>.png. Usage: npm run build && node tests/support/v024-shots.mjs before|after */
 import { mkdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
@@ -11,7 +12,8 @@ import { startServer } from '../../scripts/serve.mjs';
 const tag = process.argv[2];
 if (!['before', 'after'].includes(tag)) { console.error('usage: v024-shots.mjs before|after'); process.exit(2); }
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..'), OUT = join(ROOT, 'tests/out/v024-shots');
-const KEY = 'aion2-assassin-route-v4', FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+const { writeSave } = createRequire(import.meta.url)('./save.js');
+const FLAGS ={ seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 mkdirSync(OUT, { recursive: true });
 const { server, url } = await startServer({});
 const b = await chromium.launch();
@@ -26,7 +28,7 @@ for (const c of CASES) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });
   const p = await ctx.newPage();
   await p.goto(url + '/');
-  await p.evaluate(([k, s]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, { ...FLAGS, open: {}, ...c.save, quest: c.quest, mode: 'advanced' }]);
+  await writeSave(p, { ...FLAGS, open: {}, ...c.save, quest: c.quest, mode: 'advanced' }, { fresh: true });
   await p.reload(); await p.waitForTimeout(600);
   await p.screenshot({ path: join(OUT, `${c.name}-${tag}.png`), fullPage: false });
   const el = p.locator('section.card.where').first(); await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(150);

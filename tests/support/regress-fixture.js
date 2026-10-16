@@ -1,5 +1,7 @@
-/* The regression matrix's saved-state fixture (tests/regress.js; also used by tests/perf.js). buildFixture runs in the page
-   via page.evaluate, so it may only use the page's globals and its argument. */
+/* The regression matrix's saved-state fixture (tests/regress.js; also used by tests/perf.js, e3, e4, a11y). buildFixture
+   runs in the page via page.evaluate, so it may only use the page's globals and its argument; it returns the flat state,
+   and writeFixture writes it through tests/support/save.js. */
+const { writeSave } = require('./save');
 /* built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS */
 function buildFixture({ L, mode, fx }) {
   const st = { checks: {}, level: L, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, areaRun: {}, hideCards: true };
@@ -23,6 +25,20 @@ function buildFixture({ L, mode, fx }) {
     open.slice(0, 2).forEach(q => { st.started['rq:' + q.id] = 1; });
     const sz = open[2]; if (sz) st.rqSnooze = { ['rq:' + sz.id]: L };
   }
-  localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(st));
+  return st;
 }
-module.exports = { buildFixture };
+/* build the fixture in the page and save it (no reload) */
+const writeFixture = async (p, spec) => writeSave(p, await p.evaluate(buildFixture, spec));
+
+/* tick counts by name (regress "migration: v285 fixture → current"; the v285 side is pinned in
+   tests/fixtures/fixture-v285.v285-metrics.json by tests/support/make-flat-fixtures.mjs). Runs in the page. */
+function migMetrics() {
+  const out = { quests: {}, sd: {}, sh: {}, sp: 0, dv: 0 };
+  GATES.forEach(g => g.items.forEach((it, j) => { const k = it.k || g.id + ':' + j;
+    if (it.kind === 'quest') out.quests[it.name] = [!!state.checks[k], !!(state.started || {})[k]];
+    if (it.kind === 'hideout') out.sd[it.name] = [!!state.checks[k], !!(state.areaRun || {})[k]]; }));
+  AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => { out.sh[x.it.name] = !!state.checks[x.k]; });
+  out.sp = SP_STEPS.filter(x => state.checks[x.k]).length; out.dv = Object.keys(state.checks).filter(k => k.startsWith('dv:') && state.checks[k]).length;
+  out.story = [state.quest, JSON.stringify(state.qsteps), JSON.stringify(state.qsub)]; out.stig = [state.stLv, state.stShards, !!state.checks['g22:1']]; return out;
+}
+module.exports = { buildFixture, writeFixture, migMetrics };

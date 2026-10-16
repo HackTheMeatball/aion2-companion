@@ -1,11 +1,12 @@
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
-const CFG = require('./config'); const ROOT = CFG.ROOT, KEY = 'aion2-assassin-route-v4', OUT = path.join(CFG.OUT, 'journey');
-async function open(width = 1500, opts = {}) {
+const CFG = require('./config'); const ROOT = CFG.ROOT, OUT = path.join(CFG.OUT, 'journey');
+const { SAVE_KEY: KEY, writeSave, flatFixture } = require('./support/save');
+/* the current page with the user's v285 save, as it stored it after loading it through v285 first
+   (tests/fixtures/fixture-user-v285.via-v285.flat.json) */
+async function open(width = 1500) {
   const b = await chromium.launch(); const ctx = await b.newContext({ viewport: { width, height: 1000 } }); const p = await ctx.newPage();
   const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
-  const user = fs.readFileSync(path.join(CFG.FIX, 'fixture-user-v285.json'), 'utf8');
-  await p.goto(CFG.V285); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, user]); await p.reload(); await p.waitForTimeout(400);
-  if (!opts.stayV285) { await p.goto(CFG.CUR); await p.waitForTimeout(600); }
+  await p.goto(CFG.CUR); await writeSave(p, flatFixture('fixture-user-v285.via-v285.flat.json')); await p.reload(); await p.waitForTimeout(600);
   return { b, p, errs };
 }
 const dump = p => p.evaluate(() => {

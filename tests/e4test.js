@@ -1,13 +1,12 @@
 /* E4 functional checks (QA3 findings 1-12). node tests/e4test.js  (page at AION_BASE; see tests/config.js) */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const ROOT = path.resolve(__dirname, '..'); const CFG = require('./config');
-const KEY = 'aion2-assassin-route-v4';
-const { buildFixture } = require('./support/regress-fixture');
+const { buildFixture } = require('./support/regress-fixture'); const { writeSave, readSave } = require('./support/save');
 let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' : 'FAIL ') + name + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 (async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } }); const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(CFG.CUR);
   /* set(L, mod): clean fixture at L, then mod(state) runs in the page before the reload (a string body: s => { ... }). */
-  const set = async (L, mod = '', mode = 'advanced', fx = 'clean') => { await p.evaluate(buildFixture, { L, mode, fx });
-    await p.evaluate(([k, m]) => { const s = JSON.parse(localStorage.getItem(k)); s.eputSync1 = true; if (m) (new Function('s', m))(s); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, mod]);
+  const set = async (L, mod = '', mode = 'advanced', fx = 'clean') => { const st = await p.evaluate(buildFixture, { L, mode, fx });
+    await writeSave(p, await p.evaluate(([s, m]) => { s.eputSync1 = true; if (m) (new Function('s', m))(s); return s; }, [st, mod]));
     await p.reload(); await p.waitForTimeout(400); };
   const cards = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '').replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.meta') || {}).innerText || '')));
   const tag = id => p.evaluate(id => { const d = document.getElementById(id); return d.querySelector('.tag').textContent + ' ' + d.querySelector('.count').textContent; }, id);
@@ -26,7 +25,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await p.evaluate(() => { const d = document.getElementById('g37'); d.open = true; d.hidden = false; }); await p.click('#gates input[data-k="g37:0"]'); await p.waitForTimeout(1600);
   r = await p.evaluate(() => ({ eq: !!state.checks['g37:0'], put: !!state.checks['g37:1'] })); ok('#1 milestone row "Equip" tick also ticks "Put on E" (slot 4)', r.eq && r.put, r);
   await set(38, `s.checks['g27:1'] = false; s.checks['g32:1'] = false; s.checks['g37:0'] = false; s.checks['g37:1'] = false; delete s.eputSync1;`);
-  r = await p.evaluate(k => ({ g27: !!state.checks['g27:1'], g32: !!state.checks['g32:1'], g37: !!state.checks['g37:1'], flag: state.eputSync1, saved: JSON.parse(localStorage.getItem(k)).checks['g27:1'] }), KEY);
+  r = { ...await p.evaluate(() => ({ g27: !!state.checks['g27:1'], g32: !!state.checks['g32:1'], g37: !!state.checks['g37:1'], flag: state.eputSync1 })), saved: (await readSave(p)).checks['g27:1'] };
   ok('#1 migration: equipped slots 2/3 get "Put on E"; unequipped slot 4 does not; flag saved', r.g27 && r.g32 && !r.g37 && r.flag === true && r.saved === true, r);
   ok('#1 migration: Lv 27/32 milestones no longer "Missed"', !/Missed/.test(await tag('g27')) && !/Missed/.test(await tag('g32')), [await tag('g27'), await tag('g32')]);
   await set(38, `s.checks['g27:1'] = false;`); /* flag already set: one-time only (an untick by hand stays) */
@@ -146,16 +145,17 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
 
   /* #14 (F6) Daevanion cost box: from empty, ▴ gives 1 and ▾ gives 0 ("already got it"); 0 stays reachable from 1 (Lv 30: Vaizel opens, its first node has no cost logged) */
   await set(30);
-  const cst = async (d, clear) => p.evaluate(([d, clear]) => { const row = document.querySelector('#dvNextList .dvrow.nx'), i = row.querySelector('input.dvc');
+  const cst = async (d, clear) => { const { k, ...r } = await p.evaluate(([d, clear]) => { const row = document.querySelector('#dvNextList .dvrow.nx'), i = row.querySelector('input.dvc');
     if (clear) { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }
-    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (state.dvCost || {})[k], saved: (JSON.parse(localStorage.getItem('aion2-assassin-route-v4')).dvCost || {})[k] }; }, [d, clear]);
+    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (state.dvCost || {})[k], k }; }, [d, clear]);
+    return { ...r, saved: ((await readSave(p)).dvCost || {})[k] }; };
   r = await cst(1, true); ok('#14 F6: empty cost box, ▴ → 1 (saved as 1)', r.v === '1' && r.cost === 1 && r.saved === 1, r);
   r = await cst(-1, false); ok('#14 F6: ▾ from 1 → 0 (0 = already bought), saved', r.v === '0' && r.cost === 0 && r.saved === 0, r);
   r = await cst(-1, true); ok('#14 F6: empty cost box, ▾ → 0', r.v === '0' && r.cost === 0, r);
   r = await cst(1, false); ok('#14 F6: ▴ from 0 → 1', r.v === '1' && r.cost === 1, r);
 
   /* #15 (F7) Build drawer rotation: only skills the guide says you have at your level (Skills card unlock rule) */
-  const low = async L => { await p.evaluate(([k, L]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: L, mode: 'advanced', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, L]);
+  const low = async L => { await writeSave(p, { checks: {}, level: L, mode: 'advanced', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
     await p.reload(); await p.waitForTimeout(300);
     return p.evaluate(() => { document.querySelector('#statDrawer details.mini').open = true; const t = id => document.getElementById(id).innerText.replace(/\s+/g, ' ');
       return { chain: t('rotChain'), play: t('rotPlay'), grid: [...document.querySelectorAll('#stackViz .sk:not(.empty):not(.ghost)')].map(x => x.textContent) }; }); };
