@@ -11464,7 +11464,7 @@
       "giver": {
         "npc": "Nemon",
         "place": "Black Claw Village",
-        "zone": "zone:impetusium-square",
+        "zone": "zone:black-claw-village",
         "kibelisk": "Outskirts Stall",
         "meters": 93,
         "coords": {
@@ -11577,12 +11577,6 @@
           "checkedAt": "2026-10-12"
         },
         {
-          "inferred": "Zone from the Kibelisk / place name through the v1 map-data zone votes (gen.py).",
-          "fields": [
-            "giver.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/farewells",
           "fields": [
             "giver.coords",
@@ -11601,11 +11595,11 @@
       "verifiedAt": "2026-10-14",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "inferred",
         "turnin.zone": "owner-check"
       },
       "notes": [
-        "Giver place 'Black Claw Village' per Metabot NPC table; same 93 m Outskirts Stall Kibelisk as Zikel's Core turn-in."
+        "Giver place 'Black Claw Village' per Metabot NPC table; same 93 m Outskirts Stall Kibelisk as Zikel's Core turn-in.",
+        "Giver zone = its Metabot Location, Black Claw Village (data/research/story-locations-metabot-2026-10.csv: metabot-location), not the zone vote of the 93 m Outskirts Stall Kibelisk (0.2.4, issue #98)."
       ]
     },
     {
