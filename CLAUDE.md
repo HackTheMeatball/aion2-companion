@@ -5,14 +5,20 @@ Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell
 (daevacompanion.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.
 
-## Never break saved progress
+## Saved progress (pre-1.0: clean breaks allowed)
 
-- `localStorage` key stays `aion2-assassin-route-v4`. Never rename, version or split it.
-- Item keys (`checks` etc.) are permanent; a removed key is retired, never reused. Never derive keys from array
-  positions. Quests are `rq:<id>`, Sealed Dungeons `sd:<slug>`.
-- Migrations only add (copy / tick), run once behind a new flag, are idempotent, and leave old data in place.
-- Any change that could touch saves: run `mig1`, `mig2` and `journey`, and extend `tests/e2-migtest.js` if you add a
-  migration.
+The owner decided (2026-10-16): there are no real players yet, so until 1.0 or the first public launch (whichever
+comes first) a change may break existing saves when that gives a better design. Don't write migrations for it.
+
+- A break must be clean: bump the `localStorage` key (`aion2-assassin-route-v4` → `-v5` …) so old saves are ignored
+  and the app starts fresh. Never read an old-shape save into new code, and never crash on one.
+- Note every save break in that release's CHANGELOG section ("Saves reset in this version").
+- When a break makes `mig1`, `mig2`, `journey` or `tests/e2-migtest.js` obsolete, remove or replace those checks and
+  say why in the commit. That is an intended change, not weakening a check. Keep a test that a fresh start works.
+- Within one key version: item keys (`checks` etc.) are never derived from array positions. Quests are `rq:<id>`,
+  Sealed Dungeons `sd:<slug>`.
+- At 1.0 / public launch, restore the strict rule: never break saves, migrations only add, run once behind a flag,
+  are idempotent and leave old data in place.
 
 ## Test before every commit
 
