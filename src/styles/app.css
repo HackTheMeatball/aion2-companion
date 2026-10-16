@@ -1482,13 +1482,13 @@ body.basic #spCard .sphint.warn { display: block !important; }
 /* 0.2.5 save safety (standalone site only; docs/design/0.2.5-save-safety.md). The "Last backup" line sits under the
    export row's text in one block, so the two buttons stay together; amber from 14 days. The export nudge and the
    Home Screen hint share one quiet card in the save-failed banner's slot and layout (normal border, dismissible). */
-.xfer-text { display: flex; flex-direction: column; gap: 2px; }
+.xfer-text { display: flex; flex-direction: column; gap: var(--space-2); }
 .backup-line { color: var(--muted); }
 .backup-line.stale { color: var(--warn); }
 .backup-line:empty { display: none; }
-.nudge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding: 10px 16px; font-size: 13px; }
+.nudge { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8) var(--space-14); margin-bottom: var(--space-16); padding: var(--space-10) var(--space-16); font-size: 13px; }
 .nudge span { flex: 1 1 24ch; }
-.nudge .xfer-btn, .nudge .nudge-x { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
+.nudge .xfer-btn, .nudge .nudge-x { font: 600 12px var(--mono); padding: var(--space-5) var(--space-11); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
 .nudge .xfer-btn:hover, .nudge .nudge-x:hover { border-color: var(--accent); }
 .nudge[hidden] { display: none; }
 @media (pointer: coarse) { .nudge button { min-height: 44px; } }
