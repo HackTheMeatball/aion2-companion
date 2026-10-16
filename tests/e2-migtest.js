@@ -131,16 +131,16 @@ const metrics = () => {
      the current page copies the tick once, keeps g45:0, saves the flag; reload writes nothing; the save rolls back to v287 with
      g45:0 still ticked there. A v287 save without the tick gains neither the key nor the flag. */
   const S10 = JSON.parse(fix287); S10.checks['g45:0'] = true; S10.level = 45; S10.quest = 'Forgotten Commander';
-  const G = await run(E2, JSON.stringify(S10)), Gpre = await run(PRE, JSON.stringify(S10));
-  ok('E10: no page errors', !G.errs.length && !Gpre.errs.length, [G.errs, Gpre.errs]);
-  ok('E10: g45:0 -> g45:witness ticked once; g45:0 kept; g45Split1 saved', G.saved.checks['g45:witness'] === true && G.saved.checks['g45:0'] === true && G.saved.g45Split1 === true,
-    [G.saved.checks['g45:witness'], G.saved.checks['g45:0'], G.saved.g45Split1]);
-  const lost10 = Object.entries(S10.checks).filter(([k, v]) => G.saved.checks[k] !== v).map(([k]) => k);
+  const G10 = await run(E2, JSON.stringify(S10)), Gpre = await run(PRE, JSON.stringify(S10));
+  ok('E10: no page errors', !G10.errs.length && !Gpre.errs.length, [G10.errs, Gpre.errs]);
+  ok('E10: g45:0 -> g45:witness ticked once; g45:0 kept; g45Split1 saved', G10.saved.checks['g45:witness'] === true && G10.saved.checks['g45:0'] === true && G10.saved.g45Split1 === true,
+    [G10.saved.checks['g45:witness'], G10.saved.checks['g45:0'], G10.saved.g45Split1]);
+  const lost10 = Object.entries(S10.checks).filter(([k, v]) => G10.saved.checks[k] !== v).map(([k]) => k);
   ok('E10: additive (every saved tick kept)', !lost10.length, lost10);
   const H10 = await run(E2, JSON.stringify({ ...S10, checks: { ...S10.checks, 'g45:0': undefined } }));   /* the same save without the tick */
-  ok('E10: the Lv 45 milestone counts Witnesses as done (one more than the same save without g45:0)', +G.m.gatesMain.g45.split('/')[0] === +H10.m.gatesMain.g45.split('/')[0] + 1, [H10.m.gatesMain.g45, G.m.gatesMain.g45]);
-  same('E10: reload idempotent (saved state)', G.saved, G.saved2);
-  const Gback = await run(PRE, JSON.stringify(G.saved));
+  ok('E10: the Lv 45 milestone counts Witnesses as done (one more than the same save without g45:0)', +G10.m.gatesMain.g45.split('/')[0] === +H10.m.gatesMain.g45.split('/')[0] + 1, [H10.m.gatesMain.g45, G10.m.gatesMain.g45]);
+  same('E10: reload idempotent (saved state)', G10.saved, G10.saved2);
+  const Gback = await run(PRE, JSON.stringify(G10.saved));
   ok('E10: rollback to v287 keeps g45:0 ticked and its Lv 45 count', Gback.saved.checks['g45:0'] === true && Gback.m.gatesMain.g45 === Gpre.m.gatesMain.g45, [Gpre.m.gatesMain.g45, Gback.m.gatesMain.g45]);
   const N10 = await run(E2, fix287);
   ok('E10: a save without g45:0 gains neither g45:witness nor the flag', !('g45:witness' in N10.saved.checks) && N10.saved.g45Split1 === undefined, [N10.saved.checks['g45:witness'], N10.saved.g45Split1]);
@@ -152,6 +152,23 @@ const metrics = () => {
   same('E10 late tick: reload idempotent (saved state)', L10.saved, L10.saved2);
   const U10 = await run(E2, JSON.stringify({ ...S10, g45Split1: true, checks: { ...S10.checks, 'g45:witness': false } }));
   ok('E10 late tick: an unticked g45:witness (false) is never overridden', !U10.errs.length && U10.saved.checks['g45:witness'] === false, [U10.errs, U10.saved.checks['g45:witness']]);
-  console.log(fail ?`E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
+  /* 6. 0.2.5 backup1: the v287 save in the current build at a fixed clock gains only backup = { since: the page clock }
+     and backup1 (run B, with the real clock, got the same with its own time); a reload changes nothing; pre-E2 keeps both
+     through an un-tick there; back in the current build, since has not moved. */
+  const T3 = Date.parse('2026-10-16T12:00:00Z'), omitBk = o => { const { backup, backup1, ...r } = o; return r; };
+  const G = await run5c(E2, fix287, T3, null);
+  ok('backup1: no page errors', !G.errs.length, G.errs);
+  ok('backup1: the save gains backup = { since: page clock } and backup1', JSON.stringify(G.loaded.backup) === JSON.stringify({ since: T3 }) && G.loaded.backup1 === true, [G.loaded.backup, G.loaded.backup1]);
+  same('backup1: nothing else differs from the same save loaded with the real clock (run B)', omitBk(G.loaded), omitBk(B.saved));
+  ok('backup1: run B (real clock) got a real-time baseline', B.saved.backup1 === true && B.saved.backup && B.saved.backup.since > T1 && Object.keys(B.saved.backup).join() === 'since', B.saved.backup);
+  const lostG = []; for (const f of ['checks', 'started', 'areaRun', 'rqSnooze']) Object.entries(S[f] || {}).forEach(([k, v]) => { if (JSON.stringify((G.loaded[f] || {})[k]) !== JSON.stringify(v)) lostG.push(f + ':' + k); });
+  ok('backup1: every saved key and value of the v287 save kept', !lostG.length, lostG);
+  same('backup1: reload writes nothing (saved state)', G.saved, G.saved2);
+  const R3 = await run5c(PRE, JSON.stringify(G.saved), T3 + 3600e3, untick('rq:2202053'));
+  ok('backup1 rollback: pre-E2 keeps backup and backup1 in its save after an un-tick there',
+    JSON.stringify(R3.saved.backup) === JSON.stringify({ since: T3 }) && R3.saved.backup1 === true && R3.saved.checks['rq:2202053'] === false, [R3.saved.backup, R3.saved.backup1]);
+  const G2 = await run5c(E2, JSON.stringify(R3.saved), T3 + 7200e3, '(() => { save(); })()');
+  ok('backup1 back from pre-E2: since is still the first load\'s clock (not moved by the later one)', JSON.stringify(G2.saved.backup) === JSON.stringify({ since: T3 }) && G2.saved.backup1 === true, G2.saved.backup);
+  console.log(fail ? `E2 MIGRATION CHECK FAILED (${fail})` : 'E2 MIGRATION CHECK PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
 })();

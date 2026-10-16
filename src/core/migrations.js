@@ -67,4 +67,8 @@ export function migrate(s, hadSave, store, now = 0) {
      Later loads re-stamp, with the page's time, whatever a build without times changed (rollback re-stamp). */
   if (!s.stampV1) { s.stampV1 = true; s.schemaVersion = Math.max(+s.schemaVersion || 0, SAVE_SCHEMA); stamp(c, mtSecOf(s.savedAt)); }
   else stamp(c, now);
+  /* 0.2.5 one-time (backup1): the baseline for the export nudge (src/core/backup.js), for every browser, fresh ones too.
+     A backup that is already an object is left as it is; nothing else is touched. Writes nothing, like stampV1: the field
+     and the flag go out with the next save. now is in seconds; backup times are ms, like savedAt. Not synced (sync.js). */
+  if (!s.backup1) { if (!s.backup || typeof s.backup !== "object" || Array.isArray(s.backup)) s.backup = { since: now * 1000 }; s.backup1 = true; }
 }

@@ -70,6 +70,10 @@ on purpose: the guide shows nothing rather than an unverified value.
   (Journey input, mid-level onboarding) keeps those steps unticked in their milestone (x/y count, "Missed" tag). Same
   for ascension steps the story implies (e.g. `g32:dreams` once "A Daeva Dreaming Anew" is turned in). Derived
   completion (`completesWith` in the architecture audit's target model) is planned for the 0.3 requirement audit.
+- **Home Screen hint, one sentence held back** (0.2.5, owner check on an iPhone). The hint would end with "The Home
+  Screen copy starts empty: import your file there." No permitted source says whether a Home Screen web app shares the
+  Safari tab's storage (docs/design/0.2.5-save-safety.md §2), so the sentence is left out until checked: add the site to
+  the Home Screen from a Safari tab with progress, open it, and see whether the progress is there.
 - **`g45:witness` story chip** (`g45:0` until 0.3 E10) says "your current quest" while "Forgotten Commander" is open;
   the step itself waits in Next up until that quest is turned in.
 

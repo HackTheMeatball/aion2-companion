@@ -421,6 +421,11 @@ export function generate(opts = {}) {
   /* shared steps carry no class content outside build tokens: no skill or stigma name of this class */
   const classWords = [...stigmas.map(s => s.name)];
   for (const s of steps) for (const w of classWords) check(`shared step ${s.id} names no stigma outside a build token`, !(s.text + (s.loc || '')).includes(w));
+  /* a location whose place is a village zone's name (Aldelle, Black Claw) sits in that village (0.2.4, issue #98). Villages
+     only: a place named after a wider zone (Southern Gribade Highland, Spirit Isle) can sit in a neighbour's zone */
+  { const zoneOfName = Object.fromEntries(Object.values(zones).filter(z => / Village$/.test(z.name)).map(z => [z.name, z.id]));
+    for (const { r } of all) for (const l of [r.giver, r.turnin, r.entrance, r.location].filter(Boolean))
+      if (l.place && zoneOfName[l.place]) check(`${r.id}: place ${l.place} is in ${zoneOfName[l.place]}`, l.zone === zoneOfName[l.place], l.zone); }
   /* zone adjacency symmetric */
   for (const z of Object.values(zones)) for (const n of z.neighbours || []) check(`zone adjacency symmetric: ${z.id} - ${n.zone}`, (zones[n.zone] && (zones[n.zone].neighbours || []).some(x => x.zone === z.id)));
   /* gate basis: requiresBasis legacy / unresearched / verified-none never sits on sourced atoms only (N2) */

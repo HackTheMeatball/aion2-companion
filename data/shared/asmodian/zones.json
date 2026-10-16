@@ -5,6 +5,47 @@
   "faction": "asmodian",
   "records": [
     {
+      "id": "zone:aldelle-village",
+      "name": "Aldelle Village",
+      "region": "Ishalgen",
+      "faction": "asmodian",
+      "traces": null,
+      "kibelisks": [
+        "Aldelle Village"
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "kibelisks"
+          ],
+          "note": "Start & turn-in table: place and Kibelisk Aldelle Village (the same table on the Lv 2-9 story quest pages, recorded in story-quests.json, issue #65)"
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-14-unlocks-23",
+            "checkedAt": "2026-10-14",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Ishalgen map, first Kibelisk Aldelle Village"
+          }
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "notes": [
+        "The village on the Ishalgen starting map (0.2.4, issue #98): the zone of the Lv 2-9 story givers and turn-ins whose place is Aldelle Village. Witch's Cabin, Abandoned Barracks Site and the Ascension Subspace stay in zone:ishalgen. No Empyrean Trace count on Metabot's Altgard table (Ishalgen isn't on it)."
+      ]
+    },
+    {
       "id": "zone:altgard-unplaced",
       "name": "Altgard (zone not recorded)",
       "region": "Altgard",
@@ -451,14 +492,8 @@
       "verifiedAt": "2026-10-14",
       "status": "verified",
       "notes": [
-        "The starting map (owner screens 22, 23, 36–39); Metabot World_D_Starter is assumed to be it. Used as the zone of the Lv 2–9 story quests, whose data has no location yet."
-      ],
-      "kibelisks": [
-        "Aldelle Village"
-      ],
-      "fieldStatus": {
-        "kibelisks": "verified"
-      }
+        "The starting map (owner screens 22, 23, 36–39); Metabot World_D_Starter is assumed to be it. Used as the zone of the Lv 2–9 story givers and turn-ins outside Aldelle Village, which is its own zone since 0.2.4 (zone:aldelle-village, with its Kibelisk)."
+      ]
     },
     {
       "id": "zone:lagta-fortress",

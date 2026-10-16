@@ -819,7 +819,8 @@ nothing reads any more) lists the boards whose plan nodes all open with the boar
 **Placeholders and debt the generator reports** (`npm run gen`, `report.debt`):
 
 - `zone:altgard-unplaced`: story quests whose location the v1 data never held (the §9 data task); `zone:ishalgen`
-  for the Lv 1–9 quests on the starting map. Both are labelled (`fieldStatus` owner-check / inferred).
+  for the Lv 1–9 quests on the starting map. Both are labelled (`fieldStatus` owner-check / inferred). Givers and
+  turn-ins whose Metabot place is Aldelle Village are in `zone:aldelle-village` since 0.2.4 (verified, not a placeholder).
 - aion2.th.gl citations (withdrawn site): re-sourced to Metabot or labelled `owner-check` in the data corrections that followed the conversion; since then any citation of a withdrawn site fails the generator.
 - No owner screen codes exist yet (§14.2), so v1 facts "seen in game" carry an `inferred` ref that says so.
 - `VERIFIED_UNLOCKS` credits sites by name only; each such unlock carries a ref saying the pages were not recorded.

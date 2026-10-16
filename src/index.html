@@ -41,6 +41,14 @@
 
   <div class="card savewarn" id="saveWarn" role="alert" hidden><span>Your progress couldn't be saved in this browser. Export a backup.</span>
     <button type="button" class="xfer-btn" id="saveWarnExp" hidden>Export progress</button></div>
+<!-- @web-only -->
+  <div id="bkNote" role="status">
+    <div class="card nudge" id="nudge" hidden><span id="nudgeTxt"></span>
+      <button type="button" class="xfer-btn" id="nudgeExp">Export progress</button><button type="button" class="nudge-x" id="nudgeNo" aria-label="Dismiss backup reminder">Not now</button></div>
+    <div class="card nudge" id="a2hs" hidden><span>Safari can clear a site's saved data after a week unused. To keep your progress, export it, then tap Share and Add to Home Screen.</span>
+      <button type="button" class="xfer-btn" id="a2hsExp">Export progress</button><button type="button" class="nudge-x" id="a2hsOk" aria-label="Dismiss Home Screen tip">Got it</button></div>
+  </div>
+<!-- @end-web-only -->
 
   <div class="layout">
     <aside class="rail" aria-label="Progress and journey">
@@ -200,7 +208,11 @@
       <summary><h2>Sources</h2></summary>
       <div id="srcBody"></div>
     </details>
-    <div class="xfer" id="xfer"><span>Progress is saved in this browser only.</span>
+    <div class="xfer" id="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span>
+<!-- @web-only -->
+      <span class="backup-line" id="backupLine"></span>
+<!-- @end-web-only -->
+      </span>
       <button type="button" class="xfer-btn" id="expBtn" hidden>Export progress</button>
       <label class="xfer-btn">Import progress<input type="file" id="impIn" class="vh" accept=".json,application/json"></label>
       <span class="xfer-msg" id="xferMsg" role="status"></span></div>

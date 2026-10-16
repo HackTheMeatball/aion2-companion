@@ -20,7 +20,8 @@ export const SAVE_SCHEMA = 1;
 const SYNC_MAPS = ["checks", "started", "areaRun", "rqSnooze", "stLv", "stPick", "dvCost"];
 const SYNC_REGS = ["level", "stones", "pendSt", "pendCr", "stShards", "dvTotal", "dvAdj", "rotSeen", "buildId", "customBuild"];
 /* One-time flags: merged with OR (seedDv…seedDv4: retired flags early builds wrote). Every other top-level field that
-   isn't character data is a view setting (per device). */
+   isn't character data is a view setting (per device). backup1 is deliberately not here: it and `backup` (0.2.5,
+   src/core/backup.js) describe this browser's copy, so each device keeps its own. */
 export const ONE_TIME_FLAGS = ["seedLv12", "stTriniel1", "dvReset1", "migV5", "eputSync1", "g45Split1", "stampV1", "seedDv", "seedDv2", "seedDv3", "seedDv4"];
 
 /* canonical JSON (object keys sorted), for comparing values */

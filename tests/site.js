@@ -189,6 +189,113 @@ const checkReport = (label, m, want) => {
     await ctx.close();
   }
 
+  /* 2e. save safety (0.2.5, docs/design/0.2.5-save-safety.md §6): the "Last backup" line, the 14-day export nudge, the
+     import rule and the one-time iPhone Safari Home Screen hint, with a fixed clock in a fixed time zone (noon, New York,
+     no clock change in the days used) */
+  {
+    const T = Date.parse('2026-09-30T16:00:00Z'), DAY = 864e5, TZ = 'America/New_York';
+    const SAVED = { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+    const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+    const page = async (opts = {}, init) => {
+      const ctx = await b.newContext({ viewport: { width: opts.w || 1500, height: 1000 }, acceptDownloads: true, timezoneId: TZ, ...(opts.ua ? { userAgent: opts.ua } : {}) });
+      if (init) await ctx.addInitScript(init);
+      const p = await ctx.newPage(), errs = []; p.on('pageerror', e => errs.push(e.message));
+      await p.clock.setFixedTime(T); await p.goto(CFG.CUR); await p.waitForTimeout(300);
+      return { ctx, p, errs };
+    };
+    const load = async (p, save) => { await p.evaluate(([k, s]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, save]); await p.reload(); await p.waitForTimeout(400); };
+    const ui = p => p.evaluate(k => { const vis = id => { const e = document.getElementById(id); return !!e && !e.hidden && e.getBoundingClientRect().height > 0; };
+      const l = document.getElementById('backupLine'), s = JSON.parse(localStorage.getItem(k) || 'null');
+      return { line: l && l.textContent, stale: !!l && l.classList.contains('stale'), nudge: vis('nudge'), nudgeTxt: (document.getElementById('nudgeTxt') || {}).textContent,
+        hint: vis('a2hs'), backup: s && s.backup, backup1: s && s.backup1, keys: Object.keys(localStorage).sort() }; }, KEY);
+
+    /* line + export */
+    {
+      const { ctx, p, errs } = await page();
+      await load(p, { ...SAVED, backup: { since: T - 3 * DAY } });
+      const a = await ui(p);
+      ok('backup line: "No backup yet." in the export row before any export; no nudge (baseline 3 days old)', a.line === 'No backup yet.' && !a.stale && !a.nudge && !a.hint, a);
+      const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]); await p.waitForTimeout(100);
+      const file = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), c = await ui(p), stored = await p.evaluate(k => localStorage.getItem(k), KEY);
+      ok('backup line: after Export it reads "Last backup: today." and the save has backup.lastExportAt (no reload)', c.line === 'Last backup: today.' && c.backup && c.backup.lastExportAt === T && c.backup.since === T - 3 * DAY, c);
+      ok('backup line: the export added no localStorage key; the save is still under ' + KEY, JSON.stringify(c.keys) === JSON.stringify(a.keys) && c.keys.includes(KEY), { before: a.keys, after: c.keys });
+      ok('backup line: the exported file equals the stored save, lastExportAt included (stored before the file is built)', JSON.stringify(file) === JSON.stringify(JSON.parse(stored)) && file.backup.lastExportAt === T && file.backup.since === T - 3 * DAY, { file: file.backup, stored });
+      for (const [n, text, stale] of [[1, 'Last backup: yesterday.', false], [13, 'Last backup: 13 days ago.', false], [14, 'Last backup: 14 days ago.', true]]) {
+        await load(p, { ...SAVED, backup1: true, backup: { since: T - 99 * DAY, lastExportAt: T - n * DAY } }); const u = await ui(p);
+        ok(`backup line: ${n} day(s) after an export: "${text}"${stale ? ', amber' : ''}`, u.line === text && u.stale === stale, u);
+      }
+      ok('backup line: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
+    /* nudge */
+    {
+      const { ctx, p, errs } = await page();
+      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 13 * DAY } });
+      ok('nudge: not shown 13 days after an export', !(await ui(p)).nudge);
+      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 14 * DAY } });
+      const n14 = await ui(p);
+      ok('nudge: shown on day 14, same N as the line', n14.nudge && n14.nudgeTxt === "You haven't exported a backup in 14 days. Progress lives in this browser only." && n14.line === 'Last backup: 14 days ago.', n14);
+      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 15 * DAY } });
+      const role = await p.evaluate(() => { const c = document.getElementById('nudge'); return c.closest('[role=status]') && c.closest('[role=status]').id; });
+      ok('nudge: shown at 15 days in the full view, inside the role=status slot', (await ui(p)).nudge && role === 'bkNote', role);
+      await p.click('.modeseg [data-mode=basic]'); await p.waitForTimeout(100);
+      ok('nudge: shown in Basic mode too', (await ui(p)).nudge);
+      await p.evaluate(() => setSaveWarn(true));
+      const sw = (await ui(p)).nudge; await p.evaluate(() => setSaveWarn(false));
+      ok('nudge: hidden while the save-failed banner shows, back when it goes', !sw && (await ui(p)).nudge, sw);
+      await p.click('#nudgeNo'); await p.waitForTimeout(100);
+      const no = await ui(p); await p.reload(); await p.waitForTimeout(400); const no2 = await ui(p);
+      ok('nudge: Not now hides it, records nudgeAt and it stays gone after a reload', !no.nudge && no.backup.nudgeAt === T && !no2.nudge && !no2.hint, { no, no2 });
+      await load(p, { ...SAVED, backup1: true, backup: { since: T - 30 * DAY } });
+      const yet = await ui(p);
+      ok('nudge: never exported, baseline 30 days old: the "yet" text', yet.nudge && yet.nudgeTxt === "You haven't exported a backup yet. Progress lives in this browser only." && yet.line === 'No backup yet.', yet);
+      const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#nudgeExp')]); await p.waitForTimeout(100);
+      const ex = await ui(p);
+      ok('nudge: its Export downloads the progress, hides the card and updates the line', !!dl && !ex.nudge && ex.line === 'Last backup: today.' && ex.backup.lastExportAt === T, ex);
+      await load(p, { checks: {}, level: 1, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, backup1: true, backup: { since: T - 30 * DAY } });
+      ok('nudge: no progress (Lv 1, no ticks) = no nudge', !(await ui(p)).nudge);
+      ok('nudge: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
+    /* import */
+    {
+      const { ctx, p, errs } = await page();
+      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 2 * DAY } });
+      const file = { ...SAVED, level: 30, backup1: true, backup: { since: T - 40 * DAY, lastExportAt: T - 20 * DAY, nudgeAt: T - 30 * DAY, a2hsAt: T - 30 * DAY } };
+      await p.setInputFiles('#impIn', { name: 'progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(file)) });
+      await Promise.all([p.waitForEvent('load'), p.click('#impGo')]); await p.waitForTimeout(400);
+      const u = await ui(p);
+      ok('import: the file\'s backup is replaced by { since, lastExportAt } = the import time; backup1 set; no nudge; line "today"',
+        JSON.stringify(u.backup) === JSON.stringify({ since: T, lastExportAt: T }) && u.backup1 === true && !u.nudge && u.line === 'Last backup: today.' && await p.evaluate(() => state.level === 30), u);
+      ok('import: no page errors', !errs.length, errs);
+      await ctx.close();
+    }
+    /* Home Screen hint */
+    {
+      const { ctx, p, errs } = await page({ ua: IPHONE, w: 390 });
+      await load(p, { ...SAVED, backup1: true, backup: { since: T - 2 * DAY } });
+      const h = await ui(p), txt = await p.evaluate(() => document.querySelector('#a2hs span').textContent);
+      ok('hint: shown in iPhone Safari with progress, in the same role=status slot', h.hint && !h.nudge && /^Safari can clear a site's saved data/.test(txt) && await p.evaluate(() => document.getElementById('a2hs').closest('[role=status]').id === 'bkNote'), { h, txt });
+      await Promise.all([p.waitForEvent('download'), p.click('#a2hsExp')]); await p.waitForTimeout(100);
+      ok('hint: its Export keeps the card (Share and Add to Home Screen come next)', (await ui(p)).hint);
+      await p.click('#a2hsOk'); await p.waitForTimeout(100);
+      const ok1 = await ui(p); await p.reload(); await p.waitForTimeout(400); const ok2 = await ui(p);
+      ok('hint: Got it hides it for good (a2hsAt stored; gone after a reload)', !ok1.hint && ok1.backup.a2hsAt === T && !ok2.hint, { ok1, ok2 });
+      await load(p, { ...SAVED, backup1: true, backup: { since: T - 20 * DAY } });
+      const both = await ui(p);
+      ok('hint: when the nudge is due too, only the nudge shows', both.nudge && !both.hint, both);
+      ok('hint: no page errors', !errs.length, errs);
+      await ctx.close();
+      const absent = {};
+      for (const [name, ua, init] of [['desktop', null], ['Chrome on iOS', IPHONE.replace('Version/18.0', 'CriOS/130.0.0.0')], ['in-app WebView', IPHONE.replace(' Safari/604.1', ' Instagram 350.0')],
+        ['opened from the Home Screen', IPHONE, () => Object.defineProperty(navigator, 'standalone', { get: () => true })]]) {
+        const x = await page({ ua, w: 390 }, init); await load(x.p, { ...SAVED, backup1: true, backup: { since: T - 2 * DAY } });
+        absent[name] = (await ui(x.p)).hint; await x.ctx.close();
+      }
+      ok('hint: absent on desktop, Chrome on iOS, an in-app WebView and when opened from the Home Screen', Object.values(absent).every(v => !v), absent);
+    }
+  }
+
   /* 3. claude.ai build: single file, icons as /_blob/<id>, no service worker / manifest; export through window.claude when present */
   {
     const art = fs.readFileSync(path.join(CFG.ROOT, 'dist-artifact', 'index.html'), 'utf8');
@@ -210,6 +317,21 @@ const checkReport = (label, m, want) => {
     ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
     checkReport('artifact build', am, { template: 'bug.yml', version: VERSION, level: '1', quest: 'A Village in the Fog', mode: 'Advanced', build: 'claude.ai' });   /* 0.2.1: fresh browser = Lv 1, first quest */
     ok('artifact build: icons load, no service worker, no page errors', !r.broken && !r.sw && !errs.length, { r, errs });
+    /* 0.2.5 save safety: none of its UI in the claude.ai build (with or without downloads), while the shared storage side
+       still gives the save its backup baseline */
+    const SAFETY_UI = ['bkNote', 'nudge', 'a2hs', 'backupLine', 'nudgeTxt', 'nudgeExp', 'nudgeNo', 'a2hsExp', 'a2hsOk'];
+    /* (the line's wording is in the shared core module, src/core/backup.js, which nothing calls in this build) */
+    ok('artifact build: no save-safety markup in the file', SAFETY_UI.every(id => !art.includes(`id="${id}"`)) && !/class="(card nudge|backup-line)"|Add to Home Screen|Not now|Got it/.test(art));
+    const noUI = pg => pg.evaluate(ids => ids.filter(id => document.getElementById(id)).concat([...document.querySelectorAll('.nudge, .backup-line')].map(e => e.className)), SAFETY_UI);
+    const withDl = await noUI(p);
+    const ctx2 = await b.newContext({ viewport: { width: 1500, height: 1000 } });
+    await ctx2.addInitScript(() => { window.claude = { use: async () => null }; });
+    const p2 = await ctx2.newPage(); await p2.goto(CFG.BASE + '/artifact/'); await p2.waitForTimeout(500);
+    const noDl = await noUI(p2); await p2.click('#lvlUp'); await p2.waitForTimeout(100);
+    const st = await p2.evaluate(k => JSON.parse(localStorage.getItem(k) || 'null'), KEY);
+    ok('artifact build: no save-safety UI in the DOM with or without the downloads permission; the save still gains backup',
+      !withDl.length && !noDl.length && st && st.backup1 === true && st.backup && typeof st.backup.since === 'number' && st.backup.since > 0, { withDl, noDl, backup: st && st.backup });
+    await ctx2.close();
     const ini = await p.evaluate(() => Object.entries(SP_ICONS).filter(([, v]) => !v).map(([n]) => [n, /class="spmini ini"/.test(spMini(n))]));
     ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', ini.length === noBlob.filter(n => n.startsWith('sk-')).length && ini.every(x => x[1]), ini);
     await ctx.close();
