@@ -63,7 +63,7 @@ export function setBackupTime(save, f, nowMs) {
   if (!backupOf(save)) save.backup = {};
   save.backup[f] = nowMs;
 }
-/* Export handed to the browser (the file already holds the save from before this). */
+/* Export handed to the browser (main.js stores this before it builds the file, so the file equals the save). */
 export const markExport = (save, nowMs) => setBackupTime(save, "lastExportAt", nowMs);
 /* Import: the file's own backup is ignored (another device's nudgeAt / a2hsAt don't apply here); the import counts as a
    backup, and backup1 is marked done so the step doesn't run again on the imported save. */

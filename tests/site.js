@@ -75,11 +75,9 @@ const checkReport = (label, m, want) => {
     checkReport('footer after a change', fm2, { template: 'bug.yml', version: VERSION, level: lv2, quest: 'Preparations for Restoration', mode: 'Basic', build: 'site' });
     await p.click('.modeseg [data-mode=advanced]'); await p.click('#lvlDown'); await p.waitForTimeout(100);
     ok('export: button visible outside claude.ai', await p.evaluate(() => !document.getElementById('expBtn').hidden));
-    const pre = await p.evaluate(() => JSON.stringify(state));
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
-    const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-    /* 0.2.5: the click then records backup.lastExportAt, so the file is the state from just before it */
-    ok('export: Blob download equals the saved state (as it was before the click)', JSON.stringify(exported) === pre && exported.level === 27, dl.suggestedFilename());
+    const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
+    ok('export: Blob download equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && exported.level === 27, dl.suggestedFilename());
     /* service worker */
     const sw = await p.evaluate(async () => { const r = await Promise.race([navigator.serviceWorker.ready, new Promise(res => setTimeout(() => res(null), 8000))]);
       return { ok: !!r, scope: r && r.scope, keys: await caches.keys(), build: await fetch('build.json').then(x => x.json()).then(x => x.build).catch(() => null) }; });
@@ -180,10 +178,9 @@ const checkReport = (label, m, want) => {
     await p.click('#lvlUp'); await p.waitForTimeout(100);
     const failed = await vis(), stored = await p.evaluate(k => JSON.parse(localStorage.getItem(k)).level, KEY);
     ok('save warning: shown when localStorage.setItem throws, with the Export action', failed.shown && failed.exp && failed.role === 'alert' && /^Your progress couldn.t be saved in this browser\. Export a backup\./.test(failed.text) && stored === 28, { failed, stored });
-    const pre = await p.evaluate(() => JSON.stringify(state));
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveWarnExp')]);
     const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-    ok('save warning: its Export button downloads the current (unsaved) progress', exported.level === 29 && JSON.stringify(exported) === pre, exported.level);
+    ok('save warning: its Export button downloads the current (unsaved) progress', exported.level === 29 && JSON.stringify(exported) === JSON.stringify(await p.evaluate(() => state)), exported.level);
     await p.evaluate(() => sessionStorage.setItem('__test:failSave', '0'));
     await p.click('#lvlDown'); await p.waitForTimeout(100);
     const back = await vis(), saved = await p.evaluate(k => localStorage.getItem(k) === JSON.stringify(state), KEY);
@@ -218,12 +215,11 @@ const checkReport = (label, m, want) => {
       await load(p, { ...SAVED, backup: { since: T - 3 * DAY } });
       const a = await ui(p);
       ok('backup line: "No backup yet." in the export row before any export; no nudge (baseline 3 days old)', a.line === 'No backup yet.' && !a.stale && !a.nudge && !a.hint, a);
-      const pre = await p.evaluate(() => JSON.stringify(state.backup));
       const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]); await p.waitForTimeout(100);
-      const file = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), c = await ui(p);
+      const file = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), c = await ui(p), stored = await p.evaluate(k => localStorage.getItem(k), KEY);
       ok('backup line: after Export it reads "Last backup: today." and the save has backup.lastExportAt (no reload)', c.line === 'Last backup: today.' && c.backup && c.backup.lastExportAt === T && c.backup.since === T - 3 * DAY, c);
       ok('backup line: the export added no localStorage key; the save is still under ' + KEY, JSON.stringify(c.keys) === JSON.stringify(a.keys) && c.keys.includes(KEY), { before: a.keys, after: c.keys });
-      ok('backup line: the exported file carries the backup from before the click', JSON.stringify(file.backup) === pre, { file: file.backup, pre });
+      ok('backup line: the exported file equals the stored save, lastExportAt included (stored before the file is built)', JSON.stringify(file) === JSON.stringify(JSON.parse(stored)) && file.backup.lastExportAt === T && file.backup.since === T - 3 * DAY, { file: file.backup, stored });
       for (const [n, text, stale] of [[1, 'Last backup: yesterday.', false], [13, 'Last backup: 13 days ago.', false], [14, 'Last backup: 14 days ago.', true]]) {
         await load(p, { ...SAVED, backup1: true, backup: { since: T - 99 * DAY, lastExportAt: T - n * DAY } }); const u = await ui(p);
         ok(`backup line: ${n} day(s) after an export: "${text}"${stale ? ', amber' : ''}`, u.line === text && u.stale === stale, u);

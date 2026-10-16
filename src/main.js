@@ -1793,11 +1793,12 @@ dvRespec.addEventListener("click", () => {
   if (!(window.claude && window.claude.use)) {
     show(true);
     btn.addEventListener("click", () => {
+      /* 0.2.5: the export time is stored before the file is built, so the file equals the save at the moment of export
+         (the browser doesn't say whether the file was kept, hence "Last backup", not "saved") */
+      markExport(state, Date.now()); save();
       const a = document.createElement("a"), url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: "application/json" }));
       a.href = url; a.download = fname(); document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      /* 0.2.5: handed to the browser (it doesn't say whether the file was kept); the file holds the backup from before */
-      markExport(state, Date.now()); save();
     });
     return;
   }
