@@ -33,6 +33,12 @@ on purpose: the guide shows nothing rather than an unverified value.
   | `owner:2026-10-15-alt-08` | Empyrean Monolith (Lv 16): all 6 regional quests it gates appear only once it is turned in | `rq:2202010`, `-12`, `-13`, `-14`, `-15`, `-23` |
 
   `owner:2026-10-15-alt-26` (#68, Lv 2–6 checks) is an earlier code of the same set.
+- **Owner refs of 2026-10-16 (0.2.4 checks, #107)**: given in chat at 03:02 ET. Build is unrecorded. The schema's ref
+  pattern needs a number, so the codes carry `-01`.
+
+  | Ref | Finding | Cited in |
+  |---|---|---|
+  | `owner:2026-10-16-hugo-01` | Turned in Hugo Mercenaries: Past and Present (screenshot); Deep Shadow was not offered afterwards, so Past and Present alone does not open it | `rq:2202011` (prereq-gates §11 check 9) |
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.
 - **Inferred (labelled in the app)**: core skill-point order, right-click row order and E stack, Vaizel / Triniel

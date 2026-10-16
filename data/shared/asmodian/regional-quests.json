@@ -312,12 +312,25 @@
             "story": "sq:2102280",
             "is": "turnedIn",
             "basis": "owner-check",
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1. Inferred, not observed: the owner's 2026-10-16 check (owner:2026-10-16-hugo-01, Past and Present turned in, Deep Shadow not offered) shows something besides Past and Present is needed, and this edge fits that; the owner checks th.gl by hand (prereq-gates §11 check 9)."
           },
           {
             "done": "rq:2202010",
             "basis": "owner-check",
-            "note": "New edge. Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-16-hugo-01",
+                  "checkedAt": "2026-10-16",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Turned in Hugo Mercenaries: Past and Present (rec Lv 16, Derk at Safe Haven); Hugo Mercenaries: Deep Shadow was not offered afterwards"
+                }
+              }
+            ],
+            "note": "New edge. Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1. Owner 2026-10-16: Past and Present alone does not open Deep Shadow (evidence against \"Past and Present alone\", not for this edge); the owner checks th.gl by hand (prereq-gates §11 check 9)."
           }
         ]
       },
