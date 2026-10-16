@@ -681,10 +681,12 @@ header .ns-btn.primary { margin-top: 2px; }
 .ah-main small { font-size: 11.5px; color: var(--muted); }
 /* Ascension bar (0.3 E8): one thin bar under the story timeline, a segment per in-cap chapter, its label below. */
 .asc { margin: -6px 0 12px; }
-.asc-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; height: 3px; }
+/* A done chapter is --good, like the timeline's done dots: 6.3:1 against an empty segment (--line), 8.0:1 against the card.
+   The label is one line (tests/a11y.js 11 checks it fits at 390 px); the ellipsis is only a fallback. */
+.asc-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; height: 4px; }
 .asc-bar span { border-radius: 2px; background: var(--line); }
-.asc-bar span.on { background: var(--prog); }
-.asc-txt { display: block; margin-top: 5px; font-size: 11.5px; line-height: 1.35; color: var(--muted); }
+.asc-bar span.on { background: var(--good); }
+.asc-txt { display: block; margin-top: 5px; font-size: 11.5px; line-height: 1.35; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .trk-wrap { margin-top: 2px; }
 .trk-wrap > summary { cursor: pointer; list-style: none; display: flex; gap: 6px; align-items: center; margin: 0; padding: 4px 0; border-radius: 4px; }
 .trk-wrap[open] > summary { margin-bottom: 4px; }

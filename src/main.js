@@ -15,7 +15,7 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gateChangeOn, gatesOf,mainCountsOf, objIdxOf, objPartsOf, objSubs,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
@@ -915,12 +915,13 @@ function renderQuest(inUpdate) {
   renderQuestSubs(inUpdate);
 }
 /* Ascension bar (0.3 E8, design §11): under the story timeline, one segment per in-cap chapter, filled when it is done
-   (ticked or derived from its wrapper quest); the label names the next chapter and what it waits for. Informational only. */
+   (ticked or derived from its wrapper quest); the label (the bar's aria-describedby) names the next chapter and, where
+   sourced, the gauge. Informational only. */
 function renderAscension() {
   const el = document.getElementById("asc");
   el.hidden = !gateChangeOn("ascensionBar"); if (el.hidden) { el.innerHTML = ""; return; }
   const a = ascensionOf(char(state));
-  el.innerHTML = `<div class="asc-bar" role="progressbar" aria-label="Ascension" aria-valuemin="0" aria-valuemax="${a.total}" aria-valuenow="${a.n}" aria-valuetext="${a.n} of ${a.total} chapters done">${a.chapters.map(x => `<span${x.done ? ' class="on"' : ""} title="${x.name}${x.done ? " · done" : ""}"></span>`).join("")}</div><small class="asc-txt">${a.label}</small>`;
+  el.innerHTML = `<div class="asc-bar" role="progressbar" aria-label="Ascension" aria-valuemin="0" aria-valuemax="${a.total}" aria-valuenow="${a.n}" aria-valuetext="${a.n} of ${a.total} chapters done" aria-describedby="ascTxt">${a.chapters.map(x => `<span${x.done ? ' class="on"' : ""} title="${x.name}${x.done ? " · done" : ""}"></span>`).join("")}</div><small class="asc-txt" id="ascTxt">${a.label}</small>`;
 }
 /* Long quest names: the field shrinks its text (to 11.5px) rather than cutting the name; the full name is the tooltip. */
 let fitQKey = "";

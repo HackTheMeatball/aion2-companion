@@ -77,8 +77,8 @@ export const GATE_CHANGES = {
     "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
   /* E8: not a gate, display only (src/core/ascension.js); a switch so --explain attributes the Journey card's new line (recorded with E8: baseline) */
   ascensionBar: { baseline: true, records: ["asc:perceives", "asc:hears-the-voice", "asc:dreams", "asc:witnesses"], what: "the Journey card shows the Ascension bar under " +
-    "the story timeline (design §11, both modes): 4 in-cap chapters, each filled once its wrapper quest is turned in or its guide step ticked, and a label " +
-    "naming the next chapter and what it waits for (\"Verdant Melody\" complete and the gauge for Hears the Voice: owner tooltip 2026-10-15)" },
+    "the story timeline (design §11, both modes): 4 in-cap chapters, each filled once its wrapper quest is turned in or its guide step ticked, and a one-line label " +
+    "naming the next chapter and, where sourced, the gauge (II: owner tooltip 2026-10-15; III: claim C36)" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
