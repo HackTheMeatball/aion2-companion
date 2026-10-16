@@ -352,6 +352,36 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
+  /* ---------- 14. Save safety (0.2.5): the export nudge (with the amber "Last backup" line) at 390 / 1500 px × Basic /
+     Advanced, and the iPhone Home Screen hint at 390 px with touch: inside the role=status slot (not an alert), buttons
+     named, axe-clean (contrast included), focus not moved to them, 44 px buttons on touch. ---------- */
+  {
+    const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
+    const BASE = { checks: { 'g22:0': true }, level: 27, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, backup1: true };
+    const cases = [];
+    for (const width of [390, 1500]) for (const mode of ['basic', 'advanced']) cases.push({ id: `nudge ${mode} ${width}px`, card: 'nudge', width, mode, days: 15 });
+    for (const mode of ['basic', 'advanced']) cases.push({ id: `hint ${mode} 390px touch`, card: 'a2hs', width: 390, mode, days: 2, opts: { userAgent: IPHONE, hasTouch: true, isMobile: true } });
+    for (const c of cases) {
+      const { ctx, p } = await page(c.width, c.opts);
+      await p.goto(CFG.CUR);
+      await p.evaluate(([k, s, d]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify({ ...s, backup: d >= 14 ? { lastExportAt: Date.now() - d * 864e5 } : { since: Date.now() - d * 864e5 } })); }, [KEY, { ...BASE, mode: c.mode }, c.days]);
+      await p.reload(); await p.waitForTimeout(400);
+      await p.addScriptTag({ content: AXE });
+      const r = await p.evaluate(async card => {
+        const el = document.getElementById(card), box = el && el.getBoundingClientRect(), slot = el && el.closest('[role]');
+        const btns = el ? [...el.querySelectorAll('button')].map(x => ({ n: (x.getAttribute('aria-label') || x.textContent).trim(), h: Math.round(x.getBoundingClientRect().height), type: x.type })) : [];
+        const line = document.getElementById('backupLine');
+        const v = await axe.run(document, { resultTypes: ['violations'] });
+        return { shown: !!el && !el.hidden && box.height > 0, role: slot && slot.getAttribute('role'), btns, focus: el && el.contains(document.activeElement),
+          stale: line && line.classList.contains('stale'), axe: v.violations.map(x => ({ id: x.id, n: x.nodes.length, first: x.nodes.slice(0, 2).map(y => y.target.join(' ')) })) };
+      }, c.card);
+      const bad = r.axe.filter(v => !ALLOW[v.id]);
+      ok(`save safety ${c.id}: shown in a role=status slot, buttons named, focus not moved, axe-clean`, r.shown && r.role === 'status' && r.btns.length === 2 && r.btns.every(x => x.n && x.type === 'button') && !r.focus && !bad.length && (c.card !== 'nudge' || r.stale), { ...r, axe: bad });
+      if (c.opts && c.opts.hasTouch) ok(`save safety ${c.id}: buttons at least 44 px tall on touch`, r.btns.every(x => x.h >= 44), r.btns);
+      await ctx.close();
+    }
+  }
+
   ok('no page errors', !errs.length, errs);
   console.log(fail ? `A11Y CHECKS FAILED (${fail})` : 'A11Y CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0);
 })();
