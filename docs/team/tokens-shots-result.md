@@ -16,3 +16,10 @@ site-1100-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-o
 
 artifact-390-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
 
+## Batch 4: `^artifact-1100-` (24 cases): 24 identical, 0 differ, 0 re-shot
+
+artifact-1100-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
+
+## Total (2026-10-16)
+
+96 / 96 pixel-identical, 0 differ, 0 needed a re-shot, so there was no noise to list.
