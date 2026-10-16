@@ -8,6 +8,37 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.3.0 — 2026-10-16
+
+Next up correctness: one requirement check for every card, and the story's last quest.
+
+### Added
+
+- "Daeva Trapped in a Nightmare" is now the last story quest in the guide, after "Forgotten Commander" (Lv 45). Its
+  giver (Koro at the Abyss Base) is single source and labelled so; the end-of-story text names the next quest in game,
+  "Waiting for the Next Journey" (Lv 46).
+
+### Changed
+
+- Every card (Next up, milestones, regional quests, Skills, Stigmas, Daevanion) now asks one shared requirement check
+  whether a step is open, done or blocked, so they agree. A step that is blocked, or already done through your story
+  progress, is never offered in Next up.
+- The Lv 45 Ascension step "The Witness of the Nightmare" is split from the end of the story: it waits until
+  "Forgotten Commander" is turned in, and a save that had finished the story at "Forgotten Commander" moves on to
+  "Daeva Trapped in a Nightmare" when it loads.
+
+### Fixed
+
+- The Daevanion card no longer says the Nezekan board opens at Lv 12: it opens with "Urgent Pursuit" (Lv 13), from
+  your story position (owner's in-game screens). The other boards follow the same gate.
+- Story levels after the first quest no longer show as requirements ("Needs Lv …: level up first").
+- The story chip for the Lv 45 Ascension step no longer says "your current quest" while "Forgotten Commander" is open.
+
+### Saved progress
+
+- Unaffected. The `localStorage` key is still `aion2-assassin-route-v4`; derived ticks are never written, and every
+  earlier save loads.
+
 ## 0.2.6 — 2026-10-16
 
 Phone layout fixes, Route rules card moved, steadier updates.
