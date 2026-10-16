@@ -62,9 +62,21 @@ const regionalKnown = M => {
   return out;
 };
 
+/* E5 (2026-10-16): the ready proposals of design §7 are live. The two regional quests are in regionalKnown (their gate is "turned in");
+   the Noble Belt / Revelation Amulet steps wait for the quest that gives the item, and every plan node for the Daevanion gate
+   ("Urgent Pursuit" turned in), so each can only be closed where 0.2 had it open (and dvNext then finds none). Held to 0.2 by B with the
+   switches off. */
+const E5 = 'live gate since E5 (ready proposal applied, design §7; switches "beltGate" / "amuletGate" / "daevanionGate", held to 0.2 by B)';
+const e5Known = M => ({
+  'step g12:belt open: 0.2 true / evaluator false': E5 + ': offered once "Urgent Pursuit" is turned in',
+  'step g16:amulet open: 0.2 true / evaluator false': E5 + ': offered once "Buried Atrocities" is turned in',
+  ...Object.fromEntries(M.DV_NODES().flatMap(it => [[`plan ${it.k} open: 0.2 true / evaluator false`, E5 + ': the board waits for "Urgent Pursuit" turned in'],
+    [`plan (dvNext) node: 0.2 ${it.k} / evaluator none`, E5 + ': every board waits for "Urgent Pursuit" turned in']])),
+});
+
 export default (test, M) => {
   const L = gates02(M);
-  const ALLOWED = regionalKnown(M);   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
+  const ALLOWED = { ...regionalKnown(M), ...e5Known(M) };   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
   /* the golden states, built from the catalog the page would hand catalogInPage() (same data, same core) */
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);

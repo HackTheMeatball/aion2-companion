@@ -314,45 +314,35 @@
       "short": "Enhance the Noble Belt",
       "text": "<b>Noble Belt:</b> the main story hands it to you around Lv 13 (it can't be missed). Enhance it +1 each time you get a <b>Noble Belt Enhance Scroll</b> (2 per Stronghold, see Dungeons &amp; Strongholds). Each +1 also costs Enhance Stones and Kina; success is 100%.",
       "requires": {
-        "level": 13,
-        "basis": "rule",
-        "note": "milestone level"
+        "all": [
+          {
+            "level": 13,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102065",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
+                "fields": [
+                  "rewards"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "the Noble Belt is \"Urgent Pursuit\"'s reward (Metabot)"
+          }
+        ]
       },
       "completesWith": [
         "tick"
       ],
       "claims": [
         "C24"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 13,
-              "basis": "rule",
-              "note": "milestone level"
-            },
-            {
-              "story": "sq:2102065",
-              "is": "turnedIn",
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/urgent-pursuit",
-                  "fields": [
-                    "rewards"
-                  ],
-                  "checkedAt": "2026-10-14"
-                }
-              ],
-              "note": "the Noble Belt is \"Urgent Pursuit\"'s reward (Metabot)"
-            }
-          ]
-        },
-        "status": "ready",
-        "basis": "prereq-gates §8",
-        "change": "Offered once \"Urgent Pursuit\" is turned in (it gives the Noble Belt), not from Lv 13 alone."
-      }
+      ]
     },
     {
       "id": "g16:0",
@@ -397,45 +387,35 @@
       "text": "<b>Revelation Amulet:</b> the story gives it at Lv 16, just before the Monolith quest. Every Monolith level from 2 gives a <b>Revelation Amulet Enhance Scroll</b>; use each one right away (+1, plus Enhance Stones and Kina).",
       "note": "The belt to +10 (Rare) costs 232,000 Kina and 9,280 Enhance Stones. Substance Morph then moves it up a rarity tier.",
       "requires": {
-        "level": 16,
-        "basis": "rule",
-        "note": "milestone level"
+        "all": [
+          {
+            "level": 16,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102100",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
+                "fields": [
+                  "rewards"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "the Revelation Amulet is \"Buried Atrocities\"'s reward (Metabot)"
+          }
+        ]
       },
       "completesWith": [
         "tick"
       ],
       "claims": [
         "C23"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 16,
-              "basis": "rule",
-              "note": "milestone level"
-            },
-            {
-              "story": "sq:2102100",
-              "is": "turnedIn",
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/buried-atrocities",
-                  "fields": [
-                    "rewards"
-                  ],
-                  "checkedAt": "2026-10-14"
-                }
-              ],
-              "note": "the Revelation Amulet is \"Buried Atrocities\"'s reward (Metabot)"
-            }
-          ]
-        },
-        "status": "ready",
-        "basis": "prereq-gates §8",
-        "change": "Offered once \"Buried Atrocities\" is turned in (it gives the Revelation Amulet), not from Lv 16 alone."
-      }
+      ]
     },
     {
       "id": "g16:monolith",

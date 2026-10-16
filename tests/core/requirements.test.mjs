@@ -81,7 +81,10 @@ export default (test, M) => {
     assert.deepEqual(M.dvGateOf(S({ dvTotal: 5, dvCost: { [n.k]: 3 } }), n.k), { off: false, warn: '' });
     assert.equal(M.dvSpent(S({ dvAdj: 2, dvCost: { [n.k]: 3 }, checks: { [n.k]: true } })), 5);
     assert.equal(M.dvNeed(S(), n), { p: 2, a: 3, c: 4 }[n.ty]);
-    assert.equal(M.dvNext(S(), 11), undefined); assert.equal(M.dvNext(S(), 12), n);
+    /* E5: the Daevanion gate, "Urgent Pursuit" turned in (unlock:daevanion), on top of the board level */
+    const past = M.QUESTS[M.QUESTS.findIndex(([, q]) => q === 'Urgent Pursuit') + 1][1];
+    assert.equal(M.dvNext(S({ quest: past }), 11), undefined); assert.equal(M.dvNext(S({ quest: past }), 12), n);
+    assert.equal(M.dvNext(S(), 12), undefined, 'story unset'); assert.equal(M.dvNext(S({ quest: 'Urgent Pursuit' }), 12), undefined, 'on it, not turned in');
   });
   test('stigma slots: picks, duplicates fall back to the plan', () => {
     const P = M.STIGMA_PLAN;

@@ -3115,18 +3115,34 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+                "fields": [
+                  "unlocksAt"
+                ]
+              }
             ]
+          },
+          {
+            "story": "sq:2102370",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
+                "section": "Required first",
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Metabot \"Required first: Blood Monument\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
           }
         ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -3178,41 +3194,7 @@
       "conflicts": [
         "Metabot shows no giver/turn-in/Kibelisk; giver name from step text only. Graverobber Campsite is mentioned in step text (Basfelt Ruins).",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
-                  "fields": [
-                    "unlocksAt"
-                  ]
-                }
-              ]
-            },
-            {
-              "story": "sq:2102370",
-              "is": "turnedIn",
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/traveling-merchants-conundrum",
-                  "section": "Required first",
-                  "checkedAt": "2026-10-14"
-                }
-              ],
-              "note": "Metabot \"Required first: Blood Monument\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "ready",
-        "basis": "prereq-gates §6 (new gate, Metabot)",
-        "change": "opens once \"Blood Monument\" is turned in instead of at its recommended Lv 33 (no prerequisite data today); one more story-gated regional quest."
-      }
+      ]
     },
     {
       "id": "rq:2202030",
@@ -6031,20 +6013,36 @@
         ]
       },
       "requires": {
-        "level": 10,
-        "basis": "sourced",
-        "sources": [
+        "all": [
           {
-            "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
-            "fields": [
-              "unlocksAt"
+            "level": 10,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+                "fields": [
+                  "unlocksAt"
+                ],
+                "checkedAt": "2026-10-14"
+              }
             ],
-            "checkedAt": "2026-10-14"
+            "note": "Metabot \"Unlocks at\" 10 (prereq-gates §6); the live atom cites shugo.gg, which shows only \"Level 45\" (see conflicts)."
+          },
+          {
+            "story": "sq:2102780",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
+                "section": "Required first",
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Metabot \"Required first: Zikel's Core\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
           }
-        ],
-        "note": "Metabot \"Unlocks at\" 10 (prereq-gates §6); shugo.gg (the record's first source) shows only \"Level 45\" without an unlock level (see conflicts)."
+        ]
       },
-      "requiresBasis": "unresearched",
       "completesWith": [
         "tick"
       ],
@@ -6089,43 +6087,7 @@
         "shugo.gg shows 'Level 45' without separating unlock level; allthings says unlocks at 10. Not in Forgotten Commander's dependent list (unlike the other Impetusium Lv 45 quests); prerequisites not checked (gaming.tools page not reachable).",
         "shugo.gg turn-in header says Nemon but step 4 says Reuben's Apparition",
         "Prerequisites not checked: no aion2.gaming.tools / aion2.th.gl page reachable for this quest"
-      ],
-      "proposed": {
-        "requires": {
-          "all": [
-            {
-              "level": 10,
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
-                  "fields": [
-                    "unlocksAt"
-                  ],
-                  "checkedAt": "2026-10-14"
-                }
-              ],
-              "note": "Metabot \"Unlocks at\" 10 (prereq-gates §6); the live atom cites shugo.gg, which shows only \"Level 45\" (see conflicts)."
-            },
-            {
-              "story": "sq:2102780",
-              "is": "turnedIn",
-              "basis": "sourced",
-              "sources": [
-                {
-                  "url": "https://metabot.gg/en/aion-2/quests/lest-we-forget",
-                  "section": "Required first",
-                  "checkedAt": "2026-10-14"
-                }
-              ],
-              "note": "Metabot \"Required first: Zikel's Core\". is \"turnedIn\" like every regional story gate (owner check 1 answered 2026-10-15)."
-            }
-          ]
-        },
-        "status": "ready",
-        "basis": "prereq-gates §6 (new gate, Metabot)",
-        "change": "opens once \"Zikel's Core\" is turned in instead of at its recommended Lv 45 (no prerequisite data today); one more story-gated regional quest."
-      }
+      ]
     },
     {
       "id": "rq:2202047",

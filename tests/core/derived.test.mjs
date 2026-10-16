@@ -18,7 +18,8 @@ export default (test, M) => {
   const der = (s, k) => M.derivedOf(M.char(s), k);
 
   test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
-    assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes']);
+    assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes',
+      'merchantGate', 'lestWeForgetGate', 'beltGate', 'amuletGate', 'daevanionGate']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
@@ -64,6 +65,12 @@ export default (test, M) => {
       withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.equal(M.objTextOf(q, i), t, q + ': off without stepNotes'));
     }
     assert.equal(M.objTextOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0], 'an objective without a note is its text');
+    /* the checklists' split (bold part, small part): the note is always in the small part (#73 review: Draupnir has no " — ") */
+    for (const [q, i] of noted) { const [a, b] = M.objPartsOf(q, i), [ta] = M.QUEST_STEPS[q][i].split(' — ');
+      assert.equal(a, ta.replace(/\.$/, ''), q + ': bold part is the objective only'); assert.ok(b.endsWith(M.QUEST_STEP_NOTES[q][i]), q + ': note in the small part'); }
+    assert.deepEqual(M.objPartsOf('Forgotten Commander', 1), [M.QUEST_STEPS['Forgotten Commander'][1], M.QUEST_STEP_NOTES['Forgotten Commander'][1]]);
+    assert.deepEqual(M.objPartsOf('Disturbed Balance', 0), M.QUEST_STEPS['Disturbed Balance'][0].split(' — '), 'no note: as before');
+    withChanges(ALL.filter(n => n !== 'stepNotes'), () => assert.deepEqual(M.objPartsOf('Forgotten Commander', 1), [M.QUEST_STEPS['Forgotten Commander'][1], undefined]));
   });
   test('regional quests open when the story quest is turned in (switch regionalTurnedIn); Shugo-of-All-Trades and Spooky Specters gained that gate', () => {
     const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
@@ -78,6 +85,39 @@ export default (test, M) => {
       assert.equal(st(n, at(gate, 1)), true, n + ': appears once ' + gate + ' is turned in');
       withChanges([], () => { assert.equal(st(n, at(gate, 1), 11), false, '0.2: from its recommended level'); });
     }
+  });
+
+  /* E5 (2026-10-16): the ready proposals of design §7, live; each switch off gives the gate from before */
+  test('E5 gates: Traveling Merchant\'s Conundrum, Lest We Forget, Noble Belt, Revelation Amulet, Daevanion boards (switches off: as before)', () => {
+    const rq = n => M.RQ.find(q => q.name === n), st = (n, quest, level = 45) => M.rqStatus(M.char(S({ quest, level })), rq(n)).open;
+    for (const [n, gate, sw] of [["Traveling Merchant's Conundrum", 'Blood Monument', 'merchantGate'], ['Lest We Forget', "Zikel's Core", 'lestWeForgetGate']]) {
+      const q = rq(n);
+      assert.equal(q.story, gate); assert.equal(q.turnedIn, true); assert.ok(!q.noPre, n + ': prerequisite data now');
+      assert.equal(st(n, gate), false, n + ': not while ' + gate + ' is current');
+      assert.equal(st(n, at(gate, 1)), true, n + ': once ' + gate + ' is turned in');
+      withChanges(ALL.filter(x => x !== sw), () => { assert.equal(st(n, gate), true, n + ': switch off, open from its recommended level');
+        assert.equal(st(n, at(gate, 1), q.rec - 1), false, n + ': switch off, not below its recommended level'); });
+    }
+    const open = (k, quest, level) => M.openOf(M.char(S({ quest, level })), k);
+    for (const [k, gate, lv, sw] of [['g12:belt', 'Urgent Pursuit', 13, 'beltGate'], ['g16:amulet', 'Buried Atrocities', 16, 'amuletGate']]) {
+      assert.equal(open(k, gate, lv), false, k + ': not while ' + gate + ' is current');
+      assert.equal(open(k, at(gate, 1), lv), true, k + ': once ' + gate + ' is turned in');
+      assert.equal(open(k, at(gate, 1), lv - 1), false, k + ': still needs its level');
+      withChanges(ALL.filter(x => x !== sw), () => assert.equal(open(k, '', lv), true, k + ': switch off, level only'));
+    }
+    const n = M.DV_NODES()[0];
+    assert.equal(M.dvNext(M.char(S({ quest: 'Urgent Pursuit', level: 20 }))), undefined, 'boards wait for "Urgent Pursuit" turned in');
+    assert.equal(M.dvOpen(M.char(S({ quest: '', level: 45 }))), false, 'story unset: the Daevanion card stays shut');
+    assert.equal(M.dvNext(M.char(S({ quest: at('Urgent Pursuit', 1), level: 20 }))), n);
+    assert.deepEqual(M.DV_NODES().filter(it => M.openOf(M.char(S({ quest: at('Urgent Pursuit', 1), level: 45 })), it.k)).length, M.DV_NODES().length, 'every plan node inherits it, nothing else');
+    withChanges(ALL.filter(x => x !== 'daevanionGate'), () => assert.equal(M.dvNext(M.char(S({ quest: '', level: 20 }))), n, 'switch off: board level only'));
+    /* the Daevanion card's "opens …" text: the level while it is above yours, then the story quest; nothing once open */
+    const wait = (quest, level, b = n.board) => M.dvWaitOf(M.char(S({ quest, level })), b);
+    assert.deepEqual(wait('Urgent Pursuit', 11), { lv: 12 });
+    assert.deepEqual(wait('Urgent Pursuit', 15), { lv: 12, story: 'Urgent Pursuit' });
+    assert.deepEqual(wait('', 15), { lv: 12, story: 'Urgent Pursuit' }, 'story unset');
+    assert.equal(wait(at('Urgent Pursuit', 1), 15), null);
+    assert.deepEqual(wait(at('Urgent Pursuit', 1), 15, 'Zikel'), { lv: 20 });
   });
 
   test('story quests: done once the story is past them (or on the last one with storyEnd), never ticked', () => {

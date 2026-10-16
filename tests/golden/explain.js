@@ -29,6 +29,7 @@ function recordsOf(root, meta) {
   for (const [n, m] of Object.entries(meta)) {
     if (m.apply) { const r = steps.find(s => s.id === m.apply) || rqs.find(q => q.id === m.apply);
       out[n] = { records: [m.apply], change: r && r.proposed ? r.proposed.change : m.what }; continue; }
+    if (m.records) { out[n] = { records: m.records.map(id => `${id}${rqName.has(id) ? ' ' + rqName.get(id) : ''}`), change: m.what }; continue; }   /* E5: proposals moved live, the switch names its records */
     if (n === 'regionalTurnedIn') out[n] = { records: rqs.filter(q => leaves(q.requires).some(a => a.story && a.is === 'turnedIn')).map(q => `${q.id} ${q.name}`), change: m.what };
     else if (n === 'storyStepDerived') out[n] = { records: [...shs, ...steps].filter(byStep).map(r => r.id), change: m.what };
     else if (n === 'stepNotes') out[n] = { records: story.flatMap(s => s.steps.filter(x => x.note).map(x => `${s.id} #${x.i} ${s.name}`)), change: m.what };
