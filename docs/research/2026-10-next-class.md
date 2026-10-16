@@ -79,22 +79,22 @@ build token". Keys are permanent and unique within one compiled class bundle; sk
 
 Policy followed: robots.txt first, the terms page for Metabot, User-Agent
 `DaevaCompanionResearch/0.1 (+https://daevacompanion.com)`, one request at a time, 7 s apart, stop on a block.
-**19 requests**, cached under the session scratchpad only (nothing copied into the repo beyond facts below).
+**19 requests** (12 + 1 + 3 + 3), cached under the session scratchpad only (nothing copied into the repo beyond facts below).
 
 | Host | Requests | Outcome |
 |---|---|---|
 | metabot.gg | 12: robots.txt, terms of service, class page, 6 skill pages, Daevanion page, class-builds guide, builds page | All 200. robots.txt allows `/en/aion-2/` (only `/api/`, `/private/` and profile pages are disallowed). Terms allow reuse with a dofollow link to the specific page the data came from, "reasonable request rate". |
-| thegameswiki.com | 1 (robots.txt) | **429 with a Vercel security checkpoint. Stopped, not retried, nothing bypassed.** No thegameswiki data for Gladiator. Owner to read by hand if a second source is wanted. |
-| aion2hub.com | 4: robots.txt, home, `/classes/gladiator` | 200. robots.txt allows all (this host is approved for spot checks, weak corroboration only). |
-| gamesfuze.com | 3: robots.txt (200), a guessed terms URL (404), the guessed Gladiator guide URL (404) | **Deviation, my mistake:** `data/sources.json` records GamesFuze as `mode: human-only` with robots and terms unchecked. I should have read that entry before touching the host. No page content was read (both content requests were 404 pages), nothing was kept, and I stopped. Needs the owner's by-hand read of the Gladiator guide and the site terms before it can count as a second source. |
+| thegameswiki.com | 1 (robots.txt) | **Deviation, same slip as GamesFuze:** `data/sources.json` marks it `human-only` (robots unchecked, terms unread) and I did not read that entry first. The 429 with a Vercel security checkpoint came from this robots.txt request (no content page was requested); the registry already notes the same 429 on 2026-10-14. Stopped, not retried, nothing bypassed. No thegameswiki data for Gladiator. Owner to read by hand if a second source is wanted. |
+| aion2hub.com | 3: robots.txt, home, `/classes/gladiator` | 200. robots.txt allows all (this host is approved for spot checks, weak corroboration only). |
+| gamesfuze.com | 3: robots.txt (200), a guessed terms URL (404), the guessed Gladiator guide URL (404) | **Deviation (my mistake):** `data/sources.json` records GamesFuze as `mode: human-only` with robots and terms unchecked. I should have read that entry before touching the host. No page content was read (both content requests were 404 pages), nothing was kept, and I stopped. Needs the owner's by-hand read of the Gladiator guide and the site terms before it can count as a second source. |
 
 Not touched: aion2.th.gl, Game8, aion2.gaming.tools, any other blocked host.
 
-### 3.2 Metabot coverage for Gladiator (all B: game-database field, build 0.0.4387.0)
+### 3.2 Metabot coverage for Gladiator (game-database fields, rated B, build 0.0.4387.0, except the editorial builds row, rated C)
 
 | Area | URL | Result |
 |---|---|---|
-| Class page | [`/classes/gladiator`](https://metabot.gg/en/aion-2/classes/gladiator) | 35 skills: 12 active, 10 passive, 13 stigma. Learn levels for all 22 non-stigma skills read and equal to the shared skeleton and to the table in classes-and-gaps §2.5. Role Tank / Damage, Greatsword, stigmas unlock Lv 22, HP at Lv 100 11,000. Active and passive max Lv 40, **stigma max Lv 25** (FAQ; Assassin is 40, owner check still pending). |
+| Class page | [`/classes/gladiator`](https://metabot.gg/en/aion-2/classes/gladiator) | 35 skills: 12 active, 10 passive, 13 stigma. Learn levels for all 22 non-stigma skills read and equal to the shared skeleton and to the table in classes-and-gaps §2.5. Role Tank / Damage, Greatsword, stigmas unlock Lv 22, HP at Lv 100 11,000. Active and passive max Lv 40, **stigma max Lv 25 (unverified: Metabot FAQ only; Assassin is 40; in-game check pending, §3.4)**. |
 | Skill pages | [`/skills/<slug>`](https://metabot.gg/en/aion-2/skills/keen-strike) | 6 of 35 read in full (keen-strike, leaping-slam, ruinous-blow, defiance, identify-weakness, rage-burst). Each gives: "Learned at Lv.", type, max level, 5 specializations with the required skill level (8 / 8 / 8 / 12 / 16 for actives, 5 / 10 / 15 / 20 for stigmas), the full 40-level table with the **required character level and point cost per skill level**, and the Daevanion nodes that boost it. The remaining 29 are the same template; the specialization texts live on those pages. |
 | Skill-point costs and gates | same pages | Matches our rules exactly: skill level 2-4 cost 1, 5-7 cost 2, 8-10 cost 4; required character level = learn level + 3 × (L − 2) (checked on 5 skills: learn Lv 1 / 11 / 14 / 16; Identify Weakness, a passive at learn Lv 11, is **stepped**, not flat, so `levelGate` is per skill: Assassin's note says two passives are flat, so check each Gladiator passive). Rage Burst stigma points: 1 / 2 / 4 / 8 per level in bands of 5, the same as `ST_COST`; costs for levels 21-25 were not extracted. |
 | Daevanion boards | [`/daevanion/gladiator`](https://metabot.gg/en/aion-2/daevanion/gladiator) | The page embeds every board and node: 5 boards (Nezekan 12, Zikel 20, Vaizel 30, Triniel 40, Azphel 45), 537 nodes, with row, column, type, grade, cost, label and for skill nodes the skill name. Totals 134 / 134 / 134 / 168 / 232. 22 skills with 4 nodes each (Identify Weakness has two on Nezekan and none on Zikel, like Assassin's Exploit Weakness). Compared to `data/classes/assassin/board-nodes.json`: same positions, types and costs in 537 / 537, identical stat labels and grades; 80 of 88 skill nodes carry a different skill; `gameId` prefix differs (Gladiator 11xxxx-15xxxx, Assassin 41xxxx-45xxxx). |
@@ -117,9 +117,11 @@ Block. Daevanion start: Nezekan Attack Preparation and Survival Stance pairs, th
 | GamesFuze, ExitLag, Destructoid, PowerUp Gaming, OSLink, KeenGamer (candidate URLs in classes-and-gaps §2.3) | Not read. GamesFuze is `human-only` in the source registry. | Not until the owner reads them or confirms they may be fetched. |
 
 So for Gladiator: skill table, specialties, level gates, costs, boards, nodes, stigma list are B (one game database).
-Per the Assassin precedent these count as verified. The advice fields (skill-point order, the four stigmas and when,
+These count as verified because CLAUDE.md accepts game-database fields (Metabot quest and skill pages) as a source, not because of the Assassin precedent. The advice fields (skill-point order, the four stigmas and when,
 first nodes per board, stat tiers, rotation / E row) have **one voice** and must be labelled "single source" or
 "inferred" unless two sources are read.
+
+**For the owner (registry mismatch, `data/sources.json` not edited):** `src:aion2hub` has `access.terms: "allows"`, but its own licence note says no terms page exists, and I found none. The `terms` value is unsupported by a page; consider `none-found`. `src:gamesfuze` and `src:thegameswiki` are `human-only` with robots unchecked and terms unread; this report's robots.txt requests (and the GamesFuze 404s) are not recorded there.
 
 ### 3.4 What needs the game, not a website
 
