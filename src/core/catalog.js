@@ -63,7 +63,8 @@ const qMap = q => [q.zone, q.place && q.place !== q.zone ? q.place : "", q.id ? 
 /* inGroup: the group heading already says it (story quest or unlock level), so the row doesn't repeat it. */
 const rqReqTxt = (q, inGroup) => { const xs = [q.unlocksAt > 10 && !inGroup ? `at Lv ${q.unlocksAt}` : "", q.story && !inGroup ? (q.turnedIn ? `once <em>${q.story}</em> is turned in` : `once the story reaches <em>${q.story}</em>`) : "",
   q.after.length ? `after ${q.after.map(n => `<em>${n}</em>`).join(" and ")} ${q.after.length > 1 ? "are" : "is"} turned in` : ""].filter(Boolean);
-  return xs.length ? `<span class="rq-req"><br>Opens ${xs.join(", ")}</span>` : ""; };
+  /* always the span (empty when nothing opens it): since E6 the page fills it from the evaluator (main.js syncQRun) */
+  return `<span class="rq-req">${xs.length ? `<br>Opens ${xs.join(", ")}` : ""}</span>`; };
 /* A regional quest row (key "rq:" + id, so where it sits never touches its ticks). lv = recommended level. */
 const rqItem = (q, inGroup) => ({ kind: "quest", name: q.name, k: "rq:" + q.id, lv: q.rec, q, ...(q.story ? { story: q.story } : {}),
   t: `<b>${q.name}</b><span class="loc">${qMap(q)}${rqReqTxt(q, inGroup)}${q.reward ? `<br>Reward: <em>${q.reward}</em>` : ""}</span>` });

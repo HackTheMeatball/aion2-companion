@@ -15,10 +15,11 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
-  setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
+  setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv, chainsOn, rqReqOf, stepChipOf, storyLineOf } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
+import { ascensionOf } from "./core/ascension.js";
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
 const stNames = () => slotNames(char(state));
@@ -87,8 +88,11 @@ function syncQRun() {
     if (zb) { zb.hidden = done || run || shut; zb.setAttribute("aria-pressed", String(zz)); zb.textContent = zz ? "Not in game yet · undo" : "Not in game yet"; }
     /* Locked by the guide's data but already offered in your game: one click marks it picked up (same as its box). */
     const ib = li.querySelector(":scope > .q-inl"); if (ib) ib.hidden = !shut;
-    /* What opens it only matters while it isn't picked up. */
-    const rr = li.querySelector(".rq-req"); if (rr) rr.hidden = done || run;
+    /* What opens it only matters while it isn't picked up. E6: what still blocks it, from the evaluator (design §4), in
+       place of the static "Opens …" list; nothing once it is open. */
+    const rr = li.querySelector(".rq-req");
+    if (rr && chainsOn()) { const why = done || run ? "" : rqReqOf(char(state), k); rr.innerHTML = why ? `<br>${capFirst(why)}` : ""; rr.hidden = !why; }
+    else if (rr) rr.hidden = done || run;
     li.classList.toggle("snoozed", zz && !done && !run);
   });
 }
@@ -437,6 +441,9 @@ const specSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick
   const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
   return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
 const nsGate = g => `<a href="#${g.id}" data-now="gate:${g.id}">${g.title}</a>`;
+/* A blocker text at the start of a line. */
+const capFirst = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const isBasic = () => document.body.classList.contains("basic");
 const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
 /* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
 const nsWhere = (area, kib, hereArea) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>` : ""].filter(Boolean).join(" · ");
@@ -470,8 +477,9 @@ function nowCard(a) {
       bar: a.scope ? `<span class="nsq-bar rq"><span class="d" style="width:${a.done / a.scope * 100}%"></span><span class="r" style="width:${a.run / a.scope * 100}%"></span></span><span class="nsq-barl">${a.done}/${a.scope} turned in</span>` : "",
       btn: "Show", act, extra: rqExtraHTML(a) };
     case "story": return storyView(a);
-    case "laterSkill": return { ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `Opens at Lv ${a.x.req} · ${away(a.x.req)}${ssTag(a.x)}`, act, later: true };
-    case "laterStep": return { ico: "⚑", t: a.x ? stepHTML(a.g, a.x) : `<b>${a.g.title}</b>`, sub: `Lv ${a.g.lv} milestone · ${away(a.g.lv)}`, act, later: true };
+    /* E6: what opens it, in the words every card uses (src/core/blockers.js) */
+    case "laterSkill": return { ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}`} · ${away(a.x.req)}${ssTag(a.x)}`, act, later: true };
+    case "laterStep": return { ico: "⚑", t: a.x ? stepHTML(a.g, a.x) : `<b>${a.g.title}</b>`, sub: `Lv ${a.g.lv} milestone · ${away(a.g.lv)}${chainsOn() && a.why ? ` · ${a.why}` : ""}`, act, later: true };
   }
   throw new Error("Next up: unknown card " + a.kind);
 }
@@ -497,7 +505,7 @@ function rqExtraHTML(a) {
   /* Snoozed ("Not in game yet", counted in the subline): one compact row with their names and one control that shows them again. */
   const zRow = a.snz.length ? `<li class="qg rq-aux"><span class="rq-auxt" title="Not in game yet: hidden until your next Level up">${a.snz.map(x => x.it.name).join(", ")}</span><button type="button" class="q-inl" data-unsnz="${a.snz.map(x => x.k).join("|")}">Show again</button></li>` : "";
   /* Waiting on the story: folded; each quest gets the milestone rows' "In my game" (= picked up). */
-  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
+  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() && !isBasic() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
   return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
 function storyView(a) {
@@ -876,23 +884,29 @@ function renderStoryReqs() {
   GATES.forEach(g => {
     const card = document.getElementById(g.id), ul = card && card.querySelector(":scope > ul.items"); if (!ul) return;
     let row = ul.querySelector(":scope > li.storyreq");
-    const reqs = g.items.map(it => it.story || it.after).filter(Boolean).map(storyIdx).filter(i => i >= 0);
-    if (!reqs.length) { if (row) row.remove(); return; }
-    /* the furthest of them; reached or not, and how far (d: quests ahead, null with the story unset), from the evaluator */
-    const q = QUESTS[Math.max(...reqs)][1], { ok, ahead: d } = storyGate(char(state), q);
+    /* the furthest of them; reached (or, E6, turned in where the rows under it wait for that) or not, and how far (d: quests
+       ahead, null with the story unset), from the evaluator */
+    const L = storyLineOf(char(state), g);
+    if (!L) { if (row) row.remove(); return; }
+    const { q, ok, ahead: d } = L, E6 = chainsOn();
     if (!row) { row = document.createElement("li"); row.className = "item storyreq"; ul.prepend(row); }
     row.classList.toggle("reached", ok);
     row.hidden = ok && !!state.hide;
-    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : " ahead"}">${ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`}</span><b>Reach "${q}" in the main story</b> <span class="sr-sub">Opens the steps with a story chip and the regional quests below that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
+    const chip = !E6 ? (ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`) : L.chip || "set your quest";
+    const now = E6 && !ok && L.turnIn && d === 1;
+    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens the steps with a story chip and the regional quests below that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
   });
 }
 /* Chip on story-gated steps: how far that quest is from your current main quest. */
 function renderStoryChips() {
-  const c = char(state);
+  const c = char(state), E6 = chainsOn(), ev = gatesOf(c);
   mainEl.querySelectorAll("li[data-story]").forEach(li => {
     const chip = li.querySelector(".schip"); if (!chip) return;
-    const sg = storyGate(c, li.dataset.story);
     chip.className = "schip";
+    /* E6: from the step's own gate (turned in where it waits for that), in the words of src/core/blockers.js */
+    if (E6) { const cb = li.querySelector("input[data-k]"), x = li.classList.contains("qrow") || !cb ? null : stepChipOf(c, cb.dataset.k, li.dataset.story, ev);
+      chip.textContent = x ? x.text : ""; if (x && x.title) chip.title = capFirst(x.title); else chip.removeAttribute("title"); if (x && x.cls) chip.classList.add(x.cls); return; }
+    const sg = storyGate(c, li.dataset.story);
     if (!sg || (!sg.ok && sg.ahead == null)) { chip.textContent = ""; return; } /* not on the chain, or the story unset */
     const d = sg.ahead;
     if (li.classList.contains("qrow")) { chip.textContent = ""; return; } /* quest rows say what opens them in their own text */
@@ -917,6 +931,15 @@ function renderQuest(inUpdate) {
   if (qInput.value !== char(state).quest) qInput.value = char(state).quest;
   requestAnimationFrame(fitQuestIn);
   renderQuestSubs(inUpdate);
+}
+/* Ascension bar (0.3 E8, design §11): under the story timeline, one segment per in-cap chapter, filled when it is done
+   (ticked or derived from its wrapper quest); the label (the bar's aria-describedby) names the next chapter and, where
+   sourced, the gauge. Informational only. */
+function renderAscension() {
+  const el = document.getElementById("asc");
+  el.hidden = !gateChangeOn("ascensionBar"); if (el.hidden) { el.innerHTML = ""; return; }
+  const a = ascensionOf(char(state));
+  el.innerHTML = `<div class="asc-bar" role="progressbar" aria-label="Ascension" aria-valuemin="0" aria-valuemax="${a.total}" aria-valuenow="${a.n}" aria-valuetext="${a.n} of ${a.total} chapters done" aria-describedby="ascTxt">${a.chapters.map(x => `<span${x.done ? ' class="on"' : ""} title="${x.name}${x.done ? " · done" : ""}"></span>`).join("")}</div><small class="asc-txt" id="ascTxt">${a.label}</small>`;
 }
 /* Long quest names: the field shrinks its text (to 11.5px) rather than cutting the name; the full name is the tooltip. */
 let fitQKey = "";
@@ -1151,6 +1174,7 @@ function renderNext() {
   renderCollection();
   renderRotation();
   renderQuest(true);
+  renderAscension();
   renderStoryChips();
   renderStoryReqs();
   const lv = char(state).level;
@@ -1220,8 +1244,12 @@ function renderNext() {
 /* Daevanion: the player types the board's total points and logs what each node cost (path included);
    remaining = total − logged costs. Node order lives in the milestones (Nezekan Lv 13, Zikel 20, Vaizel 30, Triniel 40). */
 const dvShort = t => t.replace("Cooldown Reduction or Combat Speed corner", "1 corner: CDR or Speed").replace("Critical Damage Boost corner", "Crit Damage corner").replace("Multi-Hit Chance corner", "Multi-Hit corner");
+/* What a shut board waits for (dvWaitOf): E6's blocker text ("unlocks after "Urgent Pursuit" · N quests ahead"); Basic and the
+   switch off keep the short "opens after "X"" (Basic shows chains on milestone rows only, design Q8). */
+const dvWhy = w => chainsOn() && !isBasic() && w.text ? w.text : `opens after "${w.story}"`;
 function renderDaevanion() {
-  const box = document.getElementById("dvBox"); box.hidden = !dvOpen(char(state));
+  /* The card stays shown before the window opens: it says what opens it. (It never hid: #dvBox's display: flex overrode
+     `hidden`, so the old `box.hidden = !dvOpen(…)` was dead code; E6 removes it rather than hide the gate text.) */
   const total = char(state).dvTotal || 0, left = total - dvSpent(char(state));
   document.getElementById("dvRemain").innerHTML = dvSplitTxt(total);
   document.getElementById("dvBig").innerHTML = `<b class="dvsync" title="Click to match the game's crystals left">${total ? left : "–"}</b><span>crystal${total && left === 1 ? "" : "s"} left</span>${char(state).dvAdj ? `<em class="dvadj" title="Correction so this matches the game">${char(state).dvAdj > 0 ? "−" : "+"}${Math.abs(char(state).dvAdj)} adj</em>` : ""}`;
@@ -1239,8 +1267,10 @@ function renderDaevanion() {
     : (() => { const nl = DV_NODES().find(it => !char(state).checks[it.k]); if (!nl) return null;
         const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv), w = dvWaitOf(char(state), nl.board);
         /* Stop point: show the next node you'll buy (on the next board) and a green "all done" status in the button slot. */
-        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${w ? ` board · opens ${w.story ? `after "${w.story}"` : `Lv ${at}`}` : ` · Lv ${at}`}</small></div></div>` +
-          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · <span class="nw">next: ${nl.board} ${w && w.story ? `after "${w.story}"` : `at Lv ${at}`}</span></div></div></div>`; })()
+        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${w ? ` board · ${w.story ? dvWhy(w).split(" · ")[0] : `opens Lv ${at}`}` : ` · Lv ${at}`}</small></div></div>` +
+          /* E6: the hero's one-line small text keeps the quest, the status below it the distance (both fit at 390 px; nothing said twice) */
+          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · ${w && w.story && dvWhy(w).split(" · ")[1] ? `<span class="nw">next: ${nl.board}</span> · <span class="nw">${dvWhy(w).split(" · ")[1]}</span>`
+            : `<span class="nw">next: ${nl.board} ${w && w.story ? dvWhy(w).replace(/^opens /, "") : `at Lv ${at}`}</span>`}</div></div></div>`; })()
     || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`;
   dvNxUpdate(); renderUndo(); requestAnimationFrame(() => typeof fitSkills === "function" && fitSkills());
   /* "Then": the next few nodes after this one (same order), like Skills' Coming up. */
@@ -1259,15 +1289,15 @@ function renderDaevanion() {
     const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv)), wB = dvWaitOf(char(state), it.board), shutB = !!wB;
     /* Not open yet: a bar from the last milestone below your level up to the board's level. */
     const fromLv = (GATES.filter(g => g.lv < char(state).level).pop() || { lv: 1 }).lv, pctB = Math.min(100, Math.max(0, (char(state).level - fromLv) / Math.max(1, opensAt - fromLv) * 100));
-    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${!shutB ? "open" : wB.story ? `opens after "${wB.story}"` : `opens Lv ${opensAt} · ${opensAt - char(state).level} to go`}</span>${shutB && !wB.story ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
+    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${!shutB ? "open" : wB.story ? dvWhy(wB) : `opens Lv ${opensAt} · ${opensAt - char(state).level} to go`}</span>${shutB && !wB.story ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
     prevB = it.board;
-    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board opens ${wB.story ? `after &quot;${wB.story}&quot; is turned in` : `at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
+    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board ${wB.story ? (chainsOn() && !isBasic() && wB.text ? wB.text : `opens after "${wB.story}" is turned in`).replace(/"/g, "&quot;") : `opens at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
   /* Full plan, grouped by board; boards not yet open are dimmed with their level. */
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });
   document.getElementById("dvAllList").innerHTML = Object.entries(byBoard).map(([b, list]) => {
     const opens = Math.min(...list.map(it => it.blv)), wb = dvWaitOf(char(state), b), shut = !!wb, done = list.filter(it => char(state).checks[it.k]).length;
-    return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? (wb.story ? `opens after "${wb.story}"` : `opens at Lv ${opens}`) : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
+    return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? (wb.story ? dvWhy(wb) : `opens at Lv ${opens}`) : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
   }).join("");
   const inp = document.getElementById("dvIn");
   if (document.activeElement !== inp) inp.value = total || "";

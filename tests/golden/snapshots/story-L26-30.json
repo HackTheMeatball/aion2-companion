@@ -2,13 +2,12 @@
   "story/L26-q40-before-A": {
     "in": "976db7242cc4",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: The High Priest Slumbers","s":"0/2 objectives · then Striving for Coexistence","c":"primary \"Turned in\" story","o":["Check if Hystan's body is safe go to the Nornir Altar","Turn in Urd, Nornir Assembly (Kibelisk: Nornir Assembly)"]},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Buy Ambush 9 → 10","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 8 → 9","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -44,6 +43,7 @@
       "next": "Striving for Coexistence Lv 26",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -68,7 +68,6 @@
   "story/L26-q40-before-B": {
     "in": "427437e6e23f",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: The High Priest Slumbers","s":"0/2 objectives · then Striving for Coexistence","c":"primary \"Turned in\" story","o":["Check if Hystan's body is safe go to the Nornir Altar","Turn in Urd, Nornir Assembly (Kibelisk: Nornir Assembly)"]},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"}
     ],
@@ -106,6 +105,7 @@
       "next": "Striving for Coexistence Lv 26",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -176,6 +176,7 @@
       "next": "Striving for Coexistence Lv 26",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "1%",
       "prog": ["Quests 11 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
@@ -209,13 +210,12 @@
   "story/L26-q41-before-A": {
     "in": "8d68f92bf40b",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Ambush 9 → 10","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 8 → 9","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -251,6 +251,7 @@
       "next": "Preparations for Restoration Lv 27",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -275,7 +276,6 @@
   "story/L26-q41-before-B": {
     "in": "a58319222f06",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"}
     ],
@@ -313,6 +313,7 @@
       "next": "Preparations for Restoration Lv 27",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -383,6 +384,7 @@
       "next": "Preparations for Restoration Lv 27",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "1%",
       "prog": ["Quests 11 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
@@ -416,13 +418,12 @@
   "story/L26-q42-before-A": {
     "in": "5cc642d21443",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Preparations for Restoration","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Ambush 9 → 10","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 8 → 9","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -458,6 +459,7 @@
       "next": "A Collective Effort Lv 27",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -482,13 +484,12 @@
   "story/L26-q43-before-A": {
     "in": "d075a9e6f2ce",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Buy Ambush 9 → 10","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 8 → 9","s":"Opens at Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -524,6 +525,7 @@
       "next": "Land of Rifts Lv 29",
       "hint": "next milestone at Lv 27",
       "ahead": ["Ahead verified","Lv 27 Stigma slot 2 1 level to go","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 2 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 next · 1 to go Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -548,12 +550,11 @@
   "story/L27-q42-before-A": {
     "in": "ed595277ca14",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -590,6 +591,7 @@
       "next": "A Collective Effort Lv 27",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -614,7 +616,6 @@
   "story/L27-q42-before-B": {
     "in": "ae9ec63ba47b",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
@@ -654,6 +655,7 @@
       "next": "A Collective Effort Lv 27",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -724,6 +726,7 @@
       "next": "A Collective Effort Lv 27",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "1%",
       "prog": ["Quests 11 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
@@ -757,12 +760,11 @@
   "story/L27-q43-before-A": {
     "in": "03ba77f1b98f",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Buy Heart Gore 9 → 10","s":"Opens at Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -799,6 +801,7 @@
       "next": "Land of Rifts Lv 29",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -823,7 +826,6 @@
   "story/L27-q43-before-B": {
     "in": "355c224ef574",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
       {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
@@ -863,6 +865,7 @@
       "next": "Land of Rifts Lv 29",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "39%",
       "prog": ["Quests 13/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -933,6 +936,7 @@
       "next": "Land of Rifts Lv 29",
       "hint": "milestone now: Lv 27",
       "ahead": ["Ahead verified","Lv 28 Urugugu Canyon Expedition (Exploration) · item level 300 · party 2–5 1 level to go","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Stigma slot 2 now Lv 27"],
       "ring": "1%",
       "prog": ["Quests 11 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
@@ -966,12 +970,11 @@
   "story/L28-q44-before-A": {
     "in": "a938f565003c",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 28. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Insignia Explosion 6 → 7","s":"Opens at Lv 29 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Rear Smite 7 → 8","s":"Opens at Lv 29 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 2 levels away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Insignia Explosion 6 → 7","s":"Needs Lv 29 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Rear Smite 7 → 8","s":"Needs Lv 29 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 2 levels away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1008,6 +1011,7 @@
       "next": "Dying Light Lv 30",
       "hint": "milestone now: Lv 28",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 2 levels to go","Lv 32 Stigma slot 3 4 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Heart Gore 10 and Urugugu Canyon now Lv 28"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1032,10 +1036,9 @@
   "story/L29-q44-before-A": {
     "in": "a4b7f741cac7",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1072,6 +1075,7 @@
       "next": "Dying Light Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1096,7 +1100,6 @@
   "story/L29-q44-before-B": {
     "in": "c27f61ad9006",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"}
     ],
@@ -1134,6 +1137,7 @@
       "next": "Dying Light Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1204,6 +1208,7 @@
       "next": "Dying Light Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "1%",
       "prog": ["Quests 12 0/58","Dungeons 36 0/60","Strongholds 7 1/15"]
@@ -1239,10 +1244,9 @@
   "story/L29-q45-before-A": {
     "in": "393598baecce",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Dying Light","s":"Needs Lv 30: you're 29. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1279,6 +1283,7 @@
       "next": "Contaminated Sacred Tree Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1303,10 +1308,9 @@
   "story/L29-q46-before-A": {
     "in": "839150c3bcdd",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Contaminated Sacred Tree","s":"Needs Lv 30: you're 29. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300)","c":""},
       {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1343,6 +1347,7 @@
       "next": "The Past Revealed Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1367,10 +1372,9 @@
   "story/L29-q47-before-A": {
     "in": "baacbd2d2642",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: The Past Revealed","s":"Needs Lv 30: you're 29. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300)","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1407,6 +1411,7 @@
       "next": "Canyon's Secret Lv 30",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1431,10 +1436,9 @@
   "story/L29-q48-before-A": {
     "in": "c6dff20acfbf",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Canyon's Secret","s":"Needs Lv 30: you're 29. Level up first. Meanwhile: Strongholds / Urugugu Canyon (Lv 28+, item level 300)","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-      {"t":"Buy Exploit Weakness 9 → 10","s":"Opens at Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
+      {"t":"Buy Exploit Weakness 9 → 10","s":"Needs Lv 30 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
@@ -1471,6 +1475,7 @@
       "next": "Bitter Reality Lv 32",
       "hint": "next milestone at Lv 30",
       "ahead": ["Ahead verified","Lv 30 Vaizel board Third Daevanion board Daily dungeon Daeva Bio-Research Base 1 level to go","Lv 32 Stigma slot 3 3 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board next · 1 to go Lv 30"],
       "ring": "40%",
       "prog": ["Quests 14/58","Dungeons 36/60","Strongholds 5 3/15"]
@@ -1495,7 +1500,6 @@
   "story/L30-q45-before-A": {
     "in": "f7e63c142d52",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Dying Light","s":"0/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Restore the Water Altar purify the Water Altar (Kibelisk: Healing Spring)","Clear around the Water Altar remove Contaminated Water defeat Water Mist Spirit defeat Cursed Poison Blood Kibelisk: Healing Spring","Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","+1 more after these"]},
@@ -1538,6 +1542,7 @@
       "next": "Contaminated Sacred Tree Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -1562,7 +1567,6 @@
   "story/L30-q45-before-B": {
     "in": "f549105f312a",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Dying Light","s":"0/4 objectives · then Contaminated Sacred Tree","c":"primary \"Turned in\" story","o":["Restore the Water Altar purify the Water Altar (Kibelisk: Healing Spring)","Clear around the Water Altar remove Contaminated Water defeat Water Mist Spirit defeat Cursed Poison Blood Kibelisk: Healing Spring","Help heal Grisilla remove Contaminated Root defeat Poison Blood Spider defeat Consumed Klaw Kibelisk: Healing Spring","+1 more after these"]},
@@ -1604,6 +1608,7 @@
       "next": "Contaminated Sacred Tree Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -1676,6 +1681,7 @@
       "next": "Contaminated Sacred Tree Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "1%",
       "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
@@ -1711,7 +1717,6 @@
   "story/L30-q46-before-A": {
     "in": "43ec7af1dec2",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Contaminated Sacred Tree","s":"0/3 objectives · then The Past Revealed","c":"primary \"Turned in\" story","o":["Help Grisilla purify the roots enter the Root of the Sacred Tree (Kibelisk: Faded Stump)","Deliver the Life Essence talk to Nemon (Kibelisk: Faded Stump)","Turn in Urd, Healing Spring"]},
@@ -1754,6 +1759,7 @@
       "next": "The Past Revealed Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -1778,7 +1784,6 @@
   "story/L30-q46-before-B": {
     "in": "611792decbed",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Contaminated Sacred Tree","s":"0/3 objectives · then The Past Revealed","c":"primary \"Turned in\" story","o":["Help Grisilla purify the roots enter the Root of the Sacred Tree (Kibelisk: Faded Stump)","Deliver the Life Essence talk to Nemon (Kibelisk: Faded Stump)","Turn in Urd, Healing Spring"]},
@@ -1820,6 +1825,7 @@
       "next": "The Past Revealed Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -1892,6 +1898,7 @@
       "next": "The Past Revealed Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "1%",
       "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
@@ -1927,7 +1934,6 @@
   "story/L30-q47-before-A": {
     "in": "08acdc159e16",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar (Kibelisk: Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
@@ -1970,6 +1976,7 @@
       "next": "Canyon's Secret Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -1994,7 +2001,6 @@
   "story/L30-q47-before-B": {
     "in": "6b7d4d00b77f",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: The Past Revealed","s":"0/2 objectives · then Canyon's Secret","c":"primary \"Turned in\" story","o":["Go to see the high priest's memories go to Nornir Altar (Kibelisk: Purifying Forest Coastal Cliff)","Turn in Ulgorn, Nornir Assembly"]},
@@ -2036,6 +2042,7 @@
       "next": "Canyon's Secret Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -2108,6 +2115,7 @@
       "next": "Canyon's Secret Lv 30",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "1%",
       "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]
@@ -2143,7 +2151,6 @@
   "story/L30-q48-before-A": {
     "in": "f186286d79f9",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
@@ -2186,6 +2193,7 @@
       "next": "Bitter Reality Lv 32",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -2210,7 +2218,6 @@
   "story/L30-q48-before-B": {
     "in": "b1b5f06fc07f",
     "nu": [
-      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
       {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
       {"t":"Story: Canyon's Secret","s":"0/2 objectives · then Bitter Reality","c":"primary \"Turned in\" story","o":["Investigate the Urugugu Canyon complete the Urugugu Canyon investigation (Kibelisk: Kraka Footpath Wastewater Downstream). This is your first run of the Urugugu Canyon Expedition.","Turn in Ulgorn, Nornir Assembly"]},
@@ -2252,6 +2259,7 @@
       "next": "Bitter Reality Lv 32",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "40%",
       "prog": ["Quests 1 14/58","Dungeons 7 36/60","Strongholds 5 3/15"]
@@ -2324,6 +2332,7 @@
       "next": "Bitter Reality Lv 32",
       "hint": "milestone now: Lv 30",
       "ahead": ["Ahead verified","Lv 32 Stigma slot 3 2 levels to go","Lv 35 Fire Temple Expedition (Exploration) · item level 500 5 levels to go"],
+      "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Daily dungeon and Vaizel board now Lv 30"],
       "ring": "1%",
       "prog": ["Quests 13 0/58","Dungeons 43 0/60","Strongholds 7 1/15"]

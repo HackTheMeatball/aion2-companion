@@ -14,6 +14,7 @@ import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
 import { AREA_LOC } from "../data/generated.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
+import { blockerText } from "./blockers.js";
 import { char } from "./state.js";
 import { areaOpen, checkableOf, countsOf, doneOf, dvNeed, dvNext, dvSpent, gatesOf, isOpen, objIdxOf, openBut, openSteps, qProgOf, rqStatus, rqWaitsOnStory, shardsFromLv,
   skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf, storyRecGate, turnInNeedsLv } from "./requirements.js";
@@ -117,8 +118,9 @@ export function rankNext(state, { basic = false } = {}) {
        their own "Buy" cards above), so a card never promises something that won't show up at that level. Its first step
        that isn't a regional quest; stigma-only milestones show their title ("Stigma slot 2"). */
     const g2 = GATES.find(g => g.lv > lv && checkableOf(state, g).some(x => x.it.kind !== "quest" && !/^(sp|dv):/.test(x.k) && !doneOf(c, x.k, ev))), st2 = g2 ? openSteps(state, g2).find(x => !x.rq && !x.adv) : null;
-    const later = sp2s.slice(0, 3).map(x => ({ L: x.req, a: { kind: "laterSkill", x, lv, later: true, act: "" } }));
-    if (g2) later.push({ L: g2.lv, a: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "" } });
+    /* why: what opens it (design §4, E6): a skill line's root blocker; a step's apart from its milestone's level (the card says it) */
+    const later = sp2s.slice(0, 3).map(x => ({ L: x.req, a: { kind: "laterSkill", x, lv, later: true, act: "", why: blockerText(ev.byKey(x.k), ev) } }));
+    if (g2) later.push({ L: g2.lv, a: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "", why: st2 && ev.byKey(st2.k) ? blockerText(ev.byKey(st2.k), ev, { omit: ["level"] }) : "" } });
     later.sort((x, y) => x.L - y.L).forEach(x => acts.push(x.a));
   }
   /* Basic: only what you can act on now (no "Later" cards, no queued skill buys after the first). */

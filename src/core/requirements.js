@@ -9,6 +9,7 @@ import { RQ } from "../data/generated.js";
 import { GATE_GRAPH } from "../data/gate-graph.js";
 import { AREA_ITEMS, DV_NODES, cardRows, itemByK } from "./catalog.js";
 import { evaluate } from "./evaluator.js";
+import { aheadText, blockerChain, blockerText, leafText, questsAhead } from "./blockers.js";
 import { char } from "./state.js";
 
 /* ---------- Gates (0.3 E2, docs/design/0.3-requirement-engine.md §8) ---------- */
@@ -64,8 +65,8 @@ export const GATE_CHANGES = {
   /* not a gate: guide text only, a switch so --explain attributes the states that show it */
   stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
     "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
-  /* E5: the `ready` proposals of design §7, live data since 2026-10-16 (in the snapshots since #78: baseline); with the switch off a
-     record has its gate from before (GATE_OFF) */
+  /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF).
+     baseline since E8: recorded in the snapshots by #78, so --explain keeps them on (else every E5 state reads "still differs with every change off") */
   merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
     "instead of at its recommended Lv 33 (no prerequisite data before)" },
   lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
@@ -76,6 +77,14 @@ export const GATE_CHANGES = {
     "Metabot, owner screen 2026-10-15), not from Lv 16 alone" },
   daevanionGate: { baseline: true, records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
     "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
+  /* E8: not a gate, display only (src/core/ascension.js); a switch so --explain attributes the Journey card's new line (recorded with E8: baseline) */
+  ascensionBar: { baseline: true, records: ["asc:perceives", "asc:hears-the-voice", "asc:dreams", "asc:witnesses"], what: "the Journey card shows the Ascension bar under " +
+    "the story timeline (design §11, both modes): 4 in-cap chapters, each filled once its wrapper quest is turned in or its guide step ticked, and a one-line label " +
+    "naming the next chapter and, where sourced, the gauge (II: owner tooltip 2026-10-15; III: claim C36)" },
+  /* E6: not a gate, the words for one (design §4, src/core/blockers.js); a switch so --explain attributes the states that show them */
+  blockerText: { what: "blocker-chain text (E6, design §4): Next up's Later cards, the milestone chips and \"Reach / Turn in\" line, the regional rows " +
+    "and the Daevanion card say what opens a thing from the evaluator (\"needs Lv N\", \"unlocks after \\\"X\\\" · N quests ahead\", \"after \\\"Y\\\" " +
+    "is turned in\"); the milestone line and its chips wait for a turn-in where the rows under them do (Basic: on milestone rows only)" },
   /* E7 (design §9, bug F3): off = slot 1 at the level of its skill's line 8 (learn + 18) and no slots 2 / 3 */
   specialtySlots: { what: "specialty slots 1-3 open at effective skill level 8 / 12 / 20 (highest skill line bought + the skill's plan board " +
     "nodes owned; rule:specialty-slots, owner F4) instead of slot 1 at the character level of the skill's line 8; slot 2 is offered once open, " +
@@ -172,6 +181,44 @@ export const turnInNeedsLv = (c, ev = gatesOf(c)) => {
   const id = CHANGES_ON.has("turnInLevel") && SQ_ID.get(c.quest); if (!id) return 0;
   const b = ev.node(id).blockers.find(b => b.kind === "level"); return b ? b.need : 0;
 };
+
+/* ---------- Blocker text (0.3 E6, design §4; the words are src/core/blockers.js) ---------- */
+/* With the switch off (the golden runner, --explain) the cards keep their 0.2 / E5 text. */
+export const chainsOn = () => CHANGES_ON.has("blockerText");
+/* The story atoms of a node's gate as the page evaluates it: [{ name, turnIn }]. */
+const storyAtomsOf = (ev, k) => { const r = ev.byKey(k), n = r && evOpts().graph.nodes[r.id]; if (!n) return [];
+  const story = evOpts().graph.story, walk = g => g.all ? g.all.flatMap(walk) : g.any ? g.any.flatMap(walk) : g.story ? [{ name: story[g.i][1], turnIn: g.is === "turnedIn" }] : [];
+  return walk(n.req); };
+/* A milestone's automatic first line: the furthest story quest its rows name (it.story / it.after), turned in when a row
+   under it waits for the turn-in (a turnedIn atom on that quest in its gate: the regional quests since #73, the Noble Belt
+   since E5), else reached. { q, turnIn, ok, ahead, chip } (ahead / chip: the distance, null / "" with the story unset;
+   the line itself names the quest), or null when no row names a story quest. Without the switch: reached, as before. */
+export const storyLineOf = (c, g, ev = gatesOf(c)) => {
+  const its = g.items.map((it, j) => ({ it, k: it.k || g.id + ":" + j })).filter(x => x.it.story || x.it.after);
+  const qi = Math.max(-1, ...its.map(x => storyIdx(x.it.story || x.it.after)));
+  if (qi < 0) return null;
+  const q = QUESTS[qi][1], turnIn = chainsOn() && its.some(x => storyAtomsOf(ev, x.k).some(a => a.name === q && a.turnIn));
+  const sg = storyGate(c, q, turnIn ? "turnedIn" : "reached");
+  return { q, turnIn, ok: sg.ok, ahead: sg.ok ? 0 : sg.ahead, chip: sg.ok ? (turnIn ? "turned in" : "reached") : sg.ahead == null ? "" : aheadText({ ahead: sg.ahead, turnIn }) };
+};
+/* The chip on a story-gated milestone step (data-story), from the step's own gate (its story atom, reached or turned in,
+   or a step before it; the milestone's level is the card's own): { text, cls } with cls "now" / "ahead" / "" (passed),
+   or null to leave it empty (story unset, or no gate node). */
+export const stepChipOf = (c, k, story, ev = gatesOf(c)) => {
+  const r = ev.byKey(k); if (!r) return null;
+  const ch = r.done === false ? blockerChain(r, ev, { omit: ["level"] }) : null;
+  if (ch) { const lf = ch.leaf;
+    if (lf && lf.kind === "story" && lf.ahead == null) return null;
+    /* a plain story leaf: the chip keeps to its distance ("your current quest — turn it in", "2 quests ahead"), the full
+       line goes in its title, so the chip stays one line at 390 px */
+    const plainStory = !ch.hop && lf && lf.kind === "story";
+    return { text: plainStory ? aheadText(lf) : ch.text, title: ch.text, cls: plainStory && questsAhead(lf) === 0 ? "now" : "ahead" }; }
+  const sg = storyGate(c, story); if (!sg || (!sg.ok && sg.ahead == null)) return null;
+  return sg.ok ? (story === c.quest ? { text: "your current quest", cls: "now" } : { text: "story: passed", cls: "" })
+    : { text: leafText({ kind: "story", name: story, ahead: sg.ahead }), cls: "ahead" };
+};
+/* What still opens a regional quest, for its row (one line, design §4), or "" when it is open. */
+export const rqReqOf = (c, k, ev = gatesOf(c)) => blockerText(ev.byKey(k), ev);
 /* Talk-only steps ("talk to …" with no trip, item or fight; turn-ins are the exception and always show) are hidden by
    default and count as done, so the list is only objectives where you travel, examine, collect, fight or deliver. */
 export const objLow = t => { const [a, b = ""] = t.split(" — "); if (/^Turn in\b/i.test(a)) return false; /* turn-ins always show: they finish the quest */ return /^talk (to|via)\b/i.test(b) && !/^(Deliver|Find|Rendezvous|Go)\b/i.test(a); };
@@ -309,13 +356,14 @@ export const dvSpent = c => DV_NODES().filter(it => c.checks[it.k]).reduce((a, i
 export const dvNext = (c, lv = c.level) => { const ev = gatesOf(c, lv); return DV_NODES().find(it => { const r = ev.byKey(it.k); return r.done === false && r.open; }); };
 /* A board is open when any of its plan nodes is (board given), the Daevanion window when any plan node is (no board). */
 export const dvOpen = (c, board) => { const ev = gatesOf(c); return DV_NODES().some(it => (!board || it.board === board) && ev.byKey(it.k).open); };
-/* What a shut board waits for (design §10): { lv } while its level is above yours (as before E5), else { lv, story } with the
-   Daevanion gate's story quest (the root of its first node's blockers: "Urgent Pursuit", to turn in). null when it is open. */
+/* What a shut board waits for (design §10): { lv } while its level is above yours (as before E5), else { lv, story, text } with
+   the Daevanion gate's story quest (the root of its first node's blockers: "Urgent Pursuit", to turn in) and its blocker
+   text (E6: "unlocks after "Urgent Pursuit" · N quests ahead"). null when it is open. */
 export const dvWaitOf = (c, board) => {
   const ev = gatesOf(c), its = DV_NODES().filter(it => it.board === board);
   if (!its.length || its.some(it => ev.byKey(it.k).open)) return null;
-  const lv = Math.min(...its.map(it => it.blv)), r = ev.byKey(its.find(it => it.blv === lv).k).root;
-  return lv <= c.level && r && r.kind === "story" ? { lv, story: r.name } : { lv };
+  const lv = Math.min(...its.map(it => it.blv)), n = ev.byKey(its.find(it => it.blv === lv).k), r = n.root;
+  return lv <= c.level && r && r.kind === "story" ? { lv, story: r.name, text: blockerText(n, ev, { omit: ["level"] }) } : { lv };
 };
 /* Its logged cost, else the cheapest it can be (the node itself; its path only adds). */
 export const dvNeed = (c, it) => (c.dvCost || {})[it.k] ?? (DV_MIN[it.ty] || 1);

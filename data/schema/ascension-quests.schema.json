@@ -71,6 +71,11 @@
           "type": "boolean",
           "default": true
         },
+        "guideStep": {
+          "description": "The guide step (key) whose stored tick also completes this chapter on the Journey card's Ascension bar (0.3 E8). The generator requires it to be the step that names this quest in ascensionQuest, where one does.",
+          "type": "string",
+          "pattern": "^g[0-9]+[a-z]?:[a-z0-9-]+$"
+        },
         "steps": {
           "type": "array",
           "items": {

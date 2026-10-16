@@ -19,7 +19,7 @@ export default (test, M) => {
 
   test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
     assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes',
-      'merchantGate', 'lestWeForgetGate', 'beltGate', 'amuletGate', 'daevanionGate', 'specialtySlots']);
+      'merchantGate', 'lestWeForgetGate', 'beltGate', 'amuletGate', 'daevanionGate', 'ascensionBar', 'blockerText', 'specialtySlots']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));
@@ -114,8 +114,10 @@ export default (test, M) => {
     /* the Daevanion card's "opens …" text: the level while it is above yours, then the story quest; nothing once open */
     const wait = (quest, level, b = n.board) => M.dvWaitOf(M.char(S({ quest, level })), b);
     assert.deepEqual(wait('Urgent Pursuit', 11), { lv: 12 });
-    assert.deepEqual(wait('Urgent Pursuit', 15), { lv: 12, story: 'Urgent Pursuit' });
-    assert.deepEqual(wait('', 15), { lv: 12, story: 'Urgent Pursuit' }, 'story unset');
+    /* E6: with its blocker text (src/core/blockers.js) */
+    assert.deepEqual(wait('Urgent Pursuit', 15), { lv: 12, story: 'Urgent Pursuit', text: 'unlocks after "Urgent Pursuit" · your current quest — turn it in' });
+    assert.deepEqual(wait(at('Urgent Pursuit', -2), 15), { lv: 12, story: 'Urgent Pursuit', text: 'unlocks after "Urgent Pursuit" · 2 quests ahead' });
+    assert.deepEqual(wait('', 15), { lv: 12, story: 'Urgent Pursuit', text: 'unlocks after "Urgent Pursuit" · set your quest' }, 'story unset');
     assert.equal(wait(at('Urgent Pursuit', 1), 15), null);
     assert.deepEqual(wait(at('Urgent Pursuit', 1), 15, 'Zikel'), { lv: 20 });
   });
