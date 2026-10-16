@@ -7,8 +7,8 @@
 
 **Standing checklist**
 - Branch + worktree per change; small commits; messages end with the attribution lines the session gives.
-- Never break saved progress (CLAUDE.md): key, item keys, additive flagged migrations; run `mig1`, `mig2`, `journey`
-  for anything near state.
+- Saved progress per CLAUDE.md: pre-1.0, clean breaks only (bump the key, fresh start, CHANGELOG note); otherwise
+  keep the key and item keys, additive flagged migrations; run `mig1`, `mig2`, `journey` for anything near state.
 - Visible changes: both builds identical; reuse existing card patterns; screenshots at 1500 px and 390 px in the PR.
 - Full `npm test` before the PR; golden diffs explained line by line or the change is not done.
 - No new game art without the owner's OK.

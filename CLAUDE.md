@@ -1,6 +1,7 @@
 # Working rules for AI sessions in this repo
 
-Aion 2 Asmodian Assassin leveling guide, Lv 1–45. Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
+Daeva Companion: an unofficial AION 2 companion app. Today the leveling guide (Asmodian Assassin, Lv 1–45; 1.0 =
+all eight classes); 1.1 adds an end-game tracker (ROADMAP.md). Source in `src/` (page shell `index.html`, `styles/*.css`, ES modules
 `main.js` / `data/*.js` / `site.js`); `npm run build` (esbuild) inlines it into one HTML file for the site
 (daevacompanion.com) and one for the claude.ai artifact. `src/index.html` doesn't run on its own: build, then
 `npm run serve`. Read `docs/ARCHITECTURE.md` before touching state, keys, data or the build.

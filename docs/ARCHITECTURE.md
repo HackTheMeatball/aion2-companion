@@ -26,7 +26,7 @@ Branding (Daeva Companion) lives in the shared shell (title, header lockup as in
 build (DECISIONS D4) carries the new name too; it needs no new blob. Favicon, manifest and app icons are web-only
 (`public/`), drawn by `tools/brand/build.py` from `brand/`.
 
-## 1. Saved progress (the part you must not break)
+## 1. Saved progress (must not break from 1.0; see the pre-1.0 exception below)
 
 People level for weeks with their progress in `localStorage`. A broken key silently drops their ticks, and there is
 no server copy. Rules:

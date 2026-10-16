@@ -196,6 +196,12 @@ coverage, then most shared with Assassin.
 
 All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX review and a docs pass.
 
+### 1.1 — End-game tracker (owner, 2026-10-16)
+
+A separate, simpler part of the app for max-level play: daily and weekly activity checklists with their resets, and
+world boss timers. Scope, reset times and boss schedules still need verified data (CLAUDE.md data policy) before
+building. From 1.0 saves are strict, so its new saved data is additive.
+
 ### Any time (patches)
 
 - Game patch watch: weekly after Global maintenance (Korean patch notes as early warning), report only; a PR only

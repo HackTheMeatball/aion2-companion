@@ -11,8 +11,8 @@ update their *Standing notes* when you learn something future threads need.
 
 **Rules for every thread**
 - One task per thread, on its own branch (never `main`). Open a pull request when done; never merge it yourself.
-- Never break saved progress: localStorage key `aion2-assassin-route-v4` and item keys are permanent; migrations are
-  additive and flagged (CLAUDE.md).
+- Saved progress follows CLAUDE.md: before 1.0 a save break is allowed only cleanly (bump the localStorage key,
+  fresh start, CHANGELOG note); from 1.0 the key and item keys are permanent and migrations additive and flagged.
 - `npm test` green before the PR; the golden-master suite must be identical unless the task changes behaviour on
   purpose, and every golden diff is explained in the PR.
 - Verified data only (two sources, game-database fields, or the owner's in-game screens); label anything weaker.
