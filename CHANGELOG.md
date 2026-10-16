@@ -8,6 +8,26 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.6 — 2026-10-16
+
+Phone layout fixes, Route rules card moved, steadier updates.
+
+### Changed
+
+- The Route rules card sits in the footer card group with the other cards.
+- The whole Confidence and Sources summary row is the tap target, not only its text.
+- Phone layout: the mode switch and number steppers are 44 px touch targets, the area select has a gap to its
+  neighbours, and locked rows have better contrast.
+- Each screen update evaluates quest gates once instead of repeatedly, so ticking and Level up respond faster.
+
+### Fixed
+
+- The Ascension gauge note wraps instead of being cut off at 360 px width.
+
+### Saved progress
+
+- Unaffected.
+
 ## 0.2.5 — 2026-10-16
 
 Backup line, 14-day backup reminder and iPhone home-screen tip.
