@@ -131,7 +131,7 @@ jobs:
 
   deploy:
     needs: [data, browser, ci-ok]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -173,7 +173,7 @@ jobs:
   # goes live fails here, before a release is tagged. Failures are ::error annotations.
   smoke:
     needs: deploy
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -190,7 +190,7 @@ jobs:
   # from its CHANGELOG section. Versions already tagged are skipped, so ordinary pushes to main do nothing here.
   release:
     needs: [deploy, smoke]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
