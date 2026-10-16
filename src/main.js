@@ -16,7 +16,7 @@ import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
 import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
-  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
+  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
 
@@ -430,7 +430,12 @@ function stepHTML(g, x) {
 }
 /* A skill upgrade backed by one source only: a small tag (the Skills card's tooltip names the source). */
 const ssTag = x => x.s.single ? ` · <span class="ss-tag" title="Single source (${x.s.single})">single source</span>` : "";
-const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" : (x.L - 1) + " → " + x.L}</b>`;
+const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " slot " + x.slot : "") : (x.L - 1) + " → " + x.L}</b>`;
+/* A specialty slot's line (0.3 E7, design §9; Q6): the build's pick once its choice is open at the skill's effective level;
+   a pick that needs a higher skill level says when; no pick: "pick a specialty". */
+const specSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}`;
+  const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
+  return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
 const nsGate = g => `<a href="#${g.id}" data-now="gate:${g.id}">${g.title}</a>`;
 const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
 /* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
@@ -441,7 +446,7 @@ function nowCard(a) {
     case "run": { const sh = a.x.it.kind === "stronghold";
       return { ico: sh ? "🏰" : "⛏", t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act }; }
     case "cube": return { ico: "🎒", t: `Use your Cube items: <b>${[a.st ? `${a.st} Wisdom Stone${a.st === 1 ? "" : "s"}` : "", a.cr ? `${a.cr} crystal${a.cr === 1 ? "" : "s"}` : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act };
-    case "skill": { const x = a.x, base = x.spec ? `Pick: ${x.s.spec}` : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
+    case "skill": { const x = a.x, base = x.spec ? specSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
       return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act }; }
     case "board": return { ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b> on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act };
     case "boardcost": return { ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act };
@@ -1155,8 +1160,9 @@ function renderNext() {
   const next = now[0];
   const overTicked = spent > fromLevels + stones;
   const ahead = open.filter(x => !now.includes(x)).sort((a, b) => a.req - b.req || a.rank - b.rank);
-  /* Hero = what to do next: the next upgrade you can take now, else the next one to unlock. */
-  const hero = next || ahead[0];
+  /* Hero = what to do next: the next upgrade you can take now, else the next one to unlock (never specialty slot 3, out of
+     reach inside Lv 45: Q5). */
+  const hero = next || ahead.find(x => x.slot !== 3);
   const nowCost = now.reduce((t, y) => t + (y.spec ? 0 : y.cost), 0);
   /* Points you'll have when x unlocks: spare now (after buying what's open) + level points gained by then. */
   const haveAt = x => pts - (next ? nowCost : 0) + (LEVEL_POINTS[Math.min(45, x.req)] || 0) - fromLevels;
@@ -1166,14 +1172,14 @@ function renderNext() {
     const have = locked ? haveAt(hero) + (next ? 0 : 0) : pts;
     const ok = !locked && (hero.spec || pts >= cost);
     const state_ = hero.spec ? (locked ? "lock" : "ok") : locked ? (have >= cost ? "lock" : "short") : ok ? "ok" : "short";
-    const sub = hero.spec ? hero.s.spec :
+    const sub = hero.spec ? specSub(hero) :
       `${locked ? `Lv ${hero.req}` : "Available now"} · <span class="nw">priority #${hero.rank + 1}</span>${hero.s.single ? ` · single source (${hero.s.single})` : ""}`;
-    const btn = hero.spec ? (locked ? `Pick at Lv ${hero.req}` : "Mark specialty picked") :
+    const btn = hero.spec ? (locked ? `Opens at skill Lv ${hero.slotLv} · yours: ${skillLvOf(char(state), hero)}` : "Mark specialty picked") :
       ok ? `Mark spent · ${spCostTxt(hero)}` : locked ? (have >= cost ? `All Lv ${lv} spent · next at Lv ${hero.req}` : `Lv ${hero.req} · need ${cost - have} more pts`) : `Need ${cost - pts} more pts`;
     const pct = hero.spec ? (locked ? 0 : 100) : Math.min(100, Math.max(0, pts / cost * 100));
     heroHTML = `<div class="sphero ${state_}${hero.spec ? " spec" : ""}">` +
       `<div class="dvhead">${SP_ICONS[hero.s.n] ? `<span class="dvico spico art"><img src="${SP_ICONS[hero.s.n]}" alt="" loading="lazy" onerror="this.remove()"></span>` : `<span class="dvico spico ini" aria-hidden="true">${ini(hero.s.n)}</span>`}` +
-      `<div class="dvtext"><span class="spname">${hero.s.n} ${hero.spec ? "<em>specialty</em>" : `<span class="lvarr">${hero.L - 1} → ${hero.L}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
+      `<div class="dvtext"><span class="spname">${hero.s.n} ${hero.spec ? `<em>specialty${hero.slot > 1 ? " " + hero.slot : ""}</em>` :`<span class="lvarr">${hero.L - 1} → ${hero.L}</span>`}</span><small title="${sub.replace(/<[^>]+>/g, "")}">${sub}</small>` +
       (hero.spec || locked ? `<span class="dvbar-ph"></span>` : `<div class="dvbar"><div class="dvtrack"><span style="width:${pct}%"></span></div><span class="dvbar-l" title="You have ${pts} point${pts === 1 ? "" : "s"}; this upgrade costs ${cost}"><b>${Math.min(pts, cost)}</b> of ${cost} pt${cost === 1 ? "" : "s"}</span></div>`) + `</div></div>` +
       `<div class="buyrow">${ok ? `<button type="button" class="dvbuy" id="spBuy">${btn}</button>` : `<div class="buystat">${btn}${tipPop("stones")}</div>`}</div>` +
 
@@ -1188,13 +1194,16 @@ function renderNext() {
   box.checked = false; box.dataset.sp = (skillBuy(char(state), lv) || {}).k || "";
   document.getElementById("spHero").innerHTML = heroHTML;
   /* Coming up: everything after the hero, as many rows as fit the card (trimmed in fitSkills). */
-  const rest = (next ? [...now.slice(1), ...ahead] : ahead.slice(1)).slice(0, 10);
-  let cum = next ? 0 : (ahead[0] && !ahead[0].spec ? ahead[0].cost : 0);
+  const rest = (next ? [...now.slice(1), ...ahead] : ahead.filter(x => x !== hero)).slice(0, 10);
+  let cum = next ? 0 : (hero && !hero.spec ? hero.cost : 0);
   const spB = SP_STEPS.filter(x => char(state).checks[x.k]).length, spN = SP_STEPS.length;
   document.getElementById("spAfter").innerHTML = rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
     const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
-    return `<li class="${x.spec ? "isspec" : ""}" title="${x.spec ? "Specialty: " + x.s.spec : spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} ${x.spec ? `<span class="spectag">spec</span>` : `<span class="lvarr">${x.L - 1} → ${x.L}</span>`}</span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    /* a specialty slot waits for a skill level, not a character level; slot 3 is past what points and plan nodes reach (Q5) */
+    if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${x.slot === 3 ? " · past Lv 45: skill points and board nodes reach 14" : ""}">` +
+      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
+    return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   const ptsIn = document.getElementById("spPts");
   if (document.activeElement !== ptsIn) ptsIn.value = stones;

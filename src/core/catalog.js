@@ -6,7 +6,7 @@
    3. Regional quests (RQ) placed into milestones by recommended level; skill lines folded into milestones.
    Keys never depend on where an item ends up (docs/ARCHITECTURE.md §1). */
 import { AREA_LOC, RQ, SD_RW, SH_DATA } from "../data/generated.js";
-import { SP_STEPS } from "../data/build.js";
+import { SP_SLOTS, SP_STEPS } from "../data/build.js";
 import { T, mapQ, mapSlug, sub } from "../data/markup.js";
 import { GATES, STEPS } from "../data/milestones.js";
 import { HIDEOUT_AREA, NO_AREA } from "../data/areas.js";
@@ -90,6 +90,8 @@ GATES.forEach((g, i) => {
     t: `<span class="cost">${spCostTxt(x)}</span>${spLabel(x)}<span class="req">unlocks at Lv ${x.req}</span>${x.spec ? `<span class="loc"><em>${x.s.spec}</em></span>` : (x.L === 8 && !x.s.passive ? `<span class="loc">opens first ${T("specialty slot", "specialty")}</span>` : "")}`,
   }));
 });
+/* Specialty slots 2 and 3 (0.3 E7) are no milestone rows: they take their skill's slot 1 place in the order, right after it. */
+SP_SLOTS.forEach(x => { const s1 = SP_STEPS.find(y => y.slot === 1 && y.s === x.s); x.gi = s1.gi; x.gj = s1.gj + x.slot / 10; });
 
 /* ---------- Lookups over the finished milestones ---------- */
 /* Every milestone / route item by its key (built on first use; the milestones are final by then). */

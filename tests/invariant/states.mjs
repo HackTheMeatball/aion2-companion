@@ -5,7 +5,8 @@
               with a stored false on every item that can be done by derivation} × Basic / Advanced; the last quest turned
               in (storyEnd); every quest one level under its own with all objectives ticked; "Urgent Pursuit" reached /
               turned in at Lv 11–13 (the Daevanion window); each specialty skill with lines ticked to 7 / 8 / 11 / 12
-              around the next line's level;
+              around the next line's level, and (E7) with lines plus 0–4 of its plan board nodes (effective level 8 … 14)
+              and specialty slots 1 / 2 ticked;
    3. random  seeded recipes (mulberry32(seed)) up to TOTAL: level, story (6 % unset), storyEnd (none / current / last /
               another quest), per-key ticks, picked-up and snoozed regional quests, a dungeon in progress, objectives,
               shards, Cube items, board costs, Basic / Advanced.
@@ -78,6 +79,14 @@ export function makeStates(M, { root, seed }) {
         add(`target/skill/${s.replace(/\W+/g, '-')}-E${E}-L${pad(lv)}${spec ? '-spec' : ''}`, { ...base(lv, onTrack(lv), checks, 'advanced'), stones: 4 });
       }
     }
+    /* 0.3 E7: effective level from lines + the skill's plan board nodes: lines to 7 + 1 node (8 by a node), lines to 10 + 0 … 4
+       nodes (10 … 14, the cap), lines to 11 − k + k nodes; with no slot, slot 1, slots 1 + 2 ticked */
+    const sid = M.GATE_GRAPH.nodes[lines[0].k].skill, plan = Object.values(M.GATE_GRAPH.nodes).filter(n => n.kind === 'plan' && n.skill === sid).map(n => n.key);
+    for (const [E, nN] of [[7, 1], [10, 0], [10, 2], [10, 4], [8, 4]]) if (nN <= plan.length)
+      for (const lv of [45]) for (const sp of [0, 1, 2]) {
+        const checks = Object.fromEntries([...lines.filter(x => x.L <= E).map(x => x.k), ...plan.slice(0, nN), ...[`sp:${s}:spec`, `sp:${s}:spec2`].slice(0, sp)].map(k => [k, true]));
+        add(`target/skill-eff/${s.replace(/\W+/g, '-')}-E${E}+${nN}-L${pad(lv)}-s${sp}`, { ...base(lv, onTrack(lv), checks, 'advanced'), stones: 4 });
+      }
   }
 
   /* 3. seeded random, to TOTAL */

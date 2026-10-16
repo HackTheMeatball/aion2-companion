@@ -3,7 +3,7 @@
    (the Optional tasks filter, the talk-only objectives filter), the whole state. Nothing here writes.
    Every "is it open?" answer comes from the evaluator (gatesOf below, 0.3 E2); this file only asks it. */
 import { QUESTS, QUEST_LOC, QUEST_STEPS, QUEST_STEP_NOTES } from "../data/story.js";
-import { DV_MIN, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
+import { DV_MIN, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS } from "../data/build.js";
 import { GATES } from "../data/milestones.js";
 import { RQ } from "../data/generated.js";
 import { GATE_GRAPH } from "../data/gate-graph.js";
@@ -38,8 +38,9 @@ const APP_GRAPH = (() => {
   { const id = idOf[GATES.flatMap(g => g.items).find(it => it.stig === 1).k], n = nodes[id];
     nodes[id] = { ...n, req: { all: [...levelAtoms(n.req), { done: idOf["g22:0"], basis: "legacy" }] } }; }
   /* Skill lines open at the level the Skills card shows (SP_STEPS req, the same formula as the graph's), read when asked:
-     the card, its "Lv" text and the Build drawer share one number (0.2.2 F7, tests/e4test.js #15). */
-  SP_STEPS.forEach(x => { const id = idOf[x.k], n = nodes[id], { basis } = n.req;
+     the card, its "Lv" text and the Build drawer share one number (0.2.2 F7, tests/e4test.js #15). Not the specialty slots:
+     they open on effective skill level (0.3 E7; with the switch specialtySlots off, slot 1 at its line's level, appGraph). */
+  SP_STEPS.filter(x => !x.spec).forEach(x => { const id = idOf[x.k], n = nodes[id], { basis } = n.req;
     nodes[id] = { ...n, get req() { return { level: x.req, basis }; } }; });
   return { story: GATE_GRAPH.story, nodes };
 })();
@@ -63,17 +64,22 @@ export const GATE_CHANGES = {
   /* not a gate: guide text only, a switch so --explain attributes the states that show it */
   stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
     "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
-  /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF) */
-  merchantGate: { records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
+  /* E5: the `ready` proposals of design §7, live data since 2026-10-16 (in the snapshots since #78: baseline); with the switch off a
+     record has its gate from before (GATE_OFF) */
+  merchantGate: { baseline: true, records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
     "instead of at its recommended Lv 33 (no prerequisite data before)" },
-  lestWeForgetGate: { records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
+  lestWeForgetGate: { baseline: true, records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
     "instead of at its recommended Lv 45 (no prerequisite data before)" },
-  beltGate: { records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
+  beltGate: { baseline: true, records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
     "2026-10-15), not from Lv 13 alone" },
-  amuletGate: { records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
+  amuletGate: { baseline: true, records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
     "Metabot, owner screen 2026-10-15), not from Lv 16 alone" },
-  daevanionGate: { records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
+  daevanionGate: { baseline: true, records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
     "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
+  /* E7 (design §9, bug F3): off = slot 1 at the level of its skill's line 8 (learn + 18) and no slots 2 / 3 */
+  specialtySlots: { what: "specialty slots 1-3 open at effective skill level 8 / 12 / 20 (highest skill line bought + the skill's plan board " +
+    "nodes owned; rule:specialty-slots, owner F4) instead of slot 1 at the character level of the skill's line 8; slot 2 is offered once open, " +
+    "slot 3 is listed in the Skills card only (Q5)" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
@@ -113,10 +119,16 @@ const withoutE5 = (g, names) => { const nodes = { ...g.nodes };
   for (const id of names.flatMap(n => GATE_CHANGES[n].records)) nodes[id] = GATE_OFF[nodes[id].kind](nodes[id], id);
   return { story: g.story, nodes }; };
 const E5_SWITCHES = ["merchantGate", "lestWeForgetGate", "beltGate", "amuletGate", "daevanionGate"];
+/* ...and without specialtySlots: slot 1 opens at the level of its skill's line 8 (SP_STEPS req, read when asked like the lines); slots 2 / 3
+   are never offered (skillOpen leaves them out) */
+const withoutSlots = g => { const nodes = { ...g.nodes };
+  SP_STEPS.filter(x => x.spec).forEach(x => { const n = nodes[x.k]; nodes[x.k] = { ...n, get req() { return { level: x.req, basis: "rule" }; } }; });
+  return { story: g.story, nodes }; };
 const APP_GRAPHS = {};
-const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), off = E5_SWITCHES.filter(n => !CHANGES_ON.has(n));
-  const k = (a ? "t" : "r") + (b ? "s" : "n") + off.join(",");
-  if (!APP_GRAPHS[k]) { const g = b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2); APP_GRAPHS[k] = off.length ? withoutE5(g, off) : g; }
+const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), off = E5_SWITCHES.filter(n => !CHANGES_ON.has(n)), f3 = CHANGES_ON.has("specialtySlots");
+  const k = (a ? "t" : "r") + (b ? "s" : "n") + (f3 ? "f" : "o") + off.join(",");
+  if (!APP_GRAPHS[k]) { const g = b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2), g5 = off.length ? withoutE5(g, off) : g;
+    APP_GRAPHS[k] = f3 ? g5 : withoutSlots(g5); }
   return APP_GRAPHS[k]; };
 const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
   apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
@@ -266,9 +278,19 @@ export const skillPoints = (c, lv = c.level) => {
   const spent = SP_STEPS.filter(x => c.checks[x.k]).reduce((a, x) => a + x.cost, 0);
   return { fromLevels, stones, spent, pts: Math.max(0, fromLevels + stones - spent) };
 };
-/* Open upgrades in the milestones' order, and the ones open at lv. */
-export const skillOpen = (c, lv = c.level) => { const ev = gatesOf(c, lv), open = SP_STEPS.filter(x => ev.byKey(x.k).done === false).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
-  return { open, now: open.filter(x => ev.byKey(x.k).open) }; };
+/* Open upgrades in the milestones' order, and the ones open at lv. With specialtySlots (0.3 E7) also specialty slots 2 and 3,
+   each right after its skill's slot 1 (src/core/catalog.js); slot 3 is never in `now` (out of reach inside Lv 45, never
+   offered: Q5). */
+export const skillRows = () => CHANGES_ON.has("specialtySlots") ? SP_STEPS.concat(SP_SLOTS) : SP_STEPS;
+export const skillOpen = (c, lv = c.level) => { const ev = gatesOf(c, lv), open = skillRows().filter(x => ev.byKey(x.k).done === false).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
+  return { open, now: open.filter(x => x.slot !== 3 && ev.byKey(x.k).open) }; };
+/* Specialty slot x (a row with x.spec): its skill's effective level (highest line bought + plan nodes owned), and the build's
+   pick for the slot when there is one and its choice is open at that level (design §9), else null ("pick a specialty"). With
+   specialtySlots off, slot 1's pick as before. */
+export const skillLvOf = (c, x, ev = gatesOf(c)) => ev.skillLv(GATE_GRAPH.nodes[x.k].skill);
+export const specPickOf = (c, x, ev = gatesOf(c)) => { const p = (x.s.specs || [])[x.slot - 1];
+  if (!CHANGES_ON.has("specialtySlots")) return x.slot === 1 ? { t: x.s.spec, lv: x.slotLv } : null;
+  return p && skillLvOf(c, x, ev) >= p.lv ? p : null; };
 /* The upgrade to buy now: the first open one, if you have the points (a specialty is free); else null. */
 export const skillBuy = (c, lv = c.level) => { const next = skillOpen(c, lv).now[0], { pts } = skillPoints(c, lv); return next && (next.spec || pts >= next.cost) ? next : null; };
 

@@ -74,9 +74,14 @@ const e5Known = M => ({
     [`plan (dvNext) node: 0.2 ${it.k} / evaluator none`, E5 + ': every board waits for "Urgent Pursuit" turned in']])),
 });
 
+/* E7 (bug F3, design §9): a specialty slot opens on effective skill level (lines bought + plan nodes owned), not at the
+   character level of its skill's line 8, so slot 1 differs from 0.2 both ways. Held to 0.2 by B with the switch off. */
+const E7 = 'live gate since E7: effective skill level ≥ 8 (rule:specialty-slots; switch "specialtySlots", held to 0.2 by B)';
+const e7Known = M => Object.fromEntries(M.SP_STEPS.filter(x => x.spec).flatMap(x => ['true / evaluator false', 'false / evaluator true'].map(d => [`skill ${x.k} open: 0.2 ${d}`, E7])));
+
 export default (test, M) => {
   const L = gates02(M);
-  const ALLOWED = { ...regionalKnown(M), ...e5Known(M) };   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
+  const ALLOWED = { ...regionalKnown(M), ...e5Known(M), ...e7Known(M) };   /* allowed by record, not pinned state by state: the gate differs only where a level or the story position puts the two readings apart */
   /* the golden states, built from the catalog the page would hand catalogInPage() (same data, same core) */
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
@@ -158,8 +163,9 @@ export default (test, M) => {
       const ev = evs[i];
       for (const x of M.SP_STEPS) { const r = ev.byKey(x.k); seen.skill.add(x.k);
         cmp('skill', x.k, 'open', x.req <= c.level, r.open, id); cmp('skill', x.k, 'done', !!c.checks[x.k], r.done !== false, id); }
-      const so = L.skillOpen(c);
-      cmp('skill', '(skillOpen now)', 'keys', so.now.map(x => x.k).join(','), so.open.filter(x => ev.byKey(x.k).open).map(x => x.k).join(','), id);
+      /* the specialty slots are compared one by one above (E7, allowed by record) */
+      const so = L.skillOpen(c), line = x => !x.spec;
+      cmp('skill', '(skillOpen now)', 'keys', so.now.filter(line).map(x => x.k).join(','), so.open.filter(x => line(x) && ev.byKey(x.k).open).map(x => x.k).join(','), id);
     });
     assert.equal(seen.skill.size, M.SP_STEPS.length);
   });
