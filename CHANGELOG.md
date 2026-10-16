@@ -14,13 +14,14 @@ Backup line, 14-day backup reminder and iPhone home-screen tip.
 
 ### Added
 
-- Website only: the export row shows a "Last backup" line (today, yesterday, or N days ago; amber from 14 days; "no
-  backup yet" counts from your first visit on this version).
-- Website only: after 14 days without a backup, one reminder card offers Export or "Not now". "Not now" hides it
-  until the next 14 days have passed. It is not shown in Basic mode or while a "could not save" banner is up.
-- Website only: on iPhone Safari, a one-time tip about adding the guide to the Home Screen, shown until you press
-  "Got it". It is not shown on desktop, in other iPhone browsers, in in-app browsers, in the installed Home Screen
-  copy, or after the 14-day reminder was shown on the same visit.
+- Website only: the export row shows a "Last backup" line (today, yesterday, or N days ago; amber from 14 days).
+  Before your first backup it says "No backup yet"; the 14 days then count from your first visit on this version.
+- Website only: once you have some progress, after 14 days without a backup, one reminder card offers Export or
+  "Not now". "Not now" hides it until the next 14 days have passed. It is not shown while a "could not save" banner
+  is up.
+- Website only: once you have some progress, on iPhone Safari, a tip about adding the guide to the Home Screen,
+  shown until you press "Got it". It is not shown on desktop, in other iPhone browsers, in in-app browsers, in the
+  installed Home Screen copy, or after the 14-day reminder was shown on the same visit.
 
 ### Changed
 
@@ -90,7 +91,7 @@ Active / Passive skill labels, specialty slots, villages, clearer lock text.
 
 ### Known issues
 
-- The Daevanion card may still show the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+- Below Lv 12 the Daevanion card still says the Nezekan board opens at Lv 12; in game it opens with "Urgent Pursuit"
   (Lv 13). Planned for 0.3.
 - Story levels after the first quest may still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
 - At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
