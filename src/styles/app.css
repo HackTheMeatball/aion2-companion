@@ -1107,7 +1107,7 @@ body.basic #ahead, body.basic #questSubs, body.basic #trackWrap, body.basic .ms-
 body.basic #areas .achips, body.basic #areaList .sh-note, body.basic #areaList .ztr,
 body.basic #spCard .ctlcol em, body.basic #spCard .tfoot, body.basic #stCard .ctlcol em, body.basic #stCard .tfoot, body.basic #spCard .sphint, body.basic #spCard .cubebar,
 body.basic #dvBox .ctlcol em, body.basic #dvBox #dvRemain, body.basic #dvUndo, body.basic #dvAllList, body.basic #dvBox .tfoot, body.basic #dvBox .cubebar,
-body.basic #gates details.step:not(.upnext):not(.overdue):not(.peek), body.basic .route-h, body.basic #steps,
+body.basic #gates details.step:not(.upnext):not(.overdue):not(.peek), body.basic #routeCard,
 body.basic #gates .loc, body.basic #gates .note, body.basic #gates .upsell, body.basic #gates small,
 
 body.basic #gates li.item:has(> label > input:checked), body.basic #gates li.item.optional, body.basic #gates li.storyreq.reached, body.basic #btnExpand,
@@ -1118,12 +1118,14 @@ body.basic :is(h2, div).sec .sec-tools .filt, body.basic :is(h2, div).sec .sec-t
 body.basic #nowStar .ns-head { display: none; }
 body.basic #nowStar .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; }
 @keyframes nsPulse { 0%, 100% { box-shadow: var(--shadow-pulse-from); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); } 50% { box-shadow: var(--shadow-pulse-to); border-color: var(--accent); } }
-details.foldcard > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: var(--space-8); padding: 0; grid-template-columns: none; }
+/* The whole card top is the hit area: the summary grows over the card's padding (no visual change). */
+details.foldcard > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: var(--space-8); margin: calc(-1 * var(--space-16)); padding: var(--space-16); grid-template-columns: none; }
+.route-card h2 small { font: 500 12px var(--body); letter-spacing: 0; text-transform: none; }
 details.foldcard > summary::-webkit-details-marker { display: none; }
 details.foldcard > summary h2 { margin: 0; }
 details.foldcard > summary::after { content: "▸"; margin-left: auto; color: var(--muted); font-size: 12px; transition: transform .2s; }
 details.foldcard[open] > summary::after { transform: rotate(90deg); }
-details.foldcard[open] > summary { margin-bottom: var(--space-12); }
+details.foldcard[open] > summary { margin-bottom: calc(-1 * var(--space-16) + var(--space-12)); }
 details.foldcard > summary:hover h2 { color: var(--fg); }
 /* Dungeons & Strongholds: one left edge for everything (section titles, zone names, rows) */
 #areaList .item.arow, #areaList .item.arow.grouped { padding-left: 0 !important; }
