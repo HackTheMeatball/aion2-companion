@@ -218,6 +218,7 @@
   "random/L16-q24-all-B-stfull": {
     "in": "84b9a6cf4a1b",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first.","c":""}
     ],
@@ -828,6 +829,7 @@
   "random/L17-q19-all-A-stready": {
     "in": "dff7200d0803",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk: Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]}
     ],
@@ -964,6 +966,7 @@
     "in": "c1833549c207",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Empyrean Monolith","s":"0/4 objectives · then A New Lead","c":"primary \"Turned in\" story","o":["Find Ruins Administrator Ollen talk to Ollen (Kibelisk: Safe Haven)","Obtain the Empyrean Trace: Altgard retrieve the trace (Kibelisk: Safe Haven)","Resonate with the Monolith obtain the Revelation Amulet Enhance Scroll (Kibelisk: Safe Haven)","+1 more after these"]},
       {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1158,6 +1161,7 @@
   "random/L17-q28-all-A-dv": {
     "in": "047ca4d58a72",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Crossroad","s":"Needs Lv 20: you're 17. Level up first.","c":""}
     ],
     "ms": [
@@ -1421,6 +1425,7 @@
   "random/L17-q58-all-B-filters": {
     "in": "7857132ce6a4",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 17. Level up first.","c":""}
     ],
     "ms": [
@@ -1546,6 +1551,7 @@
   "random/L17-q65-all-B-stfull": {
     "in": "7fe9592a5ae9",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 17. Level up first.","c":""}
     ],
@@ -1675,6 +1681,7 @@
   "random/L17-q77-rnd128p95-A-stfull": {
     "in": "cc91c67e2101",
     "nu": [
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","+12 more"]},
       {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 17. Level up first.","c":""},
       {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1933,6 +1940,7 @@
   "random/L17-qxx-all-B-stfull": {
     "in": "882715726fd1",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
     ],
@@ -1995,13 +2003,13 @@
     "in": "2dba2a1e3a35",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
       {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["run Hugo Mercenaries: Past and Present","run Missing Mount","run Creion Research Assistant","+2 waiting on the story Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Missed | 10/11 | overdue | open",
@@ -2066,13 +2074,13 @@
     "in": "e38a379c4fc8",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2343,13 +2351,13 @@
     "in": "91bbc27184d3",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]"]},
       {"t":"Story: The Past Revealed","s":"Needs Lv 30: you're 18. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -2408,6 +2416,7 @@
   "random/L18-q58-all-A-objs": {
     "in": "8747e04aae24",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 18. Level up first.","c":""}
     ],
     "ms": [
@@ -2469,6 +2478,7 @@
   "random/L18-q66-all-B": {
     "in": "d5db3188144e",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 18. Level up first.","c":""}
     ],
     "ms": [
@@ -2529,6 +2539,7 @@
   "random/L18-q69-rnd100p80-B": {
     "in": "dbe77bf21821",
     "nu": [
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 1/20 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+12 more"]},
       {"t":"Clear Howling Den and others until Lv 37","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 4 open at your level"},
       {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
@@ -2741,13 +2752,13 @@
     "in": "ef1497f38846",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
       {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 18. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-      {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+      {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2880,6 +2891,7 @@
     "in": "2c8e7a0a18e7",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+      {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3338,6 +3350,7 @@
   "random/L19-q34-all-B-rqmix": {
     "in": "d5223eb38586",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 19. Level up first.","c":""}
     ],
     "ms": [
@@ -3955,6 +3968,7 @@
   "random/L19-q64-all-A-rqmix": {
     "in": "54db06249168",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Frozen Fafnite","s":"Needs Lv 36: you're 19. Level up first.","c":""}
     ],
     "ms": [
@@ -4089,6 +4103,7 @@
   "random/L19-qxx-all-A-dv": {
     "in": "43091e251c94",
     "nu": [
+      {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
     ],
     "ms": [
@@ -5268,6 +5283,7 @@
   "random/L20-q81-rnd128p80-B": {
     "in": "6bf786fe198e",
     "nu": [
+      {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","+12 more"]},
       {"t":"Clear Predator's Lair and others until Lv 44","s":"Purifying Forest · Kibelisk: Guide Rest Stop · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 5 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},

@@ -18,11 +18,13 @@ import { ROOT, dataFiles, validateDoc } from './validate.mjs';
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
    them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
 const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
-const loadBundle = ({ dropProposed = false } = {}) => {
+/* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks) */
+const loadBundle = ({ dropProposed = false, mutate = null } = {}) => {
   const files = dataFiles(), by = {}, schemaErrors = [];
   let retired = null, sources = null;
   for (const f of files) {
     const doc = JSON.parse(readFileSync(f, 'utf8')), rel = relative(ROOT, f);
+    if (mutate) mutate(rel, doc);
     const errs = validateDoc(f, doc);
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
@@ -166,8 +168,10 @@ export function generate(opts = {}) {
   const choice = id => { for (const s of skills) for (const c of s.specialtyChoices || []) if (c.id === id) return c; throw new Error('unknown specialty choice ' + id); };
   const sk = id => { if (!skById[id]) throw new Error('unknown skill ' + id); return skById[id]; };
   const stg = id => { if (!stById[id]) throw new Error('unknown stigma ' + id); return stById[id]; };
-  const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), pick = (build.specialtyPicks[e.skill] || [])[0];
-    return { n: s.name, learn: s.learnLv, ...(pick ? { spec: choice(pick).label || choice(pick).text } : {}), ...(s.type === 'passive' ? { passive: true } : {}) }; });
+  /* spec: the slot 1 pick's text; specs (0.3 E7): the pick per slot in order, { t: text, lv: the choice's skill level } */
+  const SP_SKILLS_CORE = build.skillOrder.filter(e => e.core).map(e => { const s = sk(e.skill), picks = build.specialtyPicks[e.skill] || [], pick = picks[0];
+    return { n: s.name, learn: s.learnLv, ...(pick ? { spec: choice(pick).label || choice(pick).text, specs: picks.map(p => ({ t: choice(p).label || choice(p).text, lv: choice(p).skillLv })) } : {}),
+      ...(s.type === 'passive' ? { passive: true } : {}) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
     return { n: s.name, learn: s.learnLv, ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
   /* specialties (owner F4, Metabot): every active skill has the 5 choices at effective skill level 8 / 8 / 8 / 12 / 16 */
@@ -176,6 +180,15 @@ export function generate(opts = {}) {
   check('specialty slots at effective level 8 / 12 / 20', JSON.stringify(rules['rule:specialty-slots'].value.slots) === '[8,12,20]' && rules['rule:specialty-slots'].value.levelBasis === 'effective');
   for (const [sid, picks] of Object.entries(build.specialtyPicks)) for (const p of picks) check(`specialty pick ${p} is a choice of ${sid}`, (sk(sid).specialtyChoices || []).some(c => c.id === p));
   check('specialty picks: at most 3 slots', Object.values(build.specialtyPicks).every(p => p.length <= rules['rule:specialty-slots'].value.slots.length));
+  /* one choice never fills two slots */
+  for (const [sid, picks] of Object.entries(build.specialtyPicks)) check(`specialty picks of ${sid} are distinct`, new Set(picks).size === picks.length, picks);
+  /* a pick beyond slot 1 needs a '2+ sources' entry in specialtyEvidence for that slot, witnessed by two or more publishers
+     (hosts) that the build cites for specialtyPicks (owner on #75; research #77 at 8dd047d); no stale entries */
+  const spEv = build.specialtyEvidence || {}, spSrc = new Set((build.sources || []).filter(r => r.url && (r.fields || []).includes('specialtyPicks')).map(r => r.url));
+  for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i) return; const ev = spEv[p];
+    check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence`, ev && ev.slot === i + 1 && ev.label === '2+ sources' && ev.sources.every(u => spSrc.has(u))
+      && new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2, ev || 'no specialtyEvidence entry'); });
+  for (const p of Object.keys(spEv)) check(`specialtyEvidence ${p} backs a pick in its slot`, Object.values(build.specialtyPicks).some(ps => ps[spEv[p].slot - 1] === p));
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
   const STAT_TIERS = build.statPriority.tiers, STAT_SRC = build.statPriority.from;
@@ -461,17 +474,22 @@ export function generate(opts = {}) {
     for (const u of unlocks.slice().sort((a, b) => (a.order ?? 1e9) - (b.order ?? 1e9) || (a.id < b.id ? -1 : 1))) add(u.id, { kind: 'unlock', req: gate(u.at), done: [gate(u.at)] });   /* done = its `at` holds (no tick) */
     for (const b of boards.slice().sort(byNum('lv'))) { add(b.id, { kind: 'board', req: gate(b.requires), done: [] }); prop(b.id, b); }
     for (const m of msOrder) for (const e of build.boardPlan.filter(x => x.milestone === m.id).sort(byNum('order'))) {
-      const k = e.node ? nodeById[e.node].key : e.key;
-      add(k, { kind: 'plan', key: k, board: nodeById[e.node || e.anyNode[0]].board, req: gate(e.requires), done: cw(e.completesWith) }); prop(k, e);
+      const k = e.node ? nodeById[e.node].key : e.key, sn = e.node && nodeById[e.node].skill;
+      /* a plan node on a skill names it and what it adds to the skill's effective level (0.3 E7, rule:specialty-slots) */
+      add(k, { kind: 'plan', key: k, board: nodeById[e.node || e.anyNode[0]].board, ...(sn ? { skill: sn, adds: nodeById[e.node].adds ?? 1 } : {}), req: gate(e.requires), done: cw(e.completesWith) }); prop(k, e);
     }
-    const slg = rules['rule:skill-level-gate'].value, per = slg.stepped.perLevel;
+    const slg = rules['rule:skill-level-gate'].value, per = slg.stepped.perLevel, slots = rules['rule:specialty-slots'].value.slots;
+    /* specialty slot n (0.3 E7, design §9): opens at effective skill level slots[n - 1] (atom skillLv: the highest ticked line,
+       1 if none, + the adds of every owned plan node on the skill); keys sp:<skill>:spec, :spec2, :spec3 */
+    const slotKey = (s, n) => `sp:${s.key}:spec${n > 1 ? n : ''}`;
+    const addSlot = (s, n) => add(slotKey(s, n), { kind: 'spec', key: slotKey(s, n), skill: s.id, slot: n, req: { skillLv: slots[n - 1], skill: s.id, basis: 'rule' }, done: ['tick'] });
     for (const e of [...build.skillOrder.filter(x => x.core), ...build.skillOrder.filter(x => !x.core)]) {
       const s = sk(e.skill), pick = e.core && (build.specialtyPicks[e.skill] || [])[0];
       for (let L = 2; L <= slg.maxFromPoints; L++) {
         add(`sp:${s.key}:${L}`, { kind: 'skill', key: `sp:${s.key}:${L}`, skill: s.id, L, req: { level: s.levelGate === 'flat' ? s.learnLv : s.learnLv + per * (L - 2), basis: 'rule' }, done: ['tick'] });
-        /* specialty slot 1: today's rule (the level of skill line 8); E7 moves it to effective skill level (rule:specialty-slots) */
-        if (L === 8 && pick && s.type !== 'passive') add(`sp:${s.key}:spec`, { kind: 'spec', key: `sp:${s.key}:spec`, skill: s.id, req: { level: s.learnLv + per * 6, basis: 'rule' }, done: ['tick'] });
+        if (L === 8 && pick && s.type !== 'passive') addSlot(s, 1);
       }
+      if (pick && s.type !== 'passive') for (let n = 2; n <= slots.length; n++) addSlot(s, n);
     }
     /* every done edge resolves to a node, every story atom to the chain, and no node depends on itself */
     const edges = id => { const n = nodes[id]; return [...atomsOf(n.req), ...n.done.filter(x => x !== 'tick').flatMap(atomsOf)].filter(a => a.done).map(a => a.done).concat(n.board ? [n.board] : []); };

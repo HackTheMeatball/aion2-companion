@@ -238,7 +238,9 @@
       },
       "specialtyPicks": {
         "skill:assassin:heart-gore": [
-          "spec:assassin:heart-gore:3"
+          "spec:assassin:heart-gore:3",
+          "spec:assassin:heart-gore:4",
+          "spec:assassin:heart-gore:5"
         ],
         "skill:assassin:insignia-explosion": [
           "spec:assassin:insignia-explosion:2"
@@ -247,7 +249,9 @@
           "spec:assassin:savage-roar:2"
         ],
         "skill:assassin:quick-slice": [
-          "spec:assassin:quick-slice:3"
+          "spec:assassin:quick-slice:3",
+          "spec:assassin:quick-slice:4",
+          "spec:assassin:quick-slice:5"
         ],
         "skill:assassin:ambush": [
           "spec:assassin:ambush:1"
@@ -255,6 +259,42 @@
         "skill:assassin:shadowstrike": [
           "spec:assassin:shadowstrike:2"
         ]
+      },
+      "specialtyEvidence": {
+        "spec:assassin:heart-gore:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+            "https://corpus.gg/blog/aion-2/assassin-pve-build",
+            "https://aion2-meta.com/guides/assassin/",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        },
+        "spec:assassin:heart-gore:5": {
+          "slot": 3,
+          "label": "2+ sources",
+          "sources": [
+            "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        },
+        "spec:assassin:quick-slice:4": {
+          "slot": 2,
+          "label": "2+ sources",
+          "sources": [
+            "https://aion2-meta.com/guides/assassin/",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        },
+        "spec:assassin:quick-slice:5": {
+          "slot": 3,
+          "label": "2+ sources",
+          "sources": [
+            "https://aion2-meta.com/guides/assassin/",
+            "https://aion2turkiye.com/en/class/assassin/"
+          ]
+        }
       },
       "stigmaSlots": [
         "stigma:assassin:triniels-dagger",
@@ -775,9 +815,41 @@
         },
         {
           "url": "https://metabot.gg/en/aion-2/guides/stigma-guide"
+        },
+        {
+          "url": "https://skycoach.gg/blog/aion-2/articles/assassin-guide",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Specialty slots 2 / 3 (0.3 E7): Heart Gore 4 (slot 2) then 5 (slot 3), leveling order."
+        },
+        {
+          "url": "https://corpus.gg/blog/aion-2/assassin-pve-build",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Specialty slot 2 (0.3 E7): Heart Gore 4 (second step)."
+        },
+        {
+          "url": "https://aion2-meta.com/guides/assassin/",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Specialty slots 2 / 3 (0.3 E7), PvE column: Heart Gore 4 (slot 2), Quick Slice 4 (slot 2) then 5 (slot 3)."
+        },
+        {
+          "url": "https://aion2turkiye.com/en/class/assassin/",
+          "checkedAt": "2026-10-16",
+          "fields": [
+            "specialtyPicks"
+          ],
+          "note": "Specialty slots 2 / 3 (0.3 E7), Leveling / Dungeon panels: Heart Gore 4 then 5, Quick Slice 4 then 5."
         }
       ],
-      "verifiedAt": "2026-10-12",
+      "verifiedAt": "2026-10-16",
       "status": "inferred",
       "conflicts": [
         "Stigma equip order: metabot: Illusive Clone, Swift Contract, Savage Fang, Triniel's Dagger · gamesfuze: Triniel's Dagger (to 10), Illusive Clone (to 20), Savage Fang (1), Swift Contract (1) · skycoach: Triniel's Dagger (to 10 first), Illusive Clone (20 main goal), Swift Contract, Savage Fang (PvE buff at 15). The guide follows Metabot and Skycoach for slots 3–4 (Swift Contract before Savage Fang; GamesFuze reverses it) and GamesFuze + Skycoach for the upgrade targets (src/data/build.js)."
@@ -788,7 +860,8 @@
         "stigmaRules.verdict (v1): No 2-source slot-by-level order. GamesFuze+Skycoach agree TD then IC as top two (supports app slots 1-2; these are priority lists, so equip timing is inferred). Slots 3-4: Metabot+Skycoach put Swift Contract before Savage Fang; GamesFuze the reverse. App's SF 32 / SC 37 is the minority order. Same four stigmas in all three sources (2-source+).",
         "Upgrade priority (v1): Triniel's Dagger to 10 and Illusive Clone to 20 (GamesFuze + Skycoach, 2-source). App plan 'all to 5, then slot 1 to 10/15' is Metabot general advice (single).",
         "v1 board notes: Metaroad board page refused (provenance) and GameWith grid is unlabelled; Metabot gives no node coordinates. Path costs unknown; keep 'about 3–5 with its path' only as labelled inference or drop.",
-        "Corner totals by board (Metabot full-board totals): Nezekan: Combat Speed +3%, Cooldown Reduction +3%; Zikel: Damage Boost +3%, Damage Tolerance +3%; Vaizel: Critical Damage Boost +3%, Critical Damage Tolerance +3%; Triniel: Multi-hit Chance +4.5%, Multi-hit Resist +4.5% (https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule))"
+        "Corner totals by board (Metabot full-board totals): Nezekan: Combat Speed +3%, Cooldown Reduction +3%; Zikel: Damage Boost +3%, Damage Tolerance +3%; Vaizel: Critical Damage Boost +3%, Critical Damage Tolerance +3%; Triniel: Multi-hit Chance +4.5%, Multi-hit Resist +4.5% (https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule))",
+        "specialtyPicks (0.3 E7, docs/research/2026-10-specialty-picks.md, merged as #77 at 8dd047d): position = slot (1, 2, 3). Slots 2 and 3 carry only picks the research labels 2+ sources for that slot (Heart Gore 4 / 5, Quick Slice 4 / 5), each listed in specialtyEvidence with its slot witnesses (the generator checks this). Insignia Explosion slot 2 (5 against 3, disputed), Savage Roar slot 2 (4, contested) and the other contested, disputed, single-source and gap slots are left out (\"pick a specialty\", design Q6). GamesFuze is not slot-ordered, so it is no slot witness. Metabot lists the choices but no picks."
       ]
     }
   ]

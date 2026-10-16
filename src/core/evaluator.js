@@ -12,6 +12,7 @@
        basis: the weakest atom basis of the gate (null when it has no atom);  eta: {level?, quest?, turnIn?}, null when open
      Ev.byKey(k) → Ev.node of the node with save key k;  Ev.list(filter) → every node in catalog order;  Ev.evals → nodes evaluated
      Ev.atom(gate) → { ok, blockers } of an ad-hoc gate;  Ev.completes(id) → the non-tick completesWith entry that holds, or null
+     Ev.skillLv(skill id) → the skill's effective level (atom skillLv below)
    opts: graph (default GATE_GRAPH; tests pass their own), derived (default false: a node that can be ticked is done by
    its tick only, as in 0.2; true adds its other completesWith entries, §5, E4). A node with no tick (story quests,
    unlocks) is always done by its completesWith (the story position).
@@ -20,6 +21,10 @@
      followUps (default false; §5.3, owner Q3): a regional quest picked up or ticked proves that the regional quests its
        gate names (a `done` atom with basis sourced or owner) were turned in, and theirs in turn: done "derived", via
        "followUp <the quest that proves it>". Read from ticks and pick-ups only, never from other derived values.
+   Atom skillLv (0.3 E7, design §9, rule:specialty-slots; the specialty slot nodes): { skillLv: n, skill } holds when the
+   skill's effective level is at least n: its highest ticked skill line (1 if none) plus the `adds` of every ticked plan node
+   on the skill. Only plan nodes have save keys, so a node bought off the plan is not counted (never overcounts).
+   Its blocker: { kind: "skill", skill, need, have }.
    Derived values are computed on every call and never written: the character is only read. */
 import { GATE_GRAPH } from "../data/gate-graph.js";
 import { GATE_PROPOSED } from "../data/gate-proposed.js";
@@ -29,16 +34,18 @@ const EV_BASES = ["sourced", "owner", "rule", "inferred", "owner-check", "legacy
 const EV_RANK = Object.fromEntries(EV_BASES.map((b, i) => [b, i]));
 /* a met gate (shared: nothing writes to a result) */
 const EV_MET = Object.freeze({ ok: true, blockers: Object.freeze([]) });
-const EV_KIND_ORDER = { story: 0, level: 1, done: 2 };
+const EV_KIND_ORDER = { story: 0, level: 1, skill: 2, done: 3 };
 /* the follow-up rule reads only edges a source or the owner backs (an owner-check edge may be wrong: never derive from it) */
 const EV_FOLLOW_BASES = new Set(["sourced", "owner"]);
 const evAtoms = g => g.all ? g.all.flatMap(evAtoms) : g.any ? g.any.flatMap(evAtoms) : [g];
-/* per graph: story name → chain index (the save stores the name), story id → index, save key → node id, regional quest ids */
+/* per graph: story name → chain index (the save stores the name), story id → index, save key → node id, regional quest ids,
+   skill id → its skill line and plan node ids (effective level) */
 const evIndex = new WeakMap();
 const evIndexOf = g => {
   let x = evIndex.get(g);
-  if (!x) { x = { byName: new Map(g.story.map(([, n], i) => [n, i])), byId: new Map(g.story.map(([id], i) => [id, i])), byKey: new Map(), rq: Object.keys(g.nodes).filter(id => g.nodes[id].kind === "rq") };
-    for (const [id, n] of Object.entries(g.nodes)) if (n.key !== undefined && !x.byKey.has(n.key)) x.byKey.set(n.key, id);
+  if (!x) { x = { byName: new Map(g.story.map(([, n], i) => [n, i])), byId: new Map(g.story.map(([id], i) => [id, i])), byKey: new Map(), rq: Object.keys(g.nodes).filter(id => g.nodes[id].kind === "rq"), skill: new Map() };
+    for (const [id, n] of Object.entries(g.nodes)) { if (n.key !== undefined && !x.byKey.has(n.key)) x.byKey.set(n.key, id);
+      if (n.skill && (n.kind === "skill" || n.kind === "plan")) { if (!x.skill.has(n.skill)) x.skill.set(n.skill, []); x.skill.get(n.skill).push(id); } }
     evIndex.set(g, x); }
   return x;
 };
@@ -58,6 +65,14 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
   const pos = c.quest && ix.byName.has(c.quest) ? ix.byName.get(c.quest) : -1;
   const memo = new Map(), BUSY = {};
   let evals = 0;
+  /* effective skill level: highest ticked line (1 if none) + the adds of the ticked plan nodes on the skill; per skill, once */
+  const effMemo = new Map();
+  const skillLv = sid => {
+    if (!effMemo.has(sid)) { let L = 1, adds = 0;
+      for (const id of ix.skill.get(sid) || []) { const n = N[id]; if (n.key === undefined || !checks[n.key]) continue; if (n.kind === "skill") L = Math.max(L, n.L); else adds += n.adds ?? 1; }
+      effMemo.set(sid, L + adds); }
+    return effMemo.get(sid);
+  };
   /* followUps: regional quest id → the picked-up or ticked quest that proves it was turned in (built once, on first use) */
   let proven = null;
   const provenOf = () => {
@@ -78,6 +93,7 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
     if (g.playerChecked) { acc.info.push(g); return EV_MET; }
     acc.worst = Math.max(acc.worst, EV_RANK[g.basis] ?? EV_RANK.legacy);
     if (g.level !== undefined) return lv >= g.level ? EV_MET : { ok: false, blockers: [{ kind: "level", need: g.level, have: lv }] };
+    if (g.skillLv !== undefined) { const have = skillLv(g.skill); return have >= g.skillLv ? EV_MET : { ok: false, blockers: [{ kind: "skill", skill: g.skill, need: g.skillLv, have }] }; }
     if (g.story) {
       const i = ix.byId.get(g.story), name = graph.story[i][1], turnIn = g.is === "turnedIn";
       const ok = pos >= 0 && (turnIn ? pos > i || (pos === i && c.storyEnd === name) : pos >= i);
@@ -98,7 +114,7 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
     const walk = xs => xs.forEach(b => {
       if (b.kind === "level") e.level = Math.max(e.level || 0, b.need);
       else if (b.kind === "story") { const a = ix.byId.get(b.quest) + (b.turnIn ? 1 : 0); if (a > at) { at = a; e.quest = b.quest; if (b.turnIn) e.turnIn = true; else delete e.turnIn; } }
-      else walk(b.chain);
+      else if (b.chain) walk(b.chain);   /* a skill blocker: neither a level nor the story opens it (bought lines, board nodes do) */
     });
     walk(bs); return e;
   };
@@ -138,6 +154,7 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
     completes: id => { const n = def(id); if (!n) return null;
       for (const e of n.done) if (e !== "tick" && test(e, { info: [], worst: -1 }).ok) return evVia(e);
       return null; },
+    skillLv,
     get evals() { return evals; },
   };
 }

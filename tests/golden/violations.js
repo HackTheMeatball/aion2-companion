@@ -53,8 +53,9 @@ function findViolations(C, states, results) {
         const o = ORACLE[k];
         if (o) { const why = oracleMisses(o, cur, st, qIdx, ck); if (why.length) add('oracle-gate', k, why.join('; ')); }
       } else if (act === 'skill') {
-        const mm = /^Buy (.+) (\d+) → (\d+)$/.exec(c.t) || /^Buy (.+) specialty$/.exec(c.t); if (!mm) return;
-        const x = mm[3] ? sp.find(y => y.n === mm[1] && y.L === +mm[3]) : sp.find(y => y.n === mm[1] && y.spec);
+        /* a specialty slot opens on effective skill level, not character level (0.3 E7): the invariant suite's oracle judges it */
+        const mm = /^Buy (.+) (\d+) → (\d+)$/.exec(c.t); if (!mm) return;
+        const x = sp.find(y => y.n === mm[1] && y.L === +mm[3]);
         if (x && x.req > lv) add('level-gate', x.k, `skill step needs Lv ${x.req}`);
       }
     });

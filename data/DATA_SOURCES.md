@@ -8,7 +8,7 @@ that cite the page (`file: record`); *Card group* is where the app lists it. Pag
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/shared/asmodian/guide/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-414 URLs · 413 in the Sources card · 1 cited only in the data files
+418 URLs · 416 in the Sources card · 2 cited only in the data files
 
 ## Metabot (222)
 
@@ -237,6 +237,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Stats](https://metabot.gg/en/aion-2/stats) | Tips and rules | shared/asmodian/guide/claims.json: Stat tiers: [Attack, Critical Hit, Back Attack Damage Boost] > [Accuracy, Critical Damage Boost] > [Double Chance, Combat Speed]; B/G letters. |
 | [Metabot: Terms of service](https://metabot.gg/en/legal/terms-of-service) | — | sources.json: Metabot |
 
+## aion2-meta (1)
+
+| Page | Card group | Backs |
+|---|---|---|
+| [aion2-meta: Assassin](https://aion2-meta.com/guides/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build |
+
 ## aion2.gaming.tools (47)
 
 | Page | Card group | Backs |
@@ -297,6 +303,12 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [AION2HUB: Asmodian 10–25](https://aion2hub.com/leveling/asmodian-levels-10-25) | Main story | shared/asmodian/story-quests.json: Finding Nemon; shared/asmodian/story-quests.json: Survival Supplies; shared/asmodian/story-quests.json: Gathering Essentials; shared/asmodian/story-quests.json: Crash Site Rendezvous; shared/asmodian/story-quests.json: Contaminated Area; shared/asmodian/story-quests.json: Express Daeva Delivery; shared/asmodian/story-quests.json: Veiled Truth; shared/asmodian/story-quests.json: Urgent Pursuit; shared/asmodian/story-quests.json: Cemetery Cleanup; shared/asmodian/story-quests.json: Back on the Scent; shared/asmodian/story-quests.json: Dead Men Tell No Tales; shared/asmodian/story-quests.json: Buried Atrocities; shared/asmodian/story-quests.json: Empyrean Monolith; shared/asmodian/story-quests.json: A New Lead; shared/asmodian/story-quests.json: Malice Laid Bare; shared/asmodian/story-quests.json: Broken Fang; shared/asmodian/story-quests.json: Watchful Eyes; shared/asmodian/story-quests.json: Imminent Threat; shared/asmodian/story-quests.json: Crossroad; shared/asmodian/story-quests.json: Creeping Shadow; shared/asmodian/story-quests.json: Children of the Elim; shared/asmodian/story-quests.json: In the Elims' Name; shared/asmodian/story-quests.json: Verdant Melody; shared/asmodian/story-quests.json: Daeva in a Dream; shared/asmodian/story-quests.json: Disturbed Balance; shared/asmodian/story-quests.json: Searching for Survivors; shared/asmodian/story-quests.json: Prison Break; shared/asmodian/story-quests.json: Finding Stolen Relics |
 | [AION2HUB: Asmodian 25–40](https://aion2hub.com/leveling/asmodian-levels-25-40) | Main story | shared/asmodian/story-quests.json: Voice of Rage; shared/asmodian/story-quests.json: Tangled Past; shared/asmodian/story-quests.json: The High Priest Slumbers; shared/asmodian/story-quests.json: Striving for Coexistence; shared/asmodian/story-quests.json: Preparations for Restoration; shared/asmodian/story-quests.json: A Collective Effort; shared/asmodian/story-quests.json: Land of Rifts; shared/asmodian/story-quests.json: Dying Light; shared/asmodian/story-quests.json: Contaminated Sacred Tree; shared/asmodian/story-quests.json: The Past Revealed; shared/asmodian/story-quests.json: Canyon's Secret; shared/asmodian/story-quests.json: Bitter Reality; shared/asmodian/story-quests.json: Eye of the Red Tower; shared/asmodian/story-quests.json: The Survivors; shared/asmodian/story-quests.json: Rescue Operation; shared/asmodian/story-quests.json: Last of the Destruction Archons; shared/asmodian/story-quests.json: A Daeva Dreaming Anew; shared/asmodian/story-quests.json: Last Refuge; shared/asmodian/story-quests.json: Scripture in the Ruins; shared/asmodian/story-quests.json: Blood Monument; shared/asmodian/story-quests.json: Impending Threat; shared/asmodian/story-quests.json: Visible Trap; shared/asmodian/story-quests.json: Destruction Archon Underground Fortress; shared/asmodian/story-quests.json: Enemy Territory; shared/asmodian/story-quests.json: Powder of Death; shared/asmodian/story-quests.json: Creion of Gribade; shared/asmodian/story-quests.json: Frozen Fafnite; shared/asmodian/story-quests.json: Inevitable Encounter; shared/asmodian/story-quests.json: Unveiling the Truth; shared/asmodian/story-quests.json: Lake of Confrontation; shared/asmodian/story-quests.json: An Ill Fate's Resolution; shared/asmodian/story-quests.json: Mirror of Greed; shared/asmodian/story-quests.json: Fafnite's Whereabouts; shared/asmodian/story-quests.json: Exiled Ritualist; shared/asmodian/story-quests.json: Healing Herbs; shared/asmodian/story-quests.json: Treatment; shared/asmodian/story-quests.json: Symbol of Liberation |
 | [AION2HUB: Elyos levels 10 25](https://aion2hub.com/leveling/elyos-levels-10-25) | Tips and rules | shared/asmodian/guide/claims.json: Sealed Dungeon first clear: 15,000 Kina, 1,250 Enhance Stones, 2 Daevanion Crystals, 2 Wisdom Stones, wing materials, statue scraps, title; one-time.; shared/asmodian/guide/claims.json: Stronghold pays 2 Noble Belt Enhance Scrolls + 15,000 Kina (some a title); belt scrolls come from nowhere else. |
+
+## aion2turkiye (1)
+
+| Page | Card group | Backs |
+|---|---|---|
+| [aion2turkiye: Assassin](https://aion2turkiye.com/en/class/assassin/) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build |
 
 ## allthings.how (82)
 
@@ -384,6 +396,13 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [allthings.how: Warriors' Rest](https://allthings.how/aion-2/map/warriors-rest/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Warriors' Rest |
 | [allthings.how: Watcher's Temporary Outpost](https://allthings.how/aion-2/map/watcher-s-temporary-outpost/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Watcher's Temporary Outpost |
 | [allthings.how: Worshiper's Underground Cave](https://allthings.how/aion-2/map/worshiper-s-underground-cave/) | Strongholds and Sealed Dungeons | shared/asmodian/sealed-dungeons.json: Worshiper's Underground Cave |
+
+## Corpus (2)
+
+| Page | Card group | Backs |
+|---|---|---|
+| [Corpus: Assassin pve build](https://corpus.gg/blog/aion-2/assassin-pve-build) | Skills, boards and stigmas | classes/assassin/builds.json: Guide build |
+| [Corpus: Terms](https://corpus.gg/terms) | — | sources.json: Corpus |
 
 ## ExitLag (1)
 

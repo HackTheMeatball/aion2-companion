@@ -193,6 +193,34 @@
       "verifiedAt": "2026-10-14"
     },
     {
+      "id": "src:aion2-meta",
+      "name": "aion2-meta",
+      "hosts": [
+        "aion2-meta.com"
+      ],
+      "kind": "guide",
+      "independenceGroup": "aion2-meta",
+      "licence": {
+        "id": "unknown"
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "unread",
+        "mode": "human-only",
+        "checkedAt": "2026-10-16"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "verifiedAt": "2026-10-16",
+      "notes": [
+        "Specialty picks per slot (PvE / PvP columns, from Korean top players). robots.txt Allow: /; only a privacy page, no terms found (docs/research/2026-10-specialty-picks.md, read 2026-10-16). Facts only."
+      ]
+    },
+    {
       "id": "src:aion2-th-gl",
       "name": "aion2.th.gl",
       "hosts": [
@@ -253,6 +281,34 @@
       "verifiedAt": "2026-10-14"
     },
     {
+      "id": "src:aion2turkiye",
+      "name": "aion2turkiye",
+      "hosts": [
+        "aion2turkiye.com"
+      ],
+      "kind": "guide",
+      "independenceGroup": "aion2turkiye",
+      "licence": {
+        "id": "unknown"
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "unread",
+        "mode": "human-only",
+        "checkedAt": "2026-10-16"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "verifiedAt": "2026-10-16",
+      "notes": [
+        "Specialty picks per slot (Leveling / Dungeon / PvP panels). robots.txt Allow: /; no terms page found (docs/research/2026-10-specialty-picks.md, read 2026-10-16). Facts only."
+      ]
+    },
+    {
       "id": "src:allthings-how",
       "name": "allthings.how",
       "hosts": [
@@ -276,6 +332,35 @@
         "link": "dofollow"
       },
       "verifiedAt": "2026-10-14"
+    },
+    {
+      "id": "src:corpus",
+      "name": "Corpus",
+      "hosts": [
+        "corpus.gg"
+      ],
+      "kind": "guide",
+      "independenceGroup": "corpus",
+      "licence": {
+        "id": "unknown"
+      },
+      "access": {
+        "robots": "allows",
+        "terms": "allows",
+        "termsUrl": "https://corpus.gg/terms",
+        "mode": "human-only",
+        "checkedAt": "2026-10-16"
+      },
+      "use": {
+        "facts": true,
+        "wording": false,
+        "quotes": "none",
+        "link": "dofollow"
+      },
+      "verifiedAt": "2026-10-16",
+      "notes": [
+        "Assassin PvE build (specialty order from two creators). robots.txt allows (/data/ disallowed, not used); /terms has no automation clause (docs/research/2026-10-specialty-picks.md, read 2026-10-16). Facts only."
+      ]
     },
     {
       "id": "src:exitlag",

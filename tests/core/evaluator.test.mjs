@@ -162,13 +162,17 @@ export default (test, M) => {
     /* the hand-made graph too (chains, inheritance, derived) */
     const g2 = freeze(structuredClone(G)); M.evaluate(freeze(C({ level: 5, quest: 'Q1' })), { graph: g2, derived: true }).list();
   });
-  test('GATE_GRAPH: live gates only, every kind present, story chain = QUESTS, skill lines = SP_STEPS (keys and levels)', () => {
+  test('GATE_GRAPH: live gates only, every kind present, story chain = QUESTS, skill lines = SP_STEPS, specialty slots = SP_STEPS + SP_SLOTS (keys and levels)', () => {
     const N = M.GATE_GRAPH.nodes, kinds = {}; for (const x of Object.values(N)) kinds[x.kind] = (kinds[x.kind] || 0) + 1;
     assert.deepEqual(M.GATE_GRAPH.story.map(([, name]) => name), M.QUESTS.map(([, name]) => name));
     for (const k of ['story', 'ascension', 'step', 'rq', 'sd', 'sh', 'unlock', 'board', 'plan', 'skill', 'spec']) assert.ok(kinds[k] > 0, k);
     assert.equal(kinds.story, 86); assert.equal(kinds.rq, 58); assert.equal(kinds.sd, 60); assert.equal(kinds.sh, 15); assert.equal(kinds.board, 5);
     assert.equal(kinds.plan, M.DV_NODES().length);
-    assert.deepEqual(Object.values(N).filter(x => x.kind === 'skill' || x.kind === 'spec').map(x => [x.key, x.req.level]).sort(), M.SP_STEPS.map(x => [x.k, x.req]).sort());
+    assert.deepEqual(Object.values(N).filter(x => x.kind === 'skill').map(x => [x.key, x.req.level]).sort(), M.SP_STEPS.filter(x => !x.spec).map(x => [x.k, x.req]).sort());
+    /* 0.3 E7: a specialty slot opens on effective skill level 8 / 12 / 20 (the slot rows' slotLv), keys :spec, :spec2, :spec3 */
+    assert.deepEqual(Object.values(N).filter(x => x.kind === 'spec').map(x => [x.key, x.req.skillLv, x.slot]).sort(),
+      [...M.SP_STEPS.filter(x => x.spec), ...M.SP_SLOTS].map(x => [x.k, x.slotLv, x.slot]).sort());
+    assert.deepEqual(M.SP_SLOTS.map(x => x.k.replace(/^sp:[^:]+:/, '')), M.SP_STEPS.filter(x => x.spec).flatMap(() => ['spec2', 'spec3']));
     assert.ok(!JSON.stringify(M.GATE_GRAPH).includes('"proposed"'));
   });
   test('evaluator on GATE_GRAPH: story quests done by the position; "Urgent Pursuit" opens unlock:daevanion once turned in', () => {

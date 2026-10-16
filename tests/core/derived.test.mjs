@@ -19,7 +19,7 @@ export default (test, M) => {
 
   test('E4 switches: the page runs with every change on; a change turns on the rule it needs; an unknown name throws', () => {
     assert.deepEqual(ALL, ['regionalTurnedIn', 'derived', 'storyStepDerived', 'followUps', 'turnInLevel', 'clearTally', 'stepNotes',
-      'merchantGate', 'lestWeForgetGate', 'beltGate', 'amuletGate', 'daevanionGate', 'ascensionBar', 'blockerText']);
+      'merchantGate', 'lestWeForgetGate', 'beltGate', 'amuletGate', 'daevanionGate', 'ascensionBar', 'blockerText', 'specialtySlots']);
     assert.ok(ALL.every(M.gateChangeOn), 'all on by default');
     withChanges(['clearTally'], () => assert.deepEqual(ALL.filter(M.gateChangeOn), ['followUps', 'clearTally']));
     withChanges([], () => assert.deepEqual(ALL.filter(M.gateChangeOn), []));

@@ -16,6 +16,7 @@
          open      requires holds (playerChecked atoms ignored)
          done      false | "tick" | "derived"
          blockers  the unmet leaf atoms: { kind: "level", need } | { kind: "story", quest, ahead } | { kind: "done", of }
+                   | { kind: "skill", skill, need, have } (effective skill level, the specialty slots)
                    (ahead = idx − pos, + 1 for turnedIn; null with the story unset)
        S.pos                        index of c.quest in the chain, −1 if unset or unknown
      O.chain                        [[id, name]…] in story order
@@ -73,17 +74,24 @@ export function loadOracle({ root, apply = new Set() }) {
     add(k, { key: k, requires: { all: [own.requires, nodes.get(n.board).requires] }, completesWith: own.completesWith });
   }
   /* skill lines (rule:skill-level-gate): line L of a skill opens at character level learnLv + perLevel × (L − 2), or at
-     learnLv for a flat gate; lines 2 … maxFromPoints. Specialty slot 1 (rule:specialty-slots, today: the level of skill
-     line 8) for a non-passive skill the build picks a specialty for. Every skill in the build's skill order. */
-  const slg = rules['rule:skill-level-gate'].value, slot1 = rules['rule:specialty-slots'].value.slots[0];
+     learnLv for a flat gate; lines 2 … maxFromPoints. Specialty slots 1 / 2 / 3 (rule:specialty-slots, 0.3 E7: effective
+     skill level 8 / 12 / 20, the atom { skillLv, skill } below) for a non-passive skill the build picks a specialty for.
+     Every skill in the build's skill order. */
+  const slg = rules['rule:skill-level-gate'].value, slots = rules['rule:specialty-slots'].value.slots;
   const skById = new Map(skills.map(s => [s.id, s]));
   const lineLv = (s, L) => s.levelGate === 'flat' ? s.learnLv : s.learnLv + slg.stepped.perLevel * (L - 2);
+  const lineKeys = new Map();   /* skill id → [[L, save key]] */
   for (const { skill } of build.skillOrder) {
-    const s = skById.get(skill);
-    for (let L = 2; L <= slg.maxFromPoints; L++) add(`sp:${s.key}:${L}`, { key: `sp:${s.key}:${L}`, requires: { level: lineLv(s, L) }, completesWith: ['tick'] });
-    if ((build.specialtyPicks[skill] || []).length && s.type !== 'passive')
-      add(`sp:${s.key}:spec`, { key: `sp:${s.key}:spec`, requires: { level: lineLv(s, slot1) }, completesWith: ['tick'] });
+    const s = skById.get(skill); lineKeys.set(skill, []);
+    for (let L = 2; L <= slg.maxFromPoints; L++) { add(`sp:${s.key}:${L}`, { key: `sp:${s.key}:${L}`, requires: { level: lineLv(s, L) }, completesWith: ['tick'] }); lineKeys.get(skill).push([L, `sp:${s.key}:${L}`]); }
+    if ((build.specialtyPicks[skill] || []).length && s.type !== 'passive') slots.forEach((lv, i) => {
+      const k = `sp:${s.key}:spec${i ? i + 1 : ''}`;
+      add(k, { key: k, requires: { skillLv: lv, skill }, completesWith: ['tick'] });
+    });
   }
+  /* the board nodes of the build's plan on each skill: [save key, adds] (rule:specialty-slots: a node adds its `adds`) */
+  const planOn = new Map();
+  for (const e of build.boardPlan) if (e.node) { const n = nodeById.get(e.node); if (n.skill) { if (!planOn.has(n.skill)) planOn.set(n.skill, []); planOn.get(n.skill).push([n.key, n.adds ?? 1]); } }
   for (const n of nodes.values()) if (n.tickable === undefined) n.tickable = n.completesWith.includes('tick');
 
   /* regional quest records by id, for the follow-up rule */
@@ -108,6 +116,11 @@ export function loadOracle({ root, apply = new Set() }) {
       if (a.any) { const bs = a.any.map(unmet); return bs.some(b => !b.length) ? [] : bs.reduce((x, y) => y.length < x.length ? y : x); }
       if (a.playerChecked) return [];
       if (a.level !== undefined) return lv >= a.level ? [] : [{ kind: 'level', need: a.level }];
+      if (a.skillLv !== undefined) {   /* effective skill level: the highest ticked line (1 if none) + the adds of the ticked plan nodes on it */
+        const L = Math.max(1, ...(lineKeys.get(a.skill) || []).filter(([, k]) => checks[k]).map(([l]) => l));
+        const have = L + (planOn.get(a.skill) || []).filter(([k]) => checks[k]).reduce((t, [, n]) => t + n, 0);
+        return have >= a.skillLv ? [] : [{ kind: 'skill', skill: a.skill, need: a.skillLv, have }];
+      }
       if (a.story) {
         const i = sIdx.get(a.story); if (i === undefined) throw new Error('oracle: story atom off the chain: ' + a.story);
         const ok = a.is === 'reached' ? pos >= 0 && pos >= i : a.is === 'turnedIn' ? pos >= 0 && (pos > i || (pos === i && c.storyEnd === chain[i][1])) : null;

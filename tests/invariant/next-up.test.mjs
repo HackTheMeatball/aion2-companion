@@ -37,7 +37,7 @@ export const KNOWN = {};
 const ASC_IDS = ['g22:0', 'g32:dreams', 'g45:0'];
 
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
-const sig = bs => bs.map(b => b.kind === 'level' ? `level ${b.need}` : b.kind === 'story' ? `story ${b.quest} ahead ${b.ahead}` : `done ${b.of}`).sort().join(' · ');
+const sig = bs => bs.map(b => b.kind === 'level' ? `level ${b.need}` : b.kind === 'story' ? `story ${b.quest} ahead ${b.ahead}` : b.kind === 'skill' ? `skill ${b.skill} ${b.need} have ${b.have}` : `done ${b.of}`).sort().join(' · ');
 const kinds = bs => [...new Set(bs.map(b => b.kind === 'done' ? 'done ' + b.of : b.kind))].sort().join(', ');
 /* the cards rankNext can return; the ones that carry no node (Cube items, stigma upgrade, "set your quest") or no action */
 const NO_NODE = new Set(['cube', 'stup']), NO_ACT = new Set(['stwait', 'laterSkill', 'laterStep']);
