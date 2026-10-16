@@ -8,6 +8,101 @@ Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, 
 loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
 
+## 0.2.5 — 2026-10-16
+
+Backup line, 14-day backup reminder and iPhone home-screen tip.
+
+### Added
+
+- Website only: the export row shows a "Last backup" line (today, yesterday, or N days ago; amber from 14 days; "no
+  backup yet" counts from your first visit on this version).
+- Website only: after 14 days without a backup, one reminder card offers Export or "Not now". "Not now" hides it
+  until the next 14 days have passed. It is not shown in Basic mode or while a "could not save" banner is up.
+- Website only: on iPhone Safari, a one-time tip about adding the guide to the Home Screen, shown until you press
+  "Got it". It is not shown on desktop, in other iPhone browsers, in in-app browsers, in the installed Home Screen
+  copy, or after the 14-day reminder was shown on the same visit.
+
+### Changed
+
+- Importing a backup file starts the backup line from the import: the line reads "today" afterwards.
+- Exporting records its time before the file is built, so the file matches what is stored in the browser.
+
+### Saved progress
+
+- Saves gain two backup fields: a `backup` record (first visit on this version, last export time, and the "Not now" /
+  "Got it" markers) and a one-time `backup1` marker. Nothing is renamed or removed, and every earlier save loads.
+
+## 0.2.4 — 2026-10-16
+
+Active / Passive skill labels, specialty slots, villages, clearer lock text.
+
+### Added
+
+- Skills card: each skill is labelled Active or Passive.
+- Skills: second and third specialty slots, opening at skill Lv 12 and Lv 20 (the first still opens at Lv 8). The
+  skill level counts Daevanion node bonuses on that skill. Slot 2 names a pick only for Heart Gore and Quick Slice
+  (two or more sources agree); other slots read "pick a specialty". Slot 3 is listed on the Skills card only and is
+  never offered in Next up.
+- Journey card: an Ascension progress bar for the four chapters up to Lv 45 (Perceives, Hears the Voice, Dreams,
+  Witnesses the Nightmare), in Basic and Advanced. It is informational: it reads your story progress and ticked steps
+  and writes nothing.
+- Locked items say why: Later cards and skill lines read "Needs Lv N"; the Daevanion card (Advanced) reads
+  `unlocks after "Urgent Pursuit" · N quests ahead`; the milestone story line says "Turn in" or "Reach" the quest a row
+  is waiting for; regional quest rows show what still blocks them, and nothing once they are open.
+
+### Changed
+
+- Rows already done through your story progress show a ticked, disabled box named "done in the story". Your own tick is
+  not changed and shows again if the story moves back. Ticking or picking up a regional quest also counts its
+  prerequisite regional quests as done.
+- The Journey "Quest done" button and Next up's "Turned in" wait for the quest's unlock level.
+- Regional quests now follow the story as turned in: Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking
+  Caper appear after their story quest is turned in; Traveling Merchant's Conundrum after "Blood Monument"; Lest We
+  Forget after "Zikel's Core". Deep Shadow (Hugo Mercenaries) needs both Canyon's Secret and Past and Present.
+- Noble Belt and Amulet steps wait for "Urgent Pursuit" and "Buried Atrocities" to be turned in. A Daevanion board
+  shut only by its unlock reads `opens after "Urgent Pursuit"` instead of a level countdown.
+- Graverobber Den is cleared by step 4 of Cemetery Cleanup; Krao Cave and Fire Temple Expedition follow their story
+  step. Some story steps carry a short note from the first run-through (Draupnir's is marked as inferred).
+- Villages are zones of their own: Aldelle Village is no longer part of Ishalgen, so "near your story step" can
+  differ for the Lv 2–7 quests there.
+
+### Data
+
+- Story quests: steps for 22 quests (A Village in the Fog through Empyrean Monolith, except Finding Nemon) and giver /
+  turn-in NPC, place, Kibelisk and distance for the 10 Ishalgen quests, from the Metabot quest pages (game build
+  0.0.4387.0, checked 2026-10-15). The Being Beneath the Lake starts with the Witch's Cabin Kibelisk bind (owner,
+  2026-10-15).
+- Aldelle Village is its own zone (Metabot start & turn-in table, 2026-10-15, and the owner's screen of 2026-10-14);
+  ten story sides moved to it. The giver of "Farewells" is in Black Claw Village (Metabot).
+- Owner in-game checks of 2026-10-15 and 2026-10-16: Hugo Mercenaries: Deep Shadow needs Canyon's Secret and Past and
+  Present (both owner-confirmed); the two Zikel Defense Break nodes are confirmed; the Ascension openings check is
+  closed, the gates stay on their Metabot sources (claim C39); Quick Slice's second specialty unlocks at skill Lv 12
+  (claim C40).
+- Skills: the unlock level and point costs follow the rule from the owner's screens (learn level + 3 × (level − 2);
+  1, 2 or 4 points).
+- Power Shards line added to the Empyrean Traces tip (claim C25); the pet note at Lv 10 was removed.
+- Slot 2 and 3 specialty picks are listed only where two or more sources agree on the slot.
+
+### Accessibility
+
+- Derived rows are named "<row>: done in the story"; the Active / Passive label and the new Ascension bar pass the
+  automated axe checks.
+
+### Known issues
+
+- The Daevanion card may still show the Nezekan board as opening at Lv 12; in game it opens with "Urgent Pursuit"
+  (Lv 13). Planned for 0.3.
+- Story levels after the first quest may still show as requirements ("Needs Lv …: level up first"). Planned for 0.3.
+- At 200 % page zoom on a phone (about 195 px wide), some card headers still run past the edge of the screen.
+- Phones: the longest quest names end in "…" in the quest field instead of wrapping.
+- The villages Steel Hammer Workcamp, Odar's Shade, Fang Hideout, Minushan Site, Shadow Hall and Sanctum Dumpsite
+  still have no zone of their own; quests there keep the placeholder zone.
+
+### Saved progress
+
+- Unaffected. Derived ticks are never written. Specialty slots 2 and 3 add the keys `spec2` / `spec3` to a skill only
+  when you tick them; no key is renamed or removed.
+
 ## 0.2.3 — 2026-10-15
 
 Story-quest zones for 34 more quest sides; stigma unlock cost check.
