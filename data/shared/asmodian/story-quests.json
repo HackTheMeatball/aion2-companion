@@ -16,14 +16,14 @@
       "giver": {
         "npc": "Andre",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 23
       },
       "turnin": {
         "npc": "Ellin",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 4
       },
@@ -67,13 +67,6 @@
           ]
         },
         {
-          "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-21",
             "checkedAt": "2026-10-14",
@@ -89,10 +82,12 @@
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "turnin.npc",
             "turnin.place",
+            "turnin.zone",
             "turnin.kibelisk",
             "turnin.meters",
             "steps"
@@ -107,10 +102,6 @@
       ],
       "verifiedAt": "2026-10-15",
       "status": "verified",
-      "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
-      },
       "notes": [
         "First story quest after the tutorial (owner screen owner:2026-10-14-unlocks-21). Ishalgen, listed before it in v1, is the starting map, not a quest (owner:2026-10-14-unlocks-22)."
       ]
@@ -127,14 +118,14 @@
       "giver": {
         "npc": "Ellin",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 4
       },
       "turnin": {
         "npc": "Stellan",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 48
       },
@@ -186,13 +177,6 @@
           ]
         },
         {
-          "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "owner": {
             "ref": "owner:2026-10-14-unlocks-02",
             "checkedAt": "2026-10-14",
@@ -208,10 +192,12 @@
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "turnin.npc",
             "turnin.place",
+            "turnin.zone",
             "turnin.kibelisk",
             "turnin.meters",
             "steps"
@@ -226,10 +212,6 @@
       ],
       "verifiedAt": "2026-10-15",
       "status": "verified",
-      "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
-      },
       "unlocks": {
         "text": "Shop and Closet"
       }
@@ -246,14 +228,14 @@
       "giver": {
         "npc": "Stellan",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 48
       },
       "turnin": {
         "npc": "Pelleir",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 57
       },
@@ -313,21 +295,16 @@
           ]
         },
         {
-          "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
-          "fields": [
-            "giver.zone",
-            "turnin.zone"
-          ]
-        },
-        {
           "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "turnin.npc",
             "turnin.place",
+            "turnin.zone",
             "turnin.kibelisk",
             "turnin.meters",
             "steps"
@@ -341,11 +318,7 @@
         }
       ],
       "verifiedAt": "2026-10-15",
-      "status": "verified",
-      "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
-      }
+      "status": "verified"
     },
     {
       "id": "sq:2101040",
@@ -359,7 +332,7 @@
       "giver": {
         "npc": "Pelleir",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 57
       },
@@ -436,7 +409,6 @@
         {
           "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
           "fields": [
-            "giver.zone",
             "turnin.zone"
           ]
         },
@@ -445,6 +417,7 @@
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "turnin.npc",
@@ -464,7 +437,6 @@
       "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       }
     },
@@ -741,7 +713,7 @@
       "giver": {
         "npc": "Argit",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 35
       },
@@ -830,7 +802,6 @@
         {
           "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
           "fields": [
-            "giver.zone",
             "turnin.zone"
           ]
         },
@@ -839,6 +810,7 @@
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "turnin.npc",
@@ -858,7 +830,6 @@
       "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       }
     },
@@ -1002,7 +973,7 @@
       "turnin": {
         "npc": "Pelleir",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 57
       },
@@ -1064,8 +1035,7 @@
         {
           "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
           "fields": [
-            "giver.zone",
-            "turnin.zone"
+            "giver.zone"
           ]
         },
         {
@@ -1077,6 +1047,7 @@
             "giver.meters",
             "turnin.npc",
             "turnin.place",
+            "turnin.zone",
             "turnin.kibelisk",
             "turnin.meters",
             "steps"
@@ -1092,8 +1063,7 @@
       "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
-        "turnin.zone": "owner-check"
+        "giver.zone": "owner-check"
       }
     },
     {
@@ -1108,7 +1078,7 @@
       "giver": {
         "npc": "Pelleir",
         "place": "Aldelle Village",
-        "zone": "zone:ishalgen",
+        "zone": "zone:aldelle-village",
         "kibelisk": "Aldelle Village",
         "meters": 57
       },
@@ -1165,7 +1135,6 @@
         {
           "inferred": "Zone: the quest is on the Ishalgen starting map (the v1 data has no location for it).",
           "fields": [
-            "giver.zone",
             "turnin.zone"
           ]
         },
@@ -1174,6 +1143,7 @@
           "fields": [
             "giver.npc",
             "giver.place",
+            "giver.zone",
             "giver.kibelisk",
             "giver.meters",
             "steps"
@@ -1189,7 +1159,6 @@
       "verifiedAt": "2026-10-15",
       "status": "verified",
       "fieldStatus": {
-        "giver.zone": "owner-check",
         "turnin.zone": "owner-check"
       }
     },
