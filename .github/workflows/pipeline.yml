@@ -6,6 +6,10 @@ name: Pipeline
 #   - CI green on a PR's current head, and no review newer than the head  -> a review run (Sonnet; Opus for risky paths).
 #   - CI red on the head: first failure -> re-run the failed jobs once (no model); second failure -> a fix run.
 #   - Latest claude[bot] review says VERDICT: CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
+#   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
+#     serial file with the merged diff) -> a run that merges main into the branch (merge commit), re-records golden only
+#     if the merge needs it, runs npm test and pushes. Opus when golden/mig1 or risky paths are involved. Not a fix round;
+#     at most one per PR per main commit.
 #   - At most 3 fix rounds per PR (Sonnet, Sonnet, Opus; Opus from round 1 for risky paths). Then the PR gets the label
 #     "stuck" and the pipeline leaves it to the CEO. A comment by the owner containing "pipeline:reset" restarts the count.
 # A review counts for a head only if it names that head's short SHA ("Review of <sha7>"); a date check alone let a
@@ -27,7 +31,7 @@ on:
         description: PR number
         required: true
       step:
-        description: review or fix
+        description: review, fix, or merge (bring main into the branch; kickoff dispatches it after a merge)
         required: true
         default: review
 
@@ -93,7 +97,7 @@ jobs:
                 return none('a run reported it is stuck; labelled');
               } else return none('comment needs no step');
             } else {
-              prNum = Number(p.inputs.pr); want = p.inputs.step === 'fix' ? 'fix' : 'review';
+              prNum = Number(p.inputs.pr); want = ['fix', 'merge'].includes(p.inputs.step) ? p.inputs.step : 'review';
               reason = 'Started by hand: read the latest review comment and the latest CI run on the head, and fix what they report.';
             }
 
@@ -115,7 +119,23 @@ jobs:
             const risky = labels.includes('opus') || changed > 300
               || files.some((f) => riskyPath.test(f.filename) || ((/^src\/main\.js$|^data\//.test(f.filename)) && riskyPatch.test(f.patch || '')));
 
-            if (want === 'review') {
+            if (want === 'merge') {
+              // One merge run per PR per main commit: kickoff can dispatch again after the next merge.
+              const main = (await github.rest.repos.getBranch({ owner, repo, branch: 'main' })).data.commit.sha.slice(0, 7);
+              if (comments.some((c) => c.user && c.user.login === 'github-actions[bot]' && (c.body || '').includes(`<!-- pipeline:merge main=${main} `)))
+                return none(`a merge run for main ${main} exists`);
+              const golden = files.some((f) => /^(tests\/golden|tests\/e2-migtest)/.test(f.filename) || /mig1/.test(f.patch || ''));
+              const opus = risky || golden;
+              core.setOutput('model', opus ? 'claude-opus-5-5' : 'claude-sonnet-5-5');
+              core.setOutput('note', `<!-- pipeline:merge main=${main} -->\nPipeline: bringing main (${main}) into this branch (${opus ? 'Opus' : 'Sonnet'}), because it conflicts with main or shares a serial file with the last merge.`);
+              core.setOutput('prompt', [
+                `You update pull request #${prNum} in ${owner}/${repo}, branch ${pr.head.ref} (checked out), head commit ${sha}, with the current main (${main}).`,
+                'Read CLAUDE.md first. Run `git fetch origin main` and `git merge origin/main` (a merge commit; never rebase, amend or force-push). Resolve conflicts keeping the intent of both sides.',
+                'Re-record golden snapshots only if the golden suite fails because of the merge itself, and say in the commit which snapshots changed and why. Never skip, disable or weaken a test or check.',
+                'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment.',
+                'If the conflict needs a design or owner decision, do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
+              ].join('\n'));
+            } else if (want === 'review') {
               const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
                 .some((r) => r.status === 'completed' && r.conclusion === 'success');
               if (!ok) return none('ci-ok not green on the head');
@@ -150,7 +170,7 @@ jobs:
                 reason,
                 'Read CLAUDE.md first and follow it. Find the root cause and fix it on this branch. Never skip, disable or weaken a test or check to get green; if an expectation must change on purpose, say why in the commit.',
                 opus ? '' : 'Sonnet limits (owner routing rule): if the fix would touch src/core/, save/sync/migration/storage code, a gate\'s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment starting "Needs @claude (Opus):" with the reason, then stop.',
-                'Run `npm test` and make sure it is green before committing (use `node tests/run.mjs --only <suites>` after `npm run build` while iterating).',
+                'Run commands in the foreground only (a background command can end the run early). Commit and push after each finished step. While iterating use `node tests/run.mjs --only <suites>` after `npm run build`, batch slow golden or pixel runs, and run the full `npm test` once at the end: it must be green before the last push.',
                 `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it.`,
                 'If it cannot be fixed safely (unverifiable game data, an owner decision, an outside failure), do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
               ].filter(Boolean).join('\n'));
@@ -162,7 +182,7 @@ jobs:
 
   run:
     needs: decide
-    if: needs.decide.outputs.step == 'review' || needs.decide.outputs.step == 'fix'
+    if: contains(fromJSON('["review","fix","merge"]'), needs.decide.outputs.step)
     runs-on: ubuntu-24.04
     timeout-minutes: 240
     concurrency:
@@ -183,6 +203,7 @@ jobs:
           SHA: ${{ needs.decide.outputs.sha }}
           STEP: ${{ needs.decide.outputs.step }}
           NOTE: ${{ needs.decide.outputs.note }}
+          ATTEMPT: ${{ github.run_attempt }}
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -196,21 +217,23 @@ jobs:
             }
             core.info(go ? 'still current' : 'stale, skipping');
             core.setOutput('go', String(go));
-            // The fix-round marker is written only once the run is known to go ahead, so a stale queued run uses no round.
-            if (go && process.env.STEP === 'fix') await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: process.env.NOTE });
+            // The fix-round (or merge) marker is written only once the run is known to go ahead, so a stale queued run uses no round.
+            // A Restart re-run (attempt 2) of the same run reuses the marker it already posted, so no extra round.
+            if (go && process.env.STEP !== 'review' && Number(process.env.ATTEMPT) === 1) await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: process.env.NOTE });
       - if: steps.recheck.outputs.go == 'true'
         uses: actions/checkout@v7
         with:
           ref: ${{ needs.decide.outputs.branch }}
-          fetch-depth: 1
+          # A merge run needs the history to find the merge base with main; a shallow head has none.
+          fetch-depth: ${{ needs.decide.outputs.step == 'merge' && 0 || 1 }}
           # Not persisted: the action pushes as the Claude GitHub App, so its pushes trigger CI (see claude.yml).
           persist-credentials: false
-      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'fix'
+      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step != 'review'
         uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
-      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'fix'
+      - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step != 'review'
         run: npm ci && npx playwright install --with-deps chromium
       - if: steps.recheck.outputs.go == 'true'
         uses: anthropics/claude-code-action@v1
