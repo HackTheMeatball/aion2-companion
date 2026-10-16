@@ -130,7 +130,9 @@ The header (brand row, eyebrow "· 1 → 45") and the footer with "unofficial �
 Mockup frames (`mockups/phone/after-*.png`, from `phone-layout.html`; Level up is green as in the app): `after-top-basic`, `after-lower-basic`,
 `after-build-sheet`. They are static HTML, not the product; labels and values are placeholders.
 The frames are cropped to fit 844 px, and their spacing is not a proposal: cards use the app's values (16 px padding,
-12 px radius, uniform gaps, `app.css:63`) in every frame.
+12 px radius, uniform gaps, `app.css:63`) in every frame. Milestones is drawn as a card for space; in the app it stays a
+heading plus the `#gates` list, and the plan does not change that. Next up's "Show" is drawn neutral in frame 1; the
+build uses the primary style from §3.4.
 
 ## 4. Patch plan (0.2.6+)
 
@@ -147,12 +149,13 @@ CSS-only means `src/styles/app.css` (and at most static markup in `src/index.htm
 | F | Sticky level bar (`LV n` + Level up, no track); moves the existing `#lvlUpBig` into the bar at phone widths (one element, one handler); live level number | `src/index.html` + CSS + **`src/main.js`** | **yes** | M | yes, owner |
 | G | Next up "1 of N" pager and compact later cards | **`src/main.js`** (`renderNow`) | **yes**, after 0.3 | L | yes, owner |
 | H | Bottom tab bar and Build bottom sheet | **`src/main.js`** (drawer code) + CSS | **yes** | M | yes, owner |
+| I | Fold Journey, Progress and Dungeons & Strongholds by default on phones (§3.6). Today only Confidence and Sources are `details.foldcard` (`src/index.html:194`, `:198`); Progress, Journey and D&S are plain `<section>`s (`:47`, `:60`, `:94`). Needs markup (`details.foldcard`, an `id` for Journey) and JS for the phone- and mode-dependent default. Fold state is saved as `state["fold_" + id]` (`src/main.js:355`): this adds new `fold_<id>` keys through that pattern, add-only, no migration | `src/index.html` + **`src/main.js`** | **yes**, after 0.3 | M | yes, owner |
 
 Order: B, C, D ship as 0.2.6 (CSS-only), and A with them apart from its one-line `aria-label` change in `main.js`. E, F,
 G, H touch `src/main.js` and the card code that 0.3 rewires, so they wait for 0.3 and then go one at a time in the
-order E, F, G, H, each rebased on the previous one. Tests: A–E change 390 px layout expectations in `regress` / `e1`
+order E, F, G, H, I, each rebased on the previous one. Tests: A–E change 390 px layout expectations in `regress` / `e1`
 and the 390 px touch probes and 260 px zoom check in `tests/a11y.js` (the audit noted this); the golden master is
-unaffected. Run `mig1`, `mig2`, `journey` for patches that touch `main.js` (A's label change, E–H). F and H are also
+unaffected. Run `mig1`, `mig2`, `journey` for patches that touch `main.js` (A's label change, E–I; I adds save keys). F and H are also
 checked at 390 px in the artifact build (see Both builds).
 
 ## 5. Open questions for the owner
