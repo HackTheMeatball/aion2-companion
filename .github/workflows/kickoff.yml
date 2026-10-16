@@ -80,16 +80,14 @@ jobs:
             // One with no PR 5 h after it started (blocked, handed to Opus, failed or timed out) is marked "stalled"
             // so it frees its slot; the planner reads why and re-queues it or raises a To-do.
             let pruned = false;
-            const kept = [];
+            const kept = [], stalled = [];
             for (const l of lines) {
               const s = l.match(/^- \[started ([^\]]*)\] #(\d+)(.*)$/);
               if (s) {
                 const n = Number(s[2]);
                 if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.state === 'closed') { pruned = true; continue; }
                 if (!refs.some((r) => r.startsWith(`claude/issue-${n}-`)) && Date.now() - Date.parse(s[1]) > 5 * 3600e3) {
-                  kept.push(`- [stalled ${s[1]}] #${n}${s[3]}`); pruned = true;
-                  await github.rest.issues.createComment({ owner, repo, issue_number: n,
-                    body: 'Kickoff: no PR 5 h after this build started; marked stalled in #114 for the CEO planner.' });
+                  kept.push(`- [stalled ${s[1]}] #${n}${s[3]}`); pruned = true; stalled.push(n);
                   continue;
                 }
               }
@@ -131,6 +129,9 @@ jobs:
             const now = (await github.rest.issues.get({ owner, repo, issue_number: STATE })).data.body || '';
             if (now !== body) { core.warning('#114 changed during this run; nothing started, retry later'); return; }
             await github.rest.issues.update({ owner, repo, issue_number: STATE, body: lines.join('\n') });
+            // Comments only after #114 was written, so a retried run doesn't comment twice.
+            for (const n of stalled) await github.rest.issues.createComment({ owner, repo, issue_number: n,
+              body: 'Kickoff: no PR 5 h after this build started; marked stalled in #114 for the CEO planner.' });
             if (!picked.length) return core.info('nothing to start');
             for (const p of picked) await github.rest.issues.createComment({ owner, repo, issue_number: p.issue,
               body: `Kickoff: started a build on this issue (${p.model.includes('opus') ? 'Opus' : 'Sonnet'}). It will open a claude/ PR when done.` });
@@ -193,7 +194,7 @@ jobs:
   refresh:
     if: github.event_name == 'workflow_run'
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 15
     permissions:
       contents: write
       pull-requests: write
@@ -236,8 +237,13 @@ jobs:
               if (!conflict && !shared.some((x) => x === 'golden' || x === 'mig')) {
                 try {
                   await github.rest.pulls.updateBranch({ owner, repo, pull_number: pr.number, expected_head_sha: pr.head.sha });
-                  // update-branch is asynchronous; give it a moment before CI is dispatched on the branch.
-                  await new Promise((r) => setTimeout(r, 10000));
+                  // update-branch is asynchronous: wait (up to 2 min) until the merge commit is the head, so CI runs on it.
+                  let moved = false;
+                  for (let i = 0; i < 24 && !moved; i++) {
+                    await new Promise((r) => setTimeout(r, 5000));
+                    moved = (await github.rest.pulls.get({ owner, repo, pull_number: pr.number })).data.head.sha !== pr.head.sha;
+                  }
+                  if (!moved) throw new Error('head did not move within 2 min');
                   await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'ci.yml', ref: pr.head.ref });
                   core.notice(`#${pr.number}: merged main in (shares ${shared.join(', ')}), CI dispatched`);
                   continue;

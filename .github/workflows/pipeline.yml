@@ -203,6 +203,7 @@ jobs:
           SHA: ${{ needs.decide.outputs.sha }}
           STEP: ${{ needs.decide.outputs.step }}
           NOTE: ${{ needs.decide.outputs.note }}
+          ATTEMPT: ${{ github.run_attempt }}
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -217,12 +218,14 @@ jobs:
             core.info(go ? 'still current' : 'stale, skipping');
             core.setOutput('go', String(go));
             // The fix-round (or merge) marker is written only once the run is known to go ahead, so a stale queued run uses no round.
-            if (go && process.env.STEP !== 'review') await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: process.env.NOTE });
+            // A Restart re-run (attempt 2) of the same run reuses the marker it already posted, so no extra round.
+            if (go && process.env.STEP !== 'review' && Number(process.env.ATTEMPT) === 1) await github.rest.issues.createComment({ owner, repo, issue_number: pr.number, body: process.env.NOTE });
       - if: steps.recheck.outputs.go == 'true'
         uses: actions/checkout@v7
         with:
           ref: ${{ needs.decide.outputs.branch }}
-          fetch-depth: 1
+          # A merge run needs the history to find the merge base with main; a shallow head has none.
+          fetch-depth: ${{ needs.decide.outputs.step == 'merge' && 0 || 1 }}
           # Not persisted: the action pushes as the Claude GitHub App, so its pushes trigger CI (see claude.yml).
           persist-credentials: false
       - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step != 'review'
