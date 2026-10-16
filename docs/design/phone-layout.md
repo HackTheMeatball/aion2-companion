@@ -99,14 +99,19 @@ The header (brand row, eyebrow "· 1 → 45") and the footer with "unofficial �
 
 1. **Order: Next up first.** ≤ 860 px: header, sticky level bar, Next up, Milestones, Journey (folded in Basic),
    Progress, Skills / Daevanion / Stigmas, Dungeons & Strongholds, The map (Advanced), Route rules, Confidence, Sources.
-   Next up lands at about 400 px instead of 2,118. The Progress card (ring plus Quests / Dungeons / Strongholds rows,
+   Next up lands at about 400 px instead of 2,118. Milestones moves from after Journey to before it: it is a short
+   "what to do at this level" list in the same family as Next up, and in Basic it keeps the essentials above the folded
+   Journey card. The Progress card (ring plus Quests / Dungeons / Strongholds rows,
    overall progress) is kept as is and moves to just after Journey; the bar does not replace it.
-2. **Sticky level bar**: `LV 39`, a track labelled "Level progress" (progress within the current level, not the
-   overall Progress card), and **Level up** (44 px). Level up keeps its current green gradient (`.lvlup-btn`,
-   `app.css:501`); no colour change. On phone widths the button lives in the bar only and Journey's `#lvlUpBig`
-   (`src/index.html:69`) is hidden at that width, so exactly one Level up button is on screen at any time. Level −/+ and
-   the slider stay in Journey (Advanced); the intent from CLAUDE.md, that the level changes only through Level up / − /
-   + / slider, is unchanged.
+2. **Sticky level bar**: `LV 39` and **Level up** (44 px), nothing else. There is no track: the app stores only a whole
+   level, no within-level progress, and the owner wants minimal visual distraction. Level up keeps its current green
+   gradient (`.lvlup-btn`, `app.css:501`); no colour change. At phone widths patch F **moves the existing
+   `#lvlUpBig` element** (`src/index.html:69`) into the bar: one element, one handler (`main.js:1624`), so it stays
+   disabled at 45 with its "Level cap (45)" title (`main.js:807`) and keeps the `.pop` / `#lvlNum.pulse` feedback. It is
+   never a second or hidden-duplicate button, so exactly one Level up is on screen at any time. Level −/+ and the
+   slider stay in Journey in both modes (Basic hides only `#ahead`, `#questSubs`, `#trackWrap`, `app.css:988`); the
+   intent from CLAUDE.md, that the level changes only through Level up / − / + / slider, is unchanged. While the Build
+   sheet is open the scrim starts below the bar, so Level up stays visible and tappable (`after-build-sheet.png`).
 3. **44 px targets** on touch: Basic/Advanced switch as two 44 px halves; −/+ steppers 44×44; `.q-inl` and "i" get a
    44 px hit area through the existing `::before { inset: -Npx }` pattern (visual size unchanged); list-row links and
    checkboxes get row-wide labels of at least 44 px; folded cards `min-height: 48px`.
@@ -135,7 +140,7 @@ CSS-only means `src/styles/app.css` (and at most static markup in `src/index.htm
 | C | Re-run page zoom at 195 / 640 px and fix what fails. `flex-wrap` on `.progress-row` (`app.css:71`) and `.ns-head` already exists, and `tests/a11y.js` §8 already asserts no sideways scroll at 260 px; only the 195 / 640 px cases are open | CSS (+ test) | no | S | yes |
 | D | Route rules card home (F11, ROADMAP 0.2.6) | `src/index.html` markup + CSS | no, unless it needs JS to place it | S | yes, owner |
 | E | Card order on phones: Next up first. Skills / Daevanion / Stigmas sit in `#main > .top-grid` and Next up comes after them, while the rail is a separate landmark. CSS `order` would need `display: contents` on `aside.rail`, `main#main` and `.top-grid` together, which flattens both landmarks (why the audit chose a JS move). So: a **`src/main.js`** move | **`src/main.js`** + CSS | **yes**, after 0.3 | M–L | yes, owner |
-| F | Sticky level bar; hides `#lvlUpBig` at phone widths; own live level | `src/index.html` + CSS + **`src/main.js`** | **yes** | M | yes, owner |
+| F | Sticky level bar (`LV n` + Level up, no track); moves the existing `#lvlUpBig` into the bar at phone widths (one element, one handler); live level number | `src/index.html` + CSS + **`src/main.js`** | **yes** | M | yes, owner |
 | G | Next up "1 of N" pager and compact later cards | **`src/main.js`** (`renderNow`) | **yes**, after 0.3 | L | yes, owner |
 | H | Bottom tab bar and Build bottom sheet | **`src/main.js`** (drawer code) + CSS | **yes** | M | yes, owner |
 
@@ -152,7 +157,7 @@ checked at 390 px in the artifact build (see Both builds).
 - Tab bar: Route · Gear · Build is a guess; Skills, Daevanion and Stigmas could be a single "Gear" tab or stay in the page flow.
 - Basic mode is essentials only, and this plan adds permanent chrome (sticky bar plus 52 px tab bar). Acceptable? Also:
   folding Dungeons & Strongholds by default hides a core tick list; folding Journey in Basic also hides − / + / slider,
-  which Basic shows today; should "1 of N" show in Basic?
+  which Basic shows today (the plan says they stay in Journey in both modes, so a folded Journey is the open point); should "1 of N" show in Basic?
 - The `before-*` PNGs (about 3.6 MB; `before-advanced-full.png` is 1.3 MB) contain skill, stigma and Daevanion icons
   inside app screenshots. They are already-approved icons, not new art; OK to commit, or trim?
 - Please check on the iPhone: whole-row tap on Confidence / Sources, and whether any field still zooms on focus.
