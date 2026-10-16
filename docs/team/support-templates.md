@@ -12,7 +12,7 @@ Sort every report into one type. Label it, then ask only for what that type need
 |---|---|---|---|---|
 | Save problem | `bug` | Progress lost, ticks reverted, wrong level after reload, import/export failed | Version, build (site or artifact), browser and device, whether the browser clears site data on exit or is in private mode, what they did just before. Ask them to use **Export** first if the page still loads. | Engineering. Treat as urgent (CLAUDE.md: never break saved progress). |
 | Wrong guide data | `data` | A level gate, quest giver, location, skill value or order is wrong | The step or quest name, their level, what the game shows, and a source if they have one (a link or "in-game screen"). | Data & Research, with the reporter's source. |
-| Display bug | `bug` or `ux` | Layout broken, text cut off, wrong colour, a card missing, slow | Version, build, browser, device and window size, mode (Basic or full), and the page section. A screenshot of the guide is fine if it shows no account info. | Engineering (reproduce at the reported version, level and story quest). |
+| Display bug | `bug` or `ux` | Layout broken, text cut off, wrong colour, a card missing, slow | Version, build, browser, device and window size, mode (Basic or Advanced), and the page section. A screenshot of the guide is fine if it shows no account info. | Engineering (reproduce at the reported version, level and story quest). |
 | Request | `feature` | New feature, another class, a different layout | What they are trying to do, not the solution. | CEO, for the roadmap. |
 
 If a report fits two types, file the more urgent one and note the other in the text.

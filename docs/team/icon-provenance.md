@@ -53,6 +53,6 @@ repo says where they came from, so this table does not guess.
 | st-swift-contract.png | none recorded | none | none |
 | st-triniels-dagger.png | none recorded | none | none |
 
-**Owner action:** say where each of these 23 came from (site, page URL, file URL, date), or approve re-sourcing them from
-Metabot under the standing icon OK, which would record them as above. Until then, a takedown or permission request for
-any of them cannot be answered from the repo. Once filled in, update the ISSUES.md table and this file together.
+**Owner action:** say where each of these 23 came from (site, page URL, file URL, date), or they are re-sourced from
+Metabot under the standing icon OK (no new approval needed) unless the owner objects. Until then, a takedown or permission request for
+any of them cannot be answered from the repo. `docs/ISSUES.md` is the canonical record; update it first and mirror it here.

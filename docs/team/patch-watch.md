@@ -15,13 +15,14 @@ Use only sources in `data/sources.json` (`records[]`). Read the record's `access
 
 | Source | Use |
 |---|---|
-| Metabot (metabot.gg) | First choice. Quest, skill and Daevanion pages. Terms allow scripted reads with a dofollow link to the page; robots.txt excludes `/api/` and player profiles. |
+| Metabot (metabot.gg) | First choice. Quest, skill and Daevanion pages. Terms allow scripted reads with a dofollow link to the page, non-commercial use and no implied endorsement; robots.txt excludes `/api/` and player profiles. |
 | aion2.gaming.tools | Game database. Cloudflare challenge: the owner reads it by hand in a browser. |
 | Wikily | `bans-automation`: the owner reads it by hand. |
 | The owner's in-game screens | Source of truth. Outranks every other source. |
-| Sites marked `human-only` | Owner by hand only. |
+| AION2HUB | `scripted` for spot checks only, as weak corroboration: single source, pre-launch client unless confirmed. |
+| Sites marked `human-only` | Owner by hand only. thegameswiki (CC BY-NC-SA): facts only, never its wording. |
 
-Never read: **aion2.th.gl** (robots.txt excludes AI agents; `withdrawn`) and **Game8** (`banned`). Facts that came from
+This table is not exhaustive; the record in `data/sources.json` decides. Any site that opts out of AI agents or all automated access is never fetched. Never read: **aion2.th.gl** (robots.txt excludes AI agents; `withdrawn`) and **Game8** (`banned`). Facts that came from
 th.gl are re-verified against a permitted source and attributed to it.
 
 Fetch rules: read terms and robots.txt before any content page. Our own honest User-Agent. At most 12 requests a minute
@@ -33,7 +34,7 @@ one. A site that only bans scraping gets a few spot checks, 5 s apart, facts onl
 Work from `verifiedAt` (oldest first) and the build. Check in this order:
 
 1. **Level gates**: story and regional quest levels, `noPre` quests, unlock levels, Sealed Dungeon entry levels, the four
-   Ascension quests (Lv 5, 22, 32, 45).
+   Ascension quests in `ascension-quests.json` (currently Lv 5, 22, 32, 45 and 49).
 2. **Quest givers and locations**: giver, zone, turn-in NPC, prerequisite and unlock links (confirm from both ends).
 3. **Skill and stigma values**: skill levels, unlock levels, costs, stigma slots, Daevanion board nodes and costs.
 4. **Rewards and items** that the guide text names.
@@ -64,7 +65,7 @@ confirms goes on a list for an owner in-game check. Then run `npm run gen`; it v
 - Data & Research prepares the change and the list of what changed, with sources and the build.
 - QA & Release runs `npm test` and the save suites ([qa-release.md](qa-release.md)).
 - The **owner** signs off anything that changes what a player sees at a level gate, anything labelled `disputed`, and
-  every in-game check. Per HANDOFF.md, the CEO may merge data-only patches within the limits the owner has set.
+  every in-game check. Merging follows the current merge rule in HANDOFF.md. By default nothing merges without the owner's OK; the CEO's merge grant covered only the 0.2 → 0.3 cycle.
 - Add a CHANGELOG line that says what changed and the game build.
 
 ## 6. Output
