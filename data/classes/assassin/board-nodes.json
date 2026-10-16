@@ -11345,16 +11345,24 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-16-zikel-01",
+            "checkedAt": "2026-10-16",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based)"
+          }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-16",
       "status": "verified",
       "notes": [
-        "Defense Break 2 of 2: assigned to r12c11 for an owner check (see dv:z:db)."
-      ],
-      "fieldStatus": {
-        "key": "owner-check"
-      }
+        "Defense Break 2 of 2. Owner 2026-10-16: row 10 column 9 on the 11×11 board (r = row + 2, c = column + 2; see dv:z:db)."
+      ]
     },
     {
       "id": "node:assassin:zikel:r12c13",
@@ -12501,16 +12509,24 @@
             "scheme": "metabot",
             "value": "0.0.4387.0"
           }
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-16-zikel-01",
+            "checkedAt": "2026-10-16",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based)"
+          }
         }
       ],
-      "verifiedAt": "2026-10-14",
+      "verifiedAt": "2026-10-16",
       "status": "verified",
       "notes": [
-        "Defense Break 1 of 2: which physical node the v1 key means is not stated anywhere; assigned to r6c7 (the cheaper path) for an owner check."
-      ],
-      "fieldStatus": {
-        "key": "owner-check"
-      }
+        "Defense Break 1 of 2 (the cheaper path). Owner 2026-10-16: the board's two Defense Break +1 nodes are at row 4 column 5 (this node) and row 10 column 9 (dv:z:db2), 1-based on the 11×11 board; node ids use Metabot's 15×15 frame, so r = row + 2, c = column + 2."
+      ]
     },
     {
       "id": "node:assassin:zikel:r6c9",

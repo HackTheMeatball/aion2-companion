@@ -531,6 +531,7 @@ span.spmini { background: var(--panel-2); border: 1px solid var(--line); box-siz
 .spmini.ini, .st-mini.ini { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; box-sizing: border-box; font: 700 8.5px/1 var(--mono); letter-spacing: 0; color: #e6b450; background: color-mix(in srgb, #e6b450 12%, var(--panel-2)); border: 1px solid color-mix(in srgb, #e6b450 30%, var(--line)); vertical-align: -4px; }
 .dvico.spico.ini { display: grid; place-items: center; font: 700 18px var(--mono); color: #e6b450; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, #e6b450 22%, var(--panel-2)), var(--panel-2)); border: 1px solid color-mix(in srgb, #e6b450 30%, var(--line)); box-sizing: border-box; }
 .dvhead .dvico img.dvbadge, .dvico img.dvbadge { position: absolute; inset: auto -4px -4px auto; width: 24px; height: 24px; border-radius: 6px; object-fit: cover; box-shadow: 0 0 0 2px var(--panel), 0 2px 6px #000a; }
+.sptype { font: 600 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid #9f90a866; border-radius: 4px; padding: 0 4px; vertical-align: 1px; }
 .spectag { font: 600 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #e6b450; border: 1px solid #e6b45066; border-radius: 4px; padding: 0 4px; margin-left: 2px; vertical-align: 1px; }
 .soonlist li[hidden] { display: none !important; }
 /* Progress card: ring (percent + count) beside three compact rows, all within the ring's height. */
@@ -1429,7 +1430,7 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   .ns-btn.primary, #nowStar .ns-card .ns-go, .dvbuy { min-height: 44px; }
   .ms-meta, .sd-tab, .where-sub, .where-sub > span, .dvbh-k, .lvl-ctl label, .numctl label, .ptbig > span, .qs-head > span,
   .khead, .tier-n, :is(h2, div).sec .ns-pop, .stackviz .rn, .lmb, .ah-ver, .q-inl, #nowStar .q-inl, .asec-t, .modeseg button,
-  .behind-pill, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
+  .behind-pill, .sptype, .spectag, .st-n, .opt-tag, .run-tag, .paid-tag, .tier .seq .src, .gate .num small, .q-snz, #nowStar .ql .q-snz,
   .dvcost-k, .soonlist li.then-board span:last-child, .dvb-new { font-size: 11px !important; }
   .dvcr, .ztr, .ah-main small, #nowStar .ah-main small, :is(h2, div).sec .sec-btn, .qs-sub-loc, .qs-list small, .ns-obj small,
   .top-grid .soonlist small, #spCard .sphero .dvtext small, .ns-obj-more, .cube-btn, .st .unl, .asc-txt { font-size: 12px !important; }

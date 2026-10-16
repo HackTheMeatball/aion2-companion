@@ -311,13 +311,50 @@
           {
             "story": "sq:2102280",
             "is": "turnedIn",
-            "basis": "owner-check",
-            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15). Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
+            "basis": "owner",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-16-hugo-02",
+                  "checkedAt": "2026-10-16",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Owner, by hand on th.gl + in-game observation: Deep Shadow needs Canyon's Secret + Hugo Mercenaries: Past and Present and unlocks Hugo Mercenaries: An Old Promise"
+                }
+              }
+            ],
+            "note": "Story quest present in app QUESTS (storyLv = app QUESTS level). Gate meaning is turned in (owner check 1, 2026-10-15). Owner-confirmed 2026-10-16 (prereq-gates §11 check 9): in game, Past and Present alone did not open Deep Shadow (owner:2026-10-16-hugo-01), and the owner's own th.gl check lists Canyon's Secret + Past and Present (owner:2026-10-16-hugo-02)."
           },
           {
             "done": "rq:2202010",
-            "basis": "owner-check",
-            "note": "New edge. Its only source was aion2.th.gl, withdrawn 2026-10-14 (robots.txt excludes AI agents); kept as in v1 until the owner checks it in game (prereq-gates §11 check 9)."
+            "basis": "owner",
+            "sources": [
+              {
+                "owner": {
+                  "ref": "owner:2026-10-16-hugo-01",
+                  "checkedAt": "2026-10-16",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Turned in Hugo Mercenaries: Past and Present (rec Lv 16, Derk at Safe Haven); Hugo Mercenaries: Deep Shadow was not offered afterwards"
+                }
+              },
+              {
+                "owner": {
+                  "ref": "owner:2026-10-16-hugo-02",
+                  "checkedAt": "2026-10-16",
+                  "build": {
+                    "scheme": "client",
+                    "value": "unrecorded"
+                  },
+                  "what": "Owner, by hand on th.gl + in-game observation: Deep Shadow needs Canyon's Secret + Hugo Mercenaries: Past and Present and unlocks Hugo Mercenaries: An Old Promise"
+                }
+              }
+            ],
+            "note": "New edge. Owner-confirmed 2026-10-16 (prereq-gates §11 check 9): the owner's own th.gl check lists Past and Present + Canyon's Secret (owner:2026-10-16-hugo-02); in game, Past and Present alone did not open it (owner:2026-10-16-hugo-01)."
           }
         ]
       },

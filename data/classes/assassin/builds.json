@@ -285,6 +285,17 @@
           "sources": [
             "https://aion2-meta.com/guides/assassin/",
             "https://aion2turkiye.com/en/class/assassin/"
+          ],
+          "owner": [
+            {
+              "ref": "owner:2026-10-16-quickslice-01",
+              "checkedAt": "2026-10-16",
+              "build": {
+                "scheme": "client",
+                "value": "unrecorded"
+              },
+              "what": "Quick Slice tooltip, Lv 7 (+1): +20% MP restored; Absorbs 0.7% HP; +50% Multi-Hit on hit; Lv 12: -1s [Insignia Explosion] cooldown on hit; Lv 16: text cut off"
+            }
           ]
         },
         "spec:assassin:quick-slice:5": {
@@ -861,7 +872,11 @@
         "Upgrade priority (v1): Triniel's Dagger to 10 and Illusive Clone to 20 (GamesFuze + Skycoach, 2-source). App plan 'all to 5, then slot 1 to 10/15' is Metabot general advice (single).",
         "v1 board notes: Metaroad board page refused (provenance) and GameWith grid is unlabelled; Metabot gives no node coordinates. Path costs unknown; keep 'about 3–5 with its path' only as labelled inference or drop.",
         "Corner totals by board (Metabot full-board totals): Nezekan: Combat Speed +3%, Cooldown Reduction +3%; Zikel: Damage Boost +3%, Damage Tolerance +3%; Vaizel: Critical Damage Boost +3%, Critical Damage Tolerance +3%; Triniel: Multi-hit Chance +4.5%, Multi-hit Resist +4.5% (https://metabot.gg/en/aion-2/daevanion/assassin (full-board totals; the % stats are the corner stats by the +1.5%/corner rule))",
-        "specialtyPicks (0.3 E7, docs/research/2026-10-specialty-picks.md, merged as #77 at 8dd047d): position = slot (1, 2, 3). Slots 2 and 3 carry only picks the research labels 2+ sources for that slot (Heart Gore 4 / 5, Quick Slice 4 / 5), each listed in specialtyEvidence with its slot witnesses (the generator checks this). Insignia Explosion slot 2 (5 against 3, disputed), Savage Roar slot 2 (4, contested) and the other contested, disputed, single-source and gap slots are left out (\"pick a specialty\", design Q6). GamesFuze is not slot-ordered, so it is no slot witness. Metabot lists the choices but no picks."
+        "specialtyPicks (0.3 E7, docs/research/2026-10-specialty-picks.md, merged as #77 at 8dd047d): position = slot (1, 2, 3). Slots 2 and 3 carry only picks the research labels 2+ sources for that slot (Heart Gore 4 / 5, Quick Slice 4 / 5), each listed in specialtyEvidence with its slot witnesses (the generator checks this). Insignia Explosion slot 2 (5 against 3, disputed), Savage Roar slot 2 (4, contested) and the other contested, disputed, single-source and gap slots are left out (\"pick a specialty\", design Q6). GamesFuze is not slot-ordered, so it is no slot witness. Metabot lists the choices but no picks.",
+        "Quick Slice slot 2 (spec:assassin:quick-slice:4, C40): the owner's tooltip (owner:2026-10-16-quickslice-01) shows the choice in game, unlocking at skill Lv 12. It witnesses the choice, not the slot order."
+      ],
+      "claims": [
+        "C40"
       ]
     }
   ]
