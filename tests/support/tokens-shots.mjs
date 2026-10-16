@@ -3,9 +3,9 @@
    worktree (`git worktree add --detach tests/out/main-wt main`, then `node scripts/build.mjs` inside it: node_modules
    resolves from the repo root above it); "after" is this branch's dist/ and dist-artifact/. Full-page screenshots of the
    site and the claude.ai build: Basic and Advanced x 390 / 1100 px x light / dark colour scheme x saves at Lv 12, 27, 45
-   and a fresh save, plus the Build drawer open and every <details> open at Lv 27. Any differing pixel fails.
-   Writes tests/out/tokens-shots/<case>-<before|after>.png (and -diff.png where they differ).
-   Usage: npm run build && node tests/support/tokens-shots.mjs */
+   and a fresh save, plus the Build drawer open and every <details> open at Lv 27 (96 cases). Any differing pixel fails
+   (a mismatch is re-shot first, see RETRIES). Writes tests/out/tokens-shots/<case>-<before|after>.png (and -diff.png).
+   Usage: npm run build && node tests/support/tokens-shots.mjs [regex,regex,...  (only the cases whose name matches)] */
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -47,11 +47,21 @@ const shoot = async (c, when) => {
   await p.reload(); await p.waitForTimeout(500);
   if (c.extra === 'drawer') { await p.evaluate(() => document.querySelector('.sd-tab').click()); await p.waitForTimeout(400); }
   if (c.extra === 'open') { await p.evaluate(() => document.querySelectorAll('details').forEach(d => { d.open = true; })); await p.waitForTimeout(300); }
-  await p.evaluate(async () => { await document.fonts.ready; scrollTo(0, 0); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
+  /* a resize re-runs fitRail(): at load it sometimes measures before layout is final (Basic rail 1228 vs 1173 px at 1100) */
+  await p.evaluate(async () => { await document.fonts.ready; scrollTo(0, 0); dispatchEvent(new Event('resize')); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
+  await p.waitForTimeout(200);
   await p.mouse.move(0, 0);
-  /* settle: shoot until two shots in a row match (late layout: Next up's stack height, images) */
-  let png = await p.screenshot({ fullPage: true, animations: 'disabled', caret: 'hide' });
-  for (let i = 0; i < 6; i++) { await p.waitForTimeout(300); const nx = await p.screenshot({ fullPage: true, animations: 'disabled', caret: 'hide' }); if (nx.equals(png)) break; png = nx; }
+  /* full page without fullPage: that option resizes the viewport while it shoots, and the page reacts to the resize (Basic
+     rail, Next up stack), so the height raced. Grow the viewport to the page height until it holds, then shoot. */
+  const frames = () => p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  for (let i = 0, h = 0; i < 8; i++) {
+    const H = await p.evaluate(() => document.documentElement.scrollHeight);
+    if (H === h) break;
+    h = H; await p.setViewportSize({ width: c.width, height: H }); await p.waitForTimeout(300); await frames();
+  }
+  /* settle: shoot until two shots in a row match (late layout: images) */
+  let png = await p.screenshot({ animations: 'disabled', caret: 'hide' });
+  for (let i = 0; i < 6; i++) { await p.waitForTimeout(300); const nx = await p.screenshot({ animations: 'disabled', caret: 'hide' }); if (nx.equals(png)) break; png = nx; }
   await ctx.close();
   if (errs.length) console.log(`  page errors (${when} ${name(c)}): ${errs.join(' | ')}`);
   return png;
@@ -71,19 +81,25 @@ const pixelDiff = (a, z) => diffPage.evaluate(async ([a, z]) => {
   return { n, size: `${A.w}x${A.h}`, box: `${x0},${y0}-${x1},${y1}`, diff: url.split(',')[1] };
 }, [a.toString('base64'), z.toString('base64')]);
 
-let same = 0; const bad = [];
+/* A mismatch is re-shot (both sides) up to RETRIES times: page loads are not perfectly repeatable (the artifact's /_blob/
+   icons 404 off claude.ai and its layout settles at varying moments), so two loads of the same build can differ. A real
+   CSS difference differs on every attempt; a case passes only on an exact before/after pair. */
+const RETRIES = 3;
+let same = 0, retried = 0; const bad = [];
 for (const c of CASES) {
   if (ONLY && !ONLY.test(name(c))) continue;
-  const n = name(c), before = await shoot(c, 'before'), after = await shoot(c, 'after');
+  const n = name(c); let before, after, d = null;
+  for (let a = 0; a <= RETRIES; a++) {
+    before = await shoot(c, 'before'); after = await shoot(c, 'after');
+    if (before.equals(after) || (d = await pixelDiff(before, after)).n === 0) { d = null; if (a) { retried++; console.log(`  ${n}: identical on attempt ${a + 1}`); } break; }
+  }
   writeFileSync(join(OUT, n + '-before.png'), before); writeFileSync(join(OUT, n + '-after.png'), after);
-  if (before.equals(after)) { same++; continue; }
-  const d = await pixelDiff(before, after);
-  if (d.n === 0) { same++; continue; }
+  if (!d) { same++; continue; }
   if (d.diff) writeFileSync(join(OUT, n + '-diff.png'), Buffer.from(d.diff, 'base64'));
   bad.push(`${n}: ${d.n < 0 ? 'size ' + d.size : d.n + ' px differ in ' + d.box + ' (' + d.size + ')'}`);
 }
 await b.close(); for (const x of Object.values(servers)) x.s.close();
 console.log(bad.join('\n'));
-console.log(`${same + bad.length} cases: ${same} pixel-identical, ${bad.length} differ · screenshots: ${OUT}`);
+console.log(`${same + bad.length} cases: ${same} pixel-identical (${retried} after a re-shoot), ${bad.length} differ · screenshots: ${OUT}`);
 console.log(bad.length ? 'TOKENS SHOTS DIFFER' : 'TOKENS SHOTS IDENTICAL');
 process.exit(bad.length ? 1 : 0);
