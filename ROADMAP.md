@@ -179,6 +179,8 @@ acceptance tests, is its plan file.
 | [P4a](docs/plans/0.4/P4a-card-registry.md) | Every card hard-wired in the page script → registry; first two cards mounted through it | M | `src/core/cards.js`, `src/main.js`, `src/index.html`, `src/cards/sources.js`, `tests/support/dom-snapshot.mjs` | Opus | main.js |
 | [P4b](docs/plans/0.4/P4b-pack-cards.md) | AION 2 cards in the page script → moved verbatim to `src/packs/aion2/cards/` | L | `src/main.js`, `src/index.html`, `src/packs/aion2/cards/**` | Opus | main.js |
 | [P4c](docs/plans/0.4/P4c-engine-cards.md) | Engine cards in the page script → moved verbatim to `src/cards/`; `main.js` is the shell | L | `src/main.js`, `src/index.html`, `src/cards/**` | Opus | main.js |
+| [P4d](docs/plans/0.4/P4d-card-styles.md) | All card styles in one `app.css` → one stylesheet per card, verbatim, proven by a computed-style snapshot (owner idea, added 2026-10-16) | L | `src/styles/**`, `src/index.html` links | Opus | app.css |
+| [P4e](docs/plans/0.4/P4e-card-golden.md) | Golden shards hold every card together → snapshots stored per card, `--record --card` (owner idea, added 2026-10-16) | M | `tests/golden.js`, `tests/golden/snapshots/**` | Opus | golden |
 | [P5a](docs/plans/0.4/P5a-nextup-card.md) | Next up and Later cards neutral | M | `src/cards/nextup.js`, `src/cards/ahead.js`, pack renderers | Opus | none |
 | [P5b](docs/plans/0.4/P5b-milestone-cards.md) | Milestone and Route rules cards neutral | M | `src/cards/milestones.js`, `src/cards/route.js`, pack row renderers | Opus | none |
 | [P5c](docs/plans/0.4/P5c-journey-card.md) | Journey card neutral (Ascension bar becomes a pack section) | M | `src/cards/journey.js`, `src/packs/aion2/cards/ascension.js` | Opus | none |
@@ -207,7 +209,7 @@ in its "After" has merged**.
 | 5 | P2c (none) ∥ P4a (main.js) | P2b |
 | 6 | P6 (none) ∥ P4b (main.js) | P6: P2c, P3c · P4b: P4a |
 | 7 | P4c (main.js) | P4b |
-| 8 | P5a ∥ P5b ∥ P5c, then P5d | P4c; P5a also P2c |
+| 8 | P5a ∥ P5b ∥ P5c, then P5d, P4d (app.css), P4e (golden) as slots free | P4c; P5a also P2c |
 | 9 | P8 (none) | P5a–P5d, P6 |
 | 10 | R, alone | everything above |
 
