@@ -1,5 +1,9 @@
 # Dispatch plan: model routing and parallel waves (0.2.x → 0.8)
 
+> **Superseded after 0.3 (2026-10-16):** the step tables and waves for 0.4 and later are replaced by the redrawn
+> ROADMAP ("Plan", engine release first, lanes by module) and each minor's planning pass. The routing rule, limits and
+> CEO checklist below still apply; the live routing rule is in #114.
+
 Written 2026-10-16 for the CEO (owner request, #84). Every upcoming step, planned ahead: which model builds it, which
 reviews it, what it waits for, what it collides with, and which steps can run at the same time. Update it when a step
 merges, a design changes the step list (0.4 design #79, 0.5 framework), or the owner moves something. HANDOFF "Now and
