@@ -19,6 +19,9 @@ run another game while it imports these.
   `GATE_CHANGES` record lists and their off-variants, the regional / stigma / skill / board helpers, through P0's hooks
   (for example `graphTransforms`).
 - The stigma pick pinning left in `src/core/migrations.js` after P3c moves to the pack's load hook.
+- The compiled data modules (`generated.js`, `gate-graph.js`, `gate-proposed.js`, built in memory by
+  `scripts/generated-data.mjs`) are pack data: they resolve under `src/packs/aion2/`, and the engine (the evaluator,
+  the fresh-start quest in `migrations.js`) gets them through the pack object, never by import.
 - `src/main.js` imports from the new paths and hands the pack to the engine; nothing else in it changes.
 
 ## Appetite
@@ -48,8 +51,9 @@ green (requirements split first), and say in the PR what is left: it becomes a f
 
 ## Files (owns)
 
-`src/core/{catalog,requirements,ascension,blockers,migrations}.js`, `src/data/**` (moved), `src/packs/aion2/**`,
-`src/main.js` (imports and wiring only), `tests/core/**`, `tests/equiv/**` and `tests/golden/*.js` import paths,
+`src/core/{catalog,requirements,ascension,blockers,migrations,evaluator}.js`, `src/data/**` (moved),
+`src/packs/aion2/**`, `src/main.js` (imports and wiring only), `scripts/build.mjs` and `scripts/generated-data.mjs`
+(module paths only), `tests/core/**`, `tests/equiv/**` and `tests/golden/*.js` import paths,
 docs/ARCHITECTURE.md.
 
 ## Lanes, model, order
