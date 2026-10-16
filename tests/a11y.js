@@ -86,6 +86,9 @@ async function load(p, state, mode) {
       return r.violations.map(v => ({ id: v.id, impact: v.impact, n: v.nodes.length, first: v.nodes.slice(0, 3).map(x => x.target.join(' ')) })); });
     const bad = res.filter(v => !ALLOW[v.id]);
     ok(`axe ${id}: no violations outside the allowlist`, !bad.length, bad);
+    /* the pass above only covers the Active / Passive chip's contrast if the chip is on screen in this state (0.2.7) */
+    const chips = await p.evaluate(() => [...document.querySelectorAll('.sptype')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; }).length);
+    ok(`axe ${id}: .sptype chips visible in the axed state (${chips})`, chips > 0, chips);
     res.filter(v => ALLOW[v.id]).forEach(v => { seen[v.id] = (seen[v.id] || 0) + v.n; });
     const names = await p.evaluate(() => [...document.querySelectorAll('button')].map(x => ({ n: (x.getAttribute('aria-label') || x.textContent || x.title || '').replace(/\s+/g, ' ').trim(), c: x.className })));
     ok(`names ${id}: no "What is ?" button, every button named`, !names.some(x => /What is\s*\?/.test(x.n)) && names.every(x => x.n), names.filter(x => !x.n || /What is\s*\?/.test(x.n)));
@@ -329,12 +332,13 @@ async function load(p, state, mode) {
   /* ---------- 13. Active / Passive tags on the Skills card (0.2.7, F2): 390 px, Basic and Advanced, every level 1-45: each skill
      shown (the hero and every Coming up row, specialty rows too) carries a visible "Active" / "Passive" tag, and it matches
      the data (skills.json type, compiled to SP_SKILLS[].passive). The tag is text, so it is in the accessible name. ---------- */
+  const SK_TYPES = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'classes', 'assassin', 'skills.json'), 'utf8')).records.map(x => [x.name, x.type]));
   for (const mode of ['basic', 'advanced']) {
     const { ctx, p } = await page(390);
     await p.goto(CFG.CUR);
     await p.evaluate(([k, mode]) => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), [KEY, mode]);
     await p.reload(); await p.waitForTimeout(400);
-    const r = await p.evaluate(() => {
+    const r = await p.evaluate(TYPES => {
       const out = { rows: 0, checked: 0, bad: [], names: new Set(), levels: 0, empty: [] };
       const names = SP_SKILLS.map(s => s.n).sort((a, b) => b.length - a.length);
       for (let lv = 1; lv <= 45; lv++) {
@@ -346,15 +350,17 @@ async function load(p, state, mode) {
           out.rows++;
           const text = el.textContent.trim(), n = names.find(x => text.startsWith(x));
           if (!n) { out.bad.push(`Lv ${lv}: no recognised skill name in "${text.slice(0, 40)}"`); continue; }
-          const tag = el.querySelector('.sptype'), want = SP_SKILLS.find(s => s.n === n).passive ? 'Passive' : 'Active';
+          const tag = el.querySelector('.sptype'), want = TYPES[n] === 'passive' ? 'Passive' : TYPES[n] === 'active' ? 'Active' : 'a type in skills.json';
           out.checked++; out.names.add(n);
           if (!tag || tag.textContent !== want || !el.textContent.includes(want)) out.bad.push(`Lv ${lv} ${n}: ${tag ? tag.textContent : 'no tag'} (want ${want})`);
         }
       }
-      return { rows: out.rows, checked: out.checked, levels: out.levels, empty: out.empty, skills: out.names.size, bad: out.bad.slice(0, 5), hasBoth: SP_SKILLS.some(s => s.passive) && SP_SKILLS.some(s => !s.passive) };
-    });
+      return { rows: out.rows, checked: out.checked, levels: out.levels, empty: out.empty, skills: out.names.size, bad: out.bad.slice(0, 5), hasBoth: SP_SKILLS.some(s => s.passive) && SP_SKILLS.some(s => !s.passive),
+        /* the compiled flag agrees with the JSON type, and every compiled skill has one */
+        drift: SP_SKILLS.filter(s => TYPES[s.n] !== (s.passive ? 'passive' : 'active')).map(s => s.n) };
+    }, SK_TYPES);
     ok(`${mode} 390px: every skill row on the Skills card has an Active / Passive tag matching the data (${r.rows} rows, all ${r.checked} checked, ${r.skills} skills, ${r.levels} levels)`,
-      r.rows > 0 && r.checked === r.rows && r.levels === 45 && !r.empty.length && r.skills > 1 && r.hasBoth && !r.bad.length, r);
+      r.rows > 0 && r.checked === r.rows && r.levels === 45 && !r.empty.length && !r.drift.length && r.skills > 1 && r.hasBoth && !r.bad.length, r);
     await ctx.close();
   }
 
