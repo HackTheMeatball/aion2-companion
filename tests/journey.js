@@ -1,8 +1,10 @@
-/* QA3 journey: the user's v285 save -> current page, Lv 27 -> 45 by clicking. node tests/journey.js [toLv]  (log: tests/out/journey/journey.log)
+/* QA3 journey: the user's v285 save (as the current page stores it: tests/fixtures/fixture-user-v285.via-v285.flat.json),
+   Lv 27 -> 45 by clicking. node tests/journey.js [toLv]  (log: tests/out/journey/journey.log)
    JOURNEY_REALTIME=1: real pauses instead of the fake clock (see below). */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const { dump } = require('./lib');
-const CFG = require('./config'); const ROOT = CFG.ROOT, KEY = 'aion2-assassin-route-v4', OUT = path.join(CFG.OUT, 'journey'), SH = path.join(OUT, 'shots');
+const { writeSave, flatFixture } = require('./support/save');
+const CFG = require('./config'); const ROOT = CFG.ROOT, OUT = path.join(CFG.OUT, 'journey'), SH = path.join(OUT, 'shots');
 fs.mkdirSync(SH, { recursive: true });
 const TO = +(process.argv[2] || 45);
 const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); console.log(s); };
@@ -17,9 +19,8 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
   const wait = ms => REAL ? new Promise(r => setTimeout(r, ms)) : ctx.clock.runFor(ms);
   await ctx.addInitScript(() => { window.documentPictureInPicture = { requestWindow: async (o) => { const w = window.open('', 'pip', `width=${o.width},height=${o.height}`); w.document.write('<!doctype html><html><head></head><body></body></html>'); w.document.close(); window.__pip = w; return w; } }; });
   const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message)); ctx.on('page', pg => pg.on('pageerror', e => errs.push('pip: ' + e.message)));
-  const user = fs.readFileSync(path.join(CFG.FIX, 'fixture-user-v285.json'), 'utf8');
-  await p.goto(CFG.V285); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, user]); await p.reload(); await wait(400);
-  await p.goto(CFG.CUR); await wait(700);
+  /* the user's v285 save as the current page stored it after loading it through v285 first (make-flat-fixtures.mjs) */
+  await p.goto(CFG.CUR); await writeSave(p, flatFixture('fixture-user-v285.via-v285.flat.json')); await p.reload(); await wait(700);
   const S = () => p.evaluate(() => JSON.stringify(state));
   const top = () => p.evaluate(() => { const c = document.querySelector('#nsqWrap > .ns-card'); return c ? c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '') : '(none: ' + (document.querySelector('#nowStar') || {}).innerText.replace(/\s+/g, ' ').slice(0, 120) + ')'; });
   const shots = async (lv) => {
@@ -112,7 +113,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
       const c2 = await b.newContext({ viewport: { width: 1500, height: 1000 } }); if (!REAL) await c2.clock.install();
       const w2 = ms => REAL ? new Promise(r => setTimeout(r, ms)) : c2.clock.runFor(ms);
       const q = await c2.newPage(); q.on('pageerror', e => errs.push(e.message));
-      await q.goto(CFG.CUR); await q.evaluate(([k, s]) => { localStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); }, [KEY, { ...FLAGS, open: {}, mode: 'advanced', showObj: true, showTalk: true, qsShowDone: true, ...save }]);
+      await q.goto(CFG.CUR); await writeSave(q, { ...FLAGS, open: {}, mode: 'advanced', showObj: true, showTalk: true, qsShowDone: true, ...save }, { fresh: true });
       await q.reload(); await w2(500);
       const tickAll = async () => { for (let n = 0; n < 40; n++) { const i = await q.$('#questSubs input[data-qobj]:not(:checked)'); if (!i) break; await i.click(); await w2(1300); } };
       await steps(q, w2, tickAll);

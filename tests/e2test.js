@@ -1,7 +1,8 @@
 /* E2 functional checks. Usage: node tests/e2test.js <page URL> (reads the data through tests/support/v1view.js and dist/index.html).
    Expectations are computed here from the data files and QUESTS order, not from the page's own rqAvail. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
-const FILE = process.argv[2], ROOT = path.resolve(__dirname, '..'), KEY = 'aion2-assassin-route-v4';
+const FILE = process.argv[2], ROOT = path.resolve(__dirname, '..');
+const { writeSave } = require('./support/save');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const V1 = require('./support/v1view'); /* the v1-shaped view of data/** (0.2 step 5b) */
 const RQ = V1.rq, CH = V1.chains, S45 = V1.story45, CLAIMS = V1.claims, BUILD = V1.build;
@@ -11,14 +12,14 @@ const PRE = {}, STORY = {}; CH.forEach(e => { if (e.kind === 'regional') (PRE[e.
 const BATCH = Object.keys(STORY).filter(q => STORY[q] === 'Forgotten Commander');
 
 async function setState(p, { L, q, mode = 'advanced', extra = {}, ticks = {} }) {
-  await p.evaluate(({ L, q, mode, extra, ticks }) => {
+  await writeSave(p, await p.evaluate(({ L, q, mode, extra, ticks }) => {
     const st = { checks: {}, level: L, quest: q, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, stones: 2 * (L - 10), dvTotal: 4 * (L - 11) + 20, stShards: 3 };
     GATES.forEach(g => g.items.forEach(it => { if (g.lv < L && !it.sub && !it.dv && it.kind !== 'hideout' && it.kind !== 'quest' && it.k) st.checks[it.k] = true; }));
     SP_STEPS.forEach(x => { if (x.req <= L - 2) st.checks[x.k] = true; }); st.stones += 150; /* points spent as they open, extras included */
     st.checks['g22:0'] = true; st.stLv = { "Triniel's Dagger": 5 };
     Object.assign(st.checks, ticks); Object.assign(st, extra);
-    localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(st));
-  }, { L, q, mode, extra, ticks });
+    return st;
+  }, { L, q, mode, extra, ticks }));
   await p.reload(); await p.waitForTimeout(400);
 }
 /* Expected availability of a regional quest, from the data: unlock level, story at/after its story quest, regional prereqs turned in. */

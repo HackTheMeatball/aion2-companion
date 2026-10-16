@@ -10,7 +10,7 @@
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const CFG = require('./config');
 const { clean, setState: setE1 } = require('./support/e1-fixture');
-const { buildFixture } = require('./support/regress-fixture');
+const { writeFixture } = require('./support/regress-fixture');
 const OUT = path.join(CFG.OUT, 'perf'), LIMIT = 15, QUICK = process.argv.includes('--quick');
 const LEVELS = QUICK ? [25, 27, 30, 32, 37, 40, 44, 45] : Array.from({ length: 21 }, (_, i) => 25 + i);
 fs.mkdirSync(OUT, { recursive: true });
@@ -33,7 +33,7 @@ const times = p => p.evaluate(() => { for (let i = 0; i < 3; i++) update(); cons
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); p.on('pageerror', e => errs.push(e.message));
     await p.goto(CFG.CUR); await p.waitForTimeout(300);
     for (const fx of ['clean', 'messy']) for (const L of LEVELS) {
-      await p.evaluate(buildFixture, { L, mode: 'advanced', fx }); await p.reload(); await p.waitForTimeout(350);
+      await writeFixture(p, { L, mode: 'advanced', fx }); await p.reload(); await p.waitForTimeout(350);
       const t = await times(p); ok(`regress 1500px advanced ${fx} Lv ${L}: update() median of 10 under ${LIMIT} ms`, (t[4] + t[5]) / 2);
     }
     await ctx.close();

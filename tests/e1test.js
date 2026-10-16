@@ -1,6 +1,8 @@
-/* E1 functional checks. Usage: node tests/e1test.js <page URL> <v285 fixture> (tests/run.mjs passes both) */
+/* E1 functional checks. Usage: node tests/e1test.js <page URL> <flat fixture to import> (tests/run.mjs passes both:
+   tests/fixtures/fixture-v285.flat.json, the v285 fixture as the current build stores it) */
 const { chromium } = require('playwright'); const fs = require('fs');
-const FILE = process.argv[2], KEY = 'aion2-assassin-route-v4';
+const FILE = process.argv[2];
+const { writeSave, readSave, clearSave, BEFORE_IMPORT_KEY } = require('./support/save');
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (detail !== undefined ? '  · ' + (typeof detail === 'string' ? detail : JSON.stringify(detail)).replace(/\s+/g, ' ') : '')); if (!cond) fail++; };
 const { clean, setState } = require('./support/e1-fixture');
 const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => ({ t: (c.querySelector('h3') || {}).innerText || '', ctl: (c.querySelector('.meta') || {}).innerText || '', act: (c.querySelector('.meta [data-now]') || { dataset: {} }).dataset.now || '' })));
@@ -9,16 +11,16 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(FILE);
   /* 1. Fresh browser: seeds don't run */
-  await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForTimeout(400);
+  await clearSave(p); await p.reload(); await p.waitForTimeout(400);
   let st = await p.evaluate(() => state);
   ok('fresh: seeds not applied (level, sp ticks, stigma, stones)', st.level === 1 && st.quest === 'A Village in the Fog' && !Object.keys(st.checks).some(k => k.startsWith('sp:')) && !st.stLv && !st.stones, { level: st.level, stLv: st.stLv, stones: st.stones });
   ok('fresh: seed flags + migV5 set, cleared milestones folded', st.seedLv12 && st.stTriniel1 && st.dvReset1 && st.migV5 && st.hideCards === true);
   /* 2. Saved state without flags: seeds still run (old behaviour); with flags: no-op */
-  await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 9, open: {}, quest: '' })), KEY); await p.reload(); await p.waitForTimeout(300);
+  await writeSave(p, { checks: {}, level: 9, open: {}, quest: '' }); await p.reload(); await p.waitForTimeout(300);
   st = await p.evaluate(() => state);
   ok('saved w/o flags: seeds run as in v285', st.level === 12 && st.checks['sp:Ambush:5'] === true && st.checks['g22:1'] === true && st.stLv["Triniel's Dagger"] === 1 && st.hideCards !== true);
   const userLike = { checks: { 'g22:0': true, 'g22:1': true, 'sp:Ambush:2': true }, level: 25, open: {}, quest: 'Voice of Rage', seedLv12: true, stTriniel1: true, dvReset1: true, stones: 7, stLv: { "Triniel's Dagger": 3 }, stShards: 4 };
-  await p.evaluate(([k, s]) => localStorage.setItem(k, JSON.stringify(s)), [KEY, userLike]); await p.reload(); await p.waitForTimeout(300);
+  await writeSave(p, userLike); await p.reload(); await p.waitForTimeout(300);
   st = await p.evaluate(() => state);
   ok('saved with flags: seeds are no-ops', st.level === 25 && st.stones === 7 && st.stLv["Triniel's Dagger"] === 3 && st.stShards === 4 && !st.checks['sp:Ambush:5'] && st.hideCards === undefined);
   ok('equipped slot 1 pinned to its stigma', st.stPick && st.stPick[1] === "Triniel's Dagger");
@@ -100,7 +102,7 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   await p.setInputFiles('#impIn', tmp); await p.waitForTimeout(200);
   ok('import: asks before replacing', /Replace your progress/.test(await p.innerText('#xferMsg')));
   await Promise.all([p.waitForNavigation(), p.click('#impGo')]); await p.waitForTimeout(400);
-  const after = await p.evaluate(k => [state, JSON.parse(localStorage.getItem(k + ':before-import'))], KEY);
+  const after = [await p.evaluate(() => state), await readSave(p, { key: BEFORE_IMPORT_KEY })];
   ok('import: state replaced (and migrated), previous kept under :before-import', after[0].level === other.level && after[0].migV5 && after[0].checks['rq:2202017'] === other.checks['g22:4'] && after[1].level === 33, { lv: after[0].level });
   /* 12. Layout (update() timing: tests/perf.js) */
   for (const [w, h] of [[1500, 1000], [1100, 900], [390, 850]]) {

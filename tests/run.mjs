@@ -85,6 +85,9 @@ catch { const g = execSync('npm root -g').toString().trim(); env.NODE_PATH = [en
 const { server, url } = await startServer({ baselines: true });
 env.AION_BASE = url;
 const CUR = url + '/', V285 = url + '/__baselines/v285.html', V287 = url + '/__baselines/v287.html', FX285 = join(FIX, 'fixture-v285.json');
+/* the v285 fixture as the current build stores it (tests/support/make-flat-fixtures.mjs): e1 imports it; only mig1 / mig2
+   load the pre-0.3 save itself */
+const FLAT285 = join(FIX, 'fixture-v285.flat.json');
 
 /* journey.js logs "!!" for anything odd; this one is a known harness limitation from QA3 (it clicks the first [data-ingame]
    pill, which can be hidden), not an app problem. */
@@ -97,7 +100,7 @@ const SUITES = {
   equiv: { args: ['tests/equiv.mjs'], pass: /EQUIV CHECKS PASSED/ },
   invariant: { args: ['tests/invariant.mjs'], pass: /INVARIANT CHECKS PASSED/ },
   tokens: { args: ['tests/tokens.mjs'], pass: /TOKENS CHECKS PASSED/ },
-  e1: { args: ['tests/e1test.js', CUR, FX285], pass: /E1 CHECKS PASSED/ },
+  e1: { args: ['tests/e1test.js', CUR, FLAT285], pass: /E1 CHECKS PASSED/ },
   e2: { args: ['tests/e2test.js', CUR], pass: /E2 CHECKS PASSED/ },
   e3: { args: ['tests/e3test.js'], pass: /E3 CHECKS PASSED/ },
   e4: { args: ['tests/e4test.js'], pass: /E4 CHECKS PASSED/ },

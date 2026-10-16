@@ -2,7 +2,7 @@
    step the story is already past. Sweeps every story position at {its quest level, 45} with an empty save, like the
    architecture audit's probe. node tests/gates.js  (page at AION_BASE; see tests/config.js) */
 const { chromium } = require('playwright'); const CFG = require('./config');
-const KEY = 'aion2-assassin-route-v4';
+const { writeSave, readSave } = require('./support/save');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 (async () => {
@@ -12,7 +12,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   const Q = await p.evaluate(() => QUESTS); const qi = n => Q.findIndex(([, q]) => q === n);
   /* Load a save and return the actionable Next up cards: [{k, h}] (k = milestone key for "tick:" cards). */
   const at = async (lv, quest, extra = {}) => {
-    await p.evaluate(([k, s]) => localStorage.setItem(k, JSON.stringify(s)), [KEY, { checks: {}, level: lv, quest, open: {}, mode: 'advanced', ...FLAGS, ...extra }]);
+    await writeSave(p, { checks: {}, level: lv, quest, open: {}, mode: 'advanced', ...FLAGS, ...extra });
     await p.reload(); await p.waitForLoadState('domcontentloaded');
     return p.evaluate(() => [...document.querySelectorAll('#nsqWrap > .ns-card')].map(c => ({ btn: c.querySelector('.meta .ns-btn.primary'), h: c.querySelector('h3').innerText.replace(/\s+/g, ' ') }))
       .filter(x => x.btn).map(x => ({ k: (x.btn.dataset.now || '').replace(/^tick:/, ''), h: x.h })));
@@ -46,7 +46,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
 
   /* Display only: being past a byStory quest writes no tick. */
   await at(20, 'Daeva in a Dream');
-  let r = await p.evaluate(() => ({ g6: !!state.checks['g6:0'], g12: !!state.checks['g12:0'], saved: JSON.parse(localStorage.getItem('aion2-assassin-route-v4')).checks }));
+  let r = { ...await p.evaluate(() => ({ g6: !!state.checks['g6:0'], g12: !!state.checks['g12:0'] })), saved: (await readSave(p)).checks };
   ok('past byStory steps are not ticked automatically (state and save unchanged)', !r.g6 && !r.g12 && !r.saved['g6:0'] && !r.saved['g12:0'], r);
 
   /* Turned in on "Forgotten Commander", in the UI: the story moves on to "Daeva Trapped in a Nightmare" and g45:witness appears; Basic mode too. */

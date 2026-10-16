@@ -1,10 +1,10 @@
 /* E3 functional checks. node tests/e3test.js  (page at AION_BASE; see tests/config.js) */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const ROOT = path.resolve(__dirname, '..'); const CFG = require('./config');
-const { buildFixture } = require('./support/regress-fixture');
+const { buildFixture } = require('./support/regress-fixture'); const { writeSave } = require('./support/save');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 500) : '')); if (!c) fail++; };
 (async () => { const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } }); const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(CFG.CUR);
-  const set = async (L, extra = {}, fx = 'clean', mode = 'advanced') => { await p.evaluate(buildFixture, { L, mode, fx }); await p.evaluate(e => { const s = JSON.parse(localStorage.getItem('aion2-assassin-route-v4')); Object.assign(s, e); localStorage.setItem('aion2-assassin-route-v4', JSON.stringify(s)); }, extra); await p.reload(); await p.waitForTimeout(350); };
+  const set = async (L, extra = {}, fx = 'clean', mode = 'advanced') => { await writeSave(p, Object.assign(await p.evaluate(buildFixture, { L, mode, fx }), extra)); await p.reload(); await p.waitForTimeout(350); };
   const cards = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '') + ' | ' + ((c.querySelector('.meta') || {}).innerText || '')));
   /* P0-1: no-prereq quests open at rec; snooze kept until rec */
   await set(27);

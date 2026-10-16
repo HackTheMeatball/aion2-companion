@@ -1,8 +1,10 @@
 /* The saved state: key, defaults, loading. */
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+const { V4_KEY } = createRequire(import.meta.url)('../support/save.js');
 
 export default (test, M) => {
-  test('storage key is aion2-assassin-route-v4 (never changes)', () => assert.equal(M.KEY, 'aion2-assassin-route-v4'));
+  test('storage key is the v4 key (V4_KEY in tests/support/save.js; never changes)', () => assert.equal(M.KEY, V4_KEY));
   test('defaults: Lv 5, no ticks, no quest', () => assert.deepEqual(M.DEFAULT(), { checks: {}, level: 5, hide: false, open: {}, quest: '' }));
   test('DEFAULT() returns a fresh object each time', () => { const a = M.DEFAULT(); a.checks.x = true; assert.deepEqual(M.DEFAULT().checks, {}); });
   test('load: no save → defaults, hadSave false', () => { const r = M.loadState(null); assert.equal(r.hadSave, false); assert.deepEqual(r.state, M.DEFAULT()); });

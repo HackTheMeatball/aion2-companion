@@ -5,7 +5,8 @@
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const CFG = require('./config');
 const ROOT = CFG.ROOT, QA = path.join(CFG.OUT, 'regress'), SHOTS = path.join(QA, 'shots');
-const CUR = CFG.CUR, V285 = CFG.V285, KEY = 'aion2-assassin-route-v4';
+const CUR = CFG.CUR;
+const { writeSave, flatFixture } = require('./support/save');
 const QUICK = process.argv.includes('--quick'), NOSHOTS = process.argv.includes('--noshots');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const SRC = fs.readFileSync(CFG.PAGE, 'utf8');
@@ -19,7 +20,7 @@ const MAX_EVALS = 3; /* evaluators per update(): 1 today (its own level); headro
 const MODES = ['advanced', 'basic'], WIDTHS = [1500, 1100, 390], FIXTURES = ['clean', 'messy'];
 
 /* ---------- fixtures (built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS): tests/support/regress-fixture.js ---------- */
-const { buildFixture } = require('./support/regress-fixture');
+const { writeFixture, migMetrics } = require('./support/regress-fixture');
 
 /* ---------- per-state probe (runs in the page) ---------- */
 function probe() {
@@ -49,7 +50,7 @@ function probe() {
     level: state.level, quest: state.quest, storyEnd: state.storyEnd || null };
 }
 
-const setState = async (p, args) => { await p.evaluate(buildFixture, args); await p.reload(); await p.waitForTimeout(350); };
+const setState = async (p, args) => { await writeFixture(p, args); await p.reload(); await p.waitForTimeout(350); };
 
 (async () => {
   const b = await chromium.launch(); const t0 = Date.now();
@@ -138,20 +139,15 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
     await ctx.close();
   }
 
-  /* ---------- migration: v285 fixture → current (tick counts by name) ---------- */
+  /* ---------- migration: v285 fixture → current (tick counts by name) ----------
+     A: what the v285 page showed for the v285 fixture (pinned in tests/fixtures/fixture-v285.v285-metrics.json); B: the
+     current page seeded with that fixture as it stored it after loading it through v285
+     (fixture-v285.via-v285.flat.json; both made by tests/support/make-flat-fixtures.mjs) */
   {
-    const fix = fs.readFileSync(path.join(CFG.FIX, 'fixture-v285.json'), 'utf8');
-    const metrics = () => { const out = { quests: {}, sd: {}, sh: {}, sp: 0, dv: 0 };
-      GATES.forEach(g => g.items.forEach((it, j) => { const k = it.k || g.id + ':' + j;
-        if (it.kind === 'quest') out.quests[it.name] = [!!state.checks[k], !!(state.started || {})[k]];
-        if (it.kind === 'hideout') out.sd[it.name] = [!!state.checks[k], !!(state.areaRun || {})[k]]; }));
-      AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => { out.sh[x.it.name] = !!state.checks[x.k]; });
-      out.sp = SP_STEPS.filter(x => state.checks[x.k]).length; out.dv = Object.keys(state.checks).filter(k => k.startsWith('dv:') && state.checks[k]).length;
-      out.story = [state.quest, JSON.stringify(state.qsteps), JSON.stringify(state.qsub)]; out.stig = [state.stLv, state.stShards, !!state.checks['g22:1']]; return out; };
+    const A = J('tests/fixtures/fixture-v285.v285-metrics.json');
     const ctx = await b.newContext(), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(V285); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, fix]); await p.reload(); await p.waitForTimeout(400);
-    const A = await p.evaluate(metrics);
-    await p.goto(CUR); await p.waitForTimeout(500); const B = await p.evaluate(metrics);
+    await p.goto(CUR); await writeSave(p, flatFixture('fixture-v285.via-v285.flat.json')); await p.reload(); await p.waitForTimeout(500);
+    const B = await p.evaluate(migMetrics);
     const c = { level: 25, mode: 'advanced', width: 1500, fixture: 'v285-fixture' };
     const diffQ = Object.keys(A.quests).filter(n => JSON.stringify(A.quests[n]) !== JSON.stringify(B.quests[n]));
     const diffSd = Object.keys(A.sd).filter(n => JSON.stringify(A.sd[n]) !== JSON.stringify(B.sd[n]));
@@ -163,17 +159,15 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
     await ctx.close();
   }
 
-  /* ---------- user-realistic: his save, through v285 first, then the current page ---------- */
-  const user = JSON.parse(fs.readFileSync(path.join(CFG.FIX, 'fixture-v285.json'), 'utf8'));
-  Object.assign(user, { level: 27, quest: 'Preparations for Restoration', stShards: 0, stones: 58, dvTotal: 114, stLv: { "Triniel's Dagger": 4 }, pendSt: 0, pendCr: 0, open: {}, areaRun: {} });
-  Object.assign(user.checks, { 'g22:3': true, 'g22:4': false, 'g22:5': true, 'g22:6': false, 'g22:7': false, 'g27:3': false, 'g22:1': true, 'g22:0': true });
-  user.started = { ...user.started, 'g22:4': 1, 'g22:6': 1, 'g22:7': 1 }; delete user.started['g30:13']; /* base fixture's Lv 30 quest in progress isn't his */
-  ['dv:ew2', 'dv:as', 'dv:as2', 'dv:corner', 'dv:ie', 'dv:ss', 'dv:z:ie', 'dv:z:qs', 'dv:z:db', 'dv:z:db2', 'dv:z:corner'].forEach(k => { user.checks[k] = true; user.dvCost[k] = 7; });
-  fs.writeFileSync(path.join(QA, 'fixture-user-v285.json'), JSON.stringify(user));
+  /* ---------- user-realistic: his save (the v285 fixture made into his Lv 27 save, on a given story quest), as the
+     current page stored it after loading it through v285 first (tests/fixtures/regress-user-<tag>.via-v285.flat.json;
+     how it is made: regressUser() in tests/support/make-flat-fixtures.mjs) ---------- */
   const userRun = async (quest, tag, shots) => {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-    await p.goto(V285); await p.evaluate(([k, s]) => localStorage.setItem(k, s), [KEY, JSON.stringify({ ...user, quest })]); await p.reload(); await p.waitForTimeout(400);
-    await p.goto(CUR); await p.waitForTimeout(600);
+    const user = flatFixture(`regress-user-${tag}.via-v285.flat.json`);
+    if (user.quest !== quest) throw new Error(`regress-user-${tag}.via-v285.flat.json is on "${user.quest}", not "${quest}"`);
+    fs.writeFileSync(path.join(QA, `fixture-user-${tag}.flat.json`), JSON.stringify(user));
+    await p.goto(CUR); await writeSave(p, user); await p.reload(); await p.waitForTimeout(600);
     const c = { level: 27, mode: 'advanced', width: 1500, fixture: 'user-' + tag };
     const r = await p.evaluate(probe);
     const st = await p.evaluate(() => { const by = n => 'rq:' + RQ_BY[n].id; const s = n => state.checks[by(n)] ? 'done' : (state.started || {})[by(n)] ? 'run' : 'open';
