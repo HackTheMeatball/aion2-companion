@@ -47,6 +47,9 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 1
+          # Don't persist the default GITHUB_TOKEN: pushes made with it never trigger workflows, so a bot push got no CI
+          # until someone dispatched it. Without it the action pushes as the Claude GitHub App, which does trigger CI.
+          persist-credentials: false
       # Same toolchain as CI, so Claude can build and run the test suites (Chromium for the browser suites).
       - uses: actions/setup-node@v7
         with:
@@ -88,6 +91,9 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 1
+          # Don't persist the default GITHUB_TOKEN: pushes made with it never trigger workflows, so a bot push got no CI
+          # until someone dispatched it. Without it the action pushes as the Claude GitHub App, which does trigger CI.
+          persist-credentials: false
       # Same toolchain as CI, so Claude can build and run the test suites (Chromium for the browser suites).
       - uses: actions/setup-node@v7
         with:
