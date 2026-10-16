@@ -17,9 +17,10 @@
 const path = require('path'), fs = require('fs'), http = require('http');
 const ROOT = path.join(__dirname, '../..');
 const { chromium } = require('playwright');
-const { catalogInPage, generate } = require('../golden/states.js');
+const { catalogInPage, generate, fixtureStates } = require('../golden/states.js');
 const { installProbe, storeDiff } = require('../golden/probe.js');
-const KEY = 'aion2-assassin-route-v4', NOW = new Date('2026-10-01T12:00:00Z');
+const { SAVE_KEY: KEY, writeRaw } = require('./save');
+const NOW = new Date('2026-10-01T12:00:00Z');
 const EXPECTED_INPUT = ['special/story-end-turned-in'];
 /* behaviour: same input, new output; rename: new input that is only the g45 rename; storyEnd: EXPECTED_INPUT;
    indexShift: ids moved one story index (86 -> 87 quests); storeDiffs: same-input states whose stored save changed */
@@ -37,7 +38,7 @@ const renameBack = o => { if (!o) return o; o = JSON.parse(JSON.stringify(o));
 (async () => {
   const srv = { base: await serve(path.join(ROOT, 'tests/out/main-wt/dist')), branch: await serve(path.join(ROOT, 'dist')) };
   const b = await chromium.launch();
-  const fixtures = ['fixture-v285.json', 'fixture-user-v285.json'].map(f => ({ name: f.replace(/\.json$/, ''), raw: JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, 'tests/fixtures', f), 'utf8'))) }));
+  const fixtures = fixtureStates(); /* the flat fixtures (0.4 P3a), same state ids */
   const states = {}, pages = {}, cats = {};
   for (const w of ['base', 'branch']) {
     const ctx = await b.newContext({ serviceWorkers: 'block' }); await ctx.clock.setFixedTime(NOW); await ctx.addInitScript(installProbe, [KEY, true]);
@@ -45,7 +46,7 @@ const renameBack = o => { if (!o) return o; o = JSON.parse(JSON.stringify(o));
     states[w] = Object.fromEntries(generate(cats[w], { fixtures }).map(s => [s.id, s.raw])); pages[w] = p;
   }
   const load = async (w, raw) => { const p = pages[w];
-    await p.evaluate(([k, r]) => { localStorage.clear(); if (r !== null) localStorage.setItem(k, r); }, [KEY, raw]);
+    await writeRaw(p, raw, { fresh: true });
     await p.reload({ waitUntil: 'commit' }); return p.evaluate(() => window.__golden); };
   const bad = [], got = {};
 

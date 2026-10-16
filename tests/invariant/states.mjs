@@ -16,7 +16,8 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 
-const { catalogInPage, generate, fnv } = createRequire(import.meta.url)('../golden/states.js');
+const { catalogInPage, generate, fixtureStates, fnv } = createRequire(import.meta.url)('../golden/states.js');
+const { storedText } = createRequire(import.meta.url)('../support/save.js');
 export const TOTAL = 10000;
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
@@ -28,7 +29,7 @@ export const catalogOf = M => new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'ST
 
 export function makeStates(M, { root, seed }) {
   const C = catalogOf(M), NQ = C.quests.length, out = new Map();
-  const fixtures = ['fixture-v285.json', 'fixture-user-v285.json'].map(f => ({ name: f.replace(/\.json$/, ''), raw: JSON.stringify(JSON.parse(readFileSync(join(root, 'tests/fixtures', f), 'utf8'))) }));
+  const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
   for (const s of generate(C, { fixtures, all: true })) out.set('golden/' + s.id, { id: 'golden/' + s.id, raw: s.raw });
 
   /* every trackable save key, and the ones whose record can also be done without a tick (a stored false there is the
@@ -43,7 +44,7 @@ export function makeStates(M, { root, seed }) {
     ...C.rq.map(q => ['rq:' + q.id, { lv: q.rec, story: q.story }]), ...C.areas.map(x => [x.k, { lv: x.lv }]), ...C.sp.map(x => [x.k, { lv: x.req }])]);
   const keptUp = (lv, qi) => Object.fromEntries(keys.filter(k => { const x = levelOf.get(k); return x && x.lv < lv && (!x.story || (qi >= 0 && qi >= qIdx(x.story))); }).map(k => [k, true]));
   const base = (lv, qi, checks, mode) => ({ checks, level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode, ...FLAGS });
-  const add = (id, st) => { if (!out.has(id)) out.set(id, { id, raw: st === null ? null : JSON.stringify(st) }); };
+  const add = (id, st) => { if (!out.has(id)) out.set(id, { id, raw: storedText(st) }); };
   /* on track: the last quest whose level is ≤ lv */
   const onTrack = lv => C.quests.reduce((a, q, j) => q[0] <= lv ? j : a, -1);
   const qid = qi => qi < 0 ? 'qxx' : 'q' + pad(qi);

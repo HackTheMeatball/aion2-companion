@@ -9,6 +9,7 @@
      oracle-gate    a gate from ORACLE below, checked whether or not the app models it (the ascension hotfix's gates)
    The file is generated, so a fix shows up as a golden diff plus a shorter list. */
 'use strict';
+const { parseStored } = require('../support/save');
 
 /* Gates checked independently of the app (the gate table). They match the ascension hotfix (PR #2, fix/ascension-gates):
      story     the story has reached X (current quest index >= X), like "story"/"after" in the app's stepsOf
@@ -36,7 +37,7 @@ function findViolations(C, states, results) {
   const sp = C.sp, out = [];
   for (const s of states) {
     const r = results[s.id]; if (!r || !r.nu) continue;
-    let st = null; try { st = JSON.parse(r.storedRaw != null ? r.storedRaw : s.raw); } catch { }
+    let st = null; try { st = parseStored(r.storedRaw != null ? r.storedRaw : s.raw); } catch { }
     if (!st || typeof st !== 'object') st = {};
     const lv = st.level != null ? st.level : 5, cur = st.quest ? qIdx(st.quest) : -1, ck = st.checks || {};
     r.nu.forEach((c, rank) => {

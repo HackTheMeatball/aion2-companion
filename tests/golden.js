@@ -21,11 +21,10 @@
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { chromium } = require('playwright');
 const CFG = require('./config');
-const { catalogInPage, generate } = require('./golden/states');
+const { catalogInPage, generate, fixtureStates } = require('./golden/states');
 const { installProbe, storeDiff } = require('./golden/probe');
 const { findViolations, renderReport } = require('./golden/violations');
-
-const KEY = 'aion2-assassin-route-v4';
+const { SAVE_KEY: KEY, writeRaw } = require('./support/save');
 const DIR = path.join(CFG.ROOT, 'tests', 'golden'), SNAP = path.join(DIR, 'snapshots'), OUT = path.join(CFG.OUT, 'golden');
 const VIOL = path.join(DIR, 'KNOWN-VIOLATIONS.md');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
@@ -161,7 +160,9 @@ function writeDiffFiles(rep, before, after) {
   /* 1. catalog from the page itself, then the states */
   const c0 = await newCtx(), p0 = await c0.newPage();
   await p0.goto(PAGE); const C = await p0.evaluate(catalogInPage); await c0.close();
-  const fixtures = ['fixture-v285.json', 'fixture-user-v285.json'].map(f => ({ name: f.replace(/\.json$/, ''), raw: JSON.stringify(JSON.parse(fs.readFileSync(path.join(CFG.FIX, f), 'utf8'))) }));
+  /* the fixture states load their flat fixture; `in` and `store` are taken against the pre-0.3 save it was made from
+     (s.src), so their snapshots are the ones recorded when the page loaded that save itself (tests/golden/states.js) */
+  const fixtures = fixtureStates(f => fs.readFileSync(path.join(CFG.FIX, f), 'utf8'));
   let states = generate(C, { fixtures, all: ALL });
   if (FILTER) states = states.filter(s => FILTER.test(s.id));
   if (LIMIT) states = states.slice(0, LIMIT);
@@ -177,7 +178,7 @@ function writeDiffFiles(rep, before, after) {
       const fresh = async () => { if (ctx) await ctx.close().catch(() => {}); ctx = await newCtx(changes); page = await ctx.newPage(); used = 0;
         await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); };
       const load = async raw => {
-        await page.evaluate(([k, raw]) => { localStorage.clear(); if (raw !== null) localStorage.setItem(k, raw); }, [KEY, raw]);
+        await writeRaw(page, raw, { fresh: true });
         await page.reload({ waitUntil: 'commit' });
         return page.evaluate(() => window.__golden);
       };
@@ -186,10 +187,10 @@ function writeDiffFiles(rep, before, after) {
         const s = states[next++];
         /* a crashed or hung page (a busy CI machine) gets one retry in a fresh context; the state itself is the same */
         let o; try { o = await load(s.raw); } catch (e) { console.log(`  retry ${s.id}: ${String(e.message).split('\n')[0]}`); await fresh(); o = await load(s.raw); }
-        const r = { in: hash(s.raw) };
+        const src = s.src != null ? s.src : s.raw, r = { in: hash(src) };
         if (o.probeError) r.probeError = o.probeError;
         for (const f of ['nu', 'ms', 'rt', 'jr', 'reg']) if (o[f] !== undefined) r[f] = o[f];
-        const sd = storeDiff(s.raw, o.stored); if (sd) r.store = sd;
+        const sd = storeDiff(src, o.stored); if (sd) r.store = sd;
         if (o.keys && o.keys.length) r.keys = o.keys;
         if (o.err && o.err.length) r.err = [...new Set(o.err)];
         r.mode = o.mode;
