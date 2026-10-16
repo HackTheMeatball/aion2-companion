@@ -12,3 +12,7 @@ site-390-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-op
 
 site-1100-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
 
+## Batch 3: `^artifact-390-` (24 cases): 24 identical, 0 differ, 0 re-shot
+
+artifact-390-{light,dark}-{basic,advanced}-{lv12,lv27,lv45,fresh,lv27-drawer,lv27-open}: all identical.
+
