@@ -510,10 +510,12 @@ function rqExtraHTML(a) {
   const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() && !isBasic() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
   return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
+/* The end of the guide's story (0.3 E10): the last covered quest turned in; the game's next story quest unlocks past the cap. */
+const STORY_DONE = `Lv ${STORY_END.lv} story complete`, END_NEXT = `next in game: "${STORY_END.next}" at Lv ${STORY_END.nextLv}`;
 function storyView(a) {
   const { act } = a;
   if (a.v === "unset") return { story: true, ico: "📜", t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
-  if (a.v === "end") return { story: true, ico: "📜", t: "Altgard story complete", sub: `Continue in ${STORY_END.region} in game · the guide's story ends at "${a.quest}"`, act };
+  if (a.v === "end") return { story: true, ico: "📜", t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
   const m = a.meanwhile, xs = [];
   if (m) { if (m.sd) xs.push("Sealed Dungeons"); if (m.sh) xs.push("Strongholds");
     if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
@@ -929,7 +931,7 @@ function renderQuest(inUpdate) {
   const prev = QUESTS[i - 1], nxt = QUESTS[i + 1];
   pv.innerHTML = row(prev);
   qlv.textContent = `Lv ${QUESTS[i][0]}`;
-  st.innerHTML = nxt ? row(nxt, STORY_UNLOCKS[nxt[1]] ? `unlocks ${STORY_UNLOCKS[nxt[1]]}` : "") : `<span class="dot"></span><span class="st-name muted">${char(state).storyEnd === char(state).quest ? `Altgard story complete — continue in ${STORY_END.region} in game` : `Last Altgard story quest · turns in at ${STORY_END.place} (${STORY_END.region})`}</span>`;
+  st.innerHTML = nxt ? row(nxt, STORY_UNLOCKS[nxt[1]] ? `unlocks ${STORY_UNLOCKS[nxt[1]]}` : "") : `<span class="dot"></span><span class="st-name muted">${char(state).storyEnd === char(state).quest ? `${STORY_DONE} — ${END_NEXT}` : `Last story quest in the guide · turns in to ${STORY_END.turnin} at ${STORY_END.place}`}</span>`;
   if (qInput.value !== char(state).quest) qInput.value = char(state).quest;
   requestAnimationFrame(fitQuestIn);
   renderQuestSubs(inUpdate);
@@ -1026,7 +1028,7 @@ function renderQuestSubs(noNow) {
   const head = `<div class="qs-head"><span>Objectives ${n}/${N}</span></div>`;
   /* Last quest the guide covers: the button turns it in (as Next up's "Turned in"); once turned in, the story continues in game. */
   const last = questIdx(char(state)) === QUESTS.length - 1, needLv = turnInNeedsLv(char(state));
-  const nextBtn = n !== N ? "" : last && char(state).storyEnd === char(state).quest ? `<p class="qs-end">Altgard story complete · continue in ${STORY_END.region} in game</p>`
+  const nextBtn = n !== N ? "" : last && char(state).storyEnd === char(state).quest ? `<p class="qs-end">${STORY_DONE} · ${END_NEXT}</p>`
     : needLv ? `<p class="qs-wait">Turn in at Lv ${needLv}: the game opens this quest at Lv ${needLv}</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
   el.innerHTML = head + `<ol class="qs-list">` +

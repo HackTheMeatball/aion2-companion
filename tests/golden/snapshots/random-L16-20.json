@@ -222,7 +222,7 @@
     "mode": "basic"
   },
   "random/L16-q24-all-B-stfull": {
-    "in": "84b9a6cf4a1b",
+    "in": "5d2952a45bb2",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
@@ -276,7 +276,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"aa7bc987"}],
+      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"b338fa62"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -360,12 +360,12 @@
     },
     "mode": "advanced"
   },
-  "random/L16-q30-before-A-stfull": {
-    "in": "aa48fa80d4b5",
+  "random/L16-q31-before-A-stfull": {
+    "in": "a0bdee8d2756",
     "nu": [
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
       {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!"]},
-      {"t":"Story: Children of the Elim","s":"Needs Lv 21: you're 16. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Story: In the Elims' Name","s":"Needs Lv 21: you're 16. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Insignia Explosion 2 → 3","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 3 → 4","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -400,12 +400,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Creeping Shadow Lv 21",
-      "quest": "Children of the Elim",
+      "prev": "Children of the Elim Lv 21",
+      "quest": "In the Elims' Name",
       "lv": "Lv 21",
-      "next": "In the Elims' Name Lv 21",
+      "next": "Verdant Melody Lv 22",
       "hint": "milestone now: Lv 16",
-      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 4 levels to go","Lv 22 Stigma slot 1 6 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 3 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 4 levels to go","Lv 22 Stigma slot 1 6 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 2 story quests · \"Daeva in a Dream\""],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Legions now Lv 16"],
       "ring": "20%",
@@ -420,7 +420,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":79,"at":{"0":78,"1790856000":1},"fnv1a":"5bec0d54"}],
+      "mt": ["(absent)",{"stamps":79,"at":{"0":78,"1790856000":1},"fnv1a":"0f86f326"}],
       "open.g16": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -573,12 +573,12 @@
     },
     "mode": "basic"
   },
-  "random/L16-q41-rnd127p95-A-cube": {
-    "in": "9744d55f550a",
+  "random/L16-q42-rnd127p95-A-cube": {
+    "in": "b2453f88de33",
     "nu": [
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 5/11 turned in","c":"go \"Show\" rqgo:rq:2202023","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
-      {"t":"Story: Striving for Coexistence","s":"Needs Lv 26: you're 16. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Story: Preparations for Restoration","s":"Needs Lv 27: you're 16. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 1 open"},
       {"t":"Buy Rear Smite 3 → 4","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Flash Slice 4 → 5","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -613,10 +613,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The High Priest Slumbers Lv 26",
-      "quest": "Striving for Coexistence",
-      "lv": "Lv 26",
-      "next": "Preparations for Restoration Lv 27",
+      "prev": "Striving for Coexistence Lv 26",
+      "quest": "Preparations for Restoration",
+      "lv": "Lv 27",
+      "next": "A Collective Effort Lv 27",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 4 levels to go","Lv 22 Stigma slot 1 6 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -633,7 +633,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":118,"at":{"0":117,"1790856000":1},"fnv1a":"10308e7b"}],
+      "mt": ["(absent)",{"stamps":118,"at":{"0":117,"1790856000":1},"fnv1a":"f5986aff"}],
       "open.g15": ["(absent)",true],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
@@ -709,18 +709,18 @@
     },
     "mode": "basic"
   },
-  "random/L16-q60-rnd132p20-A-stwait": {
-    "in": "ea132e8026b6",
+  "random/L16-q61-rnd132p20-A-stwait": {
+    "in": "fac3abca6cd5",
     "nu": [
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Exploit Weakness 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 2 near your story step · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+15 more"]},
-      {"t":"Clear Abandoned Archon Jail and others until Lv 34","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 19 open at your level"},
+      {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+15 more"]},
+      {"t":"Clear Abandoned Archon Jail and others until Lv 35","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 19 open at your level"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-      {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"}
     ],
     "ms": [
@@ -751,10 +751,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Visible Trap Lv 34",
-      "quest": "Destruction Archon Underground Fortress",
-      "lv": "Lv 34",
-      "next": "Enemy Territory Lv 35",
+      "prev": "Destruction Archon Underground Fortress Lv 34",
+      "quest": "Enemy Territory",
+      "lv": "Lv 35",
+      "next": "Powder of Death Lv 35",
       "hint": "milestone now: Lv 16",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 4 levels to go","Lv 22 Stigma slot 1 6 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -771,7 +771,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":40,"at":{"0":39,"1790856000":1},"fnv1a":"d8534a2c"}],
+      "mt": ["(absent)",{"stamps":40,"at":{"0":39,"1790856000":1},"fnv1a":"5e332350"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -785,12 +785,12 @@
     },
     "mode": "advanced"
   },
-  "random/L16-q69-before-B": {
-    "in": "ce106218e0c1",
+  "random/L16-q70-before-B": {
+    "in": "67a0d3c7e919",
     "nu": [
       {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Regional quests","s":"14 to pick up · 5 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+13 more"]},
-      {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 16. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Regional quests","s":"15 to pick up · 6 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+15 more"]},
+      {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 16. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
     ],
     "ms": [
@@ -808,8 +808,8 @@
       "g28 | Later | 0/1 | ",
       "g30 | Later | 0/10 | ",
       "g32 | Later | 1/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
+      "g35 | Later | 1/3 | ",
+      "g37 | Later | 1/5 | ",
       "g40 | Later | 0/3 | ",
       "g45 | Later | 0/32 | "
     ],
@@ -821,16 +821,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "An Ill Fate's Resolution Lv 37",
-      "quest": "Mirror of Greed",
-      "lv": "Lv 37",
-      "next": "Fafnite's Whereabouts Lv 40",
+      "prev": "Mirror of Greed Lv 37",
+      "quest": "Fafnite's Whereabouts",
+      "lv": "Lv 40",
+      "next": "Exiled Ritualist Lv 40",
       "hint": "milestone now: Lv 16",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 4 levels to go","Lv 22 Stigma slot 1 6 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Legions now Lv 16"],
       "ring": "20%",
-      "prog": ["Quests 14 2/58","Dungeons 24/60","Strongholds 5 1/15"]
+      "prog": ["Quests 15 2/58","Dungeons 24/60","Strongholds 5 1/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 11/15 · 4 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
@@ -841,7 +841,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":77,"at":{"0":76,"1790856000":1},"fnv1a":"11e153e4"}],
+      "mt": ["(absent)",{"stamps":77,"at":{"0":76,"1790856000":1},"fnv1a":"92042655"}],
       "open.g16": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -851,7 +851,7 @@
     "mode": "basic"
   },
   "random/L17-q19-all-A-stready": {
-    "in": "dff7200d0803",
+    "in": "5cf9cb59672c",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
@@ -905,7 +905,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"4fb649f2"}],
+      "mt": ["(absent)",{"stamps":345,"at":{"0":344,"1790856000":1},"fnv1a":"4035b6fb"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1192,11 +1192,11 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q28-all-A-dv": {
-    "in": "047ca4d58a72",
+  "random/L17-q29-all-A-dv": {
+    "in": "602ce0cf15e0",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Crossroad","s":"Needs Lv 20: you're 17. Level up first.","c":""}
+      {"t":"Story: Creeping Shadow","s":"Needs Lv 21: you're 17. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1226,12 +1226,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Imminent Threat Lv 20",
-      "quest": "Crossroad",
-      "lv": "Lv 20",
-      "next": "Creeping Shadow Lv 21",
+      "prev": "Crossroad Lv 20",
+      "quest": "Creeping Shadow",
+      "lv": "Lv 21",
+      "next": "Children of the Elim Lv 21",
       "hint": "all milestones cleared",
-      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 5 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 4 story quests · \"Daeva in a Dream\""],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
       "track": [],
       "ring": "100%",
@@ -1246,7 +1246,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":352,"at":{"0":351,"1790856000":1},"fnv1a":"079de18f"}],
+      "mt": ["(absent)",{"stamps":352,"at":{"0":351,"1790856000":1},"fnv1a":"8abf257d"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1323,15 +1323,15 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q43-rnd114p50-B-filters": {
-    "in": "2e241e517225",
+  "random/L17-q44-rnd114p50-B-filters": {
+    "in": "54c89db13b9c",
     "nu": [
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
-      {"t":"Clear Bloodsoaked Confessional and others until Lv 27","s":"Moslan Forest · Kibelisk: Forest Hideout · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Forest Hideout is 140 m away · 13 open at your level"},
+      {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
+      {"t":"Clear Bloodsoaked Confessional and others until Lv 29","s":"Moslan Forest · Kibelisk: Forest Hideout · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Forest Hideout is 140 m away · 13 open at your level"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
       {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 17. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 17. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
     ],
     "ms": [
@@ -1362,16 +1362,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Preparations for Restoration Lv 27",
-      "quest": "A Collective Effort",
-      "lv": "Lv 27",
-      "next": "Land of Rifts Lv 29",
+      "prev": "A Collective Effort Lv 27",
+      "quest": "Land of Rifts",
+      "lv": "Lv 29",
+      "next": "Dying Light Lv 30",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Wings and Ascension missed · 6 open Lv 6","Enhancement unlocks missed · 3 open Lv 9","Altgard opens missed · 3 open Lv 10","Daevanion board missed · 3 open Lv 13","Ring quest and skills missed · 1 open Lv 15","Legions missed · 3 open Lv 16","Skill tier: level 8 next · 2 to go Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "15%",
-      "prog": ["Quests 11 0/58","Dungeons 13 11/60","Strongholds 2 9/15"]
+      "prog": ["Quests 12 0/58","Dungeons 13 11/60","Strongholds 2 9/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 7/15 · 8 open","* Lv 15–19 · 8/15 · 7 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 1/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 1/12","Lv 40–44 (later) · 2/10","All strongholds · 9/15"],
@@ -1381,7 +1381,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":66,"at":{"0":65,"1790856000":1},"fnv1a":"cd6f9cf1"}],
+      "mt": ["(absent)",{"stamps":66,"at":{"0":65,"1790856000":1},"fnv1a":"4a3a5a42"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -1464,11 +1464,11 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q58-all-B-filters": {
-    "in": "7857132ce6a4",
+  "random/L17-q59-all-B-filters": {
+    "in": "7b702c346855",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 17. Level up first.","c":""}
+      {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 17. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done | hidden",
@@ -1498,10 +1498,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Blood Monument Lv 33",
-      "quest": "Impending Threat",
+      "prev": "Impending Threat Lv 34",
+      "quest": "Visible Trap",
       "lv": "Lv 34",
-      "next": "Visible Trap Lv 34",
+      "next": "Destruction Archon Underground Fortress Lv 34",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -1517,7 +1517,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"a914e8c8"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"2a3ea327"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1526,12 +1526,12 @@
     },
     "mode": "basic"
   },
-  "random/L17-q64-rnd145p95-B-filters": {
-    "in": "7443b91d58e6",
+  "random/L17-q65-rnd145p95-B-filters": {
+    "in": "20e2d649b0d1",
     "nu": [
       {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
-      {"t":"Clear Treasure Hunter's Residence and others until Lv 36","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"},
-      {"t":"Story: Frozen Fafnite","s":"Needs Lv 36: you're 17. Level up first. Meanwhile: Sealed Dungeons","c":""}
+      {"t":"Clear Treasure Hunter's Residence and others until Lv 37","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"},
+      {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 17. Level up first. Meanwhile: Sealed Dungeons","c":""}
     ],
     "ms": [
       "g6 | Missed | 10/11 | overdue | open",
@@ -1561,10 +1561,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Creion of Gribade Lv 36",
-      "quest": "Frozen Fafnite",
-      "lv": "Lv 36",
-      "next": "Inevitable Encounter Lv 37",
+      "prev": "Frozen Fafnite Lv 36",
+      "quest": "Inevitable Encounter",
+      "lv": "Lv 37",
+      "next": "Unveiling the Truth Lv 37",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1580,7 +1580,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":113,"at":{"0":112,"1790856000":1},"fnv1a":"5ace8f07"}],
+      "mt": ["(absent)",{"stamps":113,"at":{"0":112,"1790856000":1},"fnv1a":"965fc30a"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g16": ["(absent)",true],
@@ -1594,12 +1594,12 @@
     },
     "mode": "basic"
   },
-  "random/L17-q65-all-B-stfull": {
-    "in": "7fe9592a5ae9",
+  "random/L17-q66-all-B-stfull": {
+    "in": "98a8db63c0c0",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-      {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 17. Level up first.","c":""}
+      {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 17. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -1629,10 +1629,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Frozen Fafnite Lv 36",
-      "quest": "Inevitable Encounter",
+      "prev": "Inevitable Encounter Lv 37",
+      "quest": "Unveiling the Truth",
       "lv": "Lv 37",
-      "next": "Unveiling the Truth Lv 37",
+      "next": "Lake of Confrontation Lv 37",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -1649,7 +1649,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"5f67a685"}],
+      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"b925c901"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -1728,12 +1728,12 @@
     },
     "mode": "basic"
   },
-  "random/L17-q77-rnd128p95-A-stfull": {
-    "in": "cc91c67e2101",
+  "random/L17-q78-rnd128p95-A-stfull": {
+    "in": "ab10a25b559c",
     "nu": [
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","+12 more"]},
-      {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 17. Level up first.","c":""},
+      {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 17. Level up first.","c":""},
       {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Impact Hit 2 → 3","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1767,10 +1767,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Daybreak Society Rescue Operation Lv 41",
-      "quest": "The Breaking of the Day",
+      "prev": "The Breaking of the Day Lv 42",
+      "quest": "Chief of the Black Claw",
       "lv": "Lv 42",
-      "next": "Chief of the Black Claw Lv 42",
+      "next": "High Priest's Fafnite Lv 43",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1787,7 +1787,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":121,"at":{"0":120,"1790856000":1},"fnv1a":"876829a5"}],
+      "mt": ["(absent)",{"stamps":121,"at":{"0":120,"1790856000":1},"fnv1a":"a21cb004"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1796,11 +1796,11 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q78-lvonly-A": {
-    "in": "559ccbb2a6f4",
+  "random/L17-q79-lvonly-A": {
+    "in": "a2f5932609c4",
     "nu": [
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
-      {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 17. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 17. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1835,10 +1835,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Breaking of the Day Lv 42",
-      "quest": "Chief of the Black Claw",
-      "lv": "Lv 42",
-      "next": "High Priest's Fafnite Lv 43",
+      "prev": "Chief of the Black Claw Lv 42",
+      "quest": "High Priest's Fafnite",
+      "lv": "Lv 43",
+      "next": "The High Priest Awakens Lv 44",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1855,7 +1855,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"a76e2fed"}],
+      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"085308c6"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1864,11 +1864,11 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q80-lvonly-A-filters": {
-    "in": "89882d0527ab",
+  "random/L17-q81-lvonly-A-filters": {
+    "in": "2da48cc61e90",
     "nu": [
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
-      {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 17. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 17. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -1903,10 +1903,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "High Priest's Fafnite Lv 43",
-      "quest": "The High Priest Awakens",
+      "prev": "The High Priest Awakens Lv 44",
+      "quest": "Lingering Apparitions",
       "lv": "Lv 44",
-      "next": "Lingering Apparitions Lv 44",
+      "next": "Blood Barrier Lv 44",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -1922,7 +1922,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"88866660"}],
+      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"f80b3b2b"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1931,11 +1931,11 @@
     },
     "mode": "advanced"
   },
-  "random/L17-q85-before-B": {
-    "in": "758200246ce2",
+  "random/L17-q86-before-B": {
+    "in": "75d7e8f08d82",
     "nu": [
-      {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 0/17 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+11 more"]},
-      {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 17. Level up first. Meanwhile: Strongholds","c":"tag \"Turn in at Lv 45\""},
+      {"t":"Regional quests","s":"31 to pick up · 7 follow-ups · 0/40 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22] | -> lock(disabled) Sapling Hide-and-Seek [Lv 45]","new Fight Poison with Poison [Lv 27]","+32 more"]},
+      {"t":"Story: Daeva Trapped in a Nightmare","s":"Needs Lv 45: you're 17. Level up first. Meanwhile: Strongholds","c":"tag \"Turn in at Lv 45\""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
     ],
     "ms": [
@@ -1966,16 +1966,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Farewells Lv 45",
-      "quest": "Forgotten Commander",
+      "prev": "Forgotten Commander Lv 45",
+      "quest": "Daeva Trapped in a Nightmare",
       "lv": "Lv 45",
-      "next": "Last Altgard story quest · turns in at Latesran Eastern Root (Reshanta)",
+      "next": "Last story quest in the guide · turns in to Nemon at Outskirts Stall",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 3 levels to go","Lv 22 Stigma slot 1 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Skill tier: level 8 next · 2 to go Lv 19"],
       "ring": "25%",
-      "prog": ["Quests 12 8/58","Dungeons 24/60","Strongholds 5 1/15"]
+      "prog": ["Quests 31 8/58","Dungeons 24/60","Strongholds 5 1/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 14/15 · 1 open","* Lv 15–19 · 11/15 · 4 open","Lv 20–24 (later) · 0/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 0/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 0/10","All strongholds · 1/15"],
@@ -1986,7 +1986,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"81ffb870"}],
+      "mt": ["(absent)",{"stamps":90,"at":{"0":89,"1790856000":1},"fnv1a":"6bb4c164"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -1996,7 +1996,7 @@
     "mode": "basic"
   },
   "random/L17-qxx-all-B-stfull": {
-    "in": "882715726fd1",
+    "in": "e59a50c0ff47",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
@@ -2050,7 +2050,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"226334e9"}],
+      "mt": ["(absent)",{"stamps":344,"at":{"0":343,"1790856000":1},"fnv1a":"d256e7b4"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2132,12 +2132,12 @@
     },
     "mode": "advanced"
   },
-  "random/L18-q16-before-A-stfull": {
-    "in": "e38a379c4fc8",
+  "random/L18-q17-before-A-stfull": {
+    "in": "38efde12cefd",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
-      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+      {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
       {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2148,7 +2148,7 @@
       "g6 | Cleared | 11/11 | done",
       "g9 | Cleared | 7/7 | done",
       "g10 | Cleared | 9/9 | done",
-      "g12 | Missed | 9/10 | overdue | open",
+      "g12 | Cleared | 10/10 | done",
       "g15 | Cleared | 4/4 | done",
       "g16 | Missed | 6/13 | overdue | open",
       "g19 | 1 to go | 0/11 | upnext | open",
@@ -2172,12 +2172,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Express Daeva Delivery Lv 12",
-      "quest": "Veiled Truth",
-      "lv": "Lv 12",
-      "next": "Urgent Pursuit unlocks Daevanion boards and the Shugo Festival Lv 13",
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
       "hint": "next milestone at Lv 19",
-      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival your next quest · \"Urgent Pursuit\""],
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
       "ring": "21%",
@@ -2192,8 +2192,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":84,"at":{"0":83,"1790856000":1},"fnv1a":"ecef6673"}],
-      "open.g12": ["(absent)",true],
+      "mt": ["(absent)",{"stamps":85,"at":{"0":84,"1790856000":1},"fnv1a":"9bd31a18"}],
       "open.g16": ["(absent)",true],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
@@ -2342,16 +2341,16 @@
     },
     "mode": "basic"
   },
-  "random/L18-q44-none-B-dv": {
-    "in": "c8f218ab3392",
+  "random/L18-q45-none-B-dv": {
+    "in": "7696d99be84d",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
-      {"t":"Clear Abandoned Archon Jail and others until Lv 29","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
+      {"t":"Clear Abandoned Archon Jail and others until Lv 30","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Land of Rifts","s":"Needs Lv 29: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Story: Dying Light","s":"Needs Lv 30: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
     ],
     "ms": [
@@ -2382,10 +2381,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Collective Effort Lv 27",
-      "quest": "Land of Rifts",
-      "lv": "Lv 29",
-      "next": "Dying Light Lv 30",
+      "prev": "Land of Rifts Lv 29",
+      "quest": "Dying Light",
+      "lv": "Lv 30",
+      "next": "Contaminated Sacred Tree Lv 30",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -2402,7 +2401,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":12,"at":{"0":11,"1790856000":1},"fnv1a":"2b896008"}],
+      "mt": ["(absent)",{"stamps":12,"at":{"0":11,"1790856000":1},"fnv1a":"ef4af703"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -2486,7 +2485,7 @@
     "mode": "advanced"
   },
   "random/L18-q58-all-A-objs": {
-    "in": "8747e04aae24",
+    "in": "3d49b83e25fb",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Impending Threat","s":"Needs Lv 34: you're 18. Level up first.","c":""}
@@ -2540,7 +2539,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":346,"at":{"0":345,"1790856000":1},"fnv1a":"4e8cdf75"}],
+      "mt": ["(absent)",{"stamps":346,"at":{"0":345,"1790856000":1},"fnv1a":"3f151fe2"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2549,11 +2548,11 @@
     },
     "mode": "advanced"
   },
-  "random/L18-q66-all-B": {
-    "in": "d5db3188144e",
+  "random/L18-q67-all-B": {
+    "in": "bb237e04b4f6",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 18. Level up first.","c":""}
+      {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 18. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -2583,10 +2582,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Inevitable Encounter Lv 37",
-      "quest": "Unveiling the Truth",
+      "prev": "Unveiling the Truth Lv 37",
+      "quest": "Lake of Confrontation",
       "lv": "Lv 37",
-      "next": "Lake of Confrontation Lv 37",
+      "next": "An Ill Fate's Resolution Lv 37",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -2603,7 +2602,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"ad5159bd"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"c78e0119"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -2612,13 +2611,13 @@
     },
     "mode": "basic"
   },
-  "random/L18-q69-rnd100p80-B": {
-    "in": "dbe77bf21821",
+  "random/L18-q70-rnd100p80-B": {
+    "in": "741813c512b3",
     "nu": [
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
-      {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 1/20 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+12 more"]},
-      {"t":"Clear Howling Den and others until Lv 37","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 4 open at your level"},
-      {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Regional quests","s":"14 to pick up · 6 follow-ups · 1/22 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+14 more"]},
+      {"t":"Clear Howling Den and others until Lv 40","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 4 open at your level"},
+      {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
     ],
     "ms": [
@@ -2636,8 +2635,8 @@
       "g28 | Later | 0/1 | ",
       "g30 | Later | 0/10 | ",
       "g32 | Later | 1/11 | ",
-      "g35 | Later | 0/2 | ",
-      "g37 | Later | 0/5 | ",
+      "g35 | Later | 1/3 | ",
+      "g37 | Later | 1/5 | ",
       "g40 | Later | 0/3 | ",
       "g45 | Later | 0/32 | "
     ],
@@ -2649,16 +2648,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "An Ill Fate's Resolution Lv 37",
-      "quest": "Mirror of Greed",
-      "lv": "Lv 37",
-      "next": "Fafnite's Whereabouts Lv 40",
+      "prev": "Mirror of Greed Lv 37",
+      "quest": "Fafnite's Whereabouts",
+      "lv": "Lv 40",
+      "next": "Exiled Ritualist Lv 40",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
       "track": ["Skill tier: level 8 next · 1 to go Lv 19"],
       "ring": "26%",
-      "prog": ["Quests 13 3/58","Dungeons 4 20/60","Strongholds 2 11/15"]
+      "prog": ["Quests 14 3/58","Dungeons 4 20/60","Strongholds 2 11/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 12/15 · 3 open","* Lv 15–19 · 12/15 · 3 open","Lv 20–24 (later) · 1/8","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 2/9","Lv 35–39 (later) · 2/12","Lv 40–44 (later) · 2/10","All strongholds · 11/15"],
@@ -2669,7 +2668,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":114,"at":{"0":113,"1790856000":1},"fnv1a":"20348124"}],
+      "mt": ["(absent)",{"stamps":114,"at":{"0":113,"1790856000":1},"fnv1a":"42a20995"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -2830,13 +2829,13 @@
     },
     "mode": "advanced"
   },
-  "random/L18-q75-lvonly-A-objs": {
-    "in": "ef1497f38846",
+  "random/L18-q76-lvonly-A-objs": {
+    "in": "e57b922c5533",
     "nu": [
       {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
-      {"t":"Story: Daybreak Society","s":"Needs Lv 41: you're 18. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 18. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -2870,10 +2869,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Symbol of Liberation Lv 40",
-      "quest": "Daybreak Society",
+      "prev": "Daybreak Society Lv 41",
+      "quest": "Daybreak Society Rescue Operation",
       "lv": "Lv 41",
-      "next": "Daybreak Society Rescue Operation Lv 41",
+      "next": "The Breaking of the Day Lv 42",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -2891,7 +2890,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":94,"at":{"0":93,"1790856000":1},"fnv1a":"6ddc6773"}],
+      "mt": ["(absent)",{"stamps":92,"at":{"0":91,"1790856000":1},"fnv1a":"a8a3f7e2"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -2900,14 +2899,14 @@
     },
     "mode": "advanced"
   },
-  "random/L18-q78-rnd131p95-A-cube": {
-    "in": "74a64d22c709",
+  "random/L18-q79-rnd131p95-A-cube": {
+    "in": "05cc34e68580",
     "nu": [
       {"t":"Finish Howling Den","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:howling-den"},
       {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
-      {"t":"Clear Howling Den and others until Lv 42","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 1 open at your level"},
-      {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 18. Level up first. Meanwhile: Sealed Dungeons","c":""},
+      {"t":"Clear Howling Den and others until Lv 43","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 1 open at your level"},
+      {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 18. Level up first. Meanwhile: Sealed Dungeons","c":""},
       {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -2940,10 +2939,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Breaking of the Day Lv 42",
-      "quest": "Chief of the Black Claw",
-      "lv": "Lv 42",
-      "next": "High Priest's Fafnite Lv 43",
+      "prev": "Chief of the Black Claw Lv 42",
+      "quest": "High Priest's Fafnite",
+      "lv": "Lv 43",
+      "next": "The High Priest Awakens Lv 44",
       "hint": "next milestone at Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 2 levels to go","Lv 22 Stigma slot 1 4 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -2960,7 +2959,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":122,"at":{"0":121,"1790856000":1},"fnv1a":"05b1d9d9"}],
+      "mt": ["(absent)",{"stamps":122,"at":{"0":121,"1790856000":1},"fnv1a":"216b7632"}],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "open.g19": ["(absent)",true],
@@ -3310,11 +3309,11 @@
     },
     "mode": "basic"
   },
-  "random/L19-q16-lvonly-B-filters": {
-    "in": "93cf169269f4",
+  "random/L19-q17-lvonly-B-filters": {
+    "in": "e696825f4226",
     "nu": [
       {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
+      {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"}
     ],
     "ms": [
@@ -3345,12 +3344,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Express Daeva Delivery Lv 12",
-      "quest": "Veiled Truth",
-      "lv": "Lv 12",
-      "next": "Urgent Pursuit unlocks Daevanion boards and the Shugo Festival Lv 13",
+      "prev": "Veiled Truth Lv 12",
+      "quest": "Urgent Pursuit",
+      "lv": "Lv 13",
+      "next": "Cemetery Cleanup Lv 13",
       "hint": "milestone now: Lv 19",
-      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go","Lv 13 🔓 Daevanion boards and the Shugo Festival your next quest · \"Urgent Pursuit\""],
+      "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go","Lv 16 🔓 Legions 4 story quests · \"Buried Atrocities\""],
       "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
       "track": ["Skill tier: level 8 now Lv 19","Zikel board Lv 20","Stigma slot 1 Lv 22","Supply Requests Lv 25","Stigma slot 2 Lv 27","Heart Gore 10 and Urugugu Canyon Lv 28","Daily dungeon and Vaizel board Lv 30","Stigma slot 3 Lv 32","Fire Temple Lv 35","Stigma slot 4 Lv 37","Triniel board Lv 40","Level cap Lv 45"],
       "ring": "26%",
@@ -3364,7 +3363,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":93,"at":{"0":92,"1790856000":1},"fnv1a":"d6116ef1"}],
+      "mt": ["(absent)",{"stamps":93,"at":{"0":92,"1790856000":1},"fnv1a":"af5947ca"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -3448,7 +3447,7 @@
     "mode": "basic"
   },
   "random/L19-q34-all-B-rqmix": {
-    "in": "d5223eb38586",
+    "in": "5617b49472ac",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Story: Disturbed Balance","s":"Needs Lv 22: you're 19. Level up first.","c":""}
@@ -3501,7 +3500,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"f4e600e3"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"b79f7d3c"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -3725,14 +3724,14 @@
     },
     "mode": "advanced"
   },
-  "random/L19-q51-rnd141p80-B-dv": {
-    "in": "f7a7c3e94380",
+  "random/L19-q52-rnd141p80-B-dv": {
+    "in": "b8661f9f5cca",
     "nu": [
       {"t":"Regional quests","s":"7 to pick up · 3 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]","+4 more"]},
       {"t":"Clear Smuggler's Cave and others until Lv 32","s":"Calderon Canyon · Kibelisk: Watcher's Tent · Lv 10–14 · 11/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Watcher's Tent is 180 m away · 2 open at your level"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-      {"t":"Story: The Survivors","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Story: Rescue Operation","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 2 open"}
     ],
     "ms": [
@@ -3763,10 +3762,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Eye of the Red Tower Lv 32",
-      "quest": "The Survivors",
+      "prev": "The Survivors Lv 32",
+      "quest": "Rescue Operation",
       "lv": "Lv 32",
-      "next": "Rescue Operation Lv 32",
+      "next": "Last of the Destruction Archons Lv 32",
       "hint": "milestone now: Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -3783,7 +3782,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":116,"at":{"0":115,"1790856000":1},"fnv1a":"90c83a39"}],
+      "mt": ["(absent)",{"stamps":116,"at":{"0":115,"1790856000":1},"fnv1a":"e18e5777"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -3940,12 +3939,12 @@
     },
     "mode": "basic"
   },
-  "random/L19-q60-lvonly-A-dv": {
-    "in": "09133033b891",
+  "random/L19-q61-lvonly-A-dv": {
+    "in": "11dde97e3180",
     "nu": [
       {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 2 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
-      {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 19. Level up first. Meanwhile: Strongholds","c":""},
+      {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
+      {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 19. Level up first. Meanwhile: Strongholds","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
       {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Rear Smite 4 → 5","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -3980,10 +3979,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Visible Trap Lv 34",
-      "quest": "Destruction Archon Underground Fortress",
-      "lv": "Lv 34",
-      "next": "Enemy Territory Lv 35",
+      "prev": "Destruction Archon Underground Fortress Lv 34",
+      "quest": "Enemy Territory",
+      "lv": "Lv 35",
+      "next": "Powder of Death Lv 35",
       "hint": "milestone now: Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -4000,7 +3999,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"b7730a51"}],
+      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"79911fcd"}],
       "open.g19": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -4083,11 +4082,11 @@
     },
     "mode": "basic"
   },
-  "random/L19-q64-all-A-rqmix": {
-    "in": "54db06249168",
+  "random/L19-q65-all-A-rqmix": {
+    "in": "88b2a3b3c015",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-      {"t":"Story: Frozen Fafnite","s":"Needs Lv 36: you're 19. Level up first.","c":""}
+      {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 19. Level up first.","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -4117,10 +4116,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Creion of Gribade Lv 36",
-      "quest": "Frozen Fafnite",
-      "lv": "Lv 36",
-      "next": "Inevitable Encounter Lv 37",
+      "prev": "Frozen Fafnite Lv 36",
+      "quest": "Inevitable Encounter",
+      "lv": "Lv 37",
+      "next": "Unveiling the Truth Lv 37",
       "hint": "all milestones cleared",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -4137,7 +4136,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"b9ca2194"}],
+      "mt": ["(absent)",{"stamps":343,"at":{"0":342,"1790856000":1},"fnv1a":"230fab88"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4146,8 +4145,8 @@
     },
     "mode": "advanced"
   },
-  "random/L19-q72-none-A-filters": {
-    "in": "96a2127171a5",
+  "random/L19-q73-none-A-filters": {
+    "in": "67eb863c54ff",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -4157,7 +4156,7 @@
       {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Healing Herbs","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Story: Treatment","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
     ],
     "ms": [
@@ -4188,10 +4187,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Exiled Ritualist Lv 40",
-      "quest": "Healing Herbs",
+      "prev": "Healing Herbs Lv 40",
+      "quest": "Treatment",
       "lv": "Lv 40",
-      "next": "Treatment Lv 40",
+      "next": "Symbol of Liberation Lv 40",
       "hint": "milestone now: Lv 19",
       "ahead": ["Ahead verified","Lv 20 Zikel board Second Daevanion board Krao Cave Expedition (Exploration) · item level 200 1 level to go","Lv 22 Stigma slot 1 3 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -4207,7 +4206,7 @@
       "areaLv": ["(absent)","15"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"f4ec2dfa"}],
+      "mt": ["(absent)",{"stamps":3,"at":{"0":2,"1790856000":1},"fnv1a":"ccee1ca4"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -4223,7 +4222,7 @@
     "mode": "advanced"
   },
   "random/L19-qxx-all-A-dv": {
-    "in": "43091e251c94",
+    "in": "ea7b91218178",
     "nu": [
       {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
       {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
@@ -4276,7 +4275,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":352,"at":{"0":351,"1790856000":1},"fnv1a":"89629bef"}],
+      "mt": ["(absent)",{"stamps":352,"at":{"0":351,"1790856000":1},"fnv1a":"52074d58"}],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
       "schemaVersion": ["(absent)",1],
@@ -4567,12 +4566,12 @@
     },
     "mode": "basic"
   },
-  "random/L20-q31-lvonly-B-rqmix": {
-    "in": "40a0f7068320",
+  "random/L20-q32-lvonly-B-rqmix": {
+    "in": "1a4a639956ae",
     "nu": [
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
-      {"t":"Clear Abandoned Memorial Room and others until Lv 21","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-      {"t":"Story: In the Elims' Name","s":"Needs Lv 21: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+      {"t":"Clear Abandoned Memorial Room and others until Lv 22","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
+      {"t":"Story: Verdant Melody","s":"Needs Lv 22: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
     ],
     "ms": [
@@ -4603,12 +4602,12 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Children of the Elim Lv 21",
-      "quest": "In the Elims' Name",
-      "lv": "Lv 21",
-      "next": "Verdant Melody Lv 22",
+      "prev": "In the Elims' Name Lv 21",
+      "quest": "Verdant Melody",
+      "lv": "Lv 22",
+      "next": "Daeva in a Dream unlocks Stigmas (via Asahr) and Expeditions Lv 22",
       "hint": "milestone now: Lv 20",
-      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions 2 story quests · \"Daeva in a Dream\""],
+      "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go","Lv 22 🔓 Stigmas (via Asahr) and Expeditions your next quest · \"Daeva in a Dream\""],
       "asc": "Ascension 1 / 4 · next: Hears the Voice · gauge 100%",
       "track": ["Zikel board now Lv 20"],
       "ring": "26%",
@@ -4623,7 +4622,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"5b9a5386"}],
+      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"b6666072"}],
       "open.g20": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -4632,15 +4631,15 @@
     },
     "mode": "basic"
   },
-  "random/L20-q35-rnd138p80-B": {
-    "in": "43d1fdaa90b9",
+  "random/L20-q36-rnd138p80-B": {
+    "in": "d5fdf56311ca",
     "nu": [
       {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
       {"t":"Clear Fanatics' Den and others until Lv 24","s":"Sanctum Outpost · Kibelisk: Temporary Retreat · Lv 15–19 · 7/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Retreat is 390 m away · 7 open at your level"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-      {"t":"Story: Searching for Survivors","s":"Needs Lv 24: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Prison Break","s":"Needs Lv 24: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
     ],
     "ms": [
@@ -4671,10 +4670,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Disturbed Balance Lv 22",
-      "quest": "Searching for Survivors",
+      "prev": "Searching for Survivors Lv 24",
+      "quest": "Prison Break",
       "lv": "Lv 24",
-      "next": "Prison Break Lv 24",
+      "next": "Finding Stolen Relics Lv 24",
       "hint": "next milestone at Lv 22",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -4691,7 +4690,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":120,"at":{"0":119,"1790856000":1},"fnv1a":"76810283"}],
+      "mt": ["(absent)",{"stamps":120,"at":{"0":119,"1790856000":1},"fnv1a":"f9b094cd"}],
       "open.g10": ["(absent)",true],
       "open.g16": ["(absent)",true],
       "open.g19": ["(absent)",true],
@@ -4781,8 +4780,8 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q48-rnd144p20-A-dv": {
-    "in": "121694c2d0d1",
+  "random/L20-q49-rnd144p20-A-dv": {
+    "in": "83a506a2a594",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -4790,9 +4789,9 @@
       {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
       {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
-      {"t":"Regional quests","s":"9 to pick up · 2 follow-ups · 3/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!","new Nine Wonders of Altgard: 1st Leg [Lv 22]","+5 more"]},
-      {"t":"Clear Closed Hideout and others until Lv 30","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 95 m away · 23 open at your level"},
-      {"t":"Story: Canyon's Secret","s":"Needs Lv 30: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Regional quests","s":"12 to pick up · 3 follow-ups · 3/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!","new Nine Wonders of Altgard: 1st Leg [Lv 22]","+9 more"]},
+      {"t":"Clear Closed Hideout and others until Lv 32","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 95 m away · 23 open at your level"},
+      {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"}
     ],
     "ms": [
@@ -4823,16 +4822,16 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Past Revealed Lv 30",
-      "quest": "Canyon's Secret",
-      "lv": "Lv 30",
-      "next": "Bitter Reality Lv 32",
+      "prev": "Canyon's Secret Lv 30",
+      "quest": "Bitter Reality",
+      "lv": "Lv 32",
+      "next": "Eye of the Red Tower Lv 32",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
       "track": ["Zikel board now Lv 20"],
       "ring": "13%",
-      "prog": ["Quests 9 3/58","Dungeons 23 8/60","Strongholds 4 6/15"]
+      "prog": ["Quests 12 3/58","Dungeons 23 8/60","Strongholds 4 6/15"]
     },
     "reg": {
       "opts": ["Lv 10–14 · 6/15 · 9 open","Lv 15–19 · 2/15 · 13 open","* Lv 20–24 · 3/8 · 5 open","Lv 25–29 (later) · 0/6","Lv 30–34 (later) · 1/9","Lv 35–39 (later) · 0/12","Lv 40–44 (later) · 2/10","All strongholds · 6/15"],
@@ -4843,7 +4842,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":42,"at":{"0":41,"1790856000":1},"fnv1a":"bed87e9a"}],
+      "mt": ["(absent)",{"stamps":42,"at":{"0":41,"1790856000":1},"fnv1a":"674a0c72"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -4859,8 +4858,8 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q52-rnd141p20-A-stwait": {
-    "in": "5bf4a504121c",
+  "random/L20-q53-rnd141p20-A-stwait": {
+    "in": "3de62f458071",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
@@ -4870,7 +4869,7 @@
       {"t":"Clear Closed Hideout and others until Lv 32","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 95 m away · 26 open at your level"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
       {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-      {"t":"Story: Rescue Operation","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
     ],
     "ms": [
@@ -4901,10 +4900,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The Survivors Lv 32",
-      "quest": "Rescue Operation",
+      "prev": "Rescue Operation Lv 32",
+      "quest": "Last of the Destruction Archons",
       "lv": "Lv 32",
-      "next": "Last of the Destruction Archons Lv 32",
+      "next": "A Daeva Dreaming Anew Lv 32",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 2 / 4 · next: Dreams · gauge 100%",
@@ -4921,7 +4920,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":24,"at":{"0":23,"1790856000":1},"fnv1a":"bb873ea4"}],
+      "mt": ["(absent)",{"stamps":24,"at":{"0":23,"1790856000":1},"fnv1a":"328c2e9c"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -4937,15 +4936,15 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q55-rnd102p20-B-filters": {
-    "in": "281c9e7db074",
+  "random/L20-q56-rnd102p20-B-filters": {
+    "in": "f0250b76a639",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 1/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+12 more"]},
       {"t":"Clear Destroyed Scriptorium and others until Lv 33","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 3/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 27 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-      {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Scripture in the Ruins","s":"Needs Lv 33: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
     ],
     "ms": [
@@ -4976,10 +4975,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "A Daeva Dreaming Anew Lv 32",
-      "quest": "Last Refuge",
+      "prev": "Last Refuge Lv 33",
+      "quest": "Scripture in the Ruins",
       "lv": "Lv 33",
-      "next": "Scripture in the Ruins Lv 33",
+      "next": "Blood Monument Lv 33",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -4995,7 +4994,7 @@
       "areaLv": ["(absent)","20"],
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
-      "mt": ["(absent)",{"stamps":33,"at":{"0":32,"1790856000":1},"fnv1a":"8598d9fb"}],
+      "mt": ["(absent)",{"stamps":33,"at":{"0":32,"1790856000":1},"fnv1a":"400382a7"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -5011,13 +5010,13 @@
     },
     "mode": "basic"
   },
-  "random/L20-q59-lvonly-A-objs": {
-    "in": "a103547e92dc",
+  "random/L20-q60-lvonly-A-objs": {
+    "in": "9e70becf1cd9",
     "nu": [
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
-      {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
+      {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 2 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
       {"t":"Clear Abandoned Memorial Room and others until Lv 34","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-      {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Destruction Archon Underground Fortress","s":"Needs Lv 34: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
       {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -5051,10 +5050,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Impending Threat Lv 34",
-      "quest": "Visible Trap",
+      "prev": "Visible Trap Lv 34",
+      "quest": "Destruction Archon Underground Fortress",
       "lv": "Lv 34",
-      "next": "Destruction Archon Underground Fortress Lv 34",
+      "next": "Enemy Territory Lv 35",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5072,7 +5071,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":104,"at":{"0":103,"1790856000":1},"fnv1a":"771bdb4d"}],
+      "mt": ["(absent)",{"stamps":104,"at":{"0":103,"1790856000":1},"fnv1a":"c40fa461"}],
       "open.g20": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -5081,14 +5080,14 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q65-before-A-dv": {
-    "in": "99dc9d9e9f04",
+  "random/L20-q66-before-A-dv": {
+    "in": "967a7961cb30",
     "nu": [
       {"t":"Buy Insignia Explosion on Nezekan","s":"5 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
       {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
       {"t":"Clear Abandoned Memorial Room and others until Lv 37","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-      {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
       {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -5121,10 +5120,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Frozen Fafnite Lv 36",
-      "quest": "Inevitable Encounter",
+      "prev": "Inevitable Encounter Lv 37",
+      "quest": "Unveiling the Truth",
       "lv": "Lv 37",
-      "next": "Unveiling the Truth Lv 37",
+      "next": "Lake of Confrontation Lv 37",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5141,7 +5140,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":117,"at":{"0":116,"1790856000":1},"fnv1a":"a4ad7106"}],
+      "mt": ["(absent)",{"stamps":117,"at":{"0":116,"1790856000":1},"fnv1a":"3da6c51d"}],
       "open.g20": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -5150,14 +5149,14 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q66-rnd139p80-A-dv": {
-    "in": "2f1f3849af88",
+  "random/L20-q67-rnd139p80-A-dv": {
+    "in": "fb260e5f2cb4",
     "nu": [
       {"t":"Buy Exploit Weakness · 1 of 2 on Nezekan","s":"4 of your 9 crystals","c":"primary \"Acquired\" board"},
       {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 5/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Fight Poison with Poison [Lv 27]","+11 more"]},
       {"t":"Clear Predator's Lair and others until Lv 37","s":"Purifying Forest · Kibelisk: Guide Rest Stop · Lv 20–24 · 5/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 8 open at your level"},
       {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 1 open"},
       {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
       {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
@@ -5190,10 +5189,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "Inevitable Encounter Lv 37",
-      "quest": "Unveiling the Truth",
+      "prev": "Unveiling the Truth Lv 37",
+      "quest": "Lake of Confrontation",
       "lv": "Lv 37",
-      "next": "Lake of Confrontation Lv 37",
+      "next": "An Ill Fate's Resolution Lv 37",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5210,7 +5209,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":145,"at":{"0":144,"1790856000":1},"fnv1a":"5f888186"}],
+      "mt": ["(absent)",{"stamps":145,"at":{"0":144,"1790856000":1},"fnv1a":"6f073f65"}],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
       "open.g16": ["(absent)",true],
@@ -5299,13 +5298,13 @@
     },
     "mode": "advanced"
   },
-  "random/L20-q80-lvonly-B": {
-    "in": "91b90b95e2c8",
+  "random/L20-q81-lvonly-B": {
+    "in": "c50f0b1d1ed8",
     "nu": [
       {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
       {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
       {"t":"Clear Abandoned Memorial Room and others until Lv 44","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
-      {"t":"Story: The High Priest Awakens","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
       {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
     ],
     "ms": [
@@ -5336,10 +5335,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "High Priest's Fafnite Lv 43",
-      "quest": "The High Priest Awakens",
+      "prev": "The High Priest Awakens Lv 44",
+      "quest": "Lingering Apparitions",
       "lv": "Lv 44",
-      "next": "Lingering Apparitions Lv 44",
+      "next": "Blood Barrier Lv 44",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5356,7 +5355,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"a33f665e"}],
+      "mt": ["(absent)",{"stamps":102,"at":{"0":101,"1790856000":1},"fnv1a":"86e86531"}],
       "open.g20": ["(absent)",true],
       "rotSeen": ["(absent)",["Right click:Heart Gore:0","Right click:Ambush:1","Right click:Insignia Explosion:2","Right click:Savage Roar:3","Q:Shadowstrike:0"]],
       "savedAt": ["(absent)",1790856000000],
@@ -5365,11 +5364,11 @@
     },
     "mode": "basic"
   },
-  "random/L20-q81-all-B-sppts": {
-    "in": "08a15db23595",
+  "random/L20-q82-all-B-sppts": {
+    "in": "3bf129da451a",
     "nu": [
       {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
+      {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
       "g6 | Missed | 1/11 | overdue | open",
@@ -5399,10 +5398,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The High Priest Awakens Lv 44",
-      "quest": "Lingering Apparitions",
+      "prev": "Lingering Apparitions Lv 44",
+      "quest": "Blood Barrier",
       "lv": "Lv 44",
-      "next": "Blood Barrier Lv 44",
+      "next": "Zikel's Core Lv 45",
       "hint": "milestone now: Lv 20",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 4 / 4 · next: Swears the Oath (Lv 49)",
@@ -5419,7 +5418,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"da5ec0a7"}],
+      "mt": ["(absent)",{"stamps":203,"at":{"0":202,"1790856000":1},"fnv1a":"965591fe"}],
       "open.g10": ["(absent)",true],
       "open.g12": ["(absent)",true],
       "open.g15": ["(absent)",true],
@@ -5436,15 +5435,15 @@
     },
     "mode": "basic"
   },
-  "random/L20-q81-rnd128p80-B": {
-    "in": "6bf786fe198e",
+  "random/L20-q82-rnd128p80-B": {
+    "in": "43a31ca474f9",
     "nu": [
       {"t":"Buy Ambush specialty","s":"Pick: Engraves 2 Insignias when it lands as a Back attack","c":"primary \"Spent\" skill"},
       {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","+12 more"]},
       {"t":"Clear Predator's Lair and others until Lv 44","s":"Purifying Forest · Kibelisk: Guide Rest Stop · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 5 open at your level"},
       {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
       {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-      {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":""}
+      {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 20. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":""}
     ],
     "ms": [
       "g6 | Cleared | 11/11 | done",
@@ -5474,10 +5473,10 @@
       "hold | 0/3"
     ],
     "jr": {
-      "prev": "The High Priest Awakens Lv 44",
-      "quest": "Lingering Apparitions",
+      "prev": "Lingering Apparitions Lv 44",
+      "quest": "Blood Barrier",
       "lv": "Lv 44",
-      "next": "Blood Barrier Lv 44",
+      "next": "Zikel's Core Lv 45",
       "hint": "next milestone at Lv 22",
       "ahead": ["Ahead verified","Lv 22 Stigma slot 1 2 levels to go","Lv 25 Sealed Dungeons New batch Supply Requests Hand in items for Abyss Points 5 levels to go"],
       "asc": "Ascension 3 / 4 · next: Witnesses the Nightmare",
@@ -5494,7 +5493,7 @@
       "backup": ["(absent)",{"since":1790856000000}],
       "backup1": ["(absent)",true],
       "hide": ["(absent)",false],
-      "mt": ["(absent)",{"stamps":130,"at":{"0":129,"1790856000":1},"fnv1a":"057449cc"}],
+      "mt": ["(absent)",{"stamps":130,"at":{"0":129,"1790856000":1},"fnv1a":"9e1058d4"}],
       "open.g16": ["(absent)",true],
       "open.g22": ["(absent)",true],
       "open.g9": ["(absent)",true],

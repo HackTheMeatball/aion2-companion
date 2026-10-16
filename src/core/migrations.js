@@ -52,6 +52,15 @@ export function migrate(s, hadSave, store, now = 0) {
   }
   /* "Turned in" on the last covered quest is remembered (storyEnd); once later quests are added, move on to the next. */
   if (c.storyEnd && c.storyEnd === c.quest) { const i = QUESTS.findIndex(([, n]) => n === c.quest); if (i >= 0 && i < QUESTS.length - 1) { c.quest = QUESTS[i + 1][1]; delete c.storyEnd; store(); } }
+  /* 0.3 E10 one-time (g45Split1): g45:0 ("Witnesses and Oath") is retired, narrowed to g45:witness (Witnesses only,
+     DATA-FORMAT-V2 N6). A true g45:0 tick implies Witnesses, so it is copied unless g45:witness already has a value
+     (unticking stores false, so a deliberate untick is never overridden); g45:0 stays in the save. The copy is checked on
+     every load, not only once: a g45:0 tick can arrive after the flag is set (an older build on another device, or a
+     rollback). The flag is only a marker, set when there is a tick, so other saves are not written. */
+  if (c.checks && c.checks["g45:0"] === true && (!s.g45Split1 || !("g45:witness" in c.checks))) {
+    if (!("g45:witness" in c.checks)) c.checks["g45:witness"] = true;
+    s.g45Split1 = true; if (hadSave) { store(); }
+  }
   /* 5c one-time (stampV1): save schemaVersion 1 and per-item change times (mt). What the save already holds is stamped
      with time 0 (unknown; an imported export's savedAt when it has one, N1), so it never outranks a dated change. Writes
      nothing: the stamps go out with the next save (the stored save, and so golden's record, stay as they were).

@@ -1042,54 +1042,6 @@
       ]
     },
     {
-      "id": "g45:0",
-      "key": "g45:0",
-      "milestone": "g45",
-      "order": 10,
-      "route": "core",
-      "short": "Finish the Hero and Ascension quests",
-      "text": "<b>Finish the remaining Hero and Ascension quests:</b> \"The One Who Witnesses the Nightmare\" (recommended 45) and \"The One Who Swears the Oath\" (recommended 49, so expect it to need gear), both from Asahr.",
-      "loc": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it. [[asc]]",
-      "ascensionQuest": "asc:witnesses",
-      "requires": {
-        "all": [
-          {
-            "level": 45,
-            "basis": "rule",
-            "note": "milestone level"
-          },
-          {
-            "story": "sq:2102800",
-            "is": "turnedIn",
-            "basis": "sourced",
-            "sources": [
-              {
-                "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
-                "fields": [
-                  "steps",
-                  "prev"
-                ],
-                "checkedAt": "2026-10-14"
-              }
-            ],
-            "note": "Daeva Trapped in a Nightmare (previous quest: Forgotten Commander) has Witnesses as its objective, so \"Forgotten Commander turned in\" is at worst late, never early (claim C37); opening while it is still open is owner check 5. Derived completion waits for Daeva Trapped (sq:2102810) in the data (owner decision Q7) and the g45:0 split (prereq-gates §9.3)."
-          },
-          {
-            "player": "Ascension Gauge at 100%",
-            "playerChecked": true,
-            "basis": "legacy"
-          }
-        ]
-      },
-      "completesWith": [
-        "tick"
-      ],
-      "claims": [
-        "C05",
-        "C37"
-      ]
-    },
-    {
       "id": "g45:2",
       "key": "g45:2",
       "milestone": "g45",
@@ -1175,6 +1127,69 @@
       ],
       "claims": [
         "C08"
+      ]
+    },
+    {
+      "id": "g45:witness",
+      "key": "g45:witness",
+      "milestone": "g45",
+      "order": 10,
+      "route": "core",
+      "short": "Ascension quest \"The One Who Witnesses the Nightmare\"",
+      "text": "<b>Complete \"The One Who Witnesses the Nightmare\"</b> (recommended Lv 45) from Asahr. The next one, \"The One Who Swears the Oath\", is recommended Lv 49, past this guide, so expect it to need gear.",
+      "loc": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it. [[asc]]",
+      "ascensionQuest": "asc:witnesses",
+      "requires": {
+        "all": [
+          {
+            "level": 45,
+            "basis": "rule",
+            "note": "milestone level"
+          },
+          {
+            "story": "sq:2102800",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+                "fields": [
+                  "steps",
+                  "prev"
+                ],
+                "checkedAt": "2026-10-14"
+              }
+            ],
+            "note": "Daeva Trapped in a Nightmare (previous quest: Forgotten Commander) has Witnesses as its objective, so \"Forgotten Commander turned in\" is at worst late, never early (claim C37); opening while it is still open is owner check 5."
+          },
+          {
+            "player": "Ascension Gauge at 100%",
+            "playerChecked": true,
+            "basis": "legacy"
+          }
+        ]
+      },
+      "completesWith": [
+        "tick",
+        {
+          "story": "sq:2102810",
+          "is": "turnedIn",
+          "basis": "sourced",
+          "sources": [
+            {
+              "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+              "fields": [
+                "steps"
+              ],
+              "checkedAt": "2026-10-16"
+            }
+          ],
+          "note": "wrapper rule: its objective is completing \"The One Who Witnesses the Nightmare\""
+        }
+      ],
+      "claims": [
+        "C05",
+        "C37"
       ]
     },
     {

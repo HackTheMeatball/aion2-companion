@@ -92,6 +92,36 @@ export default (test, M) => {
     assert.equal(C(state).quest, M.QUESTS[4][1]); assert.equal(C(state).storyEnd, undefined); assert.equal(writes.length, 1);
     const last = M.QUESTS[M.QUESTS.length - 1][1], end = run(M, { ...FLAGS, checks: {}, level: 45, quest: last, storyEnd: last });
     assert.equal(C(end.state).quest, last); assert.equal(C(end.state).storyEnd, last); assert.deepEqual(end.writes, []);
+    /* 0.3 E10: the data used to end at Forgotten Commander; such a save moves on to Daeva Trapped in a Nightmare */
+    const fc = run(M, { ...FLAGS, checks: {}, level: 45, quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' });
+    assert.equal(C(fc.state).quest, 'Daeva Trapped in a Nightmare'); assert.equal(C(fc.state).storyEnd, undefined); assert.equal(fc.writes.length, 1);
+  });
+  test('E10 g45Split1: a true g45:0 tick is copied to g45:witness once; g45:0 stays; nothing written without one', () => {
+    const saved = { ...FLAGS, checks: { 'g45:0': true, 'g6:0': true }, level: 45, quest: 'Forgotten Commander' };
+    const { state, writes } = run(M, saved);
+    assert.equal(C(state).checks['g45:witness'], true); assert.equal(C(state).checks['g45:0'], true, 'the retired key stays');
+    assert.equal(state.g45Split1, true); assert.equal(writes.length, 1);
+    assert.deepEqual(kept(saved, state), [], 'only adds');
+    const again = run(M, writes[0]);
+    assert.deepEqual(again.writes, [], 'idempotent: no second write'); assert.deepEqual(C(again.state).checks, C(state).checks);
+    /* the player unticked Witnesses after the copy: never re-copied */
+    const unticked = run(M, { ...writes[0], checks: { ...C(writes[0]).checks, 'g45:witness': false } });
+    assert.equal(C(unticked.state).checks['g45:witness'], false); assert.deepEqual(unticked.writes, []);
+    /* an existing g45:witness value is never overwritten */
+    const has = run(M, { ...saved, checks: { 'g45:0': true, 'g45:witness': false } });
+    assert.equal(C(has.state).checks['g45:witness'], false); assert.equal(has.state.g45Split1, true);
+    /* a false or missing g45:0: nothing to copy, no flag, no write (the stored save stays as it was) */
+    for (const checks of [{ 'g45:0': false }, {}]) {
+      const r = run(M, { ...FLAGS, checks, level: 45, quest: 'Forgotten Commander' });
+      assert.equal('g45:witness' in C(r.state).checks, false); assert.equal(r.state.g45Split1, undefined); assert.deepEqual(r.writes, []);
+    }
+    /* late tick: the flag is already set (synced, or an earlier tick), then an older build ticks g45:0. It is still copied */
+    const late = run(M, { ...FLAGS, g45Split1: true, checks: { 'g45:0': true }, level: 45, quest: 'Forgotten Commander' });
+    assert.equal(C(late.state).checks['g45:witness'], true); assert.equal(C(late.state).checks['g45:0'], true); assert.equal(late.writes.length, 1);
+    assert.deepEqual(run(M, late.writes[0]).writes, [], 'late copy idempotent');
+    /* ...but with the flag set, a deliberate untick (false) is never overridden and nothing is written */
+    const lateOff = run(M, { ...FLAGS, g45Split1: true, checks: { 'g45:0': true, 'g45:witness': false }, level: 45, quest: 'Forgotten Commander' });
+    assert.equal(C(lateOff.state).checks['g45:witness'], false); assert.deepEqual(lateOff.writes, []);
   });
 
   /* ---------- 0.2.5 backup1: the export nudge's baseline (docs/design/0.2.5-save-safety.md §4) ---------- */

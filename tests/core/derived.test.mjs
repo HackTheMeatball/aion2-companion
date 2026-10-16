@@ -161,11 +161,14 @@ export default (test, M) => {
     withChanges([], () => assert.equal(der(past, 'g22:0'), null, 'without derived: the tick only, as in 0.2'));
   });
 
-  test('wrapper rule, g32:dreams (live since owner approval): done once "A Daeva Dreaming Anew" is turned in; g45:0 is never derived (Q9 / E10)', () => {
+  test('wrapper rule, g32:dreams (live since owner approval): done once "A Daeva Dreaming Anew" is turned in; g45:witness once "Daeva Trapped in a Nightmare" is (Q9 / E10)', () => {
     assert.equal(der(S({ level: 32, quest: at('A Daeva Dreaming Anew', 1) }), 'g32:dreams').via, 'turnedIn sq:2102345');
     assert.equal(der(S({ level: 32, quest: 'A Daeva Dreaming Anew' }), 'g32:dreams'), null);
     const last = M.QUESTS[M.QUESTS.length - 1][1];
-    assert.equal(der(S({ quest: last, storyEnd: last }), 'g45:0'), null);
+    assert.equal(last, 'Daeva Trapped in a Nightmare', 'E10: the story data ends at the wrapper of Witnesses');
+    assert.equal(der(S({ level: 45, quest: last, storyEnd: last }), 'g45:witness').via, 'turnedIn sq:2102810');
+    assert.equal(der(S({ level: 45, quest: last }), 'g45:witness'), null, 'on Daeva Trapped, not turned in');
+    assert.equal(der(S({ level: 45, quest: last, storyEnd: last }), 'g45:0'), null, 'the retired key has no node');
   });
 
   test('"Put … on E" (g27:1): derived once stigma slot 2 (g27:0) is marked equipped', () => {

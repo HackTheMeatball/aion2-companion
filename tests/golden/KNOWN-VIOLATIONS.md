@@ -12,6 +12,6 @@ inferred gates). Fixing one shows up as golden diffs plus a shorter list here.
 ## Gate table (ORACLE)
 
 - `g32:dreams`: story at "A Daeva Dreaming Anew". hotfix: "The One Who Dreams" waits for the story to reach "A Daeva Dreaming Anew" (claims C36)
-- `g45:0`: "Forgotten Commander" turned in. hotfix: "The One Who Witnesses the Nightmare" needs "Forgotten Commander" turned in (claims C37)
+- `g45:witness`: "Forgotten Commander" turned in. hotfix: "The One Who Witnesses the Nightmare" needs "Forgotten Commander" turned in (claims C37)
 
 ## States

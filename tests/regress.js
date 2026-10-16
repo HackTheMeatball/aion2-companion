@@ -64,7 +64,7 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
     const c0 = { level: null, mode: null, width: 1500, fixture: 'static' };
     rec(c0, 'every regional chain lock names an existing quest', !s.badAfter.length, s.badAfter);
     rec(c0, 'every story gate names an existing story quest', !s.badStory.length, s.badStory);
-    rec(c0, 'story data ends at Forgotten Commander (Lv 45), levels non-decreasing', s.last[1] === 'Forgotten Commander' && s.last[0] === 45 && s.lvSorted, s.last);
+    rec(c0, 'story data ends at Daeva Trapped in a Nightmare (Lv 45, 0.3 E10), levels non-decreasing', s.last[1] === 'Daeva Trapped in a Nightmare' && s.last[0] === 45 && s.lvSorted, s.last);
     rec(c0, 'strongholds credit nothing; Sealed Dungeons 2+2', s.shRw.every(x => x === null) && s.sdRw.join() === '{"st":2,"cr":2}', { sh: s.shRw.slice(0, 3), sd: s.sdRw });
     rec(c0, 'no dungeon XP in AREA_LOC', !s.xpLoc, s.xpLoc);
     rec(c0, 'no "Ariel" in the page source', !/Ariel/.test(SRC));
@@ -96,7 +96,7 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
       rec(c, 'Skills card not empty', r.spVis && r.sp.length > 3, r.sp);
       rec(c, 'Daevanion card not empty', r.dvVis && r.dv.length > 3, r.dv);
       rec(c, 'Stigmas card not empty', r.stVis && r.st.length > 3, r.st);
-      const storyCard = r.cards.find(x => /^(Story:|Continue the story|Altgard story complete|Set your current main quest)/.test(x.title));
+      const storyCard = r.cards.find(x => /^(Story:|Continue the story|Lv 45 story complete|Set your current main quest)/.test(x.title));
       rec(c, 'a story card exists', !!storyCard, titles);
       if (L === 45) { rec(c, 'Lv 45: Ahead shows the level cap', /Level cap reached/.test(r.ahead), r.ahead); rec(c, 'Lv 45: Level up disabled', r.lvlUpDisabled); }
       rec(c, 'no horizontal scroll (scrollWidth == innerWidth)', r.sw <= r.iw, { sw: r.sw, iw: r.iw });
@@ -127,7 +127,7 @@ const setState = async (p, args) => { await p.evaluate(buildFixture, args); awai
         const has = await p.evaluate(() => { const b = [...document.querySelectorAll('#nowStar [data-now="story"]')].pop(); if (!b) return false; b.click(); return true; });
         if (has) { await p.waitForTimeout(700); const after = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));
           rec(c, '"Turned in" changes state', after !== before, { before, after }); }
-        else rec(c, '"Turned in" present unless story is level-gated or complete', storyCard && (/Needs Lv|Altgard story complete/.test(storyCard.sub + storyCard.title)), storyCard);
+        else rec(c, '"Turned in" present unless story is level-gated or complete', storyCard && (/Needs Lv|Lv 45 story complete/.test(storyCard.sub + storyCard.title)), storyCard);
       }
     }
     await ctx.close();

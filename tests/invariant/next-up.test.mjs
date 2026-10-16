@@ -34,7 +34,7 @@ const { fnv } = createRequire(import.meta.url)('../golden/states.js');
    ticked. E4 fixes it: the turn-in waits for the quest's unlock level, turnInNeedsLv; core nextup.test.mjs pins it.) */
 export const KNOWN = {};
 /* invariant 3's Ascension steps (step nodes; the test fails unless all three exist, so a rename can't empty it) */
-const ASC_IDS = ['g22:0', 'g32:dreams', 'g45:0'];
+const ASC_IDS = ['g22:0', 'g32:dreams', 'g45:witness'];
 
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 const sig = bs => bs.map(b => b.kind === 'level' ? `level ${b.need}` : b.kind === 'story' ? `story ${b.quest} ahead ${b.ahead}` : b.kind === 'skill' ? `skill ${b.skill} ${b.need} have ${b.have}` : `done ${b.of}`).sort().join(' · ');

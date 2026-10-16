@@ -60,7 +60,7 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 | `stLv{name: lv}`, `stShards`, `stPick{slot: name}` | stigma levels, shards, the stigma picked per slot |
 | `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
 | `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings |
-| `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `stampV1`, `backup1` | one-time flags (see below) |
+| `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `g45Split1`, `stampV1`, `backup1` | one-time flags (see below) |
 | `backup{lastExportAt, since, nudgeAt, a2hsAt}` | 0.2.5 save safety: this browser's backup times (ms, all optional); top level, not synced (`src/core/backup.js`) |
 | `schemaVersion`, `savedAt`, `mt` | save shape (absent = 0; `1` since 5c), time of the last saved progress change (ms), per-item change times (character field; see Change times below) |
 
@@ -122,16 +122,22 @@ called exactly where the page wrote the save before (the `core` suite pins the w
 3. `seedLv12`, `stTriniel1`, `dvReset1`: one-time player syncs from early versions (only for saves that predate them).
 4. Equipped stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
 5. `eputSync1` (E4): equipped slots get their "Put X on E" step ticked.
-6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more.
-7. `stampV1` (0.2 step 5c): `schemaVersion: 1` and `mt`, every value the save holds stamped with time 0 (or the save's
+6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more (0.3 E10: a
+   save that ended at "Forgotten Commander" moves on to "Daeva Trapped in a Nightmare").
+7. `g45Split1` (0.3 E10): a true `g45:0` tick (retired: it meant "Witnesses and Oath") is copied to `g45:witness`
+   ("Witnesses" only, DATA-FORMAT-V2 N6), unless that key already has a value (unticking stores `false`, so an untick is
+   never overridden); `g45:0` stays. The copy is checked on every load, not only before the flag: a `g45:0` tick can
+   arrive after the flag is set (an older build on another device, or a rollback). The flag is a marker, set only when
+   there is a tick, so no other save is written.
+8. `stampV1` (0.2 step 5c): `schemaVersion: 1` and `mt`, every value the save holds stamped with time 0 (or the save's
    `savedAt`: an imported export, N1). Writes nothing itself; the stamps go out with the next write. On later loads it
    re-stamps, with `now`, whatever a build without change times changed (rollback re-stamp).
-8. `backup1` (0.2.5): `backup = { since: now }` (ms), the export nudge's baseline, for every browser (fresh ones too);
+9. `backup1` (0.2.5): `backup = { since: now }` (ms), the export nudge's baseline, for every browser (fresh ones too);
    a `backup` that is already an object is kept as it is. Writes nothing itself, like `stampV1`. Not in
    `ONE_TIME_FLAGS`: each device keeps its own backup times.
-9. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done, and
-   replaces the file's `backup` with `{ since: now, lastExportAt: now }` plus `backup1` (the import counts as a backup);
-   the migrations above run on the reload.
+10. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done, and
+    replaces the file's `backup` with `{ since: now, lastExportAt: now }` plus `backup1` (the import counts as a backup);
+    the migrations above run on the reload.
 
 Adding a migration: give it a new flag, make it idempotent and additive, run it after the existing ones in `migrate()`,
 save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive, idempotent, write points) and extend

@@ -83,13 +83,13 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(1600); const t2 = await stTot();
   ok(`#6 total = full plan (${want}) before and after equipping slot 2`, t1.endsWith(`of ${want} spent`) && t2.endsWith(`of ${want} spent`) && +t2.split(' ')[0] === +t1.split(' ')[0] + 1, [t1, t2]);
 
-  /* #7 last Altgard quest: no dead "next quest" button */
+  /* #7 last covered quest (0.3 E10: Daeva Trapped in a Nightmare): no dead "next quest" button */
   const last = await p.evaluate(() => QUESTS[QUESTS.length - 1][1]);
   await set(45, `s.quest = ${JSON.stringify(last)}; s.showObj = true; s.qsteps = { [${JSON.stringify(last)}]: [...Array(40).keys()] };`);
   r = await p.evaluate(() => (document.getElementById('qsNext') || {}).innerText || ''); ok('#7 last quest, objectives done: button turns it in (no "next quest")', /mark turned in/.test(r) && !/next quest/.test(r), r);
   await p.click('#qsNext'); await p.waitForTimeout(600);
   r = await p.evaluate(() => ({ end: state.storyEnd, btn: !!document.getElementById('qsNext'), txt: (document.querySelector('#questSubs .qs-end') || {}).innerText || '', body: /next quest ›/.test(document.body.innerText), nu: [...document.querySelectorAll('#nowStar .ns-card h3')].map(h => h.innerText).join(' | ') }));
-  ok('#7 after turn-in: "Altgard story complete" in Journey and Next up; no dead button anywhere', r.end === last && !r.btn && /^Altgard story complete · continue in Reshanta in game$/.test(r.txt) && !r.body && /Altgard story complete/.test(r.nu), r);
+  ok('#7 after turn-in: "Lv 45 story complete" in Journey and Next up; no dead button anywhere', r.end === last && !r.btn && /^Lv 45 story complete · next in game: "Waiting for the Next Journey" at Lv 46$/.test(r.txt) && !r.body && /Lv 45 story complete/.test(r.nu), r);
   await p.reload(); await p.waitForTimeout(400); r = await p.evaluate(() => !!document.getElementById('qsNext')); ok('#7 still no button after reload', !r, r);
 
   /* #8 snoozing the only open regional quest keeps a compact card with an un-snooze control */

@@ -37,13 +37,17 @@ export default (test, M) => {
       assert.ok(a.chapters.slice(0, n).every(x => x.done === 'derived') && a.chapters.slice(n).every(x => !x.done), quest);
       if (label) assert.equal(a.label, label, quest);
     }
-    const end = asc(S({ quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' }));
-    assert.equal(end.n, 3, 'Witnesses is done by its tick only (its wrapper is not in the data, Q7)');
-    assert.equal(end.label, 'Ascension 3 / 4 · next: Witnesses the Nightmare');
-    assert.equal(asc(S({ quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander', checks: { 'g45:0': true } })).label, OATH);
+    /* E10: the wrapper "Daeva Trapped in a Nightmare" is the last covered quest; turning it in (storyEnd) fills chapter IV */
+    const DT = 'Daeva Trapped in a Nightmare', on = asc(S({ quest: DT }));
+    assert.equal(on.n, 3, 'on Daeva Trapped (not turned in): Witnesses is not done yet');
+    assert.equal(on.label, 'Ascension 3 / 4 · next: Witnesses the Nightmare');
+    const end = asc(S({ quest: DT, storyEnd: DT }));
+    assert.equal(end.n, 4); assert.equal(end.chapters[3].done, 'derived', 'Daeva Trapped turned in: Witnesses derived (wrapper rule)');
+    assert.equal(end.label, OATH);
+    assert.equal(asc(S({ quest: DT, checks: { 'g45:witness': true } })).label, OATH, 'on Daeva Trapped with Witnesses ticked');
   });
-  test('E8 from ticks (story unset): g6:0, g22:0, g32:dreams, g45:0 fill one chapter each; 4 / 4 reads the Oath line', () => {
-    const keys = ['g6:0', 'g22:0', 'g32:dreams', 'g45:0'], checks = {};
+  test('E8 from ticks (story unset): g6:0, g22:0, g32:dreams, g45:witness fill one chapter each; 4 / 4 reads the Oath line', () => {
+    const keys = ['g6:0', 'g22:0', 'g32:dreams', 'g45:witness'], checks = {};
     keys.forEach((k, i) => {
       checks[k] = true;
       const a = asc(S({ checks: { ...checks } }));
@@ -52,7 +56,7 @@ export default (test, M) => {
       if (i < 3) assert.equal(a.next.name, a.chapters[i + 1].name, k);
     });
     assert.equal(asc(S({ checks })).label, OATH);
-    assert.equal(asc(S({ checks: { 'g45:0': true } })).n, 1, 'a chapter is filled by its own tick or wrapper, never inferred from a later one');
+    assert.equal(asc(S({ checks: { 'g45:witness': true } })).n, 1, 'a chapter is filled by its own tick or wrapper, never inferred from a later one');
     assert.equal(asc(S({ checks: { 'g6:0': false } })).n, 0, 'a stored false is no tick');
   });
   test('E8: g6:0 done by the story ("The Being Beneath the Lake" turned in) is not Perceives done; Spread Your Wings turned in is', () => {
@@ -80,8 +84,8 @@ export default (test, M) => {
     });
   });
   test('E8: informational only, nothing written (deep-frozen save)', () => {
-    const s = deepFreeze(S({ quest: at('Daeva in a Dream', 1), checks: { 'g45:0': false } }));
+    const s = deepFreeze(S({ quest: at('Daeva in a Dream', 1), checks: { 'g45:witness': false } }));
     assert.doesNotThrow(() => asc(s));
-    assert.deepEqual(s.checks, { 'g45:0': false });
+    assert.deepEqual(s.checks, { 'g45:witness': false });
   });
 };

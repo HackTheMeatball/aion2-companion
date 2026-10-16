@@ -18,7 +18,7 @@
    gate the entry stays and simply finds nothing. */
 const ORACLE = {
   'g32:dreams': { story: 'A Daeva Dreaming Anew', why: 'hotfix: "The One Who Dreams" waits for the story to reach "A Daeva Dreaming Anew" (claims C36)' },
-  'g45:0': { turnedIn: 'Forgotten Commander', why: 'hotfix: "The One Who Witnesses the Nightmare" needs "Forgotten Commander" turned in (claims C37)' },
+  'g45:witness': { turnedIn: 'Forgotten Commander', why: 'hotfix: "The One Who Witnesses the Nightmare" needs "Forgotten Commander" turned in (claims C37)' },
 };
 
 /* Unmet parts of an ORACLE entry for a save (cur = current story index, st = the stored state), as reasons. */
