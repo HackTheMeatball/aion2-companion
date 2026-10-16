@@ -173,7 +173,7 @@ export default (test, M) => {
     assert.equal(der(S({ level: 27, quest: at('Daeva in a Dream', 5) }), 'g27:1'), null);
   });
 
-  test('regional follow-up (Q3): picking up or ticking a follow-up makes its sourced prerequisites done, transitively; not owner-check edges', () => {
+  test('regional follow-up (Q3): picking up or ticking a follow-up makes its sourced / owner prerequisites done, transitively', () => {
     const lv = 30, quest = at('Daeva in a Dream', 10);
     /* In the Fang Legion's Name (2202017) needs Blade of Vengeance (2202016) and Odyle Jelly (2202014), both sourced */
     const picked = S({ level: lv, quest, started: { 'rq:2202017': 1 } });
@@ -185,8 +185,9 @@ export default (test, M) => {
     const fs = S({ level: 45, quest: M.QUESTS[M.QUESTS.length - 1][1], started: { 'rq:2202071': 1 } });
     assert.equal(der(fs, 'rq:2202070').via, 'followUp rq:2202071');
     assert.equal(der(fs, 'rq:2202053').via, 'followUp rq:2202070');
-    /* Deep Shadow (2202011) → Past and Present (2202010) is an owner-check edge (its only source was withdrawn): no proof */
-    assert.equal(der(S({ level: lv, quest, started: { 'rq:2202011': 1 } }), 'rq:2202010'), null);
+    /* Deep Shadow (2202011) → Past and Present (2202010): owner-confirmed 2026-10-16 (check 9), so it proves too
+       (an owner-check edge never does: tests/core/evaluator.test.mjs, followUps) */
+    assert.equal(der(S({ level: lv, quest, started: { 'rq:2202011': 1 } }), 'rq:2202010').via, 'followUp rq:2202011');
     /* the follow-up's own lock lifts: rqStatus has no "pre" left for the proven quest */
     const c = M.char(S({ level: lv, quest, checks: { 'rq:2202014': true }, started: { 'rq:2202017': 1 } })), q = M.RQ.find(q => q.id === 2202017 || q.id === '2202017');
     assert.deepEqual(M.rqStatus(c, q).pre, []);

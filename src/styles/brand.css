@@ -2,7 +2,7 @@
    so brand changes don't touch the app's styles. Only the brand uses C's colours for now (brass, and the mark's own teal);
    the app keeps its palette until the owner decides on the full C theme. */
 :root { --brand: #cfa650; }
-header.top .brand { grid-area: brand; display: flex; align-items: center; gap: 10px; color: var(--brand); align-self: start; margin: 0 0 10px; }
+header.top .brand { grid-area: brand; display: flex; align-items: center; gap: var(--space-10); color: var(--brand); align-self: start; margin: 0 0 var(--space-10); }
 header.top .brand-mark { width: 30px; height: 30px; flex: none; display: block; }
 header.top .brand-name { height: 22px; width: auto; display: block; }
 header.top { grid-template-areas: "brand eyebrow" "title sub" "tools tools" !important; }
