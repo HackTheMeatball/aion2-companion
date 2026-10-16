@@ -24,7 +24,9 @@
       (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus.
   10. Derived rows (0.3 E4, 390 / 1500 px × Basic / Advanced): a row done in the story (byStory, wrapper, regional
       follow-up) is a ticked, disabled box named "<row>: done in the story" with that tooltip, axe-clean; the same rows
-      in both modes; moving the story back shows the stored false again (box enabled, save untouched). */
+      in both modes; moving the story back shows the stored false again (box enabled, save untouched).
+  11. Ascension bar (0.3 E8, same saves as 10): shown in Basic and Advanced, a progressbar named "Ascension" with its value
+      (aria-valuenow / max / valuetext), the same label in both modes, axe-clean. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path'); const CFG = require('./config');
 const KEY = 'aion2-assassin-route-v4';
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
@@ -281,13 +283,45 @@ async function load(p, state, mode) {
       await p.addScriptTag({ content: AXE });
       const ax = await p.evaluate(async () => (await axe.run('#gates', { resultTypes: ['violations'] })).violations.map(v => ({ id: v.id, n: v.nodes.length, first: v.nodes.slice(0, 2).map(x => x.target.join(' ')) })));
       ok(`${id}: axe on the milestones, no violations outside the allowlist`, !ax.filter(v => !ALLOW[v.id]).length, ax);
+      /* 11. the Ascension bar (0.3 E8): shown in both modes, a progressbar with a name and a value (2 / 4 here: Perceives and
+         Hears the Voice derived from their wrappers), its label as visible text */
+      const asc = await p.evaluate(() => { const el = document.getElementById('asc'), b = el && el.querySelector('[role="progressbar"]');
+        return { shown: !!el && el.offsetParent !== null, name: b && b.getAttribute('aria-label'), now: b && b.getAttribute('aria-valuenow'), max: b && b.getAttribute('aria-valuemax'),
+          text: b && b.getAttribute('aria-valuetext'), on: b ? b.querySelectorAll('.on').length : -1, label: el ? el.querySelector('.asc-txt').textContent : '',
+          desc: b && (document.getElementById(b.getAttribute('aria-describedby')) || {}).textContent }; });
+      counts[mode] += ' | ' + asc.label;
+      ok(`${id}: Ascension bar shown, a progressbar named "Ascension" with value 2 of 4, described by its label`, asc.shown && asc.name === 'Ascension' && asc.now === '2' && asc.max === '4' &&
+        asc.text === '2 of 4 chapters done' && asc.on === 2 && asc.label === 'Ascension 2 / 4 · next: Dreams · gauge 100%' && asc.desc === asc.label, asc);
+      const axAsc = await p.evaluate(async () => (await axe.run('#asc', { resultTypes: ['violations'] })).violations.map(v => v.id));
+      ok(`${id}: axe on the Ascension bar, no violations`, !axAsc.length, axAsc);
       /* A3: the story moves back before "Buried Atrocities": the stored false shows again, the box is enabled */
       const back = await p.evaluate(() => { char(state).quest = 'Buried Atrocities'; update(); const i = document.querySelector('#gates input[data-k="g16:0"]');
         return { checked: i.checked, disabled: i.disabled, derived: 'derived' in i.dataset, label: i.getAttribute('aria-label'), stored: char(state).checks['g16:0'] }; });
       ok(`${id}: story moved back: g16:0 unticked and enabled again, its stored false untouched`, !back.checked && !back.disabled && !back.derived && back.label === null && back.stored === false, back);
       await ctx.close();
     }
-    ok(`derived ${width}px: the same derived rows in Basic and Advanced`, counts.basic === counts.advanced, counts);
+    ok(`derived ${width}px: the same derived rows and Ascension bar in Basic and Advanced`, counts.basic === counts.advanced, counts);
+  }
+
+  /* ---------- 12. the Ascension label is one line on a phone (owner, 2026-10-16): 390 px, touch (the 12 px phone size), Basic,
+     at every story position and at 4 / 4 (all four steps ticked), no ellipsis needed. The suites block web fonts (fallback
+     fonts, tests/run.mjs), but this is a width check in the font users get, so it adds the shipped Figtree 400 itself. ---------- */
+  {
+    const { ctx, p } = await page(390, { hasTouch: true });
+    await p.goto(CFG.CUR);
+    await p.evaluate(k => localStorage.setItem(k, JSON.stringify({ checks: {}, level: 45, quest: '', mode: 'basic', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true })), KEY);
+    await p.reload(); await p.waitForTimeout(400);
+    const FIG = fs.readFileSync(path.join(__dirname, '..', 'src', 'assets', 'fonts', 'figtree-latin.woff2')).toString('base64');
+    const r = await p.evaluate(async fig => {
+      const f = new FontFace('Figtree', Uint8Array.from(atob(fig), ch => ch.charCodeAt(0)), { weight: '400' }); document.fonts.add(await f.load());
+      const s = () => document.querySelector('#asc .asc-txt'), out = { size: getComputedStyle(s()).fontSize, font: f.status, n: 0, want: QUESTS.length + 2, wide: [] };
+      const fits = () => { const t = s(); out.n++; if (t.scrollWidth > t.clientWidth && out.wide.length < 3) out.wide.push(`${t.textContent} (${t.scrollWidth} > ${t.clientWidth})`); };
+      for (const q of ['', ...QUESTS.map(x => x[1])]) { char(state).quest = q; update(); fits(); }
+      Object.assign(char(state).checks, { 'g6:0': true, 'g22:0': true, 'g32:dreams': true, 'g45:0': true }); update(); fits();
+      return out;
+    }, FIG);
+    ok(`Ascension label one line at 390px (touch, Basic, ${r.size} Figtree): ${r.n} positions, none wider than the card`, r.size === '12px' && r.font === 'loaded' && r.n === r.want && !r.wide.length, r);
+    await ctx.close();
   }
 
   ok('no page errors', !errs.length, errs);

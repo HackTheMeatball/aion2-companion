@@ -54,7 +54,7 @@ function installProbe([KEY, EARLY]) {
     /* Journey: story timeline, objectives, "Ahead", milestone track, progress */
     const qi = $('#questIn');
     o.jr = { prev: T($('#questPrev')), quest: qi ? N(qi.value) : '', lv: T($('#questLv')), next: T($('#questStatus')), hint: T($('#gateHint')),
-      ahead: $$('#ahead > *').map(T).filter(Boolean), track: $$('#track > li').map(T), ring: T($('#ringTxt')), prog: $$('#progRows > *').map(T).filter(Boolean) };
+      ahead: $$('#ahead > *').map(T).filter(Boolean), ...(T($('#asc')) ? { asc: T($('#asc')) } : {}), track: $$('#track > li').map(T), ring: T($('#ringTxt')), prog: $$('#progRows > *').map(T).filter(Boolean) };
     const subs = $('#questSubs'); if (subs && subs.firstElementChild) o.jr.subs = { head: T(subs.querySelector('.qs-head')), items: $$('.qs-list > li', subs).length, on: $$('.qs-list > li.on', subs).length, end: T(subs.querySelector('.qs-next, .qs-end, .qs-none')) };
     /* Dungeons & Strongholds (the regional card): band options, then section / zone headers and rows */
     o.reg = { opts: $$('#areaSel option').filter(x => !x.disabled).map(x => (x.selected ? '* ' : '') + T(x)),
