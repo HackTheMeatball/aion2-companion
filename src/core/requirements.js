@@ -146,10 +146,10 @@ const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES
 /* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
    page). Evaluated lazily and memoised per call: ask it once per pass and pass it along where a function takes `ev`.
    Inside gatesPass(fn) the same character object, level and options give the same evaluator: update() asks ~500
-   times per render, and a fresh one each time was 60% of its cost. The character must not change while fn runs
+   times per render, and a fresh one each time was over a third of its cost. The character must not change while fn runs
    (update() only reads it; every write is in a handler that calls update() afterwards). */
 let PASS = null, RUNS = 0;
-/* how many evaluators gatesOf has built (tests/e1test.js: one update() builds only a few) */
+/* how many evaluators gatesOf has built (tests/regress.js: one update() builds at most a few) */
 export const gatesRuns = () => RUNS;
 export function gatesPass(fn) {
   if (PASS) return fn();
