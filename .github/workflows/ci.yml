@@ -69,6 +69,8 @@ jobs:
       - run: node tests/run.mjs --shard ${{ matrix.shard }}
       - name: Upload test output (logs, results.json, screenshots)
         if: always()
+        # Non-blocking: a flaky artifact upload must not fail the shard (it did once, on main, and skipped the deploy).
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: test-output-${{ matrix.shard }}
@@ -103,6 +105,7 @@ jobs:
           if [ "${{ steps.perf.outcome }}" != "success" ]; then echo "::warning title=perf (non-blocking)::tests/perf.js failed (see the warnings above, or tests/out/perf.out); ci-ok does not depend on it."; fi
       - name: Upload perf output
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: test-output-perf
