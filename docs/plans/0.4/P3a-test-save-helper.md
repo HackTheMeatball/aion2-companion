@@ -32,6 +32,14 @@ load the save the way the suite does today, take the flat state the current buil
 as a new fixture (`tests/fixtures/*.flat.json`, with the script that made it under `tests/support/`), and seed the
 suite from that fixture through `writeSave`. Each suite's result must not change.
 
+The Node suites do the same in Node: `tests/equiv/evaluator-equivalence.test.mjs:88-89` and
+`tests/invariant/states.mjs:31` read `fixture-v285.json` and `fixture-user-v285.json` and run `migrate()` on them;
+they switch to the flat fixtures (P3c then wraps them with `toStored`). Keep the state ids the golden generator gives
+them (`fixture/fixture-v285`, `fixture/fixture-user-v285`: pass the old `name`), so no snapshot id changes.
+
+P1 edits path lines in the same equiv and invariant files in the same wave: whichever merges second merges `main` in
+first (DISPATCH "How later branches absorb earlier ones").
+
 ## Appetite
 
 M (100–300 lines across about 30 files, mostly one-line swaps).
