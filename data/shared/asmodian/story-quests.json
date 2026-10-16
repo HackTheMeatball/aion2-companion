@@ -11649,7 +11649,7 @@
       "unlocksAt": 45,
       "questType": "Episode",
       "chapter": "Encountering Zikel's Core",
-      "next": null,
+      "next": "sq:2102810",
       "giver": {
         "npc": "Menrik",
         "place": "Fang Hideout",
@@ -11791,12 +11791,160 @@
         "turnin.zone": "owner-check"
       },
       "notes": [
-        "Unlocks at 45 (all earlier 40-45 story quests say unlocks at 10). Steps are in Altgard; turn-in is in Chaotic Lower Reshanta, so the Altgard story ends here."
+        "Unlocks at 45 (all earlier 40-45 story quests say unlocks at 10). Steps are in Altgard; the turn-in is in Chaotic Lower Reshanta (Koro, who then gives \"Daeva Trapped in a Nightmare\"; Metabot's turn-in marker reads \"Abyss Base\")."
+      ]
+    },
+    {
+      "id": "sq:2102810",
+      "key": "Daeva Trapped in a Nightmare",
+      "name": "Daeva Trapped in a Nightmare",
+      "faction": "asmodian",
+      "gameId": "2102810",
+      "lv": 45,
+      "unlocksAt": 45,
+      "questType": "Episode",
+      "chapter": "Encountering Zikel's Core",
+      "next": null,
+      "giver": {
+        "npc": "Koro",
+        "place": "Abyss Base",
+        "zone": "zone:altgard-unplaced",
+        "kibelisk": null,
+        "meters": null
+      },
+      "turnin": {
+        "npc": "Nemon",
+        "place": null,
+        "zone": "zone:impetusium-square",
+        "kibelisk": "Outskirts Stall",
+        "meters": 21
+      },
+      "steps": [
+        {
+          "i": 0,
+          "text": "Ascend to the next dimension of power as a Daeva — complete The One Who Witnesses the Nightmare"
+        },
+        {
+          "i": 1,
+          "text": "Turn in — Nemon, Outskirts Stall"
+        }
+      ],
+      "wraps": "asc:witnesses",
+      "requires": {
+        "all": [
+          {
+            "story": "sq:2102800",
+            "is": "turnedIn",
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+                "section": "Previous quest",
+                "checkedAt": "2026-10-16"
+              }
+            ]
+          },
+          {
+            "level": 45,
+            "basis": "sourced",
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+                "fields": [
+                  "unlocksAt"
+                ],
+                "checkedAt": "2026-10-16"
+              }
+            ],
+            "note": "Metabot \"Unlocks at\" 45, equal to its recommended level and to Forgotten Commander's, so nothing new is gated."
+          }
+        ]
+      },
+      "completesWith": [
+        {
+          "story": "sq:2102810",
+          "is": "turnedIn"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare",
+          "fields": [
+            "gameId",
+            "lv",
+            "unlocksAt",
+            "questType",
+            "chapter",
+            "steps",
+            "turnin.npc",
+            "turnin.kibelisk",
+            "turnin.meters",
+            "end.next"
+          ],
+          "checkedAt": "2026-10-16",
+          "note": "One step (\"Ascend to the next dimension of power as a Daeva\": complete The One Who Witnesses the Nightmare); turn-in Nemon, nearest Kibelisk Outskirts Stall 21 m; no giver, no rewards on the page; previous quest Forgotten Commander, next Waiting for the Next Journey."
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/waiting-for-the-next-journey-asmodian",
+          "label": "Waiting for the Next Journey",
+          "fields": [
+            "end.next",
+            "end.nextLv"
+          ],
+          "checkedAt": "2026-10-16",
+          "note": "Asmodian page (the bare slug is the Elyos quest): previous quest Daeva Trapped in a Nightmare; recommended 46, unlocks at 46."
+        },
+        {
+          "owner": {
+            "ref": "owner:2026-10-16-daeva-trapped-01",
+            "checkedAt": "2026-10-16",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Owner's lookup: giver Koro (Abyss Base); complete The One Who Witnesses the Nightmare, then Nemon (Outskirts Stall); after Forgotten Commander, before Waiting for the Next Journey"
+          },
+          "fields": [
+            "giver.npc",
+            "giver.place"
+          ],
+          "note": "Single source until the owner sees it in game at Lv 45 (claim C41). It fits Metabot: Forgotten Commander turns in at Koro, whose marker reads \"Abyss Base\" (Latesran Eastern Root, Chaotic Lower Reshanta). The owner's second objective is Metabot's turn-in (Nemon, Outskirts Stall)."
+        },
+        {
+          "inferred": "Giver zone not found: Abyss Base / Latesran Eastern Root is in Chaotic Lower Reshanta, outside the Altgard zone registry (as Forgotten Commander's turn-in). Placeholder zone kept for an owner check.",
+          "fields": [
+            "giver.zone"
+          ]
+        },
+        {
+          "inferred": "Turn-in zone from its Kibelisk: Outskirts Stall is an Impetusium Square Kibelisk (zones.json), as for Zikel's Core and Farewells.",
+          "fields": [
+            "turnin.zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-16",
+      "status": "verified",
+      "fieldStatus": {
+        "giver.npc": "single-source",
+        "giver.place": "single-source",
+        "giver.zone": "owner-check",
+        "turnin.zone": "inferred"
+      },
+      "claims": [
+        "C37",
+        "C41"
+      ],
+      "notes": [
+        "The last story quest inside the Lv 45 cap (story quest 88 of 89 on the owner's lookup). Its only objective is the Ascension quest \"The One Who Witnesses the Nightmare\" (wrapper rule, design §5), and it turns in back in Altgard.",
+        "The owner's lookup shows \"Steps: 1\" but two numbered lines; the second (talk to Nemon at the Outskirts Stall) is the turn-in, so the record has one objective plus the turn-in, like the other wrapper quests."
       ],
       "end": {
-        "region": "Reshanta",
-        "regionFull": "Chaotic Lower Reshanta",
-        "note": "leaves Altgard: turn-in at Latesran Eastern Root, Chaotic Lower Reshanta. Metabot next = 'Daeva Trapped in a Nightmare' (https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare), not covered."
+        "region": "Altgard",
+        "regionFull": "Altgard",
+        "next": "Waiting for the Next Journey",
+        "nextLv": 46,
+        "note": "The next story quest, \"Waiting for the Next Journey\" (Metabot, Asmodian page: chapter 7 \"Shadows Cast Everywhere\", rec 46, unlocks at 46, one step \"Wait for the right time\" in Altgard, no giver or turn-in listed), is past the Lv 45 cap and is not in the data."
       }
     }
   ]

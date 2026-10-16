@@ -8,9 +8,9 @@ that cite the page (`file: record`); *Card group* is where the app lists it. Pag
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/shared/asmodian/guide/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-418 URLs · 416 in the Sources card · 2 cited only in the data files
+419 URLs · 417 in the Sources card · 2 cited only in the data files
 
-## Metabot (222)
+## Metabot (223)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -82,7 +82,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Creion Research Assistant](https://metabot.gg/en/aion-2/quests/creion-research-assistant) | Regional quests | shared/asmodian/regional-quests.json: Creion Research Assistant |
 | [Metabot: Crossroad](https://metabot.gg/en/aion-2/quests/crossroad) | Main story | shared/asmodian/story-quests.json: Crossroad |
 | [Metabot: Daeva in a Dream](https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian) | Main story | shared/asmodian/ascension-quests.json: The One Who Hears the Voice; shared/asmodian/guide/claims.json: "The One Who Hears the Voice" (Lv 22) is open by the time the story reaches "Daeva in a Dream".; shared/asmodian/guide/steps.json: g22:0; shared/asmodian/story-quests.json: Daeva in a Dream |
-| [Metabot: Daeva trapped in a nightmare](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) | Main story | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/guide/steps.json: g45:0; shared/asmodian/story-quests.json: Forgotten Commander |
+| [Metabot: Daeva Trapped in a Nightmare](https://metabot.gg/en/aion-2/quests/daeva-trapped-in-a-nightmare) | Main story | shared/asmodian/ascension-quests.json: The One Who Witnesses the Nightmare; shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/guide/steps.json: g45:0; shared/asmodian/story-quests.json: Daeva Trapped in a Nightmare |
 | [Metabot: Daybreak Society](https://metabot.gg/en/aion-2/quests/daybreak-society) | Main story | shared/asmodian/story-quests.json: Daybreak Society |
 | [Metabot: Daybreak Society Rescue Operation](https://metabot.gg/en/aion-2/quests/daybreak-society-rescue-operation) | Main story | shared/asmodian/story-quests.json: Daybreak Society Rescue Operation |
 | [Metabot: Dead Men Tell No Tales](https://metabot.gg/en/aion-2/quests/dead-men-tell-no-tales) | Main story | shared/asmodian/story-quests.json: Dead Men Tell No Tales |
@@ -109,7 +109,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Finding Stolen Relics](https://metabot.gg/en/aion-2/quests/finding-stolen-relics) | Main story | shared/asmodian/story-quests.json: Finding Stolen Relics |
 | [Metabot: Flauke Legion Outpost](https://metabot.gg/en/aion-2/quests/flauke-legion-outpost) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Flauke Legion Outpost |
 | [Metabot: Forest Marauder Campsite](https://metabot.gg/en/aion-2/quests/forest-marauder-campsite) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Forest Marauder Campsite |
-| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/story-quests.json: Forgotten Commander |
+| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | shared/asmodian/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; shared/asmodian/guide/claims.json: "Daeva Trapped in a Nightmare" is given by Koro at the Abyss Base, right after you turn in "Forgotten Commander" to him.; shared/asmodian/story-quests.json: Forgotten Commander |
 | [Metabot: Frozen Fafnite](https://metabot.gg/en/aion-2/quests/frozen-fafnite) | Main story | shared/asmodian/story-quests.json: Frozen Fafnite |
 | [Metabot: Gathering Essentials](https://metabot.gg/en/aion-2/quests/gathering-essentials) | Main story | shared/asmodian/story-quests.json: Gathering Essentials |
 | [Metabot: Granach's Hideout](https://metabot.gg/en/aion-2/quests/granachs-hideout) | Strongholds and Sealed Dungeons | shared/asmodian/strongholds.json: Granach's Hideout |
@@ -211,6 +211,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Verdant Melody](https://metabot.gg/en/aion-2/quests/verdant-melody) | Main story | shared/asmodian/story-quests.json: Verdant Melody |
 | [Metabot: Visible Trap](https://metabot.gg/en/aion-2/quests/visible-trap) | Main story | shared/asmodian/story-quests.json: Visible Trap |
 | [Metabot: Voice of Rage](https://metabot.gg/en/aion-2/quests/voice-of-rage) | Main story | shared/asmodian/story-quests.json: Voice of Rage |
+| [Metabot: Waiting for the Next Journey](https://metabot.gg/en/aion-2/quests/waiting-for-the-next-journey-asmodian) | Main story | shared/asmodian/story-quests.json: Daeva Trapped in a Nightmare |
 | [Metabot: Watchful Eyes](https://metabot.gg/en/aion-2/quests/watchful-eyes) | Main story | shared/asmodian/story-quests.json: Watchful Eyes |
 | [Metabot: Workplace Misunderstanding](https://metabot.gg/en/aion-2/quests/workplace-misunderstanding) | Regional quests | shared/asmodian/regional-quests.json: Workplace Misunderstanding |
 | [Metabot: Young Elim's Story](https://metabot.gg/en/aion-2/quests/young-elims-story) | Regional quests | shared/asmodian/regional-quests.json: Young Elim's Story |

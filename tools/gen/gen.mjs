@@ -101,8 +101,10 @@ export function generate(opts = {}) {
   const QUESTS_X = X.map(s => [s.lv, s.name]);
   const QUEST_STEPS_X = Object.fromEntries(X.map(s => [s.name, s.steps.map(x => x.text)]));
   const QUEST_LOC_X = Object.fromEntries(X.map(s => [s.name, LOC(s)]));
-  const STORY_END = { quest: last.name, lv: last.lv, turnin: last.turnin.npc, place: last.turnin.place, region: last.end.region, regionFull: last.end.regionFull };
-  check('last story quest turns in in Reshanta', STORY_END.region === 'Reshanta');
+  const STORY_END = { quest: last.name, lv: last.lv, turnin: last.turnin.npc, place: last.turnin.place || last.turnin.kibelisk, region: last.end.region, regionFull: last.end.regionFull,
+    next: last.end.next, nextLv: last.end.nextLv };
+  /* 0.3 E10: the data ends at "Daeva Trapped in a Nightmare"; the game's next story quest unlocks past the Lv 45 cap */
+  check('story end names the next story quest past the cap', !!STORY_END.next && STORY_END.nextLv > 45, [STORY_END.next, STORY_END.nextLv]);
   const STORY_UNLOCKS = Object.fromEntries(chain.filter(s => s.unlocks && s.unlocks.text).map(s => [s.name, s.unlocks.text]));
   const UNLOCK_GATE = Object.fromEntries(chain.filter(s => s.unlocks).map(s => [s.name, s.unlocks.milestone]));
 
@@ -292,8 +294,9 @@ export function generate(opts = {}) {
   for (const q of rqs) { const p = pageOf(q, ['gameId']); if (p) labelOf[p.url] = q.name; nameOfId[q.gameId] = q.name; }
   for (const q of rqs) for (const a of atomsOf(q.requires)) if (a.story) nameOfId[sqById[a.story].gameId] = sqById[a.story].name;
   for (const s of story) { const p = pageOf(s, ['steps', 'gameId']); if (p) labelOf[p.url] = s.name; }
-  /* any other Metabot quest page a quest cites (e.g. the location pass) is labelled with the quest's name */
-  for (const q of [...rqs, ...story]) for (const s of q.sources || []) if (s.url && /metabot\.gg\/en\/aion-2\/quests\//.test(s.url)) setdef(s.url, q.name);
+  /* any other Metabot quest page a quest cites (e.g. the location pass) is labelled with the quest's name, or the ref's own
+     label (Daeva Trapped's end.next cites the next quest's page) */
+  for (const q of [...rqs, ...story]) for (const s of q.sources || []) if (s.url && /metabot\.gg\/en\/aion-2\/quests\//.test(s.url)) setdef(s.url, s.label || q.name);
   for (const a of asc) { const p = pageOf(a, ['chapter']); if (p) labelOf[p.url] = a.name; }
   for (const s of shs) { const p = pageOf(s, ['gameId']); if (p) labelOf[p.url] = s.name; }
   for (const d of sds) { const p = pageOf(d, ['rewards']); if (p) labelOf[p.url] = d.name; }

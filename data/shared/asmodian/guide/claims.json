@@ -998,12 +998,13 @@
       ],
       "action": "rewrite",
       "newText": "\"The One Who Witnesses the Nightmare\" opens after you turn in \"Forgotten Commander\"; the next story quest, \"Daeva Trapped in a Nightmare\", needs it.",
-      "note": "g45:0 is gated on Forgotten Commander turned in (state.storyEnd, since it is the last story quest the guide covers). 'Daeva Trapped in a Nightmare' is not in the story data yet (0.3). No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one. Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn). Whether Witnesses opens while Forgotten Commander is still open is owner check 5 (prereq-gates §11).",
+      "note": "The step is gated on Forgotten Commander turned in. Since 0.3 E10 'Daeva Trapped in a Nightmare' (sq:2102810) is the last covered story quest, so turning it in completes Witnesses by the wrapper rule. No source gives an Ascension Gauge requirement at 45, so the text doesn't claim one. Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn); Daeva Trapped page re-read 2026-10-16. Whether Witnesses opens while Forgotten Commander is still open is owner check 5 (prereq-gates §11).",
       "appliesTo": [
         "g45:0",
-        "asc:witnesses"
+        "asc:witnesses",
+        "sq:2102810"
       ],
-      "verifiedAt": "2026-10-14"
+      "verifiedAt": "2026-10-16"
     },
     {
       "id": "C38",
@@ -1093,6 +1094,34 @@
       "note": "The owner's in-game tooltip (2026-10-16, 03:05 ET) shows the slot-2 pick is a real Quick Slice choice that unlocks at skill Lv 12. The slot order rests on the two slot witnesses (specialtyEvidence). The Lv 16 choice text is cut off on the screen and is not completed here.",
       "appliesTo": [
         "build:assassin:guide"
+      ],
+      "verifiedAt": "2026-10-16"
+    },
+    {
+      "id": "C41",
+      "claim": "\"Daeva Trapped in a Nightmare\" is given by Koro at the Abyss Base, right after you turn in \"Forgotten Commander\" to him.",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "owner": {
+            "ref": "owner:2026-10-16-daeva-trapped-01",
+            "checkedAt": "2026-10-16",
+            "build": {
+              "scheme": "client",
+              "value": "unrecorded"
+            },
+            "what": "Owner's own lookup (03:14 ET): Daeva Trapped in a Nightmare, 'Talk to Koro at the Abyss Base'; previous quest Forgotten Commander"
+          }
+        },
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "note": "Indirect: Forgotten Commander turns in at Koro (Latesran Eastern Root, Chaotic Lower Reshanta; marker 'Abyss Base'). The Daeva Trapped page names no giver."
+        }
+      ],
+      "action": "keep",
+      "note": "Owner decision Q7 (design §16). Labelled single source until the owner sees it in game at Lv 45; the giver is only shown in the story data (Journey card), never used as a gate. aion2.th.gl is not cited.",
+      "appliesTo": [
+        "sq:2102810"
       ],
       "verifiedAt": "2026-10-16"
     }

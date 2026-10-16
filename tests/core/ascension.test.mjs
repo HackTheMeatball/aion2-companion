@@ -37,9 +37,13 @@ export default (test, M) => {
       assert.ok(a.chapters.slice(0, n).every(x => x.done === 'derived') && a.chapters.slice(n).every(x => !x.done), quest);
       if (label) assert.equal(a.label, label, quest);
     }
-    const end = asc(S({ quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander' }));
-    assert.equal(end.n, 3, 'Witnesses is done by its tick only (its wrapper is not in the data, Q7)');
-    assert.equal(end.label, 'Ascension 3 / 4 · next: Witnesses the Nightmare');
+    /* E10: the wrapper "Daeva Trapped in a Nightmare" is the last covered quest; turning it in (storyEnd) fills chapter IV */
+    const DT = 'Daeva Trapped in a Nightmare', on = asc(S({ quest: DT }));
+    assert.equal(on.n, 3, 'on Daeva Trapped (not turned in): Witnesses is not done yet');
+    assert.equal(on.label, 'Ascension 3 / 4 · next: Witnesses the Nightmare');
+    const end = asc(S({ quest: DT, storyEnd: DT }));
+    assert.equal(end.n, 4); assert.equal(end.chapters[3].done, 'derived', 'Daeva Trapped turned in: Witnesses derived (wrapper rule)');
+    assert.equal(end.label, OATH);
     assert.equal(asc(S({ quest: 'Forgotten Commander', storyEnd: 'Forgotten Commander', checks: { 'g45:0': true } })).label, OATH);
   });
   test('E8 from ticks (story unset): g6:0, g22:0, g32:dreams, g45:0 fill one chapter each; 4 / 4 reads the Oath line', () => {

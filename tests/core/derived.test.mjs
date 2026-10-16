@@ -165,6 +165,7 @@ export default (test, M) => {
     assert.equal(der(S({ level: 32, quest: at('A Daeva Dreaming Anew', 1) }), 'g32:dreams').via, 'turnedIn sq:2102345');
     assert.equal(der(S({ level: 32, quest: 'A Daeva Dreaming Anew' }), 'g32:dreams'), null);
     const last = M.QUESTS[M.QUESTS.length - 1][1];
+    assert.equal(last, 'Daeva Trapped in a Nightmare', 'E10: the story data ends at the wrapper of Witnesses');
     assert.equal(der(S({ quest: last, storyEnd: last }), 'g45:0'), null);
   });
 

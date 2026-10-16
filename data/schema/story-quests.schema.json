@@ -109,6 +109,18 @@
             "regionFull": {
               "type": "string"
             },
+            "next": {
+              "description": "The next story quest in the game, past the guide's cap (not a record): its name, for the end-of-story text.",
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "nextLv": {
+              "description": "The level the next story quest unlocks at.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 99
+            },
             "note": {
               "type": "string"
             }

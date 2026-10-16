@@ -70,14 +70,14 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('snooze set from milestone row', await p.evaluate(k => !!(state.rqSnooze || {})[k], pre[1]));
   await p.evaluate(k => { const i = document.querySelector(`#gates input[data-k="${k}"]`); i.click(); i.click(); }, pre[0]); await p.waitForTimeout(1500);
   ok('snooze: cleared when the quest before it is turned in', await p.evaluate(([a, b]) => state.checks[a] === true && !(state.rqSnooze || {})[b], pre));
-  /* 7. Story end (E2: the data now ends at Forgotten Commander, Lv 45) */
-  await setState(p, clean(45, 'Forgotten Commander', 'advanced'));
-  await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Forgotten Commander/.test(c.innerText)); c.querySelector('[data-now="story"]').click(); }); await p.waitForTimeout(800);
+  /* 7. Story end (0.3 E10: the data now ends at Daeva Trapped in a Nightmare, Lv 45; the game's next story quest unlocks at 46) */
+  await setState(p, clean(45, 'Daeva Trapped in a Nightmare', 'advanced'));
+  await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Daeva Trapped in a Nightmare/.test(c.innerText)); c.querySelector('[data-now="story"]').click(); }); await p.waitForTimeout(800);
   let se = await p.evaluate(() => ({ end: state.storyEnd, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /story/i.test(t)), hasBtn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
-  ok('story end: "Altgard story complete", no dead Turned in', se.end === 'Forgotten Commander' && /Altgard story complete/.test(se.card) && /Reshanta/.test(se.card) && !se.hasBtn, se);
-  ok('story end: Journey says the Altgard story is complete', /Altgard story complete — continue in Reshanta in game/.test(se.status), se.status);
-  await p.fill('#questIn', 'Daeva Trapped in a Nightmare'); await p.dispatchEvent('#questIn', 'change'); await p.waitForTimeout(100);
-  ok('story input message names the last covered quest', /story ends at "Forgotten Commander" \(Lv 45\)/.test(await p.innerText('#questStatus')));
+  ok('story end: "Lv 45 story complete", names the next quest in game, no dead Turned in', se.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(se.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(se.card) && !se.hasBtn, se);
+  ok('story end: Journey says the Lv 45 story is complete', /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(se.status), se.status);
+  await p.fill('#questIn', 'Waiting for the Next Journey'); await p.dispatchEvent('#questIn', 'change'); await p.waitForTimeout(100);
+  ok('story input message names the last covered quest', /story ends at "Daeva Trapped in a Nightmare" \(Lv 45\)/.test(await p.innerText('#questStatus')));
   /* 8. Level cap */
   await setState(p, clean(45, 'Symbol of Liberation', 'advanced'));
   const cap = await p.evaluate(() => ({ ahead: document.getElementById('ahead').innerText, dis: document.getElementById('lvlUpBig').disabled }));

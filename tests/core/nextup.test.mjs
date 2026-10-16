@@ -95,7 +95,7 @@ export default (test, M) => {
           if (need && qi(need) > i) bad.push(`${tag} story ${k}`);
           if (it && it.byStory && qi(it.story) <= i) bad.push(`${tag} byStory ${k}`);
           if (k === 'g32:dreams' && i < qi('A Daeva Dreaming Anew')) bad.push(`${tag} oracle ${k}`);
-          if (k === 'g45:0') bad.push(`${tag} oracle ${k}`); /* "Forgotten Commander" isn't turned in (no storyEnd) */
+          if (k === 'g45:0' && i <= qi('Forgotten Commander')) bad.push(`${tag} oracle ${k}`); /* "Forgotten Commander" isn't turned in (no storyEnd); past it from E10 on */
         }
       }
     });

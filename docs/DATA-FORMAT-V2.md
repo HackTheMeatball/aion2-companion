@@ -807,6 +807,7 @@ generator (`tools/gen/gen.mjs`) compiles it into the same constants the app used
 | `regional-quests` | optional `order` | the v1 list order (allthings.how's) is not derivable from `rec` + id and decides Next up and milestone order |
 | `retired` (new) | `data/retired.json`: `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
 | `common` (data corrections) | owner ref `owner:YYYY-MM-DD-<set>-NN` also allowed | the owner's numbered screen sets are cited that way (`owner:2026-10-14-unlocks-05`, docs/research/2026-10-owner-unlocks.md) |
+| `common`, `story-quests` (0.3 E10) | a set name may have several words (`owner:2026-10-16-daeva-trapped-01`); `end.next` / `end.nextLv` | the owner's code for the Daeva Trapped lookup; the last covered quest names the game's next story quest (past the cap) for the end-of-story text |
 | `story-quests` (data corrections) | `unlocks.milestone` optional | an unlock before the first milestone (Prepare to Escape: Shop and Closet) has no milestone to link to |
 | `common`, `boards` (0.3 audit) | optional `stepFields.proposed` (`$defs/proposedGate`), and `proposed` on boards | the prerequisite gates of docs/research/2026-10-prereq-gates.md that change behaviour wait there, unread by the app, until their 0.3 build step (§6) |
 

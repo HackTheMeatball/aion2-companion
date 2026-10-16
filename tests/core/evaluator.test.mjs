@@ -166,7 +166,7 @@ export default (test, M) => {
     const N = M.GATE_GRAPH.nodes, kinds = {}; for (const x of Object.values(N)) kinds[x.kind] = (kinds[x.kind] || 0) + 1;
     assert.deepEqual(M.GATE_GRAPH.story.map(([, name]) => name), M.QUESTS.map(([, name]) => name));
     for (const k of ['story', 'ascension', 'step', 'rq', 'sd', 'sh', 'unlock', 'board', 'plan', 'skill', 'spec']) assert.ok(kinds[k] > 0, k);
-    assert.equal(kinds.story, 86); assert.equal(kinds.rq, 58); assert.equal(kinds.sd, 60); assert.equal(kinds.sh, 15); assert.equal(kinds.board, 5);
+    assert.equal(kinds.story, 87); /* 0.3 E10: + Daeva Trapped in a Nightmare */ assert.equal(kinds.rq, 58); assert.equal(kinds.sd, 60); assert.equal(kinds.sh, 15); assert.equal(kinds.board, 5);
     assert.equal(kinds.plan, M.DV_NODES().length);
     assert.deepEqual(Object.values(N).filter(x => x.kind === 'skill').map(x => [x.key, x.req.level]).sort(), M.SP_STEPS.filter(x => !x.spec).map(x => [x.k, x.req]).sort());
     /* 0.3 E7: a specialty slot opens on effective skill level 8 / 12 / 20 (the slot rows' slotLv), keys :spec, :spec2, :spec3 */

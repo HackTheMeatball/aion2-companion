@@ -65,8 +65,9 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     const msBad = ms.filter(x => { const r = RQ.find(q => 'rq:' + q.id === x.k), e = exp[r.name], done = !!st.checks[x.k]; return !done && (x.locked !== !e.ok || (x.locked && !x.snzHidden)); });
     ok(`${label}: milestone rows dim exactly the quests that aren't open`, !msBad.length, msBad.slice(0, 5));
   }
-  /* 2. Lv 44–45 batch: only once "Forgotten Commander" is turned in (E9, owner check 1: a regional gate is "turned in"; it is the last covered quest, so storyEnd) */
-  for (const [q, end, want] of [['Farewells', false, false], ["Zikel's Core", false, false], ['Forgotten Commander', false, false], ['Forgotten Commander', true, true]]) {
+  /* 2. Lv 44–45 batch: only once "Forgotten Commander" is turned in (E9, owner check 1: a regional gate is "turned in"). Since 0.3 E10 the story
+     goes on to "Daeva Trapped in a Nightmare"; a save with storyEnd = Forgotten Commander (an older end of data) moves on to it at load. */
+  for (const [q, end, want] of [['Farewells', false, false], ["Zikel's Core", false, false], ['Forgotten Commander', false, false], ['Forgotten Commander', true, true], ['Daeva Trapped in a Nightmare', false, true]]) {
     await setState(p, { L: 45, q, extra: end ? { storyEnd: 'Forgotten Commander' } : {} });
     const all = await p.evaluate(names => { const ids = names.map(n => RQ_BY[n].id); return ids.map(id => rqAvail(RQ.find(r => r.id === id)).open); }, BATCH);
     const nu = await nextUp(p), inNu = nu.rows.filter(r => BATCH.includes(r.name)).length, m = nu.sub.match(/(\d+) to pick up/);
@@ -98,28 +99,28 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   }
   ok('no dungeon XP in Next up dungeon cards, Dungeons & Strongholds or AREA_LOC (Lv 15–45)', !xp.length, xp);
   ok('page source has no dungeon XP text', !/XP \(exploration\)|xp": \d/.test(SRC.replace(/(?:const|var) RQ = \[[\s\S]*?\n\];/, '') /* esbuild prints top-level const as var */));
-  /* 5. Story chain continuous to Forgotten Commander; end-of-data state */
+  /* 5. Story chain continuous to Daeva Trapped in a Nightmare (0.3 E10); end-of-data state */
   const sc5 = await p.evaluate(() => { const i0 = QUESTS.findIndex(x => x[1] === 'A New Lead'), tail = QUESTS.slice(i0);
-    return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, n]) => !QUEST_STEPS[n]).map(x => x[1]), last: QUESTS[QUESTS.length - 1], afterSoL: QUESTS[QUESTS.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QUESTS.filter(x => x[0] > 40).every(([, n]) => QUEST_LOC[n] && QUEST_LOC[n].giverKib && (QUEST_LOC[n].turninKib || n === 'Blood Barrier')) }; });
+    return { lvSorted: QUESTS.every((x, i) => !i || QUESTS[i - 1][0] <= x[0]), missingSteps: tail.filter(([, n]) => !QUEST_STEPS[n]).map(x => x[1]), last: QUESTS[QUESTS.length - 1], afterSoL: QUESTS[QUESTS.findIndex(x => x[1] === 'Symbol of Liberation') + 1], dup: QUESTS.length - new Set(QUESTS.map(x => x[1])).size, loc45: QUESTS.filter(x => x[0] > 40).every(([, n]) => QUEST_LOC[n] && QUEST_LOC[n].giverKib && (QUEST_LOC[n].turninKib || n === 'Blood Barrier') || n === 'Daeva Trapped in a Nightmare') }; });
   let chain = 'Daybreak Society', order = []; while (chain) { order.push(chain); chain = S45[chain].next; }
   const qNames = QUESTS.map(x => x[1]), i0 = qNames.indexOf('Symbol of Liberation');
-  ok('story chain continuous: Symbol of Liberation → … → Forgotten Commander matches the data\'s next links (Lv 41–45)', JSON.stringify(qNames.slice(i0 + 1)) === JSON.stringify(order) && sc5.last[1] === 'Forgotten Commander' && sc5.last[0] === 45, { tail: qNames.slice(i0 + 1), order });
-  ok('every story quest from "A New Lead" on has objectives; levels non-decreasing; no duplicates; Lv 41–45 Kibelisks', !sc5.missingSteps.length && sc5.lvSorted && !sc5.dup && sc5.loc45, sc5); /* Blood Barrier: Metabot gives no turn-in Kibelisk */
+  ok('story chain continuous: Symbol of Liberation → … → Daeva Trapped in a Nightmare matches the data\'s next links (Lv 41–45)', JSON.stringify(qNames.slice(i0 + 1)) === JSON.stringify(order) && sc5.last[1] === 'Daeva Trapped in a Nightmare' && sc5.last[0] === 45, { tail: qNames.slice(i0 + 1), order });
+  ok('every story quest from "A New Lead" on has objectives; levels non-decreasing; no duplicates; Lv 41–45 Kibelisks', !sc5.missingSteps.length && sc5.lvSorted && !sc5.dup && sc5.loc45, sc5); /* Blood Barrier: Metabot gives no turn-in Kibelisk; Daeva Trapped: no giver on Metabot, the owner's lookup names the place only (C41) */
   await setState(p, { L: 40, q: 'Symbol of Liberation' });
   await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
   ok('"Turned in" on Symbol of Liberation moves to Daybreak Society', await p.evaluate(() => state.quest === 'Daybreak Society' && !state.storyEnd));
   await setState(p, { L: 40, q: 'Symbol of Liberation', extra: { storyEnd: 'Symbol of Liberation' } });
   ok('an E1 end-of-data save (storyEnd at Symbol of Liberation) moves on to Daybreak Society at load', await p.evaluate(() => state.quest === 'Daybreak Society' && !state.storyEnd));
   for (const mode of ['advanced', 'basic']) {
-    await setState(p, { L: 45, q: 'Forgotten Commander', mode });
+    await setState(p, { L: 45, q: 'Daeva Trapped in a Nightmare', mode });
     const before = await p.evaluate(() => document.getElementById('questStatus').innerText);
     await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
-    const end = async () => p.evaluate(() => ({ end: state.storyEnd, q: state.quest, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Altgard story/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
+    const end = async () => p.evaluate(() => ({ end: state.storyEnd, q: state.quest, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Lv 45 story complete/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
     let e = await end();
-    ok(`${mode}: last quest before turn-in says where it turns in`, /Last Altgard story quest · turns in at Latesran Eastern Root \(Reshanta\)/.test(before), before);
-    ok(`${mode}: end state reads "Altgard story complete — continue in Reshanta in game"; no dead Turned in`, e.end === 'Forgotten Commander' && /Altgard story complete/.test(e.card) && /Continue in Reshanta in game/.test(e.card) && !e.btn && /Altgard story complete — continue in Reshanta in game/.test(e.status), e);
+    ok(`${mode}: last quest before turn-in says where it turns in`, /Last story quest in the guide · turns in to Nemon at Outskirts Stall/.test(before), before);
+    ok(`${mode}: end state reads "Lv 45 story complete — next in game: …"; no dead Turned in`, e.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(e.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(e.card) && !e.btn && /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(e.status), e);
     await p.reload(); await p.waitForTimeout(400); e = await end();
-    ok(`${mode}: end state survives a reload`, e.end === 'Forgotten Commander' && /Altgard story complete/.test(e.card), e);
+    ok(`${mode}: end state survives a reload`, e.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(e.card), e);
   }
   ok('old "40–45 not covered" text gone', !/aren't covered|not covered yet|End of the covered story/.test(SRC));
   /* 6. Ahead: no Ariel at any level; nowhere on the page */
