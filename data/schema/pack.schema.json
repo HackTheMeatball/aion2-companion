@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/pack.schema.json",
+  "title": "Pack manifest (data/packs/<id>/pack.json)",
+  "description": "One per pack folder (0.4 P1, DATA-FORMAT-V2 §2.1). A pack is a game, a class, a faction or a guide; `id` is its folder below the packs root. The generator resolves the chain (parent, then uses), loads exactly the files listed here and fails on a listed file that is missing, a JSON file in the folder that is not listed, an unknown parent / uses or a cycle.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "kind", "name", "files"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 2 },
+    "id": {
+      "description": "The pack's folder below the packs root: the game, then one segment per level (aion2, aion2/classes/assassin, aion2/asmodian, aion2/asmodian/assassin).",
+      "$ref": "#/$defs/packId"
+    },
+    "kind": { "enum": ["game", "class", "faction", "guide"] },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "parent": {
+      "description": "The pack this one extends. A game has none; every other kind has one.",
+      "$ref": "#/$defs/packId"
+    },
+    "uses": {
+      "description": "Other packs this one reads (not extends), e.g. a guide uses its class.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/packId" },
+      "uniqueItems": true
+    },
+    "files": {
+      "description": "Every data file of the pack, relative to its folder, in load order. Not pack.json, not a nested pack's files.",
+      "type": "array",
+      "items": { "type": "string", "pattern": "^([a-z0-9][a-z0-9-]*/)*[a-z0-9][a-z0-9-]*\\.json$" },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "if": { "properties": { "kind": { "const": "game" } } },
+  "then": { "properties": { "parent": false } },
+  "else": { "properties": { "parent": true }, "required": ["parent"] },
+  "additionalProperties": false,
+  "$defs": {
+    "packId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$", "maxLength": 120 }
+  }
+}

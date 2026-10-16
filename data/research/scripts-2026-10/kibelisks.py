@@ -1,6 +1,6 @@
 """Kibelisk table (Data & Research, 2026-10-15): the first story step per Kibelisk and the 0.4 binding class.
 
-Reads data/shared/asmodian/{story,regional}-quests.json, the derived-position CSV, Metabot's Altgard Kibelisk listing
+Reads data/packs/aion2/asmodian/{story,regional}-quests.json, the derived-position CSV, Metabot's Altgard Kibelisk listing
 (parsed to altgard61.json) and cached Metabot quest pages (for step distances the repo does not store).
 Rules (DECISIONS "Kibelisk binding (0.4)"): d <= 25 m auto-bound, 25 < d <= 150 nudge, d > 150 none.
 
@@ -12,8 +12,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from extract import flight, spots  # noqa: E402
 
 SC, ROOT, OUTCSV, OUTJSON = sys.argv[1:5]
-ST = json.load(open(f'{ROOT}/data/shared/asmodian/story-quests.json'))['records']
-RQ = json.load(open(f'{ROOT}/data/shared/asmodian/regional-quests.json'))['records']
+ST = json.load(open(f'{ROOT}/data/packs/aion2/asmodian/story-quests.json'))['records']
+RQ = json.load(open(f'{ROOT}/data/packs/aion2/asmodian/regional-quests.json'))['records']
 LIST = json.load(open(f'{SC}/altgard61.json'))  # [name, zone, level range]
 POS = {r['kibelisk']: r for r in csv.DictReader(open(f'{ROOT}/data/research/kibelisk-positions-metabot-2026-10.csv'))}
 ISH = {'Aldelle Village', "Witch's Cabin", 'Abandoned Barracks Site'}

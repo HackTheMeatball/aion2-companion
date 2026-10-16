@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/game-builds.schema.json",
-  "title": "Observed game builds (data/game-builds.json)",
+  "title": "Observed game builds (packs/<game>/game-builds.json)",
   "description": "DRAFT. Build strings seen per numbering scheme (M9), with the date first seen and the patch they belong to when known. Patch-watch becomes 'source refs with a build older than X'.",
   "type": "object",
   "allOf": [

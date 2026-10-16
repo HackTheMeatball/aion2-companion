@@ -85,29 +85,39 @@ Non-goals for 0.2: localisation, Elyos content, new data, new UI, changing any s
 
 ## 2. Layout: shared vs per class
 
+Since 0.4 P1 the data sits in packs (§2.1):
+
 ```
 data/
-  schema/                          JSON Schemas (draft 2020-12), one per collection, + common.schema.json
-  sources.json                     sources registry (sites, access, licence, use) + pages cited only by guide text
-  game-builds.json                 observed game build strings per numbering scheme
-  shared/                          class-independent
-    rules.json  boards.json  items.json
-    asmodian/                      faction-specific, class-independent
-      story-quests.json  ascension-quests.json  regional-quests.json  sealed-dungeons.json
-      strongholds.json  zones.json  unlocks.json
-      guide/                       the guide's own content (rights reserved, LICENSE)
-        milestones.json  steps.json  tips.json  claims.json  confidence.json
-  classes/
-    assassin/
-      class.json                   the class and its default build id
-      skills.json  stigmas.json  board-nodes.json      game facts
-      builds.json                  the guide build + up to two credited alternatives
-      steps-asmodian.json          (rare) steps true for this class whatever the build
-      claims.json  tips.json       (optional)
+  schema/                          JSON Schemas (draft 2020-12), one per collection, + common.schema.json, pack.schema.json
+  packs/
+    aion2/                         game pack (class- and faction-independent)
+      pack.json
+      sources.json                 sources registry (sites, access, licence, use) + pages cited only by guide text
+      game-builds.json             observed game build strings per numbering scheme
+      rules.json  boards.json  items.json
+      classes/
+        assassin/                  class pack: game facts of one class
+          pack.json
+          class.json               the class and its default build id
+          skills.json  stigmas.json  board-nodes.json
+      asmodian/                    faction pack: faction-specific, class-independent
+        pack.json
+        story-quests.json  regional-quests.json  sealed-dungeons.json  strongholds.json  zones.json
+        unlocks.json  ascension-quests.json
+        assassin/                  guide pack: the Asmodian Assassin guide (rights reserved, LICENSE)
+          pack.json
+          builds.json              the guide build + up to two credited alternatives
+          retired.json             save keys never to be reused (§3)
+          claims-notes.md          how the claim verdicts were reached
+          guide/
+            milestones.json  steps.json  tips.json  claims.json  confidence.json
+  DATA_SOURCES.md, research/       generated listing; research notes (not loaded)
 ```
 
-**The bundle.** One character loads `sources.json` + `game-builds.json` + `shared/*.json` + `shared/<faction>/**` +
-`classes/<class>/**`, and one build: `char.buildId`, else the class's `defaultBuild` (§8.4).
+**The bundle.** One character loads one guide pack and its chain (§2.1): today `aion2/asmodian/assassin`, which extends
+`aion2/asmodian` (and through it `aion2`) and uses `aion2/classes/assassin`; and one build: `char.buildId`, else the
+class's `defaultBuild` (§8.4).
 
 - **No overrides.** A class file adds records; it never replaces or patches a shared record.
 - **Shared steps name build choices only through `[[build:…]]` tokens** (M2). A class step exists only for text that is
@@ -120,6 +130,28 @@ data/
   reward weapons go to `rewards.byClass`; faction differences in rules go to `appliesTo.faction` (N5).
 - One file per collection, records sorted by id.
 
+### 2.1 Packs and the pack chain (0.4 P1)
+
+A pack is a folder below `data/packs/` with a `pack.json` (`data/schema/pack.schema.json`, examples in
+`data/schema/examples/packs/`):
+
+| Field | |
+|---|---|
+| `schemaVersion` | 2 |
+| `id` | the folder below the packs root: `aion2`, `aion2/classes/assassin`, `aion2/asmodian`, `aion2/asmodian/assassin` |
+| `kind` | `game` · `class` · `faction` · `guide` |
+| `name` | display name |
+| `parent` | the pack it extends; a game has none, every other kind has one |
+| `uses` | other packs it reads without extending them (the guide uses its class) |
+| `files` | every data file of the pack, relative to its folder, in load order (not `pack.json`, not a nested pack's files) |
+
+`tools/gen/gen.mjs --pack <id> --root <dir>` (defaults `aion2/asmodian/assassin`, `data/packs`) resolves the chain from
+that pack: its parent, then each `uses`, then the pack itself, depth first, each pack once (today: `aion2`,
+`aion2/asmodian`, `aion2/classes/assassin`, `aion2/asmodian/assassin`). It loads exactly the listed files in that order
+and fails on a manifest that fails its schema or whose `id` is not its folder, an unknown `parent` / `uses`, a cycle,
+a listed file that is missing, and a JSON file in a pack folder that no manifest lists. The cross-record checks are
+the same as before packs. The page still gets one compiled module (per-pack loading is 0.6).
+
 ## 3. Ids and save keys
 
 Every record has an **`id`**; every record a save refers to has a **`key`**. Both are written out, never derived.
@@ -129,7 +161,7 @@ Every record has an **`id`**; every record a save refers to has a **`key`**. Bot
 | `id` = `<kind>:<local>[:<local>…]`, lowercase, never derived at runtime, never reused, never changed once released. | Stable references. |
 | `key` = the save key; **equal to today's key for every existing record**. | Saves stay valid. |
 | New ids: the game id when one is known (`rq:2202044`, `sq:2102235`), else a slug (`asc:hears-the-voice`). Story quests always use the game id (M6: all 88 Asmodian ids are known; a bare Metabot slug like `daeva-in-a-dream` is the **Elyos** page). | |
-| A renamed thing keeps id and key; `name` changes. A removed thing's id and key are retired in `data/retired.json` (5b adds it; the build fails if one reappears). | |
+| A renamed thing keeps id and key; `name` changes. A removed thing's id and key are retired in the guide pack's `retired.json` (5b adds it; the build fails if one reappears). | |
 | **A narrowed meaning gets a new key** (N6): if a step's meaning narrows (prereq-gates §9.3 proposes `g45:0` → "Witnesses the Nightmare" only), it gets a new key (`g45:witness`) and the old key is retired. Old ticks never claim something different. | A narrowed key is a reused key in disguise. |
 
 Id kinds: `sq:<game id>` story · `asc:<slug>` Ascension · `rq:` regional · `sd:` Sealed Dungeon · `sh:` stronghold ·
@@ -171,7 +203,7 @@ The localStorage key stays `aion2-assassin-route-v4`; its `v4` is not a version.
 
 ## 5. Provenance
 
-### 5.1 Sources registry (`data/sources.json`)
+### 5.1 Sources registry (`data/packs/aion2/sources.json`)
 
 One record per site:
 
@@ -233,7 +265,7 @@ Precedence: **owner screen > game-database field > guide or wiki > inferred.**
   `verified`, and any source that differs is kept in `conflicts`. One exception: a newer database value after a patch
   needs an explicit `conflicts` entry and the label `owner-check`, never a silent overwrite.
 
-### 5.5 Game builds (`data/game-builds.json`, M9)
+### 5.5 Game builds (`data/packs/aion2/game-builds.json`, M9)
 
 Observed build strings per scheme (`gb:metabot-0-0-4387-0`, first seen 2026-10-14), with the patch when known and
 `sameAs` links across schemes once T1 maps them. Patch-watch becomes "refs whose build is older than X".
@@ -322,7 +354,7 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 
 ### 8.1 Builds (M1; owner decisions)
 
-`classes/<class>/builds.json`, one record per build:
+`builds.json` in the guide pack (`data/packs/aion2/asmodian/assassin/builds.json`), one record per build:
 
 - `origin`: `guide` (the class's `defaultBuild`) or `community`. **At most three per class: one guide build plus up to
   two credited alternatives** (schema `maxItems: 3`; the build checks exactly one `guide`). Alternatives are credited
@@ -351,7 +383,7 @@ Anything else, an unknown token or an unknown `build:` kind fails validation.
 
 ### 8.3 Board nodes (M5)
 
-`classes/<class>/board-nodes.json`: every node of every board (Assassin: 89 + 89 + 89 + 117 + 153 from Metabot's
+`data/packs/<game>/classes/<class>/board-nodes.json`: every node of every board (Assassin: 89 + 89 + 89 + 117 + 153 from Metabot's
 planner, build 0.0.4387.0), with `row`, `col`, `type` (`start` · `stat` · `skill` · `unique`), `grade`, `cost`,
 `label`, `skill` and `adds` for skill nodes (`skill` is required on `type: skill` and forbidden on every other
 type, so effective level can't miss or miscount a node), `gameId`. Keys: the existing `dv:` key where the node has one (a
@@ -805,7 +837,7 @@ generator (`tools/gen/gen.mjs`) compiles it into the same constants the app used
 | `story-quests` | `unlocks.milestone` pattern `^g[0-9]+$` | it referenced `recordId`, which needs a colon; milestone ids are `g6` … `g45` (§3) |
 | `unlocks` | optional `credit`, `order` | `VERIFIED_UNLOCKS` shows the credited site names and has a display order; records are stored sorted by id |
 | `regional-quests` | optional `order` | the v1 list order (allthings.how's) is not derivable from `rec` + id and decides Next up and milestone order |
-| `retired` (new) | `data/retired.json`: `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
+| `retired` (new) | `data/retired.json` (since 0.4 P1 `data/packs/aion2/asmodian/assassin/retired.json`): `{key, retired, note}` | §3: 5b adds it; the generator fails if a retired key reappears |
 | `common` (data corrections) | owner ref `owner:YYYY-MM-DD-<set>-NN` also allowed | the owner's numbered screen sets are cited that way (`owner:2026-10-14-unlocks-05`, docs/research/2026-10-owner-unlocks.md) |
 | `common`, `story-quests` (0.3 E10) | a set name may have several words (`owner:2026-10-16-daeva-trapped-01`); `end.next` / `end.nextLv` | the owner's code for the Daeva Trapped lookup; the last covered quest names the game's next story quest (past the cap) for the end-of-story text |
 | `story-quests` (data corrections) | `unlocks.milestone` optional | an unlock before the first milestone (Prepare to Escape: Shop and Closet) has no milestone to link to |

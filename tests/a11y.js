@@ -339,7 +339,7 @@ async function load(p, state, mode) {
   /* ---------- 13. Active / Passive tags on the Skills card (0.2.7, F2): 390 px, Basic and Advanced, every level 1-45: each skill
      shown (the hero and every Coming up row, specialty rows too) carries a visible "Active" / "Passive" tag, and it matches
      the data (skills.json type, compiled to SP_SKILLS[].passive). The tag is text, so it is in the accessible name. ---------- */
-  const SK_TYPES = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'classes', 'assassin', 'skills.json'), 'utf8')).records.map(x => [x.name, x.type]));
+  const SK_TYPES = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'packs', 'aion2', 'classes', 'assassin', 'skills.json'), 'utf8')).records.map(x => [x.name, x.type]));
   for (const mode of ['basic', 'advanced']) {
     const { ctx, p } = await page(390);
     await p.goto(CFG.CUR);

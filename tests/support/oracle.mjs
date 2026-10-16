@@ -29,12 +29,12 @@ const read = (root, f) => JSON.parse(readFileSync(join(root, 'data', f), 'utf8')
 
 export function loadOracle({ root, apply = new Set() }) {
   const recs = f => read(root, f).records;
-  const story = recs('shared/asmodian/story-quests.json'), steps = recs('shared/asmodian/guide/steps.json');
-  const rqs = recs('shared/asmodian/regional-quests.json'), sds = recs('shared/asmodian/sealed-dungeons.json');
-  const shs = recs('shared/asmodian/strongholds.json'), unlocks = recs('shared/asmodian/unlocks.json');
-  const ascs = recs('shared/asmodian/ascension-quests.json'), boards = recs('shared/boards.json');
-  const skills = recs('classes/assassin/skills.json'), bnodes = recs('classes/assassin/board-nodes.json');
-  const build = recs('classes/assassin/builds.json')[0], rules = Object.fromEntries(recs('shared/rules.json').map(r => [r.id, r]));
+  const story = recs('packs/aion2/asmodian/story-quests.json'), steps = recs('packs/aion2/asmodian/assassin/guide/steps.json');
+  const rqs = recs('packs/aion2/asmodian/regional-quests.json'), sds = recs('packs/aion2/asmodian/sealed-dungeons.json');
+  const shs = recs('packs/aion2/asmodian/strongholds.json'), unlocks = recs('packs/aion2/asmodian/unlocks.json');
+  const ascs = recs('packs/aion2/asmodian/ascension-quests.json'), boards = recs('packs/aion2/boards.json');
+  const skills = recs('packs/aion2/classes/assassin/skills.json'), bnodes = recs('packs/aion2/classes/assassin/board-nodes.json');
+  const build = recs('packs/aion2/asmodian/assassin/builds.json')[0], rules = Object.fromEntries(recs('packs/aion2/rules.json').map(r => [r.id, r]));
 
   /* the story chain: start at the quest no other quest names as `next`, follow `next` */
   const sById = new Map(story.map(s => [s.id, s])), named = new Set(story.map(s => s.next).filter(Boolean));

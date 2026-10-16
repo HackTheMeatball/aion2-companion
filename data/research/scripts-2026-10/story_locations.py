@@ -19,8 +19,8 @@ sys.path.insert(0, __file__.rsplit('/', 1)[0])
 from extract import flight, spots  # noqa: E402
 
 CACHE, URLS, ROOT = sys.argv[1], sys.argv[2], sys.argv[3]
-SQ = json.load(open(f'{ROOT}/data/shared/asmodian/story-quests.json'))['records']
-ZN = [z for z in json.load(open(f'{ROOT}/data/shared/asmodian/zones.json'))['records'] if z['id'] != 'zone:altgard-unplaced']
+SQ = json.load(open(f'{ROOT}/data/packs/aion2/asmodian/story-quests.json'))['records']
+ZN = [z for z in json.load(open(f'{ROOT}/data/packs/aion2/asmodian/zones.json'))['records'] if z['id'] != 'zone:altgard-unplaced']
 BY_NAME = {z['name']: z['id'] for z in ZN}
 CAMP = {k: z['id'] for z in ZN for k in (z.get('camps') or []) + (z.get('kibelisks') or [])}
 BY_URL = {}

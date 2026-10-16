@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/story-quests.schema.json",
-  "title": "Main story quests (shared/<faction>/story-quests.json)",
+  "title": "Main story quests (packs/<game>/<faction>/story-quests.json)",
   "description": "DRAFT. One record per Hero/Episode quest. Ids are sq:<game id> (M6). Order is the 'next' chain (validated: one start, one end, no cycles). Replaces story.json, story-40-45.json, QUESTS, QUEST_STEPS, QUEST_LOC, STORY_UNLOCKS, UNLOCK_GATE.",
   "allOf": [
     {

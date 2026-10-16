@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/confidence.schema.json",
-  "title": "Confidence card (shared/guide/confidence.json, classes/<class>/confidence.json)",
+  "title": "Confidence card (packs/<game>/<faction>/<class>/guide/confidence.json)",
   "description": "DRAFT. Replaces the CONF text hard-coded in gen.py. An item shows only while its 'when' claims have the stated verdicts; {placeholders} are filled by the compiler from compiled data.",
   "allOf": [
     {

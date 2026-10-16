@@ -33,7 +33,7 @@ export function makeStates(M, { root, seed }) {
 
   /* every trackable save key, and the ones whose record can also be done without a tick (a stored false there is the
      "ticked-but-derived-false" case): completesWith beyond "tick", and the Ascension steps (wrapper rule, §5) */
-  const steps = JSON.parse(readFileSync(join(root, 'data/shared/asmodian/guide/steps.json'), 'utf8')).records;
+  const steps = JSON.parse(readFileSync(join(root, 'data/packs/aion2/asmodian/assassin/guide/steps.json'), 'utf8')).records;
   const derivable = steps.filter(s => s.completesWith.some(e => e !== 'tick') || s.ascensionQuest).map(s => s.key);
   const keys = [...new Set([...C.gates.flatMap(g => g.items.filter(it => !it.sub && !it.hidden).map(it => it.k)), ...C.steps.flatMap(s => s.items),
     ...C.rq.map(q => 'rq:' + q.id), ...C.areas.map(x => x.k), ...C.sp.map(x => x.k), ...C.dvNodes.map(x => x.k), ...C.slots.map(x => x.k)])];

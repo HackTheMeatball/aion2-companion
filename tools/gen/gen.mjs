@@ -10,25 +10,27 @@
      - tests (core, e4) call generate() for the values the page should carry.
    Fails (throws / exit 1) on a schema error, a failed cross-record check or an unknown data major version. */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ROOT, dataFiles, validateDoc } from './validate.mjs';
+import { ROOT, validateDoc } from './validate.mjs';
+import { DEFAULT_PACK, DEFAULT_ROOT, resolvePacks } from './packs.mjs';
 
 /* ------------------------------------------------------------------ load */
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
    them, i.e. nothing compiles a proposal; DATA-FORMAT-V2 §6, docs/design/0.3-requirement-engine.md §7). */
 const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (const e of r.boardPlan || []) delete e.proposed; } };   /* where the schema allows it: records, build plan nodes */
-/* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks) */
-const loadBundle = ({ dropProposed = false, mutate = null } = {}) => {
-  const files = dataFiles(), by = {}, schemaErrors = [];
+/* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks).
+   root, pack: the packs root and the pack to build (packs.mjs); the files are exactly those the pack chain lists. */
+const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) => {
+  const { files } = resolvePacks({ root, pack }), by = {}, schemaErrors = [];
   let retired = null, sources = null;
-  for (const f of files) {
-    const doc = JSON.parse(readFileSync(f, 'utf8')), rel = relative(ROOT, f);
+  for (const { abs: f, rel } of files) {
+    const doc = JSON.parse(readFileSync(f, 'utf8'));
     if (mutate) mutate(rel, doc);
     const errs = validateDoc(f, doc);
     if (errs.length) schemaErrors.push(`${rel}: ${errs.slice(0, 5).join('; ')}${errs.length > 5 ? ` (+${errs.length - 5})` : ''}`);
     if (doc.schemaVersion !== 2) throw new Error(`${rel}: data schemaVersion ${doc.schemaVersion} is not 2 (this generator knows major 2 only)`);
-    if (rel === 'data/retired.json') { retired = doc; continue; }
+    if (basename(f) === 'retired.json') { retired = doc; continue; }
     if (dropProposed) stripProposed(doc.records);
     if (doc.collection === 'sources') sources = doc;
     (by[doc.collection] = by[doc.collection] || []).push({ file: rel, doc });
@@ -553,7 +555,7 @@ export function dataSourcesMd(g) {
     'that cite the page (`file: record`); *Card group* is where the app lists it. Pages were checked in Oct 2026.',
     'A claim that is not verified is tagged `[id · verdict]` (`owner source`: the owner\'s own check is one of its sources), and',
     '"(this page: …)" says which part of a claim a page backs when it backs only part.', '',
-    'Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/shared/asmodian/guide/claims.json`',
+    'Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/packs/aion2/asmodian/assassin/guide/claims.json`',
     'stay their owners\'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.', '',
     `${all.length} URLs · ${groupOf.size} in the Sources card · ${all.filter(u => !groupOf.has(u)).length} cited only in the data files`, ''];
   const bySite = new Map();
@@ -568,18 +570,26 @@ export function dataSourcesMd(g) {
 }
 
 /* ------------------------------------------------------------------ CLI */
+/* node tools/gen/gen.mjs [--pack <id>] [--root <dir>]: defaults aion2/asmodian/assassin and data/packs. data/DATA_SOURCES.md
+   is the default pack's; another pack or root writes its DATA_SOURCES.md to tools/gen/out/ instead. */
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const t0 = Date.now();
-  let g; try { g = generate(); } catch (e) { console.error('gen: ' + e.message); process.exit(1); }
+  const t0 = Date.now(), args = process.argv.slice(2), opt = { pack: DEFAULT_PACK, root: DEFAULT_ROOT };
+  for (let i = 0; i < args.length; i++) {
+    const k = args[i].replace(/^--/, '');
+    if (!['pack', 'root'].includes(k) || !args[i].startsWith('--') || args[i + 1] === undefined) { console.error('usage: node tools/gen/gen.mjs [--pack <id>] [--root <dir>]'); process.exit(2); }
+    opt[k] = k === 'root' ? resolve(args[++i]) : args[++i];
+  }
+  let g; try { g = generate(opt); } catch (e) { console.error('gen: ' + e.message); process.exit(1); }
+  const isDefault = opt.pack === DEFAULT_PACK && opt.root === DEFAULT_ROOT, dsMd = isDefault ? 'data/DATA_SOURCES.md' : 'tools/gen/out/DATA_SOURCES.md';
   mkdirSync(join(ROOT, 'tools/gen/out'), { recursive: true });
   writeFileSync(join(ROOT, 'tools/gen/out/generated.js'), g.module);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-graph.js'), g.gateModule);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-proposed.js'), g.proposedModule);
   writeFileSync(join(ROOT, 'tools/gen/out/gen-report.json'), JSON.stringify(g.report, null, 1) + '\n');
-  writeFileSync(join(ROOT, 'data/DATA_SOURCES.md'), dataSourcesMd(g));
+  writeFileSync(join(ROOT, dsMd), dataSourcesMd(g));
   for (const c of g.failed) console.error('CHECK FAILED: ' + c.check + (c.detail !== undefined ? ' ' + JSON.stringify(c.detail) : ''));
   for (const w of g.report.warnings.filter(w => !/robots unchecked|terms unread/.test(w))) console.log('  warn: ' + w);
   const pr = g.report.proposed, prN = s => pr.filter(p => p.status === s).length;
-  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants + GATE_GRAPH (${g.report.stats.gateNodes} nodes) · ${pr.length} proposed 0.3 gates (${prN('ready')} ready, ${prN('owner-check')} owner-check; in GATE_PROPOSED, applied per id) · data/DATA_SOURCES.md, tools/gen/out/ written (${Date.now() - t0} ms)`);
+  console.log(`gen: ${g.report.checks.length} checks, ${g.failed.length} failed · ${Object.keys(g.constants).length} constants + GATE_GRAPH (${g.report.stats.gateNodes} nodes) · ${pr.length} proposed 0.3 gates (${prN('ready')} ready, ${prN('owner-check')} owner-check; in GATE_PROPOSED, applied per id) · pack ${opt.pack} · ${isDefault ? dsMd + ', ' : ''}tools/gen/out/ written (${Date.now() - t0} ms)`);
   process.exit(g.failed.length ? 1 : 0);
 }

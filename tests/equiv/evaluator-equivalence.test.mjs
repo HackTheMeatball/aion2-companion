@@ -53,7 +53,7 @@ const KNOWN = {
 /* E9 (2026-10-15, owner check 1): every regional quest's story gate is "turned in" (the quest after the gate's quest), not "reached"; Shugo-of-All-Trades
    and Spooky Specters also gained a story gate (they were open from their recommended level). The 0.2 form is the page's with the switch regionalTurnedIn
    off, held to the frozen rules by B; here the live data is compared with 0.2 and each regional quest that differs is known by its record. */
-const RQ_TURNED_IN = 'live story gate is "turned in" (owner check 1, 2026-10-15; data/shared/asmodian/regional-quests.json); 0.2 opened the quest when the story ' +
+const RQ_TURNED_IN = 'live story gate is "turned in" (owner check 1, 2026-10-15; data/packs/aion2/asmodian/regional-quests.json); 0.2 opened the quest when the story ' +
   'reached it [switch "regionalTurnedIn", held to 0.2 by B]';
 const regionalKnown = M => {
   const out = {}, atoms = g => g.all ? g.all.flatMap(atoms) : g.any ? g.any.flatMap(atoms) : [g];

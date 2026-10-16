@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/sealed-dungeons.schema.json",
-  "title": "Sealed Dungeons (shared/<faction>/sealed-dungeons.json)",
+  "title": "Sealed Dungeons (packs/<game>/<faction>/sealed-dungeons.json)",
   "description": "DRAFT. Replaces dungeons.json, the hideouts() name lists in GATES, HIDEOUT_AREA, AREA_LOC (+ snapshots area-loc-v287 / hideout-area-v288).",
   "allOf": [
     {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/retired.schema.json",
-  "title": "Retired save keys (data/retired.json)",
+  "title": "Retired save keys (packs/<game>/<faction>/<class>/retired.json)",
   "description": "Save keys that existed and were removed (DATA-FORMAT-V2 §3). A retired key is never used again: the generator fails if one reappears on any record. Narrowed meanings get a new key and retire the old one (N6).",
   "type": "object",
   "required": ["schemaVersion", "keys"],

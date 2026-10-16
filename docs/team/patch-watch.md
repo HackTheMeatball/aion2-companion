@@ -5,13 +5,13 @@ there and in CLAUDE.md is authoritative; this file only applies it.
 
 ## 1. Trigger
 
-Start when any of these happens: Metabot's game build changes (`data/game-builds.json` records `0.0.4387.0`, first seen
+Start when any of these happens: Metabot's game build changes (`data/packs/aion2/game-builds.json` records `0.0.4387.0`, first seen
 2026-10-14), a patch note is published, or a player report says the game changed. Record the new build next to the
 re-check date.
 
 ## 2. Where to look
 
-Use only sources in `data/sources.json` (`records[]`). Read the record's `access` and `use` first.
+Use only sources in `data/packs/aion2/sources.json` (`records[]`). Read the record's `access` and `use` first.
 
 | Source | Use |
 |---|---|
@@ -22,7 +22,7 @@ Use only sources in `data/sources.json` (`records[]`). Read the record's `access
 | AION2HUB | `scripted` for spot checks only, as weak corroboration: single source, pre-launch client unless confirmed. |
 | Sites marked `human-only` | Owner by hand only. thegameswiki (CC BY-NC-SA): facts only, never its wording. |
 
-This table is not exhaustive; the record in `data/sources.json` decides. Any site that opts out of AI agents or all automated access is never fetched. Never read: **aion2.th.gl** (robots.txt excludes AI agents; `withdrawn`) and **Game8** (`banned`). Facts that came from
+This table is not exhaustive; the record in `data/packs/aion2/sources.json` decides. Any site that opts out of AI agents or all automated access is never fetched. Never read: **aion2.th.gl** (robots.txt excludes AI agents; `withdrawn`) and **Game8** (`banned`). Facts that came from
 th.gl are re-verified against a permitted source and attributed to it.
 
 Fetch rules: read terms and robots.txt before any content page. Our own honest User-Agent. At most 12 requests a minute
@@ -40,12 +40,12 @@ Work from `verifiedAt` (oldest first) and the build. Check in this order:
 4. **Rewards and items** that the guide text names.
 5. **Guide text** (`tips.json`, `steps.json`, `milestones.json`) that depends on any record above.
 
-Do not change ids or keys. A removed record is retired in `data/retired.json`, never reused (CLAUDE.md). Check that no
+Do not change ids or keys. A removed record is retired in `data/packs/aion2/asmodian/assassin/retired.json`, never reused (CLAUDE.md). Check that no
 change can touch saved progress; if one can, flag it for Engineering and run `mig1`, `mig2` and `journey`.
 
 ## 4. Labelling changed facts (`claims.json`)
 
-In `data/shared/asmodian/guide/claims.json`, set per claim:
+In `data/packs/aion2/asmodian/assassin/guide/claims.json`, set per claim:
 
 | Case | `verdict` | `action` |
 |---|---|---|

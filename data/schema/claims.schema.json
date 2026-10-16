@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/claims.schema.json",
-  "title": "Text claims (shared/guide/claims.json, classes/<class>/claims.json)",
+  "title": "Text claims (packs/<game>/<faction>/<class>/guide/claims.json)",
   "description": "DRAFT. Replaces data/claims.json. 'lines' and 'edits' (line numbers in the pre-0.2 single file) are retired; appliesTo names the records whose text follows the verdict.",
   "allOf": [
     {

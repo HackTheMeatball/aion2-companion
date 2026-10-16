@@ -102,7 +102,7 @@ export default (test, M) => {
     /* docs/feedback/2026-10-14-owner.md F5: unlocking costs 1 point and the stigma starts at Lv 1. ST_COST(1) is that
        learn cost, it matches rule:stigma-shard-cost, upgrades start at Lv 2, and the plan total includes one learn per
        planned stigma. */
-    const rule = JSON.parse(readFileSync(new URL('../../data/shared/rules.json', import.meta.url), 'utf8')).records.find(r => r.id === 'rule:stigma-shard-cost');
+    const rule = JSON.parse(readFileSync(new URL('../../data/packs/aion2/rules.json', import.meta.url), 'utf8')).records.find(r => r.id === 'rule:stigma-shard-cost');
     for (const { from, to, cost } of rule.value) for (let L = from; L <= to; L++) assert.equal(M.ST_COST(L), cost, `ST_COST(${L})`);
     assert.equal(M.ST_COST(1), 1);
     const n = M.STIGMA_PLAN[0], s = S({ checks: { 'g22:1': true } });

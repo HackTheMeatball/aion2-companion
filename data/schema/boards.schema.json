@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/boards.schema.json",
-  "title": "Daevanion boards (shared/boards.json)",
-  "description": "DRAFT. The boards themselves (game-wide); each class's nodes are in classes/<class>/boards.json. Replaces build.json boards.list / Ariel / BOARDS.",
+  "title": "Daevanion boards (packs/<game>/boards.json)",
+  "description": "DRAFT. The boards themselves (game-wide); each class's nodes are in packs/<game>/classes/<class>/board-nodes.json. Replaces build.json boards.list / Ariel / BOARDS.",
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/envelope"

@@ -26,13 +26,13 @@ export const compiler = () => {
   return ajv;
 };
 
-/* every data file under data/ (not schema/, research/) */
-export const dataFiles = () => walk(join(ROOT, 'data')).filter(f => f.endsWith('.json') && !/\/data\/(schema|research)\//.test(f));
+/* every JSON file under data/packs/: the data files and the pack manifests (pack.json) */
+export const dataFiles = () => walk(join(ROOT, 'data/packs')).filter(f => f.endsWith('.json'));
 
 /* returns [{file, errors}] for files that fail; doc is the parsed file */
 export const validateDoc = (file, doc) => {
   const a = compiler();
-  const name = basename(file) === 'retired.json' ? 'retired.schema.json' : SCHEMA_OF[doc.collection] ? SCHEMA_OF[doc.collection] + '.schema.json' : null;
+  const name = basename(file) === 'pack.json' ? 'pack.schema.json' : basename(file) === 'retired.json' ? 'retired.schema.json' : SCHEMA_OF[doc.collection] ? SCHEMA_OF[doc.collection] + '.schema.json' : null;
   if (!name) return [`unknown collection "${doc.collection}"`];
   const v = a.getSchema(name);
   if (v(doc)) return [];

@@ -1,7 +1,8 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
 import { E_ORDER, LEVEL_POINTS, RMB_ROWS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
-/* Compiled from data/classes/assassin/ since 0.2 step 5b (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
+/* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
+   (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
    skill order and specialty picks, stigma plan and targets, key stacks), skills.json (learn levels, icons) and
    stigmas.json (icons), and rule:level-points. Re-exported here under their page names. */
 export { E_ORDER, LEVEL_POINTS, SP_ICONS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS };

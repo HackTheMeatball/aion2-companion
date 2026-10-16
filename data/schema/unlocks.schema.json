@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/unlocks.schema.json",
-  "title": "Content unlocks (shared/<faction>/unlocks.json)",
+  "title": "Content unlocks (packs/<game>/<faction>/unlocks.json)",
   "description": "DRAFT. Informational (not tickable). Replaces VERIFIED_UNLOCKS, build.json unlocks / dailyDungeon / unlocksRecommendation. The 'Ahead' row shows records whose status is verified.",
   "allOf": [
     {

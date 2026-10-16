@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/sources.schema.json",
-  "title": "Sources registry (data/sources.json)",
+  "title": "Sources registry (packs/<game>/sources.json)",
   "description": "DRAFT. One record per site: who it is, how independent it is, its licence and what the guide may take from it. Every URL in the data must resolve to a site here by host (checked by the 5b build, not by this schema).",
   "allOf": [
     {

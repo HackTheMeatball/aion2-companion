@@ -85,7 +85,7 @@ view settings leave `savedAt` alone, so a reload stores the same text. Older bui
 save the whole object); the next load in a build with times re-stamps their changes. `merge(local, remote)` (not used by
 the UI yet) keeps the later change per item, ORs one-time flags and keeps the local view settings;
 `lastConfirmedLocation(char)` derives the zone of the newest dated tick of a located item, skipping steps with
-`ascensionQuest` (from `data/shared/asmodian/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; `mig2` tests the load / save / rollback path.
+`ascensionQuest` (from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; `mig2` tests the load / save / rollback path.
 
 ### Item keys
 
@@ -169,19 +169,23 @@ save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive
 ## 3. Data pipeline
 
 ```
-web sources ──(research sessions, by hand)──▶ data/** (format v2) ──tools/gen/gen.mjs──▶ module src/data/generated.js (in memory, at build time)
+web sources ──(research sessions, by hand)──▶ data/packs/** (v2) ───tools/gen/gen.mjs──▶ module src/data/generated.js (in memory, at build time)
                                                 │                     ├─▶ data/DATA_SOURCES.md (committed: every URL and what it backs)
                                                 │                     └─▶ tools/gen/out/ (npm run gen: gen-report.json, generated.js; not committed)
                                                 └── data/schema/*.schema.json (JSON Schema 2020-12; ajv 8 Ajv2020, strict)
 ```
 
-- **Format v2** (0.2 step 5b; spec `docs/DATA-FORMAT-V2.md`). `data/sources.json` (sites: access, licence, use),
-  `data/game-builds.json`, `data/retired.json` (keys never to be reused), `data/shared/` (rules, boards, items),
-  `data/shared/asmodian/` (story, Ascension and regional quests, Sealed Dungeons, strongholds, zones, unlocks) and its
-  `guide/` (milestones, steps, tips, claims, confidence: the guide's own text), `data/classes/assassin/` (class, skills,
-  stigmas, every board node, builds). One envelope per file (`schemaVersion: 2`, `collection`, records sorted by id).
-  `data/claims-notes.md` explains the claim verdicts.
-- **Generator** (`tools/gen/gen.mjs`, Node, no dependency but ajv): validates every file (`tools/gen/validate.mjs`), runs
+- **Format v2** (0.2 step 5b; spec `docs/DATA-FORMAT-V2.md`), in packs since 0.4 P1 (DATA-FORMAT-V2 §2.1): a folder
+  below `data/packs/` with a `pack.json` (`id` = the folder, `kind`, `parent`, `uses`, `files`). The game pack
+  `aion2/` (`sources.json`: sites, access, licence, use; `game-builds.json`; rules, boards, items); the class pack
+  `aion2/classes/assassin/` (class, skills, stigmas, every board node); the faction pack `aion2/asmodian/` (story,
+  Ascension and regional quests, Sealed Dungeons, strongholds, zones, unlocks); the guide pack
+  `aion2/asmodian/assassin/` (builds, `retired.json`: keys never to be reused, and `guide/`: milestones, steps, tips,
+  claims, confidence, the guide's own text; `claims-notes.md` explains the claim verdicts). The guide extends the
+  faction and uses the class. One envelope per file (`schemaVersion: 2`, `collection`, records sorted by id).
+- **Generator** (`tools/gen/gen.mjs`, Node, no dependency but ajv): resolves the pack chain of `--pack` (default
+  `aion2/asmodian/assassin`, `tools/gen/packs.mjs`), loads exactly the files the manifests list, validates every file
+  (`tools/gen/validate.mjs`), runs
   the cross-record checks (ids unique, keys unique, references resolve, story chain one path, URLs on registered sites
   and never on a banned or `mode: none` site, `verifiedAt` = latest `checkedAt`, claims ↔ `appliesTo`, retired keys,
   objective indices, …; about 8,600 checks) and compiles today's constants: `RQ`, `RQ_STATS`, `QUESTS`, `QUEST_STEPS`,

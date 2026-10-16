@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/tips.schema.json",
-  "title": "Explainers (shared/guide/tips.json, classes/<class>/tips.json)",
+  "title": "Explainers (packs/<game>/<faction>/<class>/guide/tips.json)",
   "description": "DRAFT. The 'i' popovers. Replaces TIPS.",
   "allOf": [
     {

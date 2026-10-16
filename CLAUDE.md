@@ -36,7 +36,7 @@ comes first) a change may break existing saves when that gives a better design. 
 
 - Only verified data: two independent sources, game-database fields (Metabot quest/skill pages, aion2.gaming.tools),
   or the user's in-game screens (the source of truth). Otherwise leave it out, or label it "single
-  source" / "inferred" / "disputed" as `data/shared/asmodian/guide/claims.json` decides.
+  source" / "inferred" / "disputed" as `data/packs/aion2/asmodian/assassin/guide/claims.json` decides.
 - Data lives in `data/**` in format v2 (`docs/DATA-FORMAT-V2.md`, JSON Schemas in `data/schema/`). Change the JSON, then
   `npm run gen` (validates, runs the cross-record checks, rewrites `data/DATA_SOURCES.md`); the build compiles the module
   `src/data/generated.js` in memory, nothing generated is committed except `DATA_SOURCES.md`. `src/data/*.js` only
