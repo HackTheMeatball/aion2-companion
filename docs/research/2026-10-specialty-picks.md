@@ -6,7 +6,11 @@ Research session, 2026-10-16 (UTC). **Docs only: no file in `data/` or `src/` wa
 
 **Evidence labels.** *2+ sources* = at least two different publishers name the pick as a main pick for that skill.
 *single-source* = one publisher. *disputed* = sources name different picks for the same slot and neither side has more
-support. *gap* = no source names a pick. The guides are editorial, not game data: agreement between them shows what
+support. *contested* = a pick that one publisher puts in the slot while more publishers put a different pick there.
+*gap* = no source names a pick. **Labels are slot-specific:** a source counts for "slot N = pick X" only if it puts X in
+slot N, or names it as the Nth pick in its order (a pick that enters at skill 12 counts for slot 2, at 20 for slot 3).
+Merely naming X somewhere in a set does not count, and PvP-only panels (AM-PvP, TR-P) are not counted for these PvE
+labels. The guides are editorial, not game data: agreement between them shows what
 players run, not what is strongest, and the owner's in-game screens stay the source of truth. Sources that read the same
 upstream (a creator's video, the same client data) are noted where I could tell.
 
@@ -16,12 +20,15 @@ upstream (a creator's video, the same client data) are noted where I could tell.
   `skills.json`) and an editorial/top-player skill build, but no per-specialty pick rate and no recommended specialty.
   Its "top players" build (150 players) gives skill levels and stigmas only. Its pick-rate figure is per skill (for
   example Quick Slice 149 of 150), not per specialty. So every pick below comes from other guides.
-- **Five guides were read:** GamesFuze, Skycoach, Corpus, aion2-meta.com and aion2turkiye.com. Five more were refused or
-  skipped by policy (section 2). gameplay.tips and Pixelnitro were read and carry no usable picks.
-- **Skills with a 2+ source pick for both slot 2 and slot 3: 4** (Heart Gore, Insignia Explosion, Quick Slice, Storm
-  Rampage). 7 skills have a 2+ source slot 2 (those four plus Flash Slice, Ambush, Whirlwind Slice), and 4 have a 2+
-  source slot 3. Savage Roar is disputed in both slots. Shadowstrike, Infiltrate, Shadow Fall and Defiance are gaps
-  or single-source.
+- **Five guides were read:** GamesFuze, Skycoach, Corpus, aion2-meta.com and aion2turkiye.com. Seven sources were not
+  read (section 2): two never used by rule, five refused or skipped by policy or access. gameplay.tips and Pixelnitro were read and carry no usable picks.
+- **Slot-specific counts (12 skills):** a 2+ source slot 2 for **5** skills (Heart Gore 4, Insignia Explosion 5, Quick
+  Slice 4, Storm Rampage 4, Flash Slice 4); a 2+ source slot 3 for **2** (Heart Gore 5, Quick Slice 5); both slots for
+  **2** (Heart Gore, Quick Slice). Single-source: Insignia Explosion slot 3 (3), Storm Rampage slot 3 (5), Ambush slot 2
+  (2), Whirlwind Slice slot 2 (2), Defiance slot 2 (4). Savage Roar slot 2 is disputed and slot 3 is disputed with no
+  pick proposed. Shadowstrike, Infiltrate, Shadow Fall and most third slots are gaps. Many picks are named by several
+  guides but as a different step (for example pick 5 on Storm Rampage), which is why the slot counts are lower than the
+  "named by N guides" counts.
 - **Slot 3 and every skill-16 choice sit beyond the Lv 1-45 guide.** Points take a skill to 10 and each Daevanion
   board adds up to 4; aion2turkiye's endgame table has the top 25 players at 13 to 15. Skycoach says level 16 needs
   Soulstones or gear. The picks are endgame information for the 1-45 guide; E7 should show them as "after Lv 45 / needs
@@ -29,9 +36,10 @@ upstream (a creator's video, the same client data) are noted where I could tell.
 - **The sources swap a pick in at skill 16.** Between 16 and 19 a skill has only two slots, and the guides put the new
   skill-16 choice over the slot-1 pick (Heart Gore, Quick Slice, Storm Rampage, Insignia Explosion). E7 has to decide
   how the picks array maps to that (section 4).
-- **Slot-1 conflict, not in scope but worth a look:** Ambush pick 1 (Engraves 2 Insignias) is supported only by
-  aion2turkiye; Skycoach, Corpus and aion2-meta open with Absorb (2). Leveling sources also open Heart Gore and Quick
-  Slice with Absorb, where `builds.json` has crit (3) and Multi-Hit (3).
+- **Slot-1 conflicts, not in scope but worth a look (labelled contested):** Ambush pick 1 (Engraves 2 Insignias) is
+  put first only by aion2turkiye; Skycoach, Corpus and aion2-meta open with Absorb (2). Heart Gore pick 3 (crit) is put
+  first only by aion2turkiye's Dungeon panel; the leveling guides open with Absorb (1). Quick Slice pick 3 has two
+  publishers (aion2-meta, aion2turkiye Dungeon) against Absorb in the leveling guides.
 - **Metabot's skill page adds one fact worth checking in game:** "Each [specialization] needs its stigma item and a
   minimum skill level" (Quick Slice page, specializations paragraph). Our data does not model the stigma item.
 
@@ -41,18 +49,18 @@ Slot 1 is the pick already in `builds.json` where one exists (kept, not re-resea
 
 | Skill | In guide build | Slot 1 | Slot 2 | Slot 3 | Slots 2 + 3 agreement |
 |---|---|---|---|---|---|
-| Heart Gore | yes | **3** (2+ sources) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
-| Insignia Explosion | yes | **2** (2+ sources) | **5** (2+ sources) | **3** (2+ sources) | 2+ sources / 2+ sources |
+| Heart Gore | yes | **3** (contested) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
+| Insignia Explosion | yes | **2** (2+ sources) | **5** (2+ sources) | **3** (single-source) | 2+ sources / single-source |
 | Quick Slice | yes | **3** (2+ sources) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
-| Savage Roar | yes | **2** (2+ sources) | **4** (disputed) | **1** (disputed) | disputed / disputed |
-| Storm Rampage | yes | **1** (2+ sources) | **4** (2+ sources) | **5** (2+ sources) | 2+ sources / 2+ sources |
-| Flash Slice | yes | **2** (2+ sources) | **4** (2+ sources) | (none) | 2+ sources / gap |
-| Shadowstrike | yes | **2** (2+ sources) | (none) | (none) | gap / gap |
-| Ambush | yes | **1** (single-source) | **2** (2+ sources) | **4** (single-source) | 2+ sources / single-source |
-| Infiltrate | no | **2** (2+ sources) | (none) | (none) | gap / gap |
-| Whirlwind Slice | no | **1** (2+ sources) | **2** (2+ sources) | (none) | 2+ sources / gap |
-| Shadow Fall | no | **1** (single-source) | (none) | (none) | gap / gap |
-| Defiance | no | **3** (2+ sources) | **4** (single-source) | **5** (single-source) | single-source / single-source |
+| Savage Roar | yes | **2** (2+ sources) | **4** (disputed) | (none; disputed) | disputed / disputed |
+| Storm Rampage | yes | **1** (2+ sources) | **4** (2+ sources) | **5** (single-source) | 2+ sources / single-source |
+| Flash Slice | yes | **2** (2+ sources) | **4** (2+ sources) | (none; gap) | 2+ sources / gap |
+| Shadowstrike | yes | **2** (2+ sources) | (none; gap) | (none; gap) | gap / gap |
+| Ambush | yes | **1** (contested) | **2** (single-source) | (none; gap) | single-source / gap |
+| Infiltrate | no | **2** (2+ sources) | (none; gap) | (none; gap) | gap / gap |
+| Whirlwind Slice | no | **1** (disputed) | **2** (single-source) | (none; gap) | single-source / gap |
+| Shadow Fall | no | **1** (single-source) | (none; gap) | (none; gap) | gap / gap |
+| Defiance | no | **3** (2+ sources) | **4** (single-source) | (none; gap) | single-source / gap |
 
 ## 2. Sources, access and what each gave
 
@@ -66,12 +74,12 @@ section 7). Cached pages are only in the session scratchpad, not in the repo.
 | GF | GamesFuze | https://gamesfuze.com/guides/aion-2-assassin-build-best-skills-stigmas-and-rotation/ | robots.txt allows; no terms page found (only a privacy policy). Tier 3, facts only. | "Updated Oct 5, 2026". Two picks for 7 skills, ordered by skill priority. Not slot-specific. |
 | SC | Skycoach | https://skycoach.gg/blog/aion-2/articles/assassin-guide | robots.txt allows (Crawl-delay 1); customer agreement `/agreement/customer` has no bot or scraping clause. Tier 3. | No date visible. Skill table plus leveling order for Heart Gore (Absorb at 8, Multi-Hit at 12, reset at 16). |
 | CP | Corpus | https://corpus.gg/blog/aion-2/assassin-pve-build | robots.txt allows (`/data/` disallowed, not touched); `/terms` has no automation clause. Tier 3. | Published Oct 4, updated Oct 10, 2026. Built from two creators, Grobs and aLuckyRO; "Grobs" and "aLuckyRO" are named where they differ. |
-| AM | aion2-meta.com | https://aion2-meta.com/guides/assassin/ | robots.txt `Allow: /`; only a privacy page found, no terms. Tier 3, facts only. | Changelog entry 9 October 2026 (new Specialties section). "Korean meta picks, with the text of the global client", separate PvE and PvP columns, slot-by-slot with the level each pick goes in. Choice numbers read from the page's own icon labels. Only 8 skills listed. |
+| AM | aion2-meta.com | https://aion2-meta.com/guides/assassin/ | robots.txt `Allow: /`; only a privacy page found, no terms. Tier 3, facts only. | Changelog entry 9 October 2026 (new Specialties section). Picks taken from Korean top players, shown with the global client's effect text; separate PvE and PvP columns, slot-by-slot with the level each pick goes in. Choice numbers read from the page's own icon labels. Only 8 skills listed. |
 | TR | aion2turkiye.com | https://aion2turkiye.com/en/class/assassin/ | robots.txt `Allow: /`; no terms page found. Tier 3, facts only. | No date visible. Three panels: TR-L (Leveling), TR-D (Dungeon, single-target PvE), TR-P (PvP). |
 
 **Read, no usable picks:** gameplay.tips skills guide (https://gameplay.tips/guides/aion-2-skills-guide-active-passive-and-stigma.html,
 explains slots and levels only); Pixelnitro (https://pixelnitro.com/aion-2-assassin-build-guide-best-skills-and-specs-for-pvp-pve-2026-global-launch-meta/,
-one vague line: "lean toward the multi-hit potential of Heart Gore and Whirlwind Slice", not counted).
+one vague sentence about favouring Multi-Hit on Heart Gore and Whirlwind Slice, not counted). Terms status: gameplay.tips and Pixelnitro each show only a privacy-policy link on the home page and no terms page, so tier 3, facts only.
 
 **Not read, by policy or access:**
 
@@ -109,9 +117,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **3** Up to +20% Critical Hit when less targets hit | 8 | 2+ sources | GF, SC (table), CP (Grobs), TR-D, TR-P, AM-PvP | Existing pick, kept. A crit bonus makes the skill crit more often, and every crit is a cooldown reset once slot 3 holds pick 5. Leveling sources (SC, CP, TR-L) open with Absorb (1) instead. |
-| 2 | 12 | **4** Multi-Hit on hit | 12 | 2+ sources | SC, CP, AM-PvE, TR-L, TR-D, TR-P | Multi-Hit is the first damage pick that opens at skill 12 and is named by four of the five guides. |
-| 3 | 20 | **5** Resets [Heart Gore] cooldown on landing a Critical Hit | 20 | 2+ sources | GF, SC, CP, AM-PvE, AM-PvP, TR-L, TR-D, TR-P | The crit cooldown reset is the skill's main payoff. It needs skill 16 and slot 3 opens at 20, so the guides that describe an order swap it in over an earlier pick at 16 (section 4.1). |
+| 1 | 8 | **3** Up to +20% Critical Hit when less targets hit | 8 | contested | TR-D (1st pick). Not counted: GF and AM-PvP/TR-P (PvP) name it, but not first. | Existing pick, kept, but contested: SC, CP and TR-L open with Absorb (1) while leveling, and only TR-D puts the crit bonus first. More crits mean more cooldown resets once pick 5 is in. |
+| 2 | 12 | **4** Multi-Hit on hit | 12 | 2+ sources | SC (2nd step), CP (2nd step), AM-PvE (enters at 12), TR-L, TR-D (2nd) | Multi-Hit is the first damage pick that opens at skill 12 and sits second in four guides. |
+| 3 | 20 | **5** Resets [Heart Gore] cooldown on landing a Critical Hit | 20 | 2+ sources | SC (3rd step), TR-L (3rd), TR-D (3rd). Also named by GF, CP, AM-PvE but as a first or second pick. | The crit cooldown reset is the skill's main payoff. It needs skill 16 and slot 3 opens at 20, so guides that describe an order swap it in over an earlier pick at 16 (section 4.1). |
 
 ### Insignia Explosion
 
@@ -129,9 +137,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **2** +50% Multi-Hit on hit | 8 | 2+ sources | GF, SC, CP, AM-PvE, TR-L, TR-D | Existing pick, kept. Named by every PvE source (TR-D takes it second, behind pick 3). |
-| 2 | 12 | **5** -3s cooldown | 16 | 2+ sources | GF, SC, CP (Grobs), AM-PvE, TR-L, TR-D, TR-P | -3s cooldown, the late damage pick. Needs skill 16; until then the slot can hold pick 3 as a stopgap (AM, TR). |
-| 3 | 20 | **3** Keeps 2 Insignia stacks after Insignia Explosion | 20 | 2+ sources | SC, AM-PvE, TR-L, TR-D | Keeping 2 Insignia stacks makes the next cast full sooner. Listed as the third pick by SC ("eventually all three") and AM; CP (Grobs) only uses it before skill 16. |
+| 1 | 8 | **2** +50% Multi-Hit on hit | 8 | 2+ sources | GF, SC, CP, AM-PvE, TR-L (each first) | Existing pick, kept. First pick in every PvE guide except TR-D. |
+| 2 | 12 | **5** -3s cooldown | 16 | 2+ sources | GF (2nd), CP-Grobs (replaces its 2nd pick from 16), AM-PvE (2nd). SC and TR-L list it last of three. | -3s cooldown, the late damage pick. Needs skill 16; until then the slot can hold pick 3 as a stopgap (SC, TR-L put 3 second). |
+| 3 | 20 | **3** Keeps 2 Insignia stacks after Insignia Explosion | 20 | single-source | AM-PvE (3rd). SC, TR-L and CP-Grobs put it second; TR-D puts it first. | Keeping 2 Insignia stacks makes the next cast full sooner. Only AM places it third; other guides use it earlier or as a stopgap. |
 
 ### Quick Slice
 
@@ -149,9 +157,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **3** +50% Multi-Hit on hit | 8 | 2+ sources | CP (leveling), AM-PvE, AM-PvP, TR-D | Existing pick, kept: +50% Multi-Hit as the opener. SC, CP and TR-L open with Absorb (2) while leveling. |
-| 2 | 12 | **4** -1s Insignia Explosion cooldown on hit | 12 | 2+ sources | GF, SC, CP, AM-PvE, TR-L, TR-D, TR-P | -1s Insignia Explosion cooldown on every hit; Quick Slice is the skill you hit all fight. |
-| 3 | 20 | **5** Ignores Block and Evasion and lands as a Critical Hit | 20 | 2+ sources | GF, SC, CP, AM-PvE, AM-PvP, TR-L, TR-D | Guaranteed crit that ignores Block and Evasion, which also lights Heart Gore. Needs skill 16; sources that describe an order swap it in over the slot-1 pick at 16 (section 4.1). |
+| 1 | 8 | **3** +50% Multi-Hit on hit | 8 | 2+ sources | AM-PvE (1st), TR-D (1st). SC, CP and TR-L open with Absorb (2). | Existing pick, kept: +50% Multi-Hit as the opener. Leveling guides prefer Absorb first. |
+| 2 | 12 | **4** -1s Insignia Explosion cooldown on hit | 12 | 2+ sources | AM-PvE (enters at 12), TR-L (2nd), TR-D (2nd) | -1s Insignia Explosion cooldown on every hit; Quick Slice is the skill you hit all fight. GF, SC and CP name it but without a slot order. |
+| 3 | 20 | **5** Ignores Block and Evasion and lands as a Critical Hit | 20 | 2+ sources | AM-PvE (enters at 20), TR-L (3rd), TR-D (3rd) | Guaranteed crit that ignores Block and Evasion, which also lights Heart Gore. Needs skill 16; guides swap it in over the slot-1 pick at 16 (section 4.1). |
 
 ### Savage Roar
 
@@ -169,9 +177,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **2** +20% Skill Speed | 8 | 2+ sources | GF, SC, CP, TR-L, TR-D | Existing pick, kept. Skill Speed is the one pick every guide agrees on. |
-| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | disputed | GF, TR-L, TR-D (for 4); SC, CP-Grobs name 1 instead | -1s Shadowstrike cooldown on hit keeps you behind the target. GF and TR pick it second; SC and CP pick -20% MP (1) second. Both open at skill 12. |
-| 3 | 20 | **1** -20% MP consumed | 20 | disputed | SC, CP-Grobs (for 1); CP-aLuckyRO, TR-D, AM-PvP name 3 instead | -20% MP consumed, or the fewer-targets damage bonus (3) for single bosses. No source picks a clear third; low stakes because slot 3 needs skill 20. |
+| 1 | 8 | **2** +20% Skill Speed | 8 | 2+ sources | GF (1st), TR-L (1st), TR-D (1st). SC and CP list it after -20% MP. | Existing pick, kept. Skill Speed is named by every guide. |
+| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | disputed | GF (2nd), TR-L (2nd), TR-D (2nd) for 4; SC and CP pair 1 with 2 instead | -1s Shadowstrike cooldown on hit keeps you behind the target. SC and CP take -20% MP (1) plus Skill Speed, so they would have 1 where slot 1 or 2 is. Both open at skill 12 or earlier. |
+| 3 | 20 | (none) | | disputed | 3 (TR-L, TR-D third; CP-aLuckyRO suggests it, order not given) vs 1 (no guide puts it third) | Disputed with no majority; no pick proposed. Candidates are 3 (fewer-targets bonus) and 1 (-20% MP). AM-PvP names 3 but is PvP and not counted. |
 
 ### Storm Rampage
 
@@ -189,9 +197,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **1** Absorbs 500, 500% HP | 8 | 2+ sources | SC, CP (both creators); TR-D takes 2, GF takes 3 | Not in builds.json yet. Absorb while leveling is the SC and CP pick; GF and TR-D name other first picks, so slot 1 is a leveling stopgap. |
-| 2 | 12 | **4** Multi-Hit on hit | 12 | 2+ sources | AM-PvE, TR-D | Multi-Hit on hit at skill 12; the pair AM and TR give before the skill-16 pick. |
-| 3 | 20 | **5** -1s all skill cooldowns on hit | 20 | 2+ sources | GF, SC, CP, AM-PvE, TR-D | -1s all cooldowns on hit, stigmas included. Needs skill 16; in AM and TR it replaces the slot-1 pick at 16 (section 4.1). |
+| 1 | 8 | **1** Absorbs 500, 500% HP | 8 | 2+ sources | SC (1st), CP (1st). TR-D takes 2, GF takes 3. | Not in builds.json yet. Absorb while leveling is the SC and CP pick; GF and TR-D name other first picks, so slot 1 is a leveling stopgap. |
+| 2 | 12 | **4** Multi-Hit on hit | 12 | 2+ sources | AM-PvE (enters at 12), TR-D (2nd) | Multi-Hit on hit at skill 12; AM and TR give it before the skill-16 pick. |
+| 3 | 20 | **5** -1s all skill cooldowns on hit | 20 | single-source | TR-D (3rd). GF, SC, CP and AM-PvE name 5 but as a second pick. | -1s all cooldowns on hit, stigmas included. Needs skill 16; in AM and TR it replaces the slot-1 pick at 16 (section 4.1). Widely named, but only TR places it third. |
 
 ### Flash Slice
 
@@ -209,9 +217,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **2** Range +6m | 8 | 2+ sources | GF, SC, CP, TR-D, TR-P | Not in builds.json yet. +6m range keeps the reposition useful on moving bosses. |
-| 2 | 12 | **4** +1 consecutive use | 12 | 2+ sources | GF, SC, CP, TR-D | +1 consecutive use, available at skill 12; named second by all four. |
-| 3 | 20 | (none) | | gap | none (TR-L names 3 for pack farming, TR-P names 1 for PvP; one source each, different goals) | No source gives a third pick. |
+| 1 | 8 | **2** Range +6m | 8 | 2+ sources | GF, SC, CP, TR-D (each first) | Not in builds.json yet. +6m range keeps the reposition useful on moving bosses. |
+| 2 | 12 | **4** +1 consecutive use | 12 | 2+ sources | GF, SC, CP, TR-D (each second) | +1 consecutive use, available at skill 12. |
+| 3 | 20 | (none) | | gap | none (TR-L names 3 and TR-P names 1 in slot 1, different goals) | No source gives a third pick. |
 
 ### Shadowstrike
 
@@ -229,9 +237,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **2** +20% caster Critical Damage Boost for 10s on hit | 8 | 2+ sources | GF, SC, CP, AM-PvP, TR-L, TR-D | Existing pick, kept. TR: "the only pick that matters in PvE". |
-| 2 | 12 | (none) | | gap | none for PvE (PvP only: AM-PvP names 3, TR-P names 3 then 4) | No PvE source names a second pick (TR-D: "the only pick that matters in PvE"). Seal (3) is a PvP pick named by AM and TR. |
-| 3 | 20 | (none) | | gap | none for PvE (PvP only: AM-PvP names 5) | No PvE source. AM-PvP puts AoE (5) third. |
+| 1 | 8 | **2** +20% caster Critical Damage Boost for 10s on hit | 8 | 2+ sources | GF, SC, CP, TR-L, TR-D (each only or first pick) | Existing pick, kept. TR-D calls it the one pick that matters in PvE. |
+| 2 | 12 | (none) | | gap | none for PvE (PvP only, not counted: AM-PvP and TR-P name 3) | No PvE source names a second pick. |
+| 3 | 20 | (none) | | gap | none for PvE (PvP only, not counted: AM-PvP names 5) | No PvE source names a third pick. |
 
 ### Ambush
 
@@ -249,9 +257,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **1** Engraves 2 Insignias for 10s on landing as a Back attack | 8 | single-source | TR-L, TR-D (for 1); SC, CP, AM-PvE open with 2 instead | Existing pick, kept for now. Only TR opens with 1; SC, CP and AM-PvE open with Absorb (2). Flagged for the owner, slot 1 is outside this task. |
-| 2 | 12 | **2** Absorbs 300, 300% HP | 12 | 2+ sources | SC, CP (Grobs, aLuckyRO), AM-PvE, TR-L, TR-D | Absorb is the one pick every source gives Ambush: it is a heal button, not a damage skill. TR puts it second behind pick 1. |
-| 3 | 20 | **4** 50% chance to trigger [Whirlwind Slice] on hit | 20 | single-source | AM-PvE (L12); AM-PvP names 3 instead | 50% chance to trigger Whirlwind Slice. Only AM names it for PvE. CP (Grobs) calls Ambush and Whirlwind Slice a damage loss, so treat as optional. |
+| 1 | 8 | **1** Engraves 2 Insignias for 10s on landing as a Back attack | 8 | contested | TR-L, TR-D (1st). SC, CP and AM-PvE put 2 first. | Existing pick, kept, but contested: one publisher for 1, three for Absorb (2) first. Flagged for the owner; slot 1 is outside this task. |
+| 2 | 12 | **2** Absorbs 300, 300% HP | 12 | single-source | TR-L, TR-D (2nd). SC, CP and AM-PvE put 2 in slot 1, so they do not support it here. | Absorb is a heal button; every guide gives Ambush this pick, but only TR places it second. If slot 1 moves to 2, slot 2 becomes 4 (AM-PvE) instead. |
+| 3 | 20 | (none) | | gap | none (AM-PvE names 4 as its 2nd pick, not 3rd; AM-PvP names 3, not counted) | No source places a pick third. 4 (50% chance to trigger Whirlwind Slice) is AM-PvE's second pick; CP-Grobs calls Ambush and Whirlwind Slice a damage loss. |
 
 ### Infiltrate
 
@@ -269,8 +277,8 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **2** +10m [Infiltrate] range | 8 | 2+ sources | SC, CP (both creators), TR-P | +10m range puts it on par with Shadowstrike. Not in the guide skill order (Skycoach "Lv 8 fairly early"). |
-| 2 | 12 | (none) | | gap | none for PvE (TR-P names 3, single-source, PvP) | No PvE source. |
+| 1 | 8 | **2** +10m [Infiltrate] range | 8 | 2+ sources | SC, CP (first). TR-P also, not counted (PvP). | +10m range puts it on par with Shadowstrike. Not in the guide skill order. |
+| 2 | 12 | (none) | | gap | none for PvE (TR-P names 3, PvP, not counted) | No PvE source. |
 | 3 | 20 | (none) | | gap | none | No source. |
 
 ### Whirlwind Slice
@@ -289,9 +297,9 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **1** +50% Multi-Hit on hit | 8 | 2+ sources | AM-PvE, CP-aLuckyRO | Multi-Hit for single bosses. TR-L and CP-aLuckyRO take AoE (2) for pack farming. Not in the guide skill order; CP (Grobs) skips the skill. |
-| 2 | 12 | **2** Changes to AoE damage | 12 | 2+ sources | AM-PvE, TR-L, CP-aLuckyRO | AoE damage is the pack-clearing pick; second behind Multi-Hit in AM. |
-| 3 | 20 | (none) | | gap | none | No source (TR-P names 3 and 4 for PvP). |
+| 1 | 8 | **1** +50% Multi-Hit on hit | 8 | disputed | AM-PvE (1st) for 1; TR-L (1st) for 2; CP-aLuckyRO names both without an order | Multi-Hit (single bosses) vs AoE (pack farming): one source each, so disputed. Not in the guide skill order; CP-Grobs skips the skill. |
+| 2 | 12 | **2** Changes to AoE damage | 12 | single-source | AM-PvE (2nd) | AoE damage as the second pick, AM only. Not proposed for builds.json. |
+| 3 | 20 | (none) | | gap | none (TR-P names 3 and 4, PvP, not counted) | No source. |
 
 ### Shadow Fall
 
@@ -310,8 +318,8 @@ Choices (from `data/classes/assassin/skills.json`):
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
 | 1 | 8 | **1** Absorbs 1000, 1000% HP | 8 | single-source | CP-aLuckyRO (leveling only) | Absorb while leveling. Not in the guide skill order (builds.json already notes games.gg calling it useless in PvE). |
-| 2 | 12 | (none) | | gap | none for PvE (TR-P names 4: single-source, PvP) | No PvE source. |
-| 3 | 20 | (none) | | gap | none for PvE (TR-P names 5: single-source, PvP) | No PvE source. |
+| 2 | 12 | (none) | | gap | none for PvE (TR-P names 4, PvP, not counted) | No PvE source. |
+| 3 | 20 | (none) | | gap | none for PvE (TR-P names 5, PvP, not counted) | No PvE source. |
 
 ### Defiance
 
@@ -329,15 +337,15 @@ Choices (from `data/classes/assassin/skills.json`):
 
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
-| 1 | 8 | **3** Restores 20% HP on using [Defiance] | 8 | 2+ sources | SC, CP, TR-L, TR-D, TR-P | Restores 20% HP on use. The pick every source takes; the skill is a safety button. |
-| 2 | 12 | **4** +2s Tenacity duration | 12 | single-source | TR-D, TR-P | +2s Tenacity duration. Only TR names a second pick. |
-| 3 | 20 | **5** +50% PvE Damage Tolerance and +25% PvP Damage Tolerance for Tenacity duration | 20 | single-source | TR-P | PvE and PvP Damage Tolerance during Tenacity. TR PvP only. |
+| 1 | 8 | **3** Restores 20% HP on using [Defiance] | 8 | 2+ sources | SC, CP, TR-L, TR-D (first) | Restores 20% HP on use. The pick every source takes; the skill is a safety button. |
+| 2 | 12 | **4** +2s Tenacity duration | 12 | single-source | TR-D (2nd). TR-P also, not counted (PvP). | +2s Tenacity duration. Only TR names a second pick. |
+| 3 | 20 | (none) | | gap | none for PvE (TR-P names 5, PvP, not counted) | Only TR's PvP panel names a third pick. |
 
 ## 4. Notes for E7
 
 **4.1 Picks order versus activation.** The sources describe picks as a growing set, not as "slot 2 is X": Heart Gore
-in aion2-meta is Multi-Hit at 12, Reset at 16, then a third at 20; aion2turkiye says "Lv16 reset replaces the crit pick
-if you only have 2 slots". So the useful runtime rule is: the player's active set at effective skill level L is the
+in aion2-meta is Multi-Hit at 12, Reset at 16, then a third at 20; aion2turkiye notes that the skill-16 reset takes the place of the crit pick when only
+two slots are open. So the useful runtime rule is: the player's active set at effective skill level L is the
 first *k* picks, in priority order, whose choice level is at most L, where *k* is 1 at 8, 2 at 12 and 3 at 20. A
 positional array `[slot1, slot2, slot3]` (as in 5.1) lists today's pick first, so it is not the priority order. The
 priority lists for the four skills that have a skill-16 pick in their set are:
@@ -374,8 +382,8 @@ are unchanged; the first id of each array is today's pick.
   "skill:assassin:heart-gore":          ["spec:assassin:heart-gore:3", "spec:assassin:heart-gore:4", "spec:assassin:heart-gore:5"],
   "skill:assassin:insignia-explosion":  ["spec:assassin:insignia-explosion:2", "spec:assassin:insignia-explosion:5", "spec:assassin:insignia-explosion:3"],
   "skill:assassin:quick-slice":         ["spec:assassin:quick-slice:3", "spec:assassin:quick-slice:4", "spec:assassin:quick-slice:5"],
-  "skill:assassin:savage-roar":         ["spec:assassin:savage-roar:2", "spec:assassin:savage-roar:4", "spec:assassin:savage-roar:1"],
-  "skill:assassin:ambush":              ["spec:assassin:ambush:1", "spec:assassin:ambush:2", "spec:assassin:ambush:4"],
+  "skill:assassin:savage-roar":         ["spec:assassin:savage-roar:2", "spec:assassin:savage-roar:4"],
+  "skill:assassin:ambush":              ["spec:assassin:ambush:1", "spec:assassin:ambush:2"],
   "skill:assassin:shadowstrike":        ["spec:assassin:shadowstrike:2"],
   "skill:assassin:storm-rampage":       ["spec:assassin:storm-rampage:1", "spec:assassin:storm-rampage:4", "spec:assassin:storm-rampage:5"],
   "skill:assassin:flash-slice":         ["spec:assassin:flash-slice:2", "spec:assassin:flash-slice:4"]
@@ -384,8 +392,13 @@ are unchanged; the first id of each array is today's pick.
 
 `storm-rampage` and `flash-slice` are new keys (both are in `skillOrder`). Infiltrate, Whirlwind Slice, Shadow Fall
 and Defiance are not in `skillOrder`, so they would only be added if the owner wants them tracked; their researched picks
-are in section 3 (Infiltrate `[2]`, Whirlwind Slice `[1, 2]`, Shadow Fall `[1]` single-source, Defiance `[3, 4, 5]`
-with 4 and 5 single-source).
+are in section 3 (Infiltrate `[2]`, Shadow Fall `[1]` single-source, Defiance `[3, 4]` with 4 single-source; Whirlwind
+Slice slot 1 is disputed between 1 and 2, so I propose nothing for it).
+
+Slots with a weaker label inside this proposal: Savage Roar slot 2 (4) is disputed, and slot 3 is left out on purpose
+(disputed, no majority). Ambush `[1, 2]` keeps today's contested slot 1 and a single-source slot 2; Ambush slot 3 is left
+out (gap). Storm Rampage slot 3 (5) and Insignia Explosion slot 3 (3) are single-source. The array alone cannot carry
+these labels, hence 5.2.
 
 `tools/gen/gen.mjs` line 178 checks at most 3 picks and line 177 that each id is a choice of its skill; line 169 and 460
 read only `[0]` of core skills, so the extra entries do not change the compiled tables today. E7's UI change is the
@@ -393,7 +406,7 @@ consumer of slots 2 and 3.
 
 **5.2 Evidence and labels.** The builds schema has no place for per-pick status. Two options, both owner decisions:
 
-1. One claim per skill and slot in `data/shared/asmodian/guide/claims.json` (next free ids after `C28c`), each with the
+1. One claim per skill and slot in `data/shared/asmodian/guide/claims.json` (next free ids), each with the
    shape already used there: `claim` ("Heart Gore slot 2: Multi-Hit on hit"), `verdict`, `sources` (the URLs in section 2,
    with short `quote`s only where needed; never copied wording), `verifiedAt: "2026-10-16"`, and a `note` naming the
    status (`2+ sources`, `single-source`, `disputed`). `npm run gen` then adds the URLs to the Sources card and
@@ -405,8 +418,9 @@ New URLs for the Sources card (all read 2026-10-16): the five in section 2 (GF, 
 already cited elsewhere; CP, AM and TR are new.
 
 **5.3 Labels in the UI.** `single-source` and `disputed` picks should carry the label (CLAUDE.md data policy). In this
-set: single-source: Ambush slots 1 and 3, Defiance slots 2 and 3, Shadow Fall slot 1;
-disputed: Savage Roar slots 2 and 3.
+set: single-source: Insignia Explosion slot 3, Storm Rampage slot 3, Ambush slot 2, Whirlwind Slice slot 2, Defiance
+slot 2, Shadow Fall slot 1; contested: Heart Gore slot 1, Ambush slot 1; disputed: Savage Roar slots 2 and 3, Whirlwind
+Slice slot 1.
 
 **5.4 Tests.** Extend the build checks in `tests/` for "every pick is a choice of its skill, picks are distinct and at
 most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never break saved progress"). Save keys
@@ -414,11 +428,13 @@ most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never
 
 ## 6. Gaps and open questions
 
-- **No PvE pick for slots 2 and 3:** Shadowstrike (no source names a second PvE pick; PvP sources name 3 then 4 or 5),
-  Infiltrate, Shadow Fall. Defiance slots 2 and 3 are single-source (aion2turkiye).
-- **Disputed:** Savage Roar slot 2 (4 vs 1) and slot 3 (1 vs 3). Both options are available at skill 12, so this is
-  a taste call; an owner decision or an in-game test settles it.
-- **Single-source:** Ambush slot 3 (pick 4, aion2-meta), Ambush slot 1 (pick 1, aion2turkiye only).
+- **No PvE pick for slots 2 and 3:** Shadowstrike (PvP panels name 3 then 4 or 5), Infiltrate, Shadow Fall, Flash Slice
+  slot 3, Ambush slot 3, Defiance slot 3.
+- **Disputed:** Savage Roar slot 2 (4 from GF and TR against SC and CP, which pair 1 with 2) and slot 3 (1 vs 3, no
+  proposal); Whirlwind Slice slot 1 (1 in aion2-meta, 2 in aion2turkiye). An owner decision or an in-game test settles
+  these.
+- **Contested slot 1 (outside this task):** Heart Gore 3 and Ambush 1.
+- **Single-source:** see 5.3.
 - **Unread sources worth an owner glance:** games.gg (403 for scripts) and thegameswiki (429) are already in our source
   list; GamerBlurb and expcarry name Claude in robots.txt.
 - **Re-check after a patch:** all five guides date from Oct 4-10 2026 or are undated; specialty text can change.
