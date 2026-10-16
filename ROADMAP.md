@@ -6,6 +6,11 @@ verified data only (see CLAUDE.md), Next up always correct, saved progress never
 Classes (per [Metabot](https://metabot.gg/en/aion-2/classes)): Gladiator, Templar, Assassin, Ranger, Sorcerer,
 Spiritmaster, Cleric, Chanter.
 
+**Direction (owner, 2026-10-16):** Daeva Companion is an engine that AION 2 happens to be the first game for. The engine
+knows no game; AION 2 is a game pack, each class a content pack, each feature a module. Modules are what make parallel
+work real: two items run at the same time only when they touch different modules. The audit behind this plan, with
+evidence: [Daeva Companion: audit and plan to 1.0](https://claude.ai/code/artifact/37732d7b-6100-47ba-b191-fb3fe9d69f96).
+
 ## Versioning
 
 [Semantic versioning](https://semver.org/); 0.x is beta. Each part is its own counter (0.9 → 0.10 → 0.11), so there is
@@ -18,6 +23,27 @@ no running out before 1.0: 1.0 ships when its scope is done.
   tests and the deploy pass on `main`, CI tags `vX.Y.Z` and publishes the GitHub Release with that section as its notes.
   CI fails early if the version has no CHANGELOG section.
 
+## How a minor is planned (every 0.X.0)
+
+Every minor opens with a planning and audit pass. Nothing in the minor is queued in #114 until the pass is written down
+and reviewed. Patches (0.X.Y) skip it.
+
+1. **Look back.** One page on the minor just shipped: items shipped, failed or redone bot runs (with causes), fixes
+   needed after release, what was slow. One process rule changes if a cause repeated.
+2. **Audit.** Re-read this roadmap against the code: is anything here stale, cut-able or now in the wrong order? Read
+   the budget trend (page size, element count, `update()` time); schedule a performance item only when a budget is
+   within 20% of its limit. Before 1.0 and before any store app, this step is a full architecture and performance audit.
+3. **Shape each item:** problem; appetite (S < 100 changed lines, M 100–300, L 300–1,000; bigger = split it); no-gos
+   (what it will not do); the module(s) it touches; the test that proves it done; builder model (routing rule in #114).
+   An item with an unknown is a research item first, not a build.
+4. **Lane map.** Items in the same module run one after another; items in different modules may run at the same time,
+   at most three builds. Shared files (until the engine split, `docs/team/DISPATCH.md` "Serial files") count as one
+   module.
+5. **Owner input.** List what needs the owner (in-game checks, mockups, money, legal). Only a true blocker becomes a
+   tracker To-do; everything else follows the recommendation.
+6. **Write and review.** The plan goes into this file and the #114 queue in one PR, written by one session and
+   reviewed by a separate one that didn't write it. Then the planner queues the items, top of the lane map first.
+
 ## How an objective is worked
 
 1. **Problem**: what's wrong or missing, in a sentence or two.
@@ -26,12 +52,6 @@ no running out before 1.0: 1.0 ships when its scope is done.
    feature works. New UI reuses the existing card patterns (uniform milestone / Next up / Skills / Stigmas cards).
 4. **Build → test → release.**
 5. **Play with it** in game; what you notice feeds the next objective.
-
-A whole-app UX review every second minor release (first one after 0.2, before 0.3 is built), before 1.0, and after any
-large visible change catches drift as features pile up.
-
-Work runs as parallel sessions, one task and one PR each. Who runs what, and what may run alongside what, is in
-docs/team/HANDOFF.md ("Now and next").
 
 ## Released
 
@@ -51,179 +71,114 @@ docs/team/HANDOFF.md ("Now and next").
 - **0.2.1** — a fresh browser starts at Lv 1 on the first story quest instead of Lv 5 with no quest.
 - **0.2.2** — Daevanion up arrow starts at 1, rotation pop-out lists only unlocked skills, missing skill icons.
 - **0.2.3** — story-quest zones for 34 more quest sides (Metabot), stigma unlock cost check.
+- **0.2.4** — Active / Passive skill labels, specialty slots, villages as zones, clearer lock text (most of the 0.3
+  engine steps went live here).
+- **0.2.5** — backup line, 14-day backup reminder, iPhone home-screen tip.
+- **0.2.6** — phone layout fixes, Route rules card moved, one gate evaluation per update.
 
-## Plan
+## Plan (redrawn 2026-10-16)
 
-Re-sequenced 2026-10-13 after an architecture audit. Principle: fix live bugs now; then build foundations with no
-visible change; then correctness; then class plumbing; then the experience for new users; then class content. Work that
-depends on the data format (the prerequisite audit, class content, onboarding, patch tracking) waits until the format
-exists, so it is done once.
+Redrawn after the engine audit, with the owner's go-ahead to re-plan the path to 1.0. Before: eleven minors after 0.3
+(0.4–0.14), one class per release, the class framework late. After: six minors (0.4–0.9), the engine split first, then
+three lanes per minor. The minor numbers below replace the ones in older decisions, reports, specs and DISPATCH; read an
+old "0.4 Smart Next up" as 0.5 here, an old "0.5 characters" as 0.4 (save shape) plus 0.6 (picker).
 
-### 0.1.x — fixes and upkeep (patches)
+**Decided (owner, 2026-10-16, 4:30 PM ET):** the Engine split comes right after 0.3.0. Engine code carries no AION 2 or
+Assassin reference; all game data lives outside the engine, in packs. 0.3.0 ships first and nothing here competes with
+it (owner, 4:34 PM ET).
 
-From the mobile & accessibility audit (docs/audits/2026-10-mobile-a11y.md):
+**Risk, called out:** two classes per minor assumes a tester (the owner or another player) can do each class's in-game
+spot check. If only one class can be checked per minor, 0.7–0.9 become one class each and 1.0 moves out by three
+minors. Research packs for every class start early (below) so data is never the bottleneck.
 
-- The invisible accessibility batch shipped as 0.1.6. Left for the visible pass: hit areas on bordered pills and the
-  Confidence / Sources summaries.
-- **0.1.9** (visible, owner approval): no iPhone zoom when tapping fields, contrast fixes, story-line connector fix,
-  layouts that survive page zoom, 44 px primary buttons on touch, minimum text sizes, compact cleared steps.
-- Save safety (visible, mockup first, built after 0.2 step 4): a "last backup N days ago" line with one export nudge,
-  and an "Add to Home Screen" hint in iPhone Safari only (home-screen apps keep their data much longer). Never in the
-  claude.ai build.
-- Design tokens (invisible: 0 changed pixels): every colour, size and radius from a token, documented in
-  docs/design-system.md; a test fails on new raw colours. Groundwork for the colour sprint and the phone layout.
-- Release safety (invisible): a post-deploy check that the live site serves this build; faster CI (fast job < 2 min,
-  browser suites in parallel, one required check `ci-ok`); the flaky timing check moved to a non-blocking `perf` suite.
-  Then branch protection on `main` (owner, in GitHub settings).
+### 0.3.0 — Next up correctness (in flight)
 
-Phone layout (Next up near the top, a touch-friendly stack, Build as a bottom sheet; audit P1-1, P1-2, P2-5) needs a
-mockup and touches the card code that 0.3 rewires, so it is built after the 0.3 requirement engine, on the design
-tokens.
+All engine steps (E1–E10) are merged; most went live in 0.2.4. 0.3.0 is the version bump and CHANGELOG. Unchanged.
 
-### 0.2 — Foundations (no visible change)
+### 0.3.x — patches while 0.4 is planned
 
-Steps here are the audit's P0–P4 (step 4 = P3, step 5 = P4). Acceptance for every step: the golden-master suite (Next up and milestone output for 2,000 generated saves) is
-identical, all suites green, saves untouched.
+- Bug #105: `fitRail()` race at load (Basic rail width differs between loads).
+- Data corrections from issues; owner checks as they arrive (C41 Koro at Lv 45; the Home Screen storage check).
 
-1. Golden-master harness (tests only).
-2. Toolchain: ES modules + esbuild, still one static HTML file for both builds.
-3. Data out of code: hand-written data constants move to data modules; the generated block is built, not committed.
-4. Pure core: state, migrations, requirements and Next-up ranking as DOM-free modules with fast Node tests; every
-   read of character data goes through one `char(state)` accessor (groundwork for characters, 0.5).
-5. Data format v2, in three parts:
-   - **5a schema** (docs only, can start before step 4 lands): stable ids (not display names), shared vs per-class
-     folders, a sources registry with license per source, `verifiedAt` per record, `requires` / `completesWith` on
-     every step, `schemaVersion`, `merge()` semantics, draft JSON Schemas. Reviewed by Data & Research and by a fresh
-     session with no team context, then by the owner, before anything is built.
-   - **5b build**: data moved to the format, Node generator replaces gen.py, schema validation, the generated block no
-     longer committed. Compiled data equals today's. No data patches while this runs.
-   - **5c saves**: `schemaVersion` added additively behind a flag, and a pure, tested `merge()` for two saves
-     (groundwork for sync, 0.6). Keeping un-ticks through a merge needs a per-item change time in the save (owner decision).
-   5b and 5c can run in parallel; both wait for step 4 and the approved schema.
+### 0.4 — Engine and packs (invisible)
 
-**0.2.0 released 2026-10-14** (5b and 5c merged). Steps 1–3 shipped 2026-10-13 with no visible change (golden harness,
-toolchain, data out of code). 5b part 2 carried owner-approved visible data corrections (#38).
+Goal: the engine holds no AION 2 term, the Assassin guide is byte-identical in the golden master, and a second game
+could be added as a pack. One clean save break (CLAUDE.md pre-1.0 rule), so the save is shaped for several characters
+once and no migration is carried.
 
-### 0.2.x — patches on the way to 0.3
+| Step | What | Module / files | After | Size |
+|---|---|---|---|---|
+| P1 | Pack folders with a manifest: engine, `aion2` game pack, `aion2/asmodian/assassin` content pack; the generator builds per pack (old 0.5 F1, F2) | `data/**` layout, `tools/gen/`, `data/schema/` | — | L |
+| P2 | AION 2 rules out of code into the game pack: cost formulas, specialty slot levels, named gates (`KEPT_RULES`), the two milestones written in `catalog.js`, map links (old 0.5 F3) | `src/core/`, `src/data/`, game pack data | P1 | L |
+| P3 | Storage adapter + save v5: a neutral storage key (no game or class name), one save slot per character with a stable internal id as its key; the slot's display label is generated from its data as `<playername>-<class>-lvl<currentlevel>` (owner, 2026-10-16), so a level-up renames the label, never the key; class per character; old `-v4` saves ignored, never read, and the break noted in CHANGELOG (old 0.5 C1, F4) | `src/core/state.js`, `sync.js`, `migrations.js`, mig tests | P1 | L |
+| P4 | Card registry: one entry point per card, the page script only mounts cards | `src/main.js` shell, `src/index.html` | P2 | M |
+| P5 | One module per card (Next up, Journey, milestones, Skills, Stigmas, Daevanion, regional, areas, sources, …): three at a time, one card per PR | each card's module | P4 | L total |
+| P6 | Fake test game pack (about 20 lines of data) + a conformance suite every pack passes (old 0.5 F5) | `tests/` | P2 | M |
+| P7 | Budgets that block CI: page bytes and element count (stable numbers); timing stays advisory. Per-pack loading so one class's page doesn't carry eight (old 0.5 F6) | `scripts/build.mjs`, CI | P1 | M |
 
-Planned 2026-10-15 (owner followed the CEO's recommendation). Patches carry small, low-risk changes (fixes, data
-corrections, polish, small display additions); no engine, data-format or save-format work; invisible work (faster CI, design tokens, the 0.3 engine groundwork) lands between them without a
-release. The order can change.
+Lanes: P1 alone → P2 ∥ P3 ∥ P7 → P4 ∥ P6 → P5 (three cards at a time). Done when the golden master is identical for the
+Assassin, the fake game passes conformance, and `src/main.js` holds no AION 2 term.
 
-- **0.2.1** (released 2026-10-15): a fresh browser starts at Lv 1 on the first story quest ("A Village in the Fog")
-  instead of Lv 5 with no quest; saves are never re-defaulted.
-- **0.2.2** (released 2026-10-15): Daevanion up arrow starts at 1 (F6); rotation pop-out lists only unlocked skills
-  (F7); missing skill icons (F8).
-- **0.2.3** (released 2026-10-15): story quest locations from Metabot (34 of 71 placeholder quest sides now have a
-  zone; 26 quests still on `zone:altgard-unplaced`); stigma unlock cost check (F5: already counted, test added).
-- **0.2.4**: results of the owner's in-game checks (Hugo Mercenaries: Deep Shadow, Ascension openings, Zikel Defense
-  Break node), once the owner has done them; the villages as zones of their own (approved by the owner 2026-10-15, from
-  Metabot data). The alt-character check is done: turning in "A Village in the Fog" takes a new character from Lv 1 to
-  Lv 2 (owner screens, 2026-10-15).
-- **0.2.5**: save safety (the "last backup" line and the iPhone home-screen hint above; mockup first).
-- **0.2.6**: polish: a home for the Route rules card (F11), the remaining phone page-zoom issues, hit areas on the
-  Confidence / Sources summaries.
-- **0.2.7**: skills marked active / passive (F2; the data exists, display only).
-- Between patches, no release: faster CI and `ci-ok`, then branch protection (owner); design tokens; 0.3 engine design
-  and the prerequisite gates loaded into the data.
+Alongside 0.4 (docs only, no code, any time): **class research packs** for all seven classes, two at a time, in cloud
+research sessions under the fetching rules (old R1). **Sync design** (old Y0), so the owner's hosting and money decision
+is ready before it's needed.
 
-**Renumbered 2026-10-15:** Smart Next up was inserted as 0.4, so every later minor moved up by one (characters
-0.4 → 0.5, sync 0.5 → 0.6, new players 0.6 → 0.7, classes 0.7–0.13 → 0.8–0.14). Scope also moved: location-aware
-ranking, fastest / completionist, catch-up and the travel model (F1, F9, F10, F15) were "0.3 design" and are now 0.4;
-0.3 kept its number and its correctness scope. Older decisions, reports, charters, specs, tests and code comments keep
-the old numbers: read "0.3 design" for those items as 0.4, characters "0.4" as 0.5, sync "0.5" as 0.6.
+### 0.5 — Smart Next up and the phone layout
 
-### 0.3 — Next up correctness
+| Lane | What | Module |
+|---|---|---|
+| A | Smart Next up (old 0.4 N1–N5): travel data, location tie-break, derived Kibelisk binds, fastest / completionist with level bands, travel UI, catch-up ranking | ranking module, Next up card |
+| B | Phone layout (audit #81 / PR #87 mockup): Next up near the top, a touch-friendly stack, Build as a bottom sheet | shell layout, styles |
+| C | Character switcher and class picker (old 0.5 C2), Assassin the only visible class | header, character module |
 
-Design and build steps: [docs/design/0.3-requirement-engine.md](docs/design/0.3-requirement-engine.md).
+Lane A's travel UI and lane B both touch the Next up card's layout: B lands first, A's UI step builds on it.
 
-- One requirement evaluator for every card, with blocker chains ("unlocks after story X · N quests ahead").
-- Completion derived from the story position (never stored as ticks).
-- The prerequisite audit, every gate sourced or labelled: researched now as a report (proposed ids, a source per
-  gate), loaded into the new format after 5b.
-- Ascension progress bar in the Journey card (informational only).
-- Daevanion card: the Nezekan board opens with "Urgent Pursuit" (Lv 13), from the story position, not at Lv 12
-  (owner screens; 0.2.0 known issue).
-- An invariant test over ~10,000 states: Next up never offers a blocked or already-done step.
-- Deriving completion changes Next up for some saves on purpose: every golden-master difference is listed with its
-  reason and approved by the owner as a product change.
-- Specialties: all three slots recommended, opening at effective skill level 8, 12 and 20 (F3).
+### 0.6 — New players and the first new class
 
-### 0.4 — Smart Next up
+| Lane | What | Module |
+|---|---|---|
+| A | First-run welcome, Lv 1–10 tuning, terms explained, join mid-level (old 0.7 P1–P3) | onboarding module, guide text |
+| B | Gladiator pack (D8 default; owner can change), from its research pack: data, guide build, icons, golden snapshot, in-game spot check | `data/classes/gladiator/` only |
+| C | Sync client on `merge()` (old 0.6 Y1), if the owner approved the sync design and hosting | sync module |
 
-Decided 2026-10-15 (owner followed the CEO's recommendation): its own minor after 0.3, so the ranking is built on a
-correct engine and each release stays testable. 0.3 makes Next up correct; 0.4 makes it smart.
+### 0.7, 0.8, 0.9 — two classes each
 
-- Location-aware "next best thing" (F15, Zygor-like): tie-break by distance from the last confirmed location; teleport
-  vs run per the travel rules in DECISIONS (Kibelisk unlocks derived from ticks, "1 scroll", an "I'll walk" override,
-  an optional "Prefer running" setting).
-- Travel notes (owner, 2026-10-15; no app change before this release):
-  - **Kibelisk binding** happens on proximity, roughly within 30–40 m. Use **25 m** as the "assume bound" cut-off (owner,
-    19:20 ET: "25m just to be safe"): within 25 m of a quest step, assume the Kibelisk is bound; 25–150 m gets a one-time
-    "Bind X" nudge row; beyond that, say nothing.
-  - **Teleport** works from the first bind and costs a Return Scroll.
-- Fastest (default) and completionist modes; Next up grouped by level band with the range shown (F10); the drawbacks of
-  "fastest" shown.
-- Catch-up: rank by what the player can do now (level, skill points, crystals), not guide order (F1).
-- Filler XP ranking once the owner's XP-per-minute measurements exist (F9).
-
-### 0.5 — Characters and class framework
-
-- Several characters per browser (the existing save stays the first character, so older versions still read it; an
-  additive, flagged migration for per-character quest steps; a rollback to 0.4 still reads character 1).
-- Class picker (Assassin only visible until a second class is ready); class data loaded per character.
-
-### 0.6 — Backup and sync
-
-No accounts and no personal data: an anonymous, end-to-end encrypted **sync code**. Your progress is backed up and
-follows you between phone and PC; the server only ever stores encrypted data it can't read. Offline-first (the browser
-copy stays the working copy), merged per item so un-ticking survives, existing saves untouched. Accounts (email codes,
-passkeys, Discord) stay possible later if a feature ever needs them.
-
-### 0.7 — New and mid-level players
-
-- First-run welcome; Lv 1–10 tuned so it isn't a wall of cards; terms explained where they first appear.
-- Joining mid-level: set level and story quest, earlier content counted as done.
-
-### 0.8 – 0.14 — one class per release
-
-Gladiator, Templar, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter (order: owner, D8). Each: a research pack
-(report, sourced per field) written ahead, then two sources per claim, data and claims entries, a golden snapshot, an
-in-game spot check. Recommended order rule: a class the owner or a tester will level to 45 first, then best data
-coverage, then most shared with Assassin.
+Each minor: two class packs side by side (lanes A and B; order by the D8 rule: a class someone will level to 45, then
+data coverage, then overlap with Assassin), plus one other module in lane C: sync server and UI (old Y2, Y3) in 0.7, the
+1.0 audit's fixes in 0.8–0.9 as found.
 
 ### 1.0
 
-All eight classes on the requirement engine, Asmodian, Lv 1–45; a whole-app UX review and a docs pass.
+Full architecture, performance and UX audit (the planning pass in its full form), docs pass, all eight classes on the
+engine, Asmodian, Lv 1–45. The strict save rule returns (CLAUDE.md).
 
 ### 1.1 — End-game tracker (owner, 2026-10-16)
 
-A separate, simpler part of the app for max-level play: daily and weekly activity checklists with their resets, and
-world boss timers. Scope, reset times and boss schedules still need verified data (CLAUDE.md data policy) before
-building. From 1.0 saves are strict, so its new saved data is additive.
+A new module for max-level play: daily and weekly checklists with their resets, world boss timers. Built on the engine
+with no page-script edits. Scope, reset times and boss schedules need verified data first; that research can run any
+time before. From 1.0 saves are strict, so its saved data is additive.
 
 ### Any time (patches)
 
 - Game patch watch: weekly after Global maintenance (Korean patch notes as early warning), report only; a PR only
-  when a claim is affected. Re-verification driven by `verifiedAt` once 5b exists.
+  when a claim is affected. Re-verification driven by `verifiedAt`.
 - Data corrections from issues.
 
-## Unscheduled ideas
+## Moved out of the path to 1.0
 
-- **Colour sprint** (owner wants its own sprint): game-inspired palette, faction and class colours, quest-type and
-  item-grade colours, parchment notes, Quest Complete style; research in docs/research/colors-2026-10. Not before the
-  foundations through the class framework (0.2–0.5) are solid; current colours are placeholders until then. When it comes up, the CEO stops and
-  goes through the research with the owner first; then the owner answers the open colour questions and does one
-  in-game check session (batched with the data checks) using a one-screen checklist. Built on the design tokens.
+Kept as ideas; each comes back through a planning pass when its time comes.
 
-- **iPhone app** (owner, 2026-10-15: "eventually"). Not scheduled; decide after sync (0.6). Likely path: the same web
-  code wrapped as an app (e.g. Capacitor), so the phone layout and offline support carry over; no native rewrite.
-  Questions to answer first: App Store review of an unofficial app using NCSoft's game name and icons (permission or
-  a name / art rework, legal review), Apple developer account (~$99 / year), Metabot's non-commercial condition if the
-  app is ever paid. The desktop app's iOS Simulator only matters once a native build exists.
-- Lv 45: weekly/daily reset checklist (Ascension Trial entries, expedition cap) once the reset time is verified.
-- Item level as an input (gates Krao Cave 200, Ascension Trial 1,000 / 1,500).
-- Post-Altgard: Reshanta / Abyss.
-- Preview deploys for pull requests (with the move to Cloudflare Pages).
-- Release tooling (release-please / changesets) if other contributors join.
-- Elyos (after 1.0).
+- **Filler XP ranking** (old 0.4 N6): needs the owner's XP-per-minute measurements; after 1.0 unless they arrive early.
+- **Whole-app UX review every second minor**: replaced by the planning pass (step 2) and the full audit at 1.0.
+- **Colour sprint** (owner wants its own sprint): CSS-only on the design tokens, so it can run as a lane in any minor
+  after 0.5 once the owner has time for the research walk-through and one in-game check session; research in
+  docs/research/colors-2026-10.
+- **Store app (iPhone / Android)** (owner, 2026-10-15: "eventually"): after sync and 1.0. Likely the same web code
+  wrapped (e.g. Capacitor) on the storage adapter from 0.4. Questions first: App Store review of an unofficial app
+  using NCSoft's game name and icons, Apple developer account (~$99 / year), Metabot's non-commercial condition if the
+  app is ever paid.
+- **Lv 45 weekly/daily reset checklist**: folded into 1.1.
+- **Item level as an input** (gates Krao Cave 200, Ascension Trial 1,000 / 1,500), **post-Altgard (Reshanta / Abyss)**,
+  **Elyos** (a faction pack after 1.0).
+- **Preview deploys** with a move to Cloudflare Pages; **release tooling** (release-please / changesets) if other
+  contributors join.

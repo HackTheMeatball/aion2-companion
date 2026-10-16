@@ -28,6 +28,8 @@ comes first) a change may break existing saves when that gives a better design. 
   expectation and say why in the commit (e.g. `E1MIG_WRITE_EXPECTED=1` for mig1's pinned diffs, then review the diff).
 - Small commits with clear messages. Don't push unless asked.
 - Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
+- Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"); no item of that minor
+  is queued before the pass is written and reviewed. Parallel work only along module boundaries.
 - Locally Chromium is preinstalled (`PLAYWRIGHT_BROWSERS_PATH`); never run `playwright install` locally.
 
 ## Data and source policy

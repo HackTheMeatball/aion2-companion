@@ -65,6 +65,8 @@ ArtifactData `update` of the dataset `source` and `updated`; "today" items carry
 Morning report daily at 9:00 AM ET (scheduled task "Daeva: 9 AM report").
 
 ## Now and next
+
+> **Stale (2026-10-16):** the waves below are from 0.2. The live queue is #114; the plan is ROADMAP "Plan".
 Wave 1 (start now, no shared files):
 | Lane | Task | Files |
 |---|---|---|
