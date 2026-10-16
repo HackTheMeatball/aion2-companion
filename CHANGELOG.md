@@ -23,7 +23,7 @@ Next up correctness: one requirement check per card, and the story's last quest.
 - Every card (Next up, milestones, regional quests, Skills, Stigmas, Daevanion) now asks one shared requirement check
   whether a step is open, done or blocked, so they agree. A step that is blocked, or already done through your story
   progress, is never offered in Next up.
-- The Lv 45 Ascension step "The Witness of the Nightmare" is split from the end of the story: it waits until
+- The Lv 45 Ascension step "The One Who Witnesses the Nightmare" is split from the end of the story: it waits until
   "Forgotten Commander" is turned in, and a save that had finished the story at "Forgotten Commander" moves on to
   "Daeva Trapped in a Nightmare" when it loads.
 
@@ -36,8 +36,9 @@ Next up correctness: one requirement check per card, and the story's last quest.
 
 ### Saved progress
 
-- Unaffected. The `localStorage` key is still `aion2-assassin-route-v4`; derived ticks are never written, and every
-  earlier save loads.
+- No reset. The `localStorage` key is still `aion2-assassin-route-v4`; derived ticks are never written, and every
+  earlier save loads. One change is written: a save that had turned in "Forgotten Commander" as the end of the story
+  moves to "Daeva Trapped in a Nightmare" and is stored that way the first time it loads.
 
 ## 0.2.6 — 2026-10-16
 

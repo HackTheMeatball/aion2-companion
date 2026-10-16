@@ -169,6 +169,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci && npx playwright install --with-deps chromium
+      - run: echo "BUILD_START=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -186,7 +187,31 @@ jobs:
           claude_args: |
             --model ${{ matrix.item.model }}
             --max-turns 400
-            --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
+            --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Bash(sed:*),Bash(find:*),Bash(jq:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
+      # A build that ends "success" with no PR and no Blocked / Needs-Opus comment did nothing (#136, 2026-10-16: 13 turns,
+      # 2 permission denials, no push, no comment). Fail the job so restart.yml re-runs it once, and print the denials
+      # (the action hides the transcript) so the cause is in the log.
+      - name: Check the build left a PR or a reason
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ matrix.item.issue }}
+          BRANCH: claude/issue-${{ matrix.item.issue }}-${{ github.run_id }}
+        run: |
+          out="$RUNNER_TEMP/claude-execution-output.json"
+          if [ -f "$out" ]; then
+            jq -r '[.[] | select(.type == "result")] | last | "turns=\(.num_turns) denials=\(.permission_denials_count)",
+              ((.permission_denials // [])[] | "denied: \(.tool_name) \(.tool_input | tostring | .[0:200])")' "$out" || true
+          fi
+          prs=$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=$GITHUB_REPOSITORY_OWNER:$BRANCH" --jq length)
+          said=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments?since=$BUILD_START&per_page=100" \
+            --jq '[.[] | select(.body | test("^(Blocked:|Needs @claude)"))] | length')
+          echo "PRs for $BRANCH: $prs; Blocked/Needs comments since $BUILD_START: $said"
+          if [ "$prs" = 0 ] && [ "$said" = 0 ]; then
+            if [ "$GITHUB_RUN_ATTEMPT" = 1 ]; then note="restart.yml re-runs it once"; else note="it already ran twice, so it is not restarted; the planner reads why"; fi
+            gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" -f body="Kickoff: the build ended with no PR and no Blocked or Needs-Opus comment ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID); $note." >/dev/null
+            echo "::error::Build of #$ISSUE ended with no PR and no reason"
+            exit 1
+          fi
 
   # Owner request (2026-10-16): right after a merge, bring main into every open claude/ PR that now conflicts with it or
   # shares a serial file (lane) with the merged diff, before CI or a review is spent on a stale branch.
