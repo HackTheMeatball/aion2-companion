@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0.2.5 save safety: mockup (not part of the app)</title>
+<!-- Static mockup. Real app CSS is linked; only the .mock-* classes and the provisional light palette are local.
+     Fonts: fonts.css is not linked (its relative font URLs only resolve inside dist/), so the system fallbacks show.
+     ?theme=light switches to the provisional light palette (the app has a single dark theme today). -->
+<link rel="stylesheet" href="../../../src/styles/app.css">
+<style>
+/* NEW in 0.2.5 (these rules would go into src/styles/app.css) */
+/* the line sits under the existing text in one block, so the two buttons always stay together (390 px: they wrap as a pair) */
+.xfer-text { display: flex; flex-direction: column; gap: 2px; }
+.backup-line { color: var(--muted); }
+.backup-line.stale { color: var(--warn); }
+.nudge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding: 10px 16px; font-size: 13px; }
+.nudge span { flex: 1 1 24ch; }
+.nudge .xfer-btn, .nudge .nudge-x { font: 600 12px var(--mono); padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; }
+.nudge .xfer-btn:hover, .nudge .nudge-x:hover { border-color: var(--accent); }
+.nudge[hidden] { display: none; }
+
+/* Mockup scaffolding only */
+html[data-theme="light"] {
+  --bg:#f6f2f7; --panel:#fff; --panel-2:#efe9f1; --line:#d6cbdb; --fg:#241a29; --muted:#5f5068;
+  --accent:#b03657; --accent-soft:#b0365722; --accent-text:#a02f4f; --accent-fill:#a02f4f; --warn:#8a5a00; color-scheme: light;
+}
+html[data-theme="light"] body { background-image: none; }
+.mock-wrap { max-width: 1180px; margin: 0 auto; padding: 20px; display: grid; gap: 28px; }
+.mock-wrap > h1 { font-size: 22px; margin: 0; }
+.mock-case { display: grid; gap: 10px; }
+.mock-case > h2 { font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); margin: 0; }
+.mock-case > p { margin: 0; font-size: 13px; color: var(--muted); max-width: 80ch; }
+.mock-frame { border: 1px dashed var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
+.mock-frame .tag-mode { font: 600 11px var(--mono); color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.mock-stub { height: 54px; display: flex; align-items: center; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="mock-wrap">
+  <h1>0.2.5 save safety: mockup</h1>
+
+  <section class="mock-case" id="c1">
+    <h2>1 · Last backup line (footer, Basic and full; standalone site only)</h2>
+    <p>Sits in the existing export row, on its own line under the existing text, so the two buttons stay together. Muted; amber from 14 days (same day count as the nudge). No new card.</p>
+    <div class="mock-frame">
+      <span class="tag-mode">Never exported</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line">No backup yet.</span></span>
+        <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
+      <span class="tag-mode">Recent</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line">Last backup: 3 days ago.</span></span>
+        <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
+      <span class="tag-mode">14 days or more</span>
+      <div class="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span><span class="backup-line stale">Last backup: 16 days ago.</span></span>
+        <button type="button" class="xfer-btn">Export progress</button><label class="xfer-btn">Import progress</label></div>
+    </div>
+  </section>
+
+  <section class="mock-case" id="c2">
+    <h2>2 · Export nudge (one slim card under the header, Basic and full; standalone site only)</h2>
+    <p>Same layout as the existing save-failed banner (<code>.card</code>, one row, buttons on the right) but quiet: normal border, <code>role="status"</code>, dismissible.</p>
+    <div class="mock-frame">
+      <span class="tag-mode">Full mode</span>
+      <div class="card nudge" role="status"><span>You haven't exported a backup in 16 days. Progress lives in this browser only.</span>
+        <button type="button" class="xfer-btn">Export progress</button><button type="button" class="nudge-x" aria-label="Dismiss backup reminder">Not now</button></div>
+      <div class="card mock-stub">Page content continues (Next up, milestones…)</div>
+      <span class="tag-mode">Basic mode (identical card; Basic hides other chrome, not this)</span>
+      <div class="card nudge" role="status"><span>You haven't exported a backup in 16 days. Progress lives in this browser only.</span>
+        <button type="button" class="xfer-btn">Export progress</button><button type="button" class="nudge-x" aria-label="Dismiss backup reminder">Not now</button></div>
+      <div class="card mock-stub">Basic page content continues…</div>
+    </div>
+  </section>
+
+  <section class="mock-case" id="c3">
+    <h2>3 · Add to Home Screen hint (iPhone Safari on the standalone site only, once)</h2>
+    <p>Same card, same position. If the nudge would show too, the nudge wins and the hint waits for a later visit.</p>
+    <div class="mock-frame">
+      <div class="card nudge" role="status"><span>Safari can clear a site's saved data after a week unused. To keep your progress, export it, then tap Share and Add to Home Screen. The Home Screen copy starts empty: import your file there.</span>
+        <button type="button" class="xfer-btn">Export progress</button><button type="button" class="nudge-x" aria-label="Dismiss Home Screen tip">Got it</button></div>
+      <div class="card mock-stub">Page content continues…</div>
+    </div>
+  </section>
+</div>
+<script>
+if (new URLSearchParams(location.search).get('theme') === 'light') document.documentElement.dataset.theme = 'light';
+</script>
+</body>
+</html>
