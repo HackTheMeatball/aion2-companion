@@ -3,8 +3,13 @@ name: Kickoff
 # Owner request (2026-10-16): when a merge lands and there is room, start the next planned item at once instead of
 # waiting for the hourly CEO planner. The planner still decides WHAT comes next: it keeps a queue in the "Next up"
 # section of the state issue (#114, "CEO pipeline state"), one line per item, each with a ready spec in its issue:
-#   - [next] #127 sonnet          a build on issue #127 with Sonnet
+#   - [next] #127 sonnet lanes:app.css         a build on issue #127 with Sonnet that edits src/styles/app.css
+#   - [next] #130 opus lanes:golden,main.js    an Opus build that re-records golden and edits src/main.js
+#   - [next] #131 sonnet lanes:none            touches no serial file (docs, research)
 #   - [next] #128 opus alone      "alone": starts only when nothing else is in flight, and nothing starts beside it
+# Lanes are the serial files of docs/team/DISPATCH.md (owner, 2026-10-16: plan to avoid failed or redone runs). An item
+# starts only when no in-flight item shares a lane with it; otherwise kickoff skips to the next queued item that
+# doesn't overlap. In-flight lanes come from each open PR's changed files plus the lanes on its started line.
 # This workflow (no model for the choice) runs after CI on main goes green (that is, after every merge, since
 # auto-merge dispatches CI on main), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
 # lines; a started line whose issue is closed is dropped, one with no PR after 5 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
@@ -43,12 +48,34 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const STATE = 114, MAX = 3;
+            const LANES = ['golden', 'mig', 'main.js', 'gates', 'gen', 'app.css', 'ci', 'a11y', 'release'];
+            const lanesOfFiles = (files) => {
+              const out = new Set();
+              for (const f of files) {
+                const n = f.filename, patch = f.patch || '';
+                if (/^tests\/golden\//.test(n)) out.add('golden');
+                if (/^tests\/e2-migtest/.test(n) || /mig1/.test(patch)) out.add('mig');
+                if (n === 'src/main.js') out.add('main.js');
+                if (/^data\//.test(n) && /"(requires|completesWith|is)"/.test(patch)) out.add('gates');
+                if (/^tools\/gen\//.test(n)) out.add('gen');
+                if (n === 'src/styles/app.css') out.add('app.css');
+                if (n === '.github/workflows/ci.yml') out.add('ci');
+                if (n === 'tests/a11y.js') out.add('a11y');
+                if (n === 'package.json' || n === 'CHANGELOG.md') out.add('release');
+              }
+              return out;
+            };
+            const lanesOfLine = (l) => { const m = l.match(/ lanes:([^\s]+)/); return new Set(m ? m[1].split(',').filter((x) => x && x !== 'none') : []); };
+            const overlap = (a, b) => [...a].some((x) => b.has(x));
             core.setOutput('items', '[]');
             const issue = (await github.rest.issues.get({ owner, repo, issue_number: STATE })).data;
             const body = issue.body || '';
             let lines = body.split('\n');
-            const refs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
-              .map((p) => p.head.ref).filter((r) => /^claude\//.test(r));
+            const prs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
+              .filter((p) => /^claude\//.test(p.head.ref));
+            const refs = prs.map((p) => p.head.ref);
+            const busy = new Set();
+            for (const p of prs) for (const x of lanesOfFiles(await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: p.number, per_page: 100 }))) busy.add(x);
             // A started item whose issue is now closed (its PR merged) is done: drop its line so it stops counting.
             // One with no PR 5 h after it started (blocked, handed to Opus, failed or timed out) is marked "stalled"
             // so it frees its slot; the planner reads why and re-queues it or raises a To-do.
@@ -73,20 +100,28 @@ jobs:
             // A started item that already has its PR open is counted once, through the PR.
             const started = lines.filter((l) => { const s = l.match(/^- \[started [^\]]*\] #(\d+)/);
               return s && !refs.some((r) => r.startsWith(`claude/issue-${s[1]}-`)); }).length;
+            for (const l of lines) if (/^- \[started /.test(l)) for (const x of lanesOfLine(l)) busy.add(x);
             let inflight = openPrs + started;
+            core.info(`busy lanes: ${[...busy].join(', ') || 'none'}`);
             core.info(`in flight: ${openPrs} open claude/ PRs + ${started} started lines`);
             const picked = [];
             const stamp = new Date().toISOString().slice(0, 16) + 'Z';
             for (let i = 0; i < lines.length && inflight < MAX; i++) {
-              const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)( alone)?\s*$/);
+              const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)((?: lanes:[^\s]+| alone)*)\s*$/);
               if (!m) continue;
-              const alone = !!m[3];
+              const alone = / alone/.test(m[3]);
               if (alone && (inflight > 0 || picked.length)) break; // an "alone" item waits; keep queue order
+              if (!/ lanes:/.test(m[3]) && !alone) core.warning(`#${m[1]} has no lanes: on its queue line; treated as lanes:none`);
+              const want = lanesOfLine(lines[i]);
+              const unknown = [...want].filter((x) => !LANES.includes(x));
+              if (unknown.length) core.warning(`#${m[1]}: unknown lanes ${unknown.join(', ')} (known: ${LANES.join(', ')})`);
+              if (overlap(want, busy)) { core.info(`#${m[1]} waits: shares ${[...want].filter((x) => busy.has(x)).join(', ')} with work in flight`); continue; }
               const n = Number(m[1]);
               const iss = (await github.rest.issues.get({ owner, repo, issue_number: n })).data;
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
               picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
-              lines[i] = `- [started ${stamp}] #${n} ${m[2]}${alone ? ' alone' : ''}`;
+              lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
+              for (const x of want) busy.add(x);
               inflight++;
               if (alone) break;
             }
@@ -140,11 +175,75 @@ jobs:
             actions: read
           prompt: |
             You build issue #${{ matrix.item.issue }} in ${{ github.repository }}. Read CLAUDE.md first and follow it, then `gh issue view ${{ matrix.item.issue }} --comments` for the spec.
-            Create a branch named claude/issue-${{ matrix.item.issue }}-${{ github.run_id }} from main, implement the issue, and make sure `npm test` is green before committing (use `node tests/run.mjs --only <suites>` after `npm run build` while iterating). Never skip, disable or weaken a test or check.
+            Create a branch named claude/issue-${{ matrix.item.issue }}-${{ github.run_id }} from main (if origin already has that branch, an earlier attempt of this run died: check it out and continue from it), implement the issue, and make sure `npm test` is green before the last push. Never skip, disable or weaken a test or check.
             Commit with a clear message, `git push origin HEAD`, then write the PR body to a file (what changed and how it was tested, then a blank line, then a line that is exactly `Closes #${{ matrix.item.issue }}`) and open the PR: `gh pr create --base main --title "<short title>" --body-file <that file>`. CI and the review start on their own.
+            Run commands in the foreground only. Commit and push after each finished step (a run that dies is restarted once and continues from the pushed branch). While iterating use `node tests/run.mjs --only <suites>` after `npm run build` and batch slow golden or pixel runs; run the full `npm test` once at the end.
             ${{ contains(matrix.item.model, 'sonnet') && 'Sonnet limits (owner routing rule): if the work would touch src/core/, save/sync/migration/storage code, a gate''s requires/completesWith, golden snapshots, the mig1 pin, or more than about 300 lines, do not edit. Post one comment on the issue starting "Needs @claude (Opus):" with the reason, then stop.' || '' }}
             If the issue cannot be done safely (unverifiable game data, an owner decision), do not push. Post one comment on the issue starting "Blocked:" with the reason in one or two lines.
           claude_args: |
             --model ${{ matrix.item.model }}
             --max-turns 400
             --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
+
+  # Owner request (2026-10-16): right after a merge, bring main into every open claude/ PR that now conflicts with it or
+  # shares a serial file (lane) with the merged diff, before CI or a review is spent on a stale branch.
+  #   - Clean and no golden/mig lane: GitHub's update-branch (a merge commit, no model), then CI is dispatched on the
+  #     branch (a push made with this workflow's token starts no CI by itself).
+  #   - Conflicting, or golden/mig involved: pipeline.yml step=merge (a model run; Opus for golden/mig).
+  refresh:
+    if: github.event_name == 'workflow_run'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const merged = (await github.rest.repos.getCommit({ owner, repo, ref: context.payload.workflow_run.head_sha })).data.files || [];
+            const lanes = (files) => {
+              const out = new Set();
+              for (const f of files) {
+                const n = f.filename, patch = f.patch || '';
+                if (/^tests\/golden\//.test(n)) out.add('golden');
+                if (/^tests\/e2-migtest/.test(n) || /mig1/.test(patch)) out.add('mig');
+                if (n === 'src/main.js') out.add('main.js');
+                if (/^data\//.test(n) && /"(requires|completesWith|is)"/.test(patch)) out.add('gates');
+                if (/^tools\/gen\//.test(n)) out.add('gen');
+                if (n === 'src/styles/app.css') out.add('app.css');
+                if (n === '.github/workflows/ci.yml') out.add('ci');
+                if (n === 'tests/a11y.js') out.add('a11y');
+                if (n === 'package.json' || n === 'CHANGELOG.md') out.add('release');
+              }
+              return out;
+            };
+            const done = lanes(merged);
+            core.info(`merged diff lanes: ${[...done].join(', ') || 'none'}`);
+            const prs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
+              .filter((p) => /^claude\//.test(p.head.ref) && p.head.repo && p.head.repo.full_name === `${owner}/${repo}` && !p.draft
+                && !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
+            for (const p0 of prs) {
+              let pr = (await github.rest.pulls.get({ owner, repo, pull_number: p0.number })).data;
+              if (pr.mergeable === null) { await new Promise((r) => setTimeout(r, 15000)); pr = (await github.rest.pulls.get({ owner, repo, pull_number: p0.number })).data; }
+              const mine = lanes(await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: pr.number, per_page: 100 }));
+              const shared = [...mine].filter((x) => done.has(x));
+              const conflict = pr.mergeable === false;
+              if (!conflict && !shared.length) { core.info(`#${pr.number}: no conflict, no shared lane`); continue; }
+              if (pr.mergeable === null) { core.warning(`#${pr.number}: mergeability unknown; left for the planner`); continue; }
+              if (!conflict && !shared.some((x) => x === 'golden' || x === 'mig')) {
+                try {
+                  await github.rest.pulls.updateBranch({ owner, repo, pull_number: pr.number, expected_head_sha: pr.head.sha });
+                  // update-branch is asynchronous; give it a moment before CI is dispatched on the branch.
+                  await new Promise((r) => setTimeout(r, 10000));
+                  await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'ci.yml', ref: pr.head.ref });
+                  core.notice(`#${pr.number}: merged main in (shares ${shared.join(', ')}), CI dispatched`);
+                  continue;
+                } catch (e) { core.warning(`#${pr.number}: update-branch failed (${e.message}); handing to a merge run`); }
+              }
+              await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main',
+                inputs: { pr: String(pr.number), step: 'merge' } });
+              core.notice(`#${pr.number}: merge run dispatched (${conflict ? 'conflicts with main' : 'shares ' + shared.join(', ')})`);
+            }
