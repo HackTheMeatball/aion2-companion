@@ -1567,3 +1567,19 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   #gates .item input:checked ~ .txt > b:first-of-type { font-size: 15px; }
   #gates .item input:checked ~ .txt > :is(b ~ b, .term, .itm, .erow, .rotseq, .sr-sub) { display: none; }
 }
+
+/* Phone layout patches A and B (docs/design/phone-layout.md §4; CSS only). Touch screens: 44 px targets on the small
+   controls, through the invisible ::before pattern where the visible size must stay (no layout shift). */
+@media (pointer: coarse) {
+  .modeseg button { display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-12); }
+  .numctl button, .tcard .numctl button { width: 44px; height: 44px; }
+  .q-inl, .amap { position: relative; }
+  .q-inl::before { content: ""; position: absolute; inset: -11px 0; }
+  .amap::before { content: ""; position: absolute; inset: -9px; }
+  .tip::before { inset: -14px; }
+  #stCard .st-lvctl button::before { inset: -14px -9px; }
+  details.foldcard > summary { min-height: 48px; }
+}
+/* B: a gap under the level-band select (Basic hides the chips that normally sit there); locked rows stay readable. */
+body.basic #areaSel { margin-bottom: var(--space-12); }
+@media (max-width: 520px) { .area-list .item.locked .txt { opacity: 1; } }
