@@ -97,12 +97,12 @@ padding, safe-area as an addition only). F and H are checked at 390 px in the ar
 The header (brand row, eyebrow "· 1 → 45") and the footer with "unofficial … not affiliated with or endorsed by NCSoft"
 (`tests/site.js`) are unchanged; the mockup omits them for space.
 
-1. **Order: Next up first.** ≤ 860 px: header, sticky level bar, Next up, Milestones, Journey (folded in Basic),
-   Progress, Skills / Daevanion / Stigmas, Dungeons & Strongholds, The map (Advanced), Route rules, Confidence, Sources.
-   Next up lands at about 400 px instead of 2,118. Milestones moves from after Journey to before it: it is a short
-   "what to do at this level" list in the same family as Next up, and in Basic it keeps the essentials above the folded
-   Journey card. The Progress card (ring plus Quests / Dungeons / Strongholds rows,
-   overall progress) is kept as is and moves to just after Journey; the bar does not replace it.
+1. **Order: Next up first.** ≤ 860 px: header, sticky level bar, Next up, Journey (folded in Basic), Progress (folded in
+   Basic), Skills / Daevanion / Stigmas, Milestones (unfolded, both modes), Dungeons & Strongholds, The map (Advanced),
+   Route rules (Advanced; Basic hides it, `app.css:992`), Confidence, Sources. Next up lands at about 400 px instead of
+   2,118. Milestones keeps its place after the gear cards, as in the app today. The Progress card (ring plus Quests /
+   Dungeons / Strongholds rows, overall progress) is kept as is and moves to just after Journey; the bar does not
+   replace it.
 2. **Sticky level bar**: `LV 39` and **Level up** (44 px), nothing else. There is no track: the app stores only a whole
    level, no within-level progress, and the owner wants minimal visual distraction. Level up keeps its current green
    gradient (`.lvlup-btn`, `app.css:501`); no colour change. At phone widths patch F **moves the existing
@@ -111,7 +111,9 @@ The header (brand row, eyebrow "· 1 → 45") and the footer with "unofficial �
    never a second or hidden-duplicate button, so exactly one Level up is on screen at any time. Level −/+ and the
    slider stay in Journey in both modes (Basic hides only `#ahead`, `#questSubs`, `#trackWrap`, `app.css:988`); the
    intent from CLAUDE.md, that the level changes only through Level up / − / + / slider, is unchanged. While the Build
-   sheet is open the scrim starts below the bar, so Level up stays visible and tappable (`after-build-sheet.png`).
+   sheet is open the scrim starts below the bar, so Level up stays visible and tappable (`after-build-sheet.png`). The sheet
+   is therefore non-modal toward the bar: patch H keeps the bar outside any focus trap / `inert` region (focus order bar →
+   sheet) and takes the scrim offset from the bar's height (a CSS variable, since 200 % text changes it), not a fixed 61 px.
 3. **44 px targets** on touch: Basic/Advanced switch as two 44 px halves; −/+ steppers 44×44; `.q-inl` and "i" get a
    44 px hit area through the existing `::before { inset: -Npx }` pattern (visual size unchanged); list-row links and
    checkboxes get row-wide labels of at least 44 px; folded cards `min-height: 48px`.
@@ -122,11 +124,13 @@ The header (brand row, eyebrow "· 1 → 45") and the footer with "unofficial �
 5. **Bottom tab bar** (Route · Gear · Build), 52 px, safe-area padding. Build opens as a bottom sheet with a scrim and
    grab handle (P2-5; `dvh`, not `vh`), replacing the 19 px side tab. Its text is 11 px under `pointer: coarse` (`app.css:1422`; 8.5 px only with a mouse at
    ≤ 600 px), so the case is the tab's size and reach, not the type size.
-6. **Folded by default on phones**: Journey (Basic), Dungeons & Strongholds, Confidence, Sources, each a uniform
+6. **Folded by default on phones**: Journey (Basic), Progress (Basic), Dungeons & Strongholds, Confidence, Sources, each a uniform
    48 px summary row ("Open ▾" in `--accent-text`).
 
 Mockup frames (`mockups/phone/after-*.png`, from `phone-layout.html`; Level up is green as in the app): `after-top-basic`, `after-lower-basic`,
 `after-build-sheet`. They are static HTML, not the product; labels and values are placeholders.
+The frames are cropped to fit 844 px, and their spacing is not a proposal: cards use the app's values (16 px padding,
+12 px radius, uniform gaps, `app.css:63`) in every frame.
 
 ## 4. Patch plan (0.2.6+)
 
@@ -160,4 +164,6 @@ checked at 390 px in the artifact build (see Both builds).
   which Basic shows today (the plan says they stay in Journey in both modes, so a folded Journey is the open point); should "1 of N" show in Basic?
 - The `before-*` PNGs (about 3.6 MB; `before-advanced-full.png` is 1.3 MB) contain skill, stigma and Daevanion icons
   inside app screenshots. They are already-approved icons, not new art; OK to commit, or trim?
+- Milestones stays after the gear cards, as today. In Advanced its full list pushes later cards far down; should it move
+  earlier or fold on phones? Not part of this plan.
 - Please check on the iPhone: whole-row tap on Confidence / Sources, and whether any field still zooms on focus.

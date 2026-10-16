@@ -23,7 +23,7 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 .seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 10px 0; }
 .seg .btn { border: 0; border-radius: 0; background: none; color: var(--muted); }
 .seg .on { background: var(--panel-2); color: var(--fg); box-shadow: inset 0 -2px var(--accent); }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; margin: 12px 14px; padding: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin: 12px 14px; padding: 16px; } /* app.css:63 values; same in every frame */
 .card.first { border-color: var(--accent); }
 .row { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 12px; align-items: center; }
 .num { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-fill); display: grid; place-items: center; color: #fff; font: 600 18px var(--mono); }
@@ -31,7 +31,7 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 .card p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
 .actions { display: flex; gap: 8px; margin-top: 12px; }
 .actions .btn { flex: 1; }
-.fold { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 0 14px; } /* whole summary row is the hit area */
+.fold { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 0 16px; } /* whole summary row is the hit area */
 .more { color: var(--accent-text); font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
 .tabs { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: 20px; /* env(safe-area-inset-bottom) */ }
 .tabs span { min-height: 52px; display: grid; place-items: center; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
@@ -40,7 +40,7 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
 .scrim { position: absolute; left: 0; right: 0; bottom: 0; top: 61px; background: #000a; z-index: 2; } /* starts below the bar: Level up stays visible and tappable */
 .grab { width: 40px; height: 5px; border-radius: 3px; background: var(--line); margin: 4px auto 10px; }
 .prio { display: grid; grid-template-columns: 1fr auto; min-height: 48px; align-items: center; border-bottom: 1px solid var(--line); }
-.lbl { position: absolute; bottom: 80px; left: 14px; z-index: 5; font: 10px var(--mono); color: var(--muted); }
+.lbl { position: absolute; bottom: 4px; left: 14px; z-index: 5; font: 10px var(--mono); color: var(--muted); }
 </style></head><body>
 
 <!-- 1. Top of the page: sticky level bar, 44 px mode switch, Next up first -->
@@ -51,21 +51,21 @@ h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
   <div class="card first"><div class="row"><span class="num">⛏</span><div><h3>Clear Destruction Archons Armory</h3><p>and others until Lv 40 · 3/10</p></div></div>
     <div class="actions"><span class="btn">Show</span></div></div>
   <div class="card"><div class="row"><span class="num" style="background:var(--panel-2);color:var(--muted)">2</span><div><h3>Regional quests</h3><p>Eastern Gribade Highland · 2 open</p></div></div></div>
-  <div class="card fold" style="margin-top:12px"><span>Milestones</span><span class="more">Open ▾</span></div>
   <div class="card fold"><span>Journey · Lv 39 → 40</span><span class="more">Open ▾</span></div>
   <div class="card fold"><span>Progress</span><span class="more">Open ▾</span></div>
+  <div class="card"><span class="mono">Skills</span></div>
   <div class="tabs"><span class="on">Route</span><span>Gear</span><span>Build</span></div></div>
 
 <!-- 2. Further down: gear cards as uniform folds, 44+ px rows -->
 <div class="ph" id="p2"><div class="lbl">2 · lower, Basic</div>
   <div class="bar"><span class="lv">LV <b>39</b></span><button class="btn lvup">Level up</button></div>
-  <div class="card" style="margin:8px 14px;padding:10px 14px"><span class="mono">Skills</span><div class="row" style="margin-top:6px"><span class="num">Q</span><div><h3>Skill name → N</h3><p>Spend 1 point</p></div></div><div class="actions" style="margin-top:8px"><span class="btn primary">Mark spent</span></div></div>
-  <div class="card" style="margin:8px 14px;padding:10px 14px"><span class="mono">Daevanion</span><div class="row" style="margin-top:6px"><span class="num">D</span><div><h3>Next node · n DP</h3><p>Have n</p></div></div><div class="actions" style="margin-top:8px"><span class="btn">−</span><span class="btn" style="flex:2">n</span><span class="btn">+</span></div></div>
-  <div class="card" style="margin:8px 14px;padding:10px 14px"><span class="mono">Stigmas</span><div class="row" style="margin-top:6px"><span class="num">S</span><div><h3>Equip stigma name</h3><p>Shards n</p></div></div></div>
-  <div class="card fold" style="margin:8px 14px"><span>Dungeons &amp; Strongholds</span><span class="more">Open ▾</span></div>
-  <div class="card fold" style="margin:8px 14px"><span>Route rules</span><span class="more">Open ▾</span></div>
-  <div class="card fold" style="margin:8px 14px"><span>Confidence</span><span class="more">Open ▾</span></div>
-  <div class="card fold" style="margin:8px 14px"><span>Sources</span><span class="more">Open ▾</span></div>
+  <div class="card"><span class="mono">Skills</span><div class="row"><span class="num">Q</span><div><h3>Skill name → N</h3><p>Spend 1 point</p></div></div><div class="actions"><span class="btn primary">Mark spent</span></div></div>
+  <div class="card"><span class="mono">Daevanion</span><div class="row"><span class="num">D</span><div><h3>Next node · n DP</h3><p>Have n</p></div></div><div class="actions"><span class="btn">−</span><span class="btn" style="flex:2">n</span><span class="btn">+</span></div></div>
+  <div class="card"><span class="mono">Stigmas</span><div class="row"><span class="num">S</span><div><h3>Equip stigma name</h3><p>Shards n</p></div></div></div>
+  <div class="card"><span class="mono">Milestones</span><div class="row"><span class="num" style="background:var(--panel-2);color:var(--muted)">☐</span><div><h3>Up-next milestone</h3><p>Lv 39 · 2 open</p></div></div></div>
+  <div class="card fold"><span>Dungeons &amp; Strongholds</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Confidence</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Sources</span><span class="more">Open ▾</span></div>
   <div class="tabs"><span>Route</span><span class="on">Gear</span><span>Build</span></div></div>
 
 <!-- 3. Build as a bottom sheet from the tab bar -->
