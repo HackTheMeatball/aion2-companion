@@ -454,7 +454,7 @@ This is 0.3 engine behaviour (0.2 keeps today's order); it needs no new data bey
 | `sources` | repo | §5.1 |
 | `gameBuilds` (`game-builds`) | repo | §5.5 |
 | `storyQuests` | faction | `sq:<game id>`, `gameId` required; order via `next` (one path, one `end`); `wraps` (4 records); `inCap: false` past Lv 45; `unlocks`; giver/turn-in with zone. |
-| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; `access: "teleport"`, no location (owner); completion from the wrapper; ranks first in Next up once its prerequisites are met (§10). |
+| `ascensionQuests` | faction | `asc:<slug>`; chapter I–V; `access: "teleport"`, no location (owner); completion from the wrapper; ranks first in Next up once its prerequisites are met (§10). `guideStep` (0.3 E8): the guide step key whose stored tick also fills the chapter's segment on the Journey card's Ascension bar (`g6:0`, `g22:0`, `g32:dreams`, `g45:0`; none for the Oath, past the cap); the generator checks it is a real step and, where a step names this record in `ascensionQuest`, that it is that step. |
 | `regionalQuests` | faction | prerequisites as atoms with their own sources; `zone` = `giver.zone`; `route`. |
 | `sealedDungeons` | faction | `band` places it; `entrance` with zone; `mapSlug`; `route`. |
 | `strongholds` | faction | `levelRange` (inferred); `location`; `route`. |
