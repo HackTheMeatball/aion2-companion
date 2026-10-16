@@ -31,6 +31,10 @@ build (DECISIONS D4) carries the new name too; it needs no new blob. Favicon, ma
 People level for weeks with their progress in `localStorage`. A broken key silently drops their ticks, and there is
 no server copy. Rules:
 
+> **Pre-1.0 exception (owner, 2026-10-16):** there are no real players yet, so a change may break saves for a better
+> design. Do it cleanly: bump the storage key (`-v4` → `-v5`) so the app starts fresh, never crash on an old save,
+> and note it in the CHANGELOG. See CLAUDE.md. The rules below are the strict rules that return at 1.0.
+
 - **The storage key is `aion2-assassin-route-v4` forever.** Don't rename it, don't version it, don't move state to
   another key. (`…:before-import` holds the state an import replaced.)
 - **Item keys are permanent.** A key that is removed is retired, never reused for something else (retired so far:
