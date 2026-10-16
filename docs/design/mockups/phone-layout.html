@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone layout mockup (static; layout only, all game text is placeholder)</title>
+<style>
+/* Tokens copied from src/styles/app.css :root; nothing here is new colour. */
+:root { --bg:#110c13; --panel:#1a1320; --panel-2:#22192a; --line:#33263c; --fg:#ece4ee; --muted:#9f90a8;
+  --accent:#d0506f; --accent-text:#da5d7b; --accent-fill:#bf3f5e; --good:#5fbf8a; --warn:#e2a64a;
+  --display:"Marcellus SC","Palatino Linotype",Georgia,serif; --body:"Figtree","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #000; color: var(--fg); font: 15px/1.45 var(--body); display: flex; gap: 24px; padding: 24px; align-items: flex-start; }
+.ph { width: 390px; height: 844px; background: var(--bg); position: relative; overflow: hidden; flex: none; }
+.pad { padding: 0 14px; }
+.mono { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 400 22px var(--display); margin: 0; letter-spacing: .04em; }
+/* sticky bar: the level is always in reach (the only Level up on phone widths; Journey's #lvlUpBig is hidden there) */
+.bar { position: sticky; top: 0; z-index: 4; background: var(--panel); border-bottom: 1px solid var(--line); padding: 8px 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.lv { font: 500 13px var(--mono); }
+.lv b { font-size: 22px; color: var(--fg); }
+.btn { min-height: 44px; min-width: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); font: 600 14px var(--body); padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; }
+.btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: #fff; }
+/* Level up = .lvlup-btn, app.css:501 (green gradient, no colour change) */
+.btn.lvup { background: linear-gradient(180deg, #3fbf78, #2a9a5c); border: 1px solid #5fdc95; color: #06150d; font-weight: 700; box-shadow: 0 2px 0 #1d6f42; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 10px 0; }
+.seg .btn { border: 0; border-radius: 0; background: none; color: var(--muted); }
+.seg .on { background: var(--panel-2); color: var(--fg); box-shadow: inset 0 -2px var(--accent); }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin: 12px 14px; padding: 16px; } /* app.css:63 values; same in every frame */
+.card.first { border-color: var(--accent); }
+.row { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 12px; align-items: center; }
+.num { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-fill); display: grid; place-items: center; color: #fff; font: 600 18px var(--mono); }
+.card h3 { margin: 0; font: 600 16px/1.25 var(--body); }
+.card p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.actions { display: flex; gap: 8px; margin-top: 12px; }
+.actions .btn { flex: 1; }
+.fold { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 0 16px; } /* whole summary row is the hit area */
+.more { color: var(--accent-text); font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.tabs { position: absolute; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: 20px; /* env(safe-area-inset-bottom) */ }
+.tabs span { min-height: 52px; display: grid; place-items: center; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.tabs .on { color: var(--accent-text); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; background: var(--panel); border-radius: 18px 18px 0 0; border-top: 1px solid var(--line); z-index: 3; padding: 8px 14px; }
+.scrim { position: absolute; left: 0; right: 0; bottom: 0; top: 61px; background: #000a; z-index: 2; } /* starts below the bar: Level up stays visible and tappable */
+.grab { width: 40px; height: 5px; border-radius: 3px; background: var(--line); margin: 4px auto 10px; }
+.prio { display: grid; grid-template-columns: 1fr auto; min-height: 48px; align-items: center; border-bottom: 1px solid var(--line); }
+.lbl { position: absolute; bottom: 4px; left: 14px; z-index: 5; font: 10px var(--mono); color: var(--muted); }
+</style></head><body>
+
+<!-- 1. Top of the page: sticky level bar, 44 px mode switch, Next up first -->
+<div class="ph" id="p1"><div class="lbl">1 · top, Basic</div>
+  <div class="bar"><span class="lv">LV <b>39</b></span><button class="btn lvup">Level up</button></div>
+  <div class="pad" style="padding-top:12px"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><h1>Asmodian Assassin Route</h1>
+    <div class="seg"><span class="btn on">Basic</span><span class="btn">Advanced</span></div></div>
+  <div class="card first"><div class="row"><span class="num">⛏</span><div><h3>Clear Destruction Archons Armory</h3><p>and others until Lv 40 · 3/10</p></div></div>
+    <div class="actions"><span class="btn">Show</span></div></div>
+  <div class="card"><div class="row"><span class="num" style="background:var(--panel-2);color:var(--muted)">2</span><div><h3>Regional quests</h3><p>Eastern Gribade Highland · 2 open</p></div></div></div>
+  <div class="card fold"><span>Journey · Lv 39 → 40</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Progress</span><span class="more">Open ▾</span></div>
+  <div class="card"><span class="mono">Skills</span></div>
+  <div class="tabs"><span class="on">Route</span><span>Gear</span><span>Build</span></div></div>
+
+<!-- 2. Further down: gear cards as uniform folds, 44+ px rows -->
+<div class="ph" id="p2"><div class="lbl">2 · lower, Basic</div>
+  <div class="bar"><span class="lv">LV <b>39</b></span><button class="btn lvup">Level up</button></div>
+  <div class="card"><span class="mono">Skills</span><div class="row"><span class="num">Q</span><div><h3>Skill name → N</h3><p>Spend 1 point</p></div></div><div class="actions"><span class="btn primary">Mark spent</span></div></div>
+  <div class="card"><span class="mono">Daevanion</span><div class="row"><span class="num">D</span><div><h3>Next node · n DP</h3><p>Have n</p></div></div><div class="actions"><span class="btn">−</span><span class="btn" style="flex:2">n</span><span class="btn">+</span></div></div>
+  <div class="card"><span class="mono">Stigmas</span><div class="row"><span class="num">S</span><div><h3>Equip stigma name</h3><p>Shards n</p></div></div></div>
+  <div class="card"><span class="mono">Milestones</span><div class="row"><span class="num" style="background:var(--panel-2);color:var(--muted)">☐</span><div><h3>Up-next milestone</h3><p>Lv 39 · 2 open</p></div></div></div>
+  <div class="card fold"><span>Dungeons &amp; Strongholds</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Confidence</span><span class="more">Open ▾</span></div>
+  <div class="card fold"><span>Sources</span><span class="more">Open ▾</span></div>
+  <div class="tabs"><span>Route</span><span class="on">Gear</span><span>Build</span></div></div>
+
+<!-- 3. Build as a bottom sheet from the tab bar -->
+<div class="ph" id="p3"><div class="lbl">3 · Build sheet</div>
+  <div class="bar"><span class="lv">LV <b>39</b></span><button class="btn lvup">Level up</button></div>
+  <div class="scrim"></div>
+  <div class="sheet"><div class="grab"></div><div class="row" style="grid-template-columns:1fr auto"><h3 style="font:400 18px var(--display)">Stat priority</h3><span class="btn">Close</span></div>
+    <div class="prio"><span>Stat 1</span><span class="mono">value</span></div>
+    <div class="prio"><span>Stat 2</span><span class="mono">value</span></div>
+    <div class="prio"><span>Stat 3</span><span class="mono">value</span></div>
+    <div class="prio" style="border:0"><span>Rotation</span><span class="more">Open ▸</span></div></div>
+  <div class="tabs" style="z-index:4"><span>Route</span><span>Gear</span><span class="on">Build</span></div></div>
+</body></html>
