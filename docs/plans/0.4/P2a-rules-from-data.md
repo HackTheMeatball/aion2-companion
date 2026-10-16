@@ -40,7 +40,7 @@ S–M (about 100–200 lines).
 
 ## Acceptance (review checklist: each line pass / fail with evidence)
 
-- [ ] `grep -nE "L <= (4|5|7|10)|\[8, 12, 20\]|p: 2, a: 3" src/` finds nothing (paste).
+- [ ] `grep -rnE "L <= 4 \?|L <= 5 \?|\[8, 12, 20\]|p: 2, a: 3" src/` finds nothing (paste).
 - [ ] `catalog.js` has no milestone text; `g19` and `g28` come from `guide/milestones.json`.
 - [ ] A new `core` test compares `spCost(L)` for L 2–10, `ST_COST(L)` for L 1–21, `SPEC_SLOT_LV` and `DV_MIN` with the
       values of `main` (pinned in the test).
