@@ -179,7 +179,7 @@ Choices (from `data/classes/assassin/skills.json`):
 | Slot | Opens at | Pick | Active from | Agreement | Sources | Reason |
 |---|---|---|---|---|---|---|
 | 1 | 8 | **2** +20% Skill Speed | 8 | contested | TR-L, TR-D (1st). Against: SC and CP list -20% MP (pick 1) first. GF is not slot-ordered and is not counted. | Existing pick, kept, but contested: one publisher puts Skill Speed first, two put -20% MP first. Every guide names Skill Speed somewhere. |
-| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | contested | TR-L, TR-D (2nd) for 4. Against: SC and CP put pick 2 second. GF is not slot-ordered and is not counted. | -1s Shadowstrike cooldown on hit keeps you behind the target. One publisher for 4 here, two for pick 2 (the Skill Speed that is our slot 1); disputed and not proposed. |
+| 2 | 12 | **4** -1s [Shadowstrike] cooldown on hit | 12 | contested | TR-L, TR-D (2nd) for 4. Against: SC and CP put pick 2 second. GF is not slot-ordered and is not counted. | -1s Shadowstrike cooldown on hit keeps you behind the target. One publisher for 4 here, two for pick 2 (the Skill Speed that is our slot 1); contested and not proposed. |
 | 3 | 20 | (none) | | single-source | 3 (TR-L, TR-D third; CP-aLuckyRO suggests it without an order). No guide puts 1 third. | Pick 3 (fewer-targets bonus) is single-source (TR); not proposed, since SC and CP want pick 1 in the set. AM-PvP names 3 but is PvP and not counted. |
 
 ### Storm Rampage
@@ -420,8 +420,8 @@ already cited elsewhere; CP, AM and TR are new.
 
 **5.3 Labels in the UI.** `single-source` and `disputed` picks should carry the label (CLAUDE.md data policy). In this
 set: single-source: Storm Rampage slot 3, Savage Roar slot 3, Whirlwind Slice slot 2, Defiance slot 2, Shadow Fall
-slot 1; contested: Heart Gore slot 1, Quick Slice slot 1, Storm Rampage slot 1, Savage Roar slot 1, Insignia Explosion
-slot 3, Ambush slot 1; disputed: Insignia Explosion slot 2, Ambush slot 2, Whirlwind Slice slot 1; contested: Savage Roar slot 2.
+slot 1; contested: Heart Gore slot 1, Quick Slice slot 1, Storm Rampage slot 1, Savage Roar slot 1, Savage Roar slot 2, Insignia Explosion
+slot 3, Ambush slot 1; disputed: Insignia Explosion slot 2, Ambush slot 2, Whirlwind Slice slot 1.
 
 **5.4 Tests.** Extend the build checks in `tests/` for "every pick is a choice of its skill, picks are distinct and at
 most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never break saved progress"). Save keys
@@ -435,7 +435,7 @@ most 3", and run `mig1`, `mig2` and `journey` after the change (CLAUDE.md "Never
   aion2turkiye); Insignia Explosion slot 2 (5 in
   Corpus and aion2-meta, 3 in Skycoach and aion2turkiye). An owner decision or an in-game test settles
   these.
-- **Contested (slot 1 is outside this task):** Heart Gore 3, Quick Slice 3, Storm Rampage 1, Savage Roar 2, Ambush 1; Insignia Explosion slot 3; Savage Roar slot 2 (4 in aion2turkiye against 2 in Skycoach and Corpus).
+- **Contested (slot 1 is outside this task):** Heart Gore slot 1 (pick 3), Quick Slice slot 1 (pick 3), Storm Rampage slot 1 (pick 1), Savage Roar slot 1 (pick 2), Ambush slot 1 (pick 1), Insignia Explosion slot 3, Savage Roar slot 2 (pick 4 in aion2turkiye against pick 2 in Skycoach and Corpus).
 - **Single-source:** see 5.3.
 - **Unread sources worth an owner glance:** games.gg (403 for scripts) and thegameswiki (429) are already in our source
   list; GamerBlurb and expcarry name Claude in robots.txt.
