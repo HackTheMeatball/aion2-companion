@@ -28,8 +28,9 @@ const CASES = [
   { name: '1-heart-gore-line-7-plus-board-node-lv21', lv: 21, off: ['sp:Heart Gore:8', 'sp:Heart Gore:spec'], on: ['dv:hg'], shots: [NOW, SKILLS] },
   { name: '2-heart-gore-line-8-not-bought-lv22', lv: 22, off: ['sp:Heart Gore:8', 'sp:Heart Gore:spec', 'dv:hg', 'dv:z:hg'], shots: [NOW, SKILLS] },
   { name: '3-quick-slice-slot-2-lv27', lv: 27, shots: [NOW, SKILLS] },
-  { name: '4-insignia-explosion-slot-2-no-pick-yet-lv40', lv: 40, on: ['sp:Quick Slice:spec2', 'sp:Heart Gore:spec2'], shots: [NOW, SKILLS] },
-  { name: '5-lv45-all-bought-slot-3-listed', lv: 45, extra: true, on: ['sp:Quick Slice:spec2', 'sp:Heart Gore:spec2', 'sp:Insignia Explosion:spec2'], shots: [SKILLS] },
+  { name: '4-insignia-explosion-slot-2-no-pick-lv40', lv: 40, on: ['sp:Quick Slice:spec2', 'sp:Heart Gore:spec2'], shots: [NOW, SKILLS] },
+  /* every line, extras too (315 pts): stones cover them past Lv 45's 203, so no "Ticked lines cost …" warning */
+  { name: '5-lv45-all-bought-slot-3-listed', lv: 45, extra: true, stones: 120, on: ['sp:Quick Slice:spec2', 'sp:Heart Gore:spec2', 'sp:Insignia Explosion:spec2'], shots: [SKILLS] },
 ];
 for (const c of CASES) for (const when of ['before', 'after']) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, serviceWorkers: 'block', reducedMotion: 'reduce' });
@@ -40,7 +41,7 @@ for (const c of CASES) for (const when of ['before', 'after']) {
     SP_STEPS.filter(x => (c.extra || !x.s.extra) && x.req <= c.lv).forEach(x => { checks[x.k] = true; });
     DV_NODES().filter(it => it.blv <= c.lv && GATES.find(g => g.items.includes(it)).lv <= c.lv).forEach(it => { checks[it.k] = true; });
     (c.off || []).forEach(x => { delete checks[x]; }); (c.on || []).forEach(x => { checks[x] = true; });
-    localStorage.clear(); localStorage.setItem(k, JSON.stringify({ ...flags, open: {}, level: c.lv, quest, checks, stones: 60, mode: 'advanced' }));
+    localStorage.clear(); localStorage.setItem(k, JSON.stringify({ ...flags, open: {}, level: c.lv, quest, checks, stones: c.stones || 60, mode: 'advanced' }));
   }, [KEY, c, FLAGS]);
   await p.reload(); await p.waitForTimeout(600);
   for (const [sel, suf] of c.shots) {

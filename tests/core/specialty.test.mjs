@@ -87,8 +87,13 @@ export default (test, M) => {
     const at = (n, to, nodes) => { const x = row(n, 1); return M.char(S({ checks: tick([...lines(n, to), ...planOf(x).slice(0, nodes)]) })); };
     assert.equal(M.specPickOf(at('Heart Gore', 10, 2), row('Heart Gore', 2)).t, 'Multi-Hit on hit');
     assert.equal(M.specPickOf(at('Quick Slice', 10, 2), row('Quick Slice', 2)).lv, 12);
-    assert.equal(M.specPickOf(at('Insignia Explosion', 10, 4), row('Insignia Explosion', 2)), null, 'its pick (-3s cooldown) needs skill Lv 16');
-    assert.equal(row('Insignia Explosion', 2).s.specs[1].lv, 16);
+    assert.equal(M.specPickOf(at('Heart Gore', 10, 4), row('Heart Gore', 3)), null, 'slot 3 (Reset, needs skill 16) is past the cap of 14');
+    assert.equal(row('Heart Gore', 3).s.specs[2].lv, 16);
+    /* research #77 at 8dd047d: Insignia Explosion slot 2 is disputed, Savage Roar slot 2 contested: no pick */
+    for (const n of ['Insignia Explosion', 'Savage Roar']) {
+      assert.equal(row(n, 2).s.specs.length, 1, `${n}: slot 1 pick only`);
+      assert.equal(M.specPickOf(at(n, 10, 4), row(n, 2)), null, `${n} slot 2: "pick a specialty"`);
+    }
     assert.equal(M.specPickOf(at('Ambush', 10, 1), row('Ambush', 2)), null, 'no 2-source pick: none');
     assert.equal(M.specPickOf(at('Shadowstrike', 10, 1), row('Shadowstrike', 3)), null);
     for (const x of slot1) assert.equal(M.specPickOf(at(x.s.n, 8, 0), x).t, x.s.spec, 'slot 1: today\'s pick');

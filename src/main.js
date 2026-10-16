@@ -1196,14 +1196,16 @@ function renderNext() {
   /* Coming up: everything after the hero, as many rows as fit the card (trimmed in fitSkills). */
   const rest = (next ? [...now.slice(1), ...ahead] : ahead.filter(x => x !== hero)).slice(0, 10);
   let cum = next ? 0 : (hero && !hero.spec ? hero.cost : 0);
+  /* "N of M spent" counts SP_STEPS only, on purpose: slots 2 / 3 (SP_SLOTS) cost no points and slot 3 is out of reach (Q5),
+     so counting them would keep the bar short of full at Lv 45 and change 0.2's count */
   const spB = SP_STEPS.filter(x => char(state).checks[x.k]).length, spN = SP_STEPS.length;
   document.getElementById("spAfter").innerHTML = rest.length ? `<div class="dvbh"><div class="dvbh-top"><span class="dvbh-k">Coming up</span><span class="dvbh-n">${spB} of ${spN} spent</span></div><span class="dvbh-bar"><span style="width:${spB / spN * 100}%"></span></span></div><ul class="soonlist" id="spSoon">` + rest.map(x => {
     cum += x.spec ? 0 : x.cost;
     const avail = now.includes(x), have = avail ? pts - (next ? next.cost : 0) : haveAt(x), short = cum - have;
-    /* a specialty slot waits for a skill level, not a character level, and is free (never short of points); slot 3 is past
-       what points and plan nodes reach (Q5) */
+    /* a specialty slot waits for a skill level, not a character level, and is free (never short of points, so an empty
+       status like the Stigmas card's slot row, not the green "points covered" ✓); slot 3 is past what points and plan nodes reach (Q5) */
     if (x.spec) return `<li class="isspec" title="Specialty slot ${x.slot}: ${specSub(x).replace(/<[^>]+>/g, "")} · ${avail ? "available now" : `at skill Lv ${x.slotLv} (yours: ${skillLvOf(char(state), x)})`}${planReachOf(x) < x.slotLv ? ` · the plan's skill points and board nodes reach skill Lv ${planReachOf(x)}` : ""}">` +
-      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst ok">✓</span></li>`;
+      `<span class="sname">${spMini(x.s.n)}${x.s.n} <span class="spectag">${x.slot > 1 ? "slot " + x.slot : "spec"}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "skill " + x.slotLv}</span><span class="sst"></span></li>`;
     return `<li title="${spCostTxt(x)} · ${avail ? "available now" : "Lv " + x.req} · ${short > 0 ? `${short} short by then` : "points covered"}${x.s.single ? ` · single source (${x.s.single})` : ""}"><span class="sname">${spMini(x.s.n)}${x.s.n} <span class="lvarr">${x.L - 1} → ${x.L}</span></span><span class="slv${avail ? " now" : ""}">${avail ? "now" : "Lv " + x.req}</span><span class="sst ${short > 0 ? "short" : "ok"}">${short > 0 ? `−${short}` : "✓"}</span></li>`;
   }).join("") + `</ul>` : "";
   const ptsIn = document.getElementById("spPts");
