@@ -20,8 +20,12 @@ export const gates02 = M => {
   /* E9 (2026-10-15, owner check 1): Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking Caper (Empyrean Monolith
      check, 20:12 ET) gained a story gate in the data (their row now has story + no noPre). 0.2 had neither, so the frozen rules see
      them as they were; the page does the same with the switch regionalTurnedIn off (src/core/requirements.js APP_GRAPH_0_2).
-     Nothing else of the frozen rules changes. */
-  const NEW_RQ_GATE = new Set(["2202044", "2202051", "2202015"]);
+     Nothing else of the frozen rules changes.
+     E5 (2026-10-16): Traveling Merchant's Conundrum and Lest We Forget gained their Metabot story gate the same way (the page:
+     switches merchantGate / lestWeForgetGate off), and the Noble Belt / Revelation Amulet steps a "turned in" gate (row story +
+     turnedIn; the page: beltGate / amuletGate off): the frozen rules see all four as they were. */
+  const NEW_RQ_GATE = new Set(["2202044", "2202051", "2202015", "2202029", "2202046"]);
+  const NEW_STEP_GATE = new Set(["g12:belt", "g16:amulet"]);
   const rq0 = q => NEW_RQ_GATE.has(q.id) ? { ...q, story: null, noPre: 1 } : q;
   const rqOpenLv = q => (q = rq0(q)).noPre ? Math.max(q.unlocksAt || 0, q.rec) : (q.unlocksAt || q.rec);
   const rqStatus = (c, q, lv = c.level) => {
@@ -41,9 +45,9 @@ export const gates02 = M => {
       if (/^(sp|dv):/.test(k) || (row.opt && !(it && it.adv))) return;
       if (it && (it.stig || it.eput)) return;
       if (it && it.byStory && it.story === c.quest) return;
-      const need = (rq && row.q && NEW_RQ_GATE.has(row.q.id) ? null : row.story) || row.after;
+      const need = ((rq && row.q && NEW_RQ_GATE.has(row.q.id)) || NEW_STEP_GATE.has(k) ? null : row.story) || row.after;
       if (need) { const at = QUESTS.findIndex(([, n]) => n === need); if (at >= 0 && (cur < 0 || at > cur)) return; }
-      if (it && it.turnedIn) { const at = QUESTS.findIndex(([, n]) => n === it.turnedIn); if (at >= 0 && !(cur > at || (cur === at && c.storyEnd === it.turnedIn))) return; }
+      if (it && it.turnedIn && !NEW_STEP_GATE.has(k)) { const at = QUESTS.findIndex(([, n]) => n === it.turnedIn); if (at >= 0 && !(cur > at || (cur === at && c.storyEnd === it.turnedIn))) return; }
       if (it && it.byStory) { const at = QUESTS.findIndex(([, n]) => n === it.story); if (at >= 0 && cur > at) return; }
       out.push({ k, it, row, rq, adv: !!(it && it.adv) });
     });

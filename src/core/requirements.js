@@ -50,19 +50,30 @@ const APP_GRAPH = (() => {
 export const GATE_CHANGES = {
   regionalTurnedIn: { what: "regional quests open when their story quest is turned in, not when it is reached (owner check 1, 2026-10-15: " +
     "Shugo-of-All-Trades and Spooky Specters are not offered while the quest before them is current; Empyrean Monolith check, 20:12 ET: all 6 of its " +
-    "regional quests appear only once it is turned in); those two and The Great Curse-Breaking Caper also gain the story gate they lacked" },
+    "regional quests appear only once it is turned in); those two and The Great Curse-Breaking Caper also gain the story gate they lacked", baseline: true },
   derived: { what: "derived completion: a step that can be ticked is also done by its other completesWith (byStory steps " +
     "once their story quest is turned in, \"Put … on E\" once its slot is equipped, the wrapper quests g22:0 / g32:dreams once " +
     "\"Daeva in a Dream\" / \"A Daeva Dreaming Anew\" is turned in: owner-approved proposals, live data since 2026-10-15)", baseline: true },
   storyStepDerived: { needs: ["derived"], what: "derived completion from a story step (owner, 2026-10-15): the Graverobber Den stronghold once Cemetery Cleanup's " +
-    "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in" },
+    "step 4 is ticked or the quest turned in; the Krao Cave and Fire Temple \"Expedition opens\" rows once their story step is ticked or the quest turned in", baseline: true },
   followUps: { what: "a regional quest picked up or turned in proves the regional quests before it were turned in (Q3)", baseline: true },
   turnInLevel: { what: "\"Turned in\" on the current story quest waits for its unlock level (Q10 follow-up)", baseline: true },
   clearTally: { needs: ["followUps"], baseline: true, what: "Progress (one-time clears): a regional quest done by derivation (a follow-up proves it " +
     "turned in), or the Graverobber Den stronghold done by Cemetery Cleanup, counts with its clear reward (Wisdom Stone + crystal; belt scrolls) like a ticked one" },
   /* not a gate: guide text only, a switch so --explain attributes the states that show it */
   stepNotes: { what: "story objectives show our one-line note after their text (E9, owner 2026-10-15): the first Krao Cave, Urugugu Canyon and " +
-    "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)" },
+    "Fire Temple Expedition runs (owner) and, \"probably\", Draupnir (inferred)", baseline: true },
+  /* E5: the `ready` proposals of design §7, live data since 2026-10-16; with the switch off a record has its gate from before (GATE_OFF) */
+  merchantGate: { records: ["rq:2202029"], what: "Traveling Merchant's Conundrum opens once \"Blood Monument\" is turned in (Metabot \"Required first\") " +
+    "instead of at its recommended Lv 33 (no prerequisite data before)" },
+  lestWeForgetGate: { records: ["rq:2202046"], what: "Lest We Forget opens once \"Zikel's Core\" is turned in (Metabot \"Required first\") " +
+    "instead of at its recommended Lv 45 (no prerequisite data before)" },
+  beltGate: { records: ["g12:belt"], what: "the Noble Belt step is offered once \"Urgent Pursuit\" is turned in (it gives the belt; Metabot, owner screen " +
+    "2026-10-15), not from Lv 13 alone" },
+  amuletGate: { records: ["g16:amulet"], what: "the Revelation Amulet step is offered once \"Buried Atrocities\" is turned in (it gives the amulet; " +
+    "Metabot, owner screen 2026-10-15), not from Lv 16 alone" },
+  daevanionGate: { records: ["board:nezekan", "board:vaizel", "board:triniel", "board:zikel", "board:azphel"], what: "the Daevanion gate (the whole board screen): every " +
+    "plan node is offered once \"Urgent Pursuit\" is turned in (unlock:daevanion, owner screen 2026-10-14) as well as at its board level" },
 };
 let CHANGES_ON = new Set(Object.keys(GATE_CHANGES)), EV_OPTS = null;
 /* Turn on exactly these changes (and what they need); returns the set now on. */
@@ -87,9 +98,26 @@ const APP_GRAPH_0_2 = (() => {
 /* ...and without storyStepDerived: the three rows E9 gave a story completion (Graverobber Den, the Krao Cave and Fire Temple Expedition rows) are tick-only again. */
 const STORY_STEP_ROWS = ["sh:graverobber-den", "g20:exp", "g35:exp"];
 const withoutStoryStep = g => { const nodes = { ...g.nodes }; for (const id of STORY_STEP_ROWS) nodes[id] = { ...nodes[id], done: ["tick"] }; return { story: g.story, nodes }; };
+/* ...and without an E5 switch: its records' gates as they were before E5 (the regional quests had no prerequisite data, so they open
+   at max(unlocksAt, rec) as "noPre" did; the two steps at their milestone level; the boards with no window gate). Same in
+   tests/support/gates-0.2.mjs and tests/golden/states.js. */
+const noStory = g => g.all ? { all: g.all.filter(x => !x.story).map(noStory) } : g;
+const GATE_OFF = {
+  rq: (n, id) => { const q = RQ_BY_ID[id], lv = { level: Math.max(q.unlocksAt, q.rec), basis: "rule" }, f = g => g.all ? { all: g.all.map(f) } : g.story ? lv : g;
+    return { ...n, req: f(n.req) }; },
+  step: n => ({ ...n, req: noStory(n.req) }),
+  board: n => ({ ...n, req: { all: [] } }),
+};
+const RQ_BY_ID = Object.fromEntries(RQ.map(q => ["rq:" + q.id, q]));
+const withoutE5 = (g, names) => { const nodes = { ...g.nodes };
+  for (const id of names.flatMap(n => GATE_CHANGES[n].records)) nodes[id] = GATE_OFF[nodes[id].kind](nodes[id], id);
+  return { story: g.story, nodes }; };
+const E5_SWITCHES = ["merchantGate", "lestWeForgetGate", "beltGate", "amuletGate", "daevanionGate"];
 const APP_GRAPHS = {};
-const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), k = (a ? "t" : "r") + (b ? "s" : "n");
-  return APP_GRAPHS[k] || (APP_GRAPHS[k] = (b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2))); };
+const appGraph = () => { const a = CHANGES_ON.has("regionalTurnedIn"), b = CHANGES_ON.has("storyStepDerived"), off = E5_SWITCHES.filter(n => !CHANGES_ON.has(n));
+  const k = (a ? "t" : "r") + (b ? "s" : "n") + off.join(",");
+  if (!APP_GRAPHS[k]) { const g = b ? (a ? APP_GRAPH : APP_GRAPH_0_2) : withoutStoryStep(a ? APP_GRAPH : APP_GRAPH_0_2); APP_GRAPHS[k] = off.length ? withoutE5(g, off) : g; }
+  return APP_GRAPHS[k]; };
 const evOpts = () => EV_OPTS || (EV_OPTS = { graph: appGraph(), derived: CHANGES_ON.has("derived"), followUps: CHANGES_ON.has("followUps"),
   apply: Object.keys(GATE_CHANGES).filter(n => CHANGES_ON.has(n) && GATE_CHANGES[n].apply).map(n => GATE_CHANGES[n].apply) });
 /* The evaluator for this character (at level lv, default its own), with the E4 changes that are on (all of them on the
@@ -150,6 +178,10 @@ export function objSubs(t) {
    objLow / objSubs / storyHereOf read QUEST_STEPS, so a note never adds sub-steps or moves a Kibelisk. */
 export const objTextOf = (quest, i) => { const t = QUEST_STEPS[quest][i], n = CHANGES_ON.has("stepNotes") && (QUEST_STEP_NOTES[quest] || {})[i];
   return n ? `${t.replace(/\.$/, "")}. ${n}` : t; };
+/* ...split for the checklists: [what to do (bold), the rest (small)]. The note always goes with the small part, also on an
+   objective with no " — " (Draupnir: the whole text is the bold part, the note alone the small one). */
+export const objPartsOf = (quest, i) => { const t = QUEST_STEPS[quest][i], n = CHANGES_ON.has("stepNotes") && (QUEST_STEP_NOTES[quest] || {})[i];
+  const [a, b] = t.split(" — "); return !n ? [a, b] : [b ? a : a.replace(/\.$/, ""), b ? `${b.replace(/\.$/, "")}. ${n}` : n]; };
 /* The objectives shown (and counted): all of them with "talk-only steps" on (state.showTalk), else the non-talk ones. */
 export const objIdxOf = (state, list) => list.map((t, i) => i).filter(i => state.showTalk || !objLow(list[i]));
 /* Where the story sends you next: the next open objective's Kibelisk, or the turn-in's. A turn-in also carries the
@@ -247,6 +279,14 @@ export const dvSpent = c => DV_NODES().filter(it => c.checks[it.k]).reduce((a, i
 export const dvNext = (c, lv = c.level) => { const ev = gatesOf(c, lv); return DV_NODES().find(it => { const r = ev.byKey(it.k); return r.done === false && r.open; }); };
 /* A board is open when any of its plan nodes is (board given), the Daevanion window when any plan node is (no board). */
 export const dvOpen = (c, board) => { const ev = gatesOf(c); return DV_NODES().some(it => (!board || it.board === board) && ev.byKey(it.k).open); };
+/* What a shut board waits for (design §10): { lv } while its level is above yours (as before E5), else { lv, story } with the
+   Daevanion gate's story quest (the root of its first node's blockers: "Urgent Pursuit", to turn in). null when it is open. */
+export const dvWaitOf = (c, board) => {
+  const ev = gatesOf(c), its = DV_NODES().filter(it => it.board === board);
+  if (!its.length || its.some(it => ev.byKey(it.k).open)) return null;
+  const lv = Math.min(...its.map(it => it.blv)), r = ev.byKey(its.find(it => it.blv === lv).k).root;
+  return lv <= c.level && r && r.kind === "story" ? { lv, story: r.name } : { lv };
+};
 /* Its logged cost, else the cheapest it can be (the node itself; its path only adds). */
 export const dvNeed = (c, it) => (c.dvCost || {})[it.k] ?? (DV_MIN[it.ty] || 1);
 /* Points left for ticking (without the correction): a node can be ticked only when its cost is logged and you have that

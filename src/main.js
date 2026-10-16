@@ -15,7 +15,7 @@ import { KEY, char, loadState } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, gatesOf, mainCountsOf, objIdxOf, objSubs, objTextOf,
+import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvOpen, dvSpent, dvWaitOf, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
   openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, skillBuy, skillOpen, skillPoints, slotLevelMet, slotNames, stLvOfC, stigmaEquipOpen,
   setGateChanges, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv } from "./core/requirements.js";
 import { rankNext } from "./core/nextup.js";
@@ -648,7 +648,7 @@ function nsObjHTML() {
   const vis = objIdx(list), open = list.map((t, i) => [t, i]).filter(([, i]) => vis.includes(i) && !done.includes(i));
   /* First three open objectives; the rest wait their turn (all of them are in the Journey card). */
   const cap = pipWin ? 2 : 3, more = open.length - cap; /* the pop-out window is short */
-  return open.length ? `<ul class="ns-obj">${open.slice(0, cap).map(([, i]) => { const [a, b] = objTextOf(char(state).quest, i).split(" — "); const sl = subListHTML(i, "data-nssub"); return `<li class="${sl ? "has-sub" : ""}"><label><input type="checkbox" data-nsobj="${i}"><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("")}${more > 0 ? `<li class="ns-obj-more">+${more} more after these</li>` : ""}</ul>` : "";
+  return open.length ? `<ul class="ns-obj">${open.slice(0, cap).map(([, i]) => { const [a, b] = objPartsOf(char(state).quest, i); const sl = subListHTML(i, "data-nssub"); return `<li class="${sl ? "has-sub" : ""}"><label><input type="checkbox" data-nsobj="${i}"><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("")}${more > 0 ? `<li class="ns-obj-more">+${more} more after these</li>` : ""}</ul>` : "";
 }
 nowEl.addEventListener("change", e => {
   const sq = e.target.dataset && e.target.dataset.nssub, st = (f, t) => nsWin().setTimeout(f, t);
@@ -1000,7 +1000,7 @@ function renderQuestSubs(noNow) {
     : needLv ? `<p class="qs-wait">Turn in at Lv ${needLv}: the game opens this quest at Lv ${needLv}</p>`
     : `<button type="button" class="qs-next" id="qsNext">${last ? "Quest done · mark turned in" : "Quest done · next quest ›"}</button>`;
   el.innerHTML = head + `<ol class="qs-list">` +
-    list.map((t, i) => { if (!vis.includes(i)) return ""; const [a, b] = objTextOf(char(state).quest, i).split(" — "); if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
+    list.map((t, i) => { if (!vis.includes(i)) return ""; const [a, b] = objPartsOf(char(state).quest, i); if (done.includes(i) && !showDone && n < N) return ""; const sl = subListHTML(i, "data-qsub"); return `<li class="${done.includes(i) ? "on" : ""}${sl ? " has-sub" : ""}"><label><input type="checkbox" data-qobj="${i}" ${done.includes(i) ? "checked" : ""}><span><b>${a}</b>${b && !sl ? `<small>${b}</small>` : ""}</span></label>${sl}</li>`; }).join("") + `</ol>` +
     nextBtn;
 }
 document.getElementById("questSubs").addEventListener("change", e => {
@@ -1225,10 +1225,10 @@ function renderDaevanion() {
           `<div class="dvcost dvcost-col"><span class="dvcost-k">cost <span class="dvi" tabindex="0" role="note" aria-label="Required amount of crystals to obtain selected Daevanion" data-tip="Required amount of crystals to obtain selected Daevanion">i</span></span><span class="cstep"><input class="dvc" type="number" min="0" max="200" inputmode="numeric" data-dvc="${it.k}" value="${cost ?? ""}" placeholder="?" aria-label="Cost in crystals"><span class="cstep-b"><button type="button" data-cst="1" tabindex="-1" aria-label="One more">▴</button><button type="button" data-cst="-1" tabindex="-1" aria-label="One fewer">▾</button></span></span></div></div></div>` +
           `<p class="dvstat"></p><div class="buyrow"><button type="button" class="dvbuy" data-buy="${it.k}"></button><div class="buystat" hidden></div></div></div>`; }).join("")
     : (() => { const nl = DV_NODES().find(it => !char(state).checks[it.k]); if (!nl) return null;
-        const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv);
+        const opensAt = Math.min(...DV_NODES().filter(n => n.board === nl.board).map(n => n.blv)), at = Math.max(opensAt, nl.blv), w = dvWaitOf(char(state), nl.board);
         /* Stop point: show the next node you'll buy (on the next board) and a green "all done" status in the button slot. */
-        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${!dvOpen(char(state), nl.board) ? ` board · opens Lv ${at}` : ` · Lv ${at}`}</small></div></div>` +
-          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · <span class="nw">next: ${nl.board} at Lv ${at}</span></div></div></div>`; })()
+        return `<div class="dvlocked"><div class="dvhead">${dvIcon(nl)}<div class="dvtext">${dvName({ ...nl, t: dvShort(nl.t.split(" · ")[0]) })}<small title="${dvMeta(nl)}">${nl.board}${w ? ` board · opens ${w.story ? `after "${w.story}"` : `Lv ${at}`}` : ` · Lv ${at}`}</small></div></div>` +
+          `<div class="buyrow"><div class="buystat done">✓ All open nodes acquired · <span class="nw">next: ${nl.board} ${w && w.story ? `after "${w.story}"` : `at Lv ${at}`}</span></div></div></div>`; })()
     || `<div class="alldone"><div class="dvhead"><span class="dvico done-ico" aria-hidden="true">✓</span><div class="dvtext"><span class="spname">All planned nodes acquired</span><small>Spare crystals: Critical Hit and Attack nodes</small></div></div></div>`;
   dvNxUpdate(); renderUndo(); requestAnimationFrame(() => typeof fitSkills === "function" && fitSkills());
   /* "Then": the next few nodes after this one (same order), like Skills' Coming up. */
@@ -1244,18 +1244,18 @@ function renderDaevanion() {
       `<span class="dvbh-bar"><span style="width:${bd / bl.length * 100}%"></span></span></div>`; }
   let prevB = curB;
   document.getElementById("dvThen").innerHTML = after.length ? `<ul class="soonlist">` + after.map(it => {
-    const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv)), shutB = !dvOpen(char(state), it.board);
+    const opensAt = Math.min(...DV_NODES().filter(n => n.board === it.board).map(n => n.blv)), wB = dvWaitOf(char(state), it.board), shutB = !!wB;
     /* Not open yet: a bar from the last milestone below your level up to the board's level. */
     const fromLv = (GATES.filter(g => g.lv < char(state).level).pop() || { lv: 1 }).lv, pctB = Math.min(100, Math.max(0, (char(state).level - fromLv) / Math.max(1, opensAt - fromLv) * 100));
-    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${shutB ? `opens Lv ${opensAt} · ${opensAt - char(state).level} to go` : "open"}</span>${shutB ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
+    const div = it.board !== prevB ? `<li class="then-board"><span>${it.board}</span><span>${!shutB ? "open" : wB.story ? `opens after "${wB.story}"` : `opens Lv ${opensAt} · ${opensAt - char(state).level} to go`}</span>${shutB && !wB.story ? `<span class="tb-bar"><span style="width:${pctB}%"></span></span>` : ""}</li>` : "";
     prevB = it.board;
-    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board opens at Lv ${opensAt}">Lv ${opensAt}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
+    return div + `<li title="${dvMeta(it)}"><span class="sname">${SP_ICONS[dvSkill(it)] ? spMini(dvSkill(it)) : `<img class="dvmini" src="${dvIconSrc(it)}" alt="" loading="lazy" onerror="this.remove()">`}<span class="dvname ${DV_TYPE[it.ty][0]}">${dvShort(it.t)}</span></span><span class="slv">${!openOf(char(state), it.k) && it.blv !== opensAt ? `Lv ${it.blv}` : ""}</span><span class="sst"></span>${shutB ? `<span class="nb-tag" title="${it.board} board opens ${wB.story ? `after &quot;${wB.story}&quot; is turned in` : `at Lv ${opensAt}`}">${wB.story ? "Story" : `Lv ${opensAt}`}</span>` : ""}</li>`; }).join("") + `</ul>` : "";
   /* Full plan, grouped by board; boards not yet open are dimmed with their level. */
   const byBoard = {};
   DV_NODES().forEach(it => { (byBoard[it.board] = byBoard[it.board] || []).push(it); });
   document.getElementById("dvAllList").innerHTML = Object.entries(byBoard).map(([b, list]) => {
-    const opens = Math.min(...list.map(it => it.blv)), shut = !dvOpen(char(state), b), done = list.filter(it => char(state).checks[it.k]).length;
-    return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? `opens at Lv ${opens}` : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
+    const opens = Math.min(...list.map(it => it.blv)), wb = dvWaitOf(char(state), b), shut = !!wb, done = list.filter(it => char(state).checks[it.k]).length;
+    return `<ul class="items dv-board${shut ? " shut" : ""}"><li class="sub-h"><span class="sub-txt">${b} · ${shut ? (wb.story ? `opens after "${wb.story}"` : `opens at Lv ${opens}`) : `${done} of ${list.length} acquired`}</span></li>${list.map(dvRowHTML).join("")}</ul>`;
   }).join("");
   const inp = document.getElementById("dvIn");
   if (document.activeElement !== inp) inp.value = total || "";

@@ -343,12 +343,13 @@ export function generate(opts = {}) {
     if (p.requiresBasis === 'verified-none') check(`${id}: proposed verified-none has no prerequisite atoms`, !atomsOf(p.requires).some(a => a.story || a.done));
     report.proposed.push({ id, status: p.status, ...(p.check ? { check: p.check } : {}), basis: p.basis, change: p.change });
   }
-  /* Daevanion: one window gate, defined once on unlock:daevanion ("Urgent Pursuit" turned in, owner screen); every board's
-     proposal inherits it (plan nodes inherit their board's), so no plan node repeats the story atom */
+  /* Daevanion: one window gate, defined once on unlock:daevanion ("Urgent Pursuit" turned in, owner screen); every board
+     inherits it (live since 0.3 E5; plan nodes inherit their board's), so no plan node repeats the story atom */
   { const ud = R('unlocks').find(u => u.id === 'unlock:daevanion');
     check('unlock:daevanion opens with "Urgent Pursuit" turned in', !!ud && atomsOf(ud.at).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
-    for (const b of boards) check(`${b.id}: proposal inherits the Daevanion window gate (done unlock:daevanion)`, !!b.proposed && atomsOf(b.proposed.requires).some(a => a.done === 'unlock:daevanion'));
-    for (const bl of builds) for (const e of bl.boardPlan) check(`${bl.id} boardPlan ${e.node || e.key}: no own copy of the window gate`, !(e.proposed && atomsOf(e.proposed.requires).some(a => a.story === 'sq:2102065'))); }
+    for (const b of boards) check(`${b.id}: inherits the Daevanion window gate (done unlock:daevanion)`, !!b.requires && atomsOf(b.requires).some(a => a.done === 'unlock:daevanion'));
+    for (const bl of builds) for (const e of bl.boardPlan) check(`${bl.id} boardPlan ${e.node || e.key}: no own copy of the window gate`,
+      ![e.requires, e.proposed && e.proposed.requires].some(g => g && atomsOf(g).some(a => a.story === 'sq:2102065'))); }
   for (const { r } of all) {
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
