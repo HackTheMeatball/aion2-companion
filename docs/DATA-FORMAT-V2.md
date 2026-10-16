@@ -827,6 +827,7 @@ nothing reads any more) lists the boards whose plan nodes all open with the boar
 terms): every node of the five Assassin boards (537, `https://metabot.gg/en/aion-2/daevanion/assassin`); the specialty
 choices of Savage Roar, Ambush and Shadowstrike (their skill pages). Story game ids and the Ascension records come from
 `docs/research/2026-10-prereq-gates.md` §4–§5. The legacy plan keys map to nodes by the `g12:0` path costs on that grid
-(`dv:ew` r3c7, `dv:ew2` r11c13; `dv:as2` r11c3 is the Assault Stance whose path gives Rear Smite); `dv:z:db` /
-`dv:z:db2` are assigned for an owner check.
+(`dv:ew` r3c7, `dv:ew2` r11c13; `dv:as2` r11c3 is the Assault Stance whose path gives Rear Smite); `dv:z:db` r6c7 /
+`dv:z:db2` r12c11, confirmed by the owner on 2026-10-16 (Zikel's Defense Break nodes at row 4 column 5 and row 10
+column 9 of the 11×11 board; ids use Metabot's 15×15 frame, so an 11×11 board's row / column + 2 gives r / c).
 

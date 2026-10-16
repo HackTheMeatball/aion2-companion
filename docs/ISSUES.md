@@ -39,6 +39,7 @@ on purpose: the guide shows nothing rather than an unverified value.
   | Ref | Finding | Cited in |
   |---|---|---|
   | `owner:2026-10-16-hugo-01` | Turned in Hugo Mercenaries: Past and Present (screenshot); Deep Shadow was not offered afterwards, so Past and Present alone does not open it | `rq:2202011` (prereq-gates §11 check 9) |
+  | `owner:2026-10-16-zikel-01` | Zikel board is 11×11; its two Defense Break +1 nodes are at row 10 column 9 and row 4 column 5 (1-based), i.e. `r12c11` and `r6c7` in Metabot's 15×15 frame | `dv:z:db`, `dv:z:db2` |
 - **Unverified, left out**: Kibelisk and Command mission unlock levels.
 - **Dungeon XP**: removed from the UI; known for only a few dungeons.
 - **Inferred (labelled in the app)**: core skill-point order, right-click row order and E stack, Vaizel / Triniel
