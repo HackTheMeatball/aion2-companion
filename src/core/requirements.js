@@ -81,8 +81,9 @@ export const GATE_CHANGES = {
   ascensionBar: { baseline: true, records: ["asc:perceives", "asc:hears-the-voice", "asc:dreams", "asc:witnesses"], what: "the Journey card shows the Ascension bar under " +
     "the story timeline (design §11, both modes): 4 in-cap chapters, each filled once its wrapper quest is turned in or its guide step ticked, and a one-line label " +
     "naming the next chapter and, where sourced, the gauge (II: owner tooltip 2026-10-15; III: claim C36)" },
-  /* E6: not a gate, the words for one (design §4, src/core/blockers.js); a switch so --explain attributes the states that show them */
-  blockerText: { what: "blocker-chain text (E6, design §4): Next up's Later cards, the milestone chips and \"Reach / Turn in\" line, the regional rows " +
+  /* E6: not a gate, the words for one (design §4, src/core/blockers.js); a switch so --explain attributes the states that show them.
+     baseline since E7: recorded in the snapshots by #95 */
+  blockerText: { baseline: true, what: "blocker-chain text (E6, design §4): Next up's Later cards, the milestone chips and \"Reach / Turn in\" line, the regional rows " +
     "and the Daevanion card say what opens a thing from the evaluator (\"needs Lv N\", \"unlocks after \\\"X\\\" · N quests ahead\", \"after \\\"Y\\\" " +
     "is turned in\"); the milestone line and its chips wait for a turn-in where the rows under them do (Basic: on milestone rows only)" },
   /* E7 (design §9, bug F3): off = slot 1 at the level of its skill's line 8 (learn + 18) and no slots 2 / 3 */
