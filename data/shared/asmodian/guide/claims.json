@@ -970,7 +970,7 @@
       ],
       "action": "rewrite",
       "newText": "Opens once your Ascension Gauge is at 100% and the story reaches \"A Daeva Dreaming Anew\" (Lv 32).",
-      "note": "Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn): the wrapper quest A Daeva Dreaming Anew shows The One Who Dreams is open by then, so the gate is never early. Whether it opens earlier (th.gl named Last of the Destruction Archons as its prerequisite) is owner check 6 (prereq-gates §11). Gauge at 32: allthings.how + Skycoach. In-game name is 'Dream Crossroad' (Metabot).",
+      "note": "Re-sourced to Metabot on 2026-10-14 (aion2.th.gl withdrawn): the wrapper quest A Daeva Dreaming Anew shows The One Who Dreams is open by then, so the gate is never early. th.gl named Last of the Destruction Archons as its prerequisite; owner decision 2026-10-16: no separate in-game check, the gate stands on its sources (prereq-gates §11 check 6). Gauge at 32: allthings.how + Skycoach. In-game name is 'Dream Crossroad' (Metabot).",
       "appliesTo": [
         "g32:dreams",
         "asc:dreams"
@@ -1040,6 +1040,25 @@
       "newText": "",
       "note": "Owner-verified 2026-10-15: the first wings (Lesser Daeva Wings, Bound) come from turning in 'The Being Beneath the Lake' and are auto-equipped; 'The One Who Perceives' is the flight tutorial and rewards the item 'Ascension: Daeva' (matches Metabot). The Skycoach line is wrong. Drop the Perceives wings phrase; the guide text already credits The Being Beneath the Lake (g6:0). Also fixes the in-game names 'Dream Crossroad' and 'The One Who Hears the Voice'.",
       "verifiedAt": "2026-10-15"
+    },
+    {
+      "id": "C39",
+      "claim": "\"The One Who Hears the Voice\" (Lv 22) is open by the time the story reaches \"Daeva in a Dream\".",
+      "verdict": "single-source",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/daeva-in-a-dream-asmodian",
+          "quote": "complete The One Who Hears the Voice",
+          "note": "The wrapper quest's objective (Metabot steps): the Ascension quest must be open by then, so the gate is never early (prereq-gates §5)."
+        }
+      ],
+      "action": "keep",
+      "note": "One source (Metabot step text, a game-database field) backs the gate. Owner decision 2026-10-16: no separate in-game check; the gate stands on its source (prereq-gates §11 check 6). The owner's Ascension Gauge tooltip (owner:2026-10-15-alt-26) lists Verdant Melody Complete as a gauge condition, which doesn't move the gate.",
+      "appliesTo": [
+        "g22:0",
+        "asc:hears-the-voice"
+      ],
+      "verifiedAt": "2026-10-16"
     }
   ]
 }
