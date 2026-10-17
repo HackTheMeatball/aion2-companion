@@ -55,12 +55,12 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
       if (!el) return 'AREA ROW NOT FOUND after Show: ' + name + ' ' + k;
       if (!(await el.isVisible())) return 'AREA ROW HIDDEN after Show: ' + name;
       await el.click(); await wait(300); el = await p.$(`#areaList input[data-k="${k}"]`); if (el) { await el.click(); await wait(1200); }
-      const ok = await p.evaluate(k => !!state.checks[k], k); return `area ${name} cleared=${ok}`; }
+      const ok = await p.evaluate(k => !!char(state).checks[k], k); return `area ${name} cleared=${ok}`; }
     return null;
   };
-  let lv = await p.evaluate(() => state.level);
+  let lv = await p.evaluate(() => char(state).level);
   for (; lv <= TO; ) {
-    L(`\n===== Lv ${lv} · story: ${await p.evaluate(() => state.quest)}`);
+    L(`\n===== Lv ${lv} · story: ${await p.evaluate(() => char(state).quest)}`);
     const d = await dupCheck(lv); L('  cards: ' + d.cards.map(c => `[${c.h} | ${c.p} | ${c.meta}]`).join(' '));
     L('  SP: ' + d.sp.slice(0, 220)); L('  ST: ' + d.st.slice(0, 260)); L('  DV: ' + d.dv.slice(0, 220)); L('  prog: ' + d.prog + ' · ahead: ' + d.ahead.slice(0, 200));
     await shots(lv);
@@ -83,7 +83,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
       const k = await p.evaluate(() => { const b = document.querySelector('#gates li.qrow [data-ingame]'); return b && b.dataset.ingame; });
       if (k) { inGameDone = 1; L('  In my game pill: ' + k); await p.evaluate(k => { const b = document.querySelector(`#gates li.qrow [data-ingame="${CSS.escape(k)}"]`); const d = b.closest('details'); d.open = true; d.hidden = false; b.scrollIntoView({ block: 'center' }); }, k);
         await wait(200); try { await p.click(`#gates li.qrow [data-ingame="${k}"]`, { timeout: 3000 }); } catch (e) { L('  !! In my game click failed: ' + e.message.split('\n')[0]); }
-        await wait(400); L('  after In my game started=' + await p.evaluate(k => (state.started || {})[k], k) + ' in NextUp=' + await p.evaluate(k => !!document.querySelector(`#nsqWrap [data-rqk="${CSS.escape(k)}"]`), k)); } }
+        await wait(400); L('  after In my game started=' + await p.evaluate(k => (char(state).started || {})[k], k) + ' in NextUp=' + await p.evaluate(k => !!document.querySelector(`#nsqWrap [data-rqk="${CSS.escape(k)}"]`), k)); } }
     let n = 0, last = '', same = 0;
     while (n++ < 140) {
       const before = await S(), tb = await top();
@@ -97,7 +97,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
     const d2 = await dupCheck(lv); L('  end-of-level cards: ' + d2.cards.map(c => `[${c.h} | ${c.p} | ${c.meta}]`).join(' '));
     if (lv >= TO || lv >= 45) break;
     await p.evaluate(() => window.scrollTo(0, 0)); await p.click('#lvlUpBig'); await wait(900);
-    const nl = await p.evaluate(() => state.level); if (state28 && !snzChecked) { snzChecked = 1; L('  after Level up snooze for ' + state28 + ' still set: ' + await p.evaluate(k => k in (state.rqSnooze || {}), state28)); } if (nl !== lv + 1) { L('  !! Level up did not advance: ' + nl); break; } lv = nl;
+    const nl = await p.evaluate(() => char(state).level); if (state28 && !snzChecked) { snzChecked = 1; L('  after Level up snooze for ' + state28 + ' still set: ' + await p.evaluate(k => k in (char(state).rqSnooze || {}), state28)); } if (nl !== lv + 1) { L('  !! Level up did not advance: ' + nl); break; } lv = nl;
   }
   await p.screenshot({ path: path.join(SH, 'j-end-full.png'), fullPage: true });
 
@@ -108,12 +108,11 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
         then Forgotten Commander's objectives ticked in the Journey card.
      (C. an imported save can hold any state; Import replaces the save as it is.) */
   {
-    const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
     const edge = async (name, save, steps) => {
       const c2 = await b.newContext({ viewport: { width: 1500, height: 1000 } }); if (!REAL) await c2.clock.install();
       const w2 = ms => REAL ? new Promise(r => setTimeout(r, ms)) : c2.clock.runFor(ms);
       const q = await c2.newPage(); q.on('pageerror', e => errs.push(e.message));
-      await q.goto(CFG.CUR); await writeSave(q, { ...FLAGS, open: {}, mode: 'advanced', showObj: true, showTalk: true, qsShowDone: true, ...save }, { fresh: true });
+      await q.goto(CFG.CUR); await writeSave(q, { open: {}, mode: 'advanced', showObj: true, showTalk: true, qsShowDone: true, ...save }, { fresh: true });
       await q.reload(); await w2(500);
       const tickAll = async () => { for (let n = 0; n < 40; n++) { const i = await q.$('#questSubs input[data-qobj]:not(:checked)'); if (!i) break; await i.click(); await w2(1300); } };
       await steps(q, w2, tickAll);

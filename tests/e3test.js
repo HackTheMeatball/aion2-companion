@@ -12,16 +12,16 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   ok('P0-1 Herb Pouch Heist / Her Last Favor closed at 27, Her Last Favor open at 30', !r.herb && !r.favor && r.favor30 && !r.rows.includes('Herb Pouch Heist'), r);
   await set(29, { rqSnooze: { 'rq:2202018': 29, 'rq:2202062': 29 } });
   await p.click('#lvlUpBig'); await p.waitForTimeout(400);
-  r = await p.evaluate(() => state.rqSnooze || {}); ok('P0-1 Level up 29→30 keeps nothing for quests whose rec is reached, clears others', !r['rq:2202062'] && !r['rq:2202018'], r);
+  r = await p.evaluate(() => char(state).rqSnooze || {}); ok('P0-1 Level up 29→30 keeps nothing for quests whose rec is reached, clears others', !r['rq:2202062'] && !r['rq:2202018'], r);
   await set(27, { rqSnooze: { 'rq:2202066': 27, 'rq:2202062': 27 } });
   await p.click('#lvlUpBig'); await p.waitForTimeout(400);
-  r = await p.evaluate(() => state.rqSnooze || {}); ok('P0-1 Level up 27→28 keeps Herb Pouch Heist snooze (rec 44), clears Fight Poison', !!r['rq:2202066'] && !r['rq:2202062'], r);
+  r = await p.evaluate(() => char(state).rqSnooze || {}); ok('P0-1 Level up 27→28 keeps Herb Pouch Heist snooze (rec 44), clears Fight Poison', !!r['rq:2202066'] && !r['rq:2202062'], r);
   /* P0-2: locked row: In my game, req line hidden once picked up */
   await set(27, { quest: 'Preparations for Restoration' });
   r = await p.evaluate(() => { const i = document.querySelector('#gates input[data-k="rq:2202062"]'), li = i.closest('li'); return { locked: li.classList.contains('locked'), ig: !li.querySelector('.q-inl').hidden, req: !li.querySelector('.rq-req').hidden }; });
   ok('P0-2 locked row shows "In my game" and its requirement', r.locked && r.ig && r.req, r);
   await p.evaluate(() => { document.querySelector('#gates input[data-k="rq:2202062"]').closest('details').open = true; document.querySelector('#gates [data-ingame="rq:2202062"]').click(); }); await p.waitForTimeout(300);
-  r = await p.evaluate(() => { const li = document.querySelector('#gates input[data-k="rq:2202062"]').closest('li'); return { started: (state.started || {})['rq:2202062'], locked: li.classList.contains('locked'), ig: !li.querySelector('.q-inl').hidden, req: !li.querySelector('.rq-req').hidden, inNext: [...document.querySelectorAll('#nowStar .ql')].some(x => /Fight Poison/.test(x.innerText)) }; });
+  r = await p.evaluate(() => { const li = document.querySelector('#gates input[data-k="rq:2202062"]').closest('li'); return { started: (char(state).started || {})['rq:2202062'], locked: li.classList.contains('locked'), ig: !li.querySelector('.q-inl').hidden, req: !li.querySelector('.rq-req').hidden, inNext: [...document.querySelectorAll('#nowStar .ql')].some(x => /Fight Poison/.test(x.innerText)) }; });
   ok('P0-2 "In my game" = picked up; requirement line and button hide; shows in Next up', r.started === 1 && !r.locked && !r.ig && !r.req && r.inNext, r);
   /* P1-6: 0 shards → Needs 1 shard, disabled; Next up card without button */
   await set(27, { stShards: 0, stLv: { "Triniel's Dagger": 5 } });
@@ -31,13 +31,13 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   ok('P1-6 Next up: Equip card waits (tag, no button), after the story', !!eq && /Needs 1 shard/.test(eq) && cs.indexOf(eq) > cs.findIndex(c => /^Story:/.test(c)), cs);
   await set(27, { stShards: 2, stLv: { "Triniel's Dagger": 5 } });
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(300);
-  r = await p.evaluate(() => ({ sh: state.stShards, undo: !!document.querySelector('#rwToast .tu') })); ok('P1-6 with shards: equip −1 with Undo', r.sh === 1 && r.undo, r);
-  await p.click('#rwToast .tu'); await p.waitForTimeout(300); r = await p.evaluate(() => state.stShards); ok('P1-6 Undo gives the shard back', r === 2, r);
+  r = await p.evaluate(() => ({ sh: char(state).stShards, undo: !!document.querySelector('#rwToast .tu') })); ok('P1-6 with shards: equip −1 with Undo', r.sh === 1 && r.undo, r);
+  await p.click('#rwToast .tu'); await p.waitForTimeout(300); r = await p.evaluate(() => char(state).stShards); ok('P1-6 Undo gives the shard back', r === 2, r);
   /* P2-9: Other… */
   await set(27);
   await p.selectOption('#stCard [data-stpick]', '__other'); await p.waitForTimeout(200);
   await p.fill('#stCard [data-stother]', 'Shadow Fall'); await p.press('#stCard [data-stother]', 'Enter'); await p.waitForTimeout(300);
-  r = await p.evaluate(() => ({ pick: state.stPick, name: document.querySelector('#stCard .spname').innerText, ico: document.querySelector('#stCard .dvico').innerText, eRow: [...document.querySelectorAll('.erow')].map(x => x.textContent).join('|') }));
+  r = await p.evaluate(() => ({ pick: char(state).stPick, name: document.querySelector('#stCard .spname').innerText, ico: document.querySelector('#stCard .dvico').innerText, eRow: [...document.querySelectorAll('.erow')].map(x => x.textContent).join('|') }));
   ok('P2-9 "Other…" records an off-plan stigma; initials icon; no "row -1"', r.pick[2] === 'Shadow Fall' && /Shadow Fall/.test(r.name) && r.ico === 'SF' && !/-1/.test(r.eRow), r);
   /* P1-1/P1-3/P1-4 */
   await set(30, {}, 'messy'); cs = await cards();
@@ -46,7 +46,7 @@ let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n 
   await set(37, { quest: 'Mirror of Greed' }); cs = await cards();
   ok('P1-3 no "Mirror of Greed" milestone card next to the story card', cs.filter(c => /Mirror of Greed/.test(c)).length === 1, cs);
   await p.evaluate(() => document.querySelector('#nowStar [data-now="story"]').click()); await p.waitForTimeout(900);
-  r = await p.evaluate(() => ({ q: state.quest, g372: !!state.checks['g37:2'] })); ok('P1-3 Turned in on Mirror of Greed ticks its milestone step', r.g372 && r.q !== 'Mirror of Greed', r);
+  r = await p.evaluate(() => ({ q: char(state).quest, g372: !!char(state).checks['g37:2'] })); ok('P1-3 Turned in on Mirror of Greed ticks its milestone step', r.g372 && r.q !== 'Mirror of Greed', r);
   await set(45, { pendSt: 0, pendCr: 0, stones: 0 }); cs = await cards();
   const si = cs.findIndex(c => /^Story:|Altgard story/.test(c)), ai = cs.findIndex(c => /Ascension Trial|Abyss Points/.test(c));
   ok('P1-4 Lv 45 advice ranked after the story (or cut)', si >= 0 && (ai < 0 || ai > si), cs);

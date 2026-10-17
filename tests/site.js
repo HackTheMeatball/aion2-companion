@@ -9,7 +9,7 @@ const FONT_FILES = ['figtree-latin', 'figtree-latin-ext', 'jetbrains-mono-latin'
 /* the families whose faces actually loaded, after waiting for the fonts the page uses */
 const loadedFamilies = p => p.evaluate(async () => { await document.fonts.ready; await new Promise(r => setTimeout(r, 300)); await document.fonts.ready;
   return [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '')))].sort(); });
-const { SAVE_KEY: KEY, writeSave, readSave, readRaw, storedText } = require('./support/save');
+const { SAVE_KEY: KEY, TEST_SLOT, writeSave, readSave, readRaw, toStored, fromStored } = require('./support/save');
 const blobs = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'scripts', 'artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(fs.readFileSync(path.join(CFG.ROOT, 'package.json'), 'utf8')).version;
 const REPO = 'https://github.com/hackthemeatball/daeva-companion';
@@ -27,6 +27,8 @@ const checkReport = (label, m, want) => {
   ok(`${label}: report link carries only version, level, story quest, mode, build and browser`,
     JSON.stringify(keys) === JSON.stringify(REPORT_FIELDS) && Object.entries({ ...want, browser: m.ua }).every(([k, v]) => got[k] === v), { keys, got, want });
   ok(`${label}: report link has nothing else from the save`, !/g22|checks|seedLv12|migV5|stTriniel|dvReset/.test(decodeURIComponent(m.rHref)), m.rHref);
+  /* save v5 (0.4 P3c): never the slot id, the character label (<name>-<class>-lvl<level>) or the class */
+  ok(`${label}: report link has no slot id, label or class`, !/[0-9a-f]{8}-[0-9a-f]{4}-|lvl\d|assassin/i.test(decodeURIComponent(m.rHref).replace(m.ua, '')) && !m.rHref.includes(TEST_SLOT), m.rHref);
 };
 
 (async () => {
@@ -74,19 +76,19 @@ const checkReport = (label, m, want) => {
     ok('footer: the Sources link opens the Sources card', await p.evaluate(() => document.getElementById('srcCard').open));
     ok('all icons load (no broken images)', await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).map(i => i.getAttribute('src'))).then(x => !x.length), await p.evaluate(() => [...document.images].filter(i => i.complete && i.naturalWidth === 0).map(i => i.getAttribute('src'))));
     /* export without window.claude: visible button, plain Blob download of the saved state */
-    await writeSave(p, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true });
+    await writeSave(p, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration' });
     await p.reload(); await p.waitForTimeout(500);
     const fm = await footerMeta(p);
     ok('footer: version after the Privacy link equals package.json, links to the CHANGELOG', fm.vText === 'v' + VERSION && fm.vPrev === 'Privacy' && fm.vHref === REPO + '/blob/main/CHANGELOG.md', { fm, VERSION });
     checkReport('footer', fm, { template: 'bug.yml', version: VERSION, level: '27', quest: 'Preparations for Restoration', mode: 'Advanced', build: 'site' });
     await p.click('.modeseg [data-mode=basic]'); await p.click('#lvlUp'); await p.waitForTimeout(100);
-    const fm2 = await footerMeta(p), lv2 = await p.evaluate(() => String(state.level));
+    const fm2 = await footerMeta(p), lv2 = await p.evaluate(() => String(char(state).level));
     checkReport('footer after a change', fm2, { template: 'bug.yml', version: VERSION, level: lv2, quest: 'Preparations for Restoration', mode: 'Basic', build: 'site' });
     await p.click('.modeseg [data-mode=advanced]'); await p.click('#lvlDown'); await p.waitForTimeout(100);
     ok('export: button visible outside claude.ai', await p.evaluate(() => !document.getElementById('expBtn').hidden));
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
     const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
-    ok('export: Blob download equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && exported.level === 27, dl.suggestedFilename());
+    ok('export: Blob download equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && fromStored(exported).level === 27 && /^companion-save-\d{4}-\d\d-\d\d\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename());
     /* service worker */
     const sw = await p.evaluate(async () => { const r = await Promise.race([navigator.serviceWorker.ready, new Promise(res => setTimeout(() => res(null), 8000))]);
       return { ok: !!r, scope: r && r.scope, keys: await caches.keys(), build: await fetch('build.json').then(x => x.json()).then(x => x.build).catch(() => null) }; });
@@ -96,7 +98,7 @@ const checkReport = (label, m, want) => {
     ok('page is controlled by the service worker after a reload', await p.evaluate(() => !!navigator.serviceWorker.controller));
     await ctx.setOffline(true);
     await p.reload(); await p.waitForTimeout(700);
-    const off = await p.evaluate(() => ({ cards: document.querySelectorAll('#nowStar .ns-card').length, lv: state.level, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
+    const off = await p.evaluate(() => ({ cards: document.querySelectorAll('#nowStar .ns-card').length, lv: char(state).level, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
     ok('offline: the app shell, icons and saved progress load from the cache', off.cards > 0 && off.lv === 27 && off.broken === 0, off);
     await ctx.setOffline(false);
     ok('no page errors, failed requests or 4xx/5xx (the blocked font files aside)', !errs.length && !bad.length, { errs, bad });
@@ -156,7 +158,7 @@ const checkReport = (label, m, want) => {
     const p = await ctx.newPage(), calls = () => p.evaluate(() => +(window.name || 0));
     await p.goto(CFG.CUR); await p.waitForTimeout(400);
     const fresh = await calls();
-    await writeSave(p, { checks: {}, level: 12, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+    await writeSave(p, { checks: {}, level: 12, open: {}, quest: '' });
     await p.reload(); await p.waitForTimeout(400); const first = await calls();
     await p.reload(); await p.waitForTimeout(400); const again = await calls();
     const lsKeys = await p.evaluate(() => Object.keys(localStorage).sort());
@@ -176,7 +178,7 @@ const checkReport = (label, m, want) => {
       Storage.prototype.setItem = function (key, v) { if (key === k && sessionStorage.getItem('__test:failSave') === '1') throw new DOMException('The quota has been exceeded.', 'QuotaExceededError'); return set.call(this, key, v); }; }, KEY);
     const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(CFG.CUR);
-    await writeSave(p, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+    await writeSave(p, { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration' });
     await p.reload(); await p.waitForTimeout(400);
     const vis = () => p.evaluate(() => { const w = document.getElementById('saveWarn'), r = w.getBoundingClientRect();
       return { shown: !w.hidden && r.height > 0, text: w.innerText.trim(), exp: !document.getElementById('saveWarnExp').hidden, role: w.getAttribute('role') }; });
@@ -189,11 +191,11 @@ const checkReport = (label, m, want) => {
     ok('save warning: shown when localStorage.setItem throws, with the Export action', failed.shown && failed.exp && failed.role === 'alert' && /^Your progress couldn.t be saved in this browser\. Export a backup\./.test(failed.text) && stored === 28, { failed, stored });
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveWarnExp')]);
     const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-    ok('save warning: its Export button downloads the current (unsaved) progress', exported.level === 29 && JSON.stringify(exported) === JSON.stringify(await p.evaluate(() => state)), exported.level);
+    ok('save warning: its Export button downloads the current (unsaved) progress', fromStored(exported).level === 29 && JSON.stringify(exported) === JSON.stringify(await p.evaluate(() => state)), fromStored(exported).level);
     await p.evaluate(() => sessionStorage.setItem('__test:failSave', '0'));
     await p.click('#lvlDown'); await p.waitForTimeout(100);
-    /* the raw stored text vs the text the build stores for the in-memory state */
-    const back = await vis(), saved = (await readRaw(p)) === storedText(JSON.parse(await p.evaluate(() => JSON.stringify(state))));
+    /* the raw stored text vs the in-memory state (the page stores JSON.stringify(state)) */
+    const back = await vis(), saved = (await readRaw(p)) === await p.evaluate(() => JSON.stringify(state));
     ok('save warning: hidden after the next successful save; saved data is exactly the state, under the same key', !back.shown && saved, { back, saved });
     ok('save warning: no page errors', !errs.length, errs);
     await ctx.close();
@@ -204,7 +206,7 @@ const checkReport = (label, m, want) => {
      no clock change in the days used) */
   {
     const T = Date.parse('2026-09-30T16:00:00Z'), DAY = 864e5, TZ = 'America/New_York';
-    const SAVED = { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
+    const SAVED = { checks: { 'g22:0': true }, level: 27, open: {}, quest: 'Preparations for Restoration' };
     const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
     const page = async (opts = {}, init) => {
       const ctx = await b.newContext({ viewport: { width: opts.w || 1500, height: 1000 }, acceptDownloads: true, timezoneId: TZ, ...(opts.ua ? { userAgent: opts.ua } : {}) });
@@ -220,7 +222,7 @@ const checkReport = (label, m, want) => {
       return { line: l && l.textContent, stale: !!l && l.classList.contains('stale'), nudge: vis('nudge'), nudgeTxt: (document.getElementById('nudgeTxt') || {}).textContent,
         hint: vis('a2hs'), keys: Object.keys(localStorage).sort() }; });
       const s = await readSave(p), { keys, ...rest } = u;
-      return { ...rest, backup: s && s.backup, backup1: s && s.backup1, keys }; };
+      return { ...rest, backup: s && s.backup, keys }; };
 
     /* line + export */
     {
@@ -234,7 +236,7 @@ const checkReport = (label, m, want) => {
       ok('backup line: the export added no localStorage key; the save is still under ' + KEY, JSON.stringify(c.keys) === JSON.stringify(a.keys) && c.keys.includes(KEY), { before: a.keys, after: c.keys });
       ok('backup line: the exported file equals the stored save, lastExportAt included (stored before the file is built)', JSON.stringify(file) === JSON.stringify(JSON.parse(stored)) && file.backup.lastExportAt === T && file.backup.since === T - 3 * DAY, { file: file.backup, stored });
       for (const [n, text, stale] of [[1, 'Last backup: yesterday.', false], [13, 'Last backup: 13 days ago.', false], [14, 'Last backup: 14 days ago.', true]]) {
-        await load(p, { ...SAVED, backup1: true, backup: { since: T - 99 * DAY, lastExportAt: T - n * DAY } }); const u = await ui(p);
+        await load(p, { ...SAVED, backup: { since: T - 99 * DAY, lastExportAt: T - n * DAY } }); const u = await ui(p);
         ok(`backup line: ${n} day(s) after an export: "${text}"${stale ? ', amber' : ''}`, u.line === text && u.stale === stale, u);
       }
       ok('backup line: no page errors', !errs.length, errs);
@@ -243,12 +245,12 @@ const checkReport = (label, m, want) => {
     /* nudge */
     {
       const { ctx, p, errs } = await page();
-      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 13 * DAY } });
+      await load(p, { ...SAVED, backup: { lastExportAt: T - 13 * DAY } });
       ok('nudge: not shown 13 days after an export', !(await ui(p)).nudge);
-      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 14 * DAY } });
+      await load(p, { ...SAVED, backup: { lastExportAt: T - 14 * DAY } });
       const n14 = await ui(p);
       ok('nudge: shown on day 14, same N as the line', n14.nudge && n14.nudgeTxt === "You haven't exported a backup in 14 days. Progress lives in this browser only." && n14.line === 'Last backup: 14 days ago.', n14);
-      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 15 * DAY } });
+      await load(p, { ...SAVED, backup: { lastExportAt: T - 15 * DAY } });
       const role = await p.evaluate(() => { const c = document.getElementById('nudge'); return c.closest('[role=status]') && c.closest('[role=status]').id; });
       ok('nudge: shown at 15 days in the full view, inside the role=status slot', (await ui(p)).nudge && role === 'bkNote', role);
       await p.click('.modeseg [data-mode=basic]'); await p.waitForTimeout(100);
@@ -259,13 +261,13 @@ const checkReport = (label, m, want) => {
       await p.click('#nudgeNo'); await p.waitForTimeout(100);
       const no = await ui(p); await p.reload(); await p.waitForTimeout(400); const no2 = await ui(p);
       ok('nudge: Not now hides it, records nudgeAt and it stays gone after a reload', !no.nudge && no.backup.nudgeAt === T && !no2.nudge && !no2.hint, { no, no2 });
-      await load(p, { ...SAVED, backup1: true, backup: { since: T - 30 * DAY } });
+      await load(p, { ...SAVED, backup: { since: T - 30 * DAY } });
       const yet = await ui(p);
       ok('nudge: never exported, baseline 30 days old: the "yet" text', yet.nudge && yet.nudgeTxt === "You haven't exported a backup yet. Progress lives in this browser only." && yet.line === 'No backup yet.', yet);
       const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#nudgeExp')]); await p.waitForTimeout(100);
       const ex = await ui(p);
       ok('nudge: its Export downloads the progress, hides the card and updates the line', !!dl && !ex.nudge && ex.line === 'Last backup: today.' && ex.backup.lastExportAt === T, ex);
-      await load(p, { checks: {}, level: 1, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, backup1: true, backup: { since: T - 30 * DAY } });
+      await load(p, { checks: {}, level: 1, open: {}, quest: '', backup: { since: T - 30 * DAY } });
       ok('nudge: no progress (Lv 1, no ticks) = no nudge', !(await ui(p)).nudge);
       ok('nudge: no page errors', !errs.length, errs);
       await ctx.close();
@@ -273,20 +275,20 @@ const checkReport = (label, m, want) => {
     /* import */
     {
       const { ctx, p, errs } = await page();
-      await load(p, { ...SAVED, backup1: true, backup: { lastExportAt: T - 2 * DAY } });
-      const file = { ...SAVED, level: 30, backup1: true, backup: { since: T - 40 * DAY, lastExportAt: T - 20 * DAY, nudgeAt: T - 30 * DAY, a2hsAt: T - 30 * DAY } };
+      await load(p, { ...SAVED, backup: { lastExportAt: T - 2 * DAY } });
+      const file = toStored({ ...SAVED, level: 30, backup: { since: T - 40 * DAY, lastExportAt: T - 20 * DAY, nudgeAt: T - 30 * DAY, a2hsAt: T - 30 * DAY } });
       await p.setInputFiles('#impIn', { name: 'progress.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(file)) });
       await Promise.all([p.waitForEvent('load'), p.click('#impGo')]); await p.waitForTimeout(400);
       const u = await ui(p);
-      ok('import: the file\'s backup is replaced by { since, lastExportAt } = the import time; backup1 set; no nudge; line "today"',
-        JSON.stringify(u.backup) === JSON.stringify({ since: T, lastExportAt: T }) && u.backup1 === true && !u.nudge && u.line === 'Last backup: today.' && await p.evaluate(() => state.level === 30), u);
+      ok('import: the file\'s backup is replaced by { since, lastExportAt } = the import time; no nudge; line "today"',
+        JSON.stringify(u.backup) === JSON.stringify({ since: T, lastExportAt: T }) && !u.nudge && u.line === 'Last backup: today.' && await p.evaluate(() => char(state).level === 30), u);
       ok('import: no page errors', !errs.length, errs);
       await ctx.close();
     }
     /* Home Screen hint */
     {
       const { ctx, p, errs } = await page({ ua: IPHONE, w: 390 });
-      await load(p, { ...SAVED, backup1: true, backup: { since: T - 2 * DAY } });
+      await load(p, { ...SAVED, backup: { since: T - 2 * DAY } });
       const h = await ui(p), txt = await p.evaluate(() => document.querySelector('#a2hs span').textContent);
       ok('hint: shown in iPhone Safari with progress, in the same role=status slot', h.hint && !h.nudge && /^Safari can clear a site's saved data/.test(txt) && await p.evaluate(() => document.getElementById('a2hs').closest('[role=status]').id === 'bkNote'), { h, txt });
       await Promise.all([p.waitForEvent('download'), p.click('#a2hsExp')]); await p.waitForTimeout(100);
@@ -294,7 +296,7 @@ const checkReport = (label, m, want) => {
       await p.click('#a2hsOk'); await p.waitForTimeout(100);
       const ok1 = await ui(p); await p.reload(); await p.waitForTimeout(400); const ok2 = await ui(p);
       ok('hint: Got it hides it for good (a2hsAt stored; gone after a reload)', !ok1.hint && ok1.backup.a2hsAt === T && !ok2.hint, { ok1, ok2 });
-      await load(p, { ...SAVED, backup1: true, backup: { since: T - 20 * DAY } });
+      await load(p, { ...SAVED, backup: { since: T - 20 * DAY } });
       const both = await ui(p);
       ok('hint: when the nudge is due too, only the nudge shows', both.nudge && !both.hint, both);
       ok('hint: no page errors', !errs.length, errs);
@@ -302,7 +304,7 @@ const checkReport = (label, m, want) => {
       const absent = {};
       for (const [name, ua, init] of [['desktop', null], ['Chrome on iOS', IPHONE.replace('Version/18.0', 'CriOS/130.0.0.0')], ['in-app WebView', IPHONE.replace(' Safari/604.1', ' Instagram 350.0')],
         ['opened from the Home Screen', IPHONE, () => Object.defineProperty(navigator, 'standalone', { get: () => true })]]) {
-        const x = await page({ ua, w: 390 }, init); await load(x.p, { ...SAVED, backup1: true, backup: { since: T - 2 * DAY } });
+        const x = await page({ ua, w: 390 }, init); await load(x.p, { ...SAVED, backup: { since: T - 2 * DAY } });
         absent[name] = (await ui(x.p)).hint; await x.ctx.close();
       }
       ok('hint: absent on desktop, Chrome on iOS, an in-app WebView and when opened from the Home Screen', Object.values(absent).every(v => !v), absent);
@@ -323,8 +325,8 @@ const checkReport = (label, m, want) => {
     const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(CFG.BASE + '/artifact/'); await p.waitForTimeout(600);
     await p.click('#expBtn'); await p.waitForTimeout(200);
-    const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).checks !== undefined]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
-    ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^aion2-assassin-progress-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
+    const r = await p.evaluate(() => ({ saved: window.__saved.map(o => [o.filename, JSON.parse(o.data).v === 5]), sw: !!navigator.serviceWorker.controller, broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0 && i.getAttribute('src')).length }));
+    ok('artifact build: Export goes through window.claude.use("downloads")', r.saved.length === 1 && /^companion-save-\d{4}-\d\d-\d\d\.json$/.test(r.saved[0][0]) && r.saved[0][1], r);
     if (process.env.AION_FONTS_BLOCKED) ok('artifact build: inlined fonts are blocked in the suites too', !(await loadedFamilies(p)).length);
     const am = await footerMeta(p);
     ok('artifact build: footer version equals package.json', am.vText === 'v' + VERSION && am.vHref === REPO + '/blob/main/CHANGELOG.md', am);
@@ -343,7 +345,7 @@ const checkReport = (label, m, want) => {
     const noDl = await noUI(p2); await p2.click('#lvlUp'); await p2.waitForTimeout(100);
     const st = await readSave(p2);
     ok('artifact build: no save-safety UI in the DOM with or without the downloads permission; the save still gains backup',
-      !withDl.length && !noDl.length && st && st.backup1 === true && st.backup && typeof st.backup.since === 'number' && st.backup.since > 0, { withDl, noDl, backup: st && st.backup });
+      !withDl.length && !noDl.length && st && st.backup && typeof st.backup.since === 'number' && st.backup.since > 0, { withDl, noDl, backup: st && st.backup });
     await ctx2.close();
     const ini = await p.evaluate(() => Object.entries(SP_ICONS).filter(([, v]) => !v).map(([n]) => [n, /class="spmini ini"/.test(spMini(n))]));
     ok('artifact build: a skill whose icon has no blob id gets the initials square, not a broken image', ini.length === noBlob.filter(n => n.startsWith('sk-')).length && ini.every(x => x[1]), ini);

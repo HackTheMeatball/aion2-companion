@@ -2,7 +2,7 @@
    tests/fixtures/fixture-v285.flat.json, the v285 fixture as the current build stores it) */
 const { chromium } = require('playwright'); const fs = require('fs');
 const FILE = process.argv[2];
-const { writeSave, readSave, clearSave, BEFORE_IMPORT_KEY } = require('./support/save');
+const { writeSave, readSave, clearSave, liveState, toStored, BEFORE_IMPORT_KEY } = require('./support/save');
 let fail = 0; const ok = (name, cond, detail) => { console.log((cond ? 'ok   ' : 'FAIL ') + name + (detail !== undefined ? '  · ' + (typeof detail === 'string' ? detail : JSON.stringify(detail)).replace(/\s+/g, ' ') : '')); if (!cond) fail++; };
 const { clean, setState } = require('./support/e1-fixture');
 const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => ({ t: (c.querySelector('h3') || {}).innerText || '', ctl: (c.querySelector('.meta') || {}).innerText || '', act: (c.querySelector('.meta [data-now]') || { dataset: {} }).dataset.now || '' })));
@@ -10,19 +10,19 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   const b = await chromium.launch(); const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 }, acceptDownloads: true }); const p = await ctx.newPage();
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(FILE);
-  /* 1. Fresh browser: seeds don't run */
+  /* 1. Fresh browser: Lv 1 on the first quest, nothing seeded */
   await clearSave(p); await p.reload(); await p.waitForTimeout(400);
-  let st = await p.evaluate(() => state);
+  let st = await liveState(p);
   ok('fresh: seeds not applied (level, sp ticks, stigma, stones)', st.level === 1 && st.quest === 'A Village in the Fog' && !Object.keys(st.checks).some(k => k.startsWith('sp:')) && !st.stLv && !st.stones, { level: st.level, stLv: st.stLv, stones: st.stones });
-  ok('fresh: seed flags + migV5 set, cleared milestones folded', st.seedLv12 && st.stTriniel1 && st.dvReset1 && st.migV5 && st.hideCards === true);
-  /* 2. Saved state without flags: seeds still run (old behaviour); with flags: no-op */
+  ok('fresh: cleared milestones folded, no one-time flags (save v5)', st.hideCards === true && !['seedLv12', 'stTriniel1', 'dvReset1', 'migV5', 'eputSync1', 'stampV1'].some(f => f in st));
+  /* 2. A saved state: loaded as it is (the pre-0.4 player seeds are gone with the clean break, 0.4 P3c) */
   await writeSave(p, { checks: {}, level: 9, open: {}, quest: '' }); await p.reload(); await p.waitForTimeout(300);
-  st = await p.evaluate(() => state);
-  ok('saved w/o flags: seeds run as in v285', st.level === 12 && st.checks['sp:Ambush:5'] === true && st.checks['g22:1'] === true && st.stLv["Triniel's Dagger"] === 1 && st.hideCards !== true);
-  const userLike = { checks: { 'g22:0': true, 'g22:1': true, 'sp:Ambush:2': true }, level: 25, open: {}, quest: 'Voice of Rage', seedLv12: true, stTriniel1: true, dvReset1: true, stones: 7, stLv: { "Triniel's Dagger": 3 }, stShards: 4 };
+  st = await liveState(p);
+  ok('saved Lv 9, no ticks: loads as Lv 9 with no ticks (nothing seeded)', st.level === 9 && !Object.values(st.checks).some(Boolean) && !st.stLv && st.hideCards !== true, { level: st.level });
+  const userLike = { checks: { 'g22:0': true, 'g22:1': true, 'sp:Ambush:2': true }, level: 25, open: {}, quest: 'Voice of Rage', stones: 7, stLv: { "Triniel's Dagger": 3 }, stShards: 4 };
   await writeSave(p, userLike); await p.reload(); await p.waitForTimeout(300);
-  st = await p.evaluate(() => state);
-  ok('saved with flags: seeds are no-ops', st.level === 25 && st.stones === 7 && st.stLv["Triniel's Dagger"] === 3 && st.stShards === 4 && !st.checks['sp:Ambush:5'] && st.hideCards === undefined);
+  st = await liveState(p);
+  ok('saved progress: kept as it is', st.level === 25 && st.stones === 7 && st.stLv["Triniel's Dagger"] === 3 && st.stShards === 4 && !st.checks['sp:Ambush:5'] && st.hideCards === undefined);
   ok('equipped slot 1 pinned to its stigma', st.stPick && st.stPick[1] === "Triniel's Dagger");
   /* 3. Keys: every checkable item has an explicit, unique key */
   const keys = await p.evaluate(() => { const ks = [], miss = []; [...GATES, ...STEPS].forEach(g => g.items.forEach((it, j) => { if (it.sub != null || it.hidden || it.group) return; if (!it.k) miss.push(g.id + ':' + j); else ks.push(it.k); })); AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => ks.push(x.k)); return { miss, dup: ks.filter((k, i) => ks.indexOf(k) !== i) }; });
@@ -51,31 +51,31 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('pick: milestone lines and E row follow', s2.ms.every(x => x === 'Savage Fang') && s2.erow === ', row 1', s2);
   ok('pick: Next up card and button show −1 shard', /Savage Fang/.test(s2.eq) && /−1 shard/.test(s2.btn), s2);
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(300);
-  let t = await p.evaluate(() => ({ shards: state.stShards, eq: state.checks['g27:0'], lv: state.stLv['Savage Fang'], toast: (document.getElementById('rwToast') || {}).innerText, estack: E_STACK(state.level) }));
+  let t = await p.evaluate(() => ({ shards: char(state).stShards, eq: char(state).checks['g27:0'], lv: char(state).stLv['Savage Fang'], toast: (document.getElementById('rwToast') || {}).innerText, estack: E_STACK(char(state).level) }));
   ok('equip: −1 shard, toast with Undo', t.shards === 2 && t.eq === true && t.lv === 1 && /−1 shard/.test(t.toast) && /Undo/.test(t.toast), t);
   ok('equip: E stack uses the pick', JSON.stringify(t.estack) === JSON.stringify(["Triniel's Dagger*", 'Savage Fang*']), t.estack);
   await p.click('#rwToast .tu'); await p.waitForTimeout(200);
-  ok('undo gives the shard back, stays equipped', (await p.evaluate(() => [state.stShards, state.checks['g27:0']])).join() === '3,true');
+  ok('undo gives the shard back, stays equipped', (await p.evaluate(() => [char(state).stShards, char(state).checks['g27:0']])).join() === '3,true');
   /* 6. Snooze (E3: at "Canyon's Secret" so more than one quest is open; quests without prerequisite data open at their rec) */
   await setState(p, clean(30, "Canyon's Secret", 'advanced'));
   const before = await p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-qgrid .ql')].map(x => x.innerText));
   const zk = await p.evaluate(() => document.querySelector('#nowStar [data-snz]').dataset.snz);
   await p.click(`#nowStar [data-snz="${zk}"]`, { force: true }); await p.waitForTimeout(300);
-  let z = await p.evaluate(k => ({ snz: state.rqSnooze, rows: [...document.querySelectorAll('#nowStar .ns-qgrid [data-rqk]')].map(x => x.dataset.rqk), sub: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Regional quests/.test(t)), ms: document.querySelector(`#gates li.qrow [data-snz="${k}"]`).textContent, cls: document.querySelector(`#gates li.qrow [data-snz="${k}"]`).closest('li').className }), zk);
+  let z = await p.evaluate(k => ({ snz: char(state).rqSnooze, rows: [...document.querySelectorAll('#nowStar .ns-qgrid [data-rqk]')].map(x => x.dataset.rqk), sub: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Regional quests/.test(t)), ms: document.querySelector(`#gates li.qrow [data-snz="${k}"]`).textContent, cls: document.querySelector(`#gates li.qrow [data-snz="${k}"]`).closest('li').className }), zk);
   ok('snooze: hidden from Next up, counted, milestone shows undo', z.snz[zk] === 30 && !z.rows.includes(zk) && /1 not in game yet/.test(z.sub) && /undo/.test(z.ms) && /snoozed/.test(z.cls), { zk, sub: z.sub, ms: z.ms });
   await p.click('#lvlUpBig'); await p.waitForTimeout(300);
-  ok('snooze: cleared by Level up', await p.evaluate(k => !(state.rqSnooze || {})[k], zk));
+  ok('snooze: cleared by Level up', await p.evaluate(k => !(char(state).rqSnooze || {})[k], zk));
   // prerequisite turned in clears the follow-up's snooze
   await setState(p, clean(30, 'Dying Light', 'advanced'));
   const pre = await p.evaluate(() => { const b = GATES.flatMap(g => g.items).find(it => it.name === 'An Invitation to the Past: Part 2'), a = GATES.flatMap(g => g.items).find(it => it.name === 'An Invitation to the Past: Part 1'); return [a.k, b.k]; });
   await p.evaluate(k => { const zb = document.querySelector(`#gates li.qrow [data-snz="${k}"]`); document.getElementById('g30').open = true; zb.click(); }, pre[1]); await p.waitForTimeout(200);
-  ok('snooze set from milestone row', await p.evaluate(k => !!(state.rqSnooze || {})[k], pre[1]));
+  ok('snooze set from milestone row', await p.evaluate(k => !!(char(state).rqSnooze || {})[k], pre[1]));
   await p.evaluate(k => { const i = document.querySelector(`#gates input[data-k="${k}"]`); i.click(); i.click(); }, pre[0]); await p.waitForTimeout(1500);
-  ok('snooze: cleared when the quest before it is turned in', await p.evaluate(([a, b]) => state.checks[a] === true && !(state.rqSnooze || {})[b], pre));
+  ok('snooze: cleared when the quest before it is turned in', await p.evaluate(([a, b]) => char(state).checks[a] === true && !(char(state).rqSnooze || {})[b], pre));
   /* 7. Story end (0.3 E10: the data now ends at Daeva Trapped in a Nightmare, Lv 45; the game's next story quest unlocks at 46) */
   await setState(p, clean(45, 'Daeva Trapped in a Nightmare', 'advanced'));
   await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Daeva Trapped in a Nightmare/.test(c.innerText)); c.querySelector('[data-now="story"]').click(); }); await p.waitForTimeout(800);
-  let se = await p.evaluate(() => ({ end: state.storyEnd, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /story/i.test(t)), hasBtn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
+  let se = await p.evaluate(() => ({ end: char(state).storyEnd, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /story/i.test(t)), hasBtn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
   ok('story end: "Lv 45 story complete", names the next quest in game, no dead Turned in', se.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(se.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(se.card) && !se.hasBtn, se);
   ok('story end: Journey says the Lv 45 story is complete', /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(se.status), se.status);
   await p.fill('#questIn', 'Waiting for the Next Journey'); await p.dispatchEvent('#questIn', 'change'); await p.waitForTimeout(100);
@@ -96,14 +96,15 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   /* Export: outside claude.ai (no window.claude.use) it is a plain Blob download (the check from before the downloads-capability version). */
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
   const exported = JSON.parse(fs.readFileSync(await dl.path(), 'utf8')), live = await p.evaluate(() => state);
-  ok('export: file equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && /^aion2-assassin-progress-\d{4}-\d\d-\d\d\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename());
-  const other = JSON.parse(fs.readFileSync(process.argv[3] || '/dev/null', 'utf8') || '{}');
-  const tmp = require('path').join(require('os').tmpdir(), 'imp.json'); fs.writeFileSync(tmp, JSON.stringify(other));
+  ok('export: file equals the saved state', JSON.stringify(exported) === JSON.stringify(live) && /^companion-save-\d{4}-\d\d-\d\d\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename());
+  /* the flat fixture as a v5 export (an export from another browser: its own slot id) */
+  const other = JSON.parse(fs.readFileSync(process.argv[3] || '/dev/null', 'utf8') || '{}'), otherFile = toStored(other);
+  const tmp = require('path').join(require('os').tmpdir(), 'imp.json'); fs.writeFileSync(tmp, JSON.stringify(otherFile));
   await p.setInputFiles('#impIn', tmp); await p.waitForTimeout(200);
   ok('import: asks before replacing', /Replace your progress/.test(await p.innerText('#xferMsg')));
   await Promise.all([p.waitForNavigation(), p.click('#impGo')]); await p.waitForTimeout(400);
-  const after = [await p.evaluate(() => state), await readSave(p, { key: BEFORE_IMPORT_KEY })];
-  ok('import: state replaced (and migrated), previous kept under :before-import', after[0].level === other.level && after[0].migV5 && after[0].checks['rq:2202017'] === other.checks['g22:4'] && after[1].level === 33, { lv: after[0].level });
+  const after = [await liveState(p), await readSave(p, { key: BEFORE_IMPORT_KEY })];
+  ok('import: state replaced, previous kept under :before-import', after[0].level === other.level && JSON.stringify(after[0].checks) === JSON.stringify(other.checks) && after[1].level === 33, { lv: after[0].level });
   /* 12. Layout (update() timing: tests/perf.js) */
   for (const [w, h] of [[1500, 1000], [1100, 900], [390, 850]]) {
     await p.setViewportSize({ width: w, height: h }); await setState(p, clean(30, 'Dying Light', 'advanced'));

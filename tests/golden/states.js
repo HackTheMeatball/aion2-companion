@@ -36,7 +36,6 @@ function catalogInPage() {
 const fnv = s => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); } return (h >>> 0) / 4294967296; };
 const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const pad = (n, w = 2) => String(n).padStart(w, '0');
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 
 function makeGen(C) {
   const qIdx = n => C.quests.findIndex(q => q[1] === n);
@@ -111,7 +110,7 @@ function makeGen(C) {
   }
 
   function state({ lv, qi, ticks: rule, mode, b = 'none' }) {
-    const st = { checks: ticks(rule, lv, qi), level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode, ...FLAGS };
+    const st = { checks: ticks(rule, lv, qi), level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode };
     build(st, b, lv);
     return st;
   }

@@ -73,8 +73,10 @@ const writeSave = (page, flat, opts = {}) => writeRaw(page, storedText(flat), op
 const readSave = async (page, opts = {}) => parseStored(await readRaw(page, opts));
 /* A fresh browser: this origin's localStorage emptied (the save, :before-import, everything). */
 const clearSave = page => page.evaluate(() => localStorage.clear());
+/* The page's in-memory save (the page global `state`) as a flat state */
+const liveState = async page => fromStored(JSON.parse(await page.evaluate(() => JSON.stringify(state))));
 
 /* A committed flat fixture (tests/fixtures/*.flat.json: the pre-0.4 saves as the 0.3 build stored them, frozen). */
 const flatFixture = name => JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'fixtures', name), 'utf8'));
 
-module.exports = { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, RETIRED_FLAGS, toStored, fromStored, storedText, parseStored, mtAtZero, writeRaw, readRaw, writeSave, readSave, clearSave, flatFixture };
+module.exports = { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, RETIRED_FLAGS, toStored, fromStored, storedText, parseStored, mtAtZero, writeRaw, readRaw, writeSave, readSave, clearSave, liveState, flatFixture };
