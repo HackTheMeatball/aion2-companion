@@ -113,6 +113,31 @@
       ]
     },
     {
+      "id": "kib:alert-observation-post",
+      "name": "Alert Observation Post",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/mirror-of-greed",
+          "checkedAt": "2026-10-17",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk of Mirror of Greed step 2 (docs/research/2026-10-story-step-points.md §5)"
+        }
+      ],
+      "verifiedAt": "2026-10-17",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps). Added with the story objective points (0.5 P9), the only Kibelisk they name that no other record does."
+      ]
+    },
+    {
       "id": "kib:amuntas-hideout",
       "name": "Amunta's Hideout",
       "map": "altgard",

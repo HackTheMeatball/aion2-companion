@@ -47,10 +47,12 @@ export function checks(ctx, check) {
     const MARK = /\(Kibelisk: ([^)]+)\)/g, uses = new Map(), use = (n, id) => { if (!uses.has(n)) uses.set(n, new Set()); uses.get(n).add(id); };
     for (const r of [...chain, ...rqs, ...sds, ...shs]) {
       for (const l of [r.giver, r.turnin, r.entrance, r.location]) if (l && l.kibelisk) use(l.kibelisk, r.id);
-      for (const x of r.steps || []) { if (x.kibelisk) use(x.kibelisk, r.id); for (const m of x.text.matchAll(MARK)) use(m[1], r.id); }
+      for (const x of r.steps || []) { if (x.kibelisk) use(x.kibelisk, r.id); if (x.at) use(x.at.kibelisk, r.id); for (const m of x.text.matchAll(MARK)) use(m[1], r.id); }
     }
     for (const [n, ids] of uses) check(`Kibelisk "${n}" resolves to a registry record`, n in byName, [...ids].slice(0, 5));
-    check('Kibelisk names in story, regional, Sealed Dungeon and stronghold records: 69, all in the registry', uses.size === 69 && [...uses.keys()].every(n => n in byName), uses.size);
+    /* 71 = P8's 69 + two that only story objective points name (0.5 P9): Alert Observation Post (new to the registry) and
+       Silent Hill Coastal Cliff (a listed registry name no record cited before) */
+    check('Kibelisk names in story, regional, Sealed Dungeon and stronghold records: 71, all in the registry', uses.size === 71 && [...uses.keys()].every(n => n in byName), uses.size);
     for (const z of Object.values(zones)) for (const n of z.kibelisks || []) check(`${z.id}: Kibelisk ${n} is a registry record filed in this zone`, n in byName && kibById[byName[n]].zone === z.id, n in byName ? kibById[byName[n]].zone : 'not in the registry');
     for (const k of kibs) if (k.zone) check(`${k.id}: listed in ${k.zone}'s kibelisks`, !!zones[k.zone] && (zones[k.zone].kibelisks || []).includes(k.name));
     /* a registry zone agrees with the record points that name it: the strict majority zone of the points within 100 m (a
@@ -68,6 +70,14 @@ export function checks(ctx, check) {
       check(`${s.id} #${x.i}: binds ${x.binds.kibelisk} is a registry id`, x.binds.kibelisk in kibById);
       if (x.binds.basis === 'step-text') check(`${s.id} #${x.i}: a step-text bind says "bind"`, /\bbind\b/i.test(x.text), x.text);
     }
+    /* objective points (0.5 P9): on story objectives only; the text's "(Kibelisk: X)" marker, when it has one, is the
+       point's nearest Kibelisk; the point is on its Kibelisk's map where the registry records one */
+    for (const r of [...rqs, ...shs, ...asc]) for (const x of r.steps || []) check(`${r.id} #${x.i}: at only on story objectives`, !x.at);
+    for (const s of chain) for (const x of s.steps.filter(x => x.at)) {
+      const marks = [...x.text.matchAll(MARK)].map(m => m[1]), K = kibById[byName[x.at.kibelisk]];
+      check(`${s.id} #${x.i}: (Kibelisk: X) marker = at.kibelisk`, marks.every(m => m === x.at.kibelisk), [marks, x.at.kibelisk]);
+      check(`${s.id} #${x.i}: at.map is its Kibelisk's map`, !K || K.map === null || K.map === x.at.map, [x.at.map, K && K.map]);
+    }
     /* the travel rules (design §8): the bind radius lies inside the nudge radius */
     const rv = id => rules[id] ? rules[id].value : null;
     check('rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius', rv('rule:kibelisk-bind-radius') !== null && rv('rule:kibelisk-nudge-radius') !== null
@@ -76,7 +86,8 @@ export function checks(ctx, check) {
     /* the place table: one entry per story / regional / Sealed Dungeon / stronghold node, every anchor a registry id */
     const placed = Object.entries(ctx.GATE_GRAPH.nodes).filter(([, x]) => ['story', 'rq', 'sd', 'sh'].includes(x.kind)).map(([id]) => id);
     check('NODE_PLACE: one entry per story, regional, Sealed Dungeon and stronghold node', placed.length === Object.keys(ctx.NODE_PLACE).length && placed.every(id => id in ctx.NODE_PLACE), [placed.length, Object.keys(ctx.NODE_PLACE).length]);
-    for (const [id, p] of Object.entries(ctx.NODE_PLACE)) for (const [side, pt] of Object.entries(p.pts)) check(`NODE_PLACE ${id} ${side}: anchor is null or a registry id`, pt.anchor === null || pt.anchor in kibById, pt.anchor); }
+    for (const [id, p] of Object.entries(ctx.NODE_PLACE)) for (const [side, pt] of Object.entries(p.pts).flatMap(([k, v]) => k === 'steps' ? v.map(x => ['objective ' + x.i, x]) : [[k, v]]))
+      check(`NODE_PLACE ${id} ${side}: anchor is null or a registry id`, pt.anchor === null || pt.anchor in kibById, pt.anchor); }
 
   /* ---------------------------------------------------------------- the guide build */
   const spSlots = rules['rule:specialty-slots'] ? rules['rule:specialty-slots'].value : { slots: [] };
