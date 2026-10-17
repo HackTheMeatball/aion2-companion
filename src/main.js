@@ -143,9 +143,38 @@ layoutEl.addEventListener("click", e => {
 });
 /* Confidence and Sources fold; open state remembered. */
 document.querySelectorAll("details.foldcard").forEach(d => { const k = "fold_" + d.id; d.open = !!(state[k]); d.addEventListener("toggle", () => { state[k] = d.open; save(); }); });
+/* Phones (<= 600 px): long cards fold too (docs/design/phone-layout.md 3.6, patch I; owner 2026-10-17): Dungeons &
+   Strongholds in both modes, Progress in Basic; Journey stays open (it holds Level − / + and the slider). The fold is a
+   details.foldcard inside the card: its title becomes the summary, the rest of the card the body, except `keep` (the
+   Map link: a link inside a summary is nested interactive), which stays in the card on the summary's row. The card
+   element itself stays (the phone moves above and the cards' code hold it). Folded by default; once the user opens or
+   closes one, its fold_<id> (a view setting) wins. Wider, or in a mode that doesn't fold the card, every node goes back
+   where a fresh load has it. */
+const foldQ = window.matchMedia ? matchMedia("(max-width: 600px)") : { matches: false };
+const phoneFolds = [
+  { id: "areasFold", card: document.getElementById("areas"), head: ".areas-head > h2", keep: ".areas-head", basic: false },
+  { id: "progFold", card: document.getElementById("progRows")?.closest(".card"), head: ":scope > h2", basic: true },
+].filter(f => f.card && f.card.querySelector(f.head));
+function placeFolds() {
+  phoneFolds.forEach(f => {
+    const on = foldQ.matches && (!f.basic || state.mode === "basic");
+    if (on === !!f.d) return;
+    if (!on) { f.card.append(...f.kids); f.home.p.insertBefore(f.head0, f.home.n); f.d.remove(); f.d = null; return; }
+    f.kids = [...f.card.childNodes];
+    const head = f.head0 = f.card.querySelector(f.head), keep = f.keep && f.card.querySelector(":scope > " + f.keep);
+    f.home = { p: head.parentNode, n: head.nextSibling };
+    const d = f.d = document.createElement("details"), s = document.createElement("summary");
+    d.className = "foldcard"; d.id = f.id; s.append(head); d.append(s, ...f.kids.filter(n => n !== head && n !== keep));
+    const k = "fold_" + f.id; d.open = !!state[k];
+    d.addEventListener("toggle", () => { if (state[k] !== d.open) { state[k] = d.open; save(); } });
+    f.card.append(d);
+  });
+}
+if (foldQ.addEventListener) foldQ.addEventListener("change", placeFolds);
 /* Basic / Advanced view. Basic keeps each card to its essentials: what you have, the one thing to do, and its button. */
 function applyMode() {
   const m = state.mode === "basic" ? "basic" : "advanced";
+  placeFolds();
   document.body.classList.toggle("basic", m === "basic");
   document.querySelectorAll(".modeseg [data-mode]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
 }
