@@ -768,7 +768,21 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   :is(h2, div).sec .sec-tools { flex-wrap: wrap; max-width: 100%; }
   details.step > summary { grid-template-columns: 36px minmax(0, 1fr); gap: var(--space-8) var(--space-10); padding: var(--space-10); }
   details.step > summary .num { width: 36px; }
+  details.step > summary .title :is(h3, p) { overflow-wrap: anywhere; }
   details.step > summary .meta { grid-column: 1 / -1; justify-content: flex-end; flex-wrap: wrap; }
   .dvbh-top { flex-wrap: wrap; }
   .dvbar-l { flex-wrap: wrap; }
+  /* Dungeons: the region name gets its own line when the traces / count don't fit (a row-reverse button that is too
+     narrow spills to the left, past the card). A row's map pin moves under its checkbox, so the name gets the full
+     width beside the box (the card has about 105 px inside), and the row may grow so its sub-line isn't cut off. */
+  #areaList .zone-h, #areaList .asec { flex-wrap: wrap; row-gap: 0; }
+  #areaList .zone-btn { flex-wrap: nowrap; max-width: 100%; overflow-wrap: anywhere; }
+  #areaList .item.arow { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: var(--space-6); row-gap: var(--space-4); align-items: start; }
+  #areaList .item.arow > label { display: contents; }
+  #areaList .item.arow > label > input { grid-column: 1; grid-row: 1; margin-top: var(--space-2); }
+  #areaList .item.arow .txt { grid-column: 2; grid-row: 1 / span 2; }
+  #areaList .item.arow > .amap { grid-column: 1; grid-row: 2; width: 22px; height: 22px; }
+  #areaList .item.arow .txt b, #areaList .item.arow .txt small { overflow-wrap: anywhere; }
+  #areaList .item.arow:not(.fading) { max-height: 240px; }
+  #srcBody .src-site, #srcBody .src-what { overflow-wrap: anywhere; }
 }

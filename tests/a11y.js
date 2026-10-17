@@ -19,7 +19,8 @@
       12 px (body) except the icon glyphs in GLYPH.
    7. Story connector (P2-4): on a fresh save no connector line is drawn above the first story row.
    8. Page zoom (P2-9, 0.5 P7): at 195 px (200 % zoom on a 390 px phone), 260 px (150 %) and 640 px (a half-width desktop window) the page doesn't scroll
-      sideways and no card header runs past its card.
+      sideways and no card header (nor a Dungeons region header, section head or row, or their text) runs past its card on
+      either side; no Dungeons row is cut off by its max-height and no map pin sits on a row's name.
    9. Folded cleared steps (P3-2, 390 px, Lv 27 and Lv 45): in every ticked milestone step the warnings (.note) and the
       location / "Reward:" line (.loc) are visible, and every link or button in the step is either out of the layout
       (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus.
@@ -243,10 +244,25 @@ async function load(p, state, mode) {
       const out = [];
       for (const card of document.querySelectorAll('.card')) {
         const cr = card.getBoundingClientRect(); if (!cr.width) continue;
-        for (const h of card.querySelectorAll('.sec, .sec *, h2, h3, summary, summary *')) {
-          const hr = h.getBoundingClientRect(); if (!hr.width || !h.offsetParent) continue;
-          if (hr.right > cr.right + 0.5 || hr.left < cr.left - 0.5)
-            out.push((card.id || card.className) + ' > ' + h.tagName.toLowerCase() + '.' + String(h.className).split(' ')[0] + ' "' + (h.textContent || '').trim().slice(0, 24) + '"');
+        /* headers, plus the Dungeons region headers and rows; each element's own text runs are measured too, since a
+           row-reverse flex box overflows to the left (no sideways scroll) and its text isn't an element */
+        for (const h of card.querySelectorAll('.sec, .sec *, h2, h3, summary, summary *, .zone-h, .zone-h *, .asec, .asec *, .item.arow *')) {
+          if (!h.offsetParent) continue;
+          const rs = [h.getBoundingClientRect()];
+          for (const t of h.childNodes) if (t.nodeType === 3 && t.textContent.trim()) { const g = document.createRange(); g.selectNodeContents(t); rs.push(g.getBoundingClientRect()); }
+          for (const hr of rs) if (hr.width && (hr.right > cr.right + 0.5 || hr.left < cr.left - 0.5))
+            out.push((card.id || card.className) + ' > ' + h.tagName.toLowerCase() + '.' + String(h.className).split(' ')[0] + ' "' + (h.textContent || '').trim().slice(0, 24) + '" ' +
+              Math.round(hr.left) + '–' + Math.round(hr.right) + ' in ' + Math.round(cr.left) + '–' + Math.round(cr.right));
+        }
+        /* a row's sub-line cut off by the row's own overflow: hidden (max-height) */
+        for (const li of card.querySelectorAll('.item.arow')) if (li.offsetParent && li.scrollHeight > li.clientHeight + 1)
+          out.push((card.id || card.className) + ' > li.arow clipped "' + (li.textContent || '').trim().slice(0, 24) + '" ' + li.scrollHeight + ' > ' + li.clientHeight);
+        /* the map pin doesn't sit on the row's name */
+        for (const li of card.querySelectorAll('.item.arow')) {
+          const a = li.querySelector('.amap'), b = li.querySelector('.txt'); if (!a || !b || !li.offsetParent) continue;
+          const ar = a.getBoundingClientRect(), br = b.getBoundingClientRect();
+          if (ar.width && br.width && ar.left < br.right - 0.5 && ar.right > br.left + 0.5 && ar.top < br.bottom && ar.bottom > br.top)
+            out.push((card.id || card.className) + ' > a.amap over "' + (b.textContent || '').trim().slice(0, 24) + '"');
         }
       }
       const wide = [];   /* what reaches past the viewport (not clipped by an ancestor, not fixed), for the failure message */
