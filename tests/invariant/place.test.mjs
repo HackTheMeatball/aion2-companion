@@ -37,8 +37,9 @@ export default (test, M, X) => {
   const P = loadPlaceOracle({ root, O: OA });
   const S = M.GATE_GRAPH.story, ALL_RANK = [...Object.keys(M.RANK_CHANGES), ...Object.keys(M.AION2_RANK_CHANGES)];
   /* the switches that change the ranking without a location (design §11 7 names the first two; etaLater, 0.5 P13, orders
-     the Later cards by when they open) */
-  const NO_LOC = ['ascensionFirst', 'catchUp', 'etaLater'];
+     the Later cards by when they open; trackFilter and bandLabels, 0.5 P14, read the route labels and the milestone
+     levels, never a place) */
+  const NO_LOC = ['ascensionFirst', 'catchUp', 'etaLater', 'trackFilter', 'bandLabels'];
   /* loaded as the page does, deep-frozen (X.loaded, shared with the other files); dated: a copy of a hashed tenth with its
      change times spread over 1 … 40 s. Samples below are hashed by state id (the suite's 30 s budget). */
   const loaded = [], dated = [], share = (tag, x, p) => fnv(tag + '|' + x.id) < p;
@@ -79,7 +80,7 @@ export default (test, M, X) => {
     assert.ok(X.only || some > n / 4, `only ${some} of ${n} states bind anything`);
   });
 
-  test('7. no location, no change: change times at 0, rankNext with the ranking switches on (but ascensionFirst, catchUp, etaLater) = every one off', () => {
+  test('7. no location, no change: change times at 0, rankNext with the ranking switches on (but ascensionFirst, catchUp, etaLater, trackFilter, bandLabels) = every one off', () => {
     const on = ALL_RANK.filter(n => !NO_LOC.includes(n)), bad = [];
     const cases = loaded.filter(x => share('nl', x, x.fam === 'loc' || x.fam === 'bind' ? 0.3 : x.fam ? 0.1 : 0.003));
     try {

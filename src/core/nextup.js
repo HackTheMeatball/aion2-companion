@@ -30,17 +30,18 @@ export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story"
    (the pack's gateChanges, design 0.3 §13), so tests/golden.js --explain can attribute every changed state to the
    smallest set of them. Unlike those, a ranking change ships off (on: false) until the step that builds it turns it on and
    re-records the golden snapshots (0.5 P11: every one off; P12 turns on ascensionFirst and placeRank, both read by the
-   pack's producers; P13 turns on catchUp and etaLater, read here and by the pack's spend and Later skill producers).
+   pack's producers; P13 turns on catchUp and etaLater, read here and by the pack's spend and Later skill producers; P14
+   turns on trackFilter and bandLabels, read here).
    baseline: in the snapshots since an earlier step, so --explain keeps it on and never explains it (as the pack's gate
    changes; the step after the one that records a switch marks it). A pack declares its own ranking changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
    exactly the names given, from any table; the caller adds what each one needs. */
 export const RANK_CHANGES = {
   ascensionFirst: { on: true, baseline: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
   placeRank: { on: true, baseline: true, what: "the side-content picks and the order of their lists by where the player is (whereNow, byPlace; design §5)" },
-  trackFilter: { on: false, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
-  bandLabels: { on: false, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
-  catchUp: { on: true, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
-  etaLater: { on: true, what: "the Later cards from every closed node, by the level (then the story quest) they open at (design §7 item 3)" },
+  trackFilter: { on: true, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
+  bandLabels: { on: true, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
+  catchUp: { on: true, baseline: true, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
+  etaLater: { on: true, baseline: true, what: "the Later cards from every closed node, by the level (then the story quest) they open at (design §7 item 3)" },
 };
 /* Catch-up's thresholds (design §7, inferred; pinned by tests/core/nextup.test.mjs): behind with at least BEHIND_MISSED
    open missed steps, or at least BEHIND_KINDS kinds of points with something affordable now. Not behind: at most
@@ -63,7 +64,27 @@ export const rankChangeOn = (n, table = RANK_CHANGES) => {
   return RANK_ON ? RANK_ON.has(n) : table[n].on === true;
 };
 
-export function rankNext(state, { basic = false } = {}) {
+/* Tracks (trackFilter, design §6; 0.5 P14). A record's route ("core" / "filler" / "completionist") is the pack's
+   (catalog.route(k); a key it doesn't label, or a pack without the hook: "core"). The view setting `track` (top-level,
+   per device, not synced; absent: "fastest") picks one; Basic always ranks the fastest track. Fastest drops an entry
+   whose candidates (its `cands` keys, else the card's step, pick or open rows) are all non-core, except while the story
+   is level-gated (filler is how you catch up XP there); the story card and entries without candidates always stay.
+   Completionist ranks every route as core and, in Advanced, offers up to COMPLETIONIST_MORE more optional steps after
+   the list (the advice cards past the first three). setRouteOf(f) (tests) labels keys with f instead of the pack. */
+export const TRACKS = ["fastest", "completionist"], COMPLETIONIST_MORE = 3;
+let ROUTE_OF = null;
+export const setRouteOf = f => { ROUTE_OF = typeof f === "function" ? f : null; };
+export const routeOf = k => { const f = ROUTE_OF || activePack().catalog.route; return (f && f(k)) || "core"; };
+export const trackOf = (state, basic = false) => !basic && state && state.track === "completionist" ? "completionist" : "fastest";
+/* Is any record the pack offers labelled non-core? (the toggle shows only then: owner, S1 Q7, DECISIONS 2026-10-17) */
+export const tracksDiffer = () => Object.values(activePack().data.graph.nodes).some(n => n.key !== undefined && n.kind !== "story" && routeOf(n.key) !== "core");
+const candsOf = e => e.cands || [e.card.x && e.card.x.k, e.card.pick && e.card.pick.k, ...(Array.isArray(e.card.open) ? e.card.open.map(x => x.k) : [])].filter(Boolean);
+/* Level bands (bandLabels, design §6): a level's band { from, to } runs from the milestone level at or below it to the
+   next one's level - 1 (to null: the last band). A card's level: its milestone's; a Later card's the level it opens at; anything else
+   is now (your level). */
+const bandOfLv = (L, lvs) => { const from = lvs.filter(m => m <= L).pop() ?? lvs[0], nx = lvs.find(m => m > from); return { from, to: nx == null ? null : nx - 1 }; };
+
+export function rankNext(state, { basic = false, track = trackOf(state, basic) } = {}) {
   /* every "is it open?" below is the evaluator's (gatesOf, src/core/requirements.js); the ranking is 0.2's */
   const P = activePack(), { milestones, rowKind, promised } = P.catalog;
   const c = char(state), lv = c.level, ev = gatesOf(c);
@@ -96,8 +117,9 @@ export function rankNext(state, { basic = false } = {}) {
   /* Nothing else to do right now: the story is the default (its steps live in the Journey card). */
   add("story", storyCard(state, ctx));
   /* Advice steps (optional notes) rank after the story. Advanced only. */
-  [...hs.filter(x => x.adv).map(x => ({ x, g: here })), ...msAll.filter(m => m.adv).map(m => ({ x: m, g: m.g }))].slice(0, 3).forEach(({ x, g }) =>
-    add("advice", { kind: "adv", adv: true, x, g, act: "tick:" + x.k }));
+  const advAll = [...hs.filter(x => x.adv).map(x => ({ x, g: here })), ...msAll.filter(m => m.adv).map(m => ({ x: m, g: m.g }))];
+  const advCard = ({ x, g }) => ({ kind: "adv", adv: true, x, g, act: "tick:" + x.k });
+  advAll.slice(0, 3).forEach(a => add("advice", advCard(a)));
   /* The queue's tail, the engine's part: the next milestone with a required step still open. Not side rows, optional
      steps, or rows the pack queues on cards of their own (catalog.promised), so a card never promises something that
      won't show up at that level. Its first step that isn't a side row or advice; a milestone whose rows Next up doesn't
@@ -107,6 +129,9 @@ export function rankNext(state, { basic = false } = {}) {
   const st2 = eta ? eta.x : g2 ? openSteps(state, g2).find(x => !x.rq && !x.adv) : null;
   if (g2) entries.push({ phase: "later", L: eta ? eta.L : g2.lv, Q: eta ? eta.Q : undefined, card: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "",
     why: st2 && ev.byKey(st2.k) ? blockerText(ev.byKey(st2.k), ev, { omit: ["level"] }) : "" } });
+  /* fastest (trackFilter): an entry whose candidates are all non-core drops, outside a story level gate */
+  const tracks = rankChangeOn("trackFilter"), fast = tracks && track !== "completionist" && !gated;
+  const onTrack = e => { if (!fast || e.card.story) return true; const ks = candsOf(e); return !ks.length || ks.some(k => routeOf(k) === "core"); };
   /* not behind (or catchUp off): the pack's queue previews past its usual length drop */
   const ranked = (lift ? entries : entries.filter(e => !e.more)).map((e, i) => ({ e, i, p: NEXT_UP_PHASES.indexOf(e.phase) }))
     .sort((a, b) => (b.e.first ? 1 : 0) - (a.e.first ? 1 : 0) || a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) || (a.e.Q ?? -1) - (b.e.Q ?? -1) : 0) || a.i - b.i).map(x => x.e);
@@ -118,7 +143,17 @@ export function rankNext(state, { basic = false } = {}) {
      (more, catch-up) may push out what ranks after the story, never a step, a missed step or the story itself. */
   const room = Math.max(0, 8 - shown.filter(e => !e.more && NEXT_UP_PHASES.indexOf(e.phase) <= NEXT_UP_PHASES.indexOf("story")).length);
   let extra = 0;
-  return shown.filter(e => !e.more || extra++ < room).filter((e, i) => i < 8 || e.card.story || e.keep).map(e => e.card);
+  /* the track filter runs after the cap, so fastest is always a subset of completionist (tracks nest, invariant 10) */
+  const out = shown.filter(e => !e.more || extra++ < room).filter((e, i) => i < 8 || e.card.story || e.keep).filter(onTrack);
+  /* completionist (Advanced): the optional steps past the first three, after the list */
+  if (tracks && track === "completionist" && !basic) advAll.slice(3, 3 + COMPLETIONIST_MORE).forEach(a => out.push({ phase: "advice", card: advCard(a) }));
+  if (!rankChangeOn("bandLabels") || basic) return out.map(e => e.card);
+  /* band labels: each card's lvBand ({ from, to }, missed: a missed step; not `band`, which the pack's cards use), only
+     when the cards span more than one band */
+  const lvs = [...new Set(milestones.map(g => g.lv))].sort((a, b) => a - b);
+  const bands = out.map(e => ({ ...bandOfLv(e.card.g ? e.card.g.lv : e.phase === "later" ? Math.max(e.L || 0, lv) : lv, lvs), ...(e.card.kind === "missed" ? { missed: true } : {}) }));
+  if (lvs.length === 0 || new Set(bands.map(b => b.from)).size < 2) return out.map(e => e.card);
+  return out.map((e, i) => ({ ...e.card, lvBand: bands[i] }));
 }
 
 /* Later by eta (etaLater, design §7 item 3): of the steps the Later card may promise (on a milestone above your level;

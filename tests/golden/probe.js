@@ -40,6 +40,8 @@ function installProbe([KEY, EARLY]) {
       const meta = c.querySelector('.meta'), b = meta && meta.querySelector('[data-now]'), tag = meta && meta.querySelector('.tag');
       r.c = b ? `${b.classList.contains('primary') ? 'primary' : 'go'} "${T(b)}" ${b.dataset.now}` : tag ? `tag "${T(tag)}"` : '';
       const f = cls(c, ['later']); if (f) r.f = f;
+      /* the level-band label above the card (0.5 P14) */
+      const band = c.querySelector('.ns-band'); if (band) r.b = T(band);
       const info = c.querySelector('.ns-info'); if (info) r.i = T(info);
       const ex = c.querySelector('.ns-extra');
       if (ex) r.x = $$('li.qg', ex).map(li => li.classList.contains('rq-aux') || li.classList.contains('more') ? T(li)

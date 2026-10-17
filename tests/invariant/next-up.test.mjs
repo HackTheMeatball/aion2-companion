@@ -152,6 +152,61 @@ export default (test, M, X) => {
     console.log(`     cap: ${loaded.length} states; catch-up compared on ${compared}, changes ${lifted}`);
   });
 
+  /* Invariant 10 (design §11, 0.5 P14): tracks nest. In a hashed share of the states (30 % of the behind family, 6 % of
+     the rest: the suite's 60 s hang guard; Advanced and Basic as stored): every card fastest
+     shows, completionist shows too, and with today's labels (the pack's routes) fastest is exactly the ranking with
+     trackFilter and bandLabels off, and completionist adds only optional ("adv") steps. Then with labels seeded (every
+     third regional quest, Sealed Dungeon and stronghold "filler", on 30 % of the behind family and 3 % of the rest), the nesting still
+     holds, the seeding drops something in some state, and fastest outside a story level gate keeps no card whose
+     candidates are all filler. */
+  const keyOf10 = a => a.kind + ' ' + (a.x ? a.x.k : a.pick ? a.pick.k : a.act);
+  test('10. tracks nest: fastest ⊆ completionist; with today\'s labels fastest = switches off and completionist adds only optional steps', () => {
+    const OFF = [...Object.keys(M.RANK_CHANGES), ...Object.keys(M.AION2_RANK_CHANGES)].filter(n => !['trackFilter', 'bandLabels'].includes(n) && M.rankChangeOn(n, n in M.RANK_CHANGES ? M.RANK_CHANGES : M.AION2_RANK_CHANGES));
+    const strip = cs => JSON.stringify(cs.map(({ lvBand, ...a }) => a));
+    const notNested = [], notSame = [], notAdv = [], seededBad = [];
+    let extra = 0, seededDrops = 0, seeded = 0;
+    const nestCheck = (id, s, basic, out) => {
+      const f = M.rankNext(s, { basic, track: 'fastest' }), co = M.rankNext(s, { basic, track: 'completionist' });
+      const have = new Set(co.map(keyOf10)), miss = f.filter(a => !have.has(keyOf10(a)));
+      if (miss.length) out.push(`${id}: ${miss.map(keyOf10).join(', ')}`);
+      return { f, co };
+    };
+    let today = 0;
+    for (const { id, s } of loaded) {
+      if (fnv('tracks-today|' + id) >= (id.startsWith('golden/behind/') ? 0.3 : 0.06)) continue;
+      today++;
+      const basic = s.mode === 'basic', { f, co } = nestCheck(id, s, basic, notNested);
+      let off; try { M.setRankChanges(OFF); off = M.rankNext(s, { basic }); } finally { M.setRankChanges(null); }
+      if (strip(f) !== strip(off)) notSame.push(id);
+      const fk = new Set(f.map(keyOf10)), add = co.filter(a => !fk.has(keyOf10(a)));
+      if (add.some(a => a.kind !== 'adv')) notAdv.push(`${id}: ${add.map(keyOf10).join(', ')}`);
+      if (add.length) extra++;
+    }
+    const kinds3 = new Set(['rq', 'sd', 'sh']), filler = new Set(Object.values(M.GATE_GRAPH.nodes).filter(n => kinds3.has(n.kind) && n.key !== undefined).map(n => n.key).filter((k, i) => i % 3 === 0));
+    try {
+      M.setRouteOf(k => filler.has(k) ? 'filler' : 'core');
+      for (const { id, s, c } of loaded) {
+        if (fnv('tracks|' + id) >= (id.startsWith('golden/behind/') ? 0.3 : 0.03)) continue;
+        seeded++;
+        const basic = s.mode === 'basic', { f, co } = nestCheck(id, s, basic, notNested);
+        if (f.length < co.length) seededDrops++;
+        if (M.storyRecGate(c).gated) continue;
+        for (const a of f) {
+          const ks = a.kind === 'rq' ? a.open.map(x => x.k) : a.kind === 'sd' || a.kind === 'sh' ? [] : a.x ? [a.x.k] : [];
+          if (ks.length && ks.every(k => filler.has(k))) seededBad.push(`${id}: ${keyOf10(a)}`);
+        }
+      }
+    } finally { M.setRouteOf(null); }
+    assert.deepEqual(notNested.slice(0, 5), [], `${notNested.length} states where a fastest card is missing from completionist`);
+    assert.deepEqual(notSame.slice(0, 5), [], `${notSame.length} states where fastest (today's labels) differs from trackFilter and bandLabels off`);
+    assert.deepEqual(notAdv.slice(0, 5), [], `${notAdv.length} states where completionist adds a card that isn't an optional step`);
+    assert.deepEqual(seededBad.slice(0, 5), [], `${seededBad.length} seeded states where fastest keeps an all-filler card`);
+    if (X.only) return;
+    assert.ok(extra > 0, 'completionist adds nothing in any state: the check compares nothing');
+    assert.ok(seededDrops > 0, 'seeded filler labels drop nothing: the filter is not exercised');
+    console.log(`     invariant 10: ${today} states nest, fastest = switches off; completionist adds optional steps in ${extra}; seeded labels drop cards in ${seededDrops} of ${seeded}`);
+  });
+
   /* Next up runs on every state. The rest is split for time: evaluator vs oracle on every targeted state plus the half of
      the golden and random ones whose id hashes low, monotonic on the other half plus every targeted state (a hash of the
      id, not the position, so the split can't alias with the generator's loops). Derived on (alone, and as the app runs
