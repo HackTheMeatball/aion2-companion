@@ -43,6 +43,8 @@ function installProbe([KEY, EARLY]) {
       /* the level-band label above the card (0.5 P14) */
       const band = c.querySelector('.ns-band'); if (band) r.b = T(band);
       const info = c.querySelector('.ns-info'); if (info) r.i = T(info);
+      /* the story card's "Bind X" row (0.5 P15): its text and the key its tick writes */
+      const bind = c.querySelector('.ns-bind'); if (bind) { const cb = bind.querySelector('input[data-nsbind]'); r.bd = `${T(bind)} ${cb ? cb.dataset.nsbind : ''}`.trim(); }
       const ex = c.querySelector('.ns-extra');
       if (ex) r.x = $$('li.qg', ex).map(li => li.classList.contains('rq-aux') || li.classList.contains('more') ? T(li)
         : $$('.ql', li).map(q => { const cb = q.querySelector('.q-cb'), nm = q.querySelector('a, span[title]');

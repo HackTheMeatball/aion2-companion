@@ -210,7 +210,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "story/L23-q36-before-A": [
-    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 23. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24"},
+    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 23. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -253,7 +253,7 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "story/L24-q36-before-A": [
-    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 22–24","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
+    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 22–24","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 25–26"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -261,7 +261,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "story/L24-q36-before-B": [
-    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
+    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
   "story/L24-q36-none-A": [
@@ -273,7 +273,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 22–24","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
+    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 22–24","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim (near your story step) · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 25)","c":"tag \"Needs 1 shard\""},
@@ -307,7 +307,7 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "story/L24-q38-before-A": [
-    {"t":"Story: Voice of Rage","s":"Needs Lv 25: you're 24. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24"},
+    {"t":"Story: Voice of Rage","s":"Needs Lv 25: you're 24. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 25–26"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -323,7 +323,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "story/L25-q38-before-A": [
-    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
+    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 25–26","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -331,7 +331,7 @@
     {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later","b":"Lv 30–31"}
   ],
   "story/L25-q38-before-B": [
-    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
+    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"}
   ],
@@ -344,7 +344,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
+    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","b":"Lv 25–26","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 26)","c":"tag \"Needs 1 shard\""},
@@ -388,7 +388,7 @@
   ],
   "story/L25-q41-before-A": [
     {"t":"Clear Dark Root Cave and others until Lv 26","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","b":"Lv 25–26","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 5 open at your level"},
-    {"t":"Story: Striving for Coexistence","s":"Needs Lv 26: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Striving for Coexistence","s":"Needs Lv 26: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly"},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},

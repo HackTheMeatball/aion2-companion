@@ -90,7 +90,7 @@
   ],
   "level/L11-q15-before-A": [
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","b":"Lv 10–12","x":["new Shugo-of-All-Trades: Asmodian [Lv 12] (near)"]},
-    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 11. Level up first. Meanwhile: Strongholds","c":""},
+    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 11. Level up first. Meanwhile: Strongholds","c":"","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -106,7 +106,7 @@
     {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · set your quest","c":"tag \"Later\"","f":"later"}
   ],
   "level/L12-q13-lvonly-A": [
-    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
+    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+1 waiting on the story Shugo-of-All-Trades: Asmodian In my game"]},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 13–14"},
@@ -223,7 +223,7 @@
   "level/L13-q15-lvonly-A": [
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill","b":"Lv 13–14"},
     {"t":"Buy Savage Roar 5 → 6","s":"2 pts","c":"tag \"After the one above\""},
-    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 2 → 3","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},

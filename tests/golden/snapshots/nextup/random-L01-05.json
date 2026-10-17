@@ -60,7 +60,7 @@
     {"t":"Story: The Survivors","s":"Needs Lv 32: you're 1. Level up first.","c":""}
   ],
   "random/L01-q55-lvonly-A": [
-    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 1. Level up first.","c":"","b":"Lv 6–8"},
+    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 1. Level up first.","c":"","b":"Lv 6–8","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
@@ -80,7 +80,7 @@
   "random/L01-q81-all-B-stready": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Upgrade Triniel's Dagger 2 → 3","s":"1 of your 3 shards","c":"primary \"Upgraded\" stup"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 1. Level up first.","c":""}
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 1. Level up first.","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L01-qxx-rnd112p50-B-objs": [
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
@@ -110,7 +110,7 @@
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 7 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L02-q15-lvonly-B-rqmix": [
-    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":""}
+    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 2. Level up first.","c":"","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite"}
   ],
   "random/L02-q24-all-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -144,7 +144,7 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Heightened Sixth Sense 1 → 2","s":"1 pt · single source","c":"tag \"After the one above\""},
-    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 2. Level up first.","c":""},
+    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 2. Level up first.","c":"","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
@@ -174,7 +174,7 @@
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L02-q83-lvonly-A-objs": [
-    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 2. Level up first.","c":"","b":"Lv 6–8"},
+    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 2. Level up first.","c":"","b":"Lv 6–8","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
     {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 3 levels away","c":"tag \"Later\"","f":"later"},
@@ -234,14 +234,14 @@
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L03-q59-none-A-dv": [
-    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 3. Level up first.","c":"","b":"Lv 6–8"},
+    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 3. Level up first.","c":"","b":"Lv 6–8","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 3 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Save your Enhance Stones","s":"Lv 9 milestone · 6 levels away","c":"tag \"Later\"","f":"later","b":"Lv 9"}
   ],
   "random/L03-q61-none-B-rqmix": [
-    {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 3. Level up first.","c":""}
+    {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 3. Level up first.","c":"","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp"}
   ],
   "random/L03-q70-lvonly-A-filters": [
     {"t":"Story: Fafnite's Whereabouts","s":"Needs Lv 40: you're 3. Level up first.","c":"","b":"Lv 6–8"},
@@ -297,7 +297,7 @@
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 4. Level up first.","c":""},
+    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 4. Level up first.","c":"","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 2 levels away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 4 levels away","c":"tag \"Later\"","f":"later"}
@@ -324,7 +324,7 @@
   ],
   "random/L04-q81-none-B-stfull": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 4. Level up first.","c":""}
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 4. Level up first.","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L04-q82-lvonly-B-stready": [
     {"t":"Story: Blood Barrier","s":"Needs Lv 44: you're 4. Level up first.","c":""}
@@ -367,17 +367,17 @@
   ],
   "random/L05-q15-all-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 5. Level up first.","c":""}
+    {"t":"Story: Express Daeva Delivery","s":"Needs Lv 12: you're 5. Level up first.","c":"","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite"}
   ],
   "random/L05-q19-all-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Back on the Scent","s":"Needs Lv 14: you're 5. Level up first.","c":""}
   ],
   "random/L05-q36-rnd134p95-B": [
-    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 5. Level up first.","c":""}
+    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 5. Level up first.","c":"","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site"}
   ],
   "random/L05-q49-lvonly-A-filters": [
-    {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 5. Level up first.","c":"","b":"Lv 6–8"},
+    {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 5. Level up first.","c":"","b":"Lv 6–8","bd":"Bind Briskwind Shelter on the way 63 m from Menrik bind:kib:briskwind-shelter"},
     {"t":"Buy Ambush 2 → 3","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},

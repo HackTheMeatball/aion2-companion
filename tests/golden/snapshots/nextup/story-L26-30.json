@@ -30,7 +30,7 @@
   ],
   "story/L26-q41-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 25–26"},
-    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
+    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 27"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -39,7 +39,7 @@
   ],
   "story/L26-q41-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
+    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"}
   ],
   "story/L26-q41-none-A": [
@@ -51,7 +51,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","b":"Lv 25–26","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
+    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","b":"Lv 25–26","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 27)","c":"tag \"Needs 1 shard\""},
@@ -59,7 +59,7 @@
   ],
   "story/L26-q42-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 25–26"},
-    {"t":"Story: Preparations for Restoration","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Preparations for Restoration","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff"},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 27"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -68,7 +68,7 @@
   ],
   "story/L26-q43-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 25–26"},
-    {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 26. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 27"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -77,7 +77,7 @@
   ],
   "story/L27-q42-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 27"},
-    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
+    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
@@ -86,7 +86,7 @@
   ],
   "story/L27-q42-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
+    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"}
@@ -100,7 +100,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","b":"Lv 27","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
+    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","b":"Lv 27","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
@@ -108,7 +108,7 @@
   ],
   "story/L27-q43-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 27"},
-    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
@@ -117,7 +117,7 @@
   ],
   "story/L27-q43-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"}
@@ -131,7 +131,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","b":"Lv 27","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","b":"Lv 27","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 28)","c":"tag \"Needs 1 shard\""},

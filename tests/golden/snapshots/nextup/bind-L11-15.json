@@ -8,7 +8,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Crash Site Rendezvous","s":"1/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","Turn in Ulgorn, Galorik's Inspection Area"]},
+    {"t":"Story: Crash Site Rendezvous","s":"1/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area","o":["Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","Turn in Ulgorn, Galorik's Inspection Area"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
   ],
@@ -21,7 +21,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
+    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
   ],
@@ -34,7 +34,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Crash Site Rendezvous","s":"4/4 objectives · Kibelisk: Galorik's Inspection Area (49 m) · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12"},
+    {"t":"Story: Crash Site Rendezvous","s":"4/4 objectives · Kibelisk: Galorik's Inspection Area (49 m) · then Contaminated Area","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area"},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt (near your story step) · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
   ],
@@ -73,7 +73,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 10–12","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian (near)"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
@@ -87,7 +87,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Express Daeva Delivery","s":"2/2 objectives · Kibelisk: Quai Campsite (30 m) · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 10–12"},
+    {"t":"Story: Express Daeva Delivery","s":"2/2 objectives · Kibelisk: Quai Campsite (30 m) · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 10–12","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite"},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}

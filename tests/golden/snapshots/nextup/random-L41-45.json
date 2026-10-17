@@ -33,7 +33,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Last Refuge","s":"0/4 objectives · then Scripture in the Ruins","c":"primary \"Turned in\" story","o":["Join Nemon at the location she mentioned go to Basfelt Waterfall (Kibelisk: Basfelt Waterfall)","Find out what is currently happening at Basfelt Waterfall talk to Ulgorn (Kibelisk: Basfelt Waterfall)","Investigate the Marauder base near the entrance of the ruins investigate the marauder goods chest retrieve loot from Marauder Brawler retrieve antiques from Marauder Watcher defeat Marauder Brawler defeat Marauder Watcher Kibelisk: Graverobber Campsite","+1 more after these"]},
+    {"t":"Story: Last Refuge","s":"0/4 objectives · then Scripture in the Ruins","c":"primary \"Turned in\" story","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite","o":["Join Nemon at the location she mentioned go to Basfelt Waterfall (Kibelisk: Basfelt Waterfall)","Find out what is currently happening at Basfelt Waterfall talk to Ulgorn (Kibelisk: Basfelt Waterfall)","Investigate the Marauder base near the entrance of the ruins investigate the marauder goods chest retrieve loot from Marauder Brawler retrieve antiques from Marauder Watcher defeat Marauder Brawler defeat Marauder Watcher Kibelisk: Graverobber Campsite","+1 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202063","x":["+3 waiting on the story Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"},
     {"t":"Ascension quest \"The One Who Witnesses the Nightmare\"","s":"Lv 45 milestone · 4 levels away · unlocks after \"Forgotten Commander\" · 30 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 45+"}
@@ -84,7 +84,7 @@
     {"t":"Buy Assault Stance 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 3 → 4","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 41. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
   ],
   "random/L41-q83-none-B": [
@@ -96,7 +96,7 @@
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
-    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 41. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Zikel's Core","s":"Needs Lv 45: you're 41. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 42)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 13 open"}
   ],
@@ -270,12 +270,12 @@
   ],
   "random/L42-q81-all-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 42. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""}
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 42. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"}
   ],
   "random/L42-q85-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202046","x":["new Lest We Forget [Lv 45]"]},
-    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 42. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\""},
+    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 42. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\"","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Run Amurahta Surveillance Base","s":"Black Claw Village · Kibelisk: Impetusium Lower Path · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Impetusium Lower Path is 180 m away · 10 open"}
   ],
   "random/L42-qxx-all-B-objs": [
@@ -327,7 +327,7 @@
   ],
   "random/L43-q15-before-B-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+20 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 10 open"}
   ],
@@ -356,7 +356,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
+    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","b":"Lv 40–44","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Regional quests","s":"13 to pick up · 2 follow-ups · 0/15 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+9 more","+11 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim (near your story step) · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 60 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 44)","c":"tag \"Needs 1 shard\""},
@@ -409,7 +409,7 @@
   ],
   "random/L43-q74-all-B-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]}
+    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]}
   ],
   "random/L43-qxx-before-B-objs": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -459,7 +459,7 @@
   ],
   "random/L44-q42-lvonly-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
+    {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","bd":"Bind Purifying Forest Coastal Cliff on the way 89 m from Hadala bind:kib:purifying-forest-coastal-cliff","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202066","x":["new Herb Pouch Heist"]},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 11 open"}
   ],
@@ -573,7 +573,7 @@
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
+    {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202026","x":["new Spacetime Rift: Asmodian","new Spacetime Rift: Unknown Species","new Spacetime Rift: Unfamiliar Material","new Spacetime Rift: Developing Travel Goods","new Spacetime Rift: Difference Between Here and There","new Spacetime Rift: An Honest Shugo","+1 more","+24 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game Lest We Forget In my game"]},
     {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
     {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
@@ -613,7 +613,7 @@
   ],
   "random/L45-q83-all-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Zikel's Core","s":"0/3 objectives · then Farewells","c":"primary \"Turned in\" story","o":["Acquire the Empyrean Core enter the Impetusium (Kibelisk: Collapsed Hall of Fame)","Join with Nemon outside the Impetusium go to the outskirts of the Impetusium (Kibelisk: Outskirts Stall)","Turn in Nemon, outskirts of the Impetusium"]}
+    {"t":"Story: Zikel's Core","s":"0/3 objectives · then Farewells","c":"primary \"Turned in\" story","bd":"Bind Outskirts Stall on the way 93 m from Nemon bind:kib:outskirts-stall","o":["Acquire the Empyrean Core enter the Impetusium (Kibelisk: Collapsed Hall of Fame)","Join with Nemon outside the Impetusium go to the outskirts of the Impetusium (Kibelisk: Outskirts Stall)","Turn in Nemon, outskirts of the Impetusium"]}
   ],
   "random/L45-q85-none-B-stwait": [
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -624,7 +624,7 @@
     {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
     {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
     {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
-    {"t":"Story: Forgotten Commander","s":"0/2 objectives · then Daeva Trapped in a Nightmare","c":"primary \"Turned in\" story","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
+    {"t":"Story: Forgotten Commander","s":"0/2 objectives · then Daeva Trapped in a Nightmare","c":"primary \"Turned in\" story","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root","o":["Investigate Draupnir (Kibelisk: Garden of the Illusion God East Observatory) This is probably your first run of the Draupnir Expedition.","Turn in Koro, Latesran Eastern Root (Chaotic Lower Reshanta)"]},
     {"t":"Regional quests","s":"28 to pick up · 6 follow-ups · 0/35 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+28 more","+23 waiting on the story A Comrade's Fate In my game A Perfect Wedding In my game Restoration Materials In my game Lost Memories In my game I'm a Believer! In my game Fallout Calmed In my game Putting a Friend to Rest In my game Sapling Hide-and-Seek In my game One Last Thing In my game Another Survivor In my game Fallout In my game A Traitor Within In my game Regular Altar Maintenance In my game Restless Spirits In my game Nine Wonders of Altgard: Final Stretch In my game Immortal Isle's Distinct Ecology In my game Spirit Isle, Where Time Has Stopped In my game Farewell, My Instructor In my game Mind Your Own Business In my game Reality Bites In my game Workplace Misunderstanding In my game Ravenous Recluse In my game Another Crisis! In my game"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 60 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard","c":"tag \"Needs 1 shard\""},

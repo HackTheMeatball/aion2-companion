@@ -1,14 +1,14 @@
 /* AION 2 travel (0.5 P10, pure: no DOM; docs/design/0.4-smart-next-up.md §4, §8): what a stamp in the save says about
    where the player was (aion2Place, the pack's `place` for src/core/place.js whereNow), which Kibelisks are bound (§8.1),
    the one-time "Bind X" row (§8.2) and teleport vs walk (§8.3). All derived from the save and the rules
-   (TRAVEL_RULES: rule:kibelisk-bind-radius, rule:kibelisk-nudge-radius, rule:teleport-gain), never stored. Nothing on the
-   page calls them yet.
+   (TRAVEL_RULES: rule:kibelisk-bind-radius, rule:kibelisk-nudge-radius, rule:teleport-gain), never stored. The story card's
+   "Bind X" row (0.5 P15, nextup.js aion2StoryFields) calls nudgeOf; teleportOf waits for P16.
 
    Points are NODE_PLACE's { map, x, y, anchor, m }: anchor = the nearest Kibelisk's registry id, m = the source's metres
    to it. Story objectives have no points yet (design §3, S1), so an objective places the player only by its Kibelisk's
    zone, and the story card's target is the current quest's turn-in. */
 import { KIBELISKS, NODE_PLACE, TRAVEL_RULES } from "./data/place.js";
-import { QUEST_STEPS } from "./data/story.js";
+import { QUEST_LOC, QUEST_STEPS } from "./data/story.js";
 import { isAscensionKey } from "./requirements.js";
 import { activePack, perPack } from "../../core/pack.js";
 import { placeDist } from "../../core/place.js";
@@ -93,9 +93,9 @@ export const bound = (c, kib, o) => boundSet(c, o).has(kib);
 
 /* ---------- The "Bind X" row (design §8.2) ---------- */
 /* On the story card while its target (the current quest's turn-in) is more than R and at most the nudge radius from its
-   Kibelisk K, K is not bound and this is the first point in story order with K in that band: { kib, name, m, key, via }
-   (key = the tick that binds it, via = the quest's node id), else null. "One-time" comes from the data: past that point
-   the row is gone. */
+   Kibelisk K, K is not bound and this is the first point in story order with K in that band: { kib, name, m, key, via,
+   npc } (key = the tick that binds it, via = the quest's node id, npc = the turn-in's NPC or null), else null.
+   "One-time" comes from the data: past that point the row is gone. */
 export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.nudgeRadius, kibs = KIBELISKS } = {}) {
   if (!c.quest || c.storyEnd === c.quest) return null;
   const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin;
@@ -105,7 +105,7 @@ export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.n
   for (const [id] of travelGraph().story) { const P = NODE_PLACE[id];
     first = P && [P.pts.giver, P.pts.turnin].find(p => inBand(p) && p.anchor === T.anchor); if (first) break; }
   if (first !== T || boundSet(c, { R, kibs }).has(T.anchor)) return null;
-  return { kib: T.anchor, name: kibs[T.anchor].name, m: T.m, key: "bind:" + T.anchor, via: x.id };
+  return { kib: T.anchor, name: kibs[T.anchor].name, m: T.m, key: "bind:" + T.anchor, via: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };
 }
 
 /* ---------- Teleport vs walk (design §8.3) ---------- */
