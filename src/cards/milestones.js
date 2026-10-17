@@ -1,12 +1,13 @@
-/* The milestone cards (0.4 P4c: moved verbatim from src/main.js; markup milestones.html): one card per GATES milestone
-   (cardHTML, also used by Route rules), their counts, tags and open state, the rail's milestone list, the tick handler of
-   every data-k box (fade-out, Cube rewards), regional quest rows (in progress, "Not in game yet"), the filters and Expand
-   all. update() calls updateMilestones, milestoneFilters, fillStigmaText and syncQRun at their old spots (src/main.js). */
+/* The milestone cards (0.4 P4c: moved from src/main.js; 0.4 P5b: no game terms; markup milestones.html): one card per
+   milestone of the pack's catalog (cardHTML, also used by Route rules), their counts, tags and open state, the rail's
+   milestone list, the tick handler of every data-k box (fade-out), the filters and Expand all. A row whose kind the pack
+   lists is drawn by the pack's row renderer (activePack().rowRenderers), what its rows do by the pack's row hooks
+   (activePack().rowHooks). update() calls updateMilestones, milestoneFilters, fillStigmaText and syncQRun at their old
+   spots (src/main.js). */
 import { char } from "../core/state.js";
-import { itemByK } from "../core/catalog.js";
-import { chainsOn, derivedOf, doneOf, gatesOf } from "../core/requirements.js";
-import { capFirst } from "./nextup.js";
-import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageRewardToast as rewardToast, pageGATES as GATES, pageITEMS as ITEMS, pageE_ORDER as E_ORDER, pageSeq as seq, pageAREA_ITEMS as AREA_ITEMS, pageCLEAR_REWARD as CLEAR_REWARD, pageRQ_K as RQ_K, pageEputK as eputK, pageRqReqOf as rqReqOf, pageAion2DungeonMap as aion2DungeonMap, pageSTIGMA_SLOTS as STIGMA_SLOTS, pageStNames as stNames, pageRqAvail as rqAvail, pageQProg as qProg, pageCounts as counts, pageMainCounts as mainCounts, pageSideOpen as sideOpen } from "./page.js";
+import { activePack } from "../core/pack.js";
+import { derivedOf, gatesOf } from "../core/requirements.js";
+import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageGATES as GATES, pageITEMS as ITEMS, pageRQ_K as RQ_K, pageCounts as counts, pageMainCounts as mainCounts, pageSideOpen as sideOpen } from "./page.js";
 
 /* Big icons for every item named in a line, shown on its right. */
 const icons = html => {
@@ -14,45 +15,27 @@ const icons = html => {
   return keys.length ? `<span class="icos">${keys.map(k => `<img src="${ITEMS[k][2]}" alt="${ITEMS[k][3]}" title="${ITEMS[k][3]}" loading="lazy" onerror="this.remove()">`).join("")}</span>` : "";
 };
 
-/* Regional quests track like dungeons: first click on the box = in progress (char(state).started), second = completed.
-   Clicking a completed one undoes it. In progress doesn't count toward the milestone. */
-function syncQRun() {
-  mainEl.querySelectorAll("#gates li.qrow input[data-k]").forEach(i => {
-    const k = i.dataset.k, dv = "derived" in i.dataset, done = !!char(state).checks[k] || dv, run = !done && qProg(k) > 0, li = i.closest("li");
-    li.classList.toggle("running", run); i.indeterminate = run;
-    if (!dv) i.title = done ? "Completed · click to undo" : run ? "In progress · click when turned in" : "Click when you take the quest; click again when turned in";
-    const txt = li.querySelector(".txt"); let tag = txt && txt.querySelector(":scope > .run-tag");
-    if (run && txt && !tag) { tag = document.createElement("span"); tag.className = "run-tag"; tag.textContent = "In progress"; const b = txt.querySelector("b"); b ? b.after(tag) : txt.prepend(tag); }
-    if (!run && tag) tag.remove();
-    /* "Not in game yet": only for a quest you haven't picked up; pressed = snoozed until your next Level up. */
-    const zb = li.querySelector(":scope > .q-snz"), zz = !!(char(state).rqSnooze || {})[k], it = itemByK(k), shut = !done && !run && !!it && !rqAvail(it.q).ok;
-    li.classList.toggle("locked", shut);
-    if (zb) { zb.hidden = done || run || shut; zb.setAttribute("aria-pressed", String(zz)); zb.textContent = zz ? "Not in game yet · undo" : "Not in game yet"; }
-    /* Locked by the guide's data but already offered in your game: one click marks it picked up (same as its box). */
-    const ib = li.querySelector(":scope > .q-inl"); if (ib) ib.hidden = !shut;
-    /* What opens it only matters while it isn't picked up. E6: what still blocks it, from the evaluator (design §4), in
-       place of the static "Opens …" list; nothing once it is open. */
-    const rr = li.querySelector(".rq-req");
-    if (rr && chainsOn()) { const why = done || run ? "" : rqReqOf(char(state), k); rr.innerHTML = why ? `<br>${capFirst(why)}` : ""; rr.hidden = !why; }
-    else if (rr) rr.hidden = done || run;
-    li.classList.toggle("snoozed", zz && !done && !run);
-  });
-}
-/* Snooze a regional quest the guide shows as available but the game doesn't (char(state).rqSnooze[key] = level it was set at).
-   Cleared by Level up (setLevel) or by turning in the quest it follows (rqTicked). */
-function snoozeToggle(k) {
-  char(state).rqSnooze = char(state).rqSnooze || {};
-  if (char(state).rqSnooze[k]) delete char(state).rqSnooze[k]; else char(state).rqSnooze[k] = char(state).level;
-  save(); update();
-}
-/* Turning in a regional quest clears the "Not in game yet" snoozes of the quests that follow it. */
-function rqTicked(k) {
-  const it = char(state).rqSnooze && RQ_K(k); if (!it) return;
-  GATES.forEach(g => g.items.forEach(x => { if (x.kind === "quest" && x.q.after.includes(it.name)) delete char(state).rqSnooze[x.k]; }));
-}
+/* The pack's row hooks (docs/design/0.4-engine-contract.md §2); a hook the pack doesn't have does nothing. text and sync
+   run on every update (the shell calls them by their old names, fillStigmaText and syncQRun); snoozeToggle and rqTicked
+   are the names the Next up card calls two of them by. */
+const rowHook = (name, ...a) => { const f = activePack().rowHooks[name]; return f ? f(...a) : undefined; };
+const syncQRun = () => rowHook("sync");
+const fillStigmaText = () => rowHook("text");
+const snoozeToggle = k => rowHook("snooze", k);
+const rqTicked = k => rowHook("turnedIn", k);
 const chev = `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
 /* "upsell" = a free step that mentions an optional paid upgrade (shown with a "Paid option" tag). */
 const MAP_ICO = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 1 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>`;
+
+/* The engine's row: a sub-heading (it.sub) or a row with its box. extra (from a pack's row renderer): pre = classes right
+   after the base class, cls = classes at the end, post = markup after the label. */
+const rowHTML = (it, k, { pre = "", cls = "", post = "" } = {}) => {
+  if (it.sub) { const ic = icons(it.subNote || ""); return `<li class="sub-h${pre}${ic ? " has-ico" : ""}"><span class="sub-txt">${it.sub}${it.subNote ? `<span>${it.subNote}</span>` : ""}</span>${ic}</li>`; }
+  const ic = icons(it.t);
+  return `<li${it.req ? ` data-req="${it.req}"` : ""}${it.story ? ` data-story="${it.story}"` : ""}${it.after ? ` data-needs="${it.after}"` : ""} class="item${pre}${it.cell ? " cell" : ""}${ic ? " has-ico" : ""}${it.opt ? " optional" : ""}${cls}"><label><input type="checkbox" data-k="${k}" ${char(state).checks[k] ? "checked" : ""}>${ic}<span class="txt">${it.story ? `<span class="schip"></span>` : ""}${it.opt ? `<span class="opt-tag">Optional</span>` : ""}${it.t}${it.note ? `<span class="note">${it.note}</span>` : ""}${it.upsell ? `<span class="upsell"><span class="paid-tag opt">Paid option</span>${it.upsell}</span>` : ""}</span></label>${post}</li>`;
+};
+/* A row's kind for the pack's row renderers: its kind or group; a row with neither is an "item". */
+const rowKindOf = it => it.kind || it.group || "item";
 
 const cardHTML = (s, num, cls) => `
   <details class="step ${cls}" id="${s.id}">
@@ -64,18 +47,15 @@ const cardHTML = (s, num, cls) => `
     <div class="bar"><span></span></div>
     <ul class="items">
       ${(() => {
-        /* Regional quests go last so the skill lines don't sit under their heading. Keys keep the original index. */
-        const isQ = it => (it.kind || it.group) === "quest";
+        /* The pack's side rows go last so its main rows don't sit under their heading. Keys keep the original index. */
+        const { catalog: { rowKind }, rowRenderers } = activePack(), isSide = it => rowKind(it) === "side";
         const order = s.items.map((it, j) => [it, j]);
-        return [...order.filter(([it]) => !isQ(it)), ...order.filter(([it]) => isQ(it))].map(([it, j]) => {
-        /* Sealed Dungeons are side content in the Areas card; milestones don't list them. Regional quests render inline. */
-        if ((it.kind || it.group) === "hideout") return "";
+        return [...order.filter(([it]) => !isSide(it)), ...order.filter(([it]) => isSide(it))].map(([it, j]) => {
+        /* rows of kind "none" are tracked in a card of the pack's own; milestones don't list them */
+        if (rowKind(it) === "none") return "";
         if (it.hidden) return "";
-        if (it.dv) return ""; /* board nodes live in the Daevanion board card */
-        if (it.sub) { const ic = icons(it.subNote || ""); return `<li class="sub-h${it.group === "quest" ? " rq" : ""}${ic ? " has-ico" : ""}"><span class="sub-txt">${it.sub}${it.subNote ? `<span>${it.subNote}</span>` : ""}</span>${ic}</li>`; }
-        const k = it.k || s.id + ":" + j;
-        const ic = icons(it.t);
-        return `<li${it.req ? ` data-req="${it.req}"` : ""}${it.story ? ` data-story="${it.story}"` : ""}${it.after ? ` data-needs="${it.after}"` : ""} class="item${it.kind === "quest" ? " qrow" : ""}${it.cell ? " cell" : ""}${ic ? " has-ico" : ""}${it.opt ? " optional" : ""}${it.map ? " has-map" : ""}"><label><input type="checkbox" data-k="${k}" ${char(state).checks[k] ? "checked" : ""}>${ic}<span class="txt">${it.story ? `<span class="schip"></span>` : ""}${it.opt ? `<span class="opt-tag">Optional</span>` : ""}${it.t}${it.note ? `<span class="note">${it.note}</span>` : ""}${it.upsell ? `<span class="upsell"><span class="paid-tag opt">Paid option</span>${it.upsell}</span>` : ""}</span></label>${it.map ? `<a class="amap" href="${aion2DungeonMap(it.map)}" target="_blank" rel="noopener" title="Show the entrance on the Altgard interactive map (Metabot)">${MAP_ICO}</a>` : ""}${it.kind === "quest" ? `<button type="button" class="q-snz" data-snz="${k}" aria-pressed="false" title="The game doesn't offer this quest yet: hide it from Next up until your next Level up">Not in game yet</button><button type="button" class="q-inl" data-ingame="${k}" hidden title="The game already offers it: mark it picked up (same as clicking its box)">In my game</button>` : ""}</li>`;
+        const k = it.k || s.id + ":" + j, draw = rowRenderers[rowKindOf(it)];
+        return draw ? draw(it, k, { c: char(state), row: extra => rowHTML(it, k, extra) }) : rowHTML(it, k);
       }).join(""); })()}
     </ul>
   </details>`;
@@ -99,8 +79,8 @@ function watchIcons() {
 /* Milestone ticks: the line turns green, then (if "Cleared tasks" hides it) fades and slides out; a milestone
    that just got cleared does the same when "Cleared milestones" is on. tickKeep holds them visible meanwhile. */
 let tickKeep = new Set();
-/* Lines shown in the Now card are hidden from the milestone below it; a regional heading with nothing left under it hides too. */
-/* A sub-heading (e.g. "Regional quests · Lv 14") with no visible rows under it is hidden (Basic hides done/locked rows). */
+/* Lines shown in the Now card are hidden from the milestone below it; a side-row heading with nothing left under it hides too. */
+/* A sub-heading (e.g. "… quests · Lv 14") with no visible rows under it is hidden (Basic hides done/locked rows). */
 function hideEmptyHeads() {
   mainEl.querySelectorAll("#gates ul.items > li.sub-h").forEach(h => {
     h.classList.remove("empty-h"); let n = h.nextElementSibling, any = false;
@@ -125,14 +105,14 @@ function dedupeNow() {
 function updateMilestones() {
   const lv = char(state).level;
   let total = 0, done = 0;
-  /* The milestone you're working toward: its main tasks aren't done (regional quests alone don't hold it). */
+  /* The milestone you're working toward: its main tasks aren't done (side rows alone don't hold it). */
   const upcoming = GATES.find(g => { const [c, n] = mainCounts(g); return g.lv >= lv && c < n; });
 
   GATES.forEach(g => {
     const d = document.getElementById(g.id), [c, n] = counts(g);
     total += n; done += c;
     const [mc, mn] = mainCounts(g), side = sideOpen(g);
-    /* A past milestone whose main tasks are done but regional quests remain isn't "missed": it steps back. */
+    /* A past milestone whose main tasks are done but side rows remain isn't "missed": it steps back. */
     const complete = c === n, sideOnly = !complete && mc === mn && g.lv <= lv, overdue = !complete && !sideOnly && g.lv < lv, isNext = g === upcoming;
     d.querySelector(".count").textContent = sideOnly ? `${mc}/${mn} · ${side} side` : `${c}/${n}`;
     d.classList.toggle("sideonly", sideOnly);
@@ -148,11 +128,9 @@ function updateMilestones() {
     tag.textContent = complete ? "Cleared" : sideOnly ? "Side quests" : overdue ? "Missed" : isNext ? (g.lv === lv ? "Now" : `${g.lv - lv} to go`) : "Later";
     d.open = state.open[g.id] !== undefined ? state.open[g.id] : (isNext || overdue);
   });
-  /* Skill lines that unlock above your level are dimmed with their unlock level, so the order in a milestone
-     doesn't look like it contradicts "Next skill upgrade" (which only offers what you can buy now). */
+  /* Rows that unlock above your level (data-req) are dimmed with their unlock level, so the order in a milestone
+     doesn't look like it contradicts Next up (which only offers what you can do now). */
   { const ev = gatesOf(char(state)); mainEl.querySelectorAll("li[data-req]").forEach(li => li.classList.toggle("locked", !ev.byKey(li.querySelector("input[data-k]").dataset.k).open)); }
-
-  { const evT = gatesOf(char(state)); total += AREA_ITEMS.length; done += AREA_ITEMS.filter(x => doneOf(char(state), x.k, evT)).length; }
 
   /* Cleared milestones follow the toolbar's "Hide cleared milestones" toggle; missed and upcoming always show. */
   const trackRows = GATES.map(g => {
@@ -213,16 +191,6 @@ function derivedBox(i, r) {
   }
   if (li) li.classList.toggle("derived", !!r);
 }
-/* E row a slot's stigma goes to when added (stigmas in slots up to n, in E_ORDER), and who moves down. */
-const eRowOf = n => { const sl = STIGMA_SLOTS(), cur = sl.filter(x => x.n <= n).map(x => x.name), nm = sl[n - 1].name, order = E_ORDER.filter(x => cur.includes(x)), r = order.indexOf(nm); return { r, below: order.slice(r + 1) }; };
-/* Milestone text follows the picks: stigma names, E rows, and the full-rotation line at slot 4. */
-function fillStigmaText() {
-  const names = stNames();
-  mainEl.querySelectorAll(".stn[data-slot]").forEach(x => { x.textContent = names[x.dataset.slot - 1]; });
-  mainEl.querySelectorAll(".erow[data-slot]").forEach(x => { const { r, below } = eRowOf(+x.dataset.slot); x.textContent = r < 0 ? "" : `, row ${r}${below.length ? ` (${below.join(", ")} move${below.length === 1 ? "s" : ""} down one)` : ""}`; });
-  const e = E_ORDER.filter(x => names.includes(x)), pre = e.filter(n => n === "Illusive Clone" || n === "Swift Contract"), post = e.filter(n => !pre.includes(n));
-  mainEl.querySelectorAll(".rotseq").forEach(x => { x.innerHTML = seq([pre.length ? "E: " + pre.join(" + ") : "", "Q: Shadowstrike", post.length ? "E: " + post.join(", ") : "", "Hold both mouse buttons"].filter(Boolean)); });
-}
 /* One toggle: Expand all ↔ Collapse all, based on the milestone cards you can see. */
 let btnExpand = null;
 const gateCards = () => [...document.querySelectorAll("#gates details.step")].filter(d => !d.hidden);
@@ -238,28 +206,14 @@ function renderMilestones() {
 }
 /* the handlers (from render(), once) */
 function milestonesMount() {
-  document.getElementById("gates").addEventListener("click", e => {
-    const zb = e.target.closest && e.target.closest("li.qrow [data-snz]"); if (zb) { e.preventDefault(); snoozeToggle(zb.dataset.snz); return; }
-    const ig = e.target.closest && e.target.closest("li.qrow [data-ingame]"); if (ig) { e.preventDefault(); const k = ig.dataset.ingame; char(state).started = char(state).started || {}; if (!char(state).checks[k]) { char(state).started[k] = 1; if (char(state).rqSnooze) delete char(state).rqSnooze[k]; save(); update(); } return; }
-    const i = e.target.closest && e.target.closest("li.qrow input[data-k]"); if (!i) return;
-    const k = i.dataset.k; char(state).started = char(state).started || {};
-    if (!char(state).checks[k] && !qProg(k)) { e.preventDefault(); char(state).started[k] = 1; save(); update(); return; }
-    delete char(state).started[k];
-  }, true);
+  /* clicks on the pack's rows (capture phase: before a box changes) */
+  document.getElementById("gates").addEventListener("click", e => rowHook("click", e), true);
   layoutEl.addEventListener("change", e => {
     const k = e.target.dataset.k; if (!k) return;
     const was = !!char(state).checks[k];
     char(state).checks[k] = e.target.checked;
-    if (e.target.checked) rqTicked(k);
-    /* Equipping a stigma slot (milestone row, Stigmas card or Next up) also puts it on E. */
-    if (e.target.checked) { const it = itemByK(k), ek = it && it.stig && eputK(it.stig); if (ek) char(state).checks[ek] = true; }
-    const rw = was !== e.target.checked && CLEAR_REWARD(k);
-    if (rw) { const d = e.target.checked ? 1 : -1;
-      /* Rewards wait in "the Cube" until you say you've used them; unticking takes from what's waiting first, then from the totals. */
-      const c = char(state), take = (pk, tk, n) => { c[pk] = (c[pk] || 0) + d * n; if (c[pk] < 0) { c[tk] = Math.max(0, (c[tk] || 0) + c[pk]); c[pk] = 0; } };
-      take("pendSt", "stones", rw.st); take("pendCr", "dvTotal", rw.cr);
-      rewardToast(d > 0 ? `+${rw.st} Wisdom Stone${rw.st > 1 ? "s" : ""} · +${rw.cr} crystal${rw.cr > 1 ? "s" : ""} waiting in your Cube` : `−${rw.st} stone${rw.st > 1 ? "s" : ""} · −${rw.cr} crystal${rw.cr > 1 ? "s" : ""} taken back`); }
-    if (k.startsWith("dv:")) { if (e.target.checked) { char(state).dvLast = k; char(state).dvLastAt = Date.now(); } else if (char(state).dvLast === k) delete char(state).dvLast; }
+    /* what else the tick changes in the pack's state (before the save and the redraw) */
+    rowHook("ticked", k, e.target.checked, was);
     const li = e.target.closest("li.item"), card = e.target.closest("details.step");
     if (li && card && mainEl.contains(li)) {
       li.classList.remove("tick-on", "leaving"); tickKeep.delete(k);

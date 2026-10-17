@@ -1,5 +1,5 @@
 /* Route rules (0.4 P4c: moved verbatim from src/main.js; markup route.html): the STEPS cards, drawn with the milestone
-   cards' cardHTML, and their counts. */
+   cards' cardHTML (rows of a kind the pack lists by its row renderers, 0.4 P5b), and their counts. */
 import { cardHTML } from "./milestones.js";
 import { pageState as state, pageUpdate as update, pageSTEPS as STEPS, pageCounts as counts } from "./page.js";
 

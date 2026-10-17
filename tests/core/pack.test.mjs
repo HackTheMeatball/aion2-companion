@@ -13,7 +13,7 @@ export default (test, M) => {
   test('definePack: only id, data and catalog are required; every hook gets its "none" default; the pack is frozen', () => {
     const p = M.definePack(tiny());
     assert.ok(Object.isFrozen(p));
-    assert.deepEqual([p.charFields, p.keptRules, p.gateChanges, p.graphTransforms, p.nextUpProducers, p.cards, p.nowRenderers, p.rowRenderers, p.text], [{}, {}, {}, [], [], [], {}, {}, {}]);
+    assert.deepEqual([p.charFields, p.keptRules, p.gateChanges, p.graphTransforms, p.nextUpProducers, p.cards, p.nowRenderers, p.rowRenderers, p.rowHooks, p.text], [{}, {}, {}, [], [], [], {}, {}, {}, {}]);
     assert.deepEqual(p.character, { pack: 'tiny', class: '' });
     assert.deepEqual(p.data.proposed, {}); assert.deepEqual(p.data.story.notes, {});
     assert.equal(p.catalog.rowKind({}), 'main'); assert.equal(p.catalog.offered({}, 'a'), true);
@@ -30,6 +30,8 @@ export default (test, M) => {
     assert.throws(() => M.definePack({ ...tiny(), story: { here: 1 } }), /"story.here"/);
     assert.throws(() => M.definePack({ ...tiny(), story: { hre: () => null } }), /"story.hre"/);
     assert.throws(() => M.definePack({ ...tiny(), catalog: { ...tiny().catalog, rowKind: 'main' } }), /"catalog.rowKind"/);
+    assert.throws(() => M.definePack({ ...tiny(), rowRenderers: { quest: '<li>' } }), /"rowRenderers" has the wrong type/);
+    assert.throws(() => M.definePack({ ...tiny(), rowHooks: { sync: true } }), /"rowHooks" has the wrong type/);
   });
   test('usePack / activePack: the active pack; usePack refuses a spec that is not a defined pack', () => {
     assert.equal(M.activePack(), M.aion2Pack);
