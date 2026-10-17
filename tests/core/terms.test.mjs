@@ -1,7 +1,6 @@
 /* The AION 2 term scan over the engine (docs/design/0.4-engine-contract.md §5, 0.4 P2b): src/core/, code and comments,
    names no AION 2 term. Case-insensitive; a match must not touch a letter, digit or _ on either side (a hyphen or a slash
-   is a boundary). One file is still allowed hits: src/core/nextup.js, until P2c moves its AION 2 producers into the pack
-   (it must still have hits, so the exception leaves with them). P8 widens the scan to src/cards/, src/shell/ and main.js. */
+   is a boundary). Since 0.4 P2c (Next up producers in the pack) no file has an exception. P8 widens the scan to src/cards/, src/shell/ and main.js. */
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,16 +27,13 @@ const termRe = fields => new RegExp(`(?<![A-Za-z0-9_])(?:${[...TERMS, ...fields]
 const hitsOf = (files, fields) => { const re = termRe(fields);
   return Object.entries(files).flatMap(([f, s]) => s.split('\n').map((l, i) => [i + 1, l]).filter(([, l]) => { const x = l.replace(PRODUCT, ''); return re.test(x) || SAVE_KEY.test(x); })
     .map(([n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`)); };
-const PENDING = 'core/nextup.js';
 
 export default (test, M) => {
   /* the pack's own field names count as terms (P0 §5 "Pack field names") */
   const fields = Object.keys(M.aion2Pack.charFields);
   const core = Object.fromEntries(readdirSync(join(SRC, 'core')).filter(f => f.endsWith('.js')).sort().map(f => ['core/' + f, readFileSync(join(SRC, 'core', f), 'utf8')]));
-  test('term scan: src/core/ names no AION 2 term (code and comments; core/nextup.js until P2c)', () => {
-    const hits = hitsOf(core, fields);
-    assert.deepEqual(hits.filter(h => !h.startsWith(PENDING + ':')), []);
-    assert.ok(hits.some(h => h.startsWith(PENDING + ':')), `${PENDING} has no AION 2 term left: remove the exception`);
+  test('term scan: src/core/ names no AION 2 term (code and comments)', () => {
+    assert.deepEqual(hitsOf(core, fields), []);
   });
   test('term scan: planted terms are caught, the product name and neutral words are not (negative control)', () => {
     const planted = { a: '/* Sealed Dungeons */', b: 'const k = "rq:" + id;', c: 'x.stLv[n]', d: 'see src/packs/aion2/rules.js', e: 'it.eput === n', f: 'ascension', g: 'stigma-slot' };
