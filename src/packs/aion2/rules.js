@@ -64,8 +64,10 @@ export const GATE_CHANGES = {
   blockerText: { baseline: true, what: "blocker-chain text (E6, design §4): Next up's Later cards, the milestone chips and \"Reach / Turn in\" line, the regional rows " +
     "and the Daevanion card say what opens a thing from the evaluator (\"needs Lv N\", \"unlocks after \\\"X\\\" · N quests ahead\", \"after \\\"Y\\\" " +
     "is turned in\"); the milestone line and its chips wait for a turn-in where the rows under them do (Basic: on milestone rows only)" },
-  /* E7 (design §9, bug F3): off = slot 1 at the level of its skill's line 8 (learn + 18) and no slots 2 / 3 */
-  specialtySlots: { what: "specialty slots 1-3 open at effective skill level 8 / 12 / 20 (highest skill line bought + the skill's plan board " +
+  /* E7 (design §9, bug F3): off = slot 1 at the level of its skill's line 8 (learn + 18) and no slots 2 / 3.
+     baseline since 0.5 P12: shipped on and in the snapshots since E7, so --explain keeps it on (else every state with a
+     specialty slot that a ranking change also moves reads "still differs with every change off") */
+  specialtySlots: { baseline: true, what: "specialty slots 1-3 open at effective skill level 8 / 12 / 20 (highest skill line bought + the skill's plan board " +
     "nodes owned; rule:specialty-slots, owner F4) instead of slot 1 at the character level of the skill's line 8; slot 2 is offered once open, " +
     "slot 3 is listed in the Skills card only (Q5)" },
 };
