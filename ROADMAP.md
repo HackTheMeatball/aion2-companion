@@ -27,22 +27,35 @@ no running out before 1.0: 1.0 ships when its scope is done.
 ## How a minor is planned (every 0.X.0)
 
 Every minor opens with a planning and audit pass, and it is most of the work: like painting, about 90% prep and 10%
-execution (owner, 2026-10-17). It runs on Opus and starts with a full kaizen review (step 1), so what the pipeline
-learned during the last minor shapes the next one. The pass that redrew the plan after 0.3 is the model: it audited the whole path to 1.0
-before planning the next minor
+execution (owner, 2026-10-17). It runs on Opus and has two halves that work as a team: step 1 is the **release kaizen
+review, the "how"** (is the way we build optimal?), and steps 2–6 are the **plan, the "what"** (which items, in what
+order). The "how" goes first because its findings change the rules the plan is made under. The pass that redrew the plan
+after 0.3 is the model: it audited the whole path to 1.0 before planning the next minor
 ([audit and plan to 1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114
 until the pass is written down and reviewed. Patches (0.X.Y) skip it.
 
-1. **Kaizen review and look back, with the data we collect.** This is the release kaizen review (owner, 2026-10-17):
-   the same review the daily kaizen task does, over the whole minor, and its findings feed every later step. Read the
-   **planner log (#232)**: what each run queued or planned and whether it worked out, plus the usage checkpoints (runs
-   by model and outcome against the owner's usage %). One page on the minor just shipped: items shipped, failed or redone bot
-   runs (the `Waste:` lines in #114), fixes needed after release, what was slow (kickoff start to PR open, PR open to
-   merge, per item). Read the **stall log (#221)**: count stalls and idle minutes by Kind, and name the Kinds that
-   came back after a fix. Read the **kaizen log (#222)**: which changes helped (Result filled in), which didn't
-   (revert them), which are still `trial` or `needs Isaac`. Each cause that repeated becomes one process rule (a #222
-   row, put in place before the minor's first item is queued), and the stall limits and the build cap in #114 are
-   re-derived from this minor's build times and usage.
+1. **Release kaizen review: the "how" (owner, 2026-10-17).** The daily kaizen task's review, over the whole minor
+   just shipped, aimed at the workflow itself, not at the product. Raised usage caps don't change the goal: the least
+   waste per item shipped (owner, 2026-10-17 3:00 PM ET).
+   - **Data.** Combine the **stall log (#221)**: stalls and idle minutes by Kind, and the Kinds that came back after a
+     fix; the **planner log (#232)**: what each planner run queued and whether it worked out, plus the usage
+     checkpoints (bot runs by model and outcome against the owner's weekly usage %); the **kaizen log (#222)**: which
+     changes helped, which didn't (revert them), which are still `trial` or `needs Isaac`; the `Waste:` lines in #114;
+     and the Actions runs (build minutes, kickoff start to PR open, PR open to merge, per item).
+   - **Audit the workflow.** Lanes (did two builds collide, or did a lane hold work that could have run?); model
+     routing (Opus runs that Sonnet would have done, Sonnet runs that handed up or were redone); redone runs and their
+     causes (review CHANGES, fix rounds, merge runs, restarts, Blocked); idle time on the critical path; handoffs
+     between the planner, the health check, kaizen, Tracker sync and the workflows (who noticed late, who waited on
+     whom); and owner waits (To-dos, typed OKs).
+   - **Scorecard.** Write `docs/kaizen/<minor>-scorecard.md`: items shipped; bot runs by model and outcome; redone runs
+     and waste %; stalls and idle minutes by Kind; median build and review-to-merge times; owner-wait hours; weekly
+     usage % per item shipped. Each row is set beside the previous minor's scorecard with the change marked better or
+     worse. The first scorecard (0.5) takes 0.4's numbers from #221 and the `Waste:` lines where they exist and marks
+     the rest "no baseline".
+   - **Changes.** Each cause that repeated, and each metric that got worse, becomes one concrete process change: a
+     #222 row, put in place before the minor's first item is queued (a #114 rule, a planner-instruction change, or a
+     workflow PR). The stall limits, build cap and model routing in #114 are re-derived from this minor's build times
+     and usage. The plan in steps 2–6 is made under these changes and cites the scorecard where it relies on it.
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
@@ -51,7 +64,7 @@ until the pass is written down and reviewed. Patches (0.X.Y) skip it.
    any store app, this step is a full architecture and performance audit.
 3. **Shape each item:** problem; appetite (S < 100 changed lines, M 100–300, L 300–1,000; bigger = split it); no-gos
    (what it will not do); the module(s) and files it owns (every acceptance line needs an owning file); the test that
-   proves it done; builder model (routing rule in #114); its stall limit from step 1's build times. An item with an
+   proves it done; builder model (routing rule in #114, as step 1 left it); its stall limit from step 1's build times. An item with an
    unknown is a research item first, not a build.
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
    module or serial file run one after another; items in different modules may run at the same time, at most five
@@ -223,7 +236,7 @@ no new game data; no `.github/workflows/` edits (bots can't push them); no chang
 
 #### Lane map (step 4)
 
-At most three builds at a time. Kickoff checks lanes, not order, so **the planner queues an item only once everything
+At most three builds at a time (five since 2026-10-17, PR #233). Kickoff checks lanes, not order, so **the planner queues an item only once everything
 in its "After" has merged**.
 
 | Wave | Builds | After |
@@ -378,7 +391,7 @@ owner's OK).
 
 #### Lane map (step 4)
 
-At most three builds at a time; kickoff queues an item once everything on its After line has merged, and the planner
+At most three builds at a time (five since 2026-10-17, PR #233); kickoff queues an item once everything on its After line has merged, and the planner
 queues the ones whose After line names an owner input or the research. Serial lanes (DISPATCH "Serial files", the
 names kickoff knows): **golden** P11 → P3 → P12 → P13 → P14 → P15 → P16 (the critical path; P3 and P12 in whichever
 order they are ready); **main.js** P1 → P2 → P4 → P5 → P6 → P18 → P19; **gen** P8 → P9; **app.css** P2, P4, P5, P7;

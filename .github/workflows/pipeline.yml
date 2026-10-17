@@ -3,7 +3,7 @@ name: Pipeline
 # Owner request (2026-10-16, "smart mode"): move a claude/ PR to its next step the moment GitHub reports something,
 # instead of waiting for the scheduled check-in. Every step here is mechanical; planning, releases and the tracker stay
 # with the scheduled CEO task (state issue "CEO pipeline state").
-#   - CI green on a PR's current head, and no review newer than the head  -> a review run (Sonnet; Opus for risky paths).
+#   - CI green on a PR's current head, and no review newer than the head  -> a review run (Opus since 2026-10-17; before that Sonnet, Opus for risky paths).
 #   - CI red on the head: first failure -> re-run the failed jobs once (no model); second failure -> a fix run.
 #   - Latest claude[bot] review says VERDICT: CHANGES, or a Sonnet run said "Needs @claude (Opus)" -> a fix run.
 #   - Dispatched with step=merge (kickoff does this after a merge, for a PR that conflicts with main or shares a
