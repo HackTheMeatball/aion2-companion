@@ -273,6 +273,12 @@ function placeLevelUp() {
 }
 function syncLevelBar() { document.getElementById("lvlBarLv").textContent = "LV " + char(state).level; }
 if (typeof ResizeObserver === "function") new ResizeObserver(placeLevelUp).observe(lvlBar);
+/* Bottom tab bar (<= 600 px, 0.5 P5): Route and Gear scroll to Next up and to the top row; the Build tab belongs to the
+   pack's card. The bar names no game term. */
+document.querySelectorAll("#tabBar [data-go]").forEach(b => b.addEventListener("click", () => {
+  const t = b.dataset.go === "top" ? document.querySelector("#main .top-grid") : document.getElementById(b.dataset.go);
+  if (t) t.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}));
 function placeCards() {
   placeLevelUp();
   const tg = document.querySelector("#main .top-grid");
