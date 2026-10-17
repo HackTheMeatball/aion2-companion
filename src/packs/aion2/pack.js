@@ -12,6 +12,7 @@ import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zo
 import { aion2OnLoad } from "./load.js";
 import { aion2Meanwhile, aion2NextUp, aion2StoryFields } from "./nextup.js";
 import { aion2Cards } from "./cards/index.js";
+import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin), the only
    ones a character can have until 0.5 adds a class picker; tests/core/state.test.mjs checks both against data/. */
@@ -51,4 +52,6 @@ export const aion2Pack = definePack({
   nextUpProducers: aion2NextUp,
   /* its cards (0.4 P4b): the shell registers each (src/main.js) */
   cards: aion2Cards,
+  /* its Next up and Later kinds and their hooks (0.4 P5a): the engine cards call them (src/cards/nextup.js, ahead.js) */
+  nowRenderers: aion2NowRenderers,
 });
