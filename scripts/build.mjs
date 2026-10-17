@@ -29,6 +29,7 @@
                                artifact's /_blob/<id> URLs (scripts/artifact-blobs.json), styles/fonts.css
                                replaced by a script that registers each font file once (FontFace API).
 
+   Card markup: a line "<!-- @card cards/X.html -->" in src/index.html is replaced by src/cards/X.html (0.4 P4a).
    Markers in src/index.html: a line "<!-- @web-only -->" opens a block, "<!-- @end-web-only -->" closes it.
    Placeholders anywhere in the page: __APP_VERSION__ becomes package.json's version, __APP_BUILD__ the build's name
    ("site" in dist/, "claude.ai" in dist-artifact/), so the version is never written by hand in the page.
@@ -49,7 +50,18 @@ const OPEN = '<!-- @web-only -->', CLOSE = '<!-- @end-web-only -->';
 const die = msg => { console.error('build: ' + msg); process.exit(1); };
 const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); return statSync(f).isDirectory() ? walk(f) : [f]; });
 
-const shell = readFileSync(P('src/index.html'), 'utf8');
+/* card markup (0.4 P4a, docs/design/0.4-engine-contract.md §4): a shell line "<!-- @card cards/X.html -->" is replaced by
+   that file under src/ as it is, before anything else reads the shell (both builds), so the page is byte-identical to the
+   markup standing in the shell. A missing file, a card file that holds an @card line, or a leftover @card line fails. */
+const CARD_TAG = /^[ \t]*<!-- @card ((?:cards|packs\/[\w-]+\/cards)\/[\w-]+\.html) -->\n/gm;
+const withCards = html => html.replace(CARD_TAG, (_, f) => {
+  if (!existsSync(P('src', f))) die(`src/index.html: @card file src/${f} is missing`);
+  const part = readFileSync(P('src', f), 'utf8');
+  if (part.includes('@card')) die(`src/${f}: a card file can't include another (@card)`);
+  return part.endsWith('\n') ? part : part + '\n';
+});
+const shell = withCards(readFileSync(P('src/index.html'), 'utf8'));
+if (shell.includes('@card')) die('src/index.html: an @card line the build can\'t include (one per line: <!-- @card cards/<id>.html -->)');
 
 /* inlining: styles verbatim, scripts as esbuild bundles. esbuild's CSS printer rewrites values (unquoted url(), one
    unicode-range per line), which the claude.ai font conversion and the test font blocker read, so CSS is not passed
