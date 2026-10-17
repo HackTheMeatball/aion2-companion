@@ -15,7 +15,7 @@ const walk = dir => readdirSync(dir).flatMap(n => { const f = join(dir, n); retu
 export const SCHEMA_OF = { sources: 'sources', gameBuilds: 'game-builds', storyQuests: 'story-quests', ascensionQuests: 'ascension-quests',
   regionalQuests: 'regional-quests', sealedDungeons: 'sealed-dungeons', strongholds: 'strongholds', zones: 'zones', unlocks: 'unlocks', items: 'items',
   rules: 'rules', boards: 'boards', milestones: 'milestones', steps: 'steps', tips: 'tips', claims: 'claims', confidence: 'confidence', classes: 'classes',
-  builds: 'builds', skills: 'skills', boardNodes: 'board-nodes', stigmas: 'stigmas' };
+  builds: 'builds', skills: 'skills', boardNodes: 'board-nodes', stigmas: 'stigmas', kibelisks: 'kibelisks' };
 
 let ajv;
 export const compiler = () => {

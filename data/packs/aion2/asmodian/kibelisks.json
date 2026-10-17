@@ -1,0 +1,1974 @@
+{
+  "$schema": "../../../schema/kibelisks.schema.json",
+  "schemaVersion": 2,
+  "collection": "kibelisks",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "kib:abandoned-barracks-site",
+      "name": "Abandoned Barracks Site",
+      "map": "ishalgen",
+      "zone": "zone:ishalgen",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing",
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Named as the nearest Kibelisk on Signs of a Crash Landing"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "notes": [
+        "Ishalgen: Metabot's Ishalgen map counts 3 Kibelisks and names none; the three names are the ones the Ishalgen story quest pages cite (docs/research/2026-10-kibelisks.md)."
+      ]
+    },
+    {
+      "id": "kib:abandoned-campsite",
+      "name": "Abandoned Campsite",
+      "map": "altgard",
+      "zone": "zone:western-gribade-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Abandoned Campsite\""
+        },
+        {
+          "inferred": "Zone: 6 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Western Gribade Highland.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:abandoned-site",
+      "name": "Abandoned Site",
+      "map": "altgard",
+      "zone": "zone:uruthumheim",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Abandoned Site\", level 1"
+        },
+        {
+          "inferred": "Zone: 2 of the 2 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Uruthumheim.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:aldelle-village",
+      "name": "Aldelle Village",
+      "map": "ishalgen",
+      "zone": "zone:aldelle-village",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/a-village-in-the-fog",
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Named as the nearest Kibelisk on A Village in the Fog"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "notes": [
+        "Ishalgen: Metabot's Ishalgen map counts 3 Kibelisks and names none; the three names are the ones the Ishalgen story quest pages cite (docs/research/2026-10-kibelisks.md)."
+      ]
+    },
+    {
+      "id": "kib:amuntas-hideout",
+      "name": "Amunta's Hideout",
+      "map": "altgard",
+      "zone": "zone:fafnite-deposit",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Amunta's Hideout\", level 40"
+        },
+        {
+          "inferred": "Zone: 8 of the 10 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Fafnite Deposit.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:basfelt-ruins-cliff",
+      "name": "Basfelt Ruins Cliff",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Basfelt Ruins\", level 33–48"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:basfelt-waterfall",
+      "name": "Basfelt Waterfall",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Basfelt Waterfall\""
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:basfelt-waterfall-arch-zone",
+      "name": "Basfelt Waterfall Arch Zone",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Basfelt Ruins\", level 33–48"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:battlescar-mound-clifftop",
+      "name": "Battlescar Mound Clifftop",
+      "map": "altgard",
+      "zone": "zone:battlescar-mound",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Battlescar Mound\", level 1–33"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:beast-hunter-campsite",
+      "name": "Beast Hunter Campsite",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Spacetime Rift: Proof"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:beneath-the-tranein-highland-bridge",
+      "name": "Beneath the Tranein Highland Bridge",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Calderon Canyon\", level 1–13"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "conflicts": [
+        "Zone left empty: Metabot's listing files it under Calderon Canyon, while 1 of the 1 points within 100 m that name it are in Tranein Highland."
+      ]
+    },
+    {
+      "id": "kib:briskwind-shelter",
+      "name": "Briskwind Shelter",
+      "map": "altgard",
+      "zone": "zone:dranactus",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Briskwind Shelter\", level 1"
+        },
+        {
+          "inferred": "Zone: 10 of the 10 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dranactus.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:collapsed-chasm",
+      "name": "Collapsed Chasm",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Collapsed Chasm\""
+        },
+        {
+          "inferred": "Zone: 10 of the 10 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Moslan Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:collapsed-hall-of-fame",
+      "name": "Collapsed Hall of Fame",
+      "map": "altgard",
+      "zone": "zone:impetusium-square",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Collapsed Hall Of Fame\""
+        },
+        {
+          "inferred": "Zone: 8 of the 8 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Impetusium Square.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:collapsed-pillar",
+      "name": "Collapsed Pillar",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Spacetime Rift: Unknown Species"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:creion-campsite",
+      "name": "Creion Campsite",
+      "map": "altgard",
+      "zone": "zone:dredgion-crash-site",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Creion Campsite\", level 1"
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dredgion Crash Site.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:dawn-legion-temporary-outpost",
+      "name": "Dawn Legion Temporary Outpost",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/disturbed-balance",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Disturbed Balance"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:dranactus-shore",
+      "name": "Dranactus Shore",
+      "map": "altgard",
+      "zone": "zone:dranactus",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Dranactus\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:eastern-gribade-highland-cliff",
+      "name": "Eastern Gribade Highland Cliff",
+      "map": "altgard",
+      "zone": "zone:eastern-gribade-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Eastern Gribade Highland\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:eastern-gribade-highland-tail-island",
+      "name": "Eastern Gribade Highland Tail Island",
+      "map": "altgard",
+      "zone": "zone:eastern-gribade-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Eastern Gribade Highland\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:elims-rest",
+      "name": "Elim's Rest",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Elim's Rest\""
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Moslan Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:faded-stump",
+      "name": "Faded Stump",
+      "map": "altgard",
+      "zone": "zone:purifying-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Faded Stump\", level 1"
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Purifying Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:fang-hideout",
+      "name": "Fang Hideout",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Fang Hideout\", level 1–18"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:fissure-cave",
+      "name": "Fissure Cave",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Fissure Cave\""
+        },
+        {
+          "inferred": "Zone: 2 of the 2 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Basfelt Ruins.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:forest-hideout",
+      "name": "Forest Hideout",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Forest Hideout\""
+        },
+        {
+          "inferred": "Zone: 2 of the 2 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Moslan Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:galoriks-inspection-area",
+      "name": "Galorik's Inspection Area",
+      "map": "altgard",
+      "zone": "zone:crypt",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Galorik's Inspection Area\", level 1–10"
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Crypt.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:garden-of-the-illusion-god-east-observatory",
+      "name": "Garden of the Illusion God East Observatory",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Forgotten Commander"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:gravekeeper-camp",
+      "name": "Gravekeeper Camp",
+      "map": "altgard",
+      "zone": "zone:nameless-cemetery",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Gravekeeper Camp\", level 1"
+        },
+        {
+          "inferred": "Zone: 5 of the 5 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Nameless Cemetery.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:graverobber-campsite",
+      "name": "Graverobber Campsite",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Graverobber Campsite\""
+        },
+        {
+          "inferred": "Zone: 10 of the 10 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Basfelt Ruins.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:gribade-highland-crossroad",
+      "name": "Gribade Highland Crossroad",
+      "map": "altgard",
+      "zone": "zone:mahindel-river",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Mahindel River\", level 1–40"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:guide-rest-stop",
+      "name": "Guide Rest Stop",
+      "map": "altgard",
+      "zone": "zone:purifying-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Guide Rest Stop\", level 1"
+        },
+        {
+          "inferred": "Zone: 6 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Purifying Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:guides-dwelling",
+      "name": "Guide's Dwelling",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Guide's Dwelling\""
+        },
+        {
+          "inferred": "Zone: 1 of the 1 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Basfelt Ruins.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:healing-spring",
+      "name": "Healing Spring",
+      "map": "altgard",
+      "zone": "zone:purifying-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Healing Spring\""
+        },
+        {
+          "inferred": "Zone: 8 of the 8 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Purifying Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:hidden-cave",
+      "name": "Hidden Cave",
+      "map": "altgard",
+      "zone": "zone:dranactus",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Hidden Cave\", level 1"
+        },
+        {
+          "inferred": "Zone: 2 of the 2 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dranactus.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:iduns-lake",
+      "name": "Idun's Lake",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Southern Gribade Highland\", level 1–40"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "conflicts": [
+        "Zone left empty: Metabot's listing files it under Southern Gribade Highland, while 3 of the 4 points within 100 m that name it are in Idun's Lake."
+      ]
+    },
+    {
+      "id": "kib:impetusium-lower-path",
+      "name": "Impetusium Lower Path",
+      "map": "altgard",
+      "zone": "zone:black-claw-village",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Black Claw Village\", level 41–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:kraka-footpath-wastewater-downstream",
+      "name": "Kraka Footpath Wastewater Downstream",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/canyons-secret",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Canyon's Secret"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:kumricas-cellar",
+      "name": "Kumrica's Cellar",
+      "map": "altgard",
+      "zone": "zone:black-claw-village",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Kumrica's Cellar\", level 41–42"
+        },
+        {
+          "inferred": "Zone: 8 of the 8 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Black Claw Village.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:latesran-eastern-root",
+      "name": "Latesran Eastern Root",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/forgotten-commander",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Forgotten Commander"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:mahindel-cliff",
+      "name": "Mahindel Cliff",
+      "map": "altgard",
+      "zone": "zone:mahindel-river",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Mahindel Cliff\", level 34"
+        },
+        {
+          "inferred": "Zone: 1 of the 1 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Mahindel River.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:minushan-site",
+      "name": "Minushan Site",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Minushan Site\", level 1"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:mire-campsite",
+      "name": "Mire Campsite",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Mire Campsite\""
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:moslan-forest-cliff",
+      "name": "Moslan Forest Cliff",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Moslan Forest\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:moslan-forest-dry-shade",
+      "name": "Moslan Forest Dry Shade",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Moslan Forest\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:neglected-crematorium",
+      "name": "Neglected Crematorium",
+      "map": "altgard",
+      "zone": "zone:nameless-cemetery",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Neglected Crematorium\", level 1"
+        },
+        {
+          "inferred": "Zone: 2 of the 2 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Nameless Cemetery.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:nornir-assembly",
+      "name": "Nornir Assembly",
+      "map": "altgard",
+      "zone": "zone:nornir-assembly",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Nornir Assembly\", level 1–26"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:odars-shade",
+      "name": "Odar's Shade",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Odar's Shade\""
+        },
+        {
+          "inferred": "Zone: 5 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Moslan Forest.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:outskirts-stall",
+      "name": "Outskirts Stall",
+      "map": "altgard",
+      "zone": "zone:impetusium-square",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Outskirts Stall\""
+        },
+        {
+          "inferred": "Zone: 4 of the 5 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Impetusium Square.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:pilgrims-rest",
+      "name": "Pilgrim's Rest",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Spacetime Rift: An Honest Shugo"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:purifying-forest-coastal-cliff",
+      "name": "Purifying Forest Coastal Cliff",
+      "map": "altgard",
+      "zone": "zone:purifying-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Purifying Forest\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:purifying-forest-sunny-hill",
+      "name": "Purifying Forest Sunny Hill",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Basfelt Ruins\", level 33–48"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:quai-campsite",
+      "name": "Quai Campsite",
+      "map": "altgard",
+      "zone": "zone:calderon-canyon",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Quai Campsite\", level 1–13"
+        },
+        {
+          "inferred": "Zone: 9 of the 9 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Calderon Canyon.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:remote-island",
+      "name": "Remote Island",
+      "map": "altgard",
+      "zone": "zone:sanctum-outpost",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Sanctum Outpost\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:safe-haven",
+      "name": "Safe Haven",
+      "map": "altgard",
+      "zone": "zone:dredgion-crash-site",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Safe Haven\", level 1–11"
+        },
+        {
+          "inferred": "Zone: 13 of the 13 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dredgion Crash Site.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:safe-haven-cliff",
+      "name": "Safe Haven Cliff",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Safe Haven\", level 1–11"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:sanctum-outpost-sky-island",
+      "name": "Sanctum Outpost Sky Island",
+      "map": "altgard",
+      "zone": "zone:tranein-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Tranein Highland\", level 1–20"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:secret-rendezvous-point",
+      "name": "Secret Rendezvous Point",
+      "map": "altgard",
+      "zone": "zone:black-claw-village",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Secret Rendezvous Point\""
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Black Claw Village.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:shulak-street-stall",
+      "name": "Shulak Street Stall",
+      "map": "altgard",
+      "zone": "zone:basfelt-ruins",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Shulak Street Stall\""
+        },
+        {
+          "inferred": "Zone: 4 of the 4 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Basfelt Ruins.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:silent-hill-coastal-cliff",
+      "name": "Silent Hill Coastal Cliff",
+      "map": "altgard",
+      "zone": "zone:silent-hill",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Silent Hill\", level 1–18"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:silent-hill-mushroom-rock",
+      "name": "Silent Hill Mushroom Rock",
+      "map": "altgard",
+      "zone": "zone:silent-hill",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Silent Hill\", level 1–18"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:steel-hammer-merchants-hq",
+      "name": "Steel Hammer Merchants HQ",
+      "map": "altgard",
+      "zone": "zone:fafnite-deposit",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Steel Hammer Merchants HQ\""
+        },
+        {
+          "inferred": "Zone: 6 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Fafnite Deposit.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:steel-hammer-temporary-trading-post",
+      "name": "Steel Hammer Temporary Trading Post",
+      "map": "altgard",
+      "zone": "zone:southern-gribade-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Steel Hammer Temporary Trading Post\""
+        },
+        {
+          "inferred": "Zone: 1 of the 1 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Southern Gribade Highland.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:steel-hammer-workcamp",
+      "name": "Steel Hammer Workcamp",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Steel Hammer Workcamp\""
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:temporary-investigation-base",
+      "name": "Temporary Investigation Base",
+      "map": "altgard",
+      "zone": "zone:dredgion-crash-site",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Temporary Investigation Base\", level 1"
+        },
+        {
+          "inferred": "Zone: 4 of the 4 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dredgion Crash Site.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:temporary-retreat",
+      "name": "Temporary Retreat",
+      "map": "altgard",
+      "zone": "zone:sanctum-outpost",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Temporary Retreat\""
+        },
+        {
+          "inferred": "Zone: 6 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Sanctum Outpost.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:uruthumheim-cliff",
+      "name": "Uruthumheim Cliff",
+      "map": "altgard",
+      "zone": "zone:uruthumheim",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Uruthumheim\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:verteron-fortress-valley",
+      "name": "Verteron Fortress Valley",
+      "map": null,
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian",
+          "checkedAt": "2026-10-12",
+          "fields": [
+            "name"
+          ],
+          "note": "Named as the nearest Kibelisk on Spacetime Rift: Asmodian"
+        }
+      ],
+      "verifiedAt": "2026-10-12",
+      "status": "single-source",
+      "notes": [
+        "Not in Metabot's Altgard Kibelisk listing (build 0.0.4387.0): known only as a quest point's nearest Kibelisk, so its map and zone are not recorded (docs/research/2026-10-kibelisks.md, Gaps)."
+      ]
+    },
+    {
+      "id": "kib:victorious-daevas-statue",
+      "name": "Victorious Daeva's Statue",
+      "map": "altgard",
+      "zone": "zone:uruthumheim",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Victorious Daeva's Statue\", level 1"
+        },
+        {
+          "inferred": "Zone: 3 of the 3 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Uruthumheim.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:watchers-tent",
+      "name": "Watcher's Tent",
+      "map": "altgard",
+      "zone": "zone:calderon-canyon",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Watcher's Tent\""
+        },
+        {
+          "inferred": "Zone: 5 of the 6 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Calderon Canyon.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    },
+    {
+      "id": "kib:wave-swept-cliff",
+      "name": "Wave-Swept Cliff",
+      "map": "altgard",
+      "zone": "zone:moslan-forest",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Listed under \"Moslan Forest\", level 1–45"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified"
+    },
+    {
+      "id": "kib:witchs-cabin",
+      "name": "Witch's Cabin",
+      "map": "ishalgen",
+      "zone": "zone:ishalgen",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/quests/shadow-forest",
+          "fields": [
+            "name",
+            "map",
+            "zone"
+          ],
+          "note": "Named as the nearest Kibelisk on Shadow Forest"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "notes": [
+        "Ishalgen: Metabot's Ishalgen map counts 3 Kibelisks and names none; the three names are the ones the Ishalgen story quest pages cite (docs/research/2026-10-kibelisks.md)."
+      ]
+    },
+    {
+      "id": "kib:zemurrus-tomb",
+      "name": "Zemurru's Tomb",
+      "map": "altgard",
+      "zone": "zone:western-gribade-highland",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Zemurru's Tomb\""
+        },
+        {
+          "inferred": "Zone: 6 of the 7 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Western Gribade Highland.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    }
+  ]
+}

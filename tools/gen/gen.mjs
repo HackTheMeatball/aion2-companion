@@ -310,7 +310,7 @@ export function generate(opts = {}) {
     ['story', 'Main story', [...story, ...asc]],
     ['areas', 'Strongholds and Sealed Dungeons', [...shs, ...sds, ...ruleRecs.filter(r => r.kind === 'firstClearReward')]],
     ['build', 'Skills, boards and stigmas', [...skills, ...stigmas, ...boards, ...nodes, ...builds, cls, ...ruleRecs.filter(r => r.kind !== 'firstClearReward'), ...unlocks, ...items]],
-    ['claims', 'Tips and rules', [...claims, ...Object.values(zones)]],
+    ['claims', 'Tips and rules', [...claims, ...Object.values(zones), ...R('kibelisks')]],
     ['old', 'Leveling guides, build and tips', pages.map(p => p.url)],
   ];
   const SOURCES = [], seen = new Set();
@@ -484,12 +484,64 @@ export function generate(opts = {}) {
     return { GATE_GRAPH: { story: chain.map(s => [s.id, s.key]), nodes }, GATE_PROPOSED: proposed };
   })();
 
+  /* ---------------------------------------------------------------- place tables (0.5 P8; docs/design/0.4-smart-next-up.md §3) */
+  /* NODE_PLACE: per GATE_GRAPH node with a place (story, regional quest, Sealed Dungeon, stronghold) { route, zone, pts };
+     zone = the record's zone (a story quest: its turn-in's), null on a placeholder zone; pts.giver / .turnin / .entrance are
+     points { map, x, y, anchor, m }: the coords (null when none), the anchor's registry id (null when the point names none)
+     and the source's metres to it. KIBELISKS: the registry by id { name, zone, map, binds? } (binds: the objectives whose
+     `binds` fact names it, [{ node, i, basis }]). Their own module (src/packs/aion2/data/place.js, `placeModule`); nothing
+     imports it yet (0.5 P10 does), so neither build carries it. */
+  const kibs = R('kibelisks'), kibByName = Object.fromEntries(kibs.map(k => [k.name, k.id]));
+  const realZone = z => z && zones[z] && zones[z].status !== 'owner-check' ? z : null;
+  const point = l => { if (!l) return null; const anchor = l.kibelisk ? kibByName[l.kibelisk] ?? null : null, c = l.coords;
+    return c || anchor ? { map: c ? c.map : null, x: c ? c.x : null, y: c ? c.y : null, anchor, m: anchor ? l.meters ?? null : null } : null; };
+  const placeOf = (r, z, ps) => { const pts = Object.fromEntries(Object.entries(ps).map(([k, l]) => [k, point(l)]).filter(([, p]) => p));
+    return { route: r.route || 'core', zone: realZone(z), pts }; };
+  const shById = Object.fromEntries(shs.map(s => [s.id, s])), sdById = Object.fromEntries(sds.map(d => [d.id, d]));
+  const NODE_PLACE = {};
+  for (const [id, n] of Object.entries(GATE_GRAPH.nodes)) {
+    if (n.kind === 'story') { const s = sqById[id]; NODE_PLACE[id] = placeOf(s, s.turnin.zone || s.giver.zone, { giver: s.giver, turnin: s.turnin }); }
+    else if (n.kind === 'rq') { const q = rqById[id]; NODE_PLACE[id] = placeOf(q, q.zone, { giver: q.giver, turnin: q.turnin }); }
+    else if (n.kind === 'sd') { const d = sdById[id]; NODE_PLACE[id] = placeOf(d, d.zone, { entrance: d.entrance }); }
+    else if (n.kind === 'sh') { const s = shById[id]; NODE_PLACE[id] = placeOf(s, s.zone, { entrance: s.location }); }
+  }
+  const bindsOf = {};
+  for (const s of chain) for (const x of s.steps) if (x.binds) (bindsOf[x.binds.kibelisk] = bindsOf[x.binds.kibelisk] || []).push({ node: s.id, i: x.i, basis: x.binds.basis });
+  const KIBELISKS = Object.fromEntries(kibs.map(k => [k.id, { name: k.name, zone: k.zone, map: k.map, ...(bindsOf[k.id] ? { binds: bindsOf[k.id] } : {}) }]));
+
+  /* the bind report (design §8.1, §8.4, §9): per Kibelisk name, the best (smallest) stated metres over the giver / turn-in
+     points; bound at most R, nudge at most the nudge radius, else none (a name cited only by objective markers has no
+     point: none). For R = 25 / 32 / 35 / 40 m and the working value, over the story quests and over every record; then the
+     owner check list: each story Kibelisk the working rules can't bind from the story points or a `binds` fact. */
+  const KIB_REPORT = (() => {
+    const R0 = ruleValue('rule:kibelisk-bind-radius'), NR = ruleValue('rule:kibelisk-nudge-radius');
+    if (R0 == null || NR == null) return null;
+    const MARK = /\(Kibelisk: ([^)]+)\)/g;
+    const cited = recs => { const ns = new Set(); for (const r of recs) { for (const l of [r.giver, r.turnin, r.entrance, r.location]) if (l && l.kibelisk) ns.add(l.kibelisk);
+      for (const x of r.steps || []) { if (x.kibelisk) ns.add(x.kibelisk); for (const m of x.text.matchAll(MARK)) ns.add(m[1]); } } return ns; };
+    const pointsOf = recs => recs.flatMap(r => [['giver', r.giver], ['turn-in', r.turnin], ['entrance', r.entrance], ['entrance', r.location], ...(r.steps || []).map(x => ['objective ' + x.i, x])]
+      .filter(([, l]) => l && l.kibelisk && l.meters != null).map(([side, l]) => ({ name: l.kibelisk, m: l.meters, rec: r, side })));
+    const best = pts => { const b = {}; for (const p of pts) if (!b[p.name] || p.m < b[p.name].m) b[p.name] = p; return b; };
+    const sets = { story: [cited(chain), best(pointsOf(chain))], all: [cited([...chain, ...rqs, ...sds, ...shs]), best(pointsOf([...chain, ...rqs, ...sds, ...shs]))] };
+    const classOf = (b, r) => !b ? 'none' : b.m <= r ? 'bound' : b.m <= NR ? 'nudge' : 'none';
+    const radii = [...new Set([25, 32, 35, 40, R0])].sort((a, b) => a - b);
+    const split = radii.map(r => ({ r, working: r === R0, ...Object.fromEntries(Object.entries(sets).map(([k, [ns, b]]) => {
+      const c = { bound: 0, nudge: 0, none: 0 }; for (const n of ns) c[classOf(b[n], r)]++; return [k, { n: ns.size, ...c }]; })) }));
+    const first = {}; chain.forEach((s, i) => { for (const n of cited([s])) if (!(n in first)) first[n] = i; });
+    const [sNames, sBest] = sets.story;
+    const ownerCheck = [...sNames].filter(n => classOf(sBest[n], R0) !== 'bound' && !(bindsOf[kibByName[n]] || []).length)
+      .sort((a, b) => first[a] - first[b] || (a < b ? -1 : 1))
+      .map(n => { const b = sBest[n]; return { kibelisk: kibByName[n] || null, name: n, class: classOf(b, R0), first: chain[first[n]].name, firstLv: chain[first[n]].lv,
+        ...(b ? { best: { m: b.m, quest: b.rec.name, side: b.side } } : {}) }; });
+    return { radius: R0, nudge: NR, split, ownerCheck };
+  })();
+
   /* ---------------------------------------------------------------- pack-declared checks (0.4 P6a) */
   /* Everything above runs for every pack. A pack's own rules (fixed counts, named records, its game's collections) live in
      the module its manifest names in `checks` (pack.schema.json), called with the bundle and the compiled tables and the
      same check(name, ok, detail); they run after the engine's checks, in chain order. */
   const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
-    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, RQ, STORY_END, SH_DATA, GATE_GRAPH, atomsOf, byNum, refCheck };
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, RQ, STORY_END, SH_DATA, GATE_GRAPH, kibs, NODE_PLACE, KIBELISKS, atomsOf, byNum, refCheck };
   for (const p of B.packChecks) p.checks(ctx, check);
 
   const failed = report.checks.filter(c => !c.pass);
@@ -507,9 +559,14 @@ export function generate(opts = {}) {
   /* GATE_PROPOSED: the proposals, compiled (src/data/gate-proposed.js), read only by src/core/evaluator.js, per id in opts.apply */
   const proposedModule = '/* Generated by tools/gen/gen.mjs from data/** (data format v2): GATE_PROPOSED, the 0.3 proposals compiled, applied per id (evaluator opts.apply). Not stored. */\n' +
     `export const GATE_PROPOSED = ${J(GATE_PROPOSED)};\n`;
+  /* NODE_PLACE and KIBELISKS (0.5 P8): src/packs/aion2/data/place.js, for the pack's travel code (0.5 P10) */
+  const placeModule = '/* Generated by tools/gen/gen.mjs from data/** (data format v2): NODE_PLACE (where each node sends the player) and KIBELISKS (the registry), 0.5 P8. Not stored. */\n' +
+    `export const NODE_PLACE = ${J(NODE_PLACE)};\nexport const KIBELISKS = ${J(KIBELISKS)};\n`;
+  if (KIB_REPORT) report.kibelisks = KIB_REPORT;
   report.stats = { checks: report.checks.length, failed: failed.length, rq: RQ_STATS, sources: Object.fromEntries(SOURCES.map(s => [s.id, s.links.length])), constants: Object.keys(C).length,
-    gateNodes: Object.keys(GATE_GRAPH.nodes).length };
-  return { module, gateModule, proposedModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, report, failed, sources: SOURCES, siteName, label, all, B };
+    gateNodes: Object.keys(GATE_GRAPH.nodes).length, places: Object.keys(NODE_PLACE).length, kibelisks: kibs.length };
+  return { module, gateModule, proposedModule, placeModule, constants: C, gateGraph: GATE_GRAPH, gateProposed: GATE_PROPOSED, nodePlace: NODE_PLACE, kibelisks: KIBELISKS,
+    report, failed, sources: SOURCES, siteName, label, all, B };
 }
 
 /* ------------------------------------------------------------------ data/DATA_SOURCES.md */
@@ -541,6 +598,25 @@ export function dataSourcesMd(g) {
     for (const u of us) out.push(`| [${cell(labelOfU.get(u) || g.label(u))}](${u}) | ${cell(groupOf.get(u) || '—')} | ${cell((used.get(u) || []).join('; ') || 'Sources card (earlier research snapshot)')} |`);
     out.push('');
   }
+  /* the bind report (0.5 P8, gen.mjs KIB_REPORT): numbers for the owner's bind-radius decision, and the in-game check list */
+  const k = g.report.kibelisks;
+  if (k) {
+    out.push('## Kibelisk binding (generated)', '',
+      `What the bind rules give on the data (docs/design/0.4-smart-next-up.md §8.1, §8.4). Per Kibelisk, the smallest stated distance over the points that`,
+      `carry one: **bound** at most R, **nudge** above R up to ${k.nudge} m (\`rule:kibelisk-nudge-radius\`), **none** beyond that or with no such point. *Story*: the`,
+      `Kibelisks the story quests cite, over their giver / turn-in points (story objectives carry no distance yet: a Kibelisk cited only by objective markers`,
+      `is "none"); *all*: with regional quests, Sealed Dungeons and strongholds (their giver, turn-in, entrance and objective points).`,
+      `\`binds\` facts are not counted here. The working value is \`rule:kibelisk-bind-radius\` = ${k.radius} m.`, '',
+      '| R | Story: bound | nudge | none | All: bound | nudge | none |', '|---|---|---|---|---|---|---|');
+    for (const s of k.split) out.push(`| ${s.r} m${s.working ? ' (working value)' : ''} | ${s.story.bound} | ${s.story.nudge} | ${s.story.none} | ${s.all.bound} | ${s.all.nudge} | ${s.all.none} |`);
+    out.push('', `${k.split[0].story.n} story Kibelisks, ${k.split[0].all.n} in all.`, '',
+      `### Owner check list (${k.ownerCheck.length})`, '',
+      `Every story Kibelisk the working rules (${k.radius} m) can't bind from the story's giver / turn-in points or a \`binds\` fact, in story order. In game, when convenient:`,
+      'which objective binds it? (A `binds` fact on that objective, basis owner, settles it.)', '',
+      '| Kibelisk | First cited in | Nearest giver / turn-in | Class |', '|---|---|---|---|');
+    for (const c of k.ownerCheck) out.push(`| ${cell(c.name)} | ${cell(c.first)} (Lv ${c.firstLv}) | ${c.best ? `${c.best.m} m, ${cell(c.best.quest)} ${c.best.side}` : 'none (objective markers only)'} | ${c.class} |`);
+    out.push('');
+  }
   return out.join('\n');
 }
 
@@ -560,6 +636,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   writeFileSync(join(ROOT, 'tools/gen/out/generated.js'), g.module);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-graph.js'), g.gateModule);
   writeFileSync(join(ROOT, 'tools/gen/out/gate-proposed.js'), g.proposedModule);
+  writeFileSync(join(ROOT, 'tools/gen/out/place.js'), g.placeModule);
   writeFileSync(join(ROOT, 'tools/gen/out/gen-report.json'), JSON.stringify(g.report, null, 1) + '\n');
   writeFileSync(join(ROOT, dsMd), dataSourcesMd(g));
   for (const c of g.failed) console.error('CHECK FAILED: ' + c.check + (c.detail !== undefined ? ' ' + JSON.stringify(c.detail) : ''));
