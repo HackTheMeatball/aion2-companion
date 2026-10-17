@@ -1,0 +1,17 @@
+/* Later, a section of the Journey card (src/cards/ahead.js). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.ns-chipbar.unl span { background: var(--gold); }
+.ahead .where-sub { margin: 0; }
+/* Next up v3: one thing to do now, one thing after it. */
+/* Ahead in Journey: flat rows */
+.ahead .ah-row { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--space-8) 0;}
+.ahead .where-sub + .ah-row { border-top: 0; padding-top: var(--space-2); }
+.ahead .ah-lv { color: var(--muted); }
+.ahead .ah-lv.unl { color: var(--gold); }
+.ahead .ah-row:hover b { color: var(--accent-text); }
+/* Ahead rows: level + title on one line, everything else full width underneath */
+.ahead .ah-row { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-10); row-gap: var(--space-4); align-items: baseline; }
+.ahead .ah-main { display: contents; }
+.ahead .ah-main > :not(b) { grid-column: 1 / -1; }
+.ah-what { display: block; line-height: 1.35; }
+.ah-d { color: var(--muted); font-size: 12px; font-weight: 400; }
+.ah-ver { margin-left: var(--space-6); font: 600 9.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--good); border: 1px solid color-mix(in srgb, var(--good) 45%, var(--line)); border-radius: var(--radius-pill); padding: var(--space-1) var(--space-6); }

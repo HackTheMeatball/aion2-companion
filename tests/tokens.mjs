@@ -1,17 +1,19 @@
 #!/usr/bin/env node
-/* Design tokens (docs/design-system.md), Node, no browser. Over src/styles/*.css:
+/* Design tokens (docs/design-system.md), Node, no browser. Over every .css under src/styles/:
    1. no raw colour (hex, rgb()/hsl()/hwb()/lab()/lch()/oklab()/oklch()/color(), a named colour) outside the token
       definitions, i.e. outside custom-property declarations in a top-level :root rule;
    2. radius, spacing (margin / padding / gap) and shadows (box-shadow, filter: drop-shadow()) use tokens: no raw
       length other than 0 there;
    3. every var(--x) refers to a custom property defined in the styles, or set by the page (RUNTIME), or has a fallback.
-   Usage: node tests/tokens.mjs [file.css ...]  (default: every src/styles/*.css) */
+   Usage: node tests/tokens.mjs [file.css ...]  (default: every .css under src/styles/) */
 import { readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..'), DIR = join(ROOT, 'src', 'styles');
-const files = process.argv.slice(2).length ? process.argv.slice(2) : readdirSync(DIR).filter(f => f.endsWith('.css')).map(f => join(DIR, f));
+/* every .css under src/styles/, the card files in its subfolders included (0.4 P4d) */
+const walk = d => readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith('.css') ? [join(d, e.name)] : []).sort();
+const files = process.argv.slice(2).length ? process.argv.slice(2) : walk(DIR);
 /* custom properties set from src/main.js (style.setProperty) rather than in the styles */
 const RUNTIME = new Set(['--dx', '--dy', '--hero']);
 const NAMED = 'aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen'.split(' ');

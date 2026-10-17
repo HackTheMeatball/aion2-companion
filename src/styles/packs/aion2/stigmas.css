@@ -1,0 +1,60 @@
+/* Stigmas card (src/packs/aion2/cards/stigmas.js, stigmas.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+/* Stigma card */
+#stCard .st-big { display: flex; align-items: baseline; gap: var(--space-8); margin-bottom: var(--space-10); }
+
+#stCard .st-big span { font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+#stCard .dvhead { display: grid; grid-template-columns: var(--hero, 56px) minmax(0, 1fr); gap: var(--space-12); }
+#stCard .st-ico { width: var(--hero, 56px); height: var(--hero, 56px); border-radius: var(--radius-10); display: grid; place-items: center; font: 700 18px var(--mono); color: var(--gold); background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--gold) 25%, var(--panel-2)), var(--panel-2)); border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--line)); }
+#stCard .dvtext { display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); min-width: 0; }
+#stCard .spname { font-weight: 700; font-size: 15px; line-height: 18px; }
+#stCard small { color: var(--muted); font-size: 12px; }
+#stCard .buyrow { margin-top: var(--space-10); }
+
+#stAfter { margin-top: var(--space-10); }
+
+#stCard .st-n { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: var(--space-8); border-radius: var(--radius-5); font: 700 10.5px var(--mono); color: var(--muted); border: 1px solid var(--line); }
+#stList li.st-on .sname { color: var(--good); }
+#stList .sst { color: var(--good); }
+body.basic #stAfter { display: none; }
+#stCard .st-then { display: none; }
+body.basic #stCard .st-then { display: block;}
+body.basic #stCard .st-then li { border-top: 0; padding-top: 0; }
+#stCard .st-ico.art { padding: 0; overflow: hidden; background: var(--panel-2); }
+#stCard .st-ico .st-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#stCard .st-mini { width: 18px; height: 18px; border-radius: var(--radius-4); object-fit: cover; margin-right: var(--space-8); vertical-align: -4px; }
+#stCard .sname { display: flex; align-items: center; }
+body.basic #stCard .st-then { margin-top: var(--space-18); }
+#stCard .st-lvctl { display: inline-flex; align-items: center; gap: var(--space-6); font: 600 11px var(--mono); color: var(--fg); justify-self: end; grid-column: 2 / -1; }
+#stCard .st-lvctl button:hover { color: var(--fg); border-color: var(--muted); }
+#stCard .sphero.short .buystat { color: var(--warn); }
+#stCard .tfoot #stList { margin-top: var(--space-6); }
+
+#stCard #stSoon { max-height: 168px; overflow-y: auto; scrollbar-width: none; }
+#stCard #stSoon .sname, #stCard .st-then .sname { display: block; }
+#stCard #stSoon .st-mini, #stCard .st-then .st-mini { vertical-align: -4px; margin-right: var(--space-6); }
+#stCard #stList .sname { display: flex; flex-wrap: nowrap; align-items: center; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#stCard #stList > li { grid-template-columns: minmax(0, 1fr) auto; }
+#stCard #stSoon > li, #stCard .st-then > li { grid-template-columns: minmax(0, 1fr) auto minmax(26px, auto); }
+
+#stCard #stSoon { -webkit-mask-image: linear-gradient(to bottom, var(--mask) 70%, transparent); mask-image: linear-gradient(to bottom, var(--mask) 70%, transparent); }
+#stCard #stSoon.at-end { -webkit-mask-image: none; mask-image: none; }
+#stCard #stSoon::-webkit-scrollbar { display: none; }
+/* Stigma pick: the hero name is a select that reads like the name. */
+#stCard .st-pick { appearance: none; -webkit-appearance: none; max-width: 100%; margin: 0; padding: 0 var(--space-16) 0 0; border: 0; border-radius: 0; background: transparent; color: var(--fg); font: inherit; line-height: inherit; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: right 5px top 8px, right 1px top 8px; background-size: 4px 4px; background-repeat: no-repeat;
+  text-decoration: underline dotted color-mix(in srgb, var(--muted) 70%, transparent); text-underline-offset: 3px; }
+#stCard .st-pick:hover { color: var(--accent-text); }
+#stCard .st-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-3); }
+#stCard .st-pick option { color: var(--fg); background: var(--panel); font-weight: 600; }
+/* The pick is a small "change ▾" link in the hero's subline; the native select sits invisibly on top of it. */
+#stCard .st-chg { position: relative; display: inline-block; white-space: nowrap; color: var(--muted); text-decoration: underline dotted; text-underline-offset: 3px; padding-right: var(--space-11);
+  background: linear-gradient(45deg, transparent 50%, currentColor 50%) right 4px top 6px / 4px 4px no-repeat, linear-gradient(135deg, currentColor 50%, transparent 50%) right 0 top 6px / 4px 4px no-repeat; }
+#stCard .st-chg:hover, #stCard .st-chg:focus-within { color: var(--accent-text); }
+#stCard .st-chg:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-3); }
+#stCard .st-chg .st-pick { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; padding: 0; background: none; cursor: pointer; font-size: 12px; }
+#stCard .st-other { width: 100%; box-sizing: border-box; font: 700 14px var(--sans, inherit); padding: var(--space-2) var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-6); background: var(--panel-2); color: var(--fg); }
+#stCard .dvbuy:disabled { opacity: .55; cursor: default; filter: grayscale(.4); }
+#stCard .st-chg .st-pick { inset: -5px -2px; width: calc(100% + 4px); height: calc(100% + 10px); }
+@media (pointer: coarse) {
+  #stCard .st-lvctl button::before { inset: -14px -9px; }
+}

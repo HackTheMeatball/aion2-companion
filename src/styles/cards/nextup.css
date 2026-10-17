@@ -1,0 +1,224 @@
+/* Next up card (src/cards/nextup.js, nextup.html; its kinds in src/packs/aion2/cards/nextup-kinds.js) and its pop-out window. Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.q-rec { margin-left: var(--space-6); font: 600 10.5px var(--mono); color: var(--muted); white-space: nowrap; }
+/* Next up (north star) */
+.nowstar .ns-head { gap: var(--space-10); flex-wrap: wrap; margin-bottom: var(--space-12);}
+.nowstar .ns-head h2 { margin: 0;}
+@container (max-width: 640px) { .ns-grid { grid-template-columns: minmax(0, 1fr); } }
+.ns-primary { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 1fr auto; gap: var(--space-10) var(--space-12); padding: var(--space-14); border-radius: var(--radius-12); background: var(--panel-2); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); }
+
+@keyframes nsNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+.ns-btn { font: 600 12px var(--body); padding: var(--space-6) var(--space-12); border-radius: var(--radius-9); white-space: nowrap; cursor: pointer; }
+.ns-btn.primary { justify-self: start; grid-column: 2; background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border: 1px solid var(--go-line); box-shadow: var(--shadow-go); }
+.ns-btn.primary:active { transform: translateY(2px); box-shadow: none; }
+.ns-then { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+/* Layout v2: Next up is the third top tile; Rotation lives in the right drawer under Stat priority. */
+#main .top-grid .nowstar { margin: 0; align-self: auto; }
+/* Ahead now closes the Next up card: now → then → what's ahead. */
+#nowStar { display: flex; flex-direction: column; }
+#nowStar > p { margin-bottom: var(--space-14); }
+#nowStar .ahead { margin: auto 0 0; padding-top: var(--space-12); border-top: 1px solid var(--line); }
+#nowStar .ahead .where-sub { margin: 0 0 var(--space-2); }
+#nowStar .ah-row { grid-template-columns: 34px minmax(0, 1fr); gap: var(--space-8);}
+#nowStar .ah-main b { font-size: 13.5px; }
+
+#nowStar .ah-main small { font-size: 11px; }
+.nowstar, #main .top-grid .nowstar { border-color: var(--line); background: var(--panel); box-shadow: none; }
+.nowstar .ns-head h2 { color: var(--muted); }
+#nowStar .ah-row { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--space-8) 0; }
+#nowStar .ahead .where-sub + .ah-row { border-top: 0; padding-top: var(--space-4); }
+#nowStar .ah-lv { color: var(--muted); }
+#nowStar .ah-lv.unl { color: var(--gold); }
+#nowStar .ah-row:hover b { color: var(--accent-text); }
+/* Next up boxes: icon/arrow and button on one line, the task below */
+.nowstar .nsbox { display: flex; flex-direction: column; gap: var(--space-8); }
+
+.nowstar .nsbox .ns-btn { grid-column: auto; justify-self: auto; }
+
+@keyframes nsDrop { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(4px); } }
+/* Next up carousel: top card + a queue that rises as the top one is done */
+.nsq { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: var(--space-10); align-items: center; padding: var(--space-9) var(--space-10); border-radius: var(--radius-10); background: var(--panel-2); border: 1px solid var(--line); }
+.nsq:nth-child(2) { opacity: .85; } .nsq:nth-child(3) { opacity: .72; } .nsq:nth-child(n+4) { opacity: .6; }
+.nowstar .ns-primary { transition: transform .3s ease, opacity .3s ease; }
+.nowstar .ns-primary.out { transform: translateY(-24px); opacity: 0; }
+.rise { animation: nsRise .38s ease both; }
+.nsq.rise:nth-child(2) { animation-delay: .04s; } .nsq.rise:nth-child(3) { animation-delay: .08s; } .nsq.rise:nth-child(n+4) { animation-delay: .12s; }
+@keyframes nsRise { from { transform: translateY(26px); opacity: 0; } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .rise, .nowstar .ns-primary { animation: none; transition: none; } }
+/* Story objectives inside the Next up top card */
+.ns-obj { list-style: none; margin: var(--space-4) 0 0; padding: var(--space-8) 0 0; border-top: 1px solid var(--line); display: grid; gap: var(--space-2); }
+.ns-obj li { max-height: 80px; overflow: hidden; transition: opacity .45s ease, max-height .4s ease .1s, padding .4s ease .1s; padding: var(--space-3) 0; }
+.ns-obj small { display: block; color: var(--muted); font-size: 11.5px; }
+.ns-obj li.on b, .ns-obj li.on small { color: var(--good); }
+.ns-obj-more { font-size: 11.5px; color: var(--muted); padding-left: var(--space-25) !important; }
+/* Next up: arrow sits at the right of the header, pointing into the top card */
+.nowstar .ns-head { display: flex; justify-content: space-between; align-items: center; }
+/* Next up: the queue scrolls inside the card and fades out at the bottom */
+/* Next up v4: everything under the header scrolls (no visible bar) and fades out at the bottom */
+.nsq-bar { display: block; height: 3px; border-radius: var(--radius-2); background: var(--line); margin-top: var(--space-6); overflow: hidden; }
+
+.nsq-barl { display: block; font: 600 10.5px var(--mono); color: var(--muted); margin-top: var(--space-3); }
+.nsinfo { display: inline-grid; width: 12px; height: 12px; font-size: 8.5px; vertical-align: 1px; margin-left: var(--space-4); border: 0; background: var(--muted); color: var(--bg); }
+.nsinfo:hover, .show-info .nsinfo { background: var(--fg); color: var(--bg); }
+.ns-info { display: none; font-size: 11.5px; line-height: 1.4; color: var(--muted); margin-top: var(--space-4); }
+.show-info .ns-info { display: block; }
+/* Basic: Next up drops its header; its first card pulses to say "this one" (#nowStar.wide itself never animates: see its !important reset). */
+body.basic #nowStar .ns-head { display: none; }
+body.basic #nowStar .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; }
+/* Next up, now a wide card above Milestones: the action on the left, what follows on the right */
+#nowStar.wide .ns-primary { flex: 0 0 40%; min-width: 0; }
+body.basic #nowStar.wide .ns-primary { align-self: center; }
+/* Next up: milestone-card look */
+#nowStar.wide { display: block; margin: var(--space-14) 0 var(--space-4); border-radius: var(--radius-12);}
+#nowStar.wide .ns-primary { border: 0; background: none; padding: 0; box-shadow: none; display: block; }
+#nowStar.wide .title h3 b { font-weight: 800; }
+#nowStar.wide > .bar { height: 3px; background: var(--line); }
+#nowStar.wide .nsq { display: grid; grid-template-columns: 22px 22px minmax(0, 1fr) auto; gap: var(--space-12); align-items: start; padding: var(--space-10); border: 0; border-radius: var(--radius-8); background: none; box-shadow: none; min-height: 0; opacity: 1 !important; }
+#nowStar.wide .nsq:hover { background: var(--panel-2); }
+#nowStar.wide .ns-go { font: 600 11px var(--mono); letter-spacing: .06em; padding: var(--space-3) var(--space-8); border-radius: var(--radius-pill); border: 1px solid var(--line); background: none; white-space: nowrap; align-self: center;}
+
+#nowStar.wide .ns-go:hover { border-color: var(--accent); }
+body.basic #nowStar.wide .nsq { padding: var(--space-7) var(--space-10); }
+@media (max-width: 520px) { #nowStar.wide .ns-mhead { grid-template-columns: 48px minmax(0, 1fr); padding: var(--space-14); }   #nowStar.wide .ns-obj { margin-left: var(--space-14); } }
+/* Next up: a stack of single-action cards; one shows, scroll for the next */
+#nowStar.wide { background: none !important; border: 0 !important; box-shadow: none !important; overflow: visible; padding: 0; animation: none !important; }
+#nowStar .ns-stack { display: flex; flex-direction: column; gap: var(--space-10); overflow-y: auto; scroll-snap-type: y mandatory; scrollbar-width: none; overscroll-behavior: contain;
+  -webkit-mask-image: linear-gradient(to bottom, var(--mask) calc(100% - 34px), var(--mask-25)); mask-image: linear-gradient(to bottom, var(--mask) calc(100% - 34px), var(--mask-25)); padding: var(--space-1); }
+#nowStar .ns-stack::-webkit-scrollbar { display: none; }
+#nowStar .ns-stack.at-end { -webkit-mask-image: none; mask-image: none; }
+#nowStar .ns-card { flex: none; scroll-snap-align: start; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); overflow: hidden; }
+#nowStar .ns-card.first { border-color: var(--accent); box-shadow: var(--ring-accent); }
+#nowStar .ns-card:not(.first) .ns-num { background: var(--panel-2); border-color: var(--line); color: var(--fg); }
+#nowStar .ns-card.later { opacity: .75; }
+#nowStar .ns-card .ns-mhead { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: var(--space-14); align-items: center; padding: var(--space-16) var(--space-18); }
+#nowStar .ns-card .ns-num { font-size: 20px; overflow: hidden; }
+#nowStar .ns-card.first .ns-num { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
+#nowStar .ns-card .ns-num img { width: 34px; height: 34px; object-fit: contain; }
+#nowStar .ns-card .title h3 { margin: 0; font-size: 17px; font-weight: 700; }
+#nowStar .ns-card .title p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13.5px; }
+#nowStar .ns-card .title p a { color: inherit; }
+
+#nowStar .ns-card .meta .ns-btn { margin: 0; }
+#nowStar .ns-card .ns-go { font: 600 12px var(--mono); padding: var(--space-6) var(--space-12); border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); cursor: pointer; white-space: nowrap; }
+
+#nowStar .ns-card .ns-obj { margin: calc(-1 * var(--space-4)) var(--space-18) var(--space-14) var(--space-84); }
+#nowStar .ns-card .nsq-bar { max-width: 280px; }
+body.basic #nowStar .ns-card.first { animation: nsPulse 2.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { body.basic #nowStar .ns-card.first { animation: none; } }
+@media (max-width: 520px) { #nowStar .ns-card .ns-mhead { grid-template-columns: 48px minmax(0, 1fr); padding: var(--space-14); } #nowStar .ns-card .meta { grid-column: 1 / -1;} #nowStar .ns-card .ns-num { width: 48px; } #nowStar .ns-card .ns-obj { margin-left: var(--space-14); } }
+#nowStar .ns-card, #nowStar.wide .ns-card.ns-primary { flex: none !important; display: block; padding: 0; background: var(--panel); border-radius: var(--radius-12); }
+#nowStar.wide .ns-card.first { border: 1px solid var(--accent); }
+
+#nowStar .nsq-bar.rq > span { position: static; height: 100%; display: block; }
+#nowStar .nsq-bar.rq > .d { background: var(--good); }
+#nowStar .nsq-bar.rq > .r { background: var(--gold); }
+#nowStar .ns-card { width: 100%; align-self: stretch !important; box-sizing: border-box; }
+#nowStar .ns-card .ns-mhead:has(.ns-extra) { grid-template-columns: 52px minmax(190px, .7fr) minmax(0, 1.5fr) auto; }
+.ns-qgrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(3, auto); gap: var(--space-3) var(--space-18); }
+.ns-qgrid li { font-size: 12.5px; line-height: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: var(--space-12); position: relative; }
+.ns-qgrid li::before { content: ""; position: absolute; left: 0; top: 5px; width: 7px; height: 7px; border-radius: var(--radius-round); border: 1.5px solid var(--muted); box-sizing: border-box; }
+.ns-qgrid li.run::before { background: var(--gold); border-color: var(--gold); }
+.ns-qgrid li.new a, .ns-qgrid li.new span { color: var(--fg); }
+.ns-qgrid li.run a, .ns-qgrid li.run span { color: var(--gold); }
+.ns-qgrid a { text-decoration: none; border-bottom: 1px dotted currentColor; }
+.ns-qgrid a:hover { color: var(--accent-text); }
+.qs-none { margin: var(--space-8) 0 0; color: var(--muted); font-size: 12.5px; }
+@media (max-width: 900px) { #nowStar .ns-card .ns-mhead:has(.ns-extra) { grid-template-columns: 52px minmax(0, 1fr) auto; } #nowStar .ns-extra { grid-column: 2 / -1; grid-row: 2; }  }
+.ns-qgrid li.lock span { color: var(--muted); }
+.ns-qgrid li.lock::before { border-style: dashed; opacity: .6; }
+/* Regional quest names: two columns of chain groups */
+
+#nowStar .ns-qgrid li.qg { break-inside: avoid; margin: 0; position: static;}
+#nowStar .ns-qgrid li.qg::before { display: none; }
+#nowStar .ns-qgrid .ql { position: relative; font-size: 12.5px; line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+#nowStar .ns-qgrid .ql::before { content: ""; position: absolute; left: 0; top: 5.5px; width: 7px; height: 7px; border-radius: var(--radius-round); border: 1.5px solid var(--muted); box-sizing: border-box; }
+#nowStar .ns-qgrid .ql.run::before { background: var(--gold); border-color: var(--gold); }
+#nowStar .ns-qgrid .ql.new a, #nowStar .ns-qgrid .ql.new span { color: var(--fg); }
+#nowStar .ns-qgrid .ql.run a, #nowStar .ns-qgrid .ql.run span { color: var(--gold); }
+#nowStar .ns-qgrid .ql.lock span { color: var(--muted); }
+#nowStar .ns-qgrid .ql.lock::before { border-style: dashed; }
+
+#nowStar .ns-qgrid li.more { color: var(--muted); font: 600 11px/18px var(--mono); }
+/* Next up header sits outside the card, like the Milestones header */
+#nowStar .ns-sec { margin: 0 0 var(--space-8); }
+/* Regional quests: one row per chain — first quest → its follow-up */
+#nowStar .ns-qgrid { columns: auto; display: flex; flex-direction: column; gap: var(--space-3); }
+#nowStar .ns-qgrid li.qg { display: flex; align-items: center; gap: var(--space-8); min-width: 0; padding: 0; }
+#nowStar .ns-qgrid .ql { min-width: 0; flex: 0 1 auto;}
+
+#nowStar .ns-qgrid .q-ar { flex: none; color: var(--muted); font-size: 12px; }
+
+#nowStar .ns-card .ns-go:hover { border-color: var(--muted); }
+#nowStar .ns-card button:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+#nowStar .ns-card button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 520px) { #nowStar .ns-qgrid .ql { white-space: normal; } #nowStar .ns-qgrid li.qg { flex-wrap: wrap; } #nowStar .ns-card .meta { justify-content: flex-end !important; } }
+#nowStar .ns-num .st-img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-9); }
+
+/* Next up: bar along the bottom edge, full width, 3px, like milestone cards */
+#nowStar .ns-card .ns-bbar .nsq-bar { display: flex; max-width: none; width: 100%; height: 3px; margin: 0; border-radius: 0; background: var(--line); }
+#nowStar .ns-card .ns-bbar .nsq-bar > span { display: block; height: 100%; }
+#nowStar .ns-card .ns-bbar .nsq-bar:not(.rq) > span { background: var(--accent); }
+/* Regional quest checkboxes in Next up (replace the dots) */
+#nowStar .ns-qgrid .ql { padding-left: 0; display: inline-flex; align-items: center; gap: var(--space-7); }
+#nowStar .ns-qgrid .ql::before { display: none; }
+#nowStar .ns-qgrid .ql > a, #nowStar .ns-qgrid .ql > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#nowStar .q-cb:hover { border-color: var(--good); }
+#nowStar .ql.run .q-cb { border-color: var(--gold); }
+#nowStar .ql.run .q-cb::after { content: ""; width: 6px; height: 1.5px; background: var(--gold); }
+#nowStar .ql.lock .q-cb { border-style: dashed; opacity: .5; cursor: default; }
+#nowStar .q-cb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* E4: Next up extras */
+#nowStar .ns-mean { display: block; margin-top: var(--space-2); color: var(--muted); }
+#nowStar .ss-tag { font: 600 10.5px var(--mono); color: var(--muted); white-space: nowrap; }
+#nowStar .ns-qgrid li.rq-aux { color: var(--muted); font-size: 12px; align-items: center; }
+#nowStar .ns-qgrid li.rq-aux .q-inl { margin: 0; padding: 0 var(--space-7); line-height: 16px; font-size: 10px; }
+#nowStar .rq-wait { min-width: 0; }
+#nowStar .rq-wait > summary { display: block; padding: 0; cursor: pointer; font: 600 11px/18px var(--mono); color: var(--muted); list-style: none; }
+#nowStar .rq-wait > summary::-webkit-details-marker { display: none; }
+#nowStar .rq-wait > summary::after { content: " ▾"; }
+#nowStar .rq-wait[open] > summary::after { content: " ▴"; }
+#nowStar .rq-wait ul { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: grid; gap: var(--space-3); }
+#nowStar .rq-wait li { display: flex; align-items: center; gap: var(--space-8); padding: 0; font-size: 12.5px; color: var(--muted); white-space: normal; overflow: visible; }
+#nowStar .rq-wait li::before { display: none; }
+#nowStar .rq-wait li .q-inl { margin: 0; padding: 0 var(--space-7); line-height: 16px; font-size: 10px; }
+/* Next up: pop-out button, page placeholder, and the pop-out window itself */
+:is(h2, div).sec.ns-sec { align-items: center; }
+:is(h2, div).sec .ns-pop { margin-left: auto; font: 600 10.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid transparent; border-radius: var(--radius-6); padding: var(--space-2) var(--space-7); cursor: pointer; }
+:is(h2, div).sec .ns-pop:hover { color: var(--fg); border-color: var(--line); }
+:is(h2, div).sec .ns-pop:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ns-away { margin: var(--space-14) 0 var(--space-4); padding: var(--space-10) var(--space-14); border: 1px dashed var(--line); border-radius: var(--radius-12); display: flex; align-items: center; gap: var(--space-8); font: 500 12.5px var(--body); color: var(--muted); }
+.ns-away .dot { opacity: .6; }
+.ns-away button { background: none; border: 0; padding: 0; font: inherit; color: var(--accent-text); cursor: pointer; }
+.ns-away button:hover { text-decoration: underline; }
+html.pip, html.pip body { height: 100%; }
+html.pip body { margin: 0; padding: var(--space-8); box-sizing: border-box; background: var(--bg); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+html.pip #nowStar, html.pip #nowStar.wide { margin: 0 !important; flex: 1 1 0; min-height: 0; display: flex !important; flex-direction: column; height: auto !important; overflow: hidden; }
+html.pip #nowStar .ns-sec { margin: 0 0 var(--space-6); }
+html.pip #nowStar .ns-pop { display: none; }
+html.pip #nowStar .ns-stack { flex: 1 1 0; min-height: 0; height: auto !important; }
+html.pip #nowStar .ns-card .ns-mhead { grid-template-columns: 40px minmax(0, 1fr) auto; gap: var(--space-10); padding: var(--space-10) var(--space-12); }
+html.pip #nowStar .ns-card .ns-num { width: 40px; height: 40px; font-size: 17px; }
+html.pip #nowStar .ns-card .ns-num img { width: 28px; height: 28px; }
+html.pip #nowStar .ns-card .title h3 { font-size: 15px; }
+html.pip #nowStar .ns-card .title p { font-size: 12.5px; }
+html.pip #nowStar .ns-card .ns-obj { margin: calc(-1 * var(--space-2)) var(--space-12) var(--space-10) var(--space-62); }
+html.pip #nowStar .ns-card .ns-mhead:has(.ns-extra) { grid-template-columns: 40px minmax(0, 1fr) auto; }
+html.pip #nowStar .ns-extra { grid-column: 2 / -1; grid-row: 2; }
+html.pip #nowStar .ns-card .meta { grid-column: auto; }
+html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var(--mono); letter-spacing: .04em; color: var(--muted); text-align: center; }
+#nowStar .ns-pin { color: var(--muted); display: inline-flex; vertical-align: -2px; margin-left: var(--space-2); }
+#nowStar .ns-pin:hover { color: var(--accent-text); }
+#nowStar .ns-then { font-weight: 400; color: var(--muted); font-size: 14px; }
+#nowStar .q-near { display: inline-flex; color: var(--accent-text); flex: none; margin-left: calc(-1 * var(--space-2)); }
+#nowStar .q-near svg { width: 12px; height: 12px; }
+#nowStar .ql .q-snz.ico { display: inline-grid; place-items: center; width: 20px; height: 17px; padding: 0; flex: none; }
+#nowStar .ql:hover .q-snz, #nowStar .ql:focus-within .q-snz { opacity: 1; }
+/* Next up quest names wrap (no truncation: several names share a prefix). */
+#nowStar .ns-qgrid li.qg { flex-wrap: wrap; align-items: flex-start; row-gap: var(--space-2); }
+#nowStar .ns-qgrid .ql { white-space: normal; overflow: visible; align-items: flex-start; }
+#nowStar .ns-qgrid .ql > a, #nowStar .ns-qgrid .ql > span { overflow: visible; text-overflow: clip; }
+#nowStar .ns-qgrid .ql > .q-cb, #nowStar .ns-qgrid .q-ar { margin-top: var(--space-2); }
+#nowStar .ns-stack { transition: height .18s ease; }
+@supports (content: "x" / "") {
+  #nowStar .rq-wait > summary::after { content: " ▾" / ""; }
+  #nowStar .rq-wait[open] > summary::after { content: " ▴" / ""; }
+}

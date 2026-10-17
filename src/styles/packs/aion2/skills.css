@@ -1,0 +1,30 @@
+/* Skills card (src/packs/aion2/cards/skills.js, skills.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.sync-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-6) var(--space-12); margin: var(--space-8) 0 var(--space-10); }
+.sync-grid label { display: flex; justify-content: space-between; align-items: center; gap: var(--space-8); font-size: 13px; }
+.sync-grid input { width: 52px; font: 600 14px var(--mono); color: var(--fg); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-6); padding: var(--space-3) var(--space-6); }
+#syncMsg { font-size: 12.5px; margin-left: var(--space-8); }
+.sphero .dvbar-l i { font-style: normal; font-weight: 500; color: var(--muted); }
+.sphero.ok .dvtrack span { background: var(--good); }
+.sphero.lock .dvtrack span { background: var(--muted); }
+.sphero.short .dvtrack span { background: var(--warn); }
+.sphint { margin: var(--space-6) 0 0; font-size: 12px; color: var(--muted); }
+.sphint.ok { color: var(--good); }
+.sphint.warn { color: var(--warn); }
+.spico.art { background: none; border: 0; }
+.spico.art img { padding: 0; border-radius: var(--radius-10); box-shadow: var(--shadow-art); }
+.sptype { font: 600 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--muted-66); border-radius: var(--radius-4); padding: 0 var(--space-4); vertical-align: 1px; }
+.spectag { font: 600 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-66); border-radius: var(--radius-4); padding: 0 var(--space-4); margin-left: var(--space-2); vertical-align: 1px; }
+/* Coming up / board lists scroll inside the card with the same fade */
+#spAfter { flex: 1 1 0; min-height: 120px; display: flex; flex-direction: column; }
+#spAfter .soonlist { flex: 1 1 0; min-height: 0; }
+#spAfter .dvbh { margin-top: var(--space-14); }
+.dvbar-ph { height: 18px; }
+#spCard .sphero .dvtext:has(.dvbar-ph) small { white-space: normal; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; font-size: 11.5px; line-height: 13px; }
+#spCard .sphero .dvtext .dvbar-ph { display: none; }
+/* Basic: a short "what's next" under each card: progress header + just the next upgrade / node */
+body.basic #spAfter { flex: none; min-height: 0; }
+body.basic #spSoon > li:nth-child(n+2) { display: none; }
+#spCard .sphero .dvhead .dvico img:first-child { width: 100%; height: 100%; }
+#spCard .sphero .dvhead .dvtext > .dvbar { margin-top: auto; }
+/* Skills card past the plan, in both modes. */
+body.basic #spCard .sphint.warn { display: block !important; }

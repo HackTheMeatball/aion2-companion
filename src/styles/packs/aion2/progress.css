@@ -1,0 +1,21 @@
+/* Progress card (src/packs/aion2/cards/progress.js, progress.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.progress-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-14); }
+.ring { flex: none;}
+.ring circle { fill: none; stroke-width: 7; }
+.ring .bg { stroke: var(--line); }
+.ring .fg { stroke-linecap: round; transition: stroke-dashoffset .4s ease; transform: rotate(-90deg); transform-origin: 50% 50%;}
+.ring text { fill: var(--fg); font: 600 16px var(--mono); }
+/* Progress card: ring (percent + count) beside three compact rows, all within the ring's height. */
+.ring { width: 96px; height: 96px; }
+.ring .ring-sub { fill: var(--muted); font: 600 9.5px var(--mono); }
+.prog-rows { flex: 1 1 130px; min-width: min(130px, 100%); display: grid; gap: 0; align-content: center; }
+.prow { all: unset; box-sizing: border-box; display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-6); margin: 0 calc(-1 * var(--space-6)); border-radius: var(--radius-7); cursor: pointer; }
+.behind-pill { display: inline-block; margin-left: var(--space-6); padding: 0 var(--space-5); border-radius: var(--radius-bar); font: 700 10px/15px var(--mono); color: var(--warn-ink); background: var(--warn); vertical-align: 1px; }
+.prow:hover { background: var(--panel-2); }
+.prow:focus-visible { outline: 2px solid var(--accent); }
+.prow-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; }
+.prow-n { font: 600 11px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.prow-bar { height: 3px; border-radius: var(--radius-2); background: var(--line); overflow: hidden; }
+.prow.done .prow-n { color: var(--good); }
+.prow.done .prow-bar span { background: var(--good); }
+.ring .fg { stroke: var(--accent); }
