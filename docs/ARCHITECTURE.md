@@ -317,9 +317,10 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   `src/cards/X.html` as it is (0.4 P4a; both builds; a missing file, an `@card` line inside a card file or a leftover
   `@card` line stops the build), then each `<link rel="stylesheet" href="styles/X.css">` line of the shell becomes a
   `<style>` with the file as it is; each `<script type="module" src="X.js"></script>` line becomes one classic `<script>`
-  holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; no minification;
-  no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
-  stays a page global, as before modules. esbuild reprints the code: comments dropped, its own formatting, and
+  holding esbuild's bundle of that entry (format `esm` with no imports or exports left, so no wrapper; minified for whitespace and syntax only (0.5 P20: `minifyWhitespace` + `minifySyntax`, never
+  `minifyIdentifiers`, so stack traces and tests still see the top-level names; about 84 KB raw and 8.6 KB gzip less,
+  for budget headroom); no tree shaking, since names are used from inline `onclick` attributes and from tests). Every top-level name therefore
+  stays a page global, as before modules. esbuild reprints the code: comments dropped, minified formatting, and
   top-level `const` / `let` emitted as `var` (it does this whenever it bundles; none of the 244 top-level names is a
   `window` property). Modules come first in import order (generated data, then the pack's data modules, the engine and
   the pack's code), then `main.js`. The generated data modules are compiled by an esbuild plugin
