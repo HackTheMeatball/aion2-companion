@@ -27,14 +27,23 @@ header.top .who { position: relative; min-width: 0; }
 .chpop { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-6); margin-top: var(--space-6); }
 .chhead { margin: var(--space-6) var(--space-10) var(--space-2); font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .chrows { list-style: none; margin: 0; padding: 0; }
+.chrows li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; border-radius: var(--radius-8); padding-right: var(--space-6); }
 .chrows li + li { border-top: 1px solid var(--line); }
+.chrows li.cur { background: var(--panel-2); box-shadow: var(--ring-accent); }
+.chrows li.chedit { display: block; padding: 0; }
+.chedit .chfld > label b { font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--fg); }
 .chrow { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 48px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--space-6); align-items: center;
   padding: 0 var(--space-6) 0 var(--space-10); border-radius: var(--radius-8); }
 .chrow:hover { background: var(--panel-2); }
 .chrow:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-.chrow.cur { background: var(--panel-2); box-shadow: var(--ring-accent); }
 .chrow .tick { color: var(--good); font: 600 14px var(--mono); }
 .chrow .lbl { font: 500 13px var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Rename / Remove per row (0.5 P19): quiet text buttons, the warn colour on Remove only */
+.chact { all: unset; box-sizing: border-box; cursor: pointer; min-height: 44px; min-width: 44px; display: inline-grid; place-items: center; padding: 0 var(--space-6);
+  border-radius: var(--radius-6); color: var(--accent-text); font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.chact.warn { color: var(--warn); }
+.chact:hover { background: var(--panel-2); }
+.chact:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .chnew { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 48px; display: flex; align-items: center; padding: 0 var(--space-10);
   border-top: 1px solid var(--line); color: var(--accent-text); font: 600 13px var(--body); }
 .chnew:hover { background: var(--panel-2); }
@@ -61,3 +70,13 @@ header.top .who { position: relative; min-width: 0; }
 @media (max-width: 600px) {
   .chbtns button { flex: 1; }
 }
+/* the remove confirmation (0.5 P19): a modal dialog over a scrim that names the character; "Keep it" first, Remove in the
+   warn colour */
+.chdlg { box-sizing: border-box; width: calc(100% - var(--space-28)); max-width: 440px; padding: var(--space-18); border: 1px solid var(--line); border-radius: var(--radius-12);
+  background: var(--panel); color: var(--fg); box-shadow: var(--shadow-float); }
+.chdlg[open] { display: grid; gap: var(--space-10); }
+.chdlg::backdrop { background: var(--shade-88); }
+.chdlg h2 { margin: 0; font: 400 18px var(--display); overflow-wrap: anywhere; }
+.chdlg p { margin: 0; color: var(--muted); font-size: 14px; }
+.chdlg p b { color: var(--fg); font-weight: 600; }
+.chbtns button.warn { background: var(--warn); border-color: var(--warn); color: var(--warn-ink); }

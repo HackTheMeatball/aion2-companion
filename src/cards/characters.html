@@ -14,4 +14,9 @@
           <div class="chbtns"><button type="button" id="charCancel">Cancel</button><button type="submit" class="primary" id="charCreate">Create character</button></div>
         </form>
       </div>
+      <dialog class="chdlg" id="charDlg" role="alertdialog" aria-labelledby="charDlgHead" aria-describedby="charDlgText">
+        <h2 id="charDlgHead"></h2>
+        <p id="charDlgText">Its progress is deleted from this browser. <b>This can't be undone.</b> Your other characters stay. Export first if you want a backup.</p>
+        <div class="chbtns"><button type="button" id="charKeep">Keep it</button><button type="button" class="warn" id="charRemove">Remove</button></div>
+      </dialog>
     </div>

@@ -21,7 +21,7 @@ import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stamp, stampSave } from "./core/sync.js";
-import { addChar, switchChar } from "./core/chars.js";
+import { addChar, removeChar, renameChar, switchChar } from "./core/chars.js";
 /* the save is read and written only through this storage (interface: src/core/storage.js) */
 import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
@@ -50,9 +50,11 @@ usePack(aion2Pack);
 sourcesCards({ CONF, SOURCES, SRC_SITE }).forEach(registerCard);
 activePack().cards.forEach(registerCard);
 [journeyCard, aheadCard, undoCard, nextUpCard, milestonesCard, routeRulesCard].forEach(registerCard);
-/* the character switcher in the header (0.5 P18): picking another character or adding one stores the new save and
-   reloads (useSave, below), so every card starts over with that character */
-registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), onAdd: ({ class: cls, name }) => useSave(newCharSave(cls, name)) }));
+/* the character switcher in the header (0.5 P18): picking another character, adding, renaming (0.5 P19) or removing one
+   (P19; a removed current one hands over to the first remaining slot) stores the new save and reloads (useSave, below),
+   so every card starts over with the current character */
+registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), onAdd: ({ class: cls, name }) => useSave(newCharSave(cls, name)),
+  onRename: (id, name) => useSave(renameChar(state, id, name)), onRemove: id => useSave(removeChar(state, id)) }));
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
