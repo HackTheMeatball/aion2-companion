@@ -131,6 +131,22 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('crossing 860 px up: same markup as a fresh load at 1100', (await layoutHtml()) === wideFresh && (await order()).dom === wideOrder.dom);
   await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
   ok('crossing 860 px down: same markup as the first load at 390', (await layoutHtml()) === narrowHtml);
+  /* 12b. Sticky level bar (0.5 P4): at 390 px the one #lvlUpBig sits in the bar, stays visible when scrolled, and works */
+  await setState(p, clean(20, 'Symbol of Liberation', 'advanced'));
+  await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await p.waitForTimeout(200);
+  const lb = await p.evaluate(() => { const bs = document.querySelectorAll('#lvlUpBig'), b = bs[0], r = b.getBoundingClientRect(); return { n: bs.length, inBar: !!b.closest('#lvlBar'), top: r.top, h: r.height, lv: document.getElementById('lvlBarLv').textContent, barH: getComputedStyle(document.documentElement).getPropertyValue('--lvlbar-h') }; });
+  ok('390px: one #lvlUpBig, in the sticky bar, visible at the page bottom, >= 44 px', lb.n === 1 && lb.inBar && lb.top >= 0 && lb.top < 100 && lb.h >= 44 && lb.lv === 'LV 20' && parseInt(lb.barH) > 40, lb);
+  await p.click('#lvlUpBig'); await p.waitForTimeout(300);
+  ok('390px: Level up in the bar raises the level and the bar label', await p.evaluate(() => char(state).level === 21 && document.getElementById('lvlBarLv').textContent === 'LV 21'));
+  await setState(p, clean(45, 'Symbol of Liberation', 'advanced'));
+  ok('390px Lv 45: disabled in the bar with the cap title', await p.evaluate(() => { const b = document.getElementById('lvlUpBig'); return !!b.closest('#lvlBar') && b.disabled && b.title === 'Level cap (45)'; }));
+  await p.setViewportSize({ width: 1100, height: 900 }); await p.waitForTimeout(400);
+  ok('1100px: #lvlUpBig back in Journey, bar hidden, --lvlbar-h 0', await p.evaluate(() => { const b = document.getElementById('lvlUpBig'); return document.querySelectorAll('#lvlUpBig').length === 1 && !!b.closest('.where-head') && b.disabled && getComputedStyle(document.getElementById('lvlBar')).display === 'none' && parseInt(getComputedStyle(document.documentElement).getPropertyValue('--lvlbar-h')) === 0; }));
+  await setState(p, clean(20, 'Symbol of Liberation', 'advanced'));
+  await p.click('#lvlUpBig'); await p.waitForTimeout(300);
+  ok('1100px: Level up in Journey still works after the round trip', await p.evaluate(() => char(state).level === 21));
+  await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
+  ok('back at 390px: in the bar again, handler works', await (async () => { const inBar = await p.evaluate(() => !!document.getElementById('lvlUpBig').closest('#lvlBar')); await p.click('#lvlUpBig'); await p.waitForTimeout(300); return inBar && await p.evaluate(() => char(state).level === 22); })());
   /* 13. Drawer focus */
   await p.setViewportSize({ width: 1500, height: 1000 }); await p.reload(); await p.waitForTimeout(300);
   await p.click('#sdTab'); await p.waitForTimeout(100);
