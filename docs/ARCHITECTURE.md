@@ -7,10 +7,11 @@ Daeva Companion (unofficial AION 2 companion; today the Asmodian Assassin leveli
 |---|---|
 | `src/index.html` | page shell: head, markup, `@web-only` markers, and the tags naming what is inlined |
 | `src/styles/fonts.css`, `src/styles/app.css`, `src/styles/brand.css` | the styles (the `@font-face` rules; everything else; the brand lockup in the header and footer), inlined verbatim. Every colour, radius, spacing step and shadow is a token in the `:root` block at the top of `app.css` (`docs/design-system.md`; `tests/tokens.mjs` enforces it) |
-| `src/main.js` | the app script (ES module entry, ≈1,760 lines, still one global scope): loading and saving, rendering, event handlers |
+| `src/main.js` | the app script (ES module entry, ≈1,220 lines, still one global scope): loading and saving, the engine cards not moved yet (milestones, Route rules, Journey, Next up, Undo: P4c), layout fitting, header, export / import, event handlers; it registers the cards and hands the AION 2 cards the names they read (`aion2UsePage`) |
 | `src/core/*.js` | the engine (0.2 P3; since 0.4 P2b no game term, `docs/design/0.4-engine-contract.md`): `pack.js` (`definePack`, `usePack`, `activePack`: the one pack object the engine reads a game through), `state.js` (key, defaults, loading, `char(state)`, `charFields()`), `migrations.js` (load-time steps), `catalog.js` (`itemByK`, `cardRows` over the pack's catalog), `requirements.js` (the evaluator glue `gatesOf` over the pack's graph and transforms, the switches over the pack's table, done / open, the story chain, objectives, milestone counts, Next up steps), `blockers.js` (blocker-chain text), `nextup.js` (Next up ranking; still imports the AION 2 pack until 0.4 P2c moves its producers), `evaluator.js` (0.3 requirement evaluator over the pack's `data.graph`), `sync.js`, `backup.js`, `storage.js` |
 | `src/cards/*.js`, `src/cards/*.html` | the engine's cards (0.4 P4a): each exports its spec for the card registry (`src/core/cards.js`, §2); its markup is put into the shell by the build's `@card` line. Today: `sources.js` / `sources.html` (Confidence, Sources) |
 | `src/packs/aion2/*.js` | the AION 2 pack's code (0.4 P2b): `pack.js` (`aion2Pack`: data, catalog, `charFields`, `keptRules`, `gateChanges`, `graphTransforms`, story hooks, `hopName`, `locate`, `skipLocation`, `onLoad`), `rules.js` (`KEPT_RULES`, `GATE_CHANGES`, the graph transforms), `requirements.js` (regional quests, the story card's level gate, objective grammar and Kibelisks, skill points and lines, the Daevanion board, stigmas, Sealed Dungeons and strongholds, the Build drawer's keys, hop names, the last-location locator), `catalog.js` (the data finished into milestones, areas, lookups), `ascension.js` (0.3 E8: the Journey card's Ascension bar; display only), `load.js` (the stigma pick pinning) |
+| `src/packs/aion2/cards/*.js`, `*.html` | the AION 2 pack's cards (0.4 P4b, moved verbatim from `main.js`; each exports its spec, `aion2Pack.cards` lists them, `index.js`): `skills.js` (Skills, `renderNext`), `daevanion.js`, `stigmas.js`, `cube.js` (the Cube bars), `areas.js` (Dungeons & Strongholds), `progress.js` (Progress, `renderCollection`), `build.js` (the Build drawer: `renderRotation`, `renderStacks`), their markup (put in place by the build's `@card` lines), `maps.js` (every Metabot map link), `shared.js` (helpers only these cards use) and `page.js` (`aion2UsePage`: the shell's names they still read, `state`, `save`, `update`, …, imported under their old names until they become clean modules). Handlers wire in each card's `mount`, so a card module touches no DOM at import (the Node core bundle imports the pack) |
 | `src/packs/aion2/data/*.js` | the data tables under their page names: since 0.2 step 5b mostly re-exports of the generated module, plus what stays code: `milestones.js` (GATES, STEPS: token text expanded), `build.js` (SP_SKILLS, SP_STEPS, SP_SLOTS, RMB_STACK, node types, costs), `areas.js` (NO_AREA), and `markup.js` (the pure text helpers: `I`, `T`, `seq`, `hideouts`, `expandTokens`, …) |
 | `src/packs/aion2/data/generated.js` | not a file: the build compiles this module from `data/**` (data format v2) with `tools/gen/gen.mjs`, in memory |
 | `src/packs/aion2/data/gate-graph.js` | not a file either: `GATE_GRAPH`, the live gates compiled by the same generator; only the pack object (`src/packs/aion2/pack.js`) imports it and hands it to the engine as `data.graph` |
@@ -174,8 +175,8 @@ points) and to the `save` suite (`tests/save.js`).
   `mountAll` for the registered cards (below).
 - `update()` runs after every change (≈10 ms; the non-blocking `perf` suite checks it stays under 15 ms): milestone counts and tags
   (Cleared / Missed / Now / Side quests), progress ring, then `renderQuest` (Journey), `renderNow` (Next up stack),
-  `renderNext` (Skills / Daevanion / Stigmas cards), `renderAhead`, area lists, then `updateAll` for the registered
-  cards. Layout fitting runs in `requestAnimationFrame`, not inside `update()`.
+  `renderNext` (Skills / Daevanion / Stigmas cards), `renderAhead`, area lists; the registered cards that draw on
+  `update()` through `updateCard` at their old spots (below). Layout fitting runs in `requestAnimationFrame`, not inside `update()`.
 
 ### Card registry (0.4 P4a)
 
@@ -192,19 +193,30 @@ time; `main.js` registers them (`registerCard`) before the first `render()`.
   the DOM position: the markup's place in `src/index.html` does.
 - **`render()`** resolves each registered `root` with `getElementById` and calls `mountAll(els, ctx)`; a card is
   mounted once (a later `render()` mounts only cards not mounted yet). **`update()`** calls
-  `updateAll(ctx)` inside its `gatesPass`, after the cards still called by hand. While cards move (P4b, P4c) a moved card
-  whose old call stood mid-list is called with `updateCard(id, ctx)` at that spot, so the call order stays today's.
+  `updateCard(id, ctx)` for each moved card at the spot its old call stood (inside its `gatesPass`), so the call order
+  stays today's; `updateAll(ctx)` replaces those calls once P4c has moved every card (until then it would draw the moved
+  cards twice). A card another card draws (`renderNext` calls `renderCollection`, `renderRotation`, `renderDaevanion`)
+  registers with `update: null`.
 - **`ctx`** = `{ state, c: char(state), pack: activePack(), basic, ev }` (`cardCtx()` in `main.js`, built once per
   `render()` / `update()`; `ev` is a getter for `gatesOf(c)`).
-- **Markup:** a card's static markup lives in its own file (`src/cards/<id>.html`); the shell keeps the line
-  `<!-- @card cards/<file>.html -->` where it stood and the build puts the file there as it is (§4).
+- **Markup:** a card's static markup lives in its own file (`src/cards/<id>.html`, a pack's in
+  `src/packs/<game>/cards/<id>.html`); the shell keeps the line `<!-- @card cards/<file>.html -->` (or
+  `<!-- @card packs/<game>/cards/<file>.html -->`) where it stood and the build puts the file there as it is (§4).
 
 | Slot | Order | Card | Module | Mount / update |
 |---|---|---|---|---|
+| `rail` | 100 | `progress` (Progress; no id) | `src/packs/aion2/cards/progress.js` | mount; drawn by `skills` |
+| `rail` | 300 | `areas` (`#areas`) | `src/packs/aion2/cards/areas.js` | mount, update |
+| `top` | 100 | `skills` (`#spCard`) | `src/packs/aion2/cards/skills.js` | mount, update |
+| `top` | 200 | `daevanion` (`#dvBox`) | `src/packs/aion2/cards/daevanion.js` | mount; drawn by `skills` |
+| `top` | 300 | `cube` (no root: `#spCube`, `#dvCube`) | `src/packs/aion2/cards/cube.js` | mount, update |
+| `top` | 400 | `stigmas` (`#stCard`) | `src/packs/aion2/cards/stigmas.js` | mount, update |
 | `foot` | 200 | `confidence` (`#confCard`) | `src/cards/sources.js` | mount only |
 | `foot` | 300 | `sources` (`#srcCard`) | `src/cards/sources.js` | mount only |
+| `drawer` | 100 | `build` (`#statDrawer`) | `src/packs/aion2/cards/build.js` | mount; drawn by `skills` |
 
-Order 100 in `foot` is left for Route rules (P4c). Confidence and Sources draw `CONF`, `SOURCES` and `SRC_SITE`, which are
+Order 100 in `foot` is left for Route rules and 200 in `rail` for Journey (P4c). Confidence and Sources draw `CONF`,
+`SOURCES` and `SRC_SITE`, which are
 the pack's data; `src/cards/` may not import a pack, so `main.js` hands the tables to `sourcesCards(data)` until P5d moves
 them behind the pack object.
 
