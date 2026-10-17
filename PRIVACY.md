@@ -6,9 +6,13 @@ This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.c
 
 ## What is stored, and where
 
-- **Your progress** (level, ticked quests and steps, stigma picks, settings) is saved in your browser's `localStorage`
-  under the key `aion2-assassin-route-v4` on `daevacompanion.com`. It never leaves your device. When you import a
-  file, the progress it replaces is kept under `aion2-assassin-route-v4:before-import`.
+- **Your progress** (per character: level, ticked quests and steps, stigma picks, the class, a random character id,
+  and a character name once you can enter one; plus your settings and the dates of your last backups) is saved in your
+  browser's `localStorage` under the key `companion-save-v5` on `daevacompanion.com`. It never leaves your device.
+  When you import a file, the progress it replaces is kept under `companion-save-v5:before-import`. The key, the
+  export file's name and the *Report a problem* link never contain your character's name. Versions before 0.4 used
+  the key `aion2-assassin-route-v4`; this version doesn't read it and leaves it as it is (clear the site's data to
+  remove it).
 - **Keeping your progress:** when you come back with saved progress, the site asks your browser to keep its storage
   (`navigator.storage.persist()`), so it isn't cleared automatically (Safari can clear site data after 7 days without a
   visit). Your browser decides; Firefox may ask you. It asks at most once per browser session (a flag in
@@ -16,7 +20,7 @@ This covers Daeva Companion, the unofficial AION 2 companion at daevacompanion.c
   Export.
 - **Offline copy:** a service worker keeps a copy of the app, its icons and fonts in your browser's cache so it works offline.
   It contains no personal data.
-- **Export progress** downloads a `.json` file to your device; **Import progress** reads a file you pick. Neither is
+- **Export progress** downloads a `.json` file (`companion-save-<date>.json`) to your device; **Import progress** reads a file you pick. Neither is
   uploaded anywhere.
 
 Clearing this site's data in your browser deletes your progress — export a backup first.

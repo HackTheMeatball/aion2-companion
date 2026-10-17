@@ -6,8 +6,10 @@
    the keys sp:<skill>:spec2 / :spec3 exist only once the player ticks them. */
 import assert from 'node:assert/strict';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 const tick = keys => Object.fromEntries(keys.map(k => [k, true]));
 
@@ -116,7 +118,7 @@ export default (test, M) => {
     const cards = M.rankNext(s), sk = cards.filter(a => a.kind === 'skill');
     assert.deepEqual(sk.map(a => a.x.k), ['sp:Heart Gore:spec2']);
     assert.equal(sk[0].act, 'skill');
-    assert.ok(!('sp:Heart Gore:spec2' in s.checks) && !('sp:Heart Gore:spec3' in s.checks));
+    assert.ok(!('sp:Heart Gore:spec2' in M.char(s).checks) && !('sp:Heart Gore:spec3' in M.char(s).checks));
     assert.equal(M.skillBuy(M.char(s)).k, 'sp:Heart Gore:spec2');
   });
 };

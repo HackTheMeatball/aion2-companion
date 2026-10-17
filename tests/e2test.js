@@ -2,7 +2,7 @@
    Expectations are computed here from the data files and QUESTS order, not from the page's own rqAvail. */
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const FILE = process.argv[2], ROOT = path.resolve(__dirname, '..');
-const { writeSave } = require('./support/save');
+const { writeSave, liveState } = require('./support/save');
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const V1 = require('./support/v1view'); /* the v1-shaped view of data/** (0.2 step 5b) */
 const RQ = V1.rq, CH = V1.chains, S45 = V1.story45, CLAIMS = V1.claims, BUILD = V1.build;
@@ -13,7 +13,7 @@ const BATCH = Object.keys(STORY).filter(q => STORY[q] === 'Forgotten Commander')
 
 async function setState(p, { L, q, mode = 'advanced', extra = {}, ticks = {} }) {
   await writeSave(p, await p.evaluate(({ L, q, mode, extra, ticks }) => {
-    const st = { checks: {}, level: L, quest: q, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, stones: 2 * (L - 10), dvTotal: 4 * (L - 11) + 20, stShards: 3 };
+    const st = { checks: {}, level: L, quest: q, mode, open: {}, started: {}, stones: 2 * (L - 10), dvTotal: 4 * (L - 11) + 20, stShards: 3 };
     GATES.forEach(g => g.items.forEach(it => { if (g.lv < L && !it.sub && !it.dv && it.kind !== 'hideout' && it.kind !== 'quest' && it.k) st.checks[it.k] = true; }));
     SP_STEPS.forEach(x => { if (x.req <= L - 2) st.checks[x.k] = true; }); st.stones += 150; /* points spent as they open, extras included */
     st.checks['g22:0'] = true; st.stLv = { "Triniel's Dagger": 5 };
@@ -52,7 +52,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
     const ticks = { ...(sc.ticks || {}) };
     if (tickLow) RQ.forEach(r => { if (r.rec < Math.min(sc.L, 30) - 4) ticks['rq:' + r.id] = true; });   // a player who did the old ones
     await setState(p, { L: sc.L, q: sc.q, ticks });
-    const st = await p.evaluate(() => state), exp = expect(QUESTS, st), nu = await nextUp(p);
+    const st = await liveState(p), exp = expect(QUESTS, st), nu = await nextUp(p);
     const label = `Lv ${sc.L} "${sc.q || '(no quest)'}"${tickLow ? ' (old ones done)' : ''}${sc.ticks ? ' +prereqs done' : ''}`;
     const bad = nu.rows.filter(r => { const e = exp[r.name]; if (!e) return true; if (!r.dis) return !e.ok; return !(e.open && e.pre.length && r.fu); });
     ok(`${label}: every Next up quest row is open in game (level, story, prerequisites)`, !bad.length, bad.map(r => [r.name, exp[r.name]]));
@@ -81,12 +81,12 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   await p.selectOption('#areaSel', 'sh'); await p.waitForTimeout(200);
   const shk = await p.evaluate(() => document.querySelector('#areaList input[data-k^="sh:"]:not(:disabled)').dataset.k);   /* a stronghold the story already cleared (Graverobber Den, E9) shows a disabled tick */
   await p.click(`#areaList input[data-k="${shk}"]`); await p.waitForTimeout(150); await p.click(`#areaList input[data-k="${shk}"]`); await p.waitForTimeout(400);
-  let r3 = await p.evaluate(k => ({ done: state.checks[k], st: state.pendSt || 0, cr: state.pendCr || 0, toast: (document.getElementById('rwToast') || {}).innerText || '' }), shk);
+  let r3 = await p.evaluate(k => ({ done: char(state).checks[k], st: char(state).pendSt || 0, cr: char(state).pendCr || 0, toast: (document.getElementById('rwToast') || {}).innerText || '' }), shk);
   ok('clearing a stronghold in Dungeons & Strongholds credits no stones or crystals', r3.done === true && r3.st === 0 && r3.cr === 0 && !/Wisdom|crystal/.test(r3.toast), r3);
   await p.evaluate(k => { const nb = [...document.querySelectorAll('#nowStar [data-now^="tick:"]')]; return nb.length; }, shk);
-  const sdk = await p.evaluate(() => AREA_ITEMS.find(x => x.it.kind === 'hideout' && x.lv <= 30 && !state.checks[x.k]).k);
+  const sdk = await p.evaluate(() => AREA_ITEMS.find(x => x.it.kind === 'hideout' && x.lv <= 30 && !char(state).checks[x.k]).k);
   await p.evaluate(k => { const t = document.createElement('input'); t.type = 'checkbox'; t.dataset.k = k; t.checked = true; document.querySelector('.layout').appendChild(t); t.dispatchEvent(new Event('change', { bubbles: true })); t.remove(); }, sdk); await p.waitForTimeout(200);
-  r3 = await p.evaluate(() => ({ st: state.pendSt, cr: state.pendCr }));
+  r3 = await p.evaluate(() => ({ st: char(state).pendSt, cr: char(state).pendCr }));
   ok('clearing a Sealed Dungeon credits 2 + 2', r3.st === 2 && r3.cr === 2, r3);
   /* stronghold card in Next up: Kibelisk from data, belt scrolls, no stones/crystals */
   const shCard = await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /^Run /.test((c.querySelector('h3') || {}).innerText || '')); return c ? c.innerText + ' ' + c.querySelector('.ns-info').innerText : ''; });
@@ -109,14 +109,14 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok('every story quest from "A New Lead" on has objectives; levels non-decreasing; no duplicates; Lv 41–45 Kibelisks', !sc5.missingSteps.length && sc5.lvSorted && !sc5.dup && sc5.loc45, sc5); /* Blood Barrier: Metabot gives no turn-in Kibelisk; Daeva Trapped: no giver on Metabot, the owner's lookup names the place only (C41) */
   await setState(p, { L: 40, q: 'Symbol of Liberation' });
   await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
-  ok('"Turned in" on Symbol of Liberation moves to Daybreak Society', await p.evaluate(() => state.quest === 'Daybreak Society' && !state.storyEnd));
+  ok('"Turned in" on Symbol of Liberation moves to Daybreak Society', await p.evaluate(() => char(state).quest === 'Daybreak Society' && !char(state).storyEnd));
   await setState(p, { L: 40, q: 'Symbol of Liberation', extra: { storyEnd: 'Symbol of Liberation' } });
-  ok('an E1 end-of-data save (storyEnd at Symbol of Liberation) moves on to Daybreak Society at load', await p.evaluate(() => state.quest === 'Daybreak Society' && !state.storyEnd));
+  ok('an E1 end-of-data save (storyEnd at Symbol of Liberation) moves on to Daybreak Society at load', await p.evaluate(() => char(state).quest === 'Daybreak Society' && !char(state).storyEnd));
   for (const mode of ['advanced', 'basic']) {
     await setState(p, { L: 45, q: 'Daeva Trapped in a Nightmare', mode });
     const before = await p.evaluate(() => document.getElementById('questStatus').innerText);
     await p.evaluate(() => [...document.querySelectorAll('#nowStar [data-now="story"]')].pop().click()); await p.waitForTimeout(900);
-    const end = async () => p.evaluate(() => ({ end: state.storyEnd, q: state.quest, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Lv 45 story complete/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
+    const end = async () => p.evaluate(() => ({ end: char(state).storyEnd, q: char(state).quest, card: [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.innerText).find(t => /Lv 45 story complete/.test(t)) || '', btn: !!document.querySelector('#nowStar [data-now="story"]'), status: document.getElementById('questStatus').innerText }));
     let e = await end();
     ok(`${mode}: last quest before turn-in says where it turns in`, /Last story quest in the guide · turns in to Nemon at Outskirts Stall/.test(before), before);
     ok(`${mode}: end state reads "Lv 45 story complete — next in game: …"; no dead Turned in`, e.end === 'Daeva Trapped in a Nightmare' && /Lv 45 story complete/.test(e.card) && /Next in game: "Waiting for the Next Journey" at Lv 46/.test(e.card) && !e.btn && /Lv 45 story complete — next in game: "Waiting for the Next Journey" at Lv 46/.test(e.status), e);
@@ -126,7 +126,7 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   ok('old "40–45 not covered" text gone', !/aren't covered|not covered yet|End of the covered story/.test(SRC));
   /* 6. Ahead: no Ariel at any level; nowhere on the page */
   const ariel = [];
-  for (let L = 25; L <= 45; L++) { await p.evaluate(L => { state.level = L; update(); }, L); if (/Ariel/.test(await p.innerText('#ahead'))) ariel.push(L); }
+  for (let L = 25; L <= 45; L++) { await p.evaluate(L => { char(state).level = L; update(); }, L); if (/Ariel/.test(await p.innerText('#ahead'))) ariel.push(L); }
   ok('Ahead never mentions Ariel (Lv 25–45)', !ariel.length, ariel);
   ok('no "Ariel" anywhere in the page source', !/Ariel/.test(SRC));
   /* 7. Claims lint (claims.json; v1 edits frozen in tests/fixtures/claims-v1-edits.json): dropped / rewritten old text gone, new text in */

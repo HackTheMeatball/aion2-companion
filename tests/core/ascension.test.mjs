@@ -4,8 +4,10 @@
    the Oath line at 4 / 4), and nothing written. */
 import assert from 'node:assert/strict';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 
 export default (test, M) => {
@@ -86,6 +88,6 @@ export default (test, M) => {
   test('E8: informational only, nothing written (deep-frozen save)', () => {
     const s = deepFreeze(S({ quest: at('Daeva in a Dream', 1), checks: { 'g45:witness': false } }));
     assert.doesNotThrow(() => asc(s));
-    assert.deepEqual(s.checks, { 'g45:witness': false });
+    assert.deepEqual(M.char(s).checks, { 'g45:witness': false });
   });
 };

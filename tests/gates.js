@@ -4,7 +4,6 @@
 const { chromium } = require('playwright'); const CFG = require('./config');
 const { writeSave, readSave } = require('./support/save');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 600) : '')); if (!c) fail++; };
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1500, height: 1000 } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
@@ -12,7 +11,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   const Q = await p.evaluate(() => QUESTS); const qi = n => Q.findIndex(([, q]) => q === n);
   /* Load a save and return the actionable Next up cards: [{k, h}] (k = milestone key for "tick:" cards). */
   const at = async (lv, quest, extra = {}) => {
-    await writeSave(p, { checks: {}, level: lv, quest, open: {}, mode: 'advanced', ...FLAGS, ...extra });
+    await writeSave(p, { checks: {}, level: lv, quest, open: {}, mode: 'advanced', ...extra });
     await p.reload(); await p.waitForLoadState('domcontentloaded');
     return p.evaluate(() => [...document.querySelectorAll('#nsqWrap > .ns-card')].map(c => ({ btn: c.querySelector('.meta .ns-btn.primary'), h: c.querySelector('h3').innerText.replace(/\s+/g, ' ') }))
       .filter(x => x.btn).map(x => ({ k: (x.btn.dataset.now || '').replace(/^tick:/, ''), h: x.h })));
@@ -46,7 +45,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
 
   /* Display only: being past a byStory quest writes no tick. */
   await at(20, 'Daeva in a Dream');
-  let r = { ...await p.evaluate(() => ({ g6: !!state.checks['g6:0'], g12: !!state.checks['g12:0'] })), saved: (await readSave(p)).checks };
+  let r = { ...await p.evaluate(() => ({ g6: !!char(state).checks['g6:0'], g12: !!char(state).checks['g12:0'] })), saved: (await readSave(p)).checks };
   ok('past byStory steps are not ticked automatically (state and save unchanged)', !r.g6 && !r.g12 && !r.saved['g6:0'] && !r.saved['g12:0'], r);
 
   /* Turned in on "Forgotten Commander", in the UI: the story moves on to "Daeva Trapped in a Nightmare" and g45:witness appears; Basic mode too. */
@@ -54,7 +53,7 @@ const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, e
   r = await p.evaluate(() => [...document.querySelectorAll('#nsqWrap [data-now^="tick:g45:witness"]')].length);
   ok('Basic, Lv 45 on "Forgotten Commander" (not turned in): no g45:witness card', r === 0, r);
   await p.evaluate(() => document.querySelector('#nsqWrap [data-now="story"]').click()); await p.waitForTimeout(300);
-  r = await p.evaluate(() => ({ quest: state.quest, end: state.storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:witness"]') }));
+  r = await p.evaluate(() => ({ quest: char(state).quest, end: char(state).storyEnd || null, card: !!document.querySelector('#nsqWrap [data-now="tick:g45:witness"]') }));
   ok('Basic: "Turned in" on "Forgotten Commander" -> on "Daeva Trapped in a Nightmare", g45:witness card offered', r.quest === 'Daeva Trapped in a Nightmare' && !r.end && r.card, r);
 
   /* Text fixes (claims C36-C38). */

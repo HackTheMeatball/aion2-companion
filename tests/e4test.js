@@ -6,30 +6,27 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await p.goto(CFG.CUR);
   /* set(L, mod): clean fixture at L, then mod(state) runs in the page before the reload (a string body: s => { ... }). */
   const set = async (L, mod = '', mode = 'advanced', fx = 'clean') => { const st = await p.evaluate(buildFixture, { L, mode, fx });
-    await writeSave(p, await p.evaluate(([s, m]) => { s.eputSync1 = true; if (m) (new Function('s', m))(s); return s; }, [st, mod]));
+    await writeSave(p, await p.evaluate(([s, m]) => { if (m) (new Function('s', m))(s); return s; }, [st, mod]));
     await p.reload(); await p.waitForTimeout(400); };
   const cards = () => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-card')].map(c => c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '').replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.meta') || {}).innerText || '')));
   const tag = id => p.evaluate(id => { const d = document.getElementById(id); return d.querySelector('.tag').textContent + ' ' + d.querySelector('.count').textContent; }, id);
   let r, cs;
 
-  /* #1 Equip ticks "Put X on E" (Next up, Stigmas card, milestone row); one-time migration */
+  /* #1 Equip ticks "Put X on E" (Next up, Stigmas card, milestone row). The one-time eputSync1 migration for pre-E4
+     saves is gone with save v5 (0.4 P3c): no pre-0.4 save is read again, so its checks were removed with it. */
   await set(28, `s.checks['g27:0'] = false; s.checks['g27:1'] = false; s.stShards = 3;`);
   await p.click('#nowStar [data-now="stequip"]'); await p.waitForTimeout(1600);
-  r = await p.evaluate(() => ({ eq: !!state.checks['g27:0'], put: !!state.checks['g27:1'], box: document.querySelector('#gates input[data-k="g27:1"]').checked }));
+  r = await p.evaluate(() => ({ eq: !!char(state).checks['g27:0'], put: !!char(state).checks['g27:1'], box: document.querySelector('#gates input[data-k="g27:1"]').checked }));
   ok('#1 Next up "Equipped" ticks slot 2 and its "Put on E" step', r.eq && r.put && r.box, r);
   ok('#1 Lv 27 milestone Cleared after equipping from Next up', /^Cleared/.test(await tag('g27')), await tag('g27'));
   await set(32, `s.checks['g32:0'] = false; s.checks['g32:1'] = false; s.stShards = 3;`);
   await p.click('#stCard [data-sttick]'); await p.waitForTimeout(1600);
-  r = await p.evaluate(() => ({ eq: !!state.checks['g32:0'], put: !!state.checks['g32:1'] })); ok('#1 Stigmas card "Mark equipped" ticks "Put on E" (slot 3)', r.eq && r.put, r);
+  r = await p.evaluate(() => ({ eq: !!char(state).checks['g32:0'], put: !!char(state).checks['g32:1'] })); ok('#1 Stigmas card "Mark equipped" ticks "Put on E" (slot 3)', r.eq && r.put, r);
   await set(37, `s.checks['g37:0'] = false; s.checks['g37:1'] = false; s.stShards = 3; s.open = { g37: true };`);
   await p.evaluate(() => { const d = document.getElementById('g37'); d.open = true; d.hidden = false; }); await p.click('#gates input[data-k="g37:0"]'); await p.waitForTimeout(1600);
-  r = await p.evaluate(() => ({ eq: !!state.checks['g37:0'], put: !!state.checks['g37:1'] })); ok('#1 milestone row "Equip" tick also ticks "Put on E" (slot 4)', r.eq && r.put, r);
-  await set(38, `s.checks['g27:1'] = false; s.checks['g32:1'] = false; s.checks['g37:0'] = false; s.checks['g37:1'] = false; delete s.eputSync1;`);
-  r = { ...await p.evaluate(() => ({ g27: !!state.checks['g27:1'], g32: !!state.checks['g32:1'], g37: !!state.checks['g37:1'], flag: state.eputSync1 })), saved: (await readSave(p)).checks['g27:1'] };
-  ok('#1 migration: equipped slots 2/3 get "Put on E"; unequipped slot 4 does not; flag saved', r.g27 && r.g32 && !r.g37 && r.flag === true && r.saved === true, r);
-  ok('#1 migration: Lv 27/32 milestones no longer "Missed"', !/Missed/.test(await tag('g27')) && !/Missed/.test(await tag('g32')), [await tag('g27'), await tag('g32')]);
-  await set(38, `s.checks['g27:1'] = false;`); /* flag already set: one-time only (an untick by hand stays) */
-  r = await p.evaluate(() => !!state.checks['g27:1']); ok('#1 migration runs once (eputSync1 set: no re-tick)', !r, r);
+  r = await p.evaluate(() => ({ eq: !!char(state).checks['g37:0'], put: !!char(state).checks['g37:1'] })); ok('#1 milestone row "Equip" tick also ticks "Put on E" (slot 4)', r.eq && r.put, r);
+  await set(38, `s.checks['g27:1'] = false;`); /* an untick by hand stays: no load step re-ticks it */
+  r = { live: await p.evaluate(() => !!char(state).checks['g27:1']), saved: (await readSave(p)).checks['g27:1'] }; ok('#1 an unticked "Put on E" stays unticked after a reload', !r.live && r.saved === false, r);
   r = await p.evaluate(() => document.getElementById('rotNote').innerHTML); ok('#1 drawer note no longer says closing marks it done', !/marks it done/.test(r), r);
 
   /* #2 unticked optional steps: not counted, hidden in Basic, no Later card */
@@ -51,7 +48,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await set(45, `Object.keys(s.checks).forEach(k => k.startsWith('sp:') && delete s.checks[k]);` + `s.stones = 400;`);
   /* 0.3 E7: the plan also has the specialty slots the plan's board nodes reach (slot 2 of Heart Gore, Quick Slice, Insignia
      Explosion); past the plan = those picked too (slots the plan can't reach are listed, never the hero) */
-  await p.evaluate(() => { SP_STEPS.forEach(x => { state.checks[x.k] = true; }); SP_SLOTS.filter(x => planReachOf(x) >= x.slotLv).forEach(x => { state.checks[x.k] = true; }); save(); }); await p.reload(); await p.waitForTimeout(400);
+  await p.evaluate(() => { SP_STEPS.forEach(x => { char(state).checks[x.k] = true; }); SP_SLOTS.filter(x => planReachOf(x) >= x.slotLv).forEach(x => { char(state).checks[x.k] = true; }); save(); }); await p.reload(); await p.waitForTimeout(400);
   r = await p.evaluate(() => ({ t: document.querySelector('#spHero .spdone') && document.querySelector('#spHero .spdone').innerText.replace(/\s+/g, ' '), a: document.querySelectorAll('#spHero a').length, cls: document.querySelector('#spHero > div').className }));
   ok('#3 past the plan: "N points spare · no sourced plan past this — spend on skills you use", no link, same card style', /^All planned upgrades spent \d+ points? spare · no sourced plan past this — spend on skills you use$/.test(r.t) && r.a === 0 && /sphero/.test(r.cls), r);
 
@@ -62,14 +59,14 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   ok('#4 Meanwhile is one line', r.h > 0 && r.h < 22, r);
   await set(38, `s.quest = "Fafnite's Whereabouts";`); r = await story();
   ok('#4 Lv 38 gated: Fire Temple (Lv 35+, item level 500) and daily dungeon (Lv 30+); not Urugugu', /Fire Temple \(Lv 35\+, item level 500\)/.test(r.mean) && /daily dungeon \(Lv 30\+\)/.test(r.mean) && !/Urugugu/.test(r.mean), r);
-  r = await p.evaluate(() => { const sd = AREA_ITEMS.some(x => x.it.kind === 'hideout' && x.lv <= state.level && !state.checks[x.k]); return { sd, mean: (document.querySelector('#nowStar .ns-mean') || {}).innerText || '' }; });
+  r = await p.evaluate(() => { const sd = AREA_ITEMS.some(x => x.it.kind === 'hideout' && x.lv <= char(state).level && !char(state).checks[x.k]); return { sd, mean: (document.querySelector('#nowStar .ns-mean') || {}).innerText || '' }; });
   ok('#4 Sealed Dungeons named only while some are open', r.sd === /Sealed Dungeons/.test(r.mean), r);
   await set(30, `s.quest = "Canyon's Secret";`); r = await story(); ok('#4 not gated: no Meanwhile line', !r.mean, r);
 
   /* #5 "+N more" counts what the points cover */
   await set(30, `Object.keys(s.checks).filter(k => k.startsWith('sp:')).forEach(k => { const L = +k.split(':')[2]; if (L > 6) delete s.checks[k]; }); s.stones = 0;`);
-  r = await p.evaluate(() => { const lv = state.level, now = SP_STEPS.filter(x => !state.checks[x.k] && x.req <= lv).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
-    const pts = (LEVEL_POINTS[lv] || 0) + (state.stones || 0) - SP_STEPS.filter(x => state.checks[x.k]).reduce((t, x) => t + x.cost, 0);
+  r = await p.evaluate(() => { const lv = char(state).level, now = SP_STEPS.filter(x => !char(state).checks[x.k] && x.req <= lv).sort((a, b) => a.gi - b.gi || a.gj - b.gj);
+    const pts = (LEVEL_POINTS[lv] || 0) + (char(state).stones || 0) - SP_STEPS.filter(x => char(state).checks[x.k]).reduce((t, x) => t + x.cost, 0);
     let left = pts - now[0].cost, k = 0; now.slice(1).some(y => { if (y.cost > left) return true; left -= y.cost; k++; return false; });
     return { hint: (document.querySelector('#spHero .sphint') || {}).innerText || '', k, left, nOpen: now.length, pts }; });
   ok('#5 hint counts only what the points left cover', r.k ? r.hint === `+${r.k} more your points cover` : r.hint === `${r.nOpen - 1} more unlocked · ${r.left} pt${r.left === 1 ? '' : 's'} left`, r);
@@ -87,7 +84,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await set(45, `s.quest = ${JSON.stringify(last)}; s.showObj = true; s.qsteps = { [${JSON.stringify(last)}]: [...Array(40).keys()] };`);
   r = await p.evaluate(() => (document.getElementById('qsNext') || {}).innerText || ''); ok('#7 last quest, objectives done: button turns it in (no "next quest")', /mark turned in/.test(r) && !/next quest/.test(r), r);
   await p.click('#qsNext'); await p.waitForTimeout(600);
-  r = await p.evaluate(() => ({ end: state.storyEnd, btn: !!document.getElementById('qsNext'), txt: (document.querySelector('#questSubs .qs-end') || {}).innerText || '', body: /next quest ›/.test(document.body.innerText), nu: [...document.querySelectorAll('#nowStar .ns-card h3')].map(h => h.innerText).join(' | ') }));
+  r = await p.evaluate(() => ({ end: char(state).storyEnd, btn: !!document.getElementById('qsNext'), txt: (document.querySelector('#questSubs .qs-end') || {}).innerText || '', body: /next quest ›/.test(document.body.innerText), nu: [...document.querySelectorAll('#nowStar .ns-card h3')].map(h => h.innerText).join(' | ') }));
   ok('#7 after turn-in: "Lv 45 story complete" in Journey and Next up; no dead button anywhere', r.end === last && !r.btn && /^Lv 45 story complete · next in game: "Waiting for the Next Journey" at Lv 46$/.test(r.txt) && !r.body && /Lv 45 story complete/.test(r.nu), r);
   await p.reload(); await p.waitForTimeout(400); r = await p.evaluate(() => !!document.getElementById('qsNext')); ok('#7 still no button after reload', !r, r);
 
@@ -96,19 +93,19 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   for (let i = 0; i < 12; i++) { const k = await p.evaluate(() => { const b = document.querySelector('#nowStar [data-snz]'); return b && b.dataset.snz; }); if (!k) break; await p.evaluate(k => document.querySelector(`#nowStar [data-snz="${k}"]`).click(), k); await p.waitForTimeout(250); }
   r = await p.evaluate(() => { const c = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test(c.querySelector('h3').innerText)); return c ? { sub: c.querySelector('.title > p').innerText, rows: c.querySelectorAll('.ql').length, un: !!c.querySelector('[data-unsnz]'), aux: (c.querySelector('.rq-aux') || {}).innerText || '' } : null; });
   ok('#8 all open quests snoozed: card stays with "N not in game yet" and "Show again"', r && /\d+ not in game yet/.test(r.sub) && r.rows === 0 && r.un, r);
-  const nz = await p.evaluate(() => Object.keys(state.rqSnooze || {}).length);
+  const nz = await p.evaluate(() => Object.keys(char(state).rqSnooze || {}).length);
   await p.click('#nowStar [data-unsnz]'); await p.waitForTimeout(400);
-  r = await p.evaluate(() => ({ z: Object.keys(state.rqSnooze || {}).length, rows: document.querySelectorAll('#nowStar .ql').length })); ok('#8 "Show again" clears those snoozes and the rows come back', nz > 0 && r.z === 0 && r.rows > 0, { nz, ...r });
+  r = await p.evaluate(() => ({ z: Object.keys(char(state).rqSnooze || {}).length, rows: document.querySelectorAll('#nowStar .ql').length })); ok('#8 "Show again" clears those snoozes and the rows come back', nz > 0 && r.z === 0 && r.rows > 0, { nz, ...r });
 
   /* #9 "+N waiting on the story" with "In my game" (Fight Poison with Poison at Preparations for Restoration) */
   await set(27, `s.quest = 'Preparations for Restoration';`);
   r = await p.evaluate(() => { const d = document.querySelector('#nowStar .rq-wait'); return d ? { sum: d.querySelector('summary').innerText, open: d.open, names: [...d.querySelectorAll('li span')].map(x => x.textContent), ig: [...d.querySelectorAll('[data-rqig]')].map(x => x.textContent) } : null; });
   const fp = await p.evaluate(() => 'rq:' + RQ_BY['Fight Poison with Poison'].id);
   ok('#9 folded "+N waiting on the story" row lists Fight Poison with Poison with "In my game"', r && /^\+\d+ waiting on the story/.test(r.sum) && !r.open && r.names.includes('Fight Poison with Poison') && r.ig.every(t => t === 'In my game'), r);
-  r = await p.evaluate(() => { const lv = state.level; return [...document.querySelectorAll('#nowStar .rq-wait [data-rqig]')].map(b => { const it = itemByK(b.dataset.rqig); return { n: it.name, rec: it.q.rec, open: rqAvail(it.q).open }; }).filter(x => x.rec > lv || x.open); });
+  r = await p.evaluate(() => { const lv = char(state).level; return [...document.querySelectorAll('#nowStar .rq-wait [data-rqig]')].map(b => { const it = itemByK(b.dataset.rqig); return { n: it.name, rec: it.q.rec, open: rqAvail(it.q).open }; }).filter(x => x.rec > lv || x.open); });
   ok('#9 only quests at/under your level that the story still locks', !r.length, r);
   await p.click('#nowStar .rq-wait summary'); await p.waitForTimeout(200); await p.click(`#nowStar [data-rqig="${fp}"]`); await p.waitForTimeout(500);
-  r = await p.evaluate(k => ({ st: (state.started || {})[k], row: [...document.querySelectorAll('#nowStar .ql')].some(x => /Fight Poison/.test(x.innerText)), still: !!document.querySelector(`#nowStar [data-rqig="${k}"]`), open: !!(document.querySelector('#nowStar .rq-wait') || {}).open }), fp);
+  r = await p.evaluate(k => ({ st: (char(state).started || {})[k], row: [...document.querySelectorAll('#nowStar .ql')].some(x => /Fight Poison/.test(x.innerText)), still: !!document.querySelector(`#nowStar [data-rqig="${k}"]`), open: !!(document.querySelector('#nowStar .rq-wait') || {}).open }), fp);
   ok('#9 "In my game" = picked up: moves into the quest rows; fold stays open', r.st === 1 && r.row && !r.still && (r.open || true), r);
 
   /* #10 single-source skill buys tagged in Next up; Skills card tooltip names the source */
@@ -147,7 +144,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   await set(30);
   const cst = async (d, clear) => { const { k, ...r } = await p.evaluate(([d, clear]) => { const row = document.querySelector('#dvNextList .dvrow.nx'), i = row.querySelector('input.dvc');
     if (clear) { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }
-    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (state.dvCost || {})[k], k }; }, [d, clear]);
+    row.querySelector(`[data-cst="${d}"]`).click(); const k = row.dataset.nx; return { v: i.value, cost: (char(state).dvCost || {})[k], k }; }, [d, clear]);
     return { ...r, saved: ((await readSave(p)).dvCost || {})[k] }; };
   r = await cst(1, true); ok('#14 F6: empty cost box, ▴ → 1 (saved as 1)', r.v === '1' && r.cost === 1 && r.saved === 1, r);
   r = await cst(-1, false); ok('#14 F6: ▾ from 1 → 0 (0 = already bought), saved', r.v === '0' && r.cost === 0 && r.saved === 0, r);
@@ -155,7 +152,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   r = await cst(1, false); ok('#14 F6: ▴ from 0 → 1', r.v === '1' && r.cost === 1, r);
 
   /* #15 (F7) Build drawer rotation: only skills the guide says you have at your level (Skills card unlock rule) */
-  const low = async L => { await writeSave(p, { checks: {}, level: L, mode: 'advanced', open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+  const low = async L => { await writeSave(p, { checks: {}, level: L, mode: 'advanced', open: {} });
     await p.reload(); await p.waitForTimeout(300);
     return p.evaluate(() => { document.querySelector('#statDrawer details.mini').open = true; const t = id => document.getElementById(id).innerText.replace(/\s+/g, ' ');
       return { chain: t('rotChain'), play: t('rotPlay'), grid: [...document.querySelectorAll('#stackViz .sk:not(.empty):not(.ghost)')].map(x => x.textContent) }; }); };

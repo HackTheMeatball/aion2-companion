@@ -15,7 +15,6 @@ export async function coreBundle() {
     'export { GATES, STEPS } from "./data/milestones.js";',
     'export { QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC } from "./data/story.js";',
     'export { SP_SLOTS, SP_STEPS, STIGMA_PLAN, ST_COST, ST_TARGETS, E_ORDER, LEVEL_POINTS, RMB_STACK, spCost, SPEC_SLOT_LV, DV_MIN } from "./data/build.js";',
-    'export { MIG_V5 } from "./data/migrations.js";',
     'export { RQ, SH_DATA } from "./data/generated.js";',
     'export { GATE_GRAPH } from "./data/gate-graph.js";',
     'export { GATE_PROPOSED } from "./data/gate-proposed.js";',

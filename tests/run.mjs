@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/* Test runner: serves dist/ (+ tests/baselines) on a free localhost port and runs every suite against it.
-   `npm test` builds first. Usage: node tests/run.mjs [--only e1,mig1,... | --shard <name>] [--quick] [--noshots] [--jobs N] [--retries N] [--with-fonts]
+/* Test runner: serves dist/ on a free localhost port and runs every suite against it.
+   `npm test` builds first. Usage: node tests/run.mjs [--only e1,save,... | --shard <name>] [--quick] [--noshots] [--jobs N] [--retries N] [--with-fonts]
    With neither --only nor --shard it runs every suite except `perf` (non-blocking; `npm run test:perf` or --only perf).
    --shard <name> runs one CI shard (SHARDS below; .github/workflows/ci.yml runs one job per shard in parallel).
    `node tests/run.mjs --check-shards` (no build needed) fails unless every blocking suite is in exactly one shard and
@@ -16,8 +16,7 @@
      e1       E1 functional checks (keys, Next up, stigma pick, snooze, story end, export/import, layout, drawer)
      e2       E2 data checks (regional availability, story 41-45, strongholds, dungeons, build, claims, Sources)
      e3       E3 checks          e4   E4 checks (QA3 findings)
-     mig1     v285 save -> current page (4 intended differences pinned in tests/fixtures/e1-migtest-expected.json)
-     mig2     v287 save -> current page, rollback to v287
+     save     save v5 (0.4 P3c): fresh start, a v4 save never read, round trip, import (v5 only), label vs slot id
      regress  QA regression matrix: Lv 25-45 x Basic/Advanced x 1500/1100/390 px x clean/messy (+ migration, user save, pop-out)
      gates    story gates: no Next up step before its story prerequisite or after the story passed it (every story position)
      journey  the user's save from Lv 27 to 45 by clicking; fails on any "!!" line except the known harness issue below
@@ -48,14 +47,14 @@ const OUT = join(ROOT, 'tests', 'out'), FIX = join(ROOT, 'tests', 'fixtures');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
 
 /* Every suite and how it is selected. NONBLOCKING suites never run by default and are in no shard. */
-const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'e1', 'e2', 'e3', 'e4', 'gates', 'mig1', 'mig2', 'regress', 'golden', 'a11y', 'journey', 'perf'];
+const ALL = ['site', 'core', 'schema', 'equiv', 'invariant', 'tokens', 'e1', 'e2', 'e3', 'e4', 'gates', 'save', 'regress', 'golden', 'a11y', 'journey', 'perf'];
 const NONBLOCKING = ['perf'];
 /* CI shards for the browser suites, balanced by CI time (a 4-vCPU runner runs 2 suites at a time). core and schema have no
    browser: the CI data job runs them (tests/core.mjs, tests/schema.mjs) before any shard finishes. */
 const SHARDS = {
   journey: ['journey'],
   regress: ['regress'],
-  golden: ['golden', 'a11y', 'mig2', 'mig1', 'site'],
+  golden: ['golden', 'a11y', 'save', 'site'],
   checks: ['e1', 'e2', 'gates', 'e4', 'e3', 'equiv', 'invariant', 'tokens'],
 };
 /* ...and the CI data job must really run them (checked below against ci.yml's text). */
@@ -82,11 +81,10 @@ const env = { ...process.env };
 try { createRequire(join(ROOT, 'package.json')).resolve('playwright'); }
 catch { const g = execSync('npm root -g').toString().trim(); env.NODE_PATH = [env.NODE_PATH, g].filter(Boolean).join(process.platform === 'win32' ? ';' : ':'); console.log('playwright: using the global install at ' + g); }
 
-const { server, url } = await startServer({ baselines: true });
+const { server, url } = await startServer();
 env.AION_BASE = url;
-const CUR = url + '/', V285 = url + '/__baselines/v285.html', V287 = url + '/__baselines/v287.html', FX285 = join(FIX, 'fixture-v285.json');
-/* the v285 fixture as the current build stores it (tests/support/make-flat-fixtures.mjs): e1 imports it; only mig1 / mig2
-   load the pre-0.3 save itself */
+const CUR = url + '/';
+/* the v285 fixture as the 0.3 build stored it (a flat fixture): e1 imports it as a v5 export */
 const FLAT285 = join(FIX, 'fixture-v285.flat.json');
 
 /* journey.js logs "!!" for anything odd; this one is a known harness limitation from QA3 (it clicks the first [data-ingame]
@@ -105,8 +103,7 @@ const SUITES = {
   e3: { args: ['tests/e3test.js'], pass: /E3 CHECKS PASSED/ },
   e4: { args: ['tests/e4test.js'], pass: /E4 CHECKS PASSED/ },
   gates: { args: ['tests/gates.js'], pass: /GATES CHECKS PASSED/ },
-  mig1: { args: ['tests/e1-migtest.js', V285, CUR, FX285], pass: /MIGRATION CHECK PASSED/ },
-  mig2: { args: ['tests/e2-migtest.js', V287, CUR, FX285], pass: /E2 MIGRATION CHECK PASSED/ },
+  save: { args: ['tests/save.js'], pass: /SAVE CHECKS PASSED/ },
   regress: { args: ['tests/regress.js', ...(flag('quick') ? ['--quick'] : []), ...(flag('noshots') ? ['--noshots'] : [])], pass: /hard fail 0\b/ },
   golden: { args: ['tests/golden.js'], pass: /GOLDEN VERIFY PASSED/ },
   a11y: { args: ['tests/a11y.js'], pass: /A11Y CHECKS PASSED/ },
@@ -122,7 +119,7 @@ if (opt('shard') && opt('only')) { console.error('use --only or --shard, not bot
 const only = opt('shard') ? SHARDS[opt('shard')] : opt('only') ? opt('only').split(',') : ALL.filter(n => !NONBLOCKING.includes(n));
 for (const n of only) if (!SUITES[n]) { console.error('unknown suite: ' + n); process.exit(2); }
 /* longest first, so the slow ones start right away */
-const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'mig2', 'mig1', 'e4', 'e3', 'site', 'tokens', 'core', 'schema'];
+const ORDER = ['regress', 'journey', 'golden', 'e1', 'e2', 'gates', 'a11y', 'perf', 'invariant', 'equiv', 'save', 'e4', 'e3', 'site', 'tokens', 'core', 'schema'];
 if (Object.keys(SUITES).sort().join() !== ALL.slice().sort().join() || ORDER.slice().sort().join() !== ALL.slice().sort().join()) { console.error('tests/run.mjs: SUITES, ALL and ORDER must list the same suites'); process.exit(2); }
 const order = ORDER.filter(n => only.includes(n));
 const jobs = Math.max(1, +(opt('jobs') || process.env.TEST_JOBS || Math.min(4, Math.max(1, Math.floor(cpus().length / 2)))));

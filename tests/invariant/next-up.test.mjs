@@ -61,7 +61,7 @@ export default (test, M, X) => {
   test(`${states.length} states loaded, migrated and deep-frozen`, () => {
     assert.equal(states.length, X.TOTAL);
     for (const { id, raw } of states) {
-      const { state, hadSave } = M.loadState(raw); M.migrate(state, hadSave, () => {}, 0);
+      const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0);
       loaded.push({ id, s: deepFreeze(state), c: M.char(state) });
     }
   });

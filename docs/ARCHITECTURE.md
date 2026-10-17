@@ -32,21 +32,28 @@ People level for weeks with their progress in `localStorage`. A broken key silen
 no server copy. Rules:
 
 > **Pre-1.0 exception (owner, 2026-10-16):** there are no real players yet, so a change may break saves for a better
-> design. Do it cleanly: bump the storage key (`-v4` → `-v5`) so the app starts fresh, never crash on an old save,
-> and note it in the CHANGELOG. See CLAUDE.md. The rules below are the strict rules that return at 1.0.
+> design. Do it cleanly: bump the storage key (`companion-save-v5` → `-v6`) so the app starts fresh, never read or
+> crash on an old save, and note it in the CHANGELOG. See CLAUDE.md. 0.4 (P3c) made one such break: save v5. The rules
+> below are the strict rules that return at 1.0.
 
-- **The storage key is `aion2-assassin-route-v4` forever.** Don't rename it, don't version it, don't move state to
-  another key. (`…:before-import` holds the state an import replaced.)
-- **Item keys are permanent.** A key that is removed is retired, never reused for something else (retired so far:
-  `g45:1`, `hold:0`, the position keys replaced in E1). Old ticks stay in the saved state; harmless.
-- **Migrations only add.** They copy or tick, set a one-time flag, and leave the old data in place, so an older build
-  can still read a newer save (the migration tests load new saves back into old builds).
+- **The storage key is `companion-save-v5`** (0.4 P3c; `…:before-import` holds the state an import replaced). No
+  game, class or player name in it. The 0.3 key `aion2-assassin-route-v4` is never read (not to migrate, detect or
+  warn); its data stays in storage untouched. From 1.0 the key is kept forever.
+- **Item keys are permanent.** A key that is removed is retired, never reused for something else (`retired.json` in
+  each pack lists them: `g45:1`, `g45:0`, `hold:0`, the position keys replaced in E1, …).
+- **Migrations only add** (from 1.0). They copy or tick, set a one-time flag, and leave the old data in place, so an
+  older build can still read a newer save. v5 has none yet.
 - **New fields must default safely** when absent: every existing save lacks them.
+- **The player name and the label never leave the save unencrypted**: no name or label (`labelOf`) in a storage key,
+  the export file name, a URL, the *Report a problem* link or a log; the slot id is random, never derived from the
+  name, class or level (`core` purity checks, `save` and `site` suites).
 
 ### State
 
-`state` is one JSON object, loaded at startup as `Object.assign(DEFAULT(), saved)` (`loadState`, `src/core/state.js`) and
-written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
+`state` is one JSON object, loaded at startup by `loadState(text, { now, newId })` (`src/core/state.js`): a v5 save is laid
+over the defaults (`DEFAULT()`, and `CHAR_DEFAULT()` under each character); anything else (no save, unreadable text,
+another shape, a pre-0.4 save) gives a new save with one empty slot (`newSave`, the id from `newId`,
+`src/shell/ids.js`: `crypto.randomUUID()`, else a v4 UUID from `getRandomValues`). It is written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
 "couldn't be saved" banner (`#saveWarn`, with the Export action) when the write fails and hides it after
 the next write that works; what is written, and under which key, is unchanged.
 
@@ -61,26 +68,36 @@ The only other localStorage key is `…:before-import` (see Import below). On th
 `navigator.storage.persist()` when it loaded saved progress, at most once per browser session (flag in
 `sessionStorage`, so the localStorage keys stay as they are; the `golden` suite records them).
 
+Shape (save v5):
+
+```
+{ v: 5, savedAt, current: <slot id>, chars: { <slot id>: { id, pack, class, name, created, ...CHAR_FIELDS } },
+  mode, open, hide, hideCards, hideOpt, areaLv, …, backup }
+```
+
+A character (`chars[id]`) has its identity (`CHAR_META`: `id` (random, stable), `pack` (`aion2/asmodian/assassin`),
+`class` (`assassin`), `name` (`""` until 0.5 adds an input), `created` (ms)) and its progress fields below. Its label
+`labelOf(c)` = `<name>-<class>-lvl<level>` (the name part left out while empty: `assassin-lvl30`) is derived on read,
+never stored; a level-up changes the label, never the id.
+
 | Field | Meaning |
 |---|---|
-| `checks{key: bool}` | every tick: milestone steps, regional quests, dungeons, strongholds, skill levels, board nodes |
-| `started{key: 1}` / `areaRun{key: ms}` | regional quest in progress / Sealed Dungeon run started (two-click boxes) |
-| `level`, `quest`, `storyEnd` | character level (changes only via Level up / − / + / slider), current main story quest, end-of-data marker |
-| `qsteps{quest: [i]}`, `qsub{quest: {i: [j]}}` | story objective ticks, keyed by **quest name** |
-| `rqSnooze{key: level}` | "Not in game yet" snoozes (cleared by Level up / prerequisite turned in) |
-| `stLv{name: lv}`, `stShards`, `stPick{slot: name}` | stigma levels, shards, the stigma picked per slot |
-| `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
-| `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings |
-| `seedLv12`, `stTriniel1`, `dvReset1`, `migV5`, `eputSync1`, `g45Split1`, `stampV1`, `backup1` | one-time flags (see below) |
+| `v`, `savedAt`, `current`, `chars{id: character}` | save version (5), time of the last saved progress change (ms), the current slot, the slots |
+| character: `checks{key: bool}` | every tick: milestone steps, regional quests, dungeons, strongholds, skill levels, board nodes |
+| character: `started{key: 1}` / `areaRun{key: ms}` | regional quest in progress / Sealed Dungeon run started (two-click boxes) |
+| character: `level`, `quest`, `storyEnd` | character level (changes only via Level up / − / + / slider), current main story quest, end-of-data marker |
+| character: `qsteps{quest: [i]}`, `qsub{quest: {i: [j]}}` | story objective ticks, keyed by **quest name** |
+| character: `rqSnooze{key: level}` | "Not in game yet" snoozes (cleared by Level up / prerequisite turned in) |
+| character: `stLv{name: lv}`, `stShards`, `stPick{slot: name}` | stigma levels, shards, the stigma picked per slot |
+| character: `stones`, `pendSt`, `pendCr`, `dvTotal`, `dvCost{key: n}`, `dvAdj`, `dvLast…` | Wisdom Stones / pending Cube items / Daevanion points and node costs |
+| character: `mt` | per-item change times (see Change times below) |
+| `mode` (`basic`/`advanced`), `open{id}`, `hide`, `hideCards`, `hideOpt`, `areaLv`, … | view settings (per device) |
 | `backup{lastExportAt, since, nudgeAt, a2hsAt}` | 0.2.5 save safety: this browser's backup times (ms, all optional); top level, not synced (`src/core/backup.js`) |
-| `schemaVersion`, `savedAt`, `mt` | save shape (absent = 0; `1` since 5c), time of the last saved progress change (ms), per-item change times (character field; see Change times below) |
 
-**Character data goes through `char(state)`** (0.2 P3, groundwork for several characters in 0.5, renumbered from 0.4). The save holds view
-settings, one-time flags and one character; the character's fields (`CHAR_FIELDS` in `src/core/state.js`: `checks`,
-`level`, `quest`, `storyEnd`, `qsteps`, `qsub`, `started`, `areaRun`, `rqSnooze`, the stigma, skill-point and board fields,
-`rotSeen`, `mt`) are read and written only as `char(state).<field>`. Today `char(state)` returns the save itself, so the stored
-JSON is unchanged; 0.5 (characters) changes that one function and the save format. The `core` suite fails on a direct
-`state.<field>` for a character field anywhere in `src/`.
+**Character data goes through `char(state)`** (0.2 P3), which returns `state.chars[state.current]`. The character's
+fields (`CHAR_FIELDS` in `src/core/state.js`) are read and written only as `char(state).<field>`; the `core` suite
+fails on a direct `state.<field>` for a character field anywhere in `src/`. 0.5 (characters) adds the switcher and the
+name input; the save format already holds several slots.
 
 ### Change times and `merge()` (0.2 step 5c)
 
@@ -88,11 +105,12 @@ JSON is unchanged; 0.5 (characters) changes that one function and the save forma
 stamps (`null` = removed). Stamps are not written at each mutation: `storeState()` calls `stampSave()`, which diffs the
 character against `mt` and stamps what changed with the write's time, bumped past the item's previous stamp (per-item
 Lamport bump, so a device with a slow clock still wins with a newer edit), and sets `savedAt`; writes that change only
-view settings leave `savedAt` alone, so a reload stores the same text. Older builds carry `mt` along untouched (they
-save the whole object); the next load in a build with times re-stamps their changes. `merge(local, remote)` (not used by
-the UI yet) keeps the later change per item, ORs one-time flags and keeps the local view settings;
+view settings leave `savedAt` alone, so a reload stores the same text. A v5 save is born with `mt` (the fresh start
+stamps its defaults at time 0). `merge(local, remote)` (not used by the UI yet) works per slot id: a slot on one side
+only is kept, a slot on both sides keeps the later change per item; `v` / `savedAt` take the larger; `current`, the
+view settings and `backup` stay the local save's;
 `lastConfirmedLocation(char)` derives the zone of the newest dated tick of a located item, skipping steps with
-`ascensionQuest` (from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; `mig2` tests the load / save / rollback path.
+`ascensionQuest` (from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; the `save` suite tests the load / save / import path in the browser.
 
 ### Item keys
 
@@ -123,37 +141,28 @@ the UI yet) keeps the later change per item, ORs one-time flags and keeps the lo
 - Quests are placed into milestones **at runtime** by recommended level, so moving one between milestones never
   changes its key.
 
-### Migrations and one-time steps (in load order)
+### Load-time steps (in load order)
 
-All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js`; the page passes its `storeState` as `store`,
-called exactly where the page wrote the save before (the `core` suite pins the write points), and its time in seconds as `now`.
+All of them are `migrate(state, hadSave, store, now)` in `src/core/migrations.js`; the page passes its `storeState` as
+`store` and its time in seconds as `now`. Save v5 (0.4 P3c) is a clean break, so there are no steps for old shapes:
+`migV5` (`MIG_V5`), the player seeds `seedLv12` / `stTriniel1` / `dvReset1`, `eputSync1`, `g45Split1`, `stampV1` and
+`backup1` were removed with the pre-0.4 saves they were for.
 
-1. Fresh browser (no save): the seed flags are set without running; cleared milestones start folded.
-2. `migV5` (E1): `MIG_V5` copies `checks` / `started` / `areaRun` from the 105 old position keys to `rq:` / `sd:` keys.
-3. `seedLv12`, `stTriniel1`, `dvReset1`: one-time player syncs from early versions (only for saves that predate them).
-4. Equipped stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
-5. `eputSync1` (E4): equipped slots get their "Put X on E" step ticked.
-6. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more (0.3 E10: a
-   save that ended at "Forgotten Commander" moves on to "Daeva Trapped in a Nightmare").
-7. `g45Split1` (0.3 E10): a true `g45:0` tick (retired: it meant "Witnesses and Oath") is copied to `g45:witness`
-   ("Witnesses" only, DATA-FORMAT-V2 N6), unless that key already has a value (unticking stores `false`, so an untick is
-   never overridden); `g45:0` stays. The copy is checked on every load, not only before the flag: a `g45:0` tick can
-   arrive after the flag is set (an older build on another device, or a rollback). The flag is a marker, set only when
-   there is a tick, so no other save is written.
-8. `stampV1` (0.2 step 5c): `schemaVersion: 1` and `mt`, every value the save holds stamped with time 0 (or the save's
-   `savedAt`: an imported export, N1). Writes nothing itself; the stamps go out with the next write. On later loads it
-   re-stamps, with `now`, whatever a build without change times changed (rollback re-stamp).
-9. `backup1` (0.2.5): `backup = { since: now }` (ms), the export nudge's baseline, for every browser (fresh ones too);
-   a `backup` that is already an object is kept as it is. Writes nothing itself, like `stampV1`. Not in
-   `ONE_TIME_FLAGS`: each device keeps its own backup times.
-10. Import: replaces the state (after confirming), keeps the old one under `:before-import`, marks the seeds done, and
-    replaces the file's `backup` with `{ since: now, lastExportAt: now }` plus `backup1` (the import counts as a backup);
-    the migrations above run on the reload.
+1. Fresh start (no v5 save): Lv 1 on the first story quest, cleared milestones folded, `backup = { since: now }` (ms,
+   the export nudge's baseline), the defaults stamped at time 0. Writes nothing itself.
+2. Equipped stigma slots without a pick are pinned to the plan name they were equipped with (plan order can change).
+3. "Turned in" on the last covered quest (`storyEnd`) moves on to the next quest once the data covers more (0.3 E10: a
+   save that ended at "Forgotten Commander" moves on to "Daeva Trapped in a Nightmare"). Writes the save.
 
-Adding a migration: give it a new flag, make it idempotent and additive, run it after the existing ones in `migrate()`,
-save only if `hadSave`, add a case to `tests/core/migrations.test.mjs` (additive, idempotent, write points) and extend
-`tests/e2-migtest.js` (realistic old save → new build, reload idempotent, rollback to the old build still works). Run
-`core`, `mig1` / `mig2`.
+**Import** accepts a v5 export only (`parseExport`): any other file, a pre-0.4 export included, gets "This file is from
+a version before 0.4 and can't be loaded." and nothing changes. A v5 file replaces the state (after confirming), the
+old one is kept under `:before-import`, and the file's `backup` is replaced with `{ since: now, lastExportAt: now }`
+(the import counts as a backup); the steps above run on the reload. **Export** writes the save as it is to
+`companion-save-<date>.json`.
+
+Adding a load-time step (from 1.0): give it a new flag, make it idempotent and additive, run it after the existing ones
+in `migrate()`, save only if `hadSave`, and add a case to `tests/core/migrations.test.mjs` (additive, idempotent, write
+points) and to the `save` suite (`tests/save.js`).
 
 ## 2. Render pipeline
 
@@ -259,12 +268,12 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   `aion2-route-*` caches (older builds, the pre-0.1.5 Google Fonts cache) are deleted on activate. Registered only on
   https or localhost, and only in `dist/`.
 - Export: `window.claude.use("downloads")` when present (claude.ai), else a Blob download.
-- `scripts/serve.mjs`: static server for `dist/` (+ `/artifact/`, `/_blob/<id>`, and `/__baselines/` for tests).
+- `scripts/serve.mjs`: static server for `dist/` (+ `/artifact/`, `/_blob/<id>`, and `/__baselines/` when started with `baselines`; no suite uses it since 0.4 P3c).
 
 **Pure core rules** (0.2 P3): `src/core/` has no DOM, storage, timer or other browser access and imports only data
 modules and other core modules; derived facts are computed, never stored as ticks. Functions take the character
 (`char(state)`) or, where a view setting changes the answer (Optional filter, talk-only objectives), the whole state.
-`main.js` keeps the old global names the suites and the baseline builds call (`counts(g)`, `STIGMA_SLOTS()`,
+`main.js` keeps the old global names the suites call (`counts(g)`, `STIGMA_SLOTS()`,
 `rqAvail(q)`, `stNames()`, `stPlan()`, …) as one-line wrappers bound to the page's state.
 
 ## 5. Tests
@@ -277,15 +286,14 @@ docs/DEPLOY.md, "CI jobs").
 |---|---|
 | `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
-| `mig1` | v285 save → current build (4 intended differences pinned in `tests/fixtures/e1-migtest-expected.json`), rollback |
-| `mig2` | realistic v287 save → current build, idempotent, rollback |
+| `save` | save v5 (0.4 P3c) in the browser: fresh start, a v4 save present (never read: `getItem` spied, its entry byte-identical), round trip, import (v5 only; a v4 export refused), Level up (label vs slot id), the name and label in no key / link / file name, two slots |
 | `regress` | Lv 25–45 × Basic/Advanced × 1500/1100/390 px × clean/messy saves, the user's save, pop-out |
 | `journey` | the user's save from Lv 27 to 45 by clicking through Next up (page timers on Playwright's fake clock; `JOURNEY_REALTIME=1` for real pauses) |
 | `perf` | non-blocking, not in `npm test`: `update()` median < 15 ms at e1's and regress's states (`npm run test:perf`) |
 | `golden` | golden master: 2,000 generated saves (every level × story position × tick subsets × Basic/Advanced × build states, plus the fixtures) against `tests/golden/snapshots/` |
 | `gates` | every story position × {quest level, 45}: no Next up step before its story gate or after the story passed it |
 | `schema` | data format v2 in Node, no browser, < 3 s (`node tests/schema.mjs`, `npm run test:data`): every data file and schema example against `data/schema/` (ajv Ajv2020 strict), 15 broken copies that must be rejected, the generator's cross-record checks, `DATA_SOURCES.md` current |
-| `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only), state, migrations (fixtures, additive, idempotent, write points), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node), the 0.3 evaluator (atom rows, chains, memo, no mutation), the §8 source check (no gate decided outside the evaluator; `tests/core/gate-sources.test.mjs`), sync (change times, `merge()` algebra over generated saves, N1 import, last confirmed location) |
+| `core` | the pure core in Node, no browser, < 5 s (`node tests/core.mjs`, `npm run test:core`; needs no build): source rules (no DOM in `core/`, `char(state)` only, no label or name in keys / file names), state (v5 shape, `char()`, `labelOf`, fresh start, import check), load-time steps (write points, idempotent), catalog, requirements, Next up (order rules, Basic, and the `gates` sweep in Node), the 0.3 evaluator (atom rows, chains, memo, no mutation), the §8 source check (no gate decided outside the evaluator; `tests/core/gate-sources.test.mjs`), sync (change times, per-slot `merge()` algebra over generated saves, N1 import, last confirmed location) |
 | `equiv` | Node, no browser, < 30 s (`node tests/equiv.mjs`, `npm run test:equiv`; CI: the `checks` shard): over the 2,000 golden states, the bare evaluator vs the frozen 0.2 gate rules (`tests/support/gates-0.2.mjs`; known differences pinned with their cause and kept rule, table in `tests/out/evaluator-equivalence.md`), and the page's gate functions (evaluator + `KEPT_RULES`) vs the same rules with no difference allowed |
 | `invariant` | Node, no browser, ~20 s (warns above 30 s, fails above 60 s; `node tests/invariant.mjs`, `npm run test:invariant`; CI: the `checks` shard): over 10,000 states (the golden generator's 8,000 with `--all`, ~1,800 targeted edge states, a seeded random top-up; `tests/invariant/states.mjs`), an independent oracle written from the raw v2 data (`tests/support/oracle.mjs`, not `GATE_GRAPH`) judges Next up (never offers a blocked or done node; disagreements pinned with their cause, table in `tests/out/invariant.md`) and the evaluator (same open / done / blockers on every node), plus monotonic gates and no writes on a frozen save. Seeded: `--seed`, `--state <id>` replays a state |
 | `tokens` | Node, no browser, < 1 s (`node tests/tokens.mjs`; CI: the `checks` shard): in `src/styles/*.css`, no raw colour outside the custom-property declarations of a top-level `:root` rule; radius, spacing (margin / padding / gap) and shadows only through tokens; every `var(--x)` defined (or set by `main.js`, or with a fallback). `docs/design-system.md` |
@@ -306,10 +314,10 @@ shrinks: when a rule is fixed, remove it so it can't come back. Motion follows `
 `#rwToast` clears itself on `animationend`). Small controls get their 24 px target from an invisible `::before` /
 `::after` (`src/styles/app.css`, "Pointer targets"); the suite lists them in `HIT`.
 
-Baselines (`tests/baselines/v285.html`, `v287.html`) are the old single-file builds, served from the same origin so
-they share `localStorage` with the current page. Web fonts are blocked in test browsers so layouts render with
-fallback fonts on every machine (`tests/support/block-web-fonts.cjs`: the self-hosted font files, the claude.ai build's
-inlined fonts, Google Fonts for the baselines; service workers are blocked unless a context allows them, since a worker
+Saves in the suites go through `tests/support/save.js` (`toStored(flat)` wraps a flat test state into a v5 save with
+one slot; the old v285 / v287 baselines and the migration suites went with the clean break in 0.4 P3c). Web fonts are
+blocked in test browsers so layouts render with fallback fonts on every machine (`tests/support/block-web-fonts.cjs`:
+the self-hosted font files, the claude.ai build's inlined fonts, Google Fonts; service workers are blocked unless a context allows them, since a worker
 would serve the fonts unrouted). `--with-fonts` lifts all of it.
 
 ## 6. Build and module notes

@@ -2,8 +2,7 @@
 
    Input: the page's catalog (catalogInPage() below runs in the page once: QUESTS, GATES, RQ, AREA_ITEMS, SP_STEPS, ...).
    Output: [{ id, tier, raw }] sorted by id, where raw is the exact text stored under the save key (SAVE_KEY,
-   tests/support/save.js: storedText() of the flat state; null = no save at all). A fixture state may also carry `src`,
-   the pre-0.3 save it was made from (see fixtureStates()).
+   tests/support/save.js: storedText() of the flat state; null = no save at all; special/ states may store other text).
 
    Stability rules (so a data change shows up as a few changed snapshots, not as a reshuffled matrix):
    - Every state has a descriptive id built from its recipe, never from its position in a list.
@@ -37,7 +36,6 @@ function catalogInPage() {
 const fnv = s => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); } return (h >>> 0) / 4294967296; };
 const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const pad = (n, w = 2) => String(n).padStart(w, '0');
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 
 function makeGen(C) {
   const qIdx = n => C.quests.findIndex(q => q[1] === n);
@@ -112,7 +110,7 @@ function makeGen(C) {
   }
 
   function state({ lv, qi, ticks: rule, mode, b = 'none' }) {
-    const st = { checks: ticks(rule, lv, qi), level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode, ...FLAGS };
+    const st = { checks: ticks(rule, lv, qi), level: lv, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode };
     build(st, b, lv);
     return st;
   }
@@ -159,27 +157,23 @@ function generate(C, { fixtures = [], all = false } = {}) {
   rnd(CORE - SPECIAL - fixtures.length, 0xA10E2, 'core');
   if (all) rnd(CORE - SPECIAL - fixtures.length + EXTENDED, 0xA10E3, 'all');
 
-  /* special: no save at all, an empty save, a save from before every one-time step (the player seeds and migrations run),
-     end of the story data, and the real fixtures (tests/fixtures) */
+  /* special: no save at all, a v5 save with an empty character, text that isn't a v5 save (an empty object, a pre-0.4
+     save: both start fresh, 0.4 P3c), end of the story data, and the real fixtures (tests/fixtures) */
   const sp = (n, raw) => out.set('special/' + n, { id: 'special/' + n, tier: 'core', raw });
   sp('fresh-no-save', null);
   sp('empty-object', storedText({}));
-  sp('pre-seeds-L12', storedText({ checks: {}, level: 12, quest: C.quests[G.onTrack(12)][1], open: {} }));
-  sp('pre-eput-L30', storedText({ ...G.state({ lv: 30, qi: G.onTrack(30), ticks: 'before', mode: 'advanced', b: 'stfull' }), eputSync1: undefined }));
+  sp('not-v5-empty-object', '{}');
+  sp('not-v5-flat-L30', JSON.stringify(G.state({ lv: 30, qi: G.onTrack(30), ticks: 'before', mode: 'advanced', b: 'stfull' })));
   { const last = C.quests[NQ - 1][1]; sp('story-end-turned-in', storedText({ ...G.state({ lv: 45, qi: NQ - 1, ticks: 'before', mode: 'advanced' }), storyEnd: last })); }
   sp('unknown-quest-name', storedText({ ...G.state({ lv: 30, qi: -1, ticks: 'before', mode: 'advanced' }), quest: 'A quest renamed in a patch' }));
-  for (const f of fixtures) out.set('fixture/' + f.name, { id: 'fixture/' + f.name, tier: 'core', raw: f.raw, ...(f.src != null ? { src: f.src } : {}) });
+  for (const f of fixtures) out.set('fixture/' + f.name, { id: 'fixture/' + f.name, tier: 'core', raw: f.raw });
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }
 
-/* The real fixtures: the pre-0.3 saves tests/fixtures/fixture-v285.json and fixture-user-v285.json as the current build
-   stores them after loading them (tests/fixtures/*.flat.json, made by tests/support/make-flat-fixtures.mjs on golden's
-   clock), under their old names, so the state ids (fixture/fixture-v285, fixture/fixture-user-v285) don't change.
-   readSrc(file) -> the pre-0.3 text, when the caller wants it as `src`: tests/golden.js records the input hash and the
-   stored-state diff against it, so the snapshots stay what they were when the page loaded the old save itself. */
+/* The real fixtures: the v285 saves as the 0.3 build stored them after loading them (tests/fixtures/*.flat.json, frozen
+   since 0.4 P3c), under their old names, so the state ids (fixture/fixture-v285, fixture/fixture-user-v285) don't change. */
 const FIXTURES = [['fixture-v285', 'fixture-v285.flat.json'], ['fixture-user-v285', 'fixture-user-v285.flat.json']];
-const fixtureStates = (readSrc = null) => FIXTURES.map(([name, flat]) => ({ name, raw: storedText(flatFixture(flat)),
-  ...(readSrc ? { src: JSON.stringify(JSON.parse(readSrc(name + '.json'))) } : {}) }));
+const fixtureStates = () => FIXTURES.map(([name, flat]) => ({ name, raw: storedText(flatFixture(flat)) }));
 
 module.exports = { catalogInPage, generate, fixtureStates, fnv };

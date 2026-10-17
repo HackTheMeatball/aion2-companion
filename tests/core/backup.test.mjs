@@ -1,6 +1,8 @@
 /* 0.2.5 save safety helpers (src/core/backup.js; docs/design/0.2.5-save-safety.md §2–§4): one day count for the line,
    the nudge and the hint; the storage side of export and import. */
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
 
 /* Local times are built in a fixed time zone (TZ is read by Node's Date at each call), restored after each test. */
 const inTZ = (tz, fn) => { const old = process.env.TZ; process.env.TZ = tz; try { fn(); } finally { if (old === undefined) delete process.env.TZ; else process.env.TZ = old; } };
@@ -16,7 +18,8 @@ const UA = {
   ipad: 'Mozilla/5.0 (iPad; CPU OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1',
   desktop: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
 };
-const save = (backup, extra = {}) => ({ checks: { 'g6:0': true }, level: 20, quest: '', backup1: true, ...(backup === undefined ? {} : { backup }), ...extra });
+/* a v5 save (tests/support/save.js): backup is a top-level field beside the character slot */
+const save = (backup, extra = {}) => toStored({ checks: { 'g6:0': true }, level: 20, quest: '', ...(backup === undefined ? {} : { backup }), ...extra });
 
 export default (test, M) => {
   test('daysSince: whole local calendar days; a future time gives 0', () => inTZ('America/New_York', () => {
@@ -80,7 +83,7 @@ export default (test, M) => {
     assert.equal(M.shouldNudge(save(b, { checks: { 'g6:0': false }, level: 1 }), at(20), false), false);
     assert.equal(M.shouldNudge(save(b, { checks: {}, level: 2 }), at(20), false), true);
     assert.equal(M.shouldNudge(save(b, { checks: { 'g6:0': true }, level: 1 }), at(20), false), true);
-    assert.equal(M.hasProgress({ checks: {} }), false);
+    assert.equal(M.hasProgress(toStored({ checks: {} })), false);
   }));
   test('hint: iPhone / iPod Safari only, not from the Home Screen, with progress, until Got it', () => {
     const s = save({ since: 1 });
@@ -102,8 +105,8 @@ export default (test, M) => {
     const s = save({ since: 10, nudgeAt: 20 }); M.markExport(s, 99); assert.deepEqual(s.backup, { since: 10, nudgeAt: 20, lastExportAt: 99 });
     for (const bad of [undefined, 'x', [1], null]) { const t = save(bad); M.markExport(t, 99); assert.deepEqual(t.backup, { lastExportAt: 99 }, JSON.stringify(bad)); }
   });
-  test('storage: import ignores the file\'s backup, counts as a backup and marks backup1 done', () => {
-    const d = { checks: {}, backup: { since: 1, lastExportAt: 2, nudgeAt: 3, a2hsAt: 4 } }; M.importBackup(d, 500);
-    assert.deepEqual(d, { checks: {}, backup: { since: 500, lastExportAt: 500 }, backup1: true });
+  test('storage: import ignores the file\'s backup and counts as a backup; nothing else changes', () => {
+    const d = toStored({ checks: {}, backup: { since: 1, lastExportAt: 2, nudgeAt: 3, a2hsAt: 4 } }); M.importBackup(d, 500);
+    assert.deepEqual(d, { ...toStored({ checks: {} }), backup: { since: 500, lastExportAt: 500 } });
   });
 };

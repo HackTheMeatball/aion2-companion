@@ -31,7 +31,7 @@ const { chromium } = require('playwright'); const fs = require('fs'); const path
 const { writeSave, clearSave, flatFixture } = require('./support/save');
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const { writeFixture } = require('./support/regress-fixture');
-/* the user's v285 save (Lv 27) as the current build stores it after loading it (tests/support/make-flat-fixtures.mjs) */
+/* the user's v285 save (Lv 27) as the current build stores it after loading it (a flat fixture, frozen since 0.4 P3c) */
 const USER = flatFixture('fixture-user-v285.flat.json');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 const info = (n, d) => console.log('info ' + n + (d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : ''));
@@ -143,7 +143,7 @@ async function load(p, state, mode) {
     await load(p, { ...USER }, 'advanced');
     await p.click('#lvlUpBig'); await p.waitForTimeout(200);
     const r = await p.evaluate(() => ({ anims: document.getAnimations().filter(a => a.playState === 'running').map(a => a.animationName || a.constructor.name),
-      toast: (document.getElementById('rwToast') || {}).textContent || '', smooth: SMOOTH(), lv: state.level }));
+      toast: (document.getElementById('rwToast') || {}).textContent || '', smooth: SMOOTH(), lv: char(state).level }));
     if (motion === 'reduce') {
       ok('reduced motion: nothing moves after Level up (only the toast fades in place)', r.anims.every(a => a === 'rwToastFade') && r.anims.length === 1, r);
       ok('reduced motion: the toast spells out the Level up gains', /Lv 28/.test(r.toast) && /skill pts/.test(r.toast), r);
@@ -282,7 +282,7 @@ async function load(p, state, mode) {
       /* Lv 22, story one quest past "Daeva in a Dream" (g6:0 … g16:monolith byStory, g22:0 wrapper), a stored false on
          g16:0, "In the Fang Legion's Name" picked up (its prerequisites by follow-up) */
       const q = await p.evaluate(() => QUESTS[QUESTS.findIndex(x => x[1] === 'Daeva in a Dream') + 1][1]);
-      await writeSave(p, { checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+      await writeSave(p, { checks: { 'g16:0': false }, started: { 'rq:2202017': 1 }, level: 22, quest: q, mode, open: {} });
       await p.reload(); await p.waitForTimeout(400);
       await p.evaluate(() => document.querySelectorAll('#gates details.step').forEach(x => { x.open = true; x.hidden = false; }));
       const id = `derived ${mode} ${width}px`;
@@ -320,7 +320,7 @@ async function load(p, state, mode) {
   for (const [W, mode] of [[390, 'basic'], [360, 'basic'], [360, 'advanced']]) {
     const { ctx, p } = await page(W, { hasTouch: true });
     await p.goto(CFG.CUR);
-    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {} });
     await p.reload(); await p.waitForTimeout(400);
     const FIG = fs.readFileSync(path.join(__dirname, '..', 'src', 'assets', 'fonts', 'figtree-latin.woff2')).toString('base64');
     const r = await p.evaluate(async fig => {
@@ -345,7 +345,7 @@ async function load(p, state, mode) {
   for (const mode of ['basic', 'advanced']) {
     const { ctx, p } = await page(390);
     await p.goto(CFG.CUR);
-    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true });
+    await writeSave(p, { checks: {}, level: 45, quest: '', mode, open: {} });
     await p.reload(); await p.waitForTimeout(400);
     const r = await p.evaluate(TYPES => {
       const out = { rows: 0, checked: 0, bad: [], names: new Set(), levels: 0, empty: [] };
@@ -378,7 +378,7 @@ async function load(p, state, mode) {
      named, axe-clean (contrast included), focus not moved to them, 44 px buttons on touch. ---------- */
   {
     const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
-    const BASE = { checks: { 'g22:0': true }, level: 27, open: {}, quest: '', seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true, backup1: true };
+    const BASE = { checks: { 'g22:0': true }, level: 27, open: {}, quest: '' };
     const cases = [];
     for (const width of [390, 1500]) for (const mode of ['basic', 'advanced']) cases.push({ id: `nudge ${mode} ${width}px`, card: 'nudge', width, mode, days: 15 });
     for (const mode of ['basic', 'advanced']) cases.push({ id: `hint ${mode} 390px touch`, card: 'a2hs', width: 390, mode, days: 2, opts: { userAgent: IPHONE, hasTouch: true, isMobile: true } });

@@ -4,7 +4,7 @@
 const { writeSave } = require('./save');
 /* built in the page from its own GATES / RQ / AREA_ITEMS / SP_STEPS */
 function buildFixture({ L, mode, fx }) {
-  const st = { checks: {}, level: L, mode, open: {}, seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, started: {}, areaRun: {}, hideCards: true };
+  const st = { checks: {}, level: L, mode, open: {}, started: {}, areaRun: {}, hideCards: true };
   const qAt = QUESTS.filter(q => q[0] <= L), qAbove = QUESTS.find(q => q[0] > L);
   st.quest = fx === 'messy' && qAbove ? qAbove[1] : qAt[qAt.length - 1][1];
   let n = 0;
@@ -31,14 +31,14 @@ function buildFixture({ L, mode, fx }) {
 const writeFixture = async (p, spec) => writeSave(p, await p.evaluate(buildFixture, spec));
 
 /* tick counts by name (regress "migration: v285 fixture → current"; the v285 side is pinned in
-   tests/fixtures/fixture-v285.v285-metrics.json by tests/support/make-flat-fixtures.mjs). Runs in the page. */
+   tests/fixtures/fixture-v285.v285-metrics.json, made by the 0.4 P3a fixture script, removed in P3c). Runs in the page. */
 function migMetrics() {
   const out = { quests: {}, sd: {}, sh: {}, sp: 0, dv: 0 };
   GATES.forEach(g => g.items.forEach((it, j) => { const k = it.k || g.id + ':' + j;
-    if (it.kind === 'quest') out.quests[it.name] = [!!state.checks[k], !!(state.started || {})[k]];
-    if (it.kind === 'hideout') out.sd[it.name] = [!!state.checks[k], !!(state.areaRun || {})[k]]; }));
-  AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => { out.sh[x.it.name] = !!state.checks[x.k]; });
-  out.sp = SP_STEPS.filter(x => state.checks[x.k]).length; out.dv = Object.keys(state.checks).filter(k => k.startsWith('dv:') && state.checks[k]).length;
-  out.story = [state.quest, JSON.stringify(state.qsteps), JSON.stringify(state.qsub)]; out.stig = [state.stLv, state.stShards, !!state.checks['g22:1']]; return out;
+    if (it.kind === 'quest') out.quests[it.name] = [!!char(state).checks[k], !!(char(state).started || {})[k]];
+    if (it.kind === 'hideout') out.sd[it.name] = [!!char(state).checks[k], !!(char(state).areaRun || {})[k]]; }));
+  AREA_ITEMS.filter(x => x.it.kind === 'stronghold').forEach(x => { out.sh[x.it.name] = !!char(state).checks[x.k]; });
+  out.sp = SP_STEPS.filter(x => char(state).checks[x.k]).length; out.dv = Object.keys(char(state).checks).filter(k => k.startsWith('dv:') && char(state).checks[k]).length;
+  out.story = [char(state).quest, JSON.stringify(char(state).qsteps), JSON.stringify(char(state).qsub)]; out.stig = [char(state).stLv, char(state).stShards, !!char(state).checks['g22:1']]; return out;
 }
 module.exports = { buildFixture, writeFixture, migMetrics };

@@ -30,13 +30,13 @@ function probe() {
     const btn = c.querySelector('.meta [data-now]');
     return { title: hc ? hc.innerText.replace(/\s+/g, ' ').trim() : '', sub: txt(c.querySelector('.title > p')), act: btn ? btn.dataset.now : null, later: c.classList.contains('later'), tag: txt(c.querySelector('.meta .tag')) }; });
   /* regional quests: independent availability (unlock level, story at/after, prereqs turned in) */
-  const sIdx = n => QUESTS.findIndex(q => q[1] === n), cur = state.quest ? sIdx(state.quest) : -1;
-  const done = q => !!state.checks['rq:' + q.id], run = q => !done(q) && !!(state.started || {})['rq:' + q.id];
-  const av = q => { const lvOk = state.level >= q.unlocksAt, sOk = !q.story || (cur >= 0 && cur >= sIdx(q.story)), pre = q.after.filter(n => !done(RQ_BY[n])); return { open: lvOk && sOk, ok: lvOk && sOk && !pre.length, pre }; };
+  const sIdx = n => QUESTS.findIndex(q => q[1] === n), cur = char(state).quest ? sIdx(char(state).quest) : -1;
+  const done = q => !!char(state).checks['rq:' + q.id], run = q => !done(q) && !!(char(state).started || {})['rq:' + q.id];
+  const av = q => { const lvOk = char(state).level >= q.unlocksAt, sOk = !q.story || (cur >= 0 && cur >= sIdx(q.story)), pre = q.after.filter(n => !done(RQ_BY[n])); return { open: lvOk && sOk, ok: lvOk && sOk && !pre.length, pre }; };
   const rqCard = [...document.querySelectorAll('#nowStar .ns-card')].find(c => /Regional quests/.test(txt(c.querySelector('h3'))));
   const nuRows = rqCard ? [...rqCard.querySelectorAll('.ql')].map(x => { const a = x.querySelector('a, span[title]'), cb = x.querySelector('.q-cb'); return { name: a.innerText, title: a.title, dis: cb.disabled, fu: x.classList.contains('fu'), k: cb.dataset.rqk, rec: (x.querySelector('.q-rec') || {}).innerText || '' }; }) : [];
   const msRows = [...document.querySelectorAll('#gates li.qrow')].map(li => { const i = li.querySelector('input[data-k]'), q = RQ.find(r => 'rq:' + r.id === i.dataset.k); return { k: i.dataset.k, name: q.name, loc: (li.querySelector('.loc') || {}).textContent || '', locked: li.classList.contains('locked') }; });
-  const rqInfo = { sub: rqCard ? txt(rqCard.querySelector('.title > p')) : '', rows: nuRows.map(r => { const q = RQ_BY[r.name]; return { ...r, zone: q && q.zone, av: q ? av(q) : null, done: q ? done(q) : null, run: q ? run(q) : null, snz: !!(state.rqSnooze || {})[r.k], recN: q && q.rec }; }) };
+  const rqInfo = { sub: rqCard ? txt(rqCard.querySelector('.title > p')) : '', rows: nuRows.map(r => { const q = RQ_BY[r.name]; return { ...r, zone: q && q.zone, av: q ? av(q) : null, done: q ? done(q) : null, run: q ? run(q) : null, snz: !!(char(state).rqSnooze || {})[r.k], recN: q && q.rec }; }) };
   const ellipsis = [...document.querySelectorAll('#nowStar *, #spCard *, #dvBox *, #stCard *, #ahead *, #questStatus')].filter(e => vis(e) && e.children.length === 0 && getComputedStyle(e).textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth + 1).map(e => e.innerText.slice(0, 60));
   /* is the top card's primary control clickable (not covered, e.g. by the Build tab at 390 px)? */
   let covered = null; const pb = document.querySelector('#nowStar .ns-card.first .meta button');
@@ -47,7 +47,7 @@ function probe() {
     ahead: txt(document.getElementById('ahead')), lvlUpDisabled: document.getElementById('lvlUpBig').disabled, sw: document.documentElement.scrollWidth, iw: window.innerWidth,
     story: txt(document.getElementById('questStatus')), bad: (body.match(/\b(undefined|NaN)\b|\[object \w+\]/g) || []), ariel: /Ariel/.test(body),
     sdCards: cards.filter(c => /^Clear /.test(c.title)).map(c => c.sub + ' ' + c.title), areaXP: /\bXP\b/.test(document.getElementById('areaList').innerText),
-    level: state.level, quest: state.quest, storyEnd: state.storyEnd || null };
+    level: char(state).level, quest: char(state).quest, storyEnd: char(state).storyEnd || null };
 }
 
 const setState = async (p, args) => { await writeFixture(p, args); await p.reload(); await p.waitForTimeout(350); };
@@ -114,7 +114,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
       const zbad = rows.filter(x => !x.zone || !x.title.includes('· ' + x.zone));
       const msZ = r.msRows.filter(m => rows.some(x => x.k === m.k)).filter(m => { const z = rows.find(x => x.k === m.k).zone; return !m.loc.startsWith(z); });
       rec(c, 'every Next up quest row has a zone, same as its milestone row', !zbad.length && !msZ.length, { zbad: zbad.map(x => x.name), msZ: msZ.map(m => [m.name, m.loc.slice(0, 50)]) });
-      const fcIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === 'Forgotten Commander')), curIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === state.quest));
+      const fcIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === 'Forgotten Commander')), curIdx = await p.evaluate(() => QUESTS.findIndex(x => x[1] === char(state).quest));
       const batch = rows.filter(x => { const q = RQD.find(d => d.name === x.name); return CH.some(e => e.kind === 'story' && e.quest === x.name && e.after === 'Forgotten Commander'); });
       rec(c, 'Lv 44–45 batch only once the story reaches Forgotten Commander', curIdx >= fcIdx || !batch.length, batch.map(x => x.name));
       const far = rows.filter(x => !x.run && x.recN > L + 5);
@@ -129,9 +129,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
            src/core/requirements.js). Without it every gatesOf built a fresh one, ~500 per update(), most of the 0.3 E4 slowdown. */
         const runs = await p.evaluate(() => { const a = gatesRuns(); update(); return gatesRuns() - a; });
         rec(c, `update() builds at most ${MAX_EVALS} gate evaluators`, runs <= MAX_EVALS, { runs });
-        const before = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));
+        const before = await p.evaluate(() => JSON.stringify([char(state).quest, char(state).storyEnd || null, (char(state).qsteps || {})[char(state).quest] || []]));
         const has = await p.evaluate(() => { const b = [...document.querySelectorAll('#nowStar [data-now="story"]')].pop(); if (!b) return false; b.click(); return true; });
-        if (has) { await p.waitForTimeout(700); const after = await p.evaluate(() => JSON.stringify([state.quest, state.storyEnd || null, (state.qsteps || {})[state.quest] || []]));
+        if (has) { await p.waitForTimeout(700); const after = await p.evaluate(() => JSON.stringify([char(state).quest, char(state).storyEnd || null, (char(state).qsteps || {})[char(state).quest] || []]));
           rec(c, '"Turned in" changes state', after !== before, { before, after }); }
         else rec(c, '"Turned in" present unless story is level-gated or complete', storyCard && (/Needs Lv|Lv 45 story complete/.test(storyCard.sub + storyCard.title)), storyCard);
       }
@@ -142,7 +142,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
   /* ---------- migration: v285 fixture → current (tick counts by name) ----------
      A: what the v285 page showed for the v285 fixture (pinned in tests/fixtures/fixture-v285.v285-metrics.json); B: the
      current page seeded with that fixture as it stored it after loading it through v285
-     (fixture-v285.via-v285.flat.json; both made by tests/support/make-flat-fixtures.mjs) */
+     (fixture-v285.via-v285.flat.json; both made by the 0.4 P3a fixture script, frozen since P3c) */
   {
     const A = J('tests/fixtures/fixture-v285.v285-metrics.json');
     const ctx = await b.newContext(), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
@@ -161,7 +161,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
 
   /* ---------- user-realistic: his save (the v285 fixture made into his Lv 27 save, on a given story quest), as the
      current page stored it after loading it through v285 first (tests/fixtures/regress-user-<tag>.via-v285.flat.json;
-     how it is made: regressUser() in tests/support/make-flat-fixtures.mjs) ---------- */
+     how it is made: regressUser() in the 0.4 P3a fixture script (git history), frozen since P3c) ---------- */
   const userRun = async (quest, tag, shots) => {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     const user = flatFixture(`regress-user-${tag}.via-v285.flat.json`);
@@ -170,9 +170,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await p.goto(CUR); await writeSave(p, user); await p.reload(); await p.waitForTimeout(600);
     const c = { level: 27, mode: 'advanced', width: 1500, fixture: 'user-' + tag };
     const r = await p.evaluate(probe);
-    const st = await p.evaluate(() => { const by = n => 'rq:' + RQ_BY[n].id; const s = n => state.checks[by(n)] ? 'done' : (state.started || {})[by(n)] ? 'run' : 'open';
-      return { q: ["Blade of Vengeance", "In the Fang Legion's Name", "Young Elim's Story", "A Guardian's Sacrifice", "Nine Wonders of Altgard: 1st Leg", "Fight Poison with Poison"].map(n => [n, s(n), rqAvail(RQ_BY[n]).ok]), migV5: state.migV5, shards: state.stShards, stLv: state.stLv, stones: state.stones, dv: state.dvTotal, dvLeft: dvLeftNow(), pick: state.stPick }; });
-    rec(c, 'user: migrated quest states by name', JSON.stringify(st.q.map(x => x[1])) === JSON.stringify(['done', 'run', 'done', 'run', 'run', 'open']) && st.migV5, st.q);
+    const st = await p.evaluate(() => { const by = n => 'rq:' + RQ_BY[n].id; const s = n => char(state).checks[by(n)] ? 'done' : (char(state).started || {})[by(n)] ? 'run' : 'open';
+      return { q: ["Blade of Vengeance", "In the Fang Legion's Name", "Young Elim's Story", "A Guardian's Sacrifice", "Nine Wonders of Altgard: 1st Leg", "Fight Poison with Poison"].map(n => [n, s(n), rqAvail(RQ_BY[n]).ok]), shards: char(state).stShards, stLv: char(state).stLv, stones: char(state).stones, dv: char(state).dvTotal, dvLeft: dvLeftNow(), pick: char(state).stPick }; });
+    rec(c, 'user: quest states by name (the E1 keys the fixture was stored with)', JSON.stringify(st.q.map(x => x[1])) === JSON.stringify(['done', 'run', 'done', 'run', 'run', 'open']), st.q);
     rec(c, 'user: shards 0, Triniel Lv 4, stones 58, crystals 114 preserved', st.shards === 0 && st.stLv["Triniel's Dagger"] === 4 && st.stones === 58 && st.dv === 114, st);
     rec(c, 'user: no page errors', !errs.length, errs);
     const fp = r.rqInfo.rows.find(x => x.name === 'Fight Poison with Poison');
@@ -208,9 +208,9 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
       rec(c, 'pop-out: first card fits the 280 px window', pr.firstH && pr.firstH <= 280 - 40, pr.firstH, true);
       rec(c, 'pop-out: no "Pop out" button inside the pop-out', !pr.popBtn, pr, true);
       if (!NOSHOTS) await pop.screenshot({ path: path.join(SHOTS, 'popout-27.png') });
-      const q0 = await p.evaluate(() => JSON.stringify([state.pendSt, state.pendCr, Object.keys(state.checks).filter(k => state.checks[k]).length, state.quest]));
+      const q0 = await p.evaluate(() => JSON.stringify([char(state).pendSt, char(state).pendCr, Object.keys(char(state).checks).filter(k => char(state).checks[k]).length, char(state).quest]));
       await pop.keyboard.press('Space'); await p.waitForTimeout(800);
-      const q1 = await p.evaluate(() => JSON.stringify([state.pendSt, state.pendCr, Object.keys(state.checks).filter(k => state.checks[k]).length, state.quest]));
+      const q1 = await p.evaluate(() => JSON.stringify([char(state).pendSt, char(state).pendCr, Object.keys(char(state).checks).filter(k => char(state).checks[k]).length, char(state).quest]));
       rec(c, 'pop-out: Space completes the top card', q0 !== q1, { q0, q1 });
       if (!NOSHOTS) await pop.screenshot({ path: path.join(SHOTS, 'popout-27-after-space.png') });
       await pop.close(); await p.waitForTimeout(400);

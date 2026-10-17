@@ -152,6 +152,8 @@ function writeDiffFiles(rep, before, after) {
   const newCtx = async (changes = null) => {
     const ctx = await browser.newContext({ viewport: { width: 1500, height: 1000 }, serviceWorkers: 'block', reducedMotion: 'reduce' });
     await ctx.clock.setFixedTime(FIXED_NOW);
+    /* a fixed slot id for a fresh save (save v5: crypto.randomUUID, src/shell/ids.js), like the fixed clock */
+    await ctx.addInitScript(() => { crypto.randomUUID = () => '00000000-0000-4000-8000-0000000f7e57'; });
     if (changes) await ctx.addInitScript(ch => { window.__gateChanges = ch; }, changes);
     await ctx.addInitScript(installProbe, [KEY, !RENDER]);
     return ctx;
@@ -160,9 +162,8 @@ function writeDiffFiles(rep, before, after) {
   /* 1. catalog from the page itself, then the states */
   const c0 = await newCtx(), p0 = await c0.newPage();
   await p0.goto(PAGE); const C = await p0.evaluate(catalogInPage); await c0.close();
-  /* the fixture states load their flat fixture; `in` and `store` are taken against the pre-0.3 save it was made from
-     (s.src), so their snapshots are the ones recorded when the page loaded that save itself (tests/golden/states.js) */
-  const fixtures = fixtureStates(f => fs.readFileSync(path.join(CFG.FIX, f), 'utf8'));
+  /* the fixture states load their flat fixture as the current build stores it (tests/golden/states.js) */
+  const fixtures = fixtureStates();
   let states = generate(C, { fixtures, all: ALL });
   if (FILTER) states = states.filter(s => FILTER.test(s.id));
   if (LIMIT) states = states.slice(0, LIMIT);
@@ -187,7 +188,7 @@ function writeDiffFiles(rep, before, after) {
         const s = states[next++];
         /* a crashed or hung page (a busy CI machine) gets one retry in a fresh context; the state itself is the same */
         let o; try { o = await load(s.raw); } catch (e) { console.log(`  retry ${s.id}: ${String(e.message).split('\n')[0]}`); await fresh(); o = await load(s.raw); }
-        const src = s.src != null ? s.src : s.raw, r = { in: hash(src) };
+        const src = s.raw, r = { in: hash(src) };
         if (o.probeError) r.probeError = o.probeError;
         for (const f of ['nu', 'ms', 'rt', 'jr', 'reg']) if (o[f] !== undefined) r[f] = o[f];
         const sd = storeDiff(src, o.stored); if (sd) r.store = sd;

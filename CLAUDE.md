@@ -11,7 +11,7 @@ all eight classes); 1.1 adds an end-game tracker (ROADMAP.md). Source in `src/` 
 The owner decided (2026-10-16): there are no real players yet, so until 1.0 or the first public launch (whichever
 comes first) a change may break existing saves when that gives a better design. Don't write migrations for it.
 
-- A break must be clean: bump the `localStorage` key (`aion2-assassin-route-v4` → `-v5` …) so old saves are ignored
+- A break must be clean: bump the `localStorage` key (`companion-save-v5` → `-v6` …) so old saves are ignored
   and the app starts fresh. Never read an old-shape save into new code, and never crash on one.
 - Note every save break in that release's CHANGELOG section ("Saves reset in this version").
 - When a break makes `mig1`, `mig2`, `journey` or `tests/e2-migtest.js` obsolete, remove or replace those checks and
