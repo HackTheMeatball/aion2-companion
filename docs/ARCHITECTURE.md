@@ -124,7 +124,13 @@ stamps its defaults at time 0). `merge(local, remote)` (not used by the UI yet) 
 only is kept, a slot on both sides keeps the later change per item; `v` / `savedAt` take the larger; `current`, the
 view settings and `backup` stay the local save's;
 `lastConfirmedLocation(char)` derives the zone of the newest dated tick of a located item (the pack's `locate`), skipping
-the keys the pack's `skipLocation` names (AION 2: steps with `ascensionQuest`, from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`). The `core` suite tests both; the `save` suite tests the load / save / import path in the browser.
+the keys the pack's `skipLocation` names (AION 2: steps with `ascensionQuest`, from `data/packs/aion2/asmodian/assassin/guide/steps.json`, emitted onto the GATES items by `tools/gen/gen.mjs`).
+`whereNow(char)` (`src/core/place.js`, 0.5 P10; design `docs/design/0.4-smart-next-up.md` §4) extends it without
+changing it: the newest dated stamp of `checks`, `started`, `qsteps`, `quest` and the pack's `place.fields` that the
+pack's `place.at(path, value)` places, as `{ via, t, zone, pt }` (same tie-break), or `null` (no such stamp, or a pack
+without `place`); `byPlace(here)` orders by zone, then same-map distance, then catalog order. The AION 2 pack's travel
+code (`src/packs/aion2/travel.js`: bound Kibelisks, the "Bind X" row, teleport vs walk) derives from the save and
+`TRAVEL_RULES`; nothing on the page calls either yet. The `core` suite tests both; the `save` suite tests the load / save / import path in the browser.
 
 ### Item keys
 

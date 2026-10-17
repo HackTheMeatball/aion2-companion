@@ -15,6 +15,7 @@ import { aion2Cards } from "./cards/index.js";
 import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
+import { aion2Place } from "./travel.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin): the one
    class with a guide pack, so the only playable class (`classes`); tests/core/state.test.mjs checks both against data/. */
@@ -53,6 +54,8 @@ export const aion2Pack = definePack({
   locate: zoneOfKey,
   skipLocation: isAscensionKey,
   onLoad: aion2OnLoad,
+  /* where a stamp says the player was (0.5 P10: src/core/place.js whereNow; the place data is NODE_PLACE / KIBELISKS) */
+  place: aion2Place,
   nextUpProducers: aion2NextUp,
   /* its cards (0.4 P4b): the shell registers each (src/main.js) */
   cards: aion2Cards,

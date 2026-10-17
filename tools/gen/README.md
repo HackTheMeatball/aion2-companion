@@ -21,8 +21,9 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
   so the page carries none of it until the evaluator is wired in (E2).
 - `NODE_PLACE` / `KIBELISKS` (0.5 P8, docs/design/0.4-smart-next-up.md §3): per story / regional / Sealed Dungeon /
   stronghold node `{ route, zone, pts }` (points `{ map, x, y, anchor, m }`, `anchor` = a `kibelisks.json` id) and the
-  Kibelisk registry with its `binds` facts. Their own module, `placeModule` (served as `src/packs/aion2/data/place.js`,
-  CLI: `out/place.js`); nothing imports it yet, so the builds don't carry it. The report's `kibelisks` (bound / nudge /
+  Kibelisk registry with its `binds` facts, plus `TRAVEL_RULES` (0.5 P10: the bind and nudge radii and the teleport
+  gain from `rules.json`). Their own module, `placeModule` (served as `src/packs/aion2/data/place.js`, CLI:
+  `out/place.js`), read by the pack's travel code (`src/packs/aion2/travel.js`, 0.5 P10). The report's `kibelisks` (bound / nudge /
   none for R = 25 / 32 / 35 / 40 m and the owner check list) is printed at the end of `data/DATA_SOURCES.md`.
 - `packs.mjs` — `resolvePacks({ root, pack })`: reads each `pack.json` (`data/schema/pack.schema.json`), resolves the
   chain (parent, then `uses`, then the pack; depth first, each pack once) and returns the listed files in load order.
