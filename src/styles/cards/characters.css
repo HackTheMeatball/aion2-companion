@@ -3,10 +3,16 @@
    list a panel in the flow under it. Targets are ≥ 44 px, the name field's text 16 px (no iOS focus zoom). */
 header.top .who { position: relative; min-width: 0; }
 @media (min-width: 601px) {
-  /* shares the brand's cell, at its right end; the 4 px it is taller than the brand hang into the row gap, so the title
-     doesn't move */
-  header.top .who { grid-area: brand; justify-self: end; align-self: start; max-width: 100%; margin-bottom: calc(-1 * var(--space-4)); }
-  header.top .chpop { position: absolute; right: 0; top: 100%; width: 460px; max-width: calc(100vw - var(--space-28)); z-index: 30; box-shadow: var(--shadow-float); }
+  /* 601–999 px: the brand's cell is too narrow beside the eyebrow, so the control takes the header's free last row
+     ("tools"), under the title */
+  header.top .who { grid-area: tools; justify-self: start; margin-top: var(--space-12); }
+  header.top .chpop { position: absolute; left: 0; top: 100%; width: 460px; max-width: calc(100vw - var(--space-28)); z-index: 30; box-shadow: var(--shadow-float); }
+}
+@media (min-width: 1000px) {
+  /* shares the brand's cell, at its right end, never over the brand (mark 30 px + gap + name ≈ 205 px; a long label is
+     cut with an ellipsis); the 4 px it is taller than the brand hang into the row gap, so the title doesn't move */
+  header.top .who { grid-area: brand; justify-self: end; align-self: start; max-width: calc(100% - 240px); margin: 0 0 calc(-1 * var(--space-4)); }
+  header.top .chpop { left: auto; right: 0; }
 }
 .chbtn { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-8); max-width: 100%; padding: 0 var(--space-12); border-radius: var(--radius-8);
   background: var(--panel-2); color: var(--fg); font: 500 13px var(--mono); }
