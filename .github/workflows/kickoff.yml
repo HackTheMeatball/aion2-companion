@@ -12,7 +12,7 @@ name: Kickoff
 # doesn't overlap. In-flight lanes come from each open PR's changed files plus the lanes on its started line.
 # This workflow (no model for the choice) runs after CI on main goes green (that is, after every merge, since
 # auto-merge dispatches CI on main and ci.yml then dispatches this), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
-# lines; a started line whose issue is closed is dropped, one with no PR after 9 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
+# lines; a started line whose issue is closed is dropped, one with no PR after 9 h becomes "[stalled ...]", one whose build posted Blocked:/Needs @claude becomes "[blocked ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
 # "- [started <time>] #N model" so neither the planner nor a second run starts it again. The build run implements the
 # issue on a new claude/ branch and opens the PR; pipeline.yml and auto-merge.yml take it from there.
 
@@ -91,7 +91,15 @@ jobs:
               if (s) {
                 const n = Number(s[2]);
                 if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.state === 'closed') { pruned = true; continue; }
-                if (!refs.some((r) => r.startsWith(`claude/issue-${n}-`)) && Date.now() - Date.parse(s[1]) > 9 * 3600e3) {
+                const hasPr = refs.some((r) => r.startsWith(`claude/issue-${n}-`));
+                // A build that ended with "Blocked:" or "Needs @claude" on its issue holds no runner, so it frees its slot
+                // now (2026-10-17: 0.5 P1 was Blocked at 09:21Z and kept P20 waiting until the 2 h planner rule).
+                if (!hasPr && (await github.rest.issues.listComments({ owner, repo, issue_number: n, since: new Date(Date.parse(s[1])).toISOString(), per_page: 100 })).data
+                  .some((c) => c.user && c.user.login !== 'github-actions[bot]' && /^(Blocked:|Needs @claude)/.test(c.body || ''))) {
+                  kept.push(`- [blocked ${s[1]}] #${n}${s[3]}`); pruned = true;
+                  continue;
+                }
+                if (!hasPr && Date.now() - Date.parse(s[1]) > 9 * 3600e3) {
                   kept.push(`- [stalled ${s[1]}] #${n}${s[3]}`); pruned = true; stalled.push(n);
                   continue;
                 }
