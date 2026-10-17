@@ -1,6 +1,6 @@
 /* The AION 2 term scan over the engine (docs/design/0.4-engine-contract.md §5, 0.4 P2b): src/core/, code and comments,
    names no AION 2 term. Case-insensitive; a match must not touch a letter, digit or _ on either side (a hyphen or a slash
-   is a boundary). Since 0.4 P2c (Next up producers in the pack) no file has an exception. P8 widens the scan to src/cards/, src/shell/ and main.js. */
+   is a boundary). Since 0.4 P2c (Next up producers in the pack) no file has an exception. Since 0.4 P5c src/cards/journey.js too. P8 widens the scan to src/cards/, src/shell/ and main.js. */
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,9 +35,9 @@ export default (test, M) => {
   test('term scan: src/core/ names no AION 2 term (code and comments)', () => {
     assert.deepEqual(hitsOf(core, fields), []);
   });
-  /* the engine cards done so far (0.4 P5b); P8 scans all of src/cards/ */
-  const cards = Object.fromEntries(['milestones.js', 'route.js'].map(f => ['cards/' + f, readFileSync(join(SRC, 'cards', f), 'utf8')]));
-  test('term scan: the milestone and Route rules cards name no AION 2 term (code and comments)', () => {
+  /* the engine cards done so far (0.4 P5b, P5c); P8 scans all of src/cards/ */
+  const cards = Object.fromEntries(['milestones.js', 'route.js', 'journey.js'].map(f => ['cards/' + f, readFileSync(join(SRC, 'cards', f), 'utf8')]));
+  test('term scan: the milestone, Route rules and Journey cards name no AION 2 term (code and comments)', () => {
     assert.deepEqual(hitsOf(cards, fields), []);
   });
   test('term scan: planted terms are caught, the product name and neutral words are not (negative control)', () => {
