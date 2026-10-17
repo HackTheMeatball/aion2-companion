@@ -129,6 +129,8 @@ function regional(state, ctx) {
   /* Bar covers only milestones that still have open regional quests (finished milestones don't pad it). */
   const rqGs = [...new Set(rqOpen.map(x => x.g))], rqScope = rqAll.filter(x => rqGs.includes(x.g));
   const rqFirst = rqOpen.length ? (rqOpen.find(x => !x.run && !x.lock) || rqOpen.find(x => !x.lock) || rqOpen[0]) : null;
+  /* near: the story step's zone even where the player is known; the card says "near your story step" (the words are
+     P14–P16's, design §5's "near" row waits for them) */
   const rqCard = rqOpen.length || rqSnzK.length || rqWait.length ? { kind: "rq", all: rqAll, open: rqOpen, wait: rqWait, snz: rqAll.filter(x => x.snz),
     run: rqRun, lock: rqLock, fresh: rqOpen.length - rqRun - rqLock, scope: rqScope.length, done: rqScope.filter(x => x.done).length,
     near: hereArea ? rqOpen.filter(x => !x.lock && x.it.q.zone === hereArea).length : 0, hereArea,
