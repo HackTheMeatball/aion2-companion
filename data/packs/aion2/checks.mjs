@@ -39,6 +39,45 @@ export function checks(ctx, check) {
     check(`camp/Kibelisk ${c} resolves to one zone`, !other, [z.id, other && other.id]);
   }
 
+  /* ---------------------------------------------------------------- Kibelisks (0.5 P8) */
+  /* the registry (kibelisks.json): one record per name; every Kibelisk name a story / regional / Sealed Dungeon / stronghold
+     record uses (location fields, objective fields, "(Kibelisk: X)" markers) and every zones[].kibelisks name resolves to it */
+  { const kibs = ctx.kibs, byName = {}, kibById = Object.fromEntries(kibs.map(k => [k.id, k]));
+    for (const k of kibs) { check('Kibelisk name unique in the registry: ' + k.name, !(k.name in byName), [byName[k.name], k.id]); byName[k.name] = k.id; }
+    const MARK = /\(Kibelisk: ([^)]+)\)/g, uses = new Map(), use = (n, id) => { if (!uses.has(n)) uses.set(n, new Set()); uses.get(n).add(id); };
+    for (const r of [...chain, ...rqs, ...sds, ...shs]) {
+      for (const l of [r.giver, r.turnin, r.entrance, r.location]) if (l && l.kibelisk) use(l.kibelisk, r.id);
+      for (const x of r.steps || []) { if (x.kibelisk) use(x.kibelisk, r.id); for (const m of x.text.matchAll(MARK)) use(m[1], r.id); }
+    }
+    for (const [n, ids] of uses) check(`Kibelisk "${n}" resolves to a registry record`, n in byName, [...ids].slice(0, 5));
+    check('Kibelisk names in story, regional, Sealed Dungeon and stronghold records: 69, all in the registry', uses.size === 69 && [...uses.keys()].every(n => n in byName), uses.size);
+    for (const z of Object.values(zones)) for (const n of z.kibelisks || []) check(`${z.id}: Kibelisk ${n} is a registry record filed in this zone`, n in byName && kibById[byName[n]].zone === z.id, n in byName ? kibById[byName[n]].zone : 'not in the registry');
+    for (const k of kibs) if (k.zone) check(`${k.id}: listed in ${k.zone}'s kibelisks`, !!zones[k.zone] && (zones[k.zone].kibelisks || []).includes(k.name));
+    /* a registry zone agrees with the record points that name it: the strict majority zone of the points within 100 m (a
+       placeholder zone doesn't vote); a Kibelisk left without a zone while such a majority exists says why (conflicts) */
+    for (const k of kibs) {
+      const near = [...chain, ...rqs, ...sds, ...shs].flatMap(r => [r.giver, r.turnin, r.entrance, r.location])
+        .filter(l => l && l.kibelisk === k.name && l.meters != null && l.meters <= 100 && zones[l.zone].status !== 'owner-check');
+      const n = {}; for (const l of near) n[l.zone] = (n[l.zone] || 0) + 1;
+      const maj = Object.keys(n).find(z => n[z] * 2 > near.length);
+      if (maj) check(`${k.id}: zone ${k.zone} is the majority zone ${maj} of its points within 100 m, or empty with a conflicts note`, k.zone === maj || (k.zone === null && (k.conflicts || []).length > 0), n);
+    }
+    /* binds facts: on story objectives only, naming a registry id; a scripted bind's own text tells the player to bind */
+    for (const r of [...rqs, ...shs, ...asc]) for (const x of r.steps || []) check(`${r.id} #${x.i}: binds only on story objectives`, !x.binds);
+    for (const s of chain) for (const x of s.steps.filter(x => x.binds)) {
+      check(`${s.id} #${x.i}: binds ${x.binds.kibelisk} is a registry id`, x.binds.kibelisk in kibById);
+      if (x.binds.basis === 'step-text') check(`${s.id} #${x.i}: a step-text bind says "bind"`, /\bbind\b/i.test(x.text), x.text);
+    }
+    /* the travel rules (design §8): the bind radius lies inside the nudge radius */
+    const rv = id => rules[id] ? rules[id].value : null;
+    check('rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius', rv('rule:kibelisk-bind-radius') !== null && rv('rule:kibelisk-nudge-radius') !== null
+      && rv('rule:kibelisk-bind-radius') < rv('rule:kibelisk-nudge-radius'), [rv('rule:kibelisk-bind-radius'), rv('rule:kibelisk-nudge-radius')]);
+    check('rule:teleport-gain is set', rv('rule:teleport-gain') !== null);
+    /* the place table: one entry per story / regional / Sealed Dungeon / stronghold node, every anchor a registry id */
+    const placed = Object.entries(ctx.GATE_GRAPH.nodes).filter(([, x]) => ['story', 'rq', 'sd', 'sh'].includes(x.kind)).map(([id]) => id);
+    check('NODE_PLACE: one entry per story, regional, Sealed Dungeon and stronghold node', placed.length === Object.keys(ctx.NODE_PLACE).length && placed.every(id => id in ctx.NODE_PLACE), [placed.length, Object.keys(ctx.NODE_PLACE).length]);
+    for (const [id, p] of Object.entries(ctx.NODE_PLACE)) for (const [side, pt] of Object.entries(p.pts)) check(`NODE_PLACE ${id} ${side}: anchor is null or a registry id`, pt.anchor === null || pt.anchor in kibById, pt.anchor); }
+
   /* ---------------------------------------------------------------- the guide build */
   const spSlots = rules['rule:specialty-slots'] ? rules['rule:specialty-slots'].value : { slots: [] };
   /* specialties (owner F4, Metabot): every active skill has the 5 choices at effective skill level 8 / 8 / 8 / 12 / 16 */

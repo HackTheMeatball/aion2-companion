@@ -67,6 +67,38 @@
       "verifiedAt": "2026-10-12"
     },
     {
+      "id": "rule:kibelisk-bind-radius",
+      "kind": "kibeliskBindRadius",
+      "appliesTo": "all-classes",
+      "value": 25,
+      "sources": [
+        {
+          "inferred": "The owner's working value (docs/DECISIONS.md \"Kibelisk binding (0.4)\", 2026-10-15): bound only within 25 m of a quest point; binding was observed at about 30-40 m."
+        }
+      ],
+      "status": "owner-check",
+      "notes": [
+        "Open decision (docs/design/0.4-smart-next-up.md §8.4): the Kibelisk research (docs/research/2026-10-kibelisks.md) finds the data fit at least 32 m, and 25 m right on 1 of the 3 owner observations that test distance. data/DATA_SOURCES.md prints the bound / nudge / none split for 25, 32, 35 and 40 m so the owner decides on numbers. Changing it is this one value."
+      ],
+      "verifiedAt": "2026-10-15"
+    },
+    {
+      "id": "rule:kibelisk-nudge-radius",
+      "kind": "kibeliskNudgeRadius",
+      "appliesTo": "all-classes",
+      "value": 150,
+      "sources": [
+        {
+          "inferred": "The owner's working value (docs/DECISIONS.md \"Kibelisk binding (0.4)\", 2026-10-15): from the bind radius to 150 m a one-time \"Bind X\" nudge; beyond that, nothing."
+        }
+      ],
+      "status": "owner-check",
+      "notes": [
+        "Untested by any observation (docs/design/0.4-smart-next-up.md §8.4)."
+      ],
+      "verifiedAt": "2026-10-15"
+    },
+    {
       "id": "rule:level-points",
       "kind": "levelPoints",
       "appliesTo": "all-classes",
@@ -605,6 +637,22 @@
         "All 13 Assassin stigmas learnable at char Lv 22 once 'The One Who Hears the Voice' (third Ascension) is done; no per-stigma acquisition. Sources: Metabot stigma-guide, allthings.how ?p=244997, PlayNews ('unlock any Stigma for your class from the Skills menu'), thegameswiki stigma-system (all 13 at 22). Verdict 2-source+. => Illusive Clone IS learnable at 22 (and at 27)."
       ],
       "verifiedAt": "2026-10-12"
+    },
+    {
+      "id": "rule:teleport-gain",
+      "kind": "teleportGain",
+      "appliesTo": "all-classes",
+      "value": 400,
+      "sources": [
+        {
+          "inferred": "The owner's example (docs/DECISIONS.md \"Teleport rules\"): a teleport is suggested only when it saves real distance, threshold tuned in game, e.g. about 400 m."
+        }
+      ],
+      "status": "owner-check",
+      "notes": [
+        "Starting value; the owner times a walk against a teleport on 2-3 routes to tune it (docs/design/0.4-smart-next-up.md §8.3, §9)."
+      ],
+      "verifiedAt": "2026-10-15"
     }
   ]
 }

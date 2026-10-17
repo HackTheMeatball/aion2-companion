@@ -16,8 +16,8 @@ import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
 
-/* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin), the only
-   ones a character can have until 0.5 adds a class picker; tests/core/state.test.mjs checks both against data/. */
+/* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin): the one
+   class with a guide pack, so the only playable class (`classes`); tests/core/state.test.mjs checks both against data/. */
 export const PACK = "aion2/asmodian/assassin";
 export const CLASS = "assassin";
 
@@ -43,6 +43,8 @@ export const aion2Pack = definePack({
     rotSeen: "register",
   },
   character: { pack: PACK, class: CLASS },
+  /* the name is the class record's (data/packs/aion2/classes/assassin/class.json; tests/core/chars.test.mjs) */
+  classes: [{ class: CLASS, pack: PACK, name: "Assassin" }],
   keptRules: KEPT_RULES,
   gateChanges: GATE_CHANGES,
   graphTransforms: aion2Transforms,

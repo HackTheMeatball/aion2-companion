@@ -285,6 +285,48 @@
                   "minItems": 2
                 }
               }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "kibeliskBindRadius"
+                },
+                "value": {
+                  "description": "0.5 P8 (design 0.4-smart-next-up §8.1, §8.4): a visited point at most this many metres (the source's stated nearest-Kibelisk distance) from its Kibelisk counts as bound.",
+                  "type": "integer",
+                  "minimum": 5,
+                  "maximum": 100
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "kibeliskNudgeRadius"
+                },
+                "value": {
+                  "description": "0.5 P8 (design §8.2): an unbound Kibelisk more than the bind radius and at most this many metres from a story target gets the one-time Bind row; beyond it, nothing.",
+                  "type": "integer",
+                  "minimum": 25,
+                  "maximum": 500
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "teleportGain"
+                },
+                "value": {
+                  "description": "0.5 P8 (design §8.3): a teleport is advised only when it saves at least this many metres of walking.",
+                  "type": "integer",
+                  "minimum": 50,
+                  "maximum": 5000
+                }
+              }
             }
           ]
         }
