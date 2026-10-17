@@ -143,8 +143,8 @@ layoutEl.addEventListener("click", e => {
 });
 /* Confidence and Sources fold; open state remembered. */
 document.querySelectorAll("details.foldcard").forEach(d => { const k = "fold_" + d.id; d.open = !!(state[k]); d.addEventListener("toggle", () => { state[k] = d.open; save(); }); });
-/* Phones (<= 600 px): long cards fold too (docs/design/phone-layout.md 3.6, patch I; owner 2026-10-17): Dungeons &
-   Strongholds in both modes, Progress in Basic; Journey stays open (it holds Level − / + and the slider). The fold is a
+/* Phones (<= 600 px): long cards fold too (docs/design/phone-layout.md 3.6, patch I; owner 2026-10-17): the Areas
+   card in both modes, Progress in Basic; Journey stays open (it holds Level − / + and the slider). The fold is a
    details.foldcard inside the card: its title becomes the summary, the rest of the card the body, except `keep` (the
    Map link: a link inside a summary is nested interactive), which stays in the card on the summary's row. The card
    element itself stays (the phone moves above and the cards' code hold it). Folded by default; once the user opens or
