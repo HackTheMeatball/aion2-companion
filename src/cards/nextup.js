@@ -68,11 +68,19 @@ function storyView(a) {
   const where = R["story.where"] ? R["story.where"](a, ctx) : "";
   return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives };
 }
+/* Phones (<= 600 px, 0.5 P3; docs/design/phone-layout.md 3.4): no nested scroll stack. The featured card is full width
+   with its action(s) under the text, the others are compact rows (tile, title, one line), and in Advanced a "1 of N"
+   pager picks the featured card (Basic hides the Next up header: no pager, owner 2026-10-17). Never in the pop-out. */
+let nsPhoneQ = { matches: false }; /* the media query, from the mount (no DOM at import) */
+const nsPhone = () => !pipWin && nsPhoneQ.matches;
+let nsCur = 0;
 function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
   const shown = rankNext(state, { basic: document.body.classList.contains("basic") }).map(nowCard);
-  const top = shown[0];
+  const top = shown[0], phone = nsPhone(), pager = phone && !isBasic() && shown.length > 1;
+  /* the featured card: the first one, or on a phone the one the pager is on */
+  nsCur = pager ? Math.min(nsCur, shown.length - 1) : 0;
   /* One card per action, each laid out like a milestone header (icon box · what · its own control). Only the first
      shows; the rest sit below it in a snap-scroll stack (a sliver of the next one peeks out). */
   /* a queue (a view's queue name): only its first card gets the button, the rest say they come after it */
@@ -89,25 +97,35 @@ function renderNow() {
   };
   /* Progress bars run along the card's bottom edge (like the milestone cards); their label joins the subline. */
   const splitBar = a => { if (!a.bar) return { bar: "", lbl: "" }; const m = a.bar.match(/<span class="nsq-barl">([\s\S]*?)<\/span>/); return { bar: a.bar.replace(/<span class="nsq-barl">[\s\S]*?<\/span>/, ""), lbl: m ? m[1] : "" }; };
-  const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · ");
-    return `<article class="ns-card${i === 0 ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
-    `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${info(a, i)}</h3>${sub ? `<p>${sub}</p>` : ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
+  /* on a phone the "i" opens the subline instead of following the title (at the end of either it wrapped onto a line of its own) */
+  const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), ti = phone ? "" : info(a, i), pi = phone ? info(a, i) : "";
+    return `<article class="ns-card${i === nsCur ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
+    `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${ti}</h3>${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
-  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + (top ? `<div class="ns-stack" id="nsqWrap">${shown.map(card).join("")}</div>`
+  const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
+  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
     : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`);
   nsAnim = false;
   if (pipWin) syncPipClasses();
   const w = el.querySelector("#nsqWrap"), vw = nsWin();
-  if (w) {
+  if (w && !phone) {
     /* The stack is as tall as the card snapped into view (+ a peek of the next one), so a taller card is never clipped. */
     const curCard = () => { const cs = [...w.children], t = w.scrollTop; let best = cs[0], bd = Infinity; cs.forEach(c => { const d = Math.abs(c.offsetTop - cs[0].offsetTop - t); if (d < bd) { bd = d; best = c; } }); return best; };
     const fit = () => { const c = curCard(); if (c) w.style.height = (c.offsetHeight + (c.nextElementSibling ? 30 : 0)) + "px"; };
     const end = () => w.classList.toggle("at-end", w.scrollTop + w.clientHeight >= w.scrollHeight - 2);
     let fitT = 0; w.addEventListener("scroll", () => { end(); vw.clearTimeout(fitT); fitT = vw.setTimeout(() => { fit(); end(); }, 140); }, { passive: true }); vw.requestAnimationFrame(() => { fit(); end(); });
     const RO = vw.ResizeObserver || window.ResizeObserver; if (typeof RO === "function") { const ro = new RO(() => { fit(); end(); }); [...w.children].forEach(c => ro.observe(c)); }
-    /* After completing a card, keep keyboard focus on the new top card's control. */
-    if (nsRefocus > Date.now()) { const c = w.querySelector(".ns-card.first .meta button, .ns-card.first .meta a"); if (c) c.focus({ preventScroll: true }); }
   }
+  /* After completing a card, keep keyboard focus on the new top card's control. */
+  if (w && nsRefocus > Date.now()) { const c = w.querySelector(".ns-card.first .meta button, .ns-card.first .meta a"); if (c) c.focus({ preventScroll: true }); }
+}
+/* The phone pager: d = -1 / +1, round the list. Focus stays on the pager button that was used (from the keyboard
+   elsewhere in the card it moves to the new card's control). */
+function nsPage(d, from) {
+  const n = nowEl.querySelectorAll("#nsqWrap > .ns-card").length; if (n < 2) return;
+  nsCur = (nsCur + d + n) % n; renderNow();
+  const f = (from && nowEl.querySelector(`[data-nspg="${from}"]`)) || nowEl.querySelector(".ns-card.first .meta button, .ns-card.first .meta a") || nowEl.querySelector('[data-nspg="1"]');
+  if (f) f.focus({ preventScroll: true });
 }
 /* Next up can live in a pop-out (Document Picture-in-Picture) window: everything goes through this node, never a
    document lookup, and timers/frames come from whichever window currently holds it. */
@@ -166,6 +184,8 @@ function nsKey(e, inPip) {
     if (b && !b.disabled) { e.preventDefault(); b.click(); } else if (inPip) e.preventDefault();
     return; }
   const d = k === "ArrowDown" || k === "ArrowRight" ? 1 : k === "ArrowUp" || k === "ArrowLeft" ? -1 : 0; if (!d) return;
+  /* on a phone the pager moves (Advanced); Basic's list is all in view */
+  if (!inPip && nsPhone()) { if (nowEl.querySelector("[data-nspg]")) { e.preventDefault(); nsPage(d, t && t.dataset && t.dataset.nspg); } return; }
   const w = nowEl.querySelector(".ns-stack"), cards = w ? [...w.children] : []; if (cards.length < 2) return;
   e.preventDefault();
   const top0 = cards[0].offsetTop, pos = cards.map(c => c.offsetTop - top0);
@@ -180,6 +200,7 @@ function nextUpMount(el) {
   nowEl.addEventListener("toggle", e => { const f = nowR()["now.toggle"]; if (f) f(e, nowCtx()); }, true);
   nowEl.addEventListener("click", e => {
     if (e.target.closest("[data-nspop]")) { popOutNow(); return; }
+    const pgb = e.target.closest("[data-nspg]"); if (pgb) { nsPage(+pgb.dataset.nspg, pgb.dataset.nspg); return; }
     /* the pack's own controls inside a card (drawn by its renderers) */
     const pc = nowR()["now.click"]; if (pc && pc(e, nowCtx())) return;
     const ib = e.target.closest(".nsinfo"); if (ib) { e.stopPropagation(); ib.setAttribute("aria-expanded", String((ib.closest(".ns-card") || ib.closest(".nsq, .nsbox")).classList.toggle("show-info"))); return; }
@@ -237,6 +258,9 @@ function nextUpMount(el) {
   nowEl.addEventListener("pointerenter", () => { nsHover = true; });
   nowEl.addEventListener("pointerleave", () => { nsHover = false; });
   document.addEventListener("keydown", e => nsKey(e, false));
+  /* crossing 600 px draws it in the other layout, the featured card back on the first */
+  if (window.matchMedia) nsPhoneQ = matchMedia("(max-width: 600px)");
+  if (nsPhoneQ.addEventListener) nsPhoneQ.addEventListener("change", () => { nsCur = 0; renderNow(); });
 }
 
 const nextUpCard = { id: "nextup", slot: "main", order: 100, root: "nowStar", mount: nextUpMount, update: () => renderNow() };

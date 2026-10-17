@@ -222,3 +222,41 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
   #nowStar .rq-wait > summary::after { content: " ▾" / ""; }
   #nowStar .rq-wait[open] > summary::after { content: " ▴" / ""; }
 }
+/* 0.5 P3, phones (<= 600 px; the class comes from renderNow, never in the pop-out): no nested scroll stack. The featured
+   card is full width with its action(s) under the text; the others are compact rows (tile, title, one line); the
+   "1 of N" pager (Advanced) sits in the header. Desktop and the pop-out keep the rules above. */
+#nowStar .ns-stack.ns-phone { height: auto !important; overflow: visible; scroll-snap-type: none; -webkit-mask-image: none; mask-image: none; gap: 0; padding: 0; transition: none; }
+#nowStar .ns-stack.ns-phone .ns-card.first { margin: 0 0 var(--space-6); }
+#nowStar .ns-stack.ns-phone .ns-card.first:not(:first-child) { margin-top: var(--space-6); }
+#nowStar .ns-stack.ns-phone .ns-card .ns-mhead, #nowStar .ns-stack.ns-phone .ns-card .ns-mhead:has(.ns-extra) { grid-template-columns: 48px minmax(0, 1fr); gap: var(--space-10) var(--space-12); padding: var(--space-14); }
+#nowStar .ns-stack.ns-phone .ns-card .ns-num { width: 48px; }
+#nowStar .ns-stack.ns-phone .ns-card .title h3 { font-size: 16px; }
+#nowStar .ns-stack.ns-phone .ns-extra { grid-column: 1 / -1; grid-row: auto; }
+#nowStar .ns-stack.ns-phone .ns-card .meta { grid-column: 1 / -1; flex-direction: column; align-items: stretch; justify-content: flex-start !important; gap: var(--space-8); }
+#nowStar .ns-stack.ns-phone .ns-card .meta:empty { display: none; }
+#nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go) { width: 100%; padding: var(--space-10) var(--space-12); font: 600 14px var(--body); letter-spacing: 0; text-align: center; border-radius: var(--radius-9); background: var(--accent-fill); border: 1px solid var(--accent-fill); color: var(--on-fill); box-shadow: none; }
+#nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go):hover { border-color: var(--accent); }
+/* the featured card says why it has no button ("Later", "After the one above"; app.css hides tags under 520 px) */
+#nowStar .ns-stack.ns-phone .ns-card .meta .tag { display: inline-block; align-self: flex-start; }
+#nowStar .ns-stack.ns-phone .ns-card .ns-obj { margin: calc(-1 * var(--space-4)) var(--space-14) var(--space-14); }
+#nowStar .ns-stack.ns-phone .title p .nsinfo { margin: 0 var(--space-6) 0 0; }
+/* compact rows: no box, a hairline between neighbours, only the tile, the title and one line */
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) { background: none; border: 0; border-radius: 0; box-shadow: none; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) + .ns-card:not(.first) { border-top: 1px solid var(--line); }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-mhead { grid-template-columns: 34px minmax(0, 1fr); gap: var(--space-12); padding: var(--space-10) var(--space-4); }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-num { width: 34px; height: 34px; font-size: 16px; border-radius: var(--radius-8); }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-num img { width: 24px; height: 24px; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .title h3 { font-size: 14.5px; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .title p { font-size: 12.5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) :is(.meta, .ns-extra, .ns-info, .nsinfo, .ns-obj, .ns-bbar) { display: none; }
+/* the pager: ‹ 1 of N › in the header, before Pop out */
+#nowStar .ns-pg { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
+#nowStar .ns-pg + .ns-pop { margin-left: var(--space-8); }
+#nowStar .ns-pgb { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; font: 600 16px var(--mono); color: var(--fg); background: none; border: 1px solid var(--line); border-radius: var(--radius-8); cursor: pointer; }
+#nowStar .ns-pgb:hover { border-color: var(--muted); }
+#nowStar .ns-pgb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#nowStar .ns-pgn { min-width: 52px; text-align: center; font: 600 12px var(--mono); letter-spacing: 0; text-transform: none; color: var(--muted); white-space: nowrap; }
+@media (pointer: coarse) {
+  #nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go) { min-height: 44px; }
+  #nowStar .ns-pgb { width: 44px; height: 44px; }
+}
