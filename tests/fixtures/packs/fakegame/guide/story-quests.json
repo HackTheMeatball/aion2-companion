@@ -1,0 +1,11 @@
+{ "$schema": "../../../../../data/schema/story-quests.schema.json", "schemaVersion": 2, "collection": "storyQuests", "records": [
+  { "id": "sq:10001", "key": "First Light", "name": "First Light", "faction": "both", "gameId": "10001", "lv": 1, "next": "sq:10002", "giver": { "zone": "zone:vale" }, "turnin": { "zone": "zone:vale" },
+    "steps": [{ "i": 0, "text": "Wake up" }, { "i": 1, "text": "Talk to the keeper" }], "requires": { "all": [] }, "completesWith": [{ "story": "sq:10001", "is": "turnedIn" }],
+    "sources": [{ "url": "https://fakegame.example/quests/10001" }], "verifiedAt": "2026-10-17", "status": "verified" },
+  { "id": "sq:10002", "key": "Second Wind", "name": "Second Wind", "faction": "both", "gameId": "10002", "lv": 2, "next": "sq:10003", "giver": { "zone": "zone:vale" }, "turnin": { "zone": "zone:vale" },
+    "steps": [{ "i": 0, "text": "Climb the hill" }], "requires": { "story": "sq:10001", "is": "turnedIn", "basis": "sourced" }, "completesWith": [{ "story": "sq:10002", "is": "turnedIn" }],
+    "sources": [{ "url": "https://fakegame.example/quests/10002" }], "verifiedAt": "2026-10-17", "status": "verified" },
+  { "id": "sq:10003", "key": "Third Gate", "name": "Third Gate", "faction": "both", "gameId": "10003", "lv": 3, "next": null, "end": { "region": "Fakeland", "regionFull": "Fakeland", "next": "Fourth Door", "nextLv": 4 },
+    "giver": { "zone": "zone:vale" }, "turnin": { "zone": "zone:vale" }, "steps": [{ "i": 0, "text": "Open the gate" }], "requires": { "story": "sq:10002", "is": "turnedIn", "basis": "sourced" },
+    "completesWith": [{ "story": "sq:10003", "is": "turnedIn" }], "sources": [{ "url": "https://fakegame.example/quests/10003" }], "verifiedAt": "2026-10-17", "status": "verified" }
+] }
