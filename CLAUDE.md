@@ -26,6 +26,9 @@ comes first) a change may break existing saves when that gives a better design. 
 - `npm test` (build + all suites) must be green before committing; `node tests/run.mjs --only <suites>` while
   iterating (after `npm run build`). Don't weaken a check to make it pass; if a change is intended, update the
   expectation and say why in the commit (e.g. `E1MIG_WRITE_EXPECTED=1` for mig1's pinned diffs, then review the diff).
+- A PR that changes what a player sees commits before / after shots and a `scrapbook.json` (`docs/reviews/README.md`,
+  `tests/support/shots.mjs`); one meant to look the same says "No visible change" in its body. The owner sees them in the
+  tracker's Scrapbook. Reviewers: a visible change without them is `VERDICT: CHANGES`.
 - Small commits with clear messages. Don't push unless asked.
 - Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
 - Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"); no item of that minor
