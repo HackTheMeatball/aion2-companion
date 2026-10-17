@@ -1,10 +1,11 @@
 /* The Confidence and Sources cards (0.4 P4a: moved verbatim from src/main.js's renderSources; markup in
    src/cards/sources.html, put in place by the build's @card line). Mount only: their text never changes after load.
-   Links are plain links (Metabot asks for that).
+   Links are plain links (the sources ask for that).
 
    The tables they draw (CONF, SOURCES, SRC_SITE, compiled from data/**) are a pack's data, which src/cards/ may not
-   import (docs/design/0.4-engine-contract.md §1): until P5d hands them over through the pack, the shell passes them to
-   sourcesCards() and registers the specs it returns. */
+   import (docs/design/0.4-engine-contract.md §1): the shell passes them to sourcesCards() and registers the specs it
+   returns. The intro sentence is the pack's text (sourcesIntro; "{n}" = the link count). */
+import { activePack } from "../core/pack.js";
 
 /* Confidence: one paragraph and list per group of CONF */
 export function renderConfidence(el, { CONF }) {
@@ -14,7 +15,7 @@ export function renderConfidence(el, { CONF }) {
 /* Sources: the intro, then one row per site */
 export function renderSources(el, { SOURCES, SRC_SITE }) {
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-  el.querySelector("#srcBody").innerHTML = `<p class="fine src-intro">Every sourced value in the guide comes from one of these pages (${SOURCES.reduce((t, g) => t + g.links.length, 0)} links, checked Oct 2026); values seen in game or worked out by the guide are marked in Confidence. Metabot data is used with credit: each item links to its Metabot page.</p>` +
+  el.querySelector("#srcBody").innerHTML = `<p class="fine src-intro">${esc(activePack().text.sourcesIntro || "").replace("{n}", SOURCES.reduce((t, g) => t + g.links.length, 0))}</p>` +
     (() => { /* One row per site: how many pages and what they back; the page list opens per site. Sites with one page share a row. */
       const host = u => u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], name = h => { const k = Object.keys(SRC_SITE).find(d => h.endsWith(d)); return k ? SRC_SITE[k] : h; };
       const by = new Map();
