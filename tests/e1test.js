@@ -115,6 +115,22 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   /* Build tab vs Next up at 390 */
   const ov = await p.evaluate(() => { const t = document.getElementById('sdTab').getBoundingClientRect(), c = document.querySelector('#nowStar .ns-card').getBoundingClientRect(); return { tabL: Math.round(t.left), cardR: Math.round(c.right) }; });
   ok('390px: Build tab clears the Next up card', ov.tabL >= ov.cardR, ov);
+  /* Card order (0.5 P2): at <= 860 px Next up, Journey, Progress lead #main and Dungeons & Strongholds / The map come after it
+     (phone-layout 3.1); above 860 px the markup order stands. Crossing 860 px either way gives the markup a fresh load has. */
+  const order = () => p.evaluate(() => { const t = e => e.getBoundingClientRect().top + scrollY, q = s => document.querySelector(s);
+    return { dom: [...document.querySelectorAll('.layout > main > *, .layout > aside > *')].map(e => e.id || e.className.split(' ')[0]).join(' '), landmarks: !!q('aside.rail') && !!q('main#main'),
+      y: ['#nowStar', 'section.where', '.progress-row', '#spCard', '#gates', '#areas'].map(s => Math.round(t(q(s)))) }; });
+  const layoutHtml = () => p.evaluate(() => document.querySelector('.layout').innerHTML);
+  await p.setViewportSize({ width: 1100, height: 900 }); await p.reload(); await p.waitForTimeout(400);
+  const wideFresh = await layoutHtml(), wideOrder = await order();
+  await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
+  const narrow = await order(), narrowHtml = await layoutHtml();
+  ok('390px: Next up, Journey, Progress, Skills, Milestones, Dungeons & Strongholds in that order, both landmarks present', narrow.landmarks && narrow.y.every((v, i) => !i || v > narrow.y[i - 1]) && narrow.y[0] < 500, narrow);
+  ok('390px: Basic keeps The map hidden', await p.evaluate(() => { document.body.classList.add('basic'); const n = document.querySelector('aside.rail > section.notes'); const h = getComputedStyle(n).display === 'none'; document.body.classList.remove('basic'); return h; }));
+  await p.setViewportSize({ width: 1100, height: 900 }); await p.waitForTimeout(400);
+  ok('crossing 860 px up: same markup as a fresh load at 1100', (await layoutHtml()) === wideFresh && (await order()).dom === wideOrder.dom);
+  await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
+  ok('crossing 860 px down: same markup as the first load at 390', (await layoutHtml()) === narrowHtml);
   /* 13. Drawer focus */
   await p.setViewportSize({ width: 1500, height: 1000 }); await p.reload(); await p.waitForTimeout(300);
   await p.click('#sdTab'); await p.waitForTimeout(100);

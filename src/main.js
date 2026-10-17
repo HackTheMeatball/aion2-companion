@@ -223,6 +223,24 @@ function fitRail() {
   if (h > 120) rail.style.height = h + "px";
   fadeScroll(rail);
 }
+/* Phones (<= 860 px): Next up, Journey, Progress lead the page (docs/design/phone-layout.md 3.1). The same three elements
+   move into #main ahead of the top row (never copies); the CSS puts #main before the rail, which keeps the later cards
+   (Dungeons, The map). Wider than 860 px they go back to where the markup has them. */
+const phoneQ = window.matchMedia ? matchMedia("(max-width: 860px)") : { matches: false };
+/* each card's home (its parent and the node after it) is noted before the first move, so going back to the wide layout
+   gives exactly the markup a fresh load has */
+const phoneCards = [document.getElementById("nowStar"), document.querySelector("aside.rail > section.where"), document.querySelector("aside.rail > section:first-child")]
+  .map(el => el && { el, p: el.parentNode, n: el.nextSibling });
+let phoneLayout = false;
+function placeCards() {
+  const tg = document.querySelector("#main .top-grid");
+  if (!tg || phoneCards.includes(null) || phoneQ.matches === phoneLayout) return;
+  phoneLayout = phoneQ.matches;
+  if (phoneLayout) tg.before(...phoneCards.map(x => x.el));
+  else [...phoneCards].reverse().forEach(x => x.p.insertBefore(x.el, x.n));
+}
+if (phoneQ.addEventListener) phoneQ.addEventListener("change", () => { placeCards(); requestAnimationFrame(fitRail); });
+placeCards();
 window.addEventListener("resize", () => requestAnimationFrame(fitRail));
 document.getElementById("gates").addEventListener("toggle", () => requestAnimationFrame(fitRail), true);
 /* Web fonts (font-display: swap) land after the first fit and rewrap the text: refit when the fonts settle (the hero
