@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0.5 characters mockup (static; layout only, all names and game text are placeholder)</title>
+<style>
+/* Every colour below is a token copied from src/styles/app.css :root (docs/design-system.md); nothing here is new colour.
+   Frames: p-* are 390 px phone frames, d-* are 1500 px desktop frames. The name "Zed" is a placeholder. */
+:root { --bg:#110c13; --panel:#1a1320; --panel-2:#22192a; --line:#33263c; --fg:#ece4ee; --muted:#9f90a8;
+  --accent:#d0506f; --accent-soft:#d0506f26; --accent-text:#da5d7b; --accent-fill:#bf3f5e; --on-fill:#fff;
+  --good:#5fbf8a; --warn:#e2a64a; --warn-ink:#1a1206; --brand:#cfa650; --shade-88:#00000088;
+  --go-hi:#3fbf78; --go-lo:#2a9a5c; --go-line:#5fdc95; --go-edge:#1d6f42; --go-ink:#06150d;
+  --display:"Marcellus SC","Palatino Linotype",Georgia,serif; --body:"Figtree","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--body); padding: 24px; display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
+.frame { background: var(--bg); position: relative; overflow: hidden; flex: none; border: 1px solid var(--line); }
+.p { width: 390px; } .d { width: 1500px; }
+.p.tall { height: 640px; } .d.tall { height: 560px; }
+.cap { position: absolute; bottom: 4px; left: 14px; z-index: 9; font: 10px var(--mono); color: var(--muted); }
+.mono { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.page { padding: 14px; } .d .page { max-width: 1100px; margin: 0 auto; padding: 18px 0; }
+/* header (app.css .top): brand, eyebrow with Basic / Advanced, h1, sub */
+.brandrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.brandname { font: 400 20px var(--display); letter-spacing: .06em; color: var(--brand); }
+.eyebrow { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
+.p .eyebrow { flex-wrap: wrap; }
+.modeseg { display: inline-grid; grid-auto-flow: column; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.modeseg span { padding: 6px 12px; font: 500 12px var(--mono); color: var(--muted); }
+.modeseg .on { background: var(--panel-2); color: var(--fg); }
+h1 { font: 400 24px var(--display); margin: 6px 0 2px; letter-spacing: .04em; }
+.sub { margin: 0; color: var(--muted); font-size: 13px; }
+/* the control: one button, label + chevron; the whole row is the hit area (44 px) */
+.who { position: relative; }
+.p .who { margin-top: 10px; }
+.chbtn { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); color: var(--fg); font: 500 13px var(--mono); }
+.p .chbtn { display: flex; width: 100%; justify-content: space-between; }
+.chbtn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chbtn .chev { color: var(--accent-text); }
+.chbtn.open { border-color: var(--accent); }
+/* list (popover on desktop, full-width panel under the control on phone) */
+.pop { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 6px; margin-top: 6px; z-index: 5; }
+.d .pop { position: absolute; right: 0; top: 100%; width: 460px; }
+.pop h2 { margin: 6px 10px 2px; font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.crow { display: grid; grid-template-columns: 20px minmax(0,1fr) auto auto; gap: 6px; align-items: center; min-height: 48px; padding: 0 6px 0 10px; border-radius: 8px; }
+.crow + .crow { border-top: 1px solid var(--line); }
+.crow.cur { background: var(--panel-2); box-shadow: inset 0 0 0 1px var(--accent); }
+.crow .tick { color: var(--good); font: 600 14px var(--mono); }
+.crow .lbl { font: 500 13px var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link { min-height: 44px; min-width: 44px; display: inline-grid; place-items: center; padding: 0 6px; color: var(--accent-text); font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.link.danger { color: var(--warn); }
+.newrow { min-height: 48px; display: flex; align-items: center; padding: 0 10px; border-top: 1px solid var(--line); color: var(--accent-text); font: 600 13px var(--body); }
+/* forms */
+.form { padding: 10px; display: grid; gap: 10px; }
+.fld { display: grid; gap: 4px; } .fld label { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.inp { min-height: 44px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel-2); color: var(--fg); font: 16px var(--body); padding: 0 12px; display: flex; align-items: center; }
+.inp.focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.hint { color: var(--muted); font-size: 12px; }
+.pick { display: grid; gap: 6px; }
+.opt { min-height: 48px; display: grid; grid-template-columns: 20px 1fr auto; gap: 10px; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); }
+.opt.sel { border-color: var(--accent); } .opt .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--muted); } .opt.sel .dot { border-color: var(--accent); background: var(--accent); }
+.prev { font: 500 12px var(--mono); color: var(--muted); } .prev b { color: var(--fg); font-weight: 500; }
+.btns { display: flex; gap: 8px; justify-content: flex-end; } .p .btns .btn { flex: 1; }
+.btn { min-height: 44px; min-width: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); font: 600 14px var(--body); display: inline-flex; align-items: center; justify-content: center; }
+.btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
+.btn.warn { background: var(--warn); border-color: var(--warn); color: var(--warn-ink); }
+.btn.lvup { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); border: 1px solid var(--go-line); color: var(--go-ink); font-weight: 700; box-shadow: 0 2px 0 var(--go-edge); }
+/* confirmation */
+.scrim { position: absolute; inset: 0; background: var(--shade-88); z-index: 6; display: grid; place-items: center; padding: 14px; }
+.dlg { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; width: 100%; max-width: 440px; display: grid; gap: 10px; }
+.dlg h3 { margin: 0; font: 400 18px var(--display); } .dlg p { margin: 0; color: var(--muted); font-size: 14px; } .dlg p b { color: var(--fg); font-weight: 600; }
+/* P4's sticky level bar under the header (phone-layout.md 3.2) */
+.bar { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 14px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.lv { font: 500 13px var(--mono); } .lv b { font-size: 22px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin: 12px 14px; padding: 16px; }
+.d .card { margin: 12px 0; }
+.card h3 { margin: 4px 0 0; font: 600 16px/1.25 var(--body); } .card p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+</style></head><body>
+
+<!-- ============ 390 px ============ -->
+
+<!-- p-name: header with the control (a name set), closed -->
+<section class="frame p" id="p-name"><div class="cap">p-name · header, name set, closed</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span></div>
+  <div class="eyebrow"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><span class="modeseg"><span class="on">Basic</span><span>Advanced</span></span></div>
+  <h1>Asmodian Assassin Route</h1><p class="sub">Free-to-play · story first · <b>Next up</b> always shows your next move.</p>
+  <div class="who"><button class="chbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Character: Zed-assassin-lvl27. Switch character"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▾</span></button></div>
+</div></section>
+
+<!-- p-noname: header with the control, no name -->
+<section class="frame p" id="p-noname"><div class="cap">p-noname · header, no name, closed</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span></div>
+  <div class="eyebrow"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><span class="modeseg"><span class="on">Basic</span><span>Advanced</span></span></div>
+  <h1>Asmodian Assassin Route</h1><p class="sub">Free-to-play · story first · <b>Next up</b> always shows your next move.</p>
+  <div class="who"><button class="chbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Character: assassin-lvl1. Switch character"><span class="lbl">assassin-lvl1</span><span class="chev">▾</span></button></div>
+</div></section>
+
+<!-- p-header-bar: phone header with P4's level bar -->
+<section class="frame p" id="p-header-bar"><div class="cap">p-header-bar · phone header + P4 level bar</div>
+  <div class="page">
+    <div class="brandrow"><span class="brandname">Daeva Companion</span></div>
+    <div class="eyebrow"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><span class="modeseg"><span class="on">Basic</span><span>Advanced</span></span></div>
+    <h1>Asmodian Assassin Route</h1>
+    <div class="who"><button class="chbtn" aria-haspopup="listbox" aria-expanded="false"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▾</span></button></div>
+  </div>
+  <div class="bar" style="margin-top:14px"><span class="lv">LV <b>27</b></span><button class="btn lvup">Level up</button></div>
+  <div class="card"><span class="mono">Next up</span><h3>Placeholder next step</h3><p>Zone · Lv 27 · 2 open</p></div>
+</section>
+
+<!-- p-list: open list, two characters -->
+<section class="frame p tall" id="p-list"><div class="cap">p-list · open list, two characters</div><div class="page">
+  <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+  <div class="pop" role="listbox" aria-label="Characters">
+    <h2>Characters</h2>
+    <div class="crow cur" role="option" aria-selected="true"><span class="tick">✓</span><span class="lbl">Zed-assassin-lvl27</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+    <div class="crow" role="option"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+    <div class="newrow">+ New character</div>
+  </div></div>
+</div></section>
+
+<!-- p-list-one: open list, one character: no Remove -->
+<section class="frame p tall" id="p-list-one"><div class="cap">p-list-one · open list, one character (no Remove offered)</div><div class="page">
+  <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">assassin-lvl1</span><span class="chev">▴</span></button>
+  <div class="pop" role="listbox" aria-label="Characters">
+    <h2>Characters</h2>
+    <div class="crow cur" role="option" aria-selected="true"><span class="tick">✓</span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span></span></div>
+    <div class="newrow">+ New character</div>
+  </div></div>
+</div></section>
+
+<!-- p-new: new-character form with the one-class picker -->
+<section class="frame p tall" id="p-new"><div class="cap">p-new · new character: name, one-class picker</div><div class="page">
+  <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+  <div class="pop"><h2>New character</h2><div class="form">
+    <div class="fld"><label for="n1">Name (optional)</label><div class="inp focus"><span>Quin</span></div><span class="hint">Shown on screen and kept in your save only. Up to 24 characters.</span></div>
+    <div class="fld"><label>Class</label><div class="pick" role="radiogroup" aria-label="Class"><div class="opt sel" role="radio" aria-checked="true"><span class="dot"></span><span>Assassin</span><span class="mono">Asmodian</span></div></div></div>
+    <div class="prev">Label: <b>Quin-assassin-lvl1</b></div>
+    <div class="btns"><span class="btn">Cancel</span><span class="btn primary">Create character</span></div>
+  </div></div></div>
+</div></section>
+
+<!-- p-rename -->
+<section class="frame p tall" id="p-rename"><div class="cap">p-rename · rename in the list</div><div class="page">
+  <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+  <div class="pop"><h2>Characters</h2>
+    <div class="form" style="border-bottom:1px solid var(--line)">
+      <div class="fld"><label for="r1">Rename Zed-assassin-lvl27</label><div class="inp focus"><span>Zed</span></div><span class="hint">Leave empty to show no name.</span></div>
+      <div class="btns"><span class="btn">Cancel</span><span class="btn primary">Save name</span></div></div>
+    <div class="crow"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+  </div></div>
+</div></section>
+
+<!-- p-remove -->
+<section class="frame p tall" id="p-remove"><div class="cap">p-remove · remove confirmation</div><div class="page">
+  <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+  <div class="pop"><h2>Characters</h2>
+    <div class="crow cur"><span class="tick">✓</span><span class="lbl">Zed-assassin-lvl27</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+    <div class="crow"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div></div></div>
+  <div class="scrim"><div class="dlg" role="alertdialog" aria-labelledby="rm1t" aria-describedby="rm1d">
+    <h3 id="rm1t">Remove Zed-assassin-lvl27?</h3>
+    <p id="rm1d">Its progress is deleted from this browser. <b>This can't be undone.</b> Your other characters stay. Export first if you want a backup.</p>
+    <div class="btns"><span class="btn">Keep it</span><span class="btn warn">Remove</span></div></div></div>
+</div></section>
+
+<!-- ============ 1500 px ============ -->
+
+<!-- d-name -->
+<section class="frame d" id="d-name"><div class="cap">d-name · header, name set, closed</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Character: Zed-assassin-lvl27. Switch character"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▾</span></button></div></div>
+  <div class="eyebrow"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><span class="modeseg"><span class="on">Basic</span><span>Advanced</span></span></div>
+  <h1>Asmodian Assassin Route</h1><p class="sub">Free-to-play · story first · <b>Next up</b> always shows your next move.</p>
+  <div class="card"><span class="mono">Next up</span><h3>Placeholder next step</h3><p>Zone · Lv 27 · 2 open</p></div>
+</div></section>
+
+<!-- d-noname -->
+<section class="frame d" id="d-noname"><div class="cap">d-noname · header, no name, closed</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Character: assassin-lvl1. Switch character"><span class="lbl">assassin-lvl1</span><span class="chev">▾</span></button></div></div>
+  <div class="eyebrow"><span class="mono">Aion 2 · Asmodian · Assassin · 1 → 45</span><span class="modeseg"><span class="on">Basic</span><span>Advanced</span></span></div>
+  <h1>Asmodian Assassin Route</h1><p class="sub">Free-to-play · story first · <b>Next up</b> always shows your next move.</p>
+</div></section>
+
+<!-- d-list -->
+<section class="frame d tall" id="d-list"><div class="cap">d-list · open list, two characters</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+    <div class="pop" role="listbox" aria-label="Characters"><h2>Characters</h2>
+      <div class="crow cur" role="option" aria-selected="true"><span class="tick">✓</span><span class="lbl">Zed-assassin-lvl27</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+      <div class="crow" role="option"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+      <div class="newrow">+ New character</div></div></div></div>
+</div></section>
+
+<!-- d-new -->
+<section class="frame d tall" id="d-new"><div class="cap">d-new · new character form, one-class picker</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+    <div class="pop"><h2>New character</h2><div class="form">
+      <div class="fld"><label>Name (optional)</label><div class="inp focus"><span>Quin</span></div><span class="hint">Shown on screen and kept in your save only. Up to 24 characters.</span></div>
+      <div class="fld"><label>Class</label><div class="pick" role="radiogroup" aria-label="Class"><div class="opt sel" role="radio" aria-checked="true"><span class="dot"></span><span>Assassin</span><span class="mono">Asmodian</span></div></div></div>
+      <div class="prev">Label: <b>Quin-assassin-lvl1</b></div>
+      <div class="btns"><span class="btn">Cancel</span><span class="btn primary">Create character</span></div></div></div></div></div>
+</div></section>
+
+<!-- d-rename -->
+<section class="frame d tall" id="d-rename"><div class="cap">d-rename · rename in the list</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+    <div class="pop"><h2>Characters</h2>
+      <div class="form" style="border-bottom:1px solid var(--line)"><div class="fld"><label>Rename Zed-assassin-lvl27</label><div class="inp focus"><span>Zed</span></div><span class="hint">Leave empty to show no name.</span></div>
+        <div class="btns"><span class="btn">Cancel</span><span class="btn primary">Save name</span></div></div>
+      <div class="crow"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div></div></div></div>
+</div></section>
+
+<!-- d-remove -->
+<section class="frame d tall" id="d-remove"><div class="cap">d-remove · remove confirmation</div><div class="page">
+  <div class="brandrow"><span class="brandname">Daeva Companion</span>
+    <div class="who"><button class="chbtn open" aria-expanded="true"><span class="lbl">Zed-assassin-lvl27</span><span class="chev">▴</span></button>
+    <div class="pop"><h2>Characters</h2>
+      <div class="crow cur"><span class="tick">✓</span><span class="lbl">Zed-assassin-lvl27</span><span class="link">Rename</span><span class="link danger">Remove</span></div>
+      <div class="crow"><span></span><span class="lbl">assassin-lvl1</span><span class="link">Rename</span><span class="link danger">Remove</span></div></div></div></div>
+  <div class="scrim"><div class="dlg" role="alertdialog" aria-labelledby="rm2t" aria-describedby="rm2d">
+    <h3 id="rm2t">Remove Zed-assassin-lvl27?</h3>
+    <p id="rm2d">Its progress is deleted from this browser. <b>This can't be undone.</b> Your other characters stay. Export first if you want a backup.</p>
+    <div class="btns"><span class="btn">Keep it</span><span class="btn warn">Remove</span></div></div></div>
+</div></section>
+</body></html>
