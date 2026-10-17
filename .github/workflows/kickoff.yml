@@ -29,12 +29,13 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: kickoff
-  cancel-in-progress: false
-
+# Serialized per job, not per run: with a run-level group a second kickoff (after the next merge) waited until every
+# build of the first run had finished (30-90 min), so nothing new started in that time (seen 2026-10-17).
 jobs:
   pick:
+    concurrency:
+      group: kickoff-pick
+      cancel-in-progress: false
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -222,6 +223,9 @@ jobs:
   #   - Conflicting, or golden/mig involved: pipeline.yml step=merge (a model run; Opus for golden/mig).
   refresh:
     if: inputs.sha != ''
+    concurrency:
+      group: kickoff-refresh
+      cancel-in-progress: false
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
