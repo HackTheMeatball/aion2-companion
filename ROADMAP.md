@@ -27,17 +27,22 @@ no running out before 1.0: 1.0 ships when its scope is done.
 ## How a minor is planned (every 0.X.0)
 
 Every minor opens with a planning and audit pass, and it is most of the work: like painting, about 90% prep and 10%
-execution (owner, 2026-10-17). The pass that redrew the plan after 0.3 is the model: it audited the whole path to 1.0
+execution (owner, 2026-10-17). It runs on Opus and starts with a full kaizen review (step 1), so what the pipeline
+learned during the last minor shapes the next one. The pass that redrew the plan after 0.3 is the model: it audited the whole path to 1.0
 before planning the next minor
 ([audit and plan to 1.0](docs/audits/2026-10-16-audit-and-plan-to-1.0.md)). Nothing in the minor is queued in #114
 until the pass is written down and reviewed. Patches (0.X.Y) skip it.
 
-1. **Look back, with the data we collect.** One page on the minor just shipped: items shipped, failed or redone bot
+1. **Kaizen review and look back, with the data we collect.** This is the release kaizen review (owner, 2026-10-17):
+   the same review the daily kaizen task does, over the whole minor, and its findings feed every later step. Read the
+   **planner log (#232)**: what each run queued or planned and whether it worked out, plus the usage checkpoints (runs
+   by model and outcome against the owner's usage %). One page on the minor just shipped: items shipped, failed or redone bot
    runs (the `Waste:` lines in #114), fixes needed after release, what was slow (kickoff start to PR open, PR open to
    merge, per item). Read the **stall log (#221)**: count stalls and idle minutes by Kind, and name the Kinds that
    came back after a fix. Read the **kaizen log (#222)**: which changes helped (Result filled in), which didn't
-   (revert them), which are still `trial` or `needs Isaac`. Each cause that repeated becomes one process rule, and
-   the stall limits in #114 are re-derived from this minor's build times.
+   (revert them), which are still `trial` or `needs Isaac`. Each cause that repeated becomes one process rule (a #222
+   row, put in place before the minor's first item is queued), and the stall limits and the build cap in #114 are
+   re-derived from this minor's build times and usage.
 2. **Audit the whole path to 1.0, then this minor.** First re-read the plan from this minor to 1.0 against the code
    and what the look-back found: is any later minor stale, in the wrong order, too big, or blocked on something
    nobody has started (research, owner input, hosting)? Change the later minors here, in this pass, before planning
@@ -49,8 +54,8 @@ until the pass is written down and reviewed. Patches (0.X.Y) skip it.
    proves it done; builder model (routing rule in #114); its stall limit from step 1's build times. An item with an
    unknown is a research item first, not a build.
 4. **Waves and lanes for the whole minor.** Lay every item out in waves before anything is queued: items in the same
-   module or serial file run one after another; items in different modules may run at the same time, at most three
-   builds. Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
+   module or serial file run one after another; items in different modules may run at the same time, at most five
+   builds (the cap in kickoff.yml). Name the critical path, put the items that unblock the most first, and give each item an `After:` line so
    kickoff can queue it the moment its dependencies merge. Check every wave for two items that touch the same file:
    that is where bots step on each other's toes, so split the file's owner or move one item. Shared files
    (`docs/team/DISPATCH.md` "Serial files") count as one module.

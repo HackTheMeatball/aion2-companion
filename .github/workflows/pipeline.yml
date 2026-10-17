@@ -149,7 +149,8 @@ jobs:
               if (!ok) return none('ci-ok not green on the head');
               const verdicts = comments.filter((c) => c.user && c.user.login === 'claude[bot]' && /VERDICT:\s*(APPROVE|CHANGES)/.test(c.body || ''));
               if (verdicts.some((c) => Date.parse(c.updated_at) >= headAt && (c.body || '').includes(sha.slice(0, 7)))) return none('a review of this head exists');
-              const model = risky ? 'claude-opus-5-5' : 'claude-sonnet-5-5';
+              // Reviews run on Opus since 2026-10-17 (owner's Max 20x plan); before that only risky PRs did.
+              const model = 'claude-opus-5-5';
               core.setOutput('model', model);
               core.setOutput('prompt', [
                 `You review pull request #${prNum} in ${owner}/${repo}, head commit ${sha}. CI (ci-ok) is green on this head, so do not run the test suites.`,
