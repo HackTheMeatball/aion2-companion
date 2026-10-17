@@ -11,6 +11,9 @@
      3. a state no single change, pair or triple reproduces is unattributed (an error: a bug, not a product change), and so is
         any difference in the stored state after load (`store`, `keys`: never approvable, design §6) or in the input,
         except one class: view flags (viewFlag below), listed with their cause in their own section of the table.
+   The ranking changes of smart Next up (0.4 design §12; src/core/nextup.js RANK_CHANGES and the pack's AION2_RANK_CHANGES,
+   read with GATE_CHANGES and marked rank) ship only with on: true; explain says which do, and one that ships off is never
+   a candidate (it makes no shipped difference). The runner hands a set's ranking names to the page as __rankChanges.
    Writes tests/out/golden/explain.md (the table for the PR: change · records · what the data / design says changes ·
    states by group and level band · kinds of change · one before / after sample) and explain.json (state → set).
    Returns the exit code: 0 when every difference is attributed and nothing else is wrong. Never records. */
