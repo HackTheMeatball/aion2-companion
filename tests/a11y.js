@@ -242,18 +242,22 @@ async function load(p, state, mode) {
     await load(p, { ...USER }, mode);
     const r = await p.evaluate(() => {
       const out = [];
+      /* each element's own text runs are measured too, since a row-reverse flex box overflows to the left (no sideways
+         scroll) and its text isn't an element */
+      const past = (name, els, cr) => { for (const h of els) {
+        if (!h.offsetParent) continue;
+        const rs = [h.getBoundingClientRect()];
+        for (const t of h.childNodes) if (t.nodeType === 3 && t.textContent.trim()) { const g = document.createRange(); g.selectNodeContents(t); rs.push(g.getBoundingClientRect()); }
+        for (const hr of rs) if (hr.width && (hr.right > cr.right + 0.5 || hr.left < cr.left - 0.5))
+          out.push(name + ' > ' + h.tagName.toLowerCase() + '.' + String(h.className).split(' ')[0] + ' "' + (h.textContent || '').trim().slice(0, 24) + '" ' +
+            Math.round(hr.left) + '–' + Math.round(hr.right) + ' in ' + Math.round(cr.left) + '–' + Math.round(cr.right));
+      } };
+      /* section headers outside a card (Milestones) stay inside the viewport */
+      past('page', [...document.querySelectorAll('.sec, .sec *')].filter(h => !h.closest('.card')), { left: 0, right: innerWidth });
       for (const card of document.querySelectorAll('.card')) {
         const cr = card.getBoundingClientRect(); if (!cr.width) continue;
-        /* headers, plus the Dungeons region headers and rows; each element's own text runs are measured too, since a
-           row-reverse flex box overflows to the left (no sideways scroll) and its text isn't an element */
-        for (const h of card.querySelectorAll('.sec, .sec *, h2, h3, summary, summary *, .zone-h, .zone-h *, .asec, .asec *, .item.arow *')) {
-          if (!h.offsetParent) continue;
-          const rs = [h.getBoundingClientRect()];
-          for (const t of h.childNodes) if (t.nodeType === 3 && t.textContent.trim()) { const g = document.createRange(); g.selectNodeContents(t); rs.push(g.getBoundingClientRect()); }
-          for (const hr of rs) if (hr.width && (hr.right > cr.right + 0.5 || hr.left < cr.left - 0.5))
-            out.push((card.id || card.className) + ' > ' + h.tagName.toLowerCase() + '.' + String(h.className).split(' ')[0] + ' "' + (h.textContent || '').trim().slice(0, 24) + '" ' +
-              Math.round(hr.left) + '–' + Math.round(hr.right) + ' in ' + Math.round(cr.left) + '–' + Math.round(cr.right));
-        }
+        /* headers, plus the Dungeons region headers, section heads and rows */
+        past(card.id || card.className, card.querySelectorAll('.sec, .sec *, h2, h3, summary, summary *, .zone-h, .zone-h *, .asec, .asec *, .item.arow *'), cr);
         /* a row's sub-line cut off by the row's own overflow: hidden (max-height) */
         for (const li of card.querySelectorAll('.item.arow')) if (li.offsetParent && li.scrollHeight > li.clientHeight + 1)
           out.push((card.id || card.className) + ' > li.arow clipped "' + (li.textContent || '').trim().slice(0, 24) + '" ' + li.scrollHeight + ' > ' + li.clientHeight);
