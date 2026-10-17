@@ -79,7 +79,8 @@ function renderNow() {
   const lv = char(state).level;
   const ranked = rankNext(state, { basic: isBasic() }), shown = ranked.map(nowCard);
   /* band labels (0.5 P14, S1): above a card whose band differs from the card before it; rankNext sets lvBand only when
-     the list spans more than one band (Advanced) */
+     the list spans more than one band (Advanced). A band is its start level plus the missed flag, so a missed card next
+     to a current one in the same band gets its own label (intended: "Missed · Lv 20–24", then "Lv 20–24") */
   const bandKey = b => b ? `${b.missed ? "m" : ""}${b.from}` : "";
   const bandTxt = b => `${b.missed ? "Missed · " : ""}Lv ${b.from}${b.to == null ? "+" : b.to > b.from ? `–${b.to}` : ""}`;
   const bandAt = i => { const b = ranked[i] && ranked[i].lvBand; return b && (i === 0 || bandKey(ranked[i - 1].lvBand) !== bandKey(b)) ? `<p class="ns-band">${bandTxt(b)}</p>` : ""; };
