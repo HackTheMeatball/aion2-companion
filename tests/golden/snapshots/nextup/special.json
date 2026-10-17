@@ -1,0 +1,54 @@
+{
+  "special/empty-object": [
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Buy Exploit Weakness 1 → 2","s":"Needs Lv 6 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Wings and Ascension","s":"Lv 6 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Flash Slice 1 → 2","s":"Needs Lv 8 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 6 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "special/fresh-no-save": [
+    {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "special/not-v5-empty-object": [
+    {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "special/not-v5-flat-L30": [
+    {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
+    {"t":"Buy Ambush 1 → 2","s":"Needs Lv 3 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 1 → 2","s":"Needs Lv 4 · 3 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Storm Rampage 1 → 2","s":"Needs Lv 5 · 4 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Wings and Ascension","s":"Lv 6 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "special/story-end-turned-in": [
+    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
+    {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
+    {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Lv 45 story complete","s":"Next in game: \"Waiting for the Next Journey\" at Lv 46 · the guide's story ends at \"Daeva Trapped in a Nightmare\"","c":""},
+    {"t":"Regional quests","s":"30 to pick up · 1 follow-up · 0/31 turned in","c":"go \"Show\" rqgo:rq:2202067","x":["new A Comrade's Fate","new A Perfect Wedding","new Restoration Materials","new Lost Memories","new I'm a Believer!","new Putting a Friend to Rest","+25 more"]},
+    {"t":"Azphel board opens","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:2"},
+    {"t":"Time your Ascension Trial","s":"Optional · Lv 45 milestone · Level cap","c":"primary \"Done\" tick:g45:3"},
+    {"t":"Run Andsha Forward Base","s":"Impetusium Square · Kibelisk: Steel Hammer Temporary Trading Post · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Steel Hammer Temporary Trading Post is 466 m away · 11 open"}
+  ],
+  "special/unknown-quest-name": [
+    {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
+    {"t":"Start the daily dungeon","s":"Lv 30 milestone · Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
+    {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
+    {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+15 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
+    {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
+    {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
+    {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ]
+}
