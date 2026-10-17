@@ -51,10 +51,14 @@ green (requirements split first), and say in the PR what is left: it becomes a f
 
 ## Files (owns)
 
-`src/core/{catalog,requirements,ascension,blockers,migrations,evaluator}.js`, `src/data/**` (moved),
-`src/packs/aion2/**`, `src/main.js` (imports and wiring only), `scripts/build.mjs` and `scripts/generated-data.mjs`
-(module paths only), `tests/core/**`, `tests/equiv/**` and `tests/golden/*.js` import paths,
-docs/ARCHITECTURE.md.
+`src/core/{catalog,requirements,ascension,blockers,migrations,evaluator}.js`, `src/core/pack.js` (new: `definePack`,
+`usePack`, `activePack`; P0 §2), `src/core/state.js` (the `CHAR_FIELDS` line only: engine fields + `charFields`) and
+`src/core/sync.js` (imports, `zoneOfKey` / `isAscensionKey` → `locate` / `skipLocation`, and comments naming AION 2
+terms, which P0 §5 scans; P0 §3), `src/data/**`
+(moved), `src/packs/aion2/**`, `src/main.js` (imports and wiring only), `scripts/build.mjs` (module paths, and the
+duplicate-name check extended to every bundled `src/**/*.js`, P0 §1) and `scripts/generated-data.mjs` (module paths
+only), `tests/support/core-bundle.mjs` (calls `usePack`), `tests/core/**`, `tests/equiv/**` and `tests/golden/*.js`
+import paths, docs/ARCHITECTURE.md.
 
 ## Lanes, model, order
 
