@@ -31,8 +31,9 @@ comes first) a change may break existing saves when that gives a better design. 
   tracker's Scrapbook. Reviewers: a visible change without them is `VERDICT: CHANGES`.
 - Small commits with clear messages. Don't push unless asked.
 - Releases: version bump + CHANGELOG section in one commit; CI tags and publishes (docs/DEPLOY.md, ROADMAP.md).
-- Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"), starting with a kaizen
-  review of the stall log (#221), planner log (#232) and kaizen log (#222); no item of that minor is queued before the
+- Every minor (0.X.0) opens with a planning and audit pass (ROADMAP "How a minor is planned"), starting with the release
+  kaizen review of how we work (stall log #221, planner log #232, kaizen log #222, a waste and usage scorecard against
+  the previous minor in `docs/kaizen/`); no item of that minor is queued before the
   pass is written and reviewed. Parallel work only along module boundaries.
 - Locally Chromium is preinstalled (`PLAYWRIGHT_BROWSERS_PATH`); never run `playwright install` locally.
 
