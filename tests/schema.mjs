@@ -63,6 +63,12 @@ broken('teleport gain that is not a number', 'packs/aion2/rules.json', (r, d) =>
 broken('Kibelisk id that is not kib:<slug>', 'packs/aion2/asmodian/kibelisks.json', r => { r.id = 'kib:Safe Haven'; });
 broken('Kibelisk without a zone field', 'packs/aion2/asmodian/kibelisks.json', r => { delete r.zone; });
 broken('Kibelisk with an unknown field', 'packs/aion2/asmodian/kibelisks.json', r => { r.pos = { x: 1, y: 2 }; });
+/* 0.5 P9: story objective points */
+broken('objective point without sources', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.at).at.sources; });
+broken('objective point with empty sources', 'packs/aion2/asmodian/story-quests.json', (r, d) => { stepWith(d, x => x.at).at.sources = []; });
+broken('objective point without its Kibelisk', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.at).at.kibelisk; });
+broken('objective point with a Metabot map id, not a map slug', 'packs/aion2/asmodian/story-quests.json', (r, d) => { stepWith(d, x => x.at).at.map = 'World_D_A'; });
+broken('objective point with fractional metres', 'packs/aion2/asmodian/story-quests.json', (r, d) => { stepWith(d, x => x.at).at.meters = 12.5; });
 
 /* the generator: cross-record checks pass, and the committed DATA_SOURCES.md is current */
 let g = null;
@@ -114,15 +120,32 @@ if (g) {
   genFailsIn('a step-text bind whose text does not say bind', SQ, d => { const x = stepWith(d, x => x.binds && x.binds.basis === 'step-text'); x.text = 'Remember Aldelle Village'; }, /a step-text bind says "bind"/);
   genFailsIn('binds on a regional quest objective', 'data/packs/aion2/asmodian/regional-quests.json', d => { d.records.find(r => (r.steps || []).length).steps[0].binds = { kibelisk: 'kib:safe-haven', basis: 'step-text' }; }, /binds only on story objectives/);
   genFailsIn('a bind radius not inside the nudge radius', 'data/packs/aion2/rules.json', d => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 100; d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 100; }, /rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius/);
+  /* 0.5 P9: story objective points: the marker equals the point's Kibelisk, story objectives only, the Kibelisk's map */
+  const sqStep = (d, id, i) => d.records.find(r => r.id === id).steps.find(x => x.i === i);
+  genFailsIn('a (Kibelisk: X) marker that differs from at.kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.kibelisk = 'Guide Rest Stop'; }, /sq:2102235 #1: \(Kibelisk: X\) marker = at\.kibelisk/);
+  genFailsIn('an objective point naming an unknown Kibelisk', SQ, d => { sqStep(d, 'sq:2102590', 1).at.kibelisk = 'Alert Observation Tower'; }, /Kibelisk "Alert Observation Tower" resolves to a registry record/);
+  genFailsIn('an objective point on another map than its Kibelisk', SQ, d => { sqStep(d, 'sq:2102235', 1).at.map = 'ishalgen'; }, /sq:2102235 #1: at\.map is its Kibelisk's map/);
+  genFailsIn('an objective point on a regional quest', 'data/packs/aion2/asmodian/regional-quests.json', d => { const r = d.records.find(r => (r.steps || []).length);
+    r.steps[0].at = { map: 'altgard', x: 1, y: 1, kibelisk: 'Safe Haven', meters: 1, sources: [{ url: 'https://metabot.gg/en/aion-2/quests/survival-supplies' }] }; }, /#0: at only on story objectives/);
+  { const ats = sq.flatMap(r => r.steps.filter(x => x.at).map(x => ({ r, x })));
+    ok('story objective points: 300 on 83 quests (research CSV, confirmed rows), each from its Metabot quest page checked 2026-10-17 on build 0.0.4387.0', ats.length === 300 && new Set(ats.map(a => a.r.id)).size === 83
+      && ats.every(({ x }) => x.at.sources.length === 1 && /^https:\/\/metabot\.gg\/en\/aion-2\/quests\//.test(x.at.sources[0].url) && x.at.sources[0].checkedAt === '2026-10-17' && x.at.sources[0].build.value === '0.0.4387.0'),
+      [ats.length, new Set(ats.map(a => a.r.id)).size]);
+    ok('story objective points: none on a turn-in line or a "via Selvis" line; Finding Nemon (no objective lines) has none', ats.every(({ x }) => !/^Turn in/.test(x.text) && !/via Selvis/.test(x.text))
+      && !sq.find(r => r.id === 'sq:2102010').steps.some(x => x.at)); }
   /* the compiled tables (src/packs/aion2/data/place.js): one place per story / regional / dungeon / stronghold node */
   const np = g.nodePlace, kb = g.kibelisks, nodes = Object.entries(g.gateGraph.nodes);
   ok('NODE_PLACE: 87 story + 58 regional + 60 Sealed Dungeon + 15 stronghold nodes, keyed by GATE_GRAPH id', Object.keys(np).length === 220
     && nodes.filter(([, n]) => ['story', 'rq', 'sd', 'sh'].includes(n.kind)).every(([id]) => id in np), Object.keys(np).length);
   ok('NODE_PLACE: Survival Supplies turn-in is VeKauf\'s point, 32 m from Safe Haven', JSON.stringify(np['sq:2102015'].pts.turnin) === JSON.stringify({ map: 'altgard', x: 3183, y: 2881, anchor: 'kib:safe-haven', m: 32 })
     && np['sq:2102015'].route === 'core' && np['sq:2102015'].zone === 'zone:dredgion-crash-site', np['sq:2102015']);
-  ok('NODE_PLACE: a point with no Kibelisk and no coords is left out; a placeholder zone is null', Object.values(np).every(p => Object.values(p.pts).every(x => x.anchor || x.map))
+  ok('NODE_PLACE: a point with no Kibelisk and no coords is left out; a placeholder zone is null', Object.values(np).every(p => Object.entries(p.pts).flatMap(([k, v]) => k === 'steps' ? v : [v]).every(x => x.anchor || x.map))
     && Object.values(np).every(p => p.zone !== 'zone:altgard-unplaced'));
-  ok('KIBELISKS: 72 records; binds facts Survival Supplies #0 → Safe Haven (owner), A Village in the Fog #1 → Aldelle Village (step text)', Object.keys(kb).length === 72
+  ok('NODE_PLACE: a story quest\'s objective points in pts.steps, in objective order, none for the "via Selvis" lines (Preparations for Restoration: objectives 1–6)',
+    JSON.stringify(np['sq:2102235'].pts.steps.map(p => p.i)) === '[1,2,3,4,5,6]' && JSON.stringify(np['sq:2102235'].pts.steps[0]) === JSON.stringify({ i: 1, map: 'altgard', x: 4997, y: 3852, anchor: 'kib:nornir-assembly', m: 143 })
+    && Object.values(np).reduce((n, p) => n + (p.pts.steps || []).length, 0) === 300 && Object.values(np).every(p => !p.pts.steps || p.pts.steps.length > 0), np['sq:2102235'].pts.steps);
+  /* 73 = P8's 72 + Alert Observation Post, which only a story objective point names (0.5 P9) */
+  ok('KIBELISKS: 73 records; binds facts Survival Supplies #0 → Safe Haven (owner), A Village in the Fog #1 → Aldelle Village (step text)', Object.keys(kb).length === 73
     && JSON.stringify(kb['kib:safe-haven'].binds) === JSON.stringify([{ node: 'sq:2102015', i: 0, basis: 'owner' }])
     && JSON.stringify(kb['kib:aldelle-village'].binds) === JSON.stringify([{ node: 'sq:2101010', i: 1, basis: 'step-text' }])
     && Object.values(kb).filter(k => k.binds).length === 2, Object.keys(kb).length);
@@ -130,8 +153,10 @@ if (g) {
     && g.placeModule.includes('export const TRAVEL_RULES = {"bindRadius":25,"nudgeRadius":150,"teleportGain":400};')
     && (g.placeModule.match(/^export const /gm) || []).length === 3 && !/NODE_PLACE|KIBELISKS|TRAVEL_RULES/.test(g.module));
   const kr = g.report.kibelisks;
-  ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 53 story and 69 cited Kibelisks; the owner check list is the story ones not bound at 25 m and with no binds fact',
-    !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.split.every(s => s.story.n === 53 && s.all.n === 69 && s.story.bound + s.story.nudge + s.story.none === 53)
+  /* 0.5 P9: the objective points cite 3 more story Kibelisks (56) and 2 more in all (71: Alert Observation Post, Silent
+     Hill Coastal Cliff); every story Kibelisk now has a point (P8: 15 were cited only by objective markers) */
+  ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 56 story and 71 cited Kibelisks, none without a point; the owner check list is the story ones not bound at 25 m and with no binds fact',
+    !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.noPoint === 0 && kr.split.every(s => s.story.n === 56 && s.all.n === 71 && s.story.bound + s.story.nudge + s.story.none === 56)
     && kr.ownerCheck.length === kr.split[0].story.nudge + kr.split[0].story.none - 1 && !kr.ownerCheck.some(c => c.name === 'Safe Haven'), kr && kr.split);
   /* 0.4 P1 pack manifests: a broken copy of data/packs (tests/out/, not committed) must stop the generator (packs.mjs) */
   const packsCopy = (label, mutate) => { const root = join(ROOT, 'tests/out/packs-' + label); rmSync(root, { recursive: true, force: true });

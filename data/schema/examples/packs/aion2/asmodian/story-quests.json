@@ -35,7 +35,25 @@
         {
           "i": 1,
           "text": "Hear about Nemon's past — talk to Ulgorn (Kibelisk: Nornir Assembly)",
-          "zone": "zone:nornir-assembly"
+          "zone": "zone:nornir-assembly",
+          "at": {
+            "map": "altgard",
+            "x": 4997,
+            "y": 3852,
+            "kibelisk": "Nornir Assembly",
+            "meters": 143,
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+                "checkedAt": "2026-10-17",
+                "build": {
+                  "scheme": "metabot",
+                  "value": "0.0.4387.0"
+                },
+                "note": "Metabot step marker 2 (map World_D_A, pixels ≈ 1 m) and its nearest Kibelisk; docs/research/2026-10-story-step-points.md"
+              }
+            ]
+          }
         },
         {
           "i": 2,
@@ -58,7 +76,25 @@
         },
         {
           "i": 6,
-          "text": "Clear around the Wind Altar — defeat the contaminated spirits, remove Poison Blood Clot (Kibelisk: Guide Rest Stop)"
+          "text": "Clear around the Wind Altar — defeat the contaminated spirits, remove Poison Blood Clot (Kibelisk: Guide Rest Stop)",
+          "at": {
+            "map": "altgard",
+            "x": 4738,
+            "y": 3602,
+            "kibelisk": "Guide Rest Stop",
+            "meters": 155,
+            "sources": [
+              {
+                "url": "https://metabot.gg/en/aion-2/quests/preparations-for-restoration-asmodian",
+                "checkedAt": "2026-10-17",
+                "build": {
+                  "scheme": "metabot",
+                  "value": "0.0.4387.0"
+                },
+                "note": "Metabot step marker 7, centre of its 29 points (map World_D_A, pixels ≈ 1 m) and its nearest Kibelisk; docs/research/2026-10-story-step-points.md"
+              }
+            ]
+          }
         },
         {
           "i": 7,

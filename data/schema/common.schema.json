@@ -383,6 +383,9 @@
         },
         "binds": {
           "$ref": "#/$defs/bindsFact"
+        },
+        "at": {
+          "$ref": "#/$defs/stepPoint"
         }
       },
       "additionalProperties": false
@@ -456,6 +459,53 @@
           }
         }
       ],
+      "additionalProperties": false
+    },
+    "stepPoint": {
+      "description": "0.5 P9 (docs/design/0.4-smart-next-up.md §3): where the objective sends the player, from the source page's step marker (Metabot: the marker's centre for a multi-point step), with that page's nearest Kibelisk and its distance. Story objectives only (AION 2 pack check); a \"(Kibelisk: X)\" marker in the text equals kibelisk. Map pixels ≈ 1 m; distances across maps are undefined.",
+      "type": "object",
+      "required": [
+        "map",
+        "x",
+        "y",
+        "kibelisk",
+        "meters",
+        "sources"
+      ],
+      "properties": {
+        "map": {
+          "description": "Map slug, as in coords and kibelisks.json (altgard, ishalgen).",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "x": {
+          "type": "number",
+          "minimum": 0
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0
+        },
+        "kibelisk": {
+          "description": "The nearest Kibelisk's name as the source gives it (resolves to a kibelisks.json record).",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "meters": {
+          "description": "The source's distance from the point to that Kibelisk, whole metres.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "minItems": 1
+        }
+      },
       "additionalProperties": false
     },
     "atomMeta": {

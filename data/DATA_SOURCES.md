@@ -146,7 +146,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Lost Ruins (exploration quest)](https://metabot.gg/en/aion-2/quests/lost-ruins) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/sealed-dungeons.json: Lost Ruins |
 | [Metabot: Malice Laid Bare](https://metabot.gg/en/aion-2/quests/malice-laid-bare) | Main story | packs/aion2/asmodian/story-quests.json: Malice Laid Bare |
 | [Metabot: Mind Your Own Business](https://metabot.gg/en/aion-2/quests/mind-your-own-business) | Regional quests | packs/aion2/asmodian/regional-quests.json: Mind Your Own Business |
-| [Metabot: Mirror of Greed](https://metabot.gg/en/aion-2/quests/mirror-of-greed) | Main story | packs/aion2/asmodian/story-quests.json: Mirror of Greed; packs/aion2/asmodian/assassin/guide/claims.json: Story dungeon around Lv 37. |
+| [Metabot: Mirror of Greed](https://metabot.gg/en/aion-2/quests/mirror-of-greed) | Main story | packs/aion2/asmodian/story-quests.json: Mirror of Greed; packs/aion2/asmodian/kibelisks.json: Alert Observation Post; packs/aion2/asmodian/assassin/guide/claims.json: Story dungeon around Lv 37. |
 | [Metabot: Missing Mount](https://metabot.gg/en/aion-2/quests/missing-mount) | Regional quests | packs/aion2/asmodian/regional-quests.json: Missing Mount |
 | [Metabot: Nine Wonders of Altgard: 1st Leg](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-1st-leg) | Regional quests | packs/aion2/asmodian/regional-quests.json: Nine Wonders of Altgard: 1st Leg |
 | [Metabot: Nine Wonders of Altgard: 2nd Leg](https://metabot.gg/en/aion-2/quests/nine-wonders-of-altgard-2nd-leg) | Regional quests | packs/aion2/asmodian/regional-quests.json: Nine Wonders of Altgard: 2nd Leg |
@@ -596,52 +596,48 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 
 What the bind rules give on the data (docs/design/0.4-smart-next-up.md §8.1, §8.4). Per Kibelisk, the smallest stated distance over the points that
 carry one: **bound** at most R, **nudge** above R up to 150 m (`rule:kibelisk-nudge-radius`), **none** beyond that or with no such point. *Story*: the
-Kibelisks the story quests cite, over their giver / turn-in points (story objectives carry no distance yet: a Kibelisk cited only by objective markers
-is "none"); *all*: with regional quests, Sealed Dungeons and strongholds (their giver, turn-in, entrance and objective points).
+Kibelisks the story quests cite, over their giver / turn-in points and their objectives' points (Metabot step markers, 0.5 P9; a Kibelisk cited only by
+markers on objectives without a point is "none"); *all*: with regional quests, Sealed Dungeons and strongholds (their giver, turn-in, entrance and objective points).
 `binds` facts are not counted here. The working value is `rule:kibelisk-bind-radius` = 25 m.
 
 | R | Story: bound | nudge | none | All: bound | nudge | none |
 |---|---|---|---|---|---|---|
-| 25 m (working value) | 23 | 14 | 16 | 35 | 24 | 10 |
-| 32 m | 27 | 10 | 16 | 41 | 18 | 10 |
-| 35 m | 29 | 8 | 16 | 45 | 14 | 10 |
-| 40 m | 30 | 7 | 16 | 46 | 13 | 10 |
+| 25 m (working value) | 30 | 17 | 9 | 40 | 19 | 12 |
+| 32 m | 34 | 13 | 9 | 44 | 15 | 12 |
+| 35 m | 36 | 11 | 9 | 47 | 12 | 12 |
+| 40 m | 38 | 9 | 9 | 47 | 12 | 12 |
 
-53 story Kibelisks, 69 in all.
+56 story Kibelisks, 71 in all; 0 story Kibelisks have no point (cited only by markers on objectives without one).
 
-### Owner check list (29)
+### Owner check list (25)
 
-Every story Kibelisk the working rules (25 m) can't bind from the story's giver / turn-in points or a `binds` fact, in story order. In game, when convenient:
+Every story Kibelisk the working rules (25 m) can't bind from the story's giver / turn-in / objective points or a `binds` fact, in story order. In game, when convenient:
 which objective binds it? (A `binds` fact on that objective, basis owner, settles it.)
 
-| Kibelisk | First cited in | Nearest giver / turn-in | Class |
+| Kibelisk | First cited in | Nearest point | Class |
 |---|---|---|---|
 | Galorik's Inspection Area | Crash Site Rendezvous (Lv 11) | 49 m, Crash Site Rendezvous turn-in | nudge |
-| Creion Campsite | Express Daeva Delivery (Lv 12) | none (objective markers only) | none |
-| Quai Campsite | Express Daeva Delivery (Lv 12) | 30 m, Express Daeva Delivery turn-in | nudge |
-| Dawn Legion Temporary Outpost | Disturbed Balance (Lv 22) | none (objective markers only) | none |
-| Forest Hideout | Disturbed Balance (Lv 22) | none (objective markers only) | none |
-| Victorious Daeva's Statue | Searching for Survivors (Lv 24) | 175 m, Searching for Survivors turn-in | none |
+| Creion Campsite | Express Daeva Delivery (Lv 12) | 116 m, Express Daeva Delivery objective 0 | nudge |
+| Silent Hill Coastal Cliff | Imminent Threat (Lv 20) | 291 m, Imminent Threat objective 1 | none |
+| Dawn Legion Temporary Outpost | Disturbed Balance (Lv 22) | 177 m, Disturbed Balance objective 2 | none |
+| Forest Hideout | Disturbed Balance (Lv 22) | 198 m, Disturbed Balance objective 1 | none |
+| Victorious Daeva's Statue | Searching for Survivors (Lv 24) | 143 m, Prison Break objective 0 | nudge |
 | Minushan Site | Prison Break (Lv 24) | 34 m, Prison Break turn-in | nudge |
-| Uruthumheim Cliff | Voice of Rage (Lv 25) | 46 m, Voice of Rage turn-in | nudge |
-| Nornir Assembly | Tangled Past (Lv 25) | 133 m, Striving for Coexistence turn-in | nudge |
-| Guide Rest Stop | Striving for Coexistence (Lv 26) | none (objective markers only) | none |
-| Purifying Forest Coastal Cliff | Preparations for Restoration (Lv 27) | 89 m, Preparations for Restoration turn-in | nudge |
+| Nornir Assembly | Tangled Past (Lv 25) | 43 m, Farewells objective 0 | nudge |
+| Purifying Forest Coastal Cliff | The High Priest Slumbers (Lv 26) | 89 m, Preparations for Restoration turn-in | nudge |
+| Guide Rest Stop | Striving for Coexistence (Lv 26) | 36 m, A Collective Effort objective 8 | nudge |
 | Faded Stump | A Collective Effort (Lv 27) | 29 m, A Collective Effort turn-in | nudge |
-| Purifying Forest Sunny Hill | A Collective Effort (Lv 27) | none (objective markers only) | none |
-| Battlescar Mound Clifftop | Canyon's Secret (Lv 30) | none (objective markers only) | none |
-| Kraka Footpath Wastewater Downstream | Canyon's Secret (Lv 30) | none (objective markers only) | none |
-| Briskwind Shelter | Bitter Reality (Lv 32) | 49 m, Last of the Destruction Archons turn-in | nudge |
-| Dranactus Shore | Last of the Destruction Archons (Lv 32) | none (objective markers only) | none |
-| Basfelt Waterfall | Last Refuge (Lv 33) | none (objective markers only) | none |
-| Graverobber Campsite | Last Refuge (Lv 33) | 36 m, Scripture in the Ruins turn-in | nudge |
-| Gribade Highland Crossroad | Enemy Territory (Lv 35) | none (objective markers only) | none |
-| Mahindel Cliff | Enemy Territory (Lv 35) | none (objective markers only) | none |
-| Steel Hammer Merchants HQ | Enemy Territory (Lv 35) | 86 m, Mirror of Greed turn-in | nudge |
-| Steel Hammer Workcamp | Enemy Territory (Lv 35) | 33 m, Powder of Death turn-in | nudge |
-| Steel Hammer Temporary Trading Post | An Ill Fate's Resolution (Lv 37) | none (objective markers only) | none |
-| Eastern Gribade Highland Cliff | Exiled Ritualist (Lv 40) | none (objective markers only) | none |
+| Purifying Forest Sunny Hill | A Collective Effort (Lv 27) | 230 m, A Collective Effort objective 6 | none |
+| Battlescar Mound Clifftop | Canyon's Secret (Lv 30) | 246 m, The Survivors objective 2 | none |
+| Kraka Footpath Wastewater Downstream | Canyon's Secret (Lv 30) | 218 m, Canyon's Secret objective 1 | none |
+| Dranactus Shore | Last of the Destruction Archons (Lv 32) | 129 m, Last of the Destruction Archons objective 1 | nudge |
+| Graverobber Campsite | Last Refuge (Lv 33) | 29 m, Scripture in the Ruins objective 2 | nudge |
+| Gribade Highland Crossroad | Enemy Territory (Lv 35) | 154 m, Creion of Gribade objective 2 | none |
+| Steel Hammer Merchants HQ | Enemy Territory (Lv 35) | 33 m, Enemy Territory objective 2 | nudge |
+| Steel Hammer Temporary Trading Post | An Ill Fate's Resolution (Lv 37) | 40 m, Symbol of Liberation objective 2 | nudge |
+| Alert Observation Post | Mirror of Greed (Lv 37) | 253 m, Mirror of Greed objective 1 | none |
+| Eastern Gribade Highland Cliff | Exiled Ritualist (Lv 40) | 129 m, Exiled Ritualist objective 1 | nudge |
 | Collapsed Hall of Fame | Lingering Apparitions (Lv 44) | 32 m, Lingering Apparitions turn-in | nudge |
-| Garden of the Illusion God East Observatory | Forgotten Commander (Lv 45) | none (objective markers only) | none |
-| Impetusium Lower Path | Forgotten Commander (Lv 45) | none (objective markers only) | none |
+| Garden of the Illusion God East Observatory | Forgotten Commander (Lv 45) | 303 m, Forgotten Commander objective 1 | none |
+| Impetusium Lower Path | Forgotten Commander (Lv 45) | 94 m, Forgotten Commander objective 3 | nudge |
 | Latesran Eastern Root | Forgotten Commander (Lv 45) | 49 m, Forgotten Commander turn-in | nudge |
