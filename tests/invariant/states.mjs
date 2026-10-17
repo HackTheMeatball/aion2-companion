@@ -1,6 +1,7 @@
-/* The invariant suite's states (0.3 E3, docs/design/0.3-requirement-engine.md §12): 10,000 saves, deterministic.
+/* The invariant suite's states (0.3 E3, docs/design/0.3-requirement-engine.md §12): 10,750 saves, deterministic.
    1. golden  the golden-master generator (tests/golden/states.js) with --all: its 2,000 core states (edge cases and the
-              fixtures included) plus its 6,000 extended random ones (its own fixed seeds);
+              fixtures included) plus its 6,000 extended random ones (its own fixed seeds) and its smart Next up
+              families (loc / behind / bind, 0.5 P11);
    2. target  every story position (and unset) × {its level − 1, its level, 45} × {no ticks, all ticks, "kept up" ticks
               with a stored false on every item that can be done by derivation} × Basic / Advanced; the last quest turned
               in (storyEnd); every quest one level under its own with all objectives ticked; "Urgent Pursuit" reached /
@@ -18,7 +19,8 @@ import { join } from 'node:path';
 
 const { catalogInPage, generate, fixtureStates, fnv } = createRequire(import.meta.url)('../golden/states.js');
 const { storedText } = createRequire(import.meta.url)('../support/save.js');
-export const TOTAL = 10000;
+/* 10,000 until 0.5 P11; its golden loc / behind / bind families (748) would have left no random state, so 750 more */
+export const TOTAL = 10750;
 const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
 const mulberry32 = a => () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const pad = (n, w = 2) => String(n).padStart(w, '0');
