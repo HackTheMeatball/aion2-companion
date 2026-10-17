@@ -187,6 +187,7 @@ function updatePass() {
   updateCard("milestones", ctx);
   updateCard("route", ctx);
   updateCard("journey", ctx);
+  syncLevelBar();
   updateCard("areas", ctx);
   milestoneFilters();
   /* the top row's cards, in their order (the pack's build cards; a card without update is skipped) */
@@ -232,7 +233,19 @@ const phoneQ = window.matchMedia ? matchMedia("(max-width: 860px)") : { matches:
 const phoneCards = [document.getElementById("nowStar"), document.querySelector("aside.rail > section.where"), document.querySelector("aside.rail > section:first-child")]
   .map(el => el && { el, p: el.parentNode, n: el.nextSibling });
 let phoneLayout = false;
+/* The sticky level bar (phone-layout.md 3.2): at phone widths the one #lvlUpBig moves into it, back to its place in
+   Journey above 860 px. Never a copy. */
+const lvlUpBig = document.getElementById("lvlUpBig"), lvlBarSlot = document.getElementById("lvlBarSlot"), lvlBar = document.getElementById("lvlBar");
+const lvlUpHome = { p: lvlUpBig.parentNode, n: lvlUpBig.nextSibling };
+function placeLevelUp() {
+  if (phoneQ.matches) lvlBarSlot.appendChild(lvlUpBig);
+  else if (lvlUpBig.parentNode === lvlBarSlot) lvlUpHome.p.insertBefore(lvlUpBig, lvlUpHome.n);
+  document.documentElement.style.setProperty("--lvlbar-h", phoneQ.matches ? lvlBar.offsetHeight + "px" : "0px");
+}
+function syncLevelBar() { document.getElementById("lvlBarLv").textContent = "LV " + char(state).level; }
+if (typeof ResizeObserver === "function") new ResizeObserver(placeLevelUp).observe(lvlBar);
 function placeCards() {
+  placeLevelUp();
   const tg = document.querySelector("#main .top-grid");
   if (!tg || phoneCards.includes(null) || phoneQ.matches === phoneLayout) return;
   phoneLayout = phoneQ.matches;
