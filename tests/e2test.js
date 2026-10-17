@@ -145,8 +145,9 @@ const nextUp = p => p.evaluate(() => { const card = [...document.querySelectorAl
   Object.entries(PHRASES).forEach(([id, ps]) => [].concat(ps).forEach(x => { if (SRC.includes(x)) oldGone.push(id + ': ' + x); }));
   ok('claims lint: no dropped or replaced wording left (claims.json edits + V1 phrases)', !oldGone.length, oldGone);
   ok('claims lint: every rewrite\'s newText is in the page (C20 / C21 / C28 checked separately)', !newIn.length, newIn);
-  { const t = CLAIMS.find(c => c.id === 'C20').newText; /* esbuild prints the top-level const as var */
-    ok('C20: stat tiers are exactly V1\'s', SRC.includes(t) || SRC.includes(t.replace(/^const /, 'var '))); }
+  { const t = CLAIMS.find(c => c.id === 'C20').newText; /* the build prints the top-level const as var and minifies the page script (0.5 P20) */
+    const min = require('esbuild').transformSync('x=' + t.replace(/^const STAT_TIERS = /, '').replace(/;$/, ''), { minifySyntax: true, minifyWhitespace: true }).code.replace(/^x=/, '').replace(/;\s*$/, '');
+    ok('C20: stat tiers are exactly V1\'s', SRC.includes(t) || SRC.includes(t.replace(/^const /, 'var ')) || SRC.includes('STAT_TIERS=' + min)); }
   ok('C21: macro step without "Quick Use 2", with the short-delay wording', SRC.includes('Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.'));
   /* 8. Build data */
   const bd = await p.evaluate(() => ({ plan: STIGMA_PLAN, extra: SP_SKILLS.filter(s => s.extra).map(s => s.n), vz: DV_NODES().filter(n => n.board === 'Vaizel').map(n => n.k + '=' + n.t), tr: DV_NODES().filter(n => n.board === 'Triniel').map(n => n.k + '=' + n.t), flat: SP_STEPS.filter(x => x.s.n === 'Defense Break').map(x => x.req), msExtra: GATES.some(g => g.items.some(it => /^sp:(Assault Stance|Impact Hit|Flash Slice|Storm Rampage|Defense Break|Determination|Heightened Sixth Sense):/.test(it.k || ''))) }));
