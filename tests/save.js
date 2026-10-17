@@ -18,7 +18,8 @@
         removing a non-current and then the current character drops the right slot, leaves the rest byte-identical,
         and a reload shows the expected current
     13. phone folds (0.5 P6): opening a fold at 390 px adds only its fold_<id> to the save, a reload keeps it; at 1500 px
-        fold_* keys change nothing */
+        fold_* keys change nothing
+    14. the "Bind X" row (0.5 P15): its tick box's name; ticking adds exactly checks["bind:<kib id>"] and its stamp */
 const { chromium } = require('playwright'); const fs = require('fs'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -360,6 +361,26 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     await writeRaw(p, raw0); await p.reload(); await p.waitForTimeout(400);
     ok('folds: at 1500 px a save with fold_* keys renders as one without (no fold, same markup)', withKeys === await p.evaluate(() => document.querySelector('.layout').innerHTML) && !withKeys.includes('areasFold') && !withKeys.includes('progFold'));
     ok('folds: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 14. the "Bind X" row (0.5 P15): Lv 11 on "Crash Site Rendezvous" (its turn-in 49 m from Galorik's Inspection Area, not
+     bound); the tick box is named by the row's text; ticking it adds exactly checks["bind:<kib id>"] and its change
+     stamp (and savedAt), nothing else; the row is then gone */
+  {
+    const { ctx, p, errs } = await page(), K = 'bind:kib:galoriks-inspection-area';
+    await writeSave(p, { checks: {}, level: 11, quest: 'Crash Site Rendezvous', open: {}, mode: 'advanced' }, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const row = await p.evaluate(() => { const i = document.querySelector('#nowStar .ns-bind input[type=checkbox]'); return i && { key: i.dataset.nsbind, name: i.closest('label').textContent.replace(/\s+/g, ' ').trim() }; });
+    ok('bind row: shown, its tick box named by its text', !!row && row.key === K && /^Bind Galorik's Inspection Area on the way ?49 m from Ulgorn$/.test(row.name), row);
+    const raw0 = await readRaw(p);
+    await p.click('#nowStar .ns-bind input'); await p.waitForTimeout(250);
+    const s0 = JSON.parse(raw0), s1 = JSON.parse(await readRaw(p)), C = s1.current, paths = diffPaths(s0, s1);
+    const stampOf = o => JSON.stringify(o).includes(K);
+    ok('bind row: ticking adds exactly checks["bind:kib:galoriks-inspection-area"] = true and its stamp (and savedAt)', s1.chars[C].checks[K] === true
+      && paths.every(x => x.startsWith('.savedAt:') || x.startsWith(`.chars.${C}.checks.${K}:`) || (x.startsWith(`.chars.${C}.mt.`) && x.includes(K)))
+      && paths.some(x => x.startsWith(`.chars.${C}.mt.`)) && !stampOf(s0.chars[C].mt || {}) && stampOf(s1.chars[C].mt), paths);
+    console.log('     save diff: ' + paths.join(' · '));
+    ok('bind row: gone once ticked, Kibelisk bound (no other row)', !(await p.$('#nowStar .ns-bind')));
+    ok('bind row: no page errors', !errs.length, errs);
     await ctx.close();
   }
   await b.close();
