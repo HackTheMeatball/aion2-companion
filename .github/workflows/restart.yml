@@ -42,7 +42,8 @@ jobs:
             const { owner, repo } = context.repo;
             const BAD = ['failure', 'cancelled', 'timed_out'];
             const recent = async (q) => (await github.rest.actions.listWorkflowRuns({ owner, repo, status: 'completed', per_page: 30, ...q })).data.workflow_runs
-              .filter((r) => r.run_attempt === 1 && BAD.includes(r.conclusion) && Date.now() - Date.parse(r.updated_at) < 90 * 60e3);
+              // Not "cancelled": a Kickoff pick job dropped while pending (concurrency) ends that way and needs no re-run.
+              .filter((r) => r.run_attempt === 1 && ['failure', 'timed_out'].includes(r.conclusion) && Date.now() - Date.parse(r.updated_at) < 90 * 60e3);
             const runs = context.eventName === 'schedule'
               ? [...await recent({ workflow_id: 'kickoff.yml' }), ...await recent({ workflow_id: 'ci.yml', branch: 'main' })]
               : [context.payload.workflow_run];
@@ -50,6 +51,7 @@ jobs:
               const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: wr.id, per_page: 100 });
               const dead = jobs.filter((j) => BAD.includes(j.conclusion)).map((j) => j.name);
               if (!dead.length) { core.info(`${wr.name} run ${wr.id}: no failed job to re-run`); continue; }
-              await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id });
+              try { await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id }); }
+              catch (e) { core.warning(`${wr.name} run ${wr.id}: re-run failed: ${e.message}`); continue; }
               core.notice(`re-running ${dead.join(', ')} of ${wr.name} run ${wr.html_url} (attempt 2 of 2)`);
             }
