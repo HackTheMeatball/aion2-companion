@@ -156,6 +156,20 @@ jobs:
             core.info(`in flight: ${openPrs} open claude/ PRs + ${started} started lines`);
             const picked = [];
             const stamp = new Date().toISOString().slice(0, 16) + 'Z';
+            // A [next] line can be an item that is already built or building: on 2026-10-17 the planner's rewrite of #114
+            // put #202 back to [next] after kickoff had started it, and the next kickoff built it a second time. Skip an
+            // issue that has any PR from a claude/issue-N- branch, or a kickoff start comment in the last 9 h with no
+            // Blocked / Needs-Opus / no-PR comment after it.
+            let allPrRefs = null;
+            const alreadyBuilt = async (n) => {
+              if (!allPrRefs) allPrRefs = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'all', base: 'main', per_page: 100 })).map((p) => p.head.ref);
+              if (allPrRefs.some((r) => r.startsWith(`claude/issue-${n}-`))) return 'it already has a PR';
+              const cs = (await github.rest.issues.listComments({ owner, repo, issue_number: n, since: new Date(Date.now() - 9 * 3600e3).toISOString(), per_page: 100 })).data;
+              const start = cs.map((c) => c.body || '').findLastIndex((b) => b.startsWith('Kickoff: started a build'));
+              if (start < 0) return '';
+              const ended = cs.slice(start + 1).some((c) => /^(Blocked:|Needs @claude|Kickoff: the build ended with no PR)/.test(c.body || ''));
+              return ended ? '' : 'a kickoff build started in the last 9 h and has not ended';
+            };
             for (let i = 0; i < lines.length && inflight < MAX; i++) {
               const m = lines[i].match(/^- \[next\] #(\d+) (sonnet|opus)((?: lanes:[^\s]+| alone)*)\s*$/);
               if (!m) continue;
@@ -169,6 +183,8 @@ jobs:
               const n = Number(m[1]);
               const iss = (await github.rest.issues.get({ owner, repo, issue_number: n })).data;
               if (iss.state !== 'open' || iss.pull_request) { core.warning(`#${n} is not an open issue; skipped`); continue; }
+              const why = await alreadyBuilt(n);
+              if (why) { core.warning(`#${n} not started again: ${why}`); lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`; pruned = true; continue; }
               picked.push({ issue: n, model: m[2] === 'opus' ? 'claude-opus-5-5' : 'claude-sonnet-5-5', title: iss.title });
               lines[i] = `- [started ${stamp}] #${n} ${m[2]}${m[3]}`;
               for (const x of want) busy.add(x);
@@ -209,18 +225,38 @@ jobs:
       id-token: write
       actions: read
     steps:
+      # A Restart re-run, or a duplicate pick, must not rebuild finished work (2026-10-17: #202 was built twice).
+      - name: Skip if the issue is closed or another build already opened its PR
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ matrix.item.issue }}
+          BRANCH: claude/issue-${{ matrix.item.issue }}-${{ github.run_id }}
+        run: |
+          state=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE" --jq .state)
+          other=$(gh api --paginate "repos/$GITHUB_REPOSITORY/pulls?state=all&per_page=100" \
+            --jq ".[] | select(.head.ref | startswith(\"claude/issue-$ISSUE-\")) | select(.head.ref != \"$BRANCH\") | .number" | head -1)
+          if [ "$state" = closed ] || [ -n "$other" ]; then
+            echo "::notice::#$ISSUE skipped: issue $state, other PR ${other:-none}"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/checkout@v7
+        if: steps.gate.outputs.skip != 'true'
         with:
           fetch-depth: 1
           # Not persisted: the action pushes as the Claude GitHub App, so its pushes and PR trigger CI (see claude.yml).
           persist-credentials: false
       - uses: actions/setup-node@v7
+        if: steps.gate.outputs.skip != 'true'
         with:
           node-version: 22
           cache: npm
-      - run: npm ci && npx playwright install --with-deps chromium
-      - run: echo "BUILD_START=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+      - if: steps.gate.outputs.skip != 'true'
+        run: npm ci && npx playwright install --with-deps chromium
+      - if: steps.gate.outputs.skip != 'true'
+        run: echo "BUILD_START=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
       - uses: anthropics/claude-code-action@v1
+        if: steps.gate.outputs.skip != 'true'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # A merge's CI on main is dispatched by auto-merge (github-actions), not a person.
@@ -242,6 +278,7 @@ jobs:
       # 2 permission denials, no push, no comment). Fail the job so restart.yml re-runs it once, and print the denials
       # (the action hides the transcript) so the cause is in the log.
       - name: Check the build left a PR or a reason
+        if: steps.gate.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE: ${{ matrix.item.issue }}
