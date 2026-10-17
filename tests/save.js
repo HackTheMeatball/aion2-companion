@@ -16,7 +16,9 @@
         that slot's name changed in the stored save
     12. remove (0.5 P19): one character offers no Remove; the confirmation names the character, Escape and Keep it cancel;
         removing a non-current and then the current character drops the right slot, leaves the rest byte-identical,
-        and a reload shows the expected current */
+        and a reload shows the expected current
+    13. phone folds (0.5 P6): opening a fold at 390 px adds only its fold_<id> to the save, a reload keeps it; at 1500 px
+        fold_* keys change nothing */
 const { chromium } = require('playwright'); const fs = require('fs'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -334,6 +336,30 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('remove: back to one character, no Remove offered', (await rowsOf(p)).length === 1 && !(await p.$('#charRows [data-remove]')));
     ok('remove: only the v5 key exists', JSON.stringify(await keys(p)) === JSON.stringify([SAVE_KEY]), await keys(p));
     ok('remove: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 13. phone folds (0.5 P6): a fresh browser at 390 px writes no fold key; opening one adds only its fold_<id> (a view
+     setting: savedAt unchanged), which a reload keeps; at 1500 px the save with fold keys renders as one without */
+  {
+    const { ctx, p, errs } = await page();
+    await p.setViewportSize({ width: 390, height: 850 }); await clearSave(p); await p.reload(); await p.waitForTimeout(400);
+    await p.click('#lvlUp'); await p.waitForTimeout(150);
+    await p.reload(); await p.waitForTimeout(400); /* a stored save to compare against (the first load writes the open milestone) */
+    const raw0 = await readRaw(p), s0 = JSON.parse(raw0);
+    ok('folds: a fresh save has no fold_* key, Dungeons & Strongholds folded', !Object.keys(s0).some(k => k.startsWith('fold_')) && await p.evaluate(() => !document.getElementById('areasFold').open));
+    await p.click('#areasFold > summary'); await p.waitForTimeout(200);
+    const raw1 = await readRaw(p), want = { ...s0, fold_areasFold: true };
+    ok('folds: opening one stores only fold_areasFold: true', isDeepStrictEqual(JSON.parse(raw1), want), diffPaths(want, JSON.parse(raw1)));
+    await p.reload(); await p.waitForTimeout(400);
+    ok('folds: after a reload it is still open and the save byte-identical', await p.evaluate(() => document.getElementById('areasFold').open) && await readRaw(p) === raw1);
+    await p.click('#areasFold > summary'); await p.waitForTimeout(200);
+    ok('folds: closing it stores fold_areasFold: false, nothing else', isDeepStrictEqual(JSON.parse(await readRaw(p)), { ...s0, fold_areasFold: false }));
+    await writeRaw(p, JSON.stringify({ ...JSON.parse(raw1), fold_progFold: true }));
+    await p.setViewportSize({ width: 1500, height: 1000 }); await p.reload(); await p.waitForTimeout(400);
+    const withKeys = await p.evaluate(() => document.querySelector('.layout').innerHTML);
+    await writeRaw(p, raw0); await p.reload(); await p.waitForTimeout(400);
+    ok('folds: at 1500 px a save with fold_* keys renders as one without (no fold, same markup)', withKeys === await p.evaluate(() => document.querySelector('.layout').innerHTML) && !withKeys.includes('areasFold') && !withKeys.includes('progFold'));
+    ok('folds: no page errors', !errs.length, errs);
     await ctx.close();
   }
   await b.close();

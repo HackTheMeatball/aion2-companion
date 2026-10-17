@@ -147,6 +147,29 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('1100px: Level up in Journey still works after the round trip', await p.evaluate(() => char(state).level === 21));
   await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
   ok('back at 390px: in the bar again, handler works', await (async () => { const inBar = await p.evaluate(() => !!document.getElementById('lvlUpBig').closest('#lvlBar')); await p.click('#lvlUpBig'); await p.waitForTimeout(300); return inBar && await p.evaluate(() => char(state).level === 22); })());
+  /* 12c. Phone folds (0.5 P6, phone-layout 3.6): at <= 600 px Dungeons & Strongholds folds in both modes and Progress in
+     Basic, folded by default, each a 48 px summary row; Journey stays open; a Progress row's jump opens the fold; above
+     600 px the cards are as a fresh load has them, saved fold_* keys or not. */
+  const folds = () => p.evaluate(() => Object.fromEntries(['areasFold', 'progFold'].map(id => { const d = document.getElementById(id); return [id, d && { open: d.open, h: d.querySelector(':scope > summary').getBoundingClientRect().height }]; })));
+  await p.setViewportSize({ width: 390, height: 850 }); await setState(p, clean(20, 'Symbol of Liberation', 'basic'));
+  let fd = await folds();
+  ok('390px Basic: Dungeons & Strongholds and Progress folded, summary rows 48 px', fd.areasFold && !fd.areasFold.open && fd.areasFold.h === 48 && fd.progFold && !fd.progFold.open && fd.progFold.h === 48, fd);
+  ok('390px Basic: Journey not folded, its Level − / + and slider visible', await p.evaluate(() => !document.querySelector('section.where details') && ['lvlDown', 'lvlUp', 'lvlNum'].every(id => document.getElementById(id).checkVisibility())));
+  ok('390px Basic: the folded bodies are not shown, the Map link is', await p.evaluate(() => !document.getElementById('progRows').checkVisibility() && !document.getElementById('areaList').checkVisibility() && document.getElementById('areaMapLink').checkVisibility()));
+  await p.click('.modeseg [data-mode="advanced"]'); await p.waitForTimeout(200);
+  fd = await folds();
+  ok('390px Advanced: Progress open (no fold), Dungeons & Strongholds still folded', !fd.progFold && fd.areasFold && !fd.areasFold.open && await p.evaluate(() => document.getElementById('progRows').checkVisibility()), fd);
+  await p.click('#progRows [data-prog="sd"]'); await p.waitForTimeout(300);
+  ok('390px: a Progress row jump opens the Dungeons & Strongholds fold', (await folds()).areasFold.open && await p.evaluate(() => document.getElementById('areaList').checkVisibility() && state.fold_areasFold === true));
+  /* the two cards' markup (the rest of the page keeps resize traces, e.g. the Daevanion card's data-fs, which 12 covers) */
+  const foldCards = () => p.evaluate(() => document.getElementById('areas').outerHTML + document.getElementById('progRows').closest('.card').outerHTML);
+  await p.setViewportSize({ width: 1100, height: 900 }); await p.waitForTimeout(400);
+  const wideFolded = await foldCards();
+  await p.reload(); await p.waitForTimeout(400);
+  const wideLoad = await foldCards(), at = [...wideLoad].findIndex((c, i) => c !== wideFolded[i]);
+  ok('crossing 600 px up (save has fold_areasFold): no folds, the markup of both cards as a fresh load at 1100', wideFolded === wideLoad && !(await p.$('#areasFold, #progFold')), at < 0 ? undefined : [wideFolded.slice(at - 150, at + 150), wideLoad.slice(at - 150, at + 150)]);
+  await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
+  ok('crossing 600 px down: the saved open fold opens again', (await folds()).areasFold.open);
   /* 13. Drawer focus */
   await p.setViewportSize({ width: 1500, height: 1000 }); await p.reload(); await p.waitForTimeout(300);
   await p.click('#sdTab'); await p.waitForTimeout(100);
