@@ -170,6 +170,8 @@ aside.rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: va
 aside.rail::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 aside.rail::-webkit-scrollbar-track { background: transparent; }
 @media (max-width: 860px) { aside.rail { max-height: none; overflow: visible; } }
+/* Phones: #main (Next up, Journey, Progress, the top row, Milestones) comes before the rail (Dungeons & Strongholds, The map); main.js placeCards moves the cards. The Basic nth-child(n+4) rule below no longer finds The map there. */
+@media (max-width: 860px) { .layout > main { order: -1; } body.basic aside.rail > section.notes { display: none !important; } }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-16); }
 .card h2, :is(h2, div).sec { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 var(--space-12); font-weight: 600; }
 :is(h2, div).sec { margin: var(--space-10) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-10); }
