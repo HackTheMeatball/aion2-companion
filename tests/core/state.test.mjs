@@ -64,11 +64,11 @@ export default (test, M) => {
     assert.deepEqual(M.parseExport(v5), JSON.parse(v5));
     for (const raw of [JSON.stringify({ checks: { 'g6:0': true }, level: 20 }), '{}', 'not json', '', JSON.stringify({ v: 5, chars: {} })]) assert.equal(M.parseExport(raw), null, raw);
   });
-  test('CHAR_FIELDS: the character fields, none of them a view setting; CHAR_META the identity', () => {
+  test('charFields(): the character fields, none of them a view setting; CHAR_META the identity', () => {
     for (const f of ['checks', 'level', 'quest', 'storyEnd', 'qsteps', 'qsub', 'started', 'areaRun', 'rqSnooze', 'stLv', 'stShards', 'stPick', 'stones', 'pendSt', 'pendCr', 'dvTotal', 'dvCost', 'dvAdj', 'mt'])
-      assert.ok(M.CHAR_FIELDS.includes(f), f);
+      assert.ok(M.charFields().includes(f), f);
     for (const f of ['mode', 'open', 'hide', 'hideCards', 'hideOpt', 'areaLv', 'showObj', 'showTalk', 'backup', 'v', 'current', 'chars', 'savedAt'])
-      assert.ok(!M.CHAR_FIELDS.includes(f), f);
+      assert.ok(!M.charFields().includes(f), f);
     assert.deepEqual(M.CHAR_META, ['id', 'pack', 'class', 'name', 'created']);
   });
 };

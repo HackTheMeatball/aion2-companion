@@ -18,7 +18,7 @@ export default (test, M) => {
       assert.equal(JSON.stringify(f), before, 'toStored must not change its input');
       assert.ok(hadSave); assert.equal(st.v, 5); assert.deepEqual(Object.keys(st.chars), [S.TEST_SLOT]); assert.equal(st.current, S.TEST_SLOT);
       assert.deepEqual({ ...M.char(state), checks: undefined, level: undefined, quest: undefined, mt: undefined }, { ...M.char(state), id: S.TEST_SLOT, pack: M.PACK, class: M.CLASS, name: '', created: 0, checks: undefined, level: undefined, quest: undefined, mt: undefined });
-      for (const k of Object.keys(st)) assert.ok(['v', 'current', 'chars'].includes(k) || !M.CHAR_FIELDS.includes(k), k + ' is a character field at the top level');
+      for (const k of Object.keys(st)) assert.ok(['v', 'current', 'chars'].includes(k) || !M.charFields().includes(k), k + ' is a character field at the top level');
     }
   });
   test('save helper: the retired one-time flags of pre-0.4 saves are left out', () => {

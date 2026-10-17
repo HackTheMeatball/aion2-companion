@@ -5,11 +5,13 @@
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
      src/styles/*.css          the styles: fonts.css (the @font-face rules), app.css and brand.css; inlined verbatim
      src/main.js               the app script (ES module entry)
-     src/data/*.js             the hand-written data tables (and the text helpers they use), imported by main.js
-     src/core/*.js             the pure core (0.2 P3): state, migrations, catalog, requirements, Next up ranking; no DOM
+     src/core/*.js             the engine (0.2 P3, 0.4 P2b): state, migrations, the pack holder, evaluator, requirements,
+                               Next up ranking; no DOM, no game term (it reaches the game through the pack object)
      src/shell/*.js            the browser side of core interfaces (0.4 P3b): storage-web.js, the localStorage adapter
-     src/data/generated.js     not a file: the build makes this module from data/** (data format v2) with
-                               tools/gen/gen.mjs, in memory, on every build
+     src/packs/aion2/          the AION 2 pack (0.4 P2b): pack.js (the pack object), rules, requirements, catalog, …
+     src/packs/aion2/data/*.js the hand-written data tables (and the text helpers they use)
+     src/packs/aion2/data/generated.js   not a file: the build makes this module (and gate-graph.js, gate-proposed.js)
+                               from data/** (data format v2) with tools/gen/gen.mjs, in memory, on every build
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
@@ -72,10 +74,12 @@ const bundleOne = async entry => {
 };
 /* one global namespace until P3: esbuild would silently rename one of two same-named top-level declarations in different
    modules, breaking the globals the page, site.js and the tests use. Checks every declaration that starts a line
-   (the first name of a multi-name declaration). */
+   (the first name of a multi-name declaration) in every .js file under src/ the page bundle can include (main.js,
+   core, cards, shell, packs/**; 0.4 P2b), so a name moved into a pack stays unique. */
 {
   const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map(generatedNames().map(n => [n, 'the generated data module']));
-  for (const f of ['src/main.js', ...['data', 'core'].flatMap(d => readdirSync(P('src', d)).filter(n => n.endsWith('.js')).map(n => `src/${d}/${n}`))])
+  const NOT_PAGE = new Set(['src/site.js', 'src/sw.js']);
+  for (const f of walk(P('src')).map(f => relative(ROOT, f).split('\\').join('/')).filter(f => f.endsWith('.js') && !NOT_PAGE.has(f) && !f.startsWith('src/assets/')).sort())
     for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
       if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);
       seen.set(m[1], f);

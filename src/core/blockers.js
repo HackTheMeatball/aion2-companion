@@ -1,7 +1,7 @@
 /* Blocker-chain text (0.3 E6, pure: no DOM; docs/design/0.3-requirement-engine.md §4). One line from an evaluator
    result (Ev.node / Ev.byKey): its first blocker, followed down to the root, naming at most one `done` hop. Every card
-   that says why something isn't open yet uses this (Later cards, milestone chips and the "Turn in / Reach" line,
-   regional rows, the Daevanion card), so the words agree everywhere:
+   that says why something isn't open yet uses this (Later cards, milestone chips and the "Turn in / Reach" line, the
+   pack's rows and cards), so the words agree everywhere:
      story leaf  unlocks after "X" · N quests ahead   (turnedIn; N = 0: "your current quest — turn it in")
                  opens on "X" · N quests ahead        (reached)
                  … · set your quest                   (story unset)
@@ -9,26 +9,19 @@
      done hop    after "Y" is turned in               (Y open, not done yet)
                  after "Y" (unlocks after "X" · …)    (Y itself blocked: Y plus the root, never deeper)
    N counts the quests from your current one to X (a turnedIn leaf's `ahead` also counts X's own turn-in, design §3).
-   An unlock node (unlock:daevanion) is no thing the player knows by name: its hop is skipped and its root shown. */
-import { RQ_K, itemByK } from "./catalog.js";
-import { GATES } from "../data/milestones.js";
+   What a `done` hop is called is the pack's (hook hopName: a name and a verb, or null to skip the hop and show its root);
+   a pack without one names a hop by its row's bold text, "is done". */
+import { itemByK } from "./catalog.js";
+import { activePack } from "./pack.js";
 
 const pl = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
 const plain = s => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-/* An Ascension node has no save key: it is named by the guide step that completes it (g22:0 → asc:hears-the-voice). */
-let ASC_STEP = null;
-const ascStep = id => { if (!ASC_STEP) { ASC_STEP = {}; GATES.forEach(g => g.items.forEach(it => { if (it.ascensionQuest && !ASC_STEP[it.ascensionQuest]) ASC_STEP[it.ascensionQuest] = it; })); } return ASC_STEP[id]; };
-const stepName = it => { const t = plain(it.ns || ((it.t || "").match(/<b>(.*?)<\/b>/) || [, it.t || ""])[1]).replace(/[\s:.]+$/, "");
+/* A row's name: its own short name (ns), else its first bold phrase; `Complete "X"` gives X. */
+export const stepName = it => { const t = plain(it.ns || ((it.t || "").match(/<b>(.*?)<\/b>/) || [, it.t || ""])[1]).replace(/[\s:.]+$/, "");
   const m = t.match(/^Complete "(.+)"$/); return m ? m[1] : t; };
-/* What a `done` hop is called, and whether it is turned in (a quest) or done (a step): { name, verb } or null (skip it). */
-export const hopName = r => {
-  if (r.kind === "unlock") return null;
-  if (r.kind === "rq") { const it = RQ_K(r.key); return { name: it ? it.name : r.id, verb: "is turned in" }; }
-  if (r.kind === "ascension") { const it = ascStep(r.id); return { name: it ? stepName(it) : r.id, verb: "is turned in" }; }
-  const it = r.key !== undefined ? itemByK(r.key) : null;
-  if (it && it.ascensionQuest) return { name: stepName(it), verb: "is turned in" };
-  return { name: it ? stepName(it) : r.id, verb: "is done" };
-};
+/* The default hop name: the row with the node's save key, "is done". */
+const rowHopName = r => { const it = r.key !== undefined ? itemByK(r.key) : null; return { name: it ? stepName(it) : r.id, verb: "is done" }; };
+const hopNameOf = r => { const h = activePack().hopName; return h ? h(r) : rowHopName(r); };
 
 /* Quests from your current quest to X (null with the story unset). */
 export const questsAhead = b => b.ahead == null ? null : b.turnIn ? b.ahead - 1 : b.ahead;
@@ -50,7 +43,7 @@ export function blockerChain(r, ev, { omit = [] } = {}) {
   let b = bs[0], hop = null;
   /* through unnamed hops (unlock nodes) to the first named one or a leaf */
   while (b.kind === "done") {
-    const y = ev.node(b.of), h = hopName(y);
+    const y = ev.node(b.of), h = hopNameOf(y);
     if (h) { hop = { id: b.of, ...h }; break; }
     if (!b.chain.length) return null;   /* an open, undone unlock: nothing the player can act on (never in the data) */
     b = b.chain[0];

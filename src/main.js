@@ -3,14 +3,16 @@
    writes it back, and turns the core's answers into the page. scripts/build.mjs bundles it with esbuild into one classic
    <script> inlined in the page, so its top-level names stay page globals (tests and the site-only script read them).
    Character data (level, story, ticks, build) is always read and written through char(state) (src/core/state.js). */
-import { CONF, RQ, SD_RW, SH_DATA, SOURCES, SRC_SITE, STORY_END } from "./data/generated.js";
-import { ITEMS } from "./data/items.js";
-import { DV_TYPE, DV_TYPE_ICONS, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, SP_SKILLS, SP_STEPS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
-import { T, metaSlug, seq } from "./data/markup.js";
-import { TIPS } from "./data/tips.js";
-import { GATES, STEPS } from "./data/milestones.js";
-import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./data/story.js";
-import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
+import { CONF, RQ, SD_RW, SH_DATA, SOURCES, SRC_SITE, STORY_END } from "./packs/aion2/data/generated.js";
+import { ITEMS } from "./packs/aion2/data/items.js";
+import { DV_TYPE, DV_TYPE_ICONS, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, SP_SKILLS, SP_STEPS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./packs/aion2/data/build.js";
+import { T, metaSlug, seq } from "./packs/aion2/data/markup.js";
+import { TIPS } from "./packs/aion2/data/tips.js";
+import { GATES, STEPS } from "./packs/aion2/data/milestones.js";
+import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./packs/aion2/data/story.js";
+import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./packs/aion2/data/areas.js";
+import { usePack } from "./core/pack.js";
+import { aion2Pack } from "./packs/aion2/pack.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
@@ -19,12 +21,16 @@ import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
-import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
-  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
-  setGateChanges, gatesPass, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv, chainsOn, rqReqOf, stepChipOf, storyLineOf } from "./core/requirements.js";
+import { itemByK } from "./core/catalog.js";
+import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt } from "./packs/aion2/catalog.js";
+import { checkableOf, countsOf, derivedOf, doneOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, openOf, qProgOf, questIdx, sideOpenOf,
+  setGateChanges, gatesPass, storyGate, storyIdx, turnInNeedsLv, chainsOn, stepChipOf, storyLineOf } from "./core/requirements.js";
+import { areaLater, areaOpen, clearDoneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, objSubs, rqStatus, rotKeys, shardsFromLv, planReachOf, skillBuy, skillLvOf,
+  skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen, stigmaPlan, stigmaSlots, rqReqOf } from "./packs/aion2/requirements.js";
 import { rankNext } from "./core/nextup.js";
-import { ascensionOf } from "./core/ascension.js";
+import { ascensionOf } from "./packs/aion2/ascension.js";
+/* the engine reaches AION 2 through this one pack object; set before anything asks the engine (the save is loaded below) */
+usePack(aion2Pack);
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
 const stNames = () => slotNames(char(state));
