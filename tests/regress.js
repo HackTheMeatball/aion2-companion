@@ -221,6 +221,36 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
     await ctx.close();
   }
 
+  /* ---------- Basic rail height is the same on every load (0.5 P1, #105 / #193) ----------
+     With web fonts allowed (the suite blocks them; unrouteAll drops the blocker's routes for this context): fonts land
+     after the first fit, and the milestone icons used to be sized to the measured text (which their own width rewraps),
+     so two loads gave different rail and milestone list heights. Lv 30 shows both: two icon rows, one of them bistable. */
+  {
+    const H = w => w === 390 ? 844 : 1000;
+    const load = async (width, resize) => {
+      const ctx = await b.newContext({ viewport: { width, height: H(width) } }); await ctx.unrouteAll();
+      const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+      await p.goto(CUR); await writeFixture(p, { L: 30, mode: 'basic', fx: 'clean' }); await p.reload();
+      const read = async () => { await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(900);
+        return p.evaluate(() => ({ rail: document.querySelector('aside.rail').getBoundingClientRect().height, list: document.getElementById('gates').getBoundingClientRect().height,
+          fonts: [...document.fonts].filter(f => f.status === 'loaded').length, ico: [...document.querySelectorAll('#gates .has-ico .icos img')].filter(i => i.offsetParent).map(i => i.getBoundingClientRect().height) })); };
+      const m = await read();
+      if (resize) { await p.setViewportSize({ width: width === 390 ? 1100 : 390, height: H(width) }); await p.waitForTimeout(300); await p.setViewportSize({ width, height: H(width) }); m.after = (await read()).rail; }
+      await ctx.close(); return { ...m, errs };
+    };
+    const c = { level: 30, mode: 'basic', width: 1100, fixture: 'clean, web fonts' };
+    const runs = []; for (let i = 0; i < 6; i++) runs.push(await load(1100, false));
+    const rails = [...new Set(runs.map(r => r.rail))], lists = [...new Set(runs.map(r => r.list))];
+    rec(c, 'Basic rail: web fonts load in this check', runs.every(r => r.fonts > 0), runs.map(r => r.fonts));
+    rec(c, 'Basic rail: 6 loads at 1100 px give one rail height and one milestone list height', rails.length === 1 && lists.length === 1 && runs[0].ico.length > 0, { rails, lists, ico: runs.map(r => r.ico.join('/')) });
+    for (const width of WIDTHS) {
+      const r = await load(width, true);
+      rec({ ...c, width }, 'Basic rail: height after load equals height after a resize back and forth', r.rail === r.after, { load: r.rail, after: r.after });
+      runs.push(r);
+    }
+    rec(c, 'Basic rail check: no page errors', runs.every(r => !r.errs.length), runs.flatMap(r => r.errs));
+  }
+
   /* ---------- review screenshots ---------- */
   if (!NOSHOTS) {
     for (const width of [1500, 390]) {

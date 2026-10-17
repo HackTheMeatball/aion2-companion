@@ -60,22 +60,6 @@ const cardHTML = (s, num, cls) => `
     </ul>
   </details>`;
 
-/* Size each item icon to the height of the text beside it. Re-runs when a card opens or text rewraps. */
-const iconSizer = typeof ResizeObserver === "function" ? new ResizeObserver(entries => {
-  entries.forEach(e => {
-    const row = e.target.closest(".has-ico"); if (!row) return;
-    /* Capped so a wide icon can't narrow the text, rewrap it taller, and grow the icon again. */
-    const h = Math.min(56, Math.round(e.target.getBoundingClientRect().height));
-    if (!h) return;
-    row.querySelectorAll(".icos img").forEach(img => { img.style.height = h + "px"; img.style.width = h + "px"; });
-  });
-}) : null;
-function watchIcons() {
-  if (!iconSizer) return;
-  iconSizer.disconnect();
-  mainEl.querySelectorAll(".has-ico .txt, .has-ico .sub-txt").forEach(el => iconSizer.observe(el));
-}
-
 /* Milestone ticks: the line turns green, then (if "Cleared tasks" hides it) fades and slides out; a milestone
    that just got cleared does the same when "Cleared milestones" is on. tickKeep holds them visible meanwhile. */
 let tickKeep = new Set();
@@ -202,7 +186,6 @@ function renderMilestones() {
   mainEl.querySelectorAll("details.step").forEach(d => {
     d.addEventListener("toggle", () => { state.open[d.id] = d.open; save(); });
   });
-  watchIcons();
 }
 /* the handlers (from render(), once) */
 function milestonesMount() {

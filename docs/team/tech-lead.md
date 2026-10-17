@@ -29,9 +29,9 @@ through esbuild; the output is not minified.
   rename one of them silently (since P2 the build fails on that, for every declaration that starts a line).
 - **Static text checks read the built page**, which esbuild reprints: match code by value, not by its source spelling
   (`const` vs `var`, quotes, comments). e2 and e4 #11 were adapted that way in P1.
-- **Comparing old and new renders:** the page is not deterministic run to run on its own: the icon sizer
-  (`iconSizer`, a ResizeObserver) can settle on 47 or 56 px depending on image decode timing, and layout fitting
-  depends on when fonts load. For screenshot comparisons install Playwright's fake clock, block web fonts
+- **Comparing old and new renders:** the page is not deterministic run to run on its own: card sizing
+  depends on when images decode and fonts load (since 0.5 P1 the milestone icons are a fixed `2lh` and the rail and
+  hero rows refit when fonts settle, but timing still moves frames in between). For screenshot comparisons install Playwright's fake clock, block web fonts
   (`node --require ./tests/support/block-web-fonts.cjs`), make lazy images eager and wait until every image is complete;
   compare DOM (scripts removed), computed styles (sorted per element: Chrome lists custom properties in varying order),
   stored state, then pixels, and run the same harness old-vs-old to know the noise floor.
