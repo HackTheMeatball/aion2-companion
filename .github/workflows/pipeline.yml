@@ -68,6 +68,10 @@ jobs:
             const { owner, repo } = context.repo;
             const ev = context.eventName, p = context.payload;
             const none = (why) => { core.info(`no step: ${why}`); core.setOutput('step', 'none'); };
+            // How a bot run works in this sandbox (health check, 2026-10-17 4:26 PM ET, #222): compound commands are denied,
+            // and the GitHub token dies 1 h after the run starts (P6 #198: 62 min, last push 401, run 39059180307).
+            const TOOLS = 'Tools: one plain command per Bash call (no `&&`, `;`, pipes, heredocs, `python3 -`, or scripts in /tmp: they are denied); create and edit files with Edit and Write.';
+            const CLOCK = 'Clock: the GitHub token expires 1 hour after this run starts. Push after every commit, so nothing is lost; aim to finish by minute 45. If a push fails with 401 or "Bad credentials", stop at once: the run is restarted with a fresh token and continues from the pushed branch.';
             let prNum, want, reason = '', reviewBody = null;
             if (ev === 'workflow_run') {
               const wr = p.workflow_run;
@@ -142,6 +146,7 @@ jobs:
                 'Re-record golden snapshots only if the golden suite fails because of the merge itself, and say in the commit which snapshots changed and why. Never skip, disable or weaken a test or check.',
                 'Run commands in the foreground. Run `npm test` once at the end and make sure it is green, then `git push origin HEAD:' + pr.head.ref + '`. Do not write the word VERDICT in any comment.',
                 'If the conflict needs a design or owner decision, do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
+                TOOLS, CLOCK,
               ].join('\n'));
             } else if (want === 'review') {
               const ok = (await github.rest.checks.listForRef({ owner, repo, ref: sha, check_name: 'ci-ok' })).data.check_runs
@@ -158,6 +163,7 @@ jobs:
                 'Check: correctness; the CLAUDE.md rules (verified data only with labels, the save rule, no weakened tests or checks, data in data/ not main.js, Sources card, licensing and "unofficial" text, both builds identical); missing tests for new behaviour.',
                 `Then post exactly one comment with \`gh pr comment ${prNum} --body-file <file>\`: first line "Review of ${sha.slice(0, 7)}", then at most 12 short lines of findings, blocking ones first and marked BLOCKING.`,
                 'The last line is `VERDICT: APPROVE` or `VERDICT: CHANGES`. Write the word VERDICT only on that last line. Use CHANGES only for blocking problems; list nits and still APPROVE.',
+                TOOLS,
               ].join('\n'));
             } else {
               let since = 0;
@@ -182,6 +188,7 @@ jobs:
                 'Run commands in the foreground only (a background command can end the run early). Commit and push after each finished step. While iterating use `node tests/run.mjs --only <suites>` after `npm run build`, batch slow golden or pixel runs, and run the full `npm test` once at the end: it must be green before the last push.',
                 `Commit with a clear message and push: \`git push origin HEAD:${pr.head.ref}\`. Then post one short comment with \`gh pr comment ${prNum}\` saying what you changed. Do not write the word VERDICT in it.`,
                 'If it cannot be fixed safely (unverifiable game data, an owner decision, an outside failure), do not push. Post one comment that starts with "Pipeline stuck:" and gives the reason in one or two lines.',
+                TOOLS, CLOCK,
               ].filter(Boolean).join('\n'));
             }
             core.setOutput('step', want);
@@ -259,6 +266,31 @@ jobs:
             --model ${{ needs.decide.outputs.model }}
             --max-turns 300
             --allowedTools "Bash(npm:*),Bash(node:*),Bash(git:*),Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr comment:*),Bash(gh run view:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(tail:*),Bash(grep:*),Bash(rg:*),Bash(wc:*),Bash(diff:*),Bash(sort:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*),Edit,Write,Read,Glob,Grep,WebFetch,WebSearch"
+      # A fix or merge run that ends "success" with no push and no reason did nothing (PR #242 fix round 2, run 39063206690:
+      # 7 permission denials, no push, no comment). Same check as kickoff's build: print the denials and fail, so
+      # restart.yml re-runs it once (the re-run reuses this round's marker).
+      - name: Check the run pushed or said why
+        if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step != 'review'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ needs.decide.outputs.pr }}
+          SHA: ${{ needs.decide.outputs.sha }}
+          STEP: ${{ needs.decide.outputs.step }}
+        run: |
+          out="$RUNNER_TEMP/claude-execution-output.json"
+          if [ -f "$out" ]; then
+            jq -r '[.[] | select(.type == "result")] | last | "turns=\(.num_turns) denials=\(.permission_denials_count)",
+              ((.permission_denials // [])[] | "denied: \(.tool_name) \(.tool_input | tostring | .[0:200])")' "$out" || true
+          fi
+          head=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR" --jq .head.sha)
+          started=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq .run_started_at)
+          said=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments?since=$started&per_page=100" \
+            --jq '[.[] | select(.user.login == "claude[bot]")] | length')
+          echo "step=$STEP head before=$SHA now=$head; claude[bot] comments since $started: $said"
+          if [ "$head" = "$SHA" ] && [ "$said" = 0 ]; then
+            echo "::error::The $STEP run on #$PR ended with no push and no reason"
+            exit 1
+          fi
       # Auto-merge also reacts to the review comment itself; this dispatch is a backstop in case that event is missed.
       - if: steps.recheck.outputs.go == 'true' && needs.decide.outputs.step == 'review'
         uses: actions/github-script@v7
