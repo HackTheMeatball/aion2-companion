@@ -11,7 +11,9 @@ import { TIPS } from "./packs/aion2/data/tips.js";
 import { GATES, STEPS } from "./packs/aion2/data/milestones.js";
 import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./packs/aion2/data/story.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./packs/aion2/data/areas.js";
-import { usePack } from "./core/pack.js";
+import { activePack, usePack } from "./core/pack.js";
+import { mountAll, registerCard, registeredCards, updateAll } from "./core/cards.js";
+import { sourcesCards } from "./cards/sources.js";
 import { aion2Pack } from "./packs/aion2/pack.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
@@ -31,6 +33,12 @@ import { rankNext } from "./core/nextup.js";
 import { ascensionOf } from "./packs/aion2/ascension.js";
 /* the engine reaches AION 2 through this one pack object; set before anything asks the engine (the save is loaded below) */
 usePack(aion2Pack);
+/* Cards through the registry (src/core/cards.js, 0.4 P4a): render() mounts them, update() updates them; the other cards
+   are still called by hand, in their old order. Confidence and Sources get the tables they draw from here (P5d moves
+   them into the pack). */
+sourcesCards({ CONF, SOURCES, SRC_SITE }).forEach(registerCard);
+/* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
+const cardCtx = () => { const c = char(state); return { state, c, pack: activePack(), basic: state.mode === "basic", get ev() { return gatesOf(c); } }; };
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
 const stNames = () => slotNames(char(state));
@@ -334,6 +342,7 @@ function render() {
     d.addEventListener("toggle", () => { state.open[d.id] = d.open; save(); });
   });
   watchIcons();
+  mountAll(Object.fromEntries(registeredCards().filter(x => x.root).map(x => [x.root, document.getElementById(x.root)])), cardCtx());
 }
 let tipSeq = 0; /* ids for the "i" popovers (aria-controls) */
 layoutEl.addEventListener("click", e => {
@@ -352,20 +361,6 @@ layoutEl.addEventListener("click", e => {
   li.after(box);
   btn.setAttribute("aria-expanded", "true"); btn.setAttribute("aria-controls", box.id);
 });
-/* Confidence and Sources, from CONF and SOURCES (generated from data/*.json). Links are plain links (Metabot asks for that). */
-function renderSources() {
-  const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-  document.getElementById("confBody").innerHTML = CONF.map(c => `<p><b>${c.g}</b> · ${c.sub}</p><ul class="conf">${c.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`).join("");
-  document.getElementById("srcBody").innerHTML = `<p class="fine src-intro">Every sourced value in the guide comes from one of these pages (${SOURCES.reduce((t, g) => t + g.links.length, 0)} links, checked Oct 2026); values seen in game or worked out by the guide are marked in Confidence. Metabot data is used with credit: each item links to its Metabot page.</p>` +
-    (() => { /* One row per site: how many pages and what they back; the page list opens per site. Sites with one page share a row. */
-      const host = u => u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], name = h => { const k = Object.keys(SRC_SITE).find(d => h.endsWith(d)); return k ? SRC_SITE[k] : h; };
-      const by = new Map();
-      SOURCES.forEach(g => g.links.forEach(([u, l]) => { const n = name(host(u)); if (!by.has(n)) by.set(n, { n, links: [], what: [] }); const x = by.get(n); x.links.push([u, l]); if (!x.what.includes(g.t)) x.what.push(g.t); }));
-      const xs = [...by.values()].sort((a, b) => b.links.length - a.links.length || a.n.localeCompare(b.n)), big = xs.filter(x => x.links.length > 1), one = xs.filter(x => x.links.length === 1);
-      if (one.length) big.push({ n: "Other sites", links: one.map(x => x.links[0]), what: [one.map(x => x.n).join(", ")] });
-      return big.map(x => `<details class="mini srcg"><summary><span class="src-site">${esc(x.n)}</span><span class="src-n">${x.links.length}</span><span class="src-what">${esc(x.what.join(" · "))}</span></summary><ul class="sources">${x.links.map(([u, l]) => [u, x.n !== "Other sites" && l.toLowerCase().startsWith(x.n.toLowerCase() + ": ") ? l.slice(x.n.length + 2) : l]).sort((a, b) => a[1].localeCompare(b[1])).map(([u, l]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a></li>`).join("")}</ul></details>`).join(""); })();
-}
-renderSources();
 /* Confidence and Sources fold; open state remembered. */
 document.querySelectorAll("details.foldcard").forEach(d => { const k = "fold_" + d.id; d.open = !!(state[k]); d.addEventListener("toggle", () => { state[k] = d.open; save(); }); });
 /* Basic / Advanced view. Basic keeps each card to its essentials: what you have, the one thing to do, and its button. */
@@ -860,6 +855,7 @@ function updatePass() {
   fillStigmaText();
   syncQRun();
   renderNow();
+  updateAll(cardCtx());
   /* Card sizing reads layout: it runs in the next frame (renderNext schedules fitSkills), so update() never forces a layout. */
   if (typeof syncExpand === "function") syncExpand();
   requestAnimationFrame(fitRail);
