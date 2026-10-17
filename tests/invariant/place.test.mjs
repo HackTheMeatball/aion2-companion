@@ -94,6 +94,23 @@ export default (test, M, X) => {
     const keys = Object.values(M.GATE_GRAPH.nodes).filter(n => ['rq', 'sd', 'sh'].includes(n.kind)).map(n => n.key);
     const qi = new Map(S.map(([, n], i) => [n, i])), bad = [];
     let n = 0, grew = 0;
+    const steps = (id, c, more) => {
+      const a0 = M.boundSet(c), o0 = P.boundSet(c);
+      for (const [what, c2] of more) { n++;
+        const a1 = M.boundSet(c2), o1 = P.boundSet(c2), lostA = [...a0].filter(k => !a1.has(k)), lostO = [...o0].filter(k => !o1.has(k));
+        if (a1.size > a0.size) grew++;
+        if (lostA.length || lostO.length) bad.push(`${id} ${what}: app lost ${lostA.join(' ')} · oracle lost ${lostO.join(' ')}`); }
+    };
+    /* one step at a time from an empty save: each regional quest picked up, then turned in; each dungeon or stronghold
+       entered, then done; each story quest current, turned in, the next one current, every objective ticked */
+    const blank = o => ({ level: 45, checks: {}, quest: '', qsteps: {}, started: {}, areaRun: {}, ...o });
+    for (const k of keys) {
+      if (k.startsWith('rq:')) steps(k, blank({ started: { [k]: 1 } }), [['turned in', blank({ started: { [k]: 1 }, checks: { [k]: true } })], ['turned in, pick-up gone', blank({ checks: { [k]: true } })]]);
+      else steps(k, blank({ areaRun: { [k]: 1760000000000 } }), [['done', blank({ areaRun: { [k]: 1760000000000 }, checks: { [k]: true } })]]);
+    }
+    S.forEach(([, q], i) => { const all = Array.from({ length: (M.QUEST_STEPS[q] || []).length }, (_, j) => j);
+      steps(q, blank({ quest: q }), [['turned in', blank({ quest: q, storyEnd: q })], ['every objective', blank({ quest: q, qsteps: { [q]: all } })],
+        ...(i + 1 < S.length ? [['story on', blank({ quest: S[i + 1][1] })]] : [])]); });
     for (const { id, c } of boundCases().filter(x => share('mono', x, 0.3))) {
       const salt = id + '|', more = [];
       more.push(['ticks', { ...c, checks: { ...c.checks, ...Object.fromEntries(keys.filter(k => fnv(salt + k) < 0.3).map(k => [k, true])), ['bind:' + Object.keys(M.KIBELISKS)[Math.floor(fnv(salt + 'b') * 50)]]: true } }]);
@@ -106,11 +123,7 @@ export default (test, M, X) => {
         if (c.storyEnd !== c.quest) more.push(['turned in', { ...c, storyEnd: c.quest }]);
         if (i + 1 < S.length) more.push(['story on', { ...c, quest: S[i + 1][1], storyEnd: undefined }]);
       }
-      const a0 = M.boundSet(c), o0 = P.boundSet(c);
-      for (const [what, c2] of more) { n++;
-        const a1 = M.boundSet(c2), o1 = P.boundSet(c2), lostA = [...a0].filter(k => !a1.has(k)), lostO = [...o0].filter(k => !o1.has(k));
-        if (a1.size > a0.size) grew++;
-        if (lostA.length || lostO.length) bad.push(`${id} ${what}: app lost ${lostA.join(' ')} · oracle lost ${lostO.join(' ')}`); }
+      steps(id, c, more);
     }
     assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${n} steps unbind`);
     assert.ok(X.only || grew > n / 10, `only ${grew} of ${n} steps bind anything new`);
