@@ -4,9 +4,23 @@ All notable changes to Daeva Companion. Versions follow [semantic versioning](ht
 beta. Each release lists only the sections that apply, in this order: Added, Changed, Fixed, Data, Accessibility,
 Removed, Action required, Known issues, Saved progress. The format is checked by `scripts/release-notes.mjs`.
 
-Saved progress has used the same `localStorage` key, `aion2-assassin-route-v4`, since before 0.1.0; every version below
-loads every earlier save. Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
+Saved progress used the `localStorage` key `aion2-assassin-route-v4` from before 0.1.0 to 0.3.0, and every version
+through 0.3.0 loads every earlier save. From 0.4.0 the key is `companion-save-v5`, and 0.4.0 reset saves (the pre-1.0
+rule in CLAUDE.md). Entries before 0.1.0 are the internal build numbers of the original single-file claude.ai
 artifact (`vNNN`) and are kept in their original form.
+
+## 0.4.0 — 2026-10-17
+
+Engine and packs: saved progress resets in this version.
+
+### Changed
+
+- The app is split into an engine and AION 2 packs; nothing on screen changes.
+
+### Saved progress
+
+- Saves reset in this version. Progress saved by 0.3.0 or earlier isn't loaded; it stays in the browser untouched.
+  Backup files exported before 0.4.0 can't be imported. The storage key is now `companion-save-v5`.
 
 ## 0.3.0 — 2026-10-16
 
