@@ -11,7 +11,7 @@ something shows exactly where.
 | `tests/golden/states.js` | the state generator (deterministic) and the catalog it reads from the page |
 | `tests/golden/probe.js` | what is recorded per state (runs in the page) |
 | `tests/golden/violations.js` | the known-violations check and report |
-| `tests/golden/snapshots/*.json` | the recorded snapshots (committed), one file per group and level band |
+| `tests/golden/snapshots/<card>/*.json` | the recorded snapshots (committed), one directory per card, one file per group and level band ("Layout") |
 | `tests/golden/KNOWN-VIOLATIONS.md` | generated: Next up cards whose gate isn't met |
 
 ## Running it
@@ -20,6 +20,7 @@ something shows exactly where.
 npm run build
 node tests/golden.js                 # verify (also suite `golden` in npm test / tests/run.mjs)
 node tests/golden.js --record        # re-record snapshots + KNOWN-VIOLATIONS.md
+node tests/golden.js --record --card nu    # re-record only the Next up shards; fails if another card changed
 node tests/golden.js --filter 'L3[0-4]-'   # only matching state ids, while iterating (verify only)
 node tests/golden.js --all           # + 6,000 extended random states (see "Extended set")
 node tests/golden.js --explain       # which 0.3 change makes which difference (tests/golden/explain.js; table in tests/out/golden/explain.md)
@@ -28,7 +29,32 @@ node tests/golden.js --explain       # which 0.3 change makes which difference (
 Options: `--jobs N` parallel pages (default 3), `--limit N`, `--render` (see "How a state is recorded").
 On a difference, verify prints a summary and writes `tests/out/golden/diff.md` (by kind, then per state) and
 `diff.json` (before/after for every changed state). `--record` prints the same summary against the old snapshots
-before it overwrites them, so a re-record is reviewable from its own output too.
+before it overwrites them, so a re-record is reviewable from its own output too. Both also list the changed shards per
+card (`nu (nextup/): 557 states in 23 files: …`; every file in `diff.md`).
+
+## Layout
+
+`tests/golden/snapshots/<card>/<group>-<band>.json` (0.4 P4e): each top-level field of a state's record (table in "How a
+state is recorded") is stored in its own directory, sharded by group and level band (`level-L01-05.json`, `special.json`,
+…), with the same shard names in every directory. Each file maps state id to that field's value.
+
+| Directory | Field |
+|---|---|
+| `nextup/` | `nu` |
+| `milestones/` | `ms` |
+| `route/` | `rt` |
+| `journey/` | `jr` |
+| `regional/` | `reg` |
+| `_state/` | `in`, `store`, `keys`, `err`, `mode` (and `probeError`): the input and page-level fields, not a card |
+
+A field the probe adds later gets a directory named after its key. The runner merges the directories back into one
+record per state, so verify, `--filter`, `--explain` and the diff report work on whole states as before.
+
+Why: a card change re-records only its own directory, so two branches that change different cards don't touch the same
+snapshot files and merge without a golden conflict. Re-record one card with `--record --card <key or directory>`
+(`nu`, `nextup`, `ms`, …, `_state`): it runs every state like `--record`, then fails and writes nothing if any other
+card's output (or `_state`) changed, naming that card; otherwise it rewrites only that card's files and
+KNOWN-VIOLATIONS.md. A plain `--record` rewrites every directory.
 
 ## What a state is
 
@@ -100,7 +126,8 @@ re-record.
      quest), so the tick rules now produce different saves for some states (`input: generated save changed`), and
      everything that differs in those states is listed with a `(new input)` prefix. Expected with data or gate changes;
      check that the states involved are the ones the change touches.
-2. `node tests/golden.js --record`. It prints the same summary, then the violation count (`… · 600 violations in 500
+2. `node tests/golden.js --record --card <card>` when the change belongs to one card (the summary's "changed shards"
+   lists one directory), else `node tests/golden.js --record`. It prints the same summary, then the violation count (`… · 600 violations in 500
    states (was 743 violations in 626 states)`). Review `git diff tests/golden/KNOWN-VIOLATIONS.md`: fixed steps leave
    the table; nothing new should appear.
 3. Commit the snapshots and KNOWN-VIOLATIONS.md with the change, and put the behaviour-change kinds with their state
@@ -128,8 +155,9 @@ Lv 32 with the story before the gate (check the examples); in 2 of them the 8-ca
 changed and their g32 milestone shows it as missed: consistent with the new gate.
 
 Two changes landing at once (e.g. the Ascension gate fix and a refactor): re-record on the branch that changes
-behaviour; the other branch rebases, rebuilds and must verify clean against the new snapshots. If both changed
-snapshots, resolve by re-recording after the merge, never by merging the JSON by hand.
+behaviour; the other branch rebases, rebuilds and must verify clean against the new snapshots. Two branches that each
+change a different card touch different directories and merge cleanly; verify after the merge. If both changed the
+same card's snapshots, resolve by re-recording after the merge, never by merging the JSON by hand.
 
 ## Known violations
 
@@ -150,7 +178,7 @@ Verify fails when the file is out of date, so it can't drift from the snapshots.
 ## Extended set
 
 `--all` adds 6,000 random states (group `xrandom/`, separate PRNG seed). Their snapshot files
-(`snapshots/xrandom-*.json`) are git-ignored (size, ~22 MB), and a plain `--record` leaves them alone. To use them
+(`snapshots/*/xrandom-*.json`) are git-ignored (size, ~22 MB), and a plain `--record` leaves them alone. To use them
 across a change, record on the base commit and verify on the change:
 
 ```sh
