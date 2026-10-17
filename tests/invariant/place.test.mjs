@@ -6,6 +6,8 @@
    oracle   whereNow and the bound Kibelisks are the oracle's on every state checked.
    7.  No location, no change: with every change time set to 0, rankNext with the ranking switches on (all but
        ascensionFirst and catchUp, which don't read location) equals rankNext with every one off.
+   8.  Location only reorders inside a phase (0.5 P12, placeRank): the same save placed three ways gives the same card
+       kinds in the same order; only the regional list's order and the rq / sd / sh picks differ.
    11. Binding is monotonic in progress: more ticks, a pick-up, a dungeon entered, one more objective or the story one
        quest on never unbinds a Kibelisk (the app's boundSet and the oracle's).
    12. Nudge: the "Bind X" row is the oracle's on every story position × {no ticks, every objective, everything done} and
@@ -14,7 +16,8 @@
    14. Deterministic after merge: whereNow(merge(a, b)) = whereNow(merge(b, a)) per slot on the sync suite's pairs.
    15. Nothing written: whereNow, boundSet, nudgeOf, teleportOf and rankNext (every ranking switch off, and on) run on
        deep-frozen saves and leave them as they were.
-   (8, 9, 10 and 13 come with the steps that build what they check: placeRank, ascensionFirst, trackFilter, travelAdvice.) */
+   9 (Ascension first) is next-up.test.mjs's invariant 3, enforced since 0.5 P12. (10 and 13 come with the steps that
+   build what they check: trackFilter, travelAdvice.) */
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { loadPlaceOracle } from '../support/oracle.mjs';
@@ -88,6 +91,33 @@ export default (test, M, X) => {
     } finally { M.setRankChanges(null); }
     assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${cases.length} states differ`);
     assert.ok(X.only || cases.length > 150, `${cases.length} states`);
+  });
+
+  /* 8 (0.5 P12, placeRank): the same save placed three ways (as recorded, every change time at 0 so whereNow is null, and
+     re-dated by a hash so another stamp is the newest), ranked as the page ships. The card kinds in order are the same;
+     a card other than rq / sd / sh is the same; rq differs only in its list order and its "go" target, sd only in its
+     pick (with the pick's entrance, band bar and button: placed, the pick is the highest band's nearest, unplaced the
+     story step's zone first, design §5), sh only in its pick. */
+  test('8. location only reorders inside a phase: three places of the same save, the same card kinds in order; only the rq order and the rq / sd / sh picks differ', () => {
+    const cases = loaded.filter(x => x.c.mt && share('in8', x, x.fam === 'loc' || x.fam === 'bind' ? 1 : x.fam ? 0.3 : 0.02)), bad = [];
+    let moved = 0, picks = 0;
+    const norm = a => a.kind === 'rq' ? { ...a, act: null, open: [...a.open].sort((x, y) => x.k < y.k ? -1 : 1) }
+      : a.kind === 'sd' ? { ...a, pick: null, loc: null, band: null, act: null } : a.kind === 'sh' ? { ...a, pick: null } : a;
+    for (const { id, s } of cases) {
+      const c0 = M.char(s), at = mt => ({ ...s, chars: { ...s.chars, [s.current]: deepFreeze({ ...c0, mt }) } });
+      const three = [s, at(retime(c0.mt, () => 0)), at(retime(c0.mt, p => 1 + Math.floor(fnv(id + '|in8|' + p.join('.')) * 40)))];
+      const heres = three.map(st => JSON.stringify(M.whereNow(M.char(st))));
+      if (new Set(heres).size > 1) moved++;
+      const runs = three.map(st => M.rankNext(st, { basic: st.mode === 'basic' }));
+      const kinds = runs.map(r => r.map(a => a.kind).join(' '));
+      if (new Set(kinds).size > 1) { bad.push(`${id}: card kinds ${kinds.join(' / ')}`); continue; }
+      const same = runs.map(r => JSON.stringify(r.map(norm)));
+      if (new Set(same).size > 1) bad.push(`${id}: a card differs beyond the rq order and the picks (places ${heres.join(' / ')})`);
+      if (new Set(runs.map(r => JSON.stringify(r))).size > 1) picks++;
+    }
+    assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${cases.length} states`);
+    console.log(`     ${cases.length} states, ${moved} placed differently, ${picks} with a different order or pick`);
+    assert.ok(X.only || (cases.length > 500 && picks > 50), `${cases.length} states, ${picks} with a different order or pick: the check must see location matter`);
   });
 
   test('11. binding is monotonic in progress: more ticks, pick-ups, a dungeon entered, one more objective or the story on never unbind (app and oracle)', () => {
