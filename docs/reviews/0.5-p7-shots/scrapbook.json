@@ -1,6 +1,8 @@
 [
-  { "case": "zoom195-advanced-milestones-header", "kind": "before-after", "title": "Milestones at 200 % zoom",
-    "caption": "On a phone zoomed to 200 %, the Milestones tools now wrap neatly inside the card instead of crowding the header." },
   { "case": "zoom195-advanced-areas", "kind": "before-after", "title": "Dungeons card at 200 % zoom",
-    "caption": "At Lv 27 and 200 % zoom the Dungeons & Strongholds header and Map link stay inside their card." }
+    "caption": "Lv 27 at 200 % zoom: region names stay inside the card, map pins sit under the checkbox, not on the name, and the \"any level\" line shows in full." },
+  { "case": "zoom195-advanced-route-step", "kind": "before-after", "title": "Route steps at 200 % zoom",
+    "caption": "Lv 27 at 200 % zoom: a Route step puts number and count on top and the title below, so \"Build plan\" reads in full." },
+  { "case": "zoom195-advanced-milestones-header", "kind": "before-after", "title": "Milestones at 200 % zoom",
+    "caption": "Lv 27 at 200 % zoom: the Milestones tools wrap under the heading; \"milestone now: Lv 27\" is the whole line, not cut off." }
 ]
