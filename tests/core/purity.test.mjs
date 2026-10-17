@@ -68,7 +68,7 @@ export default (test, M) => {
     /* in the core and the pack, a function's save parameter is `s`, `save` or `state`: s.<field> is a direct read too
        (one-time flags are save data) */
     const directS = new RegExp(`\\b(s|save)\\.(${F})\\b`);
-    const bad = ['main.js', 'site.js', ...CORE, ...PACKS].flatMap(f => code(read(f)).split('\n').map((l, i) => [f, i + 1, l])
+    const bad = ['main.js', 'site.js', ...CORE, ...walk('cards'), ...PACKS].flatMap(f => code(read(f)).split('\n').map((l, i) => [f, i + 1, l])
       .filter(([f, , l]) => direct.test(l) || (/^(core|packs)\//.test(f) && f !== 'core/state.js' && directS.test(l))).map(([f, n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`));
     assert.deepEqual(bad, []);
   });
