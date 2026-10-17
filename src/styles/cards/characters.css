@@ -1,0 +1,57 @@
+/* The character switcher (0.5 P18, src/cards/characters.js; design docs/design/0.5-characters-mockup.md). Desktop: the
+   right end of the brand row, the list a 460 px panel under the button; phone: a full-width row under the title, the
+   list a panel in the flow under it. Targets are ≥ 44 px, the name field's text 16 px (no iOS focus zoom). */
+header.top .who { position: relative; min-width: 0; }
+@media (min-width: 601px) {
+  /* shares the brand's cell, at its right end; the 4 px it is taller than the brand hang into the row gap, so the title
+     doesn't move */
+  header.top .who { grid-area: brand; justify-self: end; align-self: start; max-width: 100%; margin-bottom: calc(-1 * var(--space-4)); }
+  header.top .chpop { position: absolute; right: 0; top: 100%; width: 460px; max-width: calc(100vw - var(--space-28)); z-index: 30; box-shadow: var(--shadow-float); }
+}
+.chbtn { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-8); max-width: 100%; padding: 0 var(--space-12); border-radius: var(--radius-8);
+  background: var(--panel-2); color: var(--fg); font: 500 13px var(--mono); }
+.chbtn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.chbtn .chev { color: var(--accent-text); flex: none; }
+.chbtn .chev::before { content: "▾"; }
+.who.open .chbtn { border-color: var(--accent); }
+.who.open .chbtn .chev::before { content: "▴"; }
+@media (max-width: 600px) {
+  .chbtn { display: flex; width: 100%; justify-content: space-between; }
+}
+.chpop { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-6); margin-top: var(--space-6); }
+.chhead { margin: var(--space-6) var(--space-10) var(--space-2); font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.chrows { list-style: none; margin: 0; padding: 0; }
+.chrows li + li { border-top: 1px solid var(--line); }
+.chrow { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 48px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--space-6); align-items: center;
+  padding: 0 var(--space-6) 0 var(--space-10); border-radius: var(--radius-8); }
+.chrow:hover { background: var(--panel-2); }
+.chrow:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.chrow.cur { background: var(--panel-2); box-shadow: var(--ring-accent); }
+.chrow .tick { color: var(--good); font: 600 14px var(--mono); }
+.chrow .lbl { font: 500 13px var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chnew { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 48px; display: flex; align-items: center; padding: 0 var(--space-10);
+  border-top: 1px solid var(--line); color: var(--accent-text); font: 600 13px var(--body); }
+.chnew:hover { background: var(--panel-2); }
+.chnew:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.chform { padding: var(--space-10); display: grid; gap: var(--space-10); }
+.chform[hidden] { display: none; }
+.chform .chhead { margin: 0 0 var(--space-2); }
+.chfld { display: grid; gap: var(--space-4); margin: 0; padding: 0; border: 0; min-width: 0; }
+.chfld > label, .chfld > legend { padding: 0; margin-bottom: var(--space-4); font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.chfld input[type=text] { min-height: 44px; box-sizing: border-box; width: 100%; border: 1px solid var(--line); border-radius: var(--radius-6); background: var(--panel-2); color: var(--fg);
+  font: 16px var(--body); padding: 0 var(--space-12); }
+.chfld input[type=text]:focus { border-color: var(--accent); }
+.chhint { color: var(--muted); font-size: 12px; }
+.chpick { display: grid; gap: var(--space-6); }
+.chopt { min-height: 48px; display: grid; grid-template-columns: 20px 1fr; gap: var(--space-10); align-items: center; padding: 0 var(--space-12); border: 1px solid var(--line);
+  border-radius: var(--radius-8); background: var(--panel-2); cursor: pointer; }
+.chopt:has(input:checked) { border-color: var(--accent); }
+.chopt input { margin: 0; width: 16px; height: 16px; accent-color: var(--accent); }
+.chprev { margin: 0; font: 500 12px var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.chprev b { color: var(--fg); font-weight: 500; }
+.chbtns { display: flex; gap: var(--space-8); justify-content: flex-end; }
+.chbtns button { min-height: 44px; min-width: 44px; padding: 0 var(--space-16); border-radius: var(--radius-12); font: 600 14px var(--body); }
+.chbtns button.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
+@media (max-width: 600px) {
+  .chbtns button { flex: 1; }
+}

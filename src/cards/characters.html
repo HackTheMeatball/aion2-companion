@@ -1,0 +1,17 @@
+    <div class="who" id="charCard">
+      <button type="button" class="chbtn" id="charBtn" aria-expanded="false" aria-controls="charPop"><span class="lbl" id="charLbl"></span><span class="chev" aria-hidden="true"></span></button>
+      <div class="chpop" id="charPop" hidden>
+        <div class="chlist" id="charList" role="group" aria-labelledby="charHead">
+          <h2 class="chhead" id="charHead">Characters</h2>
+          <ul class="chrows" id="charRows"></ul>
+          <button type="button" class="chnew" id="charNew">+ New character</button>
+        </div>
+        <form class="chform" id="charForm" aria-labelledby="charFormHead" hidden>
+          <h2 class="chhead" id="charFormHead">New character</h2>
+          <div class="chfld"><label for="charName">Name (optional)</label><input type="text" id="charName" autocomplete="off" spellcheck="false" aria-describedby="charNameHint"><span class="chhint" id="charNameHint"></span></div>
+          <fieldset class="chfld"><legend>Class</legend><div class="chpick" id="charPick"></div></fieldset>
+          <p class="chprev">Label: <b id="charPrev"></b></p>
+          <div class="chbtns"><button type="button" id="charCancel">Cancel</button><button type="submit" class="primary" id="charCreate">Create character</button></div>
+        </form>
+      </div>
+    </div>
