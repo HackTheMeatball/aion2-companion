@@ -1,6 +1,7 @@
 /* Later (0.4 P4c: moved verbatim from src/main.js): the Journey card's "Ahead" list (#ahead), the next verified
    unlocks by level and the next story unlock. Drawn by renderQuest (Journey), so it registers with update: null. */
 import { char } from "../core/state.js";
+import { activePack } from "../core/pack.js";
 import { questIdx } from "../core/requirements.js";
 import { pageState as state, pageUpdate as update, pageGATES as GATES, pageQUESTS as QUESTS, pageSTORY_UNLOCKS as STORY_UNLOCKS, pageUNLOCK_GATE as UNLOCK_GATE, pageVERIFIED_UNLOCKS as VERIFIED_UNLOCKS } from "./page.js";
 
@@ -19,8 +20,9 @@ function renderAhead() {
     if (qi >= 0) { const ui = QUESTS.slice(qi + 1).findIndex(([, n]) => STORY_UNLOCKS[n]);
       if (ui >= 0) { const uq = QUESTS[qi + 1 + ui], gid = UNLOCK_GATE[uq[1]];
         rows.push(`<a class="ah-row"${gid ? ` href="#${gid}" data-gogate="${gid}"` : ""}><span class="ah-lv unl">Lv ${uq[0]}</span><span class="ah-main"><b>🔓 ${STORY_UNLOCKS[uq[1]]}</b><small>${ui === 0 ? "your next quest" : pl(ui + 1, "story quest")} · "${uq[1]}"</small></span></a>`); } }
-    /* At the cap there's nothing above you: say so instead of an empty box. */
-    if (lv >= 45) rows.push(`<a class="ah-row" href="#g45" data-gogate="g45"><span class="ah-lv">Lv 45</span><span class="ah-main"><b>Level cap reached</b><small>Progress now comes from gear score, not levels</small></span></a>`);
+    /* At the cap there's nothing above you: the pack's row says so instead of an empty box (0.4 P5a, nowRenderers). */
+    const capRow = activePack().nowRenderers["ahead.cap"], cap = capRow ? capRow(lv, { state, c: char(state), lv }) : "";
+    if (cap) rows.push(cap);
     el.hidden = !rows.length;
     el.innerHTML = rows.length ? `<div class="where-sub">Ahead <span class="ah-ver" title="Each unlock here is backed by two or more independent sources">verified</span></div>${rows.join("")}` : "";
   }

@@ -1,23 +1,23 @@
 /* Next up (0.4 P4c: moved verbatim from src/main.js; markup nextup.html): the one-task cards rankNext ranks
-   (src/core/nextup.js) as a snap-scroll stack, the regional quests card's list, the story card's objectives, the hotkeys
-   and the pop-out window (Document Picture-in-Picture). Its handlers wire in its mount (from render(), once), so the
-   module touches no DOM at import (the Node core bundle imports it). */
+   (src/core/nextup.js) as a snap-scroll stack, the story card's objectives, the hotkeys and the pop-out window (Document
+   Picture-in-Picture). Its handlers wire in its mount (from render(), once), so the module touches no DOM at import (the
+   Node core bundle imports it). 0.4 P5a: it draws its own kinds (milestone steps, the story card, the milestone Later
+   card) and hands every other kind, and the pack's controls inside it, to the pack's nowRenderers
+   (docs/design/0.4-engine-contract.md §2; the hooks are listed where the pack defines them). */
 import { char } from "../core/state.js";
-import { chainsOn, objPartsOf, openOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
+import { activePack } from "../core/pack.js";
+import { chainsOn, objPartsOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
 import { rankNext } from "../core/nextup.js";
-import { MAP_ICO, rqTicked, snoozeToggle } from "./milestones.js";
 import { completeBefore, renderQuestSubs, setObj, setSub, stepQuest, subListHTML } from "./journey.js";
-import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageTipClick as tipClick, pageTipGoClick as tipGoClick, pageTipEsc as tipEsc, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_END as STORY_END, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg, pageObjIdx as objIdx } from "./page.js";
+import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageTipClick as tipClick, pageTipGoClick as tipGoClick, pageTipEsc as tipEsc, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_END as STORY_END, pageObjIdx as objIdx } from "./page.js";
 
-/* "Not in game yet" in Next up (compact): eye with a slash. */
-const EYE_OFF = `<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7c2 0 3.7.7 5.1 1.6M22 12s-3.6 7-10 7c-2 0-3.7-.7-5.1-1.6"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg>`;
 /* Next up (#nowStar) can move into a pop-out window, so it is always reached through this node. */
 let nowEl = null;
 let pipWin = null, nsHover = false;
 const nsWin = () => (nowEl && nowEl.ownerDocument.defaultView) || window;
-/* XP in regional quest tooltips (dungeon XP isn't shown: only a few pages state it). */
-const fmtXP = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M" : n >= 1000 ? Math.round(n / 1000) + "k" : String(n);
-const pinLink = (href, label) => href ? ` <a class="ns-pin" href="${href}" target="_blank" rel="noopener" title="${label || "Show on the map"}">${MAP_ICO}</a>` : "";
+/* the pack's renderers and Next up hooks (docs/design/0.4-engine-contract.md §2 nowRenderers) */
+const nowR = () => activePack().nowRenderers;
+const nowCtx = () => ({ state, c: char(state), lv: char(state).level, basic: isBasic(), el: nowEl });
 
 /* "Next up": the north star. A short ranked list of what moves you forward right now, each with one action. The ranking
    is rankNext (src/core/nextup.js); nowCard turns one of its cards into the view object renderNow lays out. */
@@ -30,81 +30,26 @@ function stepHTML(g, x) {
   const cl = t.cloneNode(true); cl.querySelectorAll(".tip, .loc, .schip, .upsell, .req, .cost, button, small").forEach(e => e.remove());
   const b = cl.querySelector("b"); return (b ? b.innerHTML : cl.innerHTML).replace(/[\s:.]+$/, "");
 }
-/* A skill upgrade backed by one source only: a small tag (the Skills card's tooltip names the source). */
-const ssTag = x => x.s.single ? ` · <span class="ss-tag" title="Single source (${x.s.single})">single source</span>` : "";
-const spBuyT = x => `Buy <b>${x.s.n} ${x.spec ? "specialty" + (x.slot > 1 ? " slot " + x.slot : "") : (x.L - 1) + " → " + x.L}</b>`;
-/* A specialty slot's line (0.3 E7, design §9; Q6): the build's pick once its choice is open at the skill's effective level;
-   a pick that needs a higher skill level says when; no pick: "pick a specialty". */
-const specSub = x => { const p = specPickOf(char(state), x); if (p) return `Pick: ${p.t}`;
-  const q = (x.s.specs || [])[x.slot - 1], open = openOf(char(state), x.k);
-  return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
+/* Kept here for the shell, which hands it to the pack's Skills card: the pack's slot line. */
+const specSub = x => nowR()["skill.slot"](x);
 const nsGate = g => `<a href="#${g.id}" data-now="gate:${g.id}">${g.title}</a>`;
 /* A blocker text at the start of a line. */
 const capFirst = s => s ? s[0].toUpperCase() + s.slice(1) : s;
 const isBasic = () => document.body.classList.contains("basic");
-const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
-/* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
-const nsWhere = (area, kib, hereArea) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>` : ""].filter(Boolean).join(" · ");
 function nowCard(a) {
   const { act } = a, lv = char(state).level, away = L => `${L - lv} level${L - lv === 1 ? "" : "s"} away`;
   switch (a.kind) {
-    case "run": { const sh = a.x.it.kind === "stronghold";
-      return { ico: sh ? "🏰" : "⛏", t: `Finish <b>${a.x.it.name}</b>`, sub: `In progress · ${sh ? "Stronghold" : "Sealed Dungeon"}`, btn: "Cleared", act }; }
-    case "cube": return { ico: "🎒", t: `Use your Cube items: <b>${[a.st ? `${a.st} Wisdom Stone${a.st === 1 ? "" : "s"}` : "", a.cr ? `${a.cr} crystal${a.cr === 1 ? "" : "s"}` : ""].filter(Boolean).join(" + ")}</b>`, sub: "Open the Cube and use them, then confirm", btn: "Used", act };
-    case "skill": { const x = a.x, base = x.spec ? specSub(x) : a.first ? `${spCostTxt(x)} · you have the points` : spCostTxt(x);
-      return a.first ? { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), btn: "Spent", act } : { ico: spMini(x.s.n) || "✦", t: spBuyT(x), sub: base + ssTag(x), act }; }
-    case "board": return { ico: "◆", t: `Buy <b>${dvShort(a.dn.t)}</b> on ${a.dn.board}`, sub: a.dc === 0 ? "Already on your board: just mark it" : `${a.dc} of your ${a.dLeft} crystals`, btn: "Acquired", act };
-    case "boardcost": return { ico: "◆", t: `Check <b>${dvShort(a.dn.t)}</b>'s cost on ${a.dn.board}`, sub: `You have ${a.dLeft} crystals; type its cost to see if you can buy it`, btn: "Enter cost", act };
-    case "stwait": return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open · needs 1 shard${a.at ? ` (+1 at Lv ${a.at})` : ""}`, tag: "Needs 1 shard", act };
-    case "stequip": { const eTxt = a.r < 0 ? "" : ` · then put it on E, row ${a.r}${a.r === 0 ? " (fires first)" : ""}`;
-      return { ico: stIco(a.nx.name, "st-img") || "✧", t: `Equip <b>${a.nx.name}</b>`, sub: `Stigma slot ${a.nx.n} is open${eTxt}`, btn: "Equipped", act }; }
-    case "stup": return { ico: stIco(a.up.x.name, "st-img") || "✧", t: `Upgrade <b>${a.up.x.name} ${a.up.L - 1} → ${a.up.L}</b>`, sub: `${a.up.cost} of your ${a.shards} shards`, btn: "Upgraded", act };
     case "step": return { ico: "⚑", t: stepHTML(a.g, a.x), sub: `Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act };
     case "missed": return { ico: "↺", t: stepHTML(a.g, a.x), sub: `Missed · Lv ${a.g.lv} ${nsGate(a.g)}`, btn: "Done", act };
     case "adv": return { adv: true, ico: "⚑", t: stepHTML(a.g, a.x), sub: `Optional · Lv ${a.g.lv} milestone · ${nsGate(a.g)}`, btn: "Done", act };
-    case "sd": { const p = a.pick, L = a.loc, pin = `<b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`;
-      return { bar: a.band.n ? nsBar(a.band.d, a.band.n, `Lv ${a.band.bd}–${a.band.bd + 4} · ${a.band.d}/${a.band.n}`) : "", ico: "⛏",
-        t: a.gated ? `Clear ${pin} <span class="ns-then">and others until Lv ${a.gateLv}</span>` : `Clear ${pin}`, sub: nsWhere(p.area, L.kib, a.hereArea),
-        info: [`+${SD_RW.cr} crystals, +${SD_RW.st} Wisdom Stones each · ~5 min`, L.kib && L.m ? `Kibelisk ${L.kib} is ${L.m} m away` : "", `${a.open} open at your level`].filter(Boolean).join(" · "), btn: "Show", act }; }
-    case "sh": { const p = a.pick;
-      return { bar: nsBar(a.done, a.total, `${a.done}/${a.total} strongholds`), ico: "🏰", t: `Run <b>${p.it.name}</b>${pinLink(mapFocus(p.it))}`, sub: nsWhere(p.area, p.it.kib, a.hereArea),
-        info: [`${SH_REWARD} each`, p.it.kib && p.it.m ? `Kibelisk ${p.it.kib} is ${p.it.m} m away` : "", `${a.open} open`].filter(Boolean).join(" · "), btn: "Show", act }; }
-    case "rq": return { ico: "❖", t: `<b>Regional quests</b>`,
-      sub: [a.fresh ? `${a.fresh} to pick up` : "", a.run ? `${a.run} in progress` : "", a.lock ? `${a.lock} follow-up${a.lock === 1 ? "" : "s"}` : "", a.snz.length ? `${a.snz.length} not in game yet` : "",
-        a.near ? `<span class="nw">${a.near} near your story step</span>` : ""].filter(Boolean).join(" · ") || "None to pick up now",
-      bar: a.scope ? `<span class="nsq-bar rq"><span class="d" style="width:${a.done / a.scope * 100}%"></span><span class="r" style="width:${a.run / a.scope * 100}%"></span></span><span class="nsq-barl">${a.done}/${a.scope} turned in</span>` : "",
-      btn: "Show", act, extra: rqExtraHTML(a) };
     case "story": return storyView(a);
     /* E6: what opens it, in the words every card uses (src/core/blockers.js) */
-    case "laterSkill": return { ico: spMini(a.x.s.n) || "✦", t: spBuyT(a.x), sub: `${chainsOn() && a.why ? capFirst(a.why) : `Opens at Lv ${a.x.req}`} · ${away(a.x.req)}${ssTag(a.x)}`, act, later: true };
     case "laterStep": return { ico: "⚑", t: a.x ? stepHTML(a.g, a.x) : `<b>${a.g.title}</b>`, sub: `Lv ${a.g.lv} milestone · ${away(a.g.lv)}${chainsOn() && a.why ? ` · ${a.why}` : ""}`, act, later: true };
   }
+  /* a kind the pack produces: its renderer returns the same view object (keys with a dot are hooks, not kinds) */
+  const R = nowR(), r = !a.kind.includes(".") && Object.hasOwn(R, a.kind) && R[a.kind];
+  if (r) return r(a, nowCtx());
   throw new Error("Next up: unknown card " + a.kind);
-}
-/* The regional quests card's list. Chains: a follow-up sits under the quest that unlocks it (→), so it's clear what to finish first. */
-function rqExtraHTML(a) {
-  const lv = char(state).level, hereArea = a.hereArea;
-  const roots = a.open.filter(x => !x.lock); /* milestone order, so rows don't jump when you tick one */
-  const preTxt = x => x.pre.join(" and ") + (x.pre.length > 1 ? " are" : " is");
-  const line = (x, fu) => { const n = x.it.name, q = x.it.q, id = q.id, st = (x.run ? "In progress" : x.lock ? `Unlocks when ${preTxt(x)} turned in` : "Not picked up") + (q.zone ? ` · ${q.zone}` : "") + (q.kib ? ` · Kibelisk: ${q.kib}${q.m ? ` (${q.m} m)` : ""}` : "") + (q.xp ? ` · ${fmtXP(q.xp)} XP` : "");
-    const label = id && !x.lock ? `<a href="${aion2QuestMap(id)}" target="_blank" rel="noopener" title="${n} · ${st} · Lv ${q.rec} · show on the map">${n}</a>` : `<span title="${n} · ${st} · Lv ${q.rec}">${n}</span>`;
-    /* Recommended level above yours: a small level tag, so a hard quest doesn't look like the obvious next pick. */
-    const hi = q.rec > lv && !x.run ? `<span class="q-rec" title="Recommended level ${q.rec}">Lv ${q.rec}</span>` : "";
-    /* Box: click once = picked up (in progress), again = turned in. Same two clicks as the milestone rows. */
-    const box = `<button type="button" class="q-cb" data-rqk="${x.k}"${x.lock ? " disabled" : ""} aria-pressed="${x.run ? "mixed" : "false"}" aria-label="${n}: ${x.lock ? "locked" : x.run ? "in progress, mark turned in" : "not picked up, mark picked up"}" title="${x.lock ? `Unlocks when ${preTxt(x)} turned in` : x.run ? "In progress · click when turned in" : "Click when you pick it up"}"></button>`;
-    const near = hereArea && q.zone === hereArea && !x.lock;
-    const zz = !x.run && !x.lock ? `<button type="button" class="q-snz ico" data-snz="${x.k}" title="Not in game yet: hide it until your next Level up" aria-label="${n}: not in game yet">${EYE_OFF}</button>` : "";
-    /* A follow-up keeps its arrow with it when the row wraps. */
-    return `<span class="ql ${x.run ? "run" : x.lock ? "lock" : "new"}${fu ? " fu" : ""}${near ? " near" : ""}">${fu ? `<span class="q-ar" aria-hidden="true">→</span>` : ""}${box}${label}${hi}${near ? `<span class="q-near" title="Near your story step (${hereArea})">${MAP_ICO}</span>` : ""}${zz}</span>`; };
-  let budget = 6, more = 0;
-  const groups = roots.map(r => { const kids = a.open.filter(y => y.lock && y.parent === r.it.name), need = 1 + kids.length;
-    if (need > budget) { more += need; return ""; } budget -= need;
-    return `<li class="qg">${line(r)}${kids.map(k => line(k, true)).join("")}</li>`; }).join("");
-  /* Snoozed ("Not in game yet", counted in the subline): one compact row with their names and one control that shows them again. */
-  const zRow = a.snz.length ? `<li class="qg rq-aux"><span class="rq-auxt" title="Not in game yet: hidden until your next Level up">${a.snz.map(x => x.it.name).join(", ")}</span><button type="button" class="q-inl" data-unsnz="${a.snz.map(x => x.k).join("|")}">Show again</button></li>` : "";
-  /* Waiting on the story: folded; each quest gets the milestone rows' "In my game" (= picked up). */
-  const wRow = a.wait.length ? `<li class="qg rq-aux"><details class="rq-wait"${rqWaitOpen ? " open" : ""}><summary>+${a.wait.length} waiting on the story</summary><ul>${a.wait.map(x => `<li><span title="${chainsOn() && !isBasic() ? capFirst(rqReqOf(char(state), x.k)) : `Opens once ${x.it.q.turnedIn ? `${x.it.q.story} is turned in` : `the story reaches ${x.it.q.story}`}`}">${x.it.name}</span><button type="button" class="q-inl" data-rqig="${x.k}">In my game</button></li>`).join("")}</ul></details></li>` : "";
-  return `<ul class="ns-qgrid">${groups}${more ? `<li class="qg more">+${more} more</li>` : ""}${zRow}${wRow}</ul>`;
 }
 /* The end of the guide's story (0.3 E10): the last covered quest turned in; the game's next story quest unlocks past the cap. */
 /* set at mount: STORY_END is the pack's, handed over after this module is loaded */
@@ -113,16 +58,15 @@ function storyView(a) {
   const { act } = a;
   if (a.v === "unset") return { story: true, ico: "📜", t: "Set your current main quest", sub: "In the Journey card; it places you on the story.", btn: "Show", act };
   if (a.v === "end") return { story: true, ico: "📜", t: STORY_DONE, sub: `${capFirst(END_NEXT)} · the guide's story ends at "${a.quest}"`, act };
-  const m = a.meanwhile, xs = [];
-  if (m) { if (m.sd) xs.push("Sealed Dungeons"); if (m.sh) xs.push("Strongholds");
-    if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
-    if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`); }
-  const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs.length ? `<span class="ns-mean">Meanwhile: ${xs.join(" / ")}</span>` : ""}`;
+  /* what else to do at your level, and where the objectives send you: in the pack's words */
+  const R = nowR(), ctx = nowCtx();
+  const xs = a.meanwhile && R["story.meanwhile"] ? R["story.meanwhile"](a.meanwhile, ctx) : "";
+  const gatedSub = `Needs Lv ${a.gateLv}: you're ${a.lv}. Level up first.${xs ? `<span class="ns-mean">Meanwhile: ${xs}</span>` : ""}`;
   /* Below the quest's unlock level (turnInNeedsLv): no "Turned in", the tag says when (as the Journey card does). */
   const tag = a.turnInLv ? `Turn in at Lv ${a.turnInLv}` : undefined;
   if (a.v === "nolist") return { story: true, ico: "📜", t: `Continue the story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : a.nq ? `Main story · then ${a.nq[1]}` : "Main story", btn: "Turned in", act, tag };
-  const kibTxt = a.kib ? ` · <span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "";
-  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${kibTxt}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives };
+  const where = R["story.where"] ? R["story.where"](a, ctx) : "";
+  return { story: true, ico: "📜", t: `Story: <b>${a.quest}</b>`, sub: a.gated ? gatedSub : `${a.done}/${a.total} objectives${where ? ` · ${where}` : ""}${a.nq ? ` · then ${a.nq[1]}` : ""}`, btn: "Turned in", act, tag, quest: a.objectives };
 }
 function renderNow() {
   const el = nowEl; if (!el) return;
@@ -131,14 +75,16 @@ function renderNow() {
   const top = shown[0];
   /* One card per action, each laid out like a milestone header (icon box · what · its own control). Only the first
      shows; the rest sit below it in a snap-scroll stack (a sliver of the next one peeks out). */
-  const firstSkill = shown.findIndex(a => a.act === "skill");
+  /* a queue (a view's queue name): only its first card gets the button, the rest say they come after it */
+  const firstOf = {}; shown.forEach((a, i) => { if (a.queue && !(a.queue in firstOf)) firstOf[a.queue] = i; });
   const info = (a, i) => a.info ? ` <button type="button" class="tipbtn nsinfo" aria-label="More info" aria-expanded="false" aria-controls="nsInfo${i}">i</button>` : "";
   const control = (a, i) => {
     if (a.later) return `<span class="tag">Later</span>`;
     if (a.tag) return `<span class="tag">${a.tag}</span>`;
     if (!a.act) return "";
-    if (a.act === "skill" && i !== firstSkill) return `<span class="tag">After the one above</span>`;
-    const done = /^(tick:|board$|usecube$|story$|skill$|stup$|stequip$)/.test(a.act);
+    if (a.queue && i !== firstOf[a.queue]) return `<span class="tag">After the one above</span>`;
+    /* completing it here (a view's done flag) makes the primary button; any other action goes somewhere */
+    const done = a.done || /^(tick:|story$)/.test(a.act);
     return `<button type="button" class="${done ? "ns-btn primary" : "ns-go"}" data-now="${a.act}">${a.btn || "Done"}</button>`;
   };
   /* Progress bars run along the card's bottom edge (like the milestone cards); their label joins the subline. */
@@ -165,7 +111,6 @@ function renderNow() {
 }
 /* Next up can live in a pop-out (Document Picture-in-Picture) window: everything goes through this node, never a
    document lookup, and timers/frames come from whichever window currently holds it. */
-let rqWaitOpen = false; /* "+N waiting on the story" fold, kept across Next up re-renders */
 let nsAnim = false, nsRefocus = 0;
 /* The current quest's open objectives, inside the Next up card when the story is the thing to do. */
 function nsObjHTML() {
@@ -198,7 +143,7 @@ async function popOutNow() {
   d.body.appendChild(nowEl);
   const hint = d.createElement("div"); hint.className = "pip-hint"; hint.textContent = "Space done · ↓ next"; d.body.appendChild(hint);
   /* Clicks that the page handles at document level (info popovers) need the same delegation in this document. */
-  [tipClick, tipGoClick, cubeClick, stTickClick, stUpClick, stLvClick].forEach(f => d.addEventListener("click", f));
+  [tipClick, tipGoClick, ...(nowR()["now.docClicks"] ? nowR()["now.docClicks"]() : [])].forEach(f => d.addEventListener("click", f));
   d.addEventListener("keydown", tipEsc);
   d.addEventListener("keydown", e => nsKey(e, true));
   w.addEventListener("pagehide", () => {
@@ -232,24 +177,16 @@ function nsKey(e, inPip) {
 function nextUpMount(el) {
   nowEl = el;
   STORY_DONE = `Lv ${STORY_END.lv} story complete`; END_NEXT = `next in game: "${STORY_END.next}" at Lv ${STORY_END.nextLv}`;
-  nowEl.addEventListener("toggle", e => { if (e.target.classList && e.target.classList.contains("rq-wait")) rqWaitOpen = e.target.open; }, true);
+  nowEl.addEventListener("toggle", e => { const f = nowR()["now.toggle"]; if (f) f(e, nowCtx()); }, true);
   nowEl.addEventListener("click", e => {
     if (e.target.closest("[data-nspop]")) { popOutNow(); return; }
-    const zb = e.target.closest("[data-snz]"); if (zb) { e.preventDefault(); snoozeToggle(zb.dataset.snz); return; }
-    const ub = e.target.closest("[data-unsnz]"); if (ub) { e.preventDefault(); ub.dataset.unsnz.split("|").forEach(k => { if (char(state).rqSnooze) delete char(state).rqSnooze[k]; }); save(); update(); return; }
-    const ig = e.target.closest("[data-rqig]"); if (ig) { e.preventDefault(); const k = ig.dataset.rqig; char(state).started = char(state).started || {};
-      if (!char(state).checks[k]) { char(state).started[k] = 1; if (char(state).rqSnooze) delete char(state).rqSnooze[k]; save(); update(); } return; }
-    const qb = e.target.closest("[data-rqk]");
-    if (qb) { e.preventDefault(); const k = qb.dataset.rqk; char(state).started = char(state).started || {};
-      if (!char(state).checks[k] && !qProg(k)) { char(state).started[k] = 1; save(); update(); return; }
-      const src = mainEl.querySelector(`input[data-k="${CSS.escape(k)}"]`);
-      if (src && !src.checked) src.click(); else { delete char(state).started[k]; char(state).checks[k] = true; rqTicked(k); save(); update(); }
-      return; }
+    /* the pack's own controls inside a card (drawn by its renderers) */
+    const pc = nowR()["now.click"]; if (pc && pc(e, nowCtx())) return;
     const ib = e.target.closest(".nsinfo"); if (ib) { e.stopPropagation(); ib.setAttribute("aria-expanded", String((ib.closest(".ns-card") || ib.closest(".nsq, .nsbox")).classList.toggle("show-info"))); return; }
     const b = e.target.closest("[data-now]"); if (!b) return;
     const a = b.dataset.now;
     /* Completing the top card: it slides up and out, then the queue rises into place. */
-    if (b.closest(".ns-primary") && /^(tick:|obj:|skill$|board$|story$|usecube$|stup$|stequip$)/.test(a) && !b.dataset.go) {
+    if (b.closest(".ns-primary") && (/^(tick:|obj:|story$)/.test(a) || b.matches(".ns-btn.primary")) && !b.dataset.go) {
       e.preventDefault(); b.dataset.go = "1"; b.disabled = true;
       nowEl.querySelector(".ns-primary").classList.add("out");
       window.setTimeout(() => { nsAnim = true; nsRefocus = Date.now() + 1500;
@@ -259,13 +196,12 @@ function nextUpMount(el) {
       return;
     }
     if (b.tagName === "A") e.preventDefault();
-    if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return; }
-    if (a.startsWith("tick:")) { const k = a.slice(5); if (char(state).areaRun) delete char(state).areaRun[k];
+    /* a pack action, or the pack's part of one the engine then finishes (tick:) */
+    const pa = nowR()["now.act"]; if (pa && pa(a, nowCtx())) return;
+    if (a.startsWith("tick:")) { const k = a.slice(5);
       const src = mainEl.querySelector(`input[data-k="${CSS.escape(k)}"]`);
-      /* A regional quest ticked from here completes in one click (its own box takes two: in progress, then done). */
-      if (src && src.closest("li.qrow") && !src.checked) { char(state).started = char(state).started || {}; char(state).started[k] = char(state).started[k] || 1; }
       if (src) { if (!src.checked) src.click(); return; }
-      /* Not on screen (e.g. a stronghold outside the selected band): tick it through the same handler. */
+      /* Not on screen (e.g. a row outside the selected band): tick it through the same handler. */
       if (!char(state).checks[k]) { const tmp = document.createElement("input"); tmp.type = "checkbox"; tmp.dataset.k = k; tmp.checked = true; tmp.hidden = true; layoutEl.appendChild(tmp); tmp.dispatchEvent(new Event("change", { bubbles: true })); tmp.remove(); }
       return; }
     if (a.startsWith("obj:")) { const i = +a.slice(4); char(state).qsteps = char(state).qsteps || {}; const cur = new Set(char(state).qsteps[char(state).quest] || []); cur.add(i); char(state).qsteps[char(state).quest] = [...cur]; save(); renderQuestSubs(); return; }
@@ -279,12 +215,6 @@ function nextUpMount(el) {
       if (questIdx(char(state)) === QUESTS.length - 1) { char(state).storyEnd = char(state).quest; save(); update(); }
       else stepQuest(1); }
     else if (a === "setquest") { const i = document.getElementById("questIn"); i.scrollIntoView({ behavior: SMOOTH(), block: "center" }); i.focus(); }
-    else if (a === "skill") { const box = document.getElementById("spNextBox"); if (box.dataset.sp) { box.checked = true; box.dispatchEvent(new Event("change")); } }
-    else if (a === "stup") { const sb = document.querySelector("#stCard [data-stup]"); if (sb) sb.click(); }
-    else if (a === "stequip") { const sb = document.querySelector("#stCard [data-sttick]"); if (sb) sb.click(); }
-    else if (a === "board") { const bb = document.querySelector("#dvNextList [data-buy]"); if (bb) bb.click(); }
-    else if (a === "boardcost") { const c = document.querySelector("#dvNextList input.dvc"); document.getElementById("dvBox").scrollIntoView({ behavior: SMOOTH(), block: "center" }); if (c) setTimeout(() => c.focus(), 300); }
-    else if (a.startsWith("areas:")) { const v = a.slice(6); goAreas(v === "sh" ? "sh" : +v); }
     else if (a.startsWith("rqgo:")) { /* open the milestone and land on that quest's row */
       const inp = mainEl.querySelector(`input[data-k="${CSS.escape(a.slice(5))}"]`), d = inp && inp.closest("details");
       if (d) { d.open = true; state.open[d.id] = true; save(); d.classList.add("peek"); d.hidden = false; requestAnimationFrame(() => { const li = inp.closest("li"); li.scrollIntoView({ behavior: SMOOTH(), block: "center" }); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }); } }

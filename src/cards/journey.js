@@ -1,12 +1,29 @@
 /* Journey (0.4 P4c: moved verbatim from src/main.js; markup journey.html): the level control (Level up, − / + and
    the slider), the story timeline and current quest, its objectives and the story filters, and the milestone rows'
    story chips and "Reach …" lines. renderQuest is drawn by the Skills card (renderNext); the card's own update keeps the
-   level control in step. */
+   level control in step. 0.4 P5c: the game's own parts (what a level change does beside the level, the Level up gains,
+   the objective's place, what a story line opens) come from the pack's sections of this card (useJourneyParts). */
 import { char } from "../core/state.js";
+import { activePack } from "../core/pack.js";
 import { chainsOn, gatesOf, objPartsOf, questIdx, stepChipOf, storyGate, storyLineOf, turnInNeedsLv } from "../core/requirements.js";
 import { END_NEXT, STORY_DONE, capFirst, renderNow } from "./nextup.js";
 import { renderAhead } from "./ahead.js";
-import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageRMQ as RMQ, pageRewardToast as rewardToast, pageChime as chime, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_UNLOCKS as STORY_UNLOCKS, pageSTORY_END as STORY_END, pageLEVEL_POINTS as LEVEL_POINTS, pageAREA_ITEMS as AREA_ITEMS, pageRQ_K as RQ_K, pageBandOf as bandOf, pageDvFromLv as dvFromLv, pageShardsFromLv as shardsFromLv, pageObjSubs as objSubs, pageObjIdx as objIdx } from "./page.js";
+import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageRMQ as RMQ, pageRewardToast as rewardToast, pageChime as chime, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_UNLOCKS as STORY_UNLOCKS, pageSTORY_END as STORY_END, pageObjIdx as objIdx } from "./page.js";
+
+/* The pack's parts of this card (0.4 P5c, P0 §4: a card's pack sections). A pack section of Journey hands them over from
+   its mount (sections mount right after their card, before anything is drawn); a part it doesn't give keeps the default,
+   which means "this game has none".
+   reqOpens: what a story line opens (the words after "Opens"); subPlace(text): the place an objective with parts names,
+   shown under its parts; onLevel(state, v): what a level change does beside the level, run before the level is set (it
+   reads the old one); levelGains(from, to): the Level up float's text after "Lv <to>". */
+const JOURNEY_PARTS = { reqOpens: "the steps with a story chip below", subPlace: () => "", onLevel: () => {}, levelGains: () => "" };
+let parts = JOURNEY_PARTS;
+const useJourneyParts = p => {
+  for (const k of Object.keys(p)) if (!(k in JOURNEY_PARTS) || typeof p[k] !== typeof JOURNEY_PARTS[k]) throw new Error(`useJourneyParts: "${k}" is unknown or of the wrong type`);
+  parts = { ...parts, ...p };
+};
+/* an objective's parts, by the pack's grammar */
+const objPartsList = t => activePack().story.subs(t);
 
 let qInput = null;
 const norm = s => s.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -33,7 +50,7 @@ function renderStoryReqs() {
     row.hidden = ok && !!state.hide;
     const chip = !E6 ? (ok ? "reached" : d == null ? "set your quest" : `${d} story quest${d === 1 ? "" : "s"} ahead`) : L.chip || "set your quest";
     const now = E6 && !ok && L.turnIn && d === 1;
-    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens the steps with a story chip and the regional quests below that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
+    row.innerHTML = `<label><input type="checkbox" disabled ${ok ? "checked" : ""}><span class="txt"><span class="schip${ok ? "" : d == null ? "" : now ? " now" : " ahead"}">${chip}</span><b>${L.turnIn ? "Turn in" : "Reach"} "${q}" in the main story</b> <span class="sr-sub">Opens ${parts.reqOpens} that wait for it.${d != null && !ok ? ` You're on "${char(state).quest}".` : ""}</span></span></label>`;
   });
 }
 /* Chip on story-gated steps: how far that quest is from your current main quest. */
@@ -59,7 +76,7 @@ function renderQuest(inUpdate) {
   const st = document.getElementById("questStatus"), pv = document.getElementById("questPrev"), qlv = document.getElementById("questLv");
   st.className = "st next"; pv.innerHTML = ""; qlv.textContent = ""; renderAhead();
   const row = (q, tag) => q ? `<span class="dot"></span><span class="st-name st-step" title="Set as current quest">${q[1]}${tag ? ` <span class="unl">${tag}</span>` : ""}</span><span class="st-lv">Lv ${q[0]}</span>` : "";
-  /* No quest, or one no longer in the story (e.g. "Ishalgen", the starting map since 0.2): ask for the current quest. */
+  /* No quest, or one no longer in the story (a quest the story has since dropped): ask for the current quest. */
   const i = questIdx(char(state));
   if (i < 0) { st.innerHTML = `<span class="dot"></span><span class="st-name muted">Pick your current quest to place yourself on the story.</span>`; return; }
   /* Story timeline: previous (dim), current (the input), next; then the next unlock as a callout linked to its milestone. */
@@ -86,17 +103,17 @@ const subDone = (i) => ((char(state).qsub || {})[char(state).quest] || {})[i] ||
 function setSub(i, j, on) {
   char(state).qsub = char(state).qsub || {}; const q = char(state).qsub[char(state).quest] = char(state).qsub[char(state).quest] || {};
   const cur = new Set(q[i] || []); on ? cur.add(j) : cur.delete(j); q[i] = [...cur];
-  const n = objSubs(QUEST_STEPS[char(state).quest][i]).length, d = new Set((char(state).qsteps || {})[char(state).quest] || []);
+  const n = objPartsList(QUEST_STEPS[char(state).quest][i]).length, d = new Set((char(state).qsteps || {})[char(state).quest] || []);
   if (cur.size >= n) d.add(i); else d.delete(i);
   char(state).qsteps = char(state).qsteps || {}; char(state).qsteps[char(state).quest] = [...d]; save();
   return cur.size >= n;
 }
 function setObj(i, on) {
-  const subs = objSubs(QUEST_STEPS[char(state).quest][i]);
+  const subs = objPartsList(QUEST_STEPS[char(state).quest][i]);
   if (subs.length) { char(state).qsub = char(state).qsub || {}; const q = char(state).qsub[char(state).quest] = char(state).qsub[char(state).quest] || {}; q[i] = on ? subs.map((_, j) => j) : []; }
 }
-const subListHTML = (i, attr) => { const t = QUEST_STEPS[char(state).quest][i], subs = objSubs(t); if (!subs.length) return ""; const sd = subDone(i);
-  const loc = ((t.split(" — ")[1] || "").match(/\(([^)]*)\)\s*$/) || [])[1];
+const subListHTML = (i, attr) => { const t = QUEST_STEPS[char(state).quest][i], subs = objPartsList(t); if (!subs.length) return ""; const sd = subDone(i);
+  const loc = parts.subPlace(t);
   return `<ul class="qs-sub">${subs.map((x, j) => `<li class="${sd.includes(j) ? "on" : ""}"><label><input type="checkbox" ${attr}="${i}:${j}" ${sd.includes(j) ? "checked" : ""}><span>${x}</span></label></li>`).join("")}${loc ? `<li class="qs-sub-loc">${loc}</li>` : ""}</ul>`; };
 /* Objectives are done in order: ticking one (or one of its parts) also ticks every objective before it,
    and those fade out with it. Unticking never unticks the earlier ones. */
@@ -144,15 +161,8 @@ function stepQuest(d) {
 
 function setLevel(v) {
   v = Math.max(1, Math.min(45, parseInt(v, 10) || 1));
-  if (char(state).dvTotal) char(state).dvTotal = Math.max(0, char(state).dvTotal + dvFromLv(v) - dvFromLv(char(state).level));
-  /* Shards on hand follow level changes the same way crystals do (down too, so fixing a mis-click undoes it). */
-  { const ds = shardsFromLv(v) - shardsFromLv(char(state).level || 1); if (ds) char(state).stShards = Math.max(0, (char(state).stShards || 0) + ds); }
-  /* "Not in game yet" snoozes last until the next Level up; a quest with no prerequisite data keeps it until its recommended level. */
-  if (v > (char(state).level || 1) && char(state).rqSnooze) { Object.keys(char(state).rqSnooze).forEach(k => { const it = RQ_K(k); if (!(it && it.q.noPre && v < it.q.rec)) delete char(state).rqSnooze[k]; });
-    if (!Object.keys(char(state).rqSnooze).length) delete char(state).rqSnooze; }
+  parts.onLevel(state, v);
   char(state).level = v;
-  /* Areas follows you: if the band you're viewing is fully cleared, go back to the default (lowest band with open clears). */
-  if (state.areaLv && state.areaLv !== "sh" && !AREA_ITEMS.some(x => bandOf(x) === +state.areaLv && !char(state).checks[x.k])) delete state.areaLv;
   GATES.forEach(g => delete state.open[g.id]);
   save(); update();
 }
@@ -226,7 +236,7 @@ function journeyMount() {
   document.getElementById("lvlUpBig").addEventListener("click", e => {
     const from = char(state).level; if (from >= 45) return;
     setLevel(from + 1);
-    const to = char(state).level, sp = (LEVEL_POINTS[to] || 0) - (LEVEL_POINTS[from] || 0), dv = dvFromLv(to) - dvFromLv(from), sh = shardsFromLv(to) - shardsFromLv(from);
+    const to = char(state).level;
     if (state.sound !== false) chime();
     const btn = e.currentTarget, r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
     btn.classList.remove("pop"); void btn.offsetWidth; btn.classList.add("pop");
@@ -240,7 +250,7 @@ function journeyMount() {
       document.body.appendChild(p); setTimeout(() => p.remove(), 900);
     }
     const f = document.createElement("div"); f.className = "lvl-float";
-    f.innerHTML = `<b>Lv ${to}</b> +${sp} skill pts${dv ? ` · +${dv} crystals` : ""}${sh ? ` · +${sh} shard${sh === 1 ? "" : "s"}` : ""}`;
+    f.innerHTML = `<b>Lv ${to}</b>${parts.levelGains(from, to)}`;
     f.style.left = cx + "px"; f.style.top = r.top - 6 + "px";
     document.body.appendChild(f); setTimeout(() => f.remove(), 1700);
     /* Under reduced motion the floating label is hidden (CSS): the gains go in the toast instead. */
@@ -248,6 +258,6 @@ function journeyMount() {
   });
 }
 
-/* the Later list (src/cards/ahead.js) is a section of this card */
-const journeyCard = { id: "journey", slot: "rail", order: 200, root: null, sections: ["ahead"], mount: journeyMount, update: () => syncLevel() };
-export { renderQuest, renderQuestSubs, renderStoryChips, renderStoryReqs, setLevel, setObj, setSub, completeBefore, subListHTML, stepQuest, journeyCard };
+/* the Later list (src/cards/ahead.js) is a section of this card; after-timeline: a pack's section under the story timeline */
+const journeyCard = { id: "journey", slot: "rail", order: 200, root: null, sections: ["ahead", "after-timeline"], mount: journeyMount, update: () => syncLevel() };
+export { useJourneyParts, renderQuest, renderQuestSubs, renderStoryChips, renderStoryReqs, setLevel, setObj, setSub, completeBefore, subListHTML, stepQuest, journeyCard };
