@@ -74,9 +74,13 @@ const SCRIPT_TAG = /^<script type="module" src="([\w.-]+\.js)"><\/script>\n/gm;
    core tests. A schema error or a failed data check stops the build. */
 if (staleGenerated()) die(`${staleGenerated()} exists: the build makes that module from data/** (tools/gen/gen.mjs); delete the file`);
 try { genModule(); } catch (e) { die(e.message); }
+/* the game pack the page loads (0.4 P8): src/main.js imports it as the module "pack", the pack's shell.js, so the shell
+   names no game (docs/design/0.4-engine-contract.md §5); one pack, always loaded, until per-pack loading (0.6) */
+const PAGE_PACK = 'aion2';
 const bundleOne = async entry => {
   const r = await build({ absWorkingDir: ROOT, entryPoints: ['src/' + entry], bundle: true, write: false, format: 'esm', platform: 'browser',
-    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: [generatedData] })
+    treeShaking: false, minify: false, charset: 'utf8', legalComments: 'inline', logLevel: 'silent', plugins: [generatedData],
+    alias: { pack: `./src/packs/${PAGE_PACK}/shell.js` } })
     .catch(e => die(`src/${entry}: ${e.errors ? e.errors.map(x => x.text + (x.location ? ` (${x.location.file}:${x.location.line})` : '')).join('; ') : e.message}`));
   for (const w of r.warnings) console.warn(`build: esbuild warning in src/${entry}: ${w.text}` + (w.location ? ` (${w.location.file}:${w.location.line})` : ''));
   const js = r.outputFiles[0].text;

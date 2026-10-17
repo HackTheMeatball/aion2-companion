@@ -1,31 +1,23 @@
 /* The page shell (entry point). What the app decides lives in the pure core (src/core/: state, migrations, catalog,
-   requirements, Next up ranking); the cards live in src/cards/ (the engine's) and src/packs/aion2/cards/ (the pack's).
-   This file reads the save from storage and writes it back, hands the AION 2 pack to the engine, registers the cards and
+   requirements, Next up ranking); the cards live in src/cards/ (the engine's) and in the game pack (the pack's).
+   This file reads the save from storage and writes it back, hands the game pack to the engine, registers the cards and
    calls them (render(), update()), and keeps what belongs to no card: the header (Basic / Advanced), layout fitting, the
    "i" popovers, the toast and sounds, the number steppers, export / import and Report a problem. scripts/build.mjs
    bundles it with esbuild into one classic <script> inlined in the page, so its top-level names stay page globals (tests
    and the site-only script read them). Character data (level, story, ticks, build) is always read and written through
    char(state) (src/core/state.js). */
-import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END } from "./packs/aion2/data/generated.js";
-import { ITEMS } from "./packs/aion2/data/items.js";
-import { E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, STIGMA_ICON } from "./packs/aion2/data/build.js";
-import { seq } from "./packs/aion2/data/markup.js";
-import { TIPS } from "./packs/aion2/data/tips.js";
-import { GATES, STEPS } from "./packs/aion2/data/milestones.js";
-import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./packs/aion2/data/story.js";
-import { NO_AREA, SH_REWARD } from "./packs/aion2/data/areas.js";
+/* the game pack, as one module: "pack" is the pack's shell.js (scripts/build.mjs maps the name): the pack object, its
+   tables and helpers the cards get by their old names, its cards' hand-over of the shell's names (aion2UsePage, below)
+   and what the shell still calls of its cards */
+import { CONF, SD_RW, SOURCES, SRC_SITE, STORY_END, ITEMS, E_ORDER, LEVEL_POINTS, RMB_STACK, seq, TIPS, GATES, STEPS, QUESTS,
+  QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS, NO_AREA, SH_REWARD, aion2Pack, aion2UsePage, aion2DungeonMap,
+  aion2QuestMap, mapFocus, aion2TipId, ini, spMini, stIco, dvShort, goAreas, cubeClick, stLvClick, stTickClick, stUpClick,
+  AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt, dvFromLv, dvGateOf, dvLeft, objSubs, rqStatus,
+  shardsFromLv, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf, ascensionOf, aion2AscensionCard,
+  renderAscension } from "pack";
 import { activePack, usePack } from "./core/pack.js";
 import { mountAll, registerCard, registeredCards, updateCard } from "./core/cards.js";
 import { sourcesCards } from "./cards/sources.js";
-import { aion2Pack } from "./packs/aion2/pack.js";
-/* the AION 2 cards (0.4 P4b, src/packs/aion2/cards/): what the shell still calls of them, and the hand-over of the
-   shell's names they read (aion2UsePage, below) */
-import { aion2UsePage } from "./packs/aion2/cards/page.js";
-import { aion2DungeonMap, aion2QuestMap, mapFocus } from "./packs/aion2/cards/maps.js";
-import { aion2TipId } from "./packs/aion2/cards/shared.js";
-import { goAreas } from "./packs/aion2/cards/areas.js";
-import { cubeClick } from "./packs/aion2/cards/cube.js";
-import { stLvClick, stTickClick, stUpClick } from "./packs/aion2/cards/stigmas.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
@@ -35,12 +27,9 @@ import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
 import { itemByK } from "./core/catalog.js";
-import { AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt } from "./packs/aion2/catalog.js";
 import { checkableOf, countsOf, derivedOf, doneOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, openOf, qProgOf, questIdx, sideOpenOf,
   setGateChanges, gatesPass, storyGate, storyIdx, turnInNeedsLv, chainsOn, stepChipOf, storyLineOf } from "./core/requirements.js";
-import { dvFromLv, dvGateOf, dvLeft, objSubs, rqStatus, shardsFromLv, slotNames, specPickOf, stLvOfC, stigmaPlan, stigmaSlots, rqReqOf } from "./packs/aion2/requirements.js";
 import { rankNext } from "./core/nextup.js";
-import { ascensionOf } from "./packs/aion2/ascension.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
 import { useCardPage } from "./cards/page.js";
@@ -50,8 +39,7 @@ import { renderRoute, routeRulesCard } from "./cards/route.js";
 import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs } from "./cards/journey.js";
 import { aheadCard } from "./cards/ahead.js";
 import { renderUndo, undoCard } from "./cards/undo.js";
-import { aion2AscensionCard, renderAscension } from "./packs/aion2/cards/ascension.js";
-/* the engine reaches AION 2 through this one pack object; set before anything asks the engine (the save is loaded below) */
+/* the engine reaches the game through this one pack object; set before anything asks the engine (the save is loaded below) */
 usePack(aion2Pack);
 /* Cards through the registry (src/core/cards.js, 0.4 P4a): render() draws the milestone and Route rules cards (on every
    call) and mounts the cards; update() calls each card with updateCard, in the old order (updatePass). Confidence and
@@ -60,7 +48,7 @@ usePack(aion2Pack);
 sourcesCards({ CONF, SOURCES, SRC_SITE }).forEach(registerCard);
 activePack().cards.forEach(registerCard);
 [journeyCard, aheadCard, undoCard, nextUpCard, milestonesCard, routeRulesCard].forEach(registerCard);
-/* the Ascension bar, an AION 2 section of Journey: registered here until P5c makes it a section of the pack */
+/* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
 const cardCtx = () => { const c = char(state); return { state, c, pack: activePack(), basic: state.mode === "basic", get ev() { return gatesOf(c); } }; };
@@ -111,7 +99,7 @@ function render() {
   renderRoute();
   mountAll(Object.fromEntries(registeredCards().filter(x => x.root).map(x => [x.root, document.getElementById(x.root)])), cardCtx());
 }
-/* the "i" popovers number their ids in one sequence with the AION 2 cards' tips (aion2TipId, src/packs/aion2/cards/shared.js) */
+/* the "i" popovers number their ids in one sequence with the pack cards' tips (aion2TipId, the pack's cards/shared.js) */
 layoutEl.addEventListener("click", e => {
   const btn = e.target.closest(".tip"); if (!btn || btn.closest(".coll")) return;
   e.preventDefault(); e.stopPropagation();
@@ -175,9 +163,8 @@ function updatePass() {
   updateCard("journey", ctx);
   updateCard("areas", ctx);
   milestoneFilters();
-  updateCard("skills", ctx);
-  updateCard("cube", ctx);
-  updateCard("stigmas", ctx);
+  /* the top row's cards, in their order (the pack's build cards; a card without update is skipped) */
+  registeredCards().filter(x => x.slot === "top").forEach(x => updateCard(x.id, ctx));
   fillStigmaText();
   syncQRun();
   updateCard("nextup", ctx);
@@ -189,14 +176,8 @@ function updatePass() {
   requestAnimationFrame(fitRail);
 }
 
-/* A board node's short name (Next up, Undo, the Daevanion card). */
-const dvShort = t => t.replace("Cooldown Reduction or Combat Speed corner", "1 corner: CDR or Speed").replace("Critical Damage Boost corner", "Crit Damage corner").replace("Multi-Hit Chance corner", "Multi-Hit corner");
-/* Small icon before a skill name; an empty slot of the same size when there's no art yet, so names line up. */
-/* No art for a skill/stigma: a small initials square (same look for both). */
-const ini = n => n.split(/\s+/).filter(w => /^[A-Z]/.test(w)).map(w => w[0]).join("").slice(0, 2) || n.slice(0, 2);
-const spMini = n => SP_ICONS[n] ? `<img class="spmini" src="${SP_ICONS[n]}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="spmini ini" aria-hidden="true">${ini(n)}</span>`;
 /* Fill the Skills card down to the height of its neighbours: drop Coming up rows that don't fit (min 3). */
-/* Elastic lists (Skills "Coming up", Daevanion's board list) show at least 3 rows, then add rows while their card
+/* Elastic lists (Skills "Coming up", the board list) show at least 3 rows, then add rows while their card
    stays within the tallest card's natural height, so the row ends level without any card setting the height. */
 /* Scroll areas with a hidden bar and a bottom fade that clears once you reach the end. */
 function fadeScroll(el) {
@@ -218,7 +199,6 @@ function fitRail() {
 }
 window.addEventListener("resize", () => requestAnimationFrame(fitRail));
 document.getElementById("gates").addEventListener("toggle", () => requestAnimationFrame(fitRail), true);
-const stIco = (name, cls) => STIGMA_ICON[name] ? `<img class="${cls}" src="${STIGMA_ICON[name]}" alt="">` : cls === "st-mini" ? `<span class="st-mini ini" aria-hidden="true">${ini(name)}</span>` : "";
 /* Hero rows: names wrap instead of "…"; both cards' rows take the taller one's height so they stay aligned. */
 function syncHeroRows() {
   const a = document.querySelector("#spCard .sphero .dvhead"), b = document.querySelector("#dvNextList .dvhead"), c = document.querySelector("#stCard .dvhead");
@@ -299,7 +279,7 @@ layoutEl.addEventListener("click", e => {
   const i = document.getElementById(b.dataset.step), before = parseInt(i.value, 10) || 0;
   i.value = Math.max(0, before + (+b.dataset.d));
   i.dispatchEvent(new Event("input", { bubbles: true }));
-  /* Stones / crystals: a bright rising ping for +, the mirrored falling one for − (silent at 0). */
+  /* a bright rising ping for +, the mirrored falling one for − (silent at 0). */
   if (state.sound !== false && +i.value !== before) blip(+b.dataset.d > 0);
 });
 /* Export / import progress: localStorage is the only copy, so offer a JSON file download and upload (P2-9). */
@@ -355,16 +335,18 @@ document.getElementById("srcLink").addEventListener("click", () => { document.ge
    The href is refreshed when the link is about to be used, so it always carries the current level and quest. */
 const APP_VERSION = "__APP_VERSION__", APP_BUILD = "__APP_BUILD__";
 const reportLink = document.getElementById("reportLink");
+/* the form's address as the page's markup holds it (src/index.html), before the first refresh adds the fields */
+const reportBase = reportLink.getAttribute("href").split("?")[0];
 const reportURL = () => {
   const f = { template: "bug.yml", version: APP_VERSION, level: String(char(state).level || ""), quest: char(state).quest || "(not set)",
     mode: state.mode === "basic" ? "Basic" : "Advanced", build: APP_BUILD, browser: navigator.userAgent };
-  return "https://github.com/hackthemeatball/daeva-companion/issues/new?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
+  return reportBase + "?" + Object.entries(f).map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
 };
 const refreshReport = () => { reportLink.href = reportURL(); };
 ["pointerdown", "focus", "mouseenter", "click", "contextmenu"].forEach(ev => reportLink.addEventListener(ev, refreshReport));
 refreshReport();
 
-/* the shell's names the AION 2 cards read (src/packs/aion2/cards/page.js), handed over before the first render() */
+/* the shell's names the pack's cards read (the pack's cards/page.js), handed over before the first render() */
 aion2UsePage({ state, save, update, render, renderNow, renderQuest, renderAscension, renderStoryChips, renderStoryReqs, renderUndo,
   fitSkills, fadeScroll, rewardToast, chime, SMOOTH, derivedBox, isBasic, spMini, ini, specSub, stIco, dvShort,
   mainEl, layoutEl, STIGMA_SLOTS, stPlan, stLvOf, rqAvail, dvGate });
