@@ -22,10 +22,10 @@ const travelIx = () => perPack("travelIx", p => ({
   storyIdx: new Map(p.data.graph.story.map(([, name], i) => [name, i])),
   kibByName: new Map(Object.entries(KIBELISKS).map(([id, k]) => [k.name, id])),
 }));
-const nodeOfKey = k => { const id = travelIx().idOfKey.get(k); return id ? { id, n: travelGraph().nodes[id], P: NODE_PLACE[id] } : null; };
-const mapOfPt = p => p ? p.map || (KIBELISKS[p.anchor] || {}).map || null : null;
-const spot = (zone, pt) => zone || pt ? { zone: zone || null, pt: pt || null } : null;
-const MARK = /\(Kibelisk: ([^)]+)\)/;
+const travelNode = k => { const id = travelIx().idOfKey.get(k); return id ? { id, n: travelGraph().nodes[id], P: NODE_PLACE[id] } : null; };
+const travelMapOf = p => p ? p.map || (KIBELISKS[p.anchor] || {}).map || null : null;
+const travelSpot = (zone, pt) => zone || pt ? { zone: zone || null, pt: pt || null } : null;
+const TRAVEL_MARK = /\(Kibelisk: ([^)]+)\)/;
 
 /* ---------- Where a stamp says the player was (design §4) ---------- */
 /* A done regional quest: its turn-in (the Kibelisk's zone, the record's zone being the giver's); picked up: its giver; a
@@ -38,23 +38,23 @@ export const aion2Place = {
   at(path, v) {
     const [f, k, i] = path;
     if (f === "checks") {
-      if (k.startsWith("bind:")) { const K = KIBELISKS[k.slice(5)]; return K ? spot(K.zone, null) : null; }
-      const x = !isAscensionKey(k) && nodeOfKey(k); if (!x || !x.P) return null;
-      if (x.n.kind === "rq") { const p = x.P.pts.turnin; return spot((p && KIBELISKS[p.anchor] || {}).zone || x.P.zone, p); }
-      return x.n.kind === "sd" || x.n.kind === "sh" ? spot(x.P.zone, x.P.pts.entrance) : null;
+      if (k.startsWith("bind:")) { const K = KIBELISKS[k.slice(5)]; return K ? travelSpot(K.zone, null) : null; }
+      const x = !isAscensionKey(k) && travelNode(k); if (!x || !x.P) return null;
+      if (x.n.kind === "rq") { const p = x.P.pts.turnin; return travelSpot((p && KIBELISKS[p.anchor] || {}).zone || x.P.zone, p); }
+      return x.n.kind === "sd" || x.n.kind === "sh" ? travelSpot(x.P.zone, x.P.pts.entrance) : null;
     }
-    if (f === "started") { const x = nodeOfKey(k); return x && x.P && x.n.kind === "rq" ? spot(x.P.zone, x.P.pts.giver) : null; }
-    if (f === "areaRun") { const x = nodeOfKey(k); return x && x.P && (x.n.kind === "sd" || x.n.kind === "sh") ? spot(x.P.zone, x.P.pts.entrance) : null; }
+    if (f === "started") { const x = travelNode(k); return x && x.P && x.n.kind === "rq" ? travelSpot(x.P.zone, x.P.pts.giver) : null; }
+    if (f === "areaRun") { const x = travelNode(k); return x && x.P && (x.n.kind === "sd" || x.n.kind === "sh") ? travelSpot(x.P.zone, x.P.pts.entrance) : null; }
     if (f === "qsteps") {
-      const x = nodeOfKey(k), m = ((QUEST_STEPS[k] || [])[+i] || "").match(MARK), K = m && KIBELISKS[travelIx().kibByName.get(m[1])];
-      return spot(K ? K.zone : x && x.P ? x.P.zone : null, null);
+      const x = travelNode(k), m = ((QUEST_STEPS[k] || [])[+i] || "").match(TRAVEL_MARK), K = m && KIBELISKS[travelIx().kibByName.get(m[1])];
+      return travelSpot(K ? K.zone : x && x.P ? x.P.zone : null, null);
     }
     if (f === "quest") {
-      const [q, end] = Array.isArray(v) ? v : [], si = travelIx().storyIdx.get(q), x = q ? nodeOfKey(q) : null;
+      const [q, end] = Array.isArray(v) ? v : [], si = travelIx().storyIdx.get(q), x = q ? travelNode(q) : null;
       if (si === undefined || !x || !x.P) return null;
-      if (end === q) return spot(x.P.zone, x.P.pts.turnin);
-      const prev = si > 0 ? NODE_PLACE[travelGraph().story[si - 1][0]] : null, g = x.P.pts.giver, pm = prev && mapOfPt(prev.pts.turnin);
-      return spot(prev && pm && pm === mapOfPt(g) ? prev.zone : x.P.zone, g);
+      if (end === q) return travelSpot(x.P.zone, x.P.pts.turnin);
+      const prev = si > 0 ? NODE_PLACE[travelGraph().story[si - 1][0]] : null, g = x.P.pts.giver, pm = prev && travelMapOf(prev.pts.turnin);
+      return travelSpot(prev && pm && pm === travelMapOf(g) ? prev.zone : x.P.zone, g);
     }
     return null;
   },
@@ -98,7 +98,7 @@ export const bound = (c, kib, o) => boundSet(c, o).has(kib);
    the row is gone. */
 export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.nudgeRadius, kibs = KIBELISKS } = {}) {
   if (!c.quest || c.storyEnd === c.quest) return null;
-  const x = nodeOfKey(c.quest), T = x && x.P && x.P.pts.turnin;
+  const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin;
   const inBand = p => !!p && p.anchor in kibs && p.m != null && p.m > R && p.m <= nudge;
   if (!inBand(T)) return null;
   let first = null;

@@ -9,18 +9,18 @@
    A point is { map, x, y } (map units are metres); a zone is the pack's zone id or null. */
 import { activePack } from "./pack.js";
 
-const isStamp = x => Array.isArray(x) && x.length === 2 && typeof x[0] === "number" && Number.isFinite(x[0]);
-const isObj = x => !!x && typeof x === "object" && !Array.isArray(x);
+const placeIsStamp = x => Array.isArray(x) && x.length === 2 && typeof x[0] === "number" && Number.isFinite(x[0]);
+const placeIsObj = x => !!x && typeof x === "object" && !Array.isArray(x);
 
 /* Every dated stamp (time > 0, value not removed) the place hook may read: [key, path, t, value]. The key is the item key
    for a tick (as lastConfirmedLocation uses it), else `started:<k>`, `qsteps:<quest>:<i>`, `quest`, `<field>:<k>`. */
 function placeStamps(mt, fields) {
-  const out = [], put = (key, path, s) => { if (isStamp(s) && s[0] > 0 && s[1] != null) out.push([key, path, s[0], s[1]]); };
-  if (!isObj(mt)) return out;
-  const perKey = (f, pre) => { if (isObj(mt[f])) Object.entries(mt[f]).forEach(([k, s]) => put(pre + k, [f, k], s)); };
+  const out = [], put = (key, path, s) => { if (placeIsStamp(s) && s[0] > 0 && s[1] != null) out.push([key, path, s[0], s[1]]); };
+  if (!placeIsObj(mt)) return out;
+  const perKey = (f, pre) => { if (placeIsObj(mt[f])) Object.entries(mt[f]).forEach(([k, s]) => put(pre + k, [f, k], s)); };
   perKey("checks", "");
   perKey("started", "started:");
-  if (isObj(mt.qsteps)) Object.entries(mt.qsteps).forEach(([q, o]) => { if (isObj(o)) Object.entries(o).forEach(([i, s]) => put(`qsteps:${q}:${i}`, ["qsteps", q, i], s)); });
+  if (placeIsObj(mt.qsteps)) Object.entries(mt.qsteps).forEach(([q, o]) => { if (placeIsObj(o)) Object.entries(o).forEach(([i, s]) => put(`qsteps:${q}:${i}`, ["qsteps", q, i], s)); });
   put("quest", ["quest"], mt.quest);
   fields.forEach(f => perKey(f, f + ":"));
   return out;
