@@ -67,7 +67,9 @@ jobs:
                 const fromBranch = pr.head.ref.match(/^claude\/issue-(\d+)-/);
                 if (fromBranch) linked.push(+fromBranch[1]);
                 for (const n of [...new Set(linked)]) {
-                  try { await github.rest.issues.update({ owner, repo, issue_number: n, state: 'closed', state_reason: 'completed' }); core.info(`closed #${n}`); }
+                  try {
+                    if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.pull_request) { core.info(`#${n} is a PR; left open`); continue; }
+                    await github.rest.issues.update({ owner, repo, issue_number: n, state: 'closed', state_reason: 'completed' }); core.info(`closed #${n}`); }
                   catch (e) { core.warning(`#${pr.number}: could not close #${n}: ${e.message}`); }
                 }
               } catch (e) { core.error(`#${pr.number}: merge failed: ${e.message}`); failed.push(`#${pr.number}: ${e.message}`); }
