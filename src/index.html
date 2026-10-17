@@ -54,40 +54,7 @@
     <aside class="rail" aria-label="Progress and journey">
       <!-- @card packs/aion2/cards/progress.html -->
 
-      <section class="card where">
-        <div class="where-head">
-          <h2>Journey</h2>
-          <div class="lvl-ctl">
-            <button type="button" id="lvlDown" aria-label="One level down">−</button>
-            <label for="lvlNum">Lv</label>
-            <input id="lvlNum" type="number" min="1" max="45" value="4">
-            <button type="button" id="lvlUp" aria-label="One level up">+</button>
-          </div>
-          <button type="button" class="lvlup-btn" id="lvlUpBig">Level up</button>
-        </div>
-        <input id="lvlRange" class="lvl-range" type="range" min="1" max="45" value="4" aria-label="Current level slider">
-        <div class="ahead" id="ahead"></div>
-        <div class="where-sub ms-head"><span>Main story</span>
-          <div class="filt jfilt">
-            <button type="button" id="jFiltBtn" class="filt-btn jfilt-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jFiltMenu" title="Story filters" aria-label="Story filters"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg><span class="jfilt-dot" id="jFiltN" hidden></span></button><button type="button" class="jfilt-x" id="jFiltX" title="Back to the default (hide both)" aria-label="Clear story filters" hidden>×</button>
-            <div class="filt-menu" id="jFiltMenu" hidden>
-              <div class="filt-k">Show</div>
-              <label><input type="checkbox" id="jfObj"> Quest objectives</label>
-              <label><input type="checkbox" id="jfDone"> Completed objectives</label>
-              <label><input type="checkbox" id="jfTalk"> Talk-only steps</label>
-            </div>
-          </div>
-        </div>
-        <ul class="story">
-          <li class="st prev" id="questPrev"></li>
-          <li class="st cur"><span class="dot"></span><span class="st-main"><input id="questIn" type="text" list="questList" placeholder="Type your current main quest" autocomplete="off" aria-label="Current main quest"><datalist id="questList"></datalist></span><span class="st-lv" id="questLv"></span></li>
-          <li class="st-subs" id="questSubs"></li>
-          <li class="st next" id="questStatus"></li>
-        </ul>
-        <div class="asc" id="asc"></div>
-        <div class="trk-wrap" id="trackWrap"><button type="button" class="where-sub trk-sum" id="trkSum" aria-expanded="false">Milestones <span id="trkN"></span></button>
-        <div class="track"><ol id="track"></ol></div></div>
-      </section>
+      <!-- @card cards/journey.html -->
 
       <!-- @card packs/aion2/cards/areas.html -->
 
@@ -106,31 +73,14 @@
       <!-- @card packs/aion2/cards/daevanion.html -->
       <!-- @card packs/aion2/cards/stigmas.html -->
       </div>
-      <section class="nowstar wide" id="nowStar" aria-label="Next up"></section>
+      <!-- @card cards/nextup.html -->
 
-      <div class="sec"><h2 class="sec-h">Milestones <small id="gateHint"></small></h2><span class="sec-tools topbar">
-    <div class="filt">
-      <button type="button" id="btnFilter" class="filt-btn icon" aria-haspopup="true" aria-expanded="false" aria-controls="filtMenu" title="Filters" aria-label="Filters">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg><span class="filt-n" id="filtN"></span>
-      </button>
-      <div class="filt-menu" id="filtMenu" hidden>
-        <div class="filt-k">Hide in milestones</div>
-        <label><input type="checkbox" id="fCards"> Cleared milestones</label>
-        <label><input type="checkbox" id="fTicked"> Cleared tasks</label>
-        <label><input type="checkbox" id="fOpt"> Optional tasks</label>
-      </div>
-    </div>
-    <button type="button" id="btnReset" class="filt-btn" title="Turn every filter off">Reset filters</button>
-<button type="button" id="btnExpand" class="sec-btn">Expand all</button></span></div>
-      <div class="list" id="gates"></div>
+      <!-- @card cards/milestones.html -->
     </main>
   </div>
 
   <footer class="foot">
-    <section class="card route-card" id="routeCard" aria-label="Route rules">
-      <h2>Route rules <small>apply for the whole climb</small></h2>
-      <div class="list" id="steps"></div>
-    </section>
+    <!-- @card cards/route.html -->
 <!-- @card cards/sources.html -->
     <div class="xfer" id="xfer"><span class="xfer-text"><span>Progress is saved in this browser only.</span>
 <!-- @web-only -->

@@ -17,7 +17,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 /* every .js file under a folder, as repo paths */
 const walk = d => readdirSync(join(ROOT, d), { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(d + '/' + e.name) : e.name.endsWith('.js') ? [d + '/' + e.name] : []);
 const FILES = ['src/main.js', 'src/site.js', ...readdirSync(join(ROOT, 'src/core')).filter(f => f.endsWith('.js') && f !== 'evaluator.js').map(f => 'src/core/' + f),
-  ...walk('src/packs').sort()];
+  ...walk('src/cards').sort(), ...walk('src/packs').sort()];
 const RULES = ['src/packs/aion2/rules.js', 'src/packs/aion2/requirements.js'];
 
 /* a comparison operator (<, <=, >, >=; not the arrow =>) on either side of `field` */
@@ -26,8 +26,8 @@ const cmpRe = field => new RegExp(String.raw`${field}\s*(\|\|\s*0\)\s*)?[<>]|(?<
 const PATTERNS = {
   /* QUESTS, or the pack's story chain as the engine reads it (activePack().data.story.quests, 0.4 P2b) */
   'story position lookup (QUESTS.findIndex)': { re: /\b(?:QUESTS|quests)\.findIndex\(/g,
-    allow: { 'src/core/requirements.js': 1, 'src/main.js': 1, 'src/core/migrations.js': 1, 'src/core/sync.js': 1 },
-    why: 'storyIdx (the position, for display); main.js findQuest (the quest search box matches typed text); migrations.js moves ' +
+    allow: { 'src/core/requirements.js': 1, 'src/cards/journey.js': 1, 'src/core/migrations.js': 1, 'src/core/sync.js': 1 },
+    why: 'storyIdx (the position, for display); the Journey card\'s findQuest (the quest search box matches typed text); migrations.js moves ' +
       'a turned-in last quest on to the next one (a save step, untouched by E2); sync.js ranks two story positions when merging saves' },
   'story gate by a quest name in code (storyIdx("…"))': { re: /storyIdx\(\s*["'`]/g, allow: {} },
   'plan node / board level compared (.blv)': { re: cmpRe(String.raw`\.blv`), allow: {} },
