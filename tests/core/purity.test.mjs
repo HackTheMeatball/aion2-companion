@@ -35,7 +35,21 @@ export default (test, M) => {
       .filter(([f, , l]) => direct.test(l) || (f.startsWith('core/') && f !== 'core/state.js' && directS.test(l))).map(([f, n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`));
     assert.deepEqual(bad, []);
   });
-  test('char(state) is the save itself until 0.4 (one character per save)', () => {
-    const s = M.DEFAULT(); assert.equal(M.char(s), s);
+  test('char(state) is the current slot of the save (save v5)', () => {
+    const s = M.newSave({ id: 'slot-a' }); assert.equal(M.char(s), s.chars['slot-a']);
+  });
+  /* the label and the name may carry the player's name: never in a storage key, a file name, a URL or a log (P3c) */
+  test('labelOf and the character name are used nowhere in src/ outside src/core/state.js', () => {
+    const files = ['main.js', 'site.js', 'sw.js', ...CORE, ...readdirSync(join(SRC, 'shell')).filter(f => f.endsWith('.js')).map(f => 'shell/' + f)];
+    const bad = files.filter(f => f !== 'core/state.js').flatMap(f => code(read(f)).split('\n').map((l, i) => [f, i + 1, l])
+      .filter(([, , l]) => /\blabelOf\b|char\([^)]*\)\.name\b|\bc\.name\b/.test(l)).map(([f, n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`));
+    assert.deepEqual(bad, []);
+  });
+  test('the storage key and the export file name carry no game, class or player name', () => {
+    assert.equal(M.KEY, 'companion-save-v5');
+    const main = code(read('main.js')), fname = /const fname = \(\) => `([^`]*)`/.exec(main);
+    assert.ok(fname, 'the export file name is built in main.js as `const fname = () => `...``');
+    assert.equal(fname[1], 'companion-save-${new Date().toISOString().slice(0, 10)}.json');
+    for (const w of ['aion', 'assassin', 'asmodian', 'name', 'label', 'char(']) assert.ok(!M.KEY.toLowerCase().includes(w) && !fname[1].toLowerCase().includes(w), w);
   });
 };

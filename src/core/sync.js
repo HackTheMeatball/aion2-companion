@@ -1,5 +1,5 @@
 /* Sync groundwork (0.2 step 5c, pure: no DOM, no storage, no clock): per-item change times in the save, merge(a, b) of
-   two saves of the same character, and the last confirmed location derived from the change times.
+   two saves (per character slot, save v5), and the last confirmed location derived from the change times.
    docs/DATA-FORMAT-V2.md §13 is the spec; docs/ARCHITECTURE.md §1 the save rules.
 
    mt (in the character, next to the fields it times) mirrors the character's fields: a stamp is [seconds, value].
@@ -7,22 +7,17 @@
      mt.qsteps{quest}{i}, mt.qsub{quest}{i}{j}: per objective (value true; null once removed)
      mt.level, mt.stones, …: registers; mt.quest = [t, [quest, storyEnd]] (one register for both)
    null is a tombstone (the entry was removed). A stamp's time is when this device saw the value change; 0 = unknown
-   (the save predates change times, or a fresh browser's defaults). Old builds keep mt as it is (they save the whole
-   object) without updating it; the next load in a build with times re-stamps whatever they changed (stamp()). */
+   (a fresh browser's defaults). A v5 save is born with mt (src/core/migrations.js) and every write stamps it. */
 import { char } from "./state.js";
 import { AREA_ITEMS, itemByK } from "./catalog.js";
 import { RQ, QUESTS } from "../data/generated.js";
 import { NO_AREA } from "../data/areas.js";
 
-export const SAVE_SCHEMA = 1;
 /* Character fields with change times, by shape. Not timed: dvLast / dvLastAt (the 10-second undo, local), dvPts /
-   crystals (retired by dvReset1). buildId / customBuild don't exist yet (0.3, §8.4); they are timed once they do. */
+   crystals (retired fields). buildId / customBuild don't exist yet (0.3, §8.4); they are timed once they do. The
+   character's identity (id, pack, class, created) never changes; name gets a stamp once 0.5 makes it editable. */
 const SYNC_MAPS = ["checks", "started", "areaRun", "rqSnooze", "stLv", "stPick", "dvCost"];
 const SYNC_REGS = ["level", "stones", "pendSt", "pendCr", "stShards", "dvTotal", "dvAdj", "rotSeen", "buildId", "customBuild"];
-/* One-time flags: merged with OR (seedDv…seedDv4: retired flags early builds wrote). Every other top-level field that
-   isn't character data is a view setting (per device). backup1 is deliberately not here: it and `backup` (0.2.5,
-   src/core/backup.js) describe this browser's copy, so each device keeps its own. */
-export const ONE_TIME_FLAGS = ["seedLv12", "stTriniel1", "dvReset1", "migV5", "eputSync1", "g45Split1", "stampV1", "seedDv", "seedDv2", "seedDv3", "seedDv4"];
 
 /* canonical JSON (object keys sorted), for comparing values */
 const mtCanon = v => JSON.stringify(v, (k, x) => x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(y => [y, x[y]])) : x);
@@ -89,8 +84,7 @@ export const mtSecOf = ms => typeof ms === "number" && Number.isFinite(ms) && ms
 
 /* Stamp every timed value of the character that differs from its stamp (or has none) with time t; a value that is gone
    gets a tombstone. Returns the number of stamps written. Used (1) by every save, so each change carries the time it
-   was saved, (2) at load, so changes made by a build without times (rollback) are stamped then, (3) once by the
-   stampV1 step with t = 0 (or the export's savedAt), so pre-existing progress never outranks a dated change. */
+   was saved, (2) once by the fresh start with t = 0, so a new character's defaults never outrank a dated change. */
 export function stamp(c, t) {
   const vals = mtValuesOf(c), st = mtStampsOf(c.mt);
   let n = 0;
@@ -101,15 +95,13 @@ export function stamp(c, t) {
 }
 /* What storeState() runs before each write (the page passes Date.now()). savedAt (ms) is the time of the last saved
    progress change: writes that change only view settings (the page writes folds and filters at start-up too) leave it,
-   so a reload stores the same text. Saves without the stampV1 flag (written by the load steps before it runs) are
-   stored as they are. */
+   so a reload stores the same text. Only the current character changes between writes, so only it is stamped. */
 export function stampSave(save, nowMs) {
-  if (!save.stampV1) return;
   if (stamp(char(save), mtSecOf(nowMs))) save.savedAt = nowMs;
 }
 
 /* The character's timed items for merging: Map "path" → [path, [t, value]]; a value with no matching stamp counts as
-   time 0 (a save that was never stamped), or its stamp's time if a build without times changed it since. */
+   time 0 (never stamped), or its stamp's time if it changed since without a new stamp. */
 function mtItemsOf(c) {
   const vals = mtValuesOf(c), st = mtStampsOf(c.mt), out = new Map();
   st.forEach(([p, s0], key) => { const cur = vals.has(key) ? vals.get(key)[1] : null; out.set(key, [p, [s0[0], cur]]); });
@@ -117,16 +109,25 @@ function mtItemsOf(c) {
   return out;
 }
 
-/* merge(local, remote): the local save with the remote one's progress folded in.
-   Character: per item, the later change wins (an un-tick dated after a tick survives); flags: OR; schemaVersion and
-   savedAt: the larger. View settings, unknown top-level fields and the local-only character fields (dvLast, dvLastAt,
-   dvPts, crystals) stay the local save's: the synced part (syncedPart) is commutative, associative and idempotent.
-   Neither input is changed, and the result shares no objects with them. */
+/* merge(local, remote): the local save with the remote one's progress folded in, per character slot (by slot id): a
+   slot on one side only is kept (merged with itself: the same values, unstamped ones filled in at time 0, so merge()
+   stays idempotent); a slot on both sides merges per item (mergeChar). v and savedAt: the larger.
+   current, the view settings, backup and unknown top-level fields stay the local save's: the synced part (syncedPart)
+   is commutative, associative and idempotent. Neither input is changed, and the result shares no objects with them. */
+const clone = x => JSON.parse(JSON.stringify(x));
+const charsOf = s => (s && s.chars && typeof s.chars === "object" ? s.chars : {});
 export function merge(a, b) {
-  const out = JSON.parse(JSON.stringify(a)), ca = char(a), cb = char(b), co = char(out);
-  ONE_TIME_FLAGS.forEach(f => { if (a[f] || b[f]) out[f] = true; });
+  const out = clone(a), ac = charsOf(a), bc = charsOf(b);
   const num = x => typeof x === "number" && Number.isFinite(x) && x > 0 ? x : 0;
-  ["schemaVersion", "savedAt"].forEach(f => { const v = Math.max(num(a[f]), num(b[f])); if (v || f in a || f in b) out[f] = v; });
+  ["v", "savedAt"].forEach(f => { const v = Math.max(num(a[f]), num(b[f])); if (v || f in a || f in b) out[f] = v; });
+  out.chars = {};
+  [...new Set([...Object.keys(ac), ...Object.keys(bc)])].forEach(id => { out.chars[id] = mergeChar(ac[id] || bc[id], bc[id] || ac[id]); });
+  return out;
+}
+/* Two copies of one character: per item, the later change wins (an un-tick dated after a tick survives). The identity
+   (id, pack, class, name, created) and the local-only fields (dvLast, dvLastAt, dvPts, crystals) stay the local copy's. */
+function mergeChar(ca, cb) {
+  const co = clone(ca);
   const ia = mtItemsOf(ca), ib = mtItemsOf(cb), win = new Map(ia);
   ib.forEach((x, key) => { const y = win.get(key); if (!y || cmpItem(key, y[1], x[1]) < 0) win.set(key, x); });
   /* rebuild every timed field from the winners; containers that either side had stay (possibly empty) */
@@ -154,13 +155,15 @@ export function merge(a, b) {
   Object.values(co.qsteps || {}).forEach(a => a.sort((x, y) => x - y));
   Object.values(co.qsub || {}).forEach(o => Object.values(o).forEach(a => a.sort((x, y) => x - y)));
   co.mt = mt;
-  return out;
+  return co;
 }
-/* The part of a save that merge() syncs (for tests and, later, the sync layer): character progress, mt, flags. */
+/* The part of a save that merge() syncs (for tests and, later, the sync layer): per slot, the character's progress and
+   mt; v and savedAt. */
 export function syncedPart(save) {
-  const c = char(save), out = {};
-  [...SYNC_MAPS, ...SYNC_REGS, "qsteps", "qsub", "quest", "storyEnd", "mt"].forEach(f => { if (c[f] !== undefined) out[f] = c[f]; });
-  [...ONE_TIME_FLAGS, "schemaVersion", "savedAt"].forEach(f => { if (save[f] !== undefined) out[f] = save[f]; });
+  const out = { chars: {} };
+  Object.entries(charsOf(save)).forEach(([id, c]) => { const o = out.chars[id] = {};
+    [...SYNC_MAPS, ...SYNC_REGS, "qsteps", "qsub", "quest", "storyEnd", "mt"].forEach(f => { if (c[f] !== undefined) o[f] = c[f]; }); });
+  ["v", "savedAt"].forEach(f => { if (save[f] !== undefined) out[f] = save[f]; });
   return out;
 }
 

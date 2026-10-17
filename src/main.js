@@ -11,11 +11,12 @@ import { TIPS } from "./data/tips.js";
 import { GATES, STEPS } from "./data/milestones.js";
 import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./data/story.js";
 import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
-import { KEY, char, loadState } from "./core/state.js";
+import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
 /* the save is read and written only through this storage (interface: src/core/storage.js) */
 import { webStorage as saveStore } from "./shell/storage-web.js";
+import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
 import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
@@ -123,11 +124,11 @@ document.getElementById("gates").addEventListener("click", e => {
 /* Test hook (tests/golden.js --explain): the 0.3 E4 changes to run with, set by the runner before the page loads; the
    page itself runs with all of them on. */
 if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
-/* The save from storage, then the load-time steps (src/core/migrations.js), which write it back where they always did. */
-let { state, hadSave } = loadState(saveStore.get(KEY));
+/* The save from storage (save v5; anything else starts fresh), then the load-time steps (src/core/migrations.js). */
+let { state, hadSave } = loadState(saveStore.get(KEY), { now: Date.now(), newId });
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
-/* Every write of the progress goes through storeState(): same key, same moments as before (0.1.5); since 5c the save
-   carries per-item change times once the stampV1 step has run (stampSave, src/core/sync.js). A write
+/* Every write of the progress goes through storeState(); each one stamps the current character's per-item change times
+   (stampSave, src/core/sync.js). A write
    that fails (storage full, private mode, storage disabled) shows the #saveWarn banner; the next write that works hides it. */
 function storeState() {
   stampSave(state, Date.now());
@@ -1795,7 +1796,8 @@ dvRespec.addEventListener("click", () => {
   const btn = document.getElementById("expBtn"), msg = document.getElementById("xferMsg");
   /* the save-failed banner offers the same Export action wherever this button is available */
   const show = on => { btn.hidden = !on; document.getElementById("saveWarnExp").hidden = !on; };
-  const fname = () => `aion2-assassin-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  /* no name or label in the file name (it may carry the player's name; docs/ARCHITECTURE.md §1) */
+  const fname = () => `companion-save-${new Date().toISOString().slice(0, 10)}.json`;
   if (!(window.claude && window.claude.use)) {
     show(true);
     btn.addEventListener("click", () => {
@@ -1818,15 +1820,15 @@ dvRespec.addEventListener("click", () => {
 })();
 document.getElementById("impIn").addEventListener("change", async e => {
   const f = e.target.files && e.target.files[0], msg = document.getElementById("xferMsg"); e.target.value = ""; if (!f) return;
-  let data = null; try { data = JSON.parse(await f.text()); } catch (err) { /* not JSON */ }
-  if (!data || typeof data !== "object" || typeof data.checks !== "object" || !data.checks) { msg.textContent = "That file isn't a progress export."; return; }
-  const n = Object.values(data.checks).filter(Boolean).length;
-  msg.innerHTML = `Replace your progress with this file (Lv ${+data.level || "?"}, ${n} ticks)? <button type="button" class="go" id="impGo">Replace</button><button type="button" id="impNo">Cancel</button>`;
+  /* only a v5 export (0.4 on) loads; anything else, a pre-0.4 export included, changes nothing */
+  const data = parseExport(await f.text());
+  if (!data) { msg.textContent = "This file is from a version before 0.4 and can't be loaded."; return; }
+  const c = char(data), n = Object.values(c.checks || {}).filter(Boolean).length;
+  msg.innerHTML = `Replace your progress with this file (Lv ${+c.level || "?"}, ${n} ticks)? <button type="button" class="go" id="impGo">Replace</button><button type="button" id="impNo">Cancel</button>`;
   document.getElementById("impNo").onclick = () => { msg.textContent = ""; };
   document.getElementById("impGo").onclick = () => {
-    /* The progress being replaced is kept one step back under a separate key. Imported files never re-run the one-time seeds. */
+    /* The progress being replaced is kept one step back under a separate key. */
     saveStore.set(KEY + ":before-import", JSON.stringify(state));
-    Object.assign(data, { seedLv12: true, stTriniel1: true, dvReset1: true });
     /* 0.2.5: the file's backup times are another copy's; the import itself counts as a backup here (src/core/backup.js) */
     importBackup(data, Date.now());
     if (!saveStore.set(KEY, JSON.stringify(data))) { msg.textContent = "Couldn't save in this browser."; return; }

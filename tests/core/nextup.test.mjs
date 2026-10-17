@@ -2,8 +2,10 @@
    story position × several levels, in Node). */
 import assert from 'node:assert/strict';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 5, hide: false, open: {}, quest: '', mode: 'advanced', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+const S = (o = {}) => toStored({ checks: {}, level: 5, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 const ACTIONABLE = ['step', 'missed', 'adv'];
 
 export default (test, M) => {
@@ -19,7 +21,7 @@ export default (test, M) => {
   });
   test('skill points to spend: the buy card, then up to 3 queued upgrades the points cover', () => {
     const cs = M.rankNext(S({ level: 20, quest: M.QUESTS[30][1] })), sk = cs.filter(c => c.kind === 'skill');
-    assert.equal(sk[0].first, true); assert.equal(sk[0].x, M.skillBuy(S({ level: 20 }))); assert.ok(sk.length >= 2 && sk.length <= 4);
+    assert.equal(sk[0].first, true); assert.equal(sk[0].x, M.skillBuy(M.char(S({ level: 20 })))); assert.ok(sk.length >= 2 && sk.length <= 4);
   });
   test('story level-gated: regional quests and the Sealed Dungeon card move above the story', () => {
     const q = M.QUESTS.find(([l]) => l >= 25), lv = q[0] - 2;

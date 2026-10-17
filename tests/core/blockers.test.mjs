@@ -4,8 +4,10 @@
    follow-up), the regional row text, the Later cards, the Daevanion card, and the switch that turns it all off. */
 import assert from 'node:assert/strict';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 
 export default (test, M) => {
   const Q = n => { const i = M.QUESTS.findIndex(q => q[1] === n); assert.ok(i >= 0, n); return i; };

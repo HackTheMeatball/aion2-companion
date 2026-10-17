@@ -1,10 +1,10 @@
 /* Save safety (0.2.5, pure: no DOM, no storage, no clock; docs/design/0.2.5-save-safety.md). The save's optional
    `backup` object holds this browser's backup times, epoch ms: lastExportAt (an export was handed to the browser),
-   since (the baseline for a player who never exported: set by the backup1 step or by import), nudgeAt ("Not now" on the
+   since (the baseline for a player who never exported: set when the save is created or imported), nudgeAt ("Not now" on the
    export nudge), a2hsAt ("Got it" on the Home Screen hint). Absent or not a finite positive number = never. It is a
    top-level field like the view settings, not a character field and not synced (src/core/sync.js). The site's own
    script (src/site.js) shows the "Last backup" line, the nudge and the hint from these helpers; the claude.ai build has
-   none of that UI, only the shared storage side (markExport, importBackup, the backup1 step). */
+   none of that UI, only the shared storage side (markExport, importBackup, the fresh start in src/core/migrations.js). */
 import { char } from "./state.js";
 
 export const NUDGE_DAYS = 14;
@@ -66,5 +66,5 @@ export function setBackupTime(save, f, nowMs) {
 /* Export handed to the browser (main.js stores this before it builds the file, so the file equals the save). */
 export const markExport = (save, nowMs) => setBackupTime(save, "lastExportAt", nowMs);
 /* Import: the file's own backup is ignored (another device's nudgeAt / a2hsAt don't apply here); the import counts as a
-   backup, and backup1 is marked done so the step doesn't run again on the imported save. */
-export function importBackup(data, nowMs) { data.backup = { since: nowMs, lastExportAt: nowMs }; data.backup1 = true; }
+   backup. */
+export function importBackup(data, nowMs) { data.backup = { since: nowMs, lastExportAt: nowMs }; }

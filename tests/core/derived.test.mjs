@@ -5,8 +5,10 @@
    back), nothing written, and the Lv 44 "Turned in" on Forgotten Commander. */
 import assert from 'node:assert/strict';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+const S = (o = {}) => toStored({ checks: {}, level: 45, hide: false, open: {}, quest: '', mode: 'advanced', ...o });
 const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
 
 export default (test, M) => {
@@ -38,7 +40,7 @@ export default (test, M) => {
     assert.equal(done(S({ quest: at(cc, -1), qsteps: step4 })), true, 'a stored objective tick counts wherever the story is now (it is only written on that quest)');
     const s = S({ quest: cc, qsteps: step4 });
     assert.equal(M.derivedOf(M.char(s), key).via.startsWith('step '), true);
-    assert.equal(s.checks[key], undefined, 'nothing is written');
+    assert.equal(M.char(s).checks[key], undefined, 'nothing is written');
     assert.equal(M.clearDoneOf(M.char(s), key), true, 'Progress counts it like a ticked clear (clearTally)');
     withChanges(['regionalTurnedIn', 'derived', 'followUps', 'turnInLevel'], () => { assert.equal(done(s), false); assert.equal(M.clearDoneOf(M.char(s), key), false); });
     assert.equal(k, 'sh:graverobber-den');
@@ -144,7 +146,7 @@ export default (test, M) => {
     assert.equal(M.doneOf(M.char(s), 'g16:0'), true);
     const back = S({ level: 16, quest: 'Buried Atrocities', checks: { 'g16:0': false } });
     assert.equal(M.doneOf(M.char(back), 'g16:0'), false);
-    assert.equal(back.checks['g16:0'], false, 'the stored false is still there');
+    assert.equal(M.char(back).checks['g16:0'], false, 'the stored false is still there');
     /* counts: the derived row counts as done (milestone counts and tags) */
     const [d1] = M.countsOf(s, g), [d0] = withChanges([], () => M.countsOf(s, g));
     const dv = M.checkableOf(s, g).filter(x => der(s, x.k)).map(x => x.k);

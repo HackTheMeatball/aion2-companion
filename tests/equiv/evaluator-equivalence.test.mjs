@@ -86,7 +86,7 @@ export default (test, M) => {
   const C = new Function('QUESTS', 'QUEST_STEPS', 'GATES', 'STEPS', 'RQ', 'AREA_ITEMS', 'SP_STEPS', 'STIGMA_PLAN', 'STIGMA_SLOTS', 'DV_NODES', `return (${catalogInPage})();`)(
     M.QUESTS, M.QUEST_STEPS, M.GATES, M.STEPS, M.RQ, M.AREA_ITEMS, M.SP_STEPS, M.STIGMA_PLAN, () => M.stigmaSlots({}), M.DV_NODES);
   const fixtures = fixtureStates(); /* the flat fixtures (tests/fixtures/*.flat.json) under their old state ids */
-  const states = generate(C, { fixtures }).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
+  const states = generate(C, { fixtures }).map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0); return { id, s: state, c: M.char(state) }; });
   const N = M.GATE_GRAPH.nodes;
   const diffs = new Map(), seen = { step: new Set(), rq: new Set(), plan: new Set(), skill: new Set() };
   const cmp = (kind, k, field, old, ev, id) => { if (old === ev) return; const d = `${kind} ${k} ${field}: 0.2 ${old} / evaluator ${ev}`;
@@ -114,7 +114,7 @@ export default (test, M) => {
     try {
       for (const it of saved.keys()) for (const f of FLAGS) delete it[f];
       states.forEach(({ id, s, c }, i) => {
-        const ev = evs[i], probe = { ...s, checks: {} };
+        const ev = evs[i], probe = { ...s, chars: { ...s.chars, [s.current]: { ...c, checks: {} } } }; /* the save with the character's ticks cleared */
         for (const g of M.GATES) for (const it of g.items) {
           if (!it.k || !N[it.k] || N[it.k].kind !== 'step') continue;
           seen.step.add(it.k);

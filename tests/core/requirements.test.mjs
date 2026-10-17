@@ -2,8 +2,12 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const FLAGS = { seedLv12: true, stTriniel1: true, dvReset1: true, migV5: true, eputSync1: true };
-const S = (o = {}) => ({ checks: {}, level: 5, hide: false, open: {}, quest: '', ...FLAGS, ...o });
+import { createRequire } from 'node:module';
+/* a test save in the v5 shape (tests/support/save.js) */
+const { toStored } = createRequire(import.meta.url)('../support/save.js');
+/* S: a character with the view settings beside it (what the functions taking c read); SV: the same as a v5 save, for
+   the functions taking the save (countsOf, openSteps) */
+const S = (o = {}) => ({ checks: {}, level: 5, hide: false, open: {}, quest: '', ...o }), SV = o => toStored(S(o));
 
 export default (test, M) => {
   const qAt = n => M.QUESTS[M.storyIdx(n)][1], qBefore = n => M.QUESTS[M.storyIdx(n) - 1][1];
@@ -45,12 +49,12 @@ export default (test, M) => {
   });
   test('optional tasks count once ticked; the Optional filter hides them', () => {
     const g = { id: 't', items: [{ k: 't:0', t: '' }, { k: 't:opt', opt: true, t: '' }] };
-    assert.deepEqual(M.countsOf(S(), g), [0, 1]);
-    assert.deepEqual(M.countsOf(S({ checks: { 't:opt': true } }), g), [1, 2]);
-    assert.deepEqual(M.countsOf(S({ checks: { 't:opt': true }, hideOpt: true }), g), [0, 1]);
+    assert.deepEqual(M.countsOf(SV(), g), [0, 1]);
+    assert.deepEqual(M.countsOf(SV({ checks: { 't:opt': true } }), g), [1, 2]);
+    assert.deepEqual(M.countsOf(SV({ checks: { 't:opt': true }, hideOpt: true }), g), [0, 1]);
   });
   test('open steps: a story-gated step waits for the story; a turned-in gate waits for "Turned in"', () => {
-    const g22 = M.GATES.find(g => g.id === 'g22'), g45 = M.GATES.find(g => g.id === 'g45'), ks = (s, g) => M.openSteps(s, g).map(x => x.k);
+    const g22 = M.GATES.find(g => g.id === 'g22'), g45 = M.GATES.find(g => g.id === 'g45'), ks = (s, g) => M.openSteps(toStored(s), g).map(x => x.k);
     assert.ok(!ks(S({ level: 22, quest: qBefore('Daeva in a Dream') }), g22).includes('g22:0'));
     assert.ok(ks(S({ level: 22, quest: 'Daeva in a Dream' }), g22).includes('g22:0'));
     assert.ok(!ks(S({ level: 45, quest: 'Forgotten Commander' }), g45).includes('g45:witness'));
@@ -60,7 +64,7 @@ export default (test, M) => {
   });
   test('open steps: a step that is a story quest (byStory) is never offered (the story card and "Turned in" cover it)', () => {
     const g6 = M.GATES.find(g => g.id === 'g6'), q = 'The Being Beneath the Lake';
-    for (const quest of [qBefore(q), q, M.QUESTS[M.storyIdx(q) + 1][1]]) assert.ok(!M.openSteps(S({ level: 6, quest }), g6).some(x => x.k === 'g6:0'), quest);
+    for (const quest of [qBefore(q), q, M.QUESTS[M.storyIdx(q) + 1][1]]) assert.ok(!M.openSteps(SV({ level: 6, quest }), g6).some(x => x.k === 'g6:0'), quest);
   });
   test('skill points: level table + Wisdom Stones − ticked lines', () => {
     assert.deepEqual(M.skillPoints(S({ level: 12 })), { fromLevels: 24, stones: 0, spent: 0, pts: 24 });
@@ -158,7 +162,7 @@ export default (test, M) => {
     assert.ok(!all(M.rotKeys(c, s1.lv - 1)).includes(s1.name));
   });
   test('gatesPass: one evaluator per character and level inside a pass, a fresh one outside it', () => {
-    const c = M.char(S({ level: 20 }));
+    const c = M.char(SV({ level: 20 }));
     assert.notEqual(M.gatesOf(c), M.gatesOf(c), 'outside a pass every call evaluates');
     const r0 = M.gatesRuns();
     const [a, b, lv, other, nested] = M.gatesPass(() => [M.gatesOf(c), M.gatesOf(c), M.gatesOf(c, 30), M.gatesOf({ ...c }), M.gatesPass(() => M.gatesOf(c))]);
