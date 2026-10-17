@@ -7,6 +7,7 @@
      src/main.js               the app script (ES module entry)
      src/data/*.js             the hand-written data tables (and the text helpers they use), imported by main.js
      src/core/*.js             the pure core (0.2 P3): state, migrations, catalog, requirements, Next up ranking; no DOM
+     src/shell/*.js            the browser side of core interfaces (0.4 P3b): storage-web.js, the localStorage adapter
      src/data/generated.js     not a file: the build makes this module from data/** (data format v2) with
                                tools/gen/gen.mjs, in memory, on every build
      src/site.js               the standalone site's own script (persistent storage, service worker); site only

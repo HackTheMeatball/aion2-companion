@@ -47,8 +47,15 @@ no server copy. Rules:
 
 `state` is one JSON object, loaded at startup as `Object.assign(DEFAULT(), saved)` (`loadState`, `src/core/state.js`) and
 written back by `save()` after every change. Every write (`save()` and the one-time steps below) goes through `storeState()`, which shows the
-"couldn't be saved" banner (`#saveWarn`, with the Export action) when `localStorage.setItem` throws and hides it after
+"couldn't be saved" banner (`#saveWarn`, with the Export action) when the write fails and hides it after
 the next write that works; what is written, and under which key, is unchanged.
+
+**Storage adapter** (0.4 P3b). The page never calls `localStorage` itself: load, `storeState()` and Import go through a
+storage object with the synchronous interface of `src/core/storage.js` (`get(key)` → text or `null`, `set(key, text)`
+→ `true` / `false`, `remove(key)`). The browser one is `src/shell/storage-web.js` (the only file in `src/` that touches
+`localStorage`; `set` returns false where `setItem` throws); `memoryStorage(quota)` in the core is the Node one the
+`core` suite tests. Same keys, same text as before the adapter. A native store app swaps the adapter (and reads its
+save into memory before start-up, so the interface stays synchronous).
 
 The only other localStorage key is `…:before-import` (see Import below). On the standalone site the page asks
 `navigator.storage.persist()` when it loaded saved progress, at most once per browser session (flag in
