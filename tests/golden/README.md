@@ -1,7 +1,7 @@
 # Golden master
 
-A safety net for refactoring (architecture audit, phase P0). It loads the built page (`dist/index.html`) with 2,000
-generated save states and records what the app decides for each one. Any later change to that behaviour shows up as a
+A safety net for refactoring (architecture audit, phase P0). It loads the built page (`dist/index.html`) with 2,748
+generated save states (2,000 plus the smart Next up families, 0.5 P11) and records what the app decides for each one. Any later change to that behaviour shows up as a
 diff, grouped by kind of change, so a refactor that should change nothing can prove it, and a fix that should change
 something shows exactly where.
 
@@ -23,7 +23,7 @@ node tests/golden.js --record        # re-record snapshots + KNOWN-VIOLATIONS.md
 node tests/golden.js --record --card nu    # re-record only the Next up shards; fails if another card changed
 node tests/golden.js --filter 'L3[0-4]-'   # only matching state ids, while iterating (verify only)
 node tests/golden.js --all           # + 6,000 extended random states (see "Extended set")
-node tests/golden.js --explain       # which 0.3 change makes which difference (tests/golden/explain.js; table in tests/out/golden/explain.md)
+node tests/golden.js --explain       # which gate or ranking change makes which difference (tests/golden/explain.js; table in tests/out/golden/explain.md)
 ```
 
 Options: `--jobs N` parallel pages (default 3), `--limit N`, `--render` (see "How a state is recorded").
@@ -69,6 +69,14 @@ Ids describe the recipe: `level/L32-q49-before-A` = Lv 32, story at `QUESTS[49]`
 | `random/` | the rest up to 2,000 | recipes from a seeded PRNG, anything combined (story anywhere, any tick rule) |
 | `special/` | 6 | no save, a v5 save with an empty character, two texts that aren't a v5 save (`{}`, a pre-0.4 flat save: both start fresh), story end, unknown quest name |
 | `fixture/` | 2 | the v285 saves as the 0.3 build stored them after loading them (`tests/fixtures/fixture-v285.flat.json`, `fixture-user-v285.flat.json`; 0.4 P3a, frozen since P3c), written as v5 saves by `tests/support/save.js` |
+| `loc/` | 376 | smart Next up (0.5 P11): dated change times (`mt`). Per Sealed Dungeon band (at its level and 4 above) and zone, the newest stamp is a regional quest turned in (`rq`) / picked up (`pick`), a dungeon done (`sd`) / entered (`run`), a stronghold done / entered (`sh` / `shrun`), a `bind:` tick of a Kibelisk there (`bind`), or one story objective per band (`obj`); the story position is dated older. Both modes |
+| `behind/` | 198 | smart Next up: the level 5 / 10 / 15 above the ticks (`fromNN`: the level they were kept up to; `lag` story there, `lagq` story at the level), or kept up with 2 / 3 / 4 missed steps (`missK`) × 0 / 1 / 2 more kinds of points (`sS`: shards, board crystals), around the catch-up thresholds. Both modes |
+| `bind/` | 174 | smart Next up: every story position at its level with no ticks (`none`) and with every objective ticked (`objs`, dated), and the Galorik's Inspection Area state of design §8.4 (`galorik`: "Crash Site Rendezvous", objective 0 ticked). Advanced |
+
+The last three (`SMART_FAMILIES` in `states.js`) come after the 2,000 above, so adding them moved no state. They are
+recorded with every ranking switch off (`RANK_CHANGES` in `src/core/nextup.js`, `AION2_RANK_CHANGES` in
+`src/packs/aion2/nextup.js`); the step that turns a switch on re-records them and attributes the difference with
+`--explain`, which reads both tables from the page and says which ship on.
 
 Tick rules: `before` = what a player who kept up has done (lower milestones, regional quests below the level whose
 story gate is reached, dungeons/strongholds below, skills 2 levels behind, earlier boards); `lvonly` = the same by level

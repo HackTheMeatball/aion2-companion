@@ -1,4 +1,4 @@
-/* Invariants (0.3 E3, docs/design/0.3-requirement-engine.md §12), suite `invariant`. Over the 10,000 states of
+/* Invariants (0.3 E3, docs/design/0.3-requirement-engine.md §12), suite `invariant`. Over the 10,750 states of
    tests/invariant/states.mjs, loaded and migrated as the page does, with an independent oracle (tests/support/oracle.mjs:
    the raw v2 data, not GATE_GRAPH and not the evaluator) as the judge:
 
@@ -60,10 +60,10 @@ export default (test, M, X) => {
 
   test(`${states.length} states loaded, migrated and deep-frozen`, () => {
     assert.equal(states.length, X.TOTAL);
-    for (const { id, raw } of states) {
-      const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0);
-      loaded.push({ id, s: deepFreeze(state), c: M.char(state) });
-    }
+    /* loaded once for every invariant file (tests/invariant.mjs X.loaded) */
+    loaded.push(...X.loaded());
+    assert.equal(loaded.length, states.length);
+    assert.ok(loaded.every(x => Object.isFrozen(x.s) && Object.isFrozen(x.c)), 'deep-frozen');
   });
 
   /* which nodes a card offers: [{ card, id, started }] (id null: a save key the oracle doesn't know) */

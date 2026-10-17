@@ -10,6 +10,26 @@ const ACTIONABLE = ['step', 'missed', 'adv'];
 
 export default (test, M) => {
   const qi = n => M.storyIdx(n), kinds = cs => cs.map(c => c.kind);
+  /* 0.5 P11: the ranking switches of smart Next up (docs/design/0.4-smart-next-up.md §12) */
+  test('ranking switches: the engine\'s and the pack\'s tables, every one off as shipped; setRankChanges picks exactly a set', () => {
+    const E = M.RANK_CHANGES, A = M.AION2_RANK_CHANGES;
+    assert.deepEqual(Object.keys(E), ['ascensionFirst', 'placeRank', 'trackFilter', 'bandLabels', 'catchUp', 'etaLater']);
+    assert.deepEqual(Object.keys(A), ['bindDerived', 'bindNudge', 'travelAdvice']);
+    assert.deepEqual(Object.keys(E).filter(n => n in A), [], 'no name in both tables');
+    for (const [n, x] of [...Object.entries(E), ...Object.entries(A)]) {
+      assert.equal(x.on, false, n); assert.ok(typeof x.what === 'string' && x.what.length > 20, n);
+      for (const d of x.needs || []) assert.ok(d in E || d in A, `${n} needs ${d}`);
+    }
+    assert.deepEqual(A.bindNudge.needs, ['bindDerived']); assert.deepEqual(A.travelAdvice.needs, ['bindDerived', 'placeRank']);
+    const on = () => [...Object.keys(E).filter(n => M.rankChangeOn(n)), ...Object.keys(A).filter(n => M.rankChangeOn(n, A))];
+    assert.deepEqual(on(), []);
+    try {
+      M.setRankChanges(['placeRank', 'bindNudge']); assert.deepEqual(on(), ['placeRank', 'bindNudge']);
+      M.setRankChanges([]); assert.deepEqual(on(), []);
+    } finally { M.setRankChanges(null); }
+    assert.deepEqual(on(), []);
+    assert.throws(() => M.rankChangeOn('bindNudge'), /unknown ranking change/, 'a pack switch read from the engine table');
+  });
   test('no quest set: the story card asks for it', () => {
     const cs = M.rankNext(S());
     assert.deepEqual(cs.filter(c => c.story).map(c => [c.v, c.act]), [['unset', 'setquest']]);

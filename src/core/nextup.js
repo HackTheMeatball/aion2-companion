@@ -17,6 +17,29 @@ import { checkableOf, countsOf, doneOf, gatesOf, isOpen, objIdxOf, openSteps, qu
 
 export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story", "side", "advice", "late", "later"];
 
+/* The ranking changes of smart Next up (docs/design/0.4-smart-next-up.md §12), each a named switch like the gate changes
+   (the pack's gateChanges, design 0.3 §13), so tests/golden.js --explain can attribute every changed state to the
+   smallest set of them. Unlike those, a ranking change ships off (on: false) until the step that builds it turns it on and
+   re-records the golden snapshots (0.5 P11: every one off, nothing reads them yet). A pack declares its own ranking
+   changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
+   exactly the names given, from any table; the caller adds what each one needs. */
+export const RANK_CHANGES = {
+  ascensionFirst: { on: false, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
+  placeRank: { on: false, what: "the side-content picks, their order and the \"near\" count by where the player is (whereNow, byPlace; design §5)" },
+  trackFilter: { on: false, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
+  bandLabels: { on: false, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
+  catchUp: { on: false, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
+  etaLater: { on: false, what: "the Later cards from every closed node, by the level (then the story quest) they open at (design §7 item 3)" },
+};
+let RANK_ON = null;
+/* Turn on exactly these ranking changes (null: back to each table's `on`); returns the names now on. */
+export const setRankChanges = names => { RANK_ON = names == null ? null : new Set(names); return RANK_ON ? [...RANK_ON] : null; };
+/* Is ranking change n on? table: the table that declares it (the engine's by default; a pack passes its own). */
+export const rankChangeOn = (n, table = RANK_CHANGES) => {
+  if (!(n in table)) throw new Error("rankChangeOn: unknown ranking change " + n);
+  return RANK_ON ? RANK_ON.has(n) : table[n].on === true;
+};
+
 export function rankNext(state, { basic = false } = {}) {
   /* every "is it open?" below is the evaluator's (gatesOf, src/core/requirements.js); the ranking is 0.2's */
   const P = activePack(), { milestones, rowKind, promised } = P.catalog;

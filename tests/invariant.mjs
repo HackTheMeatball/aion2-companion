@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Invariant suite (0.3 E3, docs/design/0.3-requirement-engine.md §12): Next up and the requirement evaluator against an
-   independent oracle (tests/support/oracle.mjs, written from the raw v2 data) over 10,000 states (tests/invariant/states.mjs),
+   independent oracle (tests/support/oracle.mjs, written from the raw v2 data) over 10,750 states (tests/invariant/states.mjs),
    in Node (no browser, no build, no server; about 20 s: a warning above 30 s, a failure above 60 s as the hang guard). Runs tests/invariant/*.test.mjs with the core bundle, (test, M, X).
    Also suite `invariant` in tests/run.mjs (CI: the `checks` shard; ci.yml has no step of its own for it).
    Deterministic: the golden states have their own fixed seeds, the random top-up uses SEED (printed on a failure).
@@ -33,7 +33,12 @@ console.log(`seed ${seedHex} · ${states.length} states${pickState ? ` (of ${tot
 
 const R = runner();
 const test = (name, fn) => { const t = performance.now(); R.test(name, fn); console.log(`     ${((performance.now() - t) / 1000).toFixed(2)} s`); };
-const X = { states, O, OA, APP_APPLY, root: ROOT, TOTAL: pickState ? states.length : TOTAL, seedHex, only: !!pickState };
+/* every state loaded and migrated as the page does, deep-frozen; once, for every test file ([{ id, s: the save, c: char(s) }]) */
+const deepFreeze = o => { if (o && typeof o === 'object' && !Object.isFrozen(o)) { Object.freeze(o); for (const v of Object.values(o)) deepFreeze(v); } return o; };
+let LOADED = null;
+const loaded = () => LOADED || (LOADED = states.map(({ id, raw }) => { const { state, hadSave } = M.loadState(raw, { newId: () => 'fresh-slot' }); M.migrate(state, hadSave, () => {}, 0);
+  return { id, s: deepFreeze(state), c: M.char(state) }; }));
+const X = { states, loaded, O, OA, APP_APPLY, root: ROOT, TOTAL: pickState ? states.length : TOTAL, seedHex, only: !!pickState };
 for (const f of readdirSync(join(ROOT, 'tests/invariant')).filter(f => f.endsWith('.test.mjs')).sort()) {
   if (only && !f.includes(only)) continue;
   console.log(`-- ${f}`);
