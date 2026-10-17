@@ -13,8 +13,9 @@ top row (Skills, Daevanion, Stigmas) come first. CSS `order` can't fix it withou
 
 ## Result
 
-At ≤ 860 px the page order is phone-layout §3.1 as the owner approved it (recommended: header, Next up, Journey,
-Progress, Skills / Daevanion / Stigmas, Milestones, Dungeons & Strongholds, The map, Route rules, Confidence, Sources).
+At ≤ 860 px the page order is phone-layout §3.1 as the owner approved it (recommended, as drawn there: header, Next
+up, Journey, Progress, Skills / Daevanion / Stigmas, Milestones, Dungeons & Strongholds, The map, Route rules,
+Confidence, Sources).
 The shell moves the card elements when the width crosses 860 px (one element each, never a copy), both landmarks stay,
 focus order follows the visual order. Above 860 px nothing changes.
 

@@ -12,7 +12,8 @@ shell).
 
 ## Result
 
-The cards the owner approved (recommended: Journey and Progress in Basic, Dungeons & Strongholds in both modes) become
+The cards the owner approved (recommended: Progress in Basic and Dungeons & Strongholds in both modes; Journey stays
+open, since it holds Level − / + and the slider that Basic shows today) become
 `details.foldcard` with a uniform 48 px summary row and are folded by default at ≤ 600 px. Once the user opens or
 closes one, the choice is saved as `fold_<id>` (the existing pattern, a view setting in the v5 save, add-only) and wins
 over the default. Above 600 px every card opens as today.
