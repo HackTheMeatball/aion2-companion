@@ -48,6 +48,6 @@ Ownership check: every acceptance line passes with these files.
 Lanes: golden. Model: Opus (ranking, golden). Visible (order only, no new UI): needs the owner's standing approval for
 0.5's visible steps (ROADMAP 0.5 "Owner input" 1).
 
-After: P11, owner-ok-visible.
+After: P11. (Owner OK recorded in DECISIONS 2026-10-17.)
 
 - [next] #? opus lanes:golden

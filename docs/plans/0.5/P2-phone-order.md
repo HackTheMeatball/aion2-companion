@@ -53,6 +53,6 @@ Ownership check: every acceptance line passes with these files; the style and DO
 Lanes: main.js, app.css. Model: Sonnet (shell and CSS, under 300 lines; no core, save or golden). Visible: waits for
 the owner's answers on the phone mockup (ROADMAP 0.5 "Owner input" 1).
 
-After: P1, owner-ok-phone.
+After: P1. (Owner OK recorded in DECISIONS 2026-10-17.)
 
 - [next] #? sonnet lanes:main.js,app.css
