@@ -11,14 +11,14 @@
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 6 open"}
   ],
   "random/L16-q14-rnd112p20-A-stready": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
+    {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","b":"Lv 16–18","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 3/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 18 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"}
@@ -38,26 +38,26 @@
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first.","c":""}
   ],
   "random/L16-q24-rnd104p20-A-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
     {"t":"Regional quests","s":"7 to pick up · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+1 more"]},
     {"t":"Clear Blue Dragon's Trap and others until Lv 18","s":"Sanctum Outpost (near your story step) · Kibelisk: Temporary Retreat · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Retreat is 80 m away · 23 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"}
   ],
   "random/L16-q31-before-A-stfull": [
-    {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet","b":"Lv 16–18"},
     {"t":"Regional quests","s":"6 to pick up · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","new Practice Makes Perfect, Nyerk!"]},
     {"t":"Story: In the Elims' Name","s":"Needs Lv 21: you're 16. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Insignia Explosion 2 → 3","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 3 → 4","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L16-q35-rnd115p80-B-objs": [
     {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
@@ -78,14 +78,14 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L16-q42-rnd127p95-A-cube": [
-    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 16–18"},
     {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 5/11 turned in","c":"go \"Show\" rqgo:rq:2202023","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
     {"t":"Story: Preparations for Restoration","s":"Needs Lv 27: you're 16. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 13/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 1 open"},
     {"t":"Buy Rear Smite 3 → 4","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 4 → 5","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 5 → 6","s":"Needs Lv 17 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L16-q60-before-B-objs": [
     {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
@@ -94,15 +94,15 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L16-q61-rnd132p20-A-stwait": [
-    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Exploit Weakness 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Shadowstrike 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · Legions","c":"primary \"Done\" tick:g16:amulet"},
     {"t":"Regional quests","s":"16 to pick up · 5 follow-ups · 0/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+15 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 35","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 19 open at your level"},
-    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom","b":"Missed · Lv 10–12"},
+    {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 16. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"}
   ],
   "random/L16-q70-before-B": [
@@ -131,42 +131,42 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"}
   ],
   "random/L17-q22-rnd148p95-A-cube": [
-    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Empyrean Monolith","s":"0/4 objectives · then A New Lead","c":"primary \"Turned in\" story","o":["Find Ruins Administrator Ollen talk to Ollen (Kibelisk: Safe Haven)","Obtain the Empyrean Trace: Altgard retrieve the trace (Kibelisk: Safe Haven)","Resonate with the Monolith obtain the Revelation Amulet Enhance Scroll (Kibelisk: Safe Haven)","+1 more after these"]},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 2 → 3","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q23-before-A": [
-    {"t":"Story: A New Lead","s":"Needs Lv 18: you're 17. Level up first. Meanwhile: Strongholds","c":""},
+    {"t":"Story: A New Lead","s":"Needs Lv 18: you're 17. Level up first. Meanwhile: Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q23-before-A-rqmix": [
-    {"t":"Story: A New Lead","s":"Needs Lv 18: you're 17. Level up first. Meanwhile: Strongholds","c":""},
+    {"t":"Story: A New Lead","s":"Needs Lv 18: you're 17. Level up first. Meanwhile: Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q29-all-A-dv": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Story: Creeping Shadow","s":"Needs Lv 21: you're 17. Level up first.","c":""}
   ],
   "random/L17-q35-before-A": [
-    {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
+    {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 16–18","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
     {"t":"Story: Searching for Survivors","s":"Needs Lv 24: you're 17. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q44-rnd114p50-B-filters": [
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -178,13 +178,13 @@
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
   ],
   "random/L17-q48-lvonly-A": [
-    {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]"]},
+    {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 16–18","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]"]},
     {"t":"Story: Canyon's Secret","s":"Needs Lv 30: you're 17. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q59-all-B-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -207,31 +207,31 @@
     {"t":"Story: Unveiling the Truth","s":"Needs Lv 37: you're 17. Level up first. Meanwhile: Sealed Dungeons","c":""}
   ],
   "random/L17-q78-rnd128p95-A-stfull": [
-    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill"},
+    {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Regional quests","s":"13 to pick up · 5 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","+12 more"]},
     {"t":"Story: Chief of the Black Claw","s":"Needs Lv 42: you're 17. Level up first.","c":""},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 2 → 3","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q79-lvonly-A": [
-    {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
+    {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 16–18","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 17. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q81-lvonly-A-filters": [
-    {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
+    {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","b":"Lv 16–18","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 17. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
     {"t":"Buy Ambush 6 → 7","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 5 → 6","s":"Needs Lv 18 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 3 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L17-q86-before-B": [
     {"t":"Regional quests","s":"31 to pick up · 7 follow-ups · 0/40 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22] | -> lock(disabled) Sapling Hide-and-Seek [Lv 45]","new Fight Poison with Poison [Lv 27]","+32 more"]},
@@ -244,22 +244,22 @@
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"}
   ],
   "random/L18-q00-before-A-rqmix": [
-    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
     {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["run Hugo Mercenaries: Past and Present","run Missing Mount","run Creion Research Assistant","+2 waiting on the story Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L18-q17-before-A-stfull": [
-    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202010","x":["+5 waiting on the story Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game Practice Makes Perfect, Nyerk! In my game"]},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
@@ -294,12 +294,12 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L18-q47-before-A-filters": [
-    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"4 to pick up · 2 follow-ups · 0/6 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]"]},
     {"t":"Story: The Past Revealed","s":"Needs Lv 30: you're 18. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
@@ -319,56 +319,56 @@
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
   ],
   "random/L18-q71-rnd114p95-A-objs": [
-    {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 5/22 turned in","c":"go \"Show\" rqgo:rq:2202023","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Fight Poison with Poison [Lv 27]","+11 more"]},
+    {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 5/22 turned in","c":"go \"Show\" rqgo:rq:2202023","b":"Lv 16–18","x":["new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Fight Poison with Poison [Lv 27]","+11 more"]},
     {"t":"Clear Treasure Hunter's Residence and others until Lv 40","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"},
-    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-    {"t":"Story: Exiled Ritualist","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons","c":""},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18"},
+    {"t":"Story: Exiled Ritualist","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons","c":"","b":"Lv 16–18"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Assault Stance 3 → 4","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L18-q74-none-A-dv": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Heart Gore on Nezekan","s":"3 of your 9 crystals","c":"primary \"Acquired\" board"},
     {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 18. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 16–18"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L18-q76-lvonly-A-objs": [
-    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Story: Daybreak Society Rescue Operation","s":"Needs Lv 41: you're 18. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L18-q79-rnd131p95-A-cube": [
-    {"t":"Finish Howling Den","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:howling-den"},
+    {"t":"Finish Howling Den","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:sd:howling-den","b":"Lv 16–18"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
     {"t":"Regional quests","s":"11 to pick up · 5 follow-ups · 0/16 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+10 more"]},
     {"t":"Clear Howling Den and others until Lv 43","s":"Moslan Forest · Kibelisk: Elim's Rest · Lv 15–19 · 10/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Elim's Rest is 260 m away · 1 open at your level"},
     {"t":"Story: High Priest's Fafnite","s":"Needs Lv 43: you're 18. Level up first. Meanwhile: Sealed Dungeons","c":""},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L18-qxx-lvonly-A": [
-    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Insignia Explosion 2 → 3","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 16–18"},
     {"t":"Buy Quick Slice specialty","s":"Pick: +50% Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"},
-    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Heart Gore 6 → 7","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 19"},
     {"t":"Buy Savage Roar 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 7 → 8","s":"Needs Lv 19 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Zikel board opens","s":"Lv 20 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"}
   ],
   "random/L19-q01-before-B-rqmix": [
     {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
@@ -437,11 +437,11 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L19-q50-lvonly-A-stwait": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Regional quests","s":"7 to pick up · 3 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]","new Fight Poison with Poison [Lv 27]","+4 more"]},
     {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
-    {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
     {"t":"Buy Rear Smite 4 → 5","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Zikel board opens","s":"Lv 20 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
@@ -457,15 +457,15 @@
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 2 open"}
   ],
   "random/L19-q55-rnd140p20-A-sppts": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"14 to pick up · 5 follow-ups · 0/20 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+13 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 33","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 3/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
+    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 3 open"}
   ],
   "random/L19-q60-before-B-stwait": [
@@ -475,11 +475,11 @@
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"}
   ],
   "random/L19-q61-lvonly-A-dv": [
-    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 6 → 7","s":"2 pts · you have the points","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Regional quests","s":"9 to pick up · 5 follow-ups · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22] | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","+8 more"]},
     {"t":"Story: Enemy Territory","s":"Needs Lv 35: you're 19. Level up first. Meanwhile: Strongholds","c":""},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 4 open"},
-    {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Insignia Explosion 3 → 4","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 20–21"},
     {"t":"Buy Rear Smite 4 → 5","s":"Needs Lv 20 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Zikel board opens","s":"Lv 20 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 2 levels away · single source","c":"tag \"Later\"","f":"later"}
@@ -501,15 +501,15 @@
     {"t":"Story: Inevitable Encounter","s":"Needs Lv 37: you're 19. Level up first.","c":""}
   ],
   "random/L19-q73-none-A-filters": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 19"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"17 to pick up · 6 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount | -> lock(disabled) A Friend's Legacy [Lv 37]","+17 more"]},
     {"t":"Clear Abandoned Archon Jail and others until Lv 40","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
-    {"t":"Story: Treatment","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
+    {"t":"Story: Treatment","s":"Needs Lv 40: you're 19. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":"","b":"Lv 19"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L19-qxx-all-A-dv": [
@@ -533,14 +533,14 @@
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"}
   ],
   "random/L20-q06-lvonly-A": [
-    {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 7 open at your level"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 5 open"},
     {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Defense Break 1 → 2","s":"Needs Lv 21 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 27 quests ahead","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 2 levels away · opens on \"Daeva in a Dream\" · 27 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 22–24"}
   ],
   "random/L20-q21-before-B": [
     {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
@@ -566,15 +566,15 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 11/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
   ],
   "random/L20-q39-none-A": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 20–21"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Memorial Room and others until Lv 25","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Story: Tangled Past","s":"Needs Lv 25: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "random/L20-q49-rnd144p20-A-dv": [
@@ -590,15 +590,15 @@
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 4 open"}
   ],
   "random/L20-q53-rnd141p20-A-stwait": [
-    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill","b":"Lv 20–21"},
     {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"14 to pick up · 4 follow-ups · 0/18 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","+12 more"]},
     {"t":"Clear Closed Hideout and others until Lv 32","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 2/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 95 m away · 26 open at your level"},
-    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Last of the Destruction Archons","s":"Needs Lv 32: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 2/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 6 open"}
   ],
   "random/L20-q56-rnd102p20-B-filters": [
@@ -634,25 +634,25 @@
     {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q67-rnd139p80-A-dv": [
-    {"t":"Buy Exploit Weakness · 1 of 2 on Nezekan","s":"4 of your 9 crystals","c":"primary \"Acquired\" board"},
+    {"t":"Buy Exploit Weakness · 1 of 2 on Nezekan","s":"4 of your 9 crystals","c":"primary \"Acquired\" board","b":"Lv 20–21"},
     {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 5/22 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Practice Makes Perfect, Nyerk!","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Fight Poison with Poison [Lv 27]","+11 more"]},
     {"t":"Clear Predator's Lair and others until Lv 37","s":"Purifying Forest · Kibelisk: Guide Rest Stop · Lv 20–24 · 5/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Guide Rest Stop is 140 m away · 8 open at your level"},
-    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-    {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18"},
+    {"t":"Story: Lake of Confrontation","s":"Needs Lv 37: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 1 open"},
     {"t":"Buy Ambush 7 → 8","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 6 → 7","s":"Needs Lv 21 · 1 level away","c":"tag \"Later\"","f":"later"}
   ],
   "random/L20-q77-rnd113p50-A": [
-    {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0"},
+    {"t":"Zikel board opens","s":"Lv 20 milestone · Zikel board","c":"primary \"Done\" tick:g20:0","b":"Lv 20–21"},
     {"t":"Regional quests","s":"12 to pick up · 5 follow-ups · 0/17 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Fight Poison with Poison [Lv 27]","+11 more"]},
     {"t":"Clear Worshiper's Underground Cave and others until Lv 42","s":"Uruthumheim · Kibelisk: Victorious Daeva's Statue · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Victorious Daeva's Statue is 160 m away · 14 open at your level"},
-    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
+    {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
-    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
-    {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt","b":"Missed · Lv 13–14"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18"},
+    {"t":"Story: The Breaking of the Day","s":"Needs Lv 42: you're 20. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 20–21"},
     {"t":"Run Blades Temporary Outpost","s":"Tranein Highland · Kibelisk: Moslan Forest Cliff · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Moslan Forest Cliff is 160 m away · 2 open"}
   ],
   "random/L20-q81-lvonly-B": [
