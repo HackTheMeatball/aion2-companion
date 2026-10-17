@@ -1,8 +1,8 @@
 /* The requirement evaluator (0.3 E1, pure: no DOM, no storage, no clock; docs/design/0.3-requirement-engine.md §3–§5).
-   One pass answers, for every trackable thing in GATE_GRAPH (compiled by tools/gen/gen.mjs from the live `requires` /
-   `completesWith` of the data), "done?", "open now?" and, if not, what blocks it. Since E2 every gate decision of the
-   page goes through it (src/core/requirements.js gatesOf, with the 0.2 rules the data doesn't hold yet as named
-   KEPT_RULES); tests/equiv/evaluator-equivalence.test.mjs holds both to the frozen 0.2 gate code.
+   One pass answers, for every trackable thing in the pack's gate graph (data.graph, compiled by tools/gen/gen.mjs from
+   the live `requires` / `completesWith` of the data), "done?", "open now?" and, if not, what blocks it. Since E2 every
+   gate decision of the page goes through it (src/core/requirements.js gatesOf, with the pack's rules the data doesn't
+   hold yet: keptRules, graphTransforms); tests/equiv/evaluator-equivalence.test.mjs holds both to the frozen 0.2 gate code.
 
    evaluate(c, opts) → Ev, for the character c = char(state); memoised per node, nothing written.
      Ev.node(id) → { id, kind, key, done, via?, open, blockers, root, info, basis, eta } (null for an unknown id)
@@ -13,21 +13,20 @@
      Ev.byKey(k) → Ev.node of the node with save key k;  Ev.list(filter) → every node in catalog order;  Ev.evals → nodes evaluated
      Ev.atom(gate) → { ok, blockers } of an ad-hoc gate;  Ev.completes(id) → the non-tick completesWith entry that holds, or null
      Ev.skillLv(skill id) → the skill's effective level (atom skillLv below)
-   opts: graph (default GATE_GRAPH; tests pass their own), derived (default false: a node that can be ticked is done by
+   opts: graph (default the active pack's data.graph; tests pass their own), derived (default false: a node that can be ticked is done by
    its tick only, as in 0.2; true adds its other completesWith entries, §5, E4). A node with no tick (story quests,
    unlocks) is always done by its completesWith (the story position).
-     apply: ids whose proposal (GATE_PROPOSED: the data's `proposed`, compiled) replaces the live requires / completesWith
+     apply: ids whose proposal (opts.proposed, default the pack's data.proposed: the data's `proposed`, compiled) replaces the live requires / completesWith
        (§13; default none). A proposed completesWith beyond "tick" on a node that can be ticked holds only with derived.
-     followUps (default false; §5.3, owner Q3): a regional quest picked up or ticked proves that the regional quests its
-       gate names (a `done` atom with basis sourced or owner) were turned in, and theirs in turn: done "derived", via
-       "followUp <the quest that proves it>". Read from ticks and pick-ups only, never from other derived values.
-   Atom skillLv (0.3 E7, design §9, rule:specialty-slots; the specialty slot nodes): { skillLv: n, skill } holds when the
+     followUps (default false; §5.3, owner Q3): an "rq" node picked up or ticked proves that the "rq" nodes its gate
+       names (a `done` atom with basis sourced or owner) were turned in, and theirs in turn: done "derived", via
+       "followUp <the node that proves it>". Read from ticks and pick-ups only, never from other derived values.
+   Atom skillLv (0.3 E7, design §9; the nodes a skill's own level opens): { skillLv: n, skill } holds when the
    skill's effective level is at least n: its highest ticked skill line (1 if none) plus the `adds` of every ticked plan node
    on the skill. Only plan nodes have save keys, so a node bought off the plan is not counted (never overcounts).
    Its blocker: { kind: "skill", skill, need, have }.
    Derived values are computed on every call and never written: the character is only read. */
-import { GATE_GRAPH } from "../data/gate-graph.js";
-import { GATE_PROPOSED } from "../data/gate-proposed.js";
+import { activePack } from "./pack.js";
 
 /* strongest first; an atom without a basis counts as legacy (carried over, no recorded source) */
 const EV_BASES = ["sourced", "owner", "rule", "inferred", "owner-check", "legacy"];
@@ -38,7 +37,7 @@ const EV_KIND_ORDER = { story: 0, level: 1, skill: 2, done: 3 };
 /* the follow-up rule reads only edges a source or the owner backs (an owner-check edge may be wrong: never derive from it) */
 const EV_FOLLOW_BASES = new Set(["sourced", "owner"]);
 const evAtoms = g => g.all ? g.all.flatMap(evAtoms) : g.any ? g.any.flatMap(evAtoms) : [g];
-/* per graph: story name → chain index (the save stores the name), story id → index, save key → node id, regional quest ids,
+/* per graph: story name → chain index (the save stores the name), story id → index, save key → node id, "rq" node ids,
    skill id → its skill line and plan node ids (effective level) */
 const evIndex = new WeakMap();
 const evIndexOf = g => {
@@ -51,7 +50,7 @@ const evIndexOf = g => {
 };
 const evVia = e => e.story ? `${e.is} ${e.story}` : e.storyStep ? `step ${e.storyStep}#${e.i}` : e.done ? `done ${e.done}` : e.level !== undefined ? `level ${e.level}` : JSON.stringify(e);
 
-export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null, proposed = GATE_PROPOSED, followUps = false } = {}) {
+export function evaluate(c, { graph = activePack().data.graph, derived = false, apply = null, proposed = activePack().data.proposed, followUps = false } = {}) {
   const N = graph.nodes, ix = evIndexOf(graph), checks = c.checks || {}, lv = c.level || 0;
   /* the node definitions of this call: the live ones, with a proposal's req / done over them for an id in apply */
   const A = apply ? new Set(apply) : null, defs = new Map();
@@ -73,7 +72,7 @@ export function evaluate(c, { graph = GATE_GRAPH, derived = false, apply = null,
       effMemo.set(sid, L + adds); }
     return effMemo.get(sid);
   };
-  /* followUps: regional quest id → the picked-up or ticked quest that proves it was turned in (built once, on first use) */
+  /* followUps: "rq" node id → the picked-up or ticked node that proves it was turned in (built once, on first use) */
   let proven = null;
   const provenOf = () => {
     if (proven) return proven;

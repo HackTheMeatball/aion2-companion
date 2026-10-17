@@ -9,15 +9,18 @@
    is the leveling path; Sealed Dungeons (one-time, fixed: 2 crystals + 2 Wisdom Stones + Enhance Stones + Kina, ~5 min)
    and Strongholds are for power, done on your route, or first when the story is level-gated above you. A crystal
    shortage alone doesn't move them above the story. */
-import { QUESTS, QUEST_STEPS, VERIFIED_UNLOCKS } from "../data/story.js";
-import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "../data/build.js";
-import { GATES } from "../data/milestones.js";
-import { AREA_LOC } from "../data/generated.js";
-import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
+/* Until P2c moves the AION 2 producers into the pack, this is the one engine file that still imports pack code
+   (tests/core/purity.test.mjs names it). */
+import { QUESTS, QUEST_STEPS, VERIFIED_UNLOCKS } from "../packs/aion2/data/story.js";
+import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "../packs/aion2/data/build.js";
+import { GATES } from "../packs/aion2/data/milestones.js";
+import { AREA_LOC } from "../packs/aion2/data/generated.js";
+import { AREA_ITEMS, KIB_AREA, bandOf } from "../packs/aion2/catalog.js";
 import { blockerText } from "./blockers.js";
 import { char } from "./state.js";
-import { areaOpen, checkableOf, countsOf, doneOf, dvNeed, dvNext, dvSpent, gatesOf, isOpen, objIdxOf, openBut, openSteps, qProgOf, rqStatus, rqWaitsOnStory, shardsFromLv,
-  skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf, storyRecGate, turnInNeedsLv } from "./requirements.js";
+import { checkableOf, countsOf, doneOf, gatesOf, isOpen, objIdxOf, openBut, openSteps, qProgOf, turnInNeedsLv } from "./requirements.js";
+import { areaOpen, dvNeed, dvNext, dvSpent, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, storyAreaOf, storyHereOf,
+  storyRecGate } from "../packs/aion2/requirements.js";
 
 export function rankNext(state, { basic = false } = {}) {
   /* every "is it open?" below is the evaluator's (gatesOf, src/core/requirements.js); the ranking is 0.2's */

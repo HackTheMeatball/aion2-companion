@@ -1,6 +1,6 @@
 /* Golden --explain (0.3 E4, docs/design/0.3-requirement-engine.md §13): which change makes which golden difference.
 
-   The page's 0.3 changes are named switches (src/core/requirements.js GATE_CHANGES, read from the page as `meta`; a
+   The page's 0.3 changes are named switches (src/packs/aion2/rules.js GATE_CHANGES, read from the page as `meta`; a
    proposal names the rule it needs). tests/golden.js runs every state with the page as it ships (every change on) and
    hands the result here. Then:
      1. the states that differ from the snapshots run again with every change off: each must equal its snapshot (else

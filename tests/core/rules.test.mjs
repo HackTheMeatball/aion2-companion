@@ -1,4 +1,4 @@
-/* Game rules from pack data (0.4 P2a, #141): src/data/build.js builds spCost, SPEC_SLOT_LV, DV_MIN and ST_COST from the
+/* Game rules from pack data (0.4 P2a, #141): src/packs/aion2/data/build.js builds spCost, SPEC_SLOT_LV, DV_MIN and ST_COST from the
    compiled rules (rule:skill-point-cost, rule:specialty-slots, rule:node-costs, rule:stigma-shard-cost) instead of writing
    them out. The values are pinned here as main returned them before the move (7d17146), for every input the app gives:
    skill levels 2–10, stigma levels 1–21 (21 = past the cap: null). The milestones g19 and g28 come from the guide pack. */

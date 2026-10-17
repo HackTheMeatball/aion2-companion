@@ -26,7 +26,7 @@ let states = makeStates(M, { root: ROOT, seed });
 const total = states.length;
 if (pickState) states = states.filter(s => s.id.includes(pickState));
 const O = loadOracle({ root: ROOT });
-/* the app runs with the 0.3 E4 changes on (src/core/requirements.js GATE_CHANGES): the oracle with the same proposals applied */
+/* the app runs with the 0.3 E4 changes on (src/packs/aion2/rules.js GATE_CHANGES): the oracle with the same proposals applied */
 const APP_APPLY = Object.values(M.GATE_CHANGES).filter(x => x.apply).map(x => x.apply);
 const OA = loadOracle({ root: ROOT, apply: new Set(APP_APPLY) });
 console.log(`seed ${seedHex} · ${states.length} states${pickState ? ` (of ${total}, --state ${pickState})` : ''} · setup ${((performance.now() - t0) / 1000).toFixed(2)} s`);

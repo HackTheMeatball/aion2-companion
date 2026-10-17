@@ -3,14 +3,16 @@
    writes it back, and turns the core's answers into the page. scripts/build.mjs bundles it with esbuild into one classic
    <script> inlined in the page, so its top-level names stay page globals (tests and the site-only script read them).
    Character data (level, story, ticks, build) is always read and written through char(state) (src/core/state.js). */
-import { CONF, RQ, SD_RW, SH_DATA, SOURCES, SRC_SITE, STORY_END } from "./data/generated.js";
-import { ITEMS } from "./data/items.js";
-import { DV_TYPE, DV_TYPE_ICONS, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, SP_SKILLS, SP_STEPS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./data/build.js";
-import { T, metaSlug, seq } from "./data/markup.js";
-import { TIPS } from "./data/tips.js";
-import { GATES, STEPS } from "./data/milestones.js";
-import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./data/story.js";
-import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./data/areas.js";
+import { CONF, RQ, SD_RW, SH_DATA, SOURCES, SRC_SITE, STORY_END } from "./packs/aion2/data/generated.js";
+import { ITEMS } from "./packs/aion2/data/items.js";
+import { DV_TYPE, DV_TYPE_ICONS, E_ORDER, LEVEL_POINTS, RMB_STACK, SP_ICONS, SP_SKILLS, SP_STEPS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_COST, ST_TARGETS } from "./packs/aion2/data/build.js";
+import { T, metaSlug, seq } from "./packs/aion2/data/markup.js";
+import { TIPS } from "./packs/aion2/data/tips.js";
+import { GATES, STEPS } from "./packs/aion2/data/milestones.js";
+import { QUESTS, QUEST_STEPS, STORY_UNLOCKS, UNLOCK_GATE, VERIFIED_UNLOCKS } from "./packs/aion2/data/story.js";
+import { NO_AREA, SD_REWARD, SH_REWARD, ZONE_TRACES } from "./packs/aion2/data/areas.js";
+import { usePack } from "./core/pack.js";
+import { aion2Pack } from "./packs/aion2/pack.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
 import { stampSave } from "./core/sync.js";
@@ -19,12 +21,16 @@ import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
 /* the whole module lands in this bundle; src/site.js reads its line / nudge / hint helpers as page globals */
 import { importBackup, markExport } from "./core/backup.js";
-import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, itemByK, spCostTxt } from "./core/catalog.js";
-import { areaLater, areaOpen, checkableOf, clearDoneOf, countsOf, derivedOf, doneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, objSubs,
-  openOf, qProgOf, questIdx, rqStatus, rotKeys, shardsFromLv, sideOpenOf, planReachOf, skillBuy, skillLvOf, skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen,
-  setGateChanges, gatesPass, stigmaPlan, stigmaSlots, storyGate, storyIdx, turnInNeedsLv, chainsOn, rqReqOf, stepChipOf, storyLineOf } from "./core/requirements.js";
+import { itemByK } from "./core/catalog.js";
+import { AREA_BANDS, AREA_ITEMS, CLEAR_REWARD, DV_NODES, RQ_BY, RQ_K, bandOf, eputK, spCostTxt } from "./packs/aion2/catalog.js";
+import { checkableOf, countsOf, derivedOf, doneOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, openOf, qProgOf, questIdx, sideOpenOf,
+  setGateChanges, gatesPass, storyGate, storyIdx, turnInNeedsLv, chainsOn, stepChipOf, storyLineOf } from "./core/requirements.js";
+import { areaLater, areaOpen, clearDoneOf, dvFromLv, dvGateOf, dvLeft, dvNeed, dvNext, dvSpent, dvWaitOf, objSubs, rqStatus, rotKeys, shardsFromLv, planReachOf, skillBuy, skillLvOf,
+  skillOpen, skillPoints, slotLevelMet, slotNames, specPickOf, stLvOfC, stigmaEquipOpen, stigmaPlan, stigmaSlots, rqReqOf } from "./packs/aion2/requirements.js";
 import { rankNext } from "./core/nextup.js";
-import { ascensionOf } from "./core/ascension.js";
+import { ascensionOf } from "./packs/aion2/ascension.js";
+/* the engine reaches AION 2 through this one pack object; set before anything asks the engine (the save is loaded below) */
+usePack(aion2Pack);
 
 /* Page API: the names the suites (and the old baseline builds they compare against) call, bound to the page's state. */
 const stNames = () => slotNames(char(state));
@@ -200,7 +206,7 @@ const fmtXP = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M" : n
 const pinLink = (href, label) => href ? ` <a class="ns-pin" href="${href}" target="_blank" rel="noopener" title="${label || "Show on the map"}">${MAP_ICO}</a>` : "";
 const areaSel = document.getElementById("areaSel");
 /* Areas: pick a level band; Sealed Dungeons (at their recommended level) and Strongholds are listed together, flat
-   (bands: src/core/catalog.js). */
+   (bands: src/packs/aion2/catalog.js). */
 /* The band that holds your level; older bands with open clears show their count in the dropdown. */
 function defaultBand() {
   return String(AREA_BANDS.filter(b => b <= char(state).level).pop() || AREA_BANDS[0]);
@@ -373,7 +379,7 @@ applyMode();
 /* Milestone ticks: the line turns green, then (if "Cleared tasks" hides it) fades and slides out; a milestone
    that just got cleared does the same when "Cleared milestones" is on. tickKeep holds them visible meanwhile. */
 let tickKeep = new Set();
-/* One-time clear rewards (CLEAR_REWARD, src/core/catalog.js) wait in "the Cube" until you say you've used them. */
+/* One-time clear rewards (CLEAR_REWARD, src/packs/aion2/catalog.js) wait in "the Cube" until you say you've used them. */
 /* "Waiting in your Cube" bars on Skills / Daevanion: one click once you've used them in game adds them to the totals. */
 function renderCube() {
   const sp = document.getElementById("spCube"), dv = document.getElementById("dvCube"), ps = char(state).pendSt || 0, pc = char(state).pendCr || 0;

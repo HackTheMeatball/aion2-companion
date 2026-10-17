@@ -229,7 +229,7 @@ export default (test, M) => {
     assert.deepEqual(M.merge(s0, s0), s0);
     for (const m of [M.merge(s0, s1), M.merge(s1, s0)]) { assert.equal(C(m).level, 40); assert.equal(C(m).checks['g40:0'], C(later).checks['g40:0']); }
     assert.deepEqual(S(M.merge(s0, s1)), S(M.merge(s1, s0)));
-    for (const f of M.CHAR_FIELDS.filter(f => f !== 'mt')) assert.deepEqual(C(M.merge(s1, s0))[f], C(s1)[f], 'merged = later copy: ' + f);
+    for (const f of M.charFields().filter(f => f !== 'mt')) assert.deepEqual(C(M.merge(s1, s0))[f], C(s1)[f], 'merged = later copy: ' + f);
   });
 
   /* ---------- last confirmed location ---------- */

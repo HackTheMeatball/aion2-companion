@@ -11,7 +11,7 @@
         skill line   open = SP_STEPS req ≤ level (skillOpen().now)
         all          done = the tick (derived completion is E4)
       A difference is never fixed by changing the 0.2 rules: each one is pinned in KNOWN with its cause and the kept rule
-      (src/core/requirements.js KEPT_RULES) that holds 0.2's behaviour on screen until the data takes it over. The test
+      (the AION 2 pack's KEPT_RULES, src/packs/aion2/rules.js) that holds 0.2's behaviour on screen until the data takes it over. The test
       fails on a difference not in KNOWN and on a KNOWN one that no longer occurs. Table: tests/out/evaluator-equivalence.md.
 
    B. what the page runs since E2 (the requirements.js functions main.js and nextup.js call: the evaluator plus the kept
@@ -35,7 +35,7 @@ const { catalogInPage, generate, fixtureStates } = createRequire(import.meta.url
 
 /* difference key → cause [kept rule]. Key: "<kind> <save key> <field>: 0.2 <value> / evaluator <value>". */
 const SH = 'live gate {level: levelRange.lo} (basis inferred); 0.2 files each stronghold under a Sealed Dungeon band ' +
-  '(src/core/catalog.js AREA_BANDS, inferred placement) and offers it from max(band, lo) [kept rule "stronghold-band"]';
+  '(src/packs/aion2/catalog.js AREA_BANDS, inferred placement) and offers it from max(band, lo) [kept rule "stronghold-band"]';
 const ST_G22 = '0.2\'s equip rule (rankNext: slot level + "g22:0" ticked) is code; in the data it is the owner-check proposal of check 3, ' +
   'so the live gate is the slot level only';
 const KNOWN = {
@@ -128,7 +128,7 @@ export default (test, M) => {
       });
     } finally { for (const [it, v] of saved) Object.assign(it, v); }
     assert.deepEqual([...seen.step].sort(), Object.keys(N).filter(k => N[k].kind === 'step').sort(), 'every step node is compared');
-    assert.deepEqual(notInGraph, ['g28:exp'], 'the only milestone row without a data record (code in src/core/catalog.js) is Urugugu Canyon');
+    assert.deepEqual(notInGraph, ['g28:exp'], 'the only milestone row without a data record (code in src/packs/aion2/catalog.js) is Urugugu Canyon');
   });
 
   test('A. regional quests (open = rqStatus ok, story + level part = rqStatus open, pre, done = tick)', () => {

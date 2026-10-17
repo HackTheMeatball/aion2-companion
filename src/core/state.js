@@ -3,25 +3,22 @@
    Save v5 (0.4 P3c, a clean break: the v4 key is never read). One save holds the view settings (mode, filters, folds),
    this browser's backup times, and the characters, one slot each:
      { v: 5, savedAt, current: <slot id>, chars: { <slot id>: character }, mode, open, hide, hideCards, …, backup }
-   A character is { id, pack, class, name, created, ...CHAR_FIELDS }. The slot id is random (newId), never derived from
+   A character is { id, pack, class, name, created, ...charFields() }. The slot id is random (newId), never derived from
    the name, class or level. Every read and write of character data goes through char(state); tests/core/purity.test.mjs
-   fails on a direct state.<field> access to a CHAR_FIELDS name anywhere in src/. */
+   fails on a direct state.<field> access to a charFields() name anywhere in src/. */
+import { activePack } from "./pack.js";
+
 export const KEY = "companion-save-v5";
 export const SAVE_V = 5;
-/* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin), the only
-   ones a character can have until 0.5 adds a class picker; tests/core/state.test.mjs checks both against data/.
-   The slot id is random (newId, src/shell/ids.js) and stays the same for the character's life. */
-export const PACK = "aion2/asmodian/assassin";
-export const CLASS = "assassin";
 
-/* The character's progress fields. Everything else in a character is its identity (CHAR_META); everything else in the
-   save is a view setting, the backup times, or v / savedAt / current / chars. */
-export const CHAR_FIELDS = [
-  "checks", "started", "areaRun", "level", "quest", "storyEnd", "qsteps", "qsub", "rqSnooze",
-  "stLv", "stShards", "stPick", "stones", "pendSt", "pendCr",
-  "dvTotal", "dvCost", "dvAdj", "dvLast", "dvLastAt", "dvPts", "crystals", "rotSeen",
+/* The character's progress fields: the engine's (ENGINE_FIELDS) and the active pack's own (its charFields, 0.4 P2b).
+   Everything else in a character is its identity (CHAR_META: the guide pack and class a new character gets are the
+   pack's `character`); everything else in the save is a view setting, the backup times, or v / savedAt / current / chars. */
+export const ENGINE_FIELDS = [
+  "checks", "started", "level", "quest", "storyEnd", "qsteps", "qsub",
   "mt", /* per-item change times (5c, src/core/sync.js) */
 ];
+export const charFields = () => [...ENGINE_FIELDS, ...Object.keys(activePack().charFields)];
 export const CHAR_META = ["id", "pack", "class", "name", "created"];
 export const char = state => state.chars[state.current];
 
@@ -32,10 +29,12 @@ export const labelOf = c => [c.name, c.class, "lvl" + (+c.level || 1)].filter(Bo
 /* Defaults laid under a stored save (a save is never re-defaulted beyond these) and a stored character. */
 export const DEFAULT = () => ({ hide: false, open: {} });
 export const CHAR_DEFAULT = () => ({ checks: {}, level: 5, quest: "" });
-/* A new character in a new slot: now is the time in ms; id is random (the page's newId, src/shell/ids.js). */
+/* A new character in a new slot: now is the time in ms; id is random (the page's newId, src/shell/ids.js) and stays the
+   same for the character's life. Its guide pack and class are the active pack's (the only ones until 0.5 adds a picker). */
 export function newChar({ now = 0, id }) {
   if (typeof id !== "string" || !id) throw new Error("newChar: a slot id is needed");
-  return { id, pack: PACK, class: CLASS, name: "", created: now, ...CHAR_DEFAULT() };
+  const { pack, class: cls } = activePack().character;
+  return { id, pack, class: cls, name: "", created: now, ...CHAR_DEFAULT() };
 }
 /* A new save with one empty character (the load-time fresh start in src/core/migrations.js sets it to Lv 1). */
 export function newSave({ now = 0, id }) {

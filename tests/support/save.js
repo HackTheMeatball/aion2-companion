@@ -2,7 +2,7 @@
    the storage key or the save's shape changes this file, not every suite. CommonJS; the .mjs suites load it with
    createRequire.
 
-   A test describes a save as a "flat" state: character fields (checks, level, quest, …; CHAR_FIELDS in
+   A test describes a save as a "flat" state: character fields (checks, level, quest, …; charFields() in
    src/core/state.js) at the top level beside the view settings. toStored() turns that into what the current build
    stores (save v5, 0.4 P3c: one character slot, TEST_SLOT), fromStored() turns a stored save back into the flat shape
    (the current character's fields beside the view settings), so assertions stay as they are. The conversion lives
@@ -19,10 +19,14 @@ const fs = require('fs'), path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const STATE_SRC = fs.readFileSync(path.join(ROOT, 'src', 'core', 'state.js'), 'utf8');
-const strConst = n => { const m = new RegExp(`^export const ${n} = "([^"]+)";`, 'm').exec(STATE_SRC); if (!m) throw new Error(`tests/support/save.js: no \`export const ${n} = "…";\` in src/core/state.js`); return m[1]; };
+/* the AION 2 pack object (0.4 P2b): a new character's guide pack and class, and the pack's character fields */
+const PACK_SRC = fs.readFileSync(path.join(ROOT, 'src', 'packs', 'aion2', 'pack.js'), 'utf8');
+const strConst = (n, src = STATE_SRC, f = 'src/core/state.js') => { const m = new RegExp(`^export const ${n} = "([^"]+)";`, 'm').exec(src); if (!m) throw new Error(`tests/support/save.js: no \`export const ${n} = "…";\` in ${f}`); return m[1]; };
 const listConst = n => { const m = new RegExp(`^export const ${n} = \\[([^\\]]+)\\];`, 'm').exec(STATE_SRC); if (!m) throw new Error(`tests/support/save.js: no \`export const ${n} = [...]\` in src/core/state.js`); return [...m[1].matchAll(/"([^"]+)"/g)].map(x => x[1]); };
-const SAVE_KEY = strConst('KEY'), PACK = strConst('PACK'), CLASS = strConst('CLASS');
-const CHAR_FIELDS = listConst('CHAR_FIELDS'), CHAR_META = listConst('CHAR_META');
+const packFields = () => { const m = /^  charFields: \{([^}]+)\},$/m.exec(PACK_SRC); if (!m) throw new Error('tests/support/save.js: no `  charFields: { … },` in src/packs/aion2/pack.js'); return [...m[1].matchAll(/(\w+): "(?:map|register|local)"/g)].map(x => x[1]); };
+const SAVE_KEY = strConst('KEY'), PACK = strConst('PACK', PACK_SRC, 'src/packs/aion2/pack.js'), CLASS = strConst('CLASS', PACK_SRC, 'src/packs/aion2/pack.js');
+/* the character fields: the engine's (ENGINE_FIELDS) and the pack's (charFields), as charFields() in src/core/state.js */
+const CHAR_FIELDS = [...listConst('ENGINE_FIELDS'), ...packFields()], CHAR_META = listConst('CHAR_META');
 const V4_KEY = 'aion2-assassin-route-v4';
 const BEFORE_IMPORT_KEY = SAVE_KEY + ':before-import';
 /* the tests' slot id (the app makes a random one for a new save; a stored id is kept as it is) */

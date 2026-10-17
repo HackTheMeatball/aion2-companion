@@ -122,7 +122,7 @@ let fail = 0, n = 0; const ok = (name, c, d) => { n++; console.log((c ? 'ok   ' 
   /* #11 zone from the giver */
   r = await p.evaluate(() => ({ z: RQ_BY['Nine Wonders of Altgard: 2nd Leg'].zone, pu: RQ_BY['Pain Unending'].zone }));
   ok('#11 Nine Wonders 2nd Leg in Battlescar Mound (giver Tina at Battlescar Mound Cliff), as Pain Unending', r.z === 'Battlescar Mound' && r.pu === 'Battlescar Mound', r);
-  /* the build makes the module src/data/generated.js from data/** (tools/gen/gen.mjs) and esbuild reprints it into the
+  /* the build makes the module src/packs/aion2/data/generated.js from data/** (tools/gen/gen.mjs) and esbuild reprints it into the
      page, so: every constant the generator compiles has the same value in the page */
   const gen = (await import(path.join(ROOT, 'tools', 'gen', 'gen.mjs'))).generate().constants;
   const names = Object.keys(gen);

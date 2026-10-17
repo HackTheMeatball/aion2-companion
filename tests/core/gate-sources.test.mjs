@@ -1,6 +1,7 @@
 /* §8 source check (0.3 E2, docs/design/0.3-requirement-engine.md §8): no file outside src/core/evaluator.js decides
    whether something is open. The page's gate questions go through src/core/requirements.js (gatesOf and the functions
-   on it); the 0.2 rules the data doesn't hold yet are the named KEPT_RULES there, pinned below.
+   on it); the 0.2 rules the data doesn't hold yet are the named KEPT_RULES of the AION 2 pack (src/packs/aion2/rules.js
+   since 0.4 P2b, applied there and in src/packs/aion2/requirements.js), pinned below.
 
    Each pattern is the shape a gate written by hand took in 0.2 (comparing story positions, board / skill / stigma /
    dungeon / stronghold levels with yours, reading "g22:0" as a gate). A match outside its allowance fails, and so does
@@ -13,24 +14,28 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+/* every .js file under a folder, as repo paths */
+const walk = d => readdirSync(join(ROOT, d), { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(d + '/' + e.name) : e.name.endsWith('.js') ? [d + '/' + e.name] : []);
 const FILES = ['src/main.js', 'src/site.js', ...readdirSync(join(ROOT, 'src/core')).filter(f => f.endsWith('.js') && f !== 'evaluator.js').map(f => 'src/core/' + f),
-  ...readdirSync(join(ROOT, 'src/data')).filter(f => f.endsWith('.js')).map(f => 'src/data/' + f)];
+  ...walk('src/packs').sort()];
+const RULES = ['src/packs/aion2/rules.js', 'src/packs/aion2/requirements.js'];
 
 /* a comparison operator (<, <=, >, >=; not the arrow =>) on either side of `field` */
 const cmpRe = field => new RegExp(String.raw`${field}\s*(\|\|\s*0\)\s*)?[<>]|(?<![=\-])[<>]=?\s*[\w.()]*${field}\b`, 'g');
 /* name → { re, allow: { file: count }, why } */
 const PATTERNS = {
-  'story position lookup (QUESTS.findIndex)': { re: /QUESTS\.findIndex\(/g,
+  /* QUESTS, or the pack's story chain as the engine reads it (activePack().data.story.quests, 0.4 P2b) */
+  'story position lookup (QUESTS.findIndex)': { re: /\b(?:QUESTS|quests)\.findIndex\(/g,
     allow: { 'src/core/requirements.js': 1, 'src/main.js': 1, 'src/core/migrations.js': 1, 'src/core/sync.js': 1 },
     why: 'storyIdx (the position, for display); main.js findQuest (the quest search box matches typed text); migrations.js moves ' +
       'a turned-in last quest on to the next one (a save step, untouched by E2); sync.js ranks two story positions when merging saves' },
   'story gate by a quest name in code (storyIdx("…"))': { re: /storyIdx\(\s*["'`]/g, allow: {} },
   'plan node / board level compared (.blv)': { re: cmpRe(String.raw`\.blv`), allow: {} },
-  'skill line level compared (.req)': { re: cmpRe(String.raw`\.req`), allow: { 'src/core/catalog.js': 2 },
+  'skill line level compared (.req)': { re: cmpRe(String.raw`\.req`), allow: { 'src/packs/aion2/catalog.js': 2 },
     why: 'catalog.js files each skill line under the first milestone at or after its unlock level (placement, not a gate)' },
   'stronghold lowest level compared (.lo)': { re: cmpRe(String.raw`\.lo`), allow: {} },
   'area band compared (bandOf(…) vs a level)': { re: /bandOf\([^)]*\)\s*[<>]|(?<![=\-])[<>]=?\s*bandOf\(/g, allow: {} },
-  'stigma slot / Sealed Dungeon level compared (x.lv, nx.lv, …)': { re: cmpRe(String.raw`\b(?:x|y|it|nx|next|sl|s)\.lv`), allow: { 'src/core/catalog.js': 1 },
+  'stigma slot / Sealed Dungeon level compared (x.lv, nx.lv, …)': { re: cmpRe(String.raw`\b(?:x|y|it|nx|next|sl|s)\.lv`), allow: { 'src/packs/aion2/catalog.js': 1 },
     why: 'catalog.js files each regional quest under the highest milestone at or below its recommended level (placement)' },
   '"g22:0" read as a gate (a write, as in a migration, is not)': { re: /checks\s*\[\s*["'`]g22:0["'`]\s*\](?!\s*=(?!=))/g, allow: {} },
   'unlock level by hand (rqOpenLv)': { re: /\brqOpenLv\b/g, allow: {} },
@@ -51,10 +56,15 @@ export default (test, M) => {
   test('§8 source check: the evaluator is imported by requirements.js only (the one place the page asks it)', () => {
     const importers = FILES.filter(f => /from\s+["'][^"']*evaluator\.js["']/.test(src[f]));
     assert.deepEqual(importers, ['src/core/requirements.js']);
-    assert.deepEqual(FILES.filter(f => /from\s+["'][^"']*gate-graph\.js["']/.test(src[f])), ['src/core/requirements.js'], 'GATE_GRAPH: the evaluator and requirements.js only');
+    /* 0.4 P2b: the engine gets GATE_GRAPH / GATE_PROPOSED through the pack object (data.graph, data.proposed), never by import */
+    assert.deepEqual(FILES.filter(f => /from\s+["'][^"']*gate-graph\.js["']/.test(src[f])), ['src/packs/aion2/pack.js'], 'GATE_GRAPH: the pack object only');
+    assert.deepEqual(FILES.filter(f => /from\s+["'][^"']*gate-proposed\.js["']/.test(src[f])), ['src/packs/aion2/pack.js'], 'GATE_PROPOSED: the pack object only');
   });
   test('§8 source check: the kept 0.2 rules are exactly the named list (each in the PR body and tests/equiv)', () => {
     assert.deepEqual(Object.keys(M.KEPT_RULES), ['stronghold-band', 'stigma-slot-1-after-g22:0', 'stigma-equip-after-g22:0', 'stigma-rotation-slot-level', 'story-card-recommended-level']);
-    for (const r of Object.keys(M.KEPT_RULES)) assert.ok(src['src/core/requirements.js'].split(`"${r}"`).length >= 3, `${r}: named where it is applied, not only in the list`);
+    /* the list lives in rules.js; each rule is applied in rules.js (a graph transform) or requirements.js (a pack helper) */
+    const rules = RULES.map(f => src[f]).join('\n');
+    for (const r of Object.keys(M.KEPT_RULES)) assert.ok(rules.split(`"${r}"`).length >= 3, `${r}: named where it is applied, not only in the list`);
+    assert.equal(M.aion2Pack.keptRules, M.KEPT_RULES, 'the pack object hands the engine this list');
   });
 };
