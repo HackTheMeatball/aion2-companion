@@ -1,10 +1,13 @@
 /* Assassin build data: stat tiers, skill point plan and costs, Daevanion node types, stigma plan, key stacks, icons.
    Every export is still a page global (scripts/build.mjs). */
-import { E_ORDER, LEVEL_POINTS, RMB_ROWS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
+import { E_ORDER, LEVEL_POINTS, RMB_ROWS, RULE_NODE_COSTS, RULE_SHARD_COST, RULE_SKILL_POINT_COST, RULE_SPEC_SLOTS, SP_EXTRA, SP_ICONS, SP_SKILLS_CORE,
+  STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS } from "./generated.js";
 /* Compiled from data/packs/aion2/classes/assassin/ and data/packs/aion2/asmodian/assassin/builds.json since 0.2 step 5b
    (tools/gen/gen.mjs): the guide build (builds.json: stat tiers,
    skill order and specialty picks, stigma plan and targets, key stacks), skills.json (learn levels, icons) and
-   stigmas.json (icons), and rule:level-points. Re-exported here under their page names. */
+   stigmas.json (icons), and rule:level-points. Re-exported here under their page names. Since 0.4 P2a the cost and slot
+   tables below are built from the pack's rules (RULE_*: rule:skill-point-cost, rule:specialty-slots, rule:node-costs,
+   rule:stigma-shard-cost), not written out here. */
 export { E_ORDER, LEVEL_POINTS, SP_ICONS, STAT_SRC, STAT_TIERS, STIGMA_ICON, STIGMA_PLAN, ST_TARGETS };
 /* Node colours match the game: blue = active skill (3), green = passive skill (2), orange = corner (4). Path stat nodes are grey (1). */
 export const DV_TYPE = { a: ["dv-a", "active skill"], p: ["dv-p", "passive skill"], c: ["dv-c", "corner"] };
@@ -13,9 +16,12 @@ export const DV_TYPE = { a: ["dv-a", "active skill"], p: ["dv-p", "passive skill
    only, not in milestones, and come after every core upgrade that's open. */
 export const SP_SKILLS = SP_SKILLS_CORE.map(s => ({ ...s }));
 SP_EXTRA.forEach(s => SP_SKILLS.push({ ...s, extra: true }));
-export const spCost = L => L <= 4 ? 1 : L <= 7 ? 2 : 4;
+/* Price at level L from a rule's cost bands [{ from, to, cost }]; null outside them */
+const bandCost = (bands, L) => { const b = bands.find(x => L >= x.from && L <= x.to); return b ? b.cost : null; };
+/* Skill points to raise a skill to level L, 2–10 (rule:skill-point-cost) */
+export const spCost = L => bandCost(RULE_SKILL_POINT_COST, L);
 /* Effective skill level at which specialty slot 1 / 2 / 3 opens (rule:specialty-slots) */
-export const SPEC_SLOT_LV = [8, 12, 20];
+export const SPEC_SLOT_LV = RULE_SPEC_SLOTS.slice();
 export const SP_STEPS = [];
 SP_SKILLS.forEach((s, rank) => {
   for (let L = 2; L <= 10; L++) {
@@ -41,6 +47,6 @@ export const DV_TYPE_ICONS = {
   a: ["assets/icons/blue-off.png", "assets/icons/blue-on.png"],
   c: ["assets/icons/orange-off.png", "assets/icons/orange-on.png"] };
 /* Live refresh while typing a cost (no re-render, so the box keeps focus). */
-/* Cheapest a node can be: the node itself (passive 2, active 3, corner 4); its path only adds to that. */
-export const DV_MIN = { p: 2, a: 3, c: 4 };
-export const ST_COST = L => L <= 5 ? 1 : L <= 10 ? 2 : L <= 15 ? 4 : L <= 20 ? 8 : null; /* shards to reach level L (Metabot) */
+/* Cheapest a node can be: the node itself (rule:node-costs by node type); its path only adds to that. */
+export const DV_MIN = { p: RULE_NODE_COSTS.passive, a: RULE_NODE_COSTS.active, c: RULE_NODE_COSTS.corner };
+export const ST_COST = L => bandCost(RULE_SHARD_COST, L); /* shards to reach stigma level L, null past 20 (rule:stigma-shard-cost) */

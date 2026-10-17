@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://daevacompanion.com/schema/v2/milestones.schema.json",
   "title": "Milestones and route rules (packs/<game>/<faction>/<class>/guide/milestones.json)",
-  "description": "DRAFT. The cards (GATES and STEPS headers). Their items are 'steps' records (shared or per class) that name the milestone; Sealed Dungeons join by band. Regional quests are still placed at runtime by recommended level.",
+  "description": "DRAFT. The cards (GATES and STEPS headers). Their items are 'steps' records (shared or per class) that name the milestone, plus card-only lines in 'items' (no gate node); Sealed Dungeons join by band. Regional quests are still placed at runtime by recommended level.",
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/envelope"
@@ -80,6 +80,55 @@
               "order": {
                 "description": "Position of the block among the milestone's steps.",
                 "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "items": {
+          "description": "Card-only lines written on the milestone itself (0.4 P2a), for a line that is no trackable step: it compiles to a milestone item like a step's (key, text, loc, short, optional, mapSlug), but never to a GATE_GRAPH node. gateNode: false says so on every item; the app relies on it (src/core/requirements.js openSteps: a row without a gate node is never offered). A line that needs a gate is a step (steps.json).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "order",
+              "gateNode",
+              "text"
+            ],
+            "properties": {
+              "key": {
+                "description": "Item k, written out (ARCHITECTURE §1); unique among save keys.",
+                "$ref": "common.schema.json#/$defs/saveKey"
+              },
+              "order": {
+                "description": "Position among the milestone's steps and blocks.",
+                "type": "number"
+              },
+              "gateNode": {
+                "description": "Always false: the generator emits no GATE_GRAPH node for a milestone item.",
+                "const": false
+              },
+              "text": {
+                "description": "Item text (t) without the location line.",
+                "$ref": "common.schema.json#/$defs/inlineText"
+              },
+              "loc": {
+                "description": "Location line.",
+                "$ref": "common.schema.json#/$defs/inlineText"
+              },
+              "short": {
+                "description": "Next up label (ns).",
+                "$ref": "common.schema.json#/$defs/inlineText"
+              },
+              "optional": {
+                "description": "opt: shown as Optional; hidden by the Optional filter.",
+                "const": true
+              },
+              "mapSlug": {
+                "description": "map: Metabot dungeon-map focus slug for the map button.",
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
               }
             },
             "additionalProperties": false
