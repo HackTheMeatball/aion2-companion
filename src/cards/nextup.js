@@ -7,7 +7,7 @@
 import { char } from "../core/state.js";
 import { activePack } from "../core/pack.js";
 import { chainsOn, objPartsOf, questIdx, turnInNeedsLv } from "../core/requirements.js";
-import { rankNext } from "../core/nextup.js";
+import { TRACKS, rankChangeOn, rankNext, trackOf, tracksDiffer } from "../core/nextup.js";
 import { completeBefore, renderQuestSubs, setObj, setSub, stepQuest, subListHTML } from "./journey.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageLayoutEl as layoutEl, pageSMOOTH as SMOOTH, pageTipClick as tipClick, pageTipGoClick as tipGoClick, pageTipEsc as tipEsc, pageGATES as GATES, pageQUESTS as QUESTS, pageQUEST_STEPS as QUEST_STEPS, pageSTORY_END as STORY_END, pageObjIdx as objIdx } from "./page.js";
 
@@ -77,7 +77,12 @@ let nsCur = 0;
 function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
-  const shown = rankNext(state, { basic: document.body.classList.contains("basic") }).map(nowCard);
+  const ranked = rankNext(state, { basic: isBasic() }), shown = ranked.map(nowCard);
+  /* band labels (0.5 P14, S1): above a card whose band differs from the card before it; rankNext sets band only when
+     the list spans more than one band (Advanced) */
+  const bandKey = b => b ? `${b.missed ? "m" : ""}${b.from}` : "";
+  const bandTxt = b => `${b.missed ? "Missed · " : ""}Lv ${b.from}${b.to == null ? "+" : b.to > b.from ? `–${b.to}` : ""}`;
+  const bandAt = i => { const b = ranked[i] && ranked[i].band; return b && (i === 0 || bandKey(ranked[i - 1].band) !== bandKey(b)) ? `<p class="ns-band">${bandTxt(b)}</p>` : ""; };
   const top = shown[0], phone = nsPhone(), pager = phone && !isBasic() && shown.length > 1;
   /* the featured card: the first one, or on a phone the one the pager is on */
   nsCur = pager ? Math.min(nsCur, shown.length - 1) : 0;
@@ -100,10 +105,10 @@ function renderNow() {
   /* on a phone the "i" opens the subline instead of following the title (at the end of either it wrapped onto a line of its own) */
   const card = (a, i) => { const pb = splitBar(a), sub = [a.sub, pb.lbl ? `<span class="nw">${pb.lbl}</span>` : ""].filter(Boolean).join(" · "), ti = phone ? "" : info(a, i), pi = phone ? info(a, i) : "";
     return `<article class="ns-card${i === nsCur ? " first ns-primary nsbox" : ""}${a.later ? " later" : ""}${pb.bar ? " has-bbar" : ""}${nsAnim ? " rise" : ""}">` +
-    `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${ti}</h3>${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
+    bandAt(i) + `<div class="ns-mhead"><div class="num ns-num" aria-hidden="true">${a.ico}</div><div class="title"><h3>${a.t}${ti}</h3>${sub || pi ? `<p>${pi}${sub}</p>` : ""}${a.info ? `<span class="ns-info" id="nsInfo${i}">${a.info}</span>` : ""}</div>` +
     (a.extra ? `<div class="ns-extra">${a.extra}</div>` : "") + `<div class="meta">${control(a, i)}</div></div>${a.quest ? nsObjHTML() : ""}${pb.bar ? `<div class="ns-bbar">${pb.bar}</div>` : ""}</article>`; };
   const pg = pager ? `<div class="ns-pg" role="group" aria-label="Next up cards"><button type="button" class="ns-pgb" data-nspg="-1" aria-label="Previous card">‹</button><span class="ns-pgn" aria-live="polite">${nsCur + 1} of ${shown.length}</span><button type="button" class="ns-pgb" data-nspg="1" aria-label="Next card">›</button></div>` : "";
-  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
+  el.innerHTML = `<div class="sec ns-sec"><h2 class="sec-h">Next up</h2>${pg}${window.documentPictureInPicture ? `<button type="button" class="ns-pop" data-nspop title="Keep Next up in a small window on top of the game">Pop out</button>` : ""}</div>` + trackHTML() + (top ? `<div class="ns-stack${phone ? " ns-phone" : ""}" id="nsqWrap">${shown.map(card).join("")}</div>`
     : `<div class="ns-stack"><article class="ns-card first"><div class="ns-mhead"><div class="num ns-num" aria-hidden="true">✓</div><div class="title"><h3>You're caught up for Lv ${lv}</h3><p>Push the story to the next level.</p></div><div class="meta"></div></div></article></div>`);
   nsAnim = false;
   if (pipWin) syncPipClasses();
@@ -118,6 +123,15 @@ function renderNow() {
   }
   /* After completing a card, keep keyboard focus on the new top card's control. */
   if (w && nsRefocus > Date.now()) { const c = w.querySelector(".ns-card.first .meta button, .ns-card.first .meta a"); if (c) c.focus({ preventScroll: true }); }
+}
+/* The track toggle (0.5 P14, S1): Fastest / Completionist, the view setting `track` (top-level, per device, not synced),
+   written only by a click. Advanced only, and hidden while no record has a non-core route (tracksDiffer; owner, S1 Q7,
+   DECISIONS 2026-10-17). Under it the drawbacks line, the pack's words ("track.drawbacks"; none: no line). */
+function trackHTML() {
+  if (isBasic() || !rankChangeOn("trackFilter") || !tracksDiffer()) return "";
+  const t = trackOf(state), R = nowR(), dl = R["track.drawbacks"] ? R["track.drawbacks"](t, nowCtx()) : "";
+  const b = (v, txt) => `<button type="button" class="ns-trk${t === v ? " on" : ""}" data-nstrack="${v}" aria-pressed="${t === v}">${txt}</button>`;
+  return `<div class="ns-opts"><div class="ns-seg" role="group" aria-label="Track">${b("fastest", "Fastest")}${b("completionist", "Completionist")}</div>${dl ? `<p class="ns-drawb">${dl}</p>` : ""}</div>`;
 }
 /* The phone pager: d = -1 / +1, round the list. Focus stays on the pager button that was used (from the keyboard
    elsewhere in the card it moves to the new card's control). */
@@ -201,6 +215,8 @@ function nextUpMount(el) {
   nowEl.addEventListener("click", e => {
     if (e.target.closest("[data-nspop]")) { popOutNow(); return; }
     const pgb = e.target.closest("[data-nspg]"); if (pgb) { nsPage(+pgb.dataset.nspg, pgb.dataset.nspg); return; }
+    const tb = e.target.closest("[data-nstrack]");
+    if (tb) { if (TRACKS.includes(tb.dataset.nstrack) && state.track !== tb.dataset.nstrack) { state.track = tb.dataset.nstrack; nsCur = 0; save(); renderNow(); } return; }
     /* the pack's own controls inside a card (drawn by its renderers) */
     const pc = nowR()["now.click"]; if (pc && pc(e, nowCtx())) return;
     const ib = e.target.closest(".nsinfo"); if (ib) { e.stopPropagation(); ib.setAttribute("aria-expanded", String((ib.closest(".ns-card") || ib.closest(".nsq, .nsbox")).classList.toggle("show-info"))); return; }

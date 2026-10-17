@@ -56,6 +56,10 @@ const placeOfKey = (k, pt, order) => {
   return { zone: pt === "turnin" ? (p && KIBELISKS[p.anchor] || {}).zone || P.zone : P.zone, pt: p, order };
 };
 
+/* A record's route ("core" / "filler" / "completionist", NODE_PLACE's; the pack's catalog.route for the engine's
+   tracks, 0.5 P14): a key with no place (a guide step, a skill line) is core. */
+export const aion2RouteOf = k => { const P = NODE_PLACE[placeIdOfKey().get(k)]; return P ? P.route : "core"; };
+
 /* Ascension first (ascensionFirst, design §5; owner, DECISIONS 2026-10-14 "Ascension quests"): a met, not-done Ascension
    step is the first step card, above everything (first: true); the engine then leaves it out of its own steps. Its
    milestone below your level: a missed card, as the engine draws it. */
@@ -137,7 +141,8 @@ function regional(state, ctx) {
     near: hereArea ? rqOpen.filter(x => !x.lock && x.it.q.zone === hereArea).length : 0, hereArea,
     act: "rqgo:" + (rqFirst ? rqFirst.k : rqSnzK.length ? rqSnzK[0] : rqWait[0].k) } : null;
   if (rqCard) out.push({ phase: gated && rqOpen.length ? "beforeStory" : "side", keep: true, card: rqCard });
-  if (sdCard) out.push({ phase: gated ? "beforeStory" : "side", keep: true, card: sdCard });
+  /* cands: every open dungeon the pick is made from (the engine's tracks; the rq card's are its open rows) */
+  if (sdCard) out.push({ phase: gated ? "beforeStory" : "side", keep: true, cands: sdOpen.map(x => x.k), card: sdCard });
   return out;
 }
 
@@ -162,7 +167,7 @@ function stronghold(state, ctx) {
   const shNear = here && byPlace(here, x => placeOfKey(x.k, "entrance"));
   const shPick = shNear ? [...shOpen].sort((a, b) => shNear(a, b) || byLo(a, b))[0] : shOpen.find(x => x.area === hereArea) || [...shOpen].sort(byLo)[0];
   const shAll = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
-  return [{ phase: "late", keep: true, card: { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, act: "areas:sh" } }];
+  return [{ phase: "late", keep: true, cands: shOpen.map(x => x.k), card: { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, act: "areas:sh" } }];
 }
 
 /* Later: each skill's own next upgrade only (no jumps past a level you haven't bought), one card per skill, at most 3;

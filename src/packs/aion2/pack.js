@@ -10,7 +10,7 @@ import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
 import { aion2OnLoad } from "./load.js";
-import { aion2Meanwhile, aion2NextUp, aion2StoryFields } from "./nextup.js";
+import { aion2Meanwhile, aion2NextUp, aion2RouteOf, aion2StoryFields } from "./nextup.js";
 import { aion2Cards } from "./cards/index.js";
 import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
@@ -34,6 +34,8 @@ export const aion2Pack = definePack({
     offered: (it, k) => !/^(sp|dv):/.test(k) && !(it && (it.stig || it.eput)),
     /* skill and board lines have their own Buy / Later cards; a stigma-only milestone's Later card shows its title */
     promised: (it, k) => !/^(sp|dv):/.test(k),
+    /* a record's route label, for Next up's fastest / completionist tracks (src/core/nextup.js routeOf, 0.5 P14) */
+    route: aion2RouteOf,
   },
   /* the character's fields beside the engine's, in the order sync stamps them (src/core/sync.js) */
   charFields: {

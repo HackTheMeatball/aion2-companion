@@ -256,7 +256,20 @@ html.pip .pip-hint { flex: none; padding-top: var(--space-6); font: 500 10px var
 #nowStar .ns-pgb:hover { border-color: var(--muted); }
 #nowStar .ns-pgb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 #nowStar .ns-pgn { min-width: 52px; text-align: center; font: 600 12px var(--mono); letter-spacing: 0; text-transform: none; color: var(--muted); white-space: nowrap; }
+/* 0.5 P14 (S1): a level-band label at the top of the first card of each band (only when the list spans more than one),
+   and the track toggle with its drawbacks line under the header (Advanced, shown once a record has a non-core route) */
+#nowStar .ns-band { display: flex; align-items: center; gap: var(--space-10); margin: 0; padding: var(--space-10) var(--space-14) 0; font: 500 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+#nowStar .ns-band::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-band { padding: var(--space-10) var(--space-4) 0; }
+#nowStar .ns-opts { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8) var(--space-12); margin: 0 0 var(--space-10); }
+#nowStar .ns-seg { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius-8); overflow: hidden; }
+#nowStar .ns-trk { padding: var(--space-6) var(--space-12); font: 600 12px var(--body); color: var(--muted); background: none; border: 0; cursor: pointer; }
+#nowStar .ns-trk + .ns-trk { border-left: 1px solid var(--line); }
+#nowStar .ns-trk.on { color: var(--fg); background: var(--accent-soft); }
+#nowStar .ns-trk:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+#nowStar .ns-drawb { flex-basis: 100%; margin: 0; font-size: 12.5px; color: var(--muted); }
 @media (pointer: coarse) {
   #nowStar .ns-stack.ns-phone .ns-card .meta :is(.ns-btn, .ns-go) { min-height: 44px; }
   #nowStar .ns-pgb { width: 44px; height: 44px; }
+  #nowStar .ns-trk { min-height: 44px; }
 }

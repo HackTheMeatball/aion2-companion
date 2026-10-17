@@ -11,11 +11,12 @@ const ACTIONABLE = ['step', 'missed', 'adv'];
 export default (test, M) => {
   const qi = n => M.storyIdx(n), kinds = cs => cs.map(c => c.kind);
   /* 0.5 P11: the ranking switches of smart Next up (docs/design/0.4-smart-next-up.md §12); P12 ships ascensionFirst and
-     placeRank on, P13 catchUp and etaLater; every other one stays off until the step that builds it */
-  const SHIPPED_ON = ['ascensionFirst', 'placeRank', 'catchUp', 'etaLater'];
-  /* in the golden snapshots before this step (--explain keeps them on): P12's two */
-  const BASELINE = ['ascensionFirst', 'placeRank'];
-  test('ranking switches: the engine\'s and the pack\'s tables, on as shipped exactly ascensionFirst, placeRank, catchUp and etaLater; setRankChanges picks exactly a set', () => {
+     placeRank on, P13 catchUp and etaLater, P14 trackFilter and bandLabels; every other one stays off until the step that
+     builds it */
+  const SHIPPED_ON = ['ascensionFirst', 'placeRank', 'trackFilter', 'bandLabels', 'catchUp', 'etaLater'];
+  /* in the golden snapshots before this step (--explain keeps them on): P12's and P13's */
+  const BASELINE = ['ascensionFirst', 'placeRank', 'catchUp', 'etaLater'];
+  test('ranking switches: the engine\'s and the pack\'s tables, on as shipped exactly ascensionFirst, placeRank, trackFilter, bandLabels, catchUp and etaLater; setRankChanges picks exactly a set', () => {
     const E = M.RANK_CHANGES, A = M.AION2_RANK_CHANGES;
     assert.deepEqual(Object.keys(E), ['ascensionFirst', 'placeRank', 'trackFilter', 'bandLabels', 'catchUp', 'etaLater']);
     assert.deepEqual(Object.keys(A), ['bindDerived', 'bindNudge', 'travelAdvice']);
