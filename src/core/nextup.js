@@ -3,13 +3,14 @@
    is { kind, act, ... }: act is the action its button runs ("tick:<key>", "story", …, "" for none), the other fields are
    what the view needs.
 
-   Cards come as entries { phase, card, keep?, queue?, L? } (docs/design/0.4-engine-contract.md §2 "Next up phases"): the
+   Cards come as entries { phase, card, keep?, queue?, L?, first? } (docs/design/0.4-engine-contract.md §2 "Next up phases"): the
    engine's own (steps of the milestone you stand on, missed steps, the story card, advice, the next milestone's Later
    card) and the pack's (nextUpProducers, each called once per ranking, in list order). They are sorted by phase, then in
    the order they were collected (the pack's producers first, then the engine's); the later phase by L (the level it
    opens at) first. Order: spend what you already have → steps the milestone you're standing on opens (the route pauses
    at milestones) → what the pack ranks above the story → missed steps → the story → side content → advice → late →
-   what opens later. */
+   what opens later. A step card the pack puts first (first: true; ascensionFirst: the rank-up quest steps, design §5)
+   goes above all of them, and the engine leaves that step out of its own steps and missed steps. */
 import { activePack } from "./pack.js";
 import { blockerText } from "./blockers.js";
 import { char } from "./state.js";
@@ -20,12 +21,13 @@ export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story"
 /* The ranking changes of smart Next up (docs/design/0.4-smart-next-up.md §12), each a named switch like the gate changes
    (the pack's gateChanges, design 0.3 §13), so tests/golden.js --explain can attribute every changed state to the
    smallest set of them. Unlike those, a ranking change ships off (on: false) until the step that builds it turns it on and
-   re-records the golden snapshots (0.5 P11: every one off, nothing reads them yet). A pack declares its own ranking
+   re-records the golden snapshots (0.5 P11: every one off; P12 turns on ascensionFirst and placeRank, both read by the
+   pack's producers). A pack declares its own ranking
    changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
    exactly the names given, from any table; the caller adds what each one needs. */
 export const RANK_CHANGES = {
-  ascensionFirst: { on: false, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
-  placeRank: { on: false, what: "the side-content picks, their order and the \"near\" count by where the player is (whereNow, byPlace; design §5)" },
+  ascensionFirst: { on: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
+  placeRank: { on: true, what: "the side-content picks, their order and the \"near\" count by where the player is (whereNow, byPlace; design §5)" },
   trackFilter: { on: false, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
   bandLabels: { on: false, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
   catchUp: { on: false, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
@@ -55,12 +57,14 @@ export function rankNext(state, { basic = false } = {}) {
     entries.push(e);
   }
   const add = (phase, card) => entries.push({ phase, card });
+  /* the steps the pack put first (first: true) aren't offered twice */
+  const firstK = new Set(entries.filter(e => e.first && e.card.x).map(e => e.card.x.k));
   /* Unlock-type steps at your milestone come before the story; its side rows come after it (the pack's cards). */
-  hs.filter(x => !x.rq && !x.adv).forEach(x => add("here", { kind: "step", x, g: here, act: "tick:" + x.k }));
+  hs.filter(x => !x.rq && !x.adv && !firstK.has(x.k)).forEach(x => add("here", { kind: "step", x, g: here, act: "tick:" + x.k }));
   /* Leftovers from milestones below your level. Unlock-type steps stay above the story; side rows keep the rank they had
      at their own level: after the story. */
   const missed = milestones.filter(g => g.lv < lv && isOpen(countsOf(state, g)));
-  const msAll = missed.flatMap(g => openSteps(state, g).map(m => ({ ...m, g })));
+  const msAll = missed.flatMap(g => openSteps(state, g).filter(m => !firstK.has(m.k)).map(m => ({ ...m, g })));
   msAll.filter(m => !m.rq && !m.adv).slice(0, 2).forEach(m => add("missed", { kind: "missed", x: m, g: m.g, act: "tick:" + m.k }));
   /* Nothing else to do right now: the story is the default (its steps live in the Journey card). */
   add("story", storyCard(state, ctx));
@@ -76,7 +80,7 @@ export function rankNext(state, { basic = false } = {}) {
   if (g2) entries.push({ phase: "later", L: g2.lv, card: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "",
     why: st2 && ev.byKey(st2.k) ? blockerText(ev.byKey(st2.k), ev, { omit: ["level"] }) : "" } });
   const ranked = entries.map((e, i) => ({ e, i, p: NEXT_UP_PHASES.indexOf(e.phase) }))
-    .sort((a, b) => a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) : 0) || a.i - b.i).map(x => x.e);
+    .sort((a, b) => (b.e.first ? 1 : 0) - (a.e.first ? 1 : 0) || a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) : 0) || a.i - b.i).map(x => x.e);
   /* Basic: only what you can act on now (no Later or advice cards, only the first card of each queue). */
   const firstOf = new Set();
   const shown = !basic ? ranked : ranked.filter(e => { if (e.card.later || e.card.adv) return false; if (!e.queue) return true;

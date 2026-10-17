@@ -1,8 +1,8 @@
 /* The AION 2 Next up producers (0.4 P2c, pure: no DOM; docs/design/0.4-engine-contract.md §2 "Next up phases"). The
    engine's rankNext (src/core/nextup.js) calls each once per ranking, in list order, and sorts the entries by phase; the
-   card objects are the ones src/main.js (nowCard) has always drawn. Here: spend what you already have (dungeon in
-   progress, Cube items, skill points, board crystals, stigma), regional quests, Sealed Dungeons, Strongholds, the
-   Later skill cards; plus the story card's Kibelisk and "Meanwhile" (pack story hooks).
+   card objects are the ones src/main.js (nowCard) has always drawn. Here: a met Ascension step first, spend what you
+   already have (dungeon in progress, Cube items, skill points, board crystals, stigma), regional quests, Sealed
+   Dungeons, Strongholds, the Later skill cards; plus the story card's Kibelisk and "Meanwhile" (pack story hooks).
 
    Story vs side content was checked against MeinMMO, GamesFuze, KeenGamer, ExitLag, aion2hub: the main story is the
    leveling path; Sealed Dungeons (one-time, fixed: 2 crystals + 2 Wisdom Stones + Enhance Stones + Kina, ~5 min) and
@@ -12,15 +12,20 @@ import { VERIFIED_UNLOCKS } from "./data/story.js";
 import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { AREA_LOC } from "./data/generated.js";
+import { KIBELISKS, NODE_PLACE } from "./data/place.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
-import { areaOpen, dvNeed, dvNext, dvSpent, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots, storyAreaOf,
-  storyHereOf } from "./requirements.js";
+import { areaOpen, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
+  storyAreaOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
-import { doneOf, gatesOf, openBut, qProgOf } from "../../core/requirements.js";
+import { rankChangeOn } from "../../core/nextup.js";
+import { perPack } from "../../core/pack.js";
+import { byPlace, whereNow } from "../../core/place.js";
+import { doneOf, gatesOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
 
 /* The pack's ranking changes (docs/design/0.4-smart-next-up.md §12), switches like the engine's RANK_CHANGES
    (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off (0.5 P11: nothing reads them
-   yet). needs: what it can't run without (travelAdvice shares whereNow with the engine's placeRank). */
+   yet). needs: what it can't run without (travelAdvice shares whereNow with the engine's placeRank). The engine's
+   ascensionFirst and placeRank (0.5 P12) are read here, by the producers below. */
 export const AION2_RANK_CHANGES = {
   bindDerived: { on: false, what: "bound Kibelisks derived from the ticks, the story position and pick-ups (travel.js boundSet, design §8.1); no visible change alone" },
   bindNudge: { on: false, needs: ["bindDerived"], what: "the one-time \"Bind X\" row on the story card (travel.js nudgeOf, design §8.2)" },
@@ -28,17 +33,43 @@ export const AION2_RANK_CHANGES = {
 };
 
 /* What several producers (and the story card's "Meanwhile") read, worked out once per ranking (ctx is one per call):
-   the story step's zone, the open Sealed Dungeons (lowest band first) and Strongholds. */
+   the story step's zone, where the player is (placeRank on: whereNow, else null), the open Sealed Dungeons (lowest band
+   first) and Strongholds. */
 const AREAS = new WeakMap();
 const areasOf = (state, ctx) => {
   let a = AREAS.get(ctx); if (a) return a;
   const { c, ev } = ctx;
-  a = { hereArea: storyAreaOf(storyHereOf(state), KIB_AREA),
+  a = { hereArea: storyAreaOf(storyHereOf(state), KIB_AREA), here: rankChangeOn("placeRank") ? whereNow(c) : null,
     sdOpen: AREA_ITEMS.filter(x => x.it.kind === "hideout" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev)).sort((a, b) => bandOf(a) - bandOf(b)),
     shOpen: AREA_ITEMS.filter(x => x.it.kind === "stronghold" && areaOpen(c, x, ev) && !doneOf(c, x.k, ev)) };
   AREAS.set(ctx, a);
   return a;
 };
+
+/* Where an item is, for byPlace (design §5): { zone, pt, order } from NODE_PLACE (node by save key); pt is the place the
+   card sends you to: a regional quest's giver (its turn-in once picked up, in that Kibelisk's zone), a dungeon's or
+   stronghold's entrance. order: the catalog order, today's tie-break. An item with no place sorts after the placed ones. */
+const placeIdOfKey = () => perPack("nextupPlaceIx", p => new Map(Object.entries(p.data.graph.nodes).filter(([, n]) => n.key !== undefined).map(([id, n]) => [n.key, id])));
+const placeOfKey = (k, pt, order) => {
+  const P = NODE_PLACE[placeIdOfKey().get(k)]; if (!P) return { zone: null, pt: null, order };
+  const p = P.pts[pt] || null;
+  return { zone: pt === "turnin" ? (p && KIBELISKS[p.anchor] || {}).zone || P.zone : P.zone, pt: p, order };
+};
+
+/* Ascension first (ascensionFirst, design §5; owner, DECISIONS 2026-10-14 "Ascension quests"): a met, not-done Ascension
+   step is the first step card, above everything (first: true); the engine then leaves it out of its own steps. Its
+   milestone below your level: a missed card, as the engine draws it. */
+function ascension(state, { c, lv, ev }) {
+  if (!rankChangeOn("ascensionFirst")) return [];
+  const out = [];
+  GATES.forEach(g => openSteps(state, g).forEach(x => {
+    if (x.rq || x.adv || !isAscensionKey(x.k)) return;
+    const r = ev.byKey(x.k); if (!r || !r.open || doneOf(c, x.k, ev)) return;
+    const card = g.lv < lv ? { kind: "missed", x: { ...x, g }, g, act: "tick:" + x.k } : { kind: "step", x, g, act: "tick:" + x.k };
+    out.push({ phase: g.lv < lv ? "missed" : "here", first: true, card });
+  }));
+  return out;
+}
 
 /* Dungeon or stronghold you went into (finish it first), Cube items, skill buys, the board node. */
 function spend(state, { c, lv, ev }) {
@@ -67,10 +98,12 @@ function spend(state, { c, lv, ev }) {
 
 /* Regional quests as one card, and the Sealed Dungeon pick: above the story when it is level-gated (XP), else after it. */
 function regional(state, ctx) {
-  const { c, lv, ev, story: { gated, gateLv } } = ctx, { hereArea, sdOpen } = areasOf(state, ctx), out = [];
-  /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. */
+  const { c, lv, ev, story: { gated, gateLv } } = ctx, { hereArea, here, sdOpen } = areasOf(state, ctx), out = [];
+  /* Sealed Dungeon pick: one in the story step's zone (highest band first); else one from the highest open band. Where
+     the player is known (placeRank, a dated stamp): the highest open band, then the nearest (byPlace). */
   const byHigh = [...sdOpen].sort((a, b) => bandOf(b) - bandOf(a));
-  const sdPick = byHigh.find(x => x.area === hereArea) || byHigh[0];
+  const sdNear = here && byPlace(here, x => placeOfKey(x.k, "entrance", AREA_ITEMS.indexOf(x)));
+  const sdPick = sdNear ? [...byHigh].sort((a, b) => bandOf(b) - bandOf(a) || sdNear(a, b))[0] : byHigh.find(x => x.area === hereArea) || byHigh[0];
   const bandCount = (kind, bd) => { const xs = AREA_ITEMS.filter(x => x.it.kind === kind && bandOf(x) === bd); return { bd, d: xs.filter(x => doneOf(c, x.k, ev)).length, n: xs.length }; };
   const sdCard = sdOpen.length ? { kind: "sd", pick: sdPick, loc: AREA_LOC[sdPick.it.name] || {}, open: sdOpen.length, gated, gateLv, hereArea, band: bandCount("hideout", bandOf(sdPick)), act: "areas:" + bandOf(sdPick) } : null;
   /* Take them all, finish them in any order. Available = the quest's own recommended level (RQ rec), not its milestone's
@@ -88,6 +121,9 @@ function regional(state, ctx) {
   const rqOpen0 = rqAll.filter(x => !x.done && !x.snz);
   /* A locked follow-up shows only under a prerequisite that is itself shown (open, not snoozed): x.parent. */
   rqOpen0.forEach(x => { x.parent = x.pre.find(n => rqOpen0.some(y => !y.lock && y.it.name === n)); });
+  /* Where the player is known (placeRank): the list and its first pick nearest first (byPlace; the card keeps each
+     follow-up under its parent), the catalog order breaking ties. */
+  if (here) { const ix = new Map(rqAll.map((x, i) => [x, i])), cmp = byPlace(here, x => placeOfKey(x.k, x.run ? "turnin" : "giver", ix.get(x))); rqOpen0.sort(cmp); }
   const rqOpen = rqOpen0.filter(x => !x.lock || x.parent), rqSnzK = rqAll.filter(x => x.snz).map(x => x.k);
   const rqRun = rqOpen.filter(x => x.run).length, rqLock = rqOpen.filter(x => x.lock).length;
   /* Bar covers only milestones that still have open regional quests (finished milestones don't pad it). */
@@ -116,9 +152,12 @@ function stigma(state, { c, lv, ev }) {
 
 /* Strongholds: one pick (in the story step's zone, else the highest band), after the advice cards. */
 function stronghold(state, ctx) {
-  const { c, ev } = ctx, { hereArea, shOpen } = areasOf(state, ctx);
+  const { c, ev } = ctx, { hereArea, here, shOpen } = areasOf(state, ctx);
   if (!shOpen.length) return [];
-  const shPick = shOpen.find(x => x.area === hereArea) || [...shOpen].sort((a, b) => (b.it.lo || 0) - (a.it.lo || 0) || (a.it.hi || 45) - (b.it.hi || 45))[0];
+  const byLo = (a, b) => (b.it.lo || 0) - (a.it.lo || 0) || (a.it.hi || 45) - (b.it.hi || 45);
+  /* where the player is known (placeRank): the nearest (byPlace), then lo / hi as before */
+  const shNear = here && byPlace(here, x => placeOfKey(x.k, "entrance"));
+  const shPick = shNear ? [...shOpen].sort((a, b) => shNear(a, b) || byLo(a, b))[0] : shOpen.find(x => x.area === hereArea) || [...shOpen].sort(byLo)[0];
   const shAll = AREA_ITEMS.filter(x => x.it.kind === "stronghold");
   return [{ phase: "late", keep: true, card: { kind: "sh", pick: shPick, open: shOpen.length, done: shAll.filter(x => doneOf(c, x.k, ev)).length, total: shAll.length, hereArea, act: "areas:sh" } }];
 }
@@ -132,6 +171,7 @@ function laterSkills(state, { c, lv, ev }) {
 }
 
 export const aion2NextUp = [
+  { id: "ascension", produce: ascension },
   { id: "spend", produce: spend },
   { id: "regional", produce: regional },
   { id: "stigma", produce: stigma },
