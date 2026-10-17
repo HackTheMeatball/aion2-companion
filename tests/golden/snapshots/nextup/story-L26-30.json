@@ -5,8 +5,8 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "story/L26-q40-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -20,6 +20,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: The High Priest Slumbers","s":"0/2 objectives · then Striving for Coexistence","c":"primary \"Turned in\" story","o":["Check if Hystan's body is safe go to the Nornir Altar","Turn in Urd, Nornir Assembly (Kibelisk: Nornir Assembly)"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
@@ -32,8 +34,8 @@
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "story/L26-q41-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -47,6 +49,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 36 open at your level"},
@@ -59,8 +63,8 @@
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "story/L26-q43-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -68,8 +72,8 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Ambush 9 → 10","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Buy Heart Gore 9 → 10","s":"Needs Lv 28 · 2 levels away","c":"tag \"Later\"","f":"later"},
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "story/L27-q42-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -94,6 +98,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Preparations for Restoration","s":"0/3 objectives · then A Collective Effort","c":"primary \"Turned in\" story","o":["Prepare to restore the Spirit Altar go to the Old Purifying Altar (Kibelisk: Guide Rest Stop)","Clear around the Wind Altar defeat the contaminated spirits remove Poison Blood Clot Kibelisk: Guide Rest Stop","Turn in Hadala, Wind Altar"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 36 open at your level"},
@@ -123,6 +129,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more","+1 waiting on the story Fight Poison with Poison In my game"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
@@ -157,6 +165,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Land of Rifts","s":"0/3 objectives · then Dying Light","c":"primary \"Turned in\" story","o":["Clear around the Earth Altar interact with Toxic Aura ×3 defeat Corroded Soil Spirit ×3 defeat Pink Gravi ×5 Kibelisk: Faded Stump","Restore the Earth Altar with Darmand purify the Earth Altar","Turn in Nemon, Water Altar (Kibelisk: Healing Spring)"]},
     {"t":"Regional quests","s":"12 to pick up · 2 follow-ups · 1 near your story step · 0/14 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+8 more"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 36 open at your level"},
@@ -199,7 +209,7 @@
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor (near)","+4 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-    {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away · opens on \"A Daeva Dreaming Anew\" · 9 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L30-q45-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -233,7 +243,7 @@
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor (near)","+4 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 5 open"},
-    {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away · opens on \"A Daeva Dreaming Anew\" · 8 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L30-q46-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -267,7 +277,7 @@
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+4 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away · opens on \"A Daeva Dreaming Anew\" · 7 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L30-q47-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -301,7 +311,7 @@
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+4 waiting on the story Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game"]},
     {"t":"Clear All-Curing Cave","s":"Battlescar Mound · Kibelisk: Battlescar Mound Clifftop · Lv 30–34 · 0/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Battlescar Mound Clifftop is 170 m away · 7 open at your level"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
-    {"t":"Stigma slot 3","s":"Lv 32 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Ascension quest \"The One Who Dreams\"","s":"Lv 32 milestone · 2 levels away · opens on \"A Daeva Dreaming Anew\" · 6 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L30-q48-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},

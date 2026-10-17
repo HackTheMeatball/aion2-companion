@@ -11,15 +11,17 @@ const ACTIONABLE = ['step', 'missed', 'adv'];
 export default (test, M) => {
   const qi = n => M.storyIdx(n), kinds = cs => cs.map(c => c.kind);
   /* 0.5 P11: the ranking switches of smart Next up (docs/design/0.4-smart-next-up.md §12); P12 ships ascensionFirst and
-     placeRank on, every other one stays off until the step that builds it */
-  const SHIPPED_ON = ['ascensionFirst', 'placeRank'];
-  test('ranking switches: the engine\'s and the pack\'s tables, on as shipped exactly ascensionFirst and placeRank; setRankChanges picks exactly a set', () => {
+     placeRank on, P13 catchUp and etaLater; every other one stays off until the step that builds it */
+  const SHIPPED_ON = ['ascensionFirst', 'placeRank', 'catchUp', 'etaLater'];
+  /* in the golden snapshots before this step (--explain keeps them on): P12's two */
+  const BASELINE = ['ascensionFirst', 'placeRank'];
+  test('ranking switches: the engine\'s and the pack\'s tables, on as shipped exactly ascensionFirst, placeRank, catchUp and etaLater; setRankChanges picks exactly a set', () => {
     const E = M.RANK_CHANGES, A = M.AION2_RANK_CHANGES;
     assert.deepEqual(Object.keys(E), ['ascensionFirst', 'placeRank', 'trackFilter', 'bandLabels', 'catchUp', 'etaLater']);
     assert.deepEqual(Object.keys(A), ['bindDerived', 'bindNudge', 'travelAdvice']);
     assert.deepEqual(Object.keys(E).filter(n => n in A), [], 'no name in both tables');
     for (const [n, x] of [...Object.entries(E), ...Object.entries(A)]) {
-      assert.equal(x.on, SHIPPED_ON.includes(n), n); assert.ok(typeof x.what === 'string' && x.what.length > 20, n);
+      assert.equal(x.on, SHIPPED_ON.includes(n), n); assert.equal(x.baseline === true, BASELINE.includes(n), n + ' baseline'); assert.ok(typeof x.what === 'string' && x.what.length > 20, n);
       for (const d of x.needs || []) assert.ok(d in E || d in A, `${n} needs ${d}`);
     }
     assert.deepEqual(A.bindNudge.needs, ['bindDerived']); assert.deepEqual(A.travelAdvice.needs, ['bindDerived', 'placeRank']);
@@ -41,9 +43,63 @@ export default (test, M) => {
     const cs = M.rankNext(S({ level: 20, quest: M.QUESTS[30][1], areaRun: { [sd.k]: 1 }, pendSt: 2 }));
     assert.deepEqual(cs.slice(0, 2).map(c => [c.kind, c.act]), [['run', 'tick:' + sd.k], ['cube', 'usecube']]);
   });
-  test('skill points to spend: the buy card, then up to 3 queued upgrades the points cover', () => {
-    const cs = M.rankNext(S({ level: 20, quest: M.QUESTS[30][1] })), sk = cs.filter(c => c.kind === 'skill');
-    assert.equal(sk[0].first, true); assert.equal(sk[0].x, M.skillBuy(M.char(S({ level: 20 })))); assert.ok(sk.length >= 2 && sk.length <= 4);
+  test('skill points to spend: the buy card, then up to 3 queued upgrades the points cover (catchUp off: 0.2\'s rule)', () => {
+    const s = S({ level: 20, quest: M.QUESTS[30][1] });
+    try { M.setRankChanges(['ascensionFirst', 'placeRank', 'etaLater']); const sk = M.rankNext(s).filter(c => c.kind === 'skill');
+      assert.equal(sk[0].first, true); assert.equal(sk[0].x, M.skillBuy(M.char(S({ level: 20 })))); assert.ok(sk.length >= 2 && sk.length <= 4, sk.length);
+    } finally { M.setRankChanges(null); }
+  });
+  /* ---------- catch-up (0.5 P13, catchUp; design §7) ----------
+     A save at Lv L on the story, every milestone row below L ticked but the skill buys (so skill points are there to
+     spend), minus the given missed steps; stShards gives a second kind of points (a stigma upgrade). */
+  const behindAt = (L, { miss = [], shards = 0 } = {}) => {
+    const quest = M.QUESTS.find(([l]) => l >= L)[1], below = M.GATES.filter(g => g.lv < L).flatMap(g => g.items.filter(it => it.k && !/^sp:/.test(it.k)));
+    const checks = Object.fromEntries(below.filter(it => !miss.includes(it.k)).map(it => [it.k, true]));
+    return S({ level: L, quest, checks, ...(shards ? { stShards: shards } : {}) });
+  };
+  /* the steps below Lv 25 Next up offers as a missed card when only that one is open */
+  const missable = L => M.GATES.filter(g => g.lv < L).flatMap(g => g.items.filter(it => it.k && !/^sp:/.test(it.k)).map(it => it.k))
+    .filter(k => M.rankNext(behindAt(L, { miss: [k] })).some(c => c.kind === 'missed' && c.x.k === k));
+  const missedOf = cs => cs.filter(c => c.kind === 'missed').map(c => c.x.k);
+  const withOn = (names, f) => { try { M.setRankChanges(names); return f(); } finally { M.setRankChanges(null); } }, offCatchUp = f => withOn(['ascensionFirst', 'placeRank', 'etaLater'], f);
+  test('catch-up thresholds: named constants (3 missed steps, 2 kinds of points, 2 missed steps shown otherwise); behindOf at and around them', () => {
+    assert.deepEqual([M.BEHIND_MISSED, M.BEHIND_KINDS, M.MISSED_SHOWN], [3, 2, 2]);
+    const pts = (...ks) => ks.map(points => ({ phase: 'spend', points, card: {} }));
+    assert.equal(M.behindOf([1, 2], pts('skill')), false, '2 missed, 1 kind');
+    assert.equal(M.behindOf([1, 2, 3], []), true, '3 missed, no points');
+    assert.equal(M.behindOf([], pts('skill', 'stigma')), true, '2 kinds');
+    assert.equal(M.behindOf([1, 2], [...pts('skill', 'skill'), { phase: 'spend', card: {} }]), false, 'one kind twice, an entry without points');
+  });
+  test('catch-up, missed steps: 2 open (not behind) show 2; 3 and 4 (behind) all show, in catalog order (no location); catchUp off: 2', () => {
+    const ks = missable(25); assert.ok(ks.length >= 4, ks.join(' '));
+    for (const n of [2, 3, 4]) {
+      const s = behindAt(25, { miss: ks.slice(0, n) }), on = M.rankNext(s), off = offCatchUp(() => M.rankNext(s));
+      assert.deepEqual(missedOf(on), ks.slice(0, n < M.BEHIND_MISSED ? M.MISSED_SHOWN : n), `${n} missed`);
+      assert.deepEqual(missedOf(off), ks.slice(0, 2), `${n} missed, catchUp off`);
+      assert.deepEqual(missedOf(M.rankNext(s, { basic: true })), missedOf(on), `${n} missed, Basic shows the same missed steps`);
+    }
+  });
+  test('catch-up, points: one kind (skill points) keeps the queue at 4 spend cards; two (and a stigma upgrade) lift it to what the points cover, never pushing out a step or the story; Basic: one skill card', () => {
+    const one = M.rankNext(behindAt(25)), two = M.rankNext(behindAt(25, { shards: 99 })), sk = cs => cs.filter(c => c.kind === 'skill').length;
+    assert.equal(sk(one), 4); assert.ok(two.some(c => c.kind === 'stup'));
+    assert.ok(sk(two) > 4, `${sk(two)} skill cards`); assert.equal(offCatchUp(() => sk(M.rankNext(behindAt(25, { shards: 99 })))), 4, 'catchUp off: 4 skill cards');
+    /* the points cover more upgrades than the cap leaves room for: the previews stop where steps and the story would go */
+    const s30 = behindAt(30, { shards: 99 }), at30 = M.rankNext(s30);
+    assert.deepEqual(at30.filter(c => c.kind !== 'skill').map(c => c.kind), offCatchUp(() => M.rankNext(s30)).filter(c => c.kind !== 'skill' && !c.later).map(c => c.kind));
+    assert.ok(at30.filter(c => !c.story && !c.later && !['rq', 'sd', 'sh', 'stwait'].includes(c.kind)).length <= 8);
+    assert.equal(sk(M.rankNext(behindAt(25, { shards: 99 }), { basic: true })), 1, 'Basic');
+  });
+  test('Later by eta: the Later cards in the order they open (level, then story position); the Later step is the closed step that opens first', () => {
+    for (const L of [10, 15, 20, 25, 30, 35, 40]) {
+      const s = behindAt(L), c = M.char(s), ev = M.gatesOf(c), cs = M.rankNext(s).filter(x => x.later);
+      const at = cs.map(x => { const e = M.etaOf(ev.byKey(x.x.k)); return [Math.max(e.L, x.kind === 'laterStep' ? x.g.lv : x.x.req), e.Q]; });
+      assert.deepEqual(at, [...at].sort((a, b) => a[0] - b[0] || a[1] - b[1]), `Lv ${L}: ${cs.map(x => x.x.k)}`);
+      for (const x of cs.filter(x => x.kind === 'laterStep')) { const r = ev.byKey(x.x.k); assert.ok(r && !r.open && r.done === false && x.g.lv > L, `Lv ${L} ${x.x.k}`); }
+    }
+    /* a step that waits on a story quest names itself (0.2's pick, the next milestone's first step open but for its level, had none) */
+    const s = behindAt(15), x = M.rankNext(s).find(x => x.kind === 'laterStep');
+    assert.equal(x.x.k, 'g16:0'); assert.equal(withOn(['ascensionFirst', 'placeRank', 'catchUp'], () => M.rankNext(s).find(x => x.kind === 'laterStep').x), null, 'etaLater off');
+    assert.ok(M.etaOf(M.gatesOf(M.char(s)).byKey('g16:0')).Q >= 0, 'g16:0 waits on a story quest');
   });
   test('story level-gated: regional quests and the Sealed Dungeon card move above the story', () => {
     const q = M.QUESTS.find(([l]) => l >= 25), lv = q[0] - 2;

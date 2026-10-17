@@ -6,7 +6,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 5 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L21-q31-before-A": [
     {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
@@ -15,7 +15,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L21-q31-before-B": [
     {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
@@ -29,7 +29,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L21-q31-lvonly-B": [
     {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
@@ -43,6 +43,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
@@ -52,6 +54,11 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Regional quests","s":"8 to pick up · 0/8 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+2 more"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
@@ -60,16 +67,20 @@
   "level/L21-q31-rnd1p50-A": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Regional quests","s":"5 to pick up · 1/6 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 4/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 14 open at your level"},
-    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"},
-    {"t":"Buy Shadowstrike 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Assault Stance 4 → 5","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
   ],
   "level/L21-q31-rnd1p50-B": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
     {"t":"Regional quests","s":"5 to pick up · 1/6 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 4/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 14 open at your level"},
@@ -83,7 +94,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L21-q31-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
@@ -98,7 +109,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "level/L21-qxx-before-A": [
     {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
@@ -108,7 +119,7 @@
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 1","s":"Lv 22 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"The One Who Hears the Voice\"","s":"Lv 22 milestone · 1 level away · opens on \"Daeva in a Dream\" · set your quest","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-q31-lvonly-A": [
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
@@ -117,7 +128,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-q34-before-A": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -127,7 +138,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-q34-before-B": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -143,7 +154,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-q34-lvonly-B": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -158,6 +169,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 1 near your story step · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+2 waiting on the story Young Elim's Story In my game A Guardian's Sacrifice In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
@@ -168,6 +181,11 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 1 near your story step · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+2 waiting on the story Young Elim's Story In my game A Guardian's Sacrifice In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
@@ -177,16 +195,20 @@
   "level/L22-q34-rnd1p50-A": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 1 near your story step · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 14 open at your level"},
-    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"},
-    {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
   ],
   "level/L22-q34-rnd1p50-B": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 1 near your story step · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 14 open at your level"},
@@ -200,7 +222,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 6 → 7","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-q34-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
@@ -216,7 +238,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L22-qxx-before-A": [
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
@@ -225,7 +247,7 @@
     {"t":"Buy Insignia Explosion 4 → 5","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 5 → 6","s":"Needs Lv 23 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 3 levels away · single source","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 8 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-q31-lvonly-A": [
     {"t":"Story: In the Elims' Name","s":"0/3 objectives · then Verdant Melody","c":"primary \"Turned in\" story","o":["Find the hiding young Elim search with Nemon (Altgard)","Find Ecco's whereabouts go to Odar's Shade","Turn in Hadala, Odar's Shade"]},
@@ -233,7 +255,7 @@
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-q34-before-A": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -241,7 +263,7 @@
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-q34-before-B": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -253,7 +275,7 @@
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-q34-lvonly-B": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -266,6 +288,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 1 near your story step · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+2 waiting on the story Young Elim's Story In my game A Guardian's Sacrifice In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
@@ -276,6 +300,11 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"10 to pick up · 1 follow-up · 1 near your story step · 0/11 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+5 more","+2 waiting on the story Young Elim's Story In my game A Guardian's Sacrifice In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 31 open at your level"},
@@ -285,16 +314,20 @@
   "level/L23-q34-rnd1p50-A": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 1 near your story step · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 14 open at your level"},
-    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"},
-    {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Impact Hit 4 → 5","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
   ],
   "level/L23-q34-rnd1p50-B": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 1 near your story step · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest (near your story step) · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 6/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 14 open at your level"},
@@ -308,7 +341,7 @@
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 4 → 5","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-q34-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
@@ -322,7 +355,7 @@
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L23-qxx-before-A": [
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
@@ -331,7 +364,7 @@
     {"t":"Buy Ambush 8 → 9","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 7 → 8","s":"Needs Lv 24 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 4 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 7 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-q34-lvonly-A": [
     {"t":"Story: Disturbed Balance","s":"0/3 objectives · then Searching for Survivors","c":"primary \"Turned in\" story","o":["Go where Ecco said Krao Cave Entrance (Kibelisk: Forest Hideout)","Investigate Krao Cave finish the investigation (Kibelisk: Dawn Legion Temporary Outpost). This is your first run of the Krao Cave Expedition.","Turn in Nemon, Odar's Shade"]},
@@ -339,7 +372,7 @@
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-q37-before-A": [
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
@@ -347,7 +380,7 @@
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-q37-before-B": [
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
@@ -359,7 +392,7 @@
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-q37-lvonly-B": [
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
@@ -372,6 +405,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
@@ -382,6 +417,11 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Abandoned Memorial Room","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 0/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 31 open at your level"},
@@ -391,16 +431,20 @@
   "level/L24-q37-rnd1p50-A": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 4/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 14 open at your level"},
-    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"},
-    {"t":"Buy Shadowstrike 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Assault Stance 5 → 6","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 2 open"}
   ],
   "level/L24-q37-rnd1p50-B": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Finding Stolen Relics","s":"0/2 objectives · then Voice of Rage","c":"primary \"Turned in\" story","o":["Retrieve the stolen relics retrieve the Golden Uruthum Statue retrieve the History of Uruthumheim retrieve the Fragment of Minusha's Heart defeat the Ancient Ruins Apparatus Kibelisk: Minushan Site","Turn in Gohok, Minushan Site"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 4/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 14 open at your level"},
@@ -414,7 +458,7 @@
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Assault Stance 5 → 6","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-q37-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
@@ -428,7 +472,7 @@
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L24-qxx-before-A": [
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
@@ -437,7 +481,7 @@
     {"t":"Buy Heart Gore 8 → 9","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 6 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-q36-lvonly-A": [
     {"t":"Story: Prison Break","s":"0/2 objectives · then Finding Stolen Relics","c":"primary \"Turned in\" story","o":["Rescue the prisoners with Nemon rescue the prisoners (Kibelisk: Victorious Daeva's Statue)","Turn in Hadala, Minushan Site"]},
@@ -445,7 +489,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-q39-before-A": [
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
@@ -453,7 +497,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-q39-before-B": [
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
@@ -466,7 +510,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-q39-lvonly-B": [
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
@@ -480,6 +524,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
@@ -490,6 +536,11 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 0/13 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+7 more"]},
     {"t":"Clear Dark Root Cave","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 0/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 36 open at your level"},
@@ -499,16 +550,20 @@
   "level/L25-q39-rnd1p50-A": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Drana Depository","s":"Dranactus · Kibelisk: Briskwind Shelter · Lv 25–29 · 3/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Briskwind Shelter is 280 m away · 16 open at your level"},
-    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 3 open"},
-    {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Buy Exploit Weakness 8 → 9","s":"Needs Lv 27 · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 8/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 3 open"}
   ],
   "level/L25-q39-rnd1p50-B": [
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet"},
+    {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Story: Tangled Past","s":"0/3 objectives · then The High Priest Slumbers","c":"primary \"Turned in\" story","o":["Investigate the Collapsed Oracle track Urd's whereabouts","Go where Hallina said go to the Nornir Assembly","Turn in Urd, Nornir Assembly"]},
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Drana Depository","s":"Dranactus · Kibelisk: Briskwind Shelter · Lv 25–29 · 3/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Briskwind Shelter is 280 m away · 16 open at your level"},
@@ -522,7 +577,7 @@
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 7 → 8","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-q39-rnd2p85-B": [
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
@@ -536,7 +591,7 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ],
   "level/L25-qxx-before-A": [
     {"t":"Set your current main quest","s":"In the Journey card; it places you on the story.","c":"go \"Show\" setquest"},
@@ -545,6 +600,6 @@
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 5 open"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 6 → 7","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Stigma slot 2","s":"Lv 27 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Vaizel board opens","s":"Lv 30 milestone · 5 levels away","c":"tag \"Later\"","f":"later"}
   ]
 }
