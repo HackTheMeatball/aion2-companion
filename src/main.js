@@ -20,7 +20,8 @@ import { mountAll, registerCard, registeredCards, updateCard } from "./core/card
 import { sourcesCards } from "./cards/sources.js";
 import { KEY, char, loadState, parseExport } from "./core/state.js";
 import { migrate } from "./core/migrations.js";
-import { stampSave } from "./core/sync.js";
+import { stamp, stampSave } from "./core/sync.js";
+import { addChar, switchChar } from "./core/chars.js";
 /* the save is read and written only through this storage (interface: src/core/storage.js) */
 import { webStorage as saveStore } from "./shell/storage-web.js";
 import { newId } from "./shell/ids.js";
@@ -39,6 +40,7 @@ import { renderRoute, routeRulesCard } from "./cards/route.js";
 import { journeyCard, renderQuest, renderStoryChips, renderStoryReqs } from "./cards/journey.js";
 import { aheadCard } from "./cards/ahead.js";
 import { renderUndo, undoCard } from "./cards/undo.js";
+import { charactersCard } from "./cards/characters.js";
 /* the engine reaches the game through this one pack object; set before anything asks the engine (the save is loaded below) */
 usePack(aion2Pack);
 /* Cards through the registry (src/core/cards.js, 0.4 P4a): render() draws the milestone and Route rules cards (on every
@@ -48,6 +50,9 @@ usePack(aion2Pack);
 sourcesCards({ CONF, SOURCES, SRC_SITE }).forEach(registerCard);
 activePack().cards.forEach(registerCard);
 [journeyCard, aheadCard, undoCard, nextUpCard, milestonesCard, routeRulesCard].forEach(registerCard);
+/* the character switcher in the header (0.5 P18): picking another character or adding one stores the new save and
+   reloads (useSave, below), so every card starts over with that character */
+registerCard(charactersCard({ onSwitch: id => useSave(switchChar(state, id)), onAdd: ({ class: cls, name }) => useSave(newCharSave(cls, name)) }));
 /* the pack's card in a section of Journey: registered after Journey, which declares the section */
 registerCard(aion2AscensionCard);
 /* what a card reads (P0 §4), built once per render() / update(); ev = the character's gates (memoised inside gatesPass) */
@@ -93,6 +98,21 @@ function setSaveWarn(on) {
   el.hidden = !on;
 }
 const save = () => { storeState(); };
+/* A save with a new character (src/core/chars.js addChar), current: it starts where a fresh browser does (Lv 1, on the
+   first story quest, its defaults stamped at time 0 so they never outrank another device's progress; migrate()). */
+function newCharSave(cls, name) {
+  const next = addChar(state, { class: cls, name, now: Date.now(), id: newId() }), c = char(next), quests = activePack().data.story.quests;
+  c.level = 1; if (quests.length) c.quest = quests[0][1];
+  stamp(c, 0);
+  return next;
+}
+/* Another current character (0.5 P18): store the save and reload, so the load-time steps and every card run for that
+   character. A write that fails keeps the page as it is and shows the banner. */
+function useSave(next) {
+  stampSave(next, Date.now());
+  if (!saveStore.set(KEY, JSON.stringify(next))) { setSaveWarn(true); return; }
+  location.reload();
+}
 
 const mainEl = document.getElementById("main");
 const layoutEl = document.querySelector(".layout");
@@ -161,6 +181,7 @@ document.addEventListener("click", tipGoClick);
 function update() { gatesPass(updatePass); }
 function updatePass() {
   const ctx = cardCtx();
+  updateCard("characters", ctx);
   updateCard("milestones", ctx);
   updateCard("route", ctx);
   updateCard("journey", ctx);

@@ -36,6 +36,7 @@ jobs:
     permissions:
       actions: write
       pull-requests: read
+      issues: read
     steps:
       - uses: actions/github-script@v7
         with:
@@ -52,6 +53,14 @@ jobs:
               const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: wr.id, per_page: 100 });
               const dead = jobs.filter((j) => BAD.includes(j.conclusion)).map((j) => j.name);
               if (!dead.length) { core.info(`${wr.name} run ${wr.id}: no failed job to re-run`); continue; }
+              // A re-run uses the workflow file of the dead run, so kickoff's newer "skip if closed" step can't stop it:
+              // don't re-run a Kickoff run whose failed builds are all for closed issues (2026-10-17: #202 built twice).
+              const builds = dead.map((n) => (n.match(/^build \((\d+),/) || [])[1]).filter(Boolean).map(Number);
+              if (wr.name === 'Kickoff' && builds.length === dead.length) {
+                const open = [];
+                for (const n of builds) if ((await github.rest.issues.get({ owner, repo, issue_number: n })).data.state === 'open') open.push(n);
+                if (!open.length) { core.info(`Kickoff run ${wr.id}: failed builds are for closed issues (${builds.map((n) => '#' + n).join(', ')}); not re-run`); continue; }
+              }
               try { await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id }); }
               catch (e) { core.warning(`${wr.name} run ${wr.id}: re-run failed: ${e.message}`); continue; }
               core.notice(`re-running ${dead.join(', ')} of ${wr.name} run ${wr.html_url} (attempt 2 of 2)`);

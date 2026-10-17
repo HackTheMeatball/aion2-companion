@@ -3,6 +3,7 @@
    per card in page order. A card's file comes after every app.css rule, so a rule that would then beat a later app.css
    rule it used to lose to (same element, property and specificity) stays in app.css. */
 @import "app.css";
+@import "cards/characters.css";
 @import "packs/aion2/progress.css";
 @import "cards/journey.css";
 @import "cards/ahead.css";
