@@ -52,6 +52,18 @@ broken('proposal with neither requires nor completesWith', 'packs/aion2/asmodian
 broken('proposal naming a story quest in done', 'packs/aion2/asmodian/assassin/guide/steps.json', r => { r.proposed = { ...P, completesWith: ['tick', { done: 'sq:2102105' }] }; });
 broken('unknown field in a proposal', 'packs/aion2/asmodian/assassin/builds.json', r => { r.boardPlan[0].proposed = { ...P, apply: true }; });
 
+/* 0.5 P8: the Kibelisk registry, binds facts and the travel rules */
+const stepWith = (d, f) => d.records.flatMap(r => r.steps).find(f);
+broken('binds without basis', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds).binds.basis; });
+broken('owner binds without its note', 'packs/aion2/asmodian/story-quests.json', (r, d) => { delete stepWith(d, x => x.binds && x.binds.basis === 'owner').binds.note; });
+broken('binds naming a Kibelisk by name, not kib:<slug>', 'packs/aion2/asmodian/story-quests.json', (r, d) => { stepWith(d, x => x.binds).binds.kibelisk = 'Safe Haven'; });
+broken('bind radius out of range (0 m)', 'packs/aion2/rules.json', (r, d) => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 0; });
+broken('nudge radius out of range (5000 m)', 'packs/aion2/rules.json', (r, d) => { d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 5000; });
+broken('teleport gain that is not a number', 'packs/aion2/rules.json', (r, d) => { d.records.find(x => x.id === 'rule:teleport-gain').value = '400 m'; });
+broken('Kibelisk id that is not kib:<slug>', 'packs/aion2/asmodian/kibelisks.json', r => { r.id = 'kib:Safe Haven'; });
+broken('Kibelisk without a zone field', 'packs/aion2/asmodian/kibelisks.json', r => { delete r.zone; });
+broken('Kibelisk with an unknown field', 'packs/aion2/asmodian/kibelisks.json', r => { r.pos = { x: 1, y: 2 }; });
+
 /* the generator: cross-record checks pass, and the committed DATA_SOURCES.md is current */
 let g = null;
 try { g = generate(); } catch (e) { ok('generator runs', false, e.message); }
@@ -90,6 +102,36 @@ if (g) {
   genFailsIn('Aldelle Village Kibelisk in two zones', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:ishalgen').kibelisks = ['Aldelle Village']; }, /Kibelisk Aldelle Village resolves to one zone/);
   genFailsIn('a giver placed in Aldelle Village but zoned Ishalgen', 'data/packs/aion2/asmodian/story-quests.json', d => { d.records.find(r => r.id === 'sq:2101010').giver.zone = 'zone:ishalgen'; }, /sq:2101010: place Aldelle Village is in zone:aldelle-village/);
   genFailsIn('a giver placed in Black Claw Village but zoned elsewhere', 'data/packs/aion2/asmodian/story-quests.json', d => { d.records.find(r => r.id === 'sq:2102781').giver.zone = 'zone:impetusium-square'; }, /sq:2102781: place Black Claw Village is in zone:black-claw-village/);
+  /* 0.5 P8: every Kibelisk name resolves to one registry record; ids, zones, binds and rules are checked */
+  const KIB = 'data/packs/aion2/asmodian/kibelisks.json', SQ = 'data/packs/aion2/asmodian/story-quests.json';
+  genFailsIn('an unknown Kibelisk name on a story giver', SQ, d => { d.records.find(r => r.id === 'sq:2102015').giver.kibelisk = 'Safe Haven Plaza'; }, /Kibelisk "Safe Haven Plaza" resolves to a registry record/);
+  genFailsIn('an unknown Kibelisk name in an objective marker', SQ, d => { d.records.find(r => r.id === 'sq:2102015').steps[0].text = 'Receive additional supplies — go to VeKauf (Kibelisk: Safe Havn)'; }, /Kibelisk "Safe Havn" resolves/);
+  genFailsIn('a duplicate Kibelisk id', KIB, d => { d.records.splice(1, 0, { ...d.records[0], name: 'Abandoned Barracks Site 2' }); }, /id unique repo-wide: kib:abandoned-barracks-site/);
+  genFailsIn('a Kibelisk name twice in the registry', KIB, d => { d.records.push({ ...d.records[0], id: 'kib:zz-copy' }); }, /Kibelisk name unique in the registry: Abandoned Barracks Site/);
+  genFailsIn('a registry zone against the points\' majority', KIB, d => { d.records.find(k => k.id === 'kib:safe-haven').zone = 'zone:crypt'; }, /kib:safe-haven: zone zone:crypt is the majority zone zone:dredgion-crash-site/);
+  genFailsIn('zones[].kibelisks naming a Kibelisk filed elsewhere', 'data/packs/aion2/asmodian/zones.json', d => { d.records.find(z => z.id === 'zone:crypt').kibelisks.push('Safe Haven'); }, /zone:crypt: Kibelisk Safe Haven is a registry record filed in this zone/);
+  genFailsIn('binds naming an id not in the registry', SQ, d => { stepWith(d, x => x.binds).binds.kibelisk = 'kib:safe-haven-plaza'; }, /binds kib:safe-haven-plaza is a registry id/);
+  genFailsIn('a step-text bind whose text does not say bind', SQ, d => { const x = stepWith(d, x => x.binds && x.binds.basis === 'step-text'); x.text = 'Remember Aldelle Village'; }, /a step-text bind says "bind"/);
+  genFailsIn('binds on a regional quest objective', 'data/packs/aion2/asmodian/regional-quests.json', d => { d.records.find(r => (r.steps || []).length).steps[0].binds = { kibelisk: 'kib:safe-haven', basis: 'step-text' }; }, /binds only on story objectives/);
+  genFailsIn('a bind radius not inside the nudge radius', 'data/packs/aion2/rules.json', d => { d.records.find(x => x.id === 'rule:kibelisk-bind-radius').value = 100; d.records.find(x => x.id === 'rule:kibelisk-nudge-radius').value = 100; }, /rule:kibelisk-bind-radius < rule:kibelisk-nudge-radius/);
+  /* the compiled tables (src/packs/aion2/data/place.js): one place per story / regional / dungeon / stronghold node */
+  const np = g.nodePlace, kb = g.kibelisks, nodes = Object.entries(g.gateGraph.nodes);
+  ok('NODE_PLACE: 87 story + 58 regional + 60 Sealed Dungeon + 15 stronghold nodes, keyed by GATE_GRAPH id', Object.keys(np).length === 220
+    && nodes.filter(([, n]) => ['story', 'rq', 'sd', 'sh'].includes(n.kind)).every(([id]) => id in np), Object.keys(np).length);
+  ok('NODE_PLACE: Survival Supplies turn-in is VeKauf\'s point, 32 m from Safe Haven', JSON.stringify(np['sq:2102015'].pts.turnin) === JSON.stringify({ map: 'altgard', x: 3183, y: 2881, anchor: 'kib:safe-haven', m: 32 })
+    && np['sq:2102015'].route === 'core' && np['sq:2102015'].zone === 'zone:dredgion-crash-site', np['sq:2102015']);
+  ok('NODE_PLACE: a point with no Kibelisk and no coords is left out; a placeholder zone is null', Object.values(np).every(p => Object.values(p.pts).every(x => x.anchor || x.map))
+    && Object.values(np).every(p => p.zone !== 'zone:altgard-unplaced'));
+  ok('KIBELISKS: 72 records; binds facts Survival Supplies #0 → Safe Haven (owner), A Village in the Fog #1 → Aldelle Village (step text)', Object.keys(kb).length === 72
+    && JSON.stringify(kb['kib:safe-haven'].binds) === JSON.stringify([{ node: 'sq:2102015', i: 0, basis: 'owner' }])
+    && JSON.stringify(kb['kib:aldelle-village'].binds) === JSON.stringify([{ node: 'sq:2101010', i: 1, basis: 'step-text' }])
+    && Object.values(kb).filter(k => k.binds).length === 2, Object.keys(kb).length);
+  ok('place module: NODE_PLACE and KIBELISKS only, not in the page\'s data module', /^export const NODE_PLACE = /m.test(g.placeModule) && /^export const KIBELISKS = /m.test(g.placeModule)
+    && !/NODE_PLACE|KIBELISKS/.test(g.module));
+  const kr = g.report.kibelisks;
+  ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 53 story and 69 cited Kibelisks; the owner check list is the story ones not bound at 25 m and with no binds fact',
+    !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.split.every(s => s.story.n === 53 && s.all.n === 69 && s.story.bound + s.story.nudge + s.story.none === 53)
+    && kr.ownerCheck.length === kr.split[0].story.nudge + kr.split[0].story.none - 1 && !kr.ownerCheck.some(c => c.name === 'Safe Haven'), kr && kr.split);
   /* 0.4 P1 pack manifests: a broken copy of data/packs (tests/out/, not committed) must stop the generator (packs.mjs) */
   const packsCopy = (label, mutate) => { const root = join(ROOT, 'tests/out/packs-' + label); rmSync(root, { recursive: true, force: true });
     cpSync(join(ROOT, 'data/packs'), root, { recursive: true }); mutate(root); return root; };

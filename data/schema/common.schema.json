@@ -380,8 +380,82 @@
           "description": "Zone of the objective when known (F15: a ticked objective also confirms a location).",
           "type": "string",
           "pattern": "^zone:[a-z0-9-]+$"
+        },
+        "binds": {
+          "$ref": "#/$defs/bindsFact"
         }
       },
+      "additionalProperties": false
+    },
+    "bindsFact": {
+      "description": "0.5 P8 (docs/design/0.4-smart-next-up.md §8.1): doing this objective binds that Kibelisk, whatever its distance. Story objectives only (AION 2 pack check). basis: owner = the owner saw it bind here (note says when and where it is recorded); step-text = the objective itself tells the player to bind (a scripted bind; the text must say so); sourced = a cited page says so (sources).",
+      "type": "object",
+      "required": [
+        "kibelisk",
+        "basis"
+      ],
+      "properties": {
+        "kibelisk": {
+          "description": "The Kibelisk's registry id (kibelisks.json).",
+          "type": "string",
+          "pattern": "^kib:[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "basis": {
+          "enum": [
+            "owner",
+            "step-text",
+            "sourced"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "minItems": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "basis": {
+                "const": "owner"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "note"
+            ],
+            "properties": {
+              "note": true
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "basis": {
+                "const": "sourced"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sources"
+            ],
+            "properties": {
+              "sources": true
+            }
+          }
+        }
+      ],
       "additionalProperties": false
     },
     "atomMeta": {
@@ -805,7 +879,8 @@
             "builds",
             "skills",
             "boardNodes",
-            "stigmas"
+            "stigmas",
+            "kibelisks"
           ]
         },
         "faction": {

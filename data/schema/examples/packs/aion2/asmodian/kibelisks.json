@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../kibelisks.schema.json",
+  "schemaVersion": 2,
+  "collection": "kibelisks",
+  "faction": "asmodian",
+  "records": [
+    {
+      "id": "kib:iduns-lake",
+      "name": "Idun's Lake",
+      "map": "altgard",
+      "zone": null,
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Southern Gribade Highland\", level 1–40"
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "conflicts": [
+        "Zone left empty: Metabot's listing files it under Southern Gribade Highland, while 3 of the 4 points within 100 m that name it are in Idun's Lake."
+      ]
+    },
+    {
+      "id": "kib:safe-haven",
+      "name": "Safe Haven",
+      "map": "altgard",
+      "zone": "zone:dredgion-crash-site",
+      "sources": [
+        {
+          "url": "https://metabot.gg/en/aion-2/map/altgard/kibelisks",
+          "checkedAt": "2026-10-15",
+          "build": {
+            "scheme": "metabot",
+            "value": "0.0.4387.0"
+          },
+          "fields": [
+            "name",
+            "map"
+          ],
+          "note": "Listed under \"Safe Haven\", level 1–11"
+        },
+        {
+          "inferred": "Zone: 13 of the 13 quest, dungeon and stronghold points within 100 m that name this Kibelisk are in Dredgion Crash Site.",
+          "fields": [
+            "zone"
+          ]
+        }
+      ],
+      "verifiedAt": "2026-10-15",
+      "status": "verified",
+      "fieldStatus": {
+        "zone": "inferred"
+      }
+    }
+  ]
+}

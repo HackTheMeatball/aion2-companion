@@ -10,9 +10,9 @@ A claim that is not verified is tagged `[id · verdict]` (`owner source`: the ow
 Only facts were taken from these pages; the app reproduces no page text. Short quotations in `data/packs/aion2/asmodian/assassin/guide/claims.json`
 stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Listing a site implies no endorsement.
 
-419 URLs · 417 in the Sources card · 2 cited only in the data files
+420 URLs · 418 in the Sources card · 2 cited only in the data files
 
-## Metabot (223)
+## Metabot (224)
 
 | Page | Card group | Backs |
 |---|---|---|
@@ -40,6 +40,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Key: Hidden Cube](https://metabot.gg/en/aion-2/items/key-hidden-cube) | Skills, boards and stigmas | packs/aion2/items.json: Hidden Cube keys |
 | [Metabot: Wisdom Stone](https://metabot.gg/en/aion-2/items/wisdom-stone-bound) | Skills, boards and stigmas | packs/aion2/items.json: Wisdom Stones |
 | [Metabot: Empyrean traces](https://metabot.gg/en/aion-2/map/altgard/empyrean-traces) | Tips and rules | packs/aion2/asmodian/zones.json: Basfelt Ruins; packs/aion2/asmodian/zones.json: Battlescar Mound; packs/aion2/asmodian/zones.json: Black Claw Village; packs/aion2/asmodian/zones.json: Calderon Canyon; packs/aion2/asmodian/zones.json: Dranactus; packs/aion2/asmodian/zones.json: Dredgion Crash Site; packs/aion2/asmodian/zones.json: Eastern Gribade Highland; packs/aion2/asmodian/zones.json: Fafnite Deposit; packs/aion2/asmodian/zones.json: Idun's Lake; packs/aion2/asmodian/zones.json: Immortal Isle; packs/aion2/asmodian/zones.json: Impetusium Square; packs/aion2/asmodian/zones.json: Lagta Fortress; packs/aion2/asmodian/zones.json: Moslan Forest; packs/aion2/asmodian/zones.json: Nameless Cemetery; packs/aion2/asmodian/zones.json: Purifying Forest; packs/aion2/asmodian/zones.json: Sanctum Outpost; packs/aion2/asmodian/zones.json: Silent Hill; packs/aion2/asmodian/zones.json: Spirit Isle; packs/aion2/asmodian/zones.json: Tranein Highland; packs/aion2/asmodian/zones.json: Uruthumheim; packs/aion2/asmodian/zones.json: Western Gribade Highland; packs/aion2/asmodian/assassin/guide/claims.json: [C25 · disputed, owner source] Empyrean Traces: 560 in Altgard; usable after Lv 16 'Empyrean Monolith'; Monolith at Safe Haven or Nornir Assembly; Resonance up to 30; extras become Power Shards.; packs/aion2/asmodian/assassin/guide/claims.json: ZONE_TRACES per-zone counts. |
+| [Metabot: Kibelisks](https://metabot.gg/en/aion-2/map/altgard/kibelisks) | Tips and rules | packs/aion2/asmodian/kibelisks.json: Abandoned Campsite; packs/aion2/asmodian/kibelisks.json: Abandoned Site; packs/aion2/asmodian/kibelisks.json: Amunta's Hideout; packs/aion2/asmodian/kibelisks.json: Basfelt Ruins Cliff; packs/aion2/asmodian/kibelisks.json: Basfelt Waterfall; packs/aion2/asmodian/kibelisks.json: Basfelt Waterfall Arch Zone; packs/aion2/asmodian/kibelisks.json: Battlescar Mound Clifftop; packs/aion2/asmodian/kibelisks.json: Beneath the Tranein Highland Bridge; packs/aion2/asmodian/kibelisks.json: Briskwind Shelter; packs/aion2/asmodian/kibelisks.json: Collapsed Chasm; packs/aion2/asmodian/kibelisks.json: Collapsed Hall of Fame; packs/aion2/asmodian/kibelisks.json: Creion Campsite; packs/aion2/asmodian/kibelisks.json: Dranactus Shore; packs/aion2/asmodian/kibelisks.json: Eastern Gribade Highland Cliff; packs/aion2/asmodian/kibelisks.json: Eastern Gribade Highland Tail Island; packs/aion2/asmodian/kibelisks.json: Elim's Rest; packs/aion2/asmodian/kibelisks.json: Faded Stump; packs/aion2/asmodian/kibelisks.json: Fang Hideout; packs/aion2/asmodian/kibelisks.json: Fissure Cave; packs/aion2/asmodian/kibelisks.json: Forest Hideout; packs/aion2/asmodian/kibelisks.json: Galorik's Inspection Area; packs/aion2/asmodian/kibelisks.json: Gravekeeper Camp; packs/aion2/asmodian/kibelisks.json: Graverobber Campsite; packs/aion2/asmodian/kibelisks.json: Gribade Highland Crossroad; packs/aion2/asmodian/kibelisks.json: Guide Rest Stop; packs/aion2/asmodian/kibelisks.json: Guide's Dwelling; packs/aion2/asmodian/kibelisks.json: Healing Spring; packs/aion2/asmodian/kibelisks.json: Hidden Cave; packs/aion2/asmodian/kibelisks.json: Idun's Lake; packs/aion2/asmodian/kibelisks.json: Impetusium Lower Path; packs/aion2/asmodian/kibelisks.json: Kumrica's Cellar; packs/aion2/asmodian/kibelisks.json: Mahindel Cliff; packs/aion2/asmodian/kibelisks.json: Minushan Site; packs/aion2/asmodian/kibelisks.json: Mire Campsite; packs/aion2/asmodian/kibelisks.json: Moslan Forest Cliff; packs/aion2/asmodian/kibelisks.json: Moslan Forest Dry Shade; packs/aion2/asmodian/kibelisks.json: Neglected Crematorium; packs/aion2/asmodian/kibelisks.json: Nornir Assembly; packs/aion2/asmodian/kibelisks.json: Odar's Shade; packs/aion2/asmodian/kibelisks.json: Outskirts Stall; packs/aion2/asmodian/kibelisks.json: Purifying Forest Coastal Cliff; packs/aion2/asmodian/kibelisks.json: Purifying Forest Sunny Hill; packs/aion2/asmodian/kibelisks.json: Quai Campsite; packs/aion2/asmodian/kibelisks.json: Remote Island; packs/aion2/asmodian/kibelisks.json: Safe Haven; packs/aion2/asmodian/kibelisks.json: Safe Haven Cliff; packs/aion2/asmodian/kibelisks.json: Sanctum Outpost Sky Island; packs/aion2/asmodian/kibelisks.json: Secret Rendezvous Point; packs/aion2/asmodian/kibelisks.json: Shulak Street Stall; packs/aion2/asmodian/kibelisks.json: Silent Hill Coastal Cliff; packs/aion2/asmodian/kibelisks.json: Silent Hill Mushroom Rock; packs/aion2/asmodian/kibelisks.json: Steel Hammer Merchants HQ; packs/aion2/asmodian/kibelisks.json: Steel Hammer Temporary Trading Post; packs/aion2/asmodian/kibelisks.json: Steel Hammer Workcamp; packs/aion2/asmodian/kibelisks.json: Temporary Investigation Base; packs/aion2/asmodian/kibelisks.json: Temporary Retreat; packs/aion2/asmodian/kibelisks.json: Uruthumheim Cliff; packs/aion2/asmodian/kibelisks.json: Victorious Daeva's Statue; packs/aion2/asmodian/kibelisks.json: Watcher's Tent; packs/aion2/asmodian/kibelisks.json: Wave-Swept Cliff; packs/aion2/asmodian/kibelisks.json: Zemurru's Tomb |
 | [Metabot: Strongholds](https://metabot.gg/en/aion-2/map/altgard/strongholds) | Strongholds and Sealed Dungeons | packs/aion2/rules.json: rule:sh-first-clear-asmodian; packs/aion2/asmodian/strongholds.json: Amurahta Surveillance Base; packs/aion2/asmodian/strongholds.json: Andsha Forward Base; packs/aion2/asmodian/strongholds.json: Barahta Extermination Unit Outpost; packs/aion2/asmodian/strongholds.json: Blades Temporary Outpost; packs/aion2/asmodian/strongholds.json: Corrupted Forester Ruins; packs/aion2/asmodian/strongholds.json: Detlef Thieves Camp; packs/aion2/asmodian/strongholds.json: Flauke Legion Outpost; packs/aion2/asmodian/strongholds.json: Forest Marauder Campsite; packs/aion2/asmodian/strongholds.json: Granach's Hideout; packs/aion2/asmodian/strongholds.json: Graverobber Den; packs/aion2/asmodian/strongholds.json: Latrima Outpost; packs/aion2/asmodian/strongholds.json: Legion Base Ruins; packs/aion2/asmodian/strongholds.json: Logger's Rest Ruins; packs/aion2/asmodian/strongholds.json: Rubek Thieves' Occupied Territory; packs/aion2/asmodian/strongholds.json: Sanctum Outskirts Watch |
 | [Metabot: A Collective Effort](https://metabot.gg/en/aion-2/quests/a-collective-effort) | Main story | packs/aion2/asmodian/story-quests.json: A Collective Effort |
 | [Metabot: A Comrade's Fate](https://metabot.gg/en/aion-2/quests/a-comrades-fate) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Comrade's Fate |
@@ -49,7 +50,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: A New Lead](https://metabot.gg/en/aion-2/quests/a-new-lead) | Main story | packs/aion2/asmodian/story-quests.json: A New Lead |
 | [Metabot: A Perfect Wedding](https://metabot.gg/en/aion-2/quests/a-perfect-wedding) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Perfect Wedding |
 | [Metabot: A Traitor Within](https://metabot.gg/en/aion-2/quests/a-traitor-within) | Regional quests | packs/aion2/asmodian/regional-quests.json: A Traitor Within |
-| [Metabot: A Village in the Fog](https://metabot.gg/en/aion-2/quests/a-village-in-the-fog) | Main story | packs/aion2/asmodian/story-quests.json: A Village in the Fog; packs/aion2/asmodian/zones.json: Aldelle Village |
+| [Metabot: A Village in the Fog](https://metabot.gg/en/aion-2/quests/a-village-in-the-fog) | Main story | packs/aion2/asmodian/story-quests.json: A Village in the Fog; packs/aion2/asmodian/zones.json: Aldelle Village; packs/aion2/asmodian/kibelisks.json: Aldelle Village |
 | [Metabot: Abandoned One's Grave (exploration quest)](https://metabot.gg/en/aion-2/quests/abandoned-ones-grave) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/sealed-dungeons.json: Abandoned One's Grave |
 | [Metabot: Amurahta Surveillance Base](https://metabot.gg/en/aion-2/quests/amurahta-surveillance-base) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/strongholds.json: Amurahta Surveillance Base |
 | [Metabot: An Ill Fate's Resolution](https://metabot.gg/en/aion-2/quests/an-ill-fates-resolution) | Main story | packs/aion2/asmodian/story-quests.json: An Ill Fate's Resolution |
@@ -70,7 +71,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Brigade Prison Compound Infiltration Operation](https://metabot.gg/en/aion-2/quests/brigade-prison-compound-infiltration-operation) | Main story | packs/aion2/asmodian/story-quests.json: Brigade Prison Compound Infiltration Operation |
 | [Metabot: Broken Fang](https://metabot.gg/en/aion-2/quests/broken-fang) | Main story | packs/aion2/asmodian/story-quests.json: Broken Fang |
 | [Metabot: Buried Atrocities](https://metabot.gg/en/aion-2/quests/buried-atrocities) | Main story | packs/aion2/asmodian/story-quests.json: Buried Atrocities; packs/aion2/asmodian/assassin/guide/steps.json: g16:amulet |
-| [Metabot: Canyon's Secret](https://metabot.gg/en/aion-2/quests/canyons-secret) | Main story | packs/aion2/asmodian/story-quests.json: Canyon's Secret |
+| [Metabot: Canyon's Secret](https://metabot.gg/en/aion-2/quests/canyons-secret) | Main story | packs/aion2/asmodian/story-quests.json: Canyon's Secret; packs/aion2/asmodian/kibelisks.json: Kraka Footpath Wastewater Downstream |
 | [Metabot: Cemetery Cleanup](https://metabot.gg/en/aion-2/quests/cemetery-cleanup) | Main story | packs/aion2/asmodian/story-quests.json: Cemetery Cleanup |
 | [Metabot: Chief of the Black Claw](https://metabot.gg/en/aion-2/quests/chief-of-the-black-claw) | Main story | packs/aion2/asmodian/story-quests.json: Chief of the Black Claw |
 | [Metabot: Children of the Elim](https://metabot.gg/en/aion-2/quests/children-of-the-elim) | Main story | packs/aion2/asmodian/story-quests.json: Children of the Elim |
@@ -91,7 +92,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Den of exiles](https://metabot.gg/en/aion-2/quests/den-of-exiles) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/sealed-dungeons.json: Den of Exiles |
 | [Metabot: Destruction Archon Underground Fortress](https://metabot.gg/en/aion-2/quests/destruction-archon-underground-fortress) | Main story | packs/aion2/asmodian/story-quests.json: Destruction Archon Underground Fortress |
 | [Metabot: Detlef Thieves Camp](https://metabot.gg/en/aion-2/quests/detlef-thieves-camp) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/strongholds.json: Detlef Thieves Camp |
-| [Metabot: Disturbed Balance](https://metabot.gg/en/aion-2/quests/disturbed-balance) | Main story | packs/aion2/asmodian/story-quests.json: Disturbed Balance |
+| [Metabot: Disturbed Balance](https://metabot.gg/en/aion-2/quests/disturbed-balance) | Main story | packs/aion2/asmodian/story-quests.json: Disturbed Balance; packs/aion2/asmodian/kibelisks.json: Dawn Legion Temporary Outpost |
 | [Metabot: Dratona Assembly Area (exploration quest)](https://metabot.gg/en/aion-2/quests/dratona-assembly-area) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/sealed-dungeons.json: Dratona Assembly Area |
 | [Metabot: Dying Light](https://metabot.gg/en/aion-2/quests/dying-light) | Main story | packs/aion2/asmodian/story-quests.json: Dying Light |
 | [Metabot: Empyrean Monolith](https://metabot.gg/en/aion-2/quests/empyrean-monolith-asmodian) | Main story | packs/aion2/asmodian/story-quests.json: Empyrean Monolith |
@@ -111,7 +112,7 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Finding Stolen Relics](https://metabot.gg/en/aion-2/quests/finding-stolen-relics) | Main story | packs/aion2/asmodian/story-quests.json: Finding Stolen Relics |
 | [Metabot: Flauke Legion Outpost](https://metabot.gg/en/aion-2/quests/flauke-legion-outpost) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/strongholds.json: Flauke Legion Outpost |
 | [Metabot: Forest Marauder Campsite](https://metabot.gg/en/aion-2/quests/forest-marauder-campsite) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/strongholds.json: Forest Marauder Campsite |
-| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | packs/aion2/asmodian/story-quests.json: Forgotten Commander; packs/aion2/asmodian/assassin/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; packs/aion2/asmodian/assassin/guide/claims.json: [C41 · single source, owner source] "Daeva Trapped in a Nightmare" is given by Koro at the Abyss Base, right after you turn in "Forgotten Commander" to him. (this page: indirect only, Koro as Forgotten Commander's turn-in; it does not name the giver of Daeva Trapped) |
+| [Metabot: Forgotten Commander](https://metabot.gg/en/aion-2/quests/forgotten-commander) | Main story | packs/aion2/asmodian/story-quests.json: Forgotten Commander; packs/aion2/asmodian/kibelisks.json: Garden of the Illusion God East Observatory; packs/aion2/asmodian/kibelisks.json: Latesran Eastern Root; packs/aion2/asmodian/assassin/guide/claims.json: "The One Who Witnesses the Nightmare" opens after "Forgotten Commander" is turned in; the story quest after it, "Daeva Trapped in a Nightmare", needs it.; packs/aion2/asmodian/assassin/guide/claims.json: [C41 · single source, owner source] "Daeva Trapped in a Nightmare" is given by Koro at the Abyss Base, right after you turn in "Forgotten Commander" to him. (this page: indirect only, Koro as Forgotten Commander's turn-in; it does not name the giver of Daeva Trapped) |
 | [Metabot: Frozen Fafnite](https://metabot.gg/en/aion-2/quests/frozen-fafnite) | Main story | packs/aion2/asmodian/story-quests.json: Frozen Fafnite |
 | [Metabot: Gathering Essentials](https://metabot.gg/en/aion-2/quests/gathering-essentials) | Main story | packs/aion2/asmodian/story-quests.json: Gathering Essentials |
 | [Metabot: Granach's Hideout](https://metabot.gg/en/aion-2/quests/granachs-hideout) | Strongholds and Sealed Dungeons | packs/aion2/asmodian/strongholds.json: Granach's Hideout |
@@ -173,16 +174,16 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Metabot: Sapling Hide-and-Seek](https://metabot.gg/en/aion-2/quests/sapling-hide-and-seek) | Regional quests | packs/aion2/asmodian/regional-quests.json: Sapling Hide-and-Seek |
 | [Metabot: Scripture in the Ruins](https://metabot.gg/en/aion-2/quests/scripture-in-the-ruins) | Main story | packs/aion2/asmodian/story-quests.json: Scripture in the Ruins |
 | [Metabot: Searching for Survivors](https://metabot.gg/en/aion-2/quests/searching-for-survivors) | Main story | packs/aion2/asmodian/story-quests.json: Searching for Survivors |
-| [Metabot: Shadow Forest](https://metabot.gg/en/aion-2/quests/shadow-forest) | Main story | packs/aion2/asmodian/story-quests.json: Shadow Forest |
+| [Metabot: Shadow Forest](https://metabot.gg/en/aion-2/quests/shadow-forest) | Main story | packs/aion2/asmodian/story-quests.json: Shadow Forest; packs/aion2/asmodian/kibelisks.json: Witch's Cabin |
 | [Metabot: Shugo-of-All-Trades: Asmodian](https://metabot.gg/en/aion-2/quests/shugo-of-all-trades-asmodian) | Regional quests | packs/aion2/asmodian/regional-quests.json: Shugo-of-All-Trades: Asmodian |
-| [Metabot: Signs of a Crash Landing](https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing) | Main story | packs/aion2/asmodian/story-quests.json: Signs of a Crash Landing |
-| [Metabot: Spacetime Rift: An Honest Shugo](https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: An Honest Shugo |
-| [Metabot: Spacetime Rift: Asmodian](https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Asmodian |
+| [Metabot: Signs of a Crash Landing](https://metabot.gg/en/aion-2/quests/signs-of-a-crash-landing) | Main story | packs/aion2/asmodian/story-quests.json: Signs of a Crash Landing; packs/aion2/asmodian/kibelisks.json: Abandoned Barracks Site |
+| [Metabot: Spacetime Rift: An Honest Shugo](https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: An Honest Shugo; packs/aion2/asmodian/kibelisks.json: Pilgrim's Rest |
+| [Metabot: Spacetime Rift: Asmodian](https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Asmodian; packs/aion2/asmodian/kibelisks.json: Verteron Fortress Valley |
 | [Metabot: Spacetime Rift: Developing Travel Goods](https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Developing Travel Goods |
 | [Metabot: Spacetime Rift: Difference Between Here and There](https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Difference Between Here and There |
-| [Metabot: Spacetime Rift: Proof](https://metabot.gg/en/aion-2/quests/spacetime-rift-proof) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Proof |
+| [Metabot: Spacetime Rift: Proof](https://metabot.gg/en/aion-2/quests/spacetime-rift-proof) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Proof; packs/aion2/asmodian/kibelisks.json: Beast Hunter Campsite |
 | [Metabot: Spacetime Rift: Unfamiliar Material](https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Unfamiliar Material |
-| [Metabot: Spacetime Rift: Unknown Species](https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Unknown Species |
+| [Metabot: Spacetime Rift: Unknown Species](https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spacetime Rift: Unknown Species; packs/aion2/asmodian/kibelisks.json: Collapsed Pillar |
 | [Metabot: Spirit Isle, Where Time Has Stopped](https://metabot.gg/en/aion-2/quests/spirit-isle-where-time-has-stopped) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spirit Isle, Where Time Has Stopped |
 | [Metabot: Spooky Specters](https://metabot.gg/en/aion-2/quests/spooky-specters) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spooky Specters |
 | [Metabot: Spread Your Wings](https://metabot.gg/en/aion-2/quests/spread-your-wings) | Main story | packs/aion2/asmodian/story-quests.json: Spread Your Wings; packs/aion2/asmodian/ascension-quests.json: The One Who Perceives |
@@ -590,3 +591,57 @@ stay their owners'; thegameswiki quotations are CC BY-NC-SA 4.0 (shortened). Lis
 | [Wikily: Leveling and unlocks](https://wikily.gg/aion-2/leveling) | Skills, boards and stigmas | packs/aion2/rules.json: rule:level-points; packs/aion2/asmodian/unlocks.json: Daily dungeon; packs/aion2/asmodian/unlocks.json: Expedition feature (Exploration) |
 | [Wikily: Lost Memories](https://wikily.gg/aion-2/quests/lost-memories) | Regional quests | packs/aion2/asmodian/regional-quests.json: Lost Memories |
 | [Wikily: Spirit Isle, Where Time Has Stopped](https://wikily.gg/aion-2/quests/spirit-isle-where-time-has-stopped) | Regional quests | packs/aion2/asmodian/regional-quests.json: Spirit Isle, Where Time Has Stopped |
+
+## Kibelisk binding (generated)
+
+What the bind rules give on the data (docs/design/0.4-smart-next-up.md §8.1, §8.4). Per Kibelisk, the smallest stated distance over the points that
+carry one: **bound** at most R, **nudge** above R up to 150 m (`rule:kibelisk-nudge-radius`), **none** beyond that or with no such point. *Story*: the
+Kibelisks the story quests cite, over their giver / turn-in points (story objectives carry no distance yet: a Kibelisk cited only by objective markers
+is "none"); *all*: with regional quests, Sealed Dungeons and strongholds (their giver, turn-in, entrance and objective points).
+`binds` facts are not counted here. The working value is `rule:kibelisk-bind-radius` = 25 m.
+
+| R | Story: bound | nudge | none | All: bound | nudge | none |
+|---|---|---|---|---|---|---|
+| 25 m (working value) | 23 | 14 | 16 | 35 | 24 | 10 |
+| 32 m | 27 | 10 | 16 | 41 | 18 | 10 |
+| 35 m | 29 | 8 | 16 | 45 | 14 | 10 |
+| 40 m | 30 | 7 | 16 | 46 | 13 | 10 |
+
+53 story Kibelisks, 69 in all.
+
+### Owner check list (29)
+
+Every story Kibelisk the working rules (25 m) can't bind from the story's giver / turn-in points or a `binds` fact, in story order. In game, when convenient:
+which objective binds it? (A `binds` fact on that objective, basis owner, settles it.)
+
+| Kibelisk | First cited in | Nearest giver / turn-in | Class |
+|---|---|---|---|
+| Galorik's Inspection Area | Crash Site Rendezvous (Lv 11) | 49 m, Crash Site Rendezvous turn-in | nudge |
+| Creion Campsite | Express Daeva Delivery (Lv 12) | none (objective markers only) | none |
+| Quai Campsite | Express Daeva Delivery (Lv 12) | 30 m, Express Daeva Delivery turn-in | nudge |
+| Dawn Legion Temporary Outpost | Disturbed Balance (Lv 22) | none (objective markers only) | none |
+| Forest Hideout | Disturbed Balance (Lv 22) | none (objective markers only) | none |
+| Victorious Daeva's Statue | Searching for Survivors (Lv 24) | 175 m, Searching for Survivors turn-in | none |
+| Minushan Site | Prison Break (Lv 24) | 34 m, Prison Break turn-in | nudge |
+| Uruthumheim Cliff | Voice of Rage (Lv 25) | 46 m, Voice of Rage turn-in | nudge |
+| Nornir Assembly | Tangled Past (Lv 25) | 133 m, Striving for Coexistence turn-in | nudge |
+| Guide Rest Stop | Striving for Coexistence (Lv 26) | none (objective markers only) | none |
+| Purifying Forest Coastal Cliff | Preparations for Restoration (Lv 27) | 89 m, Preparations for Restoration turn-in | nudge |
+| Faded Stump | A Collective Effort (Lv 27) | 29 m, A Collective Effort turn-in | nudge |
+| Purifying Forest Sunny Hill | A Collective Effort (Lv 27) | none (objective markers only) | none |
+| Battlescar Mound Clifftop | Canyon's Secret (Lv 30) | none (objective markers only) | none |
+| Kraka Footpath Wastewater Downstream | Canyon's Secret (Lv 30) | none (objective markers only) | none |
+| Briskwind Shelter | Bitter Reality (Lv 32) | 49 m, Last of the Destruction Archons turn-in | nudge |
+| Dranactus Shore | Last of the Destruction Archons (Lv 32) | none (objective markers only) | none |
+| Basfelt Waterfall | Last Refuge (Lv 33) | none (objective markers only) | none |
+| Graverobber Campsite | Last Refuge (Lv 33) | 36 m, Scripture in the Ruins turn-in | nudge |
+| Gribade Highland Crossroad | Enemy Territory (Lv 35) | none (objective markers only) | none |
+| Mahindel Cliff | Enemy Territory (Lv 35) | none (objective markers only) | none |
+| Steel Hammer Merchants HQ | Enemy Territory (Lv 35) | 86 m, Mirror of Greed turn-in | nudge |
+| Steel Hammer Workcamp | Enemy Territory (Lv 35) | 33 m, Powder of Death turn-in | nudge |
+| Steel Hammer Temporary Trading Post | An Ill Fate's Resolution (Lv 37) | none (objective markers only) | none |
+| Eastern Gribade Highland Cliff | Exiled Ritualist (Lv 40) | none (objective markers only) | none |
+| Collapsed Hall of Fame | Lingering Apparitions (Lv 44) | 32 m, Lingering Apparitions turn-in | nudge |
+| Garden of the Illusion God East Observatory | Forgotten Commander (Lv 45) | none (objective markers only) | none |
+| Impetusium Lower Path | Forgotten Commander (Lv 45) | none (objective markers only) | none |
+| Latesran Eastern Root | Forgotten Commander (Lv 45) | 49 m, Forgotten Commander turn-in | nudge |

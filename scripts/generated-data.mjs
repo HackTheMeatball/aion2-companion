@@ -4,7 +4,8 @@
    v2, 0.2 step 5b), src/packs/aion2/data/gate-graph.js as GATE_GRAPH (the live gates, 0.3 E1) and
    src/packs/aion2/data/gate-proposed.js as GATE_PROPOSED (the 0.3 proposals compiled, 0.3 E4). They are pack data (0.4
    P2b): the pack object (src/packs/aion2/pack.js) hands GATE_GRAPH and GATE_PROPOSED to the engine, which never imports
-   them. The modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
+   them. src/packs/aion2/data/place.js serves NODE_PLACE and KIBELISKS (0.5 P8, the place and Kibelisk tables); nothing
+   imports it yet. The modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -26,13 +27,13 @@ export const genModule = () => genResult().module;
 export const generatedNames = () => [...Object.keys(genResult().constants), 'GATE_GRAPH', 'GATE_PROPOSED'];
 /* where the modules resolve (the AION 2 pack's data folder), and file name -> module text */
 const DATA_DIR = 'src/packs/aion2/data';
-const MODULES = { 'generated.js': () => genResult().module, 'gate-graph.js': () => genResult().gateModule, 'gate-proposed.js': () => genResult().proposedModule };
+const MODULES = { 'generated.js': () => genResult().module, 'gate-graph.js': () => genResult().gateModule, 'gate-proposed.js': () => genResult().proposedModule, 'place.js': () => genResult().placeModule };
 /* a stored copy of a generated module (in the pack's data folder, or the pre-0.4 src/data), else null */
 export const staleGenerated = () => [DATA_DIR, 'src/data'].flatMap(d => Object.keys(MODULES).map(f => d + '/' + f)).find(f => existsSync(P(f))) || null;
 export const generatedData = {
   name: 'generated-data',
   setup(b) {
-    b.onResolve({ filter: /^(\.\.?\/)+([\w-]+\/)*(generated|gate-graph|gate-proposed)\.js$/ }, a => {
+    b.onResolve({ filter: /^(\.\.?\/)+([\w-]+\/)*(generated|gate-graph|gate-proposed|place)\.js$/ }, a => {
       const f = Object.keys(MODULES).find(f => join(a.resolveDir, a.path) === P(DATA_DIR, f));
       return f ? { path: 'data/' + f, namespace: 'generated' } : undefined;
     });

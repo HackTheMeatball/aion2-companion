@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daevacompanion.com/schema/v2/kibelisks.schema.json",
+  "title": "Kibelisks (packs/<game>/<faction>/kibelisks.json)",
+  "description": "The Kibelisk registry (0.5 P8, docs/design/0.4-smart-next-up.md §3): one record per Kibelisk. Every `kibelisk` name a record uses (giver / turn-in / entrance / location, objective fields and '(Kibelisk: X)' markers) resolves to exactly one record by name (AION 2 pack check). The id is kib:<slug of the name at creation> and is frozen: a rename changes `name`, never `id` (a bind:<id> save key never moves).",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    }
+  ],
+  "properties": {
+    "collection": {
+      "const": "kibelisks"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/kibelisk"
+      }
+    }
+  },
+  "$defs": {
+    "kibelisk": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "id",
+        "name",
+        "map",
+        "zone"
+      ],
+      "properties": {
+        "id": {
+          "description": "kib:<slug>, frozen when the record is created (never derived from the name at runtime).",
+          "type": "string",
+          "pattern": "^kib:[a-z0-9]+(-[a-z0-9]+)*$",
+          "maxLength": 80
+        },
+        "name": {
+          "description": "The in-game name, exactly as the records cite it.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "map": {
+          "description": "The map it is on (the coords map id); null when no source places it.",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "zone": {
+          "description": "Our zone (zones.json) it belongs to; null when no source places it or the sources disagree (then `conflicts` says how). zones[].kibelisks lists exactly the records filed in that zone (pack check).",
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^zone:[a-z0-9-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  },
+  "type": "object"
+}

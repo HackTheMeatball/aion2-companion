@@ -34,7 +34,11 @@
         },
         {
           "i": 1,
-          "text": "Remember Aldelle Village — bind with the Kibelisk"
+          "text": "Remember Aldelle Village — bind with the Kibelisk",
+          "binds": {
+            "kibelisk": "kib:aldelle-village",
+            "basis": "step-text"
+          }
         },
         {
           "i": 2,
@@ -1350,7 +1354,12 @@
       "steps": [
         {
           "i": 0,
-          "text": "Receive additional supplies — go to VeKauf (Kibelisk: Safe Haven)"
+          "text": "Receive additional supplies — go to VeKauf (Kibelisk: Safe Haven)",
+          "binds": {
+            "kibelisk": "kib:safe-haven",
+            "basis": "owner",
+            "note": "Owner, alt character, 2026-10-15: Safe Haven bound during this objective, at 32 m on Metabot's figure (docs/research/2026-10-kibelisks.md, owner evidence case 5; docs/design/0.4-smart-next-up.md §8.1). No screen code."
+          }
         },
         {
           "i": 1,
