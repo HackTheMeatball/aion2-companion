@@ -1,12 +1,12 @@
 /* What the engine cards read of the page shell (0.4 P4c). Next up, Journey, Later, the milestone cards, Route rules and
    Undo moved out of src/main.js verbatim (docs/plans/0.4/P4c-engine-cards.md): they still use the shell's state, save(),
-   update(), a few shared helpers and the AION 2 pack's tables and helpers by their old names. src/cards/ may import only
+   update(), a few shared helpers and the game pack's tables and helpers by their old names. src/cards/ may import only
    src/core/ and src/cards/ (docs/design/0.4-engine-contract.md §1), so the shell hands them over once, with
    useCardPage({ state, save, … }) before its first render(), and each card imports what it uses under its old name:
    import { pageState as state } from "./page.js". The bindings are live (one bundle scope), so a card reads them when it
    runs, never at import (they are null until the shell has called useCardPage).
 
-   The list shrinks as P5a–d make these cards read the pack through the pack object (and AION 2 terms leave src/cards/). */
+   The list shrinks as P5a–d make these cards read the pack through the pack object (and the pack's names leave src/cards/). */
 export const CARD_PAGE_NAMES = [
   "state", "save", "update", "mainEl", "layoutEl", "SMOOTH", "RMQ", "rewardToast", "chime", "tipClick",
   "tipGoClick", "tipEsc", "GATES", "STEPS", "QUESTS", "QUEST_STEPS", "STORY_UNLOCKS", "UNLOCK_GATE",
