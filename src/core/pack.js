@@ -19,6 +19,10 @@ const PACK_KEYS = {
   charFields: [x => pkObj(x) && Object.values(x).every(v => FIELD_SHAPES.has(v)), () => ({})],
   /* a new character's identity: the guide pack it plays and its class (src/core/state.js newChar) */
   character: [x => pkObj(x) && pkStr(x.pack) && typeof x.class === "string"],
+  /* the playable classes a new character may pick (0.5 P17): [{ class, pack: its guide pack, name: shown in the picker }],
+     one entry per class, only classes with a guide pack. A pack without it offers its `character` alone (packClasses) */
+  classes: [x => pkArr(x) && x.length > 0 && x.every(e => pkObj(e) && pkStr(e.class) && pkStr(e.pack) && pkStr(e.name))
+    && new Set(x.map(e => e.class)).size === x.length],
   keptRules: [pkObj, () => ({})],
   gateChanges: [x => pkObj(x) && Object.values(x).every(pkObj), () => ({})],
   graphTransforms: [x => pkArr(x) && x.every(t => pkObj(t) && pkStr(t.id) && pkFn(t.apply) && (t.when === "always" || (pkObj(t.when) && pkStr(t.when.off)))), () => []],
@@ -59,8 +63,17 @@ export function definePack(spec) {
   p.data = { proposed: {}, ...p.data, story: { notes: {}, ...p.data.story } };
   p.catalog = { ...PACK_CATALOG_DEFAULTS, ...p.catalog };
   p.story = { ...PACK_STORY_DEFAULTS, ...p.story };
+  /* with `classes`, `character` is one of them; without `character`, the first */
+  if (p.classes) {
+    if (!spec.character) p.character = { pack: p.classes[0].pack, class: p.classes[0].class };
+    else if (!p.classes.some(e => e.class === p.character.class && e.pack === p.character.pack)) throw new Error('definePack: "character" is not one of "classes"');
+    p.classes = Object.freeze(p.classes.map(e => Object.freeze({ class: e.class, pack: e.pack, name: e.name })));
+  }
   return Object.freeze(p);
 }
+
+/* The classes a new character may pick: the pack's `classes`, or else its `character` alone (named by its class id). */
+export const packClasses = (p = activePack()) => p.classes || [{ class: p.character.class, pack: p.character.pack, name: p.character.class }];
 
 let ACTIVE_PACK = null;
 /* Set the active pack (the shell, once, before loadState; the Node test bundle). Returns it. */

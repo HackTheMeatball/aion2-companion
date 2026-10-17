@@ -6,7 +6,7 @@
    A character is { id, pack, class, name, created, ...charFields() }. The slot id is random (newId), never derived from
    the name, class or level. Every read and write of character data goes through char(state); tests/core/purity.test.mjs
    fails on a direct state.<field> access to a charFields() name anywhere in src/. */
-import { activePack } from "./pack.js";
+import { activePack, packClasses } from "./pack.js";
 
 export const KEY = "companion-save-v5";
 export const SAVE_V = 5;
@@ -30,11 +30,13 @@ export const labelOf = c => [c.name, c.class, "lvl" + (+c.level || 1)].filter(Bo
 export const DEFAULT = () => ({ hide: false, open: {} });
 export const CHAR_DEFAULT = () => ({ checks: {}, level: 5, quest: "" });
 /* A new character in a new slot: now is the time in ms; id is random (the page's newId, src/shell/ids.js) and stays the
-   same for the character's life. Its guide pack and class are the active pack's (the only ones until 0.5 adds a picker). */
-export function newChar({ now = 0, id }) {
+   same for the character's life. cls is one of the active pack's playable classes (packClasses, 0.5 P17): the entry gives
+   the class and its guide pack; without cls, the pack's `character`. A class the pack doesn't list throws. */
+export function newChar({ now = 0, id, class: cls }) {
   if (typeof id !== "string" || !id) throw new Error("newChar: a slot id is needed");
-  const { pack, class: cls } = activePack().character;
-  return { id, pack, class: cls, name: "", created: now, ...CHAR_DEFAULT() };
+  const e = cls === undefined ? activePack().character : packClasses().find(x => x.class === cls);
+  if (!e) throw new Error("newChar: not a playable class of this pack");
+  return { id, pack: e.pack, class: e.class, name: "", created: now, ...CHAR_DEFAULT() };
 }
 /* A new save with one empty character (the load-time fresh start in src/core/migrations.js sets it to Lv 1). */
 export function newSave({ now = 0, id }) {
