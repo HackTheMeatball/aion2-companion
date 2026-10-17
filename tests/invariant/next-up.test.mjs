@@ -17,6 +17,7 @@
       (level needed, story quest and `ahead`, the `done` atom); a level blocker never shows with the level met (every
       targeted state and the other hashed half; and the oracle must catch three bugs seeded into a copy of the graph).
    6. Nothing is written: rankNext and evaluate run on a deep-frozen save and character.
+   cap (0.5 P13): at most 8 cards besides the story and the kept side cards; catch-up never drops one of those or a step.
 
    A disagreement between the app and the oracle is never fixed by changing the app or weakening the oracle: it is
    pinned in KNOWN with its cause and the exact states that hit it. The test fails on a disagreement not in KNOWN and
@@ -120,6 +121,31 @@ export default (test, M, X) => {
     if (X.only) return;
     assert.ok(ascFirst.met > 0, 'no state has a met, unfinished Ascension step: invariant 3 counts nothing');
     console.log(`     invariant 3 / 9: a met, unfinished Ascension step is the first step card in all ${ascFirst.met} states that have one`);
+  });
+
+  /* The 8-card cap and the kept cards (0.2 P3; 0.5 P13 lifts the queues when you are behind): as the page ships, at most
+     8 cards besides the story and the pack's kept side cards, in every state. Catch-up (catchUp) only adds: with it off,
+     every kept card, the story and every step or missed card shown is still shown with it on (the behind family and a
+     hashed fifth of the rest). */
+  const KEPT = new Set(['rq', 'sd', 'sh', 'stwait']), keyOf = a => a.kind + ' ' + (a.x ? a.x.k : a.act);
+  test('cap: at most 8 cards besides the story and the kept cards in every state; catch-up never drops a kept card, the story, a step or a missed card', () => {
+    const over = [], lost = [], OFF = [...Object.keys(M.RANK_CHANGES), ...Object.keys(M.AION2_RANK_CHANGES)].filter(n => n !== 'catchUp' && M.rankChangeOn(n, n in M.RANK_CHANGES ? M.RANK_CHANGES : M.AION2_RANK_CHANGES));
+    let compared = 0, lifted = 0;
+    for (const { id, s } of loaded) {
+      const basic = s.mode === 'basic', on = M.rankNext(s, { basic });
+      if (on.filter(a => !a.story && !KEPT.has(a.kind)).length > 8) over.push(id);
+      if (!id.startsWith('golden/behind/') && fnv('cap|' + id) >= 0.2) continue;
+      compared++;
+      let off; try { M.setRankChanges(OFF); off = M.rankNext(s, { basic }); } finally { M.setRankChanges(null); }
+      const have = new Set(on.map(keyOf)), miss = off.filter(a => (a.story || KEPT.has(a.kind) || a.kind === 'step' || a.kind === 'missed') && !have.has(keyOf(a)));
+      if (miss.length) lost.push(`${id}: ${miss.map(keyOf).join(', ')}`);
+      if (on.length !== off.length || on.some((a, i) => keyOf(a) !== keyOf(off[i]))) lifted++;
+    }
+    assert.deepEqual(over.slice(0, 5), [], `${over.length} states over the cap`);
+    assert.deepEqual(lost.slice(0, 5), [], `${lost.length} states lose a card to catch-up`);
+    if (X.only) return;
+    assert.ok(lifted > 0, 'catch-up changes no state: the check compares nothing');
+    console.log(`     cap: ${loaded.length} states; catch-up compared on ${compared}, changes ${lifted}`);
   });
 
   /* Next up runs on every state. The rest is split for time: evaluator vs oracle on every targeted state plus the half of
