@@ -49,6 +49,7 @@ function renderRotation() {
   const nw = rotNew(lv);
   document.getElementById("rotNote").innerHTML = nw.length ? `<b class="rot-new">New</b> ${nw.map(x => `put <b>${x.n}</b> on ${rotWhere(x)}`).join("; ")}. The key grid below shows the full setup; closing this panel clears this note.` : "";
   const tb = document.getElementById("sdNew"); if (tb) tb.hidden = !nw.length;
+  const bt = document.getElementById("tabBuild"); if (bt) bt.classList.toggle("has-new", !!nw.length);
   if (nw.length) { const ks = document.querySelector("#statDrawer details.mini"); if (ks) ks.open = true; }
   document.getElementById("statSeq").innerHTML = statSeqHTML();
   renderStacks(lv);
@@ -63,17 +64,23 @@ function aion2BuildMount() {
     addEventListener("scroll", place, { passive: true }); addEventListener("resize", place); requestAnimationFrame(place);
   })();
   (() => {
-    const d = document.getElementById("statDrawer"), tab = document.getElementById("sdTab");
-    const set = o => { const was = d.classList.contains("open"); d.classList.toggle("open", o); tab.setAttribute("aria-expanded", String(o)); state.statOpen = o;
+    const d = document.getElementById("statDrawer"), sideTab = document.getElementById("sdTab"), barTab = document.getElementById("tabBuild");
+    /* <= 600 px (0.5 P5): the drawer is a bottom sheet opened from the tab bar's Build tab, which takes its label from this
+       card; the side tab is hidden there. Same open state either way. */
+    const sheetQ = window.matchMedia ? matchMedia("(max-width: 600px)") : { matches: false };
+    barTab.textContent = sideTab.querySelector(".sd-lbl").textContent;
+    const tab = { setAttribute: (k, v) => { sideTab.setAttribute(k, v); barTab.setAttribute(k, v); }, focus: o => (sheetQ.matches ? barTab : sideTab).focus(o) };
+    const set = (o, viaKey) => { const was = d.classList.contains("open"); d.classList.toggle("open", o); tab.setAttribute("aria-expanded", String(o)); state.statOpen = o;
       /* Focus moves into the panel when it opens and back to the tab when it closes. */
       if (o && !was) requestAnimationFrame(() => document.getElementById("sdClose").focus({ preventScroll: true }));
-      if (!o && was && d.contains(document.activeElement)) tab.focus({ preventScroll: true });
+      /* (also after a scrim tap, which leaves focus on the page, and after Escape with focus on Level up in the bar) */
+      if (!o && was && (viaKey || d.contains(document.activeElement) || document.activeElement === document.body)) tab.focus({ preventScroll: true });
       /* Closing the panel after seeing a new key placement counts as done. */
       if (was && !o && rotNew(char(state).level).length) { rotMarkSeen(); update(); } else save(); };
     if (state.statOpen) { d.classList.add("open"); tab.setAttribute("aria-expanded", "true"); }
-    tab.addEventListener("click", () => set(!d.classList.contains("open")));
-    document.getElementById("sdClose").addEventListener("click", () => set(false));
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && d.classList.contains("open")) set(false); });
+    for (const t of [sideTab, barTab]) t.addEventListener("click", () => set(!d.classList.contains("open")));
+    for (const id of ["sdClose", "sdGrab", "sdScrim"]) document.getElementById(id).addEventListener("click", () => set(false));
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && d.classList.contains("open")) set(false, sheetQ.matches); });
   })();
 }
 

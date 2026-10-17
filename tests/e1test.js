@@ -112,9 +112,9 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
     ok(`${w}px: no horizontal scroll`, m.sw <= m.iw, m);
     console.log(`info ${w}px: update() median ${m.med.toFixed(1)} ms (the < 15 ms check is in tests/perf.js, non-blocking)`);
   }
-  /* Build tab vs Next up at 390 */
-  const ov = await p.evaluate(() => { const t = document.getElementById('sdTab').getBoundingClientRect(), c = document.querySelector('#nowStar .ns-card').getBoundingClientRect(); return { tabL: Math.round(t.left), cardR: Math.round(c.right) }; });
-  ok('390px: Build tab clears the Next up card', ov.tabL >= ov.cardR, ov);
+  /* 0.5 P5: at 390 the side tab is gone (it overlapped the Next up card); the tab bar's Build tab opens the sheet */
+  const ov = await p.evaluate(() => { const t = document.getElementById('tabBuild').getBoundingClientRect(); return { side: getComputedStyle(document.getElementById('sdTab')).display, barH: Math.round(t.height), bottom: Math.round(t.bottom), ih: innerHeight }; });
+  ok('390px: side tab hidden, Build tab in the bar (>= 44 px, at the bottom)', ov.side === 'none' && ov.barH >= 44 && ov.bottom === ov.ih, ov);
   /* Card order (0.5 P2): at <= 860 px Next up, Journey, Progress lead #main and Dungeons & Strongholds / The map come after it
      (phone-layout 3.1); above 860 px the markup order stands. Crossing 860 px either way gives the markup a fresh load has. */
   const order = () => p.evaluate(() => { const t = e => e.getBoundingClientRect().top + scrollY, q = s => document.querySelector(s);
@@ -223,6 +223,19 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('drawer: focus moves to Close on open', await p.evaluate(() => document.activeElement.id === 'sdClose'));
   await p.keyboard.press('Escape'); await p.waitForTimeout(100);
   ok('drawer: focus back on the tab on close', await p.evaluate(() => document.activeElement.id === 'sdTab'));
+  /* 0.5 P5: Build sheet at 390 px */
+  await p.setViewportSize({ width: 390, height: 850 }); await p.reload(); await p.waitForTimeout(300);
+  await p.click('#tabBuild'); await p.waitForTimeout(400);
+  const sh = await p.evaluate(() => { const s = document.getElementById('sdPanel').getBoundingClientRect(); return { open: document.getElementById('statDrawer').classList.contains('open'), inSheet: document.getElementById('sdPanel').contains(document.activeElement), exp: document.getElementById('tabBuild').getAttribute('aria-expanded'), bottom: Math.round(s.bottom), ih: innerHeight, w: s.width, iw: innerWidth, act: document.activeElement.id }; });
+  ok('sheet: opens from the Build tab, focus in the sheet, bar tab expanded', sh.open && sh.inSheet && sh.exp === 'true' && sh.bottom === sh.ih && sh.w === sh.iw, sh);
+  await p.click('#sdScrim', { position: { x: 195, y: 10 }, force: true }); await p.waitForTimeout(400);
+  ok('sheet: the scrim closes it, focus back on the Build tab', await p.evaluate(() => !document.getElementById('statDrawer').classList.contains('open') && document.activeElement.id === 'tabBuild'));
+  await p.click('#tabBuild'); await p.waitForTimeout(400); await p.click('#sdGrab'); await p.waitForTimeout(400);
+  ok('sheet: the handle closes it', await p.evaluate(() => !document.getElementById('statDrawer').classList.contains('open')));
+  for (const [w, h] of [[1100, 900], [1500, 1000]]) {
+    await p.setViewportSize({ width: w, height: h }); await p.waitForTimeout(200);
+    ok(`${w}px: no tab bar, no scrim, no handle, side tab shown`, await p.evaluate(() => ['tabBar', 'sdScrim', 'sdGrab'].every(i => getComputedStyle(document.getElementById(i)).display === 'none') && getComputedStyle(document.getElementById('sdTab')).display !== 'none'));
+  }
   ok('no page errors', !errs.length, errs);
   console.log(fail ? `E1 CHECKS FAILED (${fail})` : 'E1 CHECKS PASSED');
   await b.close(); process.exit(fail ? 1 : 0);
