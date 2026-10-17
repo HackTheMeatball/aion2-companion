@@ -1,0 +1,169 @@
+{
+  "build/L10-q12-before-A-cube": [
+    {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
+    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-A-dv": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-filters": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-objs": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-rqmix": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-sppts": [
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Buy Savage Roar 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-A-stfull": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-stready": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-A-stwait": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"},
+    {"t":"Buy Rear Smite 1 → 2","s":"Needs Lv 11 · 1 level away","c":"tag \"Later\"","f":"later"},
+    {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 2 levels away","c":"tag \"Later\"","f":"later"}
+  ],
+  "build/L10-q12-before-B-cube": [
+    {"t":"Finish Abandoned One's Grave","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:abandoned-one-s-grave"},
+    {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-dv": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-filters": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-objs": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-rqmix": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-sppts": [
+    {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-stfull": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-stready": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ],
+  "build/L10-q12-before-B-stwait": [
+    {"t":"Extract gear you've replaced","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Lv 10 milestone · Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Story: Gathering Essentials","s":"0/1 objectives · Kibelisk: Safe Haven (89 m) · then Crash Site Rendezvous","c":"primary \"Turned in\" story","o":["Turn in Dinoh, Safe Haven"]},
+    {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
+    {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
+  ]
+}

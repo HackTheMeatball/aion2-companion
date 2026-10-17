@@ -2,11 +2,12 @@
 
    Loads dist/index.html once per generated save state (~2,000 states, tests/golden/states.js) and records what the app
    decides: the Next up stack, milestone headers, the Journey card, the Dungeons & Strongholds card and the stored state
-   after load (tests/golden/probe.js). Snapshots live in tests/golden/snapshots/*.json.
+   after load (tests/golden/probe.js). Snapshots live in tests/golden/snapshots/<card>/<shard>.json, one directory per card.
 
    Usage (after `npm run build`; tests/run.mjs runs it as suite `golden`):
      node tests/golden.js              verify: diff against the snapshots, print a summary grouped by kind of change, exit 1 on any
      node tests/golden.js --record     write the snapshots and tests/golden/KNOWN-VIOLATIONS.md (prints the same summary first)
+     node tests/golden.js --record --card nu   re-record only that card's shards; fails, writing nothing, if another card changed
      options: --all (also the extended random set, ~6,000 more states) · --jobs N (parallel pages, default 3)
               --filter <regex> (only states whose id matches; verify ignores the rest) · --limit N (first N states, smoke runs)
               --render (let the page render; slower. The default hides the page so no layout runs; --render must give
@@ -30,6 +31,8 @@ const VIOL = path.join(DIR, 'KNOWN-VIOLATIONS.md');
 const args = process.argv.slice(2), flag = n => args.includes('--' + n), opt = n => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : null; };
 const RECORD = flag('record'), EXPLAIN = flag('explain'), ALL = flag('all'), JOBS = Math.max(1, +(opt('jobs') || process.env.GOLDEN_JOBS || 3));
 const RENDER = flag('render');
+/* --card nu / --card nextup: with --record, re-record only that card (a probe key or its snapshot directory) */
+const CARD = opt('card');
 const FILTER = opt('filter') ? new RegExp(opt('filter')) : null, LIMIT = opt('limit') ? +opt('limit') : 0;
 const RECYCLE = 150;
 const FIXED_NOW = new Date('2026-10-01T12:00:00Z'); /* the page sees this as "now" (Date.now / new Date) */
@@ -37,32 +40,86 @@ const FIXED_NOW = new Date('2026-10-01T12:00:00Z'); /* the page sees this as "no
 /* ---------- serialisation: canonical (sorted keys) for hashing/comparing; line-oriented pretty form for the files ---------- */
 const canon = x => JSON.stringify(x, (k, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map(j => [j, v[j]])) : v);
 const hash = s => crypto.createHash('sha1').update(s == null ? '(no save)' : canon(JSON.parse(s))).digest('hex').slice(0, 12);
-/* objects/arrays are expanded down to depth 2 (state -> field -> entry); anything deeper stays on one line */
-function pretty(x, d = 0) {
+/* objects/arrays are expanded down to depth `max` (state -> field -> entry in a _state shard, state -> entry in a card
+   shard); anything deeper stays on one line, so each entry sits on one line as in the pre-P4e combined files */
+function pretty(x, max = 2, d = 0) {
   const ind = '  '.repeat(d + 1), end = '  '.repeat(d);
-  if (d > 2 || x === null || typeof x !== 'object') return JSON.stringify(x);
-  if (Array.isArray(x)) return x.length ? '[\n' + x.map(v => ind + pretty(v, d >= 2 ? 3 : d + 1)).join(',\n') + '\n' + end + ']' : '[]';
-  const ks = Object.keys(x); return ks.length ? '{\n' + ks.map(k => ind + JSON.stringify(k) + ': ' + pretty(x[k], d + 1)).join(',\n') + '\n' + end + '}' : '{}';
+  if (d > max || x === null || typeof x !== 'object') return JSON.stringify(x);
+  if (Array.isArray(x)) return x.length ? '[\n' + x.map(v => ind + pretty(v, max, d >= max ? max + 1 : d + 1)).join(',\n') + '\n' + end + ']' : '[]';
+  const ks = Object.keys(x); return ks.length ? '{\n' + ks.map(k => ind + JSON.stringify(k) + ': ' + pretty(x[k], max, d + 1)).join(',\n') + '\n' + end + '}' : '{}';
 }
 /* shard file per group and level band, so adding a state never moves other states between files */
 const shardOf = id => { const [g, rest] = id.split('/'); const m = /^L(\d+)/.exec(rest || ''); if (!m) return g; const b = Math.floor((+m[1] - 1) / 5) * 5 + 1; return `${g}-L${String(b).padStart(2, '0')}-${String(b + 4).padStart(2, '0')}`; };
-const FIELD_ORDER = ['in', 'nu', 'ms', 'rt', 'jr', 'reg', 'store', 'keys', 'err', 'mode'];
+const FIELD_ORDER = ['in', 'probeError', 'nu', 'ms', 'rt', 'jr', 'reg', 'store', 'keys', 'err', 'mode'];
+/* stored per card (0.4 P4e): snapshots/<card>/<shard>.json, one directory per top-level field of a state's record, so a
+   change to one card re-records only that card's files. The input hash and the page-level fields (stored state, other
+   keys, errors, mode) aren't cards: they share snapshots/_state/. A field the probe adds later gets a directory named
+   after its key. */
+const CARD_DIR = { nu: 'nextup', ms: 'milestones', rt: 'route', jr: 'journey', reg: 'regional' };
+const STATE_FIELDS = ['in', 'probeError', 'store', 'keys', 'err', 'mode'], STATE_DIR = '_state';
+const dirOf = k => CARD_DIR[k] || (STATE_FIELDS.includes(k) ? STATE_DIR : k);
+const keyOfDir = Object.fromEntries(Object.entries(CARD_DIR).map(([k, d]) => [d, k]));
+const cardLabel = d => d === STATE_DIR ? `${STATE_DIR}/ (input, stored state, keys, errors, mode)` : `${keyOfDir[d] || d} (${d}/)`;
+/* a record split into its parts: { dir: value } (the _state part is an object of its fields) */
+function partsOf(r) {
+  const out = {};
+  for (const [k, v] of Object.entries(r || {})) { const d = dirOf(k); if (d === STATE_DIR) (out[d] = out[d] || {})[k] = v; else out[d] = v; }
+  return out;
+}
+const fieldRank = k => { const i = FIELD_ORDER.indexOf(k); return i < 0 ? FIELD_ORDER.length : i; };
+const ordered = r => Object.fromEntries(Object.keys(r).sort((a, b) => fieldRank(a) - fieldRank(b)).map(k => [k, r[k]]));
 
 function loadSnapshots() {
   const snaps = {};
   if (!fs.existsSync(SNAP)) return snaps;
-  for (const f of fs.readdirSync(SNAP).filter(f => f.endsWith('.json')).sort()) Object.assign(snaps, JSON.parse(fs.readFileSync(path.join(SNAP, f), 'utf8')));
+  for (const d of fs.readdirSync(SNAP, { withFileTypes: true }).filter(e => e.isDirectory()).map(e => e.name).sort())
+    for (const f of fs.readdirSync(path.join(SNAP, d)).filter(f => f.endsWith('.json')).sort())
+      for (const [id, v] of Object.entries(JSON.parse(fs.readFileSync(path.join(SNAP, d, f), 'utf8')))) {
+        const r = snaps[id] = snaps[id] || {};
+        if (d === STATE_DIR) Object.assign(r, v); else r[keyOfDir[d] || d] = v;
+      }
+  for (const id of Object.keys(snaps)) snaps[id] = ordered(snaps[id]);
   return snaps;
 }
-function writeSnapshots(results, ids) {
+/* only = a card directory (--record --card): write that card's shards, leave every other file alone */
+function writeSnapshots(results, ids, only = null) {
   fs.mkdirSync(SNAP, { recursive: true });
-  const shards = {};
-  for (const id of ids) (shards[shardOf(id)] = shards[shardOf(id)] || {})[id] = results[id];
-  /* a full core run replaces every core shard; extended (xrandom) shards are only replaced by an --all run */
-  for (const f of fs.readdirSync(SNAP).filter(f => f.endsWith('.json'))) if (!shards[f.slice(0, -5)] && (ALL || !f.startsWith('xrandom'))) fs.unlinkSync(path.join(SNAP, f));
-  let bytes = 0;
-  for (const [name, obj] of Object.entries(shards)) { const s = pretty(obj) + '\n'; bytes += s.length; fs.writeFileSync(path.join(SNAP, name + '.json'), s); }
-  return { files: Object.keys(shards).length, bytes };
+  const shards = {}; /* dir -> shard -> { id: value } */
+  for (const id of ids) for (const [d, v] of Object.entries(partsOf(results[id]))) {
+    if (only && d !== only) continue;
+    const s = shards[d] = shards[d] || {}, n = shardOf(id); (s[n] = s[n] || {})[id] = v;
+  }
+  /* a full core run replaces every core shard; extended (xrandom) shards are only replaced by an --all run. A full run
+     also drops the pre-P4e combined files (snapshots/*.json). */
+  const replaced = f => ALL || !f.startsWith('xrandom');
+  if (!only) for (const f of fs.readdirSync(SNAP).filter(f => f.endsWith('.json'))) fs.unlinkSync(path.join(SNAP, f));
+  for (const d of fs.readdirSync(SNAP, { withFileTypes: true }).filter(e => e.isDirectory() && (!only || e.name === only)).map(e => e.name)) {
+    for (const f of fs.readdirSync(path.join(SNAP, d)).filter(f => f.endsWith('.json'))) if (!(shards[d] || {})[f.slice(0, -5)] && replaced(f)) fs.unlinkSync(path.join(SNAP, d, f));
+    if (!fs.readdirSync(path.join(SNAP, d)).length) fs.rmdirSync(path.join(SNAP, d));
+  }
+  let bytes = 0, files = 0;
+  for (const [d, byShard] of Object.entries(shards)) {
+    fs.mkdirSync(path.join(SNAP, d), { recursive: true });
+    for (const [name, obj] of Object.entries(byShard)) { const s = pretty(obj, d === STATE_DIR ? 2 : 1) + '\n'; bytes += s.length; files++; fs.writeFileSync(path.join(SNAP, d, name + '.json'), s); }
+  }
+  return { files, bytes };
+}
+/* which card shards a difference touches: dir -> { files: Set, ids: [] } */
+function changedCards(before, after, ids) {
+  const out = {};
+  for (const id of ids) {
+    const A = partsOf(before[id]), B = partsOf(after[id]);
+    for (const d of new Set([...Object.keys(A), ...Object.keys(B)])) if (canon(A[d]) !== canon(B[d])) {
+      const c = out[d] = out[d] || { files: new Set(), ids: [] }; c.files.add(`${d}/${shardOf(id)}.json`); c.ids.push(id);
+    }
+  }
+  return out;
+}
+function printCards(cards) {
+  const ds = Object.keys(cards).sort(); if (!ds.length) return;
+  console.log(`  changed shards (${ds.length} of the card directories):`);
+  for (const d of ds) { const fl = [...cards[d].files].sort();
+    console.log(`    ${cardLabel(d)}: ${cards[d].ids.length} states in ${fl.length} files: ${fl.slice(0, 6).join(' ')}${fl.length > 6 ? ' …' : ''}`); }
 }
 
 /* ---------- diff, grouped by kind of change ---------- */
@@ -125,9 +182,11 @@ function printReport(rep, nIds, label) {
     console.log(`  ${String(g.ids.length).padStart(5)}  ${g.d.slice(0, 150)}\n         e.g. ${g.ids.slice(0, 3).join(', ')}${g.detail ? `\n         ${g.detail.slice(0, 220)}` : ''}`); });
   if (rep.groups.length > 60) console.log(`  … ${rep.groups.length - 60} more kinds in tests/out/golden/diff.md`);
 }
-function writeDiffFiles(rep, before, after) {
+function writeDiffFiles(rep, before, after, cards) {
   fs.mkdirSync(OUT, { recursive: true });
-  const md = ['# Golden diff', '', `${rep.changed.length} states differ.`, '', '## By kind of change', '', '| States | Change | Examples |', '|---:|---|---|',
+  const md = ['# Golden diff', '', `${rep.changed.length} states differ.`, '', '## Changed shards', '', '| Card | States | Files |', '|---|---:|---|',
+    ...Object.keys(cards).sort().map(d => `| ${cardLabel(d)} | ${cards[d].ids.length} | ${[...cards[d].files].sort().map(f => '`' + f + '`').join(' ')} |`),
+    '', '## By kind of change', '', '| States | Change | Examples |', '|---:|---|---|',
     ...rep.groups.map(g => `| ${g.ids.length} | ${g.d.replace(/\|/g, '\\|')} | ${g.ids.slice(0, 4).map(i => '`' + i + '`').join(' ')} |`), '', '## Per state', ''];
   for (const id of rep.changed) { md.push(`### ${id}`, ''); for (const [d, detail] of describe(before[id], after[id])) md.push(`- ${d}${detail ? `: \`${detail.slice(0, 600).replace(/`/g, "'")}\`` : ''}`); md.push(''); }
   fs.writeFileSync(path.join(OUT, 'diff.md'), md.join('\n'));
@@ -138,6 +197,8 @@ function writeDiffFiles(rep, before, after) {
 (async () => {
   const t0 = Date.now();
   if (!fs.existsSync(CFG.PAGE)) { console.error('dist/ is missing: run `npm run build` first'); process.exit(2); }
+  if (CARD && (!RECORD || !(CARD in CARD_DIR || CARD in keyOfDir || CARD === STATE_DIR))) {
+    console.error(`--card goes with --record and names a card: ${[...Object.entries(CARD_DIR).map(([k, d]) => `${k} (${d})`), STATE_DIR].join(', ')}`); process.exit(2); }
   let base = process.env.AION_BASE, server = null;
   if (!base) { const { startServer } = await import(path.join(CFG.ROOT, 'scripts', 'serve.mjs')); ({ server, url: base } = await startServer({})); }
   const PAGE = base.replace(/\/$/, '') + '/';
@@ -229,14 +290,26 @@ function writeDiffFiles(rep, before, after) {
   const oldReport = fs.existsSync(VIOL) ? fs.readFileSync(VIOL, 'utf8') : '';
   const vCount = s => { const m = /^(\d+) violations in (\d+) of/m.exec(s); return m ? `${m[1]} violations in ${m[2]} states` : 'none recorded'; };
   printReport(rep, allIds.length, RECORD ? 'golden (vs the previous snapshots)' : 'golden');
-  if (rep.changed.length) { writeDiffFiles(rep, before, results); console.log('  full diff: tests/out/golden/diff.md, diff.json'); }
+  const cards = changedCards(before, results, allIds);
+  printCards(cards);
+  if (rep.changed.length) { writeDiffFiles(rep, before, results, cards); console.log('  full diff: tests/out/golden/diff.md, diff.json'); }
   const timing = `${states.length} states in ${((tRun - t0) / 1000).toFixed(1)} s (${((tRun - tGen) / states.length).toFixed(0)} ms/state wall, ${JOBS} pages)`;
 
   if (RECORD) {
     if (FILTER || LIMIT) { console.log('--record with --filter/--limit would drop states: not writing'); process.exit(2); }
-    const w = writeSnapshots(results, ids);
+    let only = null;
+    if (CARD) {
+      only = dirOf(keyOfDir[CARD] || CARD);
+      const others = Object.keys(cards).filter(d => d !== only).sort();
+      if (others.length) {
+        console.log(`--record --card ${CARD}: other cards changed too: ${others.map(d => `${cardLabel(d)} in ${cards[d].ids.length} states, e.g. ${cards[d].ids[0]}`).join('; ')}`);
+        console.log('GOLDEN RECORD FAILED (nothing written: a --card re-record must change only that card; re-record all with --record if every change is intended)');
+        process.exit(1);
+      }
+    }
+    const w = writeSnapshots(results, ids, only);
     fs.writeFileSync(VIOL, report);
-    console.log(`recorded ${ids.length} states in ${w.files} files (${(w.bytes / 1048576).toFixed(2)} MB) · ${vCount(report)} (was ${vCount(oldReport)}) · ${timing}`);
+    console.log(`recorded ${ids.length} states${only ? ` (card ${cardLabel(only)} only)` : ''} in ${w.files} files (${(w.bytes / 1048576).toFixed(2)} MB) · ${vCount(report)} (was ${vCount(oldReport)}) · ${timing}`);
     console.log('GOLDEN RECORDED');
     return;
   }
