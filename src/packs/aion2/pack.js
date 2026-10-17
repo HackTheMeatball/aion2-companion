@@ -1,6 +1,6 @@
 /* The AION 2 pack object (0.4 P2b, docs/design/0.4-engine-contract.md §2): everything the engine reads of AION 2, handed
    over in one place. The shell imports it and calls usePack(aion2Pack) before it loads the save (src/main.js); the Node
-   test bundle does the same (tests/support/core-bundle.mjs). The compiled data modules (gate-graph.js, gate-proposed.js;
+   test bundle does the same (tests/support/core-bundle.mjs). The compiled data modules (gate-graph.js, gate-proposed.js, place.js;
    scripts/generated-data.mjs) are imported here and nowhere in the engine. */
 import { definePack } from "../../core/pack.js";
 import { GATE_GRAPH } from "./data/gate-graph.js";
@@ -15,6 +15,8 @@ import { aion2Cards } from "./cards/index.js";
 import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
+import { NODE_PLACE } from "./data/place.js";
+import { aion2ObjectivePlace, aion2StampPlace } from "./travel.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin): the one
    class with a guide pack, so the only playable class (`classes`); tests/core/state.test.mjs checks both against data/. */
@@ -52,6 +54,9 @@ export const aion2Pack = definePack({
   hopName,
   locate: zoneOfKey,
   skipLocation: isAscensionKey,
+  /* where each node sends the player (0.5 P10, src/core/place.js whereNow): the place table (0.5 P8), an objective's
+     place and the pack's own keys (the bind tick, a dungeon run started; src/packs/aion2/travel.js) */
+  place: { nodes: NODE_PLACE, objective: aion2ObjectivePlace, stamp: aion2StampPlace },
   onLoad: aion2OnLoad,
   nextUpProducers: aion2NextUp,
   /* its cards (0.4 P4b): the shell registers each (src/main.js) */

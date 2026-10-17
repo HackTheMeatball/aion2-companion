@@ -4,8 +4,8 @@
    v2, 0.2 step 5b), src/packs/aion2/data/gate-graph.js as GATE_GRAPH (the live gates, 0.3 E1) and
    src/packs/aion2/data/gate-proposed.js as GATE_PROPOSED (the 0.3 proposals compiled, 0.3 E4). They are pack data (0.4
    P2b): the pack object (src/packs/aion2/pack.js) hands GATE_GRAPH and GATE_PROPOSED to the engine, which never imports
-   them. src/packs/aion2/data/place.js serves NODE_PLACE and KIBELISKS (0.5 P8, the place and Kibelisk tables); nothing
-   imports it yet. The modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
+   them. src/packs/aion2/data/place.js serves NODE_PLACE and KIBELISKS (0.5 P8, the place and Kibelisk tables) and
+   TRAVEL_RULES (0.5 P10), read only by the AION 2 pack (pack.js, travel.js). The modules are never stored: not in src/, not in tools/. A schema error or a failed data check stops the build. */
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';

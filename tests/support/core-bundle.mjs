@@ -24,6 +24,7 @@ export async function coreBundle() {
     'export { RQ, SH_DATA } from "./packs/aion2/data/generated.js";',
     'export { GATE_GRAPH } from "./packs/aion2/data/gate-graph.js";',
     'export { GATE_PROPOSED } from "./packs/aion2/data/gate-proposed.js";',
+    'export { NODE_PLACE, KIBELISKS, TRAVEL_RULES } from "./packs/aion2/data/place.js";',
     'import { usePack as __usePack } from "./core/pack.js";',
     'import { aion2Pack as __aion2Pack } from "./packs/aion2/pack.js";',
     '__usePack(__aion2Pack);',

@@ -30,6 +30,10 @@ const PACK_KEYS = {
   hopName: [x => x === null || pkFn(x), () => null],
   locate: [pkFn, () => () => null],
   skipLocation: [pkFn, () => () => false],
+  /* where things are (0.5 P10, src/core/place.js): { nodes: { node id: { zone, pts: { side: { map, x, y, … } } } },
+     objective?(node id, i) → { zone, pt } | null, stamp?(field, key, value) → { zone, pt } | null }. A pack without it
+     has no places: whereNow() is null */
+  place: [x => pkObj(x) && pkObj(x.nodes) && ["objective", "stamp"].every(k => x[k] === undefined || pkFn(x[k])), () => null],
   onLoad: [pkFn, () => packNoop],
   /* [{ id, produce(state, ctx) → [{ phase, card, keep?, queue?, L? }] }] (src/core/nextup.js) */
   nextUpProducers: [x => pkArr(x) && x.every(n => pkObj(n) && pkStr(n.id) && pkFn(n.produce)), () => []],

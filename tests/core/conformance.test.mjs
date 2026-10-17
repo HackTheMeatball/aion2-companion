@@ -152,6 +152,13 @@ export default (test, M) => {
     const cards = FAKE.E.rankNext(fs).map(x => x.kind);
     assert.deepEqual(cards.filter(k => k === 'story' || k === 'fakeEnd'), ['story', 'fakeEnd']);
   });
+  /* 0.5 P10: `place` is optional; a pack without it has no places, even on a save with dated changes */
+  test(`${F} 4: no \`place\`: whereNow is null on its dated save, byPlace keeps catalog order`, () => {
+    assert.equal(FAKE.E.activePack().place, null);
+    assert.ok(Object.values(FAKE.E.char(fs).mt.checks).some(([t]) => t > 0), 'the save has dated stamps');
+    assert.equal(FAKE.E.whereNow(FAKE.E.char(fs)), null);
+    assert.deepEqual([{ catalogIndex: 1 }, { catalogIndex: 0 }].sort(FAKE.E.byPlace(null)).map(x => x.catalogIndex), [0, 1]);
+  });
   test(`${F} 5: the fake chain loads no module from src/packs/ (import graph)`, () => {
     const packs = FAKE.inputs.filter(p => p.startsWith('src/packs/') || p.startsWith('generated:'));
     assert.deepEqual(packs, [], `${packs.length} pack module(s) loaded: ${packs.slice(0, 4).join(', ')}`);
