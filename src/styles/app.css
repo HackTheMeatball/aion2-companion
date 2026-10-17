@@ -177,7 +177,7 @@ aside.rail::-webkit-scrollbar-track { background: transparent; }
 .lvlbar { display: none; }
 @media (max-width: 860px) {
   .lvlbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); position: sticky; top: 0; z-index: 30;
-    margin: calc(-1 * var(--space-12)) calc(-8px - var(--space-20)) var(--space-16); padding: var(--space-8) calc(8px + var(--space-20)); background: var(--bg); border-bottom: 1px solid var(--line); }
+    margin: calc(-1 * var(--space-12)) calc(-1 * (var(--space-8) + var(--space-20))) var(--space-16); padding: var(--space-8) calc(var(--space-8) + var(--space-20)); background: var(--bg); border-bottom: 1px solid var(--line); }
   .lvlbar-lv { font: 700 18px var(--mono); letter-spacing: .06em; color: var(--fg); }
   .lvlbar .lvlup-btn { height: 44px; min-width: 120px; }
 }
