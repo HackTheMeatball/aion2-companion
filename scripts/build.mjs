@@ -3,7 +3,9 @@
 
    Source layout (0.2 P1–P3):
      src/index.html            the page shell: head, markup, and tags naming the files the build inlines
-     src/styles/*.css          the styles: fonts.css (the @font-face rules), app.css and brand.css; inlined verbatim
+     src/styles/*.css          the styles: fonts.css (the @font-face rules), index.css (0.4 P4d: @imports app.css, the page
+                               frame and shared rules, then one file per card from styles/cards/ and styles/packs/<game>/,
+                               in cascade order) and brand.css; inlined verbatim
      src/main.js               the app script (ES module entry)
      src/core/*.js             the engine (0.2 P3, 0.4 P2b): state, migrations, the pack holder, evaluator, requirements,
                                Next up ranking; no DOM, no game term (it reaches the game through the pack object)
@@ -13,7 +15,8 @@
      src/packs/aion2/data/generated.js   not a file: the build makes this module (and gate-graph.js, gate-proposed.js)
                                from data/** (data format v2) with tools/gen/gen.mjs, in memory, on every build
      src/site.js               the standalone site's own script (persistent storage, service worker); site only
-   The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is, and
+   The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is (its
+   '@import "Y.css";' lines replaced by those files), and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
    that entry (no minification, no tree shaking, so every top-level name stays a page global, as before modules).
    src/index.html is not runnable on its own: build, then `npm run serve`.
@@ -106,13 +109,25 @@ for (const [e, js] of Object.entries(bundles)) {
     die(`src/${e}: esbuild renamed "${base}" (${PAGE_NAMES.get(base)}) to "${n}": a module uses "${base}" without importing it`); }
 }
 const bundle = entry => bundles[entry];
-const inline = html => html
-  .replace(STYLE_TAG, (_, f) => { const css = readFileSync(P('src', f), 'utf8'); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); return `<style>\n${css}</style>\n`; })
+/* @import lines (0.4 P4d): a line '@import "X.css";' in a stylesheet is replaced by that file (path relative to the importing
+   file) as it is, recursively, so src/styles/index.css (app.css, then one file per card) inlines as one stylesheet. A
+   missing file or one imported twice stops the build; so does a .css file under src/styles/ that nothing links or imports. */
+const IMPORT = /^@import "([\w./-]+\.css)";\n/gm, cssUsed = new Set();
+const readCss = (f, seen) => {
+  if (!existsSync(P('src', f))) die(`src/${f} is missing (an @import or <link> names it)`);
+  if (seen.has(f)) die(`src/${f} is imported twice`);
+  seen.add(f); cssUsed.add(f);
+  return readFileSync(P('src', f), 'utf8').replace(IMPORT, (_, g) => { const css = readCss(join(dirname(f), g).split('\\').join('/'), seen); return css.endsWith('\n') ? css : css + '\n'; });
+};
+const inline = (html, seen = new Set()) => html
+  .replace(STYLE_TAG, (_, f) => { const css = readCss(f, seen); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); if (/^\s*@import\b/m.test(css)) die(`src/${f}: an @import the build can't inline (one per line: @import "X.css";)`); return `<style>\n${css}</style>\n`; })
   .replace(SCRIPT_TAG, (_, f) => `<script>\n${bundle(f)}</script>\n`);
 if (!shell.match(STYLE_TAG) || !shell.match(SCRIPT_TAG)) die('src/index.html: no <link rel="stylesheet" href="styles/…"> or <script type="module" src="…"> to inline');
 for (const m of shell.matchAll(/<(link rel="stylesheet"|script)[^>]*>/g)) if (!/^<(link rel="stylesheet" href="styles\/[\w.-]+\.css"|script type="module" src="[\w.-]+\.js")>$/.test(m[0]) && m[0] !== '<script>')
   die(`src/index.html: "${m[0]}" is not a tag the build inlines (one per line, styles/X.css or X.js)`);
 const src = inline(shell); /* the whole page, markers kept: what the checks below read */
+for (const f of walk(P('src/styles')).map(f => relative(P('src'), f).split('\\').join('/')).filter(f => f.endsWith('.css')))
+  if (!cssUsed.has(f)) die(`src/${f} is not linked from src/index.html or imported by a stylesheet (src/styles/index.css lists the card styles)`);
 const blobs = JSON.parse(readFileSync(P('scripts/artifact-blobs.json'), 'utf8'));
 const VERSION = JSON.parse(readFileSync(P('package.json'), 'utf8')).version;
 if (!/^\d+\.\d+\.\d+$/.test(VERSION || '')) die(`package.json version "${VERSION}" is not X.Y.Z`);

@@ -28,7 +28,7 @@
      invariant Node, no browser: over 10,000 seeded states, Next up never offers a blocked or done node, judged by an
               independent oracle from the raw data (tests/support/oracle.mjs); evaluator = oracle on every node (~20 s, warns > 30 s, fails > 60 s;
               tests/invariant.mjs). In the `checks` shard like equiv (the app can't edit ci.yml to give it a step)
-     tokens   Node, no browser: no raw colour in src/styles/*.css outside the :root token definitions; radius, spacing and
+     tokens   Node, no browser: no raw colour in any .css under src/styles/ outside the :root token definitions; radius, spacing and
               shadows use tokens; every var() is defined (tests/tokens.mjs, docs/design-system.md; < 1 s). In the `checks` shard
      schema   every v2 data file and schema example against data/schema/ (ajv Ajv2020, strict), then the generator's data checks
      a11y     axe-core at 390 / 1500 px (fresh / Lv 27 / Lv 45 x Basic / Advanced; fails on rules outside its allowlist),

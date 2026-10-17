@@ -1,0 +1,20 @@
+/* The page's styles in cascade order (0.4 P4d): the build replaces each @import line with its file as it is, so both builds
+   carry one inlined stylesheet. app.css comes first (tokens, the page frame, the rules several cards share), then one file
+   per card in page order. A card's file comes after every app.css rule, so a rule that would then beat a later app.css
+   rule it used to lose to (same element, property and specificity) stays in app.css. */
+@import "app.css";
+@import "packs/aion2/progress.css";
+@import "cards/journey.css";
+@import "cards/ahead.css";
+@import "packs/aion2/ascension.css";
+@import "packs/aion2/areas.css";
+@import "packs/aion2/skills.css";
+@import "packs/aion2/daevanion.css";
+@import "packs/aion2/cube.css";
+@import "cards/undo.css";
+@import "packs/aion2/stigmas.css";
+@import "cards/nextup.css";
+@import "cards/milestones.css";
+@import "cards/route.css";
+@import "cards/sources.css";
+@import "packs/aion2/build.css";

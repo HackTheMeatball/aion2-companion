@@ -1,0 +1,54 @@
+/* Milestones card (src/cards/milestones.js, milestones.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+details.step.overdue { border-color: var(--warn); }
+.gate .num { font: 600 15px var(--mono); }
+.gate .num small { display: block; font-size: 9px; letter-spacing: .12em; color: var(--muted); margin-bottom: var(--space-2); }
+details.step.overdue .num { border-color: var(--warn); color: var(--warn); }
+details[open] .chev { transform: rotate(180deg); }
+#main li.item.tick-on .txt, #main li.item.tick-on .txt b { color: var(--good); transition: color .2s; }
+#main li.item.tick-on input:checked { background: var(--good); border-color: var(--good); }
+#main li.item.leaving { opacity: 0; max-height: 0; overflow: hidden; }
+#main details.step { transition: opacity .45s ease; }
+#main details.step.leaving { opacity: 0; }
+.sub-h.has-ico { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); }
+.filt-n { font: 700 10px/16px var(--mono); min-width: 16px; padding: 0 var(--space-4); border-radius: var(--radius-bar); background: var(--accent-fill); color: var(--on-fill); text-align: center; }
+.filt-n:empty { display: none; }
+:is(h2, div).sec .sec-btn { margin-left: auto; align-self: center; font: 600 11.5px var(--body); letter-spacing: 0; text-transform: none; padding: var(--space-5) var(--space-10); }
+/* Top-right bar: filter icon (dropdown) + Reset filters */
+.topbar { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-6); margin: calc(-1 * var(--space-12)) 0 var(--space-10); }
+.topbar .filt-btn { display: inline-flex; align-items: center; gap: var(--space-6); height: 32px; padding: 0 var(--space-10); font: 600 12px var(--body); }
+.topbar .filt-btn.icon { width: auto; padding: 0 var(--space-9); position: relative; }
+.topbar .filt-btn.icon .filt-n { position: absolute; top: -6px; right: -6px; }
+.topbar .filt-menu { left: auto; right: 0; }
+.topbar #btnReset:disabled { opacity: .45; cursor: default; }
+/* Optional tasks */
+.opt-tag { display: inline-block; margin-right: var(--space-6); padding: 0 var(--space-6); border-radius: var(--radius-4); border: 1px solid var(--line); font: 600 10px/16px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); vertical-align: 1px; }
+#main li.item.optional .txt { color: color-mix(in srgb, var(--fg) 75%, var(--muted)); }
+/* Filters + Expand live on the Milestones header */
+:is(h2, div).sec .sec-tools { margin: 0 0 0 auto; display: inline-flex; align-items: center; gap: var(--space-6); align-self: center; letter-spacing: 0; text-transform: none; font-family: var(--body); position: relative; }
+:is(h2, div).sec .sec-tools .sec-btn { margin-left: 0; }
+:is(h2, div).sec .sec-tools .filt-btn { height: 30px; }
+:is(h2, div).sec .sec-tools .filt-menu { font-size: 13px; color: var(--fg); }
+/* Automatic story prerequisite line at the top of a milestone */
+#main li.storyreq label { cursor: default; }
+#main li.storyreq input:disabled { opacity: 1; border-style: dashed; }
+#main li.storyreq.reached input:checked { background: var(--good); border-color: var(--good); border-style: solid; }
+#main li.storyreq .sr-sub { display: block; font-size: 12px; color: var(--muted); margin-top: var(--space-2); }
+body.basic :is(h2, div).sec .sec-tools .filt, body.basic :is(h2, div).sec .sec-tools #btnReset { display: none; }
+#gates li.qrow.running { background: color-mix(in srgb, var(--gold) 8%, transparent); border-radius: var(--radius-8); }
+#gates li.qrow.running input { border-color: var(--gold); }
+#gates li.qrow.running input:not(:checked)::after { content: ""; width: 9px; height: 2px; background: var(--gold); border: 0; transform: none; }
+details.step.sideonly { opacity: .85; }
+#gates li.qrow.snoozed .txt { color: var(--muted); }
+#gates li.qrow:hover .q-snz, #gates li.qrow:focus-within .q-snz, #gates li.qrow .q-snz[aria-pressed="true"] { opacity: 1; }
+body.basic #gates .q-snz { display: none; }
+#gates li.sub-h.empty-h { display: none; }
+/* Phones (P3-2): a cleared milestone step folds to its title. The description (bare text, so font-size: 0, plus the
+   extra bold runs, "i" terms and links in it) is hidden; display: none also takes its links and buttons out of the
+   tab order. Kept: status chips, cost, the location / "Reward:" line (.loc), warnings (.note) and the paid note. */
+@media (max-width: 520px) {
+  #gates .item input:checked ~ .txt { font-size: 0; text-decoration: none; }
+  /* the strike moves to the children: drawn from the 0 px parent it would sit at the top of the line */
+  #gates .item input:checked ~ .txt > :is(b:first-of-type, .loc, .note, .upsell) { text-decoration: line-through; text-decoration-color: var(--muted-strike); }
+  #gates .item input:checked ~ .txt > b:first-of-type { font-size: 15px; }
+  #gates .item input:checked ~ .txt > :is(b ~ b, .term, .itm, .erow, .rotseq, .sr-sub) { display: none; }
+}

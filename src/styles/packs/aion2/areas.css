@@ -1,0 +1,72 @@
+/* Dungeons & Strongholds card (src/packs/aion2/cards/areas.js, areas.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.areas select { width: 100%; font: 500 13.5px var(--body); color: var(--fg); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-8); padding: var(--space-6) var(--space-10); max-width: 100%; }
+.area-list { padding: 0; grid-template-columns: minmax(0, 1fr); }
+.area-list .item label { grid-template-columns: 22px minmax(0,1fr) auto; }
+.area-list .itm { white-space: normal; }
+.area-list .item.locked .txt { opacity: .85; }
+.item.rdone input:checked { background: var(--good); border-color: var(--good); }
+.item.rdone input:checked ~ .txt { color: var(--good); text-decoration: none; }
+.sh-note { list-style: none; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); align-items: center; margin: 0 0 var(--space-4); }
+.sh-note > span:first-child { color: var(--fg); font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-4); }
+.sh-note + .item.arow { margin-top: var(--space-4); }
+.asec { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-8); margin: var(--space-2) 0 var(--space-2); }
+.asec-t { font: 600 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); display: inline-flex; align-items: center; gap: var(--space-6); }
+.asec.sh .asec-t { color: var(--gold); }
+.asec-n { font: 500 11px var(--mono); color: var(--muted); }
+.asec-n.done { color: var(--good); }
+.areas .ns-head select { flex-basis: 100%; }
+.shband { list-style: none; display: flex; justify-content: space-between; font: 600 10.5px var(--mono); letter-spacing: .08em; color: var(--muted); padding: var(--space-10) 0 var(--space-4); }
+.shband.done { color: var(--good); }
+.zone-h { list-style: none; display: flex; justify-content: space-between; gap: var(--space-8); font: 700 14.5px var(--body); color: var(--fg);}
+.zone-h span:last-child { font: 500 11px var(--mono); color: var(--muted); }
+.zone-h.done, .zone-h.done span:last-child { color: var(--good); }
+.item.arow.grouped { padding: var(--space-2) 0; }
+.asec.split { margin-top: var(--space-14); padding-top: var(--space-14); border-top: 2px solid var(--line); }
+.item.arow { padding: var(--space-4) 0; border-top: 1px solid var(--line); }
+.item.arow .txt { line-height: 1.3; }
+.item.arow .txt small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; margin-top: var(--space-2); }
+.item.arow.rdone .txt, .item.arow.rdone .txt a, .item.arow.rdone .txt b { color: var(--good); }
+.item.arow.rdone .txt small { color: var(--good); opacity: .75; }
+/* Areas card */
+.areas-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4) var(--space-6); }
+
+.achips { display: flex; flex-wrap: wrap; gap: var(--space-6); margin: var(--space-8) 0 var(--space-12); }
+.achip { display: inline-flex; align-items: center; gap: var(--space-5); font: 600 11px var(--mono); color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius-pill); padding: var(--space-3) var(--space-9) var(--space-3) var(--space-7); cursor: pointer; user-select: none; text-decoration: none; }
+.achip:hover { color: var(--fg); border-color: var(--muted); }
+.achip input { width: 12px; height: 12px; margin: 0; accent-color: var(--good); }
+.achip.sh input { accent-color: var(--gold); }
+.achip.link { margin-left: auto; padding: var(--space-3) var(--space-9); }
+.area-list .item.arow { display: flex; align-items: center; gap: var(--space-6); }
+.area-list .item.arow > label { flex: 1; min-width: 0; }
+.ztr { font: 500 11px var(--body); color: var(--muted); text-decoration: none; margin-left: var(--space-4); }
+.ztr:hover { color: var(--fg); text-decoration: underline; }
+.sh-note.ok { color: var(--good); }
+/* Region headers above their rows; rows a step smaller */
+.zone-h { align-items: baseline; padding: var(--space-12) 0 var(--space-4); }
+.zone-btn:hover { color: var(--accent-text); }
+.zone-btn:focus-visible { outline: 2px solid var(--accent); border-radius: var(--radius-4); }
+.zchev { font-size: 10px; color: var(--muted); width: 10px; }
+.zone-h .ztr { margin-left: 0; margin-right: auto; padding-left: var(--space-6); }
+
+.zone-h.done .zone-btn, .zone-h.done .zn { color: var(--good); }
+.area-list .item.arow .txt b { font-size: 13.5px; font-weight: 600; }
+.area-list .item.arow { transition: opacity .45s ease .2s, max-height .35s ease .45s, padding .35s ease .45s; max-height: 120px; overflow: hidden; }
+.area-list .item.arow.fading { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; border-top-color: transparent; }
+.areas-head h2 { margin: 0; white-space: nowrap; letter-spacing: .07em; }
+#areasBody { margin-top: var(--space-12); }
+/* In-progress dungeon / stronghold */
+#areaList li.running { background: color-mix(in srgb, var(--gold) 8%, transparent); border-radius: var(--radius-8); }
+#areaList li.running input { border-color: var(--gold); }
+#areaList li.running input:indeterminate::after { content: ""; width: 9px; height: 2px; background: var(--gold); border: 0; transform: none; }
+/* Dungeons & Strongholds: one left edge for everything (section titles, zone names, rows) */
+#areaList .item.arow, #areaList .item.arow.grouped { padding-left: 0 !important; }
+#areaList .item.arow > label { padding-left: 0; padding-right: var(--space-4); }
+#areaList .item.arow > label:hover { background: none; }
+#areaList .item.arow:hover .txt b { color: var(--accent-text); }
+
+#areaList .zone-btn { flex-direction: row-reverse; }
+#areaList .zone-btn .zchev { font-size: 10px; color: var(--muted); }
+.zone-btn::before { content: ""; position: absolute; inset: -4px 0; }
+/* B: a gap under the level-band select (Basic hides the chips that normally sit there); locked rows stay readable. */
+body.basic #areaSel { margin-bottom: var(--space-12); }
+@media (max-width: 520px) { .area-list .item.locked .txt { opacity: 1; } }

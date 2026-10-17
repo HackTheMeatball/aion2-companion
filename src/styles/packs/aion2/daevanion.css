@@ -1,0 +1,113 @@
+/* Daevanion card (src/packs/aion2/cards/daevanion.js, daevanion.html). Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+.item.dvn { display: flex; align-items: flex-start; gap: var(--space-8); }
+.item.dvn > label:first-child { flex: 1; }
+.dvc-wrap { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-10) var(--space-10) 0 0; font: 600 11px var(--mono); color: var(--muted); white-space: nowrap; }
+.dvname { font-weight: 700; }
+.dvwarn:not(:empty) { display: inline; margin-left: var(--space-6); color: var(--warn); }
+.dvwarn:not(:empty)::before { content: "· "; }
+.tcard .tline { margin: var(--space-10) 0 0; }
+.linkbtn { all: unset; cursor: pointer; font-size: 12.5px; color: var(--muted); text-decoration: underline dotted; }
+.linkbtn:hover { color: var(--fg); }
+
+#dvAllList { margin-top: var(--space-10); }
+.dvst { font-size: 12px; color: var(--muted); }
+.dvcost { margin-top: var(--space-6); flex-wrap: wrap;}
+/* Next node card block: what → progress → action. */
+#dvNextList .dvrow.nx { display: block; }
+.dvrow.nx.ok .dvtrack span { background: var(--good); }
+.dvrow input.dvcb { display: none !important; }
+.dvbar-l .dvc::-webkit-outer-spin-button, .dvbar-l .dvc::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.dvbar-l .dvc { -moz-appearance: textfield; width: 38px; padding: var(--space-2) var(--space-4); text-align: center; font: 600 12px var(--mono); }
+.dvrow.nx.short .dvbuy { color: var(--warn); }
+.dvrow.nx.ok .dvbuy { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border: 1px solid var(--go-line); box-shadow: var(--shadow-go); }
+.dvrow.nx.ok .dvbuy:active { transform: translateY(2px); box-shadow: none; }
+.top-grid .tfoot.dv-foot { margin-top: auto; padding-top: var(--space-12); }
+.dvmini { width: 20px; height: 20px; object-fit: contain; vertical-align: -5px; margin-right: var(--space-6); }
+.dvst.ok { color: var(--good); }
+/* Board card's next-node row: checkbox | text | cost, aligned like the skill row. */
+.dvrow { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: var(--space-10); align-items: start; font-size: 14px; }
+.dvrow input[type=checkbox] { appearance: none; width: 20px; height: 20px; margin: var(--space-1) 0 0; border: 2px solid var(--muted); border-radius: var(--radius-5); cursor: pointer; display: grid; place-items: center; }
+.dvrow input[type=checkbox]:disabled { opacity: .35; cursor: not-allowed; }
+.dvrow small { display: block; color: var(--muted); font-size: 12.5px; margin-top: var(--space-2); }
+
+#dvAllList .items { padding: 0; margin: var(--space-6) 0 0; }
+#dvAllList .sub-h { padding-left: 0; }
+#dvAllList .item.dvn label:first-child { padding-left: 0; }
+#dvAllList .sub-h .sub-txt { margin-left: 0; }
+#dvAllList .dvc-wrap { padding-right: 0; }
+.dv-board.shut .item { opacity: .5; }
+.dv-foot p { flex: 1; min-width: 0; margin: 0; }
+.dv-foot button { flex-shrink: 0; font-size: 12px; padding: var(--space-5) var(--space-10); }
+#dvNextList { display: grid; gap: var(--space-12); }
+
+.dvc-wrap.inline { padding: 0; margin-top: calc(-1 * var(--space-3)); }
+#dvThen .soonlist .sname .dvname { font-weight: 500; }
+#dvThen .dvmini { width: 16px; height: 16px; vertical-align: -3px; }
+#dvRemain:empty { display: none; }
+.dv-foot { justify-content: flex-start; }
+.dv-foot #dvRespec { margin-left: auto; }
+.dvhead .dvico img.dvbadge, .dvico img.dvbadge { position: absolute; inset: auto -4px -4px auto; width: 24px; height: 24px; border-radius: var(--radius-6); object-fit: cover; box-shadow: var(--shadow-badge); }
+/* Daevanion board banner + board dividers in Then */
+@keyframes boardGlow { from { box-shadow: var(--shadow-board-glow-from); } to { box-shadow: var(--shadow-board-glow-to); } }
+.soonlist li.then-board span:first-child { font: 700 14px var(--body); color: var(--gold-light); }
+.soonlist li.then-board span:last-child { font: 600 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+/* Next up: the active milestone's open steps */
+.soonlist li.then-board { flex-wrap: wrap; }
+.tb-bar { flex: 1 1 100%; display: block; height: 3px; border-radius: var(--radius-2); background: var(--line); margin-top: var(--space-5); overflow: hidden; }
+.tb-bar span { display: block; height: 100%; background: var(--gold); }
+/* Daevanion review round */
+.dvb-new { font: 700 9px var(--mono); letter-spacing: .08em; color: var(--gold); border: 1px solid var(--gold-99); border-radius: var(--radius-4); padding: 0 var(--space-4); }
+.dvrow.nx.nocost .dvc { border-style: dashed; border-color: var(--gold); box-shadow: var(--ring-gold); width: 44px; height: 26px; }
+.dvcost-k { display: inline-flex; align-items: center; gap: var(--space-4); }
+.dvcost .dvc::-webkit-outer-spin-button, .dvcost .dvc::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.dvi::after { content: attr(data-tip); position: absolute; z-index: 30; right: -6px; bottom: calc(100% + 8px); width: 190px; padding: var(--space-7) var(--space-9); border-radius: var(--radius-8); background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow-tip); color: var(--fg); font: 500 12px/1.35 var(--body); font-style: normal; text-align: left; white-space: normal; opacity: 0; pointer-events: none; transition: opacity .15s; }
+.dvi:hover::after, .dvi:focus::after { opacity: 1; }
+
+#dvNextList .dvrow.nx.short .dvtrack span { background: var(--warn); }
+#dvNextList .dvrow.nx.short .dvbuy { border-style: dashed; }
+#dvBox #dvBoard { margin-top: var(--space-14); }
+@container (min-width: 681px) and (max-width: 790px) { #dvBoard .dvbh-w { display: none; } }
+.dvstat { margin: var(--space-8) 0 0; font-size: 12px; color: var(--muted); }
+.dvrow.nx.short .dvstat { font: 600 13px var(--body); color: var(--warn); }
+.dvstat:empty { display: none; }
+.dvsync { cursor: pointer; border-bottom: 1px dotted transparent; }
+.dvsync:hover { border-bottom-color: var(--muted); }
+.dvsync-in { width: 56px; font: 700 22px var(--mono); padding: 0 var(--space-4); }
+.dvadj { font: 600 10px var(--mono); font-style: normal; color: var(--muted); margin-left: var(--space-4); }
+#dvThen { flex: 1 1 0; min-height: 90px; }
+/* Node art at full size behind the skill badge */
+#dvNextList .dvhead .dvico.art img:first-child { inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); }
+#dvNextList .dvhead .dvtext > .dvname { grid-column: 1 / -1; }
+#dvNextList .dvhead .dvtext > small { grid-column: 1; grid-row: 2; align-self: center; }
+#dvNextList .dvhead .dvtext > .dvbar { grid-column: 1; grid-row: 3; }
+#dvNextList .dvcost-col { grid-column: 2; grid-row: 2 / 4; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; gap: var(--space-2); font: 600 10.5px var(--mono); color: var(--muted); }
+.cstep { position: relative; display: inline-flex; }
+#dvNextList .cstep .dvc { width: 52px; height: 22px; padding: 0 var(--space-16) 0 var(--space-4); box-sizing: border-box; text-align: center; font-size: 12px; }
+#dvNextList .dvrow.nx.nocost .cstep .dvc { width: 52px; height: 22px; }
+.cstep-b { position: absolute; right: 2px; top: 2px; bottom: 2px; display: flex; flex-direction: column; width: 12px; }
+.cstep-b button { all: unset; flex: 1; display: grid; place-items: center; font-size: 8px; line-height: 1; color: var(--muted); cursor: pointer; border-radius: var(--radius-2); }
+.cstep-b button:hover { color: var(--fg); background: var(--panel-2); }
+#dvNextList .dvhead .dvico.art img.dvon { position: absolute; inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); object-fit: contain; opacity: 0; transition: opacity .25s ease; pointer-events: none; }
+#dvNextList .dvrow.nx:has(.dvbuy:not([hidden]):hover) .dvico img.dvon, #dvNextList .dvrow.nx:has(.dvbuy:not([hidden]):focus-visible) .dvico img.dvon { opacity: 1; }
+#dvNextList .dvhead .dvico img.dvbadge { z-index: 2; }
+body.basic #dvThen .soonlist > li:nth-child(n+2) { display: none; }
+.nb-tag { display: none; }
+
+body.basic #dvThen .soonlist:has(> li.then-board:first-child) > li:nth-child(2) { display: grid; }
+body.basic #dvThen .soonlist > li .nb-tag { grid-column: 2 / -1; justify-self: end; white-space: nowrap;}
+body.basic #dvThen .soonlist > li:has(.nb-tag) { grid-template-columns: minmax(0, 1fr) auto; }
+body.basic #dvThen .soonlist > li:has(.nb-tag) .slv, body.basic #dvThen .soonlist > li:has(.nb-tag) .sst { display: none; }
+body.basic #dvThen .soonlist > li:has(.nb-tag) .nb-tag { display: inline; }
+#dvNextList .dvhead .dvtext { grid-template-rows: auto 1fr auto; }
+#dvNextList .alldone .dvhead { display: grid; grid-template-columns: var(--hero, 56px) minmax(0, 1fr); gap: var(--space-12); align-items: center; }
+#dvNextList .alldone .dvtext { display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); }
+#dvNextList .alldone .spname { font-weight: 700; font-size: 15px; line-height: 18px; color: var(--good); }
+#dvNextList .alldone small { color: var(--muted); font-size: 12px; }
+#dvNextList .alldone .dvhead .done-ico { align-self: center; }
+#dvNextList .dvlocked .dvhead .dvico { align-self: center; }
+#dvNextList .dvlocked .dvhead .dvico img:not(.dvbadge) { filter: grayscale(.35) brightness(.85); }
+#dvNextList .dvlocked .buyrow { margin-top: var(--space-10); }
+/* The node's subline wraps beside the cost box instead of being cut ("Vaizel · active"). */
+#dvNextList .dvrow.nx .dvhead .dvtext > small { white-space: normal; overflow: visible; text-overflow: clip; }
+/* Basic: the one row under each card looks the same — icon · name · "Lv N" in muted mono */
+body.basic #dvThen .soonlist > li .nb-tag { color: var(--muted); font: 600 11px var(--mono); }

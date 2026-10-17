@@ -1,0 +1,124 @@
+/* Journey card (src/cards/journey.js, journey.html): the level control, the story timeline and objectives, the rail's milestone list. Moved verbatim from app.css (0.4 P4d), in their original order; app.css keeps the page frame and the rules several cards share. */
+/* Journey: level control in the header, story as a small timeline, next unlock as a callout. */
+.where-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-10);}
+.where-head h2 { margin: 0; }
+.lvl-ctl { display: inline-flex; align-items: center; gap: var(--space-4); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-10); padding: var(--space-3); }
+.lvl-ctl label { font: 600 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-left: var(--space-4); }
+.lvl-ctl input { width: 34px; border: 0; background: transparent; color: var(--fg); font: 700 18px var(--mono); text-align: center; padding: 0; -moz-appearance: textfield; }
+.lvl-ctl input::-webkit-outer-spin-button, .lvl-ctl input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.lvl-ctl button { width: 26px; height: 26px; padding: 0; display: grid; place-items: center; font: 600 15px var(--mono); border-radius: var(--radius-7); background: var(--panel); }
+.lvl-range { display: block; margin: 0 0 var(--space-14); }
+.story { list-style: none; margin: 0 0 var(--space-14); padding: 0; position: relative; }
+.st + .st::before { content: ""; position: absolute; left: 6px; bottom: 50%; height: 100%; width: 2px; background: var(--line); }
+.st { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: var(--space-10); align-items: center; padding: var(--space-4) 0; position: relative; font-size: 13px; }
+.st:empty { display: none; }
+.st:empty + .st::before { content: none; } /* no connector above the first row (fresh save, first quest) */
+.st .dot { width: 10px; height: 10px; border-radius: var(--radius-round); background: var(--panel); border: 2px solid var(--line); justify-self: center; z-index: 1; }
+.st-name { min-width: 0; }
+.st-lv { font: 600 11px var(--mono); color: var(--muted); white-space: nowrap; }
+.st.prev { color: var(--muted); }
+.st.prev .dot { background: var(--good); border-color: var(--good); }
+.st.cur .dot { border-color: var(--accent); background: var(--accent); box-shadow: var(--ring-current); }
+.st.cur input { width: 100%; font: 600 14px var(--body); color: var(--fg); background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-8); padding: var(--space-7) var(--space-10); }
+.st.cur input:focus { border-color: var(--accent); outline: none; }
+.st.cur .st-lv { color: var(--accent-text); }
+.st .unl { display: block; color: var(--accent-text); font-size: 11.5px; }
+.st.warn .st-name { color: var(--warn); }
+.unlock:empty { display: none; }
+.unlock { margin: var(--space-8) 0 0 0; padding: var(--space-9) var(--space-12); border-radius: var(--radius-10); background: linear-gradient(135deg, var(--accent-soft), transparent 80%); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.story li.tipbox { margin: var(--space-8) 0 0 0; padding: var(--space-10) var(--space-12); }
+.track li { display: grid; grid-template-columns: 30px 12px minmax(0,1fr); gap: var(--space-10); align-items: center; padding: var(--space-3) 0; font-size: 13px; }
+
+.track a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.track .lv { font: 600 12px var(--mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.track .dot { width: 10px; height: 10px; border-radius: var(--radius-round); border: 2px solid var(--line); background: var(--bg); }
+.track li.cleared .dot { background: var(--good); border-color: var(--good); }
+.track li.overdue .dot { background: var(--warn); border-color: var(--warn); }
+.track li.ms { grid-template-columns: 14px minmax(0, 1fr) auto; gap: var(--space-10); padding: var(--space-4) 0; position: relative; font-size: 13px; }
+.track li.ms + li.ms::before { content: ""; position: absolute; left: 6px; bottom: 50%; height: 100%; width: 2px; background: var(--line); }
+.track li.ms .dot { justify-self: center; z-index: 1; }
+.ms-name { min-width: 0; color: inherit; text-decoration: none; }
+.ms-name:hover { color: var(--accent-text); }
+.ms-meta { display: block; font: 600 10.5px var(--mono); letter-spacing: .04em; color: var(--muted); }
+.track li.overdue .ms-meta { color: var(--warn); }
+.track li.next .ms-meta { color: var(--accent-text); }
+.track li.cleared .ms-meta { color: var(--good); }
+.track li.cleared .ms-name { color: var(--muted); }
+.track li.next .dot { border-color: var(--accent); box-shadow: var(--ring-current); }
+.track li.next .lv, .track li.cleared .lv { color: var(--fg); }
+.track li.next .what::after { content: "next"; margin-left: var(--space-8); font: 600 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.track li.overdue .what::after { content: "missed"; margin-left: var(--space-8); font: 600 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--warn); }
+/* Level up button + effects */
+.where-head { gap: var(--space-6); }
+.where-head .lvl-ctl input { width: 30px; }
+.where-head .lvl-ctl { margin-left: auto; }
+.lvlup-btn { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border: 1px solid var(--go-line); font: 700 12px var(--body); padding: 0 var(--space-11); height: 34px; border-radius: var(--radius-10); cursor: pointer; white-space: nowrap; box-shadow: var(--shadow-go-rest); transition: transform .08s, box-shadow .2s, filter .2s; }
+.lvlup-btn:hover { filter: brightness(1.1); box-shadow: var(--shadow-go-hover); }
+.lvlup-btn:active { transform: translateY(2px); box-shadow: var(--shadow-go-pressed); }
+.lvl-spark { position: fixed; width: 6px; height: 6px; border-radius: var(--radius-round); pointer-events: none; z-index: 100; transform: translate(-50%, -50%); animation: lvlspark .85s cubic-bezier(.2,.7,.3,1) forwards; }
+@keyframes lvlspark { to { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.3); opacity: 0; } }
+.lvl-float { position: fixed; transform: translate(-50%, -100%); pointer-events: none; z-index: 100; white-space: nowrap; font: 600 12px var(--body); color: var(--good); background: var(--panel); border: 1px solid var(--go-glow-66); border-radius: var(--radius-pill); padding: var(--space-4) var(--space-10); box-shadow: var(--shadow-float); animation: lvlfloat 1.6s ease-out forwards; }
+.lvl-float b { color: var(--fg); margin-right: var(--space-4); }
+@keyframes lvlfloat { 0% { opacity: 0; transform: translate(-50%, -80%); } 15% { opacity: 1; transform: translate(-50%, -100%); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -190%); } }
+@media (prefers-reduced-motion: reduce) { .lvl-spark, .lvl-float { display: none; } }
+.where-head { flex-wrap: wrap; }
+/* Story drum: click previous/next to step; rows roll up (next) or down (previous). */
+.st-step { cursor: pointer; border-radius: var(--radius-6); transition: color .15s; }
+.st-step:hover { color: var(--accent-text); }
+ul.story { perspective: 400px; }
+ul.story.roll-next > li.st { animation: storyRollNext .42s cubic-bezier(.2,.7,.25,1); transform-origin: 50% 0; }
+ul.story.roll-prev > li.st { animation: storyRollPrev .42s cubic-bezier(.2,.7,.25,1); transform-origin: 50% 100%; }
+@keyframes storyRollNext { 0% { transform: translateY(70%) rotateX(-55deg); opacity: .25; } 100% { transform: none; opacity: 1; } }
+@keyframes storyRollPrev { 0% { transform: translateY(-70%) rotateX(55deg); opacity: .25; } 100% { transform: none; opacity: 1; } }
+ul.story.roll-next > li.st .dot, ul.story.roll-prev > li.st .dot { transition: background .3s, border-color .3s, box-shadow .3s; }
+@media (prefers-reduced-motion: reduce) { ul.story.roll-next > li.st, ul.story.roll-prev > li.st { animation: none; } }
+/* Current quest objectives (Journey) */
+.st-subs { list-style: none; position: relative; margin: var(--space-2) 0 var(--space-4); padding: 0 0 0 var(--space-24); }
+.st-subs:empty { display: none; }
+.st-subs::before { content: ""; position: absolute; left: 6px; top: -6px; bottom: -6px; width: 2px; background: var(--line); }
+.qs-head { display: flex; justify-content: space-between; font: 600 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: var(--space-4) 0 var(--space-2); }
+.qs-list { list-style: none; margin: 0; padding: 0; counter-reset: qs; }
+.qs-list li { padding: var(--space-3) 0; }
+.qs-list b { font-weight: 600; color: var(--fg); }
+.qs-list small { display: block; color: var(--muted); font-size: 11.5px; }
+.qs-list li { max-height: 80px; overflow: hidden; transition: opacity .45s ease, max-height .4s ease .1s, padding .4s ease .1s; }
+.qs-list li.on b, .qs-list li.on small { color: var(--good); }
+.qs-list li.on small { opacity: .75; }
+.qs-end { margin: var(--space-6) 0 0; font: 600 12px var(--body); color: var(--good); }
+.qs-wait { margin: var(--space-6) 0 0; font: 600 12px var(--body); color: var(--muted); }
+.qs-next { margin-top: var(--space-6); width: 100%; font: 600 12px var(--body); padding: var(--space-6); border-radius: var(--radius-8); background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border: 1px solid var(--go-line); cursor: pointer; }
+.trk-wrap { margin-top: var(--space-2); }
+.trk-wrap > summary { cursor: pointer; list-style: none; display: flex; gap: var(--space-6); align-items: center; margin: 0; padding: var(--space-4) 0; border-radius: var(--radius-4); }
+.trk-wrap[open] > summary { margin-bottom: var(--space-4); }
+.trk-wrap > summary::-webkit-details-marker { display: none; }
+.trk-wrap > summary::before { content: "▸"; font-size: 10px; }
+.trk-wrap[open] > summary::before { content: "▾"; }
+.trk-wrap > summary:hover { color: var(--fg); }
+#trkN { letter-spacing: 0; text-transform: none; font-weight: 500; }
+.ms-head { display: flex; justify-content: space-between; align-items: center; }
+.jfilt-x:hover { color: var(--warn); background: var(--panel-2); }
+.jfilt-x[hidden] { display: none; }
+.jfilt-btn:hover, .jfilt-btn[aria-expanded="true"] { color: var(--fg); background: var(--panel-2); }
+.jfilt-dot { position: absolute; top: 1px; right: 1px; width: 5px; height: 5px; border-radius: var(--radius-round); background: currentColor; }
+.jfilt-dot[hidden] { display: none; }
+.jfilt-btn .filt-n { position: absolute; top: -5px; right: -6px; font-size: 9px; line-height: 13px; min-width: 13px; padding: 0 var(--space-3); letter-spacing: 0; box-shadow: var(--ring-panel); }
+.jfilt .filt-menu { left: auto; right: 0; min-width: 210px; text-transform: none; letter-spacing: 0; font-family: var(--body); font-weight: 400; color: var(--fg); }
+.jfilt .filt-menu input:disabled + * , .jfilt .filt-menu label:has(input:disabled) { opacity: .45; cursor: default; }
+.qs-head { align-items: center; }
+.trk-sum::before { content: "▸"; font-size: 10px; }
+.trk-sum[aria-expanded="true"]::before { content: "▾"; }
+.trk-sum:hover { color: var(--fg); }
+.trk-sum:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-4); }
+.lvlup-btn:disabled { filter: grayscale(.85); opacity: .5; cursor: default; box-shadow: none; transform: none; }
+.st.cur input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Screen readers skip decorative arrows drawn with CSS (alt text "" where supported; same glyphs elsewhere). */
+@supports (content: "x" / "") {
+  .trk-wrap > summary::before, .trk-sum::before { content: "▸" / ""; }
+  .trk-wrap[open] > summary::before, .trk-sum[aria-expanded="true"]::before { content: "▾" / ""; }
+}
+.jfilt-btn::before { content: ""; position: absolute; inset: -3px 0 -3px -1px; }
+.jfilt-x::before { content: ""; position: absolute; inset: -4px -4px -4px -3px; }
+@media (pointer: coarse) {
+  #questIn { text-overflow: ellipsis; } /* a long quest name no longer shrinks to fit: cut it with an ellipsis rather than mid-word */
+  .lvlup-btn { height: 44px; }
+}
