@@ -38,8 +38,8 @@ export default (test, M, X) => {
   const S = M.GATE_GRAPH.story, ALL_RANK = [...Object.keys(M.RANK_CHANGES), ...Object.keys(M.AION2_RANK_CHANGES)];
   /* the switches that change the ranking without a location (design §11 7 names the first two; etaLater, 0.5 P13, orders
      the Later cards by when they open; trackFilter and bandLabels, 0.5 P14, read the route labels and the milestone
-     levels, never a place) */
-  const NO_LOC = ['ascensionFirst', 'catchUp', 'etaLater', 'trackFilter', 'bandLabels'];
+     levels, never a place; bindDerived and bindNudge, 0.5 P15, read the ticks and the story position, never a change time) */
+  const NO_LOC = ['ascensionFirst', 'catchUp', 'etaLater', 'trackFilter', 'bandLabels', 'bindDerived', 'bindNudge'];
   /* loaded as the page does, deep-frozen (X.loaded, shared with the other files); dated: a copy of a hashed tenth with its
      change times spread over 1 … 40 s. Samples below are hashed by state id (the suite's 30 s budget). */
   const loaded = [], dated = [], share = (tag, x, p) => fnv(tag + '|' + x.id) < p;
@@ -80,7 +80,7 @@ export default (test, M, X) => {
     assert.ok(X.only || some > n / 4, `only ${some} of ${n} states bind anything`);
   });
 
-  test('7. no location, no change: change times at 0, rankNext with the ranking switches on (but ascensionFirst, catchUp, etaLater, trackFilter, bandLabels) = every one off', () => {
+  test('7. no location, no change: change times at 0, rankNext with the ranking switches on (but ascensionFirst, catchUp, etaLater, trackFilter, bandLabels, bindDerived, bindNudge) = every one off', () => {
     const on = ALL_RANK.filter(n => !NO_LOC.includes(n)), bad = [];
     const cases = loaded.filter(x => share('nl', x, x.fam === 'loc' || x.fam === 'bind' ? 0.3 : x.fam ? 0.1 : 0.003));
     try {
@@ -186,6 +186,26 @@ export default (test, M, X) => {
     assert.deepEqual([...bad.slice(0, 5), ...twice], [], `${bad.length} nudge differences, ${twice.length} Kibelisks nudged twice`);
     console.log(`     nudge on ${perKib.size} story positions: ${[...perKib.keys()].join(', ')}`);
     assert.ok(perKib.size > 0, 'the nudge shows somewhere');
+  });
+
+  /* 12 on the page (0.5 P15, bindNudge on): the story card's bind is nudgeOf's on every family state and a hashed share
+     of the rest, and nothing with bindNudge (or the bindDerived it needs) off; a card with a row is the current quest's */
+  test('12. the story card: its "Bind X" row is nudgeOf\'s exactly (bindDerived and bindNudge on), none with either off', () => {
+    const bad = []; let rows = 0, n = 0;
+    try {
+      for (const { id, s, c } of loaded.filter(x => x.s && share('nucard', x, x.fam === 'bind' ? 1 : x.fam ? 0.2 : 0.02))) { n++;
+        const card = r => r.find(a => a.kind === 'story') || {};
+        M.setRankChanges(null); const st = card(M.rankNext(s, { basic: s.mode === 'basic' })), want = M.nudgeOf(c);
+        if (st.v === 'obj' && JSON.stringify(st.bind || null) !== JSON.stringify(want)) bad.push(`${id}: card ${JSON.stringify(st.bind)} / nudgeOf ${JSON.stringify(want)}`);
+        if (st.bind) { rows++; if (st.quest !== c.quest || st.bind.key !== 'bind:' + st.bind.kib) bad.push(`${id}: row ${JSON.stringify(st.bind)} on ${st.quest}`); }
+        if (!st.bind && !share('nucard-off', { id }, 0.2)) continue;
+        for (const off of [ALL_RANK.filter(k => k !== 'bindNudge'), ALL_RANK.filter(k => k !== 'bindDerived')]) {
+          M.setRankChanges(off); if (card(M.rankNext(s, { basic: s.mode === 'basic' })).bind) bad.push(`${id}: a row with ${ALL_RANK.find(k => !off.includes(k))} off`); }
+      }
+    } finally { M.setRankChanges(null); }
+    assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${n} states`);
+    console.log(`     ${n} states, ${rows} with the row`);
+    assert.ok(X.only || rows > 0, 'the row shows on some state');
   });
 
   test('14. deterministic after merge: whereNow(merge(a, b)) = whereNow(merge(b, a)) per slot, and the oracle\'s, on the sync suite\'s pairs', () => {

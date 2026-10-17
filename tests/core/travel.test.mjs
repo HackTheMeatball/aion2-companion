@@ -106,7 +106,9 @@ export default (test, M) => {
       const c = at(S[i][1]), n = M.nudgeOf(c); if (!n) continue;
       const T = NP[S[i][0]].pts.turnin;
       assert.ok(!seen.has(n.kib), `${n.kib} twice: ${seen.get(n.kib)} and ${S[i][1]}`); seen.set(n.kib, S[i][1]);
-      assert.deepEqual(n, { kib: T.anchor, name: K[T.anchor].name, m: T.m, key: 'bind:' + T.anchor, via: S[i][0] });
+      /* npc (0.5 P15): the turn-in's NPC, which the row names ("32 m from VeKauf") */
+      assert.deepEqual(n, { kib: T.anchor, name: K[T.anchor].name, m: T.m, key: 'bind:' + T.anchor, via: S[i][0], npc: n.npc });
+      assert.ok(typeof n.npc === 'string' && n.npc.length > 1, `${S[i][1]}: the turn-in NPC`);
       assert.ok(T.m > TR.bindRadius && T.m <= TR.nudgeRadius);
       assert.equal(M.bound(c, n.kib), false);
       assert.equal(M.nudgeOf({ ...c, checks: { [n.key]: true } }), null, 'ticking the row ends it');

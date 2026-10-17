@@ -13,6 +13,7 @@ import { E_ORDER, LEVEL_POINTS, SP_STEPS } from "./data/build.js";
 import { GATES } from "./data/milestones.js";
 import { AREA_LOC } from "./data/generated.js";
 import { KIBELISKS, NODE_PLACE } from "./data/place.js";
+import { nudgeOf } from "./travel.js";
 import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
 import { areaOpen, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
   storyAreaOf, storyHereOf } from "./requirements.js";
@@ -23,12 +24,13 @@ import { byPlace, whereNow } from "../../core/place.js";
 import { doneOf, gatesOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
 
 /* The pack's ranking changes (docs/design/0.4-smart-next-up.md §12), switches like the engine's RANK_CHANGES
-   (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off (0.5 P11: nothing reads them
-   yet). needs: what it can't run without (travelAdvice shares whereNow with the engine's placeRank). The engine's
-   ascensionFirst and placeRank (0.5 P12) are read here, by the producers below. */
+   (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off until the step that builds
+   it (0.5 P15 turns on bindDerived and bindNudge, read by aion2StoryFields below). needs: what it can't run without
+   (travelAdvice shares whereNow with the engine's placeRank). The engine's ascensionFirst and placeRank (0.5 P12) are
+   read here, by the producers below. */
 export const AION2_RANK_CHANGES = {
-  bindDerived: { on: false, what: "bound Kibelisks derived from the ticks, the story position and pick-ups (travel.js boundSet, design §8.1); no visible change alone" },
-  bindNudge: { on: false, needs: ["bindDerived"], what: "the one-time \"Bind X\" row on the story card (travel.js nudgeOf, design §8.2)" },
+  bindDerived: { on: true, what: "bound Kibelisks derived from the ticks, the story position and pick-ups (travel.js boundSet, design §8.1); no visible change alone" },
+  bindNudge: { on: true, needs: ["bindDerived"], what: "the one-time \"Bind X\" row on the story card (travel.js nudgeOf, design §8.2)" },
   travelAdvice: { on: false, needs: ["bindDerived", "placeRank"], what: "teleport vs walk: one line on a card whose target's Kibelisk is bound (travel.js teleportOf, design §8.3)" },
 };
 
@@ -202,8 +204,10 @@ export function aion2Meanwhile(state, ctx) {
 }
 
 /* Where to go next on the story card (not level-gated): the story's Kibelisk, unless the open objective already names
-   its Kibelisk. */
-export const aion2StoryFields = (state, { story: { gated }, open }) => {
+   its Kibelisk. bind (bindNudge, design §8.2): the one-time "Bind X" row while the quest's turn-in is in the nudge band
+   of a Kibelisk the save doesn't bind (nudgeOf: { kib, name, m, key, via }), else null. */
+export const aion2StoryFields = (state, { c, story: { gated }, open }) => {
   const sh = gated ? null : storyHereOf(state);
-  return { kib: sh && !/\(Kibelisk:/.test(open || "") ? sh : null };
+  const bind = rankChangeOn("bindDerived", AION2_RANK_CHANGES) && rankChangeOn("bindNudge", AION2_RANK_CHANGES) ? nudgeOf(c) : null;
+  return { kib: sh && !/\(Kibelisk:/.test(open || "") ? sh : null, bind };
 };

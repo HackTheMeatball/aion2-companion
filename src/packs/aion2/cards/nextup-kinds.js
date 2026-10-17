@@ -7,6 +7,7 @@
    Keys with a dot are hooks of the engine cards, not card kinds:
    - story.meanwhile(m, ctx) → html: the story card's "Meanwhile" list (m = the pack's story.meanwhile object)
    - story.where(card, ctx) → html: where the story card's objectives send you, or ""
+   - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row), or ""
    - now.act(act, ctx) → true when handled: a data-now action (called before the engine's; false = the engine goes on)
    - now.click(e, ctx) → true when handled: a click on the pack's own controls inside Next up (the regional quests list)
    - now.toggle(e): a toggle event inside Next up (the "+N waiting on the story" fold)
@@ -99,6 +100,11 @@ export const aion2NowRenderers = {
     if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`);
     return xs.join(" / "); },
   "story.where": a => a.kib ? `<span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "",
+  /* The one-time "Bind X" row (0.5 P15, S1 M2 / D1 / D3; design §8.2): the whole row is the tick box's label, so the box
+     is named by its text. The metres are the data's (the turn-in's distance to that Kibelisk). Ticking writes
+     checks["bind:<kib id>"] ("now.click"). */
+  "story.row": a => { const b = a.bind; if (!b) return "";
+    return `<label class="ns-bind"><input type="checkbox" data-nsbind="${b.key}"><span>Bind <b>${b.name}</b> on the way<small>${b.m} m from ${b.npc || "the turn-in"}</small></span></label>`; },
   "now.act": a => {
     if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return true; }
     if (a.startsWith("tick:")) { const k = a.slice(5); if (char(state).areaRun) delete char(state).areaRun[k];
@@ -116,6 +122,10 @@ export const aion2NowRenderers = {
     return true;
   },
   "now.click": e => {
+    /* the "Bind X" tick (the box's own click; a click on its label text reaches the box as one) */
+    const bb = e.target.closest("input[data-nsbind]");
+    if (bb) { const k = bb.dataset.nsbind; if (/^bind:/.test(k) && !char(state).checks[k]) { char(state).checks[k] = true; save(); update(); } return true; }
+    if (e.target.closest(".ns-bind")) return true;
     const zb = e.target.closest("[data-snz]"); if (zb) { e.preventDefault(); snoozeToggle(zb.dataset.snz); return true; }
     const ub = e.target.closest("[data-unsnz]"); if (ub) { e.preventDefault(); ub.dataset.unsnz.split("|").forEach(k => { if (char(state).rqSnooze) delete char(state).rqSnooze[k]; }); save(); update(); return true; }
     const ig = e.target.closest("[data-rqig]"); if (ig) { e.preventDefault(); const k = ig.dataset.rqig; char(state).started = char(state).started || {};

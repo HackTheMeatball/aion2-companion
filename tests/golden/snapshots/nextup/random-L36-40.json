@@ -29,7 +29,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","b":"Lv 35–36","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"3 to pick up · 1 near your story step · 0/3 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian (near)","new Her Last Favor","new Pain Unending","+21 waiting on the story Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Young Elim's Story In my game A Guardian's Sacrifice In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 53 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 11 open"}
@@ -43,7 +43,7 @@
     {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0"},
     {"t":"Vaizel board opens","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:0"},
     {"t":"Start the daily dungeon","s":"Missed · Lv 30 Daily dungeon and Vaizel board","c":"primary \"Done\" tick:g30:1"},
-    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
+    {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","bd":"Bind Quai Campsite on the way 30 m from Ulgorn bind:kib:quai-campsite","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 1/2 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+18 waiting on the story Spooky Specters In my game Hugo Mercenaries: Past and Present In my game Missing Mount In my game Creion Research Assistant In my game Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Practice Makes Perfect, Nyerk! In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Nine Wonders of Altgard: 1st Leg In my game Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 3/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 40 open at your level"},
     {"t":"Equip Illusive Clone","s":"Stigma slot 2 is open · needs 1 shard (+1 at Lv 37)","c":"tag \"Needs 1 shard\""},
@@ -105,7 +105,7 @@
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 37)","c":"tag \"Needs 1 shard\""}
   ],
   "random/L36-q61-rnd142p80-A": [
-    {"t":"Story: Enemy Territory","s":"0/2 objectives · then Powder of Death","c":"primary \"Turned in\" story","b":"Lv 35–36","o":["Deliver supplies to the Steel Hammer Workcamp collect mined Fafnite Gemstone retrieve the pickaxes from Contaminated Shulak Worker defeat Contaminated Shulak Worker Kibelisk: Gribade Highland Crossroad","Turn in Mannikiki, Steel Hammer Workcamp"]},
+    {"t":"Story: Enemy Territory","s":"0/2 objectives · then Powder of Death","c":"primary \"Turned in\" story","b":"Lv 35–36","bd":"Bind Steel Hammer Workcamp on the way 53 m from Mannikiki bind:kib:steel-hammer-workcamp","o":["Deliver supplies to the Steel Hammer Workcamp collect mined Fafnite Gemstone retrieve the pickaxes from Contaminated Shulak Worker defeat Contaminated Shulak Worker Kibelisk: Gribade Highland Crossroad","Turn in Mannikiki, Steel Hammer Workcamp"]},
     {"t":"Regional quests","s":"2 to pick up · 4/6 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Pain Unending"]},
     {"t":"Clear Empty Cave","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · Lv 35–39 · 7/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Zemurru's Tomb is 300 m away · 14 open at your level"},
     {"t":"\"Mirror of Greed\": the Fire Temple run","s":"Lv 37 milestone · 1 level away · opens on \"Mirror of Greed\" · 8 quests ahead","c":"tag \"Later\"","f":"later","b":"Lv 37–39"},
@@ -121,7 +121,7 @@
   "random/L36-q69-all-A-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 36. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""}
+    {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 36. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq"}
   ],
   "random/L36-q73-lvonly-B-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -253,7 +253,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","b":"Lv 37–39","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
+    {"t":"Story: A Collective Effort","s":"0/4 objectives · then Land of Rifts","c":"primary \"Turned in\" story","b":"Lv 37–39","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump","o":["Restore the Wind Altar purify the Wind Altar (Kibelisk: Purifying Forest Coastal Cliff)","Clear around the Fire Altar eliminate the Rift Fragment defeat the Flame Rock Spider remove the Vines Corroded by Poison Blood Kibelisk: Guide Rest Stop","Restore the Fire Altar purify the Fire Altar (Kibelisk: Purifying Forest Sunny Hill)","+1 more after these"]},
     {"t":"Regional quests","s":"13 to pick up · 2 follow-ups · 0/15 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","+9 more","+11 waiting on the story Fight Poison with Poison In my game Hugo Mercenaries: Deep Shadow In my game An Invitation to the Past: Part 1 In my game An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Traveling Merchant's Conundrum In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
@@ -285,7 +285,7 @@
   ],
   "random/L37-q74-all-A-stwait": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 37. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 37. Level up first. Meanwhile: Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""}
   ],
   "random/L37-q80-before-A": [
@@ -300,7 +300,7 @@
   "random/L37-q81-before-A-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Regional quests","s":"2 in progress · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202039","x":["run A Friend's Legacy","run Bloodstained Rose"]},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 37. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 37. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
     {"t":"Buy Insignia Explosion 9 → 10","s":"Needs Lv 38 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -387,7 +387,7 @@
   ],
   "random/L38-q59-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
-    {"t":"Story: Visible Trap","s":"0/3 objectives · then Destruction Archon Underground Fortress","c":"primary \"Turned in\" story","o":["Defeat the Blades and secure a retreat defeat Blades Searcher defeat Blades Messenger Kibelisk: Fissure Cave","Fulfill Purakhi's request retrieve the unexploded bomb collect the Soulless Archon Armor Kibelisk: Shulak Street Stall","Turn in Nemon, Shulak Street Stall"]},
+    {"t":"Story: Visible Trap","s":"0/3 objectives · then Destruction Archon Underground Fortress","c":"primary \"Turned in\" story","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall","o":["Defeat the Blades and secure a retreat defeat Blades Searcher defeat Blades Messenger Kibelisk: Fissure Cave","Fulfill Purakhi's request retrieve the unexploded bomb collect the Soulless Archon Armor Kibelisk: Shulak Street Stall","Turn in Nemon, Shulak Street Stall"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202039","x":["+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins (near your story step) · Kibelisk: Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -483,7 +483,7 @@
   "random/L39-q13-rnd144p95-B-cube": [
     {"t":"Finish Lost Ruins","s":"In progress · Sealed Dungeon","c":"primary \"Cleared\" tick:g10h:lost-ruins"},
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
-    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
+    {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","bd":"Bind Galorik's Inspection Area on the way 49 m from Ulgorn bind:kib:galoriks-inspection-area","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
     {"t":"Regional quests","s":"1 to pick up · 4/5 turned in","c":"go \"Show\" rqgo:rq:2202018","x":["new Her Last Favor","+6 waiting on the story Odyle Jelly Misappropriation Investigation In my game The Great Curse-Breaking Caper In my game Blade of Vengeance In my game In the Fang Legion's Name In my game Fight Poison with Poison In my game Finders Keepers In my game"]},
     {"t":"Clear Library of Patience","s":"Basfelt Ruins · Kibelisk: Fissure Cave · Lv 30–34 · 6/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Fissure Cave is 140 m away · 3 open at your level"},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 40)","c":"tag \"Needs 1 shard\""}
@@ -566,7 +566,7 @@
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom","b":"Missed · Lv 10–12"},
     {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18"},
     {"t":"Zikel board opens","s":"Missed · Lv 20 Zikel board","c":"primary \"Done\" tick:g20:0","b":"Missed · Lv 20–21"},
-    {"t":"Story: Visible Trap","s":"0/3 objectives · then Destruction Archon Underground Fortress","c":"primary \"Turned in\" story","b":"Lv 37–39","o":["Defeat the Blades and secure a retreat defeat Blades Searcher defeat Blades Messenger Kibelisk: Fissure Cave","Fulfill Purakhi's request retrieve the unexploded bomb collect the Soulless Archon Armor Kibelisk: Shulak Street Stall","Turn in Nemon, Shulak Street Stall"]},
+    {"t":"Story: Visible Trap","s":"0/3 objectives · then Destruction Archon Underground Fortress","c":"primary \"Turned in\" story","b":"Lv 37–39","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall","o":["Defeat the Blades and secure a retreat defeat Blades Searcher defeat Blades Messenger Kibelisk: Fissure Cave","Fulfill Purakhi's request retrieve the unexploded bomb collect the Soulless Archon Armor Kibelisk: Shulak Street Stall","Turn in Nemon, Shulak Street Stall"]},
     {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 2 near your story step · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Dratona Assembly Area","s":"Basfelt Ruins (near your story step) · Kibelisk: Graverobber Campsite · Lv 30–34 · 2/7","c":"go \"Show\" areas:30","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Graverobber Campsite is 111 m away · 43 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 40)","c":"tag \"Needs 1 shard\""},
@@ -592,7 +592,7 @@
     {"t":"Clear Destruction Archons Armory and others until Lv 45","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 1/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 44 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
-    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 39. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\"","b":"Lv 37–39"},
+    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 39. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"tag \"Turn in at Lv 45\"","b":"Lv 37–39","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 40)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"}
   ],
@@ -665,7 +665,7 @@
   "random/L40-q38-before-B-rqmix": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
-    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
+    {"t":"Story: Voice of Rage","s":"0/3 objectives · then Tangled Past","c":"primary \"Turned in\" story","bd":"Bind Uruthumheim Cliff on the way 46 m from Nemon bind:kib:uruthumheim-cliff","o":["Clear the way to the Eastern Altar defeat the Balaur in front of the altar defeat the Mind-Controlled Ancient Soldier and Ranger destroy the Midsize Fafnium","Find another Nornir survivor join Gohok in front of the Eastern Altar","Turn in Nemon, in front of the Collapsed Oracle"]},
     {"t":"Regional quests","s":"3 in progress · 1/4 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["run Fight Poison with Poison","run Hugo Mercenaries: Deep Shadow","run An Invitation to the Past: Part 1","+7 waiting on the story An Invitation to the Past: Part 2 In my game The Future Within the Past In my game Hugo Mercenaries: An Old Promise In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk: Eastern Gribade Highland Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 10 open"}
@@ -679,7 +679,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
+    {"t":"Story: Striving for Coexistence","s":"0/3 objectives · then Preparations for Restoration","c":"primary \"Turned in\" story","b":"Lv 40–44","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly","o":["Get potion ingredients from the Soft Breeze Spirit gather antidote ingredients (Kibelisk: Guide Rest Stop)","Find supplies for the patients check the General Goods Chest check the Garment Chest Kibelisk: Nornir Assembly","Turn in Varron, Nornir Assembly"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202062","x":["+3 waiting on the story Fight Poison with Poison In my game Nine Wonders of Altgard: 2nd Leg In my game Finders Keepers In my game"]},
     {"t":"Clear Destroyed Scriptorium","s":"Purifying Forest (near your story step) · Kibelisk: Faded Stump · Lv 20–24 · 5/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 30 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
@@ -745,7 +745,7 @@
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
     {"t":"Clear Ascetic's Cave and others until Lv 44","s":"Impetusium Square (near your story step) · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 40. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 40. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Barahta Extermination Unit Outpost","s":"Idun's Lake · Kibelisk: Eastern Gribade Highland Cliff · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Cliff is 283 m away · 10 open"}
   ]

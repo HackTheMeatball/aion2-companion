@@ -74,7 +74,7 @@
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube","b":"Lv 20–21"},
     {"t":"Buy Heart Gore specialty","s":"Pick: Up to +20% Critical Hit when fewer targets are hit","c":"primary \"Spent\" skill"},
     {"t":"Regional quests","s":"3 to pick up · 2 follow-ups · 0/5 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance [Lv 22] | -> lock(disabled) In the Fang Legion's Name [Lv 22]","new Young Elim's Story [Lv 22] | -> lock(disabled) A Guardian's Sacrifice [Lv 22]","new Nine Wonders of Altgard: 1st Leg [Lv 22]"]},
-    {"t":"Story: Striving for Coexistence","s":"Needs Lv 26: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Striving for Coexistence","s":"Needs Lv 26: you're 21. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Nornir Assembly on the way 133 m from Varron bind:kib:nornir-assembly"},
     {"t":"Run Forest Marauder Campsite","s":"Purifying Forest (near your story step) · Kibelisk: Purifying Forest Sunny Hill · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Purifying Forest Sunny Hill is 247 m away · 4 open"},
     {"t":"Buy Heart Gore 7 → 8","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 22–24"},
     {"t":"Buy Savage Roar 8 → 9","s":"Needs Lv 22 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -129,7 +129,7 @@
   "random/L22-q36-all-A-stfull": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup"},
-    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 22. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":""}
+    {"t":"Story: Prison Break","s":"Needs Lv 24: you're 22. Level up first. Meanwhile: Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Minushan Site on the way 34 m from Hadala bind:kib:minushan-site"}
   ],
   "random/L22-q44-all-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -147,7 +147,7 @@
     {"t":"Buy Savage Roar 2 → 3","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Regional quests","s":"7 to pick up · 3 follow-ups · 0/10 turned in","c":"go \"Show\" rqgo:rq:2202016","x":["new Blade of Vengeance | -> lock(disabled) In the Fang Legion's Name","new Young Elim's Story | -> lock(disabled) A Guardian's Sacrifice","new Nine Wonders of Altgard: 1st Leg","new Fight Poison with Poison [Lv 27]","+4 more"]},
-    {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 22. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Bitter Reality","s":"Needs Lv 32: you're 22. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Briskwind Shelter on the way 63 m from Menrik bind:kib:briskwind-shelter"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 23)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
@@ -255,7 +255,7 @@
   "random/L23-q55-lvonly-B-cube": [
     {"t":"Use your Cube items: 2 Wisdom Stones + 3 crystals","s":"Open the Cube and use them, then confirm","c":"primary \"Used\" usecube"},
     {"t":"Regional quests","s":"5 to pick up · 2 follow-ups · 1 near your story step · 0/7 turned in","c":"go \"Show\" rqgo:rq:2202062","x":["new Fight Poison with Poison [Lv 27]","new Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) Hugo Mercenaries: An Old Promise [Lv 32]","new An Invitation to the Past: Part 1 [Lv 30] | -> lock(disabled) An Invitation to the Past: Part 2 [Lv 30]","new The Future Within the Past [Lv 30]","+1 more"]},
-    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 23. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 23. Level up first. Meanwhile: Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 4 open"}
   ],
   "random/L23-q64-rnd137p95-B-stready": [
@@ -385,7 +385,7 @@
     {"t":"Regional quests","s":"11 to pick up · 2 follow-ups · 9/22 turned in","c":"go \"Show\" rqgo:rq:2202023","b":"Lv 22–24","x":["new Practice Makes Perfect, Nyerk!","new A Guardian's Sacrifice","new Fight Poison with Poison [Lv 27]","new Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) Hugo Mercenaries: An Old Promise [Lv 32]","new The Future Within the Past [Lv 30]","+7 more"]},
     {"t":"Clear Treasure Hunter's Residence and others until Lv 44","s":"Dredgion Crash Site · Kibelisk: Temporary Investigation Base · Lv 10–14 · 12/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 160 m away · 1 open at your level"},
     {"t":"Enhance the Revelation Amulet","s":"Missed · Lv 16 Legions","c":"primary \"Done\" tick:g16:amulet","b":"Missed · Lv 16–18"},
-    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 24. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24"},
+    {"t":"Story: Lingering Apparitions","s":"Needs Lv 44: you're 24. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 22–24","bd":"Bind Collapsed Hall of Fame on the way 32 m from Nemon bind:kib:collapsed-hall-of-fame"},
     {"t":"Buy Quick Slice 9 → 10","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 25–26"},
     {"t":"Buy Assault Stance 5 → 6","s":"Needs Lv 25 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Determination 1 → 2","s":"Needs Lv 25 · 1 level away · single source","c":"tag \"Later\"","f":"later"},
@@ -396,7 +396,7 @@
     {"t":"Regional quests","s":"11 to pick up · 3 follow-ups · 4/18 turned in","c":"go \"Show\" rqgo:rq:2202051","x":["new Spooky Specters","new Nine Wonders of Altgard: 1st Leg | -> lock(disabled) Nine Wonders of Altgard: 2nd Leg [Lv 32]","new Fight Poison with Poison [Lv 27]","new Hugo Mercenaries: Deep Shadow [Lv 30] | -> lock(disabled) Hugo Mercenaries: An Old Promise [Lv 32]","+8 more"]},
     {"t":"Clear Destroyed Scriptorium and others until Lv 45","s":"Purifying Forest · Kibelisk: Faded Stump · Lv 20–24 · 5/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Faded Stump is 200 m away · 7 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
-    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 24. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"tag \"Turn in at Lv 45\""},
+    {"t":"Story: Forgotten Commander","s":"Needs Lv 45: you're 24. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"tag \"Turn in at Lv 45\"","bd":"Bind Latesran Eastern Root on the way 49 m from Koro bind:kib:latesran-eastern-root"},
     {"t":"Run Corrupted Forester Ruins","s":"Moslan Forest · Kibelisk: Forest Hideout · 12/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Forest Hideout is 121 m away · 1 open"}
   ],
   "random/L24-q86-all-B": [
@@ -485,7 +485,7 @@
     {"t":"Regional quests","s":"6 to pick up · 1 follow-up · 4/11 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+2 more"]},
     {"t":"Clear Dark Root Cave and others until Lv 27","s":"Dranactus · Kibelisk: Hidden Cave · Lv 25–29 · 1/5","c":"go \"Show\" areas:25","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Hidden Cave is 230 m away · 31 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
-    {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 25–26"},
+    {"t":"Story: A Collective Effort","s":"Needs Lv 27: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","b":"Lv 25–26","bd":"Bind Faded Stump on the way 29 m from Darmand bind:kib:faded-stump"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 4/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L25-q46-lvonly-A-dv": [
@@ -501,7 +501,7 @@
     {"t":"Upgrade Triniel's Dagger 1 → 2","s":"1 of your 20 shards","c":"primary \"Upgraded\" stup","b":"Lv 25–26"},
     {"t":"Regional quests","s":"10 to pick up · 3 follow-ups · 1 near your story step · 4/18 turned in","c":"go \"Show\" rqgo:rq:2202010","x":["new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow [Lv 30]","new Missing Mount","new Creion Research Assistant","new Odyle Jelly Misappropriation Investigation","new The Great Curse-Breaking Caper","+7 more"]},
     {"t":"Clear Abandoned Memorial Room and others until Lv 33","s":"Uruthumheim · Kibelisk: Abandoned Site · Lv 20–24 · 6/7","c":"go \"Show\" areas:20","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Abandoned Site is 260 m away · 6 open at your level"},
-    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 25. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Last Refuge","s":"Needs Lv 33: you're 25. Level up first. Meanwhile: Sealed Dungeons / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Graverobber Campsite on the way 128 m from Nemon bind:kib:graverobber-campsite"},
     {"t":"Buy Insignia Explosion 5 → 6","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Flash Slice 7 → 8","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Storm Rampage 8 → 9","s":"Needs Lv 26 · 1 level away","c":"tag \"Later\"","f":"later"},
@@ -516,7 +516,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":""},
+    {"t":"Story: Visible Trap","s":"Needs Lv 34: you're 25. Level up first. Meanwhile: Sealed Dungeons / Strongholds / Krao Cave (Lv 20+, item level 200)","c":"","bd":"Bind Shulak Street Stall on the way 35 m from Nemon bind:kib:shulak-street-stall"},
     {"t":"Run Sanctum Outskirts Watch","s":"Silent Hill · Kibelisk: Silent Hill Mushroom Rock · 5/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Silent Hill Mushroom Rock is 126 m away · 5 open"}
   ],
   "random/L25-q62-all-A-filters": [

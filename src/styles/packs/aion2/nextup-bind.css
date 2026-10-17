@@ -1,0 +1,10 @@
+/* The story card's one-time "Bind X" row in Next up (src/packs/aion2/cards/nextup-kinds.js story.row; 0.5 P15, S1 M2 / D1 /
+   D3): under the card's text, above its action, after a hairline. The whole row is the tick box's label; 44 px tall on
+   phones. */
+#nowStar .ns-bind { display: flex; align-items: center; gap: var(--space-10); margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--line); font-size: 13px; color: var(--fg); cursor: pointer; }
+#nowStar .ns-bind input { flex: none; margin: 0; }
+#nowStar .ns-bind > span { flex: 1; min-width: 0; }
+#nowStar .ns-bind b { font-weight: 600; }
+#nowStar .ns-bind small { display: block; color: var(--muted); font-size: 11.5px; }
+#nowStar .ns-stack.ns-phone .ns-bind { min-height: 44px; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-bind { display: none; }

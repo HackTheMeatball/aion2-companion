@@ -83,7 +83,7 @@
   ],
   "story/L36-q69-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 35–36"},
-    {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 36. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Mirror of Greed","s":"Needs Lv 37: you're 36. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq"},
     {"t":"Run Flauke Legion Outpost","s":"Basfelt Ruins · Kibelisk: Shulak Street Stall · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Shulak Street Stall is 138 m away · 8 open"},
     {"t":"Buy Insignia Explosion 9 → 10","s":"Needs Lv 38 · 2 levels away","c":"tag \"Later\"","f":"later","b":"Lv 37–39"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 4 levels away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
@@ -214,7 +214,7 @@
   ],
   "story/L37-q69-before-A": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
-    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202039","x":["+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"},
@@ -223,7 +223,7 @@
   ],
   "story/L37-q69-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
-    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202039","x":["+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Equip Savage Fang","s":"Stigma slot 4 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
     {"t":"Run Detlef Thieves Camp","s":"Western Gribade Highland · Kibelisk: Zemurru's Tomb · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Zemurru's Tomb is 180 m away · 9 open"}
@@ -237,7 +237,7 @@
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
-    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","b":"Lv 37–39","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
+    {"t":"Story: Mirror of Greed","s":"0/3 objectives · then Fafnite's Whereabouts","c":"primary \"Turned in\" story","b":"Lv 37–39","bd":"Bind Steel Hammer Merchants HQ on the way 86 m from Crobakhi bind:kib:steel-hammer-merchants-hq","o":["Go to the Fire Temple Entrance talk to Trekhi","Investigate the Fire Temple complete the Fire Temple investigation. This is your first run of the Fire Temple Expedition.","Turn in Crobakhi, Steel Hammer Merchants HQ"]},
     {"t":"Regional quests","s":"18 to pick up · 5 follow-ups · 0/24 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount","new Creion Research Assistant","+17 more","+2 waiting on the story A Friend's Legacy In my game Bloodstained Rose In my game"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 53 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 38)","c":"tag \"Needs 1 shard\""},
@@ -279,7 +279,7 @@
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill","b":"Lv 37–39"},
     {"t":"Buy Heart Gore specialty slot 2","s":"Pick: Multi-Hit on hit","c":"tag \"After the one above\""},
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
-    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":""},
+    {"t":"Story: Symbol of Liberation","s":"Needs Lv 40: you're 39. Level up first. Meanwhile: Strongholds / Fire Temple (Lv 35+, item level 500) / daily dungeon (Lv 30+)","c":"","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 9 open"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · 1 level away","c":"tag \"Later\"","f":"later","b":"Lv 40–44"}
   ],
@@ -417,14 +417,14 @@
     {"t":"Buy Insignia Explosion specialty slot 2","s":"Slot 2 open: pick a specialty","c":"tag \"After the one above\""},
     {"t":"Buy Assault Stance 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
-    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"}
   ],
   "story/L40-q74-before-B": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
     {"t":"Triniel board opens","s":"Lv 40 milestone · Triniel board","c":"primary \"Done\" tick:g40:0"},
-    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Clear Ascetic's Cave","s":"Impetusium Square · Kibelisk: Outskirts Stall · Lv 40–44 · 0/7","c":"go \"Show\" areas:40","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Outskirts Stall is 165 m away · 7 open at your level"},
     {"t":"Run Granach's Hideout","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Eastern Gribade Highland Tail Island · 3/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Eastern Gribade Highland Tail Island is 230 m away · 10 open"}
   ],
@@ -437,7 +437,7 @@
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0","b":"Missed · Lv 9"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0","b":"Missed · Lv 10–12"},
     {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
-    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","b":"Lv 40–44","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
+    {"t":"Story: Symbol of Liberation","s":"0/5 objectives · then Daybreak Society","c":"primary \"Turned in\" story","b":"Lv 40–44","bd":"Bind Zemurru's Tomb on the way 27 m from Amunta bind:kib:zemurrus-tomb","o":["Collect materials to repair Zemurru's Totem search the Pile of Broken Totems collect materials from Drakan Patrol Totem retrieve the Drakan Patrol Sorcery Talisman defeat Drakan Patrol Totem Kibelisk: Eastern Gribade Highland Cliff","Deliver totem restoration materials to Amunta talk to Amunta (Kibelisk: Amunta's Hideout)","Go to the Steel Hammer Temporary Trading Post meet with Amunta (Kibelisk: Steel Hammer Temporary Trading Post)","+2 more after these"]},
     {"t":"Regional quests","s":"19 to pick up · 6 follow-ups · 0/26 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters","new Hugo Mercenaries: Past and Present | -> lock(disabled) Hugo Mercenaries: Deep Shadow","new Missing Mount | -> lock(disabled) A Friend's Legacy","+19 more"]},
     {"t":"Clear Destruction Archons Armory","s":"Eastern Gribade Highland (near your story step) · Kibelisk: Steel Hammer Temporary Trading Post · Lv 35–39 · 0/10","c":"go \"Show\" areas:35","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Steel Hammer Temporary Trading Post is 290 m away · 60 open at your level"},
     {"t":"Equip Triniel's Dagger","s":"Stigma slot 1 is open · needs 1 shard (+1 at Lv 41)","c":"tag \"Needs 1 shard\""},
