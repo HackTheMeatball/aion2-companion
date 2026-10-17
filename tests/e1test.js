@@ -131,6 +131,53 @@ const cards = p => p.evaluate(() => [...document.querySelectorAll('#nowStar .ns-
   ok('crossing 860 px up: same markup as a fresh load at 1100', (await layoutHtml()) === wideFresh && (await order()).dom === wideOrder.dom);
   await p.setViewportSize({ width: 390, height: 850 }); await p.waitForTimeout(400);
   ok('crossing 860 px down: same markup as the first load at 390', (await layoutHtml()) === narrowHtml);
+  /* 12b. Next up on phones (0.5 P3, phone-layout 3.4): at 390 px with touch, the owner's Lv 27 save. The featured card's
+     actions are full width and 44 px, the "i" never follows the title, there is no nested scroll, and in Advanced the
+     "1 of N" pager reaches every card by button and by keyboard; Basic has no pager. Above 600 px none of it. */
+  {
+    const { flatFixture } = require('./support/save');
+    const pctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }), pp = await pctx.newPage(); pp.on('pageerror', e => errs.push('phone: ' + e.message));
+    await pp.goto(FILE);
+    const load = async mode => { await writeSave(pp, { ...flatFixture('fixture-user-v285.flat.json'), mode }, { fresh: true }); await pp.reload(); await pp.waitForTimeout(450); };
+    const look = () => pp.evaluate(() => { const r = e => e.getBoundingClientRect(), w = document.getElementById('nsqWrap'), cs = [...w.children], f = w.querySelector('.ns-card.first'), fr = r(f), pad = parseFloat(getComputedStyle(f.querySelector('.ns-mhead')).paddingLeft);
+      const btns = [...f.querySelectorAll('.meta button, .meta a')].filter(x => x.offsetParent).map(x => ({ h: Math.round(r(x).height), w: Math.round(r(x).width) }));
+      const h3 = f.querySelector('h3'), ib = f.querySelector('.nsinfo');
+      return { n: cs.length, cur: cs.indexOf(f), firsts: w.querySelectorAll('.ns-card.first').length, phone: w.classList.contains('ns-phone'), pg: (document.querySelector('#nowStar .ns-pgn') || {}).textContent || null,
+        inner: Math.round(fr.width - 2 * pad - 2), btns, iInTitle: document.querySelectorAll('#nowStar h3 .nsinfo').length, iLine: ib && ib.offsetParent ? { iTop: Math.round(r(ib).top), h3Bottom: Math.round(r(h3).bottom) } : null,
+        nested: w.scrollHeight > w.clientHeight + 1 || getComputedStyle(w).overflowY !== 'visible', compactActs: cs.filter(c => c !== f).some(c => [...c.querySelectorAll('.meta button, .ns-extra button')].some(x => x.offsetParent)),
+        sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+    await load('advanced');
+    let m = await look();
+    ok('phone Advanced Lv 27: featured card first, its actions >= 44 px tall and as wide as the card', m.phone && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= m.inner - 1), m);
+    ok('phone Advanced Lv 27: no "i" after a title, no nested scroll, no actions on compact cards, no sideways scroll', !m.iInTitle && !m.nested && !m.compactActs && m.sw <= m.iw, m);
+    ok(`phone Advanced Lv 27: pager says "1 of ${m.n}"`, m.n > 1 && m.pg === `1 of ${m.n}`, m.pg);
+    const names = await pp.evaluate(() => ({ group: document.querySelector('#nowStar .ns-pg').getAttribute('aria-label'), b: [...document.querySelectorAll('#nowStar [data-nspg]')].map(x => x.getAttribute('aria-label')), live: document.querySelector('#nowStar .ns-pgn').getAttribute('aria-live') }));
+    ok('phone pager: spoken names (group, Previous card, Next card), the count is announced', names.group === 'Next up cards' && names.b.join() === 'Previous card,Next card' && names.live === 'polite', names);
+    const seen = [], bad = [];
+    for (let i = 0; i < m.n; i++) { const x = await look(); seen.push(x.cur);
+      if (x.pg !== `${i + 1} of ${m.n}` || x.firsts !== 1 || x.iInTitle || (x.iLine && x.iLine.iTop < x.iLine.h3Bottom) || !x.btns.every(y => y.h >= 44 && y.w >= x.inner - 1)) bad.push({ i, ...x });
+      await pp.click('#nowStar [data-nspg="1"]'); await pp.waitForTimeout(80); }
+    m = await look();
+    ok('phone pager: "Next card" reaches every card in order, then wraps to the first', seen.join() === [...Array(m.n).keys()].join() && m.cur === 0 && !bad.length, { seen, bad: bad.slice(0, 3) });
+    await pp.click('#nowStar [data-nspg="-1"]'); await pp.waitForTimeout(80);
+    ok('phone pager: "Previous card" from the first goes to the last', (await look()).cur === m.n - 1);
+    await pp.focus('#nowStar [data-nspg="1"]'); await pp.keyboard.press('ArrowRight'); await pp.waitForTimeout(80);
+    const k1 = await look(), kf = await pp.evaluate(() => document.activeElement.dataset.nspg);
+    await pp.keyboard.press('ArrowLeft'); await pp.keyboard.press('ArrowLeft'); await pp.waitForTimeout(80);
+    const k2 = await look();
+    ok('phone pager: arrow keys move it, focus stays on the pager', k1.cur === 0 && k2.cur === m.n - 2 && kf === '1' && await pp.evaluate(() => !!document.activeElement.closest('#nowStar .ns-pg')), { k1: k1.cur, k2: k2.cur, kf });
+    /* the featured card's action works where the pager put it: "Spent" on the first skill card buys the points */
+    await load('advanced');
+    const st0 = await pp.evaluate(() => JSON.stringify(char(state).checks));
+    await pp.click('#nowStar .ns-card.first .meta button'); await pp.waitForTimeout(800);
+    ok('phone: the featured card\'s action completes it', await pp.evaluate(() => JSON.stringify(char(state).checks)) !== st0);
+    await load('basic');
+    m = await look();
+    ok('phone Basic Lv 27: no pager, the first card featured with full-width 44 px actions, no nested scroll', m.phone && m.pg === null && m.cur === 0 && m.btns.length > 0 && m.btns.every(x => x.h >= 44 && x.w >= m.inner - 1) && !m.nested, m);
+    await pp.setViewportSize({ width: 601, height: 844 }); await pp.waitForTimeout(300);
+    ok('601 px: the desktop stack (no pager, no phone layout)', await pp.evaluate(() => !document.querySelector('#nowStar .ns-pg, #nowStar .ns-phone') && !!document.querySelector('#nowStar h3 .nsinfo, #nowStar .ns-stack')));
+    await pctx.close();
+  }
   /* 13. Drawer focus */
   await p.setViewportSize({ width: 1500, height: 1000 }); await p.reload(); await p.waitForTimeout(300);
   await p.click('#sdTab'); await p.waitForTimeout(100);
