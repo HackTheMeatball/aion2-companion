@@ -45,6 +45,8 @@ function installProbe([KEY, EARLY]) {
       const info = c.querySelector('.ns-info'); if (info) r.i = T(info);
       /* the story card's "Bind X" row (0.5 P15): its text and the key its tick writes */
       const bind = c.querySelector('.ns-bind'); if (bind) { const cb = bind.querySelector('input[data-nsbind]'); r.bd = `${T(bind)} ${cb ? cb.dataset.nsbind : ''}`.trim(); }
+      /* its travel line (0.5 P16): the text and the target "I'll walk" hides */
+      const tele = c.querySelector('.ns-tele'); if (tele) { const wb = tele.querySelector('[data-nswalk]'); r.tl = `${T(tele.querySelector('span'))} ${wb ? wb.dataset.nswalk : ''}`.trim(); }
       const ex = c.querySelector('.ns-extra');
       if (ex) r.x = $$('li.qg', ex).map(li => li.classList.contains('rq-aux') || li.classList.contains('more') ? T(li)
         : $$('.ql', li).map(q => { const cb = q.querySelector('.q-cb'), nm = q.querySelector('a, span[title]');

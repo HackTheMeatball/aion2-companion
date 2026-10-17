@@ -129,12 +129,18 @@ function renderNow() {
 }
 /* The track toggle (0.5 P14, S1): Fastest / Completionist, the view setting `track` (top-level, per device, not synced),
    written only by a click. Advanced only, and hidden while no record has a non-core route (tracksDiffer; owner, S1 Q7,
-   DECISIONS 2026-10-17). Under it the drawbacks line, the pack's words ("track.drawbacks"; none: no line). */
+   DECISIONS 2026-10-17). Under it the drawbacks line, the pack's words ("track.drawbacks"; none: no line). After them
+   the pack's own view settings ("now.opts", 0.5 P16; S1 Q6': in this row in every Advanced frame, never in Basic). */
 function trackHTML() {
-  if (isBasic() || !rankChangeOn("trackFilter") || !tracksDiffer()) return "";
-  const t = trackOf(state), R = nowR(), dl = R["track.drawbacks"] ? R["track.drawbacks"](t, nowCtx()) : "";
-  const b = (v, txt) => `<button type="button" class="ns-trk${t === v ? " on" : ""}" data-nstrack="${v}" aria-pressed="${t === v}">${txt}</button>`;
-  return `<div class="ns-opts"><div class="ns-seg" role="group" aria-label="Track">${b("fastest", "Fastest")}${b("completionist", "Completionist")}</div>${dl ? `<p class="ns-drawb">${dl}</p>` : ""}</div>`;
+  if (isBasic()) return "";
+  const R = nowR(), po = R["now.opts"] ? R["now.opts"](nowCtx()) : "";
+  let tk = "";
+  if (rankChangeOn("trackFilter") && tracksDiffer()) {
+    const t = trackOf(state), dl = R["track.drawbacks"] ? R["track.drawbacks"](t, nowCtx()) : "";
+    const b = (v, txt) => `<button type="button" class="ns-trk${t === v ? " on" : ""}" data-nstrack="${v}" aria-pressed="${t === v}">${txt}</button>`;
+    tk = `<div class="ns-seg" role="group" aria-label="Track">${b("fastest", "Fastest")}${b("completionist", "Completionist")}</div>${dl ? `<p class="ns-drawb">${dl}</p>` : ""}`;
+  }
+  return tk || po ? `<div class="ns-opts">${tk}${po}</div>` : "";
 }
 /* The phone pager: d = -1 / +1, round the list. Focus stays on the pager button that was used (from the keyboard
    elsewhere in the card it moves to the new card's control). */

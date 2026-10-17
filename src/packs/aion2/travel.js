@@ -2,7 +2,7 @@
    where the player was (aion2Place, the pack's `place` for src/core/place.js whereNow), which Kibelisks are bound (§8.1),
    the one-time "Bind X" row (§8.2) and teleport vs walk (§8.3). All derived from the save and the rules
    (TRAVEL_RULES: rule:kibelisk-bind-radius, rule:kibelisk-nudge-radius, rule:teleport-gain), never stored. The story card's
-   "Bind X" row (0.5 P15, nextup.js aion2StoryFields) calls nudgeOf; teleportOf waits for P16.
+   "Bind X" row (0.5 P15, nextup.js aion2StoryFields) calls nudgeOf, its travel line (0.5 P16) teleportOf.
 
    Points are NODE_PLACE's { map, x, y, anchor, m }: anchor = the nearest Kibelisk's registry id, m = the source's metres
    to it. Story objectives have no points yet (design §3, S1), so an objective places the player only by its Kibelisk's
@@ -109,6 +109,13 @@ export function nudgeOf(c, { R = TRAVEL_RULES.bindRadius, nudge = TRAVEL_RULES.n
 }
 
 /* ---------- Teleport vs walk (design §8.3) ---------- */
+/* The story card's target: the current quest's turn-in while it isn't turned in, { zone (its Kibelisk's, else the
+   quest's), pt, to (the quest's node id: what "I'll walk" hides), npc (the turn-in's NPC or null) }, else null. */
+export function storyTargetOf(c) {
+  if (!c.quest || c.storyEnd === c.quest) return null;
+  const x = travelNode(c.quest), T = x && x.P && x.P.pts.turnin; if (!T) return null;
+  return { zone: (KIBELISKS[T.anchor] || {}).zone || x.P.zone, pt: T, to: x.id, npc: (QUEST_LOC[c.quest] || {}).turnin || null };
+}
 /* For a target { zone, pt } (pt a NODE_PLACE point) from here (whereNow): teleport when the target's Kibelisk is bound and
    either the walk is known and at least the teleport gain longer than the run from the Kibelisk, or the walk is unknown
    (another map, or no position) and here is a known zone other than the target's. o.preferRun (the view setting) and

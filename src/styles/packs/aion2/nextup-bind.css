@@ -8,3 +8,16 @@
 #nowStar .ns-bind small { display: block; color: var(--muted); font-size: 11.5px; }
 #nowStar .ns-stack.ns-phone .ns-bind { min-height: 44px; }
 #nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-bind { display: none; }
+/* The travel line (0.5 P16, S1 M3 / D2 / D4): the same place and hairline as the Bind row, the text then a quiet
+   "I'll walk" (44 px on phones). "Prefer running" (S1 Q6'): a labelled box in the Advanced options row. */
+#nowStar .ns-tele { display: flex; align-items: center; gap: var(--space-10); margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--line); font-size: 13px; color: var(--fg); }
+#nowStar .ns-tele > span { flex: 1; min-width: 0; }
+#nowStar .ns-tele b { font-weight: 600; }
+#nowStar .ns-walk { flex: none; padding: var(--space-4) var(--space-10); font: 600 12px var(--body); color: var(--muted); background: none; border: 1px solid var(--line); border-radius: var(--radius-8); cursor: pointer; }
+#nowStar .ns-walk:hover { color: var(--fg); }
+#nowStar .ns-walk:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#nowStar .ns-stack.ns-phone .ns-walk { min-height: 44px; }
+#nowStar .ns-stack.ns-phone .ns-card:not(.first) .ns-tele { display: none; }
+#nowStar .ns-pref { display: inline-flex; align-items: center; gap: var(--space-6); font-size: 12.5px; color: var(--muted); cursor: pointer; }
+#nowStar .ns-pref input { margin: 0; }
+@media (pointer: coarse) { #nowStar .ns-pref { min-height: 44px; } }

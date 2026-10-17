@@ -13,11 +13,13 @@
    12. Nudge: the "Bind X" row is the oracle's on every story position × {no ticks, every objective, everything done} and
        on every state checked: only for R < m ≤ the nudge radius (both from rules.json), never for a Kibelisk the data
        binds, at most one story position per Kibelisk.
+   13. Teleport line (0.5 P16, travelAdvice): the story card's travel line is the oracle's; never with preferRun, never
+       for an unbound Kibelisk, never a distance claim across maps, only on the story card; its metres are the data's.
    14. Deterministic after merge: whereNow(merge(a, b)) = whereNow(merge(b, a)) per slot on the sync suite's pairs.
    15. Nothing written: whereNow, boundSet, nudgeOf, teleportOf and rankNext (every ranking switch off, and on) run on
        deep-frozen saves and leave them as they were.
-   9 (Ascension first) is next-up.test.mjs's invariant 3, enforced since 0.5 P12. (10 and 13 come with the steps that
-   build what they check: trackFilter, travelAdvice.) */
+   9 (Ascension first) is next-up.test.mjs's invariant 3, enforced since 0.5 P12. (10 comes with the step that builds
+   what it checks: trackFilter.) */
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { loadPlaceOracle } from '../support/oracle.mjs';
@@ -104,7 +106,9 @@ export default (test, M, X) => {
   test('8. location only reorders inside a phase: three places of the same save, the same card kinds in order; only the rq order and the rq / sd / sh picks differ', () => {
     const cases = loaded.filter(x => x.c.mt && share('in8', x, x.fam === 'loc' || x.fam === 'bind' ? 1 : x.fam ? 0.3 : 0.02)), bad = [];
     let moved = 0, picks = 0;
-    const norm = a => a.kind === 'rq' ? { ...a, act: null, open: [...a.open].sort((x, y) => x.k < y.k ? -1 : 1) }
+    /* the story card's travel line (0.5 P16, travelAdvice) reads the place by design (invariant 13 checks it); it adds a
+       line, never moves a card */
+    const norm = a => a.kind === 'story' ? { ...a, tele: null } : a.kind === 'rq' ? { ...a, act: null, open: [...a.open].sort((x, y) => x.k < y.k ? -1 : 1) }
       : a.kind === 'sd' ? { ...a, pick: null, loc: null, band: null, act: null } : a.kind === 'sh' ? { ...a, pick: null } : a;
     for (const { id, s } of cases) {
       const c0 = M.char(s), at = mt => ({ ...s, chars: { ...s.chars, [s.current]: deepFreeze({ ...c0, mt }) } });
@@ -206,6 +210,38 @@ export default (test, M, X) => {
     assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${n} states`);
     console.log(`     ${n} states, ${rows} with the row`);
     assert.ok(X.only || rows > 0, 'the row shows on some state');
+  });
+
+  /* 13 (0.5 P16, travelAdvice on): the story card's travel line is the oracle's on every family state, a hashed share of
+     the rest and every dated copy we can rank (as recorded, and with preferRun on); never with preferRun, never for a
+     Kibelisk the data doesn't bind, never a distance claim across maps, never on a card other than the story card (so
+     never on an Ascension step), the metres are the turn-in's data metres; none with travelAdvice off */
+  test('13. teleport line: the oracle\'s; never with preferRun, never unbound, never cross-map on distance, never on an Ascension step; metres = the data', () => {
+    const bad = []; let n = 0, lines = 0, dist = 0, zone = 0;
+    const rank = s => M.rankNext(s, { basic: s.mode === 'basic' });
+    try {
+      M.setRankChanges(null);
+      for (const { id, s, c } of loaded.filter(x => x.s && share('tele', x, x.fam ? 1 : 0.1))) { n++;
+        const r = rank(s), st = r.find(a => a.kind === 'story') || {}, t = st.tele || null, here = P.whereNow(c);
+        r.filter(a => a.kind !== 'story' && a.tele).forEach(a => bad.push(`${id}: a travel line on a ${a.kind} card`));
+        const o = P.teleport(c, here, { preferRun: s.preferRun === true });
+        const a2 = t && { kib: t.kib, m: t.m, walk: t.walk };
+        if (st.v === 'obj' && JSON.stringify(a2) !== JSON.stringify(o)) bad.push(`${id}: app ${JSON.stringify(a2)} / oracle ${JSON.stringify(o)}`);
+        if (!t) continue;
+        lines++; if (t.walk === null) zone++; else dist++;
+        if (!P.boundSet(c).has(t.kib)) bad.push(`${id}: a line for ${t.kib}, which the data doesn't bind`);
+        const T = P.turnin(c.quest);
+        if (!T || T.anchor !== t.kib || T.m !== t.m) bad.push(`${id}: ${t.m} m to ${t.kib}, the data's turn-in says ${JSON.stringify(T)}`);
+        if (t.walk !== null && !(here && here.pt && T.map && here.pt.map === T.map)) bad.push(`${id}: a distance claim across maps (${JSON.stringify(here)} → ${JSON.stringify(T)})`);
+        if (t.to !== S[S.findIndex(([, q]) => q === c.quest)][0]) bad.push(`${id}: "I'll walk" target ${t.to} is not ${c.quest}'s node`);
+        if (rank({ ...s, preferRun: true }).some(a => a.tele)) bad.push(`${id}: a line with preferRun`);
+        M.setRankChanges(ALL_RANK.filter(k => k !== 'travelAdvice')); if (rank(s).some(a => a.tele)) bad.push(`${id}: a line with travelAdvice off`);
+        M.setRankChanges(null);
+      }
+    } finally { M.setRankChanges(null); }
+    assert.deepEqual(bad.slice(0, 5), [], `${bad.length} of ${n} states`);
+    console.log(`     ${n} states, ${lines} with the line (${dist} by distance, ${zone} by zone)`);
+    assert.ok(X.only || lines > 0, 'the line shows on some state');
   });
 
   test('14. deterministic after merge: whereNow(merge(a, b)) = whereNow(merge(b, a)) per slot, and the oracle\'s, on the sync suite\'s pairs', () => {

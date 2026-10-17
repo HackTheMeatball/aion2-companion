@@ -7,7 +7,9 @@
    Keys with a dot are hooks of the engine cards, not card kinds:
    - story.meanwhile(m, ctx) → html: the story card's "Meanwhile" list (m = the pack's story.meanwhile object)
    - story.where(card, ctx) → html: where the story card's objectives send you, or ""
-   - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row), or ""
+   - story.row(card, ctx) → html: a row inside the story card under its text, above its action (the "Bind X" row or the
+     travel line), or ""
+   - now.opts(ctx) → html: the pack's controls in the Advanced options row under the header ("Prefer running"), or ""
    - now.act(act, ctx) → true when handled: a data-now action (called before the engine's; false = the engine goes on)
    - now.click(e, ctx) → true when handled: a click on the pack's own controls inside Next up (the regional quests list)
    - now.toggle(e): a toggle event inside Next up (the "+N waiting on the story" fold)
@@ -17,7 +19,7 @@
 import { char } from "../../../core/state.js";
 import { chainsOn, openOf } from "../../../core/requirements.js";
 import { MAP_ICO, rqTicked, snoozeToggle } from "../../../cards/milestones.js";
-import { capFirst, isBasic } from "../../../cards/nextup.js";
+import { capFirst, isBasic, renderNow } from "../../../cards/nextup.js";
 import { pageState as state, pageSave as save, pageUpdate as update, pageMainEl as mainEl, pageSMOOTH as SMOOTH, pageSD_RW as SD_RW, pageSH_REWARD as SH_REWARD, pageNO_AREA as NO_AREA, pageSpCostTxt as spCostTxt, pageRqReqOf as rqReqOf, pageSpecPickOf as specPickOf, pageMapFocus as mapFocus, pageAion2QuestMap as aion2QuestMap, pageGoAreas as goAreas, pageCubeClick as cubeClick, pageStTickClick as stTickClick, pageStUpClick as stUpClick, pageStLvClick as stLvClick, pageSpMini as spMini, pageStIco as stIco, pageDvShort as dvShort, pageQProg as qProg } from "../../../cards/page.js";
 
 /* "Not in game yet" in Next up (compact): eye with a slash. */
@@ -36,6 +38,9 @@ const spSlotSub = x => { const p = specPickOf(char(state), x); if (p) return `Pi
   return `${open ? `Slot ${x.slot} open: pick` : "Pick"} a specialty${q ? ` · guide pick (${q.t}) at skill Lv ${q.lv}` : ""}`; };
 const nsBar = (d, n, lbl) => `<span class="nsq-bar"><span style="width:${d / n * 100}%"></span></span><span class="nsq-barl">${lbl}</span>`;
 /* Zone (and whether it's where the story sends you) · nearest Kibelisk. */
+/* "I'll walk" (0.5 P16, design §8.3, Q4): the targets (story quest node ids) the player chose to walk to, this session only */
+const teleWalked = new Set();
+const teleShown = a => !!a.tele && !teleWalked.has(a.tele.to);
 const nsWhere = (area, kib, hereArea) => [area !== NO_AREA ? area + (area === hereArea ? " (near your story step)" : "") : "", kib ? `<span class="nw">Kibelisk: ${kib}</span>` : ""].filter(Boolean).join(" · ");
 
 /* The regional quests card's list. Chains: a follow-up sits under the quest that unlocks it (→), so it's clear what to finish first. */
@@ -99,12 +104,19 @@ export const aion2NowRenderers = {
     if (m.ex) xs.push(`${m.ex.name} (Lv ${m.ex.lv}+${m.ex.il ? `, item level ${m.ex.il}` : ""})`);
     if (m.dd != null) xs.push(`daily dungeon (Lv ${m.dd}+)`);
     return xs.join(" / "); },
-  "story.where": a => a.kib ? `<span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "",
+  /* the Kibelisk hint; the travel line replaces it while shown (Q11) */
+  "story.where": a => a.kib && !teleShown(a) ? `<span class="nw">Kibelisk: ${a.kib.kib}${a.kib.m ? ` (${a.kib.m} m)` : ""}</span>` : "",
   /* The one-time "Bind X" row (0.5 P15, S1 M2 / D1 / D3; design §8.2): the whole row is the tick box's label, so the box
      is named by its text. The metres are the data's (the turn-in's distance to that Kibelisk). Ticking writes
-     checks["bind:<kib id>"] ("now.click"). */
-  "story.row": a => { const b = a.bind; if (!b) return "";
-    return `<label class="ns-bind"><input type="checkbox" data-nsbind="${b.key}"><span>Bind <b>${b.name}</b> on the way<small>${b.m} m from ${b.npc || "the turn-in"}</small></span></label>`; },
+     checks["bind:<kib id>"] ("now.click"). Else the travel line (0.5 P16, S1 M3 / D2 / D4; design §8.3): "Teleport to X
+     (1 scroll), then N m", N the data's metres, never the walk; "I'll walk" hides it for that target this session. The
+     two never meet: the row is for an unbound Kibelisk, the line for a bound one. */
+  "story.row": a => { const b = a.bind, t = a.tele;
+    if (b) return `<label class="ns-bind"><input type="checkbox" data-nsbind="${b.key}"><span>Bind <b>${b.name}</b> on the way<small>${b.m} m from ${b.npc || "the turn-in"}</small></span></label>`;
+    if (!teleShown(a)) return "";
+    return `<div class="ns-tele"><span>Teleport to <b>${t.name}</b> (1 scroll), then ${t.m} m</span><button type="button" class="ns-walk" data-nswalk="${t.to}" aria-label="I will walk to ${t.npc || "the turn-in"}">I'll walk</button></div>`; },
+  /* "Prefer running" (0.5 P16, S1 Q6'): the view setting preferRun, in the Advanced options row; no travel line while on */
+  "now.opts": () => `<label class="ns-pref"><input type="checkbox" data-nsprefer${state.preferRun === true ? " checked" : ""}><span>Prefer running</span></label>`,
   "now.act": a => {
     if (a === "usecube") { char(state).stones = (char(state).stones || 0) + (char(state).pendSt || 0); char(state).dvTotal = (char(state).dvTotal || 0) + (char(state).pendCr || 0); char(state).pendSt = 0; char(state).pendCr = 0; save(); update(); return true; }
     if (a.startsWith("tick:")) { const k = a.slice(5); if (char(state).areaRun) delete char(state).areaRun[k];
@@ -126,6 +138,12 @@ export const aion2NowRenderers = {
     const bb = e.target.closest("input[data-nsbind]");
     if (bb) { const k = bb.dataset.nsbind; if (/^bind:/.test(k) && !char(state).checks[k]) { char(state).checks[k] = true; save(); update(); } return true; }
     if (e.target.closest(".ns-bind")) return true;
+    /* "I'll walk": in memory only (Q4), nothing saved */
+    const wb = e.target.closest("[data-nswalk]"); if (wb) { teleWalked.add(wb.dataset.nswalk); renderNow(); return true; }
+    /* "Prefer running": stored only by this click (absent: off) */
+    const pb = e.target.closest("input[data-nsprefer]");
+    if (pb) { if (pb.checked) state.preferRun = true; else delete state.preferRun; save(); update(); return true; }
+    if (e.target.closest(".ns-pref")) return true;
     const zb = e.target.closest("[data-snz]"); if (zb) { e.preventDefault(); snoozeToggle(zb.dataset.snz); return true; }
     const ub = e.target.closest("[data-unsnz]"); if (ub) { e.preventDefault(); ub.dataset.unsnz.split("|").forEach(k => { if (char(state).rqSnooze) delete char(state).rqSnooze[k]; }); save(); update(); return true; }
     const ig = e.target.closest("[data-rqig]"); if (ig) { e.preventDefault(); const k = ig.dataset.rqig; char(state).started = char(state).started || {};
