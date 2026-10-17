@@ -99,6 +99,45 @@ jobs:
               kept.push(l);
             }
             lines = kept;
+            // Auto-queue (2026-10-17: after P3c merged nothing was queued until the hourly planner ran, so 0.4 sat idle).
+            // An open item issue titled "<minor> <key>: ..." (e.g. "0.4 P2b: ...", or "Release 0.4.0 ..." as key R) whose body holds its own queue line
+            // ("- [next] #N ...") is queued here once every key on its "After:" line names a closed item of the same
+            // minor. "After: everything" waits for all other items of the minor. A key that matches no item (or an
+            // After line that can't be read) leaves it for the planner.
+            const items = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
+              .filter((i) => !i.pull_request)
+              .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
+              .filter((x) => x.m.length === 3)
+              .map(({ i, m }) => ({ n: i.number, ver: m[1], key: m[2], open: i.state === 'open', body: i.body || '' }));
+            const keyed = new Map(items.map((x) => [`${x.ver} ${x.key}`, x]));
+            const listed = new Set(lines.flatMap((l) => { const q = l.match(/^- \[[^\]]+\] #(\d+)/); return q ? [Number(q[1])] : []; }));
+            const queued = [];
+            for (const x of items.filter((y) => y.open && !listed.has(y.n)).sort((a, b) => a.n - b.n)) {
+              const ql = x.body.split('\n').find((l) => l.startsWith(`- [next] #${x.n} `));
+              const after = x.body.match(/\bAfter:\s*([^.(\n]*)/);
+              if (!ql || !after) continue;
+              let deps;
+              if (/everything|\ball\b/i.test(after[1])) deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
+              else {
+                const keys = [];
+                for (const t of after[1].split(/[,\s]+/).filter(Boolean)) {
+                  const r = t.match(/^(P\d+)([a-z])[–-](?:P\d+)?([a-z])$/); // P5a–d or P5a–P5d
+                  if (r) for (let c = r[2].charCodeAt(0); c <= r[3].charCodeAt(0); c++) keys.push(r[1] + String.fromCharCode(c));
+                  else if (/^(?:P\d+[a-z]?|S\d+)$/.test(t)) keys.push(t);
+                  else if (!/^(?:and|none|nothing)$/i.test(t)) { keys.length = 0; keys.push('?' + t); break; }
+                }
+                deps = keys.map((k) => keyed.get(`${x.ver} ${k}`));
+                if (deps.some((d) => !d)) { core.info(`#${x.n}: After line "${after[1].trim()}" not understood; left for the planner`); continue; }
+              }
+              if (deps.some((d) => d.open)) continue;
+              queued.push(ql.trim());
+            }
+            if (queued.length) {
+              let at = lines.findIndex((l) => l.startsWith('<!-- One line per item'));
+              for (let k = at + 1; at >= 0 && k < lines.length && /^- \[/.test(lines[k]); k++) at = k;
+              if (at < 0) core.warning('#114 has no queue comment line; auto-queue skipped');
+              else { lines.splice(at + 1, 0, ...queued); pruned = true; core.notice(`queued: ${queued.join(' | ')}`); }
+            }
             const openPrs = refs.length;
             // A started item that already has its PR open is counted once, through the PR.
             const started = lines.filter((l) => { const s = l.match(/^- \[started [^\]]*\] #(\d+)/);
