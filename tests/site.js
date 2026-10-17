@@ -55,6 +55,15 @@ const checkReport = (label, m, want) => {
     ok('head: standards mode, UTF-8, title, viewport, description, canonical, theme-color, favicon, manifest, Open Graph, lang',
       head.mode === 'CSS1Compat' && head.charset === 'UTF-8' && head.title === 'Daeva Companion · Asmodian Assassin' && /width=device-width/.test(head.viewport) && head.desc &&
       head.canonical === 'https://daevacompanion.com/' && head.theme === '#110c13' && /favicon\.svg$/.test(head.icon) && /manifest\.webmanifest$/.test(head.manifest) && head.og && head.lang === 'en', head);
+    /* element budget (0.4 P7; docs/ARCHITECTURE.md §4): fresh browser, 390 px, no save */
+    {
+      const ctx390 = await b.newContext({ viewport: { width: 390, height: 800 } }), p390 = await ctx390.newPage();
+      await p390.goto(CFG.CUR); await p390.waitForTimeout(600);
+      const els = await p390.evaluate(() => document.querySelectorAll('*').length), ELEMENT_MAX = 6200;
+      console.log(`  elements at 390 px, fresh: ${els} / ${ELEMENT_MAX} (${(100 * els / ELEMENT_MAX).toFixed(0)}%)`);
+      ok(`budget: at most ${ELEMENT_MAX} elements after load at 390 px with no save`, els <= ELEMENT_MAX, els);
+      await ctx390.close();
+    }
     ok('brand: apple-touch-icon link, Daeva Companion lockup in the header', /icons\/apple-touch-icon\.png$/.test(head.touch) && head.brand, head);
     const foot = await p.evaluate(() => { const f = document.querySelector('.fanline'), links = f ? [...f.querySelectorAll('a')] : [];
       return { text: f ? f.innerText : '', links: links.map(a => [a.textContent, a.getAttribute('href'), a.getAttribute('rel')]) }; });
