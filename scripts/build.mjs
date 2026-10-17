@@ -18,7 +18,7 @@
    The shell's <link rel="stylesheet" href="styles/X.css"> lines become <style> elements holding the file as it is (its
    '@import "Y.css";' lines replaced by those files), and
    its <script type="module" src="X.js"></script> lines become one classic <script> each holding the esbuild bundle of
-   that entry (no minification, no tree shaking, so every top-level name stays a page global, as before modules).
+   that entry (whitespace and syntax minified, no renaming, no tree shaking, so every top-level name stays a page global, as before modules).
    src/index.html is not runnable on its own: build, then `npm run serve`.
 
    dist/                       GitHub Pages site
@@ -42,7 +42,7 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statS
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
-import { build } from 'esbuild';
+import { build, transform } from 'esbuild';
 import { genModule, generatedData, generatedNames, staleGenerated } from './generated-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -112,7 +112,11 @@ for (const [e, js] of Object.entries(bundles)) {
   for (const n of out) { const base = n.replace(/\d+$/, ''); if (base !== n && !out.has(base) && PAGE_NAMES.has(base) && !PAGE_NAMES.has(n))
     die(`src/${e}: esbuild renamed "${base}" (${PAGE_NAMES.get(base)}) to "${n}": a module uses "${base}" without importing it`); }
 }
-const bundle = entry => bundles[entry];
+/* whitespace and syntax minification of each checked bundle (0.5 P20), identifiers untouched: a separate transform, since
+   minifySyntax inside the bundling step renames top-level names (update → update3) */
+const minified = Object.fromEntries(await Promise.all(Object.entries(bundles).map(async ([e, js]) =>
+  [e, (await transform(js, { loader: 'js', minifyWhitespace: true, minifySyntax: true, minifyIdentifiers: false, charset: 'utf8', legalComments: 'inline' }).catch(x => die(`src/${e}: minify: ${x.message}`))).code])));
+const bundle = entry => minified[entry];
 /* @import lines (0.4 P4d): a line '@import "X.css";' in a stylesheet is replaced by that file (path relative to the importing
    file) as it is, recursively, so src/styles/index.css (app.css, then one file per card) inlines as one stylesheet. A
    missing file or one imported twice stops the build; so does a .css file under src/styles/ that nothing links or imports. */
