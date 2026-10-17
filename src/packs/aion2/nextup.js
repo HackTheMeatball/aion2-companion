@@ -18,6 +18,15 @@ import { areaOpen, dvNeed, dvNext, dvSpent, rqStatus, rqWaitsOnStory, shardsFrom
 import { blockerText } from "../../core/blockers.js";
 import { doneOf, gatesOf, openBut, qProgOf } from "../../core/requirements.js";
 
+/* The pack's ranking changes (docs/design/0.4-smart-next-up.md §12), switches like the engine's RANK_CHANGES
+   (src/core/nextup.js: rankChangeOn(n, AION2_RANK_CHANGES), setRankChanges); each ships off (0.5 P11: nothing reads them
+   yet). needs: what it can't run without (travelAdvice shares whereNow with the engine's placeRank). */
+export const AION2_RANK_CHANGES = {
+  bindDerived: { on: false, what: "bound Kibelisks derived from the ticks, the story position and pick-ups (travel.js boundSet, design §8.1); no visible change alone" },
+  bindNudge: { on: false, needs: ["bindDerived"], what: "the one-time \"Bind X\" row on the story card (travel.js nudgeOf, design §8.2)" },
+  travelAdvice: { on: false, needs: ["bindDerived", "placeRank"], what: "teleport vs walk: one line on a card whose target's Kibelisk is bound (travel.js teleportOf, design §8.3)" },
+};
+
 /* What several producers (and the story card's "Meanwhile") read, worked out once per ranking (ctx is one per call):
    the story step's zone, the open Sealed Dungeons (lowest band first) and Strongholds. */
 const AREAS = new WeakMap();

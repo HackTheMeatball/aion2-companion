@@ -1,5 +1,5 @@
 /* Evaluator equivalence (0.3 E1 / E2, docs/design/0.3-requirement-engine.md §15), suite `equiv`. For every golden-master
-   state (the 2,000 core saves of tests/golden/states.js, loaded and migrated as the page does), two comparisons against
+   state (the 2,000 core saves of tests/golden/states.js and its smart Next up families, loaded and migrated as the page does), two comparisons against
    the 0.2 gate rules, frozen in tests/support/gates-0.2.mjs (L below):
 
    A. the bare evaluator (GATE_GRAPH as the data has it, proposals off, derived off) against 0.2: `open` / `done` of every
@@ -31,7 +31,7 @@ import { fileURLToPath } from 'node:url';
 import { gates02 } from '../support/gates-0.2.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const { catalogInPage, generate, fixtureStates } = createRequire(import.meta.url)('../golden/states.js');
+const { catalogInPage, generate, fixtureStates, SMART_FAMILIES } = createRequire(import.meta.url)('../golden/states.js');
 
 /* difference key → cause [kept rule]. Key: "<kind> <save key> <field>: 0.2 <value> / evaluator <value>". */
 const SH = 'live gate {level: levelRange.lo} (basis inferred); 0.2 files each stronghold under a Sealed Dungeon band ' +
@@ -99,8 +99,10 @@ export default (test, M) => {
     try { fn(); } finally { M.setGateChanges(on); } assert.deepEqual([...appDiffs].map(([w, x]) => `${w} · ${x.n} states, e.g. ${x.ex}`), [], 'app differs from 0.2'); });
   let evs = null;
 
-  test(`equivalence: ${states.length} golden states (2,000 core saves) loaded and migrated`, () => {
-    assert.equal(states.length, 2000);
+  test(`equivalence: ${states.length} golden states (2,000 core saves and the smart Next up families) loaded and migrated`, () => {
+    const fam = id => SMART_FAMILIES.includes(id.split('/')[0]);
+    assert.equal(states.filter(s => !fam(s.id)).length, 2000);
+    assert.deepEqual(SMART_FAMILIES.filter(f => !states.some(s => s.id.startsWith(f + '/'))), [], 'every smart Next up family has states');
     evs = states.map(({ c }) => M.evaluate(c));
   });
 

@@ -74,9 +74,16 @@ function viewFlag(p, A, B, a, b, canon) {
 
 async function explain({ states, shipped, before, meta, run, canon, describe, out, root }) {
   const all = Object.keys(meta), base = all.filter(n => meta[n].baseline);   /* baseline = already approved and in the snapshots: on in every run, never explained */
-  const names = all.filter(n => !meta[n].baseline);
+  /* the ranking changes of smart Next up (rank: true, src/core/nextup.js RANK_CHANGES and the pack's table; 0.4 design §12)
+     ship on only with on: true; one that ships off makes no shipped difference, so it is never a candidate */
+  const shipsOn = n => !meta[n].rank || meta[n].on === true;
+  const names = all.filter(n => !meta[n].baseline && shipsOn(n));
   const eff = set => { const on = new Set(base); for (const n of set) { on.add(n); (meta[n].needs || []).forEach(d => on.add(d)); } return all.filter(n => on.has(n)); };
   const errors = [], flags = []; /* flags: view flags, { id, path, cause } */
+  const rank = all.filter(n => meta[n].rank), rankOn = rank.filter(shipsOn);
+  for (const n of all) for (const d of meta[n].needs || []) if (!(d in meta)) errors.push(`switch ${n} needs ${d}, which no switch table declares`);
+  for (const n of base) if (!shipsOn(n)) errors.push(`switch ${n} is baseline (in the snapshots) but ships off`);
+  console.log(`explain: ranking switches (${rank.length}: ${rank.join(', ') || 'none'}): on as shipped: ${rankOn.join(', ') || 'none'}`);
   const changed = states.filter(s => before[s.id] && canon(before[s.id]) !== canon(shipped[s.id]));
   const noSnap = states.filter(s => !before[s.id]);
   console.log(`explain: ${changed.length} of ${states.length} states differ from the snapshots with every change on (${names.join(', ')}; already in the snapshots: ${base.join(', ') || 'none'})`);
@@ -134,6 +141,7 @@ async function explain({ states, shipped, before, meta, run, canon, describe, ou
     `${attr.size} attributed, ${todo.length} unattributed, ${notUndone.size} not undone with every change off. Every attributed state is reproduced exactly by the change(s) in its row ` +
     '(a proposal row includes the rule it needs). Store / save differences: ' + (errors.some(e => /stored state|localStorage keys/.test(e)) ? '**some (see errors)**' : 'none') +
     ` (view flags \`open.<milestone>\` apart: ${flags.length}, listed below with their cause).`, '',
+    `Ranking switches (smart Next up, 0.4 design §12): ${rank.map(n => `\`${n}\` ${shipsOn(n) ? '**on**' : 'off'}`).join(', ') || 'none'}; on as shipped: ${rankOn.join(', ') || 'none'}.`, '',
     '| # | Change | Record(s) | What changes (data `change` / design) | States (group, level band) | Kinds of change (states) | Sample: state, before → after |', '|---|---|---|---|---|---|---|',
     ...rows.map((r, i) => {
       const rc = r.set.map(n => recs[n] || { records: [], change: '' });
@@ -152,7 +160,7 @@ async function explain({ states, shipped, before, meta, run, canon, describe, ou
     ...(errors.length ? ['', '## Errors', '', ...errors.slice(0, 200).map(e => `- ${e}`)] : []), ''];
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'explain.md'), md.join('\n'));
-  fs.writeFileSync(path.join(out, 'explain.json'), JSON.stringify({ changed: changed.length, attributed: Object.fromEntries([...attr].map(([id, c]) => [id, c.eff])), viewFlags: flags, errors }, null, 1));
+  fs.writeFileSync(path.join(out, 'explain.json'), JSON.stringify({ changed: changed.length, rankSwitches: Object.fromEntries(rank.map(n => [n, shipsOn(n)])), attributed: Object.fromEntries([...attr].map(([id, c]) => [id, c.eff])), viewFlags: flags, errors }, null, 1));
   rows.forEach((r, i) => console.log(`  row ${i + 1}: ${r.set.join(' + ')} · ${r.ids.length} states · ${byGroup(r.ids)}`));
   if (flags.length) console.log(`  view flags: ${flags.length} (open.<milestone> absent ↔ true from auto-open; in the table)`);
   console.log('  table: tests/out/golden/explain.md');

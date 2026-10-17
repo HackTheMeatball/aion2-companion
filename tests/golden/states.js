@@ -12,7 +12,7 @@
    - Tick rules ("before", "all") are applied to the current catalog, so a new milestone step is ticked by the rules
      that cover it. Such a change shows up as a changed input hash (kind "input") in the verify summary. */
 'use strict';
-const { storedText, flatFixture } = require('../support/save');
+const { storedText, flatFixture, mtAtZero } = require('../support/save');
 
 /* ---------- runs in the page (serialised by Playwright; must be self-contained) ---------- */
 function catalogInPage() {
@@ -23,8 +23,8 @@ function catalogInPage() {
     questSteps: Object.fromEntries(Object.entries(QUEST_STEPS).map(([q, l]) => [q, l.length])),
     gates: GATES.map(g => ({ id: g.id, lv: g.lv, title: g.title, items: g.items.filter(it => it.k).map(it => it2(g, it)) })),
     steps: STEPS.map(s => ({ id: s.id, items: s.items.filter(it => it.k).map(it => it.k) })),
-    rq: RQ.map(q => ({ id: String(q.id), name: q.name, rec: q.rec, unlocksAt: q.unlocksAt || 0, story: ['2202044', '2202051', '2202015', '2202029', '2202046'].includes(String(q.id)) ? '' : q.story || '' /* E9: Shugo / Spooky / Curse-Breaking Caper gained a story gate, E5: Traveling Merchant's Conundrum / Lest We Forget; the generated saves stay what they were, so --explain sees only behaviour */, after: q.after || [] })),
-    areas: AREA_ITEMS.map(x => ({ k: x.k, kind: x.it.kind, lv: x.lv, lo: x.it.lo || 0, hi: x.it.hi || 45 })),
+    rq: RQ.map(q => ({ id: String(q.id), name: q.name, rec: q.rec, unlocksAt: q.unlocksAt || 0, zone: q.zone || '', kib: q.kib || '', story: ['2202044', '2202051', '2202015', '2202029', '2202046'].includes(String(q.id)) ? '' : q.story || '' /* E9: Shugo / Spooky / Curse-Breaking Caper gained a story gate, E5: Traveling Merchant's Conundrum / Lest We Forget; the generated saves stay what they were, so --explain sees only behaviour */, after: q.after || [] })),
+    areas: AREA_ITEMS.map(x => ({ k: x.k, kind: x.it.kind, lv: x.lv, lo: x.it.lo || 0, hi: x.it.hi || 45, area: x.area || '', kib: x.it.kib || '' })),
     sp: SP_STEPS.map(x => ({ k: x.k, req: x.req, cost: x.cost, spec: !!x.spec, extra: !!(x.s && x.s.extra), n: x.s.n, L: x.L })),
     stigmaPlan: STIGMA_PLAN.slice(),
     slots: STIGMA_SLOTS().map(s => ({ k: s.k, n: s.n, lv: s.lv })),
@@ -115,7 +115,84 @@ function makeGen(C) {
     return st;
   }
   const id = r => `L${pad(r.lv)}-q${r.qi < 0 ? 'xx' : pad(r.qi)}-${r.ticks}-${r.mode === 'basic' ? 'B' : 'A'}${r.b && r.b !== 'none' ? '-' + r.b : ''}`;
-  return { state, id, onTrack, qIdx };
+  return { state, id, onTrack, qIdx, ticks, allItems };
+}
+
+/* ---------- smart Next up families (0.5 P11; docs/design/0.4-smart-next-up.md §12) ----------
+   Added after the 2,000 (their own groups and shards), so no earlier state moves or changes. Recorded with every ranking
+   switch off (src/core/nextup.js RANK_CHANGES, the pack's AION2_RANK_CHANGES); each later step re-records them with its
+   switch on and attributes the difference with --explain.
+   - loc     dated change times (mt): per Sealed Dungeon band and zone, the newest stamp is a regional quest turned in /
+             picked up, a dungeon or stronghold done / entered, a "bind:" tick of a Kibelisk there, or a story objective
+             (one per band); the story position is dated older. × Basic / Advanced.
+   - behind  the level 5 / 10 / 15 above the ticks (catch-up, design §7): ticks kept up at the lower level (story there or
+             at the level), or kept up at the level with 2 / 3 / 4 missed steps × 0 / 1 / 2 more kinds of points to spend
+             (shards, board crystals) around the thresholds (3 missed, 2 kinds). × Basic / Advanced.
+   - bind    every story position at its level × {no ticks, every objective ticked (dated)}, and the Galorik's Inspection
+             Area state of design §8.4 ("Crash Site Rendezvous", objective 0 ticked: running to objective 1). Advanced. */
+const kibId = name => 'kib:' + name.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const slug = s => s.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+/* a flat state with its change times: every value at time 0 (as tests/support/save.js stamps it), then the given stamps
+   at their times ([path, t]: the stamp at that path must exist) */
+function dated(st, stamps) {
+  const mt = mtAtZero(st);
+  for (const [p, t] of stamps) { let o = mt; p.slice(0, -1).forEach(k => { o = o && o[k]; }); const s = o && o[p[p.length - 1]];
+    if (!Array.isArray(s)) throw new Error(`states: no stamp at ${p.join('.')} to date`); s[0] = t; }
+  return { ...st, mt };
+}
+function smartFamilies(C, G, add) {
+  const NQ = C.quests.length, T_QUEST = 500, T_LAST = 1000, mark = m => m === 'basic' ? 'B' : 'A';
+  /* loc */
+  const bands = [...new Set(C.areas.filter(x => x.kind === 'hideout' && x.lv != null).map(x => x.lv))].sort((a, b) => a - b);
+  for (const B of bands) for (const L of [...new Set([B, Math.min(45, B + 4)])]) for (const mode of ['advanced', 'basic']) {
+    const qi = G.onTrack(L), base = G.state({ lv: L, qi, ticks: 'before', mode }), quest = base.quest;
+    const rqIn = z => C.rq.filter(q => q.zone === z && q.rec <= L && q.rec > L - 5), arIn = (z, kind) => C.areas.filter(x => x.area === z && x.kind === kind);
+    const zones = [...new Set([...C.areas.filter(x => x.kind === 'hideout' && x.lv === B).map(x => x.area), ...C.rq.filter(q => q.rec <= L && q.rec > L - 5).map(q => q.zone)])].filter(Boolean).sort();
+    const put = (what, z, st, stamp) => add('loc', `L${pad(L)}-q${pad(qi)}-before-${mark(mode)}-${what}${z ? '-' + slug(z) : ''}`, dated(st, [...(quest ? [[['quest'], T_QUEST]] : []), [stamp, T_LAST]]));
+    for (const z of zones) {
+      const rqDone = rqIn(z).find(q => base.checks['rq:' + q.id]), rqOpen = rqIn(z).find(q => !base.checks['rq:' + q.id]);
+      if (rqDone) put('rq', z, base, ['checks', 'rq:' + rqDone.id]);
+      if (rqOpen) put('pick', z, { ...base, started: { ['rq:' + rqOpen.id]: 1 } }, ['started', 'rq:' + rqOpen.id]);
+      const sdDone = arIn(z, 'hideout').find(x => base.checks[x.k]), sdOpen = arIn(z, 'hideout').find(x => x.lv === B && !base.checks[x.k]);
+      if (sdDone) put('sd', z, base, ['checks', sdDone.k]);
+      if (sdOpen) put('run', z, { ...base, areaRun: { [sdOpen.k]: 1760000000000 } }, ['areaRun', sdOpen.k]);
+      const shDone = arIn(z, 'stronghold').find(x => base.checks[x.k]), shOpen = arIn(z, 'stronghold').find(x => x.lo <= L && L <= x.hi && !base.checks[x.k]);
+      if (shDone) put('sh', z, base, ['checks', shDone.k]);
+      else if (shOpen) put('shrun', z, { ...base, areaRun: { [shOpen.k]: 1760000000000 } }, ['areaRun', shOpen.k]);
+      const kib = (arIn(z, 'hideout').find(x => x.kib) || {}).kib || (arIn(z, 'stronghold').find(x => x.kib) || {}).kib || (rqIn(z).find(q => q.kib) || {}).kib;
+      if (kib) put('bind', z, { ...base, checks: { ...base.checks, ['bind:' + kibId(kib)]: true } }, ['checks', 'bind:' + kibId(kib)]);
+    }
+    if (quest && C.questSteps[quest]) put('obj', '', { ...base, qsteps: { [quest]: [0] } }, ['qsteps', quest, '0']);
+  }
+  /* behind */
+  const missable = C.gates.flatMap(g => g.items).filter(it => !it.kind && !it.sub && !it.hidden && !it.opt && !it.adv && !it.dv);
+  for (const T of [10, 20, 30]) for (const d of [5, 10, 15]) for (const mode of ['advanced', 'basic']) {
+    const L = T + d, qT = G.onTrack(T), qL = G.onTrack(L);
+    const at = (qi, checks, extra = {}) => ({ checks, level: L, quest: qi >= 0 ? C.quests[qi][1] : '', open: {}, mode, ...extra });
+    add('behind', `L${pad(L)}-q${pad(qT)}-from${pad(T)}-lag-${mark(mode)}`, at(qT, G.ticks('before', T, qT)));
+    add('behind', `L${pad(L)}-q${pad(qL)}-from${pad(T)}-lagq-${mark(mode)}`, at(qL, G.ticks('before', T, qL)));
+    const kept = G.ticks('before', L, qL), gone = missable.filter(it => kept[it.k] && it.lv >= T && it.lv < L).sort((a, b) => b.lv - a.lv || (a.k < b.k ? -1 : 1));
+    for (const k of [2, 3, 4]) for (const s of [0, 1, 2]) {
+      if (gone.length < k) continue;
+      const checks = { ...kept }; gone.slice(0, k).forEach(it => { delete checks[it.k]; });
+      const extra = {};
+      if (s >= 1) { extra.stShards = 20; extra.stLv = Object.fromEntries(C.stigmaPlan.slice(0, 1).map(n => [n, 1])); }
+      if (s >= 2) { const open = C.dvNodes.filter(n => n.blv <= L); extra.dvCost = Object.fromEntries(open.map((n, i) => [n.k, 3 + (i % 3)]));
+        extra.dvTotal = open.filter(n => checks[n.k]).reduce((t, n) => t + extra.dvCost[n.k], 0) + 9; }
+      add('behind', `L${pad(L)}-q${pad(qL)}-from${pad(T)}-miss${k}-s${s}-${mark(mode)}`, at(qL, checks, extra));
+    }
+  }
+  /* bind */
+  for (let qi = 0; qi < NQ; qi++) {
+    const [lv, quest] = C.quests[qi], n = C.questSteps[quest] || 0, st = { checks: {}, level: lv, quest, open: {}, mode: 'advanced' };
+    add('bind', `L${pad(lv)}-q${pad(qi)}-none-A`, dated(st, [[['quest'], T_QUEST]]));
+    if (n) add('bind', `L${pad(lv)}-q${pad(qi)}-objs-A`, dated({ ...st, qsteps: { [quest]: Array.from({ length: n }, (_, i) => i) } },
+      [[['quest'], T_QUEST], ...Array.from({ length: n }, (_, i) => [['qsteps', quest, String(i)], T_LAST + i])]));
+  }
+  const gq = G.qIdx('Crash Site Rendezvous');
+  if (gq < 0) throw new Error('states: "Crash Site Rendezvous" (the Galorik\'s Inspection Area state) is not in the story');
+  { const [lv, quest] = C.quests[gq];
+    add('bind', `L${pad(lv)}-q${pad(gq)}-galorik-A`, dated({ checks: {}, level: lv, quest, qsteps: { [quest]: [0] }, open: {}, mode: 'advanced' }, [[['quest'], T_QUEST], [['qsteps', quest, '0'], T_LAST]])); }
 }
 
 /* The matrix. tier 'core' (CORE states in all) runs by default; 'all' adds EXTENDED random states (--all). */
@@ -167,6 +244,9 @@ function generate(C, { fixtures = [], all = false } = {}) {
   { const last = C.quests[NQ - 1][1]; sp('story-end-turned-in', storedText({ ...G.state({ lv: 45, qi: NQ - 1, ticks: 'before', mode: 'advanced' }), storyEnd: last })); }
   sp('unknown-quest-name', storedText({ ...G.state({ lv: 30, qi: -1, ticks: 'before', mode: 'advanced' }), quest: 'A quest renamed in a patch' }));
   for (const f of fixtures) out.set('fixture/' + f.name, { id: 'fixture/' + f.name, tier: 'core', raw: f.raw });
+  /* the smart Next up families (0.5 P11), after everything above */
+  smartFamilies(C, G, (group, rest, flat) => { const i = group + '/' + rest; if (out.has(i)) throw new Error('states: duplicate state id ' + i);
+    out.set(i, { id: i, tier: 'core', raw: storedText(flat) }); });
 
   return [...out.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }
@@ -176,4 +256,6 @@ function generate(C, { fixtures = [], all = false } = {}) {
 const FIXTURES = [['fixture-v285', 'fixture-v285.flat.json'], ['fixture-user-v285', 'fixture-user-v285.flat.json']];
 const fixtureStates = () => FIXTURES.map(([name, flat]) => ({ name, raw: storedText(flatFixture(flat)) }));
 
-module.exports = { catalogInPage, generate, fixtureStates, fnv };
+/* the groups smartFamilies() adds (0.5 P11) */
+const SMART_FAMILIES = ['loc', 'behind', 'bind'];
+module.exports = { catalogInPage, generate, fixtureStates, fnv, SMART_FAMILIES };

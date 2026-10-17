@@ -35,6 +35,8 @@ const RENDER = flag('render');
 const CARD = opt('card');
 const FILTER = opt('filter') ? new RegExp(opt('filter')) : null, LIMIT = opt('limit') ? +opt('limit') : 0;
 const RECYCLE = 150;
+/* the ranking changes' names (--explain reads them from the page with its switch tables) */
+const RANK_NAMES = new Set();
 const FIXED_NOW = new Date('2026-10-01T12:00:00Z'); /* the page sees this as "now" (Date.now / new Date) */
 
 /* ---------- serialisation: canonical (sorted keys) for hashing/comparing; line-oriented pretty form for the files ---------- */
@@ -215,7 +217,9 @@ function writeDiffFiles(rep, before, after, cards) {
     await ctx.clock.setFixedTime(FIXED_NOW);
     /* a fixed slot id for a fresh save (save v5: crypto.randomUUID, src/shell/ids.js), like the fixed clock */
     await ctx.addInitScript(() => { crypto.randomUUID = () => '00000000-0000-4000-8000-0000000f7e57'; });
-    if (changes) await ctx.addInitScript(ch => { window.__gateChanges = ch; }, changes);
+    /* the ranking changes (RANK_NAMES, from the page's switch tables) go to their own hook (window.__rankChanges) */
+    if (changes) await ctx.addInitScript(([g, r]) => { window.__gateChanges = g; window.__rankChanges = r; },
+      [changes.filter(n => !RANK_NAMES.has(n)), changes.filter(n => RANK_NAMES.has(n))]);
     await ctx.addInitScript(installProbe, [KEY, !RENDER]);
     return ctx;
   };
@@ -267,7 +271,12 @@ function writeDiffFiles(rep, before, after, cards) {
   const results = await runStates(states);
   if (EXPLAIN) {
     if (FILTER || LIMIT || ALL) console.log('--explain: attributing the states run (filtered / limited / extended)');
-    const meta = await (async () => { const cx = await newCtx(), pg = await cx.newPage(); await pg.goto(PAGE); const m = await pg.evaluate(() => JSON.parse(JSON.stringify(GATE_CHANGES))); await cx.close(); return m; })();
+    /* the gate changes (on as the page ships) and the ranking changes of smart Next up (the engine's RANK_CHANGES and the
+       pack's AION2_RANK_CHANGES, marked rank: shipped on or off by their own `on`; 0.5 P11) */
+    const meta = await (async () => { const cx = await newCtx(), pg = await cx.newPage(); await pg.goto(PAGE);
+      const m = await pg.evaluate(() => JSON.parse(JSON.stringify({ gate: GATE_CHANGES, rank: { ...RANK_CHANGES, ...AION2_RANK_CHANGES } }))); await cx.close();
+      for (const n of Object.keys(m.rank)) { if (n in m.gate) throw new Error(`--explain: "${n}" is both a gate and a ranking change`); RANK_NAMES.add(n); }
+      return { ...m.gate, ...Object.fromEntries(Object.entries(m.rank).map(([n, x]) => [n, { ...x, rank: true }])) }; })();
     const code = await require('./golden/explain').explain({ states, shipped: results, before: loadSnapshots(), meta, run: runStates, canon, describe, out: OUT, root: CFG.ROOT });
     await browser.close(); if (server) server.close();
     console.log(`${states.length} states in ${((Date.now() - t0) / 1000).toFixed(1)} s`);

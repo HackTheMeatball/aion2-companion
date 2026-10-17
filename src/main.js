@@ -29,7 +29,7 @@ import { importBackup, markExport } from "./core/backup.js";
 import { itemByK } from "./core/catalog.js";
 import { checkableOf, countsOf, derivedOf, doneOf, gateChangeOn, gatesOf, mainCountsOf, objIdxOf, objPartsOf, openOf, qProgOf, questIdx, sideOpenOf,
   setGateChanges, gatesPass, storyGate, storyIdx, turnInNeedsLv, chainsOn, stepChipOf, storyLineOf } from "./core/requirements.js";
-import { rankNext } from "./core/nextup.js";
+import { rankNext, setRankChanges } from "./core/nextup.js";
 /* the engine's cards (0.4 P4c, src/cards/): what the shell still calls of them, and the hand-over of the shell's names
    they read (useCardPage, below) */
 import { useCardPage } from "./cards/page.js";
@@ -75,6 +75,9 @@ const SMOOTH = () => RMQ.matches ? "auto" : "smooth";
 /* Test hook (tests/golden.js --explain): the 0.3 E4 changes to run with, set by the runner before the page loads; the
    page itself runs with all of them on. */
 if (Array.isArray(window.__gateChanges)) setGateChanges(window.__gateChanges);
+/* ... and the ranking changes of smart Next up (RANK_CHANGES and the pack's table) to run with; the page runs with each
+   table's `on` (0.5 P11: all off). */
+if (Array.isArray(window.__rankChanges)) setRankChanges(window.__rankChanges);
 /* The save from storage (save v5; anything else starts fresh), then the load-time steps (src/core/migrations.js). */
 let { state, hadSave } = loadState(saveStore.get(KEY), { now: Date.now(), newId });
 migrate(state, hadSave, storeState, Math.floor(Date.now() / 1000));
