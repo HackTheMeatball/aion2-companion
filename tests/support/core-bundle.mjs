@@ -1,4 +1,4 @@
-/* The engine (src/core/*.js) and the AION 2 pack's code (src/packs/aion2/*.js) bundled for Node the way the page build
+/* The engine (src/core/*.js, src/cards/*.js) and the AION 2 pack's code (src/packs/aion2/*.js) bundled for Node the way the page build
    does it (esbuild + the generated-data plugin), imported once, with the pack set as the page sets it (usePack, 0.4 P2b):
    the namespace M the core, equiv and invariant suites test (engine and pack exports plus the data tables listed in ENTRY). */
 import { readdirSync } from 'node:fs';
@@ -12,8 +12,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 export async function coreBundle() {
   const CORE = readdirSync(join(ROOT, 'src/core')).filter(f => f.endsWith('.js')).sort();
   const PACK = readdirSync(join(ROOT, 'src/packs/aion2')).filter(f => f.endsWith('.js')).sort();
+  /* the engine's cards (0.4 P4a): their specs, without a DOM */
+  const CARDS = readdirSync(join(ROOT, 'src/cards')).filter(f => f.endsWith('.js')).sort();
   const ENTRY = [
     ...CORE.map(f => `export * from "./core/${f}";`),
+    ...CARDS.map(f => `export * from "./cards/${f}";`),
     ...PACK.map(f => `export * from "./packs/aion2/${f}";`),
     'export { GATES, STEPS } from "./packs/aion2/data/milestones.js";',
     'export { QUESTS, QUEST_STEPS, QUEST_STEP_NOTES, QUEST_LOC } from "./packs/aion2/data/story.js";',
