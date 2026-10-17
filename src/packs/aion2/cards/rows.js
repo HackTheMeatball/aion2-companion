@@ -18,6 +18,7 @@ import { E_ORDER } from "../data/build.js";
 import { seq } from "../data/markup.js";
 import { CLEAR_REWARD, RQ_K, eputK } from "../catalog.js";
 import { rqReqOf, slotNames } from "../requirements.js";
+import { aion2UndoDo, aion2UndoLast } from "./undo.js";
 import { aion2DungeonMap } from "./maps.js";
 import { aion2State as state, aion2Save as save, aion2Update as update, aion2MainEl as mainEl, aion2RewardToast as rewardToast, aion2STIGMA_SLOTS as STIGMA_SLOTS, aion2RqAvail as rqAvail } from "./page.js";
 
@@ -96,4 +97,4 @@ export const aion2RowRenderers = {
   /* a plain row; one that names a Sealed Dungeon entrance gets its pin on the Metabot map */
   item: (it, k, ctx) => it.map ? ctx.row({ cls: " has-map", post: `<a class="amap" href="${aion2DungeonMap(it.map)}" target="_blank" rel="noopener" title="Show the entrance on the Altgard interactive map (Metabot)">${MAP_ICO}</a>` }) : ctx.row(),
 };
-export const aion2RowHooks = { text: aion2RowText, sync: aion2QuestSync, ticked: aion2RowTicked, click: aion2RowClick, snooze: aion2Snooze, turnedIn: aion2QuestTurnedIn };
+export const aion2RowHooks = { text: aion2RowText, sync: aion2QuestSync, ticked: aion2RowTicked, click: aion2RowClick, snooze: aion2Snooze, turnedIn: aion2QuestTurnedIn, undoLast: aion2UndoLast, undoDo: aion2UndoDo };
