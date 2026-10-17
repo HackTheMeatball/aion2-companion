@@ -19,7 +19,7 @@ export const gates02 = M => {
   /* requirements.js */
   /* E9 (2026-10-15, owner check 1): Shugo-of-All-Trades, Spooky Specters and The Great Curse-Breaking Caper (Empyrean Monolith
      check, 20:12 ET) gained a story gate in the data (their row now has story + no noPre). 0.2 had neither, so the frozen rules see
-     them as they were; the page does the same with the switch regionalTurnedIn off (src/core/requirements.js APP_GRAPH_0_2).
+     them as they were; the page does the same with the switch regionalTurnedIn off (src/packs/aion2/rules.js, graph transform "regional-0.2").
      Nothing else of the frozen rules changes.
      E5 (2026-10-16): Traveling Merchant's Conundrum and Lest We Forget gained their Metabot story gate the same way (the page:
      switches merchantGate / lestWeForgetGate off), and the Noble Belt / Revelation Amulet steps a "turned in" gate (row story +

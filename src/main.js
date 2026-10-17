@@ -206,7 +206,7 @@ const fmtXP = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M" : n
 const pinLink = (href, label) => href ? ` <a class="ns-pin" href="${href}" target="_blank" rel="noopener" title="${label || "Show on the map"}">${MAP_ICO}</a>` : "";
 const areaSel = document.getElementById("areaSel");
 /* Areas: pick a level band; Sealed Dungeons (at their recommended level) and Strongholds are listed together, flat
-   (bands: src/core/catalog.js). */
+   (bands: src/packs/aion2/catalog.js). */
 /* The band that holds your level; older bands with open clears show their count in the dropdown. */
 function defaultBand() {
   return String(AREA_BANDS.filter(b => b <= char(state).level).pop() || AREA_BANDS[0]);
@@ -379,7 +379,7 @@ applyMode();
 /* Milestone ticks: the line turns green, then (if "Cleared tasks" hides it) fades and slides out; a milestone
    that just got cleared does the same when "Cleared milestones" is on. tickKeep holds them visible meanwhile. */
 let tickKeep = new Set();
-/* One-time clear rewards (CLEAR_REWARD, src/core/catalog.js) wait in "the Cube" until you say you've used them. */
+/* One-time clear rewards (CLEAR_REWARD, src/packs/aion2/catalog.js) wait in "the Cube" until you say you've used them. */
 /* "Waiting in your Cube" bars on Skills / Daevanion: one click once you've used them in game adds them to the totals. */
 function renderCube() {
   const sp = document.getElementById("spCube"), dv = document.getElementById("dvCube"), ps = char(state).pendSt || 0, pc = char(state).pendCr || 0;

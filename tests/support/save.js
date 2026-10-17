@@ -2,7 +2,7 @@
    the storage key or the save's shape changes this file, not every suite. CommonJS; the .mjs suites load it with
    createRequire.
 
-   A test describes a save as a "flat" state: character fields (checks, level, quest, …; CHAR_FIELDS in
+   A test describes a save as a "flat" state: character fields (checks, level, quest, …; charFields() in
    src/core/state.js) at the top level beside the view settings. toStored() turns that into what the current build
    stores (save v5, 0.4 P3c: one character slot, TEST_SLOT), fromStored() turns a stored save back into the flat shape
    (the current character's fields beside the view settings), so assertions stay as they are. The conversion lives

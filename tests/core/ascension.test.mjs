@@ -1,4 +1,4 @@
-/* The Ascension bar (0.3 E8, docs/design/0.3-requirement-engine.md §11; src/core/ascension.js): 0–4 / 4 from the wrapper
+/* The Ascension bar (0.3 E8, docs/design/0.3-requirement-engine.md §11; src/packs/aion2/ascension.js): 0–4 / 4 from the wrapper
    quests (derived, §5) and from the guide step ticks, the label (owner, 2026-10-16: "Ascension n / 4 · next: <name>", the
    gauge note only where sourced: II owner tooltip 2026-10-15, III claim C36; no story position, the timeline shows it;
    the Oath line at 4 / 4), and nothing written. */
