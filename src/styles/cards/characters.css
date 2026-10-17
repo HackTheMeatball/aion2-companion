@@ -31,6 +31,7 @@ header.top .who { position: relative; min-width: 0; }
 .chrows li + li { border-top: 1px solid var(--line); }
 .chrows li.cur { background: var(--panel-2); box-shadow: var(--ring-accent); }
 .chrows li.chedit { display: block; padding: 0; }
+.chedit .chfld > label b { font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--fg); }
 .chrow { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 48px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--space-6); align-items: center;
   padding: 0 var(--space-6) 0 var(--space-10); border-radius: var(--radius-8); }
 .chrow:hover { background: var(--panel-2); }
