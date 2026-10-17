@@ -49,7 +49,7 @@ npm run build                            # dist/ (site) + dist-artifact/index.ht
 npm run serve                            # http://localhost:8080/  (claude.ai build at /artifact/)
 npm test                                 # build, then every suite against dist/ except perf (≈10–15 min)
 npm run test:quick                       # build, then the suites with a smaller regression matrix and no screenshots
-node tests/run.mjs --only e1,mig1        # selected suites (after a build); --shard journey: one CI shard
+node tests/run.mjs --only e1,save        # selected suites (after a build); --shard journey: one CI shard
 npm run test:perf                        # build, then the non-blocking update() < 15 ms timing suite
 npm run gen                              # validate data/**, run the cross-record checks, rewrite data/DATA_SOURCES.md
 npm run test:data                        # schema suite only (no browser, ≈1 s)

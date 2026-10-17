@@ -31,7 +31,7 @@ function buildFixture({ L, mode, fx }) {
 const writeFixture = async (p, spec) => writeSave(p, await p.evaluate(buildFixture, spec));
 
 /* tick counts by name (regress "migration: v285 fixture → current"; the v285 side is pinned in
-   tests/fixtures/fixture-v285.v285-metrics.json by tests/support/make-flat-fixtures.mjs). Runs in the page. */
+   tests/fixtures/fixture-v285.v285-metrics.json, made by the 0.4 P3a fixture script, removed in P3c). Runs in the page. */
 function migMetrics() {
   const out = { quests: {}, sd: {}, sh: {}, sp: 0, dv: 0 };
   GATES.forEach(g => g.items.forEach((it, j) => { const k = it.k || g.id + ':' + j;

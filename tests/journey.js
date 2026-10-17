@@ -19,7 +19,7 @@ const log = []; const L = (...a) => { const s = a.join(' '); log.push(s); consol
   const wait = ms => REAL ? new Promise(r => setTimeout(r, ms)) : ctx.clock.runFor(ms);
   await ctx.addInitScript(() => { window.documentPictureInPicture = { requestWindow: async (o) => { const w = window.open('', 'pip', `width=${o.width},height=${o.height}`); w.document.write('<!doctype html><html><head></head><body></body></html>'); w.document.close(); window.__pip = w; return w; } }; });
   const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message)); ctx.on('page', pg => pg.on('pageerror', e => errs.push('pip: ' + e.message)));
-  /* the user's v285 save as the current page stored it after loading it through v285 first (make-flat-fixtures.mjs) */
+  /* the user's v285 save as the current page stored it after loading it through v285 first (a flat fixture, frozen since 0.4 P3c) */
   await p.goto(CFG.CUR); await writeSave(p, flatFixture('fixture-user-v285.via-v285.flat.json')); await p.reload(); await wait(700);
   const S = () => p.evaluate(() => JSON.stringify(state));
   const top = () => p.evaluate(() => { const c = document.querySelector('#nsqWrap > .ns-card'); return c ? c.querySelector('h3').innerText.replace(/\s+/g, ' ') + ' | ' + ((c.querySelector('.title > p') || {}).innerText || '') : '(none: ' + (document.querySelector('#nowStar') || {}).innerText.replace(/\s+/g, ' ').slice(0, 120) + ')'; });

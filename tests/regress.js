@@ -142,7 +142,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
   /* ---------- migration: v285 fixture → current (tick counts by name) ----------
      A: what the v285 page showed for the v285 fixture (pinned in tests/fixtures/fixture-v285.v285-metrics.json); B: the
      current page seeded with that fixture as it stored it after loading it through v285
-     (fixture-v285.via-v285.flat.json; both made by tests/support/make-flat-fixtures.mjs) */
+     (fixture-v285.via-v285.flat.json; both made by the 0.4 P3a fixture script, frozen since P3c) */
   {
     const A = J('tests/fixtures/fixture-v285.v285-metrics.json');
     const ctx = await b.newContext(), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
@@ -161,7 +161,7 @@ const setState = async (p, args) => { await writeFixture(p, args); await p.reloa
 
   /* ---------- user-realistic: his save (the v285 fixture made into his Lv 27 save, on a given story quest), as the
      current page stored it after loading it through v285 first (tests/fixtures/regress-user-<tag>.via-v285.flat.json;
-     how it is made: regressUser() in tests/support/make-flat-fixtures.mjs) ---------- */
+     how it is made: regressUser() in the 0.4 P3a fixture script (git history), frozen since P3c) ---------- */
   const userRun = async (quest, tag, shots) => {
     const ctx = await b.newContext({ viewport: { width: 1500, height: 1000 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     const user = flatFixture(`regress-user-${tag}.via-v285.flat.json`);

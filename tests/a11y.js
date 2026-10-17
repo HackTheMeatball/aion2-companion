@@ -31,7 +31,7 @@ const { chromium } = require('playwright'); const fs = require('fs'); const path
 const { writeSave, clearSave, flatFixture } = require('./support/save');
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const { writeFixture } = require('./support/regress-fixture');
-/* the user's v285 save (Lv 27) as the current build stores it after loading it (tests/support/make-flat-fixtures.mjs) */
+/* the user's v285 save (Lv 27) as the current build stores it after loading it (a flat fixture, frozen since 0.4 P3c) */
 const USER = flatFixture('fixture-user-v285.flat.json');
 let fail = 0; const ok = (n, c, d) => { console.log((c ? 'ok   ' : 'FAIL ') + n + (!c && d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : '')); if (!c) fail++; };
 const info = (n, d) => console.log('info ' + n + (d !== undefined ? '  · ' + JSON.stringify(d).slice(0, 700) : ''));
