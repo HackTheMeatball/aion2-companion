@@ -24,6 +24,12 @@ node tests/schema.mjs   # the `schema` suite: schemas, broken copies that must b
   Fails on a manifest that fails its schema or names another folder, an unknown `parent` / `uses`, a cycle, a listed
   file that is missing and a JSON file in a pack folder that no manifest lists (DATA-FORMAT-V2 §2.1).
   `generate({ root, pack })` passes them through; `tests/schema.mjs` checks broken copies of `data/packs` are rejected.
+- Checks (0.4 P6a): `generate()` runs the engine checks for every pack (schema, id and save-key uniqueness, references,
+  source/URL policy, claims, story chain shape, milestones and steps, gate atoms, objective `i`, place/zone, GATE_GRAPH),
+  then each `checks` module the pack chain's manifests name (`pack.schema.json`), as `checks(ctx, check)` with the same
+  `check(name, ok, detail)`. AION 2's is `data/packs/aion2/checks.mjs` (fixed counts, named quests and rules, specialties,
+  build, strongholds, Sealed Dungeons, regional quests, camps, Daevanion gate). A manifest chain without one gets engine
+  checks only. The module is loaded with `require` (Node >= 22.12) so `generate()` stays synchronous.
 - `validate.mjs` — the schema step (pack manifests included): all schemas in `data/schema/` compile under `{ strict: true, allErrors: true }`.
 - `../../data/DATA_SOURCES.md` — every source URL, the records that cite it, and its Sources-card group (committed).
 - The report's `debt` lists what the data still owes: citations of the withdrawn site (aion2.th.gl) and records on the
