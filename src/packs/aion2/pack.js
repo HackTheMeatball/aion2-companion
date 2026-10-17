@@ -12,6 +12,7 @@ import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zo
 import { aion2OnLoad } from "./load.js";
 import { aion2Meanwhile, aion2NextUp, aion2StoryFields } from "./nextup.js";
 import { aion2Cards } from "./cards/index.js";
+import { aion2Text } from "./text.js";
 import { aion2NowRenderers } from "./cards/nextup-kinds.js";
 import { aion2RowHooks, aion2RowRenderers } from "./cards/rows.js";
 
@@ -58,4 +59,6 @@ export const aion2Pack = definePack({
   /* its rows in the milestone and Route rules cards, and what they do (0.4 P5b) */
   rowRenderers: aion2RowRenderers,
   rowHooks: aion2RowHooks,
+  /* the words the engine cards may not hold (0.4 P5d) */
+  text: aion2Text,
 });
