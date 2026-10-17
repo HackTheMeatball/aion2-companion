@@ -152,6 +152,8 @@ function writeDiffFiles(rep, before, after) {
   const newCtx = async (changes = null) => {
     const ctx = await browser.newContext({ viewport: { width: 1500, height: 1000 }, serviceWorkers: 'block', reducedMotion: 'reduce' });
     await ctx.clock.setFixedTime(FIXED_NOW);
+    /* a fixed slot id for a fresh save (save v5: crypto.randomUUID, src/shell/ids.js), like the fixed clock */
+    await ctx.addInitScript(() => { crypto.randomUUID = () => '00000000-0000-4000-8000-0000000f7e57'; });
     if (changes) await ctx.addInitScript(ch => { window.__gateChanges = ch; }, changes);
     await ctx.addInitScript(installProbe, [KEY, !RENDER]);
     return ctx;
