@@ -199,6 +199,14 @@ function fitRail() {
 }
 window.addEventListener("resize", () => requestAnimationFrame(fitRail));
 document.getElementById("gates").addEventListener("toggle", () => requestAnimationFrame(fitRail), true);
+/* Web fonts (font-display: swap) land after the first fit and rewrap the text: refit when the fonts settle (the hero
+   rows too, as on a resize: they set the top row's height) and whenever the main column or the milestone list changes
+   size, at most once a frame. */
+let railQueued = false, heroQueued = false;
+const refitRail = () => { if (railQueued) return; railQueued = true; requestAnimationFrame(() => { railQueued = false; if (heroQueued) { heroQueued = false; fitSkills(); } fitRail(); }); };
+const fontsSettled = () => { heroQueued = true; refitRail(); };
+if (document.fonts) { document.fonts.addEventListener("loadingdone", fontsSettled); document.fonts.ready.then(fontsSettled); }
+if (typeof ResizeObserver === "function") { const ro = new ResizeObserver(refitRail); ro.observe(document.getElementById("main")); ro.observe(document.getElementById("gates")); }
 /* Hero rows: names wrap instead of "…"; both cards' rows take the taller one's height so they stay aligned. */
 function syncHeroRows() {
   const a = document.querySelector("#spCard .sphero .dvhead"), b = document.querySelector("#dvNextList .dvhead"), c = document.querySelector("#stCard .dvhead");

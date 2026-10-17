@@ -28,6 +28,7 @@
   and on summaries with a rotated arrow that changes antialiasing (screenshots differ by 1 level), so those get bigger
   targets only in a visible pass. Check new ones against neighbours with the a11y suite (`HIT` list).
 - Pixel-exact old-vs-new screenshots: launch Chromium with `--disable-partial-raster --disable-gpu --disable-lcd-text`
-  (removes raster noise), block web fonts, fix the clock, and pin the icon sizer (`iconSizer.disconnect()`, then one
-  fixed size on `.icos img`; it settles on 47 or 56 px by decode timing). With that, old-vs-old is identical in every
+  (removes raster noise), block web fonts, fix the clock, and compare against a build from 0.5 P1 on (before it the
+  milestone icon sizer settled on 24, 47 or 56 px by load order; to compare an older build, disconnect its `iconSizer`
+  and give `.icos img` one fixed size). With that, old-vs-old is identical in every
   state, so any difference is real.
