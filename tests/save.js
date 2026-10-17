@@ -8,7 +8,10 @@
      5. import of a v5 export: replaces the save, the old one kept under :before-import
      6. Level up changes the label (labelOf), never the slot id or the key
      7. the player name and the label never leave the save: not in a storage key, the report link or the export file name
-     8. two slots: the page shows the current one and leaves the other as it is */
+     8. two slots: the page shows the current one and leaves the other as it is
+     9. the character switcher (0.5 P18): a fresh browser shows assassin-lvl1; spoken names, Enter / Escape, focus return
+    10. two characters: add one (named Zed), tick a quest on it, switch back; each keeps its progress after a reload, and
+        "Zed" is in no key, link, URL, title or file name */
 const { chromium } = require('playwright'); const fs = require('fs'); const { isDeepStrictEqual } = require('util');
 const CFG = require('./config');
 const { SAVE_KEY, V4_KEY, BEFORE_IMPORT_KEY, TEST_SLOT, toStored, writeRaw, readRaw, writeSave, clearSave } = require('./support/save');
@@ -151,6 +154,77 @@ const V4_SAVE = JSON.stringify({ checks: { 'g6:0': true, 'g9:0': true, 'rq:22020
     ok('two slots: the page shows the current slot (Lv 40 → 41, its quest)', st.chars[B].level === 41 && shown === 'Forgotten Commander', { lv: st.chars[B].level, shown });
     ok('two slots: the other slot is left exactly as it was', isDeepStrictEqual(st.chars[TEST_SLOT], two.chars[TEST_SLOT]), st.chars[TEST_SLOT]);
     ok('two slots: no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 9. the character switcher (0.5 P18): the header control in a fresh browser, by keyboard */
+  {
+    const { ctx, p, errs } = await page();
+    await clearSave(p); await p.reload(); await p.waitForTimeout(400);
+    const btn = () => p.evaluate(() => { const b = document.getElementById('charBtn'), pop = document.getElementById('charPop');
+      return { text: b.innerText.trim(), name: b.getAttribute('aria-label'), exp: b.getAttribute('aria-expanded'), open: !pop.hidden, focus: document.activeElement && document.activeElement.id }; });
+    const a = await btn();
+    ok('switcher: a fresh browser shows assassin-lvl1 (no name), closed', a.text.startsWith('assassin-lvl1') && a.exp === 'false' && !a.open, a);
+    ok('switcher: the button\'s spoken name is "Character: assassin-lvl1. Switch character"', a.name === 'Character: assassin-lvl1. Switch character', a.name);
+    await p.focus('#charBtn'); await p.keyboard.press('Enter'); await p.waitForTimeout(100);
+    const list = await p.evaluate(() => { const g = document.getElementById('charList'), rows = [...document.querySelectorAll('#charRows [data-char]')];
+      return { role: g.getAttribute('role'), name: document.getElementById(g.getAttribute('aria-labelledby')).textContent, rows: rows.map(r => [r.innerText.replace(/\s+/g, ' ').trim(), r.getAttribute('aria-current')]), add: document.getElementById('charNew').innerText }; });
+    const b1 = await btn();
+    ok('switcher: Enter opens the list (aria-expanded true)', b1.exp === 'true' && b1.open, b1);
+    ok('switcher: the list is a group named "Characters": one row, current, and "+ New character"', list.role === 'group' && list.name === 'Characters' && list.rows.length === 1 && list.rows[0][0] === '✓ assassin-lvl1' && list.rows[0][1] === 'true' && list.add === '+ New character', list);
+    await p.keyboard.press('Tab'); await p.keyboard.press('Escape'); await p.waitForTimeout(100);
+    const b2 = await btn();
+    ok('switcher: Escape in the list closes it and returns focus to the button', b2.exp === 'false' && !b2.open && b2.focus === 'charBtn', b2);
+    await p.keyboard.press('Enter'); await p.focus('#charNew'); await p.keyboard.press('Enter'); await p.waitForTimeout(100);
+    const f = await p.evaluate(() => ({ focus: document.activeElement.id, label: document.querySelector('label[for="charName"]').textContent, legend: document.querySelector('#charForm legend').textContent,
+      radios: [...document.querySelectorAll('#charPick input[type=radio]')].map(r => [r.value, r.checked, r.closest('label').innerText.trim()]), list: !document.getElementById('charList').hidden }));
+    ok('switcher: New character opens the form with the focus in "Name (optional)"', f.focus === 'charName' && f.label === 'Name (optional)' && !f.list, f);
+    ok('switcher: the class picker offers the pack\'s one class, picked', f.legend === 'Class' && JSON.stringify(f.radios) === JSON.stringify([['assassin', true, 'Assassin']]), f.radios);
+    await p.keyboard.type('  Zed  '); await p.waitForTimeout(50);
+    ok('switcher: the form previews the label Zed-assassin-lvl1 (name trimmed)', await p.innerText('#charPrev') === 'Zed-assassin-lvl1', await p.innerText('#charPrev'));
+    await p.keyboard.press('Escape'); await p.waitForTimeout(100);
+    const b3 = await btn();
+    ok('switcher: Escape in the form closes it, focus back on the button, nothing saved', b3.exp === 'false' && !b3.open && b3.focus === 'charBtn' && Object.keys(JSON.parse(await readRaw(p) || '{"chars":{}}').chars).length <= 1, b3);
+    ok('switcher (keyboard): no page errors', !errs.length, errs);
+    await ctx.close();
+  }
+  /* 10. two characters: add one, tick a quest on it, switch back; each keeps its own progress across reloads */
+  {
+    const { ctx, p, errs } = await page();
+    await writeSave(p, SAVED, { fresh: true }); await p.reload(); await p.waitForTimeout(400);
+    const first = JSON.parse(await readRaw(p)).chars[TEST_SLOT];
+    const label = () => p.evaluate(() => document.getElementById('charLbl').textContent);
+    ok('two characters: the control shows assassin-lvl22', await label() === 'assassin-lvl22', await label());
+    await p.click('#charBtn'); await p.click('#charNew'); await p.fill('#charName', 'Zed');
+    await Promise.all([p.waitForEvent('load'), p.click('#charCreate')]); await p.waitForTimeout(400);
+    const s = await p.evaluate(() => ({ cur: state.current, ids: Object.keys(state.chars), c: char(state), q0: QUESTS[0][1] }));
+    const zed = s.cur;
+    ok('new character: a second slot with a random id, current, named Zed, Lv 1 on the first quest, no ticks', s.ids.length === 2 && s.ids[0] === TEST_SLOT && UUID4.test(zed) && s.c.name === 'Zed' && s.c.class === 'assassin' && s.c.level === 1 && s.c.quest === s.q0 && !Object.keys(s.c.checks).length, s);
+    ok('new character: the control shows Zed-assassin-lvl1', await label() === 'Zed-assassin-lvl1', await label());
+    ok('new character: the first character is stored exactly as it was', isDeepStrictEqual(JSON.parse(await readRaw(p)).chars[TEST_SLOT], first));
+    /* tick a regional quest on Zed (two clicks: started, then done) and level up */
+    const rk = await p.evaluate(() => { const i = document.querySelector('#gates input[data-k^="rq:"]'); i.click(); i.click(); return i.dataset.k; }); await p.waitForTimeout(100);
+    await p.click('#lvlUp'); await p.waitForTimeout(200);
+    ok('Zed: the tick and the level are saved on Zed', JSON.parse(await readRaw(p)).chars[zed].checks[rk] === true && JSON.parse(await readRaw(p)).chars[zed].level === 2, rk);
+    ok('Zed: the control follows the level (Zed-assassin-lvl2)', await label() === 'Zed-assassin-lvl2', await label());
+    /* the name stays inside the save */
+    const where = await p.evaluate(() => { document.getElementById('reportLink').dispatchEvent(new Event('focus'));
+      return { ls: Object.keys(localStorage), ss: Object.keys(sessionStorage), report: document.getElementById('reportLink').href, url: location.href, title: document.title }; });
+    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#expBtn')]);
+    const fname = dl.suggestedFilename(), leaks = [...where.ls, ...where.ss, where.report, decodeURIComponent(where.report), where.url, where.title, fname].filter(x => x.includes('Zed'));
+    ok('Zed: not in a storage key, the report link, the URL, the title or the export file name', !leaks.length && /^companion-save-\d{4}-\d\d-\d\d\.json$/.test(fname) && JSON.stringify(where.ls.sort()) === JSON.stringify([SAVE_KEY]), { leaks, fname, ls: where.ls });
+    /* switch back by picking the first row */
+    await p.click('#charBtn');
+    const rows = await p.evaluate(() => [...document.querySelectorAll('#charRows [data-char]')].map(r => [r.dataset.char, r.querySelector('.lbl').textContent, r.getAttribute('aria-current')]));
+    ok('list: both characters by label in save order, Zed current', JSON.stringify(rows) === JSON.stringify([[TEST_SLOT, 'assassin-lvl22', null], [zed, 'Zed-assassin-lvl2', 'true']]), rows);
+    await Promise.all([p.waitForEvent('load'), p.click(`#charRows [data-char="${TEST_SLOT}"]`)]); await p.waitForTimeout(400);
+    const back = JSON.parse(await readRaw(p)), shown = await p.evaluate(k => ({ cur: state.current, lv: char(state).level, q: document.getElementById("questIn").value, rk: document.querySelector(`#gates input[data-k="${k}"]`).checked }), rk);
+    ok('switch back: the first character is current and shown (Lv 22, its quest, Zed\'s quest not ticked)', back.current === TEST_SLOT && shown.cur === TEST_SLOT && shown.lv === 22 && shown.q === SAVED.quest && !shown.rk, shown);
+    ok('switch back: the first character\'s progress is unchanged', isDeepStrictEqual(back.chars[TEST_SLOT], first), back.chars[TEST_SLOT]);
+    ok('switch back: the control shows assassin-lvl22', await label() === 'assassin-lvl22', await label());
+    await p.reload(); await p.waitForTimeout(400);
+    const after = JSON.parse(await readRaw(p));
+    ok('reload: Zed keeps the tick and Lv 2; the first character is still current and unchanged', after.chars[zed].checks[rk] === true && after.chars[zed].level === 2 && after.chars[zed].name === 'Zed' && after.current === TEST_SLOT && isDeepStrictEqual(after.chars[TEST_SLOT], first), after.chars[zed]);
+    ok('two characters: no page errors', !errs.length, errs);
     await ctx.close();
   }
   await b.close();

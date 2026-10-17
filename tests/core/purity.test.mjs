@@ -106,11 +106,20 @@ export default (test, M) => {
     const s = M.newSave({ id: 'slot-a' }); assert.equal(M.char(s), s.chars['slot-a']);
   });
   /* the label and the name may carry the player's name: never in a storage key, a file name, a URL or a log (P3c) */
-  test('labelOf and the character name are used nowhere in src/ outside src/core/state.js', () => {
+  /* 0.5 P18: the character switcher (src/cards/characters.js) is the one place that shows the label; it is scanned on its
+     own below */
+  test('labelOf and the character name are used nowhere in src/ outside src/core/state.js and the switcher card', () => {
     const files = ['main.js', 'site.js', 'sw.js', ...CORE, ...walk('shell'), ...walk('cards'), ...PACKS];
-    const bad = files.filter(f => f !== 'core/state.js').flatMap(f => code(read(f)).split('\n').map((l, i) => [f, i + 1, l])
+    const bad = files.filter(f => f !== 'core/state.js' && f !== 'cards/characters.js').flatMap(f => code(read(f)).split('\n').map((l, i) => [f, i + 1, l])
       .filter(([, , l]) => /\blabelOf\b|char\([^)]*\)\.name\b|\bc\.name\b/.test(l)).map(([f, n, l]) => `${f}:${n}: ${l.trim().slice(0, 120)}`));
     assert.deepEqual(bad, []);
+  });
+  test('the switcher card puts the label on screen only: no log, title, URL, storage or request', () => {
+    const src = code(read('cards/characters.js'));
+    assert.ok(/\blabelOf\b/.test(src), 'the switcher shows the label');
+    const leaks = src.split('\n').map((l, i) => [i + 1, l]).filter(([, l]) => /\bconsole\.|document\.title|\blocation\b|\bhistory\.|localStorage|sessionStorage|\bfetch\(|XMLHttpRequest|sendBeacon/.test(l))
+      .map(([n, l]) => `cards/characters.js:${n}: ${l.trim().slice(0, 120)}`);
+    assert.deepEqual(leaks, []);
   });
   test('the storage key and the export file name carry no game, class or player name', () => {
     assert.equal(M.KEY, 'companion-save-v5');
