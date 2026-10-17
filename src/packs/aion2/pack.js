@@ -10,6 +10,7 @@ import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
 import { aion2OnLoad } from "./load.js";
+import { aion2Cards } from "./cards/index.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin), the only
    ones a character can have until 0.5 adds a class picker; tests/core/state.test.mjs checks both against data/. */
@@ -44,4 +45,6 @@ export const aion2Pack = definePack({
   locate: zoneOfKey,
   skipLocation: isAscensionKey,
   onLoad: aion2OnLoad,
+  /* its cards (0.4 P4b): the shell registers each (src/main.js) */
+  cards: aion2Cards,
 });

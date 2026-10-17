@@ -1,0 +1,25 @@
+      <section class="card tcard" id="spCard">
+        <div class="ns-head">
+          <h2>Skills</h2>
+          <div class="ctlcol"><span class="numctl"><button type="button" data-step="spPts" data-d="-1" aria-label="One fewer">−</button><label for="spPts">Stones</label><input id="spPts" type="number" min="0" max="19999" inputmode="numeric" placeholder="0" aria-label="Wisdom Stones used"><button type="button" data-step="spPts" data-d="1" aria-label="One more">+</button></span><em class="dvcr" id="spLv"></em></div>
+        </div>
+        <div class="cubebar" id="spCube" hidden></div>
+        <div class="tmain">
+          <div class="ptbig" id="spBig"></div>
+          <input type="checkbox" id="spNextBox" hidden>
+          <div id="spHero"></div>
+        </div>
+        <div id="spAfter"></div>
+        <div class="tfoot">
+          <details class="mini" id="syncBox">
+            <summary>Sync levels</summary>
+            <p class="fine">Type each skill's level from its tooltip title, without the green bonus: "Heart Gore Lv. 6 (+1)" → 6. The number on the skill icon includes board bonuses (7), so don't use that one. Then apply. Skill lines in the milestones get ticked or unticked to match.</p>
+            <div class="sync-grid" id="syncGrid"></div>
+            <button type="button" id="syncApply">Apply</button> <span class="muted" id="syncMsg"></span>
+          </details>
+          <details class="mini">
+            <summary>How points work</summary>
+            <p class="fine">You earn points two ways: from character levels (24 by Lv 12, 28 by Lv 13, up to 203 at Lv 45), and 1 per Wisdom Stone you use from your Cube. Enter your stones used above and the card works out what you can spend. The skill window's points breakdown shows both and how many are unspent. Levels 2–4 cost 1 point, 5–7 cost 2, 8–10 cost 4; points stop at 10. Skill level 8 opens the first specialty slot, 12 the second and 20 the third; the skill's Daevanion nodes count toward that level (+1 each). Each milestone lists the core upgrades that opened since the last one, in priority order; the extra skills after them are in this card only. Respec is free while you level; check the reset button's cost at 31.</p>
+          </details>
+        </div>
+      </section>
