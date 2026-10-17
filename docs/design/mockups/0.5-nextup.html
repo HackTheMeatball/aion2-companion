@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0.5 S1 Next up mockup (static; layout only, all game text is placeholder)</title>
+<style>
+/* Tokens copied verbatim from src/styles/app.css :root; nothing here is new colour, font, radius or spacing. */
+:root {
+  /* Design tokens: every colour, radius, spacing step and shadow the styles use (docs/design-system.md). One theme, dark,
+     by choice; colours are allowed only here (tests/tokens.mjs). The plum surfaces and rose accent are placeholders until
+     the colour sprint (docs/team/colour-sprint.md). */
+  /* surfaces and text */
+  --bg: #110c13;
+  --bg-glow-1: #3a1730;    /* page background glows: top right, bottom left */
+  --bg-glow-2: #221a3d;
+  --panel: #1a1320;
+  --panel-2: #22192a;
+  --panel-glow: #2a2235;   /* centre of the round glow behind a Daevanion icon */
+  --line: #33263c;
+  --fg: #ece4ee;
+  --muted: #9f90a8;
+  --muted-strike: #9f90a888;  /* line-through on ticked steps */
+  --muted-66: #9f90a866;      /* border of the Active / Passive tag */
+  /* accent: "act now" */
+  --accent: #d0506f;
+  --accent-soft: #d0506f26;
+  --accent-text: #da5d7b;  /* accent as text on the panels: 5.0:1 (--accent is 4.4:1) */
+  --accent-fill: #bf3f5e;  /* accent behind white text: 5.1:1 (--accent is 4.2:1) */
+  --on-fill: #fff;         /* text and ticks on a filled colour (--accent-fill, --good, --accent) */
+  /* states */
+  --good: #5fbf8a;
+  --good-soft: #5fbf8a22;
+  --warn: #e2a64a;
+  --warn-ink: #1a1206;     /* text on a --warn fill */
+  --prog: color-mix(in srgb, var(--fg) 45%, var(--line));  /* progress bars: neutral, --good when complete */
+  /* gold: unlocks, specialties, running dungeons; the suffix is the alpha byte */
+  --gold: #e6b450;
+  --gold-light: #f1d58a;
+  --gold-18: #e6b45018;
+  --gold-22: #e6b45022;
+  --gold-33: #e6b45033;
+  --gold-55: #e6b45055;
+  --gold-66: #e6b45066;
+  --gold-99: #e6b45099;
+  /* the green "do it" button (Level up, Mark spent, Next up actions) */
+  --go-hi: #3fbf78;        /* gradient top */
+  --go-lo: #2a9a5c;        /* gradient bottom */
+  --go-line: #5fdc95;
+  --go-edge: #1d6f42;      /* the 2 px lip under it */
+  --go-ink: #06150d;
+  --go-glow-00: #3fbf7800;
+  --go-glow-66: #3fbf7866;
+  --go-glow-aa: #3fbf78aa;
+  /* Daevanion node types (DV_TYPE in src/data/build.js) */
+  --dv-active: #6aa8ff;
+  --dv-passive: #4fd18b;
+  --dv-corner: #f0954a;
+  /* black: shadows (suffix = alpha byte) and mask gradients */
+  --shade-88: #0008;
+  --shade-99: #0009;
+  --shade-aa: #000a;
+  --shade-bb: #000b;
+  --mask: #000;
+  --mask-25: rgba(0,0,0,.25);
+  --display: "Marcellus SC", "Palatino Linotype", Georgia, serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  /* radius: named by size until the scale is consolidated (a visible change, for the colour / polish sprint) */
+  --radius-2: 2px;
+  --radius-3: 3px;
+  --radius-4: 4px;
+  --radius-5: 5px;
+  --radius-6: 6px;
+  --radius-7: 7px;
+  --radius-8: 8px;
+  --radius-9: 9px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-bar: 99px;
+  --radius-pill: 999px;
+  --radius-round: 50%;
+  /* spacing (margin, padding, gap): named by size, same reason; negative steps are calc(-1 * var(--space-N)) */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-7: 7px;
+  --space-8: 8px;
+  --space-9: 9px;
+  --space-10: 10px;
+  --space-11: 11px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-25: 25px;
+  --space-28: 28px;
+  --space-44: 44px;
+  --space-62: 62px;
+  --space-64: 64px;
+  --space-84: 84px;
+  /* shadows and rings */
+  --ring-accent: 0 0 0 1px var(--accent);
+  --ring-accent-soft: 0 0 0 1px var(--accent-soft);
+  --ring-current: 0 0 0 4px var(--accent-soft);
+  --ring-panel: 0 0 0 2px var(--panel);
+  --ring-gold: 0 0 0 3px var(--gold-22);
+  --ring-inset-line: inset 0 0 0 1px var(--line);
+  --shadow-step-current: 0 0 0 1px var(--accent), 0 10px 40px -20px var(--accent);
+  --shadow-pulse-from: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+  --shadow-pulse-to: 0 0 0 1px var(--accent), 0 0 18px -4px var(--accent);
+  --shadow-board-glow-from: 0 0 0 1px var(--gold-33), 0 0 10px var(--gold-18);
+  --shadow-board-glow-to: 0 0 0 1px var(--gold-55), 0 0 22px var(--gold-33);
+  --shadow-go: 0 2px 0 var(--go-edge);
+  --shadow-go-rest: 0 2px 0 var(--go-edge), 0 0 0 0 var(--go-glow-00);
+  --shadow-go-hover: 0 2px 0 var(--go-edge), 0 0 14px var(--go-glow-66);
+  --shadow-go-pressed: 0 0 0 var(--go-edge);
+  --shadow-go-pop-from: 0 0 0 0 var(--go-glow-aa);
+  --shadow-go-pop-to: 0 2px 0 var(--go-edge), 0 0 0 14px var(--go-glow-00);
+  --shadow-float: 0 6px 18px var(--shade-99);
+  --shadow-art: 0 0 0 1px var(--shade-88), 0 4px 12px var(--shade-88);
+  --shadow-badge: 0 0 0 2px var(--panel), 0 2px 6px var(--shade-aa);
+  --shadow-tip: 0 8px 20px var(--shade-aa);
+  --shadow-menu: 0 12px 30px var(--shade-aa);
+  --shadow-popover: 0 10px 28px var(--shade-bb);
+  --shadow-toast: 0 10px 30px var(--shade-bb);
+  --shadow-drawer: -8px 0 24px var(--shade-88);
+  --drop-icon: drop-shadow(0 3px 8px var(--shade-88));
+  --drop-art: drop-shadow(0 3px 8px var(--shade-aa));
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--body); padding: var(--space-24); }
+.frames { display: flex; flex-wrap: wrap; gap: var(--space-24); align-items: flex-start; }
+.fr { flex: none; }
+.cap { font: 500 11px var(--mono); letter-spacing: .1em; color: var(--muted); margin: 0 0 var(--space-8); text-transform: uppercase; max-width: 390px; }
+.dk-fr .cap { max-width: none; }
+.ph { width: 390px; background: var(--bg); border: 1px solid var(--line); padding: var(--space-14) 0; }
+.dk { width: 1500px; background: var(--bg); border: 1px solid var(--line); padding: var(--space-16); }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-16); align-items: start; }
+.ghost { border: 1px dashed var(--line); border-radius: var(--radius-12); min-height: 120px; padding: var(--space-16); color: var(--muted); font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-16); }
+.ph .card { margin: 0 var(--space-14); }
+.hd { display: flex; align-items: center; gap: var(--space-10); flex-wrap: wrap; margin-bottom: var(--space-12); }
+.hd h2 { margin: 0; font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.hd .sp { flex: 1; }
+.btn { min-height: 44px; min-width: 44px; border-radius: var(--radius-8); border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); font: 600 14px var(--body); padding: 0 var(--space-16); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8); }
+.dk .btn { min-height: 0; min-width: 0; font-size: 12px; padding: var(--space-6) var(--space-12); }
+.btn.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--on-fill); }
+.dk .btn.primary { background: linear-gradient(180deg, var(--go-hi), var(--go-lo)); color: var(--go-ink); border-color: var(--go-line); box-shadow: var(--shadow-go); }
+.btn.quiet { background: none; color: var(--muted); }
+.i { width: 44px; height: 44px; border-radius: var(--radius-round); border: 1px solid var(--line); display: inline-grid; place-items: center; color: var(--muted); font: 600 13px var(--mono); }
+.dk .i { width: 22px; height: 22px; font-size: 11px; }
+.pager { display: inline-flex; align-items: center; gap: var(--space-4); font: 500 12px var(--mono); color: var(--muted); }
+.pager .btn { padding: 0; }
+.seg { display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--radius-8); overflow: hidden; }
+.seg span { min-height: 44px; display: inline-flex; align-items: center; padding: 0 var(--space-12); font: 600 13px var(--body); color: var(--muted); }
+.dk .seg span { min-height: 0; padding: var(--space-6) var(--space-12); font-size: 12px; }
+.seg .on { background: var(--panel-2); color: var(--fg); box-shadow: var(--ring-inset-line); }
+.opts { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-16); margin-bottom: var(--space-12); }
+.drawb { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 12.5px; order: 3; }
+.drawb b { color: var(--fg); font-weight: 600; }
+.chk { display: inline-flex; align-items: center; gap: var(--space-8); min-height: 44px; color: var(--fg); font-size: 13px; }
+.dk .chk { min-height: 0; }
+.box { width: 22px; height: 22px; border-radius: var(--radius-6); border: 1.5px solid var(--muted); flex: none; display: inline-grid; place-items: center; font-size: 14px; color: var(--on-fill); }
+.box.on { background: var(--accent-fill); border-color: var(--accent-fill); }
+.band { margin: var(--space-14) 0 var(--space-8); font: 500 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: var(--space-10); }
+.band::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+.band.first { margin-top: 0; }
+.first-card { background: var(--panel-2); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-radius: var(--radius-12); padding: var(--space-14); }
+.row { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--space-12); align-items: center; }
+.num { width: 48px; height: 48px; border-radius: var(--radius-12); background: var(--accent-fill); display: grid; place-items: center; color: var(--on-fill); font: 600 18px var(--mono); }
+.num.sm { width: 32px; height: 32px; border-radius: var(--radius-10); background: var(--panel-2); color: var(--muted); font-size: 14px; border: 1px solid var(--line); }
+h3 { margin: 0; font: 600 16px/1.25 var(--body); }
+p { margin: var(--space-2) 0 0; color: var(--muted); font-size: 13px; }
+.sub-row { padding: var(--space-8) 0 0; margin-top: var(--space-10); border-top: 1px solid var(--line); display: flex; align-items: center; gap: var(--space-10); font-size: 13px; }
+.sub-row .t { flex: 1; min-width: 0; }
+.sub-row .t small { display: block; color: var(--muted); font-size: 11.5px; }
+.bind { min-height: 44px; }
+.dk .bind { min-height: 0; }
+.travel .t b { font-weight: 600; }
+.hint { margin-top: var(--space-10); font-size: 12px; color: var(--muted); }
+.act { margin-top: var(--space-12); }
+.ph .act .btn { width: 100%; }
+.cmp { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: var(--space-10); align-items: center; padding: var(--space-8) 0; border-top: 1px solid var(--line); min-height: 48px; }
+.cmp.nb { border-top: 0; }
+.cmp b { font-weight: 600; font-size: 13.5px; display: block; }
+.cmp small { color: var(--muted); font-size: 11.5px; display: block; }
+</style></head><body>
+<!-- Static mockup, not the product. Every name, number and distance below is a placeholder, not game data. -->
+<div class="frames" id="phones">
+<div class="fr"><p class="cap">M1 · 390 · Basic · P3 card as specified (phone-layout §3.4), no lane A rows</p><div class="ph"><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M2 · 390 · Basic · Bind row on the story card (P15)</p><div class="ph"><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row bind"><span class="box"></span><div class="t">Bind Placeholder Haven on the way<small>32 m from Placeholder NPC</small></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M3 · 390 · Basic · travel line with "I’ll walk" replaces the Kibelisk hint (P16)</p><div class="ph"><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row travel"><div class="t"><b>Teleport to Placeholder Haven (1 scroll), then 32 m</b></div><span class="btn quiet" aria-label="I will walk to Placeholder NPC">I’ll walk</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M4 · 390 · Advanced · "1 of 4", track toggle + drawbacks line, band labels on a mixed-band list (P14)</p><div class="ph"><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="seg" role="group" aria-label="Track"><span class="on">Fastest</span><span>Completionist</span></span><p class="drawb"><b>Fastest skips:</b> Placeholder reward (Placeholder milestone)</p><span class="chk"><span class="box "></span>Prefer running</span></div><div class="band first">Lv 20–24</div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div><div class="band ">Lv 25–29</div><div class="cmp nb"><span class="num sm">4</span><div><b>Placeholder milestone step</b><small>Placeholder milestone</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M5 · 390 · Advanced · toggle hidden (no approved non-core label), travel line</p><div class="ph"><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="chk"><span class="box "></span>Prefer running</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row travel"><div class="t"><b>Teleport to Placeholder Haven (1 scroll), then 32 m</b></div><span class="btn quiet" aria-label="I will walk to Placeholder NPC">I’ll walk</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M6 · 390 · Advanced · Prefer running on: no travel line, the Kibelisk hint stays as today</p><div class="ph"><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="chk"><span class="box on">✓</span>Prefer running</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="hint">Kibelisk hint: Placeholder Haven is nearby</div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M7 · 390 · Advanced · catch-up: lifted queue, missed steps grouped by band, later ones by when they open</p><div class="ph"><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 7<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="chk"><span class="box "></span>Prefer running</span></div><div class="band first">Now</div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>3 points affordable</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="band ">Missed · Lv 20–24</div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder missed step A</b><small>Placeholder milestone</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder missed step B</b><small>Placeholder milestone</small></div></div><div class="band ">Missed · Lv 25–29</div><div class="cmp nb"><span class="num sm">4</span><div><b>Placeholder missed step C</b><small>Placeholder milestone</small></div></div><div class="cmp "><span class="num sm">5</span><div><b>Spend skill points: placeholder skill</b><small>2 points affordable</small></div></div><div class="band ">Later</div><div class="cmp nb"><span class="num sm">6</span><div><b>Placeholder step waiting on a quest</b><small>Opens at Lv 31</small></div></div></section></div></div>
+<div class="fr"><p class="cap">M8 · 390 · Basic · catch-up: Basic keeps the first skill card only, no band labels</p><div class="ph"><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>3 points affordable</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div>
+</div>
+<div class="frames" id="desktop" style="margin-top: var(--space-24)">
+<div class="fr dk-fr"><p class="cap">D1 · 1500 · Basic · Bind row (P15)</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row bind"><span class="box"></span><div class="t">Bind Placeholder Haven on the way<small>32 m from Placeholder NPC</small></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div></div>
+<div class="fr dk-fr"><p class="cap">D2 · 1500 · Basic · travel line + "I’ll walk" (P16)</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row travel"><div class="t"><b>Teleport to Placeholder Haven (1 scroll), then 32 m</b></div><span class="btn quiet" aria-label="I will walk to Placeholder NPC">I’ll walk</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div></div>
+<div class="fr dk-fr"><p class="cap">D3 · 1500 · Advanced · toggle + drawbacks line + band labels + Bind row (P14, P15)</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="seg" role="group" aria-label="Track"><span class="on">Fastest</span><span>Completionist</span></span><p class="drawb"><b>Fastest skips:</b> Placeholder reward (Placeholder milestone)</p><span class="chk"><span class="box "></span>Prefer running</span></div><div class="band first">Lv 20–24</div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row bind"><span class="box"></span><div class="t">Bind Placeholder Haven on the way<small>32 m from Placeholder NPC</small></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div><div class="band ">Lv 25–29</div><div class="cmp nb"><span class="num sm">4</span><div><b>Placeholder milestone step</b><small>Placeholder milestone</small></div></div></section></div></div></div>
+<div class="fr dk-fr"><p class="cap">D4 · 1500 · Advanced · toggle hidden, travel line, Prefer running (P14 hidden state, P16)</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="chk"><span class="box "></span>Prefer running</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="sub-row travel"><div class="t"><b>Teleport to Placeholder Haven (1 scroll), then 32 m</b></div><span class="btn quiet" aria-label="I will walk to Placeholder NPC">I’ll walk</span></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div></div>
+<div class="fr dk-fr"><p class="cap">D5 · 1500 · Advanced · catch-up</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 7<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="seg" role="group" aria-label="Track"><span class="on">Fastest</span><span>Completionist</span></span><p class="drawb"><b>Fastest skips:</b> Placeholder reward (Placeholder milestone)</p><span class="chk"><span class="box "></span>Prefer running</span></div><div class="band first">Now</div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Spend skill points: placeholder skill</h3><p>3 points affordable</p></div></div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="band ">Missed · Lv 20–24</div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder missed step A</b><small>Placeholder milestone</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder missed step B</b><small>Placeholder milestone</small></div></div><div class="band ">Missed · Lv 25–29</div><div class="cmp nb"><span class="num sm">4</span><div><b>Placeholder missed step C</b><small>Placeholder milestone</small></div></div><div class="cmp "><span class="num sm">5</span><div><b>Spend skill points: placeholder skill</b><small>2 points affordable</small></div></div><div class="band ">Later</div><div class="cmp nb"><span class="num sm">6</span><div><b>Placeholder step waiting on a quest</b><small>Opens at Lv 31</small></div></div></section></div></div></div>
+<div class="fr dk-fr"><p class="cap">D6 · 1500 · Advanced · Prefer running on</p><div class="dk"><div class="grid3"><div class="ghost">Skills (placeholder tile)</div><div class="ghost">Daevanion (placeholder tile)</div><section class="card nowstar"><div class="hd"><h2>Next up</h2><span class="sp"></span><span class="pager"><span class="btn quiet" aria-label="Previous Next up card">‹</span>1 of 4<span class="btn quiet" aria-label="Next Next up card">›</span></span><span class="i" aria-label="Info">i</span></div><div class="opts"><span class="chk"><span class="box on">✓</span>Prefer running</span></div><div class="first-card"><div class="row"><span class="num">1</span><div><h3>Placeholder story quest</h3><p>Placeholder chapter · step 2 of 5</p></div></div><div class="hint">Kibelisk hint: Placeholder Haven is nearby</div><div class="act"><span class="btn primary">Placeholder action</span></div></div><div class="cmp nb"><span class="num sm">2</span><div><b>Placeholder regional quest</b><small>Placeholder zone · 2 open</small></div></div><div class="cmp "><span class="num sm">3</span><div><b>Placeholder dungeon</b><small>Placeholder entrance</small></div></div></section></div></div></div>
+</div>
+</body></html>
