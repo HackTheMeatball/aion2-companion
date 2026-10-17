@@ -31,7 +31,10 @@ const PACK_KEYS = {
   nextUpProducers: [x => pkArr(x) && x.every(n => pkObj(n) && pkStr(n.id) && pkFn(n.produce)), () => []],
   cards: [pkArr, () => []],
   nowRenderers: [pkObj, () => ({})],
-  rowRenderers: [pkObj, () => ({})],
+  rowRenderers: [x => pkObj(x) && Object.values(x).every(pkFn), () => ({})],
+  /* { name: fn }: what the milestone card calls for the pack's rows (text, sync, ticked, click, snooze, turnedIn;
+     src/cards/milestones.js); a missing one does nothing */
+  rowHooks: [x => pkObj(x) && Object.values(x).every(pkFn), () => ({})],
   text: [pkObj, () => ({})],
 };
 const PACK_REQUIRED = ["id", "data", "catalog"];
