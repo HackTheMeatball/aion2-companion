@@ -10,9 +10,17 @@
    opens at) first. Order: spend what you already have → steps the milestone you're standing on opens (the route pauses
    at milestones) → what the pack ranks above the story → missed steps → the story → side content → advice → late →
    what opens later. A step card the pack puts first (first: true; ascensionFirst: the rank-up quest steps, design §5)
-   goes above all of them, and the engine leaves that step out of its own steps and missed steps. */
-import { activePack } from "./pack.js";
+   goes above all of them, and the engine leaves that step out of its own steps and missed steps.
+
+   Catch-up (catchUp, design §7): an entry may say what it spends (points: the kind of points, "skill" / "board" / …, on
+   the entry that shows something affordable now) and that it is a queue preview past the pack's usual length (more:
+   true). When the player is behind (behindOf), the previews stay and every missed step shows; else the previews drop and
+   the missed steps stop at MISSED_SHOWN. Later by eta (etaLater, design §7 item 3): later entries carry Q (the story
+   position they wait on, etaOf) next to L, and sort by L, then Q. */
+import { activePack, perPack } from "./pack.js";
 import { blockerText } from "./blockers.js";
+import { cardRows, itemByK } from "./catalog.js";
+import { byPlace, whereNow } from "./place.js";
 import { char } from "./state.js";
 import { checkableOf, countsOf, doneOf, gatesOf, isOpen, objIdxOf, openSteps, questIdx, turnInNeedsLv } from "./requirements.js";
 
@@ -22,16 +30,29 @@ export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story"
    (the pack's gateChanges, design 0.3 §13), so tests/golden.js --explain can attribute every changed state to the
    smallest set of them. Unlike those, a ranking change ships off (on: false) until the step that builds it turns it on and
    re-records the golden snapshots (0.5 P11: every one off; P12 turns on ascensionFirst and placeRank, both read by the
-   pack's producers). A pack declares its own ranking
-   changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
+   pack's producers; P13 turns on catchUp and etaLater, read here and by the pack's spend and Later skill producers).
+   baseline: in the snapshots since an earlier step, so --explain keeps it on and never explains it (as the pack's gate
+   changes; the step after the one that records a switch marks it). A pack declares its own ranking changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
    exactly the names given, from any table; the caller adds what each one needs. */
 export const RANK_CHANGES = {
-  ascensionFirst: { on: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
-  placeRank: { on: true, what: "the side-content picks and the order of their lists by where the player is (whereNow, byPlace; design §5)" },
+  ascensionFirst: { on: true, baseline: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
+  placeRank: { on: true, baseline: true, what: "the side-content picks and the order of their lists by where the player is (whereNow, byPlace; design §5)" },
   trackFilter: { on: false, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
   bandLabels: { on: false, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
-  catchUp: { on: false, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
-  etaLater: { on: false, what: "the Later cards from every closed node, by the level (then the story quest) they open at (design §7 item 3)" },
+  catchUp: { on: true, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
+  etaLater: { on: true, what: "the Later cards from every closed node, by the level (then the story quest) they open at (design §7 item 3)" },
+};
+/* Catch-up's thresholds (design §7, inferred; pinned by tests/core/nextup.test.mjs): behind with at least BEHIND_MISSED
+   open missed steps, or at least BEHIND_KINDS kinds of points with something affordable now. Not behind: at most
+   MISSED_SHOWN missed steps (0.2's rule). */
+export const BEHIND_MISSED = 3, BEHIND_KINDS = 2, MISSED_SHOWN = 2;
+/* behind(c), from what this ranking collected: missed = the open missed steps, entries = every entry (their points). */
+export const behindOf = (missed, entries) => missed.length >= BEHIND_MISSED || new Set(entries.filter(e => e.points).map(e => e.points)).size >= BEHIND_KINDS;
+/* When a closed node opens (etaLater): { L: the level it waits for (0: none), Q: the story position it waits on (the
+   quest's index on the chain, +0.5 when it needs the turn-in; -1: none) } from its eta (src/core/evaluator.js). */
+export const etaOf = r => {
+  const e = (r && r.eta) || {}, ix = perPack("nextupStoryIx", p => new Map(p.data.graph.story.map(([id], i) => [id, i])));
+  return { L: e.level || 0, Q: e.quest && ix.has(e.quest) ? ix.get(e.quest) + (e.turnIn ? 0.5 : 0) : -1 };
 };
 let RANK_ON = null;
 /* Turn on exactly these ranking changes (null: back to each table's `on`); returns the names now on. */
@@ -65,7 +86,13 @@ export function rankNext(state, { basic = false } = {}) {
      at their own level: after the story. */
   const missed = milestones.filter(g => g.lv < lv && isOpen(countsOf(state, g)));
   const msAll = missed.flatMap(g => openSteps(state, g).filter(m => !firstK.has(m.k)).map(m => ({ ...m, g })));
-  msAll.filter(m => !m.rq && !m.adv).slice(0, 2).forEach(m => add("missed", { kind: "missed", x: m, g: m.g, act: "tick:" + m.k }));
+  let ms = msAll.filter(m => !m.rq && !m.adv);
+  /* Catch-up (design §7): behind, every missed step, nearest first (byPlace on the zone the pack locates a key in; where
+     the player isn't known, the catalog order); else the first MISSED_SHOWN, as 0.2. */
+  const lift = rankChangeOn("catchUp") && behindOf(ms, entries);
+  if (lift) { const ix = new Map(ms.map((m, i) => [m, i])); ms = [...ms].sort(byPlace(whereNow(c), m => ({ zone: P.locate(m.k), pt: null, order: ix.get(m) }))); }
+  else ms = ms.slice(0, MISSED_SHOWN);
+  ms.forEach(m => add("missed", { kind: "missed", x: m, g: m.g, act: "tick:" + m.k }));
   /* Nothing else to do right now: the story is the default (its steps live in the Journey card). */
   add("story", storyCard(state, ctx));
   /* Advice steps (optional notes) rank after the story. Advanced only. */
@@ -75,18 +102,42 @@ export function rankNext(state, { basic = false } = {}) {
      steps, or rows the pack queues on cards of their own (catalog.promised), so a card never promises something that
      won't show up at that level. Its first step that isn't a side row or advice; a milestone whose rows Next up doesn't
      offer shows its title. why: what opens that step apart from its milestone's level (the card says it). */
-  const g2 = milestones.find(g => g.lv > lv && checkableOf(state, g).some(x => rowKind(x.it) !== "side" && promised(x.it, x.k) && !doneOf(c, x.k, ev)));
-  const st2 = g2 ? openSteps(state, g2).find(x => !x.rq && !x.adv) : null;
-  if (g2) entries.push({ phase: "later", L: g2.lv, card: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "",
+  const eta = rankChangeOn("etaLater") ? laterByEta(state, ctx) : null;
+  const g2 = eta ? eta.g : milestones.find(g => g.lv > lv && checkableOf(state, g).some(x => rowKind(x.it) !== "side" && promised(x.it, x.k) && !doneOf(c, x.k, ev)));
+  const st2 = eta ? eta.x : g2 ? openSteps(state, g2).find(x => !x.rq && !x.adv) : null;
+  if (g2) entries.push({ phase: "later", L: eta ? eta.L : g2.lv, Q: eta ? eta.Q : undefined, card: { kind: "laterStep", g: g2, x: st2 || null, lv, later: true, act: "",
     why: st2 && ev.byKey(st2.k) ? blockerText(ev.byKey(st2.k), ev, { omit: ["level"] }) : "" } });
-  const ranked = entries.map((e, i) => ({ e, i, p: NEXT_UP_PHASES.indexOf(e.phase) }))
-    .sort((a, b) => (b.e.first ? 1 : 0) - (a.e.first ? 1 : 0) || a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) : 0) || a.i - b.i).map(x => x.e);
+  /* not behind (or catchUp off): the pack's queue previews past its usual length drop */
+  const ranked = (lift ? entries : entries.filter(e => !e.more)).map((e, i) => ({ e, i, p: NEXT_UP_PHASES.indexOf(e.phase) }))
+    .sort((a, b) => (b.e.first ? 1 : 0) - (a.e.first ? 1 : 0) || a.p - b.p || (a.e.phase === "later" ? (a.e.L || 0) - (b.e.L || 0) || (a.e.Q ?? -1) - (b.e.Q ?? -1) : 0) || a.i - b.i).map(x => x.e);
   /* Basic: only what you can act on now (no Later or advice cards, only the first card of each queue). */
   const firstOf = new Set();
   const shown = !basic ? ranked : ranked.filter(e => { if (e.card.later || e.card.adv) return false; if (!e.queue) return true;
     if (firstOf.has(e.queue)) return false; firstOf.add(e.queue); return true; });
-  /* At most 8 cards, plus the story card and the cards the pack keeps (keep: true), which always stay. */
-  return shown.filter((e, i) => i < 8 || e.card.story || e.keep).map(e => e.card);
+  /* At most 8 cards, plus the story card and the cards the pack keeps (keep: true), which always stay. Queue previews
+     (more, catch-up) may push out what ranks after the story, never a step, a missed step or the story itself. */
+  const room = Math.max(0, 8 - shown.filter(e => !e.more && NEXT_UP_PHASES.indexOf(e.phase) <= NEXT_UP_PHASES.indexOf("story")).length);
+  let extra = 0;
+  return shown.filter(e => !e.more || extra++ < room).filter((e, i) => i < 8 || e.card.story || e.keep).map(e => e.card);
+}
+
+/* Later by eta (etaLater, design §7 item 3): of the steps the Later card may promise (on a milestone above your level;
+   not a side row, advice or a quest row; offered and promised by the pack; not done) the closed one that opens
+   first: by the level it waits for, then the story position, then the catalog order. So a step that waits on a quest
+   ranks by that quest, not by its milestone's first row. { g, x, L, Q }, or null (none: the card is 0.2's pick). */
+function laterByEta(state, { c, lv, ev }) {
+  const { milestones, rowKind, offered, promised } = activePack().catalog;
+  let best = null;
+  for (const g of milestones) { if (g.lv <= lv) continue;
+    for (const { it: row, k } of cardRows(g)) {
+      const r = ev.byKey(k), it = itemByK(k);
+      if (!r || r.open || r.done !== false || row.kind === "quest" || row.opt || (it && it.adv)) continue;
+      if (rowKind(row) === "side" || !offered(it, k) || !promised(row, k)) continue;
+      if (it && it.byStory && (it.story === c.quest || ev.completes(r.id))) continue;
+      const { L, Q } = etaOf(r), at = Math.max(L, g.lv);
+      if (!best || at < best.L || (at === best.L && Q < best.Q)) best = { g, x: { k, it, row, rq: false, adv: false }, L: at, Q };
+    } }
+  return best;
 }
 
 /* The story card: set your quest / story complete / the quest with its objectives. Level-gated (the quest's level is

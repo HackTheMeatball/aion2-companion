@@ -5,7 +5,7 @@
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L11-q13-before-B": [
     {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
@@ -18,6 +18,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Crash Site Rendezvous","s":"0/4 objectives · then Contaminated Area","c":"primary \"Turned in\" story","o":["Find Hadala at Galorik's Inspection Area talk to Hadala (Kibelisk: Galorik's Inspection Area)","Collect the neutralizer materials Poison Flower fruit Red Shell Mole shell Kibelisk: Galorik's Inspection Area","Find the herbalist and gather neutralizer materials talk to Matir (Kibelisk: Temporary Investigation Base)","+1 more after these"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Run Graverobber Den","s":"Crypt · Kibelisk: Galorik's Inspection Area · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Galorik's Inspection Area is 377 m away · 2 open"}
@@ -28,7 +30,7 @@
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 3 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L11-q14-before-B": [
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
@@ -41,6 +43,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Contaminated Area","s":"0/3 objectives · then Express Daeva Delivery","c":"primary \"Turned in\" story","o":["Go to the Temporary Investigation Base talk to Niror (Kibelisk: Temporary Investigation Base)","Collect the neutralizer materials Drakana from Drana Slime fragments from Crash Site Kalgolem eggshells from Dredgion Remnants Kibelisk: Temporary Investigation Base","Turn in Niror (Dispatched Daeva), Temporary Investigation Base"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site (near your story step) · Kibelisk: Safe Haven Cliff · 0/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 2 open"}
@@ -52,7 +56,7 @@
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L11-q16-before-A": [
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian [Lv 12]"]},
@@ -61,7 +65,7 @@
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q15-before-A": [
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
@@ -70,7 +74,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q15-before-B": [
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
@@ -84,6 +88,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Express Daeva Delivery","s":"0/2 objectives · then Veiled Truth","c":"primary \"Turned in\" story","o":["Restore the supply route retrieve the Lost Supplies defeat Drana Predator defeat Congealed Drana Kibelisk: Creion Campsite","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 1 near your story step · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian (near)"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 13 open at your level"},
@@ -96,7 +102,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q16-before-B": [
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
@@ -110,6 +116,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Veiled Truth","s":"0/3 objectives · then Urgent Pursuit","c":"primary \"Turned in\" story","o":["Meet Baba at Quai Campsite go inside (Kibelisk: Quai Campsite)","Find the broker's associate go to Barvir (Kibelisk: Quai Campsite)","Turn in Ulgorn, Quai Campsite"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Dusk Pit","s":"Calderon Canyon (near your story step) · Kibelisk: Quai Campsite · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Quai Campsite is 200 m away · 13 open at your level"},
@@ -122,7 +130,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · 1 level away · unlocks after \"Urgent Pursuit\" · your current quest — turn it in","c":"tag \"Later\"","f":"later"}
   ],
   "story/L12-q18-before-A": [
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
@@ -141,7 +149,7 @@
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 2 → 3","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 3 levels away · opens on \"Buried Atrocities\" · 4 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L13-q17-before-B": [
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
@@ -155,6 +163,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Urgent Pursuit","s":"0/5 objectives · then Cemetery Cleanup","c":"primary \"Turned in\" story","o":["Find out where the broker is talk to Tagar (Kibelisk: Gravekeeper Camp)","Eliminate the hindrance defeat Corrupted Karas Handmaiden defeat Hungry Dead Kibelisk: Gravekeeper Camp","Investigate the Shaded Cave enter the Shaded Cave (Kibelisk: Gravekeeper Camp)","+2 more after these"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
@@ -184,6 +194,7 @@
     {"t":"Enhance the Noble Belt","s":"Lv 13 milestone · Daevanion board","c":"primary \"Done\" tick:g12:belt"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
     {"t":"Story: Cemetery Cleanup","s":"0/3 objectives · then Back on the Scent","c":"primary \"Turned in\" story","o":["Help the gravekeeper with chores defeat Vampire Vivel defeat Rafflesia Kibelisk: Gravekeeper Camp","Investigate the Graverobber Den retrieve the items stolen by graverobbers (Kibelisk: Gravekeeper Camp)","Turn in Tagar (Gravekeeper), Gravekeeper Camp"]},
     {"t":"Regional quests","s":"1 to pick up · 0/1 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
@@ -206,7 +217,7 @@
     {"t":"Buy Ambush 5 → 6","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 4 → 5","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away · opens on \"Buried Atrocities\" · 2 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L14-q19-before-B": [
     {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk: Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
@@ -220,6 +231,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Back on the Scent","s":"0/2 objectives · then Dead Men Tell No Tales","c":"primary \"Turned in\" story","o":["Clear the path to the crematorium defeat Lost Specter defeat Ancient Revenant Knight investigate Brok's traces on the corpse Kibelisk: Neglected Crematorium","Turn in Kolina (Gravekeeper's Assistant), Neglected Crematorium"]},
     {"t":"Regional quests","s":"2 to pick up · 1 near your story step · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters (near)"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
@@ -232,7 +245,7 @@
     {"t":"Buy Ambush 5 → 6","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 4 → 5","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away · opens on \"Buried Atrocities\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L15-q20-before-A": [
     {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -242,7 +255,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 1 level away · opens on \"Buried Atrocities\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "story/L15-q20-before-B": [
     {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
@@ -257,6 +270,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Dead Men Tell No Tales","s":"0/2 objectives · then Buried Atrocities","c":"primary \"Turned in\" story","o":["Clear nearby threats defeat Evil Black Soul defeat Grudge Bearing Warrior Kibelisk: Neglected Crematorium","Turn in Ulgorn, Crypt"]},
     {"t":"Regional quests","s":"2 to pick up · 1 near your story step · 0/2 turned in","c":"go \"Show\" rqgo:rq:2202044","x":["new Shugo-of-All-Trades: Asmodian","new Spooky Specters (near)"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery (near your story step) · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 24 open at your level"},
@@ -270,7 +285,7 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Enhance the Revelation Amulet","s":"Lv 16 milestone · 1 level away · unlocks after \"Buried Atrocities\" · your current quest — turn it in","c":"tag \"Later\"","f":"later"}
   ],
   "story/L15-q22-before-A": [
     {"t":"Buy Insignia Explosion 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},

@@ -17,7 +17,7 @@ import { AREA_ITEMS, KIB_AREA, bandOf } from "./catalog.js";
 import { areaOpen, dvNeed, dvNext, dvSpent, isAscensionKey, rqStatus, rqWaitsOnStory, shardsFromLv, skillBuy, skillOpen, stigmaEquipOpen, stigmaPlan, stigmaSlots,
   storyAreaOf, storyHereOf } from "./requirements.js";
 import { blockerText } from "../../core/blockers.js";
-import { rankChangeOn } from "../../core/nextup.js";
+import { etaOf, rankChangeOn } from "../../core/nextup.js";
 import { perPack } from "../../core/pack.js";
 import { byPlace, whereNow } from "../../core/place.js";
 import { doneOf, gatesOf, openBut, openSteps, qProgOf } from "../../core/requirements.js";
@@ -78,21 +78,22 @@ function spend(state, { c, lv, ev }) {
   Object.keys(c.areaRun || {}).filter(k => !doneOf(c, k, ev)).forEach(k => { const x = AREA_ITEMS.find(y => y.k === k); if (!x) return;
     add({ kind: "run", x, act: "tick:" + k }); });
   if ((c.pendSt || 0) + (c.pendCr || 0) > 0) add({ kind: "cube", st: c.pendSt, cr: c.pendCr, act: "usecube" });
-  if (sp) { out.push({ phase: "spend", queue: "skill", card: { kind: "skill", x: sp, first: true, act: "skill" } });
-    /* The upgrades right after it that your current points also cover (queue previews; each becomes the top card in turn). */
+  if (sp) { out.push({ phase: "spend", queue: "skill", points: "skill", card: { kind: "skill", x: sp, first: true, act: "skill" } });
+    /* The upgrades right after it that your current points also cover (queue previews; each becomes the top card in turn).
+       Past 4 spend cards they are previews the engine shows only when you are behind (more: catchUp, design §7). */
     const pts = (LEVEL_POINTS[Math.min(45, Math.max(0, lv))] || 0) + (c.stones || 0) - SP_STEPS.filter(x => c.checks[x.k]).reduce((t, x) => t + x.cost, 0);
     let left = pts - (sp.spec ? 0 : sp.cost);
     skillOpen(c, lv).now.filter(x => x !== sp).some(x => {
       const cost = x.spec ? 0 : x.cost; if (cost > left) return true; left -= cost;
-      out.push({ phase: "spend", queue: "skill", card: { kind: "skill", x, act: "skill" } });
-      return out.length >= 4; }); }
+      out.push({ phase: "spend", queue: "skill", ...(out.length >= 4 ? { more: true } : {}), card: { kind: "skill", x, act: "skill" } });
+      return false; }); }
   const dn = dvNext(c, lv), dLeft = (c.dvTotal || 0) - dvSpent(c), dc = dn && (c.dvCost || {})[dn.k];
   /* "<Board> board opens" (a milestone step) still open: that card comes first, the board's buy card after it (one, not both). */
   const boOpen = dn && GATES.some(g => g.lv <= lv && g.items.some(it => it.bo === dn.board && !c.checks[it.k]));
   if (boOpen) { /* the milestone card covers it */ }
   else if (dn && dLeft < dvNeed(c, dn) && dc !== 0) { /* can't afford even the cheapest version of the next node: nothing to do on the board yet */ }
-  else if (dn && dc != null && dc <= dLeft) add({ kind: "board", dn, dc, dLeft, act: "board" });
-  else if (dn && dc == null && dLeft > 0) add({ kind: "boardcost", dn, dLeft, act: "boardcost" });
+  else if (dn && dc != null && dc <= dLeft) out.push({ phase: "spend", points: "board", card: { kind: "board", dn, dc, dLeft, act: "board" } });
+  else if (dn && dc == null && dLeft > 0) out.push({ phase: "spend", points: "board", card: { kind: "boardcost", dn, dLeft, act: "boardcost" } });
   return out;
 }
 
@@ -147,7 +148,7 @@ function stigma(state, { c, lv, ev }) {
     if (!(c.stLv || {})[nx.name] && !(c.stShards || 0)) { let at = null; for (let L = lv + 1; L <= 45 && at == null; L++) if (shardsFromLv(L) > shardsFromLv(lv)) at = L;
       return [{ phase: "side", keep: true, card: { kind: "stwait", nx, at, act: "" } }]; }
     return [{ phase: "spend", card: { kind: "stequip", nx, r, act: "stequip" } }]; }
-  if (up && (c.stShards || 0) >= up.cost) return [{ phase: "spend", card: { kind: "stup", up, shards: c.stShards, act: "stup" } }];
+  if (up && (c.stShards || 0) >= up.cost) return [{ phase: "spend", points: "stigma", card: { kind: "stup", up, shards: c.stShards, act: "stup" } }];
   /* Key placement for new skills/stigmas is already a milestone step ("Put … in row 0 of E"); the Build tab shows a "new" badge. */
   return [];
 }
@@ -169,7 +170,10 @@ function stronghold(state, ctx) {
 function laterSkills(state, { c, lv, ev }) {
   const nextOf = {}; SP_STEPS.filter(x => !c.checks[x.k]).forEach(x => { const n = nextOf[x.s.n]; if (!n || x.L < n.L) nextOf[x.s.n] = x; });
   const sp2s = Object.values(nextOf).filter(x => !ev.byKey(x.k).open && !x.spec).sort((a, b) => a.req - b.req || a.rank - b.rank);
-  return sp2s.slice(0, 3).map(x => ({ phase: "later", L: x.req, card: { kind: "laterSkill", x, lv, later: true, act: "", why: blockerText(ev.byKey(x.k), ev) } }));
+  /* etaLater (design §7 item 3): by when each opens (its eta: level, then story position), as the engine's Later step */
+  const eta = rankChangeOn("etaLater"), at = new Map(sp2s.map(x => { const e = etaOf(ev.byKey(x.k)); return [x, eta ? { L: Math.max(e.L, x.req), Q: e.Q } : { L: x.req }]; }));
+  if (eta) sp2s.sort((a, b) => at.get(a).L - at.get(b).L || at.get(a).Q - at.get(b).Q);
+  return sp2s.slice(0, 3).map(x => ({ phase: "later", ...at.get(x), card: { kind: "laterSkill", x, lv, later: true, act: "", why: blockerText(ev.byKey(x.k), ev) } }));
 }
 
 export const aion2NextUp = [
