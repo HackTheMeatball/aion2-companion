@@ -1,0 +1,31 @@
+<aside class="statdrawer" id="statDrawer" aria-label="Build: stat priority and rotation">
+  <button type="button" class="sd-tab" id="sdTab" aria-expanded="false" aria-controls="sdPanel" title="Stat priority and rotation"><span class="sd-chev" aria-hidden="true">‹</span><span class="sd-lbl">Build</span><span class="sd-new" id="sdNew" hidden>new</span></button>
+  <div class="sd-panel" id="sdPanel">
+    <div class="sd-head"><h2>Stat priority</h2><button type="button" class="sd-close" id="sdClose" aria-label="Close">×</button></div>
+        <div class="tiers" id="statSeq"></div>
+        <p class="fine tline">B board · G gear. Only stats two or more sources rank high; order inside a tier varies.</p>
+    <div class="sd-rot">
+        <div class="ns-head">
+          <h2 class="sd-h2">Rotation</h2><span class="lvtag" id="rotLv" hidden></span>
+        </div>
+        <ol class="playsteps" id="rotPlay"></ol>
+        <div class="rmbline"><span class="khead">Right click fires</span><ol class="chain" id="rotChain"></ol></div>
+        <div class="rmbline"><span class="khead">Left click</span><ol class="chain lclick"><li><span class="dot"></span><span><img class="spmini" src="assets/icons/sk-quick-slice.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">Quick Slice <span class="muted">· refills the MP right click spends</span></span></li></ol></div>
+        <p class="fine tline" id="rotNote"></p>
+        <div class="tfoot">
+        <details class="mini">
+          <summary>Key setup</summary>
+          <div class="stackviz" id="stackViz"></div>
+          <ol class="fine macro-steps">
+            <li><b>Put the macro on right click:</b> Esc → Key Settings → General → Gameplay → Macro, press right click and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</li>
+            <li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.</li>
+            <li><b>Hold right and left click together</b> in a fight. Right click alone drains MP; holding left click too keeps it full (your test).</li>
+          </ol>
+          <p class="fine tline">Without the macro, each click fires one skill from the stack, so you'd have to keep clicking. Press K to open this grid in game and put each skill in the row shown. Row 0 is tried first; anything on cooldown or not ready is skipped. Quick Slice stays alone on left click: with no cooldown it would block everything above it in a stack.</p>
+          <p class="fine tline">Right click fires the first ready skill, row 0 first, so Heart Gore jumps in whenever a crit opens it. Left click (Quick Slice) restores the MP Savage Roar spends.</p>
+          <p class="fine tline">Row order and the E stack are the guide's inference (Heart Gore first because it only opens after a crit; Insignia Explosion after the builders because it scales with stacks). Test on a training dummy; if a skill never fires, move it down a row.</p>
+        </details>
+        </div>
+    </div>
+  </div>
+</aside>

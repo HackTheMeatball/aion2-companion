@@ -52,18 +52,7 @@
 
   <div class="layout">
     <aside class="rail" aria-label="Progress and journey">
-      <section class="card">
-        <h2>Progress</h2>
-        <div class="progress-row">
-          <svg class="ring" viewBox="0 0 76 76" aria-hidden="true">
-            <circle class="bg" cx="38" cy="38" r="32"></circle>
-            <circle class="fg" id="ringFg" cx="38" cy="38" r="32"></circle>
-            <text id="ringTxt" x="38" y="38" text-anchor="middle">0%</text>
-            <text id="progBig" class="ring-sub" x="38" y="51" text-anchor="middle">0/0</text>
-          </svg>
-          <div class="prog-rows" id="progRows"></div>
-        </div>
-      </section>
+      <!-- @card packs/aion2/cards/progress.html -->
 
       <section class="card where">
         <div class="where-head">
@@ -100,20 +89,7 @@
         <div class="track"><ol id="track"></ol></div></div>
       </section>
 
-      <section class="card areas" id="areas">
-        <div class="areas-head">
-          <h2>Dungeons &amp; Strongholds</h2>
-          <a class="achip link" id="areaMapLink" href="https://metabot.gg/en/aion-2/map/altgard" target="_blank" rel="noopener" title="Altgard map: dungeons, strongholds, Empyrean Traces">Map ↗</a>
-        </div>
-        <div id="areasBody">
-          <select id="areaSel" aria-label="Level band"></select>
-          <div class="achips">
-            <label class="achip sh"><input type="checkbox" id="areaShTog"> Strongholds</label>
-            <label class="achip" title="Hide dungeons and strongholds you've cleared"><input type="checkbox" id="areaDoneTog"> Hide cleared</label>
-          </div>
-          <ul class="items area-list" id="areaList"></ul>
-        </div>
-      </section>
+      <!-- @card packs/aion2/cards/areas.html -->
 
 
       <section class="card notes">
@@ -126,56 +102,9 @@
 
     <main id="main">
       <div class="top-grid">
-      <section class="card tcard" id="spCard">
-        <div class="ns-head">
-          <h2>Skills</h2>
-          <div class="ctlcol"><span class="numctl"><button type="button" data-step="spPts" data-d="-1" aria-label="One fewer">−</button><label for="spPts">Stones</label><input id="spPts" type="number" min="0" max="19999" inputmode="numeric" placeholder="0" aria-label="Wisdom Stones used"><button type="button" data-step="spPts" data-d="1" aria-label="One more">+</button></span><em class="dvcr" id="spLv"></em></div>
-        </div>
-        <div class="cubebar" id="spCube" hidden></div>
-        <div class="tmain">
-          <div class="ptbig" id="spBig"></div>
-          <input type="checkbox" id="spNextBox" hidden>
-          <div id="spHero"></div>
-        </div>
-        <div id="spAfter"></div>
-        <div class="tfoot">
-          <details class="mini" id="syncBox">
-            <summary>Sync levels</summary>
-            <p class="fine">Type each skill's level from its tooltip title, without the green bonus: "Heart Gore Lv. 6 (+1)" → 6. The number on the skill icon includes board bonuses (7), so don't use that one. Then apply. Skill lines in the milestones get ticked or unticked to match.</p>
-            <div class="sync-grid" id="syncGrid"></div>
-            <button type="button" id="syncApply">Apply</button> <span class="muted" id="syncMsg"></span>
-          </details>
-          <details class="mini">
-            <summary>How points work</summary>
-            <p class="fine">You earn points two ways: from character levels (24 by Lv 12, 28 by Lv 13, up to 203 at Lv 45), and 1 per Wisdom Stone you use from your Cube. Enter your stones used above and the card works out what you can spend. The skill window's points breakdown shows both and how many are unspent. Levels 2–4 cost 1 point, 5–7 cost 2, 8–10 cost 4; points stop at 10. Skill level 8 opens the first specialty slot, 12 the second and 20 the third; the skill's Daevanion nodes count toward that level (+1 each). Each milestone lists the core upgrades that opened since the last one, in priority order; the extra skills after them are in this card only. Respec is free while you level; check the reset button's cost at 31.</p>
-          </details>
-        </div>
-      </section>
-      <section class="card tcard" id="dvBox">
-        <div class="ns-head">
-          <h2>Daevanion</h2>
-          <div class="ctlcol"><span class="numctl"><button type="button" data-step="dvIn" data-d="-1" aria-label="One fewer">−</button><label for="dvIn" title="Total Daevanion Crystals on the board">Total</label><input id="dvIn" type="number" min="0" max="9999" inputmode="numeric" placeholder="0" aria-label="Total Daevanion Crystals on the board"><button type="button" data-step="dvIn" data-d="1" aria-label="One more">+</button></span><em class="dvcr" id="dvCr"></em></div>
-        </div>
-        <div class="cubebar" id="dvCube" hidden></div>
-        <div class="tmain">
-          <div id="dvNextList"></div>
-          <div class="ptbig" id="dvBig"></div>
-        </div>
-        <p class="muted tline" id="dvRemain"></p>
-        <div id="dvUndo"></div>
-        <div id="dvBoard"></div>
-        <div id="dvThen"></div>
-        <div id="dvAllList" hidden></div>
-        <div class="tfoot dv-foot">
-          <button type="button" class="linkbtn" id="dvAllBtn" aria-expanded="false">All nodes</button>
-          <button type="button" id="dvRespec" title="Untick every node and clear their costs; total points stay">Respec</button>
-        </div>
-      </section>
-      <section class="card tcard" id="stCard" aria-label="Stigmas"><div class="ns-head"><h2>Stigmas</h2><div class="ctlcol"><span class="numctl"><button type="button" data-step="stShards" data-d="-1" aria-label="One fewer">−</button><label for="stShards">Shards</label><input id="stShards" type="number" min="0" max="9999" inputmode="numeric" placeholder="0" aria-label="Stigma Shards you have"><button type="button" data-step="stShards" data-d="1" aria-label="One more">+</button></span><em class="dvcr" id="stLvNote"></em></div></div><div id="stBody"></div>
-        <div class="tfoot">
-          <details class="mini" id="stSlotsBox"><summary>Slots</summary><p class="fine">Match each equipped stigma's level to the game with − / +.</p><ul class="soonlist" id="stList"></ul></details>
-          <details class="mini"><summary>How shards work</summary><p class="fine">Shards per level, the same for every stigma: levels 1–5 cost 1 each, 6–10 cost 2, 11–15 cost 4, 16–20 cost 8 (75 to reach 20). Learning a stigma is its level 1. Bonus effects switch on at 5, 10, 15 and 20; past 20 needs Superior Stigma Shards. You get 1 shard per character level from 23 to 39 (2 from 40); the card adds them when you level up. Plan: Triniel's Dagger to 10, then Illusive Clone toward 20 (GamesFuze, Skycoach); the others stay at 1. Costs from Metabot and allthings.how, not yet checked in game.</p></details>
-        </div></section>
+      <!-- @card packs/aion2/cards/skills.html -->
+      <!-- @card packs/aion2/cards/daevanion.html -->
+      <!-- @card packs/aion2/cards/stigmas.html -->
       </div>
       <section class="nowstar wide" id="nowStar" aria-label="Next up"></section>
 
@@ -215,37 +144,7 @@
   </footer>
 </div>
 
-<aside class="statdrawer" id="statDrawer" aria-label="Build: stat priority and rotation">
-  <button type="button" class="sd-tab" id="sdTab" aria-expanded="false" aria-controls="sdPanel" title="Stat priority and rotation"><span class="sd-chev" aria-hidden="true">‹</span><span class="sd-lbl">Build</span><span class="sd-new" id="sdNew" hidden>new</span></button>
-  <div class="sd-panel" id="sdPanel">
-    <div class="sd-head"><h2>Stat priority</h2><button type="button" class="sd-close" id="sdClose" aria-label="Close">×</button></div>
-        <div class="tiers" id="statSeq"></div>
-        <p class="fine tline">B board · G gear. Only stats two or more sources rank high; order inside a tier varies.</p>
-    <div class="sd-rot">
-        <div class="ns-head">
-          <h2 class="sd-h2">Rotation</h2><span class="lvtag" id="rotLv" hidden></span>
-        </div>
-        <ol class="playsteps" id="rotPlay"></ol>
-        <div class="rmbline"><span class="khead">Right click fires</span><ol class="chain" id="rotChain"></ol></div>
-        <div class="rmbline"><span class="khead">Left click</span><ol class="chain lclick"><li><span class="dot"></span><span><img class="spmini" src="assets/icons/sk-quick-slice.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">Quick Slice <span class="muted">· refills the MP right click spends</span></span></li></ol></div>
-        <p class="fine tline" id="rotNote"></p>
-        <div class="tfoot">
-        <details class="mini">
-          <summary>Key setup</summary>
-          <div class="stackviz" id="stackViz"></div>
-          <ol class="fine macro-steps">
-            <li><b>Put the macro on right click:</b> Esc → Key Settings → General → Gameplay → Macro, press right click and confirm moving it from its current key (only in the current control mode, not AION 1 mode).</li>
-            <li><b>Make the macro:</b> K → Macro (top right) → Add Macro. Step 1 = the right-click macro slot (the right-click stack). If ready skills get skipped, add a short delay.</li>
-            <li><b>Hold right and left click together</b> in a fight. Right click alone drains MP; holding left click too keeps it full (your test).</li>
-          </ol>
-          <p class="fine tline">Without the macro, each click fires one skill from the stack, so you'd have to keep clicking. Press K to open this grid in game and put each skill in the row shown. Row 0 is tried first; anything on cooldown or not ready is skipped. Quick Slice stays alone on left click: with no cooldown it would block everything above it in a stack.</p>
-          <p class="fine tline">Right click fires the first ready skill, row 0 first, so Heart Gore jumps in whenever a crit opens it. Left click (Quick Slice) restores the MP Savage Roar spends.</p>
-          <p class="fine tline">Row order and the E stack are the guide's inference (Heart Gore first because it only opens after a crit; Insignia Explosion after the builders because it scales with stacks). Test on a training dummy; if a skill never fires, move it down a row.</p>
-        </details>
-        </div>
-    </div>
-  </div>
-</aside>
+<!-- @card packs/aion2/cards/build.html -->
 <script type="module" src="main.js"></script>
 <!-- @web-only -->
 <script type="module" src="site.js"></script>
