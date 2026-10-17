@@ -13,13 +13,15 @@ export default (test, M) => {
   /* 0.5 P11: the ranking switches of smart Next up (docs/design/0.4-smart-next-up.md §12); P12 ships ascensionFirst and
      placeRank on, P13 catchUp and etaLater; every other one stays off until the step that builds it */
   const SHIPPED_ON = ['ascensionFirst', 'placeRank', 'catchUp', 'etaLater'];
+  /* in the golden snapshots before this step (--explain keeps them on): P12's two */
+  const BASELINE = ['ascensionFirst', 'placeRank'];
   test('ranking switches: the engine\'s and the pack\'s tables, on as shipped exactly ascensionFirst, placeRank, catchUp and etaLater; setRankChanges picks exactly a set', () => {
     const E = M.RANK_CHANGES, A = M.AION2_RANK_CHANGES;
     assert.deepEqual(Object.keys(E), ['ascensionFirst', 'placeRank', 'trackFilter', 'bandLabels', 'catchUp', 'etaLater']);
     assert.deepEqual(Object.keys(A), ['bindDerived', 'bindNudge', 'travelAdvice']);
     assert.deepEqual(Object.keys(E).filter(n => n in A), [], 'no name in both tables');
     for (const [n, x] of [...Object.entries(E), ...Object.entries(A)]) {
-      assert.equal(x.on, SHIPPED_ON.includes(n), n); assert.ok(typeof x.what === 'string' && x.what.length > 20, n);
+      assert.equal(x.on, SHIPPED_ON.includes(n), n); assert.equal(x.baseline === true, BASELINE.includes(n), n + ' baseline'); assert.ok(typeof x.what === 'string' && x.what.length > 20, n);
       for (const d of x.needs || []) assert.ok(d in E || d in A, `${n} needs ${d}`);
     }
     assert.deepEqual(A.bindNudge.needs, ['bindDerived']); assert.deepEqual(A.travelAdvice.needs, ['bindDerived', 'placeRank']);

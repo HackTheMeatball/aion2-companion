@@ -15,7 +15,7 @@
     {"t":"Buy Ambush 4 → 5","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 3 → 4","s":"Needs Lv 12 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 2 levels away · opens on \"Urgent Pursuit\" · 15 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L11-q14-all-B-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -130,7 +130,7 @@
     {"t":"Buy Heart Gore 4 → 5","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 5 → 6","s":"Needs Lv 13 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Daevanion board","s":"Lv 13 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Urgent Pursuit\"","s":"Lv 13 milestone · 1 level away · opens on \"Urgent Pursuit\" · 1 quest ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L12-q17-all-B-filters": [
     {"t":"Buy Quick Slice specialty slot 2","s":"Pick: -1s Insignia Explosion cooldown on hit","c":"primary \"Spent\" skill"},
@@ -226,6 +226,7 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Signs of a Crash Landing","s":"0/5 objectives · then Prison Compound Infiltration Plan","c":"primary \"Turned in\" story","o":["Go to Anturn Cliff go to Milred (Kibelisk: Witch's Cabin)","Search the airship at the top of Anturn Cliff ride the Updraft to the top (Kibelisk: Witch's Cabin)","Return to Aldelle Village go to Aldelle Village (Kibelisk: Aldelle Village)","+2 more after these"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 4/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 9 open at your level"},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 6/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
@@ -237,6 +238,8 @@
     {"t":"Buy Quick Slice 1 → 2","s":"1 pt","c":"tag \"After the one above\""},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: The Longest Night","s":"0/2 objectives · then Finding Nemon","c":"primary \"Turned in\" story","o":["Sleep at the village cabin go to the village cabin (Kibelisk: Aldelle Village)","Turn in no NPC; escaping from Ishalgen completes the quest"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+1 waiting on the story Shugo-of-All-Trades: Asmodian In my game"]},
     {"t":"Clear Abandoned One's Grave","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
@@ -249,6 +252,8 @@
     {"t":"Clear Abandoned One's Grave and others until Lv 18","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Malice Laid Bare","s":"Needs Lv 18: you're 13. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -309,7 +314,7 @@
     {"t":"Buy Insignia Explosion 1 → 2","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Rear Smite 2 → 3","s":"Needs Lv 14 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 2 levels away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 3 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 3 levels away · opens on \"Buried Atrocities\" · set your quest","c":"tag \"Later\"","f":"later"}
   ],
   "random/L13-qxx-lvonly-B": [
     {"t":"Buy Heart Gore 4 → 5","s":"2 pts · you have the points","c":"primary \"Spent\" skill"},
@@ -323,7 +328,7 @@
     {"t":"Buy Ambush 5 → 6","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Exploit Weakness 4 → 5","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Impact Hit 1 → 2","s":"Needs Lv 15 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 2 levels away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 2 levels away · opens on \"Buried Atrocities\" · 21 quests ahead","c":"tag \"Later\"","f":"later"}
   ],
   "random/L14-q00-rnd115p80-B-dv": [
     {"t":"Story: A Village in the Fog","s":"0/2 objectives · then Prepare to Escape","c":"primary \"Turned in\" story","o":["Remember Aldelle Village bind with the Kibelisk","Turn in Ellin (Villager), Aldelle Village"]},
@@ -383,6 +388,9 @@
     {"t":"Clear Abandoned One's Grave and others until Lv 33","s":"Nameless Cemetery · Kibelisk: Neglected Crematorium · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Neglected Crematorium is 189 m away · 13 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
     {"t":"Story: Blood Monument","s":"Needs Lv 33: you're 14. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Rubek Thieves' Occupied Territory","s":"Dredgion Crash Site · Kibelisk: Safe Haven Cliff · 1/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Safe Haven Cliff is 471 m away · 1 open"}
   ],
@@ -436,6 +444,8 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Prepare to Escape","s":"0/2 objectives · then Shadow Forest","c":"primary \"Turned in\" story","o":["Find gear in the Supply Chest check the Supply Chest (Kibelisk: Aldelle Village)","Turn in Stellan (Villager), Aldelle Village"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+2 waiting on the story Shugo-of-All-Trades: Asmodian In my game Spooky Specters In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -445,6 +455,8 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Prison Compound Infiltration Plan","s":"0/5 objectives · then Brigade Prison Compound Infiltration Operation","c":"primary \"Turned in\" story","o":["Find information on the Azrakar Brigade Prison Compound defeat Azrakar Watcher investigate the Azrakar Brigade Command Kibelisk: Abandoned Barracks Site","Deliver the information to Anders talk to Anders (Kibelisk: Abandoned Barracks Site)","Obtain the key from Balaur collect the key (Kibelisk: Abandoned Barracks Site)","+2 more after these"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+2 waiting on the story Shugo-of-All-Trades: Asmodian In my game Spooky Specters In my game"]},
     {"t":"Clear Abandoned Archon Jail","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 0/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 24 open at your level"},
@@ -459,6 +471,8 @@
     {"t":"Buy Heart Gore 1 → 2","s":"1 pt · you have the points","c":"primary \"Spent\" skill"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Use your Wisdom Stones","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:wisdom"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
     {"t":"Story: Survival Supplies","s":"0/2 objectives · then Gathering Essentials","c":"primary \"Turned in\" story","o":["Receive additional supplies go to VeKauf (Kibelisk: Safe Haven)","Turn in VeKauf (Militia Supply Officer), Safe Haven"]},
     {"t":"Regional quests","s":"None to pick up now","c":"go \"Show\" rqgo:rq:2202044","x":["+2 waiting on the story Shugo-of-All-Trades: Asmodian In my game Spooky Specters In my game"]},
     {"t":"Clear Dratona Cave","s":"Dredgion Crash Site (near your story step) · Kibelisk: Temporary Investigation Base · Lv 10–14 · 0/13","c":"go \"Show\" areas:10","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Temporary Investigation Base is 240 m away · 24 open at your level"},
@@ -530,6 +544,8 @@
     {"t":"Clear Abandoned Archon Jail and others until Lv 32","s":"Moslan Forest · Kibelisk: Moslan Forest Cliff · Lv 15–19 · 1/11","c":"go \"Show\" areas:15","i":"+2 crystals, +2 Wisdom Stones each · ~5 min · Kibelisk Moslan Forest Cliff is 150 m away · 18 open at your level"},
     {"t":"Save your Enhance Stones","s":"Missed · Lv 9 Enhancement unlocks","c":"primary \"Done\" tick:g9:0"},
     {"t":"Extract gear you've replaced","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:0"},
+    {"t":"Claim Daeva Pass free-track rewards","s":"Missed · Lv 10 Altgard opens","c":"primary \"Done\" tick:g10:5"},
+    {"t":"Enhance the Noble Belt","s":"Missed · Lv 13 Daevanion board","c":"primary \"Done\" tick:g12:belt"},
     {"t":"Story: Eye of the Red Tower","s":"Needs Lv 32: you're 15. Level up first. Meanwhile: Sealed Dungeons / Strongholds","c":""},
     {"t":"Run Logger's Rest Ruins","s":"Moslan Forest · Kibelisk: Elim's Rest · 9/15 strongholds","c":"go \"Show\" areas:sh","i":"2 Noble Belt Enhance Scrolls each · Kibelisk Elim's Rest is 224 m away · 1 open"}
   ],
@@ -566,6 +582,6 @@
     {"t":"Buy Heart Gore 5 → 6","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Savage Roar 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
     {"t":"Buy Quick Slice 6 → 7","s":"Needs Lv 16 · 1 level away","c":"tag \"Later\"","f":"later"},
-    {"t":"Legions","s":"Lv 16 milestone · 1 level away","c":"tag \"Later\"","f":"later"}
+    {"t":"Complete \"Buried Atrocities\"","s":"Lv 16 milestone · 1 level away · opens on \"Buried Atrocities\" · set your quest","c":"tag \"Later\"","f":"later"}
   ]
 }

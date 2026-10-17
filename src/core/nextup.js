@@ -30,12 +30,13 @@ export const NEXT_UP_PHASES = ["spend", "here", "beforeStory", "missed", "story"
    (the pack's gateChanges, design 0.3 §13), so tests/golden.js --explain can attribute every changed state to the
    smallest set of them. Unlike those, a ranking change ships off (on: false) until the step that builds it turns it on and
    re-records the golden snapshots (0.5 P11: every one off; P12 turns on ascensionFirst and placeRank, both read by the
-   pack's producers; P13 turns on catchUp and etaLater, read here and by the pack's spend and Later skill producers). A
-   pack declares its own ranking changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
+   pack's producers; P13 turns on catchUp and etaLater, read here and by the pack's spend and Later skill producers).
+   baseline: in the snapshots since an earlier step, so --explain keeps it on and never explains it (as the pack's gate
+   changes; the step after the one that records a switch marks it). A pack declares its own ranking changes in a table of its own, read with rankChangeOn(n, table). setRankChanges (tests, the golden runner) turns on
    exactly the names given, from any table; the caller adds what each one needs. */
 export const RANK_CHANGES = {
-  ascensionFirst: { on: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
-  placeRank: { on: true, what: "the side-content picks and the order of their lists by where the player is (whereNow, byPlace; design §5)" },
+  ascensionFirst: { on: true, baseline: true, what: "a met, not-done step the pack ranks first (the rank-up quest steps) moves to the top of the steps (design §5; 0.3 invariant 3 enforced)" },
+  placeRank: { on: true, baseline: true, what: "the side-content picks and the order of their lists by where the player is (whereNow, byPlace; design §5)" },
   trackFilter: { on: false, what: "fastest drops cards whose candidates are all non-core outside a story level gate; completionist offers its steps after the story (design §6)" },
   bandLabels: { on: false, what: "one level-band label per group when Next up holds cards from more than one milestone band (design §6)" },
   catchUp: { on: true, what: "behind (3+ missed steps or 2+ kinds of points to spend): the spend queue and the missed steps lifted, missed steps by place (design §7)" },
