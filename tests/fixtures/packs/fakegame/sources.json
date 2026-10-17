@@ -1,0 +1,4 @@
+{ "$schema": "../../../../data/schema/sources.schema.json", "schemaVersion": 2, "collection": "sources", "pages": [], "records": [
+  { "id": "src:fakegame-wiki", "name": "Fakegame Wiki", "hosts": ["fakegame.example"], "kind": "wiki", "independenceGroup": "fakegame-wiki", "licence": { "id": "unknown" },
+    "access": { "robots": "allows", "terms": "allows", "mode": "human-only", "checkedAt": "2026-10-17" }, "use": { "facts": true, "wording": false, "quotes": "none", "link": "dofollow" }, "verifiedAt": "2026-10-17" }
+] }
