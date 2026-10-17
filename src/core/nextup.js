@@ -148,11 +148,12 @@ export function rankNext(state, { basic = false, track = trackOf(state, basic) }
   /* completionist (Advanced): the optional steps past the first three, after the list */
   if (tracks && track === "completionist" && !basic) advAll.slice(3, 3 + COMPLETIONIST_MORE).forEach(a => out.push({ phase: "advice", card: advCard(a) }));
   if (!rankChangeOn("bandLabels") || basic) return out.map(e => e.card);
-  /* band labels: each card's band ({ from, to }, missed: a missed step), only when the cards span more than one band */
+  /* band labels: each card's lvBand ({ from, to }, missed: a missed step; not `band`, which the pack's cards use), only
+     when the cards span more than one band */
   const lvs = [...new Set(milestones.map(g => g.lv))].sort((a, b) => a - b);
   const bands = out.map(e => ({ ...bandOfLv(e.card.g ? e.card.g.lv : e.phase === "later" ? Math.max(e.L || 0, lv) : lv, lvs), ...(e.card.kind === "missed" ? { missed: true } : {}) }));
   if (lvs.length === 0 || new Set(bands.map(b => b.from)).size < 2) return out.map(e => e.card);
-  return out.map((e, i) => ({ ...e.card, band: bands[i] }));
+  return out.map((e, i) => ({ ...e.card, lvBand: bands[i] }));
 }
 
 /* Later by eta (etaLater, design §7 item 3): of the steps the Later card may promise (on a milestone above your level;

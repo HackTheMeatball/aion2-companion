@@ -162,7 +162,7 @@ export default (test, M, X) => {
   const keyOf10 = a => a.kind + ' ' + (a.x ? a.x.k : a.pick ? a.pick.k : a.act);
   test('10. tracks nest: fastest ⊆ completionist; with today\'s labels fastest = switches off and completionist adds only optional steps', () => {
     const OFF = [...Object.keys(M.RANK_CHANGES), ...Object.keys(M.AION2_RANK_CHANGES)].filter(n => !['trackFilter', 'bandLabels'].includes(n) && M.rankChangeOn(n, n in M.RANK_CHANGES ? M.RANK_CHANGES : M.AION2_RANK_CHANGES));
-    const strip = cs => JSON.stringify(cs.map(({ band, ...a }) => a));
+    const strip = cs => JSON.stringify(cs.map(({ lvBand, ...a }) => a));
     const notNested = [], notSame = [], notAdv = [], seededBad = [];
     let extra = 0, seededDrops = 0, seeded = 0;
     const nestCheck = (id, s, basic, out) => {

@@ -78,11 +78,11 @@ function renderNow() {
   const el = nowEl; if (!el) return;
   const lv = char(state).level;
   const ranked = rankNext(state, { basic: isBasic() }), shown = ranked.map(nowCard);
-  /* band labels (0.5 P14, S1): above a card whose band differs from the card before it; rankNext sets band only when
+  /* band labels (0.5 P14, S1): above a card whose band differs from the card before it; rankNext sets lvBand only when
      the list spans more than one band (Advanced) */
   const bandKey = b => b ? `${b.missed ? "m" : ""}${b.from}` : "";
   const bandTxt = b => `${b.missed ? "Missed · " : ""}Lv ${b.from}${b.to == null ? "+" : b.to > b.from ? `–${b.to}` : ""}`;
-  const bandAt = i => { const b = ranked[i] && ranked[i].band; return b && (i === 0 || bandKey(ranked[i - 1].band) !== bandKey(b)) ? `<p class="ns-band">${bandTxt(b)}</p>` : ""; };
+  const bandAt = i => { const b = ranked[i] && ranked[i].lvBand; return b && (i === 0 || bandKey(ranked[i - 1].lvBand) !== bandKey(b)) ? `<p class="ns-band">${bandTxt(b)}</p>` : ""; };
   const top = shown[0], phone = nsPhone(), pager = phone && !isBasic() && shown.length > 1;
   /* the featured card: the first one, or on a phone the one the pager is on */
   nsCur = pager ? Math.min(nsCur, shown.length - 1) : 0;
