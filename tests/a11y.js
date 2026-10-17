@@ -18,7 +18,7 @@
       fields (BIGNUM) still at 18 px, the primary buttons (PRIMARY) at least 44 px tall, no text under 11 px (mono) /
       12 px (body) except the icon glyphs in GLYPH.
    7. Story connector (P2-4): on a fresh save no connector line is drawn above the first story row.
-   8. Page zoom (P2-9, 0.5 P7): at 195 / 260 / 640 px (200 % / 150 % zoom on a 390 px phone) the page doesn't scroll
+   8. Page zoom (P2-9, 0.5 P7): at 195 px (200 % zoom on a 390 px phone), 260 px (150 %) and 640 px (a half-width desktop window) the page doesn't scroll
       sideways and no card header runs past its card.
    9. Folded cleared steps (P3-2, 390 px, Lv 27 and Lv 45): in every ticked milestone step the warnings (.note) and the
       location / "Reward:" line (.loc) are visible, and every link or button in the step is either out of the layout
