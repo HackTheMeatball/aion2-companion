@@ -1,0 +1,6 @@
+{ "$schema": "../../../../../data/schema/steps.schema.json", "schemaVersion": 2, "collection": "steps", "records": [
+  { "id": "f2:0", "key": "f2:0", "milestone": "f2", "order": 10, "text": "<b>Light the beacon.</b>",
+    "requires": { "all": [{ "level": 2, "basis": "rule" }, { "story": "sq:10002", "is": "reached", "basis": "rule" }] }, "completesWith": ["tick"] },
+  { "id": "f2:1", "key": "f2:1", "milestone": "f2", "order": 20, "text": "<b>Ring the bell.</b>",
+    "requires": { "all": [{ "level": 2, "basis": "rule" }, { "story": "sq:10002", "is": "turnedIn", "basis": "rule" }] }, "completesWith": ["tick"] }
+] }
