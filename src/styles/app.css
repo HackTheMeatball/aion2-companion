@@ -757,3 +757,18 @@ button, .numctl, .lvl-ctl, #nowStar .ns-stack { touch-action: manipulation; }
   .amap::before { content: ""; position: absolute; inset: -9px; }
   .tip::before { inset: -14px; }
 }
+
+/* 200 % page zoom on a phone (about 195 px): headers and bars wrap instead of running past the card (0.5 P7).
+   Only below 300 px, so 390 px and up are untouched. */
+@media (max-width: 299px) {
+  .card .areas-head h2, .dvbar-l, #spCard .sphero .dvbar-l, #dvNextList .dvtext .dvbar-l, .dvbh-k, .dvbh-n { white-space: normal; overflow-wrap: anywhere; min-width: 0; }
+  #spCard .sphero .spname, #dvNextList .dvhead .dvname { overflow-wrap: anywhere; }
+  #nowStar .nw, .tcard .nw { white-space: normal; }
+  #spCard .sphero .dvhead small, #dvNextList .dvhead small { white-space: normal; overflow-wrap: anywhere; }
+  :is(h2, div).sec .sec-tools { flex-wrap: wrap; max-width: 100%; }
+  details.step > summary { grid-template-columns: 36px minmax(0, 1fr); gap: var(--space-8) var(--space-10); padding: var(--space-10); }
+  details.step > summary .num { width: 36px; }
+  details.step > summary .meta { grid-column: 1 / -1; justify-content: flex-end; flex-wrap: wrap; }
+  .dvbh-top { flex-wrap: wrap; }
+  .dvbar-l { flex-wrap: wrap; }
+}

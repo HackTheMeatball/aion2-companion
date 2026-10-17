@@ -18,7 +18,8 @@
       fields (BIGNUM) still at 18 px, the primary buttons (PRIMARY) at least 44 px tall, no text under 11 px (mono) /
       12 px (body) except the icon glyphs in GLYPH.
    7. Story connector (P2-4): on a fresh save no connector line is drawn above the first story row.
-   8. Page zoom (P2-9): at 260 px (150 % zoom on a 390 px phone) the page doesn't scroll sideways.
+   8. Page zoom (P2-9, 0.5 P7): at 195 / 260 / 640 px (200 % / 150 % zoom on a 390 px phone) the page doesn't scroll
+      sideways and no card header runs past its card.
    9. Folded cleared steps (P3-2, 390 px, Lv 27 and Lv 45): in every ticked milestone step the warnings (.note) and the
       location / "Reward:" line (.loc) are visible, and every link or button in the step is either out of the layout
       (display: none, so not focusable) or visible inside its row: nothing hidden can take keyboard focus.
@@ -234,12 +235,31 @@ async function load(p, state, mode) {
     await ctx.close();
   }
 
-  /* ---------- 8. page zoom: no sideways scroll at 260 px ---------- */
-  for (const mode of ['basic', 'advanced']) {
-    const { ctx, p } = await page(260);
+  /* ---------- 8. page zoom: no sideways scroll, no card header past its card (195 px = 200 % on a 390 px phone) ---------- */
+  for (const width of [195, 260, 640]) for (const mode of ['basic', 'advanced']) {
+    const { ctx, p } = await page(width);
     await load(p, { ...USER }, mode);
-    const over = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-    ok(`page zoom lv27 ${mode} 260px: no horizontal scroll`, over <= 0, over);
+    const r = await p.evaluate(() => {
+      const out = [];
+      for (const card of document.querySelectorAll('.card')) {
+        const cr = card.getBoundingClientRect(); if (!cr.width) continue;
+        for (const h of card.querySelectorAll('.sec, .sec *, h2, h3, summary, summary *')) {
+          const hr = h.getBoundingClientRect(); if (!hr.width || !h.offsetParent) continue;
+          if (hr.right > cr.right + 0.5 || hr.left < cr.left - 0.5)
+            out.push((card.id || card.className) + ' > ' + h.tagName.toLowerCase() + '.' + String(h.className).split(' ')[0] + ' "' + (h.textContent || '').trim().slice(0, 24) + '"');
+        }
+      }
+      const wide = [];   /* what reaches past the viewport (not clipped by an ancestor, not fixed), for the failure message */
+      if (document.documentElement.scrollWidth > innerWidth) for (const e of document.body.querySelectorAll('*')) {
+        if (!e.offsetParent || e.getBoundingClientRect().right <= innerWidth + 0.5) continue;
+        let clipped = false;
+        for (let a = e; a && a !== document.body; a = a.parentElement) if (getComputedStyle(a).overflowX !== 'visible') clipped = true;
+        if (!clipped) wide.push(e.tagName.toLowerCase() + '.' + String(e.className).split(' ')[0] + ' "' + (e.textContent || '').trim().slice(0, 20) + '" ' + Math.round(e.getBoundingClientRect().right));
+      }
+      return { over: document.documentElement.scrollWidth - innerWidth, wide: wide.slice(0, 8), hdr: [...new Set(out)].slice(0, 12) };
+    });
+    ok(`page zoom lv27 ${mode} ${width}px: no horizontal scroll`, r.over <= 0, [r.over, r.wide]);
+    ok(`page zoom lv27 ${mode} ${width}px: no card header past its card`, !r.hdr.length, r.hdr);
     await ctx.close();
   }
 
