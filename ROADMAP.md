@@ -78,6 +78,8 @@ and reviewed. Patches (0.X.Y) skip it.
 - **0.2.6** — phone layout fixes, Route rules card moved, one gate evaluation per update.
 - **0.3.0** — Next up correctness: one requirement check per card, completion derived from the story, blocker
   chains, the story's last quest (Lv 45).
+- **0.4.0** — Engine and packs: the engine holds no AION 2 term, AION 2 is a game pack, save v5 shaped for several
+  characters (saves reset once), blocking page budgets.
 
 ## Plan (redrawn 2026-10-16)
 
@@ -96,11 +98,14 @@ minors. Research packs for every class start early (below) so data is never the 
 
 ### 0.3.x — patches while 0.4 is planned (0.3.0 released 2026-10-16)
 
-- Bug #105: `fitRail()` race at load (Basic rail width differs between loads).
-- #136: the 0.3.0 CHANGELOG's Lv 45 quest name and its saved-progress note (docs/reviews/0.3-lookback.md).
+- Bug #105: `fitRail()` race at load (Basic rail width differs between loads). Planned as 0.5 P1.
+- #136: the 0.3.0 CHANGELOG's Lv 45 quest name and its saved-progress note (docs/reviews/0.3-lookback.md). Done in
+  #163.
 - Data corrections from issues; owner checks as they arrive (C41 Koro at Lv 45; the Home Screen storage check).
 
-### 0.4 — Engine and packs (invisible)
+### 0.4 — Engine and packs (invisible; released 2026-10-17)
+
+Look back: [docs/reviews/0.4-lookback.md](docs/reviews/0.4-lookback.md).
 
 Goal: the engine holds no AION 2 term, the Assassin guide shows the same in the golden master, and a second game
 could be added as a pack. One clean save break (CLAUDE.md pre-1.0 rule), so the save is shaped for several characters
@@ -254,6 +259,164 @@ coordinator starts them. **Sync design** is S0 above.
 | C | Character switcher and class picker (old 0.5 C2), Assassin the only visible class; the player-name field that completes the save label (0.4 P3c) | header, character module |
 
 Lane A's travel UI and lane B both touch the Next up card's layout: B lands first, A's UI step builds on it.
+
+Planning pass written 2026-10-17 (#191): look back in [docs/reviews/0.4-lookback.md](docs/reviews/0.4-lookback.md), one
+spec per item in [docs/plans/0.5/](docs/plans/0.5/) (the issue body the planner creates, verbatim). Item keys are
+`P<n>` / `S<n>` so kickoff's After-line queueing (#173) reads them; an After line with a token that isn't a key
+(`owner-ok-…`, `research-…`) is left to the planner, who queues the item once that input is recorded.
+
+**Process rule from the look back (0.5 on):** before an item is queued, each acceptance line has a file that makes it
+pass, owned by the item or by one on its After line, and no no-go forbids it; a check a later item turns green is run
+on `main` at planning time and every hit gets an owner. Each plan file has an "Ownership check" line; the reviewer of
+the pass checks it. (0.4: P6 Blocked on the generator, P8 needed a fix round.)
+
+#### Audit (step 2), against `main` at `f1d38e5` (0.4.0)
+
+1. **This file was stale:** the released list ended at 0.3.0; 0.3.x still listed #136 (done in #163) and #105 (now
+   P1). Fixed here.
+2. **The smart Next up design predates the engine split** ([docs/design/0.4-smart-next-up.md](docs/design/0.4-smart-next-up.md),
+   PR #85). Its paths are gone (`src/data/node-place.js`, `nextup.js` tiers and line numbers, `renderNow` in
+   `main.js`), and its place layer would put AION 2 terms (Kibelisk, teleport, scroll) in the engine, which the 0.4 P8
+   term scan fails. Re-cut: the engine gets the neutral parts (where the player is, the nearest-first comparator,
+   tracks, catch-up, the switch table); the AION 2 pack gets Kibelisks, binding, the Bind row and the teleport line
+   (its producers and `nowRenderers`). Its tiers are P2c's phases now; location only reorders inside a phase. Design
+   steps S1–S8 become P8–P16; S9 (filler XP, F9) stays moved out.
+3. **The design's data step needs the web** (Metabot step markers for the story objectives), and a bot build has none
+   (DISPATCH checklist 7). Split: P8 builds the Kibelisk registry and rules from the research already in the repo
+   (`docs/research/2026-10-kibelisks.md`, `data/research/`); P9 adds the objective points after a cloud research
+   session (below, "Alongside").
+4. **The phone layout plan** ([docs/design/phone-layout.md](docs/design/phone-layout.md), PR #87): patches A, B and D
+   shipped in 0.2.6 (#121, #126); C (195 / 640 px page zoom) is still open, and the CHANGELOG has listed its known
+   issue since 0.1.9; E–I remain. Its file references are stale: card code is in `src/cards/` (P4c), styles are per
+   card (P4d; `app.css` is the shell's 747 lines), the Build drawer is the AION 2 pack's card, Level up lives in
+   `src/cards/journey.html`. Its §5 owner questions were never answered (owner input 1).
+5. **Lane C has its save:** v5 already holds slots, random slot ids and `labelOf` (P3c). Missing: functions that add,
+   switch, rename and remove a character; a class list (`newChar` takes the pack's one `character`); any place that
+   shows the label. Finding for 0.6 (sync): `merge()` keeps a slot present on one side only, so a removed character
+   can come back from another device's save; 0.5 doesn't change `merge()`, P17 and P19 say so.
+6. **A stale comment:** `src/main.js` says `updateAll` takes over once P5a–d make the cards independent; P5a–d merged
+   and `update()` still calls each card by name in the old order. Not scheduled (no user value); P2 keeps the order.
+7. **Order:** lane A's ranking steps (P12, P13) don't touch the card's layout and can go before lane B's P3; its UI
+   steps (P14–P16) wait for P3. Nothing in the 0.5 table is cut-able: each lane answers an owner decision (DECISIONS
+   2026-10-14 / 15) or an audit finding.
+
+**Budget trend** (`npm run build`; elements at 390 px in a fresh browser; `tests/perf.js`, 45 states, run alone):
+
+| | 0.2.0 | 0.2.3 | 0.2.5 | 0.2.6 / 0.3.0 | 0.4.0 | Limit | Use |
+|---|---|---|---|---|---|---|---|
+| `dist/index.html` | 498,891 B | 507,536 B | 665,735 B | 669,290 B | 705,008 B | 870,000 B, blocking | **81%** |
+| same, gzip -9 | — | — | — | 153,871 B | 164,936 B | 200,000 B, blocking | **82%** |
+| `dist-artifact/index.html` | — | — | — | 790,763 B | 826,481 B | 1,030,000 B, blocking | **80%** |
+| Page elements | — | 4,658 | — | 4,741 | 4,741 | 6,200, blocking | 76% |
+| `update()` median / worst | — | — | — | 6.8 / 8.5 ms | 8.7 / 10.3 ms | 15 ms, advisory | 58% / 69% |
+| Inlined fonts (artifact) | — | — | — | 126.2 KB | 126.2 KB | 150 KB, blocking | **84%** |
+
+The three byte budgets entered the 20% band in 0.4 (+5.3% with no visible feature: module boundaries and pack hooks),
+and 0.5 adds the place data and new UI, so **P20 is a performance item**: whitespace and syntax minification of the page
+script, measured here at −84 KB raw and −8.6 KB gzip. The fonts are unchanged at 84% and no 0.5 item adds a font. The
+0.3.0 `update()` figures were measured in another session, possibly on other hardware, so the rise to 8.7 ms isn't a
+trend yet (the next pass re-measures both on one machine); `perf` also fails its limit when it runs beside `site`
+(16–18 ms, look back), and stays advisory.
+
+#### Items (step 3)
+
+Appetite counts hand-written changed lines as in 0.4 (data records count; regenerated fixtures and snapshots don't).
+The full spec of each item, with its acceptance tests and ownership check, is its plan file.
+
+| Item | Problem → result | Size | Owns (files) | Model | Lanes |
+|---|---|---|---|---|---|
+| [P1](docs/plans/0.5/P1-fitrail-race.md) | Basic rail height differs between loads (#105) → cause found, `fitRail()` re-runs when it settles | S | `src/main.js` (`fitRail()`), one `regress` check | Sonnet | main.js |
+| [P2](docs/plans/0.5/P2-phone-order.md) | Next up 2.5–4.4 screens down on phones → Next up first at ≤ 860 px | M | `src/main.js` (placement), `app.css` phone block, 390 px expectations | Sonnet | main.js, app.css |
+| [P3](docs/plans/0.5/P3-nextup-phone-card.md) | Next up wraps badly on phones, nested scroll stack → full-width first card, "1 of N", compact later cards | M | `src/cards/nextup.js`, `ahead.js`, their stylesheets, golden `nextup/` | Opus | golden |
+| [P4](docs/plans/0.5/P4-level-bar.md) | Level up out of reach on phones → sticky bar holding the one `#lvlUpBig` | M | `src/index.html`, `src/main.js`, `app.css`, `src/cards/journey.js` | Sonnet | main.js, app.css |
+| [P5](docs/plans/0.5/P5-tab-bar-build-sheet.md) | Build drawer behind a thin edge tab → bottom tab bar, Build as a bottom sheet | M | the pack's `build` card and stylesheet, `src/main.js`, `src/index.html`, `app.css`, `tests/a11y.js` | Sonnet | main.js, app.css, a11y |
+| [P6](docs/plans/0.5/P6-phone-folds.md) | Long cards push the page down on phones → folded by default, choice saved as `fold_<id>` | M | three card `.html` files, `src/main.js`, card stylesheets | Opus | main.js |
+| [P7](docs/plans/0.5/P7-zoom-195.md) | Headers overflow at 195 px (known issue since 0.1.9) → fixed, checked at 195 / 260 / 640 px | S | `tests/a11y.js` §8, stylesheets | Sonnet | app.css, a11y |
+| [P8](docs/plans/0.5/P8-place-data.md) | Kibelisks are names only, travel numbers only in DECISIONS → registry, rules, `binds`, place table | M–L | AION 2 pack data (`kibelisks.json` new, zones, story `binds`, rules), schemas, `checks.mjs`, `tools/gen/` | Opus | gen |
+| [P9](docs/plans/0.5/P9-step-points.md) | 0 of 432 objectives have a point → `steps[].at` from the research | M–L | story-quests data and schema, `checks.mjs`, `tools/gen/` | Opus | gen |
+| [P10](docs/plans/0.5/P10-place-module.md) | Nothing knows where the player is → `whereNow`, `byPlace` (engine), `bound` / nudge / teleport (pack), not wired | M | `src/core/place.js`, `src/core/pack.js`, `src/packs/aion2/travel.js`, core tests | Opus | none |
+| [P11](docs/plans/0.5/P11-ranking-families.md) | Golden and invariant states have no dated ticks → `loc` / `behind` / `bind` families, oracle, invariants, switches off | M–L | `tests/golden/**` (new states), oracle, `tests/invariant/**`, switch tables | Opus | golden |
+| [P12](docs/plans/0.5/P12-place-rank.md) | Location ignored, Ascension not always first → `ascensionFirst`, `placeRank` on | M | `src/core/nextup.js`, `src/packs/aion2/nextup.js`, golden `nextup/` | Opus | golden |
+| [P13](docs/plans/0.5/P13-catch-up.md) | A player ahead of their ticks sees 2 missed steps → catch-up, Later by when it opens | M | same as P12, core cases | Opus | golden |
+| [P14](docs/plans/0.5/P14-tracks-bands.md) | No fastest / completionist, no level bands → tracks, band labels, toggle as the owner decides | M | `src/core/nextup.js`, `src/cards/nextup.js`, its stylesheet, golden `nextup/` | Opus | golden |
+| [P15](docs/plans/0.5/P15-bind-row.md) | No Kibelisk binding → derived binds, one-time "Bind X" row (`bind:<kib>` on tick) | M | the pack's `nextup.js`, `travel.js`, `nextup-kinds.js`, a pack stylesheet, golden | Opus | golden |
+| [P16](docs/plans/0.5/P16-travel-line.md) | No teleport-or-walk advice → travel line, "I'll walk", `preferRun` | M | same as P15, `src/cards/nextup.js` (setting) | Opus | golden |
+| [P17](docs/plans/0.5/P17-character-ops.md) | Slots exist, nothing manages them → add / switch / rename / remove, pack `classes` | M | `src/core/chars.js`, `state.js`, `pack.js`, the AION 2 pack's `classes` | Opus | none |
+| [P18](docs/plans/0.5/P18-character-switcher.md) | One character per browser, no name → header switcher, class picker (Assassin), name field | M–L | `src/cards/characters.*`, `src/index.html`, `src/main.js`, `tests/save.js` | Opus | main.js |
+| [P19](docs/plans/0.5/P19-rename-remove.md) | Names fixed at creation, no remove → rename, remove with confirmation | S–M | the characters card, `tests/save.js` | Opus | main.js |
+| [S1](docs/plans/0.5/S1-nextup-mockup.md) | Lane A's rows not drawn yet → mockup on P3's phone card and desktop, owner questions | M (docs) | `docs/design/0.5-nextup-mockup.md`, `docs/design/mockups/0.5-nextup*` | Sonnet | none |
+| [S2](docs/plans/0.5/S2-characters-mockup.md) | Switcher not drawn yet → mockup, owner questions | S–M (docs) | `docs/design/0.5-characters-mockup.md`, `docs/design/mockups/0.5-characters*` | Sonnet | none |
+| [P20](docs/plans/0.5/P20-page-script-size.md) | Byte budgets at 80–82% → page script minified (whitespace and syntax, names kept) | S | `scripts/build.mjs` (esbuild options), ARCHITECTURE §4 | Sonnet | none |
+| [R](docs/plans/0.5/R-release-0.5.0.md) | Release 0.5.0 | S | `package.json`, `package-lock.json`, `CHANGELOG.md` | Sonnet | release, alone |
+
+No-gos for the whole minor: no save break (0.5 adds keys inside `companion-save-v5` only: `bind:<kib>` checks,
+`track`, `preferRun`, `fold_<id>`, more character slots); no AION 2 term in the engine, engine cards or shell (term
+scan); no new game data except P8 / P9's, each with its source; no `.github/workflows/` edits (bots can't push them);
+no change to the artifact rules (one file, `/_blob/` icons, no service worker); no new game art (class icons need the
+owner's OK).
+
+#### Lane map (step 4)
+
+At most three builds at a time; kickoff queues an item once everything on its After line has merged, and the planner
+queues the ones whose After line names an owner input or the research. Serial lanes (DISPATCH "Serial files", the
+names kickoff knows): **golden** P11 → P3 → P12 → P13 → P14 → P15 → P16 (the critical path; P3 and P12 in whichever
+order they are ready); **main.js** P1 → P2 → P4 → P5 → P6 → P18 → P19; **gen** P8 → P9; **app.css** P2, P4, P5, P7;
+**a11y** P5, P7. The Next up card is shared by lanes A and B: B first (P14–P16 are After P3).
+
+| Wave | Builds | After |
+|---|---|---|
+| 1 | S1 (none) ∥ S2 (none) ∥ P8 (gen) | — |
+| 2 | P1 (main.js) ∥ P10 (none) ∥ P17 (none) | P10: P8 |
+| 3 | P2 (main.js, app.css) ∥ P11 (golden) ∥ P20 (none) | P2: P1 + owner input 1 · P11: P10 |
+| 4 | P3 (golden) ∥ P4 (main.js, app.css) ∥ P9 (gen) | P3, P4: P2 · P9: P8 + the step-points research |
+| 5 | P12 (golden) ∥ P5 (main.js, app.css, a11y) | P12: P11 + owner input 1 · P5: P4 |
+| 6 | P13 (golden) ∥ P6 (main.js) ∥ P7 (app.css, a11y) | P13: P12 · P6, P7: P2 |
+| 7 | P14 (golden) ∥ P18 (main.js) | P14: P3, P13 + owner input 2 · P18: P17 + owner input 3 |
+| 8 | P15 (golden) ∥ P19 (main.js) | P15: P3, P9, P12 + owner input 2 · P19: P18 |
+| 9 | P16 (golden) | P15 |
+| 10 | R, alone | everything above |
+
+Waves are the expected order, not gates: an item starts when its After line has merged and its lanes are free.
+
+#### Owner input (step 5)
+
+Three To-dos, each a true blocker for visible work; the recommendation is in each, so the owner can answer "yes":
+
+1. **Phone layout and 0.5's visible steps** (blocks P2–P7 and P12–P16; token `owner-ok-phone`, `owner-ok-visible`).
+   Answer the phone mockup's open questions (phone-layout §5); recommended: Basic opens on Next up with Journey still
+   open (it holds Level − / + and the slider) and Progress folded; tabs Route · Gear · Build; the level bar and tab bar
+   in both modes; Dungeons & Strongholds folded on phones in both modes; "1 of N" in Advanced only; Milestones stays
+   where it is; the `before-*` shots are already in the repo, no action. And a **standing approval** like 0.3's: a
+   visible 0.5 step that follows an approved mockup or the smart Next up design merges on a separate reviewer's
+   APPROVE and green CI, with its before / after shots and `--explain` table kept for you to check afterwards (undo by
+   a follow-up patch).
+2. **S1 mockup** (written when S1 merges; blocks P14–P16; token `owner-ok-S1`): approve the drawn rows and its
+   questions. One needs your OK because it differs from your 2026-10-14 decision ("fastest, with a completionist
+   toggle"): the toggle stays hidden until at least one milestone has approved non-core labels (today every record is
+   `core`, so the toggle would change nothing).
+3. **S2 mockup** (written when S2 merges; blocks P18–P19; token `owner-ok-S2`): approve the switcher, the one-class
+   picker and the name field.
+
+Not blockers (the recommendation applies unless the owner says otherwise):
+
+- **Bind radius:** your working value, 25 m, stays (DECISIONS 2026-10-15). P8 prints the bound / nudge split for 25,
+  32, 35 and 40 m (the Kibelisk research finds the data fit at least 32 m); changing it later is one data line.
+- **In-game checks, when convenient:** the Kibelisk check list P8 / P9 generate (which objective binds which
+  Kibelisk), a timed walk vs teleport on two routes (`rule:teleport-gain`, 400 m to start), C41 (Koro at Lv 45). None
+  blocks a build.
+- **Route labels:** Data & Research proposes `filler` / `completionist` labels milestone by milestone for your approval;
+  until then fastest = today's order.
+- **Sync hosting** (S0's decision) blocks 0.6 lane C, not 0.5.
+
+#### Alongside (not #114 items)
+
+- **Story step-points research** (gates P9; token `research-step-points`): a cloud research session (it needs the web)
+  reads the Metabot quest pages of the 51 story quests with step markers (about 185 points) under the fetching rules
+  (terms and robots.txt first, ≤ 12 requests / min, one at a time, our User-Agent, 24 h cache, facts only), and writes
+  `docs/research/2026-10-story-step-points.md` plus a CSV under `data/research/`, each point with its page URL. The
+  coordinator starts it; no aion2.th.gl.
+- **Route label proposals** for P14's toggle (Data & Research, docs only).
+- **Class research packs** for 0.6 lane B continue as in 0.4.
 
 ### 0.6 — New players and the first new class
 
