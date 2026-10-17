@@ -30,6 +30,11 @@
       "items": { "type": "string", "pattern": "^([a-z0-9][a-z0-9-]*/)*[a-z0-9][a-z0-9-]*\\.json$" },
       "minItems": 1,
       "uniqueItems": true
+    },
+    "checks": {
+      "description": "Optional (0.4 P6a): the pack's own cross-record checks, an ES module relative to its folder that exports checks(ctx, check). The generator runs it after its engine checks, in chain order; a pack without one gets the engine checks only.",
+      "type": "string",
+      "pattern": "^([a-z0-9][a-z0-9-]*/)*[a-z0-9][a-z0-9-]*\\.mjs$"
     }
   },
   "if": { "properties": { "kind": { "const": "game" } } },

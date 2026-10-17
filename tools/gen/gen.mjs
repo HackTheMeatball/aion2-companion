@@ -12,8 +12,10 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { ROOT, validateDoc } from './validate.mjs';
 import { DEFAULT_PACK, DEFAULT_ROOT, resolvePacks } from './packs.mjs';
+const require = createRequire(import.meta.url);
 
 /* ------------------------------------------------------------------ load */
 /* dropProposed: strip every `proposed` gate after validation (tests/schema.mjs proves the module is the same without
@@ -22,7 +24,7 @@ const stripProposed = recs => { for (const r of recs) { delete r.proposed; for (
 /* mutate(rel, doc): tests only, edits a file's doc before validation (negative controls for cross-record checks).
    root, pack: the packs root and the pack to build (packs.mjs); the files are exactly those the pack chain lists. */
 const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) => {
-  const { files } = resolvePacks({ root, pack }), by = {}, schemaErrors = [];
+  const { chain, files } = resolvePacks({ root, pack }), by = {}, schemaErrors = [];
   let retired = null, sources = null;
   for (const { abs: f, rel } of files) {
     const doc = JSON.parse(readFileSync(f, 'utf8'));
@@ -37,7 +39,15 @@ const loadBundle = ({ dropProposed = false, mutate = null, root, pack } = {}) =>
   }
   if (schemaErrors.length) throw new Error('schema validation failed:\n  ' + schemaErrors.join('\n  '));
   const recs = c => (by[c] || []).flatMap(x => x.doc.records);
-  return { by, recs, retired, sources };
+  if (!sources) throw new Error('no sources collection (sources.json) in the pack chain');
+  /* pack-declared checks (0.4 P6a): each manifest's optional `checks` module, in chain order. Loaded with require (an
+     ES module, Node >= 22.12) so generate() stays synchronous for the build plugin and the tests. */
+  const packChecks = chain.filter(m => m.checks).map(m => {
+    const mod = require(join(root || DEFAULT_ROOT, ...m.id.split('/'), m.checks));
+    if (typeof mod.checks !== 'function') throw new Error(`pack ${m.id}: ${m.checks} exports no checks(ctx, check)`);
+    return { pack: m.id, checks: mod.checks };
+  });
+  return { by, recs, retired, sources, packChecks };
 };
 
 /* ------------------------------------------------------------------ helpers */
@@ -64,9 +74,13 @@ export function generate(opts = {}) {
   const boards = R('boards'), boardById = Object.fromEntries(boards.map(b => [b.id, b]));
   const sds = R('sealedDungeons'), shs = R('strongholds'), rules = Object.fromEntries(R('rules').map(r => [r.id, r]));
   const claims = R('claims'), claimById = Object.fromEntries(claims.map(c => [c.id, c]));
-  const classes = R('classes'); if (classes.length !== 1) throw new Error('one class per bundle in 0.2, got ' + classes.length);
-  const cls = classes[0], builds = R('builds'), build = builds.find(b => b.id === cls.defaultBuild);
+  /* at most one class per bundle; a pack with none (0.4 P6a, a pack that only checks the engine) compiles an empty build */
+  const classes = R('classes'); if (classes.length > 1) throw new Error('one class per bundle in 0.2, got ' + classes.length);
+  const cls = classes[0] || null, builds = R('builds');
+  const build = cls ? builds.find(b => b.id === cls.defaultBuild) : { id: 'build:none', skillOrder: [], specialtyPicks: {}, stigmaSlots: [], stigmaTargets: [],
+    statPriority: { tiers: [], from: null }, keyStacks: { rightClick: [], eOrder: [] }, texts: {}, boardPlan: [] };
   if (!build) throw new Error('default build missing: ' + cls.defaultBuild);
+  const ruleValue = id => rules[id] ? rules[id].value : null;
   const milestones = R('milestones'), steps = R('steps'), tips = R('tips'), unlocks = R('unlocks'), items = R('items'), asc = R('ascensionQuests');
 
   /* ---------------------------------------------------------------- story chain (QUESTS) */
@@ -80,7 +94,6 @@ export function generate(opts = {}) {
   check('story: the chain covers every story quest (one path)', chain.length === story.length, [chain.length, story.length]);
   const last = chain[chain.length - 1];
   check('story: last quest has an end marker and no next', !!last.end && last.next === null);
-  for (const s of chain) if (s.steps.length) check('story steps end with a turn-in: ' + s.name, /^Turn in/.test(s.steps[s.steps.length - 1].text));
   for (const s of story) check('story id is sq:<gameId>: ' + s.name, s.id === 'sq:' + s.gameId);
   const QUESTS = chain.map(s => [s.lv, s.name]);
   const sqName = id => { if (!sqById[id]) throw new Error('unknown story quest ' + id); return sqById[id].name; };
@@ -105,8 +118,6 @@ export function generate(opts = {}) {
   const QUEST_LOC_X = Object.fromEntries(X.map(s => [s.name, LOC(s)]));
   const STORY_END = { quest: last.name, lv: last.lv, turnin: last.turnin.npc, place: last.turnin.place || last.turnin.kibelisk, region: last.end.region, regionFull: last.end.regionFull,
     next: last.end.next, nextLv: last.end.nextLv };
-  /* 0.3 E10: the data ends at "Daeva Trapped in a Nightmare"; the game's next story quest unlocks past the Lv 45 cap */
-  check('story end names the next story quest past the cap', !!STORY_END.next && STORY_END.nextLv > 45, [STORY_END.next, STORY_END.nextLv]);
   const STORY_UNLOCKS = Object.fromEntries(chain.filter(s => s.unlocks && s.unlocks.text).map(s => [s.name, s.unlocks.text]));
   const UNLOCK_GATE = Object.fromEntries(chain.filter(s => s.unlocks).map(s => [s.name, s.unlocks.milestone]));
 
@@ -125,46 +136,25 @@ export function generate(opts = {}) {
     const at = atomsOf(q.requires), zone = zname(q.zone);
     const after = at.filter(a => a.done).map(a => { if (!rqById[a.done]) throw new Error(`${q.id}: unknown prerequisite ${a.done}`); return rqById[a.done].name; });
     const st = at.filter(a => a.story);
-    check('regional: at most one story gate: ' + q.name, st.length <= 1);
     const its = (q.rewards.items || []).map(shortItem).filter(Boolean);
     if (q.rewards.ap) its.unshift(`${Math.floor(q.rewards.ap / 1000)}k Abyss Points`);
     let place = q.giver.place || ''; if (place === zone) place = '';
     const row = { name: q.name, id: q.gameId, rec: q.rec, unlocksAt: q.unlocksAt, zone, place, npc: q.giver.npc || '', kib: q.giver.kibelisk, m: q.giver.meters,
       after, story: st.length ? sqName(st[0].story) : null, ...(st.length && st[0].is === 'turnedIn' ? { turnedIn: true } : {}), reward: its.join(' · '), xp: q.rewards.xp ?? null, rw: { st: q.rewards.wisdom || 0, cr: q.rewards.crystal || 0 } };
     if (q.requiresBasis === 'unresearched') row.noPre = 1;
-    check('regional: zone = giver zone: ' + q.name, q.zone === q.giver.zone);
-    check('regional: id = key = rq:<gameId>: ' + q.name, q.id === 'rq:' + q.gameId && q.key === q.id);
     return row;
   });
-  check('58 regional quests', RQ.length === 58, RQ.length);
-  check('every regional quest has unlocksAt and rec', RQ.every(x => x.unlocksAt && x.rec));
-  /* a camp (giver place, or a Kibelisk within 100 m of the giver) belongs to one zone; a nearest Kibelisk further away
-     may lie across a zone border (Pain Unending: Basfelt Waterfall 309 m) */
-  { const cz = {}; for (const q of rqs) for (const a of [q.giver.meters != null && q.giver.meters <= 100 ? q.giver.kibelisk : null, q.giver.place]) if (a) (cz[a] = cz[a] || new Set()).add(q.zone);
-    check('same giver camp/Kibelisk -> one zone', Object.values(cz).every(v => v.size === 1), Object.entries(cz).filter(([, v]) => v.size > 1).map(([k, v]) => [k, [...v]])); }
-  check('Nine Wonders of Altgard: 2nd Leg is in Battlescar Mound (E4)', RQ.find(x => x.name === 'Nine Wonders of Altgard: 2nd Leg').zone === 'Battlescar Mound');
   const RQ_STATS = { n: RQ.length, at10: RQ.filter(x => x.unlocksAt === 10).length, story: RQ.filter(x => x.story).length, chained: RQ.filter(x => x.after.length).length, kib: RQ.filter(x => x.kib).length };
 
   /* ---------------------------------------------------------------- strongholds, Sealed Dungeons, zones */
   const SH_DATA = shs.slice().sort((a, b) => a.levelRange.lo - b.levelRange.lo || (a.name < b.name ? -1 : 1)).map(s => ({ name: s.name, qid: +s.gameId, zone: zname(s.zone),
     lo: s.levelRange.lo, hi: s.levelRange.hi, kib: s.location.kibelisk, m: s.location.meters }));
-  check('15 strongholds', SH_DATA.length === 15);
-  check('every stronghold has zone, range and Kibelisk', SH_DATA.every(x => x.zone && x.lo && x.hi && x.kib));
-  for (const s of shs) check('stronghold pays no stones/crystals: ' + s.name, !s.rewards.wisdom && !s.rewards.crystal);
-  const mapSlug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  for (const d of sds) check('Sealed Dungeon key = <band prefix>:<slug>: ' + d.name, d.key === `${d.band === 10 ? 'g10h' : 'sd'}:${mapSlug(d.name)}` && d.id === 'sd:' + mapSlug(d.name));
-  check('60 Sealed Dungeons', sds.length === 60, sds.length);
   const AREA_LOC = Object.fromEntries(sds.filter(d => d.entrance.kibelisk).map(d => [d.name, { kib: d.entrance.kibelisk, m: d.entrance.meters }]));
   const HIDEOUT_AREA = Object.fromEntries(sds.map(d => [d.name, zname(d.zone)]));
   const ZONE_TRACES = Object.fromEntries(Object.values(zones).filter(z => z.traces != null).sort((a, b) => b.traces - a.traces).map(z => [z.name, z.traces]));
-  const sdRule = rules['rule:sd-first-clear-asmodian'], shRule = rules['rule:sh-first-clear-asmodian'];
-  check('Sealed Dungeon reward is 2 Wisdom Stones + 2 crystals in every sampled band', sdRule.value.evidence.every(b => b.wisdom === 2 && b.crystal === 2));
-  const SD_RW = { st: sdRule.value.rewards.wisdom, cr: sdRule.value.rewards.crystal };
-  const SD_REWARD = sdRule.value.text, SH_REWARD = shRule.value.text;
-  for (const z of Object.values(zones)) for (const c of [...(z.camps || []), ...(z.kibelisks || [])]) {
-    const other = Object.values(zones).find(o => o !== z && [...(o.camps || []), ...(o.kibelisks || [])].includes(c));
-    check(`camp/Kibelisk ${c} resolves to one zone`, !other, [z.id, other && other.id]);
-  }
+  const sdRule = ruleValue('rule:sd-first-clear-asmodian'), shRule = ruleValue('rule:sh-first-clear-asmodian');
+  const SD_RW = sdRule ? { st: sdRule.rewards.wisdom, cr: sdRule.rewards.crystal } : null;
+  const SD_REWARD = sdRule ? sdRule.text : null, SH_REWARD = shRule ? shRule.text : null;
 
   /* ---------------------------------------------------------------- the guide build */
   const SP_ICONS = Object.fromEntries(skills.filter(s => s.icon).map(s => [s.name, s.icon]));
@@ -178,38 +168,19 @@ export function generate(opts = {}) {
       ...(s.type === 'passive' ? { passive: true } : {}) }; });
   const SP_EXTRA = build.skillOrder.filter(e => !e.core).map(e => { const s = sk(e.skill);
     return { n: s.name, learn: s.learnLv, ...(s.type === 'passive' ? { passive: true } : {}), ...(s.levelGate === 'flat' ? { flat: true } : {}), ...(e.status !== 'verified' ? { single: e.basis.split(' (')[0] } : {}) }; });
-  /* specialties (owner F4, Metabot): every active skill has the 5 choices at effective skill level 8 / 8 / 8 / 12 / 16 */
-  for (const s of skills) if (s.type === 'active') check(`specialty choices 8/8/8/12/16: ${s.name}`, JSON.stringify((s.specialtyChoices || []).map(c => c.skillLv)) === '[8,8,8,12,16]', (s.specialtyChoices || []).map(c => c.skillLv));
-    else check(`passive skill has no specialty choices: ${s.name}`, !s.specialtyChoices);
-  check('specialty slots at effective level 8 / 12 / 20', JSON.stringify(rules['rule:specialty-slots'].value.slots) === '[8,12,20]' && rules['rule:specialty-slots'].value.levelBasis === 'effective');
-  for (const [sid, picks] of Object.entries(build.specialtyPicks)) for (const p of picks) check(`specialty pick ${p} is a choice of ${sid}`, (sk(sid).specialtyChoices || []).some(c => c.id === p));
-  check('specialty picks: at most 3 slots', Object.values(build.specialtyPicks).every(p => p.length <= rules['rule:specialty-slots'].value.slots.length));
-  /* one choice never fills two slots */
-  for (const [sid, picks] of Object.entries(build.specialtyPicks)) check(`specialty picks of ${sid} are distinct`, new Set(picks).size === picks.length, picks);
-  /* a pick beyond slot 1 needs a '2+ sources' entry in specialtyEvidence for that slot, witnessed by two or more publishers
-     (hosts) that the build cites for specialtyPicks (owner on #75; research #77 at 8dd047d); no stale entries */
-  const spEv = build.specialtyEvidence || {}, spSrc = new Set((build.sources || []).filter(r => r.url && (r.fields || []).includes('specialtyPicks')).map(r => r.url));
-  for (const [sid, picks] of Object.entries(build.specialtyPicks)) picks.forEach((p, i) => { if (!i) return; const ev = spEv[p];
-    check(`specialty pick ${p} (slot ${i + 1}) has 2+ source evidence`, ev && ev.slot === i + 1 && ev.label === '2+ sources' && ev.sources.every(u => spSrc.has(u))
-      && new Set(ev.sources.map(u => new URL(u).hostname.replace(/^www\./, ''))).size >= 2, ev || 'no specialtyEvidence entry'); });
-  for (const p of Object.keys(spEv)) check(`specialtyEvidence ${p} backs a pick in its slot`, Object.values(build.specialtyPicks).some(ps => ps[spEv[p].slot - 1] === p));
   const STIGMA_PLAN = build.stigmaSlots.map(id => stg(id).name);
   const ST_TARGETS = build.stigmaTargets.map(t => [stg(t.stigma).name, t.level]);
   const STAT_TIERS = build.statPriority.tiers, STAT_SRC = build.statPriority.from;
   const RMB_ROWS = build.keyStacks.rightClick.map(r => ({ minLv: r.minLv, skills: r.skills.map(id => sk(id).name) })).sort((a, b) => b.minLv - a.minLv);
   const E_ORDER = build.keyStacks.eOrder.map(id => stg(id).name);
-  const LEVEL_POINTS = rules['rule:level-points'].value;
+  const LEVEL_POINTS = ruleValue('rule:level-points');
   /* game rules the build tables use (0.4 P2a; src/data/build.js spCost, SPEC_SLOT_LV, DV_MIN, ST_COST): cost bands
-     [{ from, to, cost }] that run without a gap over the levels they price, slot levels, node costs by node type */
-  const bands = (id, lo, hi) => { const v = rules[id].value;
-    check(`${id}: bands run ${lo}–${hi} without a gap`, v.length > 0 && v[0].from === lo && v[v.length - 1].to === hi && v.every((b, i) => b.from <= b.to && (!i || b.from === v[i - 1].to + 1)), v);
-    return v.map(({ from, to, cost }) => ({ from, to, cost })); };
-  const RULE_SKILL_POINT_COST = bands('rule:skill-point-cost', 2, rules['rule:skill-level-gate'].value.maxFromPoints);
-  const RULE_SHARD_COST = bands('rule:stigma-shard-cost', 1, 20);
-  const RULE_SPEC_SLOTS = rules['rule:specialty-slots'].value.slots;
-  const nc = rules['rule:node-costs'].value, RULE_NODE_COSTS = { passive: nc.passive, active: nc.active, corner: nc.corner };
-  check('rule:node-costs: passive / active / corner are numbers', Object.values(RULE_NODE_COSTS).every(Number.isInteger), RULE_NODE_COSTS);
-  check('exactly one guide build, at most two community builds', builds.filter(b => b.origin === 'guide').length === 1 && builds.filter(b => b.origin === 'community').length <= 2);
+     [{ from, to, cost }] (the pack checks they run without a gap), slot levels, node costs by node type */
+  const bands = id => (ruleValue(id) || []).map(({ from, to, cost }) => ({ from, to, cost }));
+  const RULE_SKILL_POINT_COST = bands('rule:skill-point-cost');
+  const RULE_SHARD_COST = bands('rule:stigma-shard-cost');
+  const RULE_SPEC_SLOTS = ruleValue('rule:specialty-slots') ? ruleValue('rule:specialty-slots').slots : [];
+  const nc = ruleValue('rule:node-costs'), RULE_NODE_COSTS = nc ? { passive: nc.passive, active: nc.active, corner: nc.corner } : {};
   /* build tokens in shared text expand with the guide build (0.3 follows the player's build) */
   const buildTok = t => t.replace(/\[\[build:(stigma|stigmaTarget|text|node|skillOrder):([A-Za-z0-9:-]+)\]\]/g, (m, kind, arg) => {
     if (kind === 'stigma') return STIGMA_PLAN[+arg - 1];
@@ -226,10 +197,7 @@ export function generate(opts = {}) {
     const k = e.node ? nodeById[e.node].key : e.key;
     return { k, dv: true, board: board.name, blv: e.requires.level, ty, t: e.label, ...(e.via ? { via: e.via } : {}) };
   };
-  for (const e of build.boardPlan) {
-    for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
-    if (e.anyNode) check('board plan any-of nodes on one board: ' + e.key, new Set(e.anyNode.map(n => nodeById[n].board)).size === 1);
-  }
+  for (const e of build.boardPlan) for (const n of e.node ? [e.node] : e.anyNode) if (!nodeById[n]) throw new Error('board plan: unknown node ' + n);
   /* DV_BOARDS (v1 constant, kept as a page global): the boards whose plan nodes all open with the board, Vaizel and Triniel */
   const DV_BOARDS = {};
   for (const b of boards.slice().sort(byNum('lv'))) {
@@ -285,13 +253,9 @@ export function generate(opts = {}) {
      name, chapter, recommended level, inCap (false: past Lv 45, never a bar segment), step = the guide step whose stored
      tick also completes it (guideStep; a step that names its Ascension quest must be that step). */
   const ASCENSION = asc.slice().sort(byNum('chapter')).map(a => ({ id: a.id, name: a.name, chapter: a.chapter, lv: a.lv, inCap: a.inCap !== false, ...(a.guideStep ? { step: a.guideStep } : {}) }));
-  for (const a of asc) {
-    if (a.guideStep) check(`ascension ${a.id}: guideStep ${a.guideStep} is a step`, steps.some(s => s.key === a.guideStep));
-    for (const s of steps.filter(s => s.ascensionQuest === a.id)) check(`ascension ${a.id}: guideStep is ${s.key} (its ascensionQuest)`, a.guideStep === s.key, a.guideStep);
-  }
 
   /* ---------------------------------------------------------------- confidence card */
-  const conf = (B.by.confidence || [])[0].doc;
+  const conf = (B.by.confidence || [])[0] ? B.by.confidence[0].doc : { groups: [], records: [] };
   const sp2 = SP_EXTRA.filter(x => !x.single).map(x => x.n), sp1 = SP_EXTRA.filter(x => x.single).map(x => x.n);
   const PH = { rqChained: RQ_STATS.chained, rqStoryGated: RQ_STATS.story, storyEndQuest: STORY_END.quest, storyEndLv: STORY_END.lv,
     boardList: boards.slice().sort(byNum('lv')).map(b => `${b.name} ${b.lv}`).join(', '), skillOrderTwoSource: sp2.join(', '), skillOrderSingle: sp1.join(', ') };
@@ -386,21 +350,12 @@ export function generate(opts = {}) {
     if (p.requiresBasis === 'verified-none') check(`${id}: proposed verified-none has no prerequisite atoms`, !atomsOf(p.requires).some(a => a.story || a.done));
     report.proposed.push({ id, status: p.status, ...(p.check ? { check: p.check } : {}), basis: p.basis, change: p.change });
   }
-  /* Daevanion: one window gate, defined once on unlock:daevanion ("Urgent Pursuit" turned in, owner screen); every board
-     inherits it (live since 0.3 E5; plan nodes inherit their board's), so no plan node repeats the story atom */
-  { const ud = R('unlocks').find(u => u.id === 'unlock:daevanion');
-    check('unlock:daevanion opens with "Urgent Pursuit" turned in', !!ud && atomsOf(ud.at).some(a => a.story === 'sq:2102065' && a.is === 'turnedIn'));
-    for (const b of boards) check(`${b.id}: inherits the Daevanion window gate (done unlock:daevanion)`, !!b.requires && atomsOf(b.requires).some(a => a.done === 'unlock:daevanion'));
-    for (const bl of builds) for (const e of bl.boardPlan) check(`${bl.id} boardPlan ${e.node || e.key}: no own copy of the window gate`,
-      ![e.requires, e.proposed && e.proposed.requires].some(g => g && atomsOf(g).some(a => a.story === 'sq:2102065'))); }
   for (const { r } of all) {
     for (const f of ['wraps', 'storyQuest', 'ascensionQuest', 'opensBoard', 'board', 'skill', 'defaultBuild']) if (typeof r[f] === 'string' && r[f].includes(':')) refCheck(r.id, r[f]);
     if (r.zone) refCheck(r.id, r.zone);
     for (const l of [r.giver, r.turnin, r.entrance, r.location].filter(Boolean)) refCheck(r.id, l.zone);
     if (r.unlocks && r.unlocks.milestone) check(`${r.id}: unlock milestone resolves`, milestones.some(m => m.id === r.unlocks.milestone));
   }
-  for (const e of build.boardPlan) check('board plan milestone resolves: ' + (e.node || e.key), milestones.some(m => m.id === e.milestone));
-  for (const s of build.skillOrder) refCheck(build.id, s.skill);
   /* every URL: on a registered site, not banned, not withdrawn, not on a mode:none site (withdrawn = PR debt list) */
   const withdrawnHits = [];
   for (const { r, file } of all) for (const u of urlsIn(r)) {
@@ -432,21 +387,13 @@ export function generate(opts = {}) {
     for (const t of c.appliesTo || []) if (!t.startsWith('page:') && !t.startsWith('conf:') && !milestones.some(m => m.id === t)) { const x = all.find(y => y.r.id === t); check(`claim ${c.id} -> ${t} resolves and lists it`, x && (x.r.claims || []).includes(c.id)); }
   }
   for (const { r } of all) for (const cid of r.claims || []) check(`${r.id}: claim ${cid} names it in appliesTo`, (claimById[cid] && (claimById[cid].appliesTo || []).includes(r.id)));
-  /* i / j / choice n: dense from 0 / 1, never renumbered (positions are save indices) */
-  for (const { r } of all) {
-    if (Array.isArray(r.steps)) check(`${r.id}: objective i = position`, r.steps.every((s, i) => s.i === i));
-    if (r.specialtyChoices) check(`${r.id}: choice n = position + 1`, r.specialtyChoices.every((c, i) => c.n === i + 1));
-  }
-  /* shared steps carry no class content outside build tokens: no skill or stigma name of this class */
-  const classWords = [...stigmas.map(s => s.name)];
-  for (const s of steps) for (const w of classWords) check(`shared step ${s.id} names no stigma outside a build token`, !(s.text + (s.loc || '')).includes(w));
+  /* i: dense from 0, never renumbered (positions are save indices; a pack checks its own, e.g. AION 2's choice n) */
+  for (const { r } of all) if (Array.isArray(r.steps)) check(`${r.id}: objective i = position`, r.steps.every((s, i) => s.i === i));
   /* a location whose place is a village zone's name (Aldelle, Black Claw) sits in that village (0.2.4, issue #98). Villages
      only: a place named after a wider zone (Southern Gribade Highland, Spirit Isle) can sit in a neighbour's zone */
   { const zoneOfName = Object.fromEntries(Object.values(zones).filter(z => / Village$/.test(z.name)).map(z => [z.name, z.id]));
     for (const { r } of all) for (const l of [r.giver, r.turnin, r.entrance, r.location].filter(Boolean))
       if (l.place && zoneOfName[l.place]) check(`${r.id}: place ${l.place} is in ${zoneOfName[l.place]}`, l.zone === zoneOfName[l.place], l.zone); }
-  /* zone adjacency symmetric */
-  for (const z of Object.values(zones)) for (const n of z.neighbours || []) check(`zone adjacency symmetric: ${z.id} - ${n.zone}`, (zones[n.zone] && (zones[n.zone].neighbours || []).some(x => x.zone === z.id)));
   /* gate basis: requiresBasis legacy / unresearched / verified-none never sits on sourced atoms only (N2) */
   for (const { r } of all) if (r.requiresBasis === 'verified-none') check(`${r.id}: verified-none has no prerequisite atoms`, !atomsOf(r.requires).some(a => a.story || a.done));
   /* placeholder zones are debt */
@@ -491,8 +438,6 @@ export function generate(opts = {}) {
     for (const a of asc.slice().sort(byNum('chapter'))) add(a.id, { kind: 'ascension', req: gate(a.requires), done: cw(a.completesWith) });
     for (const m of msOrder) for (const s of steps.filter(x => x.milestone === m.id).sort(byNum('order'))) { add(s.id, { kind: 'step', key: s.key, ms: m.id, req: gate(s.requires), done: cw(s.completesWith) }); prop(s.id, s); }
     for (const q of rqs.slice().sort(byNum('order'))) {
-      const lv = atomsOf(q.requires).filter(a => a.level !== undefined).map(a => a.level);
-      check('GATE_GRAPH: regional level atom = unlocksAt: ' + q.id, lv.length === 1 && lv[0] === q.unlocksAt, lv);
       const req = q.requiresBasis === 'unresearched' ? { all: [gate(q.requires), { level: Math.max(q.unlocksAt, q.rec), basis: 'rule' }] } : gate(q.requires);
       add(q.id, { kind: 'rq', key: q.key, req, done: cw(q.completesWith), ...(q.requiresBasis ? { rb: q.requiresBasis } : {}) }); prop(q.id, q, true);
     }
@@ -505,7 +450,9 @@ export function generate(opts = {}) {
       /* a plan node on a skill names it and what it adds to the skill's effective level (0.3 E7, rule:specialty-slots) */
       add(k, { kind: 'plan', key: k, board: nodeById[e.node || e.anyNode[0]].board, ...(sn ? { skill: sn, adds: nodeById[e.node].adds ?? 1 } : {}), req: gate(e.requires), done: cw(e.completesWith) }); prop(k, e);
     }
-    const slg = rules['rule:skill-level-gate'].value, per = slg.stepped.perLevel, slots = rules['rule:specialty-slots'].value.slots;
+    /* no skill gate rule: no skill lines (a pack without skills); a build with skills and no rule throws */
+    const slg = ruleValue('rule:skill-level-gate') || { maxFromPoints: 1, stepped: {} }, per = slg.stepped.perLevel, slots = RULE_SPEC_SLOTS;
+    if (!ruleValue('rule:skill-level-gate') && build.skillOrder.length) throw new Error('rule:skill-level-gate missing: the build has a skill order');
     /* specialty slot n (0.3 E7, design §9): opens at effective skill level slots[n - 1] (atom skillLv: the highest ticked line,
        1 if none, + the adds of every owned plan node on the skill); keys sp:<skill>:spec, :spec2, :spec3 */
     const slotKey = (s, n) => `sp:${s.key}:spec${n > 1 ? n : ''}`;
@@ -536,6 +483,14 @@ export function generate(opts = {}) {
       check(`GATE_PROPOSED: ${id}: ${a.done ? `done ${a.done} is a node` : `story atom ${a.story} is on the chain, with "is"`}`, a.done ? a.done in nodes : a.i >= 0 && !!a.is);
     return { GATE_GRAPH: { story: chain.map(s => [s.id, s.key]), nodes }, GATE_PROPOSED: proposed };
   })();
+
+  /* ---------------------------------------------------------------- pack-declared checks (0.4 P6a) */
+  /* Everything above runs for every pack. A pack's own rules (fixed counts, named records, its game's collections) live in
+     the module its manifest names in `checks` (pack.schema.json), called with the bundle and the compiled tables and the
+     same check(name, ok, detail); they run after the engine's checks, in chain order. */
+  const ctx = { B, R, zones, story, sqById, chain, rqs, rqById, skills, skById, stigmas, stById, nodes, nodeById, boards, boardById, sds, shs, rules, claims,
+    cls, builds, build, milestones, steps, tips, unlocks, items, asc, all, RQ, STORY_END, SH_DATA, GATE_GRAPH, atomsOf, byNum, refCheck };
+  for (const p of B.packChecks) p.checks(ctx, check);
 
   const failed = report.checks.filter(c => !c.pass);
   /* ---------------------------------------------------------------- the module */
