@@ -444,6 +444,32 @@ async function load(p, state, mode) {
     }
   }
 
+  /* ---------- 0.5 P5: bottom tab bar and Build sheet at 390 px ---------- */
+  {
+    const { ctx, p } = await page(390, { isMobile: true, hasTouch: true });
+    await load(p, typeof STATES.lv27 === 'function' ? STATES.lv27() : STATES.lv27, 'basic');
+    await p.evaluate(() => { if (document.getElementById('statDrawer').classList.contains('open')) document.getElementById('sdClose').click(); });
+    await p.waitForTimeout(300);
+    const bar = await p.evaluate(() => { const bs = [...document.querySelectorAll('#tabBar button')].map(b => b.getBoundingClientRect()); const r = document.getElementById('tabBar').getBoundingClientRect(); return { n: bs.length, minH: Math.min(...bs.map(b => b.height)), minW: Math.min(...bs.map(b => b.width)), bottom: Math.round(r.bottom), ih: innerHeight, nav: !!document.querySelector('nav#tabBar[aria-label]') }; });
+    ok('tab bar 390px: three tabs of at least 44 px, pinned to the bottom, a named nav', bar.n === 3 && bar.minH >= 44 && bar.minW >= 44 && bar.bottom === bar.ih && bar.nav, bar);
+    await p.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await p.waitForTimeout(150);
+    ok('tab bar 390px: still visible at the end of the page', await p.evaluate(() => Math.round(document.getElementById('tabBar').getBoundingClientRect().bottom) === innerHeight));
+    await p.tap('#tabBar [data-go=nowStar]'); await p.waitForTimeout(1000);
+    const route = await p.evaluate(() => { const t = document.getElementById('nowStar').getBoundingClientRect().top; return { t, bar: document.getElementById('lvlBar').getBoundingClientRect().bottom, half: innerHeight / 2 }; });
+    ok('tab bar 390px: Route lands on Next up (just under the level bar)', route.t >= route.bar - 2 && route.t < route.half, route);
+    await p.tap('#tabBar [data-go=top]'); await p.waitForTimeout(1000);
+    ok('tab bar 390px: Gear lands on the top row', await p.evaluate(() => { const t = document.querySelector('#main .top-grid').getBoundingClientRect().top; return t < innerHeight / 2 && t > -4; }));
+    const lv0 = await p.evaluate(() => char(state).level);
+    await p.tap('#tabBuild'); await p.waitForTimeout(400);
+    const open = await p.evaluate(() => { const s = document.getElementById('sdPanel'); return { in: s.contains(document.activeElement), exp: document.getElementById('tabBuild').getAttribute('aria-expanded'), inert: !!document.querySelector('[inert]'), side: getComputedStyle(document.getElementById('sdTab')).display }; });
+    ok('Build sheet 390px: focus moves into the sheet, no inert region, side tab hidden', open.in && open.exp === 'true' && !open.inert && open.side === 'none', open);
+    await p.tap('#lvlUpBig'); await p.waitForTimeout(400);
+    ok('Build sheet 390px: Level up in the bar works while the sheet is open', await p.evaluate(l => char(state).level === l + 1 && document.getElementById('statDrawer').classList.contains('open'), lv0));
+    await p.keyboard.press('Escape'); await p.waitForTimeout(400);
+    ok('Build sheet 390px: Escape closes it and focus returns to the Build tab', await p.evaluate(() => !document.getElementById('statDrawer').classList.contains('open') && document.activeElement.id === 'tabBuild'));
+    await ctx.close();
+  }
+
   ok('no page errors', !errs.length, errs);
   console.log(fail ? `A11Y CHECKS FAILED (${fail})` : 'A11Y CHECKS PASSED'); await b.close(); process.exit(fail ? 1 : 0);
 })();

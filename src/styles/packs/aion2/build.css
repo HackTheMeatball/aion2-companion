@@ -62,5 +62,26 @@
 .st-later .lt-lv { font: 600 11px var(--mono); color: var(--muted); }
 .st-later .lt-where { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
 /* Phones: a slimmer Build tab so it clears the cards' right edge. */
+.sd-scrim, .sd-grab { display: none; }
+/* <= 600 px (0.5 P5): a bottom sheet opened from the tab bar's Build tab (app.css .tabbar) instead of the side tab. The scrim
+   starts below the level bar (--lvlbar-h) and the bar sits above it, so Level up stays tappable and outside the sheet's focus order. */
+@media (max-width: 600px) {
+  .statdrawer { display: block; top: auto !important; left: 0; bottom: 0; }
+  .sd-tab { display: none; }
+  .sd-scrim { display: block; position: fixed; left: 0; right: 0; bottom: 0; top: var(--lvlbar-h, 0px); background: var(--shade-99); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; pointer-events: auto; }
+  .statdrawer.open .sd-scrim { opacity: 1; visibility: visible; }
+  /* the bar pins to the top while the sheet is open (it may sit mid-page at scroll 0) and stays above the scrim */
+  body:has(#statDrawer.open) .lvlbar { position: fixed; top: 0; left: 0; right: 0; margin: 0; z-index: 60; }
+  .sd-panel, .statdrawer.open .sd-panel { position: fixed; left: 0; right: 0; bottom: 0; width: auto; box-sizing: border-box; border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius-12) var(--radius-12) 0 0;
+    padding: var(--space-8) var(--space-16) calc(var(--space-16) + env(safe-area-inset-bottom, 0px)); max-height: calc(100vh - var(--lvlbar-h, 0px) - 32px); max-height: calc(100dvh - var(--lvlbar-h, 0px) - 32px);
+    box-shadow: var(--shadow-float); transition: transform .2s; }
+  /* visible at once on open (focus moves in on the next frame); hidden only after the slide down */
+  .statdrawer:not(.open) .sd-panel { transform: translateY(100%); visibility: hidden; transition: transform .2s, visibility 0s .2s; border-width: 0; box-shadow: none; padding: var(--space-8) var(--space-16) 0; }
+  .statdrawer.open .sd-panel { transform: none; visibility: visible; }
+  .sd-grab { display: block; width: 100%; height: 28px; margin: 0 0 var(--space-4); padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+  .sd-grab::before { content: ""; position: absolute; left: 50%; top: 10px; width: 40px; height: 4px; margin-left: -20px; border-radius: var(--radius-round); background: var(--line); }
+  .sd-grab:hover::before { background: var(--muted); }
+}
+@media (max-width: 600px) and (prefers-reduced-motion: reduce) { .sd-panel, .sd-scrim { transition: none !important; } }
 @media (max-width: 600px) { .sd-tab { padding: var(--space-8) var(--space-3); gap: var(--space-4); font-size: 8.5px; letter-spacing: .1em; } .sd-tab .sd-chev { font-size: 11px; } }
 .sd-close::before { content: ""; position: absolute; inset: -4px -2px; }
