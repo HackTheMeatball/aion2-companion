@@ -2,8 +2,8 @@
    character, from the save and the pack's catalog. Functions take the character (c = char(state)) or, where a view
    setting changes the answer (the Optional tasks filter, the talk-only objectives filter), the whole state. Nothing here
    writes. Every "is it open?" answer comes from the evaluator (gatesOf below, 0.3 E2); this file only asks it.
-   The game's own rules and helpers are the pack's (keptRules, gateChanges, graphTransforms, story hooks; for AION 2
-   src/packs/aion2/rules.js and requirements.js); this file reaches them through the pack object only. */
+   The game's own rules and helpers are the pack's (keptRules, gateChanges, graphTransforms, story hooks; a pack's
+   rules.js and requirements.js under src/packs/); this file reaches them through the pack object only. */
 import { evaluate } from "./evaluator.js";
 import { aheadText, blockerChain, leafText, questsAhead } from "./blockers.js";
 import { cardRows, itemByK } from "./catalog.js";

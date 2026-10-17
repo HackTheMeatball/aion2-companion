@@ -75,17 +75,24 @@ const bundleOne = async entry => {
 /* one global namespace until P3: esbuild would silently rename one of two same-named top-level declarations in different
    modules, breaking the globals the page, site.js and the tests use. Checks every declaration that starts a line
    (the first name of a multi-name declaration) in every .js file under src/ the page bundle can include (main.js,
-   core, cards, shell, packs/**; 0.4 P2b), so a name moved into a pack stays unique. */
+   core, cards, shell, packs/**; 0.4 P2b), so a name moved into a pack stays unique. esbuild also renames a declaration
+   when another bundled module uses the same name without importing it (a free global reference); the check after
+   bundling catches that: no declared name may come out of a bundle as name2, name3, … */
+const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, PAGE_NAMES = new Map(generatedNames().map(n => [n, 'the generated data module']));
 {
-  const DECL = /^(?:export )?(?:const|let|var|function\*?|async function|class) +([\w$]+)/gm, seen = new Map(generatedNames().map(n => [n, 'the generated data module']));
   const NOT_PAGE = new Set(['src/site.js', 'src/sw.js']);
   for (const f of walk(P('src')).map(f => relative(ROOT, f).split('\\').join('/')).filter(f => f.endsWith('.js') && !NOT_PAGE.has(f) && !f.startsWith('src/assets/')).sort())
     for (const m of readFileSync(P(f), 'utf8').matchAll(DECL)) {
-      if (seen.has(m[1]) && seen.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${seen.get(m[1])} and ${f} (the bundle would rename one)`);
-      seen.set(m[1], f);
+      if (PAGE_NAMES.has(m[1]) && PAGE_NAMES.get(m[1]) !== f) die(`top-level name "${m[1]}" is declared in both ${PAGE_NAMES.get(m[1])} and ${f} (the bundle would rename one)`);
+      PAGE_NAMES.set(m[1], f);
     }
 }
 const bundles = Object.fromEntries(await Promise.all([...new Set([...shell.matchAll(SCRIPT_TAG)].map(m => m[1]))].map(async e => [e, await bundleOne(e)])));
+for (const [e, js] of Object.entries(bundles)) {
+  const out = new Set([...js.matchAll(DECL)].map(m => m[1]));
+  for (const n of out) { const base = n.replace(/\d+$/, ''); if (base !== n && !out.has(base) && PAGE_NAMES.has(base) && !PAGE_NAMES.has(n))
+    die(`src/${e}: esbuild renamed "${base}" (${PAGE_NAMES.get(base)}) to "${n}": a module uses "${base}" without importing it`); }
+}
 const bundle = entry => bundles[entry];
 const inline = html => html
   .replace(STYLE_TAG, (_, f) => { const css = readFileSync(P('src', f), 'utf8'); if (/<\/style/i.test(css)) die(`src/${f} contains "</style"`); return `<style>\n${css}</style>\n`; })
