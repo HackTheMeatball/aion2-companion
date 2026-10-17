@@ -35,9 +35,9 @@ export default (test, M) => {
   test('term scan: src/core/ names no AION 2 term (code and comments)', () => {
     assert.deepEqual(hitsOf(core, fields), []);
   });
-  /* the engine cards done so far (0.4 P5b); P8 scans all of src/cards/ */
-  const cards = Object.fromEntries(['milestones.js', 'route.js'].map(f => ['cards/' + f, readFileSync(join(SRC, 'cards', f), 'utf8')]));
-  test('term scan: the milestone and Route rules cards name no AION 2 term (code and comments)', () => {
+  /* the engine cards done so far (0.4 P5b, P5d); P8 scans all of src/cards/ */
+  const cards = Object.fromEntries(['milestones.js', 'route.js', 'sources.js', 'undo.js'].map(f => ['cards/' + f, readFileSync(join(SRC, 'cards', f), 'utf8')]));
+  test('term scan: the milestone, Route rules, Sources and Undo cards name no AION 2 term (code and comments)', () => {
     assert.deepEqual(hitsOf(cards, fields), []);
   });
   test('term scan: planted terms are caught, the product name and neutral words are not (negative control)', () => {
