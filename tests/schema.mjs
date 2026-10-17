@@ -126,8 +126,9 @@ if (g) {
     && JSON.stringify(kb['kib:safe-haven'].binds) === JSON.stringify([{ node: 'sq:2102015', i: 0, basis: 'owner' }])
     && JSON.stringify(kb['kib:aldelle-village'].binds) === JSON.stringify([{ node: 'sq:2101010', i: 1, basis: 'step-text' }])
     && Object.values(kb).filter(k => k.binds).length === 2, Object.keys(kb).length);
-  ok('place module: NODE_PLACE and KIBELISKS only, not in the page\'s data module', /^export const NODE_PLACE = /m.test(g.placeModule) && /^export const KIBELISKS = /m.test(g.placeModule)
-    && !/NODE_PLACE|KIBELISKS/.test(g.module));
+  ok('place module: NODE_PLACE, KIBELISKS and TRAVEL_RULES (25 / 150 / 400 m) only, not in the page\'s data module', /^export const NODE_PLACE = /m.test(g.placeModule) && /^export const KIBELISKS = /m.test(g.placeModule)
+    && g.placeModule.includes('export const TRAVEL_RULES = {"bindRadius":25,"nudgeRadius":150,"teleportGain":400};')
+    && (g.placeModule.match(/^export const /gm) || []).length === 3 && !/NODE_PLACE|KIBELISKS|TRAVEL_RULES/.test(g.module));
   const kr = g.report.kibelisks;
   ok('bind report: R = 25 (working value) / 32 / 35 / 40 m over 53 story and 69 cited Kibelisks; the owner check list is the story ones not bound at 25 m and with no binds fact',
     !!kr && kr.split.map(s => s.r).join() === '25,32,35,40' && kr.split[0].working && kr.split.every(s => s.story.n === 53 && s.all.n === 69 && s.story.bound + s.story.nudge + s.story.none === 53)

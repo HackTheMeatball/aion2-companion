@@ -31,6 +31,9 @@ const PACK_KEYS = {
   locate: [pkFn, () => () => null],
   skipLocation: [pkFn, () => () => false],
   onLoad: [pkFn, () => packNoop],
+  /* where a stamp says the player was (0.5 P10, src/core/place.js): { at(path, value) → { zone, pt } or null, fields?: the
+     pack's own char fields whose stamps also place the player }; none = the game has no places (whereNow is null) */
+  place: [x => x === null || (pkObj(x) && pkFn(x.at) && (x.fields === undefined || (pkArr(x.fields) && x.fields.every(pkStr)))), () => null],
   /* [{ id, produce(state, ctx) → [{ phase, card, keep?, queue?, L? }] }] (src/core/nextup.js) */
   nextUpProducers: [x => pkArr(x) && x.every(n => pkObj(n) && pkStr(n.id) && pkFn(n.produce)), () => []],
   cards: [pkArr, () => []],
@@ -63,6 +66,7 @@ export function definePack(spec) {
   p.data = { proposed: {}, ...p.data, story: { notes: {}, ...p.data.story } };
   p.catalog = { ...PACK_CATALOG_DEFAULTS, ...p.catalog };
   p.story = { ...PACK_STORY_DEFAULTS, ...p.story };
+  if (p.place) p.place = Object.freeze({ at: p.place.at, fields: Object.freeze([...(p.place.fields || [])]) });
   /* with `classes`, `character` is one of them; without `character`, the first */
   if (p.classes) {
     if (!spec.character) p.character = { pack: p.classes[0].pack, class: p.classes[0].class };

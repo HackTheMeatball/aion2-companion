@@ -25,7 +25,7 @@ const SLOT_B = '00000000-0000-4000-8000-0000000000b2';
 /* A device's save after a few sessions of random edits, each session saved at a time from a small range (so equal
    times and equal values happen and the tie-breaks are exercised). Some saves hold values without stamps (time 0 to
    merge()); some have a second character slot (SLOT_B), edited too, so pairs have slots on one side and on both. */
-function genSave(M, seed) {
+export function genSave(M, seed) {
   const r = rng(seed), pick = a => a[Math.floor(r() * a.length)];
   const KEYS = ['g6:0', 'g22:0', 'g22:1', 'g32:dreams', 'build:0', 'sd:twisted-pit', 'sh:blades-temporary-outpost', ...M.RQ.slice(0, 6).map(q => 'rq:' + q.id)];
   const QS = ['Land of Rifts', 'Tangled Past'];
