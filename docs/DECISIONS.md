@@ -3,6 +3,12 @@
 Decisions the owner made, so every department works from the same answers. Newest first. Product calls belong to the
 owner; the CEO records them here and in the department charters they affect.
 
+## 2026-10-17
+
+| # | Topic | Decision |
+|---|---|---|
+| — | Phone layout and 0.5 visible steps (`owner-ok-phone`, `owner-ok-visible`) | Owner, typed in the project thread 2026-10-17 11:43 AM ET (first sent 11:10 AM ET): "yes, phone layout and visible 0.5 steps as recommended". Approves ROADMAP 0.5 "Owner input" 1 as written: the phone mockup's open questions (phone-layout §5) take the recommended answers (Basic opens on Next up with Journey still open and Progress folded; tabs Route · Gear · Build; the level bar and tab bar in both modes; Dungeons & Strongholds folded on phones in both modes; "1 of N" in Advanced only; Milestones stays where it is), and a visible 0.5 step that follows an approved mockup or the smart Next up design merges on a separate reviewer's APPROVE and green CI, with its before / after shots and `--explain` table kept for the owner to check afterwards (undo by a follow-up patch). Clears `owner-ok-phone` (P2) and `owner-ok-visible` (P12). Not covered: `owner-ok-S1` (P14–P16) and `owner-ok-S2` (P18), which need their own typed OK. |
+
 ## 2026-10-16
 
 | # | Topic | Decision |
