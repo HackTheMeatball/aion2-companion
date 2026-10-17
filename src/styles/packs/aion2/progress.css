@@ -19,3 +19,7 @@
 .prow.done .prow-n { color: var(--good); }
 .prow.done .prow-bar span { background: var(--good); }
 .ring .fg { stroke: var(--accent); }
+/* Folded by default on phones in Basic (main.js, phone-layout.md 3.6): the title is the summary, one 48 px row. */
+@media (max-width: 600px) {
+  #progFold > summary { box-sizing: border-box; min-height: 48px; padding-block: 0; }
+}

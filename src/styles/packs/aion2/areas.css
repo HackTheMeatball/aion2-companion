@@ -70,3 +70,10 @@
 /* B: a gap under the level-band select (Basic hides the chips that normally sit there); locked rows stay readable. */
 body.basic #areaSel { margin-bottom: var(--space-12); }
 @media (max-width: 520px) { .area-list .item.locked .txt { opacity: 1; } }
+/* Folded by default on phones (main.js, phone-layout.md 3.6): the title is the summary, one 48 px row as Progress's;
+   the Map link stays outside the summary, drawn on that row left of the fold arrow. */
+@media (max-width: 600px) {
+  #areas { position: relative; }
+  #areasFold > summary { box-sizing: border-box; min-height: 48px; padding-block: 0; }
+  #areas > .areas-head { position: absolute; top: 0; right: 36px; height: 48px; }
+}

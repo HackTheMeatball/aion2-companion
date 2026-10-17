@@ -22,6 +22,7 @@ function goAreas(band) {
   state.areasCollapsed = false; areaKeep = new Set();
   if (band != null) state.areaLv = String(band);
   save(); update();
+  const fold = document.querySelector("#areas > details.foldcard"); if (fold) fold.open = true; /* folded on a phone (main.js) */
   document.getElementById("areas").scrollIntoView({ behavior: SMOOTH(), block: "start" });
 }
 function renderAreas() {
