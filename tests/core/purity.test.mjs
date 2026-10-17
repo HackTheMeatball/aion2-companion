@@ -58,6 +58,30 @@ export default (test, M) => {
       'core/x.js: main.js', 'cards/y.js: packs/aion2/pack.js', 'shell/z.js: cards/a.js', 'packs/aion2/w.js: packs/other/pack.js', 'packs/aion2/w.js: main.js', 'packs/aion2/w.js: shell/ids.js']);
     assert.deepEqual(badImports({ 'core/ok.js': 'import { x } from "./pack.js";', 'packs/aion2/ok.js': 'import { y } from "../../core/pack.js";\nimport { z } from "./data/build.js";' }), []);
   });
+  /* ---------- The term scan (P0 §5, P8): no AION 2 term in the engine, engine cards or shell ---------- */
+  test('no AION 2 term in src/core/, src/cards/, src/shell/ or main.js (code and comments)', () => {
+    const TERMS = ['aion(?:[\\s-]?2)?', 'ncsoft', 'asmodians?', 'elyos', 'daeva',
+      'assassin', 'gladiator', 'templar', 'ranger', 'sorcerer', 'spiritmaster', 'cleric', 'chanter',
+      'daevanion', 'stigmas?', 'shards?', 'kibelisks?', 'cube', 'wisdom stones?', 'crystals?', 'kina', 'specialty', 'specialties', 'ascension', 'abyss', 'empyrean',
+      'sealed dungeons?', 'hideouts?', 'strongholds?', 'expeditions?', 'regional',
+      'altgard', 'ishalgen', 'asahr', 'nezekan', 'zikel', 'vaizel', 'triniel', 'azphel',
+      'balaur', 'draconute', 'dratona', 'shugo',
+      'metabot', 'thegameswiki', 'gaming\\.tools', 'th\\.gl',
+      'kib', 'stig', 'eput', 'blv', ...Object.keys(M.aion2Pack.charFields)];
+    /* a word not touching a letter, digit or _; or a quote, then a save-key prefix */
+    const TERM = new RegExp(`(?<![A-Za-z0-9_])(?:${TERMS.join('|')})(?![A-Za-z0-9_])|["'\`](?:rq|sd|sh|dv|sp|g\\d+):`, 'gi');
+    /* the only exceptions (P0 §5): the product name; the legal sentence; DOM / CSS names (class values, classList.*(),
+       querySelector*(), closest(), getElementById() arguments) */
+    const EXCEPT = [/Daeva Companion/g, /not affiliated with or endorsed by NCSoft/g, /\bclass(?:Name)?\s*=\s*(?:"[^"]*"|'[^']*')/g,
+      /\b(?:classList\.\w+|querySelector(?:All)?|closest|getElementById)\([^)]*\)/g];
+    const files = ['main.js', ...CORE, ...walk('cards'), ...walk('shell')];
+    const bad = files.flatMap(f => read(f).split('\n').flatMap((l, i) => {
+      const t = EXCEPT.reduce((x, r) => x.replace(r, m => ' '.repeat(m.length)), l);
+      return [...new Set([...t.matchAll(TERM)].map(m => m[0].toLowerCase()))].map(w => `${f}:${i + 1}: ${w}`);
+    }));
+    if (bad.length) console.log(bad.join("\n")); assert.deepEqual(bad, [], `${bad.length} hits in ${files.length} files`);
+    console.log(`  term scan: ${files.length} files, ${TERMS.length} term patterns, ${bad.length} hits`);
+  });
   test('data modules never read the state', () => {
     const bad = DATA.filter(f => /\bstate\b|\bchar\(/.test(code(read(f))));
     assert.deepEqual(bad, []);
