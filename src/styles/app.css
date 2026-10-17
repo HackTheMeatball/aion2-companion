@@ -88,6 +88,7 @@
   --space-12: 12px;
   --space-14: 14px;
   --space-16: 16px;
+  --tabbar-h: 52px;
   --space-18: 18px;
   --space-20: 20px;
   --space-24: 24px;
@@ -185,13 +186,13 @@ aside.rail::-webkit-scrollbar-track { background: transparent; }
    iframe). Route and Gear scroll (main.js); Build opens the pack's sheet (build.js, build.css). */
 .tabbar { display: none; }
 @media (max-width: 600px) {
-  .tabbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-sizing: border-box; height: calc(52px + env(safe-area-inset-bottom, 0px));
-    padding-bottom: env(safe-area-inset-bottom, 0px); background: var(--panel); border-top: 1px solid var(--line); }
+  .tabbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-sizing: border-box; height: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom); background: var(--panel); border-top: 1px solid var(--line); }
   .tabbar button { flex: 1; position: relative; min-height: 44px; border: 0; border-radius: 0; background: none; color: var(--muted); font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
   .tabbar button:hover, .tabbar button[aria-expanded="true"] { color: var(--fg); }
   .tabbar button + button { border-left: 1px solid var(--line); }
   .tabbar .has-new::after { content: ""; position: absolute; top: var(--space-12); margin-left: var(--space-6); width: 6px; height: 6px; border-radius: var(--radius-round); background: var(--accent-fill); }
-  .wrap { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px) + var(--space-16)); }
+  .wrap { padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-16)); }
   #nowStar, #main .top-grid { scroll-margin-top: calc(var(--lvlbar-h, 0px) + var(--space-8)); }
 }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-16); }
