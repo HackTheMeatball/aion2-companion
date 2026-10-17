@@ -12,7 +12,7 @@ name: Restart
 # Only attempt 1 is re-run, so each run gets at most one automatic restart; a second death is left to the planner.
 # A run started with GITHUB_TOKEN sends no workflow_run event (Kickoff started by ci.yml, CI on main started by
 # auto-merge), so the schedule also looks every 15 min for an attempt-1 Kickoff or main CI run that ended badly in the
-# last 90 min. A main CI re-run that passes then starts Kickoff.
+# last 90 min. A main CI re-run that passes then starts Kickoff. It also brings main into claude/ PRs that conflict.
 
 on:
   workflow_run:
@@ -35,6 +35,7 @@ jobs:
     timeout-minutes: 5
     permissions:
       actions: write
+      pull-requests: read
     steps:
       - uses: actions/github-script@v7
         with:
@@ -54,4 +55,18 @@ jobs:
               try { await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id }); }
               catch (e) { core.warning(`${wr.name} run ${wr.id}: re-run failed: ${e.message}`); continue; }
               core.notice(`re-running ${dead.join(', ')} of ${wr.name} run ${wr.html_url} (attempt 2 of 2)`);
+            }
+            // A claude/ PR that conflicts with main gets no CI (GitHub runs none on a conflicting PR), so nothing ever
+            // wakes for it. Kickoff's refresh only sees PRs open at merge time: P4b's PR #177 opened 8 min after the
+            // merge it conflicted with and had no CI until someone noticed (2026-10-17). Start pipeline step=merge for it; pipeline runs at most
+            // one merge per PR per main commit, so this repeats nothing.
+            if (context.eventName === 'schedule') {
+              const open = (await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', base: 'main', per_page: 100 }))
+                .filter((p) => !p.draft && /^claude\//.test(p.head.ref) && !p.labels.some((l) => ['hold', 'stuck'].includes(l.name)));
+              for (const p of open) {
+                const pr = (await github.rest.pulls.get({ owner, repo, pull_number: p.number })).data;
+                if (pr.mergeable_state !== 'dirty') continue;
+                await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'pipeline.yml', ref: 'main', inputs: { pr: String(p.number), step: 'merge' } });
+                core.notice(`#${p.number} conflicts with main: started pipeline step=merge`);
+              }
             }
