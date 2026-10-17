@@ -1,6 +1,6 @@
 /* The AION 2 term scan over the engine (docs/design/0.4-engine-contract.md §5, 0.4 P2b): src/core/, code and comments,
    names no AION 2 term. Case-insensitive; a match must not touch a letter, digit or _ on either side (a hyphen or a slash
-   is a boundary). Since 0.4 P2c (Next up producers in the pack) no file has an exception. P8 widens the scan to src/cards/, src/shell/ and main.js. */
+   is a boundary). Since 0.4 P2c (Next up producers in the pack) no file has an exception. Since 0.4 P5c src/cards/journey.js too. P8 widens the scan to src/cards/, src/shell/ and main.js. */
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,6 +34,11 @@ export default (test, M) => {
   const core = Object.fromEntries(readdirSync(join(SRC, 'core')).filter(f => f.endsWith('.js')).sort().map(f => ['core/' + f, readFileSync(join(SRC, 'core', f), 'utf8')]));
   test('term scan: src/core/ names no AION 2 term (code and comments)', () => {
     assert.deepEqual(hitsOf(core, fields), []);
+  });
+  /* the engine cards one by one as P5a–d clear them (P8 then scans all of src/cards/) */
+  const cards = Object.fromEntries(['journey.js'].map(f => ['cards/' + f, readFileSync(join(SRC, 'cards', f), 'utf8')]));
+  test('term scan: the cleared engine cards (src/cards/journey.js, 0.4 P5c) name no AION 2 term', () => {
+    assert.deepEqual(hitsOf(cards, fields), []);
   });
   test('term scan: planted terms are caught, the product name and neutral words are not (negative control)', () => {
     const planted = { a: '/* Sealed Dungeons */', b: 'const k = "rq:" + id;', c: 'x.stLv[n]', d: 'see src/packs/aion2/rules.js', e: 'it.eput === n', f: 'ascension', g: 'stigma-slot' };
