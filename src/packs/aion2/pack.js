@@ -10,6 +10,7 @@ import { GATES, STEPS } from "./data/milestones.js";
 import { GATE_CHANGES, KEPT_RULES, aion2Transforms } from "./rules.js";
 import { hopName, isAscensionKey, objLow, objSubs, storyHereOf, storyRecGate, zoneOfKey } from "./requirements.js";
 import { aion2OnLoad } from "./load.js";
+import { aion2Meanwhile, aion2NextUp, aion2StoryFields } from "./nextup.js";
 import { aion2Cards } from "./cards/index.js";
 
 /* The guide pack (data/packs/aion2/asmodian/assassin/pack.json) and its class (data/packs/aion2/classes/assassin), the only
@@ -27,6 +28,8 @@ export const aion2Pack = definePack({
     rowKind: it => { const k = it.kind || it.group; return k === "hideout" || it.dv ? "none" : k === "quest" ? "side" : "main"; },
     /* skill and board lines have their own cards, the Stigmas card covers stigma equips and "Put … on E" */
     offered: (it, k) => !/^(sp|dv):/.test(k) && !(it && (it.stig || it.eput)),
+    /* skill and board lines have their own Buy / Later cards; a stigma-only milestone's Later card shows its title */
+    promised: (it, k) => !/^(sp|dv):/.test(k),
   },
   /* the character's fields beside the engine's, in the order sync stamps them (src/core/sync.js) */
   charFields: {
@@ -40,11 +43,12 @@ export const aion2Pack = definePack({
   keptRules: KEPT_RULES,
   gateChanges: GATE_CHANGES,
   graphTransforms: aion2Transforms,
-  story: { levelGate: storyRecGate, isTalkOnly: objLow, subs: objSubs, here: storyHereOf },
+  story: { levelGate: storyRecGate, isTalkOnly: objLow, subs: objSubs, here: storyHereOf, meanwhile: aion2Meanwhile, cardFields: aion2StoryFields },
   hopName,
   locate: zoneOfKey,
   skipLocation: isAscensionKey,
   onLoad: aion2OnLoad,
+  nextUpProducers: aion2NextUp,
   /* its cards (0.4 P4b): the shell registers each (src/main.js) */
   cards: aion2Cards,
 });

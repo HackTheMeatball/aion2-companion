@@ -29,10 +29,6 @@ const allowedFor = from => from.startsWith('packs/') ? ['core', 'cards', from] :
 /* imports that break the rule: ["file: path"] for files { path: source } */
 const badImports = files => Object.entries(files).flatMap(([f, s]) => { const ok = allowedFor(areaOf(f));
   return importsOf(f, s).filter(p => !ok.includes(areaOf(p))).map(p => `${f}: ${p}`); });
-/* The one engine file still allowed to import the AION 2 pack: Next up, until P2c moves its AION 2 producers into the
-   pack (docs/plans/0.4/P2c-nextup-producers.md). Each listed import must still be there, so the entry leaves with them. */
-const PENDING = { 'core/nextup.js': 'packs/aion2' };
-
 export default (test, M) => {
   test('core: no DOM, storage, timers or other browser globals', () => {
     const BROWSER = /(?<![.\w$])(document|window|globalThis|self|localStorage|sessionStorage|navigator|location|history|requestAnimationFrame|setTimeout|setInterval|matchMedia|getComputedStyle|CSS|Event|CustomEvent|HTMLElement|Element|Node|ResizeObserver|MutationObserver|fetch|alert|confirm|Audio|AudioContext|performance|Date\.now|Math\.random)\b/;
@@ -40,10 +36,7 @@ export default (test, M) => {
     assert.deepEqual(bad, []);
   });
   test('import rule: src/core/ imports only src/core/ (never a pack, src/cards/, src/shell/, src/data/ or main.js)', () => {
-    const bad = badImports(Object.fromEntries(CORE.map(f => [f, read(f)])));
-    const pending = bad.filter(x => { const [f, p] = x.split(': '); return PENDING[f] && areaOf(p) === PENDING[f]; });
-    assert.deepEqual(bad.filter(x => !pending.includes(x)), []);
-    for (const f of Object.keys(PENDING)) assert.ok(pending.some(x => x.startsWith(f + ': ')), `${f} no longer imports ${PENDING[f]}: remove it from PENDING`);
+    assert.deepEqual(badImports(Object.fromEntries(CORE.map(f => [f, read(f)]))), []);
   });
   test('import rule: src/cards/ imports only src/core/ and src/cards/; src/shell/ only src/core/ and src/shell/', () => {
     assert.deepEqual(badImports(Object.fromEntries([...walk('cards'), ...walk('shell')].map(f => [f, read(f)]))), []);
