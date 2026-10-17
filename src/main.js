@@ -224,8 +224,8 @@ function fitRail() {
   fadeScroll(rail);
 }
 /* Phones (<= 860 px): Next up, Journey, Progress lead the page (docs/design/phone-layout.md 3.1). The same three elements
-   move into #main ahead of the top row (never copies); the CSS puts #main before the rail, which keeps Dungeons &
-   Strongholds and The map. Wider than 860 px they go back to where the markup has them. */
+   move into #main ahead of the top row (never copies); the CSS puts #main before the rail, which keeps the later cards
+   (Dungeons, The map). Wider than 860 px they go back to where the markup has them. */
 const phoneQ = window.matchMedia ? matchMedia("(max-width: 860px)") : { matches: false };
 /* each card's home (its parent and the node after it) is noted before the first move, so going back to the wide layout
    gives exactly the markup a fresh load has */
