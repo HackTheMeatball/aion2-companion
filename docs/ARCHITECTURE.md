@@ -240,6 +240,11 @@ produced the v1 files (provenance; they no longer match `data/`). `tools/history
   build id = hash of all cached files) and `dist-artifact/index.html` (web-only blocks removed before inlining, so
   `site.js` is never in it; icons → `/_blob/<id>`; the `styles/fonts.css` link replaced by a script that holds each
   font file once in base64 and registers the same faces with the FontFace API; capped at 150 KB).
+- **Page budgets** (0.4 P7, about 1.3x the 0.3.0 numbers; the build prints each with its limit and % used): `dist/index.html`
+  870,000 B (0.3.0: 669,290), its gzip -9 200,000 B (153,871) and `dist-artifact/index.html` 1,030,000 B (790,763) fail the
+  build (`BUDGETS` in `scripts/build.mjs`); 6,200 elements in a fresh browser at 390 px (4,741) fail the `site` suite
+  (`ELEMENT_MAX` in `tests/site.js`). To raise one, change that constant in the PR and say in the PR why. Timing
+  (`perf`) stays advisory.
 - Fonts (since 0.1.5): `src/assets/fonts/` holds the latin and latin-ext WOFF2 files Google Fonts serves for Marcellus SC,
   Figtree and JetBrains Mono, with their SIL OFL 1.1 texts. The `@font-face` rules copy Google's CSS (one face per
   weight and subset, same unicode ranges; Figtree and JetBrains Mono are variable files shared by their weights), so
@@ -270,7 +275,7 @@ docs/DEPLOY.md, "CI jobs").
 
 | Suite | What |
 |---|---|
-| `site` | head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts, persistent storage, save-failure banner |
+| `site` | element budget at 390 px (§4), head, footer (version, Report a problem), export (Blob and claude.ai paths), service worker + offline, manifest, 404, artifact build, self-hosted fonts, persistent storage, save-failure banner |
 | `e1`…`e4` | functional checks from each polish pass |
 | `mig1` | v285 save → current build (4 intended differences pinned in `tests/fixtures/e1-migtest-expected.json`), rollback |
 | `mig2` | realistic v287 save → current build, idempotent, rollback |

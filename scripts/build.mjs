@@ -35,6 +35,7 @@ import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gzipSync } from 'node:zlib';
 import { build } from 'esbuild';
 import { genModule, generatedData, generatedNames, staleGenerated } from './generated-data.mjs';
 
@@ -205,4 +206,14 @@ const kb = f => (statSync(f).size / 1024).toFixed(1) + ' KB';
 console.log(`build ${BUILD} · v${VERSION}`);
 console.log(`  dist/index.html            ${kb(join(DIST, 'index.html'))} · ${walk(DIST).length} files · precache ${precache.length}`);
 console.log(`  dist-artifact/index.html   ${kb(join(ART, 'index.html'))} · ${[...used].filter(n => blobs[n]).length} icons as /_blob/<id>${[...used].some(n => blobs[n] === null) ? ` · ${[...used].filter(n => blobs[n] === null).length} without a blob id (initials there)` : ''} · ${fontsUsed.size} fonts inlined once each (${(fontInline / 1024).toFixed(1)} KB base64)`);
+
+/* page budgets (0.4 P7): about 1.3x the 0.3.0 numbers; a PR that raises one says why (docs/ARCHITECTURE.md §4). The element
+   budget is checked by the `site` suite. */
+const BUDGETS = [
+  ['dist/index.html bytes', Buffer.byteLength(web), 870000],
+  ['dist/index.html gzip -9 bytes', gzipSync(web, { level: 9 }).length, 200000],
+  ['dist-artifact/index.html bytes', Buffer.byteLength(art), 1030000],
+];
+for (const [name, n, max] of BUDGETS) console.log(`  budget ${name.padEnd(32)} ${String(n).padStart(9)} / ${max} (${(100 * n / max).toFixed(0)}%)`);
+for (const [name, n, max] of BUDGETS) if (n > max) die(`budget "${name}": ${n} is over the limit ${max}`);
 if (!existsSync(join(DIST, 'CNAME'))) die('dist/CNAME missing');
