@@ -23,6 +23,7 @@ permissions:
   pull-requests: write
   actions: write
   checks: read
+  issues: write
 
 concurrency:
   group: auto-merge
@@ -59,6 +60,16 @@ jobs:
               try {
                 await github.rest.pulls.merge({ owner, repo, pull_number: pr.number, sha, merge_method: 'squash' });
                 core.notice(`Merged #${pr.number}`); merged++;
+                // A merge made with this workflow's token doesn't close the issues the PR names ("Closes #N"): #135-#145
+                // stayed open on 2026-10-16, and their kickoff "started" lines in #114 held slots. Close them here: every
+                // "Closes/Fixes/Resolves #N" in the title or body, plus N of a kickoff branch claude/issue-N-<run>.
+                const linked = [...`${pr.title}\n${pr.body || ''}`.matchAll(/\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)\b/gi)].map((m) => +m[1]);
+                const fromBranch = pr.head.ref.match(/^claude\/issue-(\d+)-/);
+                if (fromBranch) linked.push(+fromBranch[1]);
+                for (const n of [...new Set(linked)]) {
+                  try { await github.rest.issues.update({ owner, repo, issue_number: n, state: 'closed', state_reason: 'completed' }); core.info(`closed #${n}`); }
+                  catch (e) { core.warning(`#${pr.number}: could not close #${n}: ${e.message}`); }
+                }
               } catch (e) { core.error(`#${pr.number}: merge failed: ${e.message}`); failed.push(`#${pr.number}: ${e.message}`); }
             }
             if (merged) await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'ci.yml', ref: 'main' });

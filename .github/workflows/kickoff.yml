@@ -11,17 +11,20 @@ name: Kickoff
 # starts only when no in-flight item shares a lane with it; otherwise kickoff skips to the next queued item that
 # doesn't overlap. In-flight lanes come from each open PR's changed files plus the lanes on its started line.
 # This workflow (no model for the choice) runs after CI on main goes green (that is, after every merge, since
-# auto-merge dispatches CI on main), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
+# auto-merge dispatches CI on main and ci.yml then dispatches this), or by hand. It counts what is in flight (open claude/ PRs plus "[started ...]"
 # lines; a started line whose issue is closed is dropped, one with no PR after 9 h becomes "[stalled ...]"), starts queued items from the top until 3 are in flight, and rewrites each started line to
 # "- [started <time>] #N model" so neither the planner nor a second run starts it again. The build run implements the
 # issue on a new claude/ branch and opens the PR; pipeline.yml and auto-merge.yml take it from there.
 
+# Started by the kickoff job of ci.yml after each green CI run on main (a workflow_run trigger here never fired: see
+# that job), or by hand.
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      sha:
+        description: The main commit CI just passed (set by ci.yml; it makes the refresh job run). Empty by hand.
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -32,7 +35,6 @@ concurrency:
 
 jobs:
   pick:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -219,7 +221,7 @@ jobs:
   #     branch (a push made with this workflow's token starts no CI by itself).
   #   - Conflicting, or golden/mig involved: pipeline.yml step=merge (a model run; Opus for golden/mig).
   refresh:
-    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+    if: inputs.sha != ''
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
@@ -231,7 +233,7 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const merged = (await github.rest.repos.getCommit({ owner, repo, ref: context.payload.workflow_run.head_sha })).data.files || [];
+            const merged = (await github.rest.repos.getCommit({ owner, repo, ref: context.payload.inputs.sha })).data.files || [];
             // Keep in step with lanesOfFiles() in the pick job above (same rules, two copies).
             const lanes = (files) => {
               const out = new Set();

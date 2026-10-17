@@ -10,11 +10,16 @@ name: Restart
 #     re-run) instead of starting over.
 #   - Claude (@claude/@sonnet): claude-code-action runs the same comment again.
 # Only attempt 1 is re-run, so each run gets at most one automatic restart; a second death is left to the planner.
+# A run started with GITHUB_TOKEN sends no workflow_run event (Kickoff started by ci.yml, CI on main started by
+# auto-merge), so the schedule also looks every 15 min for an attempt-1 Kickoff or main CI run that ended badly in the
+# last 90 min. A main CI re-run that passes then starts Kickoff.
 
 on:
   workflow_run:
     workflows: [Claude, Pipeline, Kickoff]
     types: [completed]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
 
 permissions:
   contents: read
@@ -22,6 +27,7 @@ permissions:
 jobs:
   restart:
     if: |
+      github.event_name == 'schedule' ||
       github.event.workflow_run.run_attempt == 1 &&
       (github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'cancelled' ||
        github.event.workflow_run.conclusion == 'timed_out')
@@ -34,9 +40,16 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const wr = context.payload.workflow_run;
-            const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: wr.id, per_page: 100 });
-            const dead = jobs.filter((j) => ['failure', 'cancelled', 'timed_out'].includes(j.conclusion)).map((j) => j.name);
-            if (!dead.length) return core.info(`${wr.name} run ${wr.id}: no failed job to re-run`);
-            await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id });
-            core.notice(`re-running ${dead.join(', ')} of ${wr.name} run ${wr.html_url} (attempt 2 of 2)`);
+            const BAD = ['failure', 'cancelled', 'timed_out'];
+            const recent = async (q) => (await github.rest.actions.listWorkflowRuns({ owner, repo, status: 'completed', per_page: 30, ...q })).data.workflow_runs
+              .filter((r) => r.run_attempt === 1 && BAD.includes(r.conclusion) && Date.now() - Date.parse(r.updated_at) < 90 * 60e3);
+            const runs = context.eventName === 'schedule'
+              ? [...await recent({ workflow_id: 'kickoff.yml' }), ...await recent({ workflow_id: 'ci.yml', branch: 'main' })]
+              : [context.payload.workflow_run];
+            for (const wr of runs) {
+              const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, { owner, repo, run_id: wr.id, per_page: 100 });
+              const dead = jobs.filter((j) => BAD.includes(j.conclusion)).map((j) => j.name);
+              if (!dead.length) { core.info(`${wr.name} run ${wr.id}: no failed job to re-run`); continue; }
+              await github.rest.actions.reRunWorkflowFailedJobs({ owner, repo, run_id: wr.id });
+              core.notice(`re-running ${dead.join(', ')} of ${wr.name} run ${wr.html_url} (attempt 2 of 2)`);
+            }
