@@ -172,6 +172,15 @@ aside.rail::-webkit-scrollbar-track { background: transparent; }
 @media (max-width: 860px) { aside.rail { max-height: none; overflow: visible; } }
 /* Phones: #main (Next up, Journey, Progress, the top row, Milestones) comes before the rail (Dungeons & Strongholds, The map); main.js placeCards moves the cards. The Basic nth-child(n+4) rule below no longer finds The map there. */
 @media (max-width: 860px) { .layout > main { order: -1; } body.basic aside.rail > section.notes { display: none !important; } }
+/* Sticky level bar (0.5 P4, phone-layout.md 3.2): phones only; main.js (placeLevelUp) moves #lvlUpBig in and sets
+   --lvlbar-h (0 above 860 px) for the sheet scrim. */
+.lvlbar { display: none; }
+@media (max-width: 860px) {
+  .lvlbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); position: sticky; top: 0; z-index: 30;
+    margin: calc(-1 * var(--space-12)) calc(-1 * (var(--space-8) + var(--space-20))) var(--space-16); padding: var(--space-8) calc(var(--space-8) + var(--space-20)); background: var(--bg); border-bottom: 1px solid var(--line); }
+  .lvlbar-lv { font: 700 18px var(--mono); letter-spacing: .06em; color: var(--fg); }
+  .lvlbar .lvlup-btn { height: 44px; min-width: 120px; }
+}
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-12); padding: var(--space-16); }
 .card h2, :is(h2, div).sec { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 var(--space-12); font-weight: 600; }
 :is(h2, div).sec { margin: var(--space-10) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-10); }
