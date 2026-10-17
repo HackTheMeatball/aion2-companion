@@ -82,6 +82,32 @@ export default (test, M) => {
     const [l, q] = M.QUESTS.find(([, n]) => (M.QUEST_STEPS[n] || []).some(t => /^(?!Turn in).*\(Kibelisk: /.test(t))), s = S({ level: l, quest: q, showTalk: true });
     const h = M.storyHereOf(s); assert.ok(h && !('zone' in h), q); assert.equal(areaAt(s), M.KIB_AREA[h.kib] || null, q);
   });
+  /* 0.4 P2c: the engine ranks, the pack produces its cards. The same pack with no producers: only the engine's cards. */
+  test('no pack producers: rankNext returns only the engine\'s cards (step, missed, story, adv, laterStep)', () => {
+    const ENGINE = ['step', 'missed', 'story', 'adv', 'laterStep'], bare = M.definePack({ ...M.aion2Pack, nextUpProducers: [] }), seen = new Set();
+    const sd = M.AREA_ITEMS.find(x => x.it.kind === 'hideout' && x.lv <= 20);
+    const saves = [S(), S({ level: 20, quest: M.QUESTS[30][1], areaRun: { [sd.k]: 1 }, pendSt: 2, stShards: 3, dvTotal: 40 }),
+      ...[1, 10, 20, 30, 40, 45].map(lv => S({ level: lv, quest: M.QUESTS.find(([l]) => l >= lv)?.[1] || '' }))];
+    const full = saves.map(s => M.rankNext(s));
+    try {
+      M.usePack(bare);
+      saves.forEach((s, i) => { for (const basic of [false, true]) {
+        const cs = M.rankNext(s, { basic }); cs.forEach(c => seen.add(c.kind));
+        assert.deepEqual(cs.filter(c => !ENGINE.includes(c.kind)).map(c => c.kind), [], `save ${i}`);
+        assert.equal(cs.filter(c => c.story).length, 1, `save ${i}: one story card`);
+        /* the pack's cards take cap places, so with them the engine's are the same cards in the same order, some cut */
+        if (!basic) { const mine = cs.map(c => c.kind + ' ' + c.act), j = { n: 0 };
+          const withPack = full[i].filter(c => ENGINE.includes(c.kind)).map(c => c.kind + ' ' + c.act);
+          assert.ok(withPack.every(x => { while (j.n < mine.length && mine[j.n] !== x) j.n++; return j.n++ < mine.length; }), `save ${i}: ${withPack} in ${mine}`); }
+      } });
+    } finally { M.usePack(M.aion2Pack); }
+    for (const k of ['step', 'story', 'laterStep']) assert.ok(seen.has(k), k);
+    assert.ok(full.some(cs => cs.some(c => !ENGINE.includes(c.kind))), 'with the pack, its cards are there');
+  });
+  test('a producer entry with an unknown phase throws', () => {
+    const bad = M.definePack({ ...M.aion2Pack, nextUpProducers: [{ id: 'x', produce: () => [{ phase: 'soon', card: { kind: 'x', act: '' } }] }] });
+    try { M.usePack(bad); assert.throws(() => M.rankNext(S({ level: 10 })), /unknown phase "soon"/); } finally { M.usePack(M.aion2Pack); }
+  });
   test('gate sweep: every story position at its level, one below and 45 — exactly one story card; no actionable step before its level or story gate, or after the story passed it', () => {
     const bad = [];
     const gateOf = it => it && (it.story || it.after);

@@ -27,15 +27,19 @@ const PACK_KEYS = {
   locate: [pkFn, () => () => null],
   skipLocation: [pkFn, () => () => false],
   onLoad: [pkFn, () => packNoop],
-  nextUpProducers: [pkArr, () => []],
+  /* [{ id, produce(state, ctx) → [{ phase, card, keep?, queue?, L? }] }] (src/core/nextup.js) */
+  nextUpProducers: [x => pkArr(x) && x.every(n => pkObj(n) && pkStr(n.id) && pkFn(n.produce)), () => []],
   cards: [pkArr, () => []],
   nowRenderers: [pkObj, () => ({})],
   rowRenderers: [pkObj, () => ({})],
   text: [pkObj, () => ({})],
 };
 const PACK_REQUIRED = ["id", "data", "catalog"];
-const PACK_CATALOG_DEFAULTS = { rowKind: () => "main", offered: () => true };
-const PACK_STORY_DEFAULTS = { levelGate: () => ({ gated: false, gateLv: 0 }), isTalkOnly: () => false, subs: () => [], here: () => null, meanwhile: () => null };
+/* promised(it, k): may Next up's Later card promise this row at its milestone's level (false for rows bought through a
+   card of their own); story.cardFields(state, ctx): the pack's own fields on the story card's objectives version (0.4 P2c) */
+const PACK_CATALOG_DEFAULTS = { rowKind: () => "main", offered: () => true, promised: () => true };
+const PACK_STORY_DEFAULTS = { levelGate: () => ({ gated: false, gateLv: 0 }), isTalkOnly: () => false, subs: () => [], here: () => null, meanwhile: () => null,
+  cardFields: () => ({}) };
 
 export function definePack(spec) {
   if (!pkObj(spec)) throw new Error("definePack: a pack spec object is needed");
