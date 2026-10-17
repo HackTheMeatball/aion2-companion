@@ -113,7 +113,9 @@ jobs:
             // minor. "After: everything" waits for all other items of the minor. A `research-<slug>` key is met once a file
             // whose name contains <slug> is in docs/research/ on main (2026-10-17: P9 sat idle 47 min after its research
             // PR merged, the 4th not-queued stall that day; #221, #222). A key that matches no item (or an After line
-            // that can't be read) leaves it for the planner; owner-ok-* keys stay with the planner on purpose.
+            // that can't be read) leaves it for the planner. An `owner-ok-<x>` key is met once docs/DECISIONS.md on main has a
+            // table row naming `owner-ok-<x>` whose decision starts "Owner, typed" (Isaac's own words, recorded by a reviewed
+            // PR; #114 "Owner tokens"). 2026-10-17: P2, P12, P14 and P15 sat unqueued after their OK was recorded (#221 x3).
             const items = (await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'all', per_page: 100 }))
               .filter((i) => !i.pull_request)
               .map((i) => ({ i, m: i.title.match(/^(\d+\.\d+) (P\d+[a-z]?|S\d+):/) || (i.title.match(/^Release (\d+\.\d+)\.0\b/) || []).concat('R').slice(0, 3) }))
@@ -128,6 +130,13 @@ jobs:
                 .then((r) => (Array.isArray(r.data) ? r.data : []).map((f) => f.name), () => []));
               return researchFiles.some((f) => f.includes(slug));
             };
+            let typedOks = null;
+            const ownerOk = async (key) => {
+              if (!typedOks) typedOks = (await github.rest.repos.getContent({ owner, repo, path: 'docs/DECISIONS.md', ref: 'main' })
+                .then((r) => Buffer.from(r.data.content, 'base64').toString('utf8').split('\n')
+                  .filter((l) => { const c = l.split('|').map((s) => s.trim()); return l.startsWith('|') && /^Owner, typed\b/.test(c[3] || ''); }), () => []));
+              return typedOks.some((l) => l.includes('`' + key + '`'));
+            };
             for (const x of items.filter((y) => y.open && !listed.has(y.n)).sort((a, b) => a.n - b.n)) {
               const ql = x.body.split('\n').find((l) => l.startsWith(`- [next] #${x.n} `));
               const after = x.body.match(/\bAfter:\s*([^.(\n]*)/);
@@ -135,10 +144,11 @@ jobs:
               let deps;
               if (/everything|\ball\b/i.test(after[1])) deps = items.filter((y) => y.ver === x.ver && y.n !== x.n);
               else {
-                const keys = [], research = [];
+                const keys = [], research = [], oks = [];
                 for (const t of after[1].split(/[,\s]+/).filter(Boolean)) {
                   const rs = t.match(/^research-([a-z0-9-]+)$/);
                   if (rs) { research.push(rs[1]); continue; }
+                  if (/^owner-ok-[A-Za-z0-9-]+$/.test(t)) { oks.push(t); continue; }
                   const r = t.match(/^(P\d+)([a-z])[–-](?:P\d+)?([a-z])$/); // P5a–d or P5a–P5d
                   if (r) for (let c = r[2].charCodeAt(0); c <= r[3].charCodeAt(0); c++) keys.push(r[1] + String.fromCharCode(c));
                   else if (/^(?:P\d+[a-z]?|S\d+)$/.test(t)) keys.push(t);
@@ -149,6 +159,8 @@ jobs:
                 let missing = '';
                 for (const slug of research) if (!(await researchDone(slug))) { missing = slug; break; }
                 if (missing) { core.info(`#${x.n}: waits on research-${missing} (no docs/research file on main)`); continue; }
+                for (const k of oks) if (!(await ownerOk(k))) { missing = k; break; }
+                if (missing) { core.info(`#${x.n}: waits on ${missing} (no "Owner, typed" row in docs/DECISIONS.md)`); continue; }
               }
               if (deps.some((d) => d.open)) continue;
               queued.push(ql.trim());
